@@ -84,6 +84,81 @@ def compare(rows: list[dict], pad: list[dict]) -> Comparison:
     return Comparison(agreement, count, best_shift, best_correlation, best_count)
 
 
+def truth_table(rows: list[dict], pad: list[dict], shift: float = 0.0) -> dict:
+    """Count releases separately from wrong-way commands, with fixed eligibility.
+
+    Raw error uses a ten-degree neutral band so map jitter is not a turn.
+    The shift samples human input at frame time + shift, as compare() does.
+    """
+    events = sorted((e for e in pad if e["src"] == "human"), key=lambda e: e["t"])
+    table = {}
+    if not events or not rows:
+        return table
+    event_times = np.array([e["t"] for e in events])
+    for row in rows:
+        time = row["time"] + shift
+        index = int(np.searchsorted(event_times, time + 1e-9, side="right")) - 1
+        reading = row["reading"]
+        if (
+            index < 0
+            or time < rows[0]["time"] - 1e-9
+            or time > rows[-1]["time"] + 1e-9
+            or reading["minimap"] != "tilted"
+            or reading["route"] not in ("yellow", "purple")
+        ):
+            continue
+        human = events[index]["left"][0]
+        if abs(human) <= 0.4:
+            continue
+        state = row["command"]["state"]
+        near, arrow = reading["bearing"], reading["arrow"]
+        raw = None if near is None or arrow is None else (near - arrow + 180) % 360 - 180
+        for signal, value, neutral in (("command", row["command"]["steer"], 1e-9), ("raw", raw, 10.0)):
+            counts = table.setdefault(state, {}).setdefault(
+                signal, dict(zero=0, same=0, opposite=0, missing=0)
+            )
+            category = (
+                "missing"
+                if value is None
+                else "zero"
+                if abs(value) <= neutral
+                else "same"
+                if value * human > 0
+                else "opposite"
+            )
+            counts[category] += 1
+    return table
+
+
+def diagnostics(rows: list[dict], pad: list[dict]) -> dict:
+    result = compare(rows, pad)
+    # Select raw-error alignment independently; do not hide it behind command state.
+    raw_rows = [
+        dict(
+            row,
+            command=dict(
+                row["command"],
+                steer=(
+                    (row["reading"]["bearing"] - row["reading"]["arrow"] + 180) % 360 - 180
+                    if row["reading"]["bearing"] is not None and row["reading"]["arrow"] is not None
+                    else 0
+                ),
+            ),
+        )
+        for row in rows
+    ]
+    raw_result = compare(raw_rows, pad)
+    return {
+        "zero_shift": truth_table(rows, pad),
+        "command_best_shift": result.shift,
+        "command_correlation": result.correlation,
+        "command_best": truth_table(rows, pad, result.shift or 0),
+        "raw_best_shift": raw_result.shift,
+        "raw_correlation": raw_result.correlation,
+        "raw_best": truth_table(rows, pad, raw_result.shift or 0),
+    }
+
+
 def run_replay(recording: Path, *, out: Path | None = None, pipeline: Pipeline | None = None) -> Comparison:
     pipeline = Pipeline() if pipeline is None else pipeline
     out = recording / "pilot-replay.jsonl" if out is None else out
@@ -91,7 +166,10 @@ def run_replay(recording: Path, *, out: Path | None = None, pipeline: Pipeline |
     pad = json_lines(recording / "pad.jsonl")
     meta = json.loads((recording / "meta.json").read_text())
     if re.search(r"wi[\s\-\u2010-\u2015]?fi", str(meta.get("note", "")), re.IGNORECASE):
-        print("Warning: Wi-Fi recording. Steering comparisons are meaningful only on wired recordings.")
+        print(
+            "Warning: Wi-Fi recording. Direction comparisons are descriptive; "
+            "shifts do not measure control latency."
+        )
     capture = cv2.VideoCapture(str(recording / "video.mp4"))
     rows = []
     try:
@@ -127,4 +205,5 @@ def run_replay(recording: Path, *, out: Path | None = None, pipeline: Pipeline |
         f"best shift={shift} correlation={correlation} ticks={result.shift_ticks} "
         "(positive means human steering follows pilot; search +/-2s)"
     )
+    print(json.dumps(diagnostics(rows, pad), sort_keys=True))
     return result

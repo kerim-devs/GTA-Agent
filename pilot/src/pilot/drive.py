@@ -8,27 +8,22 @@ from pilot.contract import NEUTRAL, Command, Reading
 
 @dataclass(frozen=True)
 class DriveConfig:
-    """Times are seconds, angles degrees, controls normalized.
-
-    Lower steer_gain / increase steer_smoothing for weaving. Increase corner_bias
-    for early corner cutting. Lower bend_throttle or increase bend_gain for late braking.
-    command_delay estimates capture-to-actuation delay. brake acts as reverse once
-    stopped, as in the game's pedal controls. A fresh Driver resets a failed run.
-    """
+    """Controller timing and gains; validate changes against replay and simulation."""
 
     steer_gain: float = 0.035  # Heading error to stick deflection per degree.
     steer_zero: float = 0.005  # Snap a decayed stick to zero below this magnitude.
     max_step_time: float = 0.5  # Bound feedback integration after a scheduling pause.
-    steer_smoothing: float = 0.2  # Low-pass time constant for stick output.
-    bearing_smoothing: float = 0.4  # Reject rapid angle noise before feedback.
-    steer_deadband: float = 2.0  # Ignore small filtered heading errors.
+    steer_smoothing: float = 0.05  # Low-pass time constant for stick output.
+    bearing_smoothing: float = 0.1  # Reject rapid angle noise before feedback.
+    steer_deadband: float = 4.0  # Ignore small filtered heading errors.
     steering_bias: float = 0.25  # Minimum active stick to tolerate a physical dead zone.
-    corner_bias: float = 7.0  # Delay early corner cutting indicated by far-near angle.
     command_delay: float = 0.21  # Capture-to-control latency used for prediction.
     prediction_limit: float = 8.0  # Maximum angle extrapolation across the delay.
     cruise_throttle: float = 0.58  # Pedal on a straight, legible route.
     bend_throttle: float = 0.22  # Minimum pedal while following a bend.
     bend_gain: float = 0.013  # Pedal reduction per degree of upcoming bend.
+    damage_hold: float = 0.5  # Conservative bound below replay gap p90 .555s; damage cannot renew it.
+    damage_angle: float = 25.0  # Reject direction changes beyond recent clean evidence.
     confidence_min: float = 0.5  # Lowest accepted perception confidence.
     hold_time: float = 0.3  # Last follow command survives only this long without evidence.
     route_gone_time: float = 2.0  # Time of observed route absence before stopping.
@@ -104,12 +99,15 @@ class Driver:
         self._phase_since = 0.0
         self._attempts = 0
         self._escape = 0.0
+        self._trusted_route: str | None = None
+        self._trusted_error: float | None = None
 
     def _emit(self, steer: float, throttle: float, brake: float, state: str) -> Command:
         self._last = Command(_clip(steer), _clip(throttle, 0), _clip(brake, 0), state)
         return self._last
 
     def _idle(self) -> Command:
+        self._trusted_route = self._trusted_error = None
         self._last_good = self._missing_observed_at = self._route_stop_time = None
         self._missing_duration = 0.0
         self._route_stopped = False
@@ -155,7 +153,8 @@ class Driver:
         if self._phase == "failed-recovery":
             return self._emit(0, 0, 0, "failed-recovery")
         confidence = _number(reading.confidence)
-        if (
+        damaged = self._damage_agrees(reading, now, confidence)
+        if not damaged and (
             reading.corrupt is not False
             or confidence is None
             or not self.config.confidence_min <= confidence <= 1
@@ -191,7 +190,10 @@ class Driver:
             if now - self._outlier_since < self.config.outlier_window:
                 return self._coast(now)
         self._outlier_since = None
-        self._last_good = now
+        if not damaged:
+            self._last_good = now
+            self._trusted_route = reading.route
+            self._trusted_error = _angle(_angle(_number(reading.bearing)) - _angle(arrow))
 
         if self._phase == "recovery-reverse":
             if now - self._phase_since < self.config.reverse_time:
@@ -244,7 +246,15 @@ class Driver:
         else:
             self._moving_since = None
         previous = self._filtered_error
-        alpha = 1.0 if previous is None else dt / max(dt + self.config.bearing_smoothing, 1e-9)
+        alpha = (
+            1.0
+            if previous is None
+            else dt
+            / max(
+                dt + self.config.bearing_smoothing,
+                1e-9,
+            )
+        )
         self._filtered_error = (
             error if previous is None else _angle(previous + alpha * _angle(error - previous))
         )
@@ -257,17 +267,27 @@ class Driver:
         correction = _clip(
             rate * self.config.command_delay, -self.config.prediction_limit, self.config.prediction_limit
         )
+        # Predict turns only outside the neutral band; differentiated map jitter
+        # otherwise caused up to 7.7 steering sign changes per second in the grid.
+        if abs(self._filtered_error) <= self.config.steer_deadband:
+            correction = 0.0
         adjusted = self._filtered_error + correction
         bend_delta = _angle(self._filtered_far - self._filtered_error)
-        if adjusted * bend_delta > 0:
-            adjusted -= _clip(self.config.corner_bias * bend_delta, -abs(adjusted), abs(adjusted))
         adjusted = (1 if adjusted >= 0 else -1) * max(0.0, abs(adjusted) - self.config.steer_deadband)
         target = _clip(self.config.steer_gain * adjusted)
         if target:
             target = (1 if target > 0 else -1) * (
                 self.config.steering_bias + (1 - self.config.steering_bias) * abs(target)
             )
-        alpha = 1.0 if self._error is None else dt / max(dt + self.config.steer_smoothing, 1e-9)
+        alpha = (
+            1.0
+            if self._error is None
+            else dt
+            / max(
+                dt + self.config.steer_smoothing,
+                1e-9,
+            )
+        )
         self._steer += alpha * (target - self._steer)
         if abs(self._steer) < self.config.steer_zero and target == 0:
             self._steer = 0.0
@@ -275,6 +295,28 @@ class Driver:
         throttle = max(self.config.bend_throttle, self.config.cruise_throttle - self.config.bend_gain * bend)
         self._error = error
         return self._emit(self._steer, throttle, 0, "follow")
+
+    def _damage_agrees(self, reading: Reading, now: float, confidence: float | None) -> bool:
+        if (
+            reading.corrupt is not True
+            or confidence is None
+            or not 0.3 <= confidence <= 1
+            or self._last_good is None
+            or now - self._last_good > self.config.damage_hold
+            or not isinstance(reading.route, str)
+            or reading.route != self._trusted_route
+            or self._trusted_error is None
+        ):
+            return False
+        near, arrow = _number(reading.bearing), _number(reading.arrow)
+        if near is None or arrow is None:
+            return False
+        error = _angle(_angle(near) - _angle(arrow))
+        return (
+            abs(error) > 5
+            and error * self._trusted_error > 0
+            and abs(_angle(error - self._trusted_error)) <= self.config.damage_angle
+        )
 
     def _recover(self, now: float, error: float) -> Command:
         self._attempts += 1

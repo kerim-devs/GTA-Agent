@@ -1,0 +1,96 @@
+{
+  "zero_shift": {
+    "follow": {
+      "command": {
+        "zero": 21,
+        "same": 371,
+        "opposite": 32,
+        "missing": 0
+      },
+      "raw": {
+        "zero": 85,
+        "same": 326,
+        "opposite": 13,
+        "missing": 0
+      }
+    },
+    "coast": {
+      "command": {
+        "zero": 53,
+        "same": 12,
+        "opposite": 6,
+        "missing": 0
+      },
+      "raw": {
+        "zero": 29,
+        "same": 40,
+        "opposite": 2,
+        "missing": 0
+      }
+    }
+  },
+  "command_best_shift": -0.45360000000009393,
+  "command_correlation": 0.8266731421188939,
+  "command_best": {
+    "coast": {
+      "command": {
+        "zero": 38,
+        "same": 14,
+        "opposite": 3,
+        "missing": 0
+      },
+      "raw": {
+        "zero": 31,
+        "same": 24,
+        "opposite": 0,
+        "missing": 0
+      }
+    },
+    "follow": {
+      "command": {
+        "zero": 13,
+        "same": 370,
+        "opposite": 20,
+        "missing": 0
+      },
+      "raw": {
+        "zero": 98,
+        "same": 288,
+        "opposite": 17,
+        "missing": 0
+      }
+    }
+  },
+  "raw_best_shift": -0.1512000000000313,
+  "raw_correlation": 0.8098471500786669,
+  "raw_best": {
+    "coast": {
+      "command": {
+        "zero": 54,
+        "same": 10,
+        "opposite": 4,
+        "missing": 0
+      },
+      "raw": {
+        "zero": 23,
+        "same": 42,
+        "opposite": 3,
+        "missing": 0
+      }
+    },
+    "follow": {
+      "command": {
+        "zero": 20,
+        "same": 363,
+        "opposite": 22,
+        "missing": 0
+      },
+      "raw": {
+        "zero": 63,
+        "same": 327,
+        "opposite": 15,
+        "missing": 0
+      }
+    }
+  }
+}
