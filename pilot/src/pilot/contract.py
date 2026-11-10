@@ -47,3 +47,31 @@ class Command:
 
 
 NEUTRAL = Command(0.0, 0.0, 0.0, "idle")
+
+
+@dataclass(frozen=True)
+class Pad:
+    """Complete controller state; no state is inherited from a previous tick."""
+
+    buttons: tuple[str, ...] = ()
+    left: tuple[float, float] = (0.0, 0.0)
+    right: tuple[float, float] = (0.0, 0.0)
+    l2: float = 0.0
+    r2: float = 0.0
+
+    @classmethod
+    def from_command(cls, command: Command) -> Pad:
+        return cls(left=(command.steer, 0.0), l2=command.brake, r2=command.throttle)
+
+    def payload(self) -> dict:
+        return {
+            "buttons": list(self.buttons),
+            "left": list(self.left),
+            "right": list(self.right),
+            "l2": self.l2,
+            "r2": self.r2,
+            "ttl_ms": 250,
+        }
+
+
+NEUTRAL_PAD = Pad()

@@ -14,7 +14,7 @@ from pathlib import Path
 import numpy as np
 
 from .bridge import Bridge
-from .contract import HUD_RECT, Command, Reading
+from .contract import HUD_RECT, Command, Pad, Reading
 from .drive import DriveConfig, Driver
 from .gps import Reader as GPSReader
 from .gps import Speedometer
@@ -133,6 +133,76 @@ class RuntimeInterruptedError(Exception):
     pass
 
 
+class ControllerRuntime:
+    """The same freshness, lease, conflict and release rules for every local skill."""
+
+    def __init__(self, bridge, *, shadow=False, clock=time.monotonic):
+        self.bridge, self.shadow, self.clock = bridge, shadow, clock
+        self.last_fresh = clock()
+        self.last_id = None
+        self.frozen = False
+        self.blocked_until = None
+        self.conflicts = 0
+
+    def observe(self, frame, received):
+        fresh = frame is not None and frame.id != self.last_id and 0 <= frame.age < 0.3
+        if frame is not None:
+            self.last_id = frame.id
+        if fresh:
+            self.last_fresh = received
+            self.frozen = False
+        return fresh
+
+    def send(self, command=None):
+        status = self.bridge.pad(command)
+        self.conflicts += int(status == 409)
+        return status
+
+    def tick(self, command: Command | Pad | None, *, fresh: bool, received: float):
+        sent, status = False, None
+        if not self.shadow:
+            if self.blocked_until is not None:
+                if received >= self.blocked_until:
+                    status = self.send()
+                    self.blocked_until = self.clock() + 1 if status == 409 else None
+                    self.frozen = not fresh
+            elif received - self.last_fresh >= 0.3 and not self.frozen:
+                status = self.send()
+                self.frozen = True
+            elif fresh:
+                status = self.send(command)
+                sent = status != 409
+            if status == 409:
+                self.blocked_until = self.clock() + 1
+        return sent, status
+
+    def release(self):
+        if not self.shadow:
+            self.send()
+
+
+def cleanup_runtime(runtime, *, recording, pipeline, logs=()):
+    """Release before stopping our recorder, even when another cleanup step fails."""
+    active_error = sys.exception()
+    errors = []
+    actions = [runtime.release]
+    if recording:
+        actions.append(runtime.bridge.record_stop)
+    actions.extend(log.close for log in logs if log is not None)
+    if getattr(pipeline, "close", None) is not None:
+        actions.append(pipeline.close)
+    for action in actions:
+        try:
+            action()
+        except Exception as exc:
+            errors.append(exc)
+    if errors:
+        if active_error is None:
+            raise errors[0]
+        for error in errors:
+            print(f"Cleanup failed: {error}", file=sys.stderr)
+
+
 @contextmanager
 def interrupt_handlers():
     def stop(signum, frame):
@@ -165,16 +235,8 @@ def run_drive(
     log = None
     started = clock()
     first_tick = None
-    last_fresh = started
-    last_id = None
-    frozen = False
-    blocked_until = None
     recording = False
-
-    def send(command=None):
-        status = bridge.pad(command)
-        summary.conflicts += int(status == 409)
-        return status
+    runtime = ControllerRuntime(bridge, shadow=shadow, clock=clock)
 
     with interrupt_handlers():
         try:
@@ -184,38 +246,22 @@ def run_drive(
                 log = (destination / "pilot.jsonl").open("x")
                 if config is not None:
                     (destination / "pilot-config.json").write_text(json.dumps(config, indent=2) + "\n")
-            started = last_fresh = clock()
+            started = runtime.last_fresh = clock()
             while seconds is None or clock() - started < seconds:
                 tick = clock()
                 if first_tick is None:
                     first_tick = tick
-                frame = bridge.frame(HUD_RECT, after=last_id)
+                frame = bridge.frame(HUD_RECT, after=runtime.last_id)
                 received = clock()
                 reading = moving = command = frame_time = None
                 sent, status = False, None
-                fresh = frame is not None and frame.id != last_id and frame.age < 0.3
+                fresh = runtime.observe(frame, received)
                 if frame is not None:
                     frame_time = received - frame.age
-                    last_id = frame.id
                 if fresh:
-                    last_fresh = received
-                    frozen = False
                     reading, moving, command = pipeline.step(frame.rgb, frame_time, feedback=not shadow)
-
-                if not shadow:
-                    if blocked_until is not None:
-                        if received >= blocked_until:
-                            status = send()
-                            blocked_until = clock() + 1 if status == 409 else None
-                            frozen = not fresh
-                    elif received - last_fresh >= 0.3 and not frozen:
-                        status = send()
-                        frozen = True
-                    elif fresh:
-                        status = send(command)
-                        sent = status != 409
-                    if status == 409:
-                        blocked_until = clock() + 1
+                sent, status = runtime.tick(command, fresh=fresh, received=received)
+                summary.conflicts = runtime.conflicts
 
                 summary.add(reading, command)
                 if log is not None:
@@ -241,29 +287,10 @@ def run_drive(
         except RuntimeInterruptedError:
             pass
         finally:
-            active_error = sys.exception()
-            cleanup_errors = []
             try:
-                if not shadow:
-                    send()
-            except Exception as exc:
-                cleanup_errors.append(exc)
-            try:
-                if recording:  # a recording someone else started is not ours to stop
-                    bridge.record_stop()
-            except Exception as exc:
-                cleanup_errors.append(exc)
+                cleanup_runtime(runtime, recording=recording, pipeline=pipeline, logs=(log,))
             finally:
-                if log is not None:
-                    log.close()
-                close = getattr(pipeline, "close", None)
-                if close is not None:
-                    close()
+                summary.conflicts = runtime.conflicts
                 summary.elapsed = clock() - started
                 print(summary)
-            if cleanup_errors:
-                if active_error is None:
-                    raise cleanup_errors[0]
-                for error in cleanup_errors:
-                    print(f"Cleanup failed: {error}", file=sys.stderr)
     return summary

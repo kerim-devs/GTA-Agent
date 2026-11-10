@@ -6,7 +6,7 @@ from pathlib import Path
 import httpx
 import numpy as np
 
-from pilot.contract import Command
+from pilot.contract import Command, Pad
 
 # Stopping joins the recorder's writer thread, which can take seconds, and a client that hangs up in
 # the middle leaves the daemon reporting "recording" for good.
@@ -29,9 +29,11 @@ class Bridge:
     ) -> None:
         self.client = httpx.Client(base_url=url, timeout=0.5, transport=transport)
 
-    def frame(self, rect: tuple[int, int, int, int], after: int | None = None) -> Frame | None:
-        x, y, width, height = rect
-        params = {"x": x, "y": y, "w": width, "h": height, "wait_ms": 100}
+    def frame(self, rect: tuple[int, int, int, int] | None = None, after: int | None = None) -> Frame | None:
+        params = {"wait_ms": 100}
+        if rect is not None:
+            x, y, width, height = rect
+            params.update(x=x, y=y, w=width, h=height)
         if after is not None:
             params["after"] = after
         response = self.client.get("/frame.raw", params=params)
@@ -52,10 +54,12 @@ class Bridge:
         response.raise_for_status()
         return response.json()
 
-    def pad(self, command: Command | None = None) -> int:
+    def pad(self, command: Command | Pad | None = None) -> int:
         payload = (
             {}
             if command is None
+            else command.payload()
+            if isinstance(command, Pad)
             else {
                 "buttons": [],
                 "left": [command.steer, 0],
