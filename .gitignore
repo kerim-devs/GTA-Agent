@@ -6,3 +6,6 @@ __pycache__/
 .venv/
 .pytest_cache/
 .ruff_cache/
+
+# rebuilt by lab/minimap/prep.py, 367 MB
+lab/minimap/data/crops.npy
