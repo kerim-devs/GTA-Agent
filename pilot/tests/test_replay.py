@@ -92,7 +92,7 @@ def test_replay_known_agreement_shift_rgb_crop_and_frame_times(tmp_path, capsys)
     assert rows[-1]["moving"] is True
     assert all(not row["sent"] and row["status"] is None for row in rows)
     output = capsys.readouterr().out
-    assert "Wi-Fi" in output and "wired" in output
+    assert "Wi-Fi" in output and "do not measure control latency" in output
     assert "sign agreement=0.438 ticks=16" in output
     assert "best shift=+0.200s correlation=1.000 ticks=16" in output
 
@@ -154,3 +154,29 @@ def test_cli_rejects_invalid_duration_without_contacting_bridge(capsys):
         main(["drive", "--seconds", "nan"])
     assert error.value.code == 2
     assert "finite and positive" in capsys.readouterr().err
+
+
+def test_truth_table_separates_zero_opposite_raw_error_and_state():
+    from pilot.replay import truth_table
+
+    def row(time, state, steer, near):
+        return {
+            "time": time,
+            "command": {"state": state, "steer": steer},
+            "reading": {"minimap": "tilted", "route": "yellow", "bearing": near, "arrow": 0},
+        }
+
+    rows = [
+        row(0, "follow", 0, 20),
+        row(1, "follow", -0.4, -30),
+        row(2, "coast", 0.2, 3),
+        row(3, "coast", 0, None),
+    ]
+    pad = [{"t": 0, "src": "human", "left": [0.8, 0]}, {"t": 1, "src": "agent", "left": [-1, 0]}]
+    table = truth_table(rows, pad)
+    assert table["follow"]["command"] == dict(zero=1, same=0, opposite=1, missing=0)
+    assert table["follow"]["raw"] == dict(zero=0, same=1, opposite=1, missing=0)
+    assert table["coast"]["command"] == dict(zero=1, same=1, opposite=0, missing=0)
+    assert table["coast"]["raw"] == dict(zero=1, same=0, opposite=0, missing=1)
+    assert truth_table(rows, pad, -1)["follow"]["command"]["opposite"] == 1
+    assert truth_table(rows, []) == {}

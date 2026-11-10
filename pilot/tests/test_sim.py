@@ -1,8 +1,10 @@
 """Full 324-run closed-loop grid and independent model invariants."""
 
+import json
 from dataclasses import replace
 from itertools import product
 from math import atan2, degrees
+from pathlib import Path
 
 import pytest
 
@@ -18,151 +20,15 @@ SCENARIOS = {
     "block": (((0, 0), (0, 100), (100, 100), (100, -30), (-30, -30), (-30, 20)), (0, 0), 0, ()),
     "wall": (((0, 0), (60, 0), (60, 100)), (0, 0), 0, (((-6, 3), (6, 3)),)),
 }
-GRID = tuple(product(SCENARIOS, (0.15, 0.21, 0.30), (0.5, 1.0, 2.0), (0, 1, 2), (0.0, 0.25)))
+GRID = tuple(product(SCENARIOS, (0.14, 0.21, 0.30), (0.5, 1.0, 2.0), (0, 1, 2), (0.0, 0.25)))
 
 
 # Explicit measured failures, never a blanket allowance for a new failing cell.
 # A changed outcome (including an improvement) fails for review of this baseline.
+# P6 v1 retains explicit measured misses; a green gate is not task acceptance.
 KNOWN_FAILURES = {
-    ("left", 0.15, 2.0, 0, 0.0): ["mean 3.453m >= 3m"],
-    ("left", 0.15, 2.0, 1, 0.0): ["mean 3.484m >= 3m"],
-    ("left", 0.15, 2.0, 2, 0.0): ["mean 3.063m >= 3m"],
-    ("left", 0.21, 2.0, 0, 0.0): ["mean 3.468m >= 3m"],
-    ("left", 0.21, 2.0, 1, 0.0): ["mean 3.511m >= 3m"],
-    ("left", 0.21, 2.0, 2, 0.0): ["mean 3.113m >= 3m"],
-    ("left", 0.3, 0.5, 0, 0.0): ["maximum 10.897m >= 10m"],
-    ("left", 0.3, 2.0, 0, 0.0): ["mean 3.458m >= 3m"],
-    ("left", 0.3, 2.0, 1, 0.0): ["mean 3.496m >= 3m"],
-    ("left", 0.3, 2.0, 2, 0.0): ["mean 3.059m >= 3m"],
-    ("right", 0.15, 2.0, 2, 0.0): ["mean 3.465m >= 3m"],
-    ("right", 0.21, 2.0, 2, 0.0): ["mean 3.456m >= 3m"],
-    ("right", 0.3, 1.0, 0, 0.0): ["mean 3.312m >= 3m", "maximum 11.442m >= 10m"],
-    ("right", 0.3, 2.0, 2, 0.0): ["mean 3.474m >= 3m"],
-    ("s_bend", 0.15, 2.0, 0, 0.0): ["mean 8.472m >= 3m", "maximum 18.801m >= 10m"],
-    ("s_bend", 0.15, 2.0, 0, 0.25): ["mean 6.016m >= 3m", "maximum 20.819m >= 10m"],
-    ("s_bend", 0.15, 2.0, 1, 0.0): ["mean 8.214m >= 3m", "maximum 20.076m >= 10m"],
-    ("s_bend", 0.15, 2.0, 1, 0.25): ["mean 6.313m >= 3m", "maximum 20.905m >= 10m"],
-    ("s_bend", 0.15, 2.0, 2, 0.0): ["mean 7.857m >= 3m", "maximum 19.910m >= 10m"],
-    ("s_bend", 0.15, 2.0, 2, 0.25): ["mean 6.097m >= 3m", "maximum 21.320m >= 10m"],
-    ("s_bend", 0.21, 2.0, 0, 0.0): ["mean 8.844m >= 3m", "maximum 17.998m >= 10m"],
-    ("s_bend", 0.21, 2.0, 0, 0.25): ["mean 6.210m >= 3m", "maximum 20.682m >= 10m"],
-    ("s_bend", 0.21, 2.0, 1, 0.0): ["mean 8.360m >= 3m", "maximum 20.257m >= 10m"],
-    ("s_bend", 0.21, 2.0, 1, 0.25): ["mean 6.452m >= 3m", "maximum 20.846m >= 10m"],
-    ("s_bend", 0.21, 2.0, 2, 0.0): ["mean 8.033m >= 3m", "maximum 20.160m >= 10m"],
-    ("s_bend", 0.21, 2.0, 2, 0.25): ["mean 6.311m >= 3m", "maximum 21.354m >= 10m"],
-    ("s_bend", 0.3, 1.0, 1, 0.0): ["mean 3.510m >= 3m", "maximum 13.527m >= 10m"],
-    ("s_bend", 0.3, 2.0, 0, 0.0): ["mean 9.241m >= 3m", "maximum 17.792m >= 10m"],
-    ("s_bend", 0.3, 2.0, 0, 0.25): ["mean 6.714m >= 3m", "maximum 20.483m >= 10m"],
-    ("s_bend", 0.3, 2.0, 1, 0.0): ["mean 8.767m >= 3m", "maximum 20.972m >= 10m"],
-    ("s_bend", 0.3, 2.0, 1, 0.25): ["mean 6.859m >= 3m", "maximum 20.362m >= 10m"],
-    ("s_bend", 0.3, 2.0, 2, 0.0): ["mean 8.616m >= 3m", "maximum 19.735m >= 10m"],
-    ("s_bend", 0.3, 2.0, 2, 0.25): ["mean 6.575m >= 3m", "maximum 20.949m >= 10m"],
-    ("block", 0.15, 1.0, 2, 0.0): ["maximum 10.549m >= 10m"],
-    ("block", 0.15, 2.0, 0, 0.0): [
-        "progress gap 13.600s > 10s",
-        "mean 14.418m >= 3m",
-        "maximum 53.682m >= 10m",
-    ],
-    ("block", 0.15, 2.0, 0, 0.25): [
-        "not reached at 240.033s",
-        "progress gap 11.633s > 10s",
-        "mean 15.644m >= 3m",
-        "maximum 50.786m >= 10m",
-    ],
-    ("block", 0.15, 2.0, 1, 0.0): [
-        "progress gap 12.833s > 10s",
-        "mean 14.865m >= 3m",
-        "maximum 55.455m >= 10m",
-    ],
-    ("block", 0.15, 2.0, 1, 0.25): [
-        "progress gap 11.500s > 10s",
-        "mean 14.428m >= 3m",
-        "maximum 52.720m >= 10m",
-    ],
-    ("block", 0.15, 2.0, 2, 0.0): [
-        "progress gap 13.133s > 10s",
-        "mean 14.617m >= 3m",
-        "maximum 54.616m >= 10m",
-    ],
-    ("block", 0.15, 2.0, 2, 0.25): [
-        "progress gap 10.767s > 10s",
-        "mean 14.455m >= 3m",
-        "maximum 45.804m >= 10m",
-    ],
-    ("block", 0.21, 2.0, 0, 0.0): [
-        "progress gap 13.600s > 10s",
-        "mean 14.433m >= 3m",
-        "maximum 53.214m >= 10m",
-    ],
-    ("block", 0.21, 2.0, 0, 0.25): [
-        "not reached at 240.033s",
-        "progress gap 11.600s > 10s",
-        "mean 15.056m >= 3m",
-        "maximum 50.783m >= 10m",
-    ],
-    ("block", 0.21, 2.0, 1, 0.0): [
-        "progress gap 12.833s > 10s",
-        "mean 15.207m >= 3m",
-        "maximum 55.384m >= 10m",
-    ],
-    ("block", 0.21, 2.0, 1, 0.25): [
-        "progress gap 11.533s > 10s",
-        "mean 15.199m >= 3m",
-        "maximum 53.039m >= 10m",
-    ],
-    ("block", 0.21, 2.0, 2, 0.0): [
-        "progress gap 13.167s > 10s",
-        "mean 14.925m >= 3m",
-        "maximum 55.722m >= 10m",
-    ],
-    ("block", 0.21, 2.0, 2, 0.25): [
-        "progress gap 10.867s > 10s",
-        "mean 14.005m >= 3m",
-        "maximum 45.164m >= 10m",
-    ],
-    ("block", 0.3, 1.0, 0, 0.0): ["mean 3.212m >= 3m", "maximum 11.442m >= 10m"],
-    ("block", 0.3, 1.0, 1, 0.0): ["maximum 13.836m >= 10m"],
-    ("block", 0.3, 2.0, 0, 0.0): [
-        "progress gap 13.633s > 10s",
-        "mean 14.677m >= 3m",
-        "maximum 53.179m >= 10m",
-    ],
-    ("block", 0.3, 2.0, 0, 0.25): [
-        "not reached at 240.033s",
-        "progress gap 11.700s > 10s",
-        "mean 15.299m >= 3m",
-        "maximum 51.304m >= 10m",
-    ],
-    ("block", 0.3, 2.0, 1, 0.0): [
-        "progress gap 12.800s > 10s",
-        "mean 15.691m >= 3m",
-        "maximum 55.084m >= 10m",
-    ],
-    ("block", 0.3, 2.0, 1, 0.25): [
-        "not reached at 240.033s",
-        "progress gap 11.533s > 10s",
-        "mean 16.687m >= 3m",
-        "maximum 56.081m >= 10m",
-    ],
-    ("block", 0.3, 2.0, 2, 0.0): [
-        "progress gap 13.100s > 10s",
-        "mean 14.715m >= 3m",
-        "maximum 55.190m >= 10m",
-    ],
-    ("block", 0.3, 2.0, 2, 0.25): [
-        "progress gap 10.967s > 10s",
-        "mean 13.345m >= 3m",
-        "maximum 44.183m >= 10m",
-    ],
-    ("wall", 0.15, 1.0, 0, 0.0): ["mean 3.502m >= 3m", "maximum 11.853m >= 10m"],
-    ("wall", 0.15, 1.0, 1, 0.0): ["mean 3.410m >= 3m", "maximum 11.256m >= 10m"],
-    ("wall", 0.15, 1.0, 2, 0.0): ["mean 3.140m >= 3m", "maximum 10.265m >= 10m"],
-    ("wall", 0.21, 1.0, 0, 0.0): ["mean 4.033m >= 3m", "maximum 13.475m >= 10m"],
-    ("wall", 0.21, 1.0, 1, 0.0): ["mean 3.747m >= 3m", "maximum 12.433m >= 10m"],
-    ("wall", 0.21, 1.0, 2, 0.0): ["mean 3.493m >= 3m", "maximum 11.482m >= 10m"],
-    ("wall", 0.3, 1.0, 0, 0.0): ["mean 4.419m >= 3m", "maximum 14.645m >= 10m"],
-    ("wall", 0.3, 1.0, 1, 0.0): ["mean 4.323m >= 3m", "maximum 14.634m >= 10m"],
-    ("wall", 0.3, 1.0, 2, 0.0): ["mean 3.967m >= 3m", "maximum 13.082m >= 10m"],
+    tuple(row["case"]): row["errors"]
+    for row in json.loads((Path(__file__).parent / "fixtures" / "driver-v1-failures.json").read_text())
 }
 
 
@@ -174,7 +40,7 @@ def run_case(name: str, delay: float, scale: float, seed: int, dead_zone: float)
     )
 
 
-def violations(name: str, result) -> list[str]:
+def violations(name: str, result, scale: float) -> list[str]:
     errors = []
     if not result.reached:
         errors.append(f"not reached at {result.elapsed:.3f}s")
@@ -182,9 +48,10 @@ def violations(name: str, result) -> list[str]:
         errors.append(f"progress gap {result.max_no_progress:.3f}s > 10s")
     if result.mean_distance >= 3:
         errors.append(f"mean {result.mean_distance:.3f}m >= 3m")
-    if result.max_distance >= 10:
-        errors.append(f"maximum {result.max_distance:.3f}m >= 10m")
-    if name == "straight" and result.steering_flips_per_second > 2:
+    limit = 6 if scale == 2 else 4
+    if result.max_distance > limit:
+        errors.append(f"maximum {result.max_distance:.3f}m > {limit}m")
+    if result.steering_flips_per_second > 2:
         errors.append(f"flips {result.steering_flips_per_second:.3f}/s > 2/s")
     return errors
 
@@ -192,7 +59,7 @@ def violations(name: str, result) -> list[str]:
 @pytest.mark.parametrize("name,delay,scale,seed,dead_zone", GRID)
 def test_closed_loop_grid(name: str, delay: float, scale: float, seed: int, dead_zone: float) -> None:
     result = run_case(name, delay, scale, seed, dead_zone)
-    errors = violations(name, result)
+    errors = violations(name, result, scale)
     key = (name, delay, scale, seed, dead_zone)
     if key in KNOWN_FAILURES:
         assert errors == KNOWN_FAILURES[key], "Measured failure changed; review the explicit baseline"

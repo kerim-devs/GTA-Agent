@@ -1,0 +1,3416 @@
+[
+  {
+    "case": [
+      "left",
+      0.14,
+      0.5,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 5.947m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      0.5,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.457m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      0.5,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.146m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      0.5,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.508m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      0.5,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.067m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      0.5,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.688m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      1.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.248m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      1.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.292m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      1.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.189m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      1.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.222m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      1.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.309m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      1.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.801m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      2.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 6.993m >= 3m",
+      "maximum 27.541m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      2.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 6.428m >= 3m",
+      "maximum 25.899m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      2.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 7.046m >= 3m",
+      "maximum 27.468m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      2.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 6.475m >= 3m",
+      "maximum 25.856m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      2.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 7.138m >= 3m",
+      "maximum 27.486m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      2.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 6.757m >= 3m",
+      "maximum 26.051m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      0.5,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 5.905m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      0.5,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.438m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      0.5,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.097m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      0.5,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.509m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      0.5,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.087m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      0.5,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.689m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      1.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.164m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      1.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.292m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      1.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.224m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      1.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.219m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      1.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.328m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      1.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.790m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      2.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 6.989m >= 3m",
+      "maximum 27.583m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      2.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 6.434m >= 3m",
+      "maximum 25.921m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      2.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 7.078m >= 3m",
+      "maximum 27.450m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      2.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 6.472m >= 3m",
+      "maximum 25.888m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      2.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 7.174m >= 3m",
+      "maximum 27.537m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      2.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 6.754m >= 3m",
+      "maximum 26.087m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      0.5,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 5.906m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      0.5,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.430m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      0.5,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.069m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      0.5,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.507m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      0.5,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.021m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      0.5,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.670m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      1.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.187m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      1.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.292m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      1.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.209m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      1.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.201m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      1.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.251m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      1.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.774m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      2.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 6.991m >= 3m",
+      "maximum 27.563m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      2.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 6.432m >= 3m",
+      "maximum 25.916m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      2.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 7.058m >= 3m",
+      "maximum 27.493m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      2.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 6.471m >= 3m",
+      "maximum 25.850m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      2.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 7.161m >= 3m",
+      "maximum 27.626m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      2.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 6.774m >= 3m",
+      "maximum 26.087m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      0.5,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.281m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      0.5,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.865m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      0.5,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.054m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      0.5,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.795m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      0.5,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.213m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      0.5,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.675m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      1.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.416m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      1.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.498m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      1.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.494m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      1.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.545m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      1.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.363m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      1.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.030m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      2.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 7.156m >= 3m",
+      "maximum 27.780m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      2.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 6.490m >= 3m",
+      "maximum 26.011m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      2.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 7.118m >= 3m",
+      "maximum 27.842m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      2.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 6.449m >= 3m",
+      "maximum 25.896m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      2.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 7.085m >= 3m",
+      "maximum 27.634m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      2.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 6.418m >= 3m",
+      "maximum 25.774m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      0.5,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.293m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      0.5,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.863m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      0.5,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.054m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      0.5,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.790m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      0.5,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.186m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      0.5,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.666m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      1.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.485m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      1.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.519m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      1.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.481m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      1.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.568m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      1.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.336m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      1.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.018m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      2.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 7.161m >= 3m",
+      "maximum 27.821m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      2.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 6.484m >= 3m",
+      "maximum 26.024m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      2.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 7.121m >= 3m",
+      "maximum 27.834m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      2.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 6.457m >= 3m",
+      "maximum 25.904m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      2.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 7.085m >= 3m",
+      "maximum 27.596m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.21,
+      2.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 6.416m >= 3m",
+      "maximum 25.790m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      0.5,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.267m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      0.5,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.864m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      0.5,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.030m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      0.5,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.768m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      0.5,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.185m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      0.5,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.689m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      1.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.498m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      1.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.511m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      1.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.489m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      1.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.565m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      1.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 13.432m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      1.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.002m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      2.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 7.180m >= 3m",
+      "maximum 27.868m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      2.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 6.476m >= 3m",
+      "maximum 26.044m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      2.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 7.148m >= 3m",
+      "maximum 27.881m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      2.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 6.454m >= 3m",
+      "maximum 25.875m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      2.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 7.083m >= 3m",
+      "maximum 27.679m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      2.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 6.409m >= 3m",
+      "maximum 25.812m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      0.5,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.208m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      0.5,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.685m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      0.5,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.057m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      0.5,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.958m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      0.5,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.144m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      0.5,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.857m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      1.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 3.528m >= 3m",
+      "maximum 12.954m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      1.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.584m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      1.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 3.590m >= 3m",
+      "maximum 13.064m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      1.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.781m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      1.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 3.500m >= 3m",
+      "maximum 13.190m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      1.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.719m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      2.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 8.486m >= 3m",
+      "maximum 22.040m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      2.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 7.403m >= 3m",
+      "maximum 21.481m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      2.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 8.585m >= 3m",
+      "maximum 22.343m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      2.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 7.473m >= 3m",
+      "maximum 21.762m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      2.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 8.451m >= 3m",
+      "maximum 22.672m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      2.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 7.333m >= 3m",
+      "maximum 21.621m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      0.5,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.205m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      0.5,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.661m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      0.5,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 5.999m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      0.5,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.953m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      0.5,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.142m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      0.5,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.849m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      1.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 3.547m >= 3m",
+      "maximum 12.928m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      1.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.599m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      1.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 3.588m >= 3m",
+      "maximum 12.894m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      1.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.740m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      1.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 3.500m >= 3m",
+      "maximum 13.174m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      1.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.752m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      2.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 8.491m >= 3m",
+      "maximum 22.075m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      2.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 7.401m >= 3m",
+      "maximum 21.473m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      2.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 8.572m >= 3m",
+      "maximum 22.299m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      2.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 7.468m >= 3m",
+      "maximum 21.768m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      2.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 8.500m >= 3m",
+      "maximum 22.791m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      2.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 7.319m >= 3m",
+      "maximum 21.688m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      0.5,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.207m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      0.5,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.632m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      0.5,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 5.996m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      0.5,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.967m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      0.5,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.110m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      0.5,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.807m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      1.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 3.558m >= 3m",
+      "maximum 12.961m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      1.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.582m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      1.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 3.620m >= 3m",
+      "maximum 13.022m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      1.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.702m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      1.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 3.531m >= 3m",
+      "maximum 13.052m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      1.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 12.685m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      2.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 8.503m >= 3m",
+      "maximum 22.042m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      2.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 7.371m >= 3m",
+      "maximum 21.572m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      2.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 8.594m >= 3m",
+      "maximum 22.388m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      2.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 7.443m >= 3m",
+      "maximum 21.737m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      2.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 8.476m >= 3m",
+      "maximum 22.696m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      2.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 7.313m >= 3m",
+      "maximum 21.713m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      0.5,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.281m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      0.5,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.964m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      0.5,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.164m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      0.5,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.795m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      0.5,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.213m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      0.5,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.842m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      1.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 4.049m >= 3m",
+      "maximum 13.831m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      1.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 3.171m >= 3m",
+      "maximum 12.498m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      1.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 4.038m >= 3m",
+      "maximum 13.789m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      1.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 3.141m >= 3m",
+      "maximum 12.545m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      1.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 4.016m >= 3m",
+      "maximum 13.876m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      1.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 3.166m >= 3m",
+      "maximum 12.247m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      2.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 115.600s > 10s",
+      "mean 18.573m >= 3m",
+      "maximum 35.460m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      2.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 115.167s > 10s",
+      "mean 16.119m >= 3m",
+      "maximum 32.878m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      2.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 122.233s > 10s",
+      "mean 18.645m >= 3m",
+      "maximum 35.461m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      2.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 115.433s > 10s",
+      "mean 16.234m >= 3m",
+      "maximum 32.831m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      2.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 121.933s > 10s",
+      "mean 18.568m >= 3m",
+      "maximum 35.601m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      2.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 114.767s > 10s",
+      "mean 16.162m >= 3m",
+      "maximum 33.124m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      0.5,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.293m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      0.5,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.863m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      0.5,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.164m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      0.5,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.790m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      0.5,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.186m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      0.5,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.789m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      1.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 4.079m >= 3m",
+      "maximum 13.854m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      1.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 3.187m >= 3m",
+      "maximum 12.519m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      1.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 4.050m >= 3m",
+      "maximum 13.814m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      1.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 3.151m >= 3m",
+      "maximum 12.568m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      1.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 4.011m >= 3m",
+      "maximum 13.846m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      1.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 3.179m >= 3m",
+      "maximum 12.270m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 122.267s > 10s",
+      "mean 18.593m >= 3m",
+      "maximum 35.526m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 115.100s > 10s",
+      "mean 16.129m >= 3m",
+      "maximum 32.885m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 122.167s > 10s",
+      "mean 18.655m >= 3m",
+      "maximum 35.460m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 115.333s > 10s",
+      "mean 16.137m >= 3m",
+      "maximum 32.791m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 121.800s > 10s",
+      "mean 18.562m >= 3m",
+      "maximum 35.569m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 114.533s > 10s",
+      "mean 16.185m >= 3m",
+      "maximum 33.154m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      0.5,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.267m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      0.5,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.926m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      0.5,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.174m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      0.5,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.768m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      0.5,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.185m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      0.5,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.804m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      1.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 4.051m >= 3m",
+      "maximum 13.781m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      1.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 3.193m >= 3m",
+      "maximum 12.511m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      1.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 4.061m >= 3m",
+      "maximum 13.769m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      1.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 3.155m >= 3m",
+      "maximum 12.565m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      1.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 4.033m >= 3m",
+      "maximum 13.804m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      1.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 3.181m >= 3m",
+      "maximum 12.243m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      2.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 122.100s > 10s",
+      "mean 18.589m >= 3m",
+      "maximum 35.545m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      2.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 114.933s > 10s",
+      "mean 16.143m >= 3m",
+      "maximum 32.926m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      2.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 122.067s > 10s",
+      "mean 18.676m >= 3m",
+      "maximum 35.457m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      2.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 115.167s > 10s",
+      "mean 16.315m >= 3m",
+      "maximum 32.942m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      2.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 121.667s > 10s",
+      "mean 18.557m >= 3m",
+      "maximum 35.586m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      2.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "not reached at 240.033s",
+      "progress gap 114.300s > 10s",
+      "mean 16.312m >= 3m",
+      "maximum 33.255m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 5.986m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.352m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.109m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.503m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.126m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.537m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 3.328m >= 3m",
+      "maximum 13.503m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 3.374m >= 3m",
+      "maximum 13.024m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 3.435m >= 3m",
+      "maximum 13.463m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 3.306m >= 3m",
+      "maximum 12.892m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 3.420m >= 3m",
+      "maximum 13.589m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 3.426m >= 3m",
+      "maximum 13.123m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 10.006m >= 3m",
+      "maximum 28.215m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 9.281m >= 3m",
+      "maximum 26.761m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 10.008m >= 3m",
+      "maximum 28.243m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 9.309m >= 3m",
+      "maximum 26.710m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "progress gap 14.933s > 10s",
+      "mean 8.047m >= 3m",
+      "maximum 28.127m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 8.588m >= 3m",
+      "maximum 26.656m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 5.955m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.393m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.076m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.496m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.091m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.505m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 3.360m >= 3m",
+      "maximum 13.495m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 3.343m >= 3m",
+      "maximum 13.000m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 3.409m >= 3m",
+      "maximum 13.439m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 3.271m >= 3m",
+      "maximum 12.825m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 3.425m >= 3m",
+      "maximum 13.568m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 3.411m >= 3m",
+      "maximum 13.110m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 10.001m >= 3m",
+      "maximum 28.192m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 9.281m >= 3m",
+      "maximum 26.772m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 10.008m >= 3m",
+      "maximum 28.170m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 9.287m >= 3m",
+      "maximum 26.649m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "progress gap 15.267s > 10s",
+      "mean 8.058m >= 3m",
+      "maximum 28.169m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 9.347m >= 3m",
+      "maximum 26.660m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0
+    ],
+    "errors": [
+      "maximum 5.974m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.334m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      1,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.089m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      1,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.507m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      2,
+      0.0
+    ],
+    "errors": [
+      "maximum 6.137m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      2,
+      0.25
+    ],
+    "errors": [
+      "maximum 5.501m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 3.244m >= 3m",
+      "maximum 13.456m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 3.360m >= 3m",
+      "maximum 13.022m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 3.371m >= 3m",
+      "maximum 13.389m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 3.257m >= 3m",
+      "maximum 12.816m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "mean 3.386m >= 3m",
+      "maximum 13.528m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 3.386m >= 3m",
+      "maximum 13.091m > 4m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      0,
+      0.0
+    ],
+    "errors": [
+      "mean 9.926m >= 3m",
+      "maximum 28.187m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      0,
+      0.25
+    ],
+    "errors": [
+      "mean 9.233m >= 3m",
+      "maximum 26.734m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      1,
+      0.0
+    ],
+    "errors": [
+      "mean 9.957m >= 3m",
+      "maximum 28.215m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      1,
+      0.25
+    ],
+    "errors": [
+      "mean 9.290m >= 3m",
+      "maximum 26.657m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      2,
+      0.0
+    ],
+    "errors": [
+      "progress gap 23.300s > 10s",
+      "mean 7.231m >= 3m",
+      "maximum 28.144m > 6m"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      2,
+      0.25
+    ],
+    "errors": [
+      "mean 9.257m >= 3m",
+      "maximum 26.626m > 6m"
+    ]
+  }
+]

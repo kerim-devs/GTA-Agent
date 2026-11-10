@@ -185,3 +185,62 @@ def test_recovery_survives_short_damage_and_one_moving_tick_is_not_success() -> 
         last_active_state = command.state
     assert reverses == 3
     assert command.state == "failed-recovery"
+
+
+def test_same_direction_bend_does_not_cancel_turn():
+    cmd = Driver().step(replace(GOOD, bearing=20, far_bearing=55), 0)
+    assert cmd.state == "follow" and cmd.steer > 0
+
+
+def test_damaged_route_requires_recent_clean_agreement_and_cannot_renew_it():
+    clean = replace(GOOD, bearing=20, far_bearing=40)
+    damage = replace(clean, corrupt=True, confidence=0.35, bearing=23)
+    assert Driver().step(damage, 0).throttle == 0
+    driver = Driver()
+    driver.step(clean, 0)
+    for time in (0.1, 0.2, 0.3, 0.4, 0.49):
+        cmd = driver.step(damage, time)
+        assert cmd.state == "follow" and cmd.steer > 0
+    released = driver.step(damage, 0.51)
+    assert released.state == "coast"
+    assert released.steer == released.throttle == released.brake == 0
+
+
+@pytest.mark.parametrize(
+    "change",
+    [
+        {"bearing": -30},
+        {"bearing": 65},
+        {"route": "purple"},
+        {"confidence": 0.1},
+        {"bearing": None},
+        {"arrow": None},
+    ],
+)
+def test_disagreeing_or_unusable_damage_cannot_take_control(change):
+    clean = replace(GOOD, bearing=20, far_bearing=40)
+    driver = Driver()
+    first = driver.step(clean, 0)
+    damage = replace(clean, corrupt=True, confidence=0.35)
+    damage = replace(damage, **change)
+    held = driver.step(damage, 0.1)
+    assert held.state == "coast" and held.steer == first.steer
+    released = driver.step(damage, 0.31)
+    assert released.steer == released.throttle == released.brake == 0
+
+
+def test_leaving_vehicle_map_clears_damage_trust():
+    clean = replace(GOOD, bearing=20)
+    driver = Driver()
+    driver.step(clean, 0)
+    driver.step(replace(clean, minimap="flat"), 0.1)
+    cmd = driver.step(replace(clean, corrupt=True, confidence=0.35), 0.2)
+    assert cmd.state == "coast" and cmd.throttle == cmd.steer == 0
+
+
+def test_small_map_jitter_does_not_create_predictive_countersteering():
+    driver = Driver()
+    for i in range(120):
+        reading = replace(GOOD, bearing=3 if i % 2 else -3)
+        cmd = driver.step(reading, i / 30, True)
+        assert cmd.state == "follow" and cmd.steer == 0
