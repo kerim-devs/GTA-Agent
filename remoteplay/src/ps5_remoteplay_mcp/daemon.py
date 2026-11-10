@@ -31,6 +31,8 @@ STALL_RECONNECT_S = 10.0  # a session with no video this long is treated as dead
 SHUTDOWN = web.AppKey("shutdown", asyncio.Event)
 BACKOFF_MAX_S = 30.0
 RESEND_S = 0.05  # how often a held input state is repeated to the console
+FROZEN_FRAME_S = 0.3  # a newest frame older than this means packets are being lost right now
+INPUT_HEARTBEAT_S = 0.25  # leave one resend tick before the 0.3 s heartbeat limit
 WAITING_STATES = ("starting", "connecting", "reconnecting", "stalled")
 CHANGE_FRACTION = 0.002  # share of downscaled pixels that must differ to count as a screen change
 CHANGE_SETTLE_S = 0.4  # after the first change, let the transition finish before the snapshot
@@ -78,18 +80,26 @@ class Daemon:
 
     async def _resend_input(self) -> None:
         """Repeats the input state to the console while anything is held and shortly after: the
-        protocol sends every change once, and one lost packet would otherwise stick."""
+        protocol sends every change once, and one lost packet would otherwise stick. A frozen picture
+        forces the repeat, and a slow heartbeat keeps it going while nothing is held."""
         heal_until = 0.0
+        last_forced = 0.0
         while True:
             await asyncio.sleep(RESEND_S)
-            if self.state == "stalled":
-                # packets have been lost for seconds, the last release maybe among them: repeat the
-                # state for as long as the picture is frozen and a moment after it is back
-                heal_until = time.monotonic() + RESEND_SETTLE_S
-            elif self.state != "up":
+            if self.state not in {"up", "stalled"}:
                 continue
-            try:
-                await self.backend.resend_input(force=time.monotonic() < heal_until)
+            now = time.monotonic()
+            try:  # nothing in here may end this task: without it a lost release is never repeated
+                frame_ts = self.backend.frame_ts()
+                if self.state == "stalled" or frame_ts is None or now - frame_ts > FROZEN_FRAME_S:
+                    # packets are being lost, the last release maybe among them, and the supervisor
+                    # calls it a stall only after seconds: repeat the state for as long as the
+                    # picture is frozen and a moment after it is back
+                    heal_until = now + RESEND_SETTLE_S
+                force = now < heal_until or now - last_forced >= INPUT_HEARTBEAT_S
+                await self.backend.resend_input(force=force)
+                if force:
+                    last_forced = now
             except Exception as err:  # a dead session is the supervisor's business
                 _LOG.debug("input resend failed: %s", err)
 
