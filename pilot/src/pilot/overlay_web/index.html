@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spielbegleitung</title>
+  <link rel="stylesheet" href="/overlay.css">
+  <script src="/overlay.js" defer></script>
+</head>
+<body>
+  <main class="overlay" aria-label="Spielbegleitung">
+    <section class="panel decision" aria-live="polite">
+      <div class="eyebrow">Mein nächster Schritt <span id="thinking" hidden>Denkt nach</span></div>
+      <p id="sentence">Warte auf eine Entscheidung.</p>
+    </section>
+    <section class="panel activity">
+      <div class="eyebrow">Gerade im Spiel</div>
+      <h1 id="skill">Bereit</h1>
+      <p id="skill-state"></p>
+      <ol id="plan" hidden aria-label="Geplante Schritte"></ol>
+    </section>
+    <section class="panel context" id="context" hidden>
+      <div id="objective-panel" hidden><div class="eyebrow">Ziel</div><p id="objective"></p></div>
+      <div id="help-panel" hidden><div class="eyebrow">Hinweis des Spiels</div><p id="help"></p></div>
+    </section>
+    <section class="panel telemetry">
+      <div class="metrics"><span><strong id="speed">—</strong> <small>km/h</small></span><span id="distance" hidden></span></div>
+      <div class="indicators"><span id="takeover" hidden>Controller-Eingriff</span><span id="shadow" hidden>Beobachtungsmodus</span><span id="connection">Warte auf Aufzeichnung</span></div>
+    </section>
+  </main>
+</body>
+</html>
