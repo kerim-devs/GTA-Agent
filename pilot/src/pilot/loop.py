@@ -20,6 +20,7 @@ from .minimap import read
 from .motion import MOVING_PX, map_motion
 
 RECORDINGS = Path(__file__).resolve().parents[3] / "recordings"
+END_STATES = ("route-gone", "failed-recovery")  # states in which drive.Driver has given the car up
 
 
 class Pipeline:
@@ -31,7 +32,11 @@ class Pipeline:
         self.driver = Driver() if driver is None else driver
         self.history: deque[tuple[float, np.ndarray]] = deque()
 
-    def step(self, crop: np.ndarray, frame_time: float) -> tuple[Reading, bool | None, Command]:
+    def step(
+        self, crop: np.ndarray, frame_time: float, feedback: bool = True
+    ) -> tuple[Reading, bool | None, Command]:
+        """With `feedback` off the driver is not told whether the map moves: while a human drives,
+        its own commands move nothing, and it would take every red light for being stuck."""
         reading = self.reader(crop)
         moving = None
         if self.history and frame_time <= self.history[-1][0]:
@@ -43,7 +48,7 @@ class Pipeline:
             displacement = self.motion(previous, crop)
             moving = None if displacement is None else bool(displacement > MOVING_PX)
         self.history.append((frame_time, crop.copy()))
-        return reading, moving, self.driver.step(reading, frame_time, moving)
+        return reading, moving, self.driver.step(reading, frame_time, moving if feedback else None)
 
 
 def log_row(t, frame_id, frame_age, frame_time, reading, moving, command, sent=False, status=None):
@@ -67,6 +72,7 @@ class Summary:
     states: Counter = field(default_factory=Counter)
     corrupt: int = 0
     conflicts: int = 0
+    ended: str | None = None  # the driver state that ended the run, None when time or a signal did
 
     def add(self, reading, command):
         self.ticks += 1
@@ -79,7 +85,7 @@ class Summary:
         rate = self.ticks / self.elapsed if self.elapsed > 0 else 0
         return (
             f"ticks={self.ticks} rate={rate:.1f}/s states={dict(self.states)} "
-            f"corrupt={self.corrupt} 409={self.conflicts}"
+            f"corrupt={self.corrupt} 409={self.conflicts} ended={self.ended}"
         )
 
 
@@ -110,6 +116,7 @@ def run_drive(
     record: bool = True,
     record_dir: Path = RECORDINGS,
     pipeline: Pipeline | None = None,
+    config: dict | None = None,
     clock=time.monotonic,
     sleep=time.sleep,
 ) -> Summary:
@@ -122,7 +129,6 @@ def run_drive(
     last_id = None
     frozen = False
     blocked_until = None
-    route_missing_since = None
     recording = False
 
     def send(command=None):
@@ -136,6 +142,8 @@ def run_drive(
                 destination = bridge.record_start(record_dir, shadow=shadow)
                 recording = True
                 log = (destination / "pilot.jsonl").open("x")
+                if config is not None:
+                    (destination / "pilot-config.json").write_text(json.dumps(config, indent=2) + "\n")
             started = last_fresh = clock()
             while seconds is None or clock() - started < seconds:
                 tick = clock()
@@ -152,12 +160,7 @@ def run_drive(
                 if fresh:
                     last_fresh = received
                     frozen = False
-                    reading, moving, command = pipeline.step(frame.rgb, frame_time)
-                    if reading.minimap == "tilted" and reading.route == "none" and not reading.corrupt:
-                        if route_missing_since is None:
-                            route_missing_since = frame_time
-                    else:
-                        route_missing_since = None
+                    reading, moving, command = pipeline.step(frame.rgb, frame_time, feedback=not shadow)
 
                 if not shadow:
                     if blocked_until is not None:
@@ -189,15 +192,11 @@ def run_drive(
                     )
                     log.write(json.dumps(row) + "\n")
                     log.flush()
-                if (
-                    route_missing_since is not None
-                    and frame_time is not None
-                    and frame_time - route_missing_since >= 2
-                    and moving is False
-                    and command is not None
-                    and command.throttle == command.brake == command.steer == 0
-                ):
-                    break
+                # the driver has given up and let go of the pedals: what comes next is the head's call
+                if not shadow and command is not None and command.state in END_STATES:
+                    if command.throttle == command.brake == 0:
+                        summary.ended = command.state
+                        break
                 sleep(max(0, tick + 1 / 30 - clock()))
         except RuntimeInterruptedError:
             pass

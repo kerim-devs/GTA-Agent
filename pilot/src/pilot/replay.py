@@ -110,7 +110,7 @@ def run_replay(recording: Path, *, out: Path | None = None, pipeline: Pipeline |
                 ok, bgr = capture.read()
                 if not ok:
                     raise ValueError(f"Missing video frame {index}")
-                reading, moving, command = pipeline.step(hud_crop(bgr), frame_time)
+                reading, moving, command = pipeline.step(hud_crop(bgr), frame_time, feedback=False)
                 row = log_row(
                     frame_time - first_time, item["frame_id"], 0.0, frame_time, reading, moving, command
                 )

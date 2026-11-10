@@ -217,22 +217,31 @@ def test_motion_uses_frame_times_and_preserves_unknown():
     assert all(call[2] is None for call in driver.calls)
 
 
-def test_route_end_waits_for_stop_and_driver_neutral(tmp_path):
+def test_the_run_ends_when_the_driver_has_given_up_and_let_go(tmp_path):
     harness = Harness(tmp_path)
-    harness.pipeline.reader = lambda crop: Reading("tilted", "none", None, None, 0, False, 1)
-    harness.pipeline.motion = lambda a, b: 0
-    harness.driver.command = Command(0, 0, 0, "route_gone")
+    harness.driver.command = Command(0, 0, 0, "route-gone")
     summary = harness.run(seconds=5)
-    assert 2 <= summary.elapsed < 2.2
+    assert summary.elapsed < 0.5
+    assert summary.ended == "route-gone"
 
 
-def test_no_route_does_not_end_while_driver_is_braking(tmp_path):
+def test_the_run_goes_on_while_the_driver_still_brakes(tmp_path):
     harness = Harness(tmp_path)
-    harness.pipeline.reader = lambda crop: Reading("tilted", "none", None, None, 0, False, 1)
-    harness.pipeline.motion = lambda a, b: 0
-    harness.driver.command = Command(0, 0, 0.2, "brake")
-    summary = harness.run(seconds=2.2)
-    assert summary.elapsed >= 2.2
+    harness.driver.command = Command(0, 0, 1, "route-gone")
+    summary = harness.run(seconds=1)
+    assert summary.elapsed >= 1
+    assert summary.ended is None
+
+
+def test_shadow_runs_on_and_keeps_the_motion_from_the_driver(tmp_path):
+    harness = Harness(tmp_path)
+    harness.driver.command = Command(0, 0, 0, "failed-recovery")
+    summary = harness.run(seconds=1, shadow=True)
+    assert summary.elapsed >= 1
+    assert summary.ended is None
+    assert harness.driver.calls
+    assert all(moving is None for _, _, moving in harness.driver.calls)
+    assert any(row["moving"] is True for row in harness.rows())
 
 
 def test_a_recording_that_could_not_be_started_is_not_stopped(tmp_path):
