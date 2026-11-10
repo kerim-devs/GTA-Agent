@@ -79,7 +79,11 @@ def recognize(crop: np.ndarray) -> Fix | None:
     pixels = np.ascontiguousarray(patch)
     height, width = pixels.shape[:2]
     # Handing the pixels over as Python bytes, or without a pool, keeps every image alive:
-    # 170 KB per call measured over 1000 calls, which is gigabytes over a stream.
+    # 170 KB per call measured over 1000 calls, which is gigabytes over a stream. Under Python 3.12
+    # the same happens (250 KB per call) unless the observations are still referenced when the pool
+    # drains, so `results` is a local that lives to the end of the function on purpose.
+    results = []
+    texts = []
     with objc.autorelease_pool():
         data = Foundation.NSData.dataWithBytes_length_(pixels.tobytes(), pixels.nbytes)
         provider = q.CGDataProviderCreateWithCFData(data)
@@ -93,9 +97,11 @@ def recognize(crop: np.ndarray) -> Fix | None:
         ok, error = handler.performRequests_error_([request], None)
         if not ok:
             raise RuntimeError(f"GPS recognition failed: {error}")
-        texts = [
-            str(o.topCandidates_(1)[0].string()) for o in (request.results() or ()) if o.topCandidates_(1)
-        ]
+        results = list(request.results() or ())
+        for observation in results:
+            candidates = observation.topCandidates_(1)
+            if candidates:
+                texts.append(str(candidates[0].string()))
     fix = parse(texts)
     if fix is None:
         return None
