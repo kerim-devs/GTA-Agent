@@ -43,3 +43,5 @@ Conductor, head and first skills merged, 22:15. One loop runs a session: it turn
 Decisions. The head cannot press `ps` or `create`. Open for the first live session: the cost of fetching the full frame on every tick, the recognition next to the loop, the rate of head calls with text events on, the sprint mapping and the camera turn rate.
 
 Recorder hardened, 22:30. Two concurrent starts after a dead writer, a tap left on a dead recording, a stop cancelled by a client that hangs up, and a default folder under a relative or tilde configuration directory are fixed and each pinned by a test that fails without the fix (card P5). The daemon was restarted on the merged code with the console in standby.
+
+Overlay merged, 22:50. `pilot overlay` serves a page for an OBS browser source from the conductor's logs: the head's sentence, the running skill and the plan, the game's objective and hint, speed and remaining distance. Seen in a browser at 1920x1080 over a frame of the game. The default positions were moved off the game's own subtitles, help box and map; the look itself is still to be decided by Kerim.
