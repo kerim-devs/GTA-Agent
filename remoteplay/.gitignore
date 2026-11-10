@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+spike_out/
+snapshot.jpg
+.pytest_cache/
+.ruff_cache/
+dist/
+.uv-cache/
+.test-run/
+.worktrees/

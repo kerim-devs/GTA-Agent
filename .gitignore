@@ -1,1 +1,8 @@
 /remoteplay.tar.gz
+.DS_Store
+._*
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
