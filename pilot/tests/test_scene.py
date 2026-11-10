@@ -1,5 +1,6 @@
 """Scene transitions use synthetic evidence; OCR needs no source recordings."""
 
+import resource
 import sys
 from dataclasses import replace
 
@@ -134,3 +135,11 @@ def test_vision_recognizes_generated_help_without_recordings():
     assert "folge lamar" in result.help.casefold()
     assert result.elapsed_ms > 0
     assert np.array_equal(frame, original)
+    reader = TextReader()
+    for _ in range(10):
+        reader.read(frame)
+    before = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    for _ in range(40):
+        reader.read(frame)
+    # a full frame is 2.8 MB; a reader that keeps them grows by more than 100 MB here
+    assert resource.getrusage(resource.RUSAGE_SELF).ru_maxrss - before < 30e6
