@@ -87,6 +87,9 @@ class FakeBackend:
     def _frame_ts(self) -> float:
         return time.monotonic() - self.stall_s
 
+    def frame_ts(self) -> float | None:
+        return self._frame_ts() if self.connected else None
+
     def _step(self, step: int) -> None:
         self.index = (self.index + step) % len(self._frames)
         self.frame_id += 1

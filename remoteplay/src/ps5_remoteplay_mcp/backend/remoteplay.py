@@ -241,6 +241,9 @@ class RemotePlayBackend:
     def set_frame_tap(self, tap: FrameTap | None) -> None:
         self._frame_tap = tap  # read by the receiver on every frame, so it survives a reconnect
 
+    def frame_ts(self) -> float | None:
+        return self.receiver.frame_ts if self.receiver and self.receiver.frame_id else None
+
     def latest_frame(self) -> Frame | None:
         if self.receiver is None:
             return None
@@ -318,11 +321,13 @@ class RemotePlayBackend:
         if not self._session_up:
             self._forget_input()
             return
-        # Only what we pressed: a release burst for every button floods the stream for nothing.
+        # Only what we pressed: more than five release events cannot all fit in the vendor
+        # MAX_EVENTS resend window, so unused triggers must not evict a needed release.
         await self.set_buttons(set())
         for side in Side:
             await self.set_stick(side, 0.0, 0.0)
-            await self.set_trigger(side, 0.0)
+            if self._triggers[side]:
+                await self.set_trigger(side, 0.0)
 
     async def wake(self) -> None:
         state = await self._refresh_console(force=True)
