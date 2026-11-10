@@ -1,10 +1,12 @@
 """Local, bounded skills. Every result describes the entire controller state."""
 
 from collections import deque
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from math import atan2, degrees, hypot
 
-from .contract import NEUTRAL_PAD, Pad, Reading
+import numpy as np
+
+from .contract import NEUTRAL_PAD, Detection, Hud, Pad, Reading
 from .drive import Driver
 from .head import SkillCall, parse_response
 
@@ -14,6 +16,12 @@ class Observation:
     reading: Reading
     moving: bool | None
     time: float
+    # Everything below is optional: a caller that has no frame, detector or HUD reader leaves it out,
+    # and a skill that needs it fails with a reason instead of guessing.
+    frame: np.ndarray | None = field(default=None, compare=False)  # 1280x720 RGB of this tick
+    objects: tuple[Detection, ...] = ()  # newest detections; they lag the frame, see `objects_time`
+    objects_time: float | None = None  # capture time of the frame the detections come from
+    hud: Hud | None = None
 
 
 @dataclass(frozen=True)
