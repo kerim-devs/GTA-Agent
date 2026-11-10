@@ -1,10 +1,14 @@
 import argparse
 import asyncio
 import json
+import os
+import threading
 import time
+from dataclasses import replace
 from itertools import pairwise
 from pathlib import Path
 from types import SimpleNamespace
+from unittest.mock import Mock
 
 import av
 import numpy as np
@@ -111,8 +115,31 @@ async def test_a_recording_whose_writer_dies_ends_itself_and_takes_nothing_more(
     client, daemon, fake, tmp_path
 ):
     started = await client.record("start", directory=str(tmp_path / "one"))
-    daemon.recorder._on_frame(999, time.monotonic(), lambda: 1 / 0)  # a picture that cannot be converted
-    await until(lambda: not daemon.recorder.active)
+    recorder = daemon.recorder
+    thread = recorder._thread
+    await until(lambda: recorder.frames == 1)
+    await asyncio.sleep(0.15)
+    entered, release = threading.Event(), threading.Event()
+
+    def broken_frame():
+        entered.set()
+        assert release.wait(5)
+        return 1 / 0
+
+    recorder._on_frame(999, time.monotonic(), broken_frame)
+    try:
+        await until(entered.is_set)
+        recorder.on_pad("agent", PadState(frozenset({Button.CROSS})), time.monotonic())
+        fake.burst(5)
+        assert recorder._pad and not recorder._frames.empty()
+        before_death = time.monotonic() - recorder._t0
+    finally:
+        release.set()
+    await until(lambda: not thread.is_alive())
+    after_death = time.monotonic() - recorder._t0
+    assert before_death <= recorder._seconds <= after_death
+    death_seconds = recorder._seconds
+    assert not recorder._pad and recorder._frames.empty()
     assert fake._frame_tap is None
     daemon.pad.submit(PadState(frozenset({Button.CROSS})))
     await until(lambda: fake.pressed == {Button.CROSS})
@@ -120,18 +147,23 @@ async def test_a_recording_whose_writer_dies_ends_itself_and_takes_nothing_more(
     assert not daemon.recorder._pad and daemon.recorder._frames.empty()  # nothing piles up unseen
     status = await client.record_status()
     assert status["recording"] is False and "ZeroDivisionError" in status["error"]
+    await asyncio.sleep(0.15)
     again = await client.record("start", directory=str(tmp_path / "two"))  # closes the dead one first
     assert again["recording"] is True and not again["error"]
     meta = json.loads((Path(started["dir"]) / "meta.json").read_text())
     assert "ZeroDivisionError" in meta["error"] and meta["frames"] == 1
+    assert meta["seconds"] == round(death_seconds, 1) > 0
 
 
 async def test_stop_can_be_called_twice_at_once_and_a_lost_folder_does_not_block_shutdown(
     client, daemon, fake, tmp_path, monkeypatch
 ):
     await client.record("start", directory=str(tmp_path))
+    write_meta = Mock(wraps=daemon.recorder._write_meta)
+    monkeypatch.setattr(daemon.recorder, "_write_meta", write_meta)
     first, second = await asyncio.gather(daemon.recorder.stop(), daemon.recorder.stop())
     assert not first["recording"] and not second["recording"] and not daemon.recorder.error
+    write_meta.assert_called_once_with()
 
     await client.record("start", directory=str(tmp_path / "gone"))
     monkeypatch.setattr(daemon.recorder, "_write_meta", lambda: (_ for _ in ()).throw(OSError("disk full")))
@@ -154,3 +186,127 @@ async def test_a_relative_folder_is_refused_by_the_daemon_and_resolved_by_the_cl
     args = argparse.Namespace(action="start", output="mine", note=None)
     await asyncio.to_thread(cli.cmd_record, cfg, args)
     assert daemon.recorder.active and daemon.recorder.dir.parent == (tmp_path / "mine").resolve()
+
+
+async def test_concurrent_starts_after_writer_failure_allow_only_one_recording(
+    client, daemon, tmp_path, monkeypatch
+):
+    recorder = daemon.recorder
+    await client.record("start", directory=str(tmp_path / "failed"))
+    thread = recorder._thread
+    recorder._on_frame(999, time.monotonic(), lambda: 1 / 0)
+    await until(lambda: not thread.is_alive())
+    stop = recorder.stop
+    both_stopping = asyncio.Event()
+    calls = 0
+
+    async def synchronized_stop():
+        nonlocal calls
+        calls += 1
+        if calls == 2:
+            both_stopping.set()
+        await asyncio.wait_for(both_stopping.wait(), timeout=2)
+        return await stop()
+
+    with monkeypatch.context() as patch:
+        patch.setattr(recorder, "stop", synchronized_stop)
+        results = await asyncio.gather(
+            client._http.post("/record", json={"action": "start", "dir": str(tmp_path / "first")}),
+            client._http.post("/record", json={"action": "start", "dir": str(tmp_path / "second")}),
+        )
+    assert sorted(result.status_code for result in results) == [200, 409]
+    success = next(result.json() for result in results if result.status_code == 200)
+    error = next(result.json() for result in results if result.status_code == 409)
+    assert success["recording"] and "already recording" in error["error"]
+    assert recorder._thread.is_alive()
+
+
+async def test_writer_failure_before_tap_installation_leaves_no_tap_or_backlog(
+    daemon, fake, tmp_path, monkeypatch
+):
+    recorder = daemon.recorder
+    write_meta, on_frame = recorder._write_meta, recorder._on_frame
+
+    def read_only_after_meta():
+        write_meta()
+        recorder.dir.chmod(0o500)
+
+    def first_frame_after_writer_dies(*args):
+        recorder._thread.join(timeout=2)
+        assert not recorder._thread.is_alive() and recorder._failed
+        on_frame(*args)
+
+    try:
+        with monkeypatch.context() as patch:
+            patch.setattr(recorder, "_write_meta", read_only_after_meta)
+            patch.setattr(recorder, "_on_frame", first_frame_after_writer_dies)
+            status = await recorder.start(str(tmp_path))
+        assert not status["recording"] and "PermissionError" in status["error"]
+        assert fake._frame_tap is None and recorder._frames.empty()
+        fake.burst(5)
+        assert recorder._frames.empty()
+    finally:
+        if recorder.dir is not None:
+            recorder.dir.chmod(0o700)
+
+
+async def test_cancelled_stop_still_finalizes_once_without_another_request(
+    client, daemon, tmp_path, monkeypatch
+):
+    recorder = daemon.recorder
+    started = await client.record("start", directory=str(tmp_path / "cancelled"))
+    thread = recorder._thread
+    join = thread.join
+    entered, release = threading.Event(), threading.Event()
+    write_meta = Mock(wraps=recorder._write_meta)
+    monkeypatch.setattr(recorder, "_write_meta", write_meta)
+
+    def blocked_join(timeout):
+        entered.set()
+        assert release.wait(5)
+        join(timeout)
+
+    monkeypatch.setattr(thread, "join", blocked_join)
+    stopping = asyncio.create_task(recorder.stop())
+    try:
+        await until(entered.is_set)
+        stopping.cancel()
+        with pytest.raises(asyncio.CancelledError):
+            await stopping
+        assert recorder._thread is thread
+    finally:
+        release.set()
+    await until(lambda: recorder._thread is None)
+    assert not recorder.active and not thread.is_alive()
+    write_meta.assert_called_once_with()
+    meta = json.loads((Path(started["dir"]) / "meta.json").read_text())
+    assert meta["frames"] == recorder.frames and not meta["error"]
+    await recorder.start(str(tmp_path / "next"))
+    await recorder.stop()
+    assert write_meta.call_count == 3 and not recorder.active
+
+
+@pytest.mark.parametrize("config_dir", ["relative-config", "~/tilde-config"])
+async def test_default_recording_directory_resolves_relative_and_tilde_config(
+    config_dir, daemon, tmp_path, monkeypatch
+):
+    monkeypatch.chdir(tmp_path)
+    if config_dir.startswith("~/"):
+        relative = await asyncio.to_thread(os.path.relpath, tmp_path, Path.home())
+        config_dir = f"~/{relative}/tilde-config"
+    expected = await asyncio.to_thread(lambda: Path(config_dir).expanduser().resolve() / "recordings")
+    monkeypatch.setattr(daemon, "cfg", replace(daemon.cfg, config_dir=Path(config_dir)))
+    started = await daemon.recorder.start()
+    folder = Path(started["dir"])
+    assert folder.is_absolute()
+    assert folder.parent == expected
+    await daemon.recorder.stop()
+
+
+async def test_latency_drops_the_state_held_by_the_agent_loop(daemon, fake, monkeypatch):
+    await daemon.agent_pad.set(PadState(frozenset({Button.CROSS})), ttl_ms=1000)
+    # Expiry must not hide a missing release while latency waits for its sample.
+    monkeypatch.setattr(daemon.agent_pad, "_deadline", float("inf"))
+    assert daemon.agent_pad.active and fake.pressed == {Button.CROSS}
+    await daemon.latency(samples=1)
+    assert not daemon.agent_pad.active and fake.idle

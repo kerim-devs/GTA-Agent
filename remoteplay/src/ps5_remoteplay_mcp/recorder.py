@@ -52,6 +52,7 @@ class Recorder:
         self._last_pad: dict[str, PadState] = {}
         self._stop = threading.Event()
         self._thread: threading.Thread | None = None
+        self._stop_task: asyncio.Task[dict] | None = None
         self._failed = False  # the writer died: nothing is taken any more, `stop` only closes the books
 
     @property
@@ -76,6 +77,8 @@ class Recorder:
             raise ConsoleError(f"already recording to {self.dir}")
         if self._thread is not None:
             await self.stop()  # a recording whose writer died: close its books first
+            if self._thread is not None:
+                raise ConsoleError(f"already recording to {self.dir}")
         first = self.daemon.backend.latest_frame()
         if first is None:
             raise ConsoleError("nothing to record: there is no picture yet")
@@ -87,6 +90,7 @@ class Recorder:
         self._pad.clear()
         self._last_pad = {}
         self._stop.clear()
+        self._stop_task = None
         self._t0 = time.monotonic()
         self._meta = {
             "started": datetime.now().astimezone().isoformat(timespec="seconds"),
@@ -99,6 +103,8 @@ class Recorder:
         self._thread.start()
         self._on_frame(first.frame_id, first.ts, lambda: first.rgb)  # a still screen is a recording too
         self.daemon.backend.set_frame_tap(self._on_frame)
+        if self._failed:
+            self._abandon()
         _LOG.info("recording to %s", self.dir)
         return self.status()
 
@@ -108,6 +114,11 @@ class Recorder:
             return self.status()
         self.daemon.backend.set_frame_tap(None)
         self._stop.set()
+        if self._stop_task is None:
+            self._stop_task = asyncio.create_task(self._finish_stop(thread))
+        return await asyncio.shield(self._stop_task)
+
+    async def _finish_stop(self, thread: threading.Thread) -> dict:
         await asyncio.to_thread(thread.join, STOP_TIMEOUT_S)
         if self._thread is not thread:  # a second stop came in meanwhile and has finished the job
             return self.status()
@@ -134,9 +145,12 @@ class Recorder:
         self._pad.append((ts, source, state))
 
     def _make_dir(self, directory: str | None) -> Path:
-        base = Path(directory).expanduser() if directory else self.daemon.cfg.config_dir / "recordings"
-        if not base.is_absolute():  # it would land wherever the daemon happened to be started
-            raise ValueError(f"dir must be an absolute path, not {directory!r}")
+        if directory is not None:
+            base = Path(directory).expanduser()
+            if not base.is_absolute():  # it would land wherever the daemon happened to be started
+                raise ValueError(f"dir must be an absolute path, not {directory!r}")
+        else:
+            base = (self.daemon.cfg.config_dir.expanduser() / "recordings").resolve()
         folder = base / datetime.now().strftime("%Y%m%d-%H%M%S")
         folder.mkdir(parents=True, exist_ok=False)
         return folder
