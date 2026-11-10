@@ -14,7 +14,7 @@ Every run is recorded. The bridge writes video, frame times and controller state
 
 ## Where things stand on 10 November
 
-The bridge works and has 120 passing tests. Over the wired connection the time from an input to the changed picture is 193 to 233 ms at 60 fps, stable from sample to sample, and the stream is almost free of damaged frames. Over Wi-Fi it was 600 to 1160 ms with roughly a third of the frames damaged.
+The bridge works and has 120 passing tests. Over the wired connection, with the game in performance mode, the time from an input to the changed picture is 120 to 156 ms at 60 fps, stable from sample to sample, and the stream is almost free of damaged frames. Over Wi-Fi it was 600 to 1160 ms with roughly a third of the frames damaged.
 
 A minimap reader exists in `lab/minimap/impl_trace`. On the held-out sheets it reports no route where there is none, finds all 11 routes, is off by 5 degrees in the median on the near bearing and takes about 1 ms per crop. It is not packaged, has no tests and was built on Wi-Fi recordings.
 
