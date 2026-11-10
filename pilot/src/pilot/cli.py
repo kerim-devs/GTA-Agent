@@ -10,6 +10,7 @@ from .conductor import PLAY_RECORDINGS, run_play
 from .drive import DriveConfig, Driver
 from .head import CodexHead, ScriptedHead
 from .loop import RECORDINGS, Pipeline, run_drive
+from .overlay import overlay_port, run_overlay
 from .replay import run_replay
 
 MEASURED_DELAY_S = 0.14  # input to picture over the wired link with the game in performance mode
@@ -71,7 +72,18 @@ def main(argv: list[str] | None = None) -> None:
         command.add_argument(
             "--set", action="append", default=[], metavar="NAME=VALUE", help="override a DriveConfig field"
         )
+    overlay = subcommands.add_parser("overlay", help="Serve a local OBS overlay from recordings")
+    overlay.add_argument("--root", type=Path, default=PLAY_RECORDINGS, help="Session recordings root")
+    overlay.add_argument("--port", type=overlay_port, default=9396, help="Loopback HTTP port (default: 9396)")
+    overlay.add_argument("--demo", type=Path, help="Replay one recorded session at its original pace")
+    overlay.add_argument(
+        "--shadow", action="store_true", help="Label a known shadow session (not persisted by play)"
+    )
+
     args = parser.parse_args(argv)
+    if args.command == "overlay":
+        run_overlay(args.root, args.port, args.demo, args.shadow)
+        return
     config = drive_config(args.set)
     pipeline = Pipeline(driver=Driver(config))
     if args.command == "drive":
