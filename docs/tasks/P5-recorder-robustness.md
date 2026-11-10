@@ -1,6 +1,6 @@
 # P5: harden the recorder
 
-Package: `remoteplay/`. Not started; it waits until the pilot has driven its first kilometre. None of these touch the path that sends inputs. An independent reviewer confirmed each point on commit `9945a67`.
+Package: `remoteplay/`. Started on 10 November, ahead of the first long sessions: a recorder that gets stuck or keeps reporting "recording" would cost a whole session its record. None of these touch the path that sends inputs. An independent reviewer confirmed each point on commit `9945a67`.
 
 After a writer thread has died, two concurrent calls of `Recorder.start()` both get through and start two writer threads on the same queue. Check again right after `await self.stop()` and raise `ConsoleError(f"already recording to {self.dir}")` when a thread is set. Test: two starts with `asyncio.gather` after a forced writer failure, exactly one succeeds and the other gets a 409.
 
