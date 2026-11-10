@@ -6,6 +6,8 @@ const skillNames = {
   wait: "Warten",
   press: "Taste drücken",
   walk: "Gehen",
+  walk_to: "Zum Punkt gehen",
+  face: "Zum Punkt drehen",
   look: "Umschauen",
   shoot: "Zielen und schießen",
 };
