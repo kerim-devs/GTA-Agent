@@ -48,6 +48,29 @@ class Reading:
 
 
 @dataclass(frozen=True)
+class Detection:
+    """One object the local detector sees in the frame. The player's own figure or vehicle is not reported."""
+
+    kind: str  # "person" | "car" | "truck" | "bus" | "motorcycle" | "bicycle"
+    box: tuple[float, float, float, float]  # x0, y0, x1, y1 in pixels of the 1280x720 frame
+    confidence: float  # 0..1
+
+
+@dataclass(frozen=True)
+class Hud:
+    """What the game shows besides the minimap. None means the value could not be read."""
+
+    wanted: int | None = None  # stars shown, 0..5
+    wanted_flashing: bool = False  # the stars blink while the police have lost sight of the player
+    health: float | None = None  # filled fraction of the green bar under the minimap, 0..1
+    armour: float | None = None  # the blue bar
+    special: float | None = None  # the yellow bar
+    # "game" | "pause" | "map" | "weapon_wheel" | "phone" | "failed" | "passed" | "wasted" | "busted" |
+    # "loading"; a screen other than "game" means the character does not take ordinary input
+    screen: str = "game"
+
+
+@dataclass(frozen=True)
 class Command:
     """One controller state for the car. The runtime maps it to the pad: left stick x, R2, L2."""
 
