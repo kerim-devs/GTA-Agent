@@ -112,10 +112,14 @@ class TextReader:
         if level not in {"fast", "accurate"}:
             raise ValueError("level must be fast or accurate")
         try:
+            import Foundation
+            import objc
             import Quartz
             import Vision
         except ImportError as exc:
             raise VisionUnavailableError("install the macOS Vision/Quartz dependencies to use OCR") from exc
+        self._foundation = Foundation
+        self._objc = objc
         self._quartz = Quartz
         self._vision = Vision
         self.level = level
@@ -128,36 +132,47 @@ class TextReader:
         x, y, w, h = REGIONS[region] if region else (0, 0, 1280, 720)
         pixels = np.ascontiguousarray(frame[y : y + h, x : x + w])
         q, v = self._quartz, self._vision
-        provider = q.CGDataProviderCreateWithData(None, pixels.tobytes(), pixels.nbytes, None)
-        image = q.CGImageCreate(
-            w, h, 8, 24, w * 3, q.CGColorSpaceCreateDeviceRGB(), 0, provider, None, False, 0
-        )
-        request = v.VNRecognizeTextRequest.alloc().init()
-        request.setRecognitionLevel_(
-            v.VNRequestTextRecognitionLevelFast
-            if self.level == "fast"
-            else v.VNRequestTextRecognitionLevelAccurate
-        )
-        request.setRecognitionLanguages_(["de-DE", "en-US"])
-        request.setUsesLanguageCorrection_(True)
-        handler = v.VNImageRequestHandler.alloc().initWithCGImage_options_(image, {})
-        success, error = handler.performRequests_error_([request], None)
-        if not success:
-            raise RuntimeError(f"Vision text recognition failed: {error}")
-        lines = []
-        for observation in request.results() or ():
-            candidates = observation.topCandidates_(1)
-            if not candidates:
-                continue
-            candidate = candidates[0]
-            bounds = observation.boundingBox()
-            box = (
-                x + round(bounds.origin.x * w),
-                y + round((1 - bounds.origin.y - bounds.size.height) * h),
-                round(bounds.size.width * w),
-                round(bounds.size.height * h),
+        found = []
+        # Handing the pixels over as Python bytes, or without a pool, keeps every image alive:
+        # 2.8 MB per full frame, measured as 170 KB per call on a 420x120 patch.
+        with self._objc.autorelease_pool():
+            data = self._foundation.NSData.dataWithBytes_length_(pixels.tobytes(), pixels.nbytes)
+            provider = q.CGDataProviderCreateWithCFData(data)
+            image = q.CGImageCreate(
+                w, h, 8, 24, w * 3, q.CGColorSpaceCreateDeviceRGB(), 0, provider, None, False, 0
             )
-            words = str(candidate.string())
+            request = v.VNRecognizeTextRequest.alloc().init()
+            request.setRecognitionLevel_(
+                v.VNRequestTextRecognitionLevelFast
+                if self.level == "fast"
+                else v.VNRequestTextRecognitionLevelAccurate
+            )
+            request.setRecognitionLanguages_(["de-DE", "en-US"])
+            request.setUsesLanguageCorrection_(True)
+            handler = v.VNImageRequestHandler.alloc().initWithCGImage_options_(image, {})
+            success, error = handler.performRequests_error_([request], None)
+            if not success:
+                raise RuntimeError(f"Vision text recognition failed: {error}")
+            for observation in request.results() or ():
+                candidates = observation.topCandidates_(1)
+                if not candidates:
+                    continue
+                bounds = observation.boundingBox()
+                found.append(
+                    (
+                        str(candidates[0].string()),
+                        float(candidates[0].confidence()),
+                        (bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height),
+                    )
+                )
+        lines = []
+        for words, confidence, (left, bottom, width, height) in found:
+            box = (
+                x + round(left * w),
+                y + round((1 - bottom - height) * h),
+                round(width * w),
+                round(height * h),
+            )
             label = next(
                 (name for name, rect in REGIONS.items() if name != "banner" and _inside(box, rect)), "other"
             )
@@ -167,7 +182,7 @@ class TextReader:
                 label = "objective" if _objective(frame, box, words) else "subtitle"
             if label == "help" and (box[0] > 115 or sum(char.isalpha() for char in words) < 4):
                 label = "other"
-            lines.append(TextLine(words, float(candidate.confidence()), box, label))
+            lines.append(TextLine(words, confidence, box, label))
         lines.sort(key=lambda line: (line.box[1], line.box[0]))
 
         def joined(*labels: str) -> str:
