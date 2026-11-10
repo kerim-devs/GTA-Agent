@@ -1,0 +1,97 @@
+{
+  "reference": "pilot/tests/fixtures/gps-a-reference.json",
+  "endpoint_decline_m": 1384.0,
+  "accepted_decline_m": 1374.0,
+  "accepted_first": [
+    238.71,
+    1390
+  ],
+  "accepted_last": [
+    306.094,
+    16.0
+  ],
+  "endpoint_seconds": 67.49099999999999,
+  "table": [
+    {
+      "stretch": "a",
+      "group": "all",
+      "frames": 1544,
+      "speed_frames": 1129,
+      "coverage_time": 0.7281919770392904,
+      "reference_samples": 1093,
+      "within_3": 0.5873741994510522
+    },
+    {
+      "stretch": "a",
+      "group": "clean",
+      "frames": 981,
+      "speed_frames": 735,
+      "coverage_time": 0.750328030178776,
+      "reference_samples": 705,
+      "within_3": 0.6453900709219859
+    },
+    {
+      "stretch": "a",
+      "group": "damaged",
+      "frames": 563,
+      "speed_frames": 394,
+      "coverage_time": 0.68742211985047,
+      "reference_samples": 388,
+      "within_3": 0.48195876288659795
+    },
+    {
+      "stretch": "b",
+      "group": "all",
+      "frames": 438,
+      "speed_frames": 225,
+      "coverage_time": 0.5624021909233182,
+      "reference_samples": 0,
+      "within_3": null
+    },
+    {
+      "stretch": "b",
+      "group": "clean",
+      "frames": 279,
+      "speed_frames": 107,
+      "coverage_time": 0.43659542557180864,
+      "reference_samples": 0,
+      "within_3": null
+    },
+    {
+      "stretch": "b",
+      "group": "damaged",
+      "frames": 159,
+      "speed_frames": 118,
+      "coverage_time": 0.798256713060585,
+      "reference_samples": 0,
+      "within_3": null
+    },
+    {
+      "stretch": "c",
+      "group": "all",
+      "frames": 1497,
+      "speed_frames": 0,
+      "coverage_time": 0.0,
+      "reference_samples": 0,
+      "within_3": null
+    },
+    {
+      "stretch": "c",
+      "group": "clean",
+      "frames": 862,
+      "speed_frames": 0,
+      "coverage_time": 0.0,
+      "reference_samples": 0,
+      "within_3": null
+    },
+    {
+      "stretch": "c",
+      "group": "damaged",
+      "frames": 635,
+      "speed_frames": 0,
+      "coverage_time": 0.0,
+      "reference_samples": 0,
+      "within_3": null
+    }
+  ]
+}

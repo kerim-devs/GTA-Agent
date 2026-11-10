@@ -1,4 +1,4 @@
-"""Defensive path following with a noisy map-pixel speed sensor."""
+"""Defensive path following with a noisy GPS distance speed sensor."""
 
 from dataclasses import dataclass
 from math import atan2, degrees, hypot, isfinite, sqrt
@@ -22,18 +22,27 @@ class DriveConfig:
     cruise_throttle: float = 0.58  # Pedal on a straight, legible route.
     bend_throttle: float = 0.22  # Minimum pedal while following a bend.
     bend_gain: float = 0.013  # Pedal reduction per degree of upcoming bend.
-    lookahead_px: float = 11.0  # First visible route target, in crop pixels.
-    speed_limit: float = 7.0  # Straight-line limit in map pixels per second.
-    slow_speed: float = 2.0  # Lowest planned corner speed, in map pixels per second.
-    lateral_acceleration: float = 1.2  # Conservative pixel/s^2 cornering budget.
-    planned_deceleration: float = 2.0  # Pixel/s^2 used to lift ahead of a bend.
+    lookahead_px: float = 8.0  # First visible route target, in crop pixels.
+    speed_limit: float = 7.0  # Straight-line limit in metres per second.
+    slow_speed: float = 2.0  # Lowest planned corner speed, in metres per second.
+    lateral_acceleration: float = 1.2  # Conservative m/s^2 cornering budget.
+    planned_deceleration: float = 2.0  # Metres/s^2 used to lift ahead of a bend.
     speed_smoothing: float = 0.25  # Suppress frame-pair sensor noise before pedal feedback.
-    speed_gain: float = 0.18  # Throttle feedback per pixel/s below the target.
-    brake_gain: float = 0.18  # Brake feedback per pixel/s above the target.
+    speed_gain: float = 0.18  # Throttle feedback per m/s below the target.
+    brake_gain: float = 0.18  # Brake feedback per m/s above the target.
     brake_margin: float = 1.0  # Sensor-error allowance before applying L2.
-    motion_speed: float = 0.5  # Filtered pixel/s evidence of motion, below the L2 safety threshold.
-    rolling_speed: float = 1.0  # Never use L2 below this measured pixel/s speed.
+    motion_speed: float = 0.5  # Filtered m/s evidence of motion, below the L2 safety threshold.
+    rolling_speed: float = 1.0  # Never use L2 below this measured m/s speed.
     unknown_throttle: float = 0.18  # Slow pedal fallback when the sensor abstains.
+    gps_interval: float = 0.25  # One optional OCR job at most every quarter second.
+    gps_window: float = 3.0  # Robust distance slope window in seconds.
+    gps_stale: float = 1.5  # Expired GPS cannot authorize braking.
+    gps_max_speed: float = 50.0  # Reject impossible distance changes, m/s.
+    gps_tolerance: float = 8.0  # Metres of OCR scatter around a consistent trend.
+    gps_acceleration: float = 8.0  # Plausible m/s^2 change before quarantining a jump.
+    map_scale_min: float = 0.35  # Low-speed 0.7 m/px with a factor-of-two safety band.
+    arrival_distance: float = 8.0  # Enter the approach speed in the last metres.
+    arrival_speed: float = 1.5  # Approach at walking pace; route loss ends the run.
     damage_hold: float = 0.5  # Conservative bound below replay gap p90 .555s; damage cannot renew it.
     damage_angle: float = 25.0  # Reject direction changes beyond recent clean evidence.
     confidence_min: float = 0.5  # Lowest accepted perception confidence.
@@ -98,6 +107,7 @@ class Driver:
         self._speed: float | None = None
         self._speed_at: float | None = None
         self._measured_speed: float | None = None
+        self._stationary = False
         self._last_good: float | None = None
         self._missing_duration = 0.0
         self._missing_observed_at: float | None = None
@@ -124,6 +134,8 @@ class Driver:
             and self._measured_speed is not None
             and self._measured_speed <= self.config.rolling_speed
         ):
+            brake = 0
+        if state in {"follow", "coast"} and (self._measured_speed is None or self._stationary):
             brake = 0
         self._last = Command(_clip(steer), _clip(throttle, 0), _clip(brake, 0), state)
         return self._last
@@ -164,6 +176,7 @@ class Driver:
         speed = speed if speed is not None and speed >= 0 else None
         self._measured_speed = speed
         moving = moving if isinstance(moving, bool) else None
+        self._stationary = moving is False
         now = _number(t)
         if now is None or (self._time is not None and now < self._time):
             self._time = now
@@ -260,7 +273,16 @@ class Driver:
                             -self.config.recovery_steer,
                             self.config.recovery_steer,
                         ),
-                        self.config.recovery_throttle,
+                        min(self.config.recovery_throttle, self.config.unknown_throttle)
+                        if speed is None
+                        else min(
+                            self.config.recovery_throttle,
+                            max(
+                                0,
+                                self.config.speed_gain
+                                * (self._speed_limit(path, max(abs(error), abs(far_error)), speed) - speed),
+                            ),
+                        ),
                         0,
                         "recovery-forward",
                     )
@@ -341,6 +363,9 @@ class Driver:
         bend = max(abs(self._filtered_error), abs(self._filtered_far), abs(bend_delta))
         throttle = max(self.config.bend_throttle, self.config.cruise_throttle - self.config.bend_gain * bend)
         limit = self._speed_limit(path, bend, speed)
+        distance = _number(reading.gps_distance)
+        if distance is not None and 0 <= distance <= self.config.arrival_distance:
+            limit = min(limit, self.config.arrival_speed)
         brake = 0.0
         if speed is None:
             throttle *= self.config.unknown_throttle / max(self.config.cruise_throttle, 1e-9)
@@ -353,9 +378,9 @@ class Driver:
 
     def _speed_limit(self, path, bend: float, speed: float | None) -> float:
         cfg = self.config
-        limit = cfg.speed_limit
+        limit = max(min(cfg.slow_speed, cfg.speed_limit), cfg.speed_limit / (1 + bend / 15))
         if len(path) < 3:
-            return max(min(cfg.slow_speed, limit), limit / (1 + bend / 15))
+            return limit
         travel = hypot(*path[0])
         for a, b, c in zip(path, path[1:], path[2:], strict=False):
             ab, bc = hypot(b[0] - a[0], b[1] - a[1]), hypot(c[0] - b[0], c[1] - b[1])
@@ -364,10 +389,15 @@ class Driver:
             cross = abs((b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0]))
             curvature = 2 * cross / max(ab * bc * hypot(c[0] - a[0], c[1] - a[1]), 1e-6)
             corner = max(
-                min(cfg.slow_speed, cfg.speed_limit), sqrt(cfg.lateral_acceleration / max(curvature, 1e-6))
+                min(cfg.slow_speed, cfg.speed_limit),
+                sqrt(cfg.lateral_acceleration * cfg.map_scale_min / max(curvature, 1e-6)),
             )
             # Reserve the hidden near-arrow section and the command delay for turning in.
-            remaining = max(0, travel - cfg.lookahead_px - (speed or 0) * cfg.command_delay)
+            remaining = max(
+                0,
+                (travel - cfg.lookahead_px) * cfg.map_scale_min
+                - (speed or 0) * (cfg.command_delay + cfg.gps_window / 2),
+            )
             limit = min(limit, sqrt(corner * corner + 2 * cfg.planned_deceleration * remaining))
             travel += ab
         return limit
@@ -421,6 +451,24 @@ def _path(value: object) -> tuple[tuple[float, float], ...]:
 
 def _target(path, radius: float):
     previous = path[0]
+    if len(path) >= 2 and hypot(*previous) > radius:
+        # Continue only the first visible straight segment under the arrow.
+        # This short aiming point avoids cutting a wide corner as the map zooms.
+        x, y = previous
+        dx, dy = path[1][0] - x, path[1][1] - y
+        length = hypot(dx, dy)
+        if length > 0:
+            dx, dy = dx / length, dy / length
+            projection = x * dx + y * dy
+            discriminant = projection * projection - x * x - y * y + radius * radius
+            if discriminant < 0 and projection > 0:
+                # Aim at the line's nearest point until the short circle reaches
+                # it; the first visible point would start cutting the corner.
+                return x - projection * dx, y - projection * dy
+            if discriminant >= 0:
+                along = -projection + sqrt(discriminant)
+                if along < 0:
+                    return x + along * dx, y + along * dy
     for point in path[1:]:
         before, after = hypot(*previous), hypot(*point)
         if before <= radius <= after and after > before:

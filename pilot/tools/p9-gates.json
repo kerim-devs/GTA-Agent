@@ -1,0 +1,12 @@
+{
+  "default": {
+    "command": ".venv/bin/python tools/gate.py",
+    "summary": "321 passed, 1 skipped, 1376 deselected, 4 xfailed in 11.95s",
+    "result": "gate passed in 12.13s (default)"
+  },
+  "full": {
+    "command": ".venv/bin/python tools/gate.py --full",
+    "summary": "1465 passed, 1 skipped, 236 xfailed in 423.35s (0:07:03)",
+    "result": "gate passed in 423.54s (full)"
+  }
+}

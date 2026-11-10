@@ -196,6 +196,9 @@ def run_replay(recording: Path, *, out: Path | None = None, pipeline: Pipeline |
                 rows.append(row)
     finally:
         capture.release()
+        close = getattr(pipeline, "close", None)
+        if close is not None:
+            close()
     result = compare(rows, pad)
     agreement = "unavailable" if result.agreement is None else f"{result.agreement:.3f}"
     shift = "unavailable" if result.shift is None else f"{result.shift:+.3f}s"

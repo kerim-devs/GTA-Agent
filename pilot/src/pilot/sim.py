@@ -8,12 +8,14 @@ This model cannot establish real-game handling or perception accuracy.
 """
 
 from collections import deque
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from math import atan2, cos, degrees, hypot, isfinite, radians, sin, sqrt, tan
 from random import Random
 
 from pilot.contract import NEUTRAL, Command, Reading
 from pilot.drive import Driver
+from pilot.gps import Fix, Speedometer
+from pilot.motion import motion_state
 
 Point = tuple[float, float]
 Wall = tuple[Point, Point]
@@ -24,6 +26,11 @@ class SimConfig:
     dt: float = 1 / 30
     delay: float = 0.21
     map_scale: float = 1.0
+    gps_interval: float = 0.25
+    gps_delay: float = 0.15
+    gps_wrong: float = 0.30
+    gps_dropout: float = 2.0  # Missing readout at the start of each twelve-second interval.
+    scale_with_speed: float = 1.0
     dead_zone: float = 0.0
     wheelbase: float = 2.7
     max_wheel_angle: float = 35.0
@@ -74,6 +81,7 @@ class SimConfig:
                 self.damage_probability,
                 self.noise_tail_probability,
                 self.speed_missing,
+                self.gps_wrong,
                 self.path_missing,
             )
             > 1
@@ -91,6 +99,9 @@ class SimResult:
     steering_flips_per_second: float
     recoveries: int
     collisions: int
+    max_overspeed_time: float
+    max_bend_speed: float
+    max_speed: float
     final_position: Point
 
 
@@ -138,6 +149,12 @@ class Simulator:
         self._poses = deque()
         self._observations = deque()
         self.observed_speed = None
+        self._gps_rng = Random(seed + 20000)
+        self._gps_queue = deque()
+        self._gps_at = -float("inf")
+        self._gps_fix = None
+        self._gps_sample_time = None
+        self._speedometer = None
         self._segment = 0
         self.collisions = 0
         self._recoveries = 0
@@ -178,10 +195,46 @@ class Simulator:
                     return ax + u * dx, ay + u * dy
         return self.route[-1]
 
+    @property
+    def map_scale(self):
+        speed = abs(self.speed)
+        table = 0.7 if speed < 6 else 1.0 if speed < 12 else 2.1 if speed < 18 else 3.6 if speed < 24 else 3.7
+        return self.config.map_scale * (table if self.config.scale_with_speed else 1.0)
+
+    def _gps_reading(self):
+        cfg = self.config
+        if self.time - self._gps_at >= cfg.gps_interval:
+            self._gps_at = self.time
+            _, progress = self._route_position()
+            remaining = max(0, self.length - progress)
+            quantum = 10 if remaining >= 1000 else 1
+            value = round(remaining / quantum) * quantum
+            fix = None
+            if self.time % 12 >= cfg.gps_dropout:
+                if self._gps_rng.random() < cfg.gps_wrong:
+                    value = max(0, value + self._gps_rng.choice((-200, -50, 30, 100, 1000)))
+                fix = Fix(value, "straight", quantum)
+            self._gps_queue.append((self.time + cfg.gps_delay, self.time, fix))
+        result = None
+        while self._gps_queue and self._gps_queue[0][0] <= self.time:
+            _, sampled_at, fix = self._gps_queue.popleft()
+            result = (sampled_at, fix)
+        if self._speedometer is None:
+            self._speedometer = Speedometer()
+        at, fix = result if result is not None else (self.time, None)
+        self.observed_speed = self._speedometer.update(self.time, fix, sampled_at=at)
+        fresh = (
+            self._speedometer.time is not None
+            and self.time - self._speedometer.time <= self._speedometer.stale
+        )
+        self._gps_fix = self._speedometer.fix if fresh else None
+        self._gps_sample_time = self._speedometer.time if fresh else None
+
     def observe(self) -> tuple[Reading, bool | None]:
         """Noisy picture-angle readings and an independent short motion estimate."""
         cfg = self.config
-        near, far = self._target(30 * cfg.map_scale), self._target(60 * cfg.map_scale)
+        scale = self.map_scale
+        near, far = self._target(30 * scale), self._target(60 * scale)
         noise = self._rng.gauss
         bearing = degrees(atan2(near[0] - self.x, near[1] - self.y) - self.camera_heading)
         far_bearing = degrees(atan2(far[0] - self.x, far[1] - self.y) - self.camera_heading)
@@ -207,17 +260,19 @@ class Simulator:
             path=() if damaged else self._path_reading(),
         )
         self._poses.append((self.time, self.x, self.y, self.camera_heading))
-        while len(self._poses) > 1 and self._poses[1][0] <= self.time - cfg.speed_window:
+        while len(self._poses) > 1 and self._poses[1][0] <= self.time - 1.2:
             self._poses.popleft()
         speed = None
-        old_t, old_x, old_y, old_camera = self._poses[0]
+        old_t, old_x, old_y, old_camera = min(
+            self._poses, key=lambda p: abs(self.time - p[0] - cfg.speed_window)
+        )
         elapsed = self.time - old_t
         if (
             elapsed >= cfg.speed_window * 0.75
             and not damaged
             and self._sensor_rng.random() >= cfg.speed_missing
         ):
-            translation = hypot(self.x - old_x, self.y - old_y) / cfg.map_scale / elapsed
+            translation = hypot(self.x - old_x, self.y - old_y) / scale / elapsed
             rotation = (
                 abs(
                     (self.camera_heading - old_camera + 3.141592653589793) % (2 * 3.141592653589793)
@@ -226,16 +281,34 @@ class Simulator:
                 / elapsed
             )
             speed = max(0, translation + rotation * 2 + self._sensor_rng.gauss(0, cfg.speed_noise))
-        moving = None if speed is None else speed > 1.0 / cfg.speed_window
+        moving = motion_state(None if speed is None else speed * cfg.speed_window)
+        if moving is not True and speed is not None and self.time - self._poses[0][0] >= 0.8:
+            _, x, y, _ = self._poses[0]
+            moving = motion_state(
+                max(
+                    0,
+                    hypot(self.x - x, self.y - y) / scale
+                    + self._sensor_rng.gauss(0, cfg.speed_noise * cfg.speed_window),
+                )
+            )
         self._observations.append((self.time, reading, moving, speed))
         while len(self._observations) > 1 and self._observations[1][0] <= self.time - cfg.sensor_delay:
             self._observations.popleft()
-        _, observed, moving, self.observed_speed = self._observations[0]
+        _, observed, moving, _ = self._observations[0]
+        self._gps_reading()
+        observed = replace(
+            observed,
+            gps_distance=None if self._gps_fix is None else self._gps_fix.distance,
+            gps_arrow=None if self._gps_fix is None else self._gps_fix.arrow,
+            gps_speed=self.observed_speed,
+            gps_time=self._gps_sample_time,
+        )
         return observed, moving
 
     def _path_reading(self):
         cfg = self.config
         rng = self._sensor_rng
+        scale = self.map_scale
         if rng.random() < cfg.path_missing:
             return ()
         _, progress = self._route_position()
@@ -246,11 +319,11 @@ class Simulator:
             samples = []
             while travel < length:
                 samples.append(travel)
-                travel += 0.5 * cfg.map_scale
+                travel += 3 * scale
             samples.append(length)
             for along in samples:
-                rx = (ax + dx * along / length - self.x) / cfg.map_scale
-                ry = (ay + dy * along / length - self.y) / cfg.map_scale
+                rx = (ax + dx * along / length - self.x) / scale
+                ry = (ay + dy * along / length - self.y) / scale
                 x = rx * cos(self.camera_heading) - ry * sin(self.camera_heading)
                 y = rx * sin(self.camera_heading) + ry * cos(self.camera_heading)
                 if hypot(x, y) < cfg.path_hidden:
@@ -335,7 +408,16 @@ class Simulator:
 
     def run(self, driver: Driver) -> SimResult:
         distance, progress = self._route_position()
-        distances = [distance]
+        distances = []
+        on_route = distance <= 1.0
+        overspeed = max_overspeed = max_bend_speed = max_speed = 0.0
+        self._speedometer = Speedometer(
+            driver.config.gps_window,
+            driver.config.gps_stale,
+            driver.config.gps_max_speed,
+            driver.config.gps_tolerance,
+            driver.config.gps_acceleration,
+        )
         best_progress, last_progress = progress, self.time
         max_gap = 0.0
         flips, last_sign = 0, 0
@@ -347,9 +429,20 @@ class Simulator:
             if sign:
                 flips += int(last_sign != 0 and sign != last_sign)
                 last_sign = sign
+            previous_segment = self._segment
             self.advance(command)
             distance, progress = self._route_position()
-            distances.append(distance)
+            on_route = on_route or distance <= 1.0
+            if on_route:
+                distances.append(distance)
+            max_speed = max(max_speed, self.speed)
+            overspeed = overspeed + self.config.dt if self.speed > driver.config.speed_limit + 2 else 0.0
+            max_overspeed = max(max_overspeed, overspeed)
+            for index, vertex in enumerate(self.route[1:-1], start=1):
+                if (self._segment <= index and hypot(self.x - vertex[0], self.y - vertex[1]) <= 5) or (
+                    previous_segment < index <= self._segment
+                ):
+                    max_bend_speed = max(max_bend_speed, self.speed)
             if progress >= best_progress + self.config.progress_distance:
                 max_gap = max(max_gap, self.time - last_progress)
                 best_progress, last_progress = progress, self.time
@@ -364,12 +457,15 @@ class Simulator:
         return SimResult(
             reached,
             self.time,
-            sum(distances) / len(distances),
-            max(distances),
+            sum(distances) / len(distances) if distances else distance,
+            max(distances) if distances else distance,
             max_gap,
             flips / max(self.time, self.config.dt),
             self._recoveries,
             self.collisions,
+            max_overspeed,
+            max_bend_speed,
+            max_speed,
             (self.x, self.y),
         )
 

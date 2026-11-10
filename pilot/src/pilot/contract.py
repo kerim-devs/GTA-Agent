@@ -30,6 +30,10 @@ class Reading:
     confidence: float  # 0..1, how far to trust `route` and `bearing`
     # Ordered route samples in map pixels relative to the arrow: x right, y up.
     path: tuple[tuple[float, float], ...] = ()
+    gps_distance: float | None = None  # Remaining route distance in metres.
+    gps_arrow: str | None = None  # Printed next turn, separate from the vehicle arrow.
+    gps_speed: float | None = None  # Causal distance slope in metres per second.
+    gps_time: float | None = None  # Capture time of the last accepted distance.
 
 
 @dataclass(frozen=True)

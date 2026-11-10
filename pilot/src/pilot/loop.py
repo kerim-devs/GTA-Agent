@@ -8,16 +8,18 @@ import sys
 import time
 from collections import Counter, deque
 from contextlib import contextmanager
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, replace
 from pathlib import Path
 
 import numpy as np
 
 from .bridge import Bridge
 from .contract import HUD_RECT, Command, Reading
-from .drive import Driver
+from .drive import DriveConfig, Driver
+from .gps import Reader as GPSReader
+from .gps import Speedometer
 from .minimap import read
-from .motion import MOVING_PX, map_motion, map_speed
+from .motion import map_motion, motion_state
 
 RECORDINGS = Path(__file__).resolve().parents[3] / "recordings"
 END_STATES = ("route-gone", "failed-recovery")  # states in which drive.Driver has given the car up
@@ -26,11 +28,21 @@ END_STATES = ("route-gone", "failed-recovery")  # states in which drive.Driver h
 class Pipeline:
     """Shared live/replay interpretation, using frame time for motion and driving."""
 
-    def __init__(self, *, reader=read, motion=map_motion, driver=None):
+    def __init__(self, *, reader=read, motion=map_motion, driver=None, gps_reader=None):
         self.reader = reader
         self.motion = motion
         self.driver = Driver() if driver is None else driver
+        cfg = getattr(self.driver, "config", DriveConfig())
+        self.gps_reader = GPSReader(cfg.gps_interval) if gps_reader is None else gps_reader
+        self.speedometer = Speedometer(
+            cfg.gps_window, cfg.gps_stale, cfg.gps_max_speed, cfg.gps_tolerance, cfg.gps_acceleration
+        )
         self.history: deque[tuple[float, np.ndarray]] = deque()
+
+    def close(self):
+        close = getattr(self.gps_reader, "close", None)
+        if close is not None:
+            close()
 
     def step(
         self, crop: np.ndarray, frame_time: float, feedback: bool = True
@@ -39,17 +51,35 @@ class Pipeline:
         its own commands move nothing, and it would take every red light for being stuck."""
         reading = self.reader(crop)
         moving = None
-        speed = None
         if self.history and frame_time <= self.history[-1][0]:
             self.history.clear()
-        while self.history and self.history[0][0] < frame_time - 0.4:
+        while self.history and self.history[0][0] < frame_time - 1.2:
             self.history.popleft()
         if self.history and frame_time - self.history[0][0] >= 0.15:
-            previous_time, previous = min(self.history, key=lambda item: abs(frame_time - item[0] - 0.2))
+            _previous_time, previous = min(self.history, key=lambda item: abs(frame_time - item[0] - 0.2))
             displacement = self.motion(previous, crop)
-            moving = None if displacement is None else bool(displacement > MOVING_PX)
-            speed = map_speed(displacement, frame_time - previous_time)
+            moving = motion_state(displacement)
+            if moving is not True and frame_time - self.history[0][0] >= 0.8:
+                moving = motion_state(self.motion(self.history[0][1], crop))
         self.history.append((frame_time, crop.copy()))
+        result = self.gps_reader.poll(crop, frame_time)
+        sample_time, fix = result if result is not None else (frame_time, None)
+        if reading.minimap != "tilted":
+            self.speedometer.reset()
+            fix = None
+        speed = self.speedometer.update(frame_time, fix, sampled_at=sample_time)
+        fresh = (
+            self.speedometer.time is not None
+            and 0 <= frame_time - self.speedometer.time <= self.speedometer.stale
+        )
+        current = self.speedometer.fix if fresh else None
+        reading = replace(
+            reading,
+            gps_distance=None if current is None else current.distance,
+            gps_arrow=None if current is None else current.arrow,
+            gps_speed=speed,
+            gps_time=self.speedometer.time if fresh else None,
+        )
         return (
             reading,
             moving,
@@ -65,6 +95,10 @@ def log_row(t, frame_id, frame_age, frame_time, reading, moving, command, sent=F
         "time": frame_time,
         "reading": None if reading is None else asdict(reading),
         "moving": moving,
+        "gps_distance": None if reading is None else reading.gps_distance,
+        "gps_arrow": None if reading is None else reading.gps_arrow,
+        "gps_speed": None if reading is None else reading.gps_speed,
+        "gps_time": None if reading is None else reading.gps_time,
         "command": None if command is None else asdict(command),
         "sent": sent,
         "status": status,
@@ -222,6 +256,9 @@ def run_drive(
             finally:
                 if log is not None:
                     log.close()
+                close = getattr(pipeline, "close", None)
+                if close is not None:
+                    close()
                 summary.elapsed = clock() - started
                 print(summary)
             if cleanup_errors:

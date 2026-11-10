@@ -20,7 +20,7 @@ CORNER = ((0.0, 12.0), (0.0, 15.0), (0.0, 18.0), (3.0, 18.0), (6.0, 18.0), (9.0,
 
 
 def test_short_path_drives_direction_and_bearing_fallback_survives():
-    path = tuple((-float(x), 12.0) for x in range(12, 33, 3))
+    path = tuple((-float(x), 6.0) for x in range(12, 33, 3))
     assert Driver().step(replace(GOOD, bearing=50, path=path), 0).steer < 0
     assert Driver().step(replace(GOOD, bearing=50), 0).steer > 0
     assert Driver().step(replace(GOOD, bearing=50, path=((float("nan"), 12),)), 0).steer > 0
@@ -62,7 +62,7 @@ def test_speed_uses_actual_elapsed_time_and_abstains():
     pipeline.step(crop, 1)
     pipeline.step(crop, 1.16, feedback=False)
     assert observed[-1][0] is None
-    assert observed[-1][1] == pytest.approx(18.75)
+    assert observed[-1][1] is None  # Map pixels must never be fed as metres per second.
     pipeline.step(crop, 0.5)
     assert observed[-1] == (None, None)
 
