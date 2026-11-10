@@ -1,0 +1,168 @@
+{
+  "method": "Manual visual inspection of all 60 original crops beside 2x overlays; every returned sample must lie on the visible GPS stroke. Unverifiable crops count as failures.",
+  "random_pass": 29,
+  "random_total": 30,
+  "corner_pass": 27,
+  "corner_total": 30,
+  "passed": 56,
+  "total": 60,
+  "failures": {
+    "1088": "No continuous colored route supports the northeast samples.",
+    "817": "Noisy map; points north of the arrow have no discernible colored support.",
+    "1058": "Overexposed map; every point cannot be verified.",
+    "1059": "Overexposed map; every point cannot be verified."
+  },
+  "road_width_method": "Underlying road-corridor edges, not the narrower colored GPS stroke. Original 260x170 pixel coordinates; visual endpoint uncertainty about 2px, width uncertainty about 3px.",
+  "road_width_samples": [
+    {
+      "k": 915,
+      "a": [
+        114,
+        100
+      ],
+      "b": [
+        130,
+        100
+      ],
+      "width_px": 16
+    },
+    {
+      "k": 977,
+      "a": [
+        115,
+        101
+      ],
+      "b": [
+        131,
+        101
+      ],
+      "width_px": 16
+    },
+    {
+      "k": 1031,
+      "a": [
+        115,
+        100
+      ],
+      "b": [
+        130,
+        100
+      ],
+      "width_px": 15
+    },
+    {
+      "k": 907,
+      "a": [
+        115,
+        100
+      ],
+      "b": [
+        131,
+        100
+      ],
+      "width_px": 16
+    },
+    {
+      "k": 1066,
+      "a": [
+        123,
+        110
+      ],
+      "b": [
+        137,
+        98
+      ],
+      "width_px": 18
+    },
+    {
+      "k": 1418,
+      "a": [
+        109,
+        104
+      ],
+      "b": [
+        121,
+        114
+      ],
+      "width_px": 16
+    },
+    {
+      "k": 950,
+      "a": [
+        106,
+        103
+      ],
+      "b": [
+        119,
+        114
+      ],
+      "width_px": 17
+    },
+    {
+      "k": 1420,
+      "a": [
+        108,
+        104
+      ],
+      "b": [
+        120,
+        114
+      ],
+      "width_px": 16
+    },
+    {
+      "k": 1393,
+      "a": [
+        134,
+        101
+      ],
+      "b": [
+        134,
+        115
+      ],
+      "width_px": 14
+    },
+    {
+      "k": 824,
+      "a": [
+        109,
+        100
+      ],
+      "b": [
+        122,
+        110
+      ],
+      "width_px": 16
+    },
+    {
+      "k": 1416,
+      "a": [
+        109,
+        104
+      ],
+      "b": [
+        122,
+        114
+      ],
+      "width_px": 16
+    },
+    {
+      "k": 948,
+      "a": [
+        106,
+        102
+      ],
+      "b": [
+        119,
+        112
+      ],
+      "width_px": 16
+    }
+  ],
+  "road_width_summary": {
+    "median_px": 16,
+    "min_px": 14,
+    "max_px": 18,
+    "uncertainty_px": 3
+  }
+}

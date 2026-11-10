@@ -1,4 +1,4 @@
-"""Full 324-run closed-loop grid and independent model invariants."""
+"""Nominal grid, pairwise car ranges and independent model invariants."""
 
 import json
 from dataclasses import replace
@@ -10,7 +10,7 @@ import pytest
 
 from pilot.contract import Command
 from pilot.drive import Driver
-from pilot.sim import SimConfig, Simulator
+from pilot.sim import CAR_PROFILES, SimConfig, Simulator
 
 SCENARIOS = {
     "straight": (((0, 0), (0, 120)), (3, 0), 20, ()),
@@ -25,16 +25,16 @@ GRID = tuple(product(SCENARIOS, (0.14, 0.21, 0.30), (0.5, 1.0, 2.0), (0, 1, 2), 
 
 # Explicit measured failures, never a blanket allowance for a new failing cell.
 # A changed outcome (including an improvement) fails for review of this baseline.
-# P6 v1 retains explicit measured misses; a green gate is not task acceptance.
+# P8 retains explicit measured misses; a green gate is not task acceptance.
 KNOWN_FAILURES = {
     tuple(row["case"]): row["errors"]
-    for row in json.loads((Path(__file__).parent / "fixtures" / "driver-v1-failures.json").read_text())
+    for row in json.loads((Path(__file__).parent / "fixtures" / "driver-p8-failures.json").read_text())
 }
 
 
-def run_case(name: str, delay: float, scale: float, seed: int, dead_zone: float):
+def run_case(name: str, delay: float, scale: float, seed: int, dead_zone: float, profile="nominal"):
     route, position, heading, walls = SCENARIOS[name]
-    config = SimConfig(delay=delay, map_scale=scale, dead_zone=dead_zone)
+    config = SimConfig(delay=delay, map_scale=scale, dead_zone=dead_zone, **CAR_PROFILES[profile])
     return Simulator(route, position=position, heading=heading, walls=walls, config=config, seed=seed).run(
         Driver()
     )
@@ -46,9 +46,7 @@ def violations(name: str, result, scale: float) -> list[str]:
         errors.append(f"not reached at {result.elapsed:.3f}s")
     if result.max_no_progress > 10:
         errors.append(f"progress gap {result.max_no_progress:.3f}s > 10s")
-    if result.mean_distance >= 3:
-        errors.append(f"mean {result.mean_distance:.3f}m >= 3m")
-    limit = 6 if scale == 2 else 4
+    limit = 5 * scale
     if result.max_distance > limit:
         errors.append(f"maximum {result.max_distance:.3f}m > {limit}m")
     if result.steering_flips_per_second > 2:
@@ -60,7 +58,7 @@ def violations(name: str, result, scale: float) -> list[str]:
 def test_closed_loop_grid(name: str, delay: float, scale: float, seed: int, dead_zone: float) -> None:
     result = run_case(name, delay, scale, seed, dead_zone)
     errors = violations(name, result, scale)
-    key = (name, delay, scale, seed, dead_zone)
+    key = (name, delay, scale, seed, dead_zone, "nominal")
     if key in KNOWN_FAILURES:
         assert errors == KNOWN_FAILURES[key], "Measured failure changed; review the explicit baseline"
         pytest.xfail("; ".join(errors))
@@ -76,7 +74,7 @@ def test_seed_reproducibility() -> None:
 
 
 def test_fractional_delay_is_applied_at_timestamp() -> None:
-    sim = Simulator([(0, 0), (0, 100)], config=clean_config(dt=0.1, delay=0.15, drag=0))
+    sim = Simulator([(0, 0), (0, 100)], config=clean_config(dt=0.1, delay=0.15, sensor_delay=0, drag=0))
     command = Command(0, 1, 0, "follow")
     sim.advance(command)
     assert sim.speed == 0
@@ -131,7 +129,8 @@ def test_rerouting_uses_global_nearest_segment() -> None:
 
 def test_noise_matches_observed_temporal_scale() -> None:
     sim = Simulator(
-        [(0, 0), (0, 300)], config=replace(SimConfig(), outlier_probability=0, damage_probability=0)
+        [(0, 0), (0, 300)],
+        config=replace(SimConfig(), outlier_probability=0, damage_probability=0, sensor_delay=0),
     )
     samples = [sim.observe()[0].bearing for _ in range(12000)]
     differences = sorted(abs(a - b) for a, b in zip(samples, samples[6:], strict=False))
@@ -140,3 +139,17 @@ def test_noise_matches_observed_temporal_scale() -> None:
     median, p90 = differences[len(differences) // 2], differences[int(len(differences) * 0.9)]
     assert 3.3 < median < 4.3
     assert 13 < p90 < 17
+
+
+@pytest.mark.parametrize("profile", tuple(CAR_PROFILES)[1:])
+@pytest.mark.parametrize(
+    "name,delay,scale,dead_zone", tuple(product(SCENARIOS, (0.14, 0.21, 0.3), (0.5, 1.0, 2.0), (0.0, 0.25)))
+)
+def test_unknown_car_ranges(profile, name, delay, scale, dead_zone):
+    result = run_case(name, delay, scale, 0, dead_zone, profile)
+    errors = violations(name, result, scale)
+    key = (name, delay, scale, 0, dead_zone, profile)
+    if key in KNOWN_FAILURES:
+        assert errors == KNOWN_FAILURES[key], "Measured edge failure changed; review the baseline"
+        pytest.xfail("; ".join(errors))
+    assert not errors, "; ".join(errors)

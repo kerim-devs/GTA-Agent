@@ -1,0 +1,2186 @@
+[
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.280m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "maximum 3.284m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "maximum 3.280m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-02"
+    ],
+    "errors": [
+      "maximum 3.276m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "maximum 3.284m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-11"
+    ],
+    "errors": [
+      "maximum 3.280m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-12"
+    ],
+    "errors": [
+      "maximum 3.276m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "maximum 3.284m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "maximum 3.280m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-22"
+    ],
+    "errors": [
+      "maximum 3.276m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "maximum 3.276m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.303m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "maximum 3.304m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "maximum 3.303m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-02"
+    ],
+    "errors": [
+      "maximum 3.295m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "maximum 3.304m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-11"
+    ],
+    "errors": [
+      "maximum 3.303m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-12"
+    ],
+    "errors": [
+      "maximum 3.295m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "maximum 3.304m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-21"
+    ],
+    "errors": [
+      "maximum 3.303m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-22"
+    ],
+    "errors": [
+      "maximum 3.295m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "maximum 3.295m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      1,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.284m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.310m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.279m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.300m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.277m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "maximum 3.279m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "maximum 3.277m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-02"
+    ],
+    "errors": [
+      "maximum 3.273m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "maximum 3.279m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-11"
+    ],
+    "errors": [
+      "maximum 3.277m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-12"
+    ],
+    "errors": [
+      "maximum 3.273m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "maximum 3.279m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "maximum 3.277m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-22"
+    ],
+    "errors": [
+      "maximum 3.273m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "maximum 3.273m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.296m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "maximum 3.300m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "maximum 3.296m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-02"
+    ],
+    "errors": [
+      "maximum 3.291m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "maximum 3.300m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-11"
+    ],
+    "errors": [
+      "maximum 3.296m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-12"
+    ],
+    "errors": [
+      "maximum 3.291m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "maximum 3.300m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-21"
+    ],
+    "errors": [
+      "maximum 3.296m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-22"
+    ],
+    "errors": [
+      "maximum 3.291m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "maximum 3.291m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      1,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.278m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.295m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.277m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.21,
+      0.5,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.296m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.271m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "maximum 3.277m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "maximum 3.271m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-02"
+    ],
+    "errors": [
+      "maximum 3.268m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "maximum 3.277m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-11"
+    ],
+    "errors": [
+      "maximum 3.271m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-12"
+    ],
+    "errors": [
+      "maximum 3.268m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "maximum 3.277m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "maximum 3.271m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-22"
+    ],
+    "errors": [
+      "maximum 3.268m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "maximum 3.268m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.286m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "maximum 3.295m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "maximum 3.286m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-02"
+    ],
+    "errors": [
+      "maximum 3.286m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "maximum 3.295m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-11"
+    ],
+    "errors": [
+      "maximum 3.286m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-12"
+    ],
+    "errors": [
+      "maximum 3.286m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "maximum 3.295m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-21"
+    ],
+    "errors": [
+      "maximum 3.286m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-22"
+    ],
+    "errors": [
+      "maximum 3.286m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "maximum 3.286m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      1,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.271m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.287m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.273m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      0.5,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.289m > 2.5m"
+    ],
+    "explanation": "The inherited initial offset is already 3m = 6px, above the 5px bound before control starts."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-02"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-11"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-12"
+    ],
+    "errors": [
+      "maximum 3.069m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-22"
+    ],
+    "errors": [
+      "maximum 3.071m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-02"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-11"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-12"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-21"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-22"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      1,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-02"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-11"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-12"
+    ],
+    "errors": [
+      "maximum 3.068m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-22"
+    ],
+    "errors": [
+      "maximum 3.068m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-02"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-11"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-12"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-21"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-22"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      1,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-02"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-11"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-12"
+    ],
+    "errors": [
+      "maximum 3.161m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-22"
+    ],
+    "errors": [
+      "maximum 3.065m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-02"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-11"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-12"
+    ],
+    "errors": [
+      "maximum 3.049m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-21"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-22"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      1,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "maximum 3.000m > 2.5m"
+    ],
+    "explanation": "The inherited start points across the route toward a wall 3m away. The minimum forward turning radius is 3.86m, exceeding the 2.5m lane bound; recovery also leaves it."
+  }
+]

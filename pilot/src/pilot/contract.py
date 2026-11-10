@@ -28,6 +28,8 @@ class Reading:
     arrow: float | None  # where the player arrow points; None if it cannot be read
     corrupt: bool  # the picture is damaged by the stream (smeared or misplaced blocks)
     confidence: float  # 0..1, how far to trust `route` and `bearing`
+    # Ordered route samples in map pixels relative to the arrow: x right, y up.
+    path: tuple[tuple[float, float], ...] = ()
 
 
 @dataclass(frozen=True)

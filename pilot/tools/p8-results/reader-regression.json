@@ -1,0 +1,24 @@
+{
+  "dev": {
+    "labelled": 120,
+    "route_found": 34,
+    "false_route": 0,
+    "missed_route": 0,
+    "near_within_45": 1.0,
+    "near_median_error": 4.2,
+    "mean_ms": 0.78,
+    "p95_ms": 1.49
+  },
+  "held": {
+    "labelled": 48,
+    "route_found": 11,
+    "false_route": 0,
+    "missed_route": 0,
+    "near_within_45": 1.0,
+    "near_median_error": 5.1,
+    "mean_ms": 0.78,
+    "p95_ms": 1.48
+  },
+  "command": "cd lab/minimap && /Users/kerim/Documents/ChatGPT/gta/lab/minimap/.venv/bin/python harness.py impl_pilot/minimap.py --split dev (and held)",
+  "note": "Existing minimap/arrow disagreements remain in the harness; P8 adds path samples without changing the legacy bearings."
+}

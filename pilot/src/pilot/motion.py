@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from math import isfinite
+
 import cv2
 import numpy as np
 
@@ -71,3 +73,16 @@ def _displacement(prev: np.ndarray, cur: np.ndarray) -> float | None:
     # Eight tracks give minimum support; q60 tolerates some remaining fixed
     # icons without letting a few moving world features dominate the estimate.
     return float(np.quantile(np.linalg.norm(flow, axis=1), 0.60))
+
+
+def map_speed(displacement: float | None, elapsed: float) -> float | None:
+    """Convert a measured crop displacement to pixels/second; unknown stays unknown."""
+    if any(isinstance(v, bool) or not isinstance(v, (int, float)) for v in (displacement, elapsed)):
+        return None
+    try:
+        if not isfinite(displacement) or not isfinite(elapsed) or displacement < 0 or elapsed <= 0:
+            return None
+        result = displacement / elapsed
+        return result if isfinite(result) else None
+    except (OverflowError, ValueError):
+        return None
