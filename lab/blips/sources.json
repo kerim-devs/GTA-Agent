@@ -1,0 +1,1465 @@
+[
+  {
+    "id": 236,
+    "mode": "flat",
+    "source": {
+      "k": 236,
+      "rec": "20261110-093238",
+      "i": 1416,
+      "t": 65.666,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.197,
+      "l2": 1.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "id": 72,
+    "mode": "flat",
+    "source": {
+      "k": 72,
+      "rec": "20261110-093238",
+      "i": 432,
+      "t": 19.461,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      false,
+      false
+    ]
+  },
+  {
+    "id": 368,
+    "mode": "flat",
+    "source": {
+      "k": 368,
+      "rec": "20261110-093238",
+      "i": 2208,
+      "t": 99.525,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.276,
+      "l2": 1.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 518,
+    "mode": "flat",
+    "source": {
+      "k": 518,
+      "rec": "20261110-093238",
+      "i": 3108,
+      "t": 137.274,
+      "steer": -0.15,
+      "steer_now": -0.15,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 2470,
+    "mode": "flat",
+    "source": {
+      "k": 2470,
+      "rec": "20261110-091812",
+      "i": 606,
+      "t": 37.53,
+      "steer": -0.337,
+      "steer_now": -0.37,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 176,
+    "mode": "flat",
+    "source": {
+      "k": 176,
+      "rec": "20261110-093238",
+      "i": 1056,
+      "t": 48.286,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "id": 2087,
+    "mode": "flat",
+    "source": {
+      "k": 2087,
+      "rec": "20261110-093238",
+      "i": 12522,
+      "t": 623.524,
+      "steer": -0.227,
+      "steer_now": -0.302,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      true,
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "id": 2092,
+    "mode": "flat",
+    "source": {
+      "k": 2092,
+      "rec": "20261110-093238",
+      "i": 12552,
+      "t": 624.83,
+      "steer": 0.013,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      true,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "id": 2544,
+    "mode": "flat",
+    "source": {
+      "k": 2544,
+      "rec": "20261110-091812",
+      "i": 1050,
+      "t": 57.11,
+      "steer": 0.829,
+      "steer_now": 0.87,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 2545,
+    "mode": "flat",
+    "source": {
+      "k": 2545,
+      "rec": "20261110-091812",
+      "i": 1056,
+      "t": 57.36,
+      "steer": 0.67,
+      "steer_now": 0.88,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 2672,
+    "mode": "flat",
+    "source": {
+      "k": 2672,
+      "rec": "20261110-091812",
+      "i": 1818,
+      "t": 92.936,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 38,
+      "purple": 0
+    },
+    "border_labels": [
+      false,
+      false
+    ]
+  },
+  {
+    "id": 397,
+    "mode": "flat",
+    "source": {
+      "k": 397,
+      "rec": "20261110-093238",
+      "i": 2382,
+      "t": 106.986,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.265,
+      "l2": 1.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "id": 214,
+    "mode": "flat",
+    "source": {
+      "k": 214,
+      "rec": "20261110-093238",
+      "i": 1284,
+      "t": 59.978,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 1.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "id": 2405,
+    "mode": "flat",
+    "source": {
+      "k": 2405,
+      "rec": "20261110-091812",
+      "i": 216,
+      "t": 12.412,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 1438,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 304,
+    "mode": "flat",
+    "source": {
+      "k": 304,
+      "rec": "20261110-093238",
+      "i": 1824,
+      "t": 83.933,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.698,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      false,
+      false
+    ]
+  },
+  {
+    "id": 2716,
+    "mode": "flat",
+    "source": {
+      "k": 2716,
+      "rec": "20261110-091812",
+      "i": 2082,
+      "t": 106.082,
+      "steer": -0.065,
+      "steer_now": -0.185,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 33,
+      "purple": 0
+    },
+    "border_labels": [
+      false,
+      false
+    ]
+  },
+  {
+    "id": 2485,
+    "mode": "flat",
+    "source": {
+      "k": 2485,
+      "rec": "20261110-091812",
+      "i": 696,
+      "t": 40.728,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 1,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 287,
+    "mode": "flat",
+    "source": {
+      "k": 287,
+      "rec": "20261110-093238",
+      "i": 1722,
+      "t": 79.473,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      false,
+      false
+    ]
+  },
+  {
+    "id": 1905,
+    "mode": "flat",
+    "source": {
+      "k": 1905,
+      "rec": "20261110-093238",
+      "i": 11430,
+      "t": 567.156,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      true,
+      true
+    ]
+  },
+  {
+    "id": 356,
+    "mode": "flat",
+    "source": {
+      "k": 356,
+      "rec": "20261110-093238",
+      "i": 2136,
+      "t": 95.891,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.278,
+      "l2": 1.0,
+      "yellow": 15,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 1693,
+    "mode": "flat",
+    "source": {
+      "k": 1693,
+      "rec": "20261110-093238",
+      "i": 10158,
+      "t": 485.729,
+      "steer": -0.363,
+      "steer_now": -0.257,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2210,
+    "mode": "flat",
+    "source": {
+      "k": 2210,
+      "rec": "20261110-093238",
+      "i": 13260,
+      "t": 655.501,
+      "steer": -0.251,
+      "steer_now": -0.22,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2301,
+    "mode": "flat",
+    "source": {
+      "k": 2301,
+      "rec": "20261110-093238",
+      "i": 13806,
+      "t": 678.39,
+      "steer": 0.444,
+      "steer_now": 0.506,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1218,
+    "mode": "flat",
+    "source": {
+      "k": 1218,
+      "rec": "20261110-093238",
+      "i": 7308,
+      "t": 340.29,
+      "steer": 0.126,
+      "steer_now": 0.16,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2238,
+    "mode": "flat",
+    "source": {
+      "k": 2238,
+      "rec": "20261110-093238",
+      "i": 13428,
+      "t": 662.17,
+      "steer": 0.836,
+      "steer_now": 0.791,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1726,
+    "mode": "flat",
+    "source": {
+      "k": 1726,
+      "rec": "20261110-093238",
+      "i": 10356,
+      "t": 495.942,
+      "steer": -0.078,
+      "steer_now": -0.111,
+      "r2": 0.0,
+      "l2": 1.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2339,
+    "mode": "flat",
+    "source": {
+      "k": 2339,
+      "rec": "20261110-093238",
+      "i": 14034,
+      "t": 688.067,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2295,
+    "mode": "flat",
+    "source": {
+      "k": 2295,
+      "rec": "20261110-093238",
+      "i": 13770,
+      "t": 677.026,
+      "steer": 0.567,
+      "steer_now": 0.6,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2622,
+    "mode": "flat",
+    "source": {
+      "k": 2622,
+      "rec": "20261110-091812",
+      "i": 1518,
+      "t": 77.086,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1731,
+    "mode": "flat",
+    "source": {
+      "k": 1731,
+      "rec": "20261110-093238",
+      "i": 10386,
+      "t": 497.072,
+      "steer": -0.281,
+      "steer_now": -1.0,
+      "r2": 0.269,
+      "l2": 0.492,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2250,
+    "mode": "flat",
+    "source": {
+      "k": 2250,
+      "rec": "20261110-093238",
+      "i": 13500,
+      "t": 665.739,
+      "steer": -0.165,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1691,
+    "mode": "flat",
+    "source": {
+      "k": 1691,
+      "rec": "20261110-093238",
+      "i": 10146,
+      "t": 485.238,
+      "steer": -0.188,
+      "steer_now": -0.156,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2629,
+    "mode": "flat",
+    "source": {
+      "k": 2629,
+      "rec": "20261110-091812",
+      "i": 1560,
+      "t": 78.793,
+      "steer": -0.175,
+      "steer_now": -0.214,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2236,
+    "mode": "flat",
+    "source": {
+      "k": 2236,
+      "rec": "20261110-093238",
+      "i": 13416,
+      "t": 661.889,
+      "steer": 0.335,
+      "steer_now": -0.107,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1732,
+    "mode": "flat",
+    "source": {
+      "k": 1732,
+      "rec": "20261110-093238",
+      "i": 10392,
+      "t": 497.327,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.083,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2176,
+    "mode": "flat",
+    "source": {
+      "k": 2176,
+      "rec": "20261110-093238",
+      "i": 13056,
+      "t": 647.46,
+      "steer": -0.008,
+      "steer_now": 0.075,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2211,
+    "mode": "flat",
+    "source": {
+      "k": 2211,
+      "rec": "20261110-093238",
+      "i": 13266,
+      "t": 655.887,
+      "steer": -0.356,
+      "steer_now": -0.251,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2621,
+    "mode": "flat",
+    "source": {
+      "k": 2621,
+      "rec": "20261110-091812",
+      "i": 1512,
+      "t": 77.041,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1834,
+    "mode": "flat",
+    "source": {
+      "k": 1834,
+      "rec": "20261110-093238",
+      "i": 11004,
+      "t": 541.721,
+      "steer": 0.402,
+      "steer_now": 1.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2256,
+    "mode": "flat",
+    "source": {
+      "k": 2256,
+      "rec": "20261110-093238",
+      "i": 13536,
+      "t": 667.298,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 843,
+    "mode": "tilted",
+    "source": {
+      "k": 843,
+      "rec": "20261110-093238",
+      "i": 5058,
+      "t": 231.333,
+      "steer": -0.158,
+      "steer_now": 0.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 101,
+      "purple": 0
+    },
+    "border_labels": [
+      true
+    ]
+  },
+  {
+    "id": 861,
+    "mode": "tilted",
+    "source": {
+      "k": 861,
+      "rec": "20261110-093238",
+      "i": 5166,
+      "t": 237.048,
+      "steer": -0.18,
+      "steer_now": 0.009,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 77,
+      "purple": 0
+    },
+    "border_labels": [
+      true
+    ]
+  },
+  {
+    "id": 552,
+    "mode": "tilted",
+    "source": {
+      "k": 552,
+      "rec": "20261110-093238",
+      "i": 3312,
+      "t": 149.397,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      true
+    ]
+  },
+  {
+    "id": 2388,
+    "mode": "tilted",
+    "source": {
+      "k": 2388,
+      "rec": "20261110-091812",
+      "i": 114,
+      "t": 6.43,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 975,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 869,
+    "mode": "tilted",
+    "source": {
+      "k": 869,
+      "rec": "20261110-093238",
+      "i": 5214,
+      "t": 240.007,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 90,
+      "purple": 0
+    },
+    "border_labels": [
+      true
+    ]
+  },
+  {
+    "id": 606,
+    "mode": "tilted",
+    "source": {
+      "k": 606,
+      "rec": "20261110-093238",
+      "i": 3636,
+      "t": 162.732,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 904,
+    "mode": "tilted",
+    "source": {
+      "k": 904,
+      "rec": "20261110-093238",
+      "i": 5424,
+      "t": 250.849,
+      "steer": 0.152,
+      "steer_now": 0.356,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 92,
+      "purple": 0
+    },
+    "border_labels": [
+      true
+    ]
+  },
+  {
+    "id": 2382,
+    "mode": "tilted",
+    "source": {
+      "k": 2382,
+      "rec": "20261110-091812",
+      "i": 78,
+      "t": 4.566,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 960,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 2395,
+    "mode": "tilted",
+    "source": {
+      "k": 2395,
+      "rec": "20261110-091812",
+      "i": 156,
+      "t": 9.077,
+      "steer": 0.25,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 963,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 704,
+    "mode": "tilted",
+    "source": {
+      "k": 704,
+      "rec": "20261110-093238",
+      "i": 4224,
+      "t": 190.588,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 114,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 888,
+    "mode": "tilted",
+    "source": {
+      "k": 888,
+      "rec": "20261110-093238",
+      "i": 5328,
+      "t": 245.446,
+      "steer": -0.59,
+      "steer_now": -0.704,
+      "r2": 0.079,
+      "l2": 0.0,
+      "yellow": 151,
+      "purple": 0
+    },
+    "border_labels": [
+      true
+    ]
+  },
+  {
+    "id": 856,
+    "mode": "tilted",
+    "source": {
+      "k": 856,
+      "rec": "20261110-093238",
+      "i": 5136,
+      "t": 235.954,
+      "steer": -0.387,
+      "steer_now": -0.873,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 1128,
+      "purple": 0
+    },
+    "border_labels": [
+      true
+    ]
+  },
+  {
+    "id": 937,
+    "mode": "tilted",
+    "source": {
+      "k": 937,
+      "rec": "20261110-093238",
+      "i": 5622,
+      "t": 259.943,
+      "steer": 1.0,
+      "steer_now": 1.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 101,
+      "purple": 0
+    },
+    "border_labels": [
+      true
+    ]
+  },
+  {
+    "id": 871,
+    "mode": "tilted",
+    "source": {
+      "k": 871,
+      "rec": "20261110-093238",
+      "i": 5226,
+      "t": 240.544,
+      "steer": 0.275,
+      "steer_now": 0.492,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 87,
+      "purple": 0
+    },
+    "border_labels": [
+      true
+    ]
+  },
+  {
+    "id": 938,
+    "mode": "tilted",
+    "source": {
+      "k": 938,
+      "rec": "20261110-093238",
+      "i": 5628,
+      "t": 260.134,
+      "steer": 0.936,
+      "steer_now": 1.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 100,
+      "purple": 0
+    },
+    "border_labels": [
+      true
+    ]
+  },
+  {
+    "id": 759,
+    "mode": "tilted",
+    "source": {
+      "k": 759,
+      "rec": "20261110-093238",
+      "i": 4554,
+      "t": 206.693,
+      "steer": 0.958,
+      "steer_now": 1.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 969,
+    "mode": "tilted",
+    "source": {
+      "k": 969,
+      "rec": "20261110-093238",
+      "i": 5814,
+      "t": 268.899,
+      "steer": 0.165,
+      "steer_now": 0.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 163,
+      "purple": 0
+    },
+    "border_labels": [
+      true
+    ]
+  },
+  {
+    "id": 591,
+    "mode": "tilted",
+    "source": {
+      "k": 591,
+      "rec": "20261110-093238",
+      "i": 3546,
+      "t": 159.283,
+      "steer": 0.179,
+      "steer_now": 0.503,
+      "r2": 0.608,
+      "l2": 0.0,
+      "yellow": 143,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 750,
+    "mode": "tilted",
+    "source": {
+      "k": 750,
+      "rec": "20261110-093238",
+      "i": 4500,
+      "t": 204.379,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": [
+      false
+    ]
+  },
+  {
+    "id": 822,
+    "mode": "tilted",
+    "source": {
+      "k": 822,
+      "rec": "20261110-093238",
+      "i": 4932,
+      "t": 225.89,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 138,
+      "purple": 0
+    },
+    "border_labels": [
+      true
+    ]
+  },
+  {
+    "id": 1628,
+    "mode": "tilted",
+    "source": {
+      "k": 1628,
+      "rec": "20261110-093238",
+      "i": 9768,
+      "t": 464.705,
+      "steer": -0.355,
+      "steer_now": 0.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1442,
+    "mode": "tilted",
+    "source": {
+      "k": 1442,
+      "rec": "20261110-093238",
+      "i": 8652,
+      "t": 408.641,
+      "steer": -0.361,
+      "steer_now": -0.436,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1656,
+    "mode": "tilted",
+    "source": {
+      "k": 1656,
+      "rec": "20261110-093238",
+      "i": 9936,
+      "t": 473.327,
+      "steer": 1.0,
+      "steer_now": 1.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1542,
+    "mode": "tilted",
+    "source": {
+      "k": 1542,
+      "rec": "20261110-093238",
+      "i": 9252,
+      "t": 437.459,
+      "steer": -0.303,
+      "steer_now": -0.014,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2362,
+    "mode": "tilted",
+    "source": {
+      "k": 2362,
+      "rec": "20261110-093238",
+      "i": 14172,
+      "t": 694.124,
+      "steer": -0.68,
+      "steer_now": -0.995,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1645,
+    "mode": "tilted",
+    "source": {
+      "k": 1645,
+      "rec": "20261110-093238",
+      "i": 9870,
+      "t": 469.64,
+      "steer": -0.183,
+      "steer_now": 0.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 570,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1270,
+    "mode": "tilted",
+    "source": {
+      "k": 1270,
+      "rec": "20261110-093238",
+      "i": 7620,
+      "t": 355.876,
+      "steer": -0.206,
+      "steer_now": -0.743,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1505,
+    "mode": "tilted",
+    "source": {
+      "k": 1505,
+      "rec": "20261110-093238",
+      "i": 9030,
+      "t": 425.493,
+      "steer": 0.288,
+      "steer_now": 0.212,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 487,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1404,
+    "mode": "tilted",
+    "source": {
+      "k": 1404,
+      "rec": "20261110-093238",
+      "i": 8424,
+      "t": 397.335,
+      "steer": 0.354,
+      "steer_now": 0.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 72,
+      "purple": 286
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1316,
+    "mode": "tilted",
+    "source": {
+      "k": 1316,
+      "rec": "20261110-093238",
+      "i": 7896,
+      "t": 368.991,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 6,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2361,
+    "mode": "tilted",
+    "source": {
+      "k": 2361,
+      "rec": "20261110-093238",
+      "i": 14166,
+      "t": 693.891,
+      "steer": -0.433,
+      "steer_now": 0.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1102,
+    "mode": "tilted",
+    "source": {
+      "k": 1102,
+      "rec": "20261110-093238",
+      "i": 6612,
+      "t": 306.789,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1460,
+    "mode": "tilted",
+    "source": {
+      "k": 1460,
+      "rec": "20261110-093238",
+      "i": 8760,
+      "t": 414.123,
+      "steer": 1.0,
+      "steer_now": 1.0,
+      "r2": 0.0,
+      "l2": 1.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 2354,
+    "mode": "tilted",
+    "source": {
+      "k": 2354,
+      "rec": "20261110-093238",
+      "i": 14124,
+      "t": 692.118,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1422,
+    "mode": "tilted",
+    "source": {
+      "k": 1422,
+      "rec": "20261110-093238",
+      "i": 8532,
+      "t": 402.654,
+      "steer": -0.068,
+      "steer_now": -0.016,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 0,
+      "purple": 302
+    },
+    "border_labels": []
+  },
+  {
+    "id": 909,
+    "mode": "tilted",
+    "source": {
+      "k": 909,
+      "rec": "20261110-093238",
+      "i": 5454,
+      "t": 251.784,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 704,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 908,
+    "mode": "tilted",
+    "source": {
+      "k": 908,
+      "rec": "20261110-093238",
+      "i": 5448,
+      "t": 251.55,
+      "steer": 0.0,
+      "steer_now": 0.0,
+      "r2": 1.0,
+      "l2": 0.0,
+      "yellow": 1276,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1085,
+    "mode": "tilted",
+    "source": {
+      "k": 1085,
+      "rec": "20261110-093238",
+      "i": 6510,
+      "t": 302.151,
+      "steer": 0.167,
+      "steer_now": 0.0,
+      "r2": 0.61,
+      "l2": 0.0,
+      "yellow": 117,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1000,
+    "mode": "tilted",
+    "source": {
+      "k": 1000,
+      "rec": "20261110-093238",
+      "i": 6000,
+      "t": 276.877,
+      "steer": -0.294,
+      "steer_now": -0.337,
+      "r2": 0.225,
+      "l2": 0.0,
+      "yellow": 96,
+      "purple": 0
+    },
+    "border_labels": []
+  },
+  {
+    "id": 1019,
+    "mode": "tilted",
+    "source": {
+      "k": 1019,
+      "rec": "20261110-093238",
+      "i": 6114,
+      "t": 281.95,
+      "steer": -0.057,
+      "steer_now": 1.0,
+      "r2": 0.0,
+      "l2": 0.0,
+      "yellow": 207,
+      "purple": 0
+    },
+    "border_labels": []
+  }
+]

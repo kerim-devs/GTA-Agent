@@ -8,6 +8,17 @@ GPS route; wait(duration 0.1..60) releases all controls; press(button, duration
 0.05..1 per press, count 1..5); walk(x,y -1..1, duration 0.1..10, sprint boolean);
 look(angle -180..180 degrees, duration 0.1..5) estimates a horizontal camera turn;
 shoot(duration 0.05..1, count 1..5) aims with L2, taps R2 and releases between shots.
+walk_to(color, duration 0.1..10, sprint boolean) walks toward the nearest visible
+yellow, blue or red circular blip on a flat map; sprint defaults to false.
+face(color, duration 0.1..5) turns toward that color until within ten degrees
+of map-up. Blips contain color, x right, y up in map pixels and a border flag.
+Colors describe pixels, not confirmed identities or friendly/enemy status.
+Choose only an observed color supported by the objective. Both skills release
+on missing/unreadable maps, fail after two seconds without a target or at the
+time limit, and require a flat on-foot map. walk_to tries at most three short
+alternating sidesteps when blocked; a border marker cannot establish arrival.
+Arrival means within four map pixels, not that a mission interaction succeeded.
+The camera/map relation has offline evidence; real-game gains are uncalibrated.
 Walking directions are relative to the camera; negative y moves forward. Sprint
 taps cross under the standard PlayStation layout. Camera angles are approximate.
 Press and shoot insert neutral gaps and have a ten-second overall limit.

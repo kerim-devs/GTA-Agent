@@ -1,0 +1,38 @@
+[
+  {
+    "skill": "walk_to",
+    "wall": "none",
+    "runs": 20,
+    "done": 20,
+    "failed": 0,
+    "max_seconds": 3.7333333333333334,
+    "max_turn_reversals": 0
+  },
+  {
+    "skill": "walk_to",
+    "wall": "corner",
+    "runs": 20,
+    "done": 8,
+    "failed": 12,
+    "max_seconds": 10.0,
+    "max_turn_reversals": 0
+  },
+  {
+    "skill": "walk_to",
+    "wall": "sealed",
+    "runs": 20,
+    "done": 0,
+    "failed": 20,
+    "max_seconds": 10.0,
+    "max_turn_reversals": 0
+  },
+  {
+    "skill": "face",
+    "wall": "none",
+    "runs": 120,
+    "done": 120,
+    "failed": 0,
+    "max_seconds": 4.5,
+    "max_turn_reversals": 0
+  }
+]

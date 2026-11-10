@@ -17,6 +17,16 @@ NEAR_R, FAR_R = 30, 60  # radii in crop pixels of the two circles around the arr
 
 
 @dataclass(frozen=True)
+class Blip:
+    """An observed circular map marker, in pixels relative to the player."""
+
+    color: str
+    x: float
+    y: float
+    border: bool = False
+
+
+@dataclass(frozen=True)
 class Reading:
     # "none" (cutscene, black, menu, big map) | "flat" (on foot, top-down) | "tilted" (in a vehicle)
     minimap: str
@@ -34,6 +44,7 @@ class Reading:
     gps_arrow: str | None = None  # Printed next turn, separate from the vehicle arrow.
     gps_speed: float | None = None  # Causal distance slope in metres per second.
     gps_time: float | None = None  # Capture time of the last accepted distance.
+    blips: tuple[Blip, ...] = ()
 
 
 @dataclass(frozen=True)

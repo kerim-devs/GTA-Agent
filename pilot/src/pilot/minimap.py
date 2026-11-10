@@ -28,7 +28,7 @@ import math
 import cv2
 import numpy as np
 
-from .contract import ARROW_XY, FAR_R, NEAR_R, Reading
+from .contract import ARROW_XY, FAR_R, NEAR_R, Blip, Reading
 
 cv2.setNumThreads(1)
 
@@ -495,6 +495,134 @@ def _blocks(crop: np.ndarray):
 
 
 # ------------------------------------------------------------------ read
+def _blips(hsv: np.ndarray, yellow_path=()) -> tuple[Blip, ...]:
+    """Find the outlined colored discs seen in the recordings, not route paint."""
+    region = hsv[25:147, 31:219]
+    hue, sat, value = cv2.split(region)
+    colors = {
+        "yellow": (hue >= 22) & (hue <= 38) & (sat >= 75) & (value >= 160),
+        "blue": (hue >= 65) & (hue <= 112) & (sat >= 25) & (value >= 85),
+        "red": ((hue <= 9) | (hue >= 165)) & (sat >= 110) & (value >= 30),
+    }
+    found = []
+    for color, pixels in colors.items():
+        if color in ("blue", "red"):
+            kernel = np.ones((2, 2), np.uint8)
+            pixels = cv2.dilate(
+                cv2.erode(pixels.astype(np.uint8), kernel, anchor=(0, 0)), kernel, anchor=(1, 1)
+            ).astype(bool)
+        count, _, stats, centers = cv2.connectedComponentsWithStats(pixels.astype(np.uint8), 8)
+        route_zone = None
+        if color == "yellow" and yellow_path:
+            paint = (hue >= 22) & (hue <= 38) & (sat >= 35) & (value >= 130)
+            joined = cv2.morphologyEx(paint.astype(np.uint8), cv2.MORPH_CLOSE, np.ones((3, 3), np.uint8))
+            _, route_labels, route_stats, _ = cv2.connectedComponentsWithStats(joined, 8)
+            route_components = set()
+            for px, py in yellow_path:
+                rx, ry = round(px + ARROW_XY[0] - 31), round(ARROW_XY[1] - py - 25)
+                if 1 <= rx < region.shape[1] - 1 and 1 <= ry < region.shape[0] - 1:
+                    route_components.update(
+                        int(i)
+                        for i in route_labels[ry - 1 : ry + 2, rx - 1 : rx + 2].ravel()
+                        if i and route_stats[i, cv2.CC_STAT_AREA] > 80
+                    )
+            if route_components:
+                route_zone = cv2.dilate(
+                    np.isin(route_labels, list(route_components)).astype(np.uint8),
+                    cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (17, 17)),
+                )
+        for index in range(1, count):
+            x, y, width, height, area = stats[index]
+            minimum = 5 if color == "yellow" else 2
+            max_height, max_area = (18, 140) if color == "red" else (11, 80)
+            max_width = 12 if color == "red" else 11
+            if not (
+                minimum <= width <= max_width and minimum <= height <= max_height and 6 <= area <= max_area
+            ):
+                continue
+            aspect = 0.5 if color == "blue" else 0.6
+            if min(width, height) / max(width, height) < aspect or area / (width * height) < 0.45:
+                continue
+            cx, cy = centers[index] + (31, 25)
+            if route_zone is not None and route_zone[round(cy - 25), round(cx - 31)]:
+                continue
+            if cx < MX0 or cx >= MX1 or cy < MY0:
+                continue
+            if (color == "yellow" and cy >= 135) or (color == "blue" and cy >= 139):
+                continue
+            # A ring darker than the colored core distinguishes icons from the
+            # translucent world and separates destination discs from route ends.
+            radius = (width + height) / 4
+            angles = np.arange(16) * (math.pi / 8)
+            radii = radius + np.array([-0.3, 0.4, 1.1])[:, None]
+            xx = np.rint(cx + radii * np.cos(angles)).astype(int)
+            yy = np.rint(cy + radii * np.sin(angles)).astype(int)
+            ring = hsv[yy, xx, 2].min(axis=0)
+            core = float(
+                np.median(value[y : y + height, x : x + width][pixels[y : y + height, x : x + width]])
+            )
+            outlined = np.mean(ring < core - 18) >= 0.55
+            core_sat = float(
+                np.median(sat[y : y + height, x : x + width][pixels[y : y + height, x : x + width]])
+            )
+            if (
+                color == "blue"
+                and core < 150
+                and (
+                    min(width, height) / max(width, height) < 0.6
+                    or float(
+                        np.median(hue[y : y + height, x : x + width][pixels[y : y + height, x : x + width]])
+                    )
+                    < 78
+                )
+            ):
+                continue
+            isolated_red = (
+                color == "red" and core_sat > 130 and np.mean(hsv[yy[-1], xx[-1], 1] < core_sat - 45) >= 0.6
+            )
+            ring_hue = hsv[yy[-1], xx[-1], 0]
+            isolated_blue = (
+                color == "blue"
+                and core < 150
+                and core_sat > 90
+                and np.mean((ring_hue < 65) | (ring_hue > 112)) >= 0.6
+            )
+            if color == "blue" and math.hypot(cx - ARROW_XY[0], cy - ARROW_XY[1]) < 10 and core_sat < 45:
+                continue
+            if not outlined and not isolated_red and not isolated_blue:
+                continue
+            if color == "blue" and math.hypot(cx - ARROW_XY[0], cy - ARROW_XY[1]) < 3:
+                continue
+            border = bool(cx <= 38 or cx >= 211 or cy <= 32 or cy >= 139)
+            centers_y = [cy]
+            if (isolated_blue or color == "red") and height >= 1.4 * width and height >= 10:
+                centers_y = [cy - height / 4, cy + height / 4]
+            if color == "blue" and len(centers_y) == 1:
+                near = next(
+                    (
+                        i
+                        for i, b in enumerate(found)
+                        if b.color == color
+                        and math.hypot(b.x - (cx - ARROW_XY[0]), b.y - (ARROW_XY[1] - cy)) < 6
+                    ),
+                    None,
+                )
+                if near is not None:
+                    old = found[near]
+                    found[near] = Blip(
+                        color,
+                        round((old.x + cx - ARROW_XY[0]) / 2, 2),
+                        round((old.y + ARROW_XY[1] - cy) / 2, 2),
+                        border or old.border,
+                    )
+                    continue
+            for center_y in centers_y:
+                blip = Blip(color, round(cx - ARROW_XY[0], 2), round(ARROW_XY[1] - center_y, 2), border)
+                if not any(b.color == color and math.hypot(b.x - blip.x, b.y - blip.y) < 4 for b in found):
+                    found.append(blip)
+    return tuple(found)
+
+
 def read(crop: np.ndarray) -> Reading:
     try:
         if not isinstance(crop, np.ndarray) or crop.shape != (H, W, 3) or crop.dtype != np.uint8:
@@ -695,6 +823,7 @@ def _analyse(crop: np.ndarray, keep: bool = False):
         corrupt=corrupt,
         confidence=round(conf, 3),
         path=tr["path"] if tr is not None else (),
+        blips=_blips(hsv, tr["path"] if tr is not None and route == "yellow" else ()) if not corrupt else (),
     )
     return reading, info
 

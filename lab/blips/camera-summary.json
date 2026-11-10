@@ -1,0 +1,43 @@
+{
+  "quality_filter": "flat, noncorrupt, >=12 inliers, >70% inliers, scale (0.99,1.01), abs rotation <2 degrees, motion >=0.5 px",
+  "raw_pairs": 406,
+  "unique_pairs": 49,
+  "delays": {
+    "0.6": {
+      "n": 39,
+      "median_degrees": 12.603540765245796,
+      "p90_degrees": 27.483744296106703,
+      "within_45_degrees": 38
+    },
+    "0.7": {
+      "n": 39,
+      "median_degrees": 10.377943286060496,
+      "p90_degrees": 25.284299809110703,
+      "within_45_degrees": 39
+    },
+    "0.8": {
+      "n": 40,
+      "median_degrees": 10.618096070681862,
+      "p90_degrees": 22.52284911172263,
+      "within_45_degrees": 40
+    },
+    "0.9": {
+      "n": 40,
+      "median_degrees": 11.730997575550102,
+      "p90_degrees": 23.14100834525538,
+      "within_45_degrees": 40
+    },
+    "1.0": {
+      "n": 38,
+      "median_degrees": 11.867821832112071,
+      "p90_degrees": 29.044542167789825,
+      "within_45_degrees": 37
+    },
+    "1.1": {
+      "n": 38,
+      "median_degrees": 12.616263416266968,
+      "p90_degrees": 42.67097875649152,
+      "within_45_degrees": 35
+    }
+  }
+}
