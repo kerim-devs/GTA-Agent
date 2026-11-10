@@ -86,3 +86,12 @@ def map_speed(displacement: float | None, elapsed: float) -> float | None:
         return result if isfinite(result) else None
     except (OverflowError, ValueError):
         return None
+
+
+def motion_state(displacement: float | None) -> bool | None:
+    """Only the calibrated stationary band proves a stop; slow motion is ambiguous."""
+    if displacement is None or not isfinite(displacement) or displacement < 0:
+        return None
+    if displacement > MOVING_PX:
+        return True
+    return False if displacement <= 0.24 else None

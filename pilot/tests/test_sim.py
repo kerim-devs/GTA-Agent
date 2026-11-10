@@ -25,10 +25,10 @@ GRID = tuple(product(SCENARIOS, (0.14, 0.21, 0.30), (0.5, 1.0, 2.0), (0, 1, 2), 
 
 # Explicit measured failures, never a blanket allowance for a new failing cell.
 # A changed outcome (including an improvement) fails for review of this baseline.
-# P8 retains explicit measured misses; a green gate is not task acceptance.
+# P9 retains explicit measured misses; a green gate is not task acceptance.
 KNOWN_FAILURES = {
     tuple(row["case"]): row["errors"]
-    for row in json.loads((Path(__file__).parent / "fixtures" / "driver-p8-failures.json").read_text())
+    for row in json.loads((Path(__file__).parent / "fixtures" / "driver-p9-failures.json").read_text())
 }
 
 
@@ -46,11 +46,15 @@ def violations(name: str, result, scale: float) -> list[str]:
         errors.append(f"not reached at {result.elapsed:.3f}s")
     if result.max_no_progress > 10:
         errors.append(f"progress gap {result.max_no_progress:.3f}s > 10s")
-    limit = 5 * scale
+    limit = 5.0
     if result.max_distance > limit:
         errors.append(f"maximum {result.max_distance:.3f}m > {limit}m")
     if result.steering_flips_per_second > 2:
         errors.append(f"flips {result.steering_flips_per_second:.3f}/s > 2/s")
+    if result.max_overspeed_time > 1:
+        errors.append(f"overspeed {result.max_overspeed_time:.3f}s > 1s")
+    if result.max_bend_speed > 4:
+        errors.append(f"bend speed {result.max_bend_speed:.3f}m/s > 4m/s")
     return errors
 
 
@@ -84,7 +88,12 @@ def test_fractional_delay_is_applied_at_timestamp() -> None:
 
 def test_camera_relative_bearings_scale_and_rerouting() -> None:
     for scale in (0.5, 1, 2):
-        sim = Simulator([(0, 0), (0, 300)], position=(3, 0), heading=20, config=clean_config(map_scale=scale))
+        sim = Simulator(
+            [(0, 0), (0, 300)],
+            position=(3, 0),
+            heading=20,
+            config=clean_config(map_scale=scale, scale_with_speed=0),
+        )
         sim.camera_heading = 0.1
         reading, _ = sim.observe()
         expected = degrees(atan2(-3, ((30 * scale) ** 2 - 9) ** 0.5)) - 20
@@ -122,7 +131,9 @@ def test_damage_is_missing_route_and_seeded_outliers_are_present() -> None:
 
 
 def test_rerouting_uses_global_nearest_segment() -> None:
-    sim = Simulator([(0, 0), (0, 200), (100, 200), (100, 0)], position=(90, 50), config=clean_config())
+    sim = Simulator(
+        [(0, 0), (0, 200), (100, 200), (100, 0)], position=(90, 50), config=clean_config(scale_with_speed=0)
+    )
     reading, _ = sim.observe()
     assert reading.bearing == pytest.approx(degrees(atan2(10, -((30**2 - 10**2) ** 0.5))))
 

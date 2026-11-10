@@ -1,0 +1,77 @@
+{
+  "samples": [
+    {
+      "t": 238.6028,
+      "distance": null,
+      "arrow": null,
+      "ms": 234.52608298975974,
+      "error": "GPS recognition failed: None"
+    },
+    {
+      "t": 241.0805,
+      "distance": null,
+      "arrow": null,
+      "ms": 38.93216699361801,
+      "error": "GPS recognition failed: None"
+    },
+    {
+      "t": 246.1182,
+      "distance": null,
+      "arrow": "left",
+      "ms": 33.77141698729247,
+      "error": "GPS recognition failed: None"
+    },
+    {
+      "t": 254.1807,
+      "distance": null,
+      "arrow": null,
+      "ms": 31.04308299953118,
+      "error": "GPS recognition failed: None"
+    },
+    {
+      "t": 259.9758,
+      "distance": null,
+      "arrow": null,
+      "ms": 27.592667000135407,
+      "error": "GPS recognition failed: None"
+    },
+    {
+      "t": 269.9972,
+      "distance": null,
+      "arrow": null,
+      "ms": 28.23129200260155,
+      "error": "GPS recognition failed: None"
+    },
+    {
+      "t": 279.93580000000003,
+      "distance": null,
+      "arrow": "right",
+      "ms": 27.844083990203217,
+      "error": "GPS recognition failed: None"
+    },
+    {
+      "t": 293.5064,
+      "distance": null,
+      "arrow": null,
+      "ms": 29.68270899145864,
+      "error": "GPS recognition failed: None"
+    },
+    {
+      "t": 300.0203,
+      "distance": null,
+      "arrow": null,
+      "ms": 29.830832994775847,
+      "error": "GPS recognition failed: None"
+    },
+    {
+      "t": 305.9528,
+      "distance": null,
+      "arrow": null,
+      "ms": 33.59008298139088,
+      "error": "GPS recognition failed: None"
+    }
+  ],
+  "fixes": 0,
+  "median_ms": 30.436957997153513,
+  "max_ms": 234.52608298975974
+}

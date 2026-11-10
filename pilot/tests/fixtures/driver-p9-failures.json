@@ -1,0 +1,3070 @@
+[
+  {
+    "case": [
+      "straight",
+      0.14,
+      0.5,
+      1,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.433s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "straight",
+      0.14,
+      2.0,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.067s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "straight",
+      0.3,
+      2.0,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.200s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.14,
+      1.0,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 15.267s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      1.0,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 16.733s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 10.100s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "left",
+      0.3,
+      1.0,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 14.600s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      1.0,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.300s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      2.0,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 11.000s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      2.0,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 11.433s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.14,
+      2.0,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 22.200s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "right",
+      0.3,
+      1.0,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 14.633s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      0.5,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 15.833s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      1.0,
+      0,
+      0.0,
+      "range-02"
+    ],
+    "errors": [
+      "bend speed 4.370m/s > 4m/s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      1.0,
+      0,
+      0.0,
+      "range-12"
+    ],
+    "errors": [
+      "bend speed 4.165m/s > 4m/s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      1.0,
+      0,
+      0.0,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "bend speed 4.165m/s > 4m/s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      1.0,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.300s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      2.0,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.133s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.14,
+      2.0,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.933s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      0.5,
+      1,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.533s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      0.5,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.967s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      1.0,
+      0,
+      0.0,
+      "range-22"
+    ],
+    "errors": [
+      "bend speed 4.067m/s > 4m/s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      1.0,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.600s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "range-12"
+    ],
+    "errors": [
+      "bend speed 4.259m/s > 4m/s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "bend speed 4.259m/s > 4m/s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      2.0,
+      0,
+      0.25,
+      "range-02"
+    ],
+    "errors": [
+      "progress gap 13.267s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      2.0,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.600s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.21,
+      2.0,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.000s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-02"
+    ],
+    "errors": [
+      "progress gap 10.233s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      0.5,
+      1,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.667s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      0.5,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.533s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      1.0,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.967s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      2.0,
+      0,
+      0.0,
+      "range-02"
+    ],
+    "errors": [
+      "bend speed 4.030m/s > 4m/s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      2.0,
+      0,
+      0.0,
+      "range-12"
+    ],
+    "errors": [
+      "bend speed 4.010m/s > 4m/s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      2.0,
+      0,
+      0.0,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "bend speed 4.110m/s > 4m/s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      2.0,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.300s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "s_bend",
+      0.3,
+      2.0,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.167s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      0.5,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 21.433s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      0.5,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 12.900s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      0.5,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.767s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      1.0,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 15.667s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      1.0,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 17.233s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      1.0,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 17.600s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      1.0,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 14.400s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      1.0,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 17.033s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      1.0,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 16.967s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      1.0,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.600s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      1.0,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.500s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      2.0,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 18.100s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      2.0,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 14.433s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      2.0,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 18.867s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      2.0,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 18.200s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      2.0,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 17.033s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      2.0,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 18.000s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      2.0,
+      1,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 30.667s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      2.0,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.033s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.14,
+      2.0,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.033s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      0.5,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 12.200s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      0.5,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.667s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      1.0,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 15.333s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      1.0,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 16.867s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      1.0,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 18.900s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      1.0,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 13.667s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      1.0,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 16.933s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      1.0,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 17.333s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      1.0,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.000s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      1.0,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.533s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 15.800s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 14.900s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 15.800s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 17.800s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 12.900s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 15.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 15.033s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 15.033s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 13.967s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 22.667s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.567s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.21,
+      2.0,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.233s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      0.5,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.833s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      0.5,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.033s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      1.0,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 15.267s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      1.0,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 16.733s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      1.0,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 18.967s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      1.0,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 15.200s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      1.0,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 16.833s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      1.0,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 18.700s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      1.0,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.300s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      1.0,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.600s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      2.0,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 23.667s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      2.0,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 24.700s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      2.0,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 13.233s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      2.0,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 17.567s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      2.0,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 24.600s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      2.0,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.200s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "block",
+      0.3,
+      2.0,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.233s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.133s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 10.867s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 11.133s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 10.867s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 11.133s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 10.867s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 11.133s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.000s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 10.967s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 11.000s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 10.967s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 11.000s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 10.967s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      0,
+      0.25,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 11.000s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      1,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.167s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.033s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.133s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      0.5,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.100s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.233s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 10.967s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 10.233s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 10.967s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.0,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 10.233s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 10.967s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 10.233s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.267s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 10.967s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 10.267s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 10.967s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.25,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 10.267s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 10.967s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      0,
+      0.25,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 10.267s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      1.0,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 13.967s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.333s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 10.333s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      0,
+      0.0,
+      "range-02"
+    ],
+    "errors": [
+      "progress gap 11.200s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      0,
+      0.0,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 10.333s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      0,
+      0.0,
+      "range-12"
+    ],
+    "errors": [
+      "progress gap 11.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 10.333s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      0,
+      0.0,
+      "range-22"
+    ],
+    "errors": [
+      "progress gap 11.733s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      0,
+      0.0,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "progress gap 10.467s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 10.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      0,
+      0.25,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 10.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.14,
+      2.0,
+      0,
+      0.25,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 10.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.700s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 11.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 10.700s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 11.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 10.700s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 11.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 10.700s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.067s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 11.467s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 11.067s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 11.467s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 11.067s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 11.467s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      0,
+      0.25,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 11.067s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      1,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.933s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.500s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.167s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      0.5,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.100s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.133s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 10.933s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 10.133s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 10.933s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.0,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 10.133s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 10.933s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 10.133s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.100s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 10.933s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 10.100s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 10.933s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.25,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 10.100s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 12.733s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      0,
+      0.25,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 10.100s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      1.0,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 14.333s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 10.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "range-02"
+    ],
+    "errors": [
+      "progress gap 17.700s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 10.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "range-12"
+    ],
+    "errors": [
+      "progress gap 14.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 10.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "range-22"
+    ],
+    "errors": [
+      "progress gap 19.533s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.0,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "progress gap 13.900s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.400s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 10.400s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.25,
+      "range-02"
+    ],
+    "errors": [
+      "progress gap 17.433s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.25,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 10.400s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.25,
+      "range-12"
+    ],
+    "errors": [
+      "progress gap 18.233s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.25,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 10.400s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.25,
+      "range-22"
+    ],
+    "errors": [
+      "progress gap 19.900s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      0,
+      0.25,
+      "fast-low-grip"
+    ],
+    "errors": [
+      "progress gap 17.067s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.21,
+      2.0,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 13.067s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 11.100s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 10.800s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 11.100s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 10.800s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 11.100s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 10.800s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 11.100s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.733s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 10.767s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 10.733s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 10.767s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 10.733s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 10.767s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      0,
+      0.25,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 10.733s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      1,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.700s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.667s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      2,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.200s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      0.5,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.233s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.600s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.0,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 10.867s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 10.600s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.0,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 10.867s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.0,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 10.600s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.0,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 10.867s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 10.600s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.667s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.25,
+      "range-00"
+    ],
+    "errors": [
+      "progress gap 10.867s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 10.667s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.25,
+      "range-10"
+    ],
+    "errors": [
+      "progress gap 10.867s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.25,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 10.667s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.25,
+      "range-20"
+    ],
+    "errors": [
+      "progress gap 10.867s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      0,
+      0.25,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 10.667s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      1,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.367s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      1.0,
+      2,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 14.067s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      0,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.400s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      0,
+      0.0,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 10.400s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      0,
+      0.0,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 10.400s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      0,
+      0.0,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 10.400s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      0,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.400s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      0,
+      0.25,
+      "range-01"
+    ],
+    "errors": [
+      "progress gap 10.400s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      0,
+      0.25,
+      "range-11"
+    ],
+    "errors": [
+      "progress gap 10.400s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      0,
+      0.25,
+      "range-21"
+    ],
+    "errors": [
+      "progress gap 10.400s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      1,
+      0.0,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.200s > 10s"
+    ]
+  },
+  {
+    "case": [
+      "wall",
+      0.3,
+      2.0,
+      1,
+      0.25,
+      "nominal"
+    ],
+    "errors": [
+      "progress gap 10.200s > 10s"
+    ]
+  }
+]
