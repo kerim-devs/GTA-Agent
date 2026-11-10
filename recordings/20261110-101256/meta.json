@@ -1,0 +1,11 @@
+{
+  "started": "2026-11-10T10:12:56+01:00",
+  "resolution": "720p",
+  "fps": 30,
+  "note": "resend check: six R2 0.7 pulses of 1.2 s, each followed by brake 0.5 s and rest 1 s",
+  "seconds": 20.7,
+  "frames": 583,
+  "dropped": 0,
+  "pad_events": 21,
+  "codec": "libx264"
+}

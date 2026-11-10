@@ -1,0 +1,11 @@
+{
+  "started": "2026-11-10T10:17:12+01:00",
+  "resolution": "720p",
+  "fps": 30,
+  "note": "latency: five holds of R3 (look behind) of 1.5 s through /pad",
+  "seconds": 17.6,
+  "frames": 482,
+  "dropped": 0,
+  "pad_events": 12,
+  "codec": "libx264"
+}

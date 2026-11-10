@@ -1,0 +1,11 @@
+{
+  "started": "2026-11-10T10:14:12+01:00",
+  "resolution": "720p",
+  "fps": 30,
+  "note": "resend check: fifteen holds of R3 (look behind), 0.7 s each",
+  "seconds": 25.7,
+  "frames": 620,
+  "dropped": 0,
+  "pad_events": 33,
+  "codec": "libx264"
+}
