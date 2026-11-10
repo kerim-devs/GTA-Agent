@@ -1,0 +1,229 @@
+{
+  "minimap": [
+    {
+      "name": "yellow_straight",
+      "file": "crop_0995.png",
+      "crop_id": 995,
+      "recording": "20261110-093238",
+      "time": 275.407,
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 0,
+      "bearing_tolerance": 15
+    },
+    {
+      "name": "yellow_left",
+      "file": "crop_0952.png",
+      "crop_id": 952,
+      "recording": "20261110-093238",
+      "time": 264.53,
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -50,
+      "bearing_tolerance": 20
+    },
+    {
+      "name": "yellow_right",
+      "file": "crop_1020.png",
+      "crop_id": 1020,
+      "recording": "20261110-093238",
+      "time": 282.617,
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 30,
+      "bearing_tolerance": 20
+    },
+    {
+      "name": "purple_bend",
+      "file": "crop_1401.png",
+      "crop_id": 1401,
+      "recording": "20261110-093238",
+      "time": 396.411,
+      "minimap": "tilted",
+      "route": "purple",
+      "bearing": 30,
+      "bearing_tolerance": 20
+    },
+    {
+      "name": "world_yellow_without_route",
+      "file": "crop_0645.png",
+      "crop_id": 645,
+      "recording": "20261110-093238",
+      "time": 172.142,
+      "minimap": "tilted",
+      "route": "none"
+    },
+    {
+      "name": "flat_without_route",
+      "file": "crop_0203.png",
+      "crop_id": 203,
+      "recording": "20261110-093238",
+      "time": 57.115,
+      "minimap": "flat",
+      "route": "none"
+    },
+    {
+      "name": "cutscene",
+      "file": "crop_1154.png",
+      "crop_id": 1154,
+      "recording": "20261110-093238",
+      "time": 324.074,
+      "minimap": "none",
+      "route": "none"
+    },
+    {
+      "name": "damaged_route_confidence",
+      "file": "crop_0834.png",
+      "crop_id": 834,
+      "recording": "20261110-093238",
+      "time": 229.003,
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 10,
+      "bearing_tolerance": 20,
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "route_with_exterior_fringe",
+      "file": "crop_0909.png",
+      "crop_id": 909,
+      "recording": "20261110-093238",
+      "time": 251.784,
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 20,
+      "bearing_tolerance": 20
+    },
+    {
+      "name": "white_arrow_amid_blips",
+      "file": "crop_2099.png",
+      "crop_id": 2099,
+      "recording": "20261110-093238",
+      "time": 626.569,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35,
+      "arrow": 0,
+      "arrow_tolerance": 20
+    },
+    {
+      "name": "black",
+      "file": "black.png",
+      "source": "synthetic",
+      "minimap": "none",
+      "route": "none"
+    },
+    {
+      "name": "arrow_pointing_back",
+      "file": "crop_0817.png",
+      "crop_id": 817,
+      "recording": "20261110-093238",
+      "time": 224.302,
+      "minimap": "tilted",
+      "route": "yellow",
+      "arrow": 180,
+      "arrow_tolerance": 20
+    },
+    {
+      "name": "arrow_pointing_left",
+      "file": "crop_1255.png",
+      "crop_id": 1255,
+      "recording": "20261110-093238",
+      "time": 350.989,
+      "minimap": "tilted",
+      "route": "none",
+      "arrow": -90,
+      "arrow_tolerance": 20
+    },
+    {
+      "name": "arrow_pointing_right",
+      "file": "crop_0248.png",
+      "crop_id": 248,
+      "recording": "20261110-093238",
+      "time": 69.609,
+      "minimap": "flat",
+      "route": "none",
+      "arrow": 90,
+      "arrow_tolerance": 20
+    }
+  ],
+  "motion": [
+    {
+      "name": "driving",
+      "prev": "crop_0858.png",
+      "cur": "crop_0859.png",
+      "crop_ids": [
+        858,
+        859
+      ],
+      "recording": "20261110-093238",
+      "times": [
+        236.472,
+        236.671
+      ],
+      "moving": true
+    },
+    {
+      "name": "vehicle_standing_under_throttle",
+      "prev": "crop_2343.png",
+      "cur": "crop_2344.png",
+      "crop_ids": [
+        2343,
+        2344
+      ],
+      "recording": "20261110-093238",
+      "times": [
+        688.905,
+        689.178
+      ],
+      "moving": false
+    },
+    {
+      "name": "foot_standing_neutral",
+      "prev": "crop_2330.png",
+      "cur": "crop_2331.png",
+      "crop_ids": [
+        2330,
+        2331
+      ],
+      "recording": "20261110-093238",
+      "times": [
+        685.475,
+        685.642
+      ],
+      "moving": false
+    },
+    {
+      "name": "no_minimap",
+      "prev": "crop_1154.png",
+      "cur": "crop_1155.png",
+      "crop_ids": [
+        1154,
+        1155
+      ],
+      "recording": "20261110-093238",
+      "times": [
+        324.074,
+        324.309
+      ],
+      "moving": null
+    },
+    {
+      "name": "damaged_pair",
+      "prev": "crop_0658.png",
+      "cur": "crop_0659.png",
+      "crop_ids": [
+        658,
+        659
+      ],
+      "recording": "20261110-093238",
+      "times": [
+        175.513,
+        175.756
+      ],
+      "moving": null
+    }
+  ]
+}
