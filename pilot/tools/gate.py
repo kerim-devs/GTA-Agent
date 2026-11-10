@@ -1,0 +1,16 @@
+"""Quality gate — one call: `.venv/bin/python tools/gate.py`. Lint, format check, tests."""
+
+import subprocess
+import sys
+
+STEPS = [
+    ["ruff", "check", "src", "tests", "tools"],
+    ["ruff", "format", "--check", "src", "tests", "tools"],
+    ["pytest", "-q"],
+]
+
+for step in STEPS:
+    print("$", " ".join(step), flush=True)
+    if subprocess.call([sys.executable, "-m", *step]) != 0:
+        sys.exit(f"gate failed at: {' '.join(step)}")
+print("gate passed")
