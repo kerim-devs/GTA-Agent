@@ -6,7 +6,9 @@ from dataclasses import asdict, fields
 from pathlib import Path
 
 from .bridge import Bridge
+from .conductor import PLAY_RECORDINGS, run_play
 from .drive import DriveConfig, Driver
+from .head import CodexHead, ScriptedHead
 from .loop import RECORDINGS, Pipeline, run_drive
 from .replay import run_replay
 
@@ -53,7 +55,19 @@ def main(argv: list[str] | None = None) -> None:
     replay = subcommands.add_parser("replay", help="Evaluate a recording offline")
     replay.add_argument("recording", type=Path)
     replay.add_argument("--out", type=Path)
-    for command in (drive, replay):
+    play = subcommands.add_parser("play", help="Run event-driven skills and an asynchronous head")
+    play.add_argument("--seconds", type=duration)
+    play.add_argument("--shadow", action="store_true")
+    play.add_argument("--no-record", action="store_true")
+    play.add_argument("--no-ocr", action="store_true")
+    play.add_argument("--record-dir", type=absolute_path, default=PLAY_RECORDINGS)
+    play.add_argument("--notebook", type=Path)
+    play.add_argument("--head", choices=("scripted", "codex"), default="scripted")
+    play.add_argument("--head-model")
+    play.add_argument("--head-effort", default="low")
+    play.add_argument("--head-timeout", type=duration, default=45.0)
+    play.add_argument("--quiet-seconds", type=duration, default=60.0)
+    for command in (drive, replay, play):
         command.add_argument(
             "--set", action="append", default=[], metavar="NAME=VALUE", help="override a DriveConfig field"
         )
@@ -70,6 +84,28 @@ def main(argv: list[str] | None = None) -> None:
                 record_dir=args.record_dir,
                 pipeline=pipeline,
                 config=asdict(config),
+            )
+    elif args.command == "play":
+        head = (
+            ScriptedHead()
+            if args.head == "scripted"
+            else CodexHead(model=args.head_model, effort=args.head_effort, timeout=args.head_timeout)
+        )
+        with Bridge() as bridge:
+            print(
+                run_play(
+                    bridge,
+                    seconds=args.seconds,
+                    shadow=args.shadow,
+                    record=not args.no_record,
+                    record_dir=args.record_dir,
+                    pipeline=pipeline,
+                    head=head,
+                    notebook=args.notebook or args.record_dir / "notebook.txt",
+                    ocr=not args.no_ocr,
+                    quiet_seconds=args.quiet_seconds,
+                    driver_factory=lambda: Driver(config),
+                )
             )
     else:
         run_replay(args.recording, out=args.out, pipeline=pipeline)
