@@ -1,7 +1,8 @@
-"""Offline P6 replay tables and deterministic simulation matrix."""
+"""Offline replay tables and the P8 deterministic car-range matrix."""
 
 import argparse
 import json
+from concurrent.futures import ProcessPoolExecutor
 from dataclasses import asdict
 from itertools import product
 from pathlib import Path
@@ -9,7 +10,7 @@ from pathlib import Path
 from pilot.contract import Reading
 from pilot.drive import DriveConfig, Driver
 from pilot.replay import diagnostics, json_lines
-from pilot.sim import SimConfig, Simulator
+from pilot.sim import CAR_PROFILES, SimConfig, Simulator
 
 SCENARIOS = {
     "straight": (((0, 0), (0, 120)), (3, 0), 20, ()),
@@ -21,28 +22,38 @@ SCENARIOS = {
 }
 
 
-def matrix(config: DriveConfig) -> list[dict]:
-    rows = []
-    for name, delay, scale, seed, dead_zone in product(
-        SCENARIOS, (0.14, 0.21, 0.3), (0.5, 1.0, 2.0), (0, 1, 2), (0.0, 0.25)
-    ):
-        route, position, heading, walls = SCENARIOS[name]
-        result = Simulator(
-            route,
-            position=position,
-            heading=heading,
-            walls=walls,
-            config=SimConfig(delay=delay, map_scale=scale, dead_zone=dead_zone),
-            seed=seed,
-        ).run(Driver(config))
-        rows.append(
-            dict(name=name, delay=delay, scale=scale, seed=seed, dead_zone=dead_zone, **asdict(result))
-        )
-    return rows
+def matrix_case(job):
+    config, name, delay, scale, seed, dead_zone, profile = job
+    route, position, heading, walls = SCENARIOS[name]
+    result = Simulator(
+        route,
+        position=position,
+        heading=heading,
+        walls=walls,
+        config=SimConfig(delay=delay, map_scale=scale, dead_zone=dead_zone, **CAR_PROFILES[profile]),
+        seed=seed,
+    ).run(Driver(config))
+    return dict(
+        name=name, delay=delay, scale=scale, seed=seed, dead_zone=dead_zone, profile=profile, **asdict(result)
+    )
+
+
+def matrix(config: DriveConfig, profiles=("nominal",), workers=1) -> list[dict]:
+    jobs = [
+        (config, *case)
+        for case in product(SCENARIOS, (0.14, 0.21, 0.3), (0.5, 1.0, 2.0), (0, 1, 2), (0.0, 0.25), profiles)
+        if case[-1] == "nominal" or case[3] == 0
+    ]
+    if workers == 1:
+        return [matrix_case(job) for job in jobs]
+    with ProcessPoolExecutor(max_workers=workers) as pool:
+        return list(pool.map(matrix_case, jobs, chunksize=3))
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--ranges", action="store_true")
+    parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--rows", type=Path)
     parser.add_argument("--pad", type=Path)
     parser.add_argument("--rerun", action="store_true", help="Run current driver over cached readings")
@@ -62,8 +73,8 @@ def main():
             ]
         result = diagnostics(rows, json_lines(args.pad))
     else:
-        result = matrix(config)
-    args.out.write_text(json.dumps(result, indent=2) + "\n")
+        result = matrix(config, tuple(CAR_PROFILES) if args.ranges else ("nominal",), args.workers)
+    args.out.write_text(json.dumps(result, separators=(",", ":")) + "\n")
     if isinstance(result, list):
         for name in SCENARIOS:
             for scale in (0.5, 1.0, 2.0):
@@ -77,7 +88,7 @@ def main():
                     round(max(r["steering_flips_per_second"] for r in cases), 3),
                 )
     else:
-        print(json.dumps(result, indent=2))
+        print(json.dumps(result, separators=(",", ":")))
 
 
 if __name__ == "__main__":

@@ -66,3 +66,13 @@ def test_invalid_input_is_unknown(crop):
     result = read(crop)
     assert result.minimap == result.route == "none"
     assert result.confidence == 0
+
+
+@pytest.mark.parametrize("case", [c for c in CASES if c["route"] != "none"], ids=lambda case: case["name"])
+def test_path_starts_where_the_route_is_visible(case):
+    crop = cv2.cvtColor(cv2.imread(str(FIXTURES / case["file"])), cv2.COLOR_BGR2RGB)
+    radii = [math.hypot(x, y) for x, y in read(crop).path]
+    assert radii
+    # The arrow hides the route below 11 px, and the driver drops a path with a point nearer than 10.
+    assert min(radii) >= 11
+    assert radii[0] <= 16

@@ -17,7 +17,7 @@ from .bridge import Bridge
 from .contract import HUD_RECT, Command, Reading
 from .drive import Driver
 from .minimap import read
-from .motion import MOVING_PX, map_motion
+from .motion import MOVING_PX, map_motion, map_speed
 
 RECORDINGS = Path(__file__).resolve().parents[3] / "recordings"
 END_STATES = ("route-gone", "failed-recovery")  # states in which drive.Driver has given the car up
@@ -39,16 +39,22 @@ class Pipeline:
         its own commands move nothing, and it would take every red light for being stuck."""
         reading = self.reader(crop)
         moving = None
+        speed = None
         if self.history and frame_time <= self.history[-1][0]:
             self.history.clear()
         while self.history and self.history[0][0] < frame_time - 0.4:
             self.history.popleft()
         if self.history and frame_time - self.history[0][0] >= 0.15:
-            _, previous = min(self.history, key=lambda item: abs(frame_time - item[0] - 0.2))
+            previous_time, previous = min(self.history, key=lambda item: abs(frame_time - item[0] - 0.2))
             displacement = self.motion(previous, crop)
             moving = None if displacement is None else bool(displacement > MOVING_PX)
+            speed = map_speed(displacement, frame_time - previous_time)
         self.history.append((frame_time, crop.copy()))
-        return reading, moving, self.driver.step(reading, frame_time, moving if feedback else None)
+        return (
+            reading,
+            moving,
+            self.driver.step(reading, frame_time, moving if feedback else None, speed=speed),
+        )
 
 
 def log_row(t, frame_id, frame_age, frame_time, reading, moving, command, sent=False, status=None):

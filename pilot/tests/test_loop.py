@@ -30,7 +30,7 @@ class Driver:
         self.calls = []
         self.command = command
 
-    def step(self, reading, t, moving):
+    def step(self, reading, t, moving, speed=None):
         self.calls.append((reading, t, moving))
         return self.command
 
@@ -146,7 +146,7 @@ def test_shadow_never_posts_pad_and_logs_complete_readings(tmp_path, capsys):
     rows = harness.rows()
     assert rows[0]["t"] == 0
     assert len(rows) == summary.ticks
-    assert rows[0]["reading"] == asdict(READING)
+    assert rows[0]["reading"] == json.loads(json.dumps(asdict(READING)))
     assert rows[0]["command"] == asdict(COMMAND)
     assert rows[0]["frame_id"] == 1
     assert rows[0]["frame_age"] == 0.02

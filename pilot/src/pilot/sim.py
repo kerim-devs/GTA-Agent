@@ -32,6 +32,14 @@ class SimConfig:
     top_speed: float = 12.0
     reverse_speed: float = 3.0
     brake_acceleration: float = 8.0
+    grip: float = 4.0  # Maximum lateral acceleration in m/s^2.
+    sensor_delay: float = 0.06  # Part of the total capture-to-command delay.
+    speed_window: float = 0.2
+    speed_noise: float = 0.5  # Pixels/s, with an additional rotation component.
+    speed_missing: float = 0.08
+    path_noise: float = 0.25  # Pixels, shared offset plus per-sample noise.
+    path_missing: float = 0.03
+    path_hidden: float = 11.0  # Arrow occlusion radius in pixels.
     camera_lag: float = 0.3
     noise_degrees: float = 3.0
     noise_tail_multiplier: float = 16 / 3
@@ -40,19 +48,36 @@ class SimConfig:
     damage_probability: float = 0.05
     arrival_radius: float = 3.0
     progress_distance: float = 0.5
-    max_time: float = 240.0
+    max_time: float = 600.0
 
     def __post_init__(self) -> None:
         for name in self.__dataclass_fields__:
             value = getattr(self, name)
             if not isinstance(value, (int, float)) or not isfinite(value) or value < 0:
                 raise ValueError(f"{name} must be finite and nonnegative")
-        for name in ("dt", "map_scale", "wheelbase", "top_speed", "arrival_radius", "max_time"):
+        for name in (
+            "dt",
+            "map_scale",
+            "wheelbase",
+            "top_speed",
+            "arrival_radius",
+            "max_time",
+            "speed_window",
+        ):
             if getattr(self, name) <= 0:
                 raise ValueError(f"{name} must be positive")
         if self.dead_zone >= 1 or self.max_wheel_angle >= 89:
             raise ValueError("invalid steering geometry")
-        if max(self.outlier_probability, self.damage_probability, self.noise_tail_probability) > 1:
+        if (
+            max(
+                self.outlier_probability,
+                self.damage_probability,
+                self.noise_tail_probability,
+                self.speed_missing,
+                self.path_missing,
+            )
+            > 1
+        ):
             raise ValueError("probabilities must be at most one")
 
 
@@ -109,6 +134,10 @@ class Simulator:
         self.applied = NEUTRAL
         self._queue: deque[tuple[float, Command]] = deque()
         self._rng = Random(seed)
+        self._sensor_rng = Random(seed + 10000)
+        self._poses = deque()
+        self._observations = deque()
+        self.observed_speed = None
         self._segment = 0
         self.collisions = 0
         self._recoveries = 0
@@ -175,9 +204,66 @@ class Simulator:
             arrow=None if damaged else (arrow + 180) % 360 - 180,
             corrupt=damaged,
             confidence=0.0 if damaged else 0.95,
+            path=() if damaged else self._path_reading(),
         )
-        moving = abs(self.speed) > 0.15
-        return reading, moving
+        self._poses.append((self.time, self.x, self.y, self.camera_heading))
+        while len(self._poses) > 1 and self._poses[1][0] <= self.time - cfg.speed_window:
+            self._poses.popleft()
+        speed = None
+        old_t, old_x, old_y, old_camera = self._poses[0]
+        elapsed = self.time - old_t
+        if (
+            elapsed >= cfg.speed_window * 0.75
+            and not damaged
+            and self._sensor_rng.random() >= cfg.speed_missing
+        ):
+            translation = hypot(self.x - old_x, self.y - old_y) / cfg.map_scale / elapsed
+            rotation = (
+                abs(
+                    (self.camera_heading - old_camera + 3.141592653589793) % (2 * 3.141592653589793)
+                    - 3.141592653589793
+                )
+                / elapsed
+            )
+            speed = max(0, translation + rotation * 2 + self._sensor_rng.gauss(0, cfg.speed_noise))
+        moving = None if speed is None else speed > 1.0 / cfg.speed_window
+        self._observations.append((self.time, reading, moving, speed))
+        while len(self._observations) > 1 and self._observations[1][0] <= self.time - cfg.sensor_delay:
+            self._observations.popleft()
+        _, observed, moving, self.observed_speed = self._observations[0]
+        return observed, moving
+
+    def _path_reading(self):
+        cfg = self.config
+        rng = self._sensor_rng
+        if rng.random() < cfg.path_missing:
+            return ()
+        _, progress = self._route_position()
+        path = []
+        offset_x, offset_y = rng.gauss(0, cfg.path_noise), rng.gauss(0, cfg.path_noise)
+        for ax, ay, dx, dy, length, start in self._segments[self._segment :]:
+            travel = max(0, progress - start)
+            samples = []
+            while travel < length:
+                samples.append(travel)
+                travel += 0.5 * cfg.map_scale
+            samples.append(length)
+            for along in samples:
+                rx = (ax + dx * along / length - self.x) / cfg.map_scale
+                ry = (ay + dy * along / length - self.y) / cfg.map_scale
+                x = rx * cos(self.camera_heading) - ry * sin(self.camera_heading)
+                y = rx * sin(self.camera_heading) + ry * cos(self.camera_heading)
+                if hypot(x, y) < cfg.path_hidden:
+                    continue
+                if abs(x) > 85 or y > 105 or y < -20:
+                    return tuple(path)
+                point = (
+                    x + offset_x + rng.gauss(0, cfg.path_noise * 0.2),
+                    y + offset_y + rng.gauss(0, cfg.path_noise * 0.2),
+                )
+                if not path or hypot(point[0] - path[-1][0], point[1] - path[-1][1]) >= 3 or along == length:
+                    path.append(point)
+        return tuple(path)
 
     @staticmethod
     def _cross(a: Point, b: Point) -> float:
@@ -213,7 +299,9 @@ class Simulator:
         self.speed = max(-cfg.reverse_speed, min(cfg.top_speed, self.speed))
         steer = max(0.0, abs(command.steer) - cfg.dead_zone) / (1 - cfg.dead_zone)
         steer = steer if command.steer >= 0 else -steer
-        yaw = self.speed / cfg.wheelbase * tan(radians(cfg.max_wheel_angle) * steer) * dt
+        yaw_rate = self.speed / cfg.wheelbase * tan(radians(cfg.max_wheel_angle) * steer)
+        grip_rate = cfg.grip / max(abs(self.speed), 0.01)
+        yaw = max(-grip_rate, min(grip_rate, yaw_rate)) * dt
         x = self.x + self.speed * sin(self.heading + yaw / 2) * dt
         y = self.y + self.speed * cos(self.heading + yaw / 2) * dt
         if self._hits_wall(x, y):
@@ -231,7 +319,7 @@ class Simulator:
 
     def advance(self, command: Command) -> None:
         """Apply queued controls at exact timestamps, including fractional delays."""
-        self._queue.append((self.time + self.config.delay, command))
+        self._queue.append((self.time + max(0, self.config.delay - self.config.sensor_delay), command))
         if command.state == "recovery-reverse" and self._last_state != command.state:
             self._recoveries += 1
         if command.state != "coast":
@@ -254,7 +342,7 @@ class Simulator:
         reached = False
         while self.time < self.config.max_time:
             reading, moving = self.observe()
-            command = driver.step(reading, self.time, moving)
+            command = driver.step(reading, self.time, moving, speed=self.observed_speed)
             sign = 1 if command.steer > 0 else -1 if command.steer < 0 else 0
             if sign:
                 flips += int(last_sign != 0 and sign != last_sign)
@@ -284,3 +372,18 @@ class Simulator:
             self.collisions,
             (self.x, self.y),
         )
+
+
+# Pairwise three-level design: every pair of unknown car parameters spans its 3x3 grid.
+CAR_PROFILES = {"nominal": {}}
+for _i in range(3):
+    for _j in range(3):
+        CAR_PROFILES[f"range-{_i}{_j}"] = dict(
+            grip=(2.0, 4.0, 7.0)[_i],
+            acceleration=(3.0, 4.5, 7.0)[_j],
+            brake_acceleration=(4.0, 8.0, 12.0)[(_i + _j) % 3],
+            top_speed=(8.0, 12.0, 18.0)[(_i + 2 * _j) % 3],
+        )
+
+# The joint fast-car/weak-brake/low-grip corner is not covered by pairwise rows alone.
+CAR_PROFILES["fast-low-grip"] = dict(grip=2.0, acceleration=7.0, brake_acceleration=4.0, top_speed=18.0)

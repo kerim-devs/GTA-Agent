@@ -1,7 +1,7 @@
-"""Defensive minimap feedback controller; no speed sensor or external state."""
+"""Defensive path following with a noisy map-pixel speed sensor."""
 
 from dataclasses import dataclass
-from math import isfinite
+from math import atan2, degrees, hypot, isfinite, sqrt
 
 from pilot.contract import NEUTRAL, Command, Reading
 
@@ -10,18 +10,30 @@ from pilot.contract import NEUTRAL, Command, Reading
 class DriveConfig:
     """Controller timing and gains; validate changes against replay and simulation."""
 
-    steer_gain: float = 0.035  # Heading error to stick deflection per degree.
+    steer_gain: float = 0.02  # Heading error to stick deflection per degree.
     steer_zero: float = 0.005  # Snap a decayed stick to zero below this magnitude.
     max_step_time: float = 0.5  # Bound feedback integration after a scheduling pause.
     steer_smoothing: float = 0.05  # Low-pass time constant for stick output.
     bearing_smoothing: float = 0.1  # Reject rapid angle noise before feedback.
-    steer_deadband: float = 4.0  # Ignore small filtered heading errors.
+    steer_deadband: float = 8.0  # Ignore small filtered heading errors.
     steering_bias: float = 0.25  # Minimum active stick to tolerate a physical dead zone.
     command_delay: float = 0.21  # Capture-to-control latency used for prediction.
     prediction_limit: float = 8.0  # Maximum angle extrapolation across the delay.
     cruise_throttle: float = 0.58  # Pedal on a straight, legible route.
     bend_throttle: float = 0.22  # Minimum pedal while following a bend.
     bend_gain: float = 0.013  # Pedal reduction per degree of upcoming bend.
+    lookahead_px: float = 11.0  # First visible route target, in crop pixels.
+    speed_limit: float = 7.0  # Straight-line limit in map pixels per second.
+    slow_speed: float = 2.0  # Lowest planned corner speed, in map pixels per second.
+    lateral_acceleration: float = 1.2  # Conservative pixel/s^2 cornering budget.
+    planned_deceleration: float = 2.0  # Pixel/s^2 used to lift ahead of a bend.
+    speed_smoothing: float = 0.25  # Suppress frame-pair sensor noise before pedal feedback.
+    speed_gain: float = 0.18  # Throttle feedback per pixel/s below the target.
+    brake_gain: float = 0.18  # Brake feedback per pixel/s above the target.
+    brake_margin: float = 1.0  # Sensor-error allowance before applying L2.
+    motion_speed: float = 0.5  # Filtered pixel/s evidence of motion, below the L2 safety threshold.
+    rolling_speed: float = 1.0  # Never use L2 below this measured pixel/s speed.
+    unknown_throttle: float = 0.18  # Slow pedal fallback when the sensor abstains.
     damage_hold: float = 0.5  # Conservative bound below replay gap p90 .555s; damage cannot renew it.
     damage_angle: float = 25.0  # Reject direction changes beyond recent clean evidence.
     confidence_min: float = 0.5  # Lowest accepted perception confidence.
@@ -29,7 +41,7 @@ class DriveConfig:
     route_gone_time: float = 2.0  # Time of observed route absence before stopping.
     stuck_time: float = 2.0  # Throttle plus explicitly absent movement before escape.
     reverse_time: float = 1.25  # Duration of the reverse pedal phase.
-    forward_time: float = 2.5  # Forward escape observation window.
+    forward_time: float = 4.0  # Forward escape observation window.
     recovery_clear_time: float = 2.0  # Sustained forward motion clears failed-attempt count.
     recovery_steer: float = 0.8  # Stick magnitude used to reverse away from the route.
     recovery_throttle: float = 0.45  # Forward pedal during escape.
@@ -46,6 +58,7 @@ class DriveConfig:
             if value < 0:
                 raise ValueError(f"{name} must be nonnegative")
         for name in (
+            "unknown_throttle",
             "cruise_throttle",
             "bend_throttle",
             "confidence_min",
@@ -82,6 +95,9 @@ class Driver:
     def __init__(self, config: DriveConfig | None = None) -> None:
         self.config = config if config is not None else DriveConfig()
         self._time: float | None = None
+        self._speed: float | None = None
+        self._speed_at: float | None = None
+        self._measured_speed: float | None = None
         self._last_good: float | None = None
         self._missing_duration = 0.0
         self._missing_observed_at: float | None = None
@@ -103,6 +119,12 @@ class Driver:
         self._trusted_error: float | None = None
 
     def _emit(self, steer: float, throttle: float, brake: float, state: str) -> Command:
+        if (
+            state in {"follow", "coast", "route-gone"}
+            and self._measured_speed is not None
+            and self._measured_speed <= self.config.rolling_speed
+        ):
+            brake = 0
         self._last = Command(_clip(steer), _clip(throttle, 0), _clip(brake, 0), state)
         return self._last
 
@@ -115,6 +137,7 @@ class Driver:
         self._filtered_error = self._filtered_far = self._moving_since = None
         self._stuck_since = None
         self._steer = 0.0
+        self._speed = None
         if self._phase != "failed-recovery":
             self._phase = None
         return self._emit(0, 0, 0, "idle")
@@ -129,21 +152,38 @@ class Driver:
             self._phase = None
         return self._emit(0, 0, 0, "coast")
 
-    def step(self, reading: Reading, t: float, moving: bool | None = None) -> Command:
+    def step(
+        self, reading: Reading, t: float, moving: bool | None = None, speed: float | None = None
+    ) -> Command:
         """Return bounded controls; invalid/backwards clocks release and reset timers.
 
         Unknown motion never means stuck. A failure latch survives clock changes.
         Picture angles minus the arrow give camera-independent heading errors.
         """
+        speed = _number(speed)
+        speed = speed if speed is not None and speed >= 0 else None
+        self._measured_speed = speed
         moving = moving if isinstance(moving, bool) else None
-        if moving is not True:
-            self._moving_since = None
         now = _number(t)
         if now is None or (self._time is not None and now < self._time):
             self._time = now
             return self._idle()
         dt = 0.0 if self._time is None else min(now - self._time, self.config.max_step_time)
         self._time = now
+        if speed is not None:
+            fresh = self._speed_at is None or now - self._speed_at > self.config.max_step_time
+            alpha_speed = (
+                1.0 if self._speed is None or fresh else dt / max(dt + self.config.speed_smoothing, 1e-9)
+            )
+            self._speed_at = now
+            self._speed = speed if self._speed is None else self._speed + alpha_speed * (speed - self._speed)
+            speed = self._speed
+            if moving is not None and speed > self.config.motion_speed:
+                moving = True
+        if moving is False:
+            self._moving_since = None
+        elif moving is None and self._moving_since is not None:
+            self._moving_since += dt
         if (
             not isinstance(reading, Reading)
             or not isinstance(reading.minimap, str)
@@ -184,6 +224,11 @@ class Driver:
             return self._coast(now)
         error = _angle(_angle(near) - _angle(arrow))
         far_error = error if far is None else _angle(_angle(far) - _angle(arrow))
+        path = _path(reading.path)
+        if path:
+            target = _target(path, self.config.lookahead_px)
+            error = _angle(degrees(atan2(target[0], target[1])) - arrow)
+            far_error = _angle(degrees(atan2(path[-1][0], path[-1][1])) - arrow)
         if self._error is not None and abs(_angle(error - self._error)) > self.config.outlier_angle:
             if self._outlier_since is None:
                 self._outlier_since = now
@@ -235,6 +280,8 @@ class Driver:
                     self._phase = "failed-recovery"
                     return self._emit(0, 0, 0, "failed-recovery")
                 return self._recover(now, error)
+        elif moving is None and self._stuck_since is not None:
+            self._stuck_since += dt  # Missing evidence pauses, rather than proves, a standstill.
         else:
             self._stuck_since = None
 
@@ -243,7 +290,7 @@ class Driver:
                 self._moving_since = now
             if now - self._moving_since >= self.config.recovery_clear_time:
                 self._attempts = 0
-        else:
+        elif moving is False or self._last.throttle <= 0:
             self._moving_since = None
         previous = self._filtered_error
         alpha = (
@@ -293,8 +340,37 @@ class Driver:
             self._steer = 0.0
         bend = max(abs(self._filtered_error), abs(self._filtered_far), abs(bend_delta))
         throttle = max(self.config.bend_throttle, self.config.cruise_throttle - self.config.bend_gain * bend)
+        limit = self._speed_limit(path, bend, speed)
+        brake = 0.0
+        if speed is None:
+            throttle *= self.config.unknown_throttle / max(self.config.cruise_throttle, 1e-9)
+        else:
+            throttle = _clip(self.config.speed_gain * (limit - speed), 0, self.config.cruise_throttle)
+            if speed > self.config.rolling_speed and speed > limit + self.config.brake_margin:
+                brake = _clip(self.config.brake_gain * (speed - limit - self.config.brake_margin), 0, 0.7)
         self._error = error
-        return self._emit(self._steer, throttle, 0, "follow")
+        return self._emit(self._steer, throttle, brake, "follow")
+
+    def _speed_limit(self, path, bend: float, speed: float | None) -> float:
+        cfg = self.config
+        limit = cfg.speed_limit
+        if len(path) < 3:
+            return max(min(cfg.slow_speed, limit), limit / (1 + bend / 15))
+        travel = hypot(*path[0])
+        for a, b, c in zip(path, path[1:], path[2:], strict=False):
+            ab, bc = hypot(b[0] - a[0], b[1] - a[1]), hypot(c[0] - b[0], c[1] - b[1])
+            if min(ab, bc) < 1:
+                continue
+            cross = abs((b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0]))
+            curvature = 2 * cross / max(ab * bc * hypot(c[0] - a[0], c[1] - a[1]), 1e-6)
+            corner = max(
+                min(cfg.slow_speed, cfg.speed_limit), sqrt(cfg.lateral_acceleration / max(curvature, 1e-6))
+            )
+            # Reserve the hidden near-arrow section and the command delay for turning in.
+            remaining = max(0, travel - cfg.lookahead_px - (speed or 0) * cfg.command_delay)
+            limit = min(limit, sqrt(corner * corner + 2 * cfg.planned_deceleration * remaining))
+            travel += ab
+        return limit
 
     def _damage_agrees(self, reading: Reading, now: float, confidence: float | None) -> bool:
         if (
@@ -324,3 +400,33 @@ class Driver:
         self._escape = -self.config.recovery_steer if error >= 0 else self.config.recovery_steer
         self._stuck_since = self._moving_since = None
         return self._emit(self._escape, 0, 1, "recovery-reverse")
+
+
+def _path(value: object) -> tuple[tuple[float, float], ...]:
+    """Reject malformed paths as a whole, preserving the legacy bearing fallback."""
+    if not isinstance(value, (tuple, list)) or len(value) > 256:
+        return ()
+    points = []
+    for point in value:
+        if not isinstance(point, (tuple, list)) or len(point) != 2:
+            return ()
+        x, y = (_number(v) for v in point)
+        if x is None or y is None or not 10 <= hypot(x, y) <= 240:
+            return ()
+        if points and hypot(x - points[-1][0], y - points[-1][1]) < 0.5:
+            continue
+        points.append((x, y))
+    return tuple(points)
+
+
+def _target(path, radius: float):
+    previous = path[0]
+    for point in path[1:]:
+        before, after = hypot(*previous), hypot(*point)
+        if before <= radius <= after and after > before:
+            fraction = (radius - before) / (after - before)
+            return tuple(a + fraction * (b - a) for a, b in zip(previous, point, strict=True))
+        if before >= radius:
+            return previous
+        previous = point
+    return previous

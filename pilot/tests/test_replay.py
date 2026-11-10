@@ -70,7 +70,7 @@ def test_replay_known_agreement_shift_rgb_crop_and_frame_times(tmp_path, capsys)
         return Reading("tilted", "yellow", 0, 0, 0, False, 1)
 
     class Driver:
-        def step(self, reading, t, moving):
+        def step(self, reading, t, moving, speed=None):
             times.append(t)
             return Command(values[len(times) - 1], 0.4, 0, "follow")
 
@@ -137,7 +137,7 @@ def test_replay_rejects_missing_video_frames(tmp_path):
     )
 
     class Driver:
-        def step(self, reading, t, moving):
+        def step(self, reading, t, moving, speed=None):
             return Command(0, 0, 0, "idle")
 
     pipeline = Pipeline(

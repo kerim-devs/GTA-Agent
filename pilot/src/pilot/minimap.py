@@ -319,6 +319,23 @@ def _trace(weak: np.ndarray, strong: np.ndarray, val: np.ndarray, erase: np.ndar
     on_path = (t_all + s_all) <= int((t_all + s_all).min()) + 2
     p_idx, p_t, p_d = idx_all[on_path], t_all[on_path], d_all[on_path]
 
+    # Export only observed route pixels, never the filled arrow or morphology gap.
+    reliable = (p_d >= 11.0) & (weak.ravel()[p_idx] > 0)
+    if erase is not None:
+        reliable &= erase.ravel()[p_idx] == 0
+    path = []
+    if reliable.any():
+        start, stop = int(p_t[reliable].min()), int(p_t[reliable].max())
+        for travel in range(start, stop + 1, 3):
+            pick = p_idx[reliable & (p_t >= travel) & (p_t < travel + 3)]
+            if not pick.size:
+                continue
+            x, y = _XF[pick], -_YF[pick]
+            center = int(np.argmin((x - x.mean()) ** 2 + (y - y.mean()) ** 2))
+            point = (float(x[center]), float(y[center]))
+            if not path or math.dist(point, path[-1]) >= 2:
+                path.append(point)
+
     def at_radius(radius):
         sel = p_d >= radius - 1.5
         if not sel.any():
@@ -352,6 +369,7 @@ def _trace(weak: np.ndarray, strong: np.ndarray, val: np.ndarray, erase: np.ndar
         "erased": erased_near,
         "near": math.degrees(math.atan2(near[0], -near[1])),
         "far": math.degrees(math.atan2(far[0], -far[1])),
+        "path": tuple(path),
     }
 
 
@@ -676,6 +694,7 @@ def _analyse(crop: np.ndarray, keep: bool = False):
         arrow=_heading(crop),
         corrupt=corrupt,
         confidence=round(conf, 3),
+        path=tr["path"] if tr is not None else (),
     )
     return reading, info
 
