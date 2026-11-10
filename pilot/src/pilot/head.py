@@ -26,8 +26,11 @@ BUTTONS = {
     "options",
     "touchpad",
 }  # not `ps` and `create`: they leave the game for the console's own menus, on stream
-SKILLS = {"drive_route", "wait", "press", "walk", "look", "shoot"}
+BLIP_COLORS = {"yellow", "blue", "red"}
+SKILLS = {"drive_route", "wait", "press", "walk", "look", "shoot", "walk_to", "face"}
 PARAMETERS = {
+    "walk_to": {"duration", "color", "sprint"},
+    "face": {"duration", "color"},
     "drive_route": {"duration"},
     "wait": {"duration"},
     "press": {"duration", "count", "button"},
@@ -88,8 +91,12 @@ def parse_response(value: str | dict) -> HeadResponse:
             raise ValueError("unknown skill parameter")
         if name == "press" and (not isinstance(args.get("button"), str) or args["button"] not in BUTTONS):
             raise ValueError("unknown button")
+        if name in ("walk_to", "face") and (
+            not isinstance(args.get("color"), str) or args["color"] not in BLIP_COLORS
+        ):
+            raise ValueError("unknown blip color")
         for key, number in args.items():
-            if key == "button":
+            if key in ("button", "color"):
                 continue
             if key == "sprint":
                 if not isinstance(number, bool):
@@ -116,6 +123,9 @@ def response_schema() -> dict:
     for name in sorted(SKILLS):
         properties = {}
         for key in sorted(PARAMETERS[name]):
+            if key == "color":
+                properties[key] = {"type": "string", "enum": sorted(BLIP_COLORS)}
+                continue
             properties[key] = (
                 {"type": "string", "enum": sorted(BUTTONS)}
                 if key == "button"

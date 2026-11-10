@@ -2,6 +2,7 @@
 
 from collections import deque
 from dataclasses import dataclass
+from math import atan2, degrees, hypot
 
 from .contract import NEUTRAL_PAD, Pad, Reading
 from .drive import Driver
@@ -39,6 +40,8 @@ class Skill:
             "walk": (0.1, 10, 1),
             "look": (0.1, 5, 0.5),
             "shoot": (0.05, 1, 0.2),
+            "walk_to": (0.1, 10, 10),
+            "face": (0.1, 5, 5),
         }
         lower, upper, default = limits[self.name]
         self.duration = clamp(self.args.get("duration", default), lower, upper)
@@ -52,6 +55,13 @@ class Skill:
         self.driver = (Driver() if driver is None else driver) if self.name == "drive_route" else None
         self.started = None
         self.finished = None
+        self.missing_since = None
+        self.stopped_since = None
+        self.sidestep_until = None
+        self.sidestep = (0.0, 0.0)
+        self.recoveries = 0
+        self.aligned_since = None
+        self.turn_sign = None
 
     def stop(self, reason="interrupted") -> SkillResult:
         self.finished = SkillResult(status="failed", reason=reason)
@@ -66,9 +76,12 @@ class Skill:
         if elapsed < 0:
             return self.stop("clock-reversed")
         if elapsed >= self.limit:
-            self.finished = SkillResult(status="done", reason="time-limit")
+            status = "failed" if self.name in ("walk_to", "face") else "done"
+            self.finished = SkillResult(status=status, reason="time-limit")
             return self.finished
         try:
+            if self.name in ("walk_to", "face"):
+                return self._blip_step(observation, elapsed)
             if self.name == "drive_route":
                 command = self.driver.step(
                     observation.reading,
@@ -104,6 +117,67 @@ class Skill:
             return SkillResult(Pad(buttons=(self.args["button"],)))
         except Exception as exc:
             return self.stop(f"skill-error: {type(exc).__name__}")
+
+    def _blip_step(self, observation: Observation, elapsed: float) -> SkillResult:
+        reading, now = observation.reading, observation.time
+        targets = [b for b in reading.blips if b.color == self.args["color"]]
+        # Walking/camera geometry is checked only on foot. Unreadable frames never
+        # inherit a command, including during a sidestep or camera settling.
+        if reading.corrupt or reading.minimap != "flat" or not targets:
+            self.aligned_since = self.stopped_since = self.sidestep_until = None
+            if self.missing_since is None:
+                self.missing_since = now
+            if now - self.missing_since >= 2:
+                return self.stop("blip-gone")
+            return SkillResult()
+        self.missing_since = None
+        target = min(targets, key=lambda b: hypot(b.x, b.y))
+        distance = hypot(target.x, target.y)
+        if self.name == "face":
+            if distance < 1:
+                return self.stop("blip-bearing-undefined")
+            angle = degrees(atan2(target.x, target.y))
+            if abs(angle) <= 10:
+                if self.aligned_since is None:
+                    self.aligned_since = now
+                if now - self.aligned_since >= 0.2:
+                    self.finished = SkillResult(status="done", reason="aligned")
+                    return self.finished
+                return SkillResult()
+            self.aligned_since = None
+            if abs(angle) < 160 or self.turn_sign is None:
+                self.turn_sign = 1 if angle > 0 else -1
+            turn = min(0.65, abs(angle) * 0.01) * self.turn_sign
+            return SkillResult(Pad(right=(turn, 0.0)))
+        if distance <= 4 and not target.border:
+            self.finished = SkillResult(status="done", reason="arrived")
+            return self.finished
+        if self.sidestep_until is not None and now < self.sidestep_until:
+            return SkillResult(Pad(left=self.sidestep))
+        if self.sidestep_until is not None:
+            self.sidestep_until = self.stopped_since = None
+        if observation.moving is False:
+            if self.stopped_since is None:
+                self.stopped_since = now
+            if now - self.stopped_since >= 0.8:
+                if self.recoveries >= 3:
+                    return self.stop("blocked")
+                side = 1 if self.recoveries % 2 == 0 else -1
+                self.sidestep = (side * target.y / distance * 0.65, side * target.x / distance * 0.65)
+                self.sidestep_until = now + 0.5
+                self.stopped_since = None
+                self.recoveries += 1
+                return SkillResult(Pad(left=self.sidestep))
+        else:
+            self.stopped_since = None
+        speed = clamp(distance / 14, 0.3, 0.85)
+        sprinting = self.args.get("sprint", False) and distance > 14 and elapsed % 0.25 < 0.125
+        return SkillResult(
+            Pad(
+                left=(target.x / distance * speed, -target.y / distance * speed),
+                buttons=("cross",) if sprinting else (),
+            )
+        )
 
 
 class SkillRunner:
