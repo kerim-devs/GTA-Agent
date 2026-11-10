@@ -1,0 +1,122 @@
+[
+ {
+  "id": "G02-01",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G02-02",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 2.5,
+  "corrupt": false,
+  "note": "bright flash frame, soft"
+ },
+ {
+  "id": "G02-03",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 12,
+  "far_clock": 11.5,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G02-04",
+  "minimap": "none",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": false,
+  "note": "scale bar with district name"
+ },
+ {
+  "id": "G02-05",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12.5,
+  "corrupt": false,
+  "note": "left part washed out"
+ },
+ {
+  "id": "G02-06",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G02-07",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "heavily damaged; map type hard to tell"
+ },
+ {
+  "id": "G02-08",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11.5,
+  "corrupt": false,
+  "note": "map washed out; yellow blips, no route"
+ },
+ {
+  "id": "G02-09",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 12.5,
+  "far_clock": 11,
+  "arrow_clock": 12.5,
+  "corrupt": true,
+  "note": ""
+ },
+ {
+  "id": "G02-10",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 11.5,
+  "far_clock": 10.5,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G02-11",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "map washed out; yellow blips, no route"
+ },
+ {
+  "id": "G02-12",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11.5,
+  "corrupt": false,
+  "note": "map faint; yellow lines are world markings"
+ }
+]

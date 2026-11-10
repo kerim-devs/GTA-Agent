@@ -1,0 +1,122 @@
+[
+ {
+  "id": "G01-01",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "yellow streak top-left is a world marking"
+ },
+ {
+  "id": "G01-02",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 12,
+  "far_clock": 10.5,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G01-03",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 1.5,
+  "far_clock": 2.5,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "blocks at the left edge and bottom-left"
+ },
+ {
+  "id": "G01-04",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11.5,
+  "corrupt": false,
+  "note": "map faint over bright ground; yellow lines are world markings"
+ },
+ {
+  "id": "G01-05",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 7,
+  "far_clock": 7,
+  "arrow_clock": 6,
+  "corrupt": false,
+  "note": "transition frame entering the vehicle: map only slightly tilted, no readout; route starts beside the arrow and runs down off the map edge"
+ },
+ {
+  "id": "G01-06",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G01-07",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G01-08",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G01-09",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11.5,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G01-10",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12.5,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G01-11",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "whole map tinted pink (flash); arrow partly hidden by car icon"
+ },
+ {
+  "id": "G01-12",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "map washed out by bright ground; yellow blips, no route"
+ }
+]

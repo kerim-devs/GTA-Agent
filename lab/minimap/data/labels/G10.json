@@ -1,0 +1,122 @@
+[
+ {
+  "id": "G10-01",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 1,
+  "far_clock": 1.5,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "damaged; route goes up-left then right to the blip"
+ },
+ {
+  "id": "G10-02",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 2,
+  "far_clock": 2,
+  "arrow_clock": 12.5,
+  "corrupt": false,
+  "note": "near between 1.5 and 2; far circle is touched at the route corner"
+ },
+ {
+  "id": "G10-03",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "heavy damage, map barely readable; faint lilac streak below arrow not counted as route"
+ },
+ {
+  "id": "G10-04",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "dark vignette, no block damage"
+ },
+ {
+  "id": "G10-05",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 12.5,
+  "far_clock": 1.5,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "far between 1 and 1.5; blocks at lower right"
+ },
+ {
+  "id": "G10-06",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "washed out, zoomed-in top-down map; arrow sits on another icon"
+ },
+ {
+  "id": "G10-07",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G10-08",
+  "minimap": "none",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": false,
+  "note": "dark world only"
+ },
+ {
+  "id": "G10-09",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 1,
+  "far_clock": 11.5,
+  "arrow_clock": 12.5,
+  "corrupt": false,
+  "note": "far: route ends at the blip right on the far circle, 11.5 to 12"
+ },
+ {
+  "id": "G10-10",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11.5,
+  "corrupt": false,
+  "note": "yellow and white lines are road markings of the world"
+ },
+ {
+  "id": "G10-11",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 11.5,
+  "far_clock": 11,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "near between 11 and 11.5"
+ },
+ {
+  "id": "G10-12",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 3,
+  "corrupt": true,
+  "note": "mild: coloured blocks around the map, map itself intact"
+ }
+]

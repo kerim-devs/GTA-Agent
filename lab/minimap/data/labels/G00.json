@@ -1,0 +1,122 @@
+[
+ {
+  "id": "G00-01",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 7,
+  "far_clock": 7,
+  "arrow_clock": 6,
+  "corrupt": true,
+  "note": "block damage; route starts beside the arrow and runs down off the map edge, ending inside the near circle"
+ },
+ {
+  "id": "G00-02",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 2,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G00-03",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "yellow streaks are world road markings"
+ },
+ {
+  "id": "G00-04",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": true,
+  "note": "heavily damaged; visible roads keep their width; arrow unreadable"
+ },
+ {
+  "id": "G00-05",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 1.5,
+  "corrupt": true,
+  "note": "mild block damage (top-left, right of the arrow, N blip)"
+ },
+ {
+  "id": "G00-06",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 1.5,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G00-07",
+  "minimap": "none",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": false,
+  "note": "black frame"
+ },
+ {
+  "id": "G00-08",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 1.5,
+  "far_clock": 2.5,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "soft at the bottom edge, no clear blocks"
+ },
+ {
+  "id": "G00-09",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 1.5,
+  "far_clock": 12.5,
+  "arrow_clock": 12.5,
+  "corrupt": false,
+  "note": "far crossing is about at the destination blip"
+ },
+ {
+  "id": "G00-10",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "mild: a few blocks top-left and at the left edge"
+ },
+ {
+  "id": "G00-11",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G00-12",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "heavily damaged; map only partly visible"
+ }
+]

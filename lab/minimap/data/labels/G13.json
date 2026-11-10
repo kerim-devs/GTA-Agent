@@ -1,0 +1,122 @@
+[
+ {
+  "id": "G13-01",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 10,
+  "corrupt": false,
+  "note": "map faint over bright ground"
+ },
+ {
+  "id": "G13-02",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11,
+  "corrupt": true,
+  "note": "washed out and damaged, map barely visible; arrow 11 to 11.5"
+ },
+ {
+  "id": "G13-03",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 12,
+  "far_clock": 11.5,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G13-04",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "white bar and yellow lines are world"
+ },
+ {
+  "id": "G13-05",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "washed out"
+ },
+ {
+  "id": "G13-06",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "pink tint; arrow next to a car icon"
+ },
+ {
+  "id": "G13-07",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 11.5,
+  "far_clock": 11,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "upper map shifted by damage, route line still continuous"
+ },
+ {
+  "id": "G13-08",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "washed out"
+ },
+ {
+  "id": "G13-09",
+  "minimap": "none",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": false,
+  "note": "scale bar with district name"
+ },
+ {
+  "id": "G13-10",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G13-11",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 10,
+  "far_clock": 10.5,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "map mostly destroyed, readout and route visible; near between 10 and 10.5"
+ },
+ {
+  "id": "G13-12",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "three yellow blips next to the arrow, no line; washed out"
+ }
+]

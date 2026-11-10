@@ -1,0 +1,122 @@
+[
+ {
+  "id": "G08-01",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11,
+  "corrupt": false,
+  "note": "washed out; unsure flat vs tilted; yellow blips are not a route"
+ },
+ {
+  "id": "G08-02",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G08-03",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "heavy damage; map type guessed, arrow barely visible"
+ },
+ {
+  "id": "G08-04",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "heavy damage; map type guessed, arrow distorted"
+ },
+ {
+  "id": "G08-05",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "washed out"
+ },
+ {
+  "id": "G08-06",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 9,
+  "corrupt": false,
+  "note": "washed out; arrow points left"
+ },
+ {
+  "id": "G08-07",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "blurry, pixelated; unsure about damage"
+ },
+ {
+  "id": "G08-08",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": ""
+ },
+ {
+  "id": "G08-09",
+  "minimap": "none",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": false,
+  "note": "almost black; faint coarse blocks, unsure about damage"
+ },
+ {
+  "id": "G08-10",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 12,
+  "far_clock": 11.5,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G08-11",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "red band is a world marking; arrow partly covered by car icon"
+ },
+ {
+  "id": "G08-12",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11,
+  "corrupt": false,
+  "note": "map half faded; yellow lines are world markings"
+ }
+]

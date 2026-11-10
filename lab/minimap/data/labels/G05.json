@@ -1,0 +1,122 @@
+[
+ {
+  "id": "G05-01",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11,
+  "corrupt": false,
+  "note": "map half faded; yellow lines are world markings outside the map"
+ },
+ {
+  "id": "G05-02",
+  "minimap": "none",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": true,
+  "note": "dark frame with coarse rectangular blocks; unsure whether damage or dark transition"
+ },
+ {
+  "id": "G05-03",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G05-04",
+  "minimap": "none",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": false,
+  "note": "only game world (brick wall)"
+ },
+ {
+  "id": "G05-05",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "yellow streaks are world markings"
+ },
+ {
+  "id": "G05-06",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G05-07",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "yellow streaks are world markings"
+ },
+ {
+  "id": "G05-08",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "yellow diagonal streaks are world markings shining through"
+ },
+ {
+  "id": "G05-09",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 10.5,
+  "far_clock": 11.5,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "route ends at blip inside far circle"
+ },
+ {
+  "id": "G05-10",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12.5,
+  "corrupt": false,
+  "note": "dark vignette"
+ },
+ {
+  "id": "G05-11",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 12,
+  "far_clock": 2,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G05-12",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 1,
+  "far_clock": 2,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "yellow diagonal streaks are world markings"
+ }
+]
