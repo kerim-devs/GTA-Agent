@@ -1,0 +1,224 @@
+$ ruff check src tests tools
+All checks passed!
+$ ruff format --check src tests tools
+52 files already formatted
+$ pytest -q
+........................................................................ [ 13%]
+........................................................................ [ 26%]
+........................................................................ [ 39%]
+.................................................s...................... [ 53%]
+............................................FF.F....F................... [ 66%]
+.................s..............xxxx.................................... [ 79%]
+........................................................................ [ 93%]
+.....................................                                    [100%]
+=================================== FAILURES ===================================
+________ test_http_growing_log_updates_within_one_second_and_reconnects ________
+
+tmp_path = PosixPath('/private/var/folders/n1/_jxqq5494mg9m33y1c3xvkx00000gn/T/pytest-of-kerim/pytest-224/test_http_growing_log_updates_0')
+
+    def test_http_growing_log_updates_within_one_second_and_reconnects(tmp_path):
+        session = tmp_path / "001"
+        session.mkdir()
+        head = session / "head.jsonl"
+        append(head, request(objective="Zum Hafen", help="Route prüfen"))
+>       with serving(OverlayState(tmp_path)) as (server, base):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_overlay.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:137: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+tests/test_overlay.py:40: in serving
+    server = make_server(state, port=0)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pilot/overlay.py:299: in make_server
+    server = Server()
+             ^^^^^^^^
+src/pilot/overlay.py:293: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socketserver.py:457: in __init__
+    self.server_bind()
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/server.py:140: in server_bind
+    socketserver.TCPServer.server_bind(self)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pilot.overlay.make_server.<locals>.Server object at 0x119f26570>
+
+    def server_bind(self):
+        """Called by constructor to bind the socket.
+    
+        May be overridden.
+    
+        """
+        if self.allow_reuse_address and hasattr(socket, "SO_REUSEADDR"):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        # Since Linux 6.12.9, SO_REUSEPORT is not allowed
+        # on other address families than AF_INET/AF_INET6.
+        if (
+            self.allow_reuse_port and hasattr(socket, "SO_REUSEPORT")
+            and self.address_family in (socket.AF_INET, socket.AF_INET6)
+        ):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+>       self.socket.bind(self.server_address)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socketserver.py:478: PermissionError
+____________ test_partial_malformed_and_replaced_logs_remain_usable ____________
+
+tmp_path = PosixPath('/private/var/folders/n1/_jxqq5494mg9m33y1c3xvkx00000gn/T/pytest-of-kerim/pytest-224/test_partial_malformed_and_rep0')
+
+    def test_partial_malformed_and_replaced_logs_remain_usable(tmp_path):
+        session = tmp_path / "001"
+        session.mkdir()
+        head = session / "head.jsonl"
+        head.write_bytes(b'{"type":"request","id":1,"request":')
+>       with serving(OverlayState(tmp_path)) as (_, base):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_overlay.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:137: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+tests/test_overlay.py:40: in serving
+    server = make_server(state, port=0)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pilot/overlay.py:299: in make_server
+    server = Server()
+             ^^^^^^^^
+src/pilot/overlay.py:293: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socketserver.py:457: in __init__
+    self.server_bind()
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/server.py:140: in server_bind
+    socketserver.TCPServer.server_bind(self)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pilot.overlay.make_server.<locals>.Server object at 0x111d66a80>
+
+    def server_bind(self):
+        """Called by constructor to bind the socket.
+    
+        May be overridden.
+    
+        """
+        if self.allow_reuse_address and hasattr(socket, "SO_REUSEADDR"):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        # Since Linux 6.12.9, SO_REUSEPORT is not allowed
+        # on other address families than AF_INET/AF_INET6.
+        if (
+            self.allow_reuse_port and hasattr(socket, "SO_REUSEPORT")
+            and self.address_family in (socket.AF_INET, socket.AF_INET6)
+        ):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+>       self.socket.bind(self.server_address)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socketserver.py:478: PermissionError
+__________________ test_missing_root_new_session_and_idle_end __________________
+
+tmp_path = PosixPath('/private/var/folders/n1/_jxqq5494mg9m33y1c3xvkx00000gn/T/pytest-of-kerim/pytest-224/test_missing_root_new_session_0')
+
+    def test_missing_root_new_session_and_idle_end(tmp_path):
+        now = [0.0]
+        root = tmp_path / "missing"
+        model = OverlayState(root, clock=lambda: now[0])
+>       with serving(model) as (_, base):
+             ^^^^^^^^^^^^^^
+
+tests/test_overlay.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:137: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+tests/test_overlay.py:40: in serving
+    server = make_server(state, port=0)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pilot/overlay.py:299: in make_server
+    server = Server()
+             ^^^^^^^^
+src/pilot/overlay.py:293: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socketserver.py:457: in __init__
+    self.server_bind()
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/server.py:140: in server_bind
+    socketserver.TCPServer.server_bind(self)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pilot.overlay.make_server.<locals>.Server object at 0x119c0a870>
+
+    def server_bind(self):
+        """Called by constructor to bind the socket.
+    
+        May be overridden.
+    
+        """
+        if self.allow_reuse_address and hasattr(socket, "SO_REUSEADDR"):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        # Since Linux 6.12.9, SO_REUSEPORT is not allowed
+        # on other address families than AF_INET/AF_INET6.
+        if (
+            self.allow_reuse_port and hasattr(socket, "SO_REUSEPORT")
+            and self.address_family in (socket.AF_INET, socket.AF_INET6)
+        ):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+>       self.socket.bind(self.server_address)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socketserver.py:478: PermissionError
+____________ test_local_assets_served_without_external_dependencies ____________
+
+tmp_path = PosixPath('/private/var/folders/n1/_jxqq5494mg9m33y1c3xvkx00000gn/T/pytest-of-kerim/pytest-224/test_local_assets_served_witho0')
+
+    def test_local_assets_served_without_external_dependencies(tmp_path):
+>       with serving(OverlayState(tmp_path)) as (_, base):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_overlay.py:219: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:137: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+tests/test_overlay.py:40: in serving
+    server = make_server(state, port=0)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/pilot/overlay.py:299: in make_server
+    server = Server()
+             ^^^^^^^^
+src/pilot/overlay.py:293: in __init__
+    super().__init__(("127.0.0.1", port), Handler)
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socketserver.py:457: in __init__
+    self.server_bind()
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/server.py:140: in server_bind
+    socketserver.TCPServer.server_bind(self)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pilot.overlay.make_server.<locals>.Server object at 0x111cbc7a0>
+
+    def server_bind(self):
+        """Called by constructor to bind the socket.
+    
+        May be overridden.
+    
+        """
+        if self.allow_reuse_address and hasattr(socket, "SO_REUSEADDR"):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        # Since Linux 6.12.9, SO_REUSEPORT is not allowed
+        # on other address families than AF_INET/AF_INET6.
+        if (
+            self.allow_reuse_port and hasattr(socket, "SO_REUSEPORT")
+            and self.address_family in (socket.AF_INET, socket.AF_INET6)
+        ):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+>       self.socket.bind(self.server_address)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/opt/homebrew/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/socketserver.py:478: PermissionError
+=========================== short test summary info ============================
+FAILED tests/test_overlay.py::test_http_growing_log_updates_within_one_second_and_reconnects
+FAILED tests/test_overlay.py::test_partial_malformed_and_replaced_logs_remain_usable
+FAILED tests/test_overlay.py::test_missing_root_new_session_and_idle_end - Pe...
+FAILED tests/test_overlay.py::test_local_assets_served_without_external_dependencies
+4 failed, 531 passed, 2 skipped, 1376 deselected, 4 xfailed in 58.82s
+gate failed at: pytest -q

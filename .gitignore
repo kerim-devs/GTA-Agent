@@ -20,3 +20,6 @@ lab/hud/review/
 # single frames rebuilt by pilot/tools/inspect_flow_clips.py, 65 MB; the contact sheets stay
 lab/flow/*/[0-9]*.jpg
 !lab/flow/failure/0038.030-856.jpg
+
+# rebuilt by pilot/tools/sim_waypoint.py, 4 MB
+lab/waypoint/simulation.json
