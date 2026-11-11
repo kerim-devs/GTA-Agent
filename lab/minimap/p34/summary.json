@@ -1,0 +1,66 @@
+{
+  "20261111-123938": {
+    "frames": 7993,
+    "first": {
+      "i": "983",
+      "frame_id": "94673",
+      "t": "16.414",
+      "before": "none",
+      "before_bearing": "",
+      "after": "purple",
+      "after_bearing": "74.28417954854312",
+      "corrupt": "False"
+    },
+    "last": {
+      "i": "8975",
+      "frame_id": "102665",
+      "t": "149.9951",
+      "before": "purple",
+      "before_bearing": "-40.41202128633789",
+      "after": "purple",
+      "after_bearing": "-40.41202128633789",
+      "corrupt": "False"
+    },
+    "before": {
+      "none": 6725,
+      "purple": 1268
+    },
+    "after": {
+      "purple": 1934,
+      "none": 6059
+    },
+    "lost_purple": 0,
+    "new_purple": 666
+  },
+  "20261111-123334": {
+    "frames": 5893,
+    "first": {
+      "i": "1000",
+      "frame_id": "72888",
+      "t": "16.6981",
+      "before": "purple",
+      "before_bearing": "128.835947743835",
+      "after": "purple",
+      "after_bearing": "128.835947743835",
+      "corrupt": "False"
+    },
+    "last": {
+      "i": "6892",
+      "frame_id": "78780",
+      "t": "115.0293",
+      "before": "purple",
+      "before_bearing": "70.12426519159561",
+      "after": "purple",
+      "after_bearing": "70.12426519159561",
+      "corrupt": "False"
+    },
+    "before": {
+      "purple": 5893
+    },
+    "after": {
+      "purple": 5893
+    },
+    "lost_purple": 0,
+    "new_purple": 0
+  }
+}
