@@ -15,3 +15,13 @@ One existing test necessarily changed: test_conductor_logs_judgments_and_emits_o
 The first full-gate attempt inside the restricted sandbox was interrupted after five loopback socket failures and five CoreML fixture errors, with 1363 tests already passing. The errors were PermissionError at local test-server bind and CoreML failing to create its temporary working directory. The separate diagnostic rerun, `env -u PS5_HOST .venv/bin/python -m pytest tests/test_objects.py tests/test_overlay.py tests/test_commentator.py -q` from pilot/, passed with approved local access: `117 passed, 1 skipped in 2.96s`. No tests or runtime code were changed to bypass these failures. The full gate was then restarted with the same approved local access and PS5_HOST still removed.
 
 Full-gate result is pending completion. No live daemon, ps5rp command, credentials, network judge or console was used. No commit or pull request was created: docs/tasks/README.md explicitly says, "Git cannot write here: no commit, stash, checkout or reset. Leave your changes in the working tree; the reviewer commits them." The pre-existing untracked task card is untouched.
+
+## Review
+
+The worker was stopped with the session before its full gate had finished; the work was complete. The reviewer ran the full gate on the result: 2576 passed, 1 skipped, 236 expected failures, green in ten minutes.
+
+One change in review. The guard the worker put in front of `LevelCamera` paused the move whenever the judge did not say "foot", also before the move had begun, so a judge that never saw the figure on foot let it run into its time limit and fail, and the failure threw away the plan behind it. That happened live within the hour: the judge said "vehicle" to the game's idle scenery. Before the move begins, a figure that is not on foot now ends it quietly as it did before P33, and the guard holds only once the stick has moved. `test_a_judge_that_never_sees_the_figure_on_foot_ends_it_without_a_failure` pins it.
+
+Live, on the car park under the motorway junction where the minimap reads as a vehicle's: `enter_vehicle` was no longer thrown out, walked to a car and, after the changes of the live rounds to when it presses, got in (sessions 20261111-121517 and 20261111-122034). The judge said "foot" on all 161 judgments of the approach and "vehicle" once the figure sat.
+
+Still open from this card's side: the scene detector's `vehicle_enter`, now immediate, reaches the head before `enter_vehicle` has confirmed its own success a second later, so the skill is replaced while it would have reported "entered vehicle". With the rules head the next plan is the right one anyway.
