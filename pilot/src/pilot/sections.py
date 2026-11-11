@@ -2,9 +2,10 @@
 
 import json
 import math
+import time
 from bisect import bisect_left, bisect_right
 from collections.abc import Callable, Iterable
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 import cv2
@@ -12,6 +13,7 @@ import numpy as np
 
 from pilot.contract import Hud, Pad, Reading
 from pilot.hud import read as read_hud
+from pilot.judge import QUESTIONS, encode, endpoint, letters, post, probability
 from pilot.minimap import read as read_minimap
 from pilot.replay import hud_crop
 
@@ -19,6 +21,15 @@ SAMPLE_HZ = 10
 KINDS = {"drive", "foot", "cutscene", "menu", "banner", "loading", "unknown"}
 MENUS = {"pause", "map", "interaction_menu", "phone", "weapon_wheel"}
 BANNERS = {"passed", "failed", "wasted", "busted"}
+# The judge is asked about one frame in every second of a stretch the readers leave open, and a
+# reader's foot or vehicle that rests on the minimap alone is open within this many seconds of a
+# change of the reader's mind (a car is entered or left there) or while stars tilt the map.
+DOUBT_SECONDS = 3.0
+NEIGHBOUR_SECONDS = 1.5
+JUDGE_WIDTH = 640
+# Asked one by one: in one request the model answered the overlay question right on 55 percent of the
+# frames, alone on 96 (lab/judge/results). The wanted level is the readers' business.
+SCORED = ("banner", "overlay", "mode")
 
 
 @dataclass(frozen=True)
@@ -28,6 +39,36 @@ class Sample:
     reading: Reading
     hud: Hud
     pad: Pad | None = None
+    # What the judge said about this frame's second, once a neighbouring second said the same:
+    # the answers of QUESTIONS as values, e.g. {"mode": "none", "overlay": False, "banner": False}.
+    judge: dict | None = None
+
+
+def pad_verdict(pad: Pad | None, minimap: str) -> str | None:
+    """What the controller alone settles: a pushed stick with Cross is a run, a held trigger with
+    steering on a tilted map is a car."""
+    if pad is None:
+        return None
+    running = "cross" in {button.lower() for button in pad.buttons}
+    moving = math.hypot(*pad.left) > 0.2
+    steering = abs(pad.left[0]) > 0.2
+    trigger = max(pad.r2, pad.l2) > 0.2
+    if running and moving and not trigger:
+        return "foot"
+    if minimap == "tilted" and trigger and steering and not running:
+        return "drive"
+    return None
+
+
+def judge_kind(answer: dict | None) -> str | None:
+    """The section kind a judge's answers name; None where they name nothing."""
+    if not answer:
+        return None
+    if answer.get("banner"):
+        return "banner"
+    if answer.get("overlay"):
+        return "menu"
+    return {"foot": "foot", "vehicle": "drive", "none": "cutscene"}.get(answer.get("mode"))
 
 
 def decide(sample: Sample) -> str:
@@ -41,19 +82,17 @@ def decide(sample: Sample) -> str:
         return "banner"
     if hud.screen == "loading":
         return "loading"
+    # Neither foot nor vehicle without a HUD is a cutscene: the readers cannot say so, the judge can.
+    judged = judge_kind(sample.judge)
+    if judged is not None:
+        return judged
     if hud.screen != "game":
         return "unknown"
     if reading.minimap == "none":
         return "unknown"
-    if pad is not None:
-        running = "cross" in {button.lower() for button in pad.buttons}
-        moving = math.hypot(*pad.left) > 0.2
-        steering = abs(pad.left[0]) > 0.2
-        trigger = max(pad.r2, pad.l2) > 0.2
-        if running and moving and not trigger:
-            return "foot"
-        if reading.minimap == "tilted" and trigger and steering and not running:
-            return "drive"
+    verdict = pad_verdict(pad, reading.minimap)
+    if verdict is not None:
+        return verdict
     if reading.minimap == "flat":
         return "foot"
     if reading.minimap == "tilted" and hud.wanted == 0:
@@ -212,7 +251,160 @@ def sections(
     return output
 
 
-def analyze(recording: Path, decision: Callable[[Sample], str] = decide) -> dict | None:
+class JudgeDownError(Exception):
+    """The judge's server did not answer; the second pass ends and the readers' result stands."""
+
+
+class Judge:
+    """The judge's answers about frames, cached in the output folder so that no frame is asked twice.
+
+    An answer is None when the reply was not one the questions allow: such a frame counts as asked
+    but decides nothing.
+    """
+
+    def __init__(self, server: str, transport: Callable[[str, str], dict] | None = None):
+        self.url, self.model = endpoint(server)
+        self.transport = transport or (
+            lambda image, name: post(self.url, self.model, image, QUESTIONS[name][0], 2, timeout=10)[0]
+        )
+        self.cache: dict[str, dict | None] = {}
+        self.seconds: list[float] = []
+        self.odd = 0
+        self.down: str | None = None
+
+    def load(self, path: Path) -> None:
+        self.cache = {}
+        if path.exists():
+            data = json.loads(path.read_text())
+            if data.get("model") == self.model:
+                self.cache = data["frames"]
+
+    def save(self, path: Path) -> None:
+        path.write_text(json.dumps({"model": self.model, "frames": self.cache}, separators=(",", ":")) + "\n")
+
+    def ask(self, frame: int, image: Callable[[], str]) -> dict | None:
+        key = str(frame)
+        if key in self.cache:
+            return self.cache[key]
+        encoded, answer = image(), {}
+        for name in SCORED:
+            for attempt in range(2):
+                started = time.perf_counter()
+                try:
+                    choice = self.transport(encoded, name)
+                    break
+                except (OSError, TimeoutError) as exc:
+                    if attempt:
+                        self.down = f"{type(exc).__name__}: {exc}"
+                        raise JudgeDownError(self.down) from exc
+                except ValueError:
+                    choice = None
+                    break
+            self.seconds.append(time.perf_counter() - started)
+            letter, top = (letters(choice) or [("", {})])[0] if choice else ("", {})
+            meaning = QUESTIONS[name][1]
+            if letter not in meaning:
+                self.odd += 1
+                self.cache[key] = None
+                return None
+            answer[name] = meaning[letter]
+            if name == "mode":
+                answer["p"] = probability(letter, top, meaning)
+        self.cache[key] = answer
+        return answer
+
+
+def doubtful(samples: list[Sample], decision: Callable[[Sample], str] = decide) -> list[bool]:
+    """The samples the judge is asked about: those the readers leave unknown, and a foot or vehicle
+    that only the minimap names, near a change of the readers' mind or under stars."""
+    kinds = [decision(replace(sample, judge=None)) for sample in samples]
+    times = [sample.time for sample in samples]
+    result = []
+    for index, sample in enumerate(samples):
+        if sample.reading.corrupt or kinds[index] in {"menu", "banner", "loading"}:
+            result.append(False)
+        elif kinds[index] == "unknown":
+            result.append(True)
+        elif pad_verdict(sample.pad, sample.reading.minimap) is not None:
+            result.append(False)
+        else:
+            low = bisect_left(times, sample.time - DOUBT_SECONDS)
+            high = bisect_right(times, sample.time + DOUBT_SECONDS)
+            changed = any(
+                kinds[other] != kinds[index]
+                for other in range(low, high)
+                if not samples[other].reading.corrupt
+            )
+            result.append(changed or (sample.hud.wanted or 0) > 0)
+    return result
+
+
+def judged_samples(
+    samples: list[Sample], ask: Callable[[Sample], dict | None], decision: Callable[[Sample], str] = decide
+) -> list[Sample]:
+    """Ask `ask` about one frame in every second that holds a doubtful sample, and hand the answer
+    to the doubtful samples of that second if a neighbouring second named the same kind: one odd
+    answer decides nothing, as one odd reading does not."""
+    chosen: dict[int, int] = {}
+    for index, flag in enumerate(doubtful(samples, decision)):
+        if flag:
+            bucket = math.floor(samples[index].time)
+            best = chosen.get(bucket)
+            if best is None or abs(samples[index].time - bucket - 0.5) < abs(
+                samples[best].time - bucket - 0.5
+            ):
+                chosen[bucket] = index
+    asked = []
+    for bucket in sorted(chosen):
+        sample = samples[chosen[bucket]]
+        answer = ask(sample)
+        asked.append((bucket, sample.time, answer, judge_kind(answer)))
+    accepted = {}
+    for i, (bucket, moment, answer, kind) in enumerate(asked):
+        near = [
+            other
+            for other in (asked[i - 1] if i else None, asked[i + 1] if i + 1 < len(asked) else None)
+            if other is not None and abs(other[1] - moment) <= NEIGHBOUR_SECONDS
+        ]
+        if kind is not None and any(other[3] == kind for other in near):
+            accepted[bucket] = answer
+    flags = doubtful(samples, decision)
+    return [
+        replace(sample, judge=accepted.get(math.floor(sample.time)))
+        if flag and math.floor(sample.time) in accepted
+        else sample
+        for sample, flag in zip(samples, flags, strict=True)
+    ]
+
+
+class FrameReader:
+    """Decodes a recording forward to the frames asked for, in increasing order."""
+
+    def __init__(self, recording: Path):
+        self.cap = cv2.VideoCapture(str(recording / "video.mp4"))
+        self.position = 0
+
+    def at(self, index: int):
+        while self.position < index:
+            if not self.cap.grab():
+                raise ValueError(f"Video ends before frame {index}")
+            self.position += 1
+        ok, bgr = self.cap.read()
+        self.position += 1
+        if not ok:
+            raise ValueError(f"Cannot decode frame {index}")
+        return bgr
+
+    def close(self) -> None:
+        self.cap.release()
+
+
+def analyze(
+    recording: Path,
+    decision: Callable[[Sample], str] = decide,
+    judge: Judge | None = None,
+    folder: Path | None = None,
+) -> dict | None:
     meta = json.loads((recording / "meta.json").read_text())
     if "seconds" not in meta:
         return None
@@ -237,6 +429,8 @@ def analyze(recording: Path, decision: Callable[[Sample], str] = decide) -> dict
             samples.append(Sample(row["t"], row["i"], read_minimap(hud_crop(bgr)), read_hud(rgb), pad))
     finally:
         cap.release()
+    if judge is not None and judge.down is None:
+        samples = second_pass(recording, samples, decision, judge, folder)
     return {
         "recording": str(recording.resolve()),
         "seconds": meta["seconds"],
@@ -244,6 +438,34 @@ def analyze(recording: Path, decision: Callable[[Sample], str] = decide) -> dict
         "has_pad": bool(events),
         "sections": sections(samples, rows, events, decision),
     }
+
+
+def second_pass(
+    recording: Path,
+    samples: list[Sample],
+    decision: Callable[[Sample], str],
+    judge: Judge,
+    folder: Path | None,
+) -> list[Sample]:
+    """The samples with the judge's answers, or as they were if the server does not answer."""
+    cache = folder / "judge.json" if folder is not None else None
+    if cache is not None:
+        judge.load(cache)
+    frames = FrameReader(recording)
+    try:
+        return judged_samples(
+            samples,
+            lambda sample: judge.ask(sample.frame, lambda: encode(frames.at(sample.frame), JUDGE_WIDTH)),
+            decision,
+        )
+    except JudgeDownError as exc:
+        print(f"judge {judge.url} did not answer ({exc}); second pass stopped, readers only", flush=True)
+        return samples
+    finally:
+        frames.close()
+        if cache is not None:
+            cache.parent.mkdir(parents=True, exist_ok=True)
+            judge.save(cache)
 
 
 def contact_sheet(recording: Path, result: dict, path: Path) -> None:
