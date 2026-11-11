@@ -32,11 +32,20 @@ MEASURED_DELAY_S = 0.14  # input to picture over the wired link with the game in
 # reader calls nine clean frames in ten damaged, and the driver stood still on them (session
 # 20261111-130955). With these the pilot drove 2.5 km through town to its waypoint.
 LIVE = {
-    "brake_gain": 0.0,
-    "brake_margin": 6.0,
-    "speed_limit": 12.0,
-    "slow_speed": 4.0,
-    "lateral_acceleration": 3.0,
+    "brake_gain": 0.15,
+    "brake_margin": 3.0,
+    "brake_floor": 7.0,
+    "brake_pulse": 0.35,
+    "speed_limit": 22.0,
+    "slow_speed": 5.0,
+    "lateral_acceleration": 7.0,
+    "map_scale_min": 0.7,
+    "cruise_throttle": 0.8,
+    "far_bend": 0.0,
+    "curve_step": 3,
+    "curve_trim": 3,
+    "hold_throttle": 0.25,
+    "speed_gain": 0.08,
     "damage_hold": 2.0,
 }
 
