@@ -58,3 +58,9 @@ lab/screens/review/
 
 # drawn from the recordings by lab/judge/sample.py, 36 MB
 lab/judge/sample/
+
+# action labels and their index, rebuilt by lab/actions/process-new.sh, about 15 MB; summary.md stays
+lab/actions/out/*
+!lab/actions/out/summary.md
+# contact sheets rebuilt by lab/actions/sheets.py
+lab/actions/sheets/
