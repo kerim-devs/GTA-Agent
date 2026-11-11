@@ -643,12 +643,12 @@ def test_a_map_the_running_skill_opened_is_no_news_for_the_head(tmp_path):
         conductor.tick(observation(0.03), RGB)  # the tick that lets go of the plan before
         conductor.tick(observation(0.06), RGB)
         assert conductor.runner.active.name == "set_waypoint"
-        for tick, kind in enumerate(("hud_absent", "hud_present"), start=3):
+        for tick, kind in enumerate(("hud_absent", "vehicle_exit", "vehicle_enter", "hud_present"), start=3):
             detector.kinds = [kind]
             conductor.tick(observation(tick * 0.03), RGB)
         assert len(pending.jobs) == 1 and conductor.runner.active.name == "set_waypoint"
         detector.kinds = ["route_vanished"]  # other news still reaches the head
-        conductor.tick(observation(0.15), RGB)
+        conductor.tick(observation(0.21), RGB)
         assert len(pending.jobs) == 2
     finally:
         conductor.close()

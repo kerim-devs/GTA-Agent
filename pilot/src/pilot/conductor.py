@@ -261,6 +261,9 @@ class Conductor:
     # the judge said "vehicle" to a car park, the skills waited for a figure on foot, and because
     # they waited the scenery stayed. A touch of the camera brings the figure back.
     OWN_SCREEN_SECONDS = 2.0  # the minimap is read as back about a second after a map has closed
+    # Behind an open map the judge sees the paused scene and may take the car from outside for a
+    # figure on foot; it said so and took it back within two seconds (session 20261111-131628).
+    OWN_SCREEN_NEWS = ("hud_absent", "hud_present", "vehicle_enter", "vehicle_exit")
     AWAKE_SECONDS = 15.0
     NUDGE_SECONDS = 0.1  # one tick is easy for the console to miss
     NUDGE_STICK = 0.5  # as it reaches the console
@@ -317,7 +320,7 @@ class Conductor:
         if getattr(self.runner.active, "opens", ()):
             self.own_screen_until = t + self.OWN_SCREEN_SECONDS
         if t < self.own_screen_until:
-            detected = [event for event in detected if event.kind not in ("hud_absent", "hud_present")]
+            detected = [event for event in detected if event.kind not in self.OWN_SCREEN_NEWS]
         new_events = [asdict(event) for event in detected] + list(events)
         new_events.extend(self._hud_events(observation))
         recovered = self.flow_started is not None
