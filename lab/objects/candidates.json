@@ -1,0 +1,1806 @@
+[
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 29,
+        "count": 35,
+        "recall": 0.8285714285714286
+      },
+      "vehicles_over_100": {
+        "found": 66,
+        "count": 93,
+        "recall": 0.7096774193548387
+      },
+      "people_over_80": {
+        "found": 3,
+        "count": 11,
+        "recall": 0.2727272727272727
+      }
+    },
+    "kind_agreement": {
+      "same": 79,
+      "matched": 90
+    },
+    "large_recall": 0.6634615384615384,
+    "invented_fraction": 0.3695652173913043,
+    "ignored_small_predictions": 55,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 48,
+    "mean_ms": 43.53397451341152,
+    "p95_ms": 43.93924730538856,
+    "candidate": "l-640-c0.4",
+    "weights_sha256": "7860ae79de6c89a3c1eb72ae9a2756c0ccfbe04b7791bb5880afabd97855a411",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 14.8,
+      "poll_mean_ms": 0.04546419426333159,
+      "poll_p95_ms": 0.12407689937390384,
+      "poll_max_ms": 0.15824998263269663
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.3617021276595745,
+    "eligible_reports": 138,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.610352725815559,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 29,
+        "count": 35,
+        "recall": 0.8285714285714286
+      },
+      "vehicles_over_100": {
+        "found": 67,
+        "count": 93,
+        "recall": 0.7204301075268817
+      },
+      "people_over_80": {
+        "found": 3,
+        "count": 11,
+        "recall": 0.2727272727272727
+      }
+    },
+    "kind_agreement": {
+      "same": 82,
+      "matched": 93
+    },
+    "large_recall": 0.6730769230769231,
+    "invented_fraction": 0.3904109589041096,
+    "ignored_small_predictions": 74,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 48,
+    "mean_ms": 22.48197817716573,
+    "p95_ms": 22.976039588684216,
+    "candidate": "m-640-c0.25",
+    "weights_sha256": "21ff6cfdeb53b013bac2249599e55f00bff3cfdfdab37ed7a4620818c1d15b3f",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.04606339265592396,
+      "poll_p95_ms": 0.12804619473172352,
+      "poll_max_ms": 0.20995800150558352
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.38,
+    "eligible_reports": 146,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.6078294624803684,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 29,
+        "count": 35,
+        "recall": 0.8285714285714286
+      },
+      "vehicles_over_100": {
+        "found": 68,
+        "count": 93,
+        "recall": 0.7311827956989247
+      },
+      "people_over_80": {
+        "found": 3,
+        "count": 11,
+        "recall": 0.2727272727272727
+      }
+    },
+    "kind_agreement": {
+      "same": 83,
+      "matched": 94
+    },
+    "large_recall": 0.6826923076923077,
+    "invented_fraction": 0.4129032258064516,
+    "ignored_small_predictions": 89,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 48,
+    "mean_ms": 43.239279125555186,
+    "p95_ms": 43.80489406612469,
+    "candidate": "l-640-c0.25",
+    "weights_sha256": "7860ae79de6c89a3c1eb72ae9a2756c0ccfbe04b7791bb5880afabd97855a411",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 14.8,
+      "poll_mean_ms": 0.04546419426333159,
+      "poll_p95_ms": 0.12407689937390384,
+      "poll_max_ms": 0.15824998263269663
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.4050632911392405,
+    "eligible_reports": 155,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.6048945677977936,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 27,
+        "count": 35,
+        "recall": 0.7714285714285715
+      },
+      "vehicles_over_100": {
+        "found": 64,
+        "count": 93,
+        "recall": 0.6881720430107527
+      },
+      "people_over_80": {
+        "found": 3,
+        "count": 11,
+        "recall": 0.2727272727272727
+      }
+    },
+    "kind_agreement": {
+      "same": 76,
+      "matched": 84
+    },
+    "large_recall": 0.6442307692307693,
+    "invented_fraction": 0.3305785123966942,
+    "ignored_small_predictions": 31,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 48,
+    "mean_ms": 43.72790527559118,
+    "p95_ms": 44.11240689223632,
+    "candidate": "l-640-c0.55",
+    "weights_sha256": "7860ae79de6c89a3c1eb72ae9a2756c0ccfbe04b7791bb5880afabd97855a411",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 14.8,
+      "poll_mean_ms": 0.04546419426333159,
+      "poll_p95_ms": 0.12407689937390384,
+      "poll_max_ms": 0.15824998263269663
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.3225806451612903,
+    "eligible_reports": 121,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.6004373436924757,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 27,
+        "count": 35,
+        "recall": 0.7714285714285715
+      },
+      "vehicles_over_100": {
+        "found": 61,
+        "count": 93,
+        "recall": 0.6559139784946236
+      },
+      "people_over_80": {
+        "found": 3,
+        "count": 11,
+        "recall": 0.2727272727272727
+      }
+    },
+    "kind_agreement": {
+      "same": 71,
+      "matched": 80
+    },
+    "large_recall": 0.6153846153846154,
+    "invented_fraction": 0.3,
+    "ignored_small_predictions": 16,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 47,
+    "mean_ms": 22.791221351508284,
+    "p95_ms": 23.459758346143644,
+    "candidate": "m-640-c0.55",
+    "weights_sha256": "21ff6cfdeb53b013bac2249599e55f00bff3cfdfdab37ed7a4620818c1d15b3f",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.04606339265592396,
+      "poll_p95_ms": 0.12804619473172352,
+      "poll_max_ms": 0.20995800150558352
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.2920353982300885,
+    "eligible_reports": 110,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.600017455662617,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 29,
+        "count": 35,
+        "recall": 0.8285714285714286
+      },
+      "vehicles_over_100": {
+        "found": 68,
+        "count": 93,
+        "recall": 0.7311827956989247
+      },
+      "people_over_80": {
+        "found": 3,
+        "count": 11,
+        "recall": 0.2727272727272727
+      }
+    },
+    "kind_agreement": {
+      "same": 85,
+      "matched": 96
+    },
+    "large_recall": 0.6826923076923077,
+    "invented_fraction": 0.44242424242424244,
+    "ignored_small_predictions": 108,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 48,
+    "mean_ms": 22.270248976928997,
+    "p95_ms": 22.582708309346344,
+    "candidate": "m-640-c0.15",
+    "weights_sha256": "21ff6cfdeb53b013bac2249599e55f00bff3cfdfdab37ed7a4620818c1d15b3f",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.04606339265592396,
+      "poll_p95_ms": 0.12804619473172352,
+      "poll_max_ms": 0.20995800150558352
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.4319526627218935,
+    "eligible_reports": 165,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.597514313643346,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 27,
+        "count": 35,
+        "recall": 0.7714285714285715
+      },
+      "vehicles_over_100": {
+        "found": 64,
+        "count": 93,
+        "recall": 0.6881720430107527
+      },
+      "people_over_80": {
+        "found": 3,
+        "count": 11,
+        "recall": 0.2727272727272727
+      }
+    },
+    "kind_agreement": {
+      "same": 77,
+      "matched": 87
+    },
+    "large_recall": 0.6442307692307693,
+    "invented_fraction": 0.3464566929133858,
+    "ignored_small_predictions": 40,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 48,
+    "mean_ms": 22.50539479791769,
+    "p95_ms": 22.956060388241895,
+    "candidate": "m-640-c0.4",
+    "weights_sha256": "21ff6cfdeb53b013bac2249599e55f00bff3cfdfdab37ed7a4620818c1d15b3f",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.04606339265592396,
+      "poll_p95_ms": 0.12804619473172352,
+      "poll_max_ms": 0.20995800150558352
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.33587786259541985,
+    "eligible_reports": 127,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5964677985633028,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 29,
+        "count": 35,
+        "recall": 0.8285714285714286
+      },
+      "vehicles_over_100": {
+        "found": 68,
+        "count": 93,
+        "recall": 0.7311827956989247
+      },
+      "people_over_80": {
+        "found": 3,
+        "count": 11,
+        "recall": 0.2727272727272727
+      }
+    },
+    "kind_agreement": {
+      "same": 84,
+      "matched": 95
+    },
+    "large_recall": 0.6826923076923077,
+    "invented_fraction": 0.46511627906976744,
+    "ignored_small_predictions": 124,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 48,
+    "mean_ms": 42.691464612289565,
+    "p95_ms": 43.47072885284433,
+    "candidate": "l-640-c0.15",
+    "weights_sha256": "7860ae79de6c89a3c1eb72ae9a2756c0ccfbe04b7791bb5880afabd97855a411",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 14.8,
+      "poll_mean_ms": 0.04546419426333159,
+      "poll_p95_ms": 0.12407689937390384,
+      "poll_max_ms": 0.15824998263269663
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.45714285714285713,
+    "eligible_reports": 172,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5918413044819647,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 30,
+        "count": 35,
+        "recall": 0.8571428571428571
+      },
+      "vehicles_over_100": {
+        "found": 73,
+        "count": 93,
+        "recall": 0.7849462365591398
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 91,
+      "matched": 100
+    },
+    "large_recall": 0.7211538461538461,
+    "invented_fraction": 0.4585635359116022,
+    "ignored_small_predictions": 196,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 50,
+    "mean_ms": 58.90313748677727,
+    "p95_ms": 59.73871520109242,
+    "candidate": "m-native-tiles-c0.25",
+    "weights_sha256": "40ff798ed8c9547e46ef2a52d7a72ff574a4c4d479494693c20123fdf10e4757",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 14.8,
+      "poll_mean_ms": 0.0518322551700597,
+      "poll_p95_ms": 0.1379107488901354,
+      "poll_max_ms": 0.16483300714753568
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.453551912568306,
+    "eligible_reports": 181,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5913359349021441,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 29,
+        "count": 35,
+        "recall": 0.8285714285714286
+      },
+      "vehicles_over_100": {
+        "found": 71,
+        "count": 93,
+        "recall": 0.7634408602150538
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 88,
+      "matched": 97
+    },
+    "large_recall": 0.7019230769230769,
+    "invented_fraction": 0.4125,
+    "ignored_small_predictions": 152,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 50,
+    "mean_ms": 59.37804951536236,
+    "p95_ms": 60.075647247140296,
+    "candidate": "m-native-tiles-c0.4",
+    "weights_sha256": "40ff798ed8c9547e46ef2a52d7a72ff574a4c4d479494693c20123fdf10e4757",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 14.8,
+      "poll_mean_ms": 0.0518322551700597,
+      "poll_p95_ms": 0.1379107488901354,
+      "poll_max_ms": 0.16483300714753568
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.4049079754601227,
+    "eligible_reports": 160,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.590332617651166,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 31,
+        "count": 35,
+        "recall": 0.8857142857142857
+      },
+      "vehicles_over_100": {
+        "found": 71,
+        "count": 93,
+        "recall": 0.7634408602150538
+      },
+      "people_over_80": {
+        "found": 3,
+        "count": 11,
+        "recall": 0.2727272727272727
+      }
+    },
+    "kind_agreement": {
+      "same": 92,
+      "matched": 99
+    },
+    "large_recall": 0.7115384615384616,
+    "invented_fraction": 0.5645756457564576,
+    "ignored_small_predictions": 418,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 48,
+    "mean_ms": 255.54507866145286,
+    "p95_ms": 259.0544791542925,
+    "candidate": "fasterrcnn-native-c0.25",
+    "weights_sha256": "dd69338a24b8d7381807e247652bdc356325bcbaf1cd3e092e00e0a1a58706bf",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 3.6,
+      "poll_mean_ms": 0.024093834023612242,
+      "poll_p95_ms": 0.07854824943933633,
+      "poll_max_ms": 0.15104198246262968
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "timing_note": "Late fallback, evaluated after fixed ONNX selection; no holdout tuning.",
+    "matched_precision_invented_fraction": 0.6071428571428571,
+    "eligible_reports": 271,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5893266932250386,
+    "speed_and_player_eligible": false
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 29,
+        "count": 35,
+        "recall": 0.8285714285714286
+      },
+      "vehicles_over_100": {
+        "found": 70,
+        "count": 93,
+        "recall": 0.7526881720430108
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 91,
+      "matched": 96
+    },
+    "large_recall": 0.6923076923076923,
+    "invented_fraction": 0.40764331210191085,
+    "ignored_small_predictions": 126,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 48,
+    "mean_ms": 110.60162241228682,
+    "p95_ms": 111.96823544305516,
+    "candidate": "l-native-tiles-c0.55",
+    "weights_sha256": "3cd564aa0bbd19e84bdafab514c636b6b4386a4344451f7b1ccb0f1ab6095350",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 7.4,
+      "poll_mean_ms": 0.02315553797719379,
+      "poll_p95_ms": 0.06758545641787349,
+      "poll_max_ms": 0.12562499614432454
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.4,
+    "eligible_reports": 157,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5888586175826775,
+    "speed_and_player_eligible": false
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 28,
+        "count": 35,
+        "recall": 0.8
+      },
+      "vehicles_over_100": {
+        "found": 70,
+        "count": 93,
+        "recall": 0.7526881720430108
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 85,
+      "matched": 92
+    },
+    "large_recall": 0.6923076923076923,
+    "invented_fraction": 0.38028169014084506,
+    "ignored_small_predictions": 102,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 49,
+    "mean_ms": 59.85019268737233,
+    "p95_ms": 60.753258649492636,
+    "candidate": "m-native-tiles-c0.55",
+    "weights_sha256": "40ff798ed8c9547e46ef2a52d7a72ff574a4c4d479494693c20123fdf10e4757",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 14.8,
+      "poll_mean_ms": 0.0518322551700597,
+      "poll_p95_ms": 0.1379107488901354,
+      "poll_max_ms": 0.16483300714753568
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.3698630136986301,
+    "eligible_reports": 142,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5885561659300869,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 31,
+        "count": 35,
+        "recall": 0.8857142857142857
+      },
+      "vehicles_over_100": {
+        "found": 73,
+        "count": 93,
+        "recall": 0.7849462365591398
+      },
+      "people_over_80": {
+        "found": 3,
+        "count": 11,
+        "recall": 0.2727272727272727
+      }
+    },
+    "kind_agreement": {
+      "same": 93,
+      "matched": 102
+    },
+    "large_recall": 0.7307692307692307,
+    "invented_fraction": 0.5914634146341463,
+    "ignored_small_predictions": 587,
+    "player_reported_frames": [
+      "079"
+    ],
+    "player_reported_fraction": 0.0125,
+    "player_present_frames": 51,
+    "removed_player_detections": 52,
+    "mean_ms": 255.80445311352378,
+    "p95_ms": 256.7981222382514,
+    "candidate": "fasterrcnn-native-c0.15",
+    "weights_sha256": "dd69338a24b8d7381807e247652bdc356325bcbaf1cd3e092e00e0a1a58706bf",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 3.6,
+      "poll_mean_ms": 0.024093834023612242,
+      "poll_p95_ms": 0.07854824943933633,
+      "poll_max_ms": 0.15104198246262968
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "timing_note": "Late fallback, evaluated after fixed ONNX selection; no holdout tuning.",
+    "matched_precision_invented_fraction": 0.6554054054054054,
+    "eligible_reports": 328,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.587981095091638,
+    "speed_and_player_eligible": false
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 30,
+        "count": 35,
+        "recall": 0.8571428571428571
+      },
+      "vehicles_over_100": {
+        "found": 73,
+        "count": 93,
+        "recall": 0.7849462365591398
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 92,
+      "matched": 101
+    },
+    "large_recall": 0.7211538461538461,
+    "invented_fraction": 0.49746192893401014,
+    "ignored_small_predictions": 254,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 51,
+    "mean_ms": 58.056403712544125,
+    "p95_ms": 59.02626876486465,
+    "candidate": "m-native-tiles-c0.15",
+    "weights_sha256": "40ff798ed8c9547e46ef2a52d7a72ff574a4c4d479494693c20123fdf10e4757",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 14.8,
+      "poll_mean_ms": 0.0518322551700597,
+      "poll_p95_ms": 0.1379107488901354,
+      "poll_max_ms": 0.16483300714753568
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.49246231155778897,
+    "eligible_reports": 197,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5816113366465421,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 29,
+        "count": 35,
+        "recall": 0.8285714285714286
+      },
+      "vehicles_over_100": {
+        "found": 70,
+        "count": 93,
+        "recall": 0.7526881720430108
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 91,
+      "matched": 96
+    },
+    "large_recall": 0.6923076923076923,
+    "invented_fraction": 0.44970414201183434,
+    "ignored_small_predictions": 160,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 48,
+    "mean_ms": 110.14323533709103,
+    "p95_ms": 110.81243090156931,
+    "candidate": "l-native-tiles-c0.4",
+    "weights_sha256": "3cd564aa0bbd19e84bdafab514c636b6b4386a4344451f7b1ccb0f1ab6095350",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 7.4,
+      "poll_mean_ms": 0.02315553797719379,
+      "poll_p95_ms": 0.06758545641787349,
+      "poll_max_ms": 0.12562499614432454
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.4418604651162791,
+    "eligible_reports": 169,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5783434101051966,
+    "speed_and_player_eligible": false
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 30,
+        "count": 35,
+        "recall": 0.8571428571428571
+      },
+      "vehicles_over_100": {
+        "found": 71,
+        "count": 93,
+        "recall": 0.7634408602150538
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 92,
+      "matched": 98
+    },
+    "large_recall": 0.7019230769230769,
+    "invented_fraction": 0.4946236559139785,
+    "ignored_small_predictions": 206,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 49,
+    "mean_ms": 109.83739167422755,
+    "p95_ms": 110.53435973444721,
+    "candidate": "l-native-tiles-c0.25",
+    "weights_sha256": "3cd564aa0bbd19e84bdafab514c636b6b4386a4344451f7b1ccb0f1ab6095350",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 7.4,
+      "poll_mean_ms": 0.02315553797719379,
+      "poll_p95_ms": 0.06758545641787349,
+      "poll_max_ms": 0.12562499614432454
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.4842105263157895,
+    "eligible_reports": 186,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5769445608155285,
+    "speed_and_player_eligible": false
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 28,
+        "count": 35,
+        "recall": 0.8
+      },
+      "vehicles_over_100": {
+        "found": 68,
+        "count": 93,
+        "recall": 0.7311827956989247
+      },
+      "people_over_80": {
+        "found": 3,
+        "count": 11,
+        "recall": 0.2727272727272727
+      }
+    },
+    "kind_agreement": {
+      "same": 89,
+      "matched": 95
+    },
+    "large_recall": 0.6826923076923077,
+    "invented_fraction": 0.509009009009009,
+    "ignored_small_predictions": 281,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 47,
+    "mean_ms": 261.6913349233073,
+    "p95_ms": 265.73359963076655,
+    "candidate": "fasterrcnn-native-c0.4",
+    "weights_sha256": "dd69338a24b8d7381807e247652bdc356325bcbaf1cd3e092e00e0a1a58706bf",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 3.6,
+      "poll_mean_ms": 0.024093834023612242,
+      "poll_p95_ms": 0.07854824943933633,
+      "poll_max_ms": 0.15104198246262968
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "timing_note": "Late fallback, evaluated after fixed ONNX selection; no holdout tuning.",
+    "matched_precision_invented_fraction": 0.5432692307692307,
+    "eligible_reports": 222,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5737252648542971,
+    "speed_and_player_eligible": false
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 30,
+        "count": 35,
+        "recall": 0.8571428571428571
+      },
+      "vehicles_over_100": {
+        "found": 71,
+        "count": 93,
+        "recall": 0.7634408602150538
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 94,
+      "matched": 100
+    },
+    "large_recall": 0.7019230769230769,
+    "invented_fraction": 0.5151515151515151,
+    "ignored_small_predictions": 260,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 50,
+    "mean_ms": 109.24816202350485,
+    "p95_ms": 109.92935559188481,
+    "candidate": "l-native-tiles-c0.15",
+    "weights_sha256": "3cd564aa0bbd19e84bdafab514c636b6b4386a4344451f7b1ccb0f1ab6095350",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 7.4,
+      "poll_mean_ms": 0.02315553797719379,
+      "poll_p95_ms": 0.06758545641787349,
+      "poll_max_ms": 0.12562499614432454
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.504950495049505,
+    "eligible_reports": 198,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5718125960061443,
+    "speed_and_player_eligible": false
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 28,
+        "count": 35,
+        "recall": 0.8
+      },
+      "vehicles_over_100": {
+        "found": 70,
+        "count": 93,
+        "recall": 0.7526881720430108
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 86,
+      "matched": 98
+    },
+    "large_recall": 0.6923076923076923,
+    "invented_fraction": 0.45604395604395603,
+    "ignored_small_predictions": 229,
+    "player_reported_frames": [
+      "064"
+    ],
+    "player_reported_fraction": 0.0125,
+    "player_present_frames": 51,
+    "removed_player_detections": 50,
+    "mean_ms": 26.085165125550702,
+    "p95_ms": 26.473226795496885,
+    "candidate": "s-native-tiles-c0.15",
+    "weights_sha256": "8d039eb27c5bbf6f3a5fa871aa0fbd0dbc4576c1d07c512b333e32a668a258cb",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.047258067837295435,
+      "poll_p95_ms": 0.13564550172304732,
+      "poll_max_ms": 0.17187499906867743
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.4585635359116022,
+    "eligible_reports": 182,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5696155994543091,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 27,
+        "count": 35,
+        "recall": 0.7714285714285715
+      },
+      "vehicles_over_100": {
+        "found": 68,
+        "count": 93,
+        "recall": 0.7311827956989247
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 84,
+      "matched": 96
+    },
+    "large_recall": 0.6730769230769231,
+    "invented_fraction": 0.40625,
+    "ignored_small_predictions": 158,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 50,
+    "mean_ms": 26.125052651332226,
+    "p95_ms": 26.658431589021347,
+    "candidate": "s-native-tiles-c0.25",
+    "weights_sha256": "8d039eb27c5bbf6f3a5fa871aa0fbd0dbc4576c1d07c512b333e32a668a258cb",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.047258067837295435,
+      "poll_p95_ms": 0.13564550172304732,
+      "poll_max_ms": 0.17187499906867743
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.40372670807453415,
+    "eligible_reports": 160,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5695448872364195,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 30,
+        "count": 35,
+        "recall": 0.8571428571428571
+      },
+      "vehicles_over_100": {
+        "found": 73,
+        "count": 93,
+        "recall": 0.7849462365591398
+      },
+      "people_over_80": {
+        "found": 4,
+        "count": 11,
+        "recall": 0.36363636363636365
+      }
+    },
+    "kind_agreement": {
+      "same": 94,
+      "matched": 104
+    },
+    "large_recall": 0.7403846153846154,
+    "invented_fraction": 0.7413793103448276,
+    "ignored_small_predictions": 957,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 50,
+    "mean_ms": 23.67944941033784,
+    "p95_ms": 25.854255598096643,
+    "candidate": "rtdetr-640-c0.15",
+    "weights_sha256": "583a236ac21c95a7fd94f284fc21485e42355bfef82c27011ba78fbc09ee87e2",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.05036635285553833,
+      "poll_p95_ms": 0.13688562175957483,
+      "poll_max_ms": 0.1687500043772161
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.7432098765432099,
+    "eligible_reports": 406,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5660865367483832,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 25,
+        "count": 35,
+        "recall": 0.7142857142857143
+      },
+      "vehicles_over_100": {
+        "found": 63,
+        "count": 93,
+        "recall": 0.6774193548387096
+      },
+      "people_over_80": {
+        "found": 3,
+        "count": 11,
+        "recall": 0.2727272727272727
+      }
+    },
+    "kind_agreement": {
+      "same": 78,
+      "matched": 86
+    },
+    "large_recall": 0.6346153846153846,
+    "invented_fraction": 0.40816326530612246,
+    "ignored_small_predictions": 110,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 47,
+    "mean_ms": 23.680251510813832,
+    "p95_ms": 25.480804160179105,
+    "candidate": "rtdetr-640-c0.55",
+    "weights_sha256": "583a236ac21c95a7fd94f284fc21485e42355bfef82c27011ba78fbc09ee87e2",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.05036635285553833,
+      "poll_p95_ms": 0.13688562175957483,
+      "poll_max_ms": 0.1687500043772161
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.410958904109589,
+    "eligible_reports": 147,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5640672691363936,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 29,
+        "count": 35,
+        "recall": 0.8285714285714286
+      },
+      "vehicles_over_100": {
+        "found": 70,
+        "count": 93,
+        "recall": 0.7526881720430108
+      },
+      "people_over_80": {
+        "found": 3,
+        "count": 11,
+        "recall": 0.2727272727272727
+      }
+    },
+    "kind_agreement": {
+      "same": 90,
+      "matched": 99
+    },
+    "large_recall": 0.7019230769230769,
+    "invented_fraction": 0.6212121212121212,
+    "ignored_small_predictions": 451,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 50,
+    "mean_ms": 23.285400087115704,
+    "p95_ms": 24.898839558591135,
+    "candidate": "rtdetr-640-c0.25",
+    "weights_sha256": "583a236ac21c95a7fd94f284fc21485e42355bfef82c27011ba78fbc09ee87e2",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.05036635285553833,
+      "poll_p95_ms": 0.13688562175957483,
+      "poll_max_ms": 0.1687500043772161
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.623574144486692,
+    "eligible_reports": 264,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5581936880323978,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 25,
+        "count": 35,
+        "recall": 0.7142857142857143
+      },
+      "vehicles_over_100": {
+        "found": 64,
+        "count": 93,
+        "recall": 0.6881720430107527
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 81,
+      "matched": 92
+    },
+    "large_recall": 0.6346153846153846,
+    "invented_fraction": 0.3706293706293706,
+    "ignored_small_predictions": 110,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 49,
+    "mean_ms": 26.084558850561734,
+    "p95_ms": 26.761272599105723,
+    "candidate": "s-native-tiles-c0.4",
+    "weights_sha256": "8d039eb27c5bbf6f3a5fa871aa0fbd0dbc4576c1d07c512b333e32a668a258cb",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.047258067837295435,
+      "poll_p95_ms": 0.13564550172304732,
+      "poll_max_ms": 0.17187499906867743
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.36551724137931035,
+    "eligible_reports": 143,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5534116421213195,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 25,
+        "count": 35,
+        "recall": 0.7142857142857143
+      },
+      "vehicles_over_100": {
+        "found": 65,
+        "count": 93,
+        "recall": 0.6989247311827957
+      },
+      "people_over_80": {
+        "found": 3,
+        "count": 11,
+        "recall": 0.2727272727272727
+      }
+    },
+    "kind_agreement": {
+      "same": 85,
+      "matched": 91
+    },
+    "large_recall": 0.6538461538461539,
+    "invented_fraction": 0.4789473684210526,
+    "ignored_small_predictions": 212,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 47,
+    "mean_ms": 268.4804187374539,
+    "p95_ms": 281.2826708497596,
+    "candidate": "fasterrcnn-native-c0.55",
+    "weights_sha256": "dd69338a24b8d7381807e247652bdc356325bcbaf1cd3e092e00e0a1a58706bf",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 3.6,
+      "poll_mean_ms": 0.024093834023612242,
+      "poll_p95_ms": 0.07854824943933633,
+      "poll_max_ms": 0.15104198246262968
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "timing_note": "Late fallback, evaluated after fixed ONNX selection; no holdout tuning.",
+    "matched_precision_invented_fraction": 0.5,
+    "eligible_reports": 190,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5517475874436826,
+    "speed_and_player_eligible": false
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 25,
+        "count": 35,
+        "recall": 0.7142857142857143
+      },
+      "vehicles_over_100": {
+        "found": 63,
+        "count": 93,
+        "recall": 0.6774193548387096
+      },
+      "people_over_80": {
+        "found": 3,
+        "count": 11,
+        "recall": 0.2727272727272727
+      }
+    },
+    "kind_agreement": {
+      "same": 83,
+      "matched": 91
+    },
+    "large_recall": 0.6346153846153846,
+    "invented_fraction": 0.49162011173184356,
+    "ignored_small_predictions": 208,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 48,
+    "mean_ms": 23.47797706424899,
+    "p95_ms": 25.139197309908923,
+    "candidate": "rtdetr-640-c0.4",
+    "weights_sha256": "583a236ac21c95a7fd94f284fc21485e42355bfef82c27011ba78fbc09ee87e2",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.05036635285553833,
+      "poll_p95_ms": 0.13688562175957483,
+      "poll_max_ms": 0.1687500043772161
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.49162011173184356,
+    "eligible_reports": 179,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5432030575299633,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 25,
+        "count": 35,
+        "recall": 0.7142857142857143
+      },
+      "vehicles_over_100": {
+        "found": 61,
+        "count": 93,
+        "recall": 0.6559139784946236
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 68,
+      "matched": 83
+    },
+    "large_recall": 0.6057692307692307,
+    "invented_fraction": 0.49375,
+    "ignored_small_predictions": 74,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 49,
+    "mean_ms": 11.31450472639699,
+    "p95_ms": 11.697514598199632,
+    "candidate": "s-640-c0.15",
+    "weights_sha256": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.04744758189190179,
+      "poll_p95_ms": 0.119458304834552,
+      "poll_max_ms": 0.15300000086426735
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.4876543209876543,
+    "eligible_reports": 160,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.51456696864963,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 23,
+        "count": 35,
+        "recall": 0.6571428571428571
+      },
+      "vehicles_over_100": {
+        "found": 58,
+        "count": 93,
+        "recall": 0.6236559139784946
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 64,
+      "matched": 78
+    },
+    "large_recall": 0.5769230769230769,
+    "invented_fraction": 0.4076923076923077,
+    "ignored_small_predictions": 38,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 48,
+    "mean_ms": 11.47327497274091,
+    "p95_ms": 12.207810081599746,
+    "candidate": "s-640-c0.25",
+    "weights_sha256": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.04744758189190179,
+      "poll_p95_ms": 0.119458304834552,
+      "poll_max_ms": 0.15300000086426735
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.40458015267175573,
+    "eligible_reports": 130,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5137311613118065,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 21,
+        "count": 35,
+        "recall": 0.6
+      },
+      "vehicles_over_100": {
+        "found": 56,
+        "count": 93,
+        "recall": 0.6021505376344086
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 62,
+      "matched": 74
+    },
+    "large_recall": 0.5576923076923077,
+    "invented_fraction": 0.33636363636363636,
+    "ignored_small_predictions": 20,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 48,
+    "mean_ms": 11.340264087630203,
+    "p95_ms": 11.820148571860045,
+    "candidate": "s-640-c0.4",
+    "weights_sha256": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.04744758189190179,
+      "poll_p95_ms": 0.119458304834552,
+      "poll_max_ms": 0.15300000086426735
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.3333333333333333,
+    "eligible_reports": 110,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5119012707722385,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 20,
+        "count": 35,
+        "recall": 0.5714285714285714
+      },
+      "vehicles_over_100": {
+        "found": 58,
+        "count": 93,
+        "recall": 0.6236559139784946
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 71,
+      "matched": 80
+    },
+    "large_recall": 0.5769230769230769,
+    "invented_fraction": 0.35537190082644626,
+    "ignored_small_predictions": 75,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 49,
+    "mean_ms": 26.11731305005378,
+    "p95_ms": 26.741400657920167,
+    "candidate": "s-native-tiles-c0.55",
+    "weights_sha256": "8d039eb27c5bbf6f3a5fa871aa0fbd0dbc4576c1d07c512b333e32a668a258cb",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.047258067837295435,
+      "poll_p95_ms": 0.13564550172304732,
+      "poll_max_ms": 0.17187499906867743
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.34959349593495936,
+    "eligible_reports": 121,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.5053826915997004,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 17,
+        "count": 35,
+        "recall": 0.4857142857142857
+      },
+      "vehicles_over_100": {
+        "found": 49,
+        "count": 93,
+        "recall": 0.5268817204301075
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 53,
+      "matched": 61
+    },
+    "large_recall": 0.49038461538461536,
+    "invented_fraction": 0.2823529411764706,
+    "ignored_small_predictions": 11,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 47,
+    "mean_ms": 11.340118236330454,
+    "p95_ms": 11.83243188279448,
+    "candidate": "s-640-c0.55",
+    "weights_sha256": "c5c2d13e59ae883e6af3b45daea64af4833a4951c92d116ec270d9ddbe998063",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.04744758189190179,
+      "poll_p95_ms": 0.119458304834552,
+      "poll_max_ms": 0.15300000086426735
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.2823529411764706,
+    "eligible_reports": 85,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.4780153116965261,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 19,
+        "count": 35,
+        "recall": 0.5428571428571428
+      },
+      "vehicles_over_100": {
+        "found": 50,
+        "count": 93,
+        "recall": 0.5376344086021505
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 50,
+      "matched": 70
+    },
+    "large_recall": 0.5,
+    "invented_fraction": 0.5068493150684932,
+    "ignored_small_predictions": 49,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 49,
+    "mean_ms": 9.550388077332173,
+    "p95_ms": 10.160995805927087,
+    "candidate": "tiny-416-c0.15",
+    "weights_sha256": "427cc366d34e27ff7a03e2899b5e3671425c262ea2291f88bb942bc1cc70b0f7",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.05038949951995164,
+      "poll_p95_ms": 0.13431700062938035,
+      "poll_max_ms": 0.15608302783221006
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.5138888888888888,
+    "eligible_reports": 146,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.43886510455224553,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 14,
+        "count": 35,
+        "recall": 0.4
+      },
+      "vehicles_over_100": {
+        "found": 42,
+        "count": 93,
+        "recall": 0.45161290322580644
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 40,
+      "matched": 56
+    },
+    "large_recall": 0.4230769230769231,
+    "invented_fraction": 0.42424242424242425,
+    "ignored_small_predictions": 28,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 48,
+    "mean_ms": 8.739229212369537,
+    "p95_ms": 9.600591340858955,
+    "candidate": "tiny-416-c0.25",
+    "weights_sha256": "427cc366d34e27ff7a03e2899b5e3671425c262ea2291f88bb942bc1cc70b0f7",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.05038949951995164,
+      "poll_p95_ms": 0.13431700062938035,
+      "poll_max_ms": 0.15608302783221006
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.42857142857142855,
+    "eligible_reports": 99,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.40229716520039094,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 13,
+        "count": 35,
+        "recall": 0.37142857142857144
+      },
+      "vehicles_over_100": {
+        "found": 34,
+        "count": 93,
+        "recall": 0.3655913978494624
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 32,
+      "matched": 43
+    },
+    "large_recall": 0.34615384615384615,
+    "invented_fraction": 0.3384615384615385,
+    "ignored_small_predictions": 9,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 47,
+    "mean_ms": 9.756437474425184,
+    "p95_ms": 10.296511877095327,
+    "candidate": "tiny-416-c0.4",
+    "weights_sha256": "427cc366d34e27ff7a03e2899b5e3671425c262ea2291f88bb942bc1cc70b0f7",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.05038949951995164,
+      "poll_p95_ms": 0.13431700062938035,
+      "poll_max_ms": 0.15608302783221006
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.3384615384615385,
+    "eligible_reports": 65,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.39509415315866925,
+    "speed_and_player_eligible": true
+  },
+  {
+    "frames": 80,
+    "iou": 0.4,
+    "groups": {
+      "vehicles_over_200": {
+        "found": 8,
+        "count": 35,
+        "recall": 0.22857142857142856
+      },
+      "vehicles_over_100": {
+        "found": 21,
+        "count": 93,
+        "recall": 0.22580645161290322
+      },
+      "people_over_80": {
+        "found": 2,
+        "count": 11,
+        "recall": 0.18181818181818182
+      }
+    },
+    "kind_agreement": {
+      "same": 23,
+      "matched": 27
+    },
+    "large_recall": 0.22115384615384615,
+    "invented_fraction": 0.325,
+    "ignored_small_predictions": 4,
+    "player_reported_frames": [],
+    "player_reported_fraction": 0.0,
+    "player_present_frames": 51,
+    "removed_player_detections": 47,
+    "mean_ms": 9.70079637481831,
+    "p95_ms": 10.235868772724643,
+    "candidate": "tiny-416-c0.55",
+    "weights_sha256": "427cc366d34e27ff7a03e2899b5e3671425c262ea2291f88bb942bc1cc70b0f7",
+    "poller": {
+      "loop_hz": 30.0,
+      "results_hz": 15.0,
+      "poll_mean_ms": 0.05038949951995164,
+      "poll_p95_ms": 0.13431700062938035,
+      "poll_max_ms": 0.15608302783221006
+    },
+    "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+    "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+    "matched_precision_invented_fraction": 0.325,
+    "eligible_reports": 40,
+    "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+    "selection_score": 0.3277990155006284,
+    "speed_and_player_eligible": true
+  }
+]

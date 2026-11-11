@@ -14,6 +14,7 @@ from pathlib import Path
 import cv2
 
 from .contract import FRAME_SIZE, HUD_RECT, Pad
+from .flow import MENUS
 from .head import HeadRequest, ScriptedHead, build_prompt, parse_response, response_data
 from .loop import ControllerRuntime, Pipeline, RuntimeInterruptedError, cleanup_runtime, interrupt_handlers
 from .scene import EventDetector, SceneText, TextReader
@@ -55,6 +56,7 @@ class Conductor:
         notebook: Path | None = None,
         runner=None,
         detector=None,
+        flow=None,
         ocr=False,
         text_reader=None,
         quiet_seconds=60.0,
@@ -96,6 +98,17 @@ class Conductor:
         self.wanted_candidate = None
         self.wanted_since = None
         self.wanted_level = None
+        self.low_health_since = None
+        self.low_health_reported = False
+        self.flow = flow
+        self.flow_result = None
+        self.flow_started = None
+        self.flow_screen = None
+        self.flow_events = []
+        self.flow_actions = []
+        self.expected_skill = None
+        self.text_time = None
+        self.ocr_capture_time = None
 
     def write(self, row):
         self.log.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -106,15 +119,18 @@ class Conductor:
             self.reader = TextReader()
         return self.reader.read(rgb)
 
-    def _text(self, rgb, t, injected):
+    def _text(self, rgb, t, injected, capture_time=None):
+        captured = t if capture_time is None else capture_time
         if injected is not None:
-            self.text = injected
+            self.text, self.text_time = injected, captured
         if not self.ocr:
             return
         if self.ocr_future is not None:
             if self.ocr_future.done():
                 try:
-                    self.text = self.ocr_future.result()
+                    result = self.ocr_future.result()
+                    if self.text_time is None or self.ocr_capture_time >= self.text_time:
+                        self.text, self.text_time = result, self.ocr_capture_time
                 except Exception as exc:
                     self.write({"type": "ocr_error", "t": t, "error": str(exc)})
                     raise RuntimeError("scene OCR failed") from exc
@@ -124,10 +140,11 @@ class Conductor:
                 raise TimeoutError("scene OCR exceeded its time limit")
         if self.ocr_future is None and t >= self.next_ocr:
             self.ocr_started = self.clock()
+            self.ocr_capture_time = captured
             self.ocr_future = self.submit(self._read_text, rgb.copy())
             self.next_ocr = t + self.ocr_interval
 
-    def _finish_head(self, t):
+    def _finish_head(self, t, *, discard=False):
         if self.future is None or not self.future.done():
             return
         request = self.inflight
@@ -138,7 +155,7 @@ class Conductor:
             "type": "response",
             "t": t,
             "duration": duration,
-            "overtaken": request["epoch"] != self.epoch,
+            "overtaken": discard or request["epoch"] != self.epoch,
             "disposition": "discarded",
         }
         try:
@@ -210,13 +227,21 @@ class Conductor:
         self.last_request_time = observation.time
         self.request_times.append(observation.time)
 
-    def tick(self, observation: Observation, rgb, *, text=None, events=()):
+    def tick(self, observation: Observation, rgb, *, text=None, text_time=None, frame_time=None, events=()):
         observation = replace(observation, frame=rgb)
         t = observation.time
-        self._text(rgb, t, text)
+        self._text(rgb, t, text, text_time if text is not None else frame_time)
         detected = self.detector.update(observation.reading, t, text=self.text)
         new_events = [asdict(event) for event in detected] + list(events)
         new_events.extend(self._hud_events(observation))
+        recovered = self.flow_started is not None
+        flow_result = self._flow_tick(observation, rgb)
+        # A stuck screen is where the reflex has done what it knows. From there the head's
+        # answer is run like any plan, and the reflex takes over again when the screen changes.
+        if flow_result is not None and flow_result.action != "stuck":
+            return SkillResult(flow_result.pad, reason="flow")
+        if recovered:
+            new_events = []
         if new_events:
             self.epoch += 1
             self.pending.extend(new_events)
@@ -224,6 +249,7 @@ class Conductor:
             self.carry_started = None
         self._finish_head(t)
         result = self.runner.tick(observation)
+        self._expect_skill()
         if self.runner.completed:
             last = self.runner.describe()
             failed = result.status == "failed"
@@ -270,13 +296,17 @@ class Conductor:
                 # One row per carry, not one per tick: the play log has the ticks.
                 self.write({"type": "carry_on", "t": t, "name": "carry_on"})
                 self.carry_logged = self.carry_started
-        elif not self.runner.has_plan:
+        elif not self.runner.has_plan and not observation.reading.corrupt:
+            # A damaged tick is stood out and decides nothing: the minimap reader calls a clean
+            # cable picture damaged about once a second, and the carry would never last.
             self.carry_allowed = False
         return result
 
     def _hud_events(self, observation):
         hud, t = observation.hud, observation.time
         if hud is None:
+            self.low_health_since = None
+            self.low_health_reported = False
             return []
         events = []
         if self.last_hud is None and hud.wanted is not None:
@@ -291,17 +321,133 @@ class Conductor:
         ):
             events.append({"kind": "wanted_changed", "wanted": hud.wanted})
             self.wanted_level = hud.wanted
+        if hud.health is not None and hud.health < 0.3:
+            if self.low_health_since is None:
+                self.low_health_since = t
+            if not self.low_health_reported and t - self.low_health_since >= 0.5:
+                events.append({"kind": "low_health", "health": hud.health})
+                self.low_health_reported = True
+        else:
+            self.low_health_since = None
+            self.low_health_reported = False
         previous = self.last_hud
-        if (
-            hud.health is not None
-            and hud.health < 0.3
-            and (previous is None or previous.health is None or previous.health >= 0.3)
-        ):
-            events.append({"kind": "low_health", "health": hud.health})
-        if previous is not None and hud.screen != previous.screen:
+        if self.flow is None and previous is not None and hud.screen != previous.screen:
             events.append({"kind": "screen_changed", "screen": hud.screen})
         self.last_hud = hud
         return events
+
+    def _expect_skill(self):
+        if self.flow is None:
+            return
+        active = self.runner.active
+        if active is self.expected_skill:
+            return
+        self.flow.end_expectation()
+        self.expected_skill = active
+        if active is not None and getattr(active, "opens", ()):
+            self.flow.expect(*active.opens, until=self.runner.active_started + active.limit)
+
+    def _abandon_head(self, t):
+        if self.future is None:
+            return
+        self.future.cancel()
+        self.write(
+            {
+                **self.inflight["row"],
+                "type": "response",
+                "t": t,
+                "duration": max(0, self.clock() - self.inflight["started"]),
+                "overtaken": True,
+                "disposition": "discarded",
+                "applied": False,
+            }
+        )
+        self.future = self.inflight = None
+
+    def _flow_tick(self, observation, rgb):
+        if self.flow is None:
+            return None
+        self._expect_skill()
+        t = observation.time
+        fresh_text = self.text if self.text_time is not None and 0 <= t - self.text_time <= 1.5 else None
+        result = self.flow.tick(observation, fresh_text)
+        self.flow_result = result
+        if result is not None:
+            if self.flow_started is None and result.action in ("confirm", "await_hud", "await_fresh_read"):
+                # One odd reading is not a screen yet: this tick is neutral and the plan is kept.
+                return result
+            screen = observation.hud.screen if observation.hud is not None else self.flow_screen
+            if result.action != "stuck" and self.runner.has_plan:
+                # Also what the head planned for a stuck screen, once that screen has changed.
+                self.runner.stop("flow")
+                self._expect_skill()
+            if self.flow_started is None:
+                self.epoch += 1
+                self.pending.clear()
+                self.carry_allowed, self.carry_started = False, None
+                self.flow_started, self.flow_screen = t, screen
+                self.flow_events, self.flow_actions = [], []
+                self.write(
+                    {
+                        "type": "flow_enter",
+                        "t": t,
+                        "screen": screen,
+                        "action": result.action,
+                        "buttons": list(result.pad.buttons),
+                        "seconds": 0,
+                    }
+                )
+            action = {"screen": screen, "action": result.action, "buttons": list(result.pad.buttons)}
+            previous = self.flow_actions[-1] if self.flow_actions else None
+            if previous is None or any(previous[key] != value for key, value in action.items()):
+                self.flow_actions.append({**action, "seconds": t - self.flow_started})
+            if result.action != "stuck":
+                self._finish_head(t, discard=True)
+            for event in result.events:
+                if event["kind"] == "stuck":
+                    # The rest of this tick asks the head, and from here its answer is run.
+                    self._abandon_head(t)
+                    self.pending = [{**event, "seconds": t - self.flow_started}]
+                else:
+                    self.flow_events.append(event)
+            return result
+        if self.flow_started is not None:
+            seconds = t - self.flow_started
+            self.epoch += 1
+            self._abandon_head(t)
+            self.pending = [
+                {"screen": self.flow_screen, **event, "seconds": seconds} for event in self.flow_events
+            ] or [
+                {
+                    "kind": "menu_closed" if self.flow_screen in MENUS else "screen_cleared",
+                    "screen": self.flow_screen,
+                    "seconds": seconds,
+                }
+            ]
+            self.write(
+                {
+                    "type": "flow_exit",
+                    "t": t,
+                    "screen": self.flow_screen,
+                    "action": "recovered",
+                    "seconds": seconds,
+                    "actions": self.flow_actions,
+                }
+            )
+            self.flow_started = None
+        return None
+
+    def describe(self, result=None):
+        if self.flow_result is not None and not (self.flow_result.action == "stuck" and self.runner.has_plan):
+            return {
+                "name": "flow",
+                "action": self.flow_result.action,
+                "status": "running",
+                "screen": self.flow_screen,
+            }
+        if result is not None and result.reason == "carry-on":
+            return {"name": "carry_on", "status": "running", "reason": "head-pending"}
+        return self.runner.describe()
 
     def close(self):
         if self.closed:
@@ -345,6 +491,7 @@ def run_play(
     driver_factory=None,
     objects=None,
     hud=None,
+    flow=None,
 ):
     pipeline = Pipeline() if pipeline is None else pipeline
     runtime = ControllerRuntime(bridge, shadow=shadow, clock=clock)
@@ -368,6 +515,7 @@ def run_play(
                 ocr=ocr,
                 quiet_seconds=quiet_seconds,
                 clock=clock,
+                **({"flow": flow} if flow is not None else {}),
                 runner=None if driver_factory is None else SkillRunner(driver_factory=driver_factory),
             )
             log = (destination / "play.jsonl").open("x")
@@ -400,6 +548,7 @@ def run_play(
                             else hud.read(frame.rgb, text=getattr(conductor, "text", None)),
                         ),
                         frame.rgb,
+                        frame_time=received - frame.age,
                     )
                 sent, status = runtime.tick(
                     None if result is None else result.pad, fresh=fresh, received=received
@@ -411,7 +560,9 @@ def run_play(
                             "frame_id": None if frame is None else frame.id,
                             "fresh": fresh,
                             "reading": None if reading is None else asdict(reading),
-                            "skill": (
+                            "skill": conductor.describe(result)
+                            if hasattr(conductor, "describe")
+                            else (
                                 {"name": "carry_on", "status": "running", "reason": "head-pending"}
                                 if result is not None and result.reason == "carry-on"
                                 else conductor.runner.describe()

@@ -2,6 +2,20 @@
 
 const element = (id) => document.getElementById(id);
 const skillNames = {
+  set_waypoint: "Wegpunkt setzen",
+  enter_vehicle: "Einsteigen",
+  fight: "Schießen",
+  melee: "Nahkampf",
+  punch: "Zuschlagen",
+  flow_retry: "Neuer Versuch",
+  flow_back: "Menü schließen",
+  flow_stuck: "Bildschirm hängt",
+  flow_wait: "Warten",
+  flow_observe: "Warten",
+  flow_confirm: "Warten",
+  flow_await_hud: "Warten",
+  flow_await_fresh_read: "Warten",
+  flow_release: "Menü schließen",
   carry_on: "Weitergehen",
   drive_route: "Route fahren",
   wait: "Warten",
@@ -23,7 +37,7 @@ function render(state) {
   document.body.hidden = state.status === "stale";
   text("sentence", state.sentence || "Warte auf eine Entscheidung.", 360);
   element("thinking").hidden = !state.thinking || ["stale", "ended", "waiting"].includes(state.status);
-  text("skill", state.skill ? skillName(state.skill.name) : "Bereit");
+  text("skill", state.skill ? skillName(state.skill.name === "flow" ? `flow_${state.skill.action}` : state.skill.name) : "Bereit");
   text("skill-state", state.skill ? (skillStates[state.skill.status] || "") : "");
   const plan = Array.isArray(state.plan) ? state.plan : [];
   const list = element("plan");

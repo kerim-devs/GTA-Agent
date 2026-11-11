@@ -7,9 +7,8 @@ from typing import ClassVar
 import cv2
 import numpy as np
 
-from .contract import Pad
+from .contract import Observation, Pad, SkillResult
 from .scene import SceneText, TextReader
-from .skills import Observation, SkillResult
 
 
 def map_screen(frame: np.ndarray, text: SceneText) -> str | None:
@@ -130,12 +129,102 @@ def read_map(frame: np.ndarray, text: SceneText) -> MapPicture:
     return MapPicture(screen, cursor, player, tuple(missions), roads, cv2.countNonZero(purple) >= 12)
 
 
+def _map_features(frame):
+    if frame.shape != (720, 1280, 3) or frame.dtype != np.uint8:
+        return None
+    gray = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
+    neutral = frame.max(axis=2).astype(int) - frame.min(axis=2).astype(int) < 30
+    mask = ((gray > 120) & neutral).astype(np.uint8) * 255
+    mask[:165] = 0
+    mask[565:] = 0
+    mask[:, :230] = 0
+    mask[:, 980:] = 0
+    mask[300:420, 580:700] = 0  # Fixed cursor, including its occlusion of streets.
+    points = cv2.goodFeaturesToTrack(gray, 250, 0.01, 8, mask=mask)
+    if points is None or len(points) < 16:
+        return None
+    return gray, points
+
+
+def map_shift(before, after):
+    """Return a supported translation, or None when damage/motion cannot be separated.
+
+    Only neutral road features vote; the coloured paused scene and fixed UI do not.
+    A majority must agree in several regions, with matching local pixel patches in
+    both pictures. A damaged pair is never added to the travelled distance.
+    """
+    a, b = _map_features(before), _map_features(after)
+    if a is None or b is None:
+        return None
+    moved, forward, error = cv2.calcOpticalFlowPyrLK(a[0], b[0], a[1], None, winSize=(31, 31), maxLevel=4)
+    returned, backward, _ = cv2.calcOpticalFlowPyrLK(b[0], a[0], moved, None, winSize=(31, 31), maxLevel=4)
+    valid = (
+        (forward[:, 0] == 1)
+        & (backward[:, 0] == 1)
+        & (error[:, 0] < 20)
+        & (np.linalg.norm(a[1] - returned, axis=2)[:, 0] < 1.5)
+    )
+    start, end = a[1][:, 0][valid], moved[:, 0][valid]
+    if len(start) < 16 or valid.mean() < 0.65:
+        return None
+    shifts = end - start
+    delta = np.median(shifts, axis=0)
+    consistent = np.linalg.norm(shifts - delta, axis=1) < 2
+    if consistent.sum() < 16 or consistent.mean() < 0.8:
+        return None
+    start, end = start[consistent], end[consistent]
+    if np.any((end[:, 0] < 235) | (end[:, 0] > 975) | (end[:, 1] < 170) | (end[:, 1] > 560)):
+        keep = (end[:, 0] >= 235) & (end[:, 0] <= 975) & (end[:, 1] >= 170) & (end[:, 1] <= 560)
+        start, end = start[keep], end[keep]
+        if len(start) < 16:
+            return None
+    if np.ptp(start[:, 0]) < 100 or np.ptp(start[:, 1]) < 80:
+        return None
+
+    errors = []
+    for first, second in zip(start, end, strict=True):
+        x, y = np.rint(first).astype(int)
+        u, v = np.rint(second).astype(int)
+        left = a[0][y - 5 : y + 6, x - 5 : x + 6].astype(float)
+        right = b[0][v - 5 : v + 6, u - 5 : u + 6].astype(float)
+        errors.append(np.mean(np.abs(left - right)))
+    if np.mean(np.array(errors) < 25) < 0.85:
+        return None
+    return tuple(float(value) for value in np.median(shifts[consistent], axis=0))
+
+
+def land_at_cursor(frame):
+    # Open water is flat. Require street/terrain detail around (not on) the cursor;
+    # uncertainty is treated like water, including the coloured scene behind the map.
+    patch = frame[328:393, 608:673]
+    gray = cv2.cvtColor(patch, cv2.COLOR_RGB2GRAY)
+    neutral = patch.max(axis=2).astype(int) - patch.min(axis=2).astype(int) < 30
+    mask = np.ones(gray.shape, bool)
+    mask[28:37] = False
+    mask[:, 28:37] = False
+    dark = (gray < 150) & neutral & mask
+    edges = cv2.Canny(gray, 70, 140) > 0
+    return bool(dark.sum() >= 250 and (edges & neutral & mask).sum() >= 35)
+
+
+BLIND_SECONDS = 2.0
+
+
 class SetWaypoint:
     name = "set_waypoint"
-    parameters: ClassVar = {"target": ("mission", "away"), "duration": (1.0, 45.0, 45.0)}
+    opens = ("pause", "map")
+    parameters: ClassVar = {
+        "target": ("mission", "away"),
+        "duration": (1.0, 45.0, 45.0),
+        "direction": ("any", "north", "east", "south", "west"),
+        "distance": ("near", "far"),
+    }
+    directions: ClassVar = {"north": (0, -1), "east": (1, 0), "south": (0, 1), "west": (-1, 0)}
+    distances: ClassVar = {"near": 100.0, "far": 220.0}
+    counter = 0
     prompt = (
-        "Set a waypoint to the nearest visible recognised mission letter, or an away road point. "
-        "Needs fresh readable German pause-map pictures and a visible player marker. "
+        "Set a waypoint to a recognised mission letter, or pan away by a measured near/far distance. "
+        "Away needs no player marker; direction any rotates. Needs fresh readable German map pictures. "
         "Fails and backs out on an unverified screen, missing target/cursor, or time limit."
     )
     settle = 1.3  # Exceeds the recorded Wi-Fi picture delay of 0.6-1.1 s.
@@ -143,10 +232,28 @@ class SetWaypoint:
 
     def __init__(self, args: dict):
         if not isinstance(args, dict) or set(args) - self.parameters.keys():
-            raise ValueError("expected target and duration")
+            raise ValueError("expected target, duration, direction and distance")
         self.target = args.get("target", "mission")
         if not isinstance(self.target, str) or self.target not in self.parameters["target"]:
             raise ValueError("target must be mission or away")
+        for key in ("direction", "distance"):
+            value = args.get(key, self.parameters[key][0])
+            if not isinstance(value, str) or value not in self.parameters[key]:
+                raise ValueError(f"invalid {key}")
+        self.direction = args.get("direction", "any")
+        self.distance = self.distances[args.get("distance", "near")]
+        if self.target == "away" and self.direction == "any":
+            self.direction = tuple(self.directions)[SetWaypoint.counter % 4]
+            SetWaypoint.counter += 1
+        self.displacement = np.zeros(2)
+        self.alternate_used = False
+        self.inland_used = False
+        self.push_seconds = 0.10
+        self.push_rate = None
+        # Which way the map moves under the stick was fitted on one noisy clip. The first
+        # push that moves the map settles it; a map that runs the other way turns the stick.
+        self.sense = 1
+        self.sense_known = False
         duration = args.get("duration", 45.0)
         if (
             isinstance(duration, bool)
@@ -172,15 +279,16 @@ class SetWaypoint:
         self.proved_waypoint = False
         self.command_frame = None
         self.current_frame = None
+        self.blind_since = None
 
     def stop(self, reason="interrupted") -> SkillResult:
         self.finished = SkillResult(status="failed", reason=reason)
         return self.finished
 
-    def _press(self, pad, now, phase):
+    def _press(self, pad, now, phase, seconds=0.10):
         self.phase = phase
         self.held = pad
-        self.release_at = now + 0.10
+        self.release_at = now + seconds
         self.ready_at = self.release_at + self.settle
         self.command_frame = None if self.current_frame is None else self.current_frame.copy()
         return SkillResult(pad)
@@ -234,6 +342,15 @@ class SetWaypoint:
 
     def _step(self, observation):
         now = observation.time
+        if observation.frame is None or observation.reading.corrupt:
+            # Nothing is decided on such a tick. The minimap reader calls a clean cable picture
+            # damaged for a tick or two about once a second; only damage that lasts is a fault.
+            if self.blind_since is None:
+                self.blind_since = now
+            if now - self.blind_since < BLIND_SECONDS:
+                return SkillResult()
+        else:
+            self.blind_since = None
         self.current_frame = observation.frame
         game = self._game(observation)
         if self.phase == "exit":
@@ -265,7 +382,11 @@ class SetWaypoint:
             return self._press(Pad(buttons=("options",)), now, "enter")
         if observation.frame is None or observation.reading.corrupt:
             return self._fail("map-picture-missing-or-damaged")
-        if self.command_frame is not None and np.array_equal(observation.frame, self.command_frame):
+        if (
+            self.command_frame is not None
+            and np.array_equal(observation.frame, self.command_frame)
+            and not (self.target == "away" and self.phase == "pan")
+        ):
             return self._fail("picture-unchanged-after-input; check the video feed")
         if observation.hud is not None and observation.hud.screen not in {"map", "pause"}:
             return self._fail(f"wrong-screen: {observation.hud.screen}")
@@ -278,15 +399,15 @@ class SetWaypoint:
             self.phase = "acquire"
         if picture.screen != "map" or picture.cursor is None:
             return self._fail("interactive-map-or-cursor-unverified")
+        if self.target == "away" and self.phase in {"acquire", "pan"}:
+            return self._away(observation, picture)
         if self.phase == "acquire":
             if picture.player is None:
                 return self._fail("player-marker-unreadable; centre the map manually")
-            points = picture.missions if self.target == "mission" else picture.roads
-            if self.target == "away":
-                points = tuple(p for p in points if math.dist(p, picture.player) >= 140)
+            points = picture.missions
             if not points:
                 return self._fail(f"no-visible-{self.target}-target; inspect the map manually")
-            points = sorted(points, key=lambda p: math.dist(p, picture.player), reverse=self.target == "away")
+            points = sorted(points, key=lambda p: math.dist(p, picture.player))
             for point in points:
                 x, y = map(round, point)
                 template = observation.frame[y - 12 : y + 13, x - 12 : x + 13].copy()
@@ -322,3 +443,53 @@ class SetWaypoint:
         dx, dy = self.point[0] - picture.cursor[0], self.point[1] - picture.cursor[1]
         scale = min(0.65, max(0.12, distance / 200)) / distance
         return self._press(Pad(left=(dx * scale, dy * scale)), now, "aim")
+
+    def _away(self, observation, picture):
+        frame, now = observation.frame, observation.time
+        if self.phase == "acquire":
+            if map_shift(frame, frame) is None:
+                return self._fail("map-texture-unverified; need a clean detailed map")
+        else:
+            delta = map_shift(self.command_frame, frame)
+            if delta is None:
+                return self._fail("map-shift-unverified; damaged or ambiguous map pair")
+            direction = np.array(self.directions[self.direction])
+            progress = -float(np.dot(delta, direction))
+            across = abs(direction[0] * delta[1] - direction[1] * delta[0])
+            if np.linalg.norm(delta) < 2:
+                if self.alternate_used:
+                    return self._fail("map-unmoved-after-alternate; check map edge or video feed")
+                self.alternate_used = True
+                names = tuple(self.directions)
+                self.direction = names[(names.index(self.direction) + 1) % 4]
+                self.push_rate = None
+            elif not self.sense_known and progress <= -2 and across <= max(3, -progress * 0.25):
+                self.sense, self.sense_known = -1, True
+                self.displacement += np.array(delta)
+            elif progress < 2 or across > max(3, progress * 0.25):
+                return self._fail("map-shift-wrong-direction; check stick mapping")
+            else:
+                self.sense_known = True
+                self.displacement += np.array(delta)
+                self.push_rate = progress / self.push_seconds
+                if self.inland_used and (not land_at_cursor(frame) or np.linalg.norm(self.displacement) < 2):
+                    return self._fail("sea-or-distance-unverified-after-inland-look")
+                if self.inland_used or np.linalg.norm(self.displacement) >= self.distance:
+                    if land_at_cursor(frame):
+                        if picture.waypoint:
+                            return self._fail("existing-waypoint-at-target; avoid toggling it off")
+                        return self._press(Pad(buttons=("cross",)), now, "confirm")
+                    self.inland_used = True
+                    # One look back toward the land visible before this push, without a coast model.
+                    names = tuple(self.directions)
+                    self.direction = names[(names.index(self.direction) + 2) % 4]
+        if self.moves >= 16:
+            return self._fail("map-move-limit")
+        self.moves += 1
+        remaining = max(30, min(60, self.distance - np.linalg.norm(self.displacement)))
+        self.push_seconds = 0.10 if not self.push_rate else min(0.40, max(0.10, remaining / self.push_rate))
+        direction = self.directions[self.direction]
+        stick = 0.65 * self.sense
+        return self._press(
+            Pad(left=(direction[0] * stick, direction[1] * stick)), now, "pan", self.push_seconds
+        )

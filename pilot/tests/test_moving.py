@@ -189,13 +189,17 @@ def test_hud_events_debounce_and_observation_payload(tmp_path):
         tick(0.91, hud=Hud(wanted=2, health=0.2, screen="pause"))
         assert {event["kind"] for event in conductor.pending} == {
             "wanted_changed",
-            "low_health",
             "screen_changed",
         }
         pending.jobs[0][0].set_result(response(("wait", {})))
         detections = tuple(Detection("person", (0, 0, 1, 1), 0.8) for _ in range(20))
-        tick(1, hud=Hud(wanted=2, health=0.2, screen="pause"), objects=detections)
+        tick(1.5, hud=Hud(wanted=2, health=0.2, screen="pause"), objects=detections)
         request = pending.jobs[1][1]
+        assert {event["kind"] for event in request.events} == {
+            "wanted_changed",
+            "low_health",
+            "screen_changed",
+        }
         assert request.hud["screen"] == "pause"
         assert len(request.objects) == 12
     finally:
@@ -243,7 +247,7 @@ def test_registry_drives_schema_prompt_and_runner(monkeypatch):
     assert runner.tick(Observation(FLAT, True, 0.7)).pad == NEUTRAL_PAD
 
 
-def test_carry_releases_on_corrupt_frame_and_new_answer(tmp_path):
+def test_carry_stands_out_a_corrupt_frame_and_releases_on_a_new_answer(tmp_path):
     conductor, pending, tick = setup(tmp_path)
     try:
         pending.jobs[0][0].set_result(response(("walk", {"duration": 0.5, "y": -1})))
@@ -263,7 +267,12 @@ def test_carry_releases_on_corrupt_frame_and_new_answer(tmp_path):
         tick(9.1)
         assert tick(9.7).pad != NEUTRAL_PAD
         assert conductor.tick(Observation(replace(FLAT, corrupt=True), True, 10), RGB).pad == NEUTRAL_PAD
-        assert tick(10.1).pad == NEUTRAL_PAD
+        # One damaged tick is stood out, the carry goes on and still ends after its four seconds.
+        assert tick(10.1).pad == Pad(left=(0, -0.45))
+        assert conductor.tick(Observation(replace(FLAT, corrupt=True), True, 13.6), RGB).pad == NEUTRAL_PAD
+        assert tick(13.69).pad == Pad(left=(0, -0.45))
+        assert tick(13.7).pad == NEUTRAL_PAD
+        assert tick(13.8).pad == NEUTRAL_PAD
     finally:
         conductor.close()
 

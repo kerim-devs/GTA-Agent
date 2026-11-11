@@ -6,13 +6,14 @@ The recording is read-only. OCR results are cached so checks can be repeated off
 
 import argparse
 import json
+from itertools import pairwise
 from pathlib import Path
 
 import cv2
 import numpy as np
 
 from pilot.scene import SceneText, TextLine, TextReader
-from pilot.waypoint import map_screen, read_map
+from pilot.waypoint import map_screen, map_shift, read_map
 
 RECORDINGS = Path("/Users/kerim/Documents/ChatGPT/gta/recordings")
 
@@ -113,10 +114,158 @@ def inspect(root, output):
     return summary
 
 
+def measure(root, output):
+    """Fit the actual stick integral against road translation, including rejected pairs."""
+    recording = root / "20261110-093238"
+    times = [json.loads(line) for line in (recording / "frames.jsonl").read_text().splitlines()]
+    events = [json.loads(line) for line in (recording / "pad.jsonl").read_text().splitlines()]
+    cache = json.loads((output / "ocr.json").read_text())
+    rows = [row for row in times if 8191 <= row["i"] <= 8304]
+    frames = {}
+    video = cv2.VideoCapture(str(recording / "video.mp4"))
+    video.set(cv2.CAP_PROP_POS_FRAMES, rows[0]["i"])
+    for row in rows:
+        ok, frame = video.read()
+        if not ok:
+            raise RuntimeError(f"missing measurement frame {row['i']}")
+        frames[row["i"]] = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    video.release()
+    usable = {}
+    for row in rows:
+        frame = frames[row["i"]]
+        text = SceneText(tuple(TextLine(**line) for line in cache[f"20261110-093238/{row['i']}"]))
+        picture = read_map(frame, text)
+        # Before 8252 the contact sheet shows the entry animation and mixed codec blocks.
+        usable[row["i"]] = (
+            row["i"] >= 8252
+            and picture.screen == "map"
+            and picture.cursor is not None
+            and map_shift(frame, frame) is not None
+        )
+    pairs = []
+    for a, b in pairwise(rows):
+        shift = map_shift(frames[a["i"]], frames[b["i"]]) if usable[a["i"]] and usable[b["i"]] else None
+        pairs.append(
+            {
+                "before": a,
+                "after": b,
+                "shift": shift,
+                "accepted": shift is not None,
+                "reason": None
+                if shift is not None
+                else "transition, damage or unsupported road correspondence",
+            }
+        )
+    accepted = [pair for pair in pairs if pair["accepted"]]
+
+    event_times = np.array([row["t"] for row in events])
+    event_sticks = np.array([row["left"] for row in events[:-1]])
+
+    def integral(start, end):
+        overlap = np.maximum(0, np.minimum(end, event_times[1:]) - np.maximum(start, event_times[:-1]))
+        return np.sum(overlap[:, None] * event_sticks, axis=0)
+
+    fits = []
+    observed = np.array([pair["shift"] for pair in accepted])
+    variance = float(np.sum((observed - observed.mean(axis=0)) ** 2))
+    for delay in np.arange(0, 1.501, 0.01):
+        inputs = np.array(
+            [-integral(pair["before"]["t"] - delay, pair["after"]["t"] - delay) for pair in accepted]
+        )
+        square = float(np.sum(inputs**2))
+        gain = float(np.sum(inputs * observed) / square) if square else 0.0
+        residual = float(np.sum((observed - inputs * gain) ** 2))
+        fits.append(
+            {
+                "delay": round(float(delay), 2),
+                "gain_px_per_full_stick_second": gain,
+                "r_squared": 1 - residual / variance if variance else 0,
+                "rmse_px": float(np.sqrt(residual / max(1, len(accepted)))),
+            }
+        )
+    best = max(fits, key=lambda row: row["r_squared"])
+    wifi_fit = max((row for row in fits if 0.6 <= row["delay"] <= 1.1), key=lambda row: row["r_squared"])
+    # A <0.05 stick magnitude is neutral; recorded hardware has small centre noise.
+    bursts = []
+    active = None
+    for row in events:
+        if not 386.5 <= row["t"] <= 390.7:
+            continue
+        moving = np.linalg.norm(row["left"]) >= 0.05
+        if moving and active is None:
+            active = row["t"]
+        if not moving and active is not None:
+            bursts.append({"start": active, "end": row["t"]})
+            active = None
+    illustrations = []
+    tiles = []
+    for number, burst in enumerate(bursts, 1):
+        a = min(rows, key=lambda row: abs(row["t"] - burst["start"] - best["delay"]))
+        b = min(rows, key=lambda row: abs(row["t"] - burst["end"] - best["delay"]))
+        shift = map_shift(frames[a["i"]], frames[b["i"]]) if usable[a["i"]] and usable[b["i"]] else None
+        illustration = {
+            "push": number,
+            **burst,
+            "stick_integral": integral(burst["start"], burst["end"]).tolist(),
+            "before": a,
+            "after": b,
+            "shift": shift,
+            "attribution": "unproven: fitted delay is not a calibration",
+        }
+        illustrations.append(illustration)
+        pair_tiles = []
+        for side, row in (("before", a), ("after", b)):
+            tile = cv2.resize(cv2.cvtColor(frames[row["i"]], cv2.COLOR_RGB2BGR), (640, 360))
+            label = f"push {number} {side} i{row['i']} {row['t']:.3f}s"
+            cv2.rectangle(tile, (0, 0), (640, 55), (0, 0, 0), -1)
+            cv2.putText(tile, label, (8, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
+            detail = (
+                "unverified pair"
+                if shift is None
+                else f"shift {shift[0]:.1f}, {shift[1]:.1f}px; attribution unproven"
+            )
+            cv2.putText(tile, detail, (8, 44), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (255, 255, 255), 1)
+            pair_tiles.append(tile)
+        tiles.append(np.hstack(pair_tiles))
+    for page, start in enumerate(range(0, len(tiles), 4)):
+        cv2.imwrite(str(output / f"p19b-pushes-{page + 1}.jpg"), np.vstack(tiles[start : start + 4]))
+    # A clean movement pair independent of the weak stick-delay fit.
+    a, b = next(row for row in rows if row["i"] == 8255), next(row for row in rows if row["i"] == 8259)
+    example = {"before": a, "after": b, "shift": map_shift(frames[a["i"]], frames[b["i"]])}
+    cv2.imwrite(
+        str(output / "p19b-clean-shift.jpg"),
+        np.hstack([cv2.cvtColor(frames[row["i"]], cv2.COLOR_RGB2BGR) for row in (a, b)]),
+    )
+    summary = {
+        "accepted_pairs": len(accepted),
+        "rejected_pairs": len(pairs) - len(accepted),
+        "model": "map shift = -gain * integral(stick(t - delay)); one scalar, zero intercept",
+        "best_fit": best,
+        "best_fit_within_reported_wifi_delay": wifi_fit,
+        "calibrated": best["r_squared"] >= 0.8 and best["gain_px_per_full_stick_second"] > 0,
+        "clean_shift_example": example,
+        "pushes": illustrations,
+        "pairs": pairs,
+        "fits": fits,
+    }
+    (output / "p19b-measurement.json").write_text(json.dumps(summary, indent=2) + "\n")
+    print(
+        json.dumps(
+            {key: value for key, value in summary.items() if key not in {"pairs", "fits", "pushes"}}, indent=2
+        )
+    )
+    return summary
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--recordings", type=Path, default=RECORDINGS)
     parser.add_argument("--output", type=Path, default=Path("../lab/waypoint"))
+    parser.add_argument("--measure-only", action="store_true")
     args = parser.parse_args()
+    if args.measure_only:
+        measure(args.recordings, args.output)
+        raise SystemExit(0)
     result = inspect(args.recordings, args.output)
+    measure(args.recordings, args.output)
     raise SystemExit(bool(result["map_missed"] or result["false_maps"] or result["non_map_frames"] < 300))

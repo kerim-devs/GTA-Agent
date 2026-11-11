@@ -1,0 +1,422 @@
+[
+  {
+    "height": 0.3,
+    "case": "standing",
+    "fov_scale": 0.5,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.3,
+    "case": "standing",
+    "fov_scale": 1.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.3,
+    "case": "standing",
+    "fov_scale": 2.0,
+    "successes": 27,
+    "runs": 30
+  },
+  {
+    "height": 0.3,
+    "case": "walking",
+    "fov_scale": 0.5,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.3,
+    "case": "walking",
+    "fov_scale": 1.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.3,
+    "case": "walking",
+    "fov_scale": 2.0,
+    "successes": 4,
+    "runs": 30
+  },
+  {
+    "height": 0.4,
+    "case": "standing",
+    "fov_scale": 0.5,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.4,
+    "case": "standing",
+    "fov_scale": 1.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.4,
+    "case": "standing",
+    "fov_scale": 2.0,
+    "successes": 7,
+    "runs": 30
+  },
+  {
+    "height": 0.4,
+    "case": "walking",
+    "fov_scale": 0.5,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.4,
+    "case": "walking",
+    "fov_scale": 1.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.4,
+    "case": "walking",
+    "fov_scale": 2.0,
+    "successes": 2,
+    "runs": 30
+  },
+  {
+    "height": 0.5,
+    "case": "standing",
+    "fov_scale": 0.5,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.5,
+    "case": "standing",
+    "fov_scale": 1.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.5,
+    "case": "standing",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.5,
+    "case": "walking",
+    "fov_scale": 0.5,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.5,
+    "case": "walking",
+    "fov_scale": 1.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.5,
+    "case": "walking",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.55,
+    "case": "standing",
+    "fov_scale": 0.5,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.55,
+    "case": "standing",
+    "fov_scale": 1.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.55,
+    "case": "standing",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.55,
+    "case": "walking",
+    "fov_scale": 0.5,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.55,
+    "case": "walking",
+    "fov_scale": 1.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.55,
+    "case": "walking",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.6,
+    "case": "standing",
+    "fov_scale": 0.5,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.6,
+    "case": "standing",
+    "fov_scale": 1.0,
+    "successes": 27,
+    "runs": 30
+  },
+  {
+    "height": 0.6,
+    "case": "standing",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.6,
+    "case": "walking",
+    "fov_scale": 0.5,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.6,
+    "case": "walking",
+    "fov_scale": 1.0,
+    "successes": 1,
+    "runs": 30
+  },
+  {
+    "height": 0.6,
+    "case": "walking",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.62,
+    "case": "standing",
+    "fov_scale": 0.5,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.62,
+    "case": "standing",
+    "fov_scale": 1.0,
+    "successes": 30,
+    "runs": 30
+  },
+  {
+    "height": 0.62,
+    "case": "standing",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.62,
+    "case": "walking",
+    "fov_scale": 0.5,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.62,
+    "case": "walking",
+    "fov_scale": 1.0,
+    "successes": 15,
+    "runs": 30
+  },
+  {
+    "height": 0.62,
+    "case": "walking",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.65,
+    "case": "standing",
+    "fov_scale": 0.5,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.65,
+    "case": "standing",
+    "fov_scale": 1.0,
+    "successes": 24,
+    "runs": 30
+  },
+  {
+    "height": 0.65,
+    "case": "standing",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.65,
+    "case": "walking",
+    "fov_scale": 0.5,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.65,
+    "case": "walking",
+    "fov_scale": 1.0,
+    "successes": 13,
+    "runs": 30
+  },
+  {
+    "height": 0.65,
+    "case": "walking",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.7,
+    "case": "standing",
+    "fov_scale": 0.5,
+    "successes": 17,
+    "runs": 30
+  },
+  {
+    "height": 0.7,
+    "case": "standing",
+    "fov_scale": 1.0,
+    "successes": 6,
+    "runs": 30
+  },
+  {
+    "height": 0.7,
+    "case": "standing",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.7,
+    "case": "walking",
+    "fov_scale": 0.5,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.7,
+    "case": "walking",
+    "fov_scale": 1.0,
+    "successes": 9,
+    "runs": 30
+  },
+  {
+    "height": 0.7,
+    "case": "walking",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.8,
+    "case": "standing",
+    "fov_scale": 0.5,
+    "successes": 22,
+    "runs": 30
+  },
+  {
+    "height": 0.8,
+    "case": "standing",
+    "fov_scale": 1.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.8,
+    "case": "standing",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.8,
+    "case": "walking",
+    "fov_scale": 0.5,
+    "successes": 7,
+    "runs": 30
+  },
+  {
+    "height": 0.8,
+    "case": "walking",
+    "fov_scale": 1.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.8,
+    "case": "walking",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.9,
+    "case": "standing",
+    "fov_scale": 0.5,
+    "successes": 5,
+    "runs": 30
+  },
+  {
+    "height": 0.9,
+    "case": "standing",
+    "fov_scale": 1.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.9,
+    "case": "standing",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.9,
+    "case": "walking",
+    "fov_scale": 0.5,
+    "successes": 4,
+    "runs": 30
+  },
+  {
+    "height": 0.9,
+    "case": "walking",
+    "fov_scale": 1.0,
+    "successes": 0,
+    "runs": 30
+  },
+  {
+    "height": 0.9,
+    "case": "walking",
+    "fov_scale": 2.0,
+    "successes": 0,
+    "runs": 30
+  }
+]

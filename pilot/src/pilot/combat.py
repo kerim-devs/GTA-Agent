@@ -3,8 +3,7 @@
 import math
 from typing import ClassVar
 
-from pilot.contract import NEUTRAL_PAD, Pad
-from pilot.skills import Observation, SkillResult
+from pilot.contract import NEUTRAL_PAD, Observation, Pad, SkillResult
 
 # Conservative estimates pending a cable trial; provenance is in the P18 report.
 FRONT_DEGREES = 12.0

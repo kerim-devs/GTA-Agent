@@ -1,0 +1,604 @@
+[
+  {
+    "true": {
+      "delay": 0.14,
+      "deadzone": 0.12,
+      "press_ticks": 1,
+      "map_sign": 1,
+      "door": 2.0
+    },
+    "checks": [
+      {
+        "name": "delay",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "seconds": 0.16666666666666666,
+          "trials_seconds": [
+            0.16666666666666666,
+            0.16666666666666718,
+            0.16666666666666607
+          ],
+          "settle_seconds": 1.2
+        }
+      },
+      {
+        "name": "camera",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "minimum_stick": 0.15,
+          "deadzone_interval": [
+            0.1,
+            0.15
+          ],
+          "samples": [
+            {
+              "stick": 0.1,
+              "pulse_seconds": 0.5999999999999979,
+              "displacement_px": 0.0,
+              "correlation": 1.0,
+              "pixels_per_second": 0.0,
+              "moving": false
+            },
+            {
+              "stick": 0.15,
+              "pulse_seconds": 0.5999999999999979,
+              "displacement_px": -2.37452138205272,
+              "correlation": 0.9886589600890875,
+              "pixels_per_second": 3.957535636754547,
+              "moving": true
+            },
+            {
+              "stick": 0.2,
+              "pulse_seconds": 0.5999999999999979,
+              "displacement_px": 6.08128353472301,
+              "correlation": 0.9851870667934418,
+              "pixels_per_second": 10.135472557871719,
+              "moving": true
+            },
+            {
+              "stick": 0.3,
+              "pulse_seconds": 0.5999999999999979,
+              "displacement_px": -14.63953692270277,
+              "correlation": 0.8961496043205261,
+              "pixels_per_second": 24.399228204504706,
+              "moving": true
+            },
+            {
+              "stick": 0.45,
+              "pulse_seconds": 0.5999999999999979,
+              "displacement_px": 26.662696681757904,
+              "correlation": 0.8763155511021614,
+              "pixels_per_second": 44.437827802929995,
+              "moving": true
+            },
+            {
+              "stick": 0.65,
+              "pulse_seconds": 0.5999999999999979,
+              "displacement_px": -43.109483649495125,
+              "correlation": 0.8434059782326222,
+              "pixels_per_second": 71.84913941582546,
+              "moving": true
+            },
+            {
+              "stick": 1.0,
+              "pulse_seconds": 0.5999999999999996,
+              "displacement_px": 71.87654409879987,
+              "correlation": 0.7803764013946056,
+              "pixels_per_second": 119.79424016466652,
+              "moving": true
+            }
+          ],
+          "units": "image pixels per second"
+        }
+      },
+      {
+        "name": "walk",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "minimum_stick": 0.2,
+          "samples": [
+            {
+              "stick": 0.2,
+              "displacement_px": 1.66786789894104,
+              "window_seconds": 0.3,
+              "moving": true
+            },
+            {
+              "stick": 0.3,
+              "displacement_px": 3.70112943649292,
+              "window_seconds": 0.3,
+              "moving": true
+            },
+            {
+              "stick": 0.45,
+              "displacement_px": 6.7596435546875,
+              "window_seconds": 0.3,
+              "moving": true
+            },
+            {
+              "stick": 0.65,
+              "displacement_px": 10.849204063415527,
+              "window_seconds": 0.3,
+              "moving": true
+            },
+            {
+              "stick": 1.0,
+              "displacement_px": 18.000221252441406,
+              "window_seconds": 0.3,
+              "moving": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "press",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "minimum_ticks": {
+            "options": 1,
+            "circle": 1
+          },
+          "tick_seconds": 0.03333333333333333,
+          "trials": [
+            {
+              "trial": 1,
+              "button": "options",
+              "ticks": 1,
+              "seconds": 0.03333333333333333,
+              "accepted": true,
+              "response_seconds": 0.23333333433334502
+            },
+            {
+              "trial": 1,
+              "button": "circle",
+              "ticks": 1,
+              "seconds": 0.03333333333333333,
+              "accepted": true,
+              "response_seconds": 0.23333333433334502
+            },
+            {
+              "trial": 2,
+              "button": "options",
+              "ticks": 1,
+              "seconds": 0.03333333333333333,
+              "accepted": true,
+              "response_seconds": 0.23333333433334502
+            },
+            {
+              "trial": 2,
+              "button": "circle",
+              "ticks": 1,
+              "seconds": 0.03333333333333333,
+              "accepted": true,
+              "response_seconds": 0.23333333433334502
+            }
+          ]
+        }
+      },
+      {
+        "name": "map",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "right": {
+            "stick": 0.65,
+            "pulse_seconds": 0.6000000000000298,
+            "shift_px": [
+              39.0,
+              0.0
+            ],
+            "pixels_per_second": [
+              64.99999999999677,
+              0.0
+            ]
+          },
+          "down": {
+            "stick": 0.65,
+            "pulse_seconds": 0.6000000000000298,
+            "shift_px": [
+              0.0,
+              39.0
+            ],
+            "pixels_per_second": [
+              0.0,
+              64.99999999999677
+            ]
+          }
+        }
+      },
+      {
+        "name": "wheel",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "while_held": "weapon_wheel",
+          "after_release": "game"
+        }
+      },
+      {
+        "name": "phone",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "open_seconds": 0.2333333343333166,
+          "close_seconds": 0.2333333343333166
+        }
+      },
+      {
+        "name": "car",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "enter": {
+            "seconds": 2.2000000009998715,
+            "confirmed_seconds": 3.2000000009998146,
+            "stable_seconds": 1.0
+          },
+          "exit": {
+            "seconds": 2.2000000009998715,
+            "confirmed_seconds": 3.2000000009998146,
+            "stable_seconds": 1.0
+          }
+        }
+      },
+      {
+        "name": "detector",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "seconds": 4.999999999999716,
+          "results": 50,
+          "results_per_second": 10.000000000000568,
+          "loop_per_second": 30.000000000001705
+        }
+      },
+      {
+        "name": "head",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "seconds": 0.75,
+          "request_count": 1
+        }
+      }
+    ],
+    "elapsed_seconds": 51.350000033999656
+  },
+  {
+    "true": {
+      "delay": 0.6,
+      "deadzone": 0.25,
+      "press_ticks": 3,
+      "map_sign": -1,
+      "door": 5.0
+    },
+    "checks": [
+      {
+        "name": "delay",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "seconds": 0.6333333333333333,
+          "trials_seconds": [
+            0.6333333333333333,
+            0.6333333333333344,
+            0.6333333333333311
+          ],
+          "settle_seconds": 1.6666666666666687
+        }
+      },
+      {
+        "name": "camera",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "minimum_stick": 0.3,
+          "deadzone_interval": [
+            0.2,
+            0.3
+          ],
+          "samples": [
+            {
+              "stick": 0.1,
+              "pulse_seconds": 0.5999999999999979,
+              "displacement_px": 0.0,
+              "correlation": 1.0,
+              "pixels_per_second": 0.0,
+              "moving": false
+            },
+            {
+              "stick": 0.15,
+              "pulse_seconds": 0.5999999999999979,
+              "displacement_px": 0.0,
+              "correlation": 1.0,
+              "pixels_per_second": 0.0,
+              "moving": false
+            },
+            {
+              "stick": 0.2,
+              "pulse_seconds": 0.5999999999999979,
+              "displacement_px": 0.0,
+              "correlation": 1.0,
+              "pixels_per_second": 0.0,
+              "moving": false
+            },
+            {
+              "stick": 0.3,
+              "pulse_seconds": 0.5999999999999979,
+              "displacement_px": -4.573341363424248,
+              "correlation": 0.9834570941329003,
+              "pixels_per_second": 7.6222356057071075,
+              "moving": true
+            },
+            {
+              "stick": 0.45,
+              "pulse_seconds": 0.5999999999999979,
+              "displacement_px": 19.018270871747244,
+              "correlation": 0.8781190647557378,
+              "pixels_per_second": 31.697118119578853,
+              "moving": true
+            },
+            {
+              "stick": 0.65,
+              "pulse_seconds": 0.6000000000000281,
+              "displacement_px": -38.193855922402754,
+              "correlation": 0.8489933568239212,
+              "pixels_per_second": 63.656426537334944,
+              "moving": true
+            },
+            {
+              "stick": 1.0,
+              "pulse_seconds": 0.6000000000000298,
+              "displacement_px": 71.88644813436036,
+              "correlation": 0.7883868366107345,
+              "pixels_per_second": 119.81074689059464,
+              "moving": true
+            }
+          ],
+          "units": "image pixels per second"
+        }
+      },
+      {
+        "name": "walk",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "minimum_stick": 0.3,
+          "samples": [
+            {
+              "stick": 0.2,
+              "displacement_px": 0.0,
+              "window_seconds": 0.3,
+              "moving": false
+            },
+            {
+              "stick": 0.3,
+              "displacement_px": 1.2305899858474731,
+              "window_seconds": 0.3,
+              "moving": true
+            },
+            {
+              "stick": 0.45,
+              "displacement_px": 4.813865661621094,
+              "window_seconds": 0.3,
+              "moving": true
+            },
+            {
+              "stick": 0.65,
+              "displacement_px": 9.618523597717285,
+              "window_seconds": 0.3,
+              "moving": true
+            },
+            {
+              "stick": 1.0,
+              "displacement_px": 18.000152587890625,
+              "window_seconds": 0.3,
+              "moving": true
+            }
+          ]
+        }
+      },
+      {
+        "name": "press",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "minimum_ticks": {
+            "options": 3,
+            "circle": 3
+          },
+          "tick_seconds": 0.03333333333333333,
+          "trials": [
+            {
+              "trial": 1,
+              "button": "options",
+              "ticks": 1,
+              "seconds": 0.03333333333333333,
+              "accepted": false,
+              "response_seconds": null
+            },
+            {
+              "trial": 1,
+              "button": "options",
+              "ticks": 2,
+              "seconds": 0.06666666666666667,
+              "accepted": false,
+              "response_seconds": null
+            },
+            {
+              "trial": 1,
+              "button": "options",
+              "ticks": 3,
+              "seconds": 0.1,
+              "accepted": true,
+              "response_seconds": 0.7333333343332882
+            },
+            {
+              "trial": 1,
+              "button": "circle",
+              "ticks": 1,
+              "seconds": 0.03333333333333333,
+              "accepted": false,
+              "response_seconds": null
+            },
+            {
+              "trial": 1,
+              "button": "circle",
+              "ticks": 2,
+              "seconds": 0.06666666666666667,
+              "accepted": false,
+              "response_seconds": null
+            },
+            {
+              "trial": 1,
+              "button": "circle",
+              "ticks": 3,
+              "seconds": 0.1,
+              "accepted": true,
+              "response_seconds": 0.7333333343332882
+            },
+            {
+              "trial": 2,
+              "button": "options",
+              "ticks": 1,
+              "seconds": 0.03333333333333333,
+              "accepted": false,
+              "response_seconds": null
+            },
+            {
+              "trial": 2,
+              "button": "options",
+              "ticks": 2,
+              "seconds": 0.06666666666666667,
+              "accepted": false,
+              "response_seconds": null
+            },
+            {
+              "trial": 2,
+              "button": "options",
+              "ticks": 3,
+              "seconds": 0.1,
+              "accepted": true,
+              "response_seconds": 0.7333333343332882
+            },
+            {
+              "trial": 2,
+              "button": "circle",
+              "ticks": 1,
+              "seconds": 0.03333333333333333,
+              "accepted": false,
+              "response_seconds": null
+            },
+            {
+              "trial": 2,
+              "button": "circle",
+              "ticks": 2,
+              "seconds": 0.06666666666666667,
+              "accepted": false,
+              "response_seconds": null
+            },
+            {
+              "trial": 2,
+              "button": "circle",
+              "ticks": 3,
+              "seconds": 0.1,
+              "accepted": true,
+              "response_seconds": 0.7333333343332882
+            }
+          ]
+        }
+      },
+      {
+        "name": "map",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "right": {
+            "stick": 0.65,
+            "pulse_seconds": 0.5999999999999659,
+            "shift_px": [
+              -39.0,
+              0.0
+            ],
+            "pixels_per_second": [
+              -65.0000000000037,
+              0.0
+            ]
+          },
+          "down": {
+            "stick": 0.65,
+            "pulse_seconds": 0.5999999999999659,
+            "shift_px": [
+              0.0,
+              -39.0
+            ],
+            "pixels_per_second": [
+              0.0,
+              -65.0000000000037
+            ]
+          }
+        }
+      },
+      {
+        "name": "wheel",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "while_held": "weapon_wheel",
+          "after_release": "game"
+        }
+      },
+      {
+        "name": "phone",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "open_seconds": 0.7333333343332953,
+          "close_seconds": 0.7333333343332953
+        }
+      },
+      {
+        "name": "car",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "enter": {
+            "seconds": 5.666666667666348,
+            "confirmed_seconds": 6.666666667666291,
+            "stable_seconds": 1.0
+          },
+          "exit": {
+            "seconds": 5.666666667666348,
+            "confirmed_seconds": 6.666666667666291,
+            "stable_seconds": 1.0
+          }
+        }
+      },
+      {
+        "name": "detector",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "seconds": 4.999999999999716,
+          "results": 50,
+          "results_per_second": 10.000000000000568,
+          "loop_per_second": 30.000000000001705
+        }
+      },
+      {
+        "name": "head",
+        "status": "ran",
+        "reason": "",
+        "numbers": {
+          "seconds": 0.75,
+          "request_count": 1
+        }
+      }
+    ],
+    "elapsed_seconds": 86.15000004199766
+  }
+]

@@ -32,23 +32,30 @@ def test_one_tick_bad_screen_does_not_press(screen):
     result = flow.tick(observation(0.1, screen), "X Retry | Circle Back")
     assert result.pad == NEUTRAL_PAD
     assert not result.events
-    assert flow.tick(observation(0.2)) is None
+    assert flow.tick(observation(0.2)).action == "confirm"
+    assert flow.tick(observation(0.3)) is None
 
 
-def test_retry_is_one_pulse_then_picture_check_and_stuck():
+def test_the_retry_is_pressed_twice_at_most_and_then_the_screen_is_stuck():
     flow = Flow(response_timeout=0.5)
-    result = enter(flow, "failed", text="Erneut versuchen X")
+    text = "Erneut versuchen"
+    result = enter(flow, "failed", text=text)
     assert result.pad.buttons == ("cross",)
     assert result.action == "retry"
     assert result.events == ({"kind": "failure", "screen": "failed", "count": 1},)
     for t in (0.2, 0.3, 0.5):
-        assert flow.tick(observation(t, "failed"), "Erneut versuchen X").pad == NEUTRAL_PAD
-    result = flow.tick(observation(0.7, "failed"), "Circle Back | X Retry")
+        assert flow.tick(observation(t, "failed"), text).pad == NEUTRAL_PAD
+    # The picture did not change: the footer may not have been ready, so once more.
+    assert flow.tick(observation(0.7, "failed"), text).pad.buttons == ("cross",)
+    assert flow.tick(observation(1.0, "failed"), text).pad == NEUTRAL_PAD
+    result = flow.tick(observation(1.3, "failed"), text)
     assert result.action == "stuck"
     assert result.events == ({"kind": "stuck", "screen": "failed"},)
-    assert not flow.tick(observation(10, "failed"), "X Retry").events
-    assert flow.tick(observation(10.1)).pad == NEUTRAL_PAD
-    assert flow.tick(observation(10.2)) is None
+    result = flow.tick(observation(10, "failed"), text)
+    assert result.action == "stuck" and not result.events and result.pad == NEUTRAL_PAD
+    for t in (10.1, 10.2, 10.3):
+        assert flow.tick(observation(t)).pad == NEUTRAL_PAD
+    assert flow.tick(observation(10.45)) is None
 
 
 def test_a_press_lasts_three_ticks_of_the_loop_and_is_not_repeated():
@@ -70,8 +77,9 @@ def test_accidental_menus_back_out(screen):
     result = enter(flow, screen, text="Circle Back")
     assert result.pad.buttons == ("circle",)
     assert result.action == "back"
-    assert flow.tick(observation(0.2)).pad == NEUTRAL_PAD
-    assert flow.tick(observation(0.3)) is None
+    for t in (0.2, 0.3, 0.4):
+        assert flow.tick(observation(t)).pad == NEUTRAL_PAD
+    assert flow.tick(observation(0.55)) is None
 
 
 def test_wheel_releases_held_controls():
@@ -84,8 +92,9 @@ def test_wait_screens_never_accept_a_prompt(screen):
     assert enter(flow, screen, text="X Retry").pad == NEUTRAL_PAD
     assert flow.tick(observation(1, screen), "Circle Back").action == "wait"
     assert flow.tick(observation(3.2, screen)).action == "stuck"
-    assert flow.tick(observation(3.3)).pad == NEUTRAL_PAD
-    assert flow.tick(observation(3.4)) is None
+    for t in (3.3, 3.4, 3.5):
+        assert flow.tick(observation(t)).pad == NEUTRAL_PAD
+    assert flow.tick(observation(3.65)) is None
 
 
 def test_expected_menu_expires_and_is_confirmed_again():
@@ -111,6 +120,7 @@ def test_failures_count_once_and_pass_resets():
     assert not flow.tick(observation(0.2, "failed")).events
     flow.tick(observation(0.3))
     flow.tick(observation(0.4))
+    assert flow.tick(observation(0.7)) is None
     result = enter(flow, "failed", 1)
     assert result.events[0]["count"] == 2
     result = enter(flow, "passed", 2)
@@ -137,12 +147,55 @@ def test_duplicate_timestamps_do_not_confirm():
 
 
 @pytest.mark.parametrize(
-    "text", ["L1 Retry", "R1 Back", "X Skip", "Retry", "X unrelated Retry", "Circle Delete"]
+    "text", ["R1 Back", "X Skip", "Circle Delete", "Verlassen O", "MISSION FEHLGESCHLAGEN"]
 )
-def test_no_guessing_from_unsupported_or_unrelated_prompt(text):
+def test_nothing_is_pressed_on_a_failure_before_the_retry_is_offered(text):
     flow = Flow()
     assert enter(flow, "failed", text=text).pad == NEUTRAL_PAD
     assert flow.tick(observation(31, "failed"), text).action == "stuck"
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        # As the text reader returned it at t=36.43 of recording 093238: the cross is not read.
+        "Franklin ist tot. Verlassen O Erneut versuchen",
+        "Verlassen ○ Erneut versuchen",
+        "Erneut versuchen ○ Verlassen",
+        "Erneut versuchen",
+        "Circle Retry",
+    ],
+)
+def test_the_retry_is_cross_whatever_glyph_the_reader_puts_next_to_it(text):
+    flow = Flow()
+    pads = [enter(flow, "failed", text=text)] + [
+        flow.tick(observation(0.1 + tick / 30, "failed"), text) for tick in range(1, 90)
+    ]
+    assert pads[0].pad.buttons == ("cross",)
+    assert all(set(result.pad.buttons) <= {"cross"} for result in pads)
+
+
+def test_a_map_is_left_with_circle_although_its_footer_reads_x_before_back():
+    # As read at t=388.49 of recording 093238; cross here would set a waypoint.
+    text = "Stripclub A Unterschlupf 9 Wegpunkt X Zurück l O"
+    flow = Flow()
+    pads = [enter(flow, "map", text=text)] + [
+        flow.tick(observation(0.1 + tick / 30, "map"), text) for tick in range(1, 90)
+    ]
+    assert pads[0].pad.buttons == ("circle",)
+    assert all(set(result.pad.buttons) <= {"circle"} for result in pads)
+
+
+def test_a_confirmed_screen_is_not_gone_after_two_frames_of_game():
+    flow = Flow()
+    assert enter(flow, "phone").pad.buttons == ("circle",)
+    # The reader called the visible phone "game" twice at t=153.70 of recording 093238.
+    assert flow.tick(observation(0.20)).pad == NEUTRAL_PAD
+    assert flow.tick(observation(0.23)).pad == NEUTRAL_PAD
+    assert flow.tick(observation(0.26, "phone")) is not None
+    assert flow.tick(observation(0.30)).pad == NEUTRAL_PAD
+    assert flow.tick(observation(0.45)).pad == NEUTRAL_PAD
+    assert flow.tick(observation(0.61)) is None
 
 
 def test_one_tick_wrong_text_does_not_press():

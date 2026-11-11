@@ -1,0 +1,678 @@
+{
+  "episodes": [
+    {
+      "screen": "loading",
+      "enter": 4.7006,
+      "exit": 5.2579,
+      "seconds": 0.5573000000000006,
+      "actions": [
+        {
+          "t": 4.7006,
+          "screen": "loading",
+          "action": "wait",
+          "buttons": [],
+          "seconds": 0.0
+        },
+        {
+          "t": 4.9573,
+          "screen": "game",
+          "action": "confirm",
+          "buttons": [],
+          "seconds": 0.2567000000000004
+        }
+      ],
+      "head": [
+        {
+          "t": 5.2579,
+          "events": [
+            {
+              "kind": "screen_cleared",
+              "screen": "loading",
+              "seconds": 0.5573000000000006
+            }
+          ]
+        }
+      ],
+      "human": [
+        {
+          "t": 3.842,
+          "button": "cross",
+          "edge": "down"
+        },
+        {
+          "t": 3.968,
+          "button": "cross",
+          "edge": "up"
+        },
+        {
+          "t": 4.1079,
+          "button": "cross",
+          "edge": "down"
+        },
+        {
+          "t": 4.1906,
+          "button": "cross",
+          "edge": "up"
+        }
+      ]
+    },
+    {
+      "screen": "weapon_wheel",
+      "enter": 14.2972,
+      "exit": 15.8753,
+      "seconds": 1.5780999999999992,
+      "actions": [
+        {
+          "t": 14.2972,
+          "screen": "weapon_wheel",
+          "action": "release",
+          "buttons": [],
+          "seconds": 0.0
+        },
+        {
+          "t": 15.353,
+          "screen": "game",
+          "action": "confirm",
+          "buttons": [],
+          "seconds": 1.0557999999999996
+        }
+      ],
+      "head": [
+        {
+          "t": 15.8753,
+          "events": [
+            {
+              "kind": "menu_closed",
+              "screen": "weapon_wheel",
+              "seconds": 1.5780999999999992
+            }
+          ]
+        }
+      ],
+      "human": [
+        {
+          "t": 13.7092,
+          "button": "l1",
+          "edge": "down"
+        },
+        {
+          "t": 15.097,
+          "button": "l1",
+          "edge": "up"
+        }
+      ]
+    },
+    {
+      "screen": "failed",
+      "enter": 33.2403,
+      "exit": 43.7149,
+      "seconds": 10.474600000000002,
+      "actions": [
+        {
+          "t": 33.2403,
+          "screen": "failed",
+          "action": "observe",
+          "buttons": [],
+          "seconds": 0.0
+        },
+        {
+          "t": 36.6856,
+          "screen": "failed",
+          "action": "retry",
+          "buttons": [
+            "cross"
+          ],
+          "seconds": 3.445300000000003
+        },
+        {
+          "t": 36.8389,
+          "screen": "failed",
+          "action": "observe",
+          "buttons": [],
+          "seconds": 3.5986000000000047
+        },
+        {
+          "t": 38.6888,
+          "screen": "failed",
+          "action": "retry",
+          "buttons": [
+            "cross"
+          ],
+          "seconds": 5.448500000000003
+        },
+        {
+          "t": 38.8227,
+          "screen": "failed",
+          "action": "observe",
+          "buttons": [],
+          "seconds": 5.5824
+        },
+        {
+          "t": 40.0373,
+          "screen": "loading",
+          "action": "confirm",
+          "buttons": [],
+          "seconds": 6.797000000000004
+        },
+        {
+          "t": 40.1238,
+          "screen": "loading",
+          "action": "wait",
+          "buttons": [],
+          "seconds": 6.883500000000005
+        },
+        {
+          "t": 43.3931,
+          "screen": "game",
+          "action": "confirm",
+          "buttons": [],
+          "seconds": 10.1528
+        }
+      ],
+      "head": [
+        {
+          "t": 43.7149,
+          "events": [
+            {
+              "screen": "failed",
+              "kind": "failure",
+              "count": 1,
+              "seconds": 10.474600000000002
+            }
+          ]
+        }
+      ],
+      "human": [
+        {
+          "t": 33.4359,
+          "button": "cross",
+          "edge": "down"
+        },
+        {
+          "t": 33.5748,
+          "button": "cross",
+          "edge": "up"
+        },
+        {
+          "t": 33.7578,
+          "button": "cross",
+          "edge": "down"
+        },
+        {
+          "t": 33.8649,
+          "button": "cross",
+          "edge": "up"
+        },
+        {
+          "t": 34.0048,
+          "button": "cross",
+          "edge": "down"
+        },
+        {
+          "t": 34.1005,
+          "button": "cross",
+          "edge": "up"
+        },
+        {
+          "t": 34.2355,
+          "button": "cross",
+          "edge": "down"
+        },
+        {
+          "t": 34.3691,
+          "button": "cross",
+          "edge": "up"
+        },
+        {
+          "t": 39.7764,
+          "button": "cross",
+          "edge": "down"
+        },
+        {
+          "t": 39.9178,
+          "button": "cross",
+          "edge": "up"
+        }
+      ]
+    },
+    {
+      "screen": "weapon_wheel",
+      "enter": 45.4872,
+      "exit": 46.3186,
+      "seconds": 0.8314000000000021,
+      "actions": [
+        {
+          "t": 45.4872,
+          "screen": "weapon_wheel",
+          "action": "release",
+          "buttons": [],
+          "seconds": 0.0
+        },
+        {
+          "t": 46.0154,
+          "screen": "game",
+          "action": "confirm",
+          "buttons": [],
+          "seconds": 0.5281999999999982
+        }
+      ],
+      "head": [
+        {
+          "t": 46.3186,
+          "events": [
+            {
+              "kind": "menu_closed",
+              "screen": "weapon_wheel",
+              "seconds": 0.8314000000000021
+            }
+          ]
+        }
+      ],
+      "human": [
+        {
+          "t": 44.7764,
+          "button": "l1",
+          "edge": "down"
+        },
+        {
+          "t": 45.6709,
+          "button": "l1",
+          "edge": "up"
+        }
+      ]
+    },
+    {
+      "screen": "phone",
+      "enter": 153.8239,
+      "exit": 157.1632,
+      "seconds": 3.33929999999998,
+      "actions": [
+        {
+          "t": 153.8239,
+          "screen": "phone",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "seconds": 0.0
+        },
+        {
+          "t": 154.0153,
+          "screen": "phone",
+          "action": "observe",
+          "buttons": [],
+          "seconds": 0.19139999999998736
+        },
+        {
+          "t": 155.8569,
+          "screen": "phone",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "seconds": 2.032999999999987
+        },
+        {
+          "t": 156.1114,
+          "screen": "phone",
+          "action": "observe",
+          "buttons": [],
+          "seconds": 2.2874999999999943
+        },
+        {
+          "t": 156.6398,
+          "screen": "game",
+          "action": "confirm",
+          "buttons": [],
+          "seconds": 2.815899999999999
+        }
+      ],
+      "head": [
+        {
+          "t": 157.1632,
+          "events": [
+            {
+              "kind": "menu_closed",
+              "screen": "phone",
+              "seconds": 3.33929999999998
+            }
+          ]
+        }
+      ],
+      "human": [
+        {
+          "t": 152.9636,
+          "button": "up",
+          "edge": "up"
+        },
+        {
+          "t": 156.2944,
+          "button": "circle",
+          "edge": "down"
+        },
+        {
+          "t": 156.3993,
+          "button": "circle",
+          "edge": "up"
+        }
+      ]
+    },
+    {
+      "screen": "passed",
+      "enter": 339.1869,
+      "exit": 342.0744,
+      "seconds": 2.8875000000000455,
+      "actions": [
+        {
+          "t": 339.1869,
+          "screen": "passed",
+          "action": "wait",
+          "buttons": [],
+          "seconds": 0.0
+        },
+        {
+          "t": 341.7178,
+          "screen": "game",
+          "action": "confirm",
+          "buttons": [],
+          "seconds": 2.530900000000031
+        }
+      ],
+      "head": [
+        {
+          "t": 342.0744,
+          "events": [
+            {
+              "screen": "passed",
+              "kind": "pass",
+              "time": 339.1869,
+              "seconds": 2.8875000000000455
+            }
+          ]
+        }
+      ],
+      "human": [
+        {
+          "t": 340.7271,
+          "button": "cross",
+          "edge": "down"
+        },
+        {
+          "t": 340.8889,
+          "button": "cross",
+          "edge": "up"
+        }
+      ]
+    },
+    {
+      "screen": "pause",
+      "enter": 385.0727,
+      "exit": 387.3251,
+      "seconds": 2.252400000000023,
+      "actions": [
+        {
+          "t": 385.0727,
+          "screen": "pause",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "seconds": 0.0
+        },
+        {
+          "t": 385.2295,
+          "screen": "pause",
+          "action": "observe",
+          "buttons": [],
+          "seconds": 0.15679999999997563
+        },
+        {
+          "t": 386.8195,
+          "screen": "game",
+          "action": "confirm",
+          "buttons": [],
+          "seconds": 1.7468000000000075
+        }
+      ],
+      "head": [
+        {
+          "t": 387.3251,
+          "events": [
+            {
+              "kind": "menu_closed",
+              "screen": "pause",
+              "seconds": 2.252400000000023
+            }
+          ]
+        }
+      ],
+      "human": [
+        {
+          "t": 384.1303,
+          "button": "options",
+          "edge": "down"
+        },
+        {
+          "t": 384.2765,
+          "button": "options",
+          "edge": "up"
+        },
+        {
+          "t": 386.1264,
+          "button": "cross",
+          "edge": "down"
+        },
+        {
+          "t": 386.2789,
+          "button": "cross",
+          "edge": "up"
+        }
+      ]
+    },
+    {
+      "screen": "map",
+      "enter": 388.3728,
+      "exit": 392.9141,
+      "seconds": 4.541300000000035,
+      "actions": [
+        {
+          "t": 388.3728,
+          "screen": "map",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "seconds": 0.0
+        },
+        {
+          "t": 388.486,
+          "screen": "map",
+          "action": "observe",
+          "buttons": [],
+          "seconds": 0.11320000000000618
+        },
+        {
+          "t": 390.4669,
+          "screen": "map",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "seconds": 2.094100000000026
+        },
+        {
+          "t": 390.586,
+          "screen": "map",
+          "action": "observe",
+          "buttons": [],
+          "seconds": 2.213200000000029
+        },
+        {
+          "t": 392.3248,
+          "screen": "game",
+          "action": "confirm",
+          "buttons": [],
+          "seconds": 3.951999999999998
+        },
+        {
+          "t": 392.4409,
+          "screen": "pause",
+          "action": "confirm",
+          "buttons": [],
+          "seconds": 4.068100000000015
+        },
+        {
+          "t": 392.4451,
+          "screen": "pause",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "seconds": 4.072300000000041
+        },
+        {
+          "t": 392.5684,
+          "screen": "game",
+          "action": "confirm",
+          "buttons": [],
+          "seconds": 4.195600000000013
+        }
+      ],
+      "head": [
+        {
+          "t": 392.9141,
+          "events": [
+            {
+              "kind": "menu_closed",
+              "screen": "map",
+              "seconds": 4.541300000000035
+            }
+          ]
+        }
+      ],
+      "human": [
+        {
+          "t": 391.2211,
+          "button": "cross",
+          "edge": "down"
+        },
+        {
+          "t": 391.3601,
+          "button": "cross",
+          "edge": "up"
+        },
+        {
+          "t": 391.9319,
+          "button": "circle",
+          "edge": "down"
+        },
+        {
+          "t": 392.0536,
+          "button": "circle",
+          "edge": "up"
+        },
+        {
+          "t": 392.1333,
+          "button": "circle",
+          "edge": "down"
+        },
+        {
+          "t": 392.259,
+          "button": "circle",
+          "edge": "up"
+        }
+      ]
+    },
+    {
+      "screen": "weapon_wheel",
+      "enter": 537.4987,
+      "exit": 539.4863,
+      "seconds": 1.987600000000043,
+      "actions": [
+        {
+          "t": 537.4987,
+          "screen": "weapon_wheel",
+          "action": "release",
+          "buttons": [],
+          "seconds": 0.0
+        },
+        {
+          "t": 539.1118,
+          "screen": "game",
+          "action": "confirm",
+          "buttons": [],
+          "seconds": 1.6131000000000313
+        }
+      ],
+      "head": [
+        {
+          "t": 539.4863,
+          "events": [
+            {
+              "kind": "menu_closed",
+              "screen": "weapon_wheel",
+              "seconds": 1.987600000000043
+            }
+          ]
+        }
+      ],
+      "human": [
+        {
+          "t": 536.7607,
+          "button": "l1",
+          "edge": "down"
+        },
+        {
+          "t": 537.7709,
+          "button": "up",
+          "edge": "down"
+        },
+        {
+          "t": 537.9667,
+          "button": "up",
+          "edge": "up"
+        },
+        {
+          "t": 539.5963,
+          "button": "l1",
+          "edge": "up"
+        }
+      ]
+    },
+    {
+      "screen": "loading",
+      "enter": 635.5456,
+      "exit": 640.4175,
+      "seconds": 4.871899999999982,
+      "actions": [
+        {
+          "t": 635.5456,
+          "screen": "loading",
+          "action": "wait",
+          "buttons": [],
+          "seconds": 0.0
+        },
+        {
+          "t": 640.0911,
+          "screen": "game",
+          "action": "confirm",
+          "buttons": [],
+          "seconds": 4.545499999999947
+        }
+      ],
+      "head": [
+        {
+          "t": 640.4175,
+          "events": [
+            {
+              "kind": "screen_cleared",
+              "screen": "loading",
+              "seconds": 4.871899999999982
+            }
+          ]
+        }
+      ],
+      "human": []
+    }
+  ]
+}

@@ -4,16 +4,20 @@ import argparse
 import json
 import math
 from concurrent.futures import Future
+from dataclasses import asdict
 from itertools import pairwise
 from pathlib import Path
 from statistics import median
 
 import cv2
 
+from pilot import hud
 from pilot.conductor import Conductor, background, minimap_crop
 from pilot.contract import NEUTRAL_PAD
+from pilot.flow import Flow
 from pilot.head import parse_response
 from pilot.loop import Pipeline
+from pilot.scene import SceneText, TextReader
 from pilot.skills import Observation
 
 
@@ -67,12 +71,26 @@ class DelayedHead:
         self.jobs = [(due, future) for due, future in self.jobs if not future.done()]
 
 
-def run_offline(recording: Path, out: Path, *, ocr=False, quiet_seconds=60, head_delay=None):
-    if ocr and head_delay is not None:
+def run_offline(
+    recording: Path,
+    out: Path,
+    *,
+    ocr=False,
+    quiet_seconds=60,
+    head_delay=None,
+    hud_flow=False,
+    text_reader=None,
+):
+    if ocr and head_delay is not None and not hud_flow:
         raise ValueError("delayed replay uses recorded time without wall-clock OCR")
     delayed = None if head_delay is None else DelayedHead(head_delay)
     judged = neutral = 0
     first_plan = False
+    scene = SceneText()
+    scene_time = None
+    next_text = float("-inf")
+    reader = (TextReader() if text_reader is None else text_reader) if hud_flow else None
+    text_log = None
     video = recording / "video.mp4"
     with video.open("rb") as source:
         if source.read(80).startswith(b"version https://git-lfs.github.com/spec/"):
@@ -83,7 +101,7 @@ def run_offline(recording: Path, out: Path, *, ocr=False, quiet_seconds=60, head
     if not capture.isOpened():
         capture.release()
         raise ValueError(f"cannot decode {video}")
-    pipeline = Pipeline(gps_reader=None if ocr else NoGPS())
+    pipeline = Pipeline(gps_reader=None if ocr and not hud_flow else NoGPS())
     conductor = None
     log = None
     count = 0
@@ -93,11 +111,14 @@ def run_offline(recording: Path, out: Path, *, ocr=False, quiet_seconds=60, head
             out,
             notebook=out / "notebook.txt",
             quiet_seconds=quiet_seconds,
-            ocr=ocr,
-            submit=delayed.submit if delayed else immediate if not ocr else background,
+            ocr=ocr and not hud_flow,
+            flow=Flow() if hud_flow else None,
+            submit=delayed.submit if delayed else immediate if not ocr or hud_flow else background,
             **({"clock": lambda: delayed.time} if delayed else {}),
         )
         log = (out / "play.jsonl").open("x")
+        if hud_flow:
+            text_log = (out / "text.jsonl").open("x")
         with (recording / "frames.jsonl").open() as metadata:
             for line in metadata:
                 item = json.loads(line)
@@ -111,13 +132,23 @@ def run_offline(recording: Path, out: Path, *, ocr=False, quiet_seconds=60, head
                 reading, _moving, _ = pipeline.step(minimap_crop(rgb), t, feedback=False)
                 if delayed:
                     delayed.advance(t)
-                result = conductor.tick(Observation(reading, None, t), rgb)
+                fresh_text = None
+                if reader is not None and t >= next_text:
+                    scene = fresh_text = reader.read(rgb)
+                    scene_time = t
+                    next_text = t + 0.5
+                    text_log.write(json.dumps({"t": t, "text": asdict(scene)}) + "\n")
+                    text_log.flush()
+                reading_hud = hud.read(rgb, text=scene) if hud_flow else None
+                result = conductor.tick(
+                    Observation(reading, None, t, hud=reading_hud), rgb, text=fresh_text, text_time=scene_time
+                )
+
                 first_plan = first_plan or conductor.runner.has_plan
                 if first_plan:
                     judged += 1
                     neutral += result.pad == NEUTRAL_PAD
                 first = t if first is None else first
-                from dataclasses import asdict
 
                 log.write(
                     json.dumps(
@@ -126,11 +157,10 @@ def run_offline(recording: Path, out: Path, *, ocr=False, quiet_seconds=60, head
                             "frame_id": item["frame_id"],
                             "fresh": True,
                             "reading": asdict(reading),
-                            "skill": (
-                                {"name": "carry_on", "status": "running", "reason": "head-pending"}
-                                if result is not None and result.reason == "carry-on"
-                                else conductor.runner.describe()
-                            ),
+                            "capture_t": t,
+                            "hud": None if reading_hud is None else asdict(reading_hud),
+                            "text_time": scene_time,
+                            "skill": conductor.describe(result),
                             "result": asdict(result),
                             "sent": False,
                             "status": None,
@@ -165,7 +195,8 @@ def run_offline(recording: Path, out: Path, *, ocr=False, quiet_seconds=60, head
             "recording": str(recording.resolve()),
             "frames": count,
             "elapsed": elapsed,
-            "ocr": ocr,
+            "ocr": ocr or hud_flow,
+            "hud_flow": hud_flow,
             "requests": len(times),
             "request_times": times,
             "intervals": intervals,
@@ -175,6 +206,14 @@ def run_offline(recording: Path, out: Path, *, ocr=False, quiet_seconds=60, head
             "intervals_under_10s": sum(interval < 10 for interval in intervals),
             "too_frequent": rate > 6 or any(interval < 10 for interval in intervals),
         }
+        if hud_flow:
+            flow_rows = [
+                json.loads(line)
+                for line in (out / "head.jsonl").read_text().splitlines()
+                if json.loads(line)["type"].startswith("flow_")
+            ]
+            (out / "flow.json").write_text(json.dumps(flow_rows, indent=2) + "\n")
+            report["takeovers"] = sum(row["type"] == "flow_enter" for row in flow_rows)
         (out / "frequency.json").write_text(json.dumps(report, indent=2) + "\n")
         return report
     finally:
@@ -191,6 +230,9 @@ def main():
     parser.add_argument("recording", type=Path)
     parser.add_argument("--out", required=True, type=Path)
     parser.add_argument("--ocr", action="store_true", help="enable asynchronous scene and GPS OCR")
+    parser.add_argument(
+        "--hud-flow", action="store_true", help="replay HUD and flow with capture-clock scene OCR"
+    )
     parser.add_argument("--quiet-seconds", type=float, default=60)
     parser.add_argument("--head-delay", type=float, help="scripted answer latency in recording seconds")
     args = parser.parse_args()
@@ -202,6 +244,7 @@ def main():
                 ocr=args.ocr,
                 quiet_seconds=args.quiet_seconds,
                 head_delay=args.head_delay,
+                hud_flow=args.hud_flow,
             ),
             indent=2,
         )
