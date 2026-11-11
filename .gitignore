@@ -58,3 +58,7 @@ lab/screens/review/
 
 # drawn from the recordings by lab/judge/sample.py, 36 MB
 lab/judge/sample/
+
+# rebuilt by pilot/tools/human_drive.py, 110 MB
+lab/human-drive/out/*/drive.json
+lab/human-drive/out/*/readings-v3.jsonl
