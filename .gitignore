@@ -46,3 +46,7 @@ lab/objects/holdout/sheets/*
 
 # Console calibration sessions and reproducible extraction scratch files.
 /lab/calibrate/*/
+
+# P25 reproducible intermediate crops and console output.
+lab/wanted/scratch/
+lab/wanted/*.log

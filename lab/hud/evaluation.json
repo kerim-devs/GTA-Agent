@@ -9,7 +9,8 @@
       "phone": 0,
       "failed": 0,
       "passed": 0,
-      "loading": 0
+      "loading": 0,
+      "wasted": 0
     },
     "pause": {
       "game": 4,
@@ -19,7 +20,8 @@
       "phone": 0,
       "failed": 0,
       "passed": 0,
-      "loading": 0
+      "loading": 0,
+      "wasted": 0
     },
     "map": {
       "game": 0,
@@ -29,7 +31,8 @@
       "phone": 0,
       "failed": 0,
       "passed": 0,
-      "loading": 0
+      "loading": 0,
+      "wasted": 0
     },
     "weapon_wheel": {
       "game": 1,
@@ -39,7 +42,8 @@
       "phone": 0,
       "failed": 0,
       "passed": 0,
-      "loading": 0
+      "loading": 0,
+      "wasted": 0
     },
     "phone": {
       "game": 1,
@@ -49,7 +53,8 @@
       "phone": 12,
       "failed": 0,
       "passed": 0,
-      "loading": 0
+      "loading": 0,
+      "wasted": 0
     },
     "failed": {
       "game": 0,
@@ -59,7 +64,8 @@
       "phone": 0,
       "failed": 15,
       "passed": 0,
-      "loading": 0
+      "loading": 0,
+      "wasted": 0
     },
     "passed": {
       "game": 2,
@@ -69,7 +75,8 @@
       "phone": 0,
       "failed": 0,
       "passed": 8,
-      "loading": 0
+      "loading": 0,
+      "wasted": 0
     },
     "loading": {
       "game": 0,
@@ -79,7 +86,19 @@
       "phone": 0,
       "failed": 0,
       "passed": 0,
-      "loading": 8
+      "loading": 8,
+      "wasted": 0
+    },
+    "wasted": {
+      "game": 0,
+      "pause": 0,
+      "map": 0,
+      "weapon_wheel": 0,
+      "phone": 0,
+      "failed": 0,
+      "passed": 0,
+      "loading": 0,
+      "wasted": 0
     }
   },
   "groups": {
@@ -101,8 +120,8 @@
   "health_hit_rate": 0.9315068493150684,
   "health_abstentions": 3,
   "health_mae_when_read": 0.021079365079365076,
-  "mean_ms": 0.30416197766666664,
-  "p95_frame_mean_ms": 0.4171542833333332,
+  "mean_ms": 0.42410305566666673,
+  "p95_frame_mean_ms": 0.5558691466666666,
   "repeats_per_frame": 30,
   "misses": [
     {
@@ -217,6 +236,8 @@
       "error": null
     }
   ],
-  "missing_screen_classes": [],
+  "missing_screen_classes": [
+    "wasted"
+  ],
   "passed": true
 }

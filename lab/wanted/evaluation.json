@@ -1,0 +1,3723 @@
+{
+  "labelled_frames": 1071,
+  "window_500_650_frames": 350,
+  "readable_labels": 670,
+  "readable_correct": 487,
+  "readable_abstentions": 183,
+  "readable_wrong_counts": 0,
+  "unknown_labels": 401,
+  "unknown_abstentions": 388,
+  "no_star_labels": 853,
+  "no_star_false_positives": 0,
+  "no_star_false_positive_rate": 0.0,
+  "longest_labelled_false_positive_run": null,
+  "longest_sampled_star_miss_run": {
+    "source": "wifi",
+    "first_i": 12271,
+    "last_i": 12281,
+    "first_capture_s": 609.5226,
+    "last_capture_s": 610.818,
+    "frames": 4,
+    "capture_span_s": 1.2954
+  },
+  "mean_ms": 0.48549541375661376,
+  "p95_frame_mean_ms": 0.5516847166666667,
+  "repeats_per_frame": 30,
+  "errors": [
+    {
+      "id": "wifi-00151",
+      "source": "wifi",
+      "i": 151,
+      "capture_s": 7.0273,
+      "rgb_sha256": "25329bf2f4066140341974e68612b3e8861c1651c91bb1118053530f94abf265",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": null,
+      "readability": "Non-game or visually clipped/featureless star positions; no-star sequence context retained for false-positive scoring.",
+      "actual_wanted": 0,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-00204",
+      "source": "wifi",
+      "i": 204,
+      "capture_s": 9.0774,
+      "rgb_sha256": "cc7a06898f5fdefc963684f90e1c30ac6c1f4e99864b0546638a748f6fe9cf92",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-01448",
+      "source": "wifi",
+      "i": 1448,
+      "capture_s": 68.1019,
+      "rgb_sha256": "d64b36d8b02a0e50c705ebb8a31a7185ee15d4607b6be2e5a4967237fcb80fa7",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-01625",
+      "source": "wifi",
+      "i": 1625,
+      "capture_s": 75.9347,
+      "rgb_sha256": "2d78bae8447920985525a7f08d622ceabba01b2121685e6a5d8df22a616c90e4",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-01682",
+      "source": "wifi",
+      "i": 1682,
+      "capture_s": 78.048,
+      "rgb_sha256": "f12fe0b55d51d6d8b0b76e7e54afa6533fd1dc659239dfff8f1203069118c620",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": null,
+      "readability": "Non-game or visually clipped/featureless star positions; no-star sequence context retained for false-positive scoring.",
+      "actual_wanted": 0,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-01886",
+      "source": "wifi",
+      "i": 1886,
+      "capture_s": 86.1757,
+      "rgb_sha256": "dedc387f9481f7a80ad23c4aa30dd0877342d74eb004de98b455a74082fca391",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-01933",
+      "source": "wifi",
+      "i": 1933,
+      "capture_s": 88.1478,
+      "rgb_sha256": "47fadffb7206c33a1ec3bd033770f95f773901c1531bd9c6d3e9d7b11347145e",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-01982",
+      "source": "wifi",
+      "i": 1982,
+      "capture_s": 90.2424,
+      "rgb_sha256": "c776e4fc3fe5cc3b390d5eb3bb78d8a3964faef8cfdc1a58d0c93619b14b80fa",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-02041",
+      "source": "wifi",
+      "i": 2041,
+      "capture_s": 92.2544,
+      "rgb_sha256": "8e4983f75d69de0c56b2b83d245f9605993df8fa05c4f3739ad7afcdafd0a800",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-02433",
+      "source": "wifi",
+      "i": 2433,
+      "capture_s": 108.4426,
+      "rgb_sha256": "c8d9a53845931b04090e9ebc322aa253a9d0d0634da57048c1f4ea290520729e",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-02531",
+      "source": "wifi",
+      "i": 2531,
+      "capture_s": 112.628,
+      "rgb_sha256": "f4a42b6669d52f07e18d50916c1d83d5f079c2226ff5e35908cbeb2906e9c9a2",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-02569",
+      "source": "wifi",
+      "i": 2569,
+      "capture_s": 114.5824,
+      "rgb_sha256": "c5b36f3ba3eaecc82c1e335a7a7ea12bf1d3cd9492d7decd57075707fbe04f87",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-03173",
+      "source": "wifi",
+      "i": 3173,
+      "capture_s": 140.9704,
+      "rgb_sha256": "f8b9e58f9bf24cd62ff81b370668ddf2e96da43f69748e4b6d532961fc3d58c7",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-03289",
+      "source": "wifi",
+      "i": 3289,
+      "capture_s": 147.2618,
+      "rgb_sha256": "080c1baa43121183c1589b68e7028743a0a71a45090a8d05a61b020621ba1b01",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-03498",
+      "source": "wifi",
+      "i": 3498,
+      "capture_s": 157.1952,
+      "rgb_sha256": "e90716a1f16f25b3b5a25d9c35596c67903342c4c9e74417509a3f14ce51150c",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-03543",
+      "source": "wifi",
+      "i": 3543,
+      "capture_s": 159.2912,
+      "rgb_sha256": "8d75d5ed5534c5605c8a5ac58f085a6e72ebf7cac7fa163fccccb689448eb295",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-03746",
+      "source": "wifi",
+      "i": 3746,
+      "capture_s": 167.3472,
+      "rgb_sha256": "1c5c50e7ce70e03c7f1669682051ba82c737c804e0ce1b8ed61966a047e36c5c",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-03998",
+      "source": "wifi",
+      "i": 3998,
+      "capture_s": 177.477,
+      "rgb_sha256": "874a18f900b3436a40bab77f920df2848152a780f72e14eb57f178c5e86d77c0",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-04112",
+      "source": "wifi",
+      "i": 4112,
+      "capture_s": 183.5632,
+      "rgb_sha256": "d4c70473f317b1c3f969c872582720e4ef906d52215b297d4bf86be28b182606",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": null,
+      "readability": "Non-game or visually clipped/featureless star positions; no-star sequence context retained for false-positive scoring.",
+      "actual_wanted": 0,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-04156",
+      "source": "wifi",
+      "i": 4156,
+      "capture_s": 187.6126,
+      "rgb_sha256": "800ff26ea88199c4865736f1d69a1c37637cde9975835d015379b865ee22296f",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-04348",
+      "source": "wifi",
+      "i": 4348,
+      "capture_s": 197.7804,
+      "rgb_sha256": "1c6ba9311f88b438214384582ca3034d5c97864cb291dea60d6af29c048c45ca",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-04434",
+      "source": "wifi",
+      "i": 4434,
+      "capture_s": 201.8594,
+      "rgb_sha256": "7ada9d0ab922b2a4a3d2cd773e9e21331d2c770de9371d8121c1f5289c5c3bb3",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-04534",
+      "source": "wifi",
+      "i": 4534,
+      "capture_s": 205.9508,
+      "rgb_sha256": "15878e388e2fb1a0c4767561497729ad0ee08a3bd64d27cf58bd3d55d443eb61",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-05143",
+      "source": "wifi",
+      "i": 5143,
+      "capture_s": 236.358,
+      "rgb_sha256": "5078df988cd8294934586283d2a9941668dfe414815d929c089ecf6ecf26eaad",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-05271",
+      "source": "wifi",
+      "i": 5271,
+      "capture_s": 242.4384,
+      "rgb_sha256": "627d43f42a0cfd47044a24c1ab9b606d7fea1ae622078adb9c8f147246249b53",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-05347",
+      "source": "wifi",
+      "i": 5347,
+      "capture_s": 246.4788,
+      "rgb_sha256": "f33efd908fee096b0cec2ef5ca21f242c1ac465835b63691205200ebe57332f4",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-05500",
+      "source": "wifi",
+      "i": 5500,
+      "capture_s": 254.5771,
+      "rgb_sha256": "0d8b147648202256d5497580630f16d4efe8085509cf1ade376029aa888c9c37",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-05644",
+      "source": "wifi",
+      "i": 5644,
+      "capture_s": 260.6718,
+      "rgb_sha256": "06026b48e699c310595f1f121f6aafd45e8c6dd75e47231e87559fbc5c0cf39b",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-05683",
+      "source": "wifi",
+      "i": 5683,
+      "capture_s": 262.8653,
+      "rgb_sha256": "c1eae87338dc51ce550dbef541ecedc9c8d69771e9d06ef920cd06173f493aa7",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-05716",
+      "source": "wifi",
+      "i": 5716,
+      "capture_s": 264.7748,
+      "rgb_sha256": "aa0714632484f1320bd20fd7486196bbe6fcefa0f1c5942b20d866a51488a9e7",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-05963",
+      "source": "wifi",
+      "i": 5963,
+      "capture_s": 274.9253,
+      "rgb_sha256": "c4b97fc972b78f74b574a8a1174942a1ab8ed4d637c098a39211414d9cc2a902",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-06081",
+      "source": "wifi",
+      "i": 6081,
+      "capture_s": 280.9908,
+      "rgb_sha256": "c542d99e5ea641e5ef48eb536870510958974d4f33ae3eb7dae5a90b42976c3e",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-06673",
+      "source": "wifi",
+      "i": 6673,
+      "capture_s": 310.8054,
+      "rgb_sha256": "4509e935e77da846c8857d5f88acdc071396af8e7341cb477b2e6a08443f7a7d",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-06674",
+      "source": "wifi",
+      "i": 6674,
+      "capture_s": 313.6717,
+      "rgb_sha256": "4a65665ffa8469f2cfc625a5d0a1adaab3751b3a7e7f09c31febe760e48f7ff2",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-06719",
+      "source": "wifi",
+      "i": 6719,
+      "capture_s": 315.5237,
+      "rgb_sha256": "971ec31c5b28e0a2700c319c47869f9d6d62f54207e9cd4e60d0ff198d2f600d",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-06916",
+      "source": "wifi",
+      "i": 6916,
+      "capture_s": 323.3964,
+      "rgb_sha256": "9af7da74c2714680a6829fe584a90b96e9ad1a14a71f8819f80301297e4e3b22",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-06958",
+      "source": "wifi",
+      "i": 6958,
+      "capture_s": 325.6384,
+      "rgb_sha256": "2daa3fc2692c41d40841e05c834e2bc9c55349e9c09d9adfc7afceba0f0fb53c",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-07006",
+      "source": "wifi",
+      "i": 7006,
+      "capture_s": 327.6672,
+      "rgb_sha256": "678d37507487ce7b09f8dbce6db2324eb6de4db0e1160fdda165b5b00427da42",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-07060",
+      "source": "wifi",
+      "i": 7060,
+      "capture_s": 329.6849,
+      "rgb_sha256": "b5fd51ae30112422c30ee4b52867897ffeca1ba09f7c2552b4b9ab189b4bed66",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-07203",
+      "source": "wifi",
+      "i": 7203,
+      "capture_s": 335.7784,
+      "rgb_sha256": "89f08b5409dbbb5a3771db2271ec009773d3588ceda832cdbd78b4ad7f8dc882",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-07249",
+      "source": "wifi",
+      "i": 7249,
+      "capture_s": 337.8669,
+      "rgb_sha256": "a592e0d3088547173b49b2ab9a96858da6883f6196ad0c0fcc566937e76a88c2",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-07455",
+      "source": "wifi",
+      "i": 7455,
+      "capture_s": 347.9369,
+      "rgb_sha256": "3dfb614868b8f788353422c286532aed5e034b186df8d3fe6d8dc0cf82d2662a",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": null,
+      "readability": "Non-game or visually clipped/featureless star positions; no-star sequence context retained for false-positive scoring.",
+      "actual_wanted": 0,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-07626",
+      "source": "wifi",
+      "i": 7626,
+      "capture_s": 356.0824,
+      "rgb_sha256": "528d14d0628608b05891d0ae8bee21a47602d5338d68ea44967e4e24fb59b7c8",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": null,
+      "readability": "Non-game or visually clipped/featureless star positions; no-star sequence context retained for false-positive scoring.",
+      "actual_wanted": 0,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-07664",
+      "source": "wifi",
+      "i": 7664,
+      "capture_s": 358.095,
+      "rgb_sha256": "ba88976ae1961270a5c6b2ad129e2709435ab2abb1d0e7e81112f59b0bbd6197",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-08355",
+      "source": "wifi",
+      "i": 8355,
+      "capture_s": 394.7134,
+      "rgb_sha256": "c5ae83fc878e59cce715326b7fcb2bdfdcb3a8928ca8544c42b4252949cdf6ca",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-08408",
+      "source": "wifi",
+      "i": 8408,
+      "capture_s": 396.6614,
+      "rgb_sha256": "4a9ddba69c42e7a63c2f797af3fac156ba5983d415be5c1ce1d9902018fc7ec6",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-08456",
+      "source": "wifi",
+      "i": 8456,
+      "capture_s": 398.6967,
+      "rgb_sha256": "831ee74ae6f1421fc36a1ed814944dcd33fefff1bb66c2beedd1dfea8f9581ce",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": null,
+      "readability": "Non-game or visually clipped/featureless star positions; no-star sequence context retained for false-positive scoring.",
+      "actual_wanted": 0,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-08493",
+      "source": "wifi",
+      "i": 8493,
+      "capture_s": 400.7249,
+      "rgb_sha256": "03c6902e0e7f3d0639e32ea89679053d316dfc756d53df8c7a9355251358e9ef",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": null,
+      "readability": "Non-game or visually clipped/featureless star positions; no-star sequence context retained for false-positive scoring.",
+      "actual_wanted": 0,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-08584",
+      "source": "wifi",
+      "i": 8584,
+      "capture_s": 404.8339,
+      "rgb_sha256": "e8b18cacba33d05cf301f0c33146e512c6b09874e362c85cb5c1dbbb9e67be99",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-08602",
+      "source": "wifi",
+      "i": 8602,
+      "capture_s": 406.8822,
+      "rgb_sha256": "8f368b012a932c7946b85616df5e1ab9393c1b6b9adee90f2b558c19744712e8",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-08779",
+      "source": "wifi",
+      "i": 8779,
+      "capture_s": 414.9291,
+      "rgb_sha256": "2831cb1eaad5b59325a30890e1fb7873bcc232cc3baf33cb696f641d477a1c9a",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-09067",
+      "source": "wifi",
+      "i": 9067,
+      "capture_s": 427.0829,
+      "rgb_sha256": "3bca7812936db83451af398d9fe4f4d292c244a68b1830508f4d57cc92a42f2c",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-09151",
+      "source": "wifi",
+      "i": 9151,
+      "capture_s": 431.2106,
+      "rgb_sha256": "cc51424af64410315332ba709c8278f251bd3249778e5d2825dc2f40470964cf",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-09248",
+      "source": "wifi",
+      "i": 9248,
+      "capture_s": 437.1905,
+      "rgb_sha256": "920049c359979b691273e630635d4eed19889eef763813f5d492fd50a31d78e3",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-09369",
+      "source": "wifi",
+      "i": 9369,
+      "capture_s": 443.1737,
+      "rgb_sha256": "6dfd1e176416ffa9a990ba2e754fdc8e5b06264cab37ac6a408408995f2357b7",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": null,
+      "readability": "Non-game or visually clipped/featureless star positions; no-star sequence context retained for false-positive scoring.",
+      "actual_wanted": 0,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-09403",
+      "source": "wifi",
+      "i": 9403,
+      "capture_s": 445.2726,
+      "rgb_sha256": "bf78ed39a7704d1cfeeafc55b8995259aa60a1c93fa06e16f0a1f90781a26eea",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": null,
+      "readability": "Non-game or visually clipped/featureless star positions; no-star sequence context retained for false-positive scoring.",
+      "actual_wanted": 0,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-09432",
+      "source": "wifi",
+      "i": 9432,
+      "capture_s": 447.3646,
+      "rgb_sha256": "d91b4d3ef25243fde870bb37a368ac682f310b254470f2a1115607dbaa7dfdfd",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": null,
+      "readability": "Non-game or visually clipped/featureless star positions; no-star sequence context retained for false-positive scoring.",
+      "actual_wanted": 0,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10019",
+      "source": "wifi",
+      "i": 10019,
+      "capture_s": 479.8879,
+      "rgb_sha256": "a376c7a4a8a58d44c10f704227c871116ff98a41ef5bef0a67c212b5a0475f3a",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10109",
+      "source": "wifi",
+      "i": 10109,
+      "capture_s": 483.9464,
+      "rgb_sha256": "f4d2523580d58bc0ba494e79a4d5e39e4504928e17c7f0911e7e82238f49781d",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10540",
+      "source": "wifi",
+      "i": 10540,
+      "capture_s": 506.6751,
+      "rgb_sha256": "97de8b75e1b29735e939551e0860724c2549174696428c8928392aea2651ce61",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10565",
+      "source": "wifi",
+      "i": 10565,
+      "capture_s": 508.7381,
+      "rgb_sha256": "c7764e28528ca15278c27809bd003e13ebac9d2c7113a564284c96ca7fdae4ea",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10572",
+      "source": "wifi",
+      "i": 10572,
+      "capture_s": 509.1293,
+      "rgb_sha256": "bb2c9407a4fd4e24118afe807f10b6f34725e7107dec7ca8f9ada19715b2e0e4",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10573",
+      "source": "wifi",
+      "i": 10573,
+      "capture_s": 510.3533,
+      "rgb_sha256": "33410ed9959a03f0f04d409b8dece4d55bc2bae5e4d5906870cf67524894a165",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10574",
+      "source": "wifi",
+      "i": 10574,
+      "capture_s": 510.4004,
+      "rgb_sha256": "c52cc63f0c4325dd8524cc542e8e4fd212cc82ec717d4b1785d3edd42684fb45",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10578",
+      "source": "wifi",
+      "i": 10578,
+      "capture_s": 510.831,
+      "rgb_sha256": "f488f0d456eb5d4cc15b67d6ba2b4e8ae617a585efb881d705f3210849460bfd",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10590",
+      "source": "wifi",
+      "i": 10590,
+      "capture_s": 511.1699,
+      "rgb_sha256": "b7985e3f239cba9ae839d564b3d48bda6195d461358cecb7d7835de96c13acf7",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10595",
+      "source": "wifi",
+      "i": 10595,
+      "capture_s": 511.7425,
+      "rgb_sha256": "267470e044f66dbcd89ee45f07c6a1625047f868c9b9b6f7cb7faa8122c04681",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10673",
+      "source": "wifi",
+      "i": 10673,
+      "capture_s": 515.3674,
+      "rgb_sha256": "4f70b8345377113c71816a836fb7f36653d4f7bc9eacf6bf9ce7456ba95fa1a1",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10788",
+      "source": "wifi",
+      "i": 10788,
+      "capture_s": 523.6858,
+      "rgb_sha256": "7081b894e54b9c1d46b1ad82d4b643019bf4034ba947267eed64514cc279424e",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10808",
+      "source": "wifi",
+      "i": 10808,
+      "capture_s": 525.8345,
+      "rgb_sha256": "b76be7799429f7d1e81c9aa6264d1bff00ffafea3a6a5e047c87b6439e03a15c",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10837",
+      "source": "wifi",
+      "i": 10837,
+      "capture_s": 527.5915,
+      "rgb_sha256": "867b50c46bbdd0aebccf32f36e8ffaa10159326d4cc927407da88f1daa78d5ed",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10865",
+      "source": "wifi",
+      "i": 10865,
+      "capture_s": 531.3435,
+      "rgb_sha256": "3546058bddaeab8e84994ba783d98c8ad9f5d5eddb90e517da486bc4d74fa310",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10871",
+      "source": "wifi",
+      "i": 10871,
+      "capture_s": 532.0969,
+      "rgb_sha256": "a53eafc2de3834ecffd52b9e7ecf3ba5164209aad30eacb0591631f7cb02436d",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10876",
+      "source": "wifi",
+      "i": 10876,
+      "capture_s": 532.3257,
+      "rgb_sha256": "a7de48cda8a8e10d4a893999890fa14c154391cb09faf9d5e70caea972b7caa2",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10885",
+      "source": "wifi",
+      "i": 10885,
+      "capture_s": 533.4164,
+      "rgb_sha256": "e20243e7074e1c614d8c162731e200aad5acdd6bca30c31a9394a84103774a5a",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-10886",
+      "source": "wifi",
+      "i": 10886,
+      "capture_s": 534.6787,
+      "rgb_sha256": "60a95de216c1d9cb3751fdd45f72d2f2031e629a0c79237a76a41a638a93e8c7",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-12000",
+      "source": "wifi",
+      "i": 12000,
+      "capture_s": 595.8277,
+      "rgb_sha256": "1e2b03fec944ed681e4e2cc8ee8c42bd74b04ce996113cf44583e1f020b343a1",
+      "stars_present": true,
+      "selection": "wanted_window",
+      "wanted": 3,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-12271",
+      "source": "wifi",
+      "i": 12271,
+      "capture_s": 609.5226,
+      "rgb_sha256": "c38e2bebff4d8512f6512b5cbd6102db36f945e93dc094e518604533b50d73af",
+      "stars_present": true,
+      "selection": "wanted_window",
+      "wanted": 3,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-12277",
+      "source": "wifi",
+      "i": 12277,
+      "capture_s": 609.9841,
+      "rgb_sha256": "a6015fc158fefccb045b13f338667d8e5c502931d260cab90c04ed2b7e37adc1",
+      "stars_present": true,
+      "selection": "wanted_window",
+      "wanted": 3,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-12278",
+      "source": "wifi",
+      "i": 12278,
+      "capture_s": 610.7236,
+      "rgb_sha256": "6ec2a3ed22f309448976386bb20c600e7ecac8b3c65c8caa7df3f0e06e689c00",
+      "stars_present": true,
+      "selection": "wanted_window",
+      "wanted": 3,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-12281",
+      "source": "wifi",
+      "i": 12281,
+      "capture_s": 610.818,
+      "rgb_sha256": "3b7dfd32b5be864faca941ac25ca9b147e934fa6a7531d38c206c142323c24b6",
+      "stars_present": true,
+      "selection": "wanted_window",
+      "wanted": 3,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-12437",
+      "source": "wifi",
+      "i": 12437,
+      "capture_s": 620.4145,
+      "rgb_sha256": "cc7f1f63124831065885256ef2d6bf69116e1448660c421040b04eea4db0f0c1",
+      "stars_present": true,
+      "selection": "wanted_window",
+      "wanted": 3,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-12984",
+      "source": "wifi",
+      "i": 12984,
+      "capture_s": 644.5836,
+      "rgb_sha256": "5d24d16d418741b470d14e1a70cfe03cc25914ab43a4db1ce219fca5184b3863",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-13081",
+      "source": "wifi",
+      "i": 13081,
+      "capture_s": 648.771,
+      "rgb_sha256": "18b1f01202d042377ba58ea6df82063f510643eb8db1359546b5bad707bc4835",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-13096",
+      "source": "wifi",
+      "i": 13096,
+      "capture_s": 649.1163,
+      "rgb_sha256": "bfb4fe7ceb820c994f6afc95c0158f011b61c197ac380fe24151ba9e25272919",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "wifi-13103",
+      "source": "wifi",
+      "i": 13103,
+      "capture_s": 649.613,
+      "rgb_sha256": "225e7516f6b9428a8a4308aa2cc5cfab09de10ae2701ac4ddbd457af49bafc82",
+      "stars_present": false,
+      "selection": "wanted_window",
+      "wanted": 0,
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-02604",
+      "source": "clean1",
+      "i": 2604,
+      "capture_s": 43.4683,
+      "rgb_sha256": "fe17dad40827be88eb913b503212690665942d495a539c51fbe608eb8cb71190",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": null,
+      "screen": "game",
+      "readability": "Non-game or visually clipped/featureless star positions; no-star sequence context retained for false-positive scoring.",
+      "actual_wanted": 0,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-02841",
+      "source": "clean1",
+      "i": 2841,
+      "capture_s": 47.4152,
+      "rgb_sha256": "b9e5ba0af41bc2b6e993e58f7dea8d2ae73608ff19b7d24e94436c8513e061a1",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-02900",
+      "source": "clean1",
+      "i": 2900,
+      "capture_s": 48.3986,
+      "rgb_sha256": "b756ddf9e7d7bdb1905963971064170baf6364bbd07df2873e6954a429037366",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-02956",
+      "source": "clean1",
+      "i": 2956,
+      "capture_s": 49.3848,
+      "rgb_sha256": "b7c413ebe0a7bd106f3aaec650526a0bb1d2cd8e7cc5df779c4a542065ba453d",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-03196",
+      "source": "clean1",
+      "i": 3196,
+      "capture_s": 53.3413,
+      "rgb_sha256": "eb9b54c12b94da9e88517c2dabf75c06b5d77ce09fcc49d15a4fa7087573b520",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-03255",
+      "source": "clean1",
+      "i": 3255,
+      "capture_s": 54.3221,
+      "rgb_sha256": "7101692e77631d150c9a77c565b19416e705389fc35ff34edda87e3881625835",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-03314",
+      "source": "clean1",
+      "i": 3314,
+      "capture_s": 55.307,
+      "rgb_sha256": "8e0af67df918ca63273cc180139624d98d94f4bf7c37db6d7db19b2beaa5285d",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-04676",
+      "source": "clean1",
+      "i": 4676,
+      "capture_s": 78.0299,
+      "rgb_sha256": "d7d4ff3cb7d773d4bc0c3466ad6bf450889dbff0f79b86e0ee4b719ce412437c",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-04734",
+      "source": "clean1",
+      "i": 4734,
+      "capture_s": 78.995,
+      "rgb_sha256": "1c8ca8a7ec45e8cac7f7678c6067f910672f90e56c22e54d774aa47649243d51",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-04787",
+      "source": "clean1",
+      "i": 4787,
+      "capture_s": 79.8816,
+      "rgb_sha256": "0b3df53e539bc89a0a2001bd2186ffb282dbdec494cd404472ec4ba09212f7f3",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-04853",
+      "source": "clean1",
+      "i": 4853,
+      "capture_s": 80.9832,
+      "rgb_sha256": "f3427dc26114fc7d3ac9a910fde68fd01b12e46838f25a853131712a0b5931bd",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-04912",
+      "source": "clean1",
+      "i": 4912,
+      "capture_s": 81.9659,
+      "rgb_sha256": "95c3b92a5abbeca91054a9ed2ac90bc0b983d808a39d5a9b7f074aa331f433aa",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-04971",
+      "source": "clean1",
+      "i": 4971,
+      "capture_s": 82.9505,
+      "rgb_sha256": "8c9c601f0264ed9e8b4d078429bbbe26a4b6efdf5cc22823c0b0a26a1a91bada",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-05027",
+      "source": "clean1",
+      "i": 5027,
+      "capture_s": 83.987,
+      "rgb_sha256": "86853e41673112f95d7de099d77f950c3004f2f9c80b1c9ce9d0d700cf2463fa",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-05090",
+      "source": "clean1",
+      "i": 5090,
+      "capture_s": 84.9373,
+      "rgb_sha256": "5dd31d31c2c5c0b70c64bdc6ecda985f6838465a34b8734b95c187df9d9cf57c",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-05149",
+      "source": "clean1",
+      "i": 5149,
+      "capture_s": 85.9158,
+      "rgb_sha256": "67b54dac1900f20c21c5b264d59aa445d2647f6ae916fe8261d8acde05e67b23",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-05208",
+      "source": "clean1",
+      "i": 5208,
+      "capture_s": 86.9031,
+      "rgb_sha256": "bd95ffd863b204965725ebfaad404d5f25ac39e7dbe3b77a0fd000eb7959ee29",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-05267",
+      "source": "clean1",
+      "i": 5267,
+      "capture_s": 87.8885,
+      "rgb_sha256": "23207d33441573feee07df87104993601b951369c0b49c7bf5053a442bc4ad76",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-05326",
+      "source": "clean1",
+      "i": 5326,
+      "capture_s": 88.8703,
+      "rgb_sha256": "0f09820254e90c525dbcbbb80bc8208f81c7dcd727a4fc6a9fdc1a1d7cd581d8",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-05386",
+      "source": "clean1",
+      "i": 5386,
+      "capture_s": 89.8744,
+      "rgb_sha256": "6156b029c628e626bfd236805cc96c8ffc1c1fdc86c86cc3013ea6be6bc1143b",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-05445",
+      "source": "clean1",
+      "i": 5445,
+      "capture_s": 90.8573,
+      "rgb_sha256": "896a76b126aefa35d47e95df646704a783337bb1528fc3f71bbc91109a7b73b7",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-06984",
+      "source": "clean1",
+      "i": 6984,
+      "capture_s": 116.5354,
+      "rgb_sha256": "8583f3b07159944e46685b26be30cb7eba4be945a00fd0ae405ede72ea8ac22a",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-08404",
+      "source": "clean1",
+      "i": 8404,
+      "capture_s": 140.2262,
+      "rgb_sha256": "57fed46c5dbe0b2b2bcc66f6a4f7465c97b6e7345675db3d8c60cc98213ec4d3",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-09292",
+      "source": "clean1",
+      "i": 9292,
+      "capture_s": 155.039,
+      "rgb_sha256": "a7be40fddf150d8fa17bc273151b73e8a20a132a113e15e2f4ff8f716c3224d9",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-09351",
+      "source": "clean1",
+      "i": 9351,
+      "capture_s": 156.0255,
+      "rgb_sha256": "5c350634e480a751275eb2c338018deebae4c166a1fbb1434f3bfca90ef01b41",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-09410",
+      "source": "clean1",
+      "i": 9410,
+      "capture_s": 157.0094,
+      "rgb_sha256": "1c569ee442147941efd5a3e5a54141afb2d14a717937f8d95e282b79fdc3bc40",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-09529",
+      "source": "clean1",
+      "i": 9529,
+      "capture_s": 158.996,
+      "rgb_sha256": "86a271cb49dfa49f9368057f4eadf97087fbee8ca7e0289bc38e36272bef19a9",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-09706",
+      "source": "clean1",
+      "i": 9706,
+      "capture_s": 161.9508,
+      "rgb_sha256": "1ef442358b5c8f636a44d32dbfc82c5c4d6b7f733c90f242cbc8de40dc3f8aaf",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11008",
+      "source": "clean1",
+      "i": 11008,
+      "capture_s": 183.6779,
+      "rgb_sha256": "9e06467b85cb6a4d19cb46cd2efd7f76c0a6a28df18eb8eecf0915058a10a076",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11068",
+      "source": "clean1",
+      "i": 11068,
+      "capture_s": 184.6676,
+      "rgb_sha256": "93adc970f47c8f0bca702630da46d8d6b07f6174c9d1588e6a1b85b13ae676a4",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11125",
+      "source": "clean1",
+      "i": 11125,
+      "capture_s": 185.6971,
+      "rgb_sha256": "f70fd9ce12376e4e63ff01be0fd21a4a4e7a51b279b4fa86593d83f9b473e6ac",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11186",
+      "source": "clean1",
+      "i": 11186,
+      "capture_s": 186.6369,
+      "rgb_sha256": "dbd41d59181876ce10d0a2e94c2f2b4116d7166bf583afe30602164ff90727b5",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11245",
+      "source": "clean1",
+      "i": 11245,
+      "capture_s": 187.6197,
+      "rgb_sha256": "66e9932ebcf23f433f2c3541732fdabdbd646814930da2e9ca5cf394b74574d4",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11305",
+      "source": "clean1",
+      "i": 11305,
+      "capture_s": 188.6209,
+      "rgb_sha256": "97aa1ef95329417300f10caabf20a8ef8401dacb63d930009d409f079cd83964",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11363",
+      "source": "clean1",
+      "i": 11363,
+      "capture_s": 189.5923,
+      "rgb_sha256": "5451aeb27e7d2e1a9cb11483c20f2a31b83411fe9091fad42ca5278f152abece",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11423",
+      "source": "clean1",
+      "i": 11423,
+      "capture_s": 190.5927,
+      "rgb_sha256": "dc56bb4add3de1826dcf36316886eecacec04d15d405a3d9b23381ab390fb3fb",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11482",
+      "source": "clean1",
+      "i": 11482,
+      "capture_s": 191.576,
+      "rgb_sha256": "bc9dbec93162d615332cd645c80ee76f2dc2e58a3f6a93c562dbe3b0a5398b1f",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11541",
+      "source": "clean1",
+      "i": 11541,
+      "capture_s": 192.5601,
+      "rgb_sha256": "eafa1f914375d1d7e30c5dee57cfac1552d2dee1561e8d4011d9bc8fc1a687a9",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11596",
+      "source": "clean1",
+      "i": 11596,
+      "capture_s": 193.56,
+      "rgb_sha256": "0b55c572869d01188b27e12513aa5e05624a87f45f3eb2ab50744146df1711c7",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11658",
+      "source": "clean1",
+      "i": 11658,
+      "capture_s": 194.51,
+      "rgb_sha256": "b3bafdef9c21bcfe32b81c078a264b24550eadb4c32743602286c2ed005ca04b",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11719",
+      "source": "clean1",
+      "i": 11719,
+      "capture_s": 195.5272,
+      "rgb_sha256": "76d07374b7a947881c33ffaf44e836a78414ce31472866da2a88cd0bdffb5134",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11778",
+      "source": "clean1",
+      "i": 11778,
+      "capture_s": 196.5132,
+      "rgb_sha256": "ddc186c0782a00b2ccef11481c682a2512228f05df344c6471315ea5ea4d8551",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11837",
+      "source": "clean1",
+      "i": 11837,
+      "capture_s": 197.5025,
+      "rgb_sha256": "af7be5f3559aa87206072304fbc62431f04e977774a121afdb7b5fb94bfce72b",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-11896",
+      "source": "clean1",
+      "i": 11896,
+      "capture_s": 198.4905,
+      "rgb_sha256": "46f5a8a4b152be3be3df9db94b234868266dfedff12c9298cab3cac02180a67c",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-12311",
+      "source": "clean1",
+      "i": 12311,
+      "capture_s": 205.4038,
+      "rgb_sha256": "5e3bcf1b0ac13d7f7f451467ba15b516040e948a16c3d47d3378e02bca751267",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-12370",
+      "source": "clean1",
+      "i": 12370,
+      "capture_s": 206.3869,
+      "rgb_sha256": "64f012b2ef55fb5c52c4d29c7e2801c5d50f89faaf1eca0595ea84769c3dea3f",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-12429",
+      "source": "clean1",
+      "i": 12429,
+      "capture_s": 207.3739,
+      "rgb_sha256": "3d55e709a6b4717a521cbf47ce8e59d0e8e0075f31fc6e2abf0c12216da5d65a",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-12488",
+      "source": "clean1",
+      "i": 12488,
+      "capture_s": 208.3585,
+      "rgb_sha256": "3107d5a1f9d9d5ef5367b98571b01df87bdbe17a65d6f839e64e4885a77f4260",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-12548",
+      "source": "clean1",
+      "i": 12548,
+      "capture_s": 209.3599,
+      "rgb_sha256": "c39e0c41248358acc9ee500204b06bff508cf4df067d27d543d668fe36806a5f",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-12603",
+      "source": "clean1",
+      "i": 12603,
+      "capture_s": 210.3391,
+      "rgb_sha256": "fc8492da0a341ce955396a8ebb250cfaeb56edc7fbfc270c95cff4db84759b7e",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-12664",
+      "source": "clean1",
+      "i": 12664,
+      "capture_s": 211.2912,
+      "rgb_sha256": "82b39633c22f9d9c042350dbb239df091f1052fba4d8c96bd90a36228d6cfb90",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-12725",
+      "source": "clean1",
+      "i": 12725,
+      "capture_s": 212.3113,
+      "rgb_sha256": "529008bda6fad816fff3bb16e3aa77b28927cb34fe30baf0ed3e1cdc95828684",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-12784",
+      "source": "clean1",
+      "i": 12784,
+      "capture_s": 213.2946,
+      "rgb_sha256": "342e5cd9ab4fe59c47383be3a2e994b6f1f912c0e9e5fa81bba7aa869c9a81e0",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-12843",
+      "source": "clean1",
+      "i": 12843,
+      "capture_s": 214.2848,
+      "rgb_sha256": "65823ea0ee5643fbeb5de0c76f8371345cfd4821a6cea44fc849b35ae42e7c3b",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-12903",
+      "source": "clean1",
+      "i": 12903,
+      "capture_s": 215.2833,
+      "rgb_sha256": "20252c52628216fb57b1698318b692d73d31f6031f4fa5b935a8e6a2b910edfb",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean1-13317",
+      "source": "clean1",
+      "i": 13317,
+      "capture_s": 222.1943,
+      "rgb_sha256": "cdfb1b80259d0f9d0d2f5e5b842275fcf545d24519f0ef31102fd9867e2a314f",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-00650",
+      "source": "clean2",
+      "i": 650,
+      "capture_s": 10.8792,
+      "rgb_sha256": "a6273b18ff5df6058f926a4dd4937c874c7611bea31378b0c65e07b5680c7a04",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-00945",
+      "source": "clean2",
+      "i": 945,
+      "capture_s": 15.798,
+      "rgb_sha256": "62336d41f70dfbefa0bc184ef1c7e9a89836cbac13ed5f84f006aaa5e55d741c",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-01893",
+      "source": "clean2",
+      "i": 1893,
+      "capture_s": 31.6147,
+      "rgb_sha256": "738f93c9d0047fb6a31aa0bd5d0c1ca8eab4cd936c74cf2fbeea4f3726a3ce32",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-04733",
+      "source": "clean2",
+      "i": 4733,
+      "capture_s": 79.0037,
+      "rgb_sha256": "eda1982e1bba81b1dbb43a727dfb4433883f614022ea18611487080676affb24",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": null,
+      "screen": "game",
+      "readability": "Non-game or visually clipped/featureless star positions; no-star sequence context retained for false-positive scoring.",
+      "actual_wanted": 0,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-05206",
+      "source": "clean2",
+      "i": 5206,
+      "capture_s": 86.9047,
+      "rgb_sha256": "26c12a3922d65a10885e66fdd57f832a035069d64f9b1e36d7b35df9f4a8ee33",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-05265",
+      "source": "clean2",
+      "i": 5265,
+      "capture_s": 87.8892,
+      "rgb_sha256": "6dfb901c993d6ab4d5b9fb06d4a73a0dc33d9321d740371ab5ce7ea83392e78a",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-05795",
+      "source": "clean2",
+      "i": 5795,
+      "capture_s": 96.781,
+      "rgb_sha256": "22cb6c6baedec625cdf02e08ff9f677f186854b79104fff550f406220f4ca6f3",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-05854",
+      "source": "clean2",
+      "i": 5854,
+      "capture_s": 97.7311,
+      "rgb_sha256": "0fc4bc1c78e4b560f424c1bc319429e22c075ce6c461b1e1792dc7039c64c4f4",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-05974",
+      "source": "clean2",
+      "i": 5974,
+      "capture_s": 99.7451,
+      "rgb_sha256": "9202ca47a496b7a30fa21a97241b18e94d5b3b0f8e1c0ebe6a33c291525025aa",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-06507",
+      "source": "clean2",
+      "i": 6507,
+      "capture_s": 108.6274,
+      "rgb_sha256": "86ccb61ae8cfa08dcba6217b7119bcc095f5a1e78e0e3da022cdbc776f5698b8",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-07082",
+      "source": "clean2",
+      "i": 7082,
+      "capture_s": 118.5036,
+      "rgb_sha256": "777a458d0b2e523ee634e89e8579389defcef81289d48206a7f3f413b4258393",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-07374",
+      "source": "clean2",
+      "i": 7374,
+      "capture_s": 123.4097,
+      "rgb_sha256": "140460ea4ca6ee2f8fb91177122805fda1abc5fb75303032762a623c457318ab",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-08082",
+      "source": "clean2",
+      "i": 8082,
+      "capture_s": 135.2847,
+      "rgb_sha256": "0493b8cf2c218245cf8acff8fea09014687a5d69b914a3ac9e1a6f54394001cc",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-08201",
+      "source": "clean2",
+      "i": 8201,
+      "capture_s": 137.2701,
+      "rgb_sha256": "5b85c2976cb47ff6991c3b75f6ae771294cc43f47dc968411c7fa2e0c5703905",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-08259",
+      "source": "clean2",
+      "i": 8259,
+      "capture_s": 138.2568,
+      "rgb_sha256": "431a4b96019d3c169aa94f1386b6a83de11ffaba3ce99305e65ac06767c3c712",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-08311",
+      "source": "clean2",
+      "i": 8311,
+      "capture_s": 139.2442,
+      "rgb_sha256": "9e2ab37b067d6b7904da8a614eb63cdf42adbfbd4cc660475e32edb0060a9ae2",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-08435",
+      "source": "clean2",
+      "i": 8435,
+      "capture_s": 141.2244,
+      "rgb_sha256": "7cfb4e15643cc716e4aad49419c998a672d617334c15c7badba12e15f8678b2a",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-08601",
+      "source": "clean2",
+      "i": 8601,
+      "capture_s": 144.1593,
+      "rgb_sha256": "4d69e11155f6807df664d5c5ffadcecf99a2b80d35ec1ccaaafa95dfb8f87513",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-09368",
+      "source": "clean2",
+      "i": 9368,
+      "capture_s": 156.9691,
+      "rgb_sha256": "b50533fbd8268a9e14a2e095a6881c58e5a8a90e2e70d4cebb18f4ab0fcdc3e7",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-09520",
+      "source": "clean2",
+      "i": 9520,
+      "capture_s": 159.9618,
+      "rgb_sha256": "20dbe1051cb1a2f486cccb719ba92e77a13d59c41b9efbb8573b3b2ef4a61781",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-09575",
+      "source": "clean2",
+      "i": 9575,
+      "capture_s": 160.9799,
+      "rgb_sha256": "d1f2afdf4f8dd427ab45852d455c578a374806d28fba38ccaca5c23c8288a46a",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-09753",
+      "source": "clean2",
+      "i": 9753,
+      "capture_s": 163.9314,
+      "rgb_sha256": "3d1ca724682c047b875e105185e20e51d64ae428ca72adfcd382576c8ffee23d",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": null,
+      "screen": "game",
+      "readability": "Non-game or visually clipped/featureless star positions; no-star sequence context retained for false-positive scoring.",
+      "actual_wanted": 0,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-09931",
+      "source": "clean2",
+      "i": 9931,
+      "capture_s": 166.8995,
+      "rgb_sha256": "6060c69d4cb20c78a11e5b775bcd5ed58bc0399600a92c24e23983396374d8fd",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-11588",
+      "source": "clean2",
+      "i": 11588,
+      "capture_s": 194.5446,
+      "rgb_sha256": "32809d65306f3fa72b7c72027bee2b4bbcc22619a509c52e30710281e8590b9d",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-11647",
+      "source": "clean2",
+      "i": 11647,
+      "capture_s": 195.5296,
+      "rgb_sha256": "6de81f322ce4b2d08205b273a30b92176d161d0460b0736f5d6c69d305201fb4",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-11706",
+      "source": "clean2",
+      "i": 11706,
+      "capture_s": 196.5099,
+      "rgb_sha256": "0caea047cd3132465f9640a0cf0bbe0342e9dd4dbb4a14c911ef56811f418733",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-11765",
+      "source": "clean2",
+      "i": 11765,
+      "capture_s": 197.502,
+      "rgb_sha256": "6e43d7db93acb6c818b231c24eb3a73848e1ba928ad4e57fac4a2bb24b17edbd",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-11823",
+      "source": "clean2",
+      "i": 11823,
+      "capture_s": 198.4894,
+      "rgb_sha256": "1529207b20738765787ed5a9144a48ea52e8ca4d731b95024fd07f49bf21a5ad",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-11881",
+      "source": "clean2",
+      "i": 11881,
+      "capture_s": 199.4298,
+      "rgb_sha256": "1fc0780b4e634dfbca6e9a35542a0aa53515034ed482bb75afd892fef4ba9c21",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-11943",
+      "source": "clean2",
+      "i": 11943,
+      "capture_s": 200.4684,
+      "rgb_sha256": "4d177f644bc0999b6792d697ea921c6f817cbc3464b924e21323ee20afdfb09b",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-12002",
+      "source": "clean2",
+      "i": 12002,
+      "capture_s": 201.4472,
+      "rgb_sha256": "941fe482b99ebec9777f3ed45e0b759e869c61c34b3f69ef306b3eb6eb337465",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-12061",
+      "source": "clean2",
+      "i": 12061,
+      "capture_s": 202.4339,
+      "rgb_sha256": "6e9b317990cc52d2128c1483c2e6eda39c942f7ee624d1a1f7d175237f425b5f",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-12120",
+      "source": "clean2",
+      "i": 12120,
+      "capture_s": 203.4214,
+      "rgb_sha256": "a72a647eaf2785fa7d6a26de8406dd1b82ab360bd92f8cb3805c0d0674974421",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-12239",
+      "source": "clean2",
+      "i": 12239,
+      "capture_s": 205.4035,
+      "rgb_sha256": "068aacdf6c47b3828e39565bee614ee84751a0e603219c4579ac2dc7b6d21fd1",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-12771",
+      "source": "clean2",
+      "i": 12771,
+      "capture_s": 214.2957,
+      "rgb_sha256": "bfd3b586363a8153f9700b5ddd60d15d48e77df87b7535054e20be2254bceaff",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-12829",
+      "source": "clean2",
+      "i": 12829,
+      "capture_s": 215.2713,
+      "rgb_sha256": "c8426cd799d67214df6b654b1655f7e83a99fc6fbff22b2b072dd73de9ece639",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-12887",
+      "source": "clean2",
+      "i": 12887,
+      "capture_s": 216.2191,
+      "rgb_sha256": "648a8833d10dedf5098a0bef52e7c8dde213792c1b313b0368257df4ca7ccd6b",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-12949",
+      "source": "clean2",
+      "i": 12949,
+      "capture_s": 217.2549,
+      "rgb_sha256": "b3a29c4c4779bb97eef0a19bc5f3d89d897d9c0959a0129cb553e77f45437e18",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13008",
+      "source": "clean2",
+      "i": 13008,
+      "capture_s": 218.2371,
+      "rgb_sha256": "1ba0c54fc08181df91c7d84e3af8e1cb99eecb1525630f161bf189292af5a94e",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13067",
+      "source": "clean2",
+      "i": 13067,
+      "capture_s": 219.2265,
+      "rgb_sha256": "502cd73fe59a205cb260f4bc109dca9bc7a51d6fb1fb9becf831cad750c61705",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13126",
+      "source": "clean2",
+      "i": 13126,
+      "capture_s": 220.2083,
+      "rgb_sha256": "a2d8cee91f29014558f8871e606ff48482f0556fe9894f3e18edb4563bcede55",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13185",
+      "source": "clean2",
+      "i": 13185,
+      "capture_s": 221.1921,
+      "rgb_sha256": "df1cbca4325d5709ecfc3b5b2e78bb34be1e9579904776cb7c131549701bff0b",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13244",
+      "source": "clean2",
+      "i": 13244,
+      "capture_s": 222.1771,
+      "rgb_sha256": "ba728949c2e4604f74ded38e68d0e05985d8b45be217a5c5ca082e63724d562b",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13304",
+      "source": "clean2",
+      "i": 13304,
+      "capture_s": 223.1781,
+      "rgb_sha256": "9487690ebd2949c392c97d0e11473315f22f63d1f88f96596775df59d9aed66a",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13358",
+      "source": "clean2",
+      "i": 13358,
+      "capture_s": 224.1746,
+      "rgb_sha256": "f7bbd40778a8a89627f8141d93c9ed7fecc7f297074e7640884ee7aeea560595",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13420",
+      "source": "clean2",
+      "i": 13420,
+      "capture_s": 225.1288,
+      "rgb_sha256": "1fafcf359129f9d49cf0b523a8a032ccaf8fb158e60f354b4d3a365a1dbe67a6",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13539",
+      "source": "clean2",
+      "i": 13539,
+      "capture_s": 227.127,
+      "rgb_sha256": "20d91e0571cba693bba2c1b8baf9ced9daa3ece43edabce7f63306c09dbc3856",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13598",
+      "source": "clean2",
+      "i": 13598,
+      "capture_s": 228.1129,
+      "rgb_sha256": "d45b8bf4b40f6cb262a2c507a23004d2d78d1a42bc65e6f0ce8286e51c62dd21",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13657",
+      "source": "clean2",
+      "i": 13657,
+      "capture_s": 229.0946,
+      "rgb_sha256": "c303fdd985090a58148d36dd8167acdbcde018e2fd19ecd4a687bd92c06af445",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13716",
+      "source": "clean2",
+      "i": 13716,
+      "capture_s": 230.0766,
+      "rgb_sha256": "334ade3eeee78eb98cf8a3e768fd08b71d2516e20e502755c1c2dc0a8bc6f789",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13776",
+      "source": "clean2",
+      "i": 13776,
+      "capture_s": 231.0812,
+      "rgb_sha256": "f57a777f41ba6f6e56f5478f511b58fc03ebe1a406a262804a3baffbd9114637",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13835",
+      "source": "clean2",
+      "i": 13835,
+      "capture_s": 232.0639,
+      "rgb_sha256": "5df92fc6e298f43fc1b33103e41f49b046fe3119b70d69b501043deb50afe876",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13891",
+      "source": "clean2",
+      "i": 13891,
+      "capture_s": 233.0922,
+      "rgb_sha256": "a78bb0d27e0ebd2a919ee9e1d298cba86d170ac760f9f0cf119d52377a6b9204",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    },
+    {
+      "id": "clean2-13953",
+      "source": "clean2",
+      "i": 13953,
+      "capture_s": 234.0415,
+      "rgb_sha256": "08bce5c30d9d9f3c0229c8289c7723c89ddf4fc7e1997b7eb5bee1fc4ce9883f",
+      "stars_present": false,
+      "selection": "no_star_review",
+      "wanted": 0,
+      "screen": "game",
+      "actual_wanted": null,
+      "actual_screen": "game"
+    }
+  ],
+  "screen_errors": [],
+  "by_wanted": {
+    "None": {
+      "labels": 401,
+      "correct": 388,
+      "abstained": 388,
+      "wrong_count": 13
+    },
+    "0": {
+      "labels": 456,
+      "correct": 279,
+      "abstained": 177,
+      "wrong_count": 0
+    },
+    "1": {
+      "labels": 121,
+      "correct": 121,
+      "abstained": 0,
+      "wrong_count": 0
+    },
+    "2": {
+      "labels": 1,
+      "correct": 1,
+      "abstained": 0,
+      "wrong_count": 0
+    },
+    "3": {
+      "labels": 92,
+      "correct": 86,
+      "abstained": 6,
+      "wrong_count": 0
+    },
+    "4": {
+      "labels": 0,
+      "correct": 0,
+      "abstained": 0,
+      "wrong_count": 0
+    },
+    "5": {
+      "labels": 0,
+      "correct": 0,
+      "abstained": 0,
+      "wrong_count": 0
+    }
+  },
+  "passed": true,
+  "full_recordings": {
+    "wifi": {
+      "frames": 14214,
+      "clean_no_star_frames": 0,
+      "no_star_false_positives": [],
+      "no_star_false_positive_rate": null,
+      "longest_false_positive_run": null,
+      "longest_star_sequence_miss_run": {
+        "source": "wifi",
+        "first_i": 10929,
+        "last_i": 10958,
+        "first_capture_s": 537.4849,
+        "last_capture_s": 539.0608,
+        "frames": 30,
+        "capture_span_s": 1.5759
+      },
+      "wanted_counts": {
+        "None": 4719,
+        "0": 7869,
+        "1": 900,
+        "2": 13,
+        "3": 713
+      },
+      "screen_counts": {
+        "game": 13494,
+        "loading": 142,
+        "weapon_wheel": 70,
+        "failed": 127,
+        "phone": 72,
+        "passed": 49,
+        "pause": 30,
+        "map": 73,
+        "wasted": 157
+      },
+      "wasted_frames": [
+        {
+          "source": "wifi",
+          "i": 12641,
+          "capture_s": 628.7738,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12642,
+          "capture_s": 628.8367,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12643,
+          "capture_s": 629.0504,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12644,
+          "capture_s": 629.053,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12645,
+          "capture_s": 629.0877,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12646,
+          "capture_s": 629.1697,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12647,
+          "capture_s": 629.2077,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12648,
+          "capture_s": 629.2131,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12649,
+          "capture_s": 629.2166,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12650,
+          "capture_s": 629.2193,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12651,
+          "capture_s": 629.2423,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12652,
+          "capture_s": 629.2467,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12653,
+          "capture_s": 629.2694,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12654,
+          "capture_s": 629.3521,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12655,
+          "capture_s": 629.3648,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12656,
+          "capture_s": 629.4511,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12657,
+          "capture_s": 629.4703,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12658,
+          "capture_s": 629.5718,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12659,
+          "capture_s": 629.6225,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12660,
+          "capture_s": 629.6252,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12661,
+          "capture_s": 629.6297,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12662,
+          "capture_s": 629.6911,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12663,
+          "capture_s": 629.721,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12664,
+          "capture_s": 629.7261,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12665,
+          "capture_s": 629.7298,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12666,
+          "capture_s": 629.7697,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12667,
+          "capture_s": 629.8053,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12668,
+          "capture_s": 629.8086,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12669,
+          "capture_s": 629.8117,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12670,
+          "capture_s": 629.818,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12671,
+          "capture_s": 629.8212,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12672,
+          "capture_s": 629.8703,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12673,
+          "capture_s": 629.9048,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12674,
+          "capture_s": 629.9909,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12675,
+          "capture_s": 630.0988,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12676,
+          "capture_s": 630.1016,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12677,
+          "capture_s": 630.1054,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12678,
+          "capture_s": 630.1227,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12679,
+          "capture_s": 630.1399,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12680,
+          "capture_s": 630.2518,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12681,
+          "capture_s": 630.2583,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12682,
+          "capture_s": 630.2617,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12683,
+          "capture_s": 630.2661,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12684,
+          "capture_s": 630.3569,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12685,
+          "capture_s": 630.3598,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12686,
+          "capture_s": 630.3665,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12687,
+          "capture_s": 630.3699,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12688,
+          "capture_s": 630.437,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12689,
+          "capture_s": 630.7067,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12690,
+          "capture_s": 630.7132,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12691,
+          "capture_s": 630.9097,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12692,
+          "capture_s": 630.9135,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12693,
+          "capture_s": 630.9181,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12694,
+          "capture_s": 630.9227,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12695,
+          "capture_s": 630.9745,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12696,
+          "capture_s": 630.9795,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12697,
+          "capture_s": 630.9824,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12698,
+          "capture_s": 631.0065,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12699,
+          "capture_s": 631.1468,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12700,
+          "capture_s": 631.1521,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12701,
+          "capture_s": 631.1742,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12702,
+          "capture_s": 631.2585,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12703,
+          "capture_s": 631.2618,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12704,
+          "capture_s": 631.5085,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12705,
+          "capture_s": 631.513,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12706,
+          "capture_s": 631.6741,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12707,
+          "capture_s": 631.6784,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12708,
+          "capture_s": 631.6818,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12709,
+          "capture_s": 631.6969,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12710,
+          "capture_s": 631.7541,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12711,
+          "capture_s": 631.8076,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12712,
+          "capture_s": 631.8581,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12713,
+          "capture_s": 631.8612,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12714,
+          "capture_s": 631.8677,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12715,
+          "capture_s": 632.0243,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12716,
+          "capture_s": 632.1971,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12717,
+          "capture_s": 632.2066,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12718,
+          "capture_s": 632.2123,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12719,
+          "capture_s": 632.2226,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12720,
+          "capture_s": 632.2273,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12721,
+          "capture_s": 632.2314,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12722,
+          "capture_s": 632.2385,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12723,
+          "capture_s": 632.2448,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12724,
+          "capture_s": 632.3243,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12725,
+          "capture_s": 632.3272,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12726,
+          "capture_s": 632.3561,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12727,
+          "capture_s": 632.376,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12728,
+          "capture_s": 632.3794,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12729,
+          "capture_s": 632.3837,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12730,
+          "capture_s": 632.3882,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12731,
+          "capture_s": 632.4085,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12732,
+          "capture_s": 632.4117,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12733,
+          "capture_s": 632.4327,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12734,
+          "capture_s": 632.4358,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12735,
+          "capture_s": 632.443,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12736,
+          "capture_s": 632.4745,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12737,
+          "capture_s": 632.5093,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12738,
+          "capture_s": 632.5649,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12739,
+          "capture_s": 632.7224,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12740,
+          "capture_s": 632.8429,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12741,
+          "capture_s": 632.8462,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12742,
+          "capture_s": 632.8729,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12743,
+          "capture_s": 632.9546,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12744,
+          "capture_s": 632.9577,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12745,
+          "capture_s": 633.0039,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12746,
+          "capture_s": 633.0482,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12747,
+          "capture_s": 633.0517,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12748,
+          "capture_s": 633.0741,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12749,
+          "capture_s": 633.0793,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12750,
+          "capture_s": 633.0837,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12751,
+          "capture_s": 633.1229,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12752,
+          "capture_s": 633.2419,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12753,
+          "capture_s": 633.2458,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12754,
+          "capture_s": 633.405,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12755,
+          "capture_s": 633.4837,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12756,
+          "capture_s": 633.4865,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12757,
+          "capture_s": 633.6585,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12758,
+          "capture_s": 633.6692,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12759,
+          "capture_s": 633.7696,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12760,
+          "capture_s": 633.7737,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12761,
+          "capture_s": 633.7786,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12762,
+          "capture_s": 633.7818,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12763,
+          "capture_s": 633.789,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12764,
+          "capture_s": 633.7938,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12765,
+          "capture_s": 633.797,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12766,
+          "capture_s": 633.8087,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12767,
+          "capture_s": 633.8251,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12768,
+          "capture_s": 633.8279,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12769,
+          "capture_s": 633.859,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12770,
+          "capture_s": 633.9388,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12771,
+          "capture_s": 633.9604,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12772,
+          "capture_s": 634.1225,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12773,
+          "capture_s": 634.1279,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12774,
+          "capture_s": 634.1355,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12775,
+          "capture_s": 634.1402,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12776,
+          "capture_s": 634.1486,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12777,
+          "capture_s": 634.2917,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12778,
+          "capture_s": 634.2971,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12779,
+          "capture_s": 634.3262,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12780,
+          "capture_s": 634.3291,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12781,
+          "capture_s": 634.3724,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12782,
+          "capture_s": 634.4248,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12783,
+          "capture_s": 634.4427,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12784,
+          "capture_s": 634.4744,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12785,
+          "capture_s": 634.5103,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12786,
+          "capture_s": 634.642,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12787,
+          "capture_s": 634.6469,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12788,
+          "capture_s": 634.6507,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12789,
+          "capture_s": 634.6531,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12790,
+          "capture_s": 634.6726,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12791,
+          "capture_s": 634.7154,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12792,
+          "capture_s": 634.8147,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12793,
+          "capture_s": 634.8198,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12794,
+          "capture_s": 634.9348,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12795,
+          "capture_s": 634.9403,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12796,
+          "capture_s": 634.9589,
+          "wanted": null,
+          "screen": "wasted"
+        },
+        {
+          "source": "wifi",
+          "i": 12797,
+          "capture_s": 634.9906,
+          "wanted": null,
+          "screen": "wasted"
+        }
+      ],
+      "wasted_outside_death_window": []
+    },
+    "clean1": {
+      "frames": 14389,
+      "clean_no_star_frames": 14389,
+      "no_star_false_positives": [],
+      "no_star_false_positive_rate": 0.0,
+      "longest_false_positive_run": null,
+      "longest_star_sequence_miss_run": null,
+      "wanted_counts": {
+        "None": 13573,
+        "0": 816
+      },
+      "screen_counts": {
+        "game": 14389
+      },
+      "wasted_frames": [],
+      "wasted_outside_death_window": []
+    },
+    "clean2": {
+      "frames": 14312,
+      "clean_no_star_frames": 14312,
+      "no_star_false_positives": [],
+      "no_star_false_positive_rate": 0.0,
+      "longest_false_positive_run": null,
+      "longest_star_sequence_miss_run": null,
+      "wanted_counts": {
+        "0": 3753,
+        "None": 10559
+      },
+      "screen_counts": {
+        "game": 14312
+      },
+      "wasted_frames": [],
+      "wasted_outside_death_window": []
+    }
+  },
+  "full_scan_provenance": "The exhaustive scan was retained unchanged after three manual non-game label corrections; reader code and source frames were unchanged. Label metrics were rerun with 30 repeats.",
+  "reader_sha256": "371ce3b8797cab2d81144f9640acc8404e0228d5634386b274be84bdc4089380"
+}
