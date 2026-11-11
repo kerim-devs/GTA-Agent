@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
 from bisect import bisect_right
 from collections import Counter
 from difflib import SequenceMatcher
@@ -227,6 +228,293 @@ def promote_objectives(scene, frame):
     return replace(scene, lines=lines, objective=joined("objective"), subtitle=joined("subtitle"))
 
 
+# What an objective asks for. The classes are closed; the rules of a head decide on the class and not on
+# one verb. Each class lists the wordings of its first words. SEEN are read in the recordings of 11
+# November (lab/notes/out), ADDED come from knowledge of the game's German texts and are unverified:
+# no recording has shown them.
+INTENT_CLASSES = (
+    "go_to",
+    "bring",
+    "enter_vehicle",
+    "take_out",
+    "follow",
+    "escape",
+    "steal",
+    "pick_up",
+    "wait",
+    "return_to",
+    "protect",
+    "destroy",
+    "use",
+    "sneak",
+    "unknown",
+)
+
+SEEN = {
+    "go_to": ("begib dich", "fahr"),
+    "bring": ("bring", "schlepp"),
+    "enter_vehicle": ("steig",),
+    "take_out": ("schalte",),
+    "follow": ("folge", "verfolge"),
+    "steal": ("hol",),
+    "pick_up": ("sammle",),
+    "wait": ("warte",),
+    "return_to": ("kehr zurück", "begib dich wieder"),
+    "use": ("mach",),
+}
+
+ADDED = {
+    "go_to": (
+        "begib",
+        "geh",
+        "gehe",
+        "fahre",
+        "lauf",
+        "laufe",
+        "renn",
+        "renne",
+        "flieg",
+        "fliege",
+        "schwimm",
+        "schwimme",
+        "erreiche",
+        "gelange",
+        "reise",
+        "steuere",
+        "triff",
+        "treffe",
+        "verlasse",
+        "steig aus",
+        "steige aus",
+    ),
+    "bring": ("bringe", "schleppe", "liefere", "liefer", "transportiere", "fahre ihn", "fahr ihn"),
+    "enter_vehicle": (
+        "steige",
+        "setz dich",
+        "setze dich",
+        "besteige",
+        "spring auf",
+        "springe auf",
+        "sitz auf",
+    ),
+    "take_out": (
+        "töte",
+        "töt",
+        "erledige",
+        "erledig",
+        "eliminiere",
+        "erschieße",
+        "erschieß",
+        "beseitige",
+        "überwältige",
+        "schieße",
+        "metzle",
+        "bringe um",
+        "bring um",
+    ),
+    "follow": ("folgt", "verfolg", "beschatte", "bleib dran", "bleibe dran"),
+    "escape": (
+        "entkomme",
+        "entkomm",
+        "entfliehe",
+        "flieh",
+        "fliehe",
+        "häng",
+        "hänge",
+        "verliere",
+        "verlier",
+        "schüttle",
+        "schüttele",
+    ),
+    "steal": (
+        "hole",
+        "stiehl",
+        "stehle",
+        "klau",
+        "klaue",
+        "entwende",
+        "raube",
+        "beschaffe",
+        "besorge",
+    ),
+    "pick_up": ("heb", "hebe", "nimm", "nehme", "schnapp dir", "greif dir", "lies auf", "lese auf"),
+    "wait": ("wartet", "bleib", "bleibe", "halte dich bereit", "warte ab"),
+    "return_to": (
+        "kehre zurück",
+        "kehr",
+        "kehre",
+        "geh zurück",
+        "gehe zurück",
+        "fahr zurück",
+        "fahre zurück",
+        "lauf zurück",
+        "flieg zurück",
+        "begib dich zurück",
+        "geh wieder",
+        "fahr wieder",
+    ),
+    "protect": (
+        "beschütze",
+        "beschütz",
+        "schütze",
+        "rette",
+        "rett",
+        "verteidige",
+        "bewache",
+        "begleite",
+        "eskortiere",
+        "decke",
+    ),
+    "destroy": (
+        "zerstöre",
+        "zerstör",
+        "sprenge",
+        "vernichte",
+        "versenke",
+        "ramme",
+        "sabotiere",
+        "beschädige",
+        "zünde",
+    ),
+    "use": (
+        "fotografiere",
+        "mach ein foto",
+        "mach ein selfie",
+        "knipse",
+        "benutze",
+        "benutz",
+        "nutze",
+        "ruf an",
+        "ruf",
+        "rufe",
+        "wähle",
+        "telefoniere",
+        "hacke",
+        "aktiviere",
+    ),
+    "sneak": (
+        "schleich",
+        "schleiche",
+        "bleib unentdeckt",
+        "bleibe unentdeckt",
+        "bleib ungesehen",
+        "bleib unbemerkt",
+        "bleibe unbemerkt",
+        "vermeide",
+    ),
+}
+
+# "Schalte ... aus" takes somebody out, but "Schalte das Radio ein." or "Schalte zu Michael um." does not.
+VETO = {"schalte": ({"ein", "an", "um", "zu"}, {"radio", "licht", "musik", "fernseher", "handy", "kamera"})}
+
+
+def _fold(text):
+    """Lower case without accents and punctuation, so "Töte" and "Tote" and "zurück" and "zuruck" meet."""
+    text = unicodedata.normalize("NFKD", text.casefold().replace("ß", "ss"))
+    return "".join(char for char in text if not unicodedata.combining(char))
+
+
+def _distance(a, b):
+    row = list(range(len(b) + 1))
+    for i, x in enumerate(a, 1):
+        previous, row[0] = row[0], i
+        for j, y in enumerate(b, 1):
+            previous, row[j] = row[j], min(row[j] + 1, row[j - 1] + 1, previous + (x != y))
+    return row[-1]
+
+
+def _word_distance(token, word, first, last):
+    """Edit distance of one text word to one wording word, or None when they do not match.
+
+    One wrong letter is tolerated from five letters in the first word and from four in a later one
+    ("dich" is read "dlch"), two in a later word of six letters or more (a
+    recognised "zurück" is "zur(ick"), a text word that is the cut-off start of the word (three letters
+    or more, and only at the end of the line) counts as exact, and a later word may be glued to the next.
+    """
+    if token == word:
+        return 0
+    if last and len(token) >= 3 and len(token) < len(word) and word.startswith(token):
+        return 0
+    if first and token.startswith(word) and len(token) <= len(word) + 2:
+        # "Fahren wir", "Hängen wir", "Machen wir": the plural of an imperative is dialogue.
+        return None
+    allowed = (0 if len(word) < 5 else 1 if len(word) < 6 else 2) if not first else int(len(word) >= 5)
+    if not first and len(word) == 4:
+        allowed = 1
+    if not allowed:
+        return None
+    distance = _distance(token, word)
+    if not first and len(token) > len(word):
+        distance = min(distance, _distance(token[: len(word)], word))
+    return distance if distance <= allowed else None
+
+
+def _compiled():
+    rows = []
+    for source, seen in ((SEEN, True), (ADDED, False)):
+        for cls, phrases in source.items():
+            for phrase in phrases:
+                rows.append((cls, phrase, tuple(_fold(word) for word in phrase.split()), seen))
+    return rows
+
+
+_WORDINGS = _compiled()
+
+
+def intent(text):
+    """What one objective asks for.
+
+    Returns a dict with the class of INTENT_CLASSES, the wording of the table that matched (empty for
+    unknown), whether that wording was seen in the recordings or is added from knowledge, the words of
+    the objective that matched, and the target: everything after them, verbatim. Only the first words of
+    the line count, since the game opens an objective with its verb. The longest matching wording wins,
+    then the one with the fewest wrong letters; two classes in a tie are unknown.
+    """
+    spans = [
+        (m.start(), m.end(), _fold(re.sub(r"[^\w]", "", m.group(), flags=re.UNICODE)))
+        for m in re.finditer(r"\S+", text)
+    ]
+    spans = [row for row in spans if row[2]]
+    unknown = {"class": "unknown", "wording": "", "seen": False, "matched": "", "target": text.strip()}
+    if not spans or len(text) > 100:
+        return unknown
+    best = []
+    for cls, phrase, words, seen in _WORDINGS:
+        if len(words) > len(spans):
+            continue
+        total = 0
+        for i, word in enumerate(words):
+            distance = _word_distance(spans[i][2], word, i == 0, len(words) == len(spans) == i + 1)
+            if distance is None:
+                break
+            total += distance
+        else:
+            best.append((len(words), -total, cls, phrase, seen))
+    if not best:
+        return unknown
+    top = max(best, key=lambda row: row[:2])
+    winners = [row for row in best if row[:2] == top[:2]]
+    if len({row[2] for row in winners}) > 1:
+        return unknown
+    # A wording the recordings showed is preferred over its added twin with the same score.
+    _, _, cls, phrase, seen = max(winners, key=lambda row: row[4])
+    count = len(phrase.split())
+    verb = _fold(phrase.split()[0])
+    if verb in VETO:
+        tails, objects = VETO[verb]
+        rest = {row[2] for row in spans[count:]}
+        if (spans[-1][2] in tails and len(spans) > count) or rest & objects:
+            return unknown
+    end = spans[count - 1][1]
+    return {
+        "class": cls,
+        "wording": phrase,
+        "seen": seen,
+        "matched": text[spans[0][0] : end],
+        "target": text[end:].strip(),
+    }
+
+
 def read_sections(path):
     path = Path(path)
     if not path.is_file():
@@ -351,6 +639,7 @@ def build_missions(intervals, sections, pads=()):
         if current is None:
             current = {"start": start, "end": stop, "steps": []}
             missions.append(current)
+        asked = intent(objective["text"])
         current["steps"].append(
             {
                 "objective": objective["text"],
@@ -366,6 +655,9 @@ def build_missions(intervals, sections, pads=()):
                 "wanted": max((row["wanted"] or 0 for row in overlapping), default=0),
                 "human": observed_actions(pads, overlapping, start, stop) if sections["has_pad"] else None,
                 "ending": outcome,
+                "intent_class": asked["class"],
+                "intent_wording": asked["wording"],
+                "intent_target": asked["target"],
             }
         )
         current["end"] = stop

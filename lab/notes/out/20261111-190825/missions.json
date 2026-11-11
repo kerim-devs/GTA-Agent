@@ -59,7 +59,10 @@
               "class": "mission_passed",
               "cause": "passed"
             }
-          ]
+          ],
+          "intent_class": "return_to",
+          "intent_wording": "begib dich wieder",
+          "intent_target": "zu Franklins Haus."
         }
       ],
       "ending": "unknown",
@@ -114,7 +117,10 @@
               }
             ]
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "enter_vehicle",
+          "intent_wording": "steig",
+          "intent_target": "in den Pickup."
         },
         {
           "objective": "Folge dem Tennislehrer.",
@@ -159,7 +165,10 @@
               }
             ]
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "follow",
+          "intent_wording": "folge",
+          "intent_target": "dem Tennislehrer."
         },
         {
           "objective": "Fahr zum Canyon.",
@@ -204,7 +213,10 @@
               "class": "collision",
               "cause": "unknown"
             }
-          ]
+          ],
+          "intent_class": "go_to",
+          "intent_wording": "fahr",
+          "intent_target": "zum Canyon."
         }
       ],
       "ending": "unknown",
@@ -259,7 +271,10 @@
               "class": "standstill",
               "cause": "stuck_vehicle"
             }
-          ]
+          ],
+          "intent_class": "enter_vehicle",
+          "intent_wording": "steig",
+          "intent_target": "in den Pickup."
         }
       ],
       "ending": "unknown",
@@ -325,7 +340,10 @@
               "class": "mission_failed",
               "cause": "player_died"
             }
-          ]
+          ],
+          "intent_class": "return_to",
+          "intent_wording": "kehr zurück",
+          "intent_target": "zu Michaels Haus."
         }
       ],
       "ending": "unknown",
@@ -393,7 +411,10 @@
               "class": "standstill",
               "cause": "fight"
             }
-          ]
+          ],
+          "intent_class": "return_to",
+          "intent_wording": "kehr zurück",
+          "intent_target": "zu Michaels Haus."
         }
       ],
       "ending": "unknown",

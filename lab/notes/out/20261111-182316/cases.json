@@ -119,6 +119,9 @@
         "neutral": 0.0
       }
     },
-    "result": "matching"
+    "result": "matching",
+    "intent_class": "go_to",
+    "intent_wording": "begib dich",
+    "intent_target": "zu Michaels H"
   }
 ]

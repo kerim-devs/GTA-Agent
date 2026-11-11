@@ -54,7 +54,10 @@
               "class": "car_change",
               "cause": "other"
             }
-          ]
+          ],
+          "intent_class": "go_to",
+          "intent_wording": "begib dich",
+          "intent_target": "nach Pacific Bluffs."
         }
       ],
       "ending": "unknown",
@@ -114,7 +117,10 @@
               "class": "car_change",
               "cause": "other"
             }
-          ]
+          ],
+          "intent_class": "bring",
+          "intent_wording": "bring",
+          "intent_target": "Franklin nahe an die Yacht."
         }
       ],
       "ending": "unknown",
@@ -173,7 +179,10 @@
               "class": "car_change",
               "cause": "other"
             }
-          ]
+          ],
+          "intent_class": "follow",
+          "intent_wording": "verfolge",
+          "intent_target": "die Yacht."
         }
       ],
       "ending": "unknown",

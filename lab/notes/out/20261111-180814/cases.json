@@ -123,7 +123,10 @@
         "neutral": 0.278
       }
     },
-    "result": "matching"
+    "result": "matching",
+    "intent_class": "go_to",
+    "intent_wording": "begib dich",
+    "intent_target": "nach Pacific Bluffs."
   },
   {
     "objective": "Bring Franklin nahe an die Yacht.",
@@ -188,7 +191,10 @@
         "neutral": 0.0
       }
     },
-    "result": "different"
+    "result": "different",
+    "intent_class": "bring",
+    "intent_wording": "bring",
+    "intent_target": "Franklin nahe an die Yacht."
   },
   {
     "objective": "Verfolge die Yacht.",
@@ -253,6 +259,9 @@
         "neutral": 0.168
       }
     },
-    "result": "different"
+    "result": "different",
+    "intent_class": "follow",
+    "intent_wording": "verfolge",
+    "intent_target": "die Yacht."
   }
 ]

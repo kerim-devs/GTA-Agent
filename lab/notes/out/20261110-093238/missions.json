@@ -51,7 +51,10 @@
                 "border": false
               }
             ]
-          }
+          },
+          "intent_class": "pick_up",
+          "intent_wording": "sammle",
+          "intent_target": "eine Waffe auf."
         },
         {
           "objective": "Schalte die Vagos aus.",
@@ -105,7 +108,10 @@
                 "border": false
               }
             ]
-          }
+          },
+          "intent_class": "take_out",
+          "intent_wording": "schalte",
+          "intent_target": "die Vagos aus."
         }
       ],
       "ending": "failed",
@@ -162,7 +168,10 @@
                 "border": false
               }
             ]
-          }
+          },
+          "intent_class": "take_out",
+          "intent_wording": "schalte",
+          "intent_target": "die Vagos aus."
         }
       ],
       "ending": "unknown",
@@ -206,7 +215,10 @@
             "t": 213.8168,
             "route": "none",
             "blips": []
-          }
+          },
+          "intent_class": "enter_vehicle",
+          "intent_wording": "steig",
+          "intent_target": "auf das Mororrad"
         },
         {
           "objective": "Begib dich zu der Autowaschanlage",
@@ -250,7 +262,10 @@
                 "border": true
               }
             ]
-          }
+          },
+          "intent_class": "go_to",
+          "intent_wording": "begib dich",
+          "intent_target": "zu der Autowaschanlage"
         }
       ],
       "ending": "unknown",

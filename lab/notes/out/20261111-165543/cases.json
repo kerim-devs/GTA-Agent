@@ -62,7 +62,10 @@
         "neutral": 0.792
       }
     },
-    "result": "different"
+    "result": "different",
+    "intent_class": "go_to",
+    "intent_wording": "begib dich",
+    "intent_target": "zum Abschleppwagen."
   },
   {
     "objective": "Warte auf Tonya.",
@@ -133,7 +136,10 @@
         "neutral": 0.0
       }
     },
-    "result": "different"
+    "result": "different",
+    "intent_class": "wait",
+    "intent_wording": "warte",
+    "intent_target": "auf Tonya."
   },
   {
     "objective": "Warte auf Tonya.",
@@ -198,7 +204,10 @@
         "neutral": 2.421
       }
     },
-    "result": "different"
+    "result": "different",
+    "intent_class": "wait",
+    "intent_wording": "warte",
+    "intent_target": "auf Tonya."
   },
   {
     "objective": "Begib dich zu dem herrenlosen Auto.",
@@ -256,7 +265,10 @@
         "neutral": 0.0
       }
     },
-    "result": "different"
+    "result": "different",
+    "intent_class": "go_to",
+    "intent_wording": "begib dich",
+    "intent_target": "zu dem herrenlosen Auto."
   },
   {
     "objective": "Schlepp den Wagen zum Abschleppplatz.",
@@ -378,7 +390,10 @@
         "neutral": 0.0
       }
     },
-    "result": "matching"
+    "result": "matching",
+    "intent_class": "bring",
+    "intent_wording": "schlepp",
+    "intent_target": "den Wagen zum Abschleppplatz."
   },
   {
     "objective": "Mach das Fahrzeug in der Ablieferzone lo",
@@ -443,6 +458,9 @@
         "neutral": 0.551
       }
     },
-    "result": "model-delegated"
+    "result": "model-delegated",
+    "intent_class": "use",
+    "intent_wording": "mach",
+    "intent_target": "das Fahrzeug in der Ablieferzone lo"
   }
 ]

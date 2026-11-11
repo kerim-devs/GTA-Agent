@@ -49,7 +49,10 @@
               }
             ]
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "go_to",
+          "intent_wording": "begib dich",
+          "intent_target": "zu Ammu-Nation."
         }
       ],
       "ending": "unknown",

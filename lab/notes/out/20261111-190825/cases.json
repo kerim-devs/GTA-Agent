@@ -115,7 +115,10 @@
         "neutral": 0.463
       }
     },
-    "result": "matching"
+    "result": "matching",
+    "intent_class": "return_to",
+    "intent_wording": "begib dich wieder",
+    "intent_target": "zu Franklins Haus."
   },
   {
     "objective": "Steig in den Pickup.",
@@ -180,7 +183,10 @@
         "neutral": 0.188
       }
     },
-    "result": "model-delegated"
+    "result": "model-delegated",
+    "intent_class": "enter_vehicle",
+    "intent_wording": "steig",
+    "intent_target": "in den Pickup."
   },
   {
     "objective": "Folge dem Tennislehrer.",
@@ -245,7 +251,10 @@
         "neutral": 0.115
       }
     },
-    "result": "different"
+    "result": "different",
+    "intent_class": "follow",
+    "intent_wording": "folge",
+    "intent_target": "dem Tennislehrer."
   },
   {
     "objective": "Fahr zum Canyon.",
@@ -364,7 +373,10 @@
         "neutral": 0.0
       }
     },
-    "result": "matching"
+    "result": "matching",
+    "intent_class": "go_to",
+    "intent_wording": "fahr",
+    "intent_target": "zum Canyon."
   },
   {
     "objective": "Steig in den Pickup.",
@@ -422,7 +434,10 @@
         "neutral": 0.991
       }
     },
-    "result": "different"
+    "result": "different",
+    "intent_class": "enter_vehicle",
+    "intent_wording": "steig",
+    "intent_target": "in den Pickup."
   },
   {
     "objective": "Kehr zurück zu Michaels Haus.",
@@ -552,7 +567,10 @@
         "neutral": 0.692
       }
     },
-    "result": "matching"
+    "result": "matching",
+    "intent_class": "return_to",
+    "intent_wording": "kehr zurück",
+    "intent_target": "zu Michaels Haus."
   },
   {
     "objective": "Kehr zurück zu Michaels Haus.",
@@ -690,6 +708,9 @@
         "neutral": 0.0
       }
     },
-    "result": "matching"
+    "result": "matching",
+    "intent_class": "return_to",
+    "intent_wording": "kehr zurück",
+    "intent_target": "zu Michaels Haus."
   }
 ]

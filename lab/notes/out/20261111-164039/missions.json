@@ -42,7 +42,10 @@
             "route": "none",
             "blips": []
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "go_to",
+          "intent_wording": "begib dich",
+          "intent_target": "nach Vespucci Beach."
         },
         {
           "objective": "Kehr zurück zu Lamar.",
@@ -81,7 +84,10 @@
             "route": "none",
             "blips": []
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "return_to",
+          "intent_wording": "kehr zurück",
+          "intent_target": "zu Lamar."
         }
       ],
       "ending": "unknown",
@@ -126,7 +132,10 @@
             "route": "none",
             "blips": []
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "follow",
+          "intent_wording": "folge",
+          "intent_target": "Lamar."
         }
       ],
       "ending": "unknown",
@@ -190,7 +199,10 @@
               }
             ]
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "pick_up",
+          "intent_wording": "sammle",
+          "intent_target": "elne Waffe auf."
         },
         {
           "objective": "Schalte die Vagos aus.",
@@ -264,7 +276,10 @@
               "class": "mission_failed",
               "cause": "player_died"
             }
-          ]
+          ],
+          "intent_class": "take_out",
+          "intent_wording": "schalte",
+          "intent_target": "die Vagos aus."
         }
       ],
       "ending": "failed",
@@ -328,7 +343,10 @@
               "class": "standstill",
               "cause": "fight"
             }
-          ]
+          ],
+          "intent_class": "take_out",
+          "intent_wording": "schalte",
+          "intent_target": "die Vagos aus."
         }
       ],
       "ending": "unknown",
@@ -382,7 +400,10 @@
               }
             ]
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "enter_vehicle",
+          "intent_wording": "steig",
+          "intent_target": "auf das Motorrad."
         },
         {
           "objective": "Begib dich zu der Autowaschanlage.",
@@ -421,7 +442,10 @@
             "route": "yellow",
             "blips": []
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "go_to",
+          "intent_wording": "begib dich",
+          "intent_target": "zu der Autowaschanlage."
         }
       ],
       "ending": "unknown",

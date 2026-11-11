@@ -46,7 +46,10 @@
               }
             ]
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "go_to",
+          "intent_wording": "begib dich",
+          "intent_target": "zum Abschleppwagen."
         },
         {
           "objective": "Warte auf Tonya.",
@@ -111,7 +114,10 @@
               "class": "collision",
               "cause": "carried_on"
             }
-          ]
+          ],
+          "intent_class": "wait",
+          "intent_wording": "warte",
+          "intent_target": "auf Tonya."
         }
       ],
       "ending": "unknown",
@@ -177,7 +183,10 @@
               "class": "collision",
               "cause": "unknown"
             }
-          ]
+          ],
+          "intent_class": "wait",
+          "intent_wording": "warte",
+          "intent_target": "auf Tonya."
         },
         {
           "objective": "Begib dich zu dem herrenlosen Auto.",
@@ -221,7 +230,10 @@
               "class": "standstill",
               "cause": "waiting"
             }
-          ]
+          ],
+          "intent_class": "go_to",
+          "intent_wording": "begib dich",
+          "intent_target": "zu dem herrenlosen Auto."
         },
         {
           "objective": "Schlepp den Wagen zum Abschleppplatz.",
@@ -272,7 +284,10 @@
               "class": "collision",
               "cause": "carried_on"
             }
-          ]
+          ],
+          "intent_class": "bring",
+          "intent_wording": "schlepp",
+          "intent_target": "den Wagen zum Abschleppplatz."
         },
         {
           "objective": "Mach das Fahrzeug in der Ablieferzone lo",
@@ -330,7 +345,10 @@
               "class": "mission_passed",
               "cause": "passed"
             }
-          ]
+          ],
+          "intent_class": "use",
+          "intent_wording": "mach",
+          "intent_target": "das Fahrzeug in der Ablieferzone lo"
         }
       ],
       "ending": "passed",

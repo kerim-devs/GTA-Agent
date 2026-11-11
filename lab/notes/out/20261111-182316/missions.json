@@ -59,7 +59,10 @@
               "class": "mission_passed",
               "cause": "passed"
             }
-          ]
+          ],
+          "intent_class": "go_to",
+          "intent_wording": "begib dich",
+          "intent_target": "zu Michaels H"
         }
       ],
       "ending": "unknown",

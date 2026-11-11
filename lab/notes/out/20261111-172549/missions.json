@@ -58,7 +58,10 @@
               "class": "standstill",
               "cause": "stuck_foot"
             }
-          ]
+          ],
+          "intent_class": "take_out",
+          "intent_wording": "schalte",
+          "intent_target": "den Gartne"
         }
       ],
       "ending": "unknown",
@@ -124,7 +127,10 @@
               }
             ]
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "steal",
+          "intent_wording": "hol",
+          "intent_target": "das Auto zurück."
         },
         {
           "objective": "Bring das Auto zum Autohaus.",
@@ -170,7 +176,10 @@
               "class": "mission_passed",
               "cause": "passed"
             }
-          ]
+          ],
+          "intent_class": "bring",
+          "intent_wording": "bring",
+          "intent_target": "das Auto zum Autohaus."
         }
       ],
       "ending": "unknown",

@@ -3,6 +3,7 @@
 import argparse
 import json
 from bisect import bisect_right
+from collections import Counter
 from dataclasses import asdict
 from pathlib import Path
 
@@ -13,7 +14,7 @@ from pilot.conductor import minimap_crop
 from pilot.head import HeadRequest
 from pilot.loop import Pipeline
 from pilot.mission import MissionHead
-from pilot.notes import build_missions, observed_actions, read_sections
+from pilot.notes import INTENT_CLASSES, build_missions, intent, observed_actions, read_sections
 from pilot.scene import SceneText, TextLine
 
 
@@ -75,6 +76,7 @@ def compare(recording, readings, sections, missions, pads):
                     pads, sections["sections"], timestamp, min(timestamp + 3, step["end"])
                 )
                 category = classify(skill, head.last_rule, human)
+                asked = intent(step["objective"])
                 cases.append(
                     {
                         "objective": step["objective"],
@@ -86,6 +88,9 @@ def compare(recording, readings, sections, missions, pads):
                         "first_skill": skill,
                         "human": human,
                         "result": category,
+                        "intent_class": asked["class"],
+                        "intent_wording": asked["wording"],
+                        "intent_target": asked["target"],
                     }
                 )
     finally:
@@ -161,12 +166,36 @@ def write_cases(path, cases):
     path.write_text("\n".join(lines))
 
 
+def intent_table(steps):
+    """Classes against how often they occur, the objective wordings seen for each and the unknown ones."""
+    by_class = {name: Counter() for name in INTENT_CLASSES}
+    for step in steps:
+        by_class[step["intent_class"]][step["objective"]] += 1
+    lines = [
+        "## What the objectives ask for",
+        "",
+        "Every step is given a class by its wording, tolerating misread letters and cut-off ends. "
+        "The count is over the steps of all recordings above.",
+        "",
+        "| Class | Steps | Wordings seen, with counts |",
+        "| --- | --- | --- |",
+    ]
+    for name, wordings in by_class.items():
+        seen = "; ".join(f"{text} ({count})" for text, count in sorted(wordings.items()))
+        lines.append(f"| {name} | {sum(wordings.values())} | {seen or '-'} |")
+    lines.extend(["", f"Objectives left unknown: {len(by_class['unknown'])} wordings.", ""])
+    for text, count in sorted(by_class["unknown"].items()):
+        lines.extend([f"{text} ({count})", ""])
+    return lines
+
+
 def write_summary(path, directories):
     """One page over several recordings: every mission with its steps, and the table of cases."""
     kinds = ("matching", "different", "model-delegated", "unknown")
     lines = ["Missions and cases of the recordings below, as written by mission_notes.py for each.", ""]
     totals = {kind: 0 for kind in kinds}
     table = []
+    steps_seen = []
     for directory in directories:
         missions = json.loads((directory / "missions.json").read_text())
         cases = json.loads((directory / "cases.json").read_text())
@@ -174,6 +203,7 @@ def write_summary(path, directories):
         for kind in kinds:
             totals[kind] += counts[kind]
         table.append((directory.name, len(missions["missions"]), len(cases), counts))
+        steps_seen.extend(step for mission in missions["missions"] for step in mission["steps"])
         lines.append(f"## {directory.name}")
         lines.append("")
         if not missions["missions"]:
@@ -211,6 +241,7 @@ def write_summary(path, directories):
         + " |"
     )
     lines.append("")
+    lines.extend(intent_table(steps_seen))
     path.write_text("\n".join(lines))
 
 

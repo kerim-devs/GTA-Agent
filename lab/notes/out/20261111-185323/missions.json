@@ -61,7 +61,10 @@
               "class": "collision",
               "cause": "unknown"
             }
-          ]
+          ],
+          "intent_class": "go_to",
+          "intent_wording": "begib dich",
+          "intent_target": "zu dem Treffen bei der Recycling-Anlage."
         }
       ],
       "ending": "unknown",
@@ -113,7 +116,10 @@
               }
             ]
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "return_to",
+          "intent_wording": "kehr zurück",
+          "intent_target": "zu Lamar und Stretch."
         }
       ],
       "ending": "unknown",
@@ -191,7 +197,10 @@
               }
             ]
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "return_to",
+          "intent_wording": "kehr zurück",
+          "intent_target": "zu Lamar und Stretch."
         }
       ],
       "ending": "unknown",

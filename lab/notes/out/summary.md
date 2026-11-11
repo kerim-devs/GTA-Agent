@@ -170,3 +170,27 @@ No objective was read in this recording.
 | 20261111-190825 | 5 | 7 | 4 | 2 | 1 | 0 |
 | 20261111-192328 | 0 | 0 | 0 | 0 | 0 | 0 |
 | all | 27 | 37 | 14 | 11 | 12 | 0 |
+
+## What the objectives ask for
+
+Every step is given a class by its wording, tolerating misread letters and cut-off ends. The count is over the steps of all recordings above.
+
+| Class | Steps | Wordings seen, with counts |
+| --- | --- | --- |
+| go_to | 10 | Begib dich nach Pacific Bluffs. (1); Begib dich nach Vespucci Beach. (1); Begib dich zu Ammu-Nation. (1); Begib dich zu Michaels H (1); Begib dich zu dem Treffen bei der Recycling-Anlage. (1); Begib dich zu dem herrenlosen Auto. (1); Begib dich zu der Autowaschanlage. (1); Begib dlch zu Chop und. zieh ihn von d (1); Beglb dlch zum Abschleppwagen. (1); Fahr zum Canyon. (1) |
+| bring | 4 | Bring D zu Lamars Haus. (1); Bring Franklin nahe an die Yacht. (1); Bring das Auto zum Autohaus. (1); Schlepp den Wagen zum Abschleppplatz. (1) |
+| enter_vehicle | 5 | Steig auf das Motorrad. (1); Steig in den Pickup. (2); Steig wieder in den Lieferwagen. (1); Stelg In den Liefemagen. (1) |
+| take_out | 3 | Schalte den Gartne (1); Schalte die Vagos aus. (2) |
+| follow | 4 | Folge Chop. (1); Folge Lamar. (1); Folge dem Tennislehrer. (1); Verfolge die Yacht. (1) |
+| escape | 0 | - |
+| steal | 1 | Hol das Auto zurück. (1) |
+| pick_up | 1 | Sammle elne Waffe auf. (1) |
+| wait | 2 | Warte auf Tonya. (2) |
+| return_to | 6 | Begib dich wieder zu Franklins Haus. (1); Kehr zurück zu Lamar und Stretch. (2); Kehr zurück zu Lamar. (1); Kehr zurück zu Michaels Haus. (2) |
+| protect | 0 | - |
+| destroy | 0 | - |
+| use | 1 | Mach das Fahrzeug in der Ablieferzone lo (1) |
+| sneak | 0 | - |
+| unknown | 0 | - |
+
+Objectives left unknown: 0 wordings.

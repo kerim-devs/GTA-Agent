@@ -48,7 +48,10 @@
               "class": "collision",
               "cause": "unknown"
             }
-          ]
+          ],
+          "intent_class": "enter_vehicle",
+          "intent_wording": "steig",
+          "intent_target": "In den Liefemagen."
         }
       ],
       "ending": "unknown",
@@ -101,7 +104,10 @@
               }
             ]
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "enter_vehicle",
+          "intent_wording": "steig",
+          "intent_target": "wieder in den Lieferwagen."
         }
       ],
       "ending": "unknown",
@@ -149,7 +155,10 @@
             "route": "none",
             "blips": []
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "follow",
+          "intent_wording": "folge",
+          "intent_target": "Chop."
         }
       ],
       "ending": "unknown",
@@ -198,7 +207,10 @@
             "route": "none",
             "blips": []
           },
-          "incidents": []
+          "incidents": [],
+          "intent_class": "go_to",
+          "intent_wording": "begib dich",
+          "intent_target": "zu Chop und. zieh ihn von d"
         }
       ],
       "ending": "unknown",
@@ -251,7 +263,10 @@
               "class": "mission_passed",
               "cause": "passed"
             }
-          ]
+          ],
+          "intent_class": "bring",
+          "intent_wording": "bring",
+          "intent_target": "D zu Lamars Haus."
         }
       ],
       "ending": "unknown",

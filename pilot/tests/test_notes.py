@@ -8,6 +8,7 @@ from pilot.notes import (
     consolidate,
     ending,
     instruction_like,
+    intent,
     observed_actions,
     pale_target,
     promote_objectives,
@@ -198,3 +199,119 @@ def test_misread_banner_still_ends_a_mission_and_is_one_ending():
         {"t": 106.5, "text": {"banner": "besiandeTr."}},
     ]
     assert len([row for row in consolidate(rows) if row["kind"] == "banner"]) == 1
+
+
+# Wordings read in the recordings of 11 November, with the class each must get.
+SEEN_OBJECTIVES = [
+    ("Sammle eine Waffe auf.", "pick_up"),
+    ("Schalte die Vagos aus.", "take_out"),
+    ("Steig auf das Motorrad.", "enter_vehicle"),
+    ("Steig in den Pickup.", "enter_vehicle"),
+    ("Steig wieder in den Lieferwagen.", "enter_vehicle"),
+    ("Begib dich zu der Autowaschanlage.", "go_to"),
+    ("Begib dich nach Vespucci Beach.", "go_to"),
+    ("Begib dich zu dem herrenlosen Auto.", "go_to"),
+    ("Fahr zum Canyon.", "go_to"),
+    ("Kehr zurück zu Lamar und Stretch.", "return_to"),
+    ("Begib dich wieder zu Franklins Haus.", "return_to"),
+    ("Folge Lamar.", "follow"),
+    ("Verfolge die Yacht.", "follow"),
+    ("Warte auf Tonya.", "wait"),
+    ("Bring das Auto zum Autohaus.", "bring"),
+    ("Schlepp den Wagen zum Abschleppplatz.", "bring"),
+    ("Hol das Auto zurück.", "steal"),
+    ("Mach das Fahrzeug in der Ablieferzone los.", "use"),
+]
+
+
+@pytest.mark.parametrize("text,cls", SEEN_OBJECTIVES)
+def test_every_wording_of_the_recordings_has_its_class(text, cls):
+    assert intent(text)["class"] == cls
+
+
+@pytest.mark.parametrize(
+    "text,cls",
+    [
+        ("Schalte dle Vagos aus.", "take_out"),
+        ("Begib dich nBch Vespucci Beach.", "go_to"),
+        ("Stelg In den Liefemagen.", "enter_vehicle"),
+        ("Schalte den Gartne", "take_out"),
+        ("Beglb dlch zum Abschleppwagen.", "go_to"),
+        ("Begib dlch wieder zu Franklins Haus.", "return_to"),
+        ("Kehr zur(ick zu Michaels Haus.", "return_to"),
+        ("Kehr zurüGI)zu Latnar und Stretch.", "return_to"),
+        ("8egib dich zu Ammu-Nation.", "go_to"),
+        ("-schalte die Vagos aus.", "take_out"),
+        ("Begib dich zu Ammu-", "go_to"),
+        ("Hol das Au", "steal"),
+        ("Mach das Fahrzeug in der Ablleferz", "use"),
+        ("Warte au onya.", "wait"),
+        ("Folge dem Tenni61ehrer.", "follow"),
+        ("Sammle elne Waffe auf.", "pick_up"),
+    ],
+)
+def test_misread_and_cut_off_wordings_keep_their_class(text, cls):
+    assert intent(text)["class"] == cls
+
+
+@pytest.mark.parametrize(
+    "text,cls",
+    [
+        ("Töte den Informanten.", "take_out"),
+        ("Erledige die Ballas.", "take_out"),
+        ("Eliminiere das Ziel.", "take_out"),
+        ("Beseitige die Zeugen.", "take_out"),
+        ("Erschieße den Dealer.", "take_out"),
+        ("Entkomme der Polizei.", "escape"),
+        ("Häng die Polizei ab.", "escape"),
+        ("Flieh vor der Polizei.", "escape"),
+        ("Verliere die Polizei.", "escape"),
+        ("Lauf zur Garage.", "go_to"),
+        ("Flieg zum Flughafen.", "go_to"),
+        ("Beschütze Lamar.", "protect"),
+        ("Zerstöre den Transporter.", "destroy"),
+        ("Fotografiere die Yacht.", "use"),
+        ("Schleich dich an die Wachen heran.", "sneak"),
+        ("Stiehl das Fahrzeug.", "steal"),
+        ("Hebe die Tasche auf.", "pick_up"),
+    ],
+)
+def test_synonyms_added_from_knowledge_get_their_class(text, cls):
+    asked = intent(text)
+    assert (asked["class"], asked["seen"]) == (cls, False)
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Schalte das Radio ein.",
+        "Schalte zu Michael um.",
+        "Das ist doch Wahnsinn, Franklin!",
+        "Ich weiß nicht, was du meinst.",
+        "Fahren wir nach Vespucci.",
+        "Machen wir das morgen.",
+        "Sprich mit Lamar.",
+        "",
+        "...",
+    ],
+)
+def test_unrelated_lines_stay_unknown(text):
+    assert intent(text)["class"] == "unknown"
+
+
+def test_target_is_the_rest_of_the_line_verbatim():
+    asked = intent("Begib dlch nBch Vespucci Beach.")
+    assert (asked["wording"], asked["matched"], asked["target"]) == (
+        "begib dich",
+        "Begib dlch",
+        "nBch Vespucci Beach.",
+    )
+    assert intent("Schalte die Vagos aus.")["target"] == "die Vagos aus."
+    assert intent("Das ist doch Wahnsinn!")["target"] == "Das ist doch Wahnsinn!"
+
+
+def test_steps_carry_their_class_and_target():
+    step = build_missions([objective(1, 3, "Schalte die Vagos aus.")], section_data())["missions"][0][
+        "steps"
+    ][0]
+    assert (step["intent_class"], step["intent_target"]) == ("take_out", "die Vagos aus.")

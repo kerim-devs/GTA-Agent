@@ -55,7 +55,10 @@
         "neutral": 0.434
       }
     },
-    "result": "model-delegated"
+    "result": "model-delegated",
+    "intent_class": "go_to",
+    "intent_wording": "begib dich",
+    "intent_target": "nach Vespucci Beach."
   },
   {
     "objective": "Kehr zurück zu Lamar.",
@@ -113,7 +116,10 @@
         "neutral": 0.103
       }
     },
-    "result": "different"
+    "result": "different",
+    "intent_class": "return_to",
+    "intent_wording": "kehr zurück",
+    "intent_target": "zu Lamar."
   },
   {
     "objective": "Folge Lamar.",
@@ -171,7 +177,10 @@
         "neutral": 0.0
       }
     },
-    "result": "model-delegated"
+    "result": "model-delegated",
+    "intent_class": "follow",
+    "intent_wording": "folge",
+    "intent_target": "Lamar."
   },
   {
     "objective": "Sammle elne Waffe auf.",
@@ -248,7 +257,10 @@
         "neutral": 0.642
       }
     },
-    "result": "model-delegated"
+    "result": "model-delegated",
+    "intent_class": "pick_up",
+    "intent_wording": "sammle",
+    "intent_target": "elne Waffe auf."
   },
   {
     "objective": "Schalte die Vagos aus.",
@@ -325,7 +337,10 @@
         "neutral": 0.245
       }
     },
-    "result": "model-delegated"
+    "result": "model-delegated",
+    "intent_class": "take_out",
+    "intent_wording": "schalte",
+    "intent_target": "die Vagos aus."
   },
   {
     "objective": "Schalte die Vagos aus.",
@@ -396,7 +411,10 @@
         "neutral": 0.062
       }
     },
-    "result": "model-delegated"
+    "result": "model-delegated",
+    "intent_class": "take_out",
+    "intent_wording": "schalte",
+    "intent_target": "die Vagos aus."
   },
   {
     "objective": "Steig auf das Motorrad.",
@@ -461,7 +479,10 @@
         "neutral": 0.714
       }
     },
-    "result": "matching"
+    "result": "matching",
+    "intent_class": "enter_vehicle",
+    "intent_wording": "steig",
+    "intent_target": "auf das Motorrad."
   },
   {
     "objective": "Begib dich zu der Autowaschanlage.",
@@ -588,6 +609,9 @@
         "neutral": 0.0
       }
     },
-    "result": "matching"
+    "result": "matching",
+    "intent_class": "go_to",
+    "intent_wording": "begib dich",
+    "intent_target": "zu der Autowaschanlage."
   }
 ]

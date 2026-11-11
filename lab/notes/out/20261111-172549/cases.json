@@ -68,7 +68,10 @@
         "neutral": 0.0
       }
     },
-    "result": "model-delegated"
+    "result": "model-delegated",
+    "intent_class": "take_out",
+    "intent_wording": "schalte",
+    "intent_target": "den Gartne"
   },
   {
     "objective": "Hol das Auto zurück.",
@@ -145,7 +148,10 @@
         "neutral": 3.0
       }
     },
-    "result": "model-delegated"
+    "result": "model-delegated",
+    "intent_class": "steal",
+    "intent_wording": "hol",
+    "intent_target": "das Auto zurück."
   },
   {
     "objective": "Bring das Auto zum Autohaus.",
@@ -203,6 +209,9 @@
         "neutral": 1.379
       }
     },
-    "result": "model-delegated"
+    "result": "model-delegated",
+    "intent_class": "bring",
+    "intent_wording": "bring",
+    "intent_target": "das Auto zum Autohaus."
   }
 ]

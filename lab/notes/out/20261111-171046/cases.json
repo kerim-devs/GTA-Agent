@@ -55,7 +55,10 @@
         "neutral": 3.0
       }
     },
-    "result": "model-delegated"
+    "result": "model-delegated",
+    "intent_class": "enter_vehicle",
+    "intent_wording": "steig",
+    "intent_target": "In den Liefemagen."
   },
   {
     "objective": "Steig wieder in den Lieferwagen.",
@@ -120,7 +123,10 @@
         "neutral": 0.097
       }
     },
-    "result": "different"
+    "result": "different",
+    "intent_class": "enter_vehicle",
+    "intent_wording": "steig",
+    "intent_target": "wieder in den Lieferwagen."
   },
   {
     "objective": "Folge Chop.",
@@ -178,7 +184,10 @@
         "neutral": 0.746
       }
     },
-    "result": "different"
+    "result": "different",
+    "intent_class": "follow",
+    "intent_wording": "folge",
+    "intent_target": "Chop."
   },
   {
     "objective": "Begib dlch zu Chop und. zieh ihn von d",
@@ -236,7 +245,10 @@
         "neutral": 2.425
       }
     },
-    "result": "model-delegated"
+    "result": "model-delegated",
+    "intent_class": "go_to",
+    "intent_wording": "begib dich",
+    "intent_target": "zu Chop und. zieh ihn von d"
   },
   {
     "objective": "Bring D zu Lamars Haus.",
@@ -351,6 +363,9 @@
         "neutral": 0.0
       }
     },
-    "result": "matching"
+    "result": "matching",
+    "intent_class": "bring",
+    "intent_wording": "bring",
+    "intent_target": "D zu Lamars Haus."
   }
 ]
