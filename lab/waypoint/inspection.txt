@@ -1,0 +1,14 @@
+frame 8191: overview, cursor=None, player=None, missions=(), waypoint=False
+frame 8192: overview, cursor=None, player=None, missions=(), waypoint=False
+frame 8216: overview, cursor=None, player=None, missions=(), waypoint=False
+frame 8221: transition, cursor=None, player=None, missions=(), waypoint=False
+frame 8252: map, cursor=(640.0, 360.0), player=None, missions=(), waypoint=False
+frame 8286: map, cursor=(640.0, 360.0), player=None, missions=(), waypoint=False
+frame 8305: map, cursor=(640.0, 360.0), player=None, missions=(), waypoint=True
+frame 8315: overview, cursor=None, player=None, missions=(), waypoint=False
+{
+  "map_frames": 125,
+  "map_missed": [],
+  "non_map_frames": 404,
+  "false_maps": []
+}
