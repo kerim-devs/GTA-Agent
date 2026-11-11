@@ -2,6 +2,7 @@
 
 import argparse
 import math
+import sys
 from dataclasses import asdict, fields
 from pathlib import Path
 
@@ -14,6 +15,7 @@ from .drive import DriveConfig, Driver
 from .flow import Flow
 from .head import CodexHead, CodexServerHead, ScriptedHead
 from .loop import RECORDINGS, Pipeline, run_drive
+from .objects import Reader as ObjectReader
 from .overlay import overlay_port, run_overlay
 from .replay import run_replay
 
@@ -74,6 +76,7 @@ def main(argv: list[str] | None = None) -> None:
     play.add_argument("--no-record", action="store_true")
     play.add_argument("--no-ocr", action="store_true")
     play.add_argument("--no-hud-flow", action="store_true", help="disable HUD readings and screen reflexes")
+    play.add_argument("--no-objects", action="store_true", help="run without the object detector")
     play.add_argument("--record-dir", type=absolute_path, default=PLAY_RECORDINGS)
     play.add_argument("--notebook", type=Path)
     play.add_argument("--head", choices=("scripted", "codex", "codex-server"), default="scripted")
@@ -136,6 +139,13 @@ def main(argv: list[str] | None = None) -> None:
                 model=args.head_model, effort=args.head_effort, timeout=args.head_timeout
             )
         )
+        objects = None
+        if not args.no_objects:
+            try:
+                objects = ObjectReader()
+            except RuntimeError as exc:
+                # Without the weights the pilot still plays; the skills that need them say so.
+                print(f"object detector off: {exc}", file=sys.stderr)
         with Bridge() as bridge:
             print(
                 run_play(
@@ -150,6 +160,7 @@ def main(argv: list[str] | None = None) -> None:
                     ocr=not args.no_ocr,
                     quiet_seconds=args.quiet_seconds,
                     driver_factory=lambda: Driver(config),
+                    objects=objects,
                     hud=None if args.no_hud_flow else hud,
                     flow=None if args.no_hud_flow else Flow(),
                 )

@@ -1,37 +1,14 @@
 """Local, bounded skills. Every result describes the entire controller state."""
 
 from collections import deque
-from dataclasses import dataclass, field
 from math import atan2, degrees, hypot
 from typing import TYPE_CHECKING, ClassVar
 
-import numpy as np
-
-from .contract import NEUTRAL_PAD, Detection, Hud, Pad, Reading
+from .contract import NEUTRAL_PAD, Observation, Pad, SkillResult
 from .drive import Driver
 
 if TYPE_CHECKING:
     from .head import SkillCall
-
-
-@dataclass(frozen=True)
-class Observation:
-    reading: Reading
-    moving: bool | None
-    time: float
-    # Everything below is optional: a caller that has no frame, detector or HUD reader leaves it out,
-    # and a skill that needs it fails with a reason instead of guessing.
-    frame: np.ndarray | None = field(default=None, compare=False)  # 1280x720 RGB of this tick
-    objects: tuple[Detection, ...] = ()  # newest detections; they lag the frame, see `objects_time`
-    objects_time: float | None = None  # capture time of the frame the detections come from
-    hud: Hud | None = None
-
-
-@dataclass(frozen=True)
-class SkillResult:
-    pad: Pad = NEUTRAL_PAD
-    status: str = "running"
-    reason: str | None = None
 
 
 def clamp(value, lower, upper):
@@ -271,9 +248,29 @@ class Face(RegisteredSkill):
 
 
 # New modules plug in with an import and one entry here.
+from .combat import Fight, Melee  # noqa: E402
+from .punch import Punch  # noqa: E402
+from .vehicle_entry import EnterVehicle  # noqa: E402
 from .waypoint import SetWaypoint  # noqa: E402
 
-REGISTRY = {cls.name: cls for cls in (DriveRoute, Wait, Press, Walk, Look, Shoot, WalkTo, Face, SetWaypoint)}
+REGISTRY = {
+    cls.name: cls
+    for cls in (
+        DriveRoute,
+        Wait,
+        Press,
+        Walk,
+        Look,
+        Shoot,
+        WalkTo,
+        Face,
+        SetWaypoint,
+        EnterVehicle,
+        Fight,
+        Melee,
+        Punch,
+    )
+}
 
 
 def make_skill(call, *, driver=None):

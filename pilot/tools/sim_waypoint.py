@@ -260,7 +260,6 @@ if __name__ == "__main__":
     for result in results:
         print(json.dumps({key: value for key, value in result.items() if key != "trace"}))
     assert all(
-        r["status"] == ("failed" if r["wrong_at"] or r["edge"] or r["sea"] or r["damaged"] else "done")
-        for r in results
+        r["status"] == ("failed" if r["wrong_at"] or r["edge"] or r["sea"] else "done") for r in results
     )
     assert all(r["injected"] for r in results if r["wrong_at"])

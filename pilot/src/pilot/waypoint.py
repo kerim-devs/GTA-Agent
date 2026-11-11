@@ -7,9 +7,8 @@ from typing import ClassVar
 import cv2
 import numpy as np
 
-from .contract import Pad
+from .contract import Observation, Pad, SkillResult
 from .scene import SceneText, TextReader
-from .skills import Observation, SkillResult
 
 
 def map_screen(frame: np.ndarray, text: SceneText) -> str | None:
@@ -208,6 +207,9 @@ def land_at_cursor(frame):
     return bool(dark.sum() >= 250 and (edges & neutral & mask).sum() >= 35)
 
 
+BLIND_SECONDS = 2.0
+
+
 class SetWaypoint:
     name = "set_waypoint"
     opens = ("pause", "map")
@@ -277,6 +279,7 @@ class SetWaypoint:
         self.proved_waypoint = False
         self.command_frame = None
         self.current_frame = None
+        self.blind_since = None
 
     def stop(self, reason="interrupted") -> SkillResult:
         self.finished = SkillResult(status="failed", reason=reason)
@@ -323,12 +326,6 @@ class SetWaypoint:
             self.started = now
         if now - self.started >= self.limit:
             return self.stop(f"time-limit: {self.failure or self.phase}; verify the screen before retrying")
-        if (
-            self.target == "away"
-            and self.phase in {"acquire", "pan", "confirm"}
-            and (observation.frame is None or observation.reading.corrupt)
-        ):
-            return self._fail("map-picture-missing-or-damaged")
         if now < self.release_at:
             if observation.hud is not None and self.held.buttons != ("circle",):
                 allowed = {"game", "pause", "map"} if self.held.buttons == ("options",) else {"pause", "map"}
@@ -345,6 +342,15 @@ class SetWaypoint:
 
     def _step(self, observation):
         now = observation.time
+        if observation.frame is None or observation.reading.corrupt:
+            # Nothing is decided on such a tick. The minimap reader calls a clean cable picture
+            # damaged for a tick or two about once a second; only damage that lasts is a fault.
+            if self.blind_since is None:
+                self.blind_since = now
+            if now - self.blind_since < BLIND_SECONDS:
+                return SkillResult()
+        else:
+            self.blind_since = None
         self.current_frame = observation.frame
         game = self._game(observation)
         if self.phase == "exit":
