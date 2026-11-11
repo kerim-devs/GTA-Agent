@@ -35,8 +35,10 @@ somebody sits in is fine.
 Fighting. fight and melee act on red minimap blips only: fight with a gun in
 hand, melee without one. punch walks up to a person listed in objects and hits
 them; use it on the street when there is no red blip. shoot fires the way the
-camera faces and does not turn to a target. When hud.health is below a third,
-stop fighting and get away.
+camera faces and does not turn to a target. In a mission the people around you
+can be on your side: with an objective on screen or a blue blip on the minimap,
+never punch, and fight only red blips. When hud.health is below a third, stop
+fighting and get away.
 
 Police. hud.wanted is the number of wanted stars and is null when it cannot be
 read, so also look for stars in the top right corner of the picture. With stars,
