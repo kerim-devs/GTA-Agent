@@ -1,0 +1,13 @@
+{
+ "note": "Hand labels for the question how the player moves, read off contact sheets of all 210 frames on 11 November. Only the frames where the hand label differs from what the readers imply are listed. 'foot': the figure is on foot although the readers say otherwise, mostly because the minimap stays tilted on foot. 'unclear': a person cannot say, or the frame is a change between the two (pulling a driver out of a car, no figure in the picture, a damaged frame); these are not scored.",
+ "foot": [
+  "kerim-00102", "kerim-12567", "kerim-13385", "kerim-14406", "kerim-14611", "kerim-15837",
+  "kerim-16041", "kerim-16246", "kerim-16450", "kerim-16654", "kerim-16859", "kerim-17063",
+  "kerim-17267", "kerim-17676", "kerim-18085", "tour-01700", "wifi-11010", "wifi-12311"
+ ],
+ "unclear": [
+  "kerim-01941", "kerim-15020", "kerim-21559", "kerim-21763", "kerim-21968", "kerim-22172",
+  "kerim-22376", "tour-00030", "tour-00060", "pilot-00357", "pilot-11091", "wifi-00728",
+  "wifi-00750", "wifi-12428"
+ ]
+}
