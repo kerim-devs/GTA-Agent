@@ -23,6 +23,22 @@ from .overlay import overlay_port, run_overlay
 from .replay import run_replay
 
 MEASURED_DELAY_S = 0.14  # input to picture over the wired link with the game in performance mode
+# What the console asked of the driver on 11 November, once the pedals answered. With its own
+# values it held the car to two to seven metres a second by the brake, a third of the time on it,
+# and after two minutes was as far from the waypoint as before (session 20261111-130010). The
+# brake that holds a speed is off altogether: the speed it reads lags, the car has stopped while
+# the reading still says fast, and the game takes a held brake at a standstill for reverse. And a
+# reading called damaged is ridden out for two seconds: in the town's grid of blocks the minimap
+# reader calls nine clean frames in ten damaged, and the driver stood still on them (session
+# 20261111-130955). With these the pilot drove 2.5 km through town to its waypoint.
+LIVE = {
+    "brake_gain": 0.0,
+    "brake_margin": 6.0,
+    "speed_limit": 12.0,
+    "slow_speed": 4.0,
+    "lateral_acceleration": 3.0,
+    "damage_hold": 2.0,
+}
 
 
 def duration(value: str) -> float:
@@ -42,7 +58,7 @@ def absolute_path(value: str) -> Path:
 def drive_config(settings: list[str]) -> DriveConfig:
     """The driver's defaults with the measured delay, then every `name=value` from the command line."""
     kinds = {field.name: field.type for field in fields(DriveConfig)}
-    values: dict[str, float | int] = {"command_delay": MEASURED_DELAY_S}
+    values: dict[str, float | int] = {"command_delay": MEASURED_DELAY_S, **LIVE}
     for setting in settings:
         name, _, value = setting.partition("=")
         if name not in kinds:
