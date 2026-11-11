@@ -10,7 +10,7 @@ The minimap already says what is needed. It turns with the camera, so up on it i
 
 Measured on the console on 11 November (`/Users/kerim/recordings/calibrate/20261111-063233/calibration.json`, a run that a jammed controller ended after two checks): the camera does not move at a right stick of 0.2 and moves at 0.3, by about 130 image pixels a second; at 0.45 and more it moves faster than that check could follow; the picture answers an input after about 0.15 s. `face` asks for `min(0.65, angle * 0.01)`, which is under 0.3 for every angle below 30 degrees, so the small turns of the skills are probably lost in the dead zone today. That is for another card; here it means the keeper must never command less than the stick that moves.
 
-Read `docs/tasks/README.md` first, and `docs/reports/P13-moving.md` for how a tick runs and what carry-on does between two answers of the head.
+Read `docs/tasks/README.md` first, and `docs/reports/P13-never-standing-still.md` for how a tick runs and what carry-on does between two answers of the head.
 
 ## What to build
 
