@@ -590,7 +590,8 @@ def pump(queue, now, predicate):
     assert predicate()
 
 
-@pytest.mark.parametrize("delay", [4, 25])
+# The real writer took up to 6.3 s for a chat line; ten seconds is late and still an answer.
+@pytest.mark.parametrize("delay", [4, 10, 25])
 def test_chat_age_budget_includes_writing(tmp_path, delay):
     clock = Clock()
 
@@ -604,9 +605,9 @@ def test_chat_age_budget_includes_writing(tmp_path, delay):
     queue.submit(Candidate("chat", "Wie läuft es?", 0, tmp_path, "anna"))
     step(queue, 0)
     row = records(tmp_path)[0]
-    assert row["decision"] == ("spoken" if delay == 4 else "dropped")
-    assert row["reason"] == ("selected" if delay == 4 else "stale")
-    assert voice.play_calls == (1 if delay == 4 else 0)
+    assert row["decision"] == ("spoken" if delay < 20 else "dropped")
+    assert row["reason"] == ("selected" if delay < 20 else "stale")
+    assert voice.play_calls == (1 if delay < 20 else 0)
 
 
 @pytest.mark.parametrize("stage", ["writer", "synthesis", "playback"])
@@ -685,7 +686,9 @@ def test_event_falls_back_at_two_seconds_without_starting_another_line(tmp_path)
             assert release.wait(2)
             return WrittenLine("Zu spät umgeschrieben.", "codex")
 
-    queue = Scheduler(Writer(), SilentVoice(duration=0.1), min_gap=0, clock=lambda: 0)
+    queue = Scheduler(
+        Writer(), SilentVoice(duration=0.1), min_gap=0, clock=lambda: 0, event_writer="character"
+    )
     queue.submit(Candidate("event", "Die Gesundheit ist knapp.", 0, tmp_path))
     queue.step(0)
     assert started.wait(1)
@@ -716,10 +719,33 @@ def test_event_uses_character_only_inside_budget(tmp_path, delay):
             clock.now += delay
             return WrittenLine("Der Einstieg sitzt.", "codex")
 
-    queue = Scheduler(Writer(), SilentVoice(), clock=clock)
+    queue = Scheduler(Writer(), SilentVoice(), clock=clock, event_writer="character")
     queue.submit(Candidate("event", "Jetzt sitzen wir im Fahrzeug.", 0, tmp_path))
     step(queue, 0)
     assert records(tmp_path)[0]["writer"] == ("codex" if delay < 2 else "plain")
+
+
+def test_an_event_is_spoken_plainly_at_once_unless_the_character_is_asked_for(tmp_path):
+    written = []
+
+    class Writer:
+        def write(self, candidate, chat):
+            written.append(candidate.source)
+            return WrittenLine("Umgeschrieben.", "codex")
+
+    queue = Scheduler(Writer(), SilentVoice(), clock=lambda: 0)
+    queue.submit(Candidate("event", "Die Gesundheit ist knapp.", 0, tmp_path))
+    step(queue, 0)
+    row = records(tmp_path)[0]
+    assert (row["text"], row["writer"], row["start"]) == ("Die Gesundheit ist knapp.", "plain", 0)
+    assert written == []
+
+
+def test_the_first_failure_is_not_counted_aloud():
+    first = event_sentence({"kind": "failure", "screen": "failed", "count": 1})
+    second = event_sentence({"kind": "failure", "screen": "failed", "count": 2})
+    assert first == "Die Mission ist fehlgeschlagen."
+    assert second == "Die Mission ist fehlgeschlagen. Fehlschlag Nummer 2."
 
 
 @pytest.mark.parametrize("reason", ["declined", "timeout", "bad_reply", "writer_error"])
@@ -754,7 +780,7 @@ def test_plain_chat_is_silence(tmp_path):
     + [{"kind": "wanted_changed", "wanted": n} for n in (0, 1, 3)]
     + [
         {"kind": "skill_failed", "skill": {"name": skill, "reason": "timeout"}}
-        for skill in ("enter_vehicle", "set_waypoint", "fight")
+        for skill in ("enter_vehicle", "set_waypoint", "fight", "melee", "punch")
     ],
 )
 def test_new_event_lines_rotate_and_preserve_counts(tmp_path, event):

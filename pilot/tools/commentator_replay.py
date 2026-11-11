@@ -14,6 +14,7 @@ from pathlib import Path
 from pilot.commentator import (
     HERE,
     ChatFilter,
+    CodexWriter,
     FileChat,
     MacVoice,
     Scheduler,
@@ -93,9 +94,31 @@ class ScriptedWriter:
             self.active = False
 
 
+class Counted:
+    """The real writer, with the marks the counts below read from the scripted one."""
+
+    def __init__(self, writer):
+        self.writer, self.active, self.calls = writer, False, 0
+
+    def write(self, candidate, chat):
+        self.active = True
+        self.calls += 1
+        try:
+            return self.writer.write(candidate, chat)
+        finally:
+            self.active = False
+
+    def cancel(self):
+        self.writer.cancel()
+
+    def close(self):
+        self.writer.close()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--session", type=Path, required=True)
+    parser.add_argument("--writer", choices=("scripted", "codex"), default="scripted")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--mute", action="store_true", required=True)
     parser.add_argument("--voice", default="Anna")
@@ -114,7 +137,7 @@ def main():
     chat_file.write_text("".join(json.dumps(row) + "\n" for row in script))
     source = FileChat(chat_file)
     voice = MacVoice(args.voice, muted=True)
-    writer = ScriptedWriter()
+    writer = ScriptedWriter() if args.writer == "scripted" else Counted(CodexWriter())
     scheduler = Scheduler(writer, voice)
     chat_filter = ChatFilter(HERE / "commentator_blocklist.txt")
     index = 0
@@ -167,7 +190,8 @@ def main():
         "minimum_gap_seconds": min(gaps, default=None),
         "configured_gap_seconds": scheduler.min_gap,
         "configured_max_age_seconds": scheduler.ages,
-        "scripted_writer_seconds": 4,
+        "writer": args.writer,
+        "scripted_writer_seconds": 4 if args.writer == "scripted" else None,
         "writer_calls": writer.calls,
         "polls_while_writing": polls_while_writing,
         "chat_messages_read_while_writing": chat_read_while_writing,

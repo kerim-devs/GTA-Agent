@@ -132,9 +132,10 @@ def event_sentence(event: dict, variant: int = 0, previous_wanted: int | None = 
         }.get(event.get("screen"))
         if lines:
             count = event.get("count")
+            # The first failure is not counted aloud.
             suffix = (
                 f" Fehlschlag Nummer {count}."
-                if isinstance(count, int) and not isinstance(count, bool)
+                if isinstance(count, int) and not isinstance(count, bool) and count > 1
                 else ""
             )
             return lines[variant % len(lines)] + suffix
@@ -172,6 +173,11 @@ def event_sentence(event: dict, variant: int = 0, previous_wanted: int | None = 
         skill = event.get("skill")
         if not isinstance(skill, dict):
             return None
+        fight = (
+            "Der Kampfversuch ist gescheitert.",
+            "Das Kampfmanöver hat nicht geklappt.",
+            "Dieser Kampfeinsatz ging daneben.",
+        )
         lines = {
             "enter_vehicle": (
                 "Das Einsteigen hat nicht geklappt.",
@@ -183,10 +189,12 @@ def event_sentence(event: dict, variant: int = 0, previous_wanted: int | None = 
                 "Das Setzen des Wegpunkts ist gescheitert.",
                 "Der Wegpunkt fehlt noch.",
             ),
-            "fight": (
-                "Der Kampfversuch ist gescheitert.",
-                "Das Kampfmanöver hat nicht geklappt.",
-                "Dieser Kampfeinsatz ging daneben.",
+            "fight": fight,
+            "melee": fight,
+            "punch": (
+                "Das Zuschlagen hat nicht geklappt.",
+                "Aus der Schlägerei wird nichts.",
+                "Der Faustkampf fällt aus.",
             ),
         }.get(skill.get("name"))
     return lines[variant % len(lines)] if lines else None
@@ -708,7 +716,8 @@ class Scheduler:
         event_max_age: float | None = None,
         event_writer_timeout: float = 2.0,
         chat_writer: str = "character",
-        event_writer: str = "character",
+        # The character needs 3.5 to 9.8 s for an event (measured on 11 November), never two.
+        event_writer: str = "plain",
     ):
         ages = {
             "chat": chat_max_age,
@@ -914,7 +923,7 @@ def main():
     parser.add_argument("--event-max-age", type=float)
     parser.add_argument("--event-writer-timeout", type=float, default=2.0)
     parser.add_argument("--chat-writer", choices=("character", "plain"), default="character")
-    parser.add_argument("--event-writer", choices=("character", "plain"), default="character")
+    parser.add_argument("--event-writer", choices=("character", "plain"), default="plain")
     parser.add_argument("--voice", default="Anna")
     parser.add_argument("--rate", type=int, default=180)
     parser.add_argument("--mute", action="store_true")
