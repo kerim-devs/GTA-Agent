@@ -262,7 +262,7 @@ class Conductor:
             # an event is a change between two modes it has named. Each event ends the running
             # plan's claim on the head, so a server that stutters must not make one.
             if mode is not None and mode != self.judged_mode:
-                if self.judged_mode is not None:
+                if self.judged_mode is not None and "none" in {self.judged_mode, mode}:
                     self.judge_events.append({"kind": "mode_changed", "old": self.judged_mode, "new": mode})
                 self.judged_mode = mode
             rows = self.judge.drain_failures()
@@ -273,7 +273,7 @@ class Conductor:
             if rows:
                 self.judge_log.flush()
         self._text(rgb, t, text, text_time if text is not None else frame_time)
-        detected = self.detector.update(observation.reading, t, text=self.text)
+        detected = self.detector.update(observation.reading, t, text=self.text, mode=observation.mode)
         new_events = [asdict(event) for event in detected] + list(events)
         new_events.extend(self._hud_events(observation))
         recovered = self.flow_started is not None

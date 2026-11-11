@@ -143,3 +143,55 @@ def test_vision_recognizes_generated_help_without_recordings():
         reader.read(frame)
     # a full frame is 2.8 MB; a reader that keeps them grows by more than 100 MB here
     assert resource.getrusage(resource.RUSAGE_SELF).ru_maxrss - before < 30e6
+
+
+def test_judge_vehicle_state_overrules_map_without_another_debounce():
+    detector = EventDetector()
+    for t in (0, 0.5, 1, 1.5):
+        assert not [
+            e for e in detector.update(reading("tilted"), t, mode="foot") if e.kind.startswith("vehicle_")
+        ]
+    events = detector.update(reading("flat"), 1.6, mode="vehicle")
+    assert [e.kind for e in events] == ["vehicle_enter"]
+    assert "judge" in events[0].evidence
+    for t, minimap in ((1.7, "flat"), (2.0, "tilted"), (3.0, "flat")):
+        assert not [
+            e for e in detector.update(reading(minimap), t, mode="vehicle") if e.kind.startswith("vehicle_")
+        ]
+    assert [e.kind for e in detector.update(reading("tilted"), 3.1, mode="foot")] == ["vehicle_exit"]
+
+
+def test_judge_silence_seeds_map_state_and_debounces_disagreement():
+    for mode, matching, opposite, kind in (
+        ("foot", "flat", "tilted", "vehicle_enter"),
+        ("vehicle", "tilted", "flat", "vehicle_exit"),
+    ):
+        detector = EventDetector()
+        detector.update(reading(opposite), 0, mode=mode)
+        for t in (0.1, 0.6, 1.1):
+            assert not [e for e in detector.update(reading(matching), t) if e.kind.startswith("vehicle_")]
+        for t in (1.2, 1.7, 2.1):
+            assert not detector.update(reading(opposite), t)
+        events = detector.update(reading(opposite), 2.21)
+        assert [e.kind for e in events] == [kind]
+        assert "minimap" in events[0].evidence
+
+
+def test_none_keeps_vehicle_state_and_discards_pending_map_change():
+    detector = EventDetector()
+    detector.update(reading("flat"), 0, mode="foot")
+    detector.update(reading("tilted"), 0.1)
+    for t in (0.5, 1, 1.5):
+        assert not [
+            e for e in detector.update(reading("tilted"), t, mode="none") if e.kind.startswith("vehicle_")
+        ]
+    for t in (1.6, 2, 2.5):
+        assert not detector.update(reading("tilted"), t)
+    assert [e.kind for e in detector.update(reading("tilted"), 2.61)] == ["vehicle_enter"]
+
+
+def test_judge_vehicle_mode_does_not_depend_on_map_integrity():
+    detector = EventDetector()
+    detector.update(reading("none", corrupt=True), 0, mode="foot")
+    events = detector.update(reading("none", corrupt=True), 0.1, mode="vehicle")
+    assert [e.kind for e in events] == ["vehicle_enter"]

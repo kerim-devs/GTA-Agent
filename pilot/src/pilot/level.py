@@ -9,7 +9,7 @@ on the same picture on the console; the sheets are in lab/camera-live.
 from math import isfinite
 from typing import ClassVar
 
-from pilot.contract import Observation, Pad, SkillResult
+from pilot.contract import Observation, Pad, SkillResult, player_mode
 from pilot.profile import active
 
 
@@ -69,7 +69,7 @@ class LevelCamera:
         if now - self.started >= self.limit:
             return self.stop("time-limit")
         if not self.on_foot:
-            if obs.reading.minimap == "flat" and not obs.reading.corrupt:
+            if player_mode(obs) == "foot" and not obs.reading.corrupt:
                 self.on_foot = True
             elif now - self.started >= self.FOOT_TIMEOUT:
                 # Nothing to level is not a failure the head has to hear about.
@@ -78,6 +78,10 @@ class LevelCamera:
             else:
                 self.last_time = now
                 return SkillResult()
+        elif obs.mode is not None and player_mode(obs) != "foot":
+            # The judge no longer sees the figure on foot: the stick is let go and the move waits.
+            self.last_time = now
+            return SkillResult()
         elif self.last_time is not None:
             self.progress += min(now - self.last_time, self.LONGEST_TICK)
         self.last_time = now

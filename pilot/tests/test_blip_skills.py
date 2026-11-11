@@ -135,3 +135,17 @@ def test_delayed_noisy_simulation_arrival_wall_and_turning():
             result = module.simulate("face", seed, angle=angle)
             assert result["status"] == "done" and result["angle_error"] <= 11
             assert result["turn_reversals"] == 0
+
+
+@pytest.mark.parametrize("name", ["walk_to", "face"])
+def test_blip_skills_take_accepted_mode_over_opposite_map(name):
+    from dataclasses import replace
+
+    call = SkillCall(name, {"color": "blue"})
+    foot = replace(observation(minimap="tilted"), mode="foot")
+    vehicle = replace(observation(minimap="flat"), mode="vehicle")
+    absent = replace(observation(minimap="flat"), mode="none")
+    assert Skill(call).step(foot).pad != NEUTRAL_PAD
+    assert Skill(call).step(vehicle).pad == NEUTRAL_PAD
+    result = Skill(call).step(absent)
+    assert result.pad == NEUTRAL_PAD and result.status == "running"
