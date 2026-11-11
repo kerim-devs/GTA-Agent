@@ -39,73 +39,6 @@ PASSED = _template(
     b"9HUP7-TzeA3Cia99qJuEWqclw8Zp!9)z68^{U=vVe*a(dWytX;ukZ)!EU^WDmEKG",
 )
 
-PAUSE = _template(
-    (14, 89),
-    b"c-kG1*>6;37>EA|FZ9B2L%i_9#27*VH=wpd2e2&CR!Eef5JE(1Fo+S2xI`mMg-RlULMe1#W+~mRQwoK4Itv}zS=uvm"
-    b"X74`j%$zyreDC|c-#GQjd;R41KK1wO>uT#7A2c*HHnz04wRf7#W~;T!+SLQ@zJY%pkBmGXTF7>}C+v2I)9H3Or*!#+"
-    b"+x6Vzar<X{-dRbKLb4o|V^TC8PpmVah{uzO#61NuTHDgx+}zUI+SzHcSi8D=dV72N2KbNtwx=osq?GvL*|^>AbUIy5"
-    b"mj)L=_q>>z_9@6+axhdNqGK=`OC*zX^9!r699x1&e2`tNVdt8fT3g$!ZRT#1#oXO9WO~#)I3hmk9iCu*cDKWZ``wO$"
-    b")9s#hFR2^8B*)OSFCbA~xe=B_awHrDc1KRm&&?Mu1+$}>{GRZ%zVQkiYjyQbnM_gH);SumrySjbZhcZ5dN?{d@&q?s"
-    b"Q{i)(ad@TdQfNxWvk?*W_#{atJAS>OEzG5r4Dqg5I+s(@E6XVkjYwM(KHO~5j!bf5CrMZJn=&C$&5X(j4?TQ3_B19+"
-    b"T!g9+cOxni^Z_w}s%8mCqI3cd&#O&AA$*9rJE&{wP<k~3Z~?h-EkJMe-~VA+bZn~0Zv0L^EW=Buc?H*AJ5J>Tg{*N="
-    b"GRf%W^Kg{Z4VU@35WG^w8j8%Zc$Dwr$79;LK%V|U{^le8`k9<Ll+6)*2Kf^?A8s9W5BvG6^;6yw3HJun%}=11G2=5V"
-    b"AGAB&Nis|UZV&Pg1V1X#zJ$J8;w{awXe1-H(Wx2y%Acn{iGC9Bj>4~xt15?M%y~oe!@HR84B%Fq?SX?qsl>KD!(xsf"
-    b"I<Va4n)EDkgBN*8jF(V8z{S2LDvO9t%i`Rks_nui2e0xAQO)Tx(e519jB7fBQ~3R`Hp8|w@`?ZyjScJk8XCg%o(GB%"
-    b"%O<J(@wCskhK2xQ=>izC^l<t`<tpDFLv!!y@`|cl&y$7D1c<7Eu97h7@Ynz1+oB}MB<=k{sPMC$6O7*Y7K@`|#}pa>"
-    b"_j|>`v6+yxhQ+f0rAxXYt8Bg9XwBk*c`)~_tfqyY1G+?2LF89;yh^l}!Ho$`V=xXoQf!tLjjfA!IDm}HXh`s#KCz2K"
-    b"r9_qXU|23J4go7oX(b~4%^G%O`N2j0Z{J#4q3%87`O|bUfxH^&H<2&b_;u&HSfMh89`G`#^t0`D5ba|9=b~9ry2x!D"
-    b"k2r$SXtq#?>4r76IHwJR_O^ltQ#wE<$LQyN(ke+w3#!(Et%*3{-bf(@3U(IQc%0$+3UA6dHleXg%E=&<%G~Hv$b+9u"
-    b"h9V&qjZv-~Sj93arKdkWrLtq{GEbUx#><y<_0t?zlXAVrGrzOK@(P_5$PTpWY{Fi9_SQ|0rNtM0^y{U%ThXTW;6Pp2"
-    b"bLUF!{YWA)H*d8pvVPl&*Rq_b|D|J58@H?4j8)RKSW_nVd<aLb+-pfH8LL-)@^`}m0|t=1t1$K-<ZIXB",
-)
-
-WHEEL = _template(
-    (32, 34),
-    b"c-jF#1i$;v&cDpY%h1@pI1w2rCJYKy+S}5qa#%@DM{t(K%FWm3{maS4!o9=Nk{lCjr@XM0JsU+)E)5M1BN+}91UsR_"
-    b"*W&HT$iTqDx{?zeq3`<T>HfcC3JEl9tJCD&+rm{B9E{T2?#aozzq5}ZG^q8>wV|KG_uFG7c<}1Zu&c4?_MaI%%+%()"
-    b"zP-Pm3o)Phw3wiyo~F6!;ciP!fSsG3ouAYFJ`~H;+{d@eyD%HC>%NzkoSc@LrlsQi!(>59ew>w^&H6PK&CuG)xyCLJ"
-    b"m-fD&k&}>|mz9;5pStDsv{gT0k(cMpA5YHE*2Teb4_Cdsm~m@%Z)$K#ahQ#xr^M*XTQ-D|xKR;@%Fxrssuw(!n3Y;K"
-    b"Pdy?I4HT4@m6es1m8y^{JUcNl3?{Y8)Xy{^grApzQF4!jazF_bl$Dj0m6esAdnr<MnyGOIKHAom1XHA)oRXH3nU#}z"
-    b"8xxe4mX?;5mZeHTlg8xNqB9D<*f$=QkfEBQmW!L4o0BUOl$Vy4mX?;3Fk6<Al$V-S4ZzzLNTQmZn3R>Dk&&aJQxSrm"
-    b"o}ODcHas7FnVpxKm?;q6-3wi*nwXlJnw6TLoSjDxU!R$XF@D3uH%y+Enx2FOTHezXRi2-mm6@BAl$M*NNCG2`o^CPb"
-    b";=5rYR!T`u9}>>q**qejpOBWEo|Ki6nW{?$2~V4LHnx|Pe;h$kLPi=C&ehkd4p^L-nVFlEpPiYTLIwZ}Sb9NoU_2Zb"
-    b"VCeA2h7D2X-1$lqfS{a|o0p%KnTs0%000s$FD5J~FD8GVsi2!9Ch^<->LDtHm6nu|i-Kw^2LuEL05B~lIXf><larK="
-    b"m>wzZ-TnH43NVU!XjMBR4Fv`t695HwcV$>$Z-<wao0WJ4RN>?L`NRkaE^?Eqtc!hVReu@;0V`K@e20mOjEstV94y@8"
-    b"<ofxi055Nbk+jV1(y5++5dZ=&M?X6`I5;>tHZTEN?BnA4_-YP-lcS%NkCT_5p<)970cXY1#mC3S#?IBaH8kz$*!uWi"
-    b"8kCHam6w;Aouj5h00sgwoU^yOy1KZvyQ5AO=;Gt}_Fo%~nU<KEnxdSTgAy1u1qCf%i;j_$m6e{0HWTCA-}d#240)TC"
-    b"n3|fHo{dEiREbj*1pp2h940F;GAjX4>Eq<|^x+sNnUt8BnV6V#Hd~jOno=JH3JVJh3m6LnCdKIE+4A!5dl^EMn3|cJ"
-    b"mxPa)nVXrJd~H`eH!UU*BXZ>E+T`E!^Yi3$5D`0ihL4PfgM@ZnQ#~ve5d{n%Nte*v=jG+*=J@#a?%%pe6&4#C8W<H3"
-    b"5D^kAGfrTax!l~@?c(X=<m2M``ug?q=Ihm;gk))SdWo92!q3y#+2q{X;pF4s<mBPu;Q9FN?&;_5;^pGs-rU>S*VEG0"
-    b"+}6zH<>ct*;NRrp;NRc={5S&",
-)
-
-PHONE = _template(
-    (14, 48),
-    b"c-k$J%TH556o=2unYs7&+6#p$0`b9Hz)C;@fruy)e9**(poO5=02YH#Aexq9BW(qN6etv;#_OX-DsfT71u-BdCN6NJ"
-    b"iCYuJjSK$_=c2QjWX}1WGs*W+j;JXr18Oo+8G%svcQlnyR6*ig;tUxQf&>sKBH=X_0FrJ>1Cj<z1Sk`g{PTT<04Oss"
-    b"hV0Ifz)A^$l9_zaNSCw2TI@0d2P#W|m*2kGS};>0+Cgk504ihPqm-%6NOhL^Kx6N$!#!P?T~(&-vz3%?bRFz@<>1z1"
-    b"kdb4pIBR8P_KQa<zY!pNm!reaYis;ti-APYI~krRb;svC-@~Sya58I5H_s+wOG)>c*o!rP?6cTYzFv_M8lUP2wmBX)"
-    b"N9*=`ee>-pMf%Top5aHWJG%YT$54T5D=|~Q{9w&5K6}+`RVQLknih*)e&>p(e|{vAr`qx==QsVUv5m*^#MjqzYtO!{"
-    b"M^}Q|^}uuQ+4=E^KIHUeMjCEjIdsYGZ8JG^nGfnie<njeruvdOC&%KeRZY{wA5thO*GIbi-LvhzPp`im2#h)dgHaoC"
-    b"{vKF(f3){kb<d8iZoB{P_?_hK`=Rh=B|vVcXQ(mrTKPH8X;;e$&y5CKrv);6@$n*7(Jh^7k+N@%wiX-?1e;SYOw<Bl"
-    b"iXs7|QOOJnLxGrSG69wf)QqVtoukC|s1}P%G>yv&5CgvOfEidg3igyxL0wqDfm2E0oEtrYE9^Q!5l~1Vuu|j%ndqiQ"
-    b"fH8&&m1Qn&VUKW#anAnRC2~X@G;|`n3#f1mCFCM23dVym1pfji1&Qb",
-)
-
-MAP = _template(
-    (20, 40),
-    b"c-m!<O-L0{6oB8)_}<g`yEAw0%)Iwz-g}yYmWlreMn$^{b<-l+NQ9F4%tUGxv<Rtn3#s-&M7an=aM7xu)~#9vZG<E="
-    b"_07!vovuZjIvg(d9=`K&?#X1b*<9w|$jZ!SGk?$HOD>l${Kw_~5R%E|mHaW9&nu;pnE|L;_I=$okyFh6j$=n&W(U;E"
-    b"z=n#_)>i6V-^G-1A#hBhz4fl5v`K;9uGXLKF+#B5g+j4y>fkUYoTr?8|NODV#nFYLrl|!*QKnh^ZRZC|1yfZ`jnZd>"
-    b"BIPMPIE%dCji9`t>$(O&Akqo5L$%NCFas#3dGt7BDHGya__cKzr9#vUUDIu4gz(1X_SW;^@zj9DA(5<wjB|m<?h5ur"
-    b"Bb-$=$$_>pM*UfyrW;ypI32?buT?2$obJm>E?JbYKsQa(DvS{t%<gl#8pH-tM+kXXA)I1L*{9*~1CyKqEMS@An1<Hi"
-    b"$-eA8YNFBzrH?8!O(~71-04VqX=qrMWf#X|>i68ZI%CXnAbphGFN>IRd<AXcpPV!4v!qWQjY<7x!uZSphK@GM#1n7x"
-    b"?e+%oFTUS={SM2$n6_;KFdE^;@?n%N^d^q2j|lRrv$wmy@5N+&p#RiR!bR6HXWIP{IsYI^;+NAH0i*jckt5+2ZAEf*"
-    b"M+r|wuVG29G!bzo62UQ{t_f<CP?E%iP$441cpOCyXhRcp^z33ui5A7Y>^N|IVR7;L+|tVO;!1O&x!PPh11;OJZA%-P"
-    b"Z!XT?Y2I4CUGWff4Yyqb5JJm`W!DK!->;N?<Tysbb=p;1m0eX&z9F<NU?bP7RKr@W9tM@b_Ygur{#n+c*XXI1J=aB!"
-    b"4ISipel@7c2qahWWm)dV1eSyR#))5cwKNj",
-)
-
 
 # Native 1280x720 masks from the real P25 frames; see lab/wanted/README.md.
 STAR_RING = _template(
@@ -120,6 +53,147 @@ WASTED = _template(
     b"yd-~DU;~cL>xHbJs^wY9sPwU#FWoq6)oO$lmlnM`mmmO+W0i2uzPjr$>{v+&+*e?vQ#x1$hv%{~C=4;g"
     b"+VZ;utOXgUFzXSrI#b>%IMP?DVqaOw`&&xSWSvd2wKY#KL?RzV",
 )
+
+
+# UI-only supports and provenance: lab/screens/build_anchors.py.
+PAUSE_UI = _template(
+    (14, 46),
+    b"c-obcJ!=(F5Qa}BScrl}FbQT=ghU9K##kg5)<lqOz(O!!!2AP0K>t9jB?c_4jFni~27)Q<0+u!*U=v~?-efQC&Kb^pobl|Hm2LBu"
+    b"XCCIv`_4FbDjks$0FtPI_lS7VR{Bu-{eJC{RikiS9y<41RF?O^)J|T^M>8v1n$#X#x;8pdd^cQqh#rG;UIntvS~R}8c$HG`(9#j?"
+    b"-s1M>5BD#_qqD2%B{noe_NLaTf7UY!NgaBA)q@?K-yY=oF{(O;k>L6Uu(G|sLXBG5z-}!Kto(H52jq(wl+$#P{p4#%UaO6ale+ZM"
+    b"xw#v&W6Ny$oyaj&f-z2gL{y-+7n;`o|0K2bvga$0$L}KMdHNmy(bJnUu!`S}HZ-=h*0EO{lV6`y>-8+9F{H!Hldrow-)w7~sN+&V"
+    b"<_d4JHDXp27O6^^nDETR&D&Eit1q+Mb*ZS&o{HJt0@B(V4e1y;?Ml*)LUI^7d0VY%S;~P#m_?e(uO{L^LlDse9JX}%^Q402F(fm-"
+    b"7U-YurrcllI$RV",
+)
+
+PAUSE_UI_MASK = _template((14, 46), b"c-muNAPF#H0DLl|sz<77k^lfA+5xc").astype(bool)
+
+PAUSE_TITLE_UI = _template(
+    (28, 178),
+    b"c-rMyS#KOg5N-%Z2;_p?K|%x&As`;Y142l^144i}LXx!|=dc`p9uNougc2bH2_kWXxD7%{h+_xa@!IR%Ir^@qs(NO3#`X#$MdE>d"
+    b"nBD1_?*6*^`@X7PA^sO1>sDy=uFu<JKG<73zm`&I{ck$xE&`)11ORIAvfuhb2ts^RZ=7}6`>UQXyHNyXz8H}Zt9<o{jaEJI#(585"
+    b"gy=T{bedxC-2&=y4$jUkdv(EeRvdy>jGxcEiGXb`4pN|3jo5qjZujPjvJrpYXMoJy*x8%4_<Th>v+UJ&r`=~$`D-!AZS?KjU;Aot"
+    b"`^S%iDu+@(`7p<_&j2n6My$kry~YWc3(JYvaW}TD7~}j8ejFw?Ma1WyM#M$LR~O@|$Z|XREVr6|GX09aq(5C70(r4~JNm5pnhsm&"
+    b"vH#?@LgO!E;Js#sNQ}0oWoTXOh4S=MM?APN@W|ZimYJzT{GQ9_b6Y&}-WtPQj7{d#5RCL;@p5mOUZjx~FhSR!13t^cf||QYx2-Hs"
+    b"7kg8jav=^?btR)xinp~^%Q-}u`&32~%OSM2Q-&rm#-@wX)DhdMVGg1TnL?zzZypx4cAmSKj$UYk@lcTp>hP);Yj{eYB;dO<ZJn|W"
+    b"8MzP^gZ-wrC9G;!@W_`UK1SW0ksMbq8W<=X#wsVput*&uw%X3%Z(T!d3dGu^;<#vW0KA(%Ixz0@l$y=WsQ0Tv+|xy@_I&Hl-z~&@"
+    b"z+lo~kfLos``Rt0v=ons`3lhk?}yEv6-)W&5Zya35#q~F(VZok*$a;dkpLo5=weUOQ(L3tjUmF|%-0X$)Z}6TQ^x)y!b2;1$gZfo"
+    b"^%e5BHVB`tBg7o|EZB|2<7^Kv?$Y|YyYSDCO}1khV(mJQ$F>ijC(U@0I?j%J4(7OkxNKWP?A$aX#&Mp*)daLu9aZINl_JUFq*ZG;"
+    b"udi)DlpO5>vD-i$;88-6ird+edbsG-pY`mzIx7f^o_>Z=T<5_Y97DuWKwdWlL@j$~YKUhBxRIZkU|$n5n3FuEMZP4Fy-;ORV#T^b"
+    b"KwZT5(S!?+aYW)8dp#Cl{x%fMseKWp5pQBRt!As9e4%2y4v@^TC_qUKAYvVLRaqq7%npcxLX?vILEOYV_R%MhC(*HdsHv5=pocgG"
+    b"e=n^%f0&0_iuemcmst)yBYtBN6=yicldpFb1=hk~85~sM0M21nK&)>L^7?$t7Z_J*;o5a$d6iDPYThb%*+U$+Fm--Ci8$ZR89eSv"
+    b"#jpvzEN4Z;Z=t{Qz)oL3P?)(#pEEF24(x#um+`J4o*U*E#`l6bf-y$ZPBr-K1p1g?&LjqtvAxADOl-P|l9Afj2XUax*F(%&bE7!D"
+    b"nQRn|az-fShdDhl+kJyz$JwjY_h$Y`7ctdw!vcNzhcn;(_{%S6PU7^g>~px=NmARiPf%@bew=jdW{k8^+q)KBtDOijgiXbiQBBsJ"
+    b"WW)n(KH6V6Iii#sDl-f^b)y?&TSKfEG4N^t<3GeEvHwUJ&X`l2KRsCXxhOFuV&*j4s9&ro^j3<r-O8Ca_B3@?WX;0PO;m}Cte6;N"
+    b"e}~Jj9!BahVp||S98(I<US)-Bavy#V*?@>KOZEuh3+}_GL)}$ckeN>yY;@gLpy(zRHdT~YVg8>|jKkR4LbthiWeH-`tay<UEFp#>"
+    b"Mu^z;LEMNLBqH{R*yVBEArTNmg+;U|5r67oeBTpAcrC}csq)QaAz@w5-Ks}~b6GPF;?8)ZT4N1SgwM%|0cN9&WF{V$GuneCkL!q?"
+    b"Y#y#6##N&1NLZ5WyJQl$b7hw)CAp;F>I%4smoi&V)kP>Mz!gVTtLb#JD@0@FnC6a;BNL4-C#^N;R3>_GM6BJ9Tx`}5>)As*fR5yH"
+    b"M>(J<Bdb7^elCJc$}Xy?OL*I(y8&eA$5#y_Zo_m;TGc`n{daFkDsWdaKqWBZ>zoZbKBXM(EX^L3>CGV|4RkIw>6BD0EA(uPvE-|B"
+    b"$LVCJe#^n>u>)Pi0G-U0U7E2ezpw@`h<hq?*=COV!k0qa4B-RB*fG0%)1X#cJG(I^xmYF-A|8x73zEuWcMSJgMFH6ctqyAn+<^*W"
+    b"v@=AkLxC7qK0-kVO5w00Z<9fP9utx&#qV4zerv4i=7Y(S6s5R}ZJE6|Eb4R~UH7i4y+LPVcayYDaK~o3O1^j^W>HXBQFl57l}l?#"
+    b"o1?6FugAa7TNT7U8OII)w#oR_+$bIz@ja6+j_xN`%yu23I1<Y=jRl;Z!AkH~Fl}-6r&AHn*j2io4Ox0l?5LhYe*Z>1P`y9V7+HE$"
+    b"8Lpp*dp}1<RyaErdC;dZVRGYfVvAqJF>LD{YsK~@Z4Yj_cS+0rxAZ>`<5=0bO%xS3c#tVJ^FRC_2x4)-f=@)!vkFY;ctuv&49&&n"
+    b"kf%y(rF7bnUYc7D<Zr2GNap",
+)
+
+PAUSE_TITLE_UI_MASK = _template(
+    (28, 178),
+    b"c-rNd+mZtz2t?`s|LLvNB+_8xh?Cuyol4bQL^&!T#Oz;O!0yMZp=>(V-yD;q@wsk^@n9MsQNK5ld&IBC>vv0BQM^Bc?y%mJNf<uP"
+    b"QaU!{kQlUSJz~LM6C3<?M~sESzaxg~WUV!RZ`05;h%cK%@J66|v1zZ8T(I<HOBReNDNQ;8Y3MSXkTtM6Y!a(3f*1v{5*H!E;BzBy"
+    b"MDeVMM_ULX%#>nGGSRoptR)&&UVc~O6ZdCBVaJo4(`(N&NemfXf*EJxY085Vl@rmnWDE{XxeuaIGO-;H)41wc6O$YWLlN7W*fOz?"
+    b"I(o-xxWnENLlfH_u{DXwu107`#PRg)5`)6db7Bi=fL`OAFFYlNB*rOm?h*{AMT`}(^rQ|kYGUAUjh&J<YdXb>;oHP1wmw^9mBpwW"
+    b"b)T3mHslpCwmu;)ts*S%E-?+jr={?sV`6m-(}8E2*yIT^_m{*n9wTS5o5VJ0ToFT_l8{E_H)vu2C$WN6=71Cifh`xNAT}ADAhS(k"
+    b"tcXz)$G8zazb;zf#cmp2CRc*kN@BJKy~cCSkR2@)U#ofr)tf49atcLux><%HX_|??`=`fbhxiRGO(tH+R7}Lu2)a=E*7XA*rUxq",
+).astype(bool)
+
+MAP_UI = _template(
+    (15, 58),
+    b"c-muN7$6{&%}s``nPm(N9v@5@7$%kzuZiuT00V>7MJCqC?;06-f66mTrIlK<GBBy<HR>9xGDH~$m-;{)BNNMD5*%4?&kW-5B>89j"
+    b"U#i9+_MV^XdBjr&ng7D#UrJmqm9eP4&-dK($&LB$_X@A|TNq0E85oowGADkDbAD$H)W|yFrFhW4SuzYP*9{e4i#!+d*dnmIj)PP8"
+    b"liJ<{Hcshx0Suq3*qDUh7$+>?U@-g6T(yvaDYJqhe{%XKB}UFqN<b&4mS;9H%=KIp$nxp^-c3jTg*;UUik|W0{A2;Np*b~iE)#?P"
+    b"2bRWSu)FiWe|pcs!1hfJ$X5FK!kp3W+J8mPFX3Fm(r!|3j2Rg?{(CTd^I>4%*z1|Fl!3wGH48Ls^1tb=>|o;hrVM0re*MbNAoA%M"
+    b"Cqu${F>dcKJkby3Iii2LF}(Sp%H#W;Tl0fF^IEvh>?T%`x26owg4uwa&VFVF)@|tw3|#5^*6+1oW=%Y@rvJ4Q<GYT{tG634Fx2c@"
+    b"K4S_}lrXt&Wzf6gi6ye6L^zlPf9f-TQ)J*|A}MXuoYhrqy(q~2UX#>R#g%#X!gMhv#v~q+6C@*1ssP3IlOq",
+)
+
+MAP_UI_MASK = _template(
+    (15, 58),
+    b"c-qC1O9}uW2t;S@f9WU+bee^^Nhm3N{((<IvH{HNoELHtS@h>v>f<JjB$7=s_^_4`EvX_$cR`TLm5PfwE6G5jLWbVPU2r|yu63Gr"
+    b"`Yuj=L3$)=&;X-80iO",
+).astype(bool)
+
+WHEEL_UI = _template(
+    (33, 35),
+    b"c-qC&Sx8h-7zgm{n9EqEjnU!)W`=9&nERxbX_;uGg(=g9Efxc%4TYj6W8;!(cjhkVo^$TZ+_{$K(4rRQm?2>xQ3};d5rl0>i?mP?"
+    b"1wk_|qZatu|Gb=sALskdMiA492?<(H%$;Ta5liP5$J=l8!}N){kAGl5;NKvW8vF6-^LOiRKd+QB@yW>Rk)Gn&Vr|>6N1bND`ti9c"
+    b"qV(n19qV=L%P-_Ca{gPtAec<t)zQ(iwDd|NHqe&)Kex^hUGE245rPmHE$@EzD--jykkt==kDV6O7b^gOr71nhxAlJb-K*Sq7}BHn"
+    b"raRt$t)HqmRAS4f5>h9EzON69H#C7BrRS7LHj>~#a$fv$DY2NQ7>+~mN>gNfYE+E(6w%=3x||BSQIoaE4<jB!z+6;^rB|6PC6glG"
+    b"$Qqbt05Luj=!+pjfTAw!h|>+cde)INLA1gpEYck0#O7!j&DaJ-)yek)fn$ZdagoKhn(f==0B6dPYB&buD->&1mYYl%;-GP|^Sr<#"
+    b"V2_Q=FGA>Sa_yZ#c>zsxxMreGwqS42ek?XZ1nI=m_!m!mN<y;patebd+vPc%fPiJ8jkp(>%H{2?@Kj{#7DcAtBq=f@ZoCj|OCdbG"
+    b"a;wsg7N@LQvhU5iLCw^;Xw4>DVS|8mK7_<w78SB8bVZ_Xxp-L+!zW3khKDTKTz5R$TjK2I6cZehkeZN9n=tJlM6y<WWc!w&<sK55"
+    b"x3g<y)js8sV>K+#87m#v=&Cr;*xjiuE6gchA#n-MKUvezP+zaDR{J|hn7STxjC_9E)l%y%A>uYGlI)39%y=%9yvQ3xEMj!n#fdmL"
+    b"@Ob#a(9rOMLCfkXA!Azsi443TikS=MIVB0*H*fXbzTJ1%lIvJS#{v#vo=5evr3z2im_2%$VHlQeNpz43lI1Zn0w!aTQnziPlXP)#"
+    b"Sahsh9z5f9Hv%3(4yzK1b$W9_fQOrl)MLJM))z@SZNEmcfu=YE(pRf?Wvq|;=eK66TFx|`BP-OZUF+ll#DB>jUF1sf",
+)
+
+WHEEL_UI_MASK = _template(
+    (33, 35), b"c-qC&K?(pM2t?8O_rG-Qf{-Rq>#rZ`Mrp-N=RARBh&VxBYzAwv1WT}l3If)6LXupcq8idaMz0CYi}Ej`^E2v81AW8-#s"
+).astype(bool)
+
+PHONE_UI = _template(
+    (22, 49),
+    b"c-muNARRDzWJE;(K_oJWii(bnjg3PBu@T|kLSPMLk6yoi^Y-oAcgW!V`wyQ!efo?5U%q_(_N<Kwq+!vcM^|nD!A)dv>(=eNckkXq"
+    b"0(WoUe0U11A!z-TGpB&yG%`4I=Ir_N=Pw|G+ZT^Ef;BM8g=IzqK@@%vmy%}A#V~Au69)qWixd|pBO@;}OpH|_AyE`Vr8qB$wE4lw"
+    b"z`%SYa)-ImDORWqSM2vM-=FiLsb}4r1ELn5_SECxPl$dWwCs+ckhLzikerIy`+UxYzswofH5jE;r0ty~IMsr^qzu1j0@aKC{c-4L"
+    b"Q1PC--){W5+;MB$H<RhVejfNfPgZ5;Pn9Eo*l+)T_2<_btDnFBt@!@4AE-h9hduYh^<N5}q$Yp!{hcWGVe;ofeziA0KTKZrFXZR@"
+    b"u>U_FOD+2Sb)VX;??3kdV@_c976#4_yT3%f*Pbw^^7G-tx7NHDma`Bw|M26`zn{PU{(b-b=l8$={(k-bd+$#xkc&R}Gy8r#w4(Na"
+    b"=<o3B4Pp@`yE{4S{|d3K`MK)XztexuF8Z!(w(i$29hbecehLFMXno&Y^0nx7%%<B_UwdvIPkG(`!<ZrEbNBim4wHVnuKg|@^{ME^"
+    b"xgGyXzwf;K(*vl%qP}CUDPOBZ=uG#yc~&c?+3R(4GKd{`yVr=(cQ#*oErZPN=k3yxho58%MZNWggf25U(K4{GvM{kg0-T8v2$1q5"
+    b"0}Bf)BLfpZUD6Q%VXjZr",
+)
+
+PHONE_UI_MASK = _template(
+    (22, 49), b"c-muNARRE007z92)<Js>B>Q1l0I*-seTCJJh+xIgz(_#D;EHKR+G@bzA_l5zfQ2qfT%kt^oS;WS0stC{0%r"
+).astype(bool)
+
+INTERACTION_UI = _template(
+    (17, 143),
+    b"c-rljYfMx}6oAit?q&DhyDt0SvMh9$g`%=)EUg55U}#IVX|O32OB)aYOAOYCQG*(j+SpLFw8$g2X-%xDNn2VPZCaE1DnSW^SZZ4^"
+    b"YsG2=BgQVQ3%i$nv7Ol~i_|9l(;xle{Fr-Y&di+eoH=uH0UouvjZPK}k5T^{9PU=dmUI6#4#!cd=$D~q=MoGLnBm2FionvugF96V"
+    b"=V|T6nNi{n3YOGiDY;b-(AL(r4?x$@&=A!cTMhu!=L$$9@>}sHGg=Q+VG9zQo0?Gn<R%hGLrvGkBQKHwro(n*jHp};u=H!^g*pkC"
+    b"`X&x7BNu#{2fBj?0S+E1hr)Wa7Nka=tj?O_mVJVTH-l?1*pv>S?uKh4fOfPaN(gDw^#BdyJF$1yf-j>pY#|Y-^}*-R%%Skds4pGi"
+    b"2<z4Ef&~@sW(`>U!#n`fSp%7#y^k;JIZLu5{t^v9+$sM$NC@mfChAr|ja-X@X`M7u*Ngs!1F(5)%nXns$0NU*zCgZkck{@o*5XBT"
+    b"Y_1!{En~91CyK*RRdS9RDQ)s1)K}i7h|Vwd6bN=tF<2w_cB1fgR>Rw!YGCaXHrhG%4T~b-nXG^`pQu>fBu}KXkmUad91gZ`+kaXM"
+    b"Mt33_f6$Ix(ahk?_u;v;hy>IpEomM!u!h81c|}w!MUqhe+A!zv+i}J)WiH+pDU}_B`fLqszbCOkr)&5t?UPm@-?%im7Ser!Vs&@("
+    b"-U|ZE3mEB#aByPro+{GfLotB&kD`;A*kw&6@ofBiE(Szz2It&JK}zV5+@(?yYbpa@)*w-IO|fE&=u^C6?PZQUT?_i&iPo2%;t1k)"
+    b"@tHD~?0@xC1tbREnz3sdFC|R@Bl8drc8pvso8v=TjPp6hxp}T$xva?5>jR_S0vc8ZC3eFk1Idx$Qn@6`V+^LDzU+5RX+Nu&2<yzU"
+    b"zz^;cx;6t%=j{2`byP*W^IsUCQYWPDO0WhSV}>2mW=q&W55Iy3A8wn21F-+ACxVt3&fOd(0BNDTti?Ik8iDyS+}}SI%3_m!4!%UT"
+    b";M+1pamq*7+-VbD%;W?$<|&a)_h%okrFjl0A~l!~-e+unQ{{1WcQsfiw6o>!-4hOvUUg?R9vs^m!(pOd?H}LEN_0>r(&6Qb);5LS"
+    b"30vr;B)Qn`$m~1JW=!)ybo4MWoQfN?&Rc_h(Dd#jtp0c)tFE}q)hE~Dir_3!g`X!+?i*M}cCQC(*fe`D)KI6aqfZ>bwdX=r3`Yqx"
+    b"^Q;^;#&E{UlguWgg^;Fk?6N0?>Osu4+^w|*RX}K6^;8UJgl1m%*6Q@BpIsHe9z+SK=?$%;wu~>ah%2Wu<HD=h)qy)Ag>eFlk`_qT"
+    b"L<Q$*x5q-P`ZLd9Ec7kBk0X7@-j{a&iXTeFE{t=s?}u~ef9f%tJ8=oi>M|b9!%O1(tkymRNMu}|k8qrL!}4QjL(ZAoL%+R)F57m|"
+    b"fYj+jMWEU-<hnVq22>rnknr<Xk^QIu^h1}r&v*TDKT%X0MpHpm;=FasxpbzM6D%`Rt+Qw2NNH(Km5o68s8(cXO*Di8#|gObvucD%"
+    b"@%TX*)HsiX_!KQpH;shVYCTdjtVL2AfyzW8&nf2$EX~E~W)esg<B;oWgF($b`jz<i_7{<Bf1L",
+)
+
+INTERACTION_UI_MASK = _template(
+    (17, 143),
+    b"c-rli+YZAp2t&>P|Mav;4K_FzRePwW@ldrim=j7U@He&i*l*)pnxtIPjE9n3ao)G26m%sYhEF{y5TWtI7ZlDfePOQ1HBOAp=6cb*"
+    b"@_L*wII+ZubDXd^P$)%Wocxe`92gvMXwoQ-uamMK;uKBA(Y>=oYk-DRtTp;=oQCyPob;#k5l&2c$1TPR2TL48KgbMcj!!LYr>LQ*"
+    b"gNT-GaO%w9HWm?+a9UAmmsagMEO$8Q!>-I2$f2H`1IakU@qLyQw!@Sk&c`3g<$l;N^uhK5+5ZG5",
+).astype(bool)
+
+
+def _ui_score(
+    frame: np.ndarray,
+    rect: tuple[int, int, int, int],
+    template: np.ndarray,
+    mask: np.ndarray,
+) -> float:
+    # Only printed glyphs and their opaque outlines participate in the score.
+    # Scene pixels between letters are deliberately absent from the support.
+    pixels = _gray(frame, rect)[mask].reshape(1, -1)
+    return _score(pixels, template[mask].reshape(1, -1))
 
 
 def _wasted(frame: np.ndarray, banner: str) -> bool:
@@ -208,21 +282,19 @@ def _screen(frame: np.ndarray, text: SceneText | None) -> str:
     if _score(yellow, PASSED) > (0.76 if "bestanden" in banner else 0.84):
         return "passed"
 
-    if _score(_gray(frame, (204, 76, 390, 112), 2), PAUSE) > 0.86:
+    if (
+        _ui_score(frame, (862, 665, 908, 679), PAUSE_UI, PAUSE_UI_MASK) > 0.88
+        and _ui_score(frame, (207, 80, 385, 108), PAUSE_TITLE_UI, PAUSE_TITLE_UI_MASK) > 0.88
+    ):
         return "pause"
-    # Full map has its own zoom-control glyphs and a scale at bottom left.
-    if _score(_gray(frame, (600, 658, 648, 686)), MAP) > 0.86:
-        scale = frame[601:607, 65:203].min(axis=2)
-        if (scale > 150).mean() > 0.15:
-            return "map"
-    if _score(_gray(frame, (622, 440, 664, 480)), WHEEL) > 0.84:
+    if _ui_score(frame, (1129, 665, 1187, 680), MAP_UI, MAP_UI_MASK) > 0.88:
+        return "map"
+    if _ui_score(frame, (625, 443, 660, 476), WHEEL_UI, WHEEL_UI_MASK) > 0.86:
         return "weapon_wheel"
-    if _score(_gray(frame, (1088, 428, 1144, 450)), PHONE) > 0.86:
-        # The bright logo is inside a dark bezel, with green side rails.
-        rails = frame[460:640:8, [1031, 1201]].astype(np.int16)
-        if (rails[:, :, 1] - rails[:, :, 0] > 12).mean() > 0.6:
-            return "phone"
-
+    if _ui_score(frame, (1093, 423, 1142, 445), PHONE_UI, PHONE_UI_MASK) > 0.88:
+        return "phone"
+    if _ui_score(frame, (68, 111, 211, 128), INTERACTION_UI, INTERACTION_UI_MASK) > 0.88:
+        return "interaction_menu"
     sample = frame[::12, ::12]
     if (sample.max(axis=2) <= 10).mean() > 0.995 and sample.mean() < 4:
         return "loading"
@@ -290,7 +362,7 @@ def read(frame: np.ndarray, text: SceneText | None = None) -> Hud:
         if not isinstance(frame, np.ndarray) or frame.shape != (720, 1280, 3) or frame.dtype != np.uint8:
             return Hud()
         screen = _screen(frame, text)
-        if screen in ("loading", "failed", "pause", "map", "wasted"):
+        if screen in ("loading", "failed", "pause", "map", "wasted", "interaction_menu"):
             return Hud(screen=screen)
         health, armour, special = _bars(frame)
         wanted, flashing = (
