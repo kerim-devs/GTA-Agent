@@ -7,17 +7,17 @@ import math
 import threading
 import time
 from concurrent.futures import Future
-from dataclasses import asdict
+from dataclasses import asdict, replace
 from datetime import UTC, datetime
 from pathlib import Path
 
 import cv2
 
-from .contract import FRAME_SIZE, HUD_RECT
+from .contract import FRAME_SIZE, HUD_RECT, Pad
 from .head import HeadRequest, ScriptedHead, build_prompt, parse_response, response_data
 from .loop import ControllerRuntime, Pipeline, RuntimeInterruptedError, cleanup_runtime, interrupt_handlers
 from .scene import EventDetector, SceneText, TextReader
-from .skills import Observation, SkillRunner
+from .skills import Observation, SkillResult, SkillRunner
 
 PLAY_RECORDINGS = Path.home() / "recordings" / "pilot"
 
@@ -88,6 +88,14 @@ class Conductor:
         self.last_request_time = None
         self.request_times = []
         self.closed = False
+        self.head_latency = 9.0
+        self.carry_started = None
+        self.carry_logged = None
+        self.carry_allowed = False
+        self.last_hud = None
+        self.wanted_candidate = None
+        self.wanted_since = None
+        self.wanted_level = None
 
     def write(self, row):
         self.log.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -123,32 +131,43 @@ class Conductor:
         if self.future is None or not self.future.done():
             return
         request = self.inflight
+        duration = max(0.0, self.clock() - request["started"])
+        self.head_latency = 0.5 * self.head_latency + 0.5 * duration
         row = {
             **request["row"],
             "type": "response",
             "t": t,
-            "duration": self.clock() - request["started"],
+            "duration": duration,
             "overtaken": request["epoch"] != self.epoch,
+            "disposition": "discarded",
         }
         try:
-            response = self.future.result()
-            # Validate even third-party Head implementations before touching the runner.
-            decision = parse_response(response_data(response))
+            decision = parse_response(response_data(self.future.result()))
             row.update(response_data(decision))
             if not row["overtaken"]:
-                self.runner.replace(decision.plan)
+                if request["append"]:
+                    self.runner.append(decision.plan)
+                    row["disposition"] = "appended"
+                else:
+                    self.runner.replace(decision.plan)
+                    row["disposition"] = "replaced"
+                if self.carry_allowed and self.carry_started is not None:
+                    self.runner.release_pending = True
                 row["applied"] = True
+                self.carry_started = None
+                self.carry_allowed = False
                 if decision.lesson:
                     self.notebook.parent.mkdir(parents=True, exist_ok=True)
                     with self.notebook.open("a") as notebook:
                         notebook.write(f"{datetime.now(UTC).isoformat()} {decision.lesson.strip()}\n")
         except Exception as exc:
             row["error"] = f"{type(exc).__name__}: {exc}"
+            self.pending.append({"kind": "head_failed", "error": row["error"]})
         finally:
             self.write(row)
             self.future = self.inflight = None
 
-    def _request(self, observation, rgb):
+    def _request(self, observation, rgb, *, append=False):
         self.request_count += 1
         stem = f"head-{self.request_count:04d}"
         jpeg = (self.directory / f"{stem}.jpg").resolve()
@@ -165,6 +184,8 @@ class Conductor:
             self.runner.describe(),
             notebook,
             str(jpeg),
+            hud=None if observation.hud is None else asdict(observation.hud),
+            objects=[asdict(item) for item in observation.objects[:12]],
         )
         prompt_file = self.directory / f"{stem}.prompt.txt"
         prompt_file.write_text(build_prompt(request))
@@ -183,30 +204,104 @@ class Conductor:
             "overtaken": False,
         }
         self.write(row)
-        self.inflight = {"row": row, "epoch": self.epoch, "started": self.clock()}
+        self.inflight = {"row": row, "epoch": self.epoch, "started": self.clock(), "append": append}
         self.future = self.submit(self.head.decide, request)
         self.pending.clear()
         self.last_request_time = observation.time
         self.request_times.append(observation.time)
 
     def tick(self, observation: Observation, rgb, *, text=None, events=()):
-        self._text(rgb, observation.time, text)
-        detected = self.detector.update(observation.reading, observation.time, text=self.text)
+        observation = replace(observation, frame=rgb)
+        t = observation.time
+        self._text(rgb, t, text)
+        detected = self.detector.update(observation.reading, t, text=self.text)
         new_events = [asdict(event) for event in detected] + list(events)
+        new_events.extend(self._hud_events(observation))
         if new_events:
             self.epoch += 1
             self.pending.extend(new_events)
-        self._finish_head(observation.time)
+            self.carry_allowed = False
+            self.carry_started = None
+        self._finish_head(t)
         result = self.runner.tick(observation)
         if self.runner.completed:
-            self.epoch += 1
-            self.pending.append({"kind": "skill_ended", "skill": self.runner.describe()})
-        quiet = (
-            self.last_request_time is None or observation.time - self.last_request_time >= self.quiet_seconds
-        )
-        if self.future is None and (self.pending or quiet):
-            self._request(observation, rgb)
+            last = self.runner.describe()
+            failed = result.status == "failed"
+            self.carry_allowed = (
+                not failed
+                and last.get("name") in ("walk", "walk_to")
+                and observation.reading.minimap == "flat"
+                and not observation.reading.corrupt
+                and not new_events
+                and (observation.hud is None or observation.hud.screen == "game")
+            )
+            self.carry_started = t if self.carry_allowed else None
+            if failed:
+                self.epoch += 1
+                self.pending.append({"kind": "skill_failed", "skill": last})
+            elif self.future is None:
+                self.pending.append({"kind": "skill_ended", "skill": last})
+        quiet = self.last_request_time is None or t - self.last_request_time >= self.quiet_seconds
+        remaining = self.runner.remaining(t)
+        if self.future is None:
+            if self.pending or quiet:
+                self._request(observation, rgb)
+            elif self.runner.has_plan and remaining < self.head_latency:
+                self.pending.append(
+                    {
+                        "kind": "plan_ending",
+                        "remaining_seconds": remaining,
+                        "steps": self.runner.remaining_steps(t),
+                    }
+                )
+                self._request(observation, rgb, append=True)
+        if (
+            not self.runner.has_plan
+            and self.future is not None
+            and self.carry_allowed
+            and self.carry_started is not None
+            and 0 <= t - self.carry_started < 4
+            and observation.reading.minimap == "flat"
+            and not observation.reading.corrupt
+            and (observation.hud is None or observation.hud.screen == "game")
+        ):
+            result = SkillResult(Pad(left=(0.0, -0.45)), reason="carry-on")
+            if self.carry_logged != self.carry_started:
+                # One row per carry, not one per tick: the play log has the ticks.
+                self.write({"type": "carry_on", "t": t, "name": "carry_on"})
+                self.carry_logged = self.carry_started
+        elif not self.runner.has_plan:
+            self.carry_allowed = False
         return result
+
+    def _hud_events(self, observation):
+        hud, t = observation.hud, observation.time
+        if hud is None:
+            return []
+        events = []
+        if self.last_hud is None and hud.wanted is not None:
+            self.wanted_level = hud.wanted
+        if hud.wanted != self.wanted_candidate:
+            self.wanted_candidate, self.wanted_since = hud.wanted, t
+        if (
+            hud.wanted is not None
+            and hud.wanted != self.wanted_level
+            and self.wanted_since is not None
+            and t - self.wanted_since >= 0.5
+        ):
+            events.append({"kind": "wanted_changed", "wanted": hud.wanted})
+            self.wanted_level = hud.wanted
+        previous = self.last_hud
+        if (
+            hud.health is not None
+            and hud.health < 0.3
+            and (previous is None or previous.health is None or previous.health >= 0.3)
+        ):
+            events.append({"kind": "low_health", "health": hud.health})
+        if previous is not None and hud.screen != previous.screen:
+            events.append({"kind": "screen_changed", "screen": hud.screen})
+        self.last_hud = hud
+        return events
 
     def close(self):
         if self.closed:
@@ -226,6 +321,9 @@ class Conductor:
             )
         if self.ocr_future is not None:
             self.ocr_future.cancel()
+        close = getattr(self.head, "close", None)
+        if close is not None:
+            close()
         self.log.close()
 
 
@@ -245,6 +343,8 @@ def run_play(
     sleep=time.sleep,
     conductor_factory=Conductor,
     driver_factory=None,
+    objects=None,
+    hud=None,
 ):
     pipeline = Pipeline() if pipeline is None else pipeline
     runtime = ControllerRuntime(bridge, shadow=shadow, clock=clock)
@@ -252,6 +352,7 @@ def run_play(
     conductor = log = None
     started = clock()
     ticks = 0
+    detections, capture_time = (), None
     with interrupt_handlers():
         try:
             if record:
@@ -281,8 +382,24 @@ def run_play(
                     reading, moving, _command = pipeline.step(
                         minimap_crop(frame.rgb), received - frame.age, feedback=not shadow
                     )
+                    if objects is not None:
+                        newest = objects.poll(frame.rgb, received - frame.age)
+                        if newest is not None:
+                            capture_time, detections = newest
+                            detections = tuple(detections)
                     result = conductor.tick(
-                        Observation(reading, moving if not shadow else None, received), frame.rgb
+                        Observation(
+                            reading,
+                            moving if not shadow else None,
+                            received,
+                            frame=frame.rgb,
+                            objects=detections,
+                            objects_time=capture_time,
+                            hud=None
+                            if hud is None
+                            else hud.read(frame.rgb, text=getattr(conductor, "text", None)),
+                        ),
+                        frame.rgb,
                     )
                 sent, status = runtime.tick(
                     None if result is None else result.pad, fresh=fresh, received=received
@@ -294,7 +411,11 @@ def run_play(
                             "frame_id": None if frame is None else frame.id,
                             "fresh": fresh,
                             "reading": None if reading is None else asdict(reading),
-                            "skill": conductor.runner.describe(),
+                            "skill": (
+                                {"name": "carry_on", "status": "running", "reason": "head-pending"}
+                                if result is not None and result.reason == "carry-on"
+                                else conductor.runner.describe()
+                            ),
                             "result": None if result is None else asdict(result),
                             "sent": sent,
                             "status": status,
@@ -311,8 +432,12 @@ def run_play(
             try:
                 cleanup_runtime(runtime, recording=recording, pipeline=pipeline, logs=(log,))
             finally:
-                if conductor is not None:
-                    conductor.close()
+                try:
+                    if objects is not None:
+                        objects.close()
+                finally:
+                    if conductor is not None:
+                        conductor.close()
     return {
         "ticks": ticks,
         "elapsed": clock() - started,

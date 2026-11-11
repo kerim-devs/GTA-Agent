@@ -16,3 +16,6 @@ lab/blips/*-scenes-*.jpg
 
 # Fetch with pilot/tools/fetch_models.py (20 MB).
 pilot/models/*.onnx
+
+# contact sheets rebuilt by lab/hud/prepare.py, 15 MB
+lab/hud/review/
