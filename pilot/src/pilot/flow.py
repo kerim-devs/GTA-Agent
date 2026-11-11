@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from pilot.contract import NEUTRAL_PAD, Pad
 from pilot.skills import Observation
 
-MENUS = frozenset({"pause", "map", "phone", "weapon_wheel"})
+MENUS = frozenset({"pause", "map", "phone", "weapon_wheel", "interaction_menu"})
 FAILURES = frozenset({"failed", "wasted", "busted"})
 # One tick is 33 ms, shorter than Kerim's presses (about 0.14 s) and easy for the console to miss.
 PRESS_SECONDS = 0.09
@@ -44,8 +44,9 @@ def _button(text: object, screen: str) -> str | None:
             )
         # Cross: the retry at t=39.776.
         return "cross" if RETRY.search(words.lower()) else None
-    # Circle: phone t=156.294, map levels t=391.932/392.133.
-    return "circle" if screen in {"pause", "map", "phone"} else None
+    # Circle: phone t=156.294, map levels t=391.932/392.133. The interaction menu names circle
+    # for "Zurück" in its footer, frames 1300 to 1513 of the screen tour of 11 November.
+    return "circle" if screen in {"pause", "map", "phone", "interaction_menu"} else None
 
 
 class Flow:

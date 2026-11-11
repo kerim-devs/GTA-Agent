@@ -1,9 +1,12 @@
 from dataclasses import replace
+from pathlib import Path
 
+import cv2
 import pytest
 
 from pilot.contract import NEUTRAL_PAD, Hud, Reading
 from pilot.flow import Flow
+from pilot.hud import read as read_hud
 from pilot.skills import Observation
 
 READING = Reading("tilted", "purple", 0.0, 0.0, 0.0, False, 1.0)
@@ -25,7 +28,9 @@ def test_ordinary_play_and_missing_reader():
     assert flow.tick(replace(observation(0.1), hud=None)) is None
 
 
-@pytest.mark.parametrize("screen", ["failed", "pause", "map", "phone", "weapon_wheel", "passed", "loading"])
+@pytest.mark.parametrize(
+    "screen", ["failed", "pause", "map", "phone", "interaction_menu", "weapon_wheel", "passed", "loading"]
+)
 def test_one_tick_bad_screen_does_not_press(screen):
     flow = Flow()
     assert flow.tick(observation(0)) is None
@@ -71,7 +76,7 @@ def test_a_press_is_let_go_when_the_hud_reading_is_lost():
     assert flow.tick(replace(observation(0.13, "pause"), hud=None)).pad == NEUTRAL_PAD
 
 
-@pytest.mark.parametrize("screen", ["pause", "map", "phone"])
+@pytest.mark.parametrize("screen", ["pause", "map", "phone", "interaction_menu"])
 def test_accidental_menus_back_out(screen):
     flow = Flow()
     result = enter(flow, screen, text="Circle Back")
@@ -80,6 +85,16 @@ def test_accidental_menus_back_out(screen):
     for t in (0.2, 0.3, 0.4):
         assert flow.tick(observation(t)).pad == NEUTRAL_PAD
     assert flow.tick(observation(0.55)) is None
+
+
+def test_the_interaction_menu_of_the_cable_tour_is_read_and_left_with_one_circle():
+    bgr = cv2.imread(str(Path(__file__).parent / "fixtures" / "screens" / "tour-01380.png"))
+    hud = read_hud(cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB))
+    assert hud.screen == "interaction_menu"
+    flow = Flow()
+    results = [flow.tick(replace(observation(tick / 10), hud=hud)) for tick in range(15)]
+    assert [result.pad.buttons for result in results[:3]] == [(), ("circle",), ()]
+    assert sum(result.pad.buttons == ("circle",) for result in results) == 1
 
 
 def test_wheel_releases_held_controls():
@@ -215,6 +230,7 @@ def test_one_tick_wrong_text_does_not_press():
         "pause",
         "map",
         "phone",
+        "interaction_menu",
         "weapon_wheel",
         "wasted",
         "busted",

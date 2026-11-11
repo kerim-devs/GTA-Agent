@@ -47,8 +47,8 @@ drive_route, on foot enter_vehicle first or sprint away from the road. Flashing
 stars mean the police have lost sight of you: keep going, do not turn back.
 
 Screens. A local reflex deals with blocking screens: it closes the pause menu,
-the map and the phone, presses retry after a failed mission and waits while the
-game loads. Your answers are thrown away while it works. When the game is back
+the map, the phone and the interaction menu, presses retry after a failed
+mission and waits while the game loads. Your answers are thrown away while it works. When the game is back
 you get one event and the old plan is gone, so plan afresh: failure (count is
 the failures in a row; change something instead of repeating the plan that
 failed), pass, menu_closed or screen_cleared. A stuck event means the reflex has
