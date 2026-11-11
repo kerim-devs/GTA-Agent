@@ -263,7 +263,10 @@
       "kind": "banner",
       "text": "bestanden",
       "first": 339.1524,
-      "last": 341.7121
+      "last": 341.7121,
+      "variants": {
+        "bestanden": 5
+      }
     }
   ]
 }

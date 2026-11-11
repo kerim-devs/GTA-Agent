@@ -1,5 +1,296 @@
 {
   "recording": "/Users/kerim/recordings/kerim/20261111-165543",
-  "missions": [],
-  "unassigned_endings": []
+  "missions": [
+    {
+      "start": 221.0052,
+      "end": 284.50210000000004,
+      "steps": [
+        {
+          "objective": "Beglb dlch zum Abschleppwagen.",
+          "start": 221.0052,
+          "end": 222.5695,
+          "last": 222.0432,
+          "duration": 1.038,
+          "step_duration": 1.564,
+          "section_kinds": [
+            "foot"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 1.564,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 0.0,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 1.564
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 221.7775,
+            "route": "none",
+            "blips": [
+              {
+                "color": "blue",
+                "x": -12.34,
+                "y": 87.29,
+                "border": true
+              }
+            ]
+          }
+        },
+        {
+          "objective": "Warte auf Tonya.",
+          "start": 222.5695,
+          "end": 284.50210000000004,
+          "last": 224.5021,
+          "duration": 1.933,
+          "step_duration": 61.933,
+          "section_kinds": [
+            "drive"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 61.933,
+            "seconds": {
+              "driving": 23.605,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 7.299,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 14.16
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 225.5598,
+            "route": "none",
+            "blips": [
+              {
+                "color": "blue",
+                "x": 88.43,
+                "y": 85.34,
+                "border": true
+              },
+              {
+                "color": "blue",
+                "x": 74.0,
+                "y": 86.5,
+                "border": true
+              }
+            ]
+          }
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Beglb dlch zum Abschleppwagen. Then Warte auf Tonya.. Outcome: unknown."
+    },
+    {
+      "start": 316.0092,
+      "end": 508.01,
+      "steps": [
+        {
+          "objective": "Warte auf Tonya.",
+          "start": 316.0092,
+          "end": 372.5079,
+          "last": 322.5032,
+          "duration": 6.494,
+          "step_duration": 56.499,
+          "section_kinds": [
+            "drive",
+            "foot"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 56.499,
+            "seconds": {
+              "driving": 45.954,
+              "walking": 0.137,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.466,
+              "looking": 2.405,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 9.107
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 318.9263,
+            "route": "none",
+            "blips": [
+              {
+                "color": "blue",
+                "x": 2.87,
+                "y": 4.4,
+                "border": false
+              }
+            ]
+          }
+        },
+        {
+          "objective": "Begib dich zu dem herrenlosen Auto.",
+          "start": 372.5079,
+          "end": 417.5945,
+          "last": 379.5042,
+          "duration": 6.996,
+          "step_duration": 45.087,
+          "section_kinds": [
+            "drive"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 45.087,
+            "seconds": {
+              "driving": 33.226,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 4.405,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 8.533
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 375.5025,
+            "route": "none",
+            "blips": []
+          }
+        },
+        {
+          "objective": "Schlepp den Wagen zum Abschleppplatz.",
+          "start": 417.5945,
+          "end": 479.5054,
+          "last": 424.5151,
+          "duration": 6.921,
+          "step_duration": 61.911,
+          "section_kinds": [
+            "drive"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 61.911,
+            "seconds": {
+              "driving": 55.354,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 1.534,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 5.831
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 420.5939,
+            "route": "yellow",
+            "blips": [
+              {
+                "color": "yellow",
+                "x": -67.8,
+                "y": 87.36,
+                "border": true
+              }
+            ]
+          }
+        },
+        {
+          "objective": "Mach das Fahrzeug in der Ablieferzone lo",
+          "start": 479.5054,
+          "end": 508.01,
+          "last": 486.5087,
+          "duration": 7.003,
+          "step_duration": 28.505,
+          "section_kinds": [
+            "banner",
+            "drive",
+            "foot"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 28.505,
+            "seconds": {
+              "driving": 14.946,
+              "walking": 3.937,
+              "running": 2.036,
+              "aiming": 0.0,
+              "firing": 1.173,
+              "looking": 2.558,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 4.85
+            }
+          },
+          "ending": "passed",
+          "sample_observation": {
+            "t": 482.504,
+            "route": "none",
+            "blips": [
+              {
+                "color": "yellow",
+                "x": 16.02,
+                "y": 15.87,
+                "border": false
+              }
+            ]
+          }
+        }
+      ],
+      "ending": "passed",
+      "end_reason": "banner",
+      "notes": "The game asks: Warte auf Tonya. Then Begib dich zu dem herrenlosen Auto. Then Schlepp den Wagen zum Abschleppplatz. Then Mach das Fahrzeug in der Ablieferzone lo. Outcome: passed."
+    }
+  ],
+  "unassigned_endings": [
+    {
+      "kind": "banner",
+      "text": "besianden",
+      "first": 104.0807,
+      "last": 106.5066,
+      "variants": {
+        "besianden": 1
+      }
+    }
+  ]
 }

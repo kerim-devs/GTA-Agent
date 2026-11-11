@@ -1,5 +1,244 @@
 [
   {
+    "objective": "Stelg In den Liefemagen.",
+    "step_start": 153.5496,
+    "sample_t": 156.5492,
+    "frame": 9333,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "li1lJrr￿ JiJr- ar.",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -32.1713732110083,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.6111111111111112,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "moving_default",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 3.0
+      }
+    },
+    "result": "model-delegated"
+  },
+  {
+    "objective": "Steig wieder in den Lieferwagen.",
+    "step_start": 329.0122,
+    "sample_t": 331.9964,
+    "frame": 19806,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "wleder in den LiefeTrJJgpr",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -41.439585074556874,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 2.64,
+            "y": 4.09,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.6111111111111112,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "foot_target",
+    "first_skill": "walk_to",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 2.803,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.1,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.097
+      }
+    },
+    "result": "different"
+  },
+  {
+    "objective": "Folge Chop.",
+    "step_start": 482.013,
+    "sample_t": 484.9838,
+    "frame": 28918,
+    "request": {
+      "events": [],
+      "help": "11 LIIE",
+      "objective": "",
+      "subtitle": "olge c.ho",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -20.885900345023856,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.6,
+        "armour": 0.0,
+        "special": null,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "foot_explore",
+    "first_skill": "look",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 0.812,
+        "running": 0.404,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.746
+      }
+    },
+    "result": "different"
+  },
+  {
+    "objective": "Begib dlch zu Chop und. zieh ihn von d",
+    "step_start": 591.5054,
+    "sample_t": 594.4912,
+    "frame": 35415,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "m Vogeln, Mann.",
+      "banner": "",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "moving_default",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 0.575,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 2.425
+      }
+    },
+    "result": "model-delegated"
+  },
+  {
     "objective": "Bring D zu Lamars Haus.",
     "step_start": 688.5152,
     "sample_t": 691.5025,

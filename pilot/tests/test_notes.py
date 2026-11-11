@@ -1,8 +1,19 @@
 """Recording-level semantics, independent of native OCR and live services."""
 
+import numpy as np
 import pytest
 
-from pilot.notes import build_missions, consolidate, observed_actions, read_sections
+from pilot.notes import (
+    build_missions,
+    consolidate,
+    ending,
+    instruction_like,
+    observed_actions,
+    pale_target,
+    promote_objectives,
+    read_sections,
+)
+from pilot.scene import SceneText, TextLine
 
 
 def section_data(has_pad=True):
@@ -26,19 +37,19 @@ def test_consolidates_ocr_variants_but_preserves_cutscene_reappearance():
         {"t": 1, "text": {"objective": "Sammle eine Waffe auf."}},
         {"t": 1.5, "text": {"objective": "Sammle eine Waffe auf"}},
         {"t": 2, "text": {}},
-        {"t": 2.5, "text": {"subtitle": "Hello"}},
-        {"t": 3, "text": {"objective": "Sammle eine Waffe auf."}},
+        {"t": 12, "text": {"subtitle": "Hello"}},
+        {"t": 15, "text": {"objective": "Sammle eine Waffe auf."}},
     ]
     intervals = [row for row in consolidate(rows) if row["kind"] == "objective"]
-    assert [(row["first"], row["last"]) for row in intervals] == [(1, 1.5), (3, 3)]
+    assert [(row["first"], row["last"]) for row in intervals] == [(1, 1.5), (15, 15)]
 
 
 def test_observed_blank_separates_runs_but_irregular_sampling_does_not():
     rows = [
         {"t": t, "text": {"objective": text}}
-        for t, text in ((1, "Go to the car."), (1.9, "Go to the car"), (2.4, ""), (2.9, "Go to the car."))
+        for t, text in ((1, "Go to the car."), (1.9, "Go to the car"), (2.4, ""), (9.9, "Go to the car."))
     ]
-    assert [(row["first"], row["last"]) for row in consolidate(rows)] == [(1, 1.9), (2.9, 2.9)]
+    assert [(row["first"], row["last"]) for row in consolidate(rows)] == [(1, 1.9), (9.9, 9.9)]
 
 
 @pytest.mark.parametrize(
@@ -105,3 +116,85 @@ def test_controller_holds_state_and_disambiguates_triggers_per_section():
 def test_missing_sections_has_actionable_error(tmp_path):
     with pytest.raises(FileNotFoundError, match=r"Missing sections\.json.*run P38 first"):
         read_sections(tmp_path / "sections.json")
+
+
+def objective_rows(readings):
+    return [{"t": t, "text": {"objective": text}} for t, text in readings]
+
+
+def test_one_objective_misread_over_wifi_is_one_line_with_the_best_reading():
+    rows = objective_rows(
+        [
+            (435.0, "Begib dich nach Vespucci Beach."),
+            (435.5, "Begib dich nach Vespucci Beach."),
+            (437.0, "Begib dich nach Vesp"),
+            (437.5, "Begib dich nBch Vespucci Beach."),
+            (438.0, "Begib dich nach Vespucci Beach."),
+        ]
+    )
+    lines = [row for row in consolidate(rows) if row["kind"] == "objective"]
+    assert [(row["text"], row["first"], row["last"]) for row in lines] == [
+        ("Begib dich nach Vespucci Beach.", 435.0, 438.0)
+    ]
+    rows = objective_rows(
+        [(133.0, "Schalte den GafUI"), (133.5, "Schalte den Gartne"), (134.0, "Schalte den Gai ti ie")]
+    )
+    assert len([row for row in consolidate(rows) if row["kind"] == "objective"]) == 1
+
+
+def test_cut_off_reading_never_wins_against_the_full_one():
+    rows = objective_rows(
+        [(1, "Schlepp den Wagen zum Abschle"), (1.5, "Schlepp den Wagen zum Abschleppplatz.")]
+    )
+    (line,) = [row for row in consolidate(rows) if row["kind"] == "objective"]
+    assert line["text"] == "Schlepp den Wagen zum Abschleppplatz."
+
+
+def test_two_different_objectives_in_a_row_stay_two_lines():
+    rows = objective_rows(
+        [
+            (1, "Begib dich nach Vespucci Beach."),
+            (1.5, "Begib dich nach Vespucci Beach."),
+            (2, "Folge Lamar."),
+        ]
+    )
+    lines = [row for row in consolidate(rows) if row["kind"] == "objective"]
+    assert [row["text"] for row in lines] == ["Begib dich nach Vespucci Beach.", "Folge Lamar."]
+
+
+def scene_with(text, box=(500, 660, 200, 20)):
+    return SceneText(lines=(TextLine(text, 0.5, box, "subtitle"),), subtitle=text)
+
+
+def frame_with_target(colour):
+    frame = np.zeros((720, 1280, 3), np.uint8)
+    frame[:, :] = (200, 200, 200)  # white-ish text and nothing coloured
+    if colour:
+        frame[664:680, 600:690] = colour
+    return frame
+
+
+@pytest.mark.parametrize("colour", [(126, 170, 184), (160, 233, 233), (236, 232, 155)])
+def test_objective_with_a_pale_target_is_not_left_a_subtitle(colour):
+    scene = promote_objectives(scene_with("Steig wieder in den Lieferwagen."), frame_with_target(colour))
+    assert scene.objective == "Steig wieder in den Lieferwagen." and scene.subtitle == ""
+
+
+def test_dialogue_and_uncoloured_text_stay_subtitles():
+    coloured = frame_with_target((160, 233, 233))
+    assert promote_objectives(scene_with("Machen wir die Kiste richtig geil."), coloured).objective == ""
+    assert promote_objectives(scene_with("Folge Lamar."), frame_with_target(None)).objective == ""
+    assert instruction_like("Beglb dlch zum Abschleppwagen.") and not instruction_like(
+        "Nach dem, was er erlebt hat"
+    )
+    assert not pale_target(frame_with_target(None), (500, 660, 200, 20))
+
+
+def test_misread_banner_still_ends_a_mission_and_is_one_ending():
+    assert ending("besianden") == "passed" and ending("mission Fe") == "failed"
+    rows = [
+        {"t": 104.0, "text": {"banner": "besianden"}},
+        {"t": 105.0, "text": {"banner": "bestsandeTr."}},
+        {"t": 106.5, "text": {"banner": "besiandeTr."}},
+    ]
+    assert len([row for row in consolidate(rows) if row["kind"] == "banner"]) == 1

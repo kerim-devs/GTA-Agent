@@ -6,150 +6,48 @@
       "end": 194.0074,
       "steps": [
         {
-          "objective": "Schalte den GafUI",
-          "start": 133.005,
-          "end": 133.5071,
-          "last": 133.005,
-          "duration": 0.0,
-          "step_duration": 0.502,
-          "section_kinds": [
-            "foot"
-          ],
-          "route": [
-            "yellow"
-          ],
-          "blips": [],
-          "blips_known": false,
-          "wanted": 0,
-          "human": {
-            "observed_seconds": 0.502,
-            "seconds": {
-              "driving": 0.0,
-              "walking": 0.318,
-              "running": 0.0,
-              "aiming": 0.0,
-              "firing": 0.0,
-              "looking": 0.0,
-              "map_input": 0.0,
-              "vehicle_input": 0.0,
-              "neutral": 0.184
-            }
-          },
-          "ending": "next objective",
-          "sample_observation": {
-            "t": 133.2554,
-            "route": "none",
-            "blips": [
-              {
-                "color": "blue",
-                "x": 2.0,
-                "y": 31.38,
-                "border": false
-              },
-              {
-                "color": "red",
-                "x": -1.95,
-                "y": 11.45,
-                "border": false
-              }
-            ]
-          }
-        },
-        {
           "objective": "Schalte den Gartne",
-          "start": 133.5071,
-          "end": 134.0074,
-          "last": 133.5071,
-          "duration": 0.0,
-          "step_duration": 0.5,
-          "section_kinds": [
-            "foot"
-          ],
-          "route": [
-            "yellow"
-          ],
-          "blips": [],
-          "blips_known": false,
-          "wanted": 0,
-          "human": {
-            "observed_seconds": 0.5,
-            "seconds": {
-              "driving": 0.0,
-              "walking": 0.5,
-              "running": 0.0,
-              "aiming": 0.0,
-              "firing": 0.0,
-              "looking": 0.0,
-              "map_input": 0.0,
-              "vehicle_input": 0.0,
-              "neutral": 0.0
-            }
-          },
-          "ending": "next objective",
-          "sample_observation": {
-            "t": 133.6576,
-            "route": "none",
-            "blips": [
-              {
-                "color": "blue",
-                "x": 2.51,
-                "y": 31.4,
-                "border": false
-              },
-              {
-                "color": "red",
-                "x": -1.5,
-                "y": 11.5,
-                "border": false
-              }
-            ]
-          }
-        },
-        {
-          "objective": "Schalte den Gai ti ie",
-          "start": 134.0074,
+          "start": 133.005,
           "end": 194.0074,
           "last": 134.0074,
-          "duration": 0.0,
-          "step_duration": 60.0,
+          "duration": 1.002,
+          "step_duration": 61.002,
           "section_kinds": [
             "foot"
           ],
-          "route": [
-            "yellow"
-          ],
+          "route": [],
           "blips": [],
           "blips_known": false,
           "wanted": 0,
           "human": {
-            "observed_seconds": 60.0,
+            "observed_seconds": 61.002,
             "seconds": {
               "driving": 0.0,
-              "walking": 57.592,
+              "walking": 58.41,
               "running": 0.0,
               "aiming": 1.511,
               "firing": 0.0,
               "looking": 5.833,
               "map_input": 0.0,
               "vehicle_input": 0.0,
-              "neutral": 2.182
+              "neutral": 2.365
             }
           },
           "ending": "unknown",
           "sample_observation": {
-            "t": 136.9925,
+            "t": 135.9915,
             "route": "none",
             "blips": [
               {
                 "color": "blue",
-                "x": 8.54,
-                "y": 26.19,
+                "x": 8.71,
+                "y": 27.71,
                 "border": false
               },
               {
                 "color": "red",
                 "x": 0.5,
-                "y": 8.5,
+                "y": 9.5,
                 "border": false
               }
             ]
@@ -158,19 +56,75 @@
       ],
       "ending": "unknown",
       "end_reason": "silence",
-      "notes": "The game asks: Schalte den GafUI Then Schalte den Gartne Then Schalte den Gai ti ie. Outcome: unknown."
+      "notes": "The game asks: Schalte den Gartne. Outcome: unknown."
     },
     {
-      "start": 263.0124,
-      "end": 328.0033,
+      "start": 206.0087,
+      "end": 330.0777,
       "steps": [
+        {
+          "objective": "Hol das Auto zurück.",
+          "start": 206.0087,
+          "end": 263.0124,
+          "last": 212.5985,
+          "duration": 6.59,
+          "step_duration": 57.004,
+          "section_kinds": [
+            "drive",
+            "foot",
+            "menu"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 57.004,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 24.997,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 11.303,
+              "map_input": 0.0,
+              "vehicle_input": 0.145,
+              "neutral": 26.123
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 208.9918,
+            "route": "none",
+            "blips": [
+              {
+                "color": "blue",
+                "x": 70.43,
+                "y": -20.81,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": -8.95,
+                "y": 18.5,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": -16.67,
+                "y": -3.92,
+                "border": false
+              }
+            ]
+          }
+        },
         {
           "objective": "Bring das Auto zum Autohaus.",
           "start": 263.0124,
-          "end": 328.0033,
-          "last": 268.0033,
-          "duration": 4.991,
-          "step_duration": 64.991,
+          "end": 330.0777,
+          "last": 270.0777,
+          "duration": 7.065,
+          "step_duration": 67.065,
           "section_kinds": [
             "drive",
             "foot",
@@ -183,13 +137,13 @@
           "blips_known": false,
           "wanted": 0,
           "human": {
-            "observed_seconds": 64.991,
+            "observed_seconds": 67.065,
             "seconds": {
-              "driving": 35.468,
-              "walking": 2.289,
+              "driving": 44.447,
+              "walking": 0.0,
               "running": 0.0,
-              "aiming": 0.446,
-              "firing": 5.261,
+              "aiming": 0.0,
+              "firing": 0.0,
               "looking": 1.412,
               "map_input": 0.0,
               "vehicle_input": 0.0,
@@ -206,8 +160,18 @@
       ],
       "ending": "unknown",
       "end_reason": "silence",
-      "notes": "The game asks: Bring das Auto zum Autohaus.. Outcome: unknown."
+      "notes": "The game asks: Hol das Auto zurück. Then Bring das Auto zum Autohaus.. Outcome: unknown."
     }
   ],
-  "unassigned_endings": []
+  "unassigned_endings": [
+    {
+      "kind": "banner",
+      "text": "-besianden",
+      "first": 481.0132,
+      "last": 481.0132,
+      "variants": {
+        "-besianden": 1
+      }
+    }
+  ]
 }

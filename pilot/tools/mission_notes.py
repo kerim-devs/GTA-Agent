@@ -161,16 +161,85 @@ def write_cases(path, cases):
     path.write_text("\n".join(lines))
 
 
+def write_summary(path, directories):
+    """One page over several recordings: every mission with its steps, and the table of cases."""
+    kinds = ("matching", "different", "model-delegated", "unknown")
+    lines = ["Missions and cases of the recordings below, as written by mission_notes.py for each.", ""]
+    totals = {kind: 0 for kind in kinds}
+    table = []
+    for directory in directories:
+        missions = json.loads((directory / "missions.json").read_text())
+        cases = json.loads((directory / "cases.json").read_text())
+        counts = {kind: sum(case["result"] == kind for case in cases) for kind in kinds}
+        for kind in kinds:
+            totals[kind] += counts[kind]
+        table.append((directory.name, len(missions["missions"]), len(cases), counts))
+        lines.append(f"## {directory.name}")
+        lines.append("")
+        if not missions["missions"]:
+            lines.extend(["No objective was read in this recording.", ""])
+        for number, mission in enumerate(missions["missions"], 1):
+            reason = mission.get("end_reason", "next objective")
+            lines.append(
+                f"Mission {number}, {mission['start']:.0f} to {mission['end']:.0f} s, "
+                f"{len(mission['steps'])} steps, ended by {reason} ({mission['ending']})."
+            )
+            lines.append("")
+            for step in mission["steps"]:
+                lines.append(
+                    f"{step['start']:.1f} s, read for {step['duration']:.1f} s, {step['ending']}: "
+                    f"{step['objective']}"
+                )
+                lines.append("")
+    lines.extend(
+        [
+            "## Cases",
+            "",
+            "| Recording | Missions | Steps | Matching | Different | Left to the model | Unknown |",
+            "| --- | --- | --- | --- | --- | --- | --- |",
+        ]
+    )
+    for name, count, steps, counts in table:
+        lines.append(
+            f"| {name} | {count} | {steps} | " + " | ".join(str(counts[kind]) for kind in kinds) + " |"
+        )
+    missions_total = sum(row[1] for row in table)
+    steps_total = sum(row[2] for row in table)
+    lines.append(
+        f"| all | {missions_total} | {steps_total} | "
+        + " | ".join(str(totals[kind]) for kind in kinds)
+        + " |"
+    )
+    lines.append("")
+    path.write_text("\n".join(lines))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("recording", type=Path)
-    parser.add_argument("--texts", required=True, type=Path)
-    parser.add_argument("--sections", required=True, type=Path)
+    parser.add_argument("recording", type=Path, nargs="?")
+    parser.add_argument("--texts", type=Path)
+    parser.add_argument("--sections", type=Path)
+    parser.add_argument(
+        "--summary",
+        type=Path,
+        help="Write one summary file over the output folders given with --dirs instead of one recording",
+    )
+    parser.add_argument("--dirs", type=Path, nargs="+")
     parser.add_argument(
         "--readings", type=Path, help="Raw OCR cache; defaults to texts' sibling readings.jsonl"
     )
-    parser.add_argument("--out", required=True, type=Path)
+    parser.add_argument("--out", type=Path)
     args = parser.parse_args()
+    if args.summary:
+        if not args.dirs:
+            parser.error("--summary needs --dirs")
+        try:
+            write_summary(args.summary, args.dirs)
+        except (FileNotFoundError, ValueError) as error:
+            parser.exit(1, f"Mission notes failed: {error}\n")
+        return
+    if not (args.recording and args.texts and args.sections and args.out):
+        parser.error("recording, --texts, --sections and --out are required")
     try:
         sections = read_sections(args.sections)
         if Path(sections["recording"]).name != args.recording.name:

@@ -1,1 +1,448 @@
-[]
+[
+  {
+    "objective": "Beglb dlch zum Abschleppwagen.",
+    "step_start": 221.0052,
+    "sample_t": 221.7775,
+    "frame": 13239,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Beglb dlch zum Abschleppwagen.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -40.83905111076433,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -12.34,
+            "y": 87.29,
+            "border": true
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.8777777777777778,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "foot_target",
+    "first_skill": "walk_to",
+    "human": {
+      "observed_seconds": 0.792,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.792
+      }
+    },
+    "result": "different"
+  },
+  {
+    "objective": "Warte auf Tonya.",
+    "step_start": 222.5695,
+    "sample_t": 225.5598,
+    "frame": 13466,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 5.560633070162623,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.43,
+            "y": 85.34,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 74.0,
+            "y": 86.5,
+            "border": true
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.8777777777777778,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_waypoint",
+    "first_skill": "set_waypoint",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 3.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.0
+      }
+    },
+    "result": "different"
+  },
+  {
+    "objective": "Warte auf Tonya.",
+    "step_start": 316.0092,
+    "sample_t": 318.9263,
+    "frame": 19052,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Warte auf Tonya.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -4.450338386670865,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 2.87,
+            "y": 4.4,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.8777777777777778,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_waypoint",
+    "first_skill": "set_waypoint",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.233,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.346,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 2.421
+      }
+    },
+    "result": "different"
+  },
+  {
+    "objective": "Begib dich zu dem herrenlosen Auto.",
+    "step_start": 372.5079,
+    "sample_t": 375.5025,
+    "frame": 22441,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "egib dich zu dem rrenlosen Auto.",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.7037644590606362,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.8777777777777778,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_waypoint",
+    "first_skill": "set_waypoint",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 3.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.0
+      }
+    },
+    "result": "different"
+  },
+  {
+    "objective": "Schlepp den Wagen zum Abschleppplatz.",
+    "step_start": 417.5945,
+    "sample_t": 420.5939,
+    "frame": 25142,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Schlepp den Wagen zum Abschlepppla",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 7.603752391036546,
+        "far_bearing": 8.31512623036645,
+        "arrow": -12.41074697871818,
+        "corrupt": false,
+        "confidence": 1.0,
+        "path": [
+          [
+            0.0,
+            14.0
+          ],
+          [
+            2.0,
+            20.0
+          ],
+          [
+            3.0,
+            25.0
+          ],
+          [
+            4.0,
+            31.0
+          ],
+          [
+            5.0,
+            38.0
+          ],
+          [
+            7.0,
+            43.0
+          ],
+          [
+            7.0,
+            50.0
+          ],
+          [
+            8.0,
+            55.0
+          ],
+          [
+            8.0,
+            62.0
+          ],
+          [
+            4.0,
+            68.0
+          ],
+          [
+            -2.0,
+            74.0
+          ],
+          [
+            -8.0,
+            79.0
+          ],
+          [
+            -11.0,
+            85.0
+          ],
+          [
+            -9.0,
+            89.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "yellow",
+            "x": -67.8,
+            "y": 87.36,
+            "border": true
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.8777777777777778,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_route",
+    "first_skill": "drive_route",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 3.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.0
+      }
+    },
+    "result": "matching"
+  },
+  {
+    "objective": "Mach das Fahrzeug in der Ablieferzone lo",
+    "step_start": 479.5054,
+    "sample_t": 482.504,
+    "frame": 28849,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Mach das Fahrzeug in der Ablieferzone los.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 5.889091294565816,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "yellow",
+            "x": 16.02,
+            "y": 15.87,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.8666666666666667,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "moving_default",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 1.276,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 1.173,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.551
+      }
+    },
+    "result": "model-delegated"
+  }
+]

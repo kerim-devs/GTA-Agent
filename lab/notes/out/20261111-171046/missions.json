@@ -2,19 +2,19 @@
   "recording": "/Users/kerim/recordings/kerim/20261111-171046",
   "missions": [
     {
-      "start": 688.5152,
-      "end": 749.0157,
+      "start": 153.5496,
+      "end": 213.5496,
       "steps": [
         {
-          "objective": "Bring D zu Lamars Haus.",
-          "start": 688.5152,
-          "end": 749.0157,
-          "last": 689.0157,
-          "duration": 0.5,
-          "step_duration": 60.5,
+          "objective": "Stelg In den Liefemagen.",
+          "start": 153.5496,
+          "end": 213.5496,
+          "last": 153.5496,
+          "duration": 0.0,
+          "step_duration": 60.0,
           "section_kinds": [
             "drive",
-            "unknown"
+            "foot"
           ],
           "route": [
             "yellow"
@@ -23,17 +23,210 @@
           "blips_known": false,
           "wanted": 0,
           "human": {
-            "observed_seconds": 60.5,
+            "observed_seconds": 60.0,
             "seconds": {
-              "driving": 39.434,
+              "driving": 34.93,
               "walking": 0.0,
               "running": 0.0,
               "aiming": 0.0,
               "firing": 0.0,
-              "looking": 2.396,
+              "looking": 3.089,
               "map_input": 0.0,
               "vehicle_input": 0.0,
-              "neutral": 18.048
+              "neutral": 24.319
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 156.5492,
+            "route": "none",
+            "blips": []
+          }
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Stelg In den Liefemagen.. Outcome: unknown."
+    },
+    {
+      "start": 329.0122,
+      "end": 391.0006,
+      "steps": [
+        {
+          "objective": "Steig wieder in den Lieferwagen.",
+          "start": 329.0122,
+          "end": 391.0006,
+          "last": 331.0006,
+          "duration": 1.988,
+          "step_duration": 61.988,
+          "section_kinds": [
+            "drive",
+            "foot"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 61.988,
+            "seconds": {
+              "driving": 53.254,
+              "walking": 0.37,
+              "running": 0.196,
+              "aiming": 0.0,
+              "firing": 0.819,
+              "looking": 5.568,
+              "map_input": 0.0,
+              "vehicle_input": 0.137,
+              "neutral": 4.967
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 331.9964,
+            "route": "none",
+            "blips": [
+              {
+                "color": "blue",
+                "x": 2.64,
+                "y": 4.09,
+                "border": false
+              }
+            ]
+          }
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Steig wieder in den Lieferwagen.. Outcome: unknown."
+    },
+    {
+      "start": 482.013,
+      "end": 542.0129999999999,
+      "steps": [
+        {
+          "objective": "Folge Chop.",
+          "start": 482.013,
+          "end": 542.0129999999999,
+          "last": 482.013,
+          "duration": 0.0,
+          "step_duration": 60.0,
+          "section_kinds": [
+            "drive",
+            "foot",
+            "menu",
+            "unknown"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 60.0,
+            "seconds": {
+              "driving": 0.5,
+              "walking": 14.21,
+              "running": 4.179,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 3.185,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 36.503
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 484.9838,
+            "route": "none",
+            "blips": []
+          }
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Folge Chop.. Outcome: unknown."
+    },
+    {
+      "start": 591.5054,
+      "end": 651.5054,
+      "steps": [
+        {
+          "objective": "Begib dlch zu Chop und. zieh ihn von d",
+          "start": 591.5054,
+          "end": 651.5054,
+          "last": 591.5054,
+          "duration": 0.0,
+          "step_duration": 60.0,
+          "section_kinds": [
+            "drive",
+            "foot",
+            "menu"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 60.0,
+            "seconds": {
+              "driving": 0.721,
+              "walking": 36.685,
+              "running": 4.1,
+              "aiming": 3.6,
+              "firing": 0.0,
+              "looking": 5.767,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 18.232
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 594.4912,
+            "route": "none",
+            "blips": []
+          }
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Begib dlch zu Chop und. zieh ihn von d. Outcome: unknown."
+    },
+    {
+      "start": 688.5152,
+      "end": 749.5003,
+      "steps": [
+        {
+          "objective": "Bring D zu Lamars Haus.",
+          "start": 688.5152,
+          "end": 749.5003,
+          "last": 689.5003,
+          "duration": 0.985,
+          "step_duration": 60.985,
+          "section_kinds": [
+            "drive"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 60.985,
+            "seconds": {
+              "driving": 40.469,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 3.825,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 18.533
             }
           },
           "ending": "unknown",

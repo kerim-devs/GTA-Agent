@@ -8,7 +8,7 @@ from pathlib import Path
 
 import cv2
 
-from pilot.notes import consolidate
+from pilot.notes import consolidate, promote_objectives
 from pilot.scene import TextReader, VisionUnavailableError
 
 
@@ -38,7 +38,7 @@ def extract(recording, out, reader):
                 if not ok:
                     raise RuntimeError(f"Cannot decode frame {index}: {recording}")
                 rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-                scene = reader.read(rgb)
+                scene = promote_objectives(reader.read(rgb), rgb)
                 row = {"t": selected[index], "i": index, "text": asdict(scene)}
                 readings.append(row)
                 stream.write(json.dumps(row, ensure_ascii=False) + "\n")

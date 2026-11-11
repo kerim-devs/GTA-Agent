@@ -2,20 +2,20 @@
   {
     "objective": "Begib dich nach Vespucci Beach.",
     "step_start": 435.0086,
-    "sample_t": 436.0094,
-    "frame": 25011,
+    "sample_t": 437.9946,
+    "frame": 25124,
     "request": {
       "events": [],
       "help": "",
-      "objective": "",
-      "subtitle": "Begib dic L_IufilL.-I¥jc",
+      "objective": "Begib dich nBch Vespucci Beach.",
+      "subtitle": "",
       "banner": "",
       "minimap": {
         "minimap": "flat",
         "route": "none",
         "bearing": null,
         "far_bearing": null,
-        "arrow": 0.0690997911979423,
+        "arrow": -51.731524122370786,
         "corrupt": false,
         "confidence": 0.9,
         "path": [],
@@ -23,14 +23,7 @@
         "gps_arrow": null,
         "gps_speed": null,
         "gps_time": null,
-        "blips": [
-          {
-            "color": "yellow",
-            "x": 89.67,
-            "y": 53.91,
-            "border": true
-          }
-        ]
+        "blips": []
       },
       "last_skill": null,
       "notebook": "",
@@ -40,47 +33,47 @@
         "wanted_flashing": false,
         "health": null,
         "armour": 0.0,
-        "special": 0.9523809523809523,
+        "special": 0.8571428571428571,
         "screen": "game"
       },
       "objects": [],
       "judgment": null
     },
-    "rule": "foot_target",
-    "first_skill": "walk_to",
+    "rule": "moving_default",
+    "first_skill": "walk",
     "human": {
-      "observed_seconds": 1.001,
+      "observed_seconds": 3.0,
       "seconds": {
-        "driving": 0.0,
+        "driving": 1.922,
         "walking": 0.0,
         "running": 0.0,
         "aiming": 0.0,
-        "firing": 0.0,
-        "looking": 0.654,
+        "firing": 0.644,
+        "looking": 0.0,
         "map_input": 0.0,
         "vehicle_input": 0.0,
-        "neutral": 0.347
+        "neutral": 0.434
       }
     },
-    "result": "different"
+    "result": "model-delegated"
   },
   {
-    "objective": "Begib dich nach Vesp",
-    "step_start": 437.0109,
-    "sample_t": 437.2288,
-    "frame": 25078,
+    "objective": "Kehr zurück zu Lamar.",
+    "step_start": 446.0034,
+    "sample_t": 448.6234,
+    "frame": 25761,
     "request": {
       "events": [],
       "help": "",
-      "objective": "Begib dich nach Vesp",
-      "subtitle": ".&4 Be",
+      "objective": "Kehr zurück zu Lamar.",
+      "subtitle": "",
       "banner": "",
       "minimap": {
-        "minimap": "flat",
+        "minimap": "tilted",
         "route": "none",
         "bearing": null,
         "far_bearing": null,
-        "arrow": -72.19098253195028,
+        "arrow": 17.454951856946366,
         "corrupt": false,
         "confidence": 0.9,
         "path": [],
@@ -104,109 +97,44 @@
       "objects": [],
       "judgment": null
     },
-    "rule": "moving_default",
-    "first_skill": "walk",
+    "rule": "vehicle_waypoint",
+    "first_skill": "set_waypoint",
     "human": {
-      "observed_seconds": 0.282,
+      "observed_seconds": 3.0,
       "seconds": {
-        "driving": 0.0,
+        "driving": 2.897,
         "walking": 0.0,
         "running": 0.0,
         "aiming": 0.0,
         "firing": 0.0,
-        "looking": 0.282,
+        "looking": 0.455,
         "map_input": 0.0,
         "vehicle_input": 0.0,
-        "neutral": 0.0
+        "neutral": 0.103
       }
     },
-    "result": "model-delegated"
+    "result": "different"
   },
   {
-    "objective": "Begib dich nBch Vespucci Beach.",
-    "step_start": 437.5105,
-    "sample_t": 440.4956,
-    "frame": 25274,
+    "objective": "Folge Lamar.",
+    "step_start": 545.5151,
+    "sample_t": 548.4991,
+    "frame": 31697,
     "request": {
       "events": [],
       "help": "",
-      "objective": "Begib dich nach Vespucci Beach.",
+      "objective": "Folge Lamar.",
       "subtitle": "",
       "banner": "",
       "minimap": {
-        "minimap": "tilted",
-        "route": "yellow",
-        "bearing": 49.26590947096316,
-        "far_bearing": 86.00487746971177,
-        "arrow": -25.154328319267734,
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.8722717152790267,
         "corrupt": false,
-        "confidence": 0.993,
-        "path": [
-          [
-            6.0,
-            12.0
-          ],
-          [
-            13.0,
-            13.0
-          ],
-          [
-            20.0,
-            16.0
-          ],
-          [
-            25.0,
-            19.0
-          ],
-          [
-            32.0,
-            19.0
-          ],
-          [
-            37.0,
-            14.0
-          ],
-          [
-            44.0,
-            12.0
-          ],
-          [
-            49.0,
-            9.0
-          ],
-          [
-            56.0,
-            6.0
-          ],
-          [
-            62.0,
-            4.0
-          ],
-          [
-            68.0,
-            1.0
-          ],
-          [
-            74.0,
-            -2.0
-          ],
-          [
-            79.0,
-            -5.0
-          ],
-          [
-            85.0,
-            -11.0
-          ],
-          [
-            89.0,
-            -19.0
-          ],
-          [
-            89.0,
-            -23.0
-          ]
-        ],
+        "confidence": 0.9,
+        "path": [],
         "gps_distance": null,
         "gps_arrow": null,
         "gps_speed": null,
@@ -219,31 +147,31 @@
       "hud": {
         "wanted": 0,
         "wanted_flashing": false,
-        "health": 0.9888888888888889,
-        "armour": 0.0,
+        "health": null,
+        "armour": null,
         "special": 1.0,
         "screen": "game"
       },
       "objects": [],
       "judgment": null
     },
-    "rule": "vehicle_route",
-    "first_skill": "drive_route",
+    "rule": "moving_default",
+    "first_skill": "walk",
     "human": {
       "observed_seconds": 3.0,
       "seconds": {
-        "driving": 2.625,
-        "walking": 0.0,
-        "running": 0.0,
+        "driving": 0.0,
+        "walking": 3.0,
+        "running": 0.741,
         "aiming": 0.0,
         "firing": 0.0,
-        "looking": 0.928,
+        "looking": 0.0,
         "map_input": 0.0,
         "vehicle_input": 0.0,
-        "neutral": 0.322
+        "neutral": 0.0
       }
     },
-    "result": "matching"
+    "result": "model-delegated"
   },
   {
     "objective": "Sammle elne Waffe auf.",
@@ -323,7 +251,7 @@
     "result": "model-delegated"
   },
   {
-    "objective": "Schalte dle Vagos aus.",
+    "objective": "Schalte die Vagos aus.",
     "step_start": 631.0015,
     "sample_t": 633.9901,
     "frame": 36819,
@@ -400,22 +328,22 @@
     "result": "model-delegated"
   },
   {
-    "objective": "Schalte die V8gos aus.",
-    "step_start": 692.8462,
-    "sample_t": 695.8404,
-    "frame": 40514,
+    "objective": "Schalte die Vagos aus.",
+    "step_start": 692.3224,
+    "sample_t": 695.3213,
+    "frame": 40483,
     "request": {
       "events": [],
-      "help": "Halt8 in der D8ckung QFJ gedrilckt um blind mit einèr Waffe zu f8uern. ohnè dl Deckung zu verlassen.",
+      "help": "Halt8 In der D8ckung QFJ gedruckt um blind mit Èiner Waffe zu feuern. ohnè dl Deckung zu verlassen.",
       "objective": "",
-      "subtitle": "schieb deinen dummen Arsch in Deckung.",
+      "subtitle": "Schieb deinen dummen Arsch in Deckung.",
       "banner": "",
       "minimap": {
         "minimap": "flat",
         "route": "none",
         "bearing": null,
         "far_bearing": null,
-        "arrow": -0.9874375665504544,
+        "arrow": 50.12875283266959,
         "corrupt": false,
         "confidence": 0.9,
         "path": [],
@@ -426,14 +354,14 @@
         "blips": [
           {
             "color": "red",
-            "x": -6.78,
-            "y": 23.05,
+            "x": -5.13,
+            "y": 23.18,
             "border": false
           },
           {
             "color": "red",
-            "x": 1.68,
-            "y": 16.84,
+            "x": 3.18,
+            "y": 16.88,
             "border": false
           }
         ]
@@ -445,7 +373,7 @@
         "wanted": 0,
         "wanted_flashing": false,
         "health": 0.9888888888888889,
-        "armour": null,
+        "armour": 0.0,
         "special": 1.0,
         "screen": "game"
       },
@@ -462,7 +390,7 @@
         "running": 0.0,
         "aiming": 2.526,
         "firing": 0.299,
-        "looking": 0.619,
+        "looking": 0.51,
         "map_input": 0.0,
         "vehicle_input": 0.0,
         "neutral": 0.062
@@ -471,80 +399,35 @@
     "result": "model-delegated"
   },
   {
-    "objective": "Begib dich zu der Autowaschanlage.",
-    "step_start": 890.0004,
-    "sample_t": 890.6572,
-    "frame": 52168,
+    "objective": "Steig auf das Motorrad.",
+    "step_start": 877.0081,
+    "sample_t": 879.9957,
+    "frame": 51530,
     "request": {
       "events": [],
-      "help": "D8in \"F8hr8n\".Wert verb8S88rt sich durch Erreichen der Höch51ge5chwindigkeit. Fastzusammenstoße. Wh*elles, Sprtinge und Landungen auf allen vier Wern",
-      "objective": "Begib dich zu der Autowaschanlage.",
-      "subtitle": "",
+      "help": "",
+      "objective": "",
+      "subtitle": "'Stèlg auf.ldas Motorrad.",
       "banner": "",
       "minimap": {
-        "minimap": "tilted",
-        "route": "yellow",
-        "bearing": 13.549981233218178,
-        "far_bearing": 1.588755916846817,
-        "arrow": -56.57241480130307,
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -13.219408269648966,
         "corrupt": false,
-        "confidence": 0.994,
-        "path": [
-          [
-            8.0,
-            11.0
-          ],
-          [
-            8.0,
-            17.0
-          ],
-          [
-            7.0,
-            23.0
-          ],
-          [
-            6.0,
-            30.0
-          ],
-          [
-            6.0,
-            36.0
-          ],
-          [
-            6.0,
-            41.0
-          ],
-          [
-            4.0,
-            48.0
-          ],
-          [
-            4.0,
-            53.0
-          ],
-          [
-            2.0,
-            60.0
-          ],
-          [
-            1.0,
-            66.0
-          ],
-          [
-            1.0,
-            71.0
-          ]
-        ],
+        "confidence": 0.9,
+        "path": [],
         "gps_distance": null,
         "gps_arrow": null,
         "gps_speed": null,
         "gps_time": null,
         "blips": [
           {
-            "color": "yellow",
-            "x": 79.74,
-            "y": 86.87,
-            "border": true
+            "color": "blue",
+            "x": -5.23,
+            "y": 11.54,
+            "border": false
           }
         ]
       },
@@ -554,7 +437,7 @@
       "hud": {
         "wanted": 0,
         "wanted_flashing": false,
-        "health": 0.8777777777777778,
+        "health": 0.8666666666666667,
         "armour": 0.0,
         "special": 1.0,
         "screen": "game"
@@ -562,109 +445,118 @@
       "objects": [],
       "judgment": null
     },
-    "rule": "vehicle_route",
-    "first_skill": "drive_route",
+    "rule": "foot_target",
+    "first_skill": "walk_to",
     "human": {
-      "observed_seconds": 0.887,
+      "observed_seconds": 3.0,
       "seconds": {
         "driving": 0.0,
-        "walking": 0.777,
-        "running": 0.0,
-        "aiming": 0.0,
-        "firing": 0.887,
-        "looking": 0.0,
+        "walking": 1.428,
+        "running": 0.421,
+        "aiming": 0.036,
+        "firing": 0.0,
+        "looking": 0.873,
         "map_input": 0.0,
-        "vehicle_input": 0.0,
-        "neutral": 0.0
+        "vehicle_input": 0.125,
+        "neutral": 0.714
       }
     },
-    "result": "different"
+    "result": "matching"
   },
   {
     "objective": "Begib dich zu der Autowaschanlage.",
-    "step_start": 891.5439,
-    "sample_t": 894.5433,
-    "frame": 52401,
+    "step_start": 889.0047,
+    "sample_t": 891.9898,
+    "frame": 52248,
     "request": {
       "events": [],
-      "help": "Dein F8hren Wert V8rb8s88rt sich durth Erreichèn der. Höch51ge5chwindigkÈlt. Fastzusamm&ThstÖß8,\"Whse1188, Sprtinge und L4ndUnyen auf allen vier Radern.",
+      "help": "Dein Fak durth Err8ichen der Höch51ge5chwindigkeii. stzusammenstÖße, Wh*81188. Sprtin",
       "objective": "Begib dich zu der Autowaschanlage.",
       "subtitle": "",
       "banner": "",
       "minimap": {
         "minimap": "tilted",
         "route": "yellow",
-        "bearing": -34.28389987107209,
-        "far_bearing": -37.463516991273345,
-        "arrow": -3.572315823796515,
+        "bearing": -7.445324534959174,
+        "far_bearing": -18.097605358981355,
+        "arrow": 2.9784202733661402,
         "corrupt": false,
-        "confidence": 0.944,
+        "confidence": 1.0,
         "path": [
           [
-            -6.0,
+            4.0,
             12.0
           ],
           [
-            -10.0,
+            2.0,
             17.0
           ],
           [
-            -15.0,
-            23.0
+            -2.0,
+            24.0
           ],
           [
-            -19.0,
+            -4.0,
             29.0
           ],
           [
-            -25.0,
+            -7.0,
             36.0
           ],
           [
-            -29.0,
-            42.0
+            -10.0,
+            41.0
           ],
           [
-            -35.0,
-            48.0
+            -13.0,
+            47.0
           ],
           [
-            -40.0,
-            53.0
+            -17.0,
+            54.0
           ],
           [
-            -44.0,
-            59.0
+            -20.0,
+            60.0
           ],
           [
-            -39.0,
-            63.0
-          ],
-          [
-            -31.0,
+            -23.0,
             66.0
           ],
           [
-            -26.0,
-            67.0
+            -20.0,
+            71.0
           ],
           [
-            -21.0,
-            68.0
+            -12.0,
+            73.0
+          ],
+          [
+            -7.0,
+            75.0
+          ],
+          [
+            -1.0,
+            75.0
+          ],
+          [
+            5.0,
+            76.0
+          ],
+          [
+            12.0,
+            78.0
+          ],
+          [
+            16.0,
+            79.0
           ]
         ],
         "gps_distance": null,
         "gps_arrow": null,
         "gps_speed": null,
         "gps_time": null,
-        "blips": [
-          {
-            "color": "yellow",
-            "x": 10.5,
-            "y": 87.38,
-            "border": true
-          }
-        ]
+        "blips": []
       },
       "last_skill": null,
       "notebook": "",
