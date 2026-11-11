@@ -159,4 +159,6 @@ Around what is in the road. A new module turns the detector's boxes into a push 
 
 The waypoint by day. The first round of P35 did not set a waypoint here (`20261111-133505`). The map is drawn over the paused scene, and by day on the coast the bright picture behind washes the roads out, which is the likely reason the pair before and after a push is refused. The card went back to the worker with both recordings.
 
-Open. The avoider in town traffic. Speed in bends above 22 m/s needs a steering that looks further ahead. Leaving a dead car and taking another. P35 second round, P36 in review.
+Later that afternoon. P36 is merged: on the two town stretches of the morning the reader calls 11 and 9 frames of 60 damaged instead of 57 and 51, counted by the reviewer. P35's second round is committed on its branch and not merged, because it has not been tried on the console: the bridge ran into the two-hour limit of the agent's background tasks at 14:14 and was not started again; in Kerim's own terminal it has no such limit. Leaving a dead car and taking another is card P37, a worker is on it.
+
+Open. The avoider in town traffic. Speed in bends above 22 m/s needs a steering that looks further ahead. P35 on the console, by day and by night. The default gate's ninety seconds with P35's tests on a quiet machine.
