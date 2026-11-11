@@ -8,6 +8,8 @@ from pathlib import Path
 
 from . import hud
 from .bridge import Bridge
+from .calibrate import RECORDINGS as CALIBRATIONS
+from .calibrate import run_calibrate, selection
 from .conductor import PLAY_RECORDINGS, run_play
 from .drive import DriveConfig, Driver
 from .flow import Flow
@@ -52,6 +54,14 @@ def drive_config(settings: list[str]) -> DriveConfig:
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(prog="pilot")
     subcommands = parser.add_subparsers(dest="command", required=True)
+    calibrate = subcommands.add_parser("calibrate", help="Measure console timing and controls")
+    calibrate.add_argument("--only", action="append", default=[], metavar="CHECK[,CHECK]")
+    calibrate.add_argument("--skip", action="append", default=[], metavar="CHECK[,CHECK]")
+    calibrate.add_argument("--car", action="store_true")
+    calibrate.add_argument("--yes", action="store_true")
+    calibrate.add_argument("--shadow", action="store_true")
+    calibrate.add_argument("--record-dir", type=absolute_path, default=CALIBRATIONS)
+    calibrate.add_argument("--head", choices=("codex", "off"), default="codex")
     drive = subcommands.add_parser("drive", help="Run the local driving loop")
     drive.add_argument("--seconds", type=duration)
     drive.add_argument("--shadow", action="store_true")
@@ -87,6 +97,24 @@ def main(argv: list[str] | None = None) -> None:
     )
 
     args = parser.parse_args(argv)
+    if args.command == "calibrate":
+        try:
+            checks = selection(args.only, args.skip, car=args.car)
+        except ValueError as error:
+            parser.error(str(error))
+        head = CodexHead(timeout=45) if "head" in checks and args.head == "codex" else None
+        with Bridge() as bridge:
+            run_calibrate(
+                bridge,
+                only=args.only,
+                skip=args.skip,
+                car=args.car,
+                yes=args.yes,
+                shadow=args.shadow,
+                record_dir=args.record_dir,
+                head=head,
+            )
+        return
     if args.command == "overlay":
         run_overlay(args.root, args.port, args.demo, args.shadow)
         return

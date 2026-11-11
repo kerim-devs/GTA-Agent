@@ -43,3 +43,6 @@ lab/objects/holdout/sheets/*
 /lab/wiring/simulations/
 /lab/wiring/mutations/
 /lab/wiring/replay*-command.log
+
+# Console calibration sessions and reproducible extraction scratch files.
+/lab/calibrate/*/
