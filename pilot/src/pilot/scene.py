@@ -13,6 +13,7 @@ from difflib import SequenceMatcher
 
 import numpy as np
 
+from pilot.apple import frameworks
 from pilot.contract import Reading
 
 REGIONS = {
@@ -112,16 +113,9 @@ class TextReader:
         if level not in {"fast", "accurate"}:
             raise ValueError("level must be fast or accurate")
         try:
-            import Foundation
-            import objc
-            import Quartz
-            import Vision
+            self._foundation, self._objc, self._quartz, self._vision = frameworks()
         except ImportError as exc:
             raise VisionUnavailableError("install the macOS Vision/Quartz dependencies to use OCR") from exc
-        self._foundation = Foundation
-        self._objc = objc
-        self._quartz = Quartz
-        self._vision = Vision
         self.level = level
 
     def read(self, frame: np.ndarray, region: str | None = None) -> SceneText:

@@ -8,6 +8,8 @@ from threading import Thread
 import cv2
 import numpy as np
 
+from .apple import frameworks
+
 
 @dataclass(frozen=True)
 class Fix:
@@ -68,12 +70,7 @@ def turn_arrow(crop: np.ndarray) -> str | None:
 
 def recognize(crop: np.ndarray) -> Fix | None:
     """Accurate Apple Vision OCR; imports and framework errors are optional."""
-    import Foundation
-    import objc
-    import Quartz
-    import Vision
-
-    q, v = Quartz, Vision
+    Foundation, objc, q, v = frameworks()
 
     patch = cv2.resize(crop[118:142, 36:120], None, fx=5, fy=5, interpolation=cv2.INTER_CUBIC)
     pixels = np.ascontiguousarray(patch)
