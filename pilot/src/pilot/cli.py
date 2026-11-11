@@ -7,7 +7,7 @@ import sys
 from dataclasses import asdict, fields
 from pathlib import Path
 
-from . import hud
+from . import hud, profile
 from .bridge import Bridge
 from .calibrate import RECORDINGS as CALIBRATIONS
 from .calibrate import run_calibrate, selection
@@ -94,6 +94,9 @@ def main(argv: list[str] | None = None) -> None:
     play.add_argument("--head-effort", default="low")
     play.add_argument("--head-timeout", type=duration, default=45.0)
     play.add_argument("--quiet-seconds", type=duration, default=60.0)
+    play.add_argument(
+        "--game", choices=sorted(profile.PROFILES), default="gta5", help="whose buttons and dead zones"
+    )
     for command in (drive, replay, play):
         command.add_argument(
             "--set", action="append", default=[], metavar="NAME=VALUE", help="override a DriveConfig field"
@@ -144,6 +147,9 @@ def main(argv: list[str] | None = None) -> None:
     elif args.command == "play":
         if args.plan and args.head != "scripted":
             parser.error("--plan needs the scripted head")
+        # Before the first skill, the reflex and the runtime are built: each keeps the profile it was
+        # built under.
+        profile.use(args.game)
         try:
             plans = [{"plan": json.loads(plan), "sentence": "Geplanter Schritt."} for plan in args.plan]
         except json.JSONDecodeError as error:

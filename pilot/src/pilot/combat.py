@@ -4,6 +4,7 @@ import math
 from typing import ClassVar
 
 from pilot.contract import NEUTRAL_PAD, Observation, Pad, SkillResult
+from pilot.profile import active
 
 # Conservative estimates pending a cable trial; provenance is in the P18 report.
 FRONT_DEGREES = 12.0
@@ -63,6 +64,7 @@ class Fight:
     )
 
     def __init__(self, args: dict):
+        self.profile = active()
         if not isinstance(args, dict) or args.keys() - self.parameters.keys():
             raise ValueError("unknown combat arguments")
         self.args = {}
@@ -157,7 +159,7 @@ class Fight:
                 self.cover_until = None
             else:
                 return SkillResult(
-                    pad=Pad(buttons=("r1",))
+                    pad=Pad(buttons=(self.profile.cover,))
                     if self.cover_until is not None and now < self.cover_until
                     else NEUTRAL_PAD
                 )
@@ -165,7 +167,9 @@ class Fight:
             self.lock_since = None
             self.recovery_since = now
             self.cover_until = now + COVER_TAP_SECONDS if self.args["cover"] == "yes" else None
-            return SkillResult(pad=Pad(buttons=("r1",)) if self.args["cover"] == "yes" else NEUTRAL_PAD)
+            return SkillResult(
+                pad=Pad(buttons=(self.profile.cover,)) if self.args["cover"] == "yes" else NEUTRAL_PAD
+            )
 
         if self.name == "melee" and (target.border or math.hypot(target.x, target.y) > MELEE_RANGE):
             return self.stop("melee-target-too-far")
@@ -188,7 +192,7 @@ class Fight:
             return SkillResult()
         attacking = elapsed >= AIM_SETTLE and (elapsed - AIM_SETTLE) % (pulse + gap) < pulse
         if self.name == "melee":
-            return SkillResult(pad=Pad(l2=1.0, buttons=("circle",) if attacking else ()))
+            return SkillResult(pad=Pad(l2=1.0, buttons=(self.profile.melee,) if attacking else ()))
         return SkillResult(pad=Pad(l2=1.0, r2=1.0 if attacking else 0.0))
 
 

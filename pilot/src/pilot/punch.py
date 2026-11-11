@@ -7,6 +7,7 @@ from math import hypot, isfinite, log
 from typing import ClassVar
 
 from pilot.contract import FRAME_SIZE, Detection, Observation, Pad, SkillResult
+from pilot.profile import active
 
 
 class Punch:
@@ -33,6 +34,7 @@ class Punch:
     HAZARD_TIMEOUT = 1.0
 
     def __init__(self, args: dict):
+        self.profile = active()
         if not isinstance(args, dict) or set(args) - self.parameters.keys():
             raise ValueError("punch accepts only duration and hits")
         values = {}
@@ -234,7 +236,7 @@ class Punch:
             return SkillResult(pad=Pad(left=(0.0, -speed), right=(turn, 0.0)))
         if self.pulse_started is not None:
             if now - self.pulse_started < self.PULSE_DURATION:
-                return SkillResult(pad=Pad(buttons=("circle",), l2=1.0))
+                return SkillResult(pad=Pad(buttons=(self.profile.melee,), l2=1.0))
             self.pulse_started = None
         if self.delivered_hits >= self.hits:
             return self._done(f"delivered {self.delivered_hits} punch pulses in reach")
@@ -242,5 +244,5 @@ class Punch:
             self.pulse_started = now
             self.next_pulse = now + self.PULSE_PERIOD
             self.delivered_hits += 1
-            return SkillResult(pad=Pad(buttons=("circle",), l2=1.0))
+            return SkillResult(pad=Pad(buttons=(self.profile.melee,), l2=1.0))
         return SkillResult(pad=Pad(l2=1.0))

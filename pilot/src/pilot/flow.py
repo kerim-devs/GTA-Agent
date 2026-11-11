@@ -4,6 +4,7 @@ import re
 from dataclasses import dataclass
 
 from pilot.contract import NEUTRAL_PAD, Pad
+from pilot.profile import active
 from pilot.skills import Observation
 
 MENUS = frozenset({"pause", "map", "phone", "weapon_wheel", "interaction_menu"})
@@ -25,7 +26,7 @@ class FlowResult:
 RETRY = re.compile(r"\b(retry|restart|erneut versuchen|wiederholen|neustart)\b")
 
 
-def _button(text: object, screen: str) -> str | None:
+def _button(text: object, screen: str, profile) -> str | None:
     """The one button a screen is left with, as Kerim pressed it in recording 093238.
 
     The button is never taken from the text. The footer's glyphs are not read reliably (the
@@ -43,10 +44,10 @@ def _button(text: object, screen: str) -> str | None:
                 for field in ("help", "objective", "subtitle", "banner", "phone_menu")
             )
         # Cross: the retry at t=39.776.
-        return "cross" if RETRY.search(words.lower()) else None
+        return profile.retry if RETRY.search(words.lower()) else None
     # Circle: phone t=156.294, map levels t=391.932/392.133. The interaction menu names circle
     # for "Zurück" in its footer, frames 1300 to 1513 of the screen tour of 11 November.
-    return "circle" if screen in {"pause", "map", "phone", "interaction_menu"} else None
+    return profile.back if screen in {"pause", "map", "phone", "interaction_menu"} else None
 
 
 class Flow:
@@ -58,6 +59,7 @@ class Flow:
     """
 
     def __init__(self, *, response_timeout: float = 2.0, wait_timeout: float = 30.0):
+        self.profile = active()
         if response_timeout < 0.14 or wait_timeout < response_timeout:
             raise ValueError("timeouts must allow the 0.14s picture delay")
         self.response_timeout = response_timeout
@@ -110,7 +112,7 @@ class Flow:
         if screen != self._candidate:
             self._candidate_since = now
         self._candidate = screen
-        button = _button(text, screen)
+        button = _button(text, screen, self.profile)
         self._button_reads = self._button_reads + 1 if button == self._button else 1
         self._button = button
         if screen == "game" and not self._engaged:

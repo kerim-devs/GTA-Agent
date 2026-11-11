@@ -587,6 +587,8 @@ def run_play(
                                 else conductor.runner.describe()
                             ),
                             "result": None if result is None else asdict(result),
+                            # What left for the console: the request with the dead zones lifted.
+                            "sent_pad": None if runtime.sent_pad is None else asdict(runtime.sent_pad),
                             "sent": sent,
                             "status": status,
                         }

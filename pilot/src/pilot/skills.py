@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, ClassVar
 
 from .contract import NEUTRAL_PAD, Observation, Pad, SkillResult
 from .drive import Driver
+from .profile import active
 
 if TYPE_CHECKING:
     from .head import SkillCall
@@ -18,6 +19,7 @@ def clamp(value, lower, upper):
 class Skill:
     def __init__(self, call: "SkillCall", *, driver=None):
         # Direct callers get the same all-or-nothing validation as a head response.
+        self.profile = active()
         from .head import parse_response
 
         parse_response({"plan": [{"name": call.name, "args": call.args}], "sentence": "Weiter."})
@@ -79,8 +81,10 @@ class Skill:
                 return SkillResult()
             if self.name == "walk":
                 stick = (clamp(self.args.get("x", 0), -1, 1), clamp(self.args.get("y", 0), -1, 1))
-                sprinting = self.args.get("sprint", False) and elapsed % 0.25 < 0.125
-                return SkillResult(Pad(left=stick, buttons=("cross",) if sprinting else ()))
+                sprinting = self.args.get("sprint", False)
+                return SkillResult(
+                    Pad(left=stick, buttons=self.profile.sprint_buttons(elapsed) if sprinting else ())
+                )
             if self.name == "look":
                 angle = clamp(self.args.get("angle", 0), -180, 180)
                 return SkillResult(Pad(right=(clamp(angle / (90 * self.duration), -1, 1), 0)))
@@ -151,11 +155,11 @@ class Skill:
         else:
             self.stopped_since = None
         speed = clamp(distance / 14, 0.3, 0.85)
-        sprinting = self.args.get("sprint", False) and distance > 14 and elapsed % 0.25 < 0.125
+        sprinting = self.args.get("sprint", False) and distance > 14
         return SkillResult(
             Pad(
                 left=(target.x / distance * speed, -target.y / distance * speed),
-                buttons=("cross",) if sprinting else (),
+                buttons=self.profile.sprint_buttons(elapsed) if sprinting else (),
             )
         )
 
