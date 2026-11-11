@@ -236,3 +236,63 @@ def test_with_stars_a_waypoint_that_is_up_is_driven_and_the_map_stays_shut(monke
         hud={"wanted": 2, "health": 1, "screen": "game"},
     )
     assert [call.name for call in MissionHead().decide(value).plan] == ["drive_route"]
+
+
+def test_the_judge_outranks_the_minimap_on_how_the_figure_moves():
+    base = replace(
+        request("pilot-20261110-231512-01"),
+        minimap={"minimap": "tilted", "route": "none", "blips": []},
+        hud={"wanted": 1, "health": 1, "screen": "game"},
+        objects=[{"kind": "car", "confidence": 0.9}],
+    )
+    # With a star the tilted map says nothing, and the rules do not guess.
+    assert movement(base) == "unknown"
+    on_foot = replace(base, judgment={"mode": "foot", "age": 0.2})
+    assert movement(on_foot) == "on_foot"
+    head = MissionHead(Fallback())
+    assert [call.name for call in head.decide(on_foot).plan] == [
+        "enter_vehicle",
+        "set_waypoint",
+        "drive_route",
+    ]
+    assert head.last_rule == "wanted_on_foot_vehicle"
+    driving = replace(base, judgment={"mode": "vehicle", "age": 0.2})
+    assert [call.name for call in head.decide(driving).plan] == ["set_waypoint", "drive_route"]
+    # A judgment without an accepted mode leaves the minimap in charge.
+    assert movement(replace(base, judgment={"mode": None, "age": 0.2})) == "unknown"
+    watching = replace(base, judgment={"mode": "none", "age": 0.2})
+    assert [call.name for call in head.decide(watching).plan] == ["wait"]
+
+
+def test_closing_the_rules_closes_the_head_behind_them():
+    class Closable(Fallback):
+        closed = False
+
+        def close(self):
+            self.closed = True
+
+    fallback = Closable()
+    MissionHead(fallback).close()
+    assert fallback.closed
+    MissionHead().close()
+
+
+@pytest.mark.parametrize("choice, behind", [("rules-only", type(None)), ("rules", "CodexServerHead")])
+def test_the_command_line_puts_the_rules_in_front_of_the_model(monkeypatch, choice, behind):
+    from pilot import cli
+
+    class Bridge:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            pass
+
+    calls = []
+    monkeypatch.setattr(cli, "Bridge", Bridge)
+    monkeypatch.setattr(cli, "Pipeline", lambda **kwargs: None)
+    monkeypatch.setattr(cli, "run_play", lambda *args, **kwargs: calls.append(kwargs))
+    cli.main(["play", "--head", choice, "--no-objects", "--no-record"])
+    head = calls[0]["head"]
+    assert isinstance(head, MissionHead)
+    assert behind in (type(head.fallback), type(head.fallback).__name__)

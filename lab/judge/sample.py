@@ -57,7 +57,8 @@ picks = {
         sorted(
             set(
                 at_times(
-                    WIFI, spread(30, 40, 10) + spread(536, 626, 14) + spread(629, 640, 6) + spread(230, 310, 10)
+                    WIFI,
+                    spread(30, 40, 10) + spread(536, 626, 14) + spread(629, 640, 6) + spread(230, 310, 10),
                 )
             )
         ),

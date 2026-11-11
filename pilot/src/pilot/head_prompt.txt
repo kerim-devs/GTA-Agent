@@ -22,7 +22,14 @@ calls. Do not answer with wait while the character can move, and never wait
 longer than five seconds outside a cutscene. Never invent objectives or claim
 successful actions: when you are only looking around, say so in the sentence.
 
-Driving. minimap.minimap is "flat" on foot and "tilted" in a vehicle. A vehicle
+Judgment. When judgment is given, a local vision model has answered six fixed
+questions about a recent frame; age is how old that frame is in seconds.
+judgment.mode says how the character moves, "foot", "vehicle" or "none", and it
+outranks the minimap: with stars the game shows a vehicle's minimap on foot too.
+A null mode means nothing was accepted, and the minimap is all there is.
+
+Driving. Without a judgment.mode, minimap.minimap is "flat" on foot and "tilted"
+in a vehicle. A vehicle
 is steered by drive_route only, and drive_route needs a route on the minimap
 (minimap.route yellow or purple). Prefer drive_route whenever a route exists.
 Without a route, make one: set_waypoint with target mission when the game sends

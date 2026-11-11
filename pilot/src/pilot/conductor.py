@@ -13,9 +13,10 @@ from pathlib import Path
 
 import cv2
 
-from .contract import FRAME_SIZE, HUD_RECT, Pad
+from .contract import FRAME_SIZE, HUD_RECT, Pad, player_mode
 from .flow import MENUS
 from .head import HeadRequest, ScriptedHead, build_prompt, parse_response, response_data
+from .judge import ModeFilter
 from .loop import ControllerRuntime, Pipeline, RuntimeInterruptedError, cleanup_runtime, interrupt_handlers
 from .scene import EventDetector, SceneText, TextReader
 from .skills import Observation, SkillResult, SkillRunner
@@ -65,6 +66,7 @@ class Conductor:
         submit=background,
         clock=time.monotonic,
         opening=(),
+        judge=None,
     ):
         for value in (quiet_seconds, ocr_interval, ocr_timeout):
             if not math.isfinite(value) or value <= 0:
@@ -114,6 +116,12 @@ class Conductor:
         self.expected_skill = None
         self.text_time = None
         self.ocr_capture_time = None
+        self.judge = judge
+        self.judgment = None
+        self.mode_filter = ModeFilter()
+        self.judged_mode = None
+        self.judge_events = []
+        self.judge_log = (self.directory / "judge.jsonl").open("x") if judge is not None else None
 
     def write(self, row):
         self.log.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -208,6 +216,15 @@ class Conductor:
             str(jpeg),
             hud=self._hud_for_head(observation),
             objects=[asdict(item) for item in observation.objects[:12]],
+            judgment=(
+                {
+                    **asdict(observation.judgment),
+                    "age": observation.time - observation.judgment.capture,
+                    "mode": observation.mode,
+                }
+                if observation.judgment is not None
+                else None
+            ),
         )
         prompt_file = self.directory / f"{stem}.prompt.txt"
         prompt_file.write_text(build_prompt(request))
@@ -235,6 +252,26 @@ class Conductor:
     def tick(self, observation: Observation, rgb, *, text=None, text_time=None, frame_time=None, events=()):
         observation = replace(observation, frame=rgb)
         t = observation.time
+        if self.judge is not None:
+            judgment = self.judge.poll(rgb, t if frame_time is None else frame_time)
+            mode = self.mode_filter.update(judgment, t)
+            if judgment is not None:
+                self.judgment = judgment
+            observation = replace(observation, judgment=self.judgment, mode=mode)
+            # A judge that falls silent is no news for the head, and neither is its first word:
+            # an event is a change between two modes it has named. Each event ends the running
+            # plan's claim on the head, so a server that stutters must not make one.
+            if mode is not None and mode != self.judged_mode:
+                if self.judged_mode is not None:
+                    self.judge_events.append({"kind": "mode_changed", "old": self.judged_mode, "new": mode})
+                self.judged_mode = mode
+            rows = self.judge.drain_failures()
+            if judgment is not None:
+                rows.append(asdict(judgment))
+            for row in rows:
+                self.judge_log.write(json.dumps({"t": t, **row, "mode": mode}) + "\n")
+            if rows:
+                self.judge_log.flush()
         self._text(rgb, t, text, text_time if text is not None else frame_time)
         detected = self.detector.update(observation.reading, t, text=self.text)
         new_events = [asdict(event) for event in detected] + list(events)
@@ -247,6 +284,8 @@ class Conductor:
             return SkillResult(flow_result.pad, reason="flow")
         if recovered:
             new_events = []
+        new_events.extend(self.judge_events)
+        self.judge_events.clear()
         if new_events:
             self.epoch += 1
             self.pending.extend(new_events)
@@ -261,7 +300,7 @@ class Conductor:
             self.carry_allowed = (
                 not failed
                 and last.get("name") in ("walk", "walk_to")
-                and observation.reading.minimap == "flat"
+                and player_mode(observation) == "foot"
                 and not observation.reading.corrupt
                 and not new_events
                 and (observation.hud is None or observation.hud.screen == "game")
@@ -292,7 +331,7 @@ class Conductor:
             and self.carry_allowed
             and self.carry_started is not None
             and 0 <= t - self.carry_started < 4
-            and observation.reading.minimap == "flat"
+            and player_mode(observation) == "foot"
             and not observation.reading.corrupt
             and (observation.hud is None or observation.hud.screen == "game")
         ):
@@ -470,6 +509,9 @@ class Conductor:
         if self.closed:
             return
         self.closed = True
+        if self.judge is not None:
+            self.judge.close()
+            self.judge_log.close()
         self.runner.stop()
         if self.future is not None:
             self.future.cancel()
@@ -510,6 +552,7 @@ def run_play(
     hud=None,
     flow=None,
     opening=(),
+    judge=None,
 ):
     pipeline = Pipeline() if pipeline is None else pipeline
     runtime = ControllerRuntime(bridge, shadow=shadow, clock=clock)
@@ -535,6 +578,7 @@ def run_play(
                 clock=clock,
                 **({"flow": flow} if flow is not None else {}),
                 **({"opening": opening} if opening else {}),
+                **({"judge": judge} if judge is not None else {}),
                 runner=None if driver_factory is None else SkillRunner(driver_factory=driver_factory),
             )
             log = (destination / "play.jsonl").open("x")
@@ -610,6 +654,8 @@ def run_play(
                 finally:
                     if conductor is not None:
                         conductor.close()
+                    elif judge is not None:
+                        judge.close()
     return {
         "ticks": ticks,
         "elapsed": clock() - started,

@@ -15,7 +15,7 @@ import json
 from pathlib import Path
 
 import cv2
-from questions import QUESTIONS, ask_joint, encode, letters
+from pilot.judge import QUESTIONS, ask_joint, encode, letters
 
 HERE = Path(__file__).resolve().parent
 

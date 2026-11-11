@@ -24,11 +24,14 @@ def _wanted(request: HeadRequest) -> int | None:
 
 
 def movement(request: HeadRequest) -> str:
-    """Keep the provisional minimap inference in one replaceable helper.
+    """How the figure moves: the judge's accepted word where there is one, else the minimap.
 
-    head_prompt.txt:25-28 supplies the normal-map heuristic. LOG.md:102-106
-    records its exception: wanted stars can tilt the map while on foot.
+    head_prompt.txt supplies the minimap heuristic. LOG.md, 11 November, records its exception:
+    with stars the map is tilted on foot as well, so a tilted map with stars says nothing.
     """
+    judged = (request.judgment or {}).get("mode")
+    if judged is not None:
+        return {"foot": "on_foot", "vehicle": "vehicle"}.get(judged, "none")
     if request.minimap.get("corrupt"):
         return "unknown"
     shape = request.minimap.get("minimap")
@@ -93,6 +96,11 @@ class MissionHead:
         self.sought_mission = any(call.args.get("target") == "mission" for call in response.plan)
         return response
 
+    def close(self) -> None:
+        close = getattr(self.fallback, "close", None)
+        if close is not None:
+            close()
+
     def _destination(self, request: HeadRequest) -> str:
         """Where a new route goes: to a mission letter, because the story lies there, unless the
         map has just shown none (head_prompt.txt:28-30)."""
@@ -137,6 +145,9 @@ class MissionHead:
             )
 
         mode = movement(request)
+        if mode == "none":
+            # The judge sees a cutscene, a black screen or a figure that is dead: nothing to steer.
+            return "judged_wait", [_call("wait", duration=3)], "Gerade läuft etwas ohne mich, ich warte."
         wanted = _wanted(request)
         cars = any(obj.get("kind") in {"car", "truck", "motorcycle"} for obj in request.objects)
         # head_prompt.txt:43-47 and LOG.md:102-106: flee, never fight;
