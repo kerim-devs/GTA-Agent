@@ -69,8 +69,9 @@ class Hud:
     health: float | None = None  # filled fraction of the green bar under the minimap, 0..1
     armour: float | None = None  # the blue bar
     special: float | None = None  # the yellow bar
-    # "game" | "pause" | "map" | "weapon_wheel" | "phone" | "failed" | "passed" | "wasted" | "busted" |
-    # "loading"; a screen other than "game" means the character does not take ordinary input
+    # "game" | "pause" | "map" | "weapon_wheel" | "phone" | "interaction_menu" | "failed" | "passed" |
+    # "wasted" | "busted" | "loading"; a screen other than "game" means the character does not take
+    # ordinary input
     screen: str = "game"
 
 
