@@ -1,0 +1,258 @@
+{
+  "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+  "seconds": 506.8,
+  "sample_hz": 10,
+  "has_pad": true,
+  "sections": [
+    {
+      "start": -0.0428,
+      "end": 23.133,
+      "first_frame": 0,
+      "last_frame": 1374,
+      "kind": "foot",
+      "screen": "game",
+      "wanted": 0,
+      "route": [],
+      "damaged": 0.0,
+      "human": 0.2177271119012072,
+      "route_share": null,
+      "speed": null
+    },
+    {
+      "start": 23.133,
+      "end": 26.4675,
+      "first_frame": 1375,
+      "last_frame": 1576,
+      "kind": "menu",
+      "screen": "game",
+      "wanted": 0,
+      "route": [],
+      "damaged": 0.03125,
+      "human": 0.2618683460788735,
+      "route_share": null,
+      "speed": null
+    },
+    {
+      "start": 26.4675,
+      "end": 69.961,
+      "first_frame": 1577,
+      "last_frame": 4145,
+      "kind": "drive",
+      "screen": "game",
+      "wanted": 0,
+      "route": [
+        "yellow"
+      ],
+      "damaged": 0.09832134292565947,
+      "human": 0.9569544874521481,
+      "route_share": 0.9095744680851063,
+      "speed": null
+    },
+    {
+      "start": 69.961,
+      "end": 101.6597,
+      "first_frame": 4146,
+      "last_frame": 6042,
+      "kind": "menu",
+      "screen": "phone",
+      "wanted": null,
+      "route": [
+        "yellow"
+      ],
+      "damaged": 0.10897435897435898,
+      "human": 0.8734522235927659,
+      "route_share": null,
+      "speed": null
+    },
+    {
+      "start": 101.6597,
+      "end": 124.0663,
+      "first_frame": 6043,
+      "last_frame": 7383,
+      "kind": "drive",
+      "screen": "game",
+      "wanted": 0,
+      "route": [
+        "yellow"
+      ],
+      "damaged": 0.13615023474178403,
+      "human": 0.8242125088143685,
+      "route_share": 0.8206521739130435,
+      "speed": null
+    },
+    {
+      "start": 124.0663,
+      "end": 222.6585,
+      "first_frame": 7384,
+      "last_frame": 13280,
+      "kind": "foot",
+      "screen": "game",
+      "wanted": 0,
+      "route": [],
+      "damaged": 0.015723270440251572,
+      "human": 0.8389730627777857,
+      "route_share": null,
+      "speed": null
+    },
+    {
+      "start": 222.6585,
+      "end": 224.1341,
+      "first_frame": 13281,
+      "last_frame": 13363,
+      "kind": "menu",
+      "screen": "game",
+      "wanted": 0,
+      "route": [],
+      "damaged": 0.0,
+      "human": 1.0,
+      "route_share": null,
+      "speed": null
+    },
+    {
+      "start": 224.1341,
+      "end": 262.0632,
+      "first_frame": 13364,
+      "last_frame": 15637,
+      "kind": "foot",
+      "screen": "game",
+      "wanted": 0,
+      "route": [],
+      "damaged": 0.013774104683195593,
+      "human": 0.5970745417107189,
+      "route_share": null,
+      "speed": null
+    },
+    {
+      "start": 262.0632,
+      "end": 263.4722,
+      "first_frame": 15638,
+      "last_frame": 15722,
+      "kind": "drive",
+      "screen": "game",
+      "wanted": 0,
+      "route": [],
+      "damaged": 0.0,
+      "human": 0.0,
+      "route_share": 0.0,
+      "speed": null
+    },
+    {
+      "start": 263.4722,
+      "end": 265.9746,
+      "first_frame": 15723,
+      "last_frame": 15860,
+      "kind": "foot",
+      "screen": "game",
+      "wanted": null,
+      "route": [],
+      "damaged": 0.0,
+      "human": 0.0,
+      "route_share": null,
+      "speed": null
+    },
+    {
+      "start": 265.9746,
+      "end": 281.6673,
+      "first_frame": 15861,
+      "last_frame": 16809,
+      "kind": "drive",
+      "screen": "game",
+      "wanted": 0,
+      "route": [
+        "yellow"
+      ],
+      "damaged": 0.03821656050955414,
+      "human": 0.8253582876114389,
+      "route_share": 0.7417218543046358,
+      "speed": null
+    },
+    {
+      "start": 281.6673,
+      "end": 296.0657,
+      "first_frame": 16810,
+      "last_frame": 17665,
+      "kind": "menu",
+      "screen": "phone",
+      "wanted": null,
+      "route": [
+        "yellow"
+      ],
+      "damaged": 0.04895104895104895,
+      "human": 0.9528489276586248,
+      "route_share": null,
+      "speed": null
+    },
+    {
+      "start": 296.0657,
+      "end": 397.0621,
+      "first_frame": 17666,
+      "last_frame": 23695,
+      "kind": "drive",
+      "screen": "game",
+      "wanted": 0,
+      "route": [
+        "yellow"
+      ],
+      "damaged": 0.040082219938335044,
+      "human": 0.6854462139244578,
+      "route_share": 0.6102783725910065,
+      "speed": null
+    },
+    {
+      "start": 397.0621,
+      "end": 480.3607,
+      "first_frame": 23696,
+      "last_frame": 28646,
+      "kind": "foot",
+      "screen": "game",
+      "wanted": 0,
+      "route": [],
+      "damaged": 0.006150061500615006,
+      "human": 0.24632947012314763,
+      "route_share": null,
+      "speed": null
+    },
+    {
+      "start": 480.3607,
+      "end": 483.0661,
+      "first_frame": 28647,
+      "last_frame": 28808,
+      "kind": "banner",
+      "screen": "passed",
+      "wanted": 0,
+      "route": [],
+      "damaged": 0.0,
+      "human": 0.8984623345900806,
+      "route_share": null,
+      "speed": null
+    },
+    {
+      "start": 483.0661,
+      "end": 485.0641,
+      "first_frame": 28809,
+      "last_frame": 28928,
+      "kind": "menu",
+      "screen": "game",
+      "wanted": 0,
+      "route": [],
+      "damaged": 0.0,
+      "human": 0.4552552552552633,
+      "route_share": null,
+      "speed": null
+    },
+    {
+      "start": 485.0641,
+      "end": 506.7624,
+      "first_frame": 28929,
+      "last_frame": 30230,
+      "kind": "foot",
+      "screen": "game",
+      "wanted": 0,
+      "route": [],
+      "damaged": 0.0,
+      "human": 0.0,
+      "route_share": null,
+      "speed": null
+    }
+  ]
+}

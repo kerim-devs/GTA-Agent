@@ -41,7 +41,14 @@
             "t": 156.5492,
             "route": "none",
             "blips": []
-          }
+          },
+          "incidents": [
+            {
+              "t": 191.301,
+              "class": "collision",
+              "cause": "unknown"
+            }
+          ]
         }
       ],
       "ending": "unknown",
@@ -93,7 +100,8 @@
                 "border": false
               }
             ]
-          }
+          },
+          "incidents": []
         }
       ],
       "ending": "unknown",
@@ -140,7 +148,8 @@
             "t": 484.9838,
             "route": "none",
             "blips": []
-          }
+          },
+          "incidents": []
         }
       ],
       "ending": "unknown",
@@ -188,7 +197,8 @@
             "t": 594.4912,
             "route": "none",
             "blips": []
-          }
+          },
+          "incidents": []
         }
       ],
       "ending": "unknown",
@@ -234,7 +244,14 @@
             "t": 691.5025,
             "route": "yellow",
             "blips": []
-          }
+          },
+          "incidents": [
+            {
+              "t": 824.925,
+              "class": "mission_passed",
+              "cause": "passed"
+            }
+          ]
         }
       ],
       "ending": "unknown",

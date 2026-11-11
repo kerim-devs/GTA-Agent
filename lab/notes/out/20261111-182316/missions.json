@@ -47,7 +47,19 @@
                 "border": true
               }
             ]
-          }
+          },
+          "incidents": [
+            {
+              "t": 45.633,
+              "class": "collision",
+              "cause": "carried_on"
+            },
+            {
+              "t": 199.428,
+              "class": "mission_passed",
+              "cause": "passed"
+            }
+          ]
         }
       ],
       "ending": "unknown",

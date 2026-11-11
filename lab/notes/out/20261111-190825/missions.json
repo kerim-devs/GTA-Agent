@@ -47,7 +47,19 @@
                 "border": true
               }
             ]
-          }
+          },
+          "incidents": [
+            {
+              "t": 330.796,
+              "class": "collision",
+              "cause": "reversed"
+            },
+            {
+              "t": 416.604,
+              "class": "mission_passed",
+              "cause": "passed"
+            }
+          ]
         }
       ],
       "ending": "unknown",
@@ -101,7 +113,8 @@
                 "border": false
               }
             ]
-          }
+          },
+          "incidents": []
         },
         {
           "objective": "Folge dem Tennislehrer.",
@@ -145,7 +158,8 @@
                 "border": false
               }
             ]
-          }
+          },
+          "incidents": []
         },
         {
           "objective": "Fahr zum Canyon.",
@@ -183,7 +197,14 @@
             "t": 577.4931,
             "route": "yellow",
             "blips": []
-          }
+          },
+          "incidents": [
+            {
+              "t": 595.826,
+              "class": "collision",
+              "cause": "unknown"
+            }
+          ]
         }
       ],
       "ending": "unknown",
@@ -231,7 +252,14 @@
             "t": 687.9954,
             "route": "none",
             "blips": []
-          }
+          },
+          "incidents": [
+            {
+              "t": 693.702,
+              "class": "standstill",
+              "cause": "stuck_vehicle"
+            }
+          ]
         }
       ],
       "ending": "unknown",
@@ -285,7 +313,19 @@
                 "border": true
               }
             ]
-          }
+          },
+          "incidents": [
+            {
+              "t": 829.124,
+              "class": "death",
+              "cause": "fight"
+            },
+            {
+              "t": 831.94,
+              "class": "mission_failed",
+              "cause": "player_died"
+            }
+          ]
         }
       ],
       "ending": "unknown",
@@ -341,7 +381,19 @@
                 "border": true
               }
             ]
-          }
+          },
+          "incidents": [
+            {
+              "t": 864.908,
+              "class": "turn",
+              "cause": "turn"
+            },
+            {
+              "t": 888.498,
+              "class": "standstill",
+              "cause": "fight"
+            }
+          ]
         }
       ],
       "ending": "unknown",

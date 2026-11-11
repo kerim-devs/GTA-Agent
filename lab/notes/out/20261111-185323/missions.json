@@ -49,7 +49,19 @@
                 "border": true
               }
             ]
-          }
+          },
+          "incidents": [
+            {
+              "t": 169.301,
+              "class": "standstill",
+              "cause": "waiting"
+            },
+            {
+              "t": 197.599,
+              "class": "collision",
+              "cause": "unknown"
+            }
+          ]
         }
       ],
       "ending": "unknown",
@@ -100,7 +112,8 @@
                 "border": false
               }
             ]
-          }
+          },
+          "incidents": []
         }
       ],
       "ending": "unknown",
@@ -177,7 +190,8 @@
                 "border": true
               }
             ]
-          }
+          },
+          "incidents": []
         }
       ],
       "ending": "unknown",

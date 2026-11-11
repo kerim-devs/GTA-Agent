@@ -51,7 +51,14 @@
                 "border": false
               }
             ]
-          }
+          },
+          "incidents": [
+            {
+              "t": 185.272,
+              "class": "standstill",
+              "cause": "stuck_foot"
+            }
+          ]
         }
       ],
       "ending": "unknown",
@@ -116,7 +123,8 @@
                 "border": false
               }
             ]
-          }
+          },
+          "incidents": []
         },
         {
           "objective": "Bring das Auto zum Autohaus.",
@@ -155,7 +163,14 @@
             "t": 266.0087,
             "route": "none",
             "blips": []
-          }
+          },
+          "incidents": [
+            {
+              "t": 480.361,
+              "class": "mission_passed",
+              "cause": "passed"
+            }
+          ]
         }
       ],
       "ending": "unknown",

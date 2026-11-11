@@ -41,7 +41,8 @@
             "t": 437.9946,
             "route": "none",
             "blips": []
-          }
+          },
+          "incidents": []
         },
         {
           "objective": "Kehr zurück zu Lamar.",
@@ -79,7 +80,8 @@
             "t": 448.6234,
             "route": "none",
             "blips": []
-          }
+          },
+          "incidents": []
         }
       ],
       "ending": "unknown",
@@ -123,7 +125,8 @@
             "t": 548.4991,
             "route": "none",
             "blips": []
-          }
+          },
+          "incidents": []
         }
       ],
       "ending": "unknown",
@@ -186,7 +189,8 @@
                 "border": false
               }
             ]
-          }
+          },
+          "incidents": []
         },
         {
           "objective": "Schalte die Vagos aus.",
@@ -243,7 +247,24 @@
                 "border": false
               }
             ]
-          }
+          },
+          "incidents": [
+            {
+              "t": 632.683,
+              "class": "standstill",
+              "cause": "fight"
+            },
+            {
+              "t": 677.782,
+              "class": "death",
+              "cause": "fight"
+            },
+            {
+              "t": 681.972,
+              "class": "mission_failed",
+              "cause": "player_died"
+            }
+          ]
         }
       ],
       "ending": "failed",
@@ -300,7 +321,14 @@
                 "border": false
               }
             ]
-          }
+          },
+          "incidents": [
+            {
+              "t": 745.482,
+              "class": "standstill",
+              "cause": "fight"
+            }
+          ]
         }
       ],
       "ending": "unknown",
@@ -353,7 +381,8 @@
                 "border": false
               }
             ]
-          }
+          },
+          "incidents": []
         },
         {
           "objective": "Begib dich zu der Autowaschanlage.",
@@ -391,7 +420,8 @@
             "t": 891.9898,
             "route": "yellow",
             "blips": []
-          }
+          },
+          "incidents": []
         }
       ],
       "ending": "unknown",

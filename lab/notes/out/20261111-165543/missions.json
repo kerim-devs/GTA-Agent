@@ -45,7 +45,8 @@
                 "border": true
               }
             ]
-          }
+          },
+          "incidents": []
         },
         {
           "objective": "Warte auf Tonya.",
@@ -93,7 +94,24 @@
                 "border": true
               }
             ]
-          }
+          },
+          "incidents": [
+            {
+              "t": 235.149,
+              "class": "standstill",
+              "cause": "waiting"
+            },
+            {
+              "t": 274.996,
+              "class": "standstill",
+              "cause": "waiting"
+            },
+            {
+              "t": 279.383,
+              "class": "collision",
+              "cause": "carried_on"
+            }
+          ]
         }
       ],
       "ending": "unknown",
@@ -147,7 +165,19 @@
                 "border": false
               }
             ]
-          }
+          },
+          "incidents": [
+            {
+              "t": 333.713,
+              "class": "collision",
+              "cause": "carried_on"
+            },
+            {
+              "t": 339.478,
+              "class": "collision",
+              "cause": "unknown"
+            }
+          ]
         },
         {
           "objective": "Begib dich zu dem herrenlosen Auto.",
@@ -184,7 +214,14 @@
             "t": 375.5025,
             "route": "none",
             "blips": []
-          }
+          },
+          "incidents": [
+            {
+              "t": 397.147,
+              "class": "standstill",
+              "cause": "waiting"
+            }
+          ]
         },
         {
           "objective": "Schlepp den Wagen zum Abschleppplatz.",
@@ -228,7 +265,14 @@
                 "border": true
               }
             ]
-          }
+          },
+          "incidents": [
+            {
+              "t": 418.12,
+              "class": "collision",
+              "cause": "carried_on"
+            }
+          ]
         },
         {
           "objective": "Mach das Fahrzeug in der Ablieferzone lo",
@@ -274,7 +318,19 @@
                 "border": false
               }
             ]
-          }
+          },
+          "incidents": [
+            {
+              "t": 492.567,
+              "class": "standstill",
+              "cause": "stuck_vehicle"
+            },
+            {
+              "t": 507.815,
+              "class": "mission_passed",
+              "cause": "passed"
+            }
+          ]
         }
       ],
       "ending": "passed",

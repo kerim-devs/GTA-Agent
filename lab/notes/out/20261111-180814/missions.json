@@ -47,7 +47,14 @@
                 "border": true
               }
             ]
-          }
+          },
+          "incidents": [
+            {
+              "t": 289.901,
+              "class": "car_change",
+              "cause": "other"
+            }
+          ]
         }
       ],
       "ending": "unknown",
@@ -100,7 +107,14 @@
                 "border": false
               }
             ]
-          }
+          },
+          "incidents": [
+            {
+              "t": 369.514,
+              "class": "car_change",
+              "cause": "other"
+            }
+          ]
         }
       ],
       "ending": "unknown",
@@ -152,7 +166,14 @@
                 "border": false
               }
             ]
-          }
+          },
+          "incidents": [
+            {
+              "t": 417.91,
+              "class": "car_change",
+              "cause": "other"
+            }
+          ]
         }
       ],
       "ending": "unknown",
