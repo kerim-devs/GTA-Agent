@@ -296,7 +296,9 @@ class Conductor:
                 # One row per carry, not one per tick: the play log has the ticks.
                 self.write({"type": "carry_on", "t": t, "name": "carry_on"})
                 self.carry_logged = self.carry_started
-        elif not self.runner.has_plan:
+        elif not self.runner.has_plan and not observation.reading.corrupt:
+            # A damaged tick is stood out and decides nothing: the minimap reader calls a clean
+            # cable picture damaged about once a second, and the carry would never last.
             self.carry_allowed = False
         return result
 

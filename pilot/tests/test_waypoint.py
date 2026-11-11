@@ -169,10 +169,13 @@ def test_missing_or_damaged_picture_only_allows_backout(frame, corrupt):
     bad = replace(
         observation(1.5, "map"), frame=frame, reading=replace(observation().reading, corrupt=corrupt)
     )
-    result = skill.step(bad)
-    assert result.pad == NEUTRAL_PAD
-    result = skill.step(replace(bad, time=1.6))
-    assert result.pad.buttons == ("circle",)
+    # A tick or two of damage is waited out; damage that lasts is backed out of.
+    for time in (1.5, 1.6, 2.5, 3.4):
+        result = skill.step(replace(bad, time=time))
+        assert result.pad == NEUTRAL_PAD and skill.failure is None
+    assert skill.step(replace(bad, time=3.6)).pad == NEUTRAL_PAD
+    assert skill.failure == "map-picture-missing-or-damaged"
+    assert skill.step(replace(bad, time=3.7)).pad.buttons == ("circle",)
 
 
 def test_ocr_failure_does_not_leave_any_control_held():
@@ -233,7 +236,7 @@ def test_nothing_is_pressed_when_it_does_not_start_from_the_game(start):
     skill = SetWaypoint({})
     results = [skill.step(replace(start, time=tick / 10)) for tick in range(60)]
     assert all(result.pad == NEUTRAL_PAD for result in results)
-    assert results[0].status == "failed" and "start-screen-unverified" in results[0].reason
+    assert results[-1].status == "failed" and "start-screen-unverified" in results[-1].reason
 
 
 def aiming(monkeypatch, points, waypoint=False):
@@ -280,7 +283,10 @@ def test_a_damaged_map_picture_is_not_acted_on(phase):
     skill._picture = lambda _: MapPicture("map", (640, 360), waypoint=True)
     frame = np.full((720, 1280, 3), 40, np.uint8)
     result = skill.step(observation(0, "map", frame, corrupt=True))
-    assert result.pad == NEUTRAL_PAD and skill.failure == "map-picture-missing-or-damaged"
+    assert result.pad == NEUTRAL_PAD and result.status == "running" and skill.failure is None
+    assert skill.step(observation(1.9, "map", frame, corrupt=True)).pad == NEUTRAL_PAD
+    assert skill.step(observation(2.1, "map", frame, corrupt=True)).pad == NEUTRAL_PAD
+    assert skill.failure == "map-picture-missing-or-damaged"
     assert not skill.proved_waypoint
 
 
@@ -350,9 +356,13 @@ def test_damaged_before_during_or_after_push_never_authorises_cross(when):
     if when:
         away_picture_step(skill, world, 0)
         world.offset[0] = -140
-    result = away_picture_step(skill, world, when, corrupt=True)
-    assert result.pad == NEUTRAL_PAD and skill.failure == "map-picture-missing-or-damaged"
-    assert not skill.proved_waypoint
+    # The map has moved far enough for a waypoint, and every picture that could show it is damaged.
+    results = [away_picture_step(skill, world, when + step / 10, corrupt=True) for step in range(45)]
+    assert all("cross" not in result.pad.buttons for result in results)
+    assert np.linalg.norm(skill.displacement) == 0 and not skill.proved_waypoint
+    # A tick or two of damage is waited out, with nothing new pressed; damage that lasts is a fault.
+    assert results[0].status == "running" and skill.failure == "map-picture-missing-or-damaged"
+    assert all(result.pad.left == (0, 0) for result in results[5:])
 
 
 def test_unflagged_damage_or_textureless_map_cannot_count_as_motion():
@@ -379,13 +389,32 @@ def test_sea_gets_one_inland_look_then_only_backout():
     assert directions == {(0.65, 0), (-0.65, 0)}
 
 
-@pytest.mark.parametrize("case", [{"edge": True}, {"damaged": True}])
-def test_away_faults_finish_neutral_after_circle_only_escape(case):
-    result = sim.simulate(target="away", delay=1.1, **case)
+def test_a_map_that_does_not_move_ends_neutral_after_circle_only():
+    result = sim.simulate(target="away", delay=1.1, edge=True)
     assert result["status"] == "failed"
     assert result["trace"][-1]["screen"] == "game"
     assert result["trace"][-1]["pad"]["buttons"] == ()
     assert not any("cross" in row["pad"]["buttons"] and row["screen"] == "map" for row in result["trace"])
+
+
+def test_one_damaged_picture_between_two_pushes_is_waited_out():
+    # The simulation itself fails when Cross is pressed on a damaged picture.
+    result = sim.simulate(target="away", delay=1.1, damaged=True)
+    assert result["status"] == "done"
+    assert any(row["corrupt"] for row in result["trace"])
+
+
+def test_a_damaged_tick_is_waited_out_and_the_next_clean_picture_decides():
+    skill, world = away_at_first_push()
+    world.offset[0] -= 60
+    assert away_picture_step(skill, world, 1.8, corrupt=True).pad == NEUTRAL_PAD
+    assert skill.failure is None and np.linalg.norm(skill.displacement) == 0
+    away_picture_step(skill, world, 1.85)
+    assert skill.failure is None
+    assert np.linalg.norm(skill.displacement) == pytest.approx(60, abs=1)
+    # The next damaged tick comes long after the first one and is waited out just the same.
+    assert away_picture_step(skill, world, 6.0, corrupt=True).pad == NEUTRAL_PAD
+    assert skill.failure is None and skill.phase == "pan"
 
 
 def test_inland_second_look_can_set_on_land_after_reaching_requested_distance():
