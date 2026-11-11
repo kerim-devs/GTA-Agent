@@ -183,21 +183,32 @@ def endpoint(value: str) -> tuple[str, str]:
 
 
 class ModeFilter:
-    """Accept a mode that two judgments in a row name, and let it lapse with the age of its frame.
+    """Accept a mode that judgments in a row name, and let it lapse with the age of its frame.
 
+    The first mode takes two judgments and a change of an accepted one three. While Kerim pulls a
+    driver out of a car the answers go foot, vehicle, vehicle, foot, foot, none, vehicle: two in a
+    row turned the mode three times in two seconds, and every turn makes the head plan afresh.
     No probability lets a single judgment through: in the recorded sequences the one wrong answer
     on foot with stars came with 0.9997, more than most right ones.
     """
+
+    FIRST, CHANGE = 2, 3
+    # Against the real server a judgment is about a frame 0.27 s old when it arrives, and the next
+    # one comes 0.3 s later; with one request lost to a server that is down the gap reached a
+    # second, and a mode that lapsed at one second flickered to nothing.
+    LAPSE = 1.5
 
     def __init__(self):
         self.mode = None
         self.capture = None
         self.candidate = None
+        self.run = 0
 
     def update(self, judgment: Judgment | None, t: float) -> str | None:
-        if self.capture is not None and t - self.capture > 1.0:
+        if self.capture is not None and t - self.capture > self.LAPSE:
             self.mode = self.candidate = None
             self.capture = None
+            self.run = 0
         if (
             judgment is not None
             and 0 <= t - judgment.capture <= 1.0
@@ -206,9 +217,10 @@ class ModeFilter:
             answer = judgment.answers.get("mode")
             mode = None if answer is None else answer.value
             if mode in {"foot", "vehicle", "none"}:
-                if mode == self.candidate:
-                    self.mode = mode
+                self.run = self.run + 1 if mode == self.candidate else 1
                 self.candidate, self.capture = mode, judgment.capture
+                if self.run >= (self.FIRST if self.mode is None else self.CHANGE):
+                    self.mode = mode
         return self.mode
 
 
@@ -223,6 +235,7 @@ class Reader:
         self.active = None
         self.busy = set()
         self.cooldown = {}
+        self.strikes = {}
         self.last_start = float("-inf")
         self.failures = []
         self.closed = False
@@ -262,7 +275,12 @@ class Reader:
                 if duration >= 1.0:
                     error = "timeout"
                 if error:
-                    self.cooldown[job["index"]] = now + 2.0
+                    # Two seconds after the first failure, twice as long after each further one in a
+                    # row: a server that is down for good costs a request every half minute, not
+                    # every other second. The next server is asked on this very tick.
+                    strikes = self.strikes[job["index"]] = self.strikes.get(job["index"], 0) + 1
+                    self.cooldown[job["index"]] = now + min(30.0, 2.0**strikes)
+                    self.last_start = float("-inf")
                     self.failures.append(
                         {
                             "capture": job["capture"],
@@ -275,6 +293,7 @@ class Reader:
                     )
                 else:
                     result = job["result"]
+                    self.strikes[job["index"]] = 0
                 self.active = None
             if self.active is None and now - self.last_start >= 0.25 and rgb is not None:
                 index = next(

@@ -7,6 +7,7 @@ import threading
 import time
 from concurrent.futures import Future
 from dataclasses import replace
+from itertools import pairwise
 from pathlib import Path
 
 import cv2
@@ -106,19 +107,32 @@ def test_tilted_map_stays_on_foot_after_initial_confirmation():
     assert accepted[1:] == ["foot"] * 120
 
 
-def test_a_mode_needs_two_judgments_in_a_row_and_lapses_with_its_frame():
+def test_a_mode_needs_judgments_in_a_row_and_lapses_with_its_frame():
     modes = ModeFilter()
     assert modes.update(judgment(0), 0) is None
     assert modes.update(judgment(0), 0.1) is None  # the same frame is not two votes
-    assert modes.update(judgment(0.25), 0.25) == "foot"
+    assert modes.update(judgment(0.25), 0.25) == "foot"  # the first mode takes two
     assert modes.update(judgment(0.5, "B"), 0.5) == "foot"
     assert modes.update(judgment(0.75, "A"), 0.75) == "foot"
     # No probability lets one judgment through: the recorded wrong answer came with 0.9997.
     assert modes.update(judgment(1, "B", 0.9997), 1) == "foot"
-    assert modes.update(judgment(1.25, "B"), 1.25) == "vehicle"
-    assert modes.update(judgment(0.5, "A", 0.99), 1.3) == "vehicle"  # an older frame is no vote
-    assert modes.update(None, 2.26) is None
-    assert modes.update(judgment(1.0, "A", 0.99), 2.3) is None
+    assert modes.update(judgment(1.25, "B"), 1.25) == "foot"  # a change takes three
+    assert modes.update(judgment(1.5, "B"), 1.5) == "vehicle"
+    assert modes.update(judgment(0.5, "A", 0.99), 1.55) == "vehicle"  # an older frame is no vote
+    assert modes.update(None, 2.9) == "vehicle"  # one late judgment does not drop the mode
+    assert modes.update(None, 3.01) is None
+    assert modes.update(judgment(1.75, "A", 0.99), 3.05) is None
+
+
+def test_pulling_a_driver_out_of_a_car_turns_the_mode_once():
+    modes = ModeFilter()
+    rows = [row for row in recorded() if 1300 <= row["frame"] <= 2600]
+    accepted = [
+        modes.update(parse(row["choice"], row["time"], row["seconds"], "recorded"), row["time"])
+        for row in rows
+    ]
+    changes = [(a, b) for a, b in pairwise(accepted) if a != b]
+    assert changes == [(None, "foot"), ("foot", "vehicle")]
     observation = Observation(READING, True, 0, mode="foot")
     assert player_mode(observation) == "foot"
     assert player_mode(replace(observation, mode=None)) == "vehicle"
@@ -210,21 +224,33 @@ def test_failure_falls_back_cools_down_and_results_are_delivered_once():
         reader.poll(red, 0)
         failures = wait_for(lambda: (reader.poll(red, 0), reader.drain_failures())[1])
         assert failures[0]["server"].endswith("=first")
-        now[0] = 0.25
-        result = wait_for(lambda: reader.poll(red, 0.25))
+        # The second server is asked on the tick that saw the failure, not a quarter second later.
+        result = wait_for(lambda: reader.poll(red, 0))
         assert isinstance(result, Judgment)
-        assert result.capture == 0.25 and result.server.endswith("=second")
-        assert reader.poll(red, 0.25) is None
+        assert result.capture == 0 and result.server.endswith("=second")
+        assert reader.poll(red, 0) is None
+        assert [url for url, _ in sent] == ["http://localhost:8000", "http://127.0.0.1:8001"]
         now[0] = 1.9
         assert wait_for(lambda: reader.poll(red, 1.9)).server.endswith("=second")
         assert [url for url, _ in sent].count("http://localhost:8000") == 1
         now[0] = 2.2
         wait_for(lambda: (reader.poll(red, 2.2), reader.drain_failures())[1])
-        assert sent[-1] == ("http://localhost:8000", 2.2)
+        assert ("http://localhost:8000", 2.2) in sent
+        # The clock of this test jumps: let the handed-over request finish before it does.
+        assert wait_for(lambda: reader.poll(red, 2.2)).server.endswith("=second")
+        # After the second failure in a row the server is left alone for four seconds, not two.
+        now[0] = 5.0
+        assert wait_for(lambda: reader.poll(red, 5.0)).server.endswith("=second")
+        assert [url for url, _ in sent].count("http://localhost:8000") == 2
+        now[0] = 6.5
+        wait_for(lambda: (reader.poll(red, 6.5), reader.drain_failures())[1])
+        assert ("http://localhost:8000", 6.5) in sent
+        wait_for(lambda: reader.poll(red, 6.5))
         reader.close()
+        asked = len(sent)
         now[0] = 10
         reader.poll(red, 10)
-        assert len(sent) == 4
+        assert len(sent) == asked
     finally:
         reader.close()
 
@@ -353,7 +379,7 @@ def test_conductor_logs_judgments_and_emits_only_accepted_changes(tmp_path):
         assert jobs[1][1].judgment["mode"] == "vehicle"
         assert jobs[1][1].judgment["age"] == pytest.approx(0.1)
         # A judge that falls silent lets the mode lapse and tells the head nothing.
-        conductor.tick(Observation(READING, True, 2.01), RGB)
+        conductor.tick(Observation(READING, True, 2.51), RGB)
         assert conductor.mode_filter.mode is None
         assert not [event for event in conductor.pending if event["kind"] == "mode_changed"]
     finally:
@@ -361,7 +387,7 @@ def test_conductor_logs_judgments_and_emits_only_accepted_changes(tmp_path):
     assert judge.closed
     rows = [json.loads(line) for line in (tmp_path / "judge.jsonl").read_text().splitlines()]
     assert len(rows) == 5
-    assert [row["mode"] for row in rows] == [None, "foot", "foot", "vehicle", "vehicle"]
+    assert [row["mode"] for row in rows] == [None, "foot", "foot", "foot", "vehicle"]
     assert set(rows[0]) == {"t", "capture", "answers", "probabilities", "duration", "server", "mode"}
 
 
