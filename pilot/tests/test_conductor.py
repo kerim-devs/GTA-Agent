@@ -11,6 +11,7 @@ from pilot.bridge import Bridge, Frame
 from pilot.conductor import Conductor, background, run_play
 from pilot.contract import NEUTRAL_PAD, Command, Hud, Pad, Reading, SkillResult
 from pilot.head import CodexHead, HeadRequest, ScriptedHead, SkillCall, parse_response
+from pilot.scene import SceneEvent
 from pilot.skills import Observation, Skill, SkillRunner
 
 RGB = np.zeros((720, 1280, 3), dtype=np.uint8)
@@ -615,5 +616,39 @@ def test_a_working_controller_and_a_menu_get_no_touch(tmp_path):
         menu = Observation(READING, True, 40.0, hud=Hud(wanted=0, health=1.0, screen="pause"))
         assert conductor.tick(menu, RGB).pad == NEUTRAL_PAD
         assert conductor.tick(Observation(READING, True, 40.1), RGB).pad != NEUTRAL_PAD
+    finally:
+        conductor.close()
+
+
+class Detected:
+    def __init__(self):
+        self.kinds = []
+
+    def update(self, reading, timestamp, **reads):
+        return [SceneEvent(kind, timestamp, "before", "after", "test") for kind in self.kinds]
+
+
+def test_a_map_the_running_skill_opened_is_no_news_for_the_head(tmp_path):
+    # Live on 11 November: told that the minimap had gone, the head planned a wait for the screen,
+    # the wait replaced set_waypoint, and the reflex closed the map the skill had just opened.
+    pending, detector = Pending(), Detected()
+    conductor = Conductor(tmp_path, submit=pending, detector=detector)
+    try:
+        conductor.tick(observation(0), RGB, events=[{"kind": "objective_changed"}])
+        plan = {
+            "plan": [{"name": "set_waypoint", "args": {"target": "away"}}],
+            "sentence": "Ich setze ein Ziel.",
+        }
+        pending.jobs[0][0].set_result(parse_response(plan))
+        conductor.tick(observation(0.03), RGB)  # the tick that lets go of the plan before
+        conductor.tick(observation(0.06), RGB)
+        assert conductor.runner.active.name == "set_waypoint"
+        for tick, kind in enumerate(("hud_absent", "hud_present"), start=3):
+            detector.kinds = [kind]
+            conductor.tick(observation(tick * 0.03), RGB)
+        assert len(pending.jobs) == 1 and conductor.runner.active.name == "set_waypoint"
+        detector.kinds = ["route_vanished"]  # other news still reaches the head
+        conductor.tick(observation(0.15), RGB)
+        assert len(pending.jobs) == 2
     finally:
         conductor.close()

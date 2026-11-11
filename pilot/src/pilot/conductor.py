@@ -128,6 +128,7 @@ class Conductor:
         self.nudge = active().right_for(self.NUDGE_STICK)
         self.last_input = None
         self.nudge_until = None
+        self.own_screen_until = -math.inf
 
     def write(self, row):
         self.log.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -259,6 +260,7 @@ class Conductor:
     # and from that picture the judge and the object reader tell nothing true: live on 11 November
     # the judge said "vehicle" to a car park, the skills waited for a figure on foot, and because
     # they waited the scenery stayed. A touch of the camera brings the figure back.
+    OWN_SCREEN_SECONDS = 2.0  # the minimap is read as back about a second after a map has closed
     AWAKE_SECONDS = 15.0
     NUDGE_SECONDS = 0.1  # one tick is easy for the console to miss
     NUDGE_STICK = 0.5  # as it reaches the console
@@ -309,6 +311,13 @@ class Conductor:
                 self.judge_log.flush()
         self._text(rgb, t, text, text_time if text is not None else frame_time)
         detected = self.detector.update(observation.reading, t, text=self.text, mode=observation.mode)
+        # A skill that opens the map hides the minimap, and that is its own doing and no news. Told
+        # of it live on 11 November, the head planned a wait for the screen, the wait replaced the
+        # skill, and the reflex closed the map the skill had just opened.
+        if getattr(self.runner.active, "opens", ()):
+            self.own_screen_until = t + self.OWN_SCREEN_SECONDS
+        if t < self.own_screen_until:
+            detected = [event for event in detected if event.kind not in ("hud_absent", "hud_present")]
         new_events = [asdict(event) for event in detected] + list(events)
         new_events.extend(self._hud_events(observation))
         recovered = self.flow_started is not None
