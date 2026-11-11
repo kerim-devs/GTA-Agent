@@ -1,0 +1,671 @@
+{
+  "note": "Exploratory trials before final class consistency audit. Five open-bed pickup labels changed from car to truck in final labels.json. These trial values are not the final acceptance benchmark; use metrics.json. Timing in these trials was not isolated from all concurrent work.",
+  "pickup_corrections": {
+    "044": [
+      202,
+      349,
+      370,
+      390
+    ],
+    "050": [
+      567,
+      218,
+      710,
+      306
+    ],
+    "051": [
+      412,
+      233,
+      577,
+      339
+    ],
+    "056": [
+      406,
+      326,
+      605,
+      420
+    ],
+    "057": [
+      863,
+      344,
+      1065,
+      419
+    ]
+  },
+  "trials": [
+    {
+      "experiment": "thresholds",
+      "results": [
+        {
+          "confidence": 0.05,
+          "large_recall": 0.36893203883495146,
+          "invented_fraction": 0.8192307692307692,
+          "player_reported_frames": [],
+          "per_kind": {
+            "person": {
+              "found": 2,
+              "missed": 15,
+              "invented": 48
+            },
+            "car": {
+              "found": 33,
+              "missed": 46,
+              "invented": 112
+            },
+            "truck": {
+              "found": 9,
+              "missed": 30,
+              "invented": 41
+            },
+            "bus": {
+              "found": 2,
+              "missed": 12,
+              "invented": 12
+            },
+            "motorcycle": {
+              "found": 1,
+              "missed": 1,
+              "invented": 0
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0,
+              "invented": 0
+            }
+          },
+          "collateral_removed": []
+        },
+        {
+          "confidence": 0.1,
+          "large_recall": 0.3592233009708738,
+          "invented_fraction": 0.7457627118644068,
+          "player_reported_frames": [],
+          "per_kind": {
+            "person": {
+              "found": 2,
+              "missed": 15,
+              "invented": 26
+            },
+            "car": {
+              "found": 31,
+              "missed": 48,
+              "invented": 77
+            },
+            "truck": {
+              "found": 9,
+              "missed": 30,
+              "invented": 22
+            },
+            "bus": {
+              "found": 2,
+              "missed": 12,
+              "invented": 7
+            },
+            "motorcycle": {
+              "found": 1,
+              "missed": 1,
+              "invented": 0
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0,
+              "invented": 0
+            }
+          },
+          "collateral_removed": []
+        },
+        {
+          "confidence": 0.15,
+          "large_recall": 0.3592233009708738,
+          "invented_fraction": 0.6896551724137931,
+          "player_reported_frames": [],
+          "per_kind": {
+            "person": {
+              "found": 2,
+              "missed": 15,
+              "invented": 19
+            },
+            "car": {
+              "found": 31,
+              "missed": 48,
+              "invented": 59
+            },
+            "truck": {
+              "found": 9,
+              "missed": 30,
+              "invented": 19
+            },
+            "bus": {
+              "found": 2,
+              "missed": 12,
+              "invented": 3
+            },
+            "motorcycle": {
+              "found": 1,
+              "missed": 1,
+              "invented": 0
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0,
+              "invented": 0
+            }
+          },
+          "collateral_removed": []
+        },
+        {
+          "confidence": 0.2,
+          "large_recall": 0.32038834951456313,
+          "invented_fraction": 0.6666666666666666,
+          "player_reported_frames": [],
+          "per_kind": {
+            "person": {
+              "found": 2,
+              "missed": 15,
+              "invented": 14
+            },
+            "car": {
+              "found": 28,
+              "missed": 51,
+              "invented": 47
+            },
+            "truck": {
+              "found": 8,
+              "missed": 31,
+              "invented": 17
+            },
+            "bus": {
+              "found": 1,
+              "missed": 13,
+              "invented": 2
+            },
+            "motorcycle": {
+              "found": 1,
+              "missed": 1,
+              "invented": 0
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0,
+              "invented": 0
+            }
+          },
+          "collateral_removed": []
+        },
+        {
+          "confidence": 0.25,
+          "large_recall": 0.30097087378640774,
+          "invented_fraction": 0.6224489795918368,
+          "player_reported_frames": [],
+          "per_kind": {
+            "person": {
+              "found": 2,
+              "missed": 15,
+              "invented": 11
+            },
+            "car": {
+              "found": 26,
+              "missed": 53,
+              "invented": 36
+            },
+            "truck": {
+              "found": 8,
+              "missed": 31,
+              "invented": 12
+            },
+            "bus": {
+              "found": 0,
+              "missed": 14,
+              "invented": 2
+            },
+            "motorcycle": {
+              "found": 1,
+              "missed": 1,
+              "invented": 0
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0,
+              "invented": 0
+            }
+          },
+          "collateral_removed": []
+        },
+        {
+          "confidence": 0.3,
+          "large_recall": 0.30097087378640774,
+          "invented_fraction": 0.5813953488372093,
+          "player_reported_frames": [],
+          "per_kind": {
+            "person": {
+              "found": 2,
+              "missed": 15,
+              "invented": 6
+            },
+            "car": {
+              "found": 26,
+              "missed": 53,
+              "invented": 32
+            },
+            "truck": {
+              "found": 7,
+              "missed": 32,
+              "invented": 11
+            },
+            "bus": {
+              "found": 0,
+              "missed": 14,
+              "invented": 1
+            },
+            "motorcycle": {
+              "found": 1,
+              "missed": 1,
+              "invented": 0
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0,
+              "invented": 0
+            }
+          },
+          "collateral_removed": []
+        },
+        {
+          "confidence": 0.35,
+          "large_recall": 0.2815533980582524,
+          "invented_fraction": 0.5657894736842105,
+          "player_reported_frames": [],
+          "per_kind": {
+            "person": {
+              "found": 2,
+              "missed": 15,
+              "invented": 6
+            },
+            "car": {
+              "found": 25,
+              "missed": 54,
+              "invented": 28
+            },
+            "truck": {
+              "found": 6,
+              "missed": 33,
+              "invented": 8
+            },
+            "bus": {
+              "found": 0,
+              "missed": 14,
+              "invented": 1
+            },
+            "motorcycle": {
+              "found": 0,
+              "missed": 2,
+              "invented": 0
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0,
+              "invented": 0
+            }
+          },
+          "collateral_removed": []
+        },
+        {
+          "confidence": 0.4,
+          "large_recall": 0.2621359223300971,
+          "invented_fraction": 0.546875,
+          "player_reported_frames": [],
+          "per_kind": {
+            "person": {
+              "found": 2,
+              "missed": 15,
+              "invented": 6
+            },
+            "car": {
+              "found": 21,
+              "missed": 58,
+              "invented": 22
+            },
+            "truck": {
+              "found": 6,
+              "missed": 33,
+              "invented": 6
+            },
+            "bus": {
+              "found": 0,
+              "missed": 14,
+              "invented": 1
+            },
+            "motorcycle": {
+              "found": 0,
+              "missed": 2,
+              "invented": 0
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0,
+              "invented": 0
+            }
+          },
+          "collateral_removed": []
+        },
+        {
+          "confidence": 0.5,
+          "large_recall": 0.22330097087378642,
+          "invented_fraction": 0.48936170212765956,
+          "player_reported_frames": [],
+          "per_kind": {
+            "person": {
+              "found": 2,
+              "missed": 15,
+              "invented": 3
+            },
+            "car": {
+              "found": 17,
+              "missed": 62,
+              "invented": 19
+            },
+            "truck": {
+              "found": 5,
+              "missed": 34,
+              "invented": 0
+            },
+            "bus": {
+              "found": 0,
+              "missed": 14,
+              "invented": 1
+            },
+            "motorcycle": {
+              "found": 0,
+              "missed": 2,
+              "invented": 0
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0,
+              "invented": 0
+            }
+          },
+          "collateral_removed": []
+        }
+      ]
+    },
+    {
+      "experiment": "preprocessing",
+      "results": [
+        {
+          "input": "normalized-rgb",
+          "large_recall": 0.0,
+          "invented_fraction": null,
+          "player_reported_frames": [],
+          "per_kind": {
+            "person": {
+              "found": 0,
+              "missed": 17,
+              "invented": 0
+            },
+            "car": {
+              "found": 0,
+              "missed": 79,
+              "invented": 0
+            },
+            "truck": {
+              "found": 0,
+              "missed": 39,
+              "invented": 0
+            },
+            "bus": {
+              "found": 0,
+              "missed": 14,
+              "invented": 0
+            },
+            "motorcycle": {
+              "found": 0,
+              "missed": 2,
+              "invented": 0
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0,
+              "invented": 0
+            }
+          },
+          "mean_ms": 14.975485462855431,
+          "collateral_removed": []
+        },
+        {
+          "input": "normalized-bgr",
+          "large_recall": 0.0,
+          "invented_fraction": null,
+          "player_reported_frames": [],
+          "per_kind": {
+            "person": {
+              "found": 0,
+              "missed": 17,
+              "invented": 0
+            },
+            "car": {
+              "found": 0,
+              "missed": 79,
+              "invented": 0
+            },
+            "truck": {
+              "found": 0,
+              "missed": 39,
+              "invented": 0
+            },
+            "bus": {
+              "found": 0,
+              "missed": 14,
+              "invented": 0
+            },
+            "motorcycle": {
+              "found": 0,
+              "missed": 2,
+              "invented": 0
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0,
+              "invented": 0
+            }
+          },
+          "mean_ms": 16.006029748314177,
+          "collateral_removed": []
+        },
+        {
+          "input": "raw-rgb",
+          "large_recall": 0.23300970873786409,
+          "invented_fraction": 0.625,
+          "player_reported_frames": [],
+          "per_kind": {
+            "person": {
+              "found": 3,
+              "missed": 14,
+              "invented": 9
+            },
+            "car": {
+              "found": 18,
+              "missed": 61,
+              "invented": 29
+            },
+            "truck": {
+              "found": 5,
+              "missed": 34,
+              "invented": 5
+            },
+            "bus": {
+              "found": 0,
+              "missed": 14,
+              "invented": 2
+            },
+            "motorcycle": {
+              "found": 1,
+              "missed": 1,
+              "invented": 0
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0,
+              "invented": 0
+            }
+          },
+          "mean_ms": 16.03866559016751,
+          "collateral_removed": []
+        }
+      ]
+    },
+    {
+      "experiment": "compare-s",
+      "results": [
+        {
+          "model": "YOLOX S 640 4 threads",
+          "input": "raw-bgr",
+          "frames": 80,
+          "iou": 0.5,
+          "per_kind": {
+            "person": {
+              "found": 2,
+              "missed": 15,
+              "invented": 11
+            },
+            "car": {
+              "found": 37,
+              "missed": 42,
+              "invented": 42
+            },
+            "truck": {
+              "found": 14,
+              "missed": 25,
+              "invented": 19
+            },
+            "bus": {
+              "found": 2,
+              "missed": 12,
+              "invented": 2
+            },
+            "motorcycle": {
+              "found": 1,
+              "missed": 1,
+              "invented": 0
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0,
+              "invented": 0
+            }
+          },
+          "large_per_kind": {
+            "person": {
+              "found": 2,
+              "missed": 9
+            },
+            "car": {
+              "found": 29,
+              "missed": 24
+            },
+            "truck": {
+              "found": 13,
+              "missed": 14
+            },
+            "bus": {
+              "found": 2,
+              "missed": 9
+            },
+            "motorcycle": {
+              "found": 0,
+              "missed": 1
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0
+            }
+          },
+          "large_recall": 0.44660194174757284,
+          "invented_fraction": 0.5692307692307692,
+          "ignored_small_predictions": 39,
+          "player_reported_frames": [],
+          "player_reported_fraction": 0.0,
+          "player_present_frames": 51,
+          "removed_player_detections": 47,
+          "collateral_removed": [],
+          "mean_ms": 136.30277083684632,
+          "p95_ms": 209.00675834855062
+        },
+        {
+          "model": "YOLOX S 640 4 threads",
+          "input": "normalized-rgb",
+          "frames": 80,
+          "iou": 0.5,
+          "per_kind": {
+            "person": {
+              "found": 1,
+              "missed": 16,
+              "invented": 0
+            },
+            "car": {
+              "found": 2,
+              "missed": 77,
+              "invented": 0
+            },
+            "truck": {
+              "found": 0,
+              "missed": 39,
+              "invented": 0
+            },
+            "bus": {
+              "found": 0,
+              "missed": 14,
+              "invented": 0
+            },
+            "motorcycle": {
+              "found": 0,
+              "missed": 2,
+              "invented": 0
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0,
+              "invented": 0
+            }
+          },
+          "large_per_kind": {
+            "person": {
+              "found": 1,
+              "missed": 10
+            },
+            "car": {
+              "found": 2,
+              "missed": 51
+            },
+            "truck": {
+              "found": 0,
+              "missed": 27
+            },
+            "bus": {
+              "found": 0,
+              "missed": 11
+            },
+            "motorcycle": {
+              "found": 0,
+              "missed": 1
+            },
+            "bicycle": {
+              "found": 0,
+              "missed": 0
+            }
+          },
+          "large_recall": 0.02912621359223301,
+          "invented_fraction": 0.0,
+          "ignored_small_predictions": 0,
+          "player_reported_frames": [],
+          "player_reported_fraction": 0.0,
+          "player_present_frames": 51,
+          "removed_player_detections": 24,
+          "collateral_removed": [],
+          "mean_ms": 53.226575563894585,
+          "p95_ms": 62.48620035330532
+        }
+      ]
+    }
+  ]
+}

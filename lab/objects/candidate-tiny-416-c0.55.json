@@ -1,0 +1,2499 @@
+{
+  "frames": 80,
+  "iou": 0.4,
+  "groups": {
+    "vehicles_over_200": {
+      "found": 8,
+      "count": 35,
+      "recall": 0.22857142857142856
+    },
+    "vehicles_over_100": {
+      "found": 21,
+      "count": 93,
+      "recall": 0.22580645161290322
+    },
+    "people_over_80": {
+      "found": 2,
+      "count": 11,
+      "recall": 0.18181818181818182
+    }
+  },
+  "kind_agreement": {
+    "same": 23,
+    "matched": 27
+  },
+  "per_kind": {
+    "person": {
+      "found": 2,
+      "missed": 15,
+      "invented": 2
+    },
+    "car": {
+      "found": 17,
+      "missed": 58,
+      "invented": 10
+    },
+    "truck": {
+      "found": 7,
+      "missed": 37,
+      "invented": 0
+    },
+    "bus": {
+      "found": 1,
+      "missed": 13,
+      "invented": 1
+    },
+    "motorcycle": {
+      "found": 0,
+      "missed": 2,
+      "invented": 0
+    },
+    "bicycle": {
+      "found": 0,
+      "missed": 0,
+      "invented": 0
+    }
+  },
+  "large_per_kind": {
+    "person": {
+      "found": 2,
+      "missed": 9
+    },
+    "car": {
+      "found": 15,
+      "missed": 34
+    },
+    "truck": {
+      "found": 6,
+      "missed": 26
+    },
+    "bus": {
+      "found": 0,
+      "missed": 11
+    },
+    "motorcycle": {
+      "found": 0,
+      "missed": 1
+    },
+    "bicycle": {
+      "found": 0,
+      "missed": 0
+    }
+  },
+  "large_recall": 0.22115384615384615,
+  "invented_fraction": 0.325,
+  "ignored_small_predictions": 4,
+  "player_reported_frames": [],
+  "player_reported_fraction": 0.0,
+  "player_present_frames": 51,
+  "removed_player_detections": 47,
+  "collateral_removed": [],
+  "mean_ms": 9.70079637481831,
+  "p95_ms": 10.235868772724643,
+  "details": [
+    {
+      "frame": "000",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            420,
+            381,
+            491,
+            419
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "001",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "truck",
+          "box": [
+            376,
+            263,
+            523,
+            373
+          ],
+          "player": false
+        },
+        {
+          "kind": "bus",
+          "box": [
+            1144,
+            570,
+            1222,
+            609
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "002",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            298,
+            576,
+            373,
+            618
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            384,
+            547,
+            509,
+            623
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            450,
+            588,
+            530,
+            621
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            553,
+            569,
+            628,
+            639
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "003",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            421,
+            575,
+            490,
+            606
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            617,
+            613,
+            695,
+            672
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            262,
+            676,
+            337,
+            719
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "004",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "bus",
+          "box": [
+            441,
+            550,
+            502,
+            602
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            373,
+            644,
+            439,
+            678
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "005",
+      "detections": [],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "006",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            0.46407848596572876,
+            324.2611083984375,
+            239.6573944091797,
+            574.1715087890625
+          ],
+          "confidence": 0.8930752277374268
+        },
+        {
+          "kind": "truck",
+          "box": [
+            0.0,
+            34.12461471557617,
+            237.3443145751953,
+            404.9117431640625
+          ],
+          "confidence": 0.8061174154281616
+        },
+        {
+          "kind": "car",
+          "box": [
+            442.3089904785156,
+            294.0581359863281,
+            615.8009643554688,
+            400.465576171875
+          ],
+          "confidence": 0.7527583837509155
+        }
+      ],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "007",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            161,
+            346,
+            310,
+            410
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            550,
+            314,
+            625,
+            372
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "008",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            0,
+            485,
+            77,
+            531
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            497,
+            407,
+            675,
+            462
+          ],
+          "player": false
+        },
+        {
+          "kind": "bus",
+          "box": [
+            787,
+            371,
+            1040,
+            438
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "009",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            336.9676513671875,
+            462.1130065917969,
+            389.8623962402344,
+            493.8425598144531
+          ],
+          "confidence": 0.5665378570556641
+        }
+      ],
+      "missed": [
+        {
+          "kind": "bus",
+          "box": [
+            28,
+            498,
+            230,
+            580
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            839,
+            489,
+            947,
+            538
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "010",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            343.52081298828125,
+            469.32379150390625,
+            401.25799560546875,
+            508.8174743652344
+          ],
+          "confidence": 0.654755711555481
+        }
+      ],
+      "missed": [
+        {
+          "kind": "bus",
+          "box": [
+            29,
+            499,
+            230,
+            579
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            716,
+            490,
+            785,
+            522
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "011",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            766.2552490234375,
+            360.1920166015625,
+            847.281982421875,
+            410.3518981933594
+          ],
+          "confidence": 0.5694681406021118
+        }
+      ],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            199,
+            452,
+            419,
+            515
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            857,
+            365,
+            918,
+            423
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            1116,
+            366,
+            1195,
+            421
+          ],
+          "player": false
+        }
+      ],
+      "invented": [
+        {
+          "kind": "car",
+          "box": [
+            766.2552490234375,
+            360.1920166015625,
+            847.281982421875,
+            410.3518981933594
+          ]
+        }
+      ]
+    },
+    {
+      "frame": "012",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            821.6802978515625,
+            379.501953125,
+            886.4915161132812,
+            428.3844299316406
+          ],
+          "confidence": 0.621940016746521
+        }
+      ],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            199,
+            452,
+            420,
+            515
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            574,
+            411,
+            713,
+            449
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            1022,
+            294,
+            1280,
+            491
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "013",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            200,
+            452,
+            421,
+            516
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            830,
+            391,
+            898,
+            431
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            1101,
+            358,
+            1280,
+            410
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "014",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            438.3625793457031,
+            324.51416015625,
+            543.4407958984375,
+            367.6549377441406
+          ],
+          "confidence": 0.7917296886444092
+        },
+        {
+          "kind": "car",
+          "box": [
+            577.5730590820312,
+            327.26678466796875,
+            717.1400146484375,
+            384.0684509277344
+          ],
+          "confidence": 0.7148069739341736
+        }
+      ],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            0,
+            349,
+            167,
+            415
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            210,
+            319,
+            394,
+            396
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            736,
+            341,
+            895,
+            397
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            824,
+            316,
+            912,
+            350
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "015",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            598.3070068359375,
+            336.46197509765625,
+            840.5182495117188,
+            439.52362060546875
+          ],
+          "confidence": 0.8746228218078613
+        },
+        {
+          "kind": "car",
+          "box": [
+            455.2987976074219,
+            313.67962646484375,
+            558.4581909179688,
+            357.9281921386719
+          ],
+          "confidence": 0.8122724294662476
+        },
+        {
+          "kind": "car",
+          "box": [
+            818.06884765625,
+            307.2275695800781,
+            904.2774047851562,
+            346.4612731933594
+          ],
+          "confidence": 0.6094701886177063
+        }
+      ],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            0,
+            350,
+            168,
+            415
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            211,
+            320,
+            393,
+            395
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            445,
+            331,
+            552,
+            379
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            830,
+            324,
+            917,
+            363
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            932,
+            322,
+            1023,
+            362
+          ],
+          "player": false
+        }
+      ],
+      "invented": [
+        {
+          "kind": "car",
+          "box": [
+            455.2987976074219,
+            313.67962646484375,
+            558.4581909179688,
+            357.9281921386719
+          ]
+        },
+        {
+          "kind": "car",
+          "box": [
+            818.06884765625,
+            307.2275695800781,
+            904.2774047851562,
+            346.4612731933594
+          ]
+        }
+      ]
+    },
+    {
+      "frame": "016",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            309,
+            405,
+            576,
+            483
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            445,
+            317,
+            716,
+            405
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "017",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            267,
+            417,
+            541,
+            494
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            65,
+            370,
+            146,
+            439
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            618,
+            326,
+            901,
+            415
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "018",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            25,
+            446,
+            301,
+            526
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            394,
+            374,
+            475,
+            438
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            881,
+            325,
+            1171,
+            400
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "019",
+      "detections": [
+        {
+          "kind": "truck",
+          "box": [
+            755.639404296875,
+            69.49089050292969,
+            1134.4378662109375,
+            364.3935241699219
+          ],
+          "confidence": 0.9126867651939392
+        },
+        {
+          "kind": "car",
+          "box": [
+            261.27264404296875,
+            265.042724609375,
+            497.27166748046875,
+            365.2601318359375
+          ],
+          "confidence": 0.754322350025177
+        },
+        {
+          "kind": "car",
+          "box": [
+            471.61651611328125,
+            281.58599853515625,
+            762.5838623046875,
+            405.8808898925781
+          ],
+          "confidence": 0.6998177766799927
+        }
+      ],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "020",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "bus",
+          "box": [
+            61,
+            295,
+            271,
+            355
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            577,
+            314,
+            641,
+            356
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "021",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            1183.3602294921875,
+            611.8967895507812,
+            1278.2049560546875,
+            673.5467529296875
+          ],
+          "confidence": 0.8248429894447327
+        }
+      ],
+      "missed": [
+        {
+          "kind": "bus",
+          "box": [
+            108,
+            304,
+            321,
+            358
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "022",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "truck",
+          "box": [
+            94,
+            278,
+            274,
+            345
+          ],
+          "player": false
+        },
+        {
+          "kind": "bus",
+          "box": [
+            512,
+            307,
+            689,
+            363
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "023",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            806.1910400390625,
+            335.21221923828125,
+            882.1888427734375,
+            368.3269348144531
+          ],
+          "confidence": 0.5847606658935547
+        }
+      ],
+      "missed": [
+        {
+          "kind": "truck",
+          "box": [
+            309,
+            281,
+            489,
+            349
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            664,
+            345,
+            739,
+            401
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "024",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            912,
+            590,
+            976,
+            618
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "025",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "truck",
+          "box": [
+            967,
+            602,
+            1055,
+            654
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1063,
+            585,
+            1130,
+            620
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "026",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            878.4690551757812,
+            632.9003295898438,
+            968.7055053710938,
+            687.7569580078125
+          ],
+          "confidence": 0.7007774710655212
+        },
+        {
+          "kind": "car",
+          "box": [
+            1015.4559936523438,
+            651.883056640625,
+            1119.932861328125,
+            710.1256103515625
+          ],
+          "confidence": 0.5699330568313599
+        }
+      ],
+      "missed": [
+        {
+          "kind": "truck",
+          "box": [
+            727,
+            529,
+            824,
+            585
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            850,
+            608,
+            944,
+            667
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            1081,
+            559,
+            1238,
+            633
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1134,
+            641,
+            1274,
+            702
+          ],
+          "player": false
+        }
+      ],
+      "invented": [
+        {
+          "kind": "car",
+          "box": [
+            878.4690551757812,
+            632.9003295898438,
+            968.7055053710938,
+            687.7569580078125
+          ]
+        },
+        {
+          "kind": "car",
+          "box": [
+            1015.4559936523438,
+            651.883056640625,
+            1119.932861328125,
+            710.1256103515625
+          ]
+        }
+      ]
+    },
+    {
+      "frame": "027",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            1176.139892578125,
+            327.0185241699219,
+            1264.3157958984375,
+            371.9574279785156
+          ],
+          "confidence": 0.6930223703384399
+        },
+        {
+          "kind": "car",
+          "box": [
+            1083.0352783203125,
+            329.0858154296875,
+            1133.767333984375,
+            360.6365051269531
+          ],
+          "confidence": 0.6263524889945984
+        }
+      ],
+      "missed": [
+        {
+          "kind": "motorcycle",
+          "box": [
+            700,
+            342,
+            792,
+            394
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "028",
+      "detections": [],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "029",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            350,
+            330,
+            416,
+            364
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "030",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            392,
+            329,
+            460,
+            363
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "031",
+      "detections": [],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "032",
+      "detections": [],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "033",
+      "detections": [],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "034",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            462,
+            285,
+            550,
+            335
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "035",
+      "detections": [
+        {
+          "kind": "truck",
+          "box": [
+            201.72674560546875,
+            216.54269409179688,
+            474.0904846191406,
+            481.3522644042969
+          ],
+          "confidence": 0.730402410030365
+        }
+      ],
+      "missed": [
+        {
+          "kind": "bus",
+          "box": [
+            100,
+            320,
+            203,
+            376
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1071,
+            363,
+            1172,
+            410
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "036",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            175.80271911621094,
+            315.9891052246094,
+            223.39205932617188,
+            358.83880615234375
+          ],
+          "confidence": 0.552015483379364
+        }
+      ],
+      "missed": [
+        {
+          "kind": "truck",
+          "box": [
+            262,
+            231,
+            441,
+            432
+          ],
+          "player": false
+        },
+        {
+          "kind": "bus",
+          "box": [
+            99,
+            313,
+            224,
+            359
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1028,
+            355,
+            1097,
+            388
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "037",
+      "detections": [
+        {
+          "kind": "truck",
+          "box": [
+            280.1739501953125,
+            256.1259460449219,
+            433.5294494628906,
+            404.9443664550781
+          ],
+          "confidence": 0.5696929097175598
+        }
+      ],
+      "missed": [
+        {
+          "kind": "bus",
+          "box": [
+            99,
+            313,
+            223,
+            359
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            909,
+            356,
+            996,
+            387
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "038",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            710.2570190429688,
+            297.00042724609375,
+            870.446533203125,
+            358.2298583984375
+          ],
+          "confidence": 0.8504351377487183
+        }
+      ],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "039",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            685.8274536132812,
+            297.837646484375,
+            864.0354614257812,
+            359.8995056152344
+          ],
+          "confidence": 0.8472464680671692
+        }
+      ],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "040",
+      "detections": [],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "041",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            0,
+            332,
+            106,
+            379
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "042",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "truck",
+          "box": [
+            197,
+            335,
+            369,
+            393
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            313,
+            358,
+            441,
+            407
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "043",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            468,
+            336,
+            545,
+            379
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            567,
+            303,
+            718,
+            378
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            310,
+            350,
+            443,
+            401
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "044",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            0.0,
+            338.6476745605469,
+            61.197322845458984,
+            389.90283203125
+          ],
+          "confidence": 0.7292203307151794
+        }
+      ],
+      "missed": [
+        {
+          "kind": "truck",
+          "box": [
+            202,
+            349,
+            370,
+            390
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "045",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "truck",
+          "box": [
+            0,
+            309,
+            61,
+            355
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "046",
+      "detections": [],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "047",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            468,
+            336,
+            545,
+            379
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            568,
+            302,
+            720,
+            377
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "048",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "person",
+          "box": [
+            410,
+            300,
+            535,
+            456
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "049",
+      "detections": [
+        {
+          "kind": "person",
+          "box": [
+            879.9901733398438,
+            226.07408142089844,
+            960.954345703125,
+            430.2959289550781
+          ],
+          "confidence": 0.8583427667617798
+        }
+      ],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "050",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "truck",
+          "box": [
+            567,
+            218,
+            710,
+            306
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "051",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            409.9965515136719,
+            223.9800567626953,
+            601.3283081054688,
+            338.6479797363281
+          ],
+          "confidence": 0.582543134689331
+        }
+      ],
+      "missed": [
+        {
+          "kind": "motorcycle",
+          "box": [
+            574,
+            354,
+            687,
+            413
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "052",
+      "detections": [],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "053",
+      "detections": [],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "054",
+      "detections": [
+        {
+          "kind": "person",
+          "box": [
+            657.8271484375,
+            280.00152587890625,
+            724.4588012695312,
+            424.0174560546875
+          ],
+          "confidence": 0.6230103373527527
+        }
+      ],
+      "missed": [
+        {
+          "kind": "person",
+          "box": [
+            1031,
+            394,
+            1115,
+            440
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "055",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "person",
+          "box": [
+            560,
+            390,
+            635,
+            555
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            799,
+            286,
+            949,
+            376
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "056",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "truck",
+          "box": [
+            406,
+            326,
+            605,
+            420
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "057",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "truck",
+          "box": [
+            863,
+            344,
+            1065,
+            419
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1056,
+            337,
+            1280,
+            421
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "058",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            635.7271118164062,
+            377.8740539550781,
+            754.0009155273438,
+            436.9557189941406
+          ],
+          "confidence": 0.7299901247024536
+        }
+      ],
+      "missed": [
+        {
+          "kind": "person",
+          "box": [
+            156,
+            330,
+            260,
+            465
+          ],
+          "player": false
+        },
+        {
+          "kind": "person",
+          "box": [
+            618,
+            341,
+            672,
+            438
+          ],
+          "player": false
+        },
+        {
+          "kind": "person",
+          "box": [
+            745,
+            345,
+            796,
+            433
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "059",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            1139.236328125,
+            267.24005126953125,
+            1275.4803466796875,
+            367.2618408203125
+          ],
+          "confidence": 0.8696336150169373
+        }
+      ],
+      "missed": [
+        {
+          "kind": "person",
+          "box": [
+            634,
+            364,
+            730,
+            411
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1086,
+            333,
+            1226,
+            420
+          ],
+          "player": false
+        }
+      ],
+      "invented": [
+        {
+          "kind": "car",
+          "box": [
+            1139.236328125,
+            267.24005126953125,
+            1275.4803466796875,
+            367.2618408203125
+          ]
+        }
+      ]
+    },
+    {
+      "frame": "060",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "person",
+          "box": [
+            910,
+            279,
+            983,
+            367
+          ],
+          "player": false
+        },
+        {
+          "kind": "person",
+          "box": [
+            430,
+            416,
+            555,
+            471
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            939,
+            249,
+            1082,
+            347
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "061",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            720.9321899414062,
+            380.3794250488281,
+            851.8655395507812,
+            467.2221984863281
+          ],
+          "confidence": 0.7084394097328186
+        },
+        {
+          "kind": "car",
+          "box": [
+            640.3024291992188,
+            365.08685302734375,
+            778.8152465820312,
+            438.6313781738281
+          ],
+          "confidence": 0.6630016565322876
+        }
+      ],
+      "missed": [
+        {
+          "kind": "person",
+          "box": [
+            665,
+            394,
+            744,
+            468
+          ],
+          "player": false
+        },
+        {
+          "kind": "person",
+          "box": [
+            997,
+            442,
+            1105,
+            491
+          ],
+          "player": false
+        }
+      ],
+      "invented": [
+        {
+          "kind": "car",
+          "box": [
+            720.9321899414062,
+            380.3794250488281,
+            851.8655395507812,
+            467.2221984863281
+          ]
+        }
+      ]
+    },
+    {
+      "frame": "062",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "person",
+          "box": [
+            552,
+            332,
+            601,
+            397
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "063",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            320,
+            347,
+            430,
+            400
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "064",
+      "detections": [],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "065",
+      "detections": [],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "066",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            19.33978843688965,
+            354.1733093261719,
+            299.99871826171875,
+            516.6096801757812
+          ],
+          "confidence": 0.931830883026123
+        }
+      ],
+      "missed": [
+        {
+          "kind": "truck",
+          "box": [
+            846,
+            341,
+            1227,
+            455
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "067",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            906.4465942382812,
+            339.2201843261719,
+            1041.5584716796875,
+            418.95166015625
+          ],
+          "confidence": 0.7236419916152954
+        },
+        {
+          "kind": "car",
+          "box": [
+            1171.1697998046875,
+            322.78509521484375,
+            1280.0,
+            414.7232360839844
+          ],
+          "confidence": 0.6093795299530029
+        }
+      ],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            912,
+            416,
+            1027,
+            489
+          ],
+          "player": false
+        },
+        {
+          "kind": "bus",
+          "box": [
+            1110,
+            397,
+            1280,
+            526
+          ],
+          "player": false
+        }
+      ],
+      "invented": [
+        {
+          "kind": "car",
+          "box": [
+            906.4465942382812,
+            339.2201843261719,
+            1041.5584716796875,
+            418.95166015625
+          ]
+        },
+        {
+          "kind": "car",
+          "box": [
+            1171.1697998046875,
+            322.78509521484375,
+            1280.0,
+            414.7232360839844
+          ]
+        }
+      ]
+    },
+    {
+      "frame": "068",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            452,
+            462,
+            1056,
+            720
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            0,
+            270,
+            350,
+            350
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            238,
+            269,
+            420,
+            309
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "069",
+      "detections": [
+        {
+          "kind": "person",
+          "box": [
+            552.590576171875,
+            324.0440979003906,
+            634.4392700195312,
+            446.0127258300781
+          ],
+          "confidence": 0.7489225268363953
+        }
+      ],
+      "missed": [],
+      "invented": [
+        {
+          "kind": "person",
+          "box": [
+            552.590576171875,
+            324.0440979003906,
+            634.4392700195312,
+            446.0127258300781
+          ]
+        }
+      ]
+    },
+    {
+      "frame": "070",
+      "detections": [
+        {
+          "kind": "person",
+          "box": [
+            314.8681640625,
+            373.02947998046875,
+            363.6034240722656,
+            476.7177734375
+          ],
+          "confidence": 0.6575935482978821
+        }
+      ],
+      "missed": [
+        {
+          "kind": "bus",
+          "box": [
+            0,
+            208,
+            423,
+            414
+          ],
+          "player": false
+        },
+        {
+          "kind": "person",
+          "box": [
+            1048,
+            255,
+            1102,
+            355
+          ],
+          "player": false
+        }
+      ],
+      "invented": [
+        {
+          "kind": "person",
+          "box": [
+            314.8681640625,
+            373.02947998046875,
+            363.6034240722656,
+            476.7177734375
+          ]
+        }
+      ]
+    },
+    {
+      "frame": "071",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            745.5322265625,
+            306.7568664550781,
+            894.6759033203125,
+            392.6744079589844
+          ],
+          "confidence": 0.72259920835495
+        }
+      ],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            120,
+            304,
+            485,
+            376
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            514,
+            264,
+            704,
+            355
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "072",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            563.2952880859375,
+            250.48834228515625,
+            693.907470703125,
+            337.0475158691406
+          ],
+          "confidence": 0.8419479131698608
+        },
+        {
+          "kind": "car",
+          "box": [
+            748.8525390625,
+            261.7875671386719,
+            931.6801147460938,
+            338.3549499511719
+          ],
+          "confidence": 0.6383656859397888
+        }
+      ],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            177,
+            237,
+            280,
+            291
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            535,
+            214,
+            743,
+            312
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1000,
+            274,
+            1280,
+            354
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "073",
+      "detections": [
+        {
+          "kind": "bus",
+          "box": [
+            1024.177978515625,
+            33.21525192260742,
+            1279.0528564453125,
+            288.03021240234375
+          ],
+          "confidence": 0.759059488773346
+        }
+      ],
+      "missed": [
+        {
+          "kind": "truck",
+          "box": [
+            327,
+            184,
+            530,
+            281
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            248,
+            258,
+            407,
+            319
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            929,
+            300,
+            1092,
+            394
+          ],
+          "player": false
+        }
+      ],
+      "invented": [
+        {
+          "kind": "bus",
+          "box": [
+            1024.177978515625,
+            33.21525192260742,
+            1279.0528564453125,
+            288.03021240234375
+          ]
+        }
+      ]
+    },
+    {
+      "frame": "074",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            112,
+            264,
+            270,
+            324
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            605,
+            204,
+            807,
+            279
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "075",
+      "detections": [
+        {
+          "kind": "car",
+          "box": [
+            383.45684814453125,
+            267.3903503417969,
+            679.4169921875,
+            371.1859436035156
+          ],
+          "confidence": 0.7494621872901917
+        }
+      ],
+      "missed": [
+        {
+          "kind": "car",
+          "box": [
+            324,
+            301,
+            530,
+            392
+          ],
+          "player": false
+        }
+      ],
+      "invented": [
+        {
+          "kind": "car",
+          "box": [
+            383.45684814453125,
+            267.3903503417969,
+            679.4169921875,
+            371.1859436035156
+          ]
+        }
+      ]
+    },
+    {
+      "frame": "076",
+      "detections": [],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "077",
+      "detections": [],
+      "missed": [],
+      "invented": []
+    },
+    {
+      "frame": "078",
+      "detections": [],
+      "missed": [
+        {
+          "kind": "person",
+          "box": [
+            91,
+            248,
+            121,
+            332
+          ],
+          "player": false
+        },
+        {
+          "kind": "person",
+          "box": [
+            143,
+            238,
+            168,
+            327
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            353,
+            228,
+            427,
+            275
+          ],
+          "player": false
+        }
+      ],
+      "invented": []
+    },
+    {
+      "frame": "079",
+      "detections": [],
+      "missed": [],
+      "invented": []
+    }
+  ],
+  "candidate": "tiny-416-c0.55",
+  "weights_sha256": "427cc366d34e27ff7a03e2899b5e3671425c262ea2291f88bb942bc1cc70b0f7",
+  "poller": {
+    "loop_hz": 30.0,
+    "results_hz": 15.0,
+    "poll_mean_ms": 0.05038949951995164,
+    "poll_p95_ms": 0.13431700062938035,
+    "poll_max_ms": 0.15608302783221006
+  },
+  "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+  "rescored": "Saved filtered predictions; original runtime and player-filter measurements retained.",
+  "matched_precision_invented_fraction": 0.325,
+  "eligible_reports": 40,
+  "scoring_accounting": "Invented fraction uses every size-eligible filtered report; matched-precision fraction is retained separately. Recounted from unchanged saved predictions.",
+  "rescoring_code_sha256": "2afb99807395461bfb1bccdd8560613a87c7c7f02d0f0b368dfb2c850597c777"
+}

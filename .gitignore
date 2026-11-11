@@ -14,6 +14,10 @@ lab/minimap/data/crops.npy
 lab/blips/skill-simulation.json
 lab/blips/*-scenes-*.jpg
 
+# Fetch with pilot/tools/fetch_models.py (20 MB).
+pilot/models/*.onnx
+pilot/models/*.pth
+
 # contact sheets rebuilt by lab/hud/prepare.py, 15 MB
 lab/hud/review/
 
@@ -26,3 +30,10 @@ lab/waypoint/simulation.json
 
 # speech files rebuilt by pilot/tools/commentator_replay.py
 lab/commentator/**/*.wav
+
+# sheets rebuilt by pilot/tools/evaluate_objects.py, 42 MB; the three the report and its review show stay
+lab/objects/p14b/sheets/
+lab/objects/holdout/sheets/*
+!lab/objects/holdout/sheets/labelled-004.jpg
+!lab/objects/holdout/sheets/labelled-008.jpg
+!lab/objects/holdout/sheets/labelled-040.jpg
