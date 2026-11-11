@@ -1,0 +1,248 @@
+[
+  {
+    "id": "wifi-01013",
+    "source": "wifi",
+    "i": 1013,
+    "capture_s": 46.7159,
+    "selection": "random",
+    "rgb_sha256": "3c63adccb95bfad5c12921557a142404af22941da8bff322f91a71ac9a9bf0b3",
+    "screen": "game",
+    "health": 1
+  },
+  {
+    "id": "wifi-03422",
+    "source": "wifi",
+    "i": 3422,
+    "capture_s": 153.7323,
+    "selection": "random",
+    "rgb_sha256": "15d789f7a1a759ec6b641e2e01271c0b52102297cb381d323faf7c32c79951ad",
+    "screen": "phone",
+    "health": 0.5
+  },
+  {
+    "id": "wifi-13181",
+    "source": "wifi",
+    "i": 13181,
+    "capture_s": 652.477,
+    "selection": "random",
+    "rgb_sha256": "14dd30a528fe6f652962308af18fb830a4dc350d0b4809ac012323384f02f93c",
+    "screen": "game",
+    "health": 1
+  },
+  {
+    "id": "wifi-00332",
+    "source": "wifi",
+    "i": 332,
+    "capture_s": 14.7448,
+    "selection": "rare",
+    "rgb_sha256": "aab8631c839f4d59587036bd22af94a53ed0d9337bd4ab14a490340cf657b4f0",
+    "screen": "weapon_wheel"
+  },
+  {
+    "id": "wifi-10961",
+    "source": "wifi",
+    "i": 10961,
+    "capture_s": 539.2213,
+    "selection": "rare",
+    "rgb_sha256": "7bd5124c849112f89a718e26493b36e94bd0be9b0ce8736a098a07c2730f5003",
+    "screen": "weapon_wheel"
+  },
+  {
+    "id": "wifi-03424",
+    "source": "wifi",
+    "i": 3424,
+    "capture_s": 153.8522,
+    "selection": "rare",
+    "rgb_sha256": "92e4e9e7e205d85950662ef27e1284dd55b64c1b738eacec3d155255d668ab7c",
+    "screen": "phone"
+  },
+  {
+    "id": "wifi-00781",
+    "source": "wifi",
+    "i": 781,
+    "capture_s": 33.9962,
+    "selection": "rare",
+    "rgb_sha256": "f9660e882dc5b41b74076a9808421b7654249a930676e93458e9b4918d8d066a",
+    "screen": "failed",
+    "health": null,
+    "health_note": "HUD absent or transitioning."
+  },
+  {
+    "id": "wifi-00888",
+    "source": "wifi",
+    "i": 888,
+    "capture_s": 40.1521,
+    "selection": "rare",
+    "rgb_sha256": "7b2a224d9b472b101042350aafcb47f77823e930e074124e09eedecd7a17db23",
+    "screen": "loading",
+    "health": null,
+    "health_note": "HUD absent or transitioning."
+  },
+  {
+    "id": "wifi-07277",
+    "source": "wifi",
+    "i": 7277,
+    "capture_s": 338.8176,
+    "selection": "rare",
+    "rgb_sha256": "3639b357808ed5cd5785a6c3bdcba0a5021fa4406d0dab862dcefee637e7bf5f",
+    "screen": "passed"
+  },
+  {
+    "id": "wifi-07317",
+    "source": "wifi",
+    "i": 7317,
+    "capture_s": 341.2215,
+    "selection": "rare",
+    "rgb_sha256": "114b43ca336c4198c6078b387a8442d0205a4fbb58d32907fd4255cbf4cc50a5",
+    "screen": "passed"
+  },
+  {
+    "id": "wifi-08196",
+    "source": "wifi",
+    "i": 8196,
+    "capture_s": 385.1642,
+    "selection": "rare",
+    "rgb_sha256": "229ea9e993bdd48166473ec9825c9ec0b5e89b81fe4a6a085d88c5f3dcd55d62",
+    "screen": "pause",
+    "health": null,
+    "health_note": "HUD absent or transitioning."
+  },
+  {
+    "id": "wifi-08221",
+    "source": "wifi",
+    "i": 8221,
+    "capture_s": 387.0318,
+    "selection": "rare",
+    "rgb_sha256": "91ad47a055762ca9bfa4e087abfecf1bd744e45034f3cb45077f17a99db6e2a9",
+    "screen": "pause",
+    "health": null,
+    "health_note": "HUD absent or transitioning."
+  },
+  {
+    "id": "wifi-08243",
+    "source": "wifi",
+    "i": 8243,
+    "capture_s": 388.5897,
+    "selection": "rare",
+    "rgb_sha256": "99ca76c6dd9e94b99995b89a45e1ebb193fbac00ea9d0ed01585771cc5cf5b84",
+    "screen": "map",
+    "health": null,
+    "health_note": "HUD absent or transitioning."
+  },
+  {
+    "id": "wifi-00913",
+    "source": "wifi",
+    "i": 913,
+    "capture_s": 41.6085,
+    "selection": "rare",
+    "rgb_sha256": "822e3a311bc34185394aeb709bb83310f1243089b95cdadc218eee179b1d6f78",
+    "screen": "loading",
+    "health": null,
+    "health_note": "HUD absent or transitioning."
+  },
+  {
+    "id": "wifi-00179",
+    "source": "wifi",
+    "i": 179,
+    "capture_s": 7.9975,
+    "selection": "rare",
+    "rgb_sha256": "ff6cfd8807cdfab52ae8e3659292f28df3977be70e027b7b64eab01b069ba2c5",
+    "screen": "game",
+    "health": 0.58
+  },
+  {
+    "id": "wifi-00545",
+    "source": "wifi",
+    "i": 545,
+    "capture_s": 25.0765,
+    "selection": "rare",
+    "rgb_sha256": "3cb71c363d3c3194e84204e673171685aaa0d00b4eb3397a5df1bacd0f774e78",
+    "screen": "game",
+    "health": 0.27
+  },
+  {
+    "id": "wifi-00679",
+    "source": "wifi",
+    "i": 679,
+    "capture_s": 30.0096,
+    "selection": "rare",
+    "rgb_sha256": "8f7bbb9bfe7d307e23185951b43a3e3f93d7770312049d7fe52b9418e5a7ff4d",
+    "screen": "game",
+    "health": null,
+    "health_note": "No defensible fill endpoint: compression, scene bleed or minimap icon occlusion."
+  },
+  {
+    "id": "wifi-02708",
+    "source": "wifi",
+    "i": 2708,
+    "capture_s": 119.9851,
+    "selection": "rare",
+    "rgb_sha256": "b4fb48fe133b08c70bfcc243321a24db393de7447df837e829eeed2c674b653b",
+    "screen": "game",
+    "health": 0.4
+  },
+  {
+    "id": "clean1-00818",
+    "source": "clean1",
+    "i": 818,
+    "capture_s": 13.7281,
+    "selection": "random",
+    "rgb_sha256": "b1dd540289a78d2b186440c6f6cab7d0bd8aacabae389dd96403c59f988edda9",
+    "screen": "game",
+    "health": 0.55
+  },
+  {
+    "id": "clean2-01932",
+    "source": "clean2",
+    "i": 1932,
+    "capture_s": 32.2966,
+    "selection": "random",
+    "rgb_sha256": "e15a09db077b88f1b01cf3d117c7991286d8b4af15772fa1aba3d316be14edda",
+    "screen": "game",
+    "health": 0.55
+  },
+  {
+    "id": "clean2-07360",
+    "source": "clean2",
+    "i": 7360,
+    "capture_s": 123.1946,
+    "selection": "random",
+    "rgb_sha256": "e6b10c0d26f44d1e52931e5dfaee720187f88fb5daa7518574c54e797d94b3f3",
+    "screen": "game",
+    "health": null,
+    "health_note": "No defensible fill endpoint: compression, scene bleed or minimap icon occlusion."
+  },
+  {
+    "id": "wifi-02869",
+    "source": "wifi",
+    "i": 2869,
+    "capture_s": 127.5554,
+    "selection": "random",
+    "rgb_sha256": "2a8530c12bdd7e121c143880bc45cf47028a7a08bcafe55fc8262584fd1ace97",
+    "screen": "game",
+    "health": null,
+    "health_note": "No defensible fill endpoint: compression, scene bleed or minimap icon occlusion."
+  },
+  {
+    "id": "wifi-03184",
+    "source": "wifi",
+    "i": 3184,
+    "capture_s": 141.718,
+    "selection": "random",
+    "rgb_sha256": "69f50e267de4755a2dc9acf010396bad48093bcc96d463b227078627d568aba1",
+    "screen": "game",
+    "health": null,
+    "health_note": "No defensible fill endpoint: compression, scene bleed or minimap icon occlusion."
+  },
+  {
+    "id": "wifi-12601",
+    "source": "wifi",
+    "i": 12601,
+    "capture_s": 627.0426,
+    "selection": "random",
+    "rgb_sha256": "84b1997a5815ba7d09c03a13735556b6520116e6522efbd8f8f82711fc4e719c",
+    "screen": "game",
+    "health": null,
+    "health_note": "HUD absent or transitioning."
+  }
+]

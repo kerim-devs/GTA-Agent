@@ -1,0 +1,222 @@
+{
+  "frames": 200,
+  "confusion": {
+    "game": {
+      "game": 110,
+      "pause": 0,
+      "map": 0,
+      "weapon_wheel": 0,
+      "phone": 0,
+      "failed": 0,
+      "passed": 0,
+      "loading": 0
+    },
+    "pause": {
+      "game": 4,
+      "pause": 7,
+      "map": 0,
+      "weapon_wheel": 0,
+      "phone": 0,
+      "failed": 0,
+      "passed": 0,
+      "loading": 0
+    },
+    "map": {
+      "game": 0,
+      "pause": 0,
+      "map": 14,
+      "weapon_wheel": 0,
+      "phone": 0,
+      "failed": 0,
+      "passed": 0,
+      "loading": 0
+    },
+    "weapon_wheel": {
+      "game": 1,
+      "pause": 0,
+      "map": 0,
+      "weapon_wheel": 18,
+      "phone": 0,
+      "failed": 0,
+      "passed": 0,
+      "loading": 0
+    },
+    "phone": {
+      "game": 1,
+      "pause": 0,
+      "map": 0,
+      "weapon_wheel": 0,
+      "phone": 12,
+      "failed": 0,
+      "passed": 0,
+      "loading": 0
+    },
+    "failed": {
+      "game": 0,
+      "pause": 0,
+      "map": 0,
+      "weapon_wheel": 0,
+      "phone": 0,
+      "failed": 15,
+      "passed": 0,
+      "loading": 0
+    },
+    "passed": {
+      "game": 2,
+      "pause": 0,
+      "map": 0,
+      "weapon_wheel": 0,
+      "phone": 0,
+      "failed": 0,
+      "passed": 8,
+      "loading": 0
+    },
+    "loading": {
+      "game": 0,
+      "pause": 0,
+      "map": 0,
+      "weapon_wheel": 0,
+      "phone": 0,
+      "failed": 0,
+      "passed": 0,
+      "loading": 8
+    }
+  },
+  "groups": {
+    "random": {
+      "count": 100,
+      "correct": 99
+    },
+    "rare": {
+      "count": 100,
+      "correct": 93
+    }
+  },
+  "screen_accuracy": 0.96,
+  "ordinary_game_frames": 110,
+  "false_stops": 0,
+  "false_stop_rate": 0.0,
+  "health_labels": 73,
+  "health_within_005": 68,
+  "health_hit_rate": 0.9315068493150684,
+  "health_abstentions": 3,
+  "health_mae_when_read": 0.021079365079365076,
+  "mean_ms": 0.30416197766666664,
+  "p95_frame_mean_ms": 0.4171542833333332,
+  "repeats_per_frame": 30,
+  "misses": [
+    {
+      "id": "wifi-03422",
+      "source": "wifi",
+      "i": 3422,
+      "capture_s": 153.7323,
+      "expected": "phone",
+      "actual": "game"
+    },
+    {
+      "id": "wifi-10961",
+      "source": "wifi",
+      "i": 10961,
+      "capture_s": 539.2213,
+      "expected": "weapon_wheel",
+      "actual": "game"
+    },
+    {
+      "id": "wifi-07277",
+      "source": "wifi",
+      "i": 7277,
+      "capture_s": 338.8176,
+      "expected": "passed",
+      "actual": "game"
+    },
+    {
+      "id": "wifi-07279",
+      "source": "wifi",
+      "i": 7279,
+      "capture_s": 339.1331,
+      "expected": "passed",
+      "actual": "game"
+    },
+    {
+      "id": "wifi-08221",
+      "source": "wifi",
+      "i": 8221,
+      "capture_s": 387.0318,
+      "expected": "pause",
+      "actual": "game"
+    },
+    {
+      "id": "wifi-08224",
+      "source": "wifi",
+      "i": 8224,
+      "capture_s": 387.3534,
+      "expected": "pause",
+      "actual": "game"
+    },
+    {
+      "id": "wifi-08230",
+      "source": "wifi",
+      "i": 8230,
+      "capture_s": 387.4617,
+      "expected": "pause",
+      "actual": "game"
+    },
+    {
+      "id": "wifi-08237",
+      "source": "wifi",
+      "i": 8237,
+      "capture_s": 388.1795,
+      "expected": "pause",
+      "actual": "game"
+    }
+  ],
+  "health_misses": [
+    {
+      "id": "wifi-03248",
+      "source": "wifi",
+      "i": 3248,
+      "capture_s": 144.478,
+      "expected": 0.43,
+      "actual": 0.0,
+      "error": 0.43
+    },
+    {
+      "id": "wifi-04876",
+      "source": "wifi",
+      "i": 4876,
+      "capture_s": 223.2659,
+      "expected": 0.5,
+      "actual": 0.0,
+      "error": 0.5
+    },
+    {
+      "id": "wifi-06660",
+      "source": "wifi",
+      "i": 6660,
+      "capture_s": 308.7334,
+      "expected": 0.5,
+      "actual": null,
+      "error": null
+    },
+    {
+      "id": "wifi-07584",
+      "source": "wifi",
+      "i": 7584,
+      "capture_s": 354.0662,
+      "expected": 0.5,
+      "actual": null,
+      "error": null
+    },
+    {
+      "id": "wifi-07871",
+      "source": "wifi",
+      "i": 7871,
+      "capture_s": 368.2327,
+      "expected": 0.5,
+      "actual": null,
+      "error": null
+    }
+  ],
+  "missing_screen_classes": [],
+  "passed": true
+}
