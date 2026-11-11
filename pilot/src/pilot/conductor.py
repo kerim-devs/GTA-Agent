@@ -97,6 +97,7 @@ class Conductor:
         self.last_hud = None
         self.wanted_candidate = None
         self.wanted_since = None
+        self.wanted_seen = None
         self.wanted_level = None
         self.low_health_since = None
         self.low_health_reported = False
@@ -201,7 +202,7 @@ class Conductor:
             self.runner.describe(),
             notebook,
             str(jpeg),
-            hud=None if observation.hud is None else asdict(observation.hud),
+            hud=self._hud_for_head(observation),
             objects=[asdict(item) for item in observation.objects[:12]],
         )
         prompt_file = self.directory / f"{stem}.prompt.txt"
@@ -302,6 +303,17 @@ class Conductor:
             self.carry_allowed = False
         return result
 
+    def _hud_for_head(self, observation):
+        if observation.hud is None:
+            return None
+        hud = asdict(observation.hud)
+        # The one tick the head is asked on may be one the reader stood out; the level the stars
+        # held a moment ago says more than nothing.
+        fresh = self.wanted_seen is not None and observation.time - self.wanted_seen <= 5.0
+        if hud["wanted"] is None and fresh:
+            hud["wanted"] = self.wanted_level
+        return hud
+
     def _hud_events(self, observation):
         hud, t = observation.hud, observation.time
         if hud is None:
@@ -309,18 +321,19 @@ class Conductor:
             self.low_health_reported = False
             return []
         events = []
-        if self.last_hud is None and hud.wanted is not None:
-            self.wanted_level = hud.wanted
-        if hud.wanted != self.wanted_candidate:
-            self.wanted_candidate, self.wanted_since = hud.wanted, t
-        if (
-            hud.wanted is not None
-            and hud.wanted != self.wanted_level
-            and self.wanted_since is not None
-            and t - self.wanted_since >= 0.5
-        ):
-            events.append({"kind": "wanted_changed", "wanted": hud.wanted})
-            self.wanted_level = hud.wanted
+        if hud.wanted is not None:
+            # A tick without a number is stood out and decides nothing: the reader abstains on one
+            # clean frame in six and for seconds at a time. A number counts once it has been read
+            # again half a second later with no other number in between and no gap over a second.
+            if hud.wanted != self.wanted_candidate or t - self.wanted_seen > 1.0:
+                self.wanted_candidate, self.wanted_since = hud.wanted, t
+            self.wanted_seen = t
+            if hud.wanted != self.wanted_level and t - self.wanted_since >= 0.5:
+                # A session that begins without stars has nothing to tell; one that begins with
+                # stars does.
+                if self.wanted_level is not None or hud.wanted:
+                    events.append({"kind": "wanted_changed", "wanted": hud.wanted})
+                self.wanted_level = hud.wanted
         if hud.health is not None and hud.health < 0.3:
             if self.low_health_since is None:
                 self.low_health_since = t

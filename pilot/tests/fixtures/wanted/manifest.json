@@ -124,5 +124,19 @@
     "i": 12277,
     "capture_s": 609.9841,
     "rgb_sha256": "a6015fc158fefccb045b13f338667d8e5c502931d260cab90c04ed2b7e37adc1"
+  },
+  {
+    "id": "clean1-00060",
+    "source": "clean1",
+    "i": 60,
+    "capture_s": 0.998,
+    "rgb_sha256": "4e3fa3f7351ebf791a06e03b0e9ea1282a9fc79f6197de4e83c4b50f6ad97de8"
+  },
+  {
+    "id": "clean1-00413",
+    "source": "clean1",
+    "i": 413,
+    "capture_s": 6.9219,
+    "rgb_sha256": "a381f89b6f0ae5dbc0f96d1d50588fc95f03311dafa76f5122eff8efb1620760"
   }
 ]

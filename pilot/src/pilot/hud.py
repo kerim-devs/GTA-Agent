@@ -158,10 +158,15 @@ def _wanted(frame: np.ndarray, game_hud: bool) -> tuple[int | None, bool]:
     if count:
         return count, False
     # A zero needs corroborating gameplay HUD and a readable empty corner.
-    # Bright white clipping and codec block edges are not evidence of zero.
+    # Codec block edges are not evidence of zero. A lit star keeps its black
+    # outline in front of a white sky (darkest pixel under 25 on all 214
+    # labelled stars), so a bright corner is empty only with nothing dark in
+    # the star row.
     corner = frame[32:64, 1120:1216]
-    if not game_hud or (corner.min(axis=2) > 235).mean() > 0.7:
+    if not game_hud:
         return None, False
+    if (corner.min(axis=2) > 235).mean() > 0.7:
+        return (0 if gray.min() > 200 else None), False
     values = corner.astype(np.int16)
     dy = np.abs(np.diff(values, axis=0)).mean(axis=2)
     dx = np.abs(np.diff(values, axis=1)).mean(axis=2)

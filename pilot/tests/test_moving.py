@@ -206,6 +206,74 @@ def test_hud_events_debounce_and_observation_payload(tmp_path):
         conductor.close()
 
 
+def wanted_events(conductor):
+    return [event["wanted"] for event in conductor.pending if event["kind"] == "wanted_changed"]
+
+
+def test_a_tick_without_a_star_count_does_not_restart_the_half_second(tmp_path):
+    conductor, _, tick = setup(tmp_path)
+    try:
+        for t in (0.1, 0.4, 0.7):
+            tick(t, hud=Hud(wanted=0))
+        assert conductor.wanted_level == 0 and not wanted_events(conductor)  # begins without stars: silent
+        tick(1.0, hud=Hud(wanted=1))
+        for t in (1.1, 1.2, 1.3, 1.4):
+            tick(t, hud=Hud())  # the reader abstains, as it does on one clean frame in six
+        assert not wanted_events(conductor)
+        tick(1.6, hud=Hud(wanted=1))
+        assert wanted_events(conductor) == [1]
+    finally:
+        conductor.close()
+
+
+def test_one_stray_star_count_and_the_same_one_much_later_are_not_a_level(tmp_path):
+    conductor, _, tick = setup(tmp_path)
+    try:
+        for t in (0.1, 0.4, 0.7):
+            tick(t, hud=Hud(wanted=0))
+        tick(1.0, hud=Hud(wanted=2))
+        for t in (1.5, 2.0, 2.5, 3.0):
+            tick(t, hud=Hud())
+        tick(3.1, hud=Hud(wanted=2))  # more than a second after the first: the count starts over
+        assert not wanted_events(conductor)
+        tick(3.4, hud=Hud(wanted=0))  # another number in between ends it
+        tick(3.7, hud=Hud(wanted=2))
+        assert not wanted_events(conductor)
+        tick(4.0, hud=Hud(wanted=2))
+        tick(4.3, hud=Hud(wanted=2))
+        assert wanted_events(conductor) == [2]
+    finally:
+        conductor.close()
+
+
+def test_a_session_that_begins_with_stars_tells_the_head_and_the_request_carries_the_level(tmp_path):
+    conductor, pending, tick = setup(tmp_path)
+    try:
+        pending.jobs[0][0].set_result(response(("wait", {"duration": 5})))
+        tick(0.1, hud=Hud(wanted=3))
+        tick(0.4, hud=Hud(wanted=3))
+        assert not wanted_events(conductor)
+        tick(0.7, hud=Hud(wanted=3))
+        tick(0.8, hud=Hud())  # asked on a tick the reader stood out
+        request = pending.jobs[1][1]
+        assert [event["wanted"] for event in request.events if event["kind"] == "wanted_changed"] == [3]
+        assert request.hud["wanted"] == 3
+    finally:
+        conductor.close()
+
+
+def test_the_request_does_not_carry_a_star_level_that_is_old(tmp_path):
+    conductor, _, tick = setup(tmp_path)
+    try:
+        tick(0.1, hud=Hud(wanted=0))
+        tick(0.7, hud=Hud(wanted=0))
+        assert conductor._hud_for_head(Observation(FLAT, True, 3.0, hud=Hud()))["wanted"] == 0
+        assert conductor._hud_for_head(Observation(FLAT, True, 6.0, hud=Hud()))["wanted"] is None
+        assert conductor._hud_for_head(Observation(FLAT, True, 6.0, hud=Hud(wanted=1)))["wanted"] == 1
+    finally:
+        conductor.close()
+
+
 def test_registry_drives_schema_prompt_and_runner(monkeypatch):
     class Nod:
         name = "nod"

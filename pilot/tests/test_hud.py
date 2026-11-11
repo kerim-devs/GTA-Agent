@@ -36,6 +36,10 @@ def wanted_frame(name):
         ("wifi-12277", None),
         ("wifi-12603", None),
         ("wifi-12934", None),
+        # A clean cable frame with white sky in the corner: nothing dark in the star row is an
+        # empty corner, a dark edge in it that is no star stays unread.
+        ("clean1-00060", 0),
+        ("clean1-00413", None),
     ],
 )
 def test_real_wanted_counts_and_abstentions(name, wanted):
@@ -75,14 +79,36 @@ def test_wanted_does_not_bridge_damage_or_remember_previous_frames():
     np.testing.assert_array_equal(one, before)
 
 
-def test_ambiguous_bright_corner_and_missing_star_slot_abstain():
+def test_bright_corner_is_empty_only_without_anything_dark_and_a_missing_star_slot_abstains():
     bright = wanted_frame("wifi-10456")
     bright[30:64, 1119:1219] = 255
+    assert read(bright).wanted == 0
+    # A lit star always brings its black outline; a dark mark that matches no star is not a zero.
+    bright[40:52, 1150:1156] = 0
     assert read(bright).wanted is None
+    # The real stars in front of a white sky still count.
+    assert read(wanted_frame("wifi-11588")).wanted == 1
     broken = wanted_frame("wifi-11857")
     # A lost rightmost slot must not turn a three-star HUD into two stars.
     broken[34:58, 1195:1219] = 0
     assert read(broken).wanted is None
+
+
+def test_a_codec_block_edge_through_the_corner_is_not_an_empty_corner():
+    blocky = wanted_frame("wifi-10456")
+    assert read(blocky).wanted == 0
+    # The lower half of the corner comes from another block row: a step along the 16 pixel grid.
+    lower = blocky[48:64, 1120:1216].astype(np.int16)
+    blocky[48:64, 1120:1216] = np.clip(lower - 80, 0, 255).astype(np.uint8)
+    assert read(blocky).wanted is None
+
+
+def test_death_text_only_confirms_letters_that_are_there():
+    smeared = wanted_frame("wifi-12745")
+    # Red where the banner sits, in a black and white picture, but no letters.
+    noise = np.random.default_rng(7).integers(60, 255, size=(120, 688), dtype=np.uint8)
+    smeared[292:412, 296:984] = np.stack((noise, noise // 8, noise // 8), axis=2)
+    assert read(smeared, SimpleNamespace(banner="AUSSER GEFECHT")).screen != "wasted"
 
 
 FIXTURES = Path(__file__).resolve().parents[2] / "lab/hud/fixtures"
