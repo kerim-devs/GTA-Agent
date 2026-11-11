@@ -1,6 +1,7 @@
 #!/bin/zsh
 # Kerim plays and everything is kept: starts the bridge if it is not running and records picture and
-# controller without a break, a new folder every fifteen minutes, until Ctrl-C.
+# controller without a break, a new folder every fifteen minutes, until Ctrl-C or until less than
+# 4 GB are left on the disk.
 #
 #   lab/live/play-session.sh [console address]        default 192.168.0.93
 #
@@ -10,6 +11,7 @@
 host=${1:-192.168.0.93}
 out=/Users/kerim/recordings/kerim
 every=900
+min_free_gb=4
 cd /Users/kerim/Documents/ChatGPT/gta || exit 1
 rp=remoteplay/.venv/bin/ps5rp
 api=http://127.0.0.1:9395
@@ -53,6 +55,11 @@ while true; do
   state=$(curl -s -m 2 $api/status)
   if [[ -z $state ]]; then
     echo "$(now) the bridge is gone"
+    finish 1
+  fi
+  free=$(df -g $out | awk 'NR == 2 { print $4 }')
+  if (( free < min_free_gb )); then
+    echo "$(now) only $free GB left on the disk"
     finish 1
   fi
   pad=$(field gamepad)
