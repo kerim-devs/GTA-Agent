@@ -1,0 +1,4863 @@
+{
+  "counts": {
+    "foot_explore": 28,
+    "fallback": 79,
+    "low_health_on_foot": 3,
+    "foot_target": 6,
+    "screen_reflex": 14,
+    "screen_wait": 2,
+    "vehicle_waypoint": 15,
+    "vehicle_route": 6,
+    "low_health_vehicle": 1,
+    "wanted_on_foot": 15,
+    "wanted_on_foot_vehicle": 4
+  },
+  "total": 173,
+  "rules": 94,
+  "fallback": 79,
+  "cases": [
+    {
+      "id": "pilot-20261110-230229-01",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+        "line": 2
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 5
+            }
+          }
+        ],
+        "sentence": "Ohne sichtbares Ziel oder GPS-Route warte ich kurz auf Orientierung.",
+        "lesson": null
+      },
+      "verdict": "Rule preferred: the request shows free movement; the model repeats a wait loop contrary to prompt lines 16-23.",
+      "elapsed_ms": 0.082792
+    },
+    {
+      "id": "pilot-20261110-230229-02",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+        "line": 4
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 30
+            }
+          }
+        ],
+        "sentence": "Wir warten auf ein klares Ziel, da keine GPS-Route angezeigt wird.",
+        "lesson": null
+      },
+      "verdict": "Rule preferred: the request shows free movement; the model repeats a wait loop contrary to prompt lines 16-23.",
+      "elapsed_ms": 0.024125
+    },
+    {
+      "id": "pilot-20261110-230229-03",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+        "line": 6
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 15
+            }
+          }
+        ],
+        "sentence": "Ohne sichtbares Ziel oder GPS-Route warten wir zunächst ab.",
+        "lesson": null
+      },
+      "verdict": "Rule preferred: the request shows free movement; the model repeats a wait loop contrary to prompt lines 16-23.",
+      "elapsed_ms": 0.019584
+    },
+    {
+      "id": "pilot-20261110-230229-04",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+        "line": 8
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 30
+            }
+          }
+        ],
+        "sentence": "Wir warten auf ein erkennbares Ziel oder eine neue Spielmeldung.",
+        "lesson": null
+      },
+      "verdict": "Rule preferred: the request shows free movement; the model repeats a wait loop contrary to prompt lines 16-23.",
+      "elapsed_ms": 0.016625
+    },
+    {
+      "id": "pilot-20261110-230229-05",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+        "line": 10
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 30
+            }
+          }
+        ],
+        "sentence": "Ohne sichtbares Ziel oder GPS-Route warten wir vorerst an der Kreuzung.",
+        "lesson": null
+      },
+      "verdict": "Rule preferred: the request shows free movement; the model repeats a wait loop contrary to prompt lines 16-23.",
+      "elapsed_ms": 0.016125
+    },
+    {
+      "id": "pilot-20261110-230229-06",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+        "line": 12
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 30
+            }
+          }
+        ],
+        "sentence": "Ohne erkennbares Ziel oder GPS-Route warten wir am Straßenrand.",
+        "lesson": null
+      },
+      "verdict": "Rule preferred: the request shows free movement; the model repeats a wait loop contrary to prompt lines 16-23.",
+      "elapsed_ms": 0.015667
+    },
+    {
+      "id": "pilot-20261110-230229-07",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+        "line": 14
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 30
+            }
+          }
+        ],
+        "sentence": "Ohne erkennbares Ziel oder GPS-Route warte ich am Straßenrand.",
+        "lesson": null
+      },
+      "verdict": "Rule preferred: the request shows free movement; the model repeats a wait loop contrary to prompt lines 16-23.",
+      "elapsed_ms": 0.015333
+    },
+    {
+      "id": "pilot-20261110-230229-08",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+        "line": 16
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 30
+            }
+          }
+        ],
+        "sentence": "Ohne erkennbares Ziel oder GPS-Route warten wir auf dem Gehweg.",
+        "lesson": null
+      },
+      "verdict": "Rule preferred: the request shows free movement; the model repeats a wait loop contrary to prompt lines 16-23.",
+      "elapsed_ms": 0.015458
+    },
+    {
+      "id": "pilot-20261110-231512-01",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+        "line": 2
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "look",
+            "args": {
+              "angle": -55,
+              "duration": 0.8
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 5,
+              "sprint": false,
+              "x": 0,
+              "y": -1
+            }
+          },
+          {
+            "name": "look",
+            "args": {
+              "angle": 20,
+              "duration": 0.5
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 5,
+              "sprint": true,
+              "x": 0,
+              "y": -1
+            }
+          }
+        ],
+        "sentence": "Ich schaue mich um und gehe auf dem Gehweg entlang der Straße weiter.",
+        "lesson": null
+      },
+      "verdict": "Both explore with look/walk. The rule uses fixed parameters; no observed target supports preferring the model parameters. Neither plan proves a safe path or mission progress.",
+      "elapsed_ms": 0.015583
+    },
+    {
+      "id": "pilot-20261110-231512-02",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+        "line": 4
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "walk",
+            "args": {
+              "duration": 3,
+              "sprint": true,
+              "x": -0.8,
+              "y": -0.5
+            }
+          },
+          {
+            "name": "look",
+            "args": {
+              "angle": -35,
+              "duration": 0.6
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 6,
+              "sprint": true,
+              "x": 0,
+              "y": -1
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 5,
+              "sprint": false,
+              "x": 0.3,
+              "y": -0.8
+            }
+          }
+        ],
+        "sentence": "Wir schauen uns um und bewegen uns zum linken Straßenrand.",
+        "lesson": null
+      },
+      "verdict": "Both explore with look/walk. The rule uses fixed parameters; no observed target supports preferring the model parameters. Neither plan proves a safe path or mission progress.",
+      "elapsed_ms": 0.014708
+    },
+    {
+      "id": "pilot-20261110-231512-03",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+        "line": 6
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "walk",
+            "args": {
+              "duration": 3,
+              "sprint": false,
+              "x": -0.25,
+              "y": -1
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 10,
+              "sprint": true,
+              "x": 0,
+              "y": -1
+            }
+          },
+          {
+            "name": "look",
+            "args": {
+              "angle": -20,
+              "duration": 0.6
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 6,
+              "sprint": false,
+              "x": 0.25,
+              "y": -1
+            }
+          }
+        ],
+        "sentence": "Wir laufen den Gehweg entlang und schauen uns an der Straße um.",
+        "lesson": null
+      },
+      "verdict": "Both explore with look/walk. The rule uses fixed parameters; no observed target supports preferring the model parameters. Neither plan proves a safe path or mission progress.",
+      "elapsed_ms": 0.01425
+    },
+    {
+      "id": "pilot-20261110-231512-04",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+        "line": 8
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "walk",
+            "args": {
+              "duration": 1.5,
+              "sprint": false,
+              "x": -1,
+              "y": 0
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 7,
+              "sprint": true,
+              "x": 0,
+              "y": -1
+            }
+          },
+          {
+            "name": "look",
+            "args": {
+              "angle": 25,
+              "duration": 0.7
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 6,
+              "sprint": true,
+              "x": 0,
+              "y": -1
+            }
+          }
+        ],
+        "sentence": "Wir gehen links am Stromkasten vorbei und erkunden den Weg entlang der Straße.",
+        "lesson": "Direkt vor der Figur steht ein Stromkasten, der den geraden Weg versperrt."
+      },
+      "verdict": "Both explore with look/walk. The rule uses fixed parameters; no observed target supports preferring the model parameters. Neither plan proves a safe path or mission progress.",
+      "elapsed_ms": 0.022709
+    },
+    {
+      "id": "pilot-20261110-231512-05",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+        "line": 10
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "walk",
+            "args": {
+              "duration": 2,
+              "sprint": true,
+              "x": 0.8,
+              "y": -0.4
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 6,
+              "sprint": true,
+              "x": 0,
+              "y": -1
+            }
+          },
+          {
+            "name": "look",
+            "args": {
+              "angle": 65,
+              "duration": 1
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 6,
+              "sprint": true,
+              "x": 0,
+              "y": -1
+            }
+          }
+        ],
+        "sentence": "Wir laufen rechts am Lastwagen vorbei und schauen uns am Straßenrand um.",
+        "lesson": null
+      },
+      "verdict": "Both explore with look/walk. The rule uses fixed parameters; no observed target supports preferring the model parameters. Neither plan proves a safe path or mission progress.",
+      "elapsed_ms": 0.014916
+    },
+    {
+      "id": "pilot-20261110-231512-06",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+        "line": 12
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "walk",
+            "args": {
+              "duration": 3,
+              "sprint": false,
+              "x": 0.6,
+              "y": -0.8
+            }
+          },
+          {
+            "name": "look",
+            "args": {
+              "angle": 65,
+              "duration": 0.7
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 6,
+              "sprint": true,
+              "x": 0,
+              "y": -1
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 3,
+              "sprint": false,
+              "x": -0.6,
+              "y": -0.7
+            }
+          }
+        ],
+        "sentence": "Wir bewegen uns vom Auto weg und schauen uns am Straßenrand um.",
+        "lesson": null
+      },
+      "verdict": "Both explore with look/walk. The rule uses fixed parameters; no observed target supports preferring the model parameters. Neither plan proves a safe path or mission progress.",
+      "elapsed_ms": 0.014708
+    },
+    {
+      "id": "pilot-20261110-231512-07",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+        "line": 14
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "walk",
+            "args": {
+              "duration": 5,
+              "sprint": true,
+              "x": 0.8,
+              "y": -0.6
+            }
+          },
+          {
+            "name": "look",
+            "args": {
+              "angle": 35,
+              "duration": 0.8
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 6,
+              "sprint": true,
+              "x": 0,
+              "y": -1
+            }
+          },
+          {
+            "name": "look",
+            "args": {
+              "angle": -45,
+              "duration": 1
+            }
+          }
+        ],
+        "sentence": "Wir erkunden den freien Weg rechts an der eingezäunten Anlage vorbei.",
+        "lesson": null
+      },
+      "verdict": "Both explore with look/walk. The rule uses fixed parameters; no observed target supports preferring the model parameters. Neither plan proves a safe path or mission progress.",
+      "elapsed_ms": 0.015
+    },
+    {
+      "id": "pilot-20261110-231512-08",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+        "line": 16
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "walk",
+            "args": {
+              "duration": 2.5,
+              "sprint": false,
+              "x": 0.3,
+              "y": -1
+            }
+          },
+          {
+            "name": "look",
+            "args": {
+              "angle": 75,
+              "duration": 1
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 7,
+              "sprint": true,
+              "x": 0,
+              "y": -1
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 5,
+              "sprint": false,
+              "x": 0,
+              "y": -1
+            }
+          }
+        ],
+        "sentence": "Ich gehe zur Straße und erkunde den Grünstreifen entlang der Fahrbahn.",
+        "lesson": null
+      },
+      "verdict": "Both explore with look/walk. The rule uses fixed parameters; no observed target supports preferring the model parameters. Neither plan proves a safe path or mission progress.",
+      "elapsed_ms": 0.014875
+    },
+    {
+      "id": "pilot-20261110-231512-09",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+        "line": 18
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "walk",
+            "args": {
+              "duration": 6,
+              "sprint": true,
+              "x": 0,
+              "y": -1
+            }
+          },
+          {
+            "name": "look",
+            "args": {
+              "angle": 60,
+              "duration": 1
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 5,
+              "sprint": true,
+              "x": 0,
+              "y": -1
+            }
+          }
+        ],
+        "sentence": "Wir laufen über die freie Grasfläche und schauen uns rechts am Weg um.",
+        "lesson": null
+      },
+      "verdict": "Both explore with look/walk. The rule uses fixed parameters; no observed target supports preferring the model parameters. Neither plan proves a safe path or mission progress.",
+      "elapsed_ms": 0.01475
+    },
+    {
+      "id": "pilot-20261110-231512-10",
+      "source": {
+        "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+        "line": 20
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": {
+        "plan": [
+          {
+            "name": "walk",
+            "args": {
+              "duration": 8,
+              "sprint": true,
+              "x": 0,
+              "y": -1
+            }
+          },
+          {
+            "name": "look",
+            "args": {
+              "angle": -15,
+              "duration": 0.5
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 8,
+              "sprint": true,
+              "x": 0,
+              "y": -1
+            }
+          }
+        ],
+        "sentence": "Wir laufen auf dem Gehweg weiter und schauen uns am Ende der Brücke um.",
+        "lesson": null
+      },
+      "verdict": "Both explore with look/walk. The rule uses fixed parameters; no observed target supports preferring the model parameters. Neither plan proves a safe path or mission progress.",
+      "elapsed_ms": 0.014959
+    },
+    {
+      "id": "wifi-0",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 0,
+        "t": -0.0283,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.007208
+    },
+    {
+      "id": "wifi-5",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 103,
+        "t": 5.0168,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 9
+      },
+      "rule": "low_health_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Meine Gesundheit ist niedrig, ich laufe weg.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.007084
+    },
+    {
+      "id": "wifi-5.2415",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 108,
+        "t": 5.2415,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 10
+      },
+      "rule": "foot_target",
+      "plan": [
+        {
+          "name": "walk_to",
+          "args": {
+            "color": "blue",
+            "duration": 10,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein Ziel ist auf der Karte markiert, ich gehe dorthin.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.017084
+    },
+    {
+      "id": "wifi-10",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 225,
+        "t": 9.9001,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 18
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.019125
+    },
+    {
+      "id": "wifi-15",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 336,
+        "t": 14.9486,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 27
+      },
+      "rule": "screen_reflex",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 1
+          }
+        }
+      ],
+      "sentence": "Ein Bildschirm unterbricht das Spiel, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.005083
+    },
+    {
+      "id": "wifi-20",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 445,
+        "t": 19.9926,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 36
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.008458
+    },
+    {
+      "id": "wifi-25",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 545,
+        "t": 25.0482,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 45
+      },
+      "rule": "low_health_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Meine Gesundheit ist niedrig, ich laufe weg.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.006292
+    },
+    {
+      "id": "wifi-30",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 680,
+        "t": 29.9839,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 54
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.003375
+    },
+    {
+      "id": "wifi-33.7221",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 776,
+        "t": 33.7221,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 61
+      },
+      "rule": "screen_reflex",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 1
+          }
+        }
+      ],
+      "sentence": "Ein Bildschirm unterbricht das Spiel, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.005
+    },
+    {
+      "id": "wifi-34.3377",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 787,
+        "t": 34.3377,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 62
+      },
+      "rule": "screen_reflex",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 1
+          }
+        }
+      ],
+      "sentence": "Ein Bildschirm unterbricht das Spiel, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.004666
+    },
+    {
+      "id": "wifi-34.8901",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 803,
+        "t": 34.8901,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 63
+      },
+      "rule": "screen_reflex",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 1
+          }
+        }
+      ],
+      "sentence": "Ein Bildschirm unterbricht das Spiel, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.004333
+    },
+    {
+      "id": "wifi-35",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 807,
+        "t": 35.0004,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 63
+      },
+      "rule": "screen_reflex",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 1
+          }
+        }
+      ],
+      "sentence": "Ein Bildschirm unterbricht das Spiel, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.004375
+    },
+    {
+      "id": "wifi-36.4327",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 834,
+        "t": 36.4327,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 66
+      },
+      "rule": "screen_reflex",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 1
+          }
+        }
+      ],
+      "sentence": "Ein Bildschirm unterbricht das Spiel, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.004541
+    },
+    {
+      "id": "wifi-40",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 886,
+        "t": 39.9906,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 72
+      },
+      "rule": "screen_reflex",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 1
+          }
+        }
+      ],
+      "sentence": "Ein Bildschirm unterbricht das Spiel, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.004333
+    },
+    {
+      "id": "wifi-41.5",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 912,
+        "t": 41.4757,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 75
+      },
+      "rule": "screen_wait",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 3
+          }
+        }
+      ],
+      "sentence": "Das Bild wechselt gerade, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.004333
+    },
+    {
+      "id": "wifi-45",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 974,
+        "t": 45.0025,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 81
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.00425
+    },
+    {
+      "id": "wifi-50",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 1099,
+        "t": 49.9358,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 90
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.009875
+    },
+    {
+      "id": "wifi-55",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 1165,
+        "t": 54.9792,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 98
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.0065
+    },
+    {
+      "id": "wifi-60",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 1287,
+        "t": 60.0,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 106
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.007209
+    },
+    {
+      "id": "wifi-65",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 1401,
+        "t": 65.0335,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 115
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.00275
+    },
+    {
+      "id": "wifi-70",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 1494,
+        "t": 70.0107,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 124
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.003833
+    },
+    {
+      "id": "wifi-75",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 1605,
+        "t": 74.9922,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 132
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.004125
+    },
+    {
+      "id": "wifi-80",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 1733,
+        "t": 80.001,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 141
+      },
+      "rule": "foot_target",
+      "plan": [
+        {
+          "name": "walk_to",
+          "args": {
+            "color": "blue",
+            "duration": 10,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein Ziel ist auf der Karte markiert, ich gehe dorthin.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.012
+    },
+    {
+      "id": "wifi-85",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 1844,
+        "t": 85.0202,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 151
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.005458
+    },
+    {
+      "id": "wifi-90",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 1976,
+        "t": 90.0535,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 159
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002708
+    },
+    {
+      "id": "wifi-95",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 2110,
+        "t": 94.9564,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 168
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002708
+    },
+    {
+      "id": "wifi-100",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 2224,
+        "t": 100.0203,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 176
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.009875
+    },
+    {
+      "id": "wifi-105",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 2346,
+        "t": 104.9685,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 186
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.006583
+    },
+    {
+      "id": "wifi-110",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 2463,
+        "t": 109.9234,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 195
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.004958
+    },
+    {
+      "id": "wifi-115",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 2585,
+        "t": 114.9942,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 204
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.005125
+    },
+    {
+      "id": "wifi-120",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 2709,
+        "t": 120.0318,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 214
+      },
+      "rule": "foot_target",
+      "plan": [
+        {
+          "name": "walk_to",
+          "args": {
+            "color": "blue",
+            "duration": 10,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein Ziel ist auf der Karte markiert, ich gehe dorthin.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.009708
+    },
+    {
+      "id": "wifi-125",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 2815,
+        "t": 124.9995,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 222
+      },
+      "rule": "low_health_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Meine Gesundheit ist niedrig, ich laufe weg.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.006042
+    },
+    {
+      "id": "wifi-130",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 2929,
+        "t": 130.0022,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 231
+      },
+      "rule": "foot_target",
+      "plan": [
+        {
+          "name": "walk_to",
+          "args": {
+            "color": "blue",
+            "duration": 10,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein Ziel ist auf der Karte markiert, ich gehe dorthin.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.010084
+    },
+    {
+      "id": "wifi-135",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 3046,
+        "t": 135.14,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 240
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.008959
+    },
+    {
+      "id": "wifi-140",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 3150,
+        "t": 139.9877,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 249
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.00775
+    },
+    {
+      "id": "wifi-145",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 3263,
+        "t": 144.9848,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 258
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002583
+    },
+    {
+      "id": "wifi-150",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 3323,
+        "t": 149.9715,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 266
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.004666
+    },
+    {
+      "id": "wifi-155",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 3450,
+        "t": 154.9396,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 275
+      },
+      "rule": "screen_reflex",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 1
+          }
+        }
+      ],
+      "sentence": "Ein Bildschirm unterbricht das Spiel, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.0045
+    },
+    {
+      "id": "wifi-160",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 3569,
+        "t": 159.9947,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 285
+      },
+      "rule": "vehicle_waypoint",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "mission",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.010459
+    },
+    {
+      "id": "wifi-165",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 3688,
+        "t": 165.0541,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 295
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.005709
+    },
+    {
+      "id": "wifi-170",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 3813,
+        "t": 169.9708,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 304
+      },
+      "rule": "vehicle_waypoint",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "mission",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.009667
+    },
+    {
+      "id": "wifi-175",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 3939,
+        "t": 174.9964,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 313
+      },
+      "rule": "vehicle_waypoint",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "mission",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.013333
+    },
+    {
+      "id": "wifi-180",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 4074,
+        "t": 179.974,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 323
+      },
+      "rule": "vehicle_waypoint",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "mission",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.010709
+    },
+    {
+      "id": "wifi-185",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 4137,
+        "t": 184.9468,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 331
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.001958
+    },
+    {
+      "id": "wifi-190",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 4207,
+        "t": 190.0395,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 338
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002583
+    },
+    {
+      "id": "wifi-195",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 4292,
+        "t": 195.0011,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 346
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.003167
+    },
+    {
+      "id": "wifi-200",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 4406,
+        "t": 200.0043,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 356
+      },
+      "rule": "vehicle_waypoint",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "mission",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.01225
+    },
+    {
+      "id": "wifi-205",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 4516,
+        "t": 205.0091,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 364
+      },
+      "rule": "vehicle_waypoint",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "mission",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.008875
+    },
+    {
+      "id": "wifi-205.206",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 4520,
+        "t": 205.2057,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 365
+      },
+      "rule": "vehicle_waypoint",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "mission",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.010792
+    },
+    {
+      "id": "wifi-206.811",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 4558,
+        "t": 206.8115,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 368
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.004708
+    },
+    {
+      "id": "wifi-210",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 4622,
+        "t": 209.9304,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 373
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.001833
+    },
+    {
+      "id": "wifi-215",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 4719,
+        "t": 214.9876,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 380
+      },
+      "rule": "foot_target",
+      "plan": [
+        {
+          "name": "walk_to",
+          "args": {
+            "color": "blue",
+            "duration": 10,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein Ziel ist auf der Karte markiert, ich gehe dorthin.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.006291
+    },
+    {
+      "id": "wifi-220",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 4845,
+        "t": 219.9558,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 390
+      },
+      "rule": "foot_target",
+      "plan": [
+        {
+          "name": "walk_to",
+          "args": {
+            "color": "blue",
+            "duration": 10,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein Ziel ist auf der Karte markiert, ich gehe dorthin.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.006208
+    },
+    {
+      "id": "wifi-224.55",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 4906,
+        "t": 224.5501,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 397
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.004
+    },
+    {
+      "id": "wifi-225",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 4913,
+        "t": 225.0804,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 398
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.00375
+    },
+    {
+      "id": "wifi-230",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 5030,
+        "t": 230.0431,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 406
+      },
+      "rule": "vehicle_route",
+      "plan": [
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Die Route ist sichtbar, ich folge ihr.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.013875
+    },
+    {
+      "id": "wifi-235",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 5122,
+        "t": 234.9359,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 415
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.008958
+    },
+    {
+      "id": "wifi-240",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 5213,
+        "t": 240.0008,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 424
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.010042
+    },
+    {
+      "id": "wifi-245",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 5311,
+        "t": 244.9987,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 434
+      },
+      "rule": "low_health_vehicle",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "away",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Meine Gesundheit ist niedrig, ich fahre weg.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.008292
+    },
+    {
+      "id": "wifi-250",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 5404,
+        "t": 249.9647,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 442
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.008042
+    },
+    {
+      "id": "wifi-255",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 5508,
+        "t": 255.0215,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 450
+      },
+      "rule": "vehicle_route",
+      "plan": [
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Die Route ist sichtbar, ich folge ihr.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.005583
+    },
+    {
+      "id": "wifi-260",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 5623,
+        "t": 259.9475,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 460
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002625
+    },
+    {
+      "id": "wifi-265",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 5723,
+        "t": 265.0152,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 468
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002625
+    },
+    {
+      "id": "wifi-270",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 5842,
+        "t": 270.0286,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 477
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002541
+    },
+    {
+      "id": "wifi-275",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 5964,
+        "t": 274.9395,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 486
+      },
+      "rule": "vehicle_route",
+      "plan": [
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Die Route ist sichtbar, ich folge ihr.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.005208
+    },
+    {
+      "id": "wifi-280",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 6068,
+        "t": 279.9075,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 495
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002417
+    },
+    {
+      "id": "wifi-285",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 6174,
+        "t": 284.9813,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 504
+      },
+      "rule": "vehicle_route",
+      "plan": [
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Die Route ist sichtbar, ich folge ihr.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.00525
+    },
+    {
+      "id": "wifi-290",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 6272,
+        "t": 290.0378,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 513
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002958
+    },
+    {
+      "id": "wifi-295",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 6364,
+        "t": 294.9443,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 522
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002459
+    },
+    {
+      "id": "wifi-300",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 6481,
+        "t": 299.992,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 531
+      },
+      "rule": "vehicle_route",
+      "plan": [
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Die Route ist sichtbar, ich folge ihr.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.005625
+    },
+    {
+      "id": "wifi-305",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 6567,
+        "t": 305.0129,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 540
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002417
+    },
+    {
+      "id": "wifi-310",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 6673,
+        "t": 310.7771,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 548
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.004917
+    },
+    {
+      "id": "wifi-315",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 6708,
+        "t": 315.063,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 551
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.004125
+    },
+    {
+      "id": "wifi-320",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 6837,
+        "t": 320.0346,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 560
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.003709
+    },
+    {
+      "id": "wifi-325",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 6950,
+        "t": 324.9756,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 570
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.004125
+    },
+    {
+      "id": "wifi-330",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 7075,
+        "t": 329.9966,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 579
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.004083
+    },
+    {
+      "id": "wifi-335",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 7188,
+        "t": 334.9715,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 588
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002459
+    },
+    {
+      "id": "wifi-340",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 7304,
+        "t": 340.0235,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 597
+      },
+      "rule": "screen_reflex",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 1
+          }
+        }
+      ],
+      "sentence": "Ein Bildschirm unterbricht das Spiel, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.0045
+    },
+    {
+      "id": "wifi-345",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 7388,
+        "t": 345.0201,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 606
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.02625
+    },
+    {
+      "id": "wifi-350",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 7502,
+        "t": 349.9646,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 615
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.019666
+    },
+    {
+      "id": "wifi-355",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 7608,
+        "t": 355.0132,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 624
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.006083
+    },
+    {
+      "id": "wifi-360",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 7690,
+        "t": 359.9742,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 631
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.005708
+    },
+    {
+      "id": "wifi-365",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 7805,
+        "t": 365.0753,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 640
+      },
+      "rule": "vehicle_waypoint",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "mission",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.010167
+    },
+    {
+      "id": "wifi-370",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 7908,
+        "t": 369.7343,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 649
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.00275
+    },
+    {
+      "id": "wifi-375",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 7988,
+        "t": 374.9618,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 657
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.007875
+    },
+    {
+      "id": "wifi-380",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 8082,
+        "t": 379.7431,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 665
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.00775
+    },
+    {
+      "id": "wifi-385",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 8192,
+        "t": 385.0703,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 674
+      },
+      "rule": "screen_reflex",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 1
+          }
+        }
+      ],
+      "sentence": "Ein Bildschirm unterbricht das Spiel, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.004459
+    },
+    {
+      "id": "wifi-390",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 8268,
+        "t": 390.0212,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 683
+      },
+      "rule": "screen_reflex",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 1
+          }
+        }
+      ],
+      "sentence": "Ein Bildschirm unterbricht das Spiel, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.004458
+    },
+    {
+      "id": "wifi-395",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 8368,
+        "t": 394.9985,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 692
+      },
+      "rule": "vehicle_route",
+      "plan": [
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Die Route ist sichtbar, ich folge ihr.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.010583
+    },
+    {
+      "id": "wifi-400",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 8481,
+        "t": 399.9493,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 700
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.01375
+    },
+    {
+      "id": "wifi-405",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 8588,
+        "t": 404.9459,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 709
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002584
+    },
+    {
+      "id": "wifi-410",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 8690,
+        "t": 409.9976,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 718
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.017709
+    },
+    {
+      "id": "wifi-415",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 8782,
+        "t": 415.0123,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 724
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.005333
+    },
+    {
+      "id": "wifi-420",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 8907,
+        "t": 420.0192,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 734
+      },
+      "rule": "vehicle_waypoint",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "mission",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.009
+    },
+    {
+      "id": "wifi-425",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 9015,
+        "t": 424.9696,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 743
+      },
+      "rule": "vehicle_waypoint",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "mission",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.00875
+    },
+    {
+      "id": "wifi-430",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 9126,
+        "t": 430.0113,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 752
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002708
+    },
+    {
+      "id": "wifi-435",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 9192,
+        "t": 435.0432,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 760
+      },
+      "rule": "vehicle_waypoint",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "mission",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.008792
+    },
+    {
+      "id": "wifi-440",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 9302,
+        "t": 440.0816,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 769
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002959
+    },
+    {
+      "id": "wifi-445",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 9397,
+        "t": 444.9977,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 778
+      },
+      "rule": "vehicle_waypoint",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "mission",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.00875
+    },
+    {
+      "id": "wifi-450",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 9467,
+        "t": 449.9777,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 786
+      },
+      "rule": "vehicle_waypoint",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "mission",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.008916
+    },
+    {
+      "id": "wifi-455",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 9562,
+        "t": 454.9866,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 795
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002541
+    },
+    {
+      "id": "wifi-460",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 9677,
+        "t": 460.0252,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 804
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002458
+    },
+    {
+      "id": "wifi-465",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 9772,
+        "t": 465.0285,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 813
+      },
+      "rule": "vehicle_waypoint",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "mission",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.009833
+    },
+    {
+      "id": "wifi-470",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 9879,
+        "t": 469.9759,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 822
+      },
+      "rule": "vehicle_waypoint",
+      "plan": [
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "mission",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.008833
+    },
+    {
+      "id": "wifi-475",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 9945,
+        "t": 474.226,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 828
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002667
+    },
+    {
+      "id": "wifi-480",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 10023,
+        "t": 480.0262,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 835
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002458
+    },
+    {
+      "id": "wifi-485",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 10137,
+        "t": 485.0283,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 844
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.014709
+    },
+    {
+      "id": "wifi-490",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 10224,
+        "t": 489.9379,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 851
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.014916
+    },
+    {
+      "id": "wifi-495",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 10327,
+        "t": 494.9665,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 861
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002625
+    },
+    {
+      "id": "wifi-500",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 10457,
+        "t": 500.0469,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 871
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.014459
+    },
+    {
+      "id": "wifi-505",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 10516,
+        "t": 505.0433,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 878
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.014458
+    },
+    {
+      "id": "wifi-510",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 10573,
+        "t": 510.325,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 885
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002042
+    },
+    {
+      "id": "wifi-515",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 10664,
+        "t": 514.9455,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 892
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002458
+    },
+    {
+      "id": "wifi-520",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 10735,
+        "t": 519.9781,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 901
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.014541
+    },
+    {
+      "id": "wifi-525",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 10802,
+        "t": 524.7552,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 909
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002625
+    },
+    {
+      "id": "wifi-530",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 10856,
+        "t": 529.9802,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 916
+      },
+      "rule": "foot_explore",
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.8,
+            "angle": -55
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "duration": 0.5,
+            "angle": 20
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": false
+          }
+        }
+      ],
+      "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.014667
+    },
+    {
+      "id": "wifi-535",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 10892,
+        "t": 535.0356,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 922
+      },
+      "rule": "wanted_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Die Polizei sucht mich, ich laufe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.006041
+    },
+    {
+      "id": "wifi-536.761",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 10914,
+        "t": 536.7611,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 924
+      },
+      "rule": "wanted_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Die Polizei sucht mich, ich laufe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.005792
+    },
+    {
+      "id": "wifi-540",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 10973,
+        "t": 539.8931,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 930
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002041
+    },
+    {
+      "id": "wifi-545",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 11037,
+        "t": 544.3884,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 937
+      },
+      "rule": "wanted_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Die Polizei sucht mich, ich laufe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.005791
+    },
+    {
+      "id": "wifi-550",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 11128,
+        "t": 549.7142,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 945
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.001875
+    },
+    {
+      "id": "wifi-555",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 11224,
+        "t": 554.9352,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 953
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.001792
+    },
+    {
+      "id": "wifi-560",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 11300,
+        "t": 560.0057,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 960
+      },
+      "rule": "wanted_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Die Polizei sucht mich, ich laufe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.005625
+    },
+    {
+      "id": "wifi-565",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 11398,
+        "t": 564.8864,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 970
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.001791
+    },
+    {
+      "id": "wifi-570",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 11472,
+        "t": 570.048,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 978
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.001792
+    },
+    {
+      "id": "wifi-575",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 11565,
+        "t": 575.0164,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 987
+      },
+      "rule": "wanted_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Die Polizei sucht mich, ich laufe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.005625
+    },
+    {
+      "id": "wifi-580",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 11679,
+        "t": 579.9244,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 996
+      },
+      "rule": "wanted_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Die Polizei sucht mich, ich laufe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.00575
+    },
+    {
+      "id": "wifi-585",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 11772,
+        "t": 584.9787,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1005
+      },
+      "rule": "wanted_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Die Polizei sucht mich, ich laufe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.005708
+    },
+    {
+      "id": "wifi-590",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 11869,
+        "t": 590.005,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1014
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.001833
+    },
+    {
+      "id": "wifi-590.005",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 11869,
+        "t": 590.005,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1014
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.001792
+    },
+    {
+      "id": "wifi-595",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 11992,
+        "t": 595.0372,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1023
+      },
+      "rule": "wanted_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Die Polizei sucht mich, ich laufe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.00575
+    },
+    {
+      "id": "wifi-600",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 12070,
+        "t": 599.9791,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1031
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.001875
+    },
+    {
+      "id": "wifi-605",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 12184,
+        "t": 604.9893,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1040
+      },
+      "rule": "wanted_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Die Polizei sucht mich, ich laufe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.005583
+    },
+    {
+      "id": "wifi-610",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 12277,
+        "t": 609.9558,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1048
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.001959
+    },
+    {
+      "id": "wifi-615",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 12328,
+        "t": 614.9208,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1056
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.001833
+    },
+    {
+      "id": "wifi-620",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 12428,
+        "t": 619.9862,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1065
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.00175
+    },
+    {
+      "id": "wifi-625",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 12558,
+        "t": 624.9613,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1074
+      },
+      "rule": "wanted_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Die Polizei sucht mich, ich laufe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.005708
+    },
+    {
+      "id": "wifi-628.8",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 12642,
+        "t": 628.8084,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1081
+      },
+      "rule": "screen_reflex",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 1
+          }
+        }
+      ],
+      "sentence": "Ein Bildschirm unterbricht das Spiel, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.004416
+    },
+    {
+      "id": "wifi-630",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 12674,
+        "t": 629.9626,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1083
+      },
+      "rule": "screen_reflex",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 1
+          }
+        }
+      ],
+      "sentence": "Ein Bildschirm unterbricht das Spiel, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.004375
+    },
+    {
+      "id": "wifi-635",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 12797,
+        "t": 634.9623,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1092
+      },
+      "rule": "screen_reflex",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 1
+          }
+        }
+      ],
+      "sentence": "Ein Bildschirm unterbricht das Spiel, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.004375
+    },
+    {
+      "id": "wifi-640",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 12883,
+        "t": 640.0515,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1101
+      },
+      "rule": "screen_wait",
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 3
+          }
+        }
+      ],
+      "sentence": "Das Bild wechselt gerade, ich warte kurz.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.004208
+    },
+    {
+      "id": "wifi-640.5",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 12894,
+        "t": 640.5562,
+        "text_path": "lab/wiring/text-093238.jsonl",
+        "text_line": 1102
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002708
+    },
+    {
+      "id": "objects-071",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 11104,
+        "t": 548.4958,
+        "object_label": "071",
+        "object_source": "lab/objects/labels.json",
+        "text_source": "lab/wiring/text-093238.jsonl"
+      },
+      "rule": "wanted_on_foot_vehicle",
+      "plan": [
+        {
+          "name": "enter_vehicle",
+          "args": {
+            "duration": 25,
+            "kind": "any"
+          }
+        },
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "away",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Ein Fahrzeug ist zu sehen, ich steige zur Flucht ein.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.01225
+    },
+    {
+      "id": "objects-072",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 11338,
+        "t": 561.4824,
+        "object_label": "072",
+        "object_source": "lab/objects/labels.json",
+        "text_source": "lab/wiring/text-093238.jsonl"
+      },
+      "rule": "wanted_on_foot_vehicle",
+      "plan": [
+        {
+          "name": "enter_vehicle",
+          "args": {
+            "duration": 25,
+            "kind": "any"
+          }
+        },
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "away",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Ein Fahrzeug ist zu sehen, ich steige zur Flucht ein.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.011
+    },
+    {
+      "id": "objects-073",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 11546,
+        "t": 574.2403,
+        "object_label": "073",
+        "object_source": "lab/objects/labels.json",
+        "text_source": "lab/wiring/text-093238.jsonl"
+      },
+      "rule": "wanted_on_foot_vehicle",
+      "plan": [
+        {
+          "name": "enter_vehicle",
+          "args": {
+            "duration": 25,
+            "kind": "any"
+          }
+        },
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "away",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Ein Fahrzeug ist zu sehen, ich steige zur Flucht ein.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.01075
+    },
+    {
+      "id": "objects-075",
+      "source": {
+        "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+        "frame": 12265,
+        "t": 608.5926,
+        "object_label": "075",
+        "object_source": "lab/objects/labels.json",
+        "text_source": "lab/wiring/text-093238.jsonl"
+      },
+      "rule": "wanted_on_foot_vehicle",
+      "plan": [
+        {
+          "name": "enter_vehicle",
+          "args": {
+            "duration": 25,
+            "kind": "any"
+          }
+        },
+        {
+          "name": "set_waypoint",
+          "args": {
+            "target": "away",
+            "duration": 45,
+            "direction": "any",
+            "distance": "far"
+          }
+        },
+        {
+          "name": "drive_route",
+          "args": {
+            "duration": 60
+          }
+        }
+      ],
+      "sentence": "Ein Fahrzeug ist zu sehen, ich steige zur Flucht ein.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.010292
+    },
+    {
+      "id": "kerim-2758",
+      "source": {
+        "path": "/Users/kerim/recordings/kerim/20261111-065022",
+        "frame": 2758,
+        "t": 46.0173,
+        "object_label": null,
+        "object_source": null,
+        "text_source": "not_read"
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.0025
+    },
+    {
+      "id": "kerim-3780",
+      "source": {
+        "path": "/Users/kerim/recordings/kerim/20261111-065022",
+        "frame": 3780,
+        "t": 63.0685,
+        "object_label": null,
+        "object_source": null,
+        "text_source": "not_read"
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002458
+    },
+    {
+      "id": "kerim-9706",
+      "source": {
+        "path": "/Users/kerim/recordings/kerim/20261111-065022",
+        "frame": 9706,
+        "t": 161.9978,
+        "object_label": null,
+        "object_source": null,
+        "text_source": "not_read"
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002417
+    },
+    {
+      "id": "kerim-10115",
+      "source": {
+        "path": "/Users/kerim/recordings/kerim/20261111-065022",
+        "frame": 10115,
+        "t": 168.8232,
+        "object_label": null,
+        "object_source": null,
+        "text_source": "not_read"
+      },
+      "rule": "wanted_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Die Polizei sucht mich, ich laufe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.00725
+    },
+    {
+      "id": "kerim-10524",
+      "source": {
+        "path": "/Users/kerim/recordings/kerim/20261111-065022",
+        "frame": 10524,
+        "t": 175.6441,
+        "object_label": null,
+        "object_source": null,
+        "text_source": "not_read"
+      },
+      "rule": "wanted_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Die Polizei sucht mich, ich laufe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.007375
+    },
+    {
+      "id": "kerim-12772",
+      "source": {
+        "path": "/Users/kerim/recordings/kerim/20261111-065022",
+        "frame": 12772,
+        "t": 213.1805,
+        "object_label": null,
+        "object_source": null,
+        "text_source": "not_read"
+      },
+      "rule": "wanted_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Die Polizei sucht mich, ich laufe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.00575
+    },
+    {
+      "id": "kerim-15020",
+      "source": {
+        "path": "/Users/kerim/recordings/kerim/20261111-065022",
+        "frame": 15020,
+        "t": 250.8697,
+        "object_label": null,
+        "object_source": null,
+        "text_source": "not_read"
+      },
+      "rule": "wanted_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Die Polizei sucht mich, ich laufe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.005792
+    },
+    {
+      "id": "kerim-15633",
+      "source": {
+        "path": "/Users/kerim/recordings/kerim/20261111-065022",
+        "frame": 15633,
+        "t": 261.0962,
+        "object_label": null,
+        "object_source": null,
+        "text_source": "not_read"
+      },
+      "rule": "wanted_on_foot",
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "x": 0,
+            "y": -1,
+            "sprint": true
+          }
+        }
+      ],
+      "sentence": "Die Polizei sucht mich, ich laufe weiter.",
+      "model": null,
+      "verdict": "No saved model answer for this recorded frame; only prompt/observation consistency can be judged.",
+      "elapsed_ms": 0.005791
+    },
+    {
+      "id": "kerim-17400",
+      "source": {
+        "path": "/Users/kerim/recordings/kerim/20261111-065022",
+        "frame": 17400,
+        "t": 290.5756,
+        "object_label": null,
+        "object_source": null,
+        "text_source": "not_read"
+      },
+      "rule": "fallback",
+      "plan": null,
+      "sentence": null,
+      "model": null,
+      "verdict": "No supported rule; delegate the unchanged request. No model was invoked in this replay.",
+      "elapsed_ms": 0.002292
+    }
+  ]
+}
