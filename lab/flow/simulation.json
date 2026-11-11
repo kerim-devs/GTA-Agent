@@ -1,0 +1,829 @@
+{
+  "control_delay_seconds": 0.14,
+  "tick_seconds": 0.05,
+  "passed_scenarios": 30,
+  "scenarios": [
+    {
+      "screen": "failed",
+      "read_delay_ticks": 0,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.55,
+          "actual": "failed",
+          "read": "failed",
+          "action": "retry",
+          "buttons": [
+            "cross"
+          ],
+          "events": [
+            {
+              "kind": "failure",
+              "screen": "failed",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "time": 0.6,
+          "actual": "failed",
+          "read": "failed",
+          "action": "retry",
+          "buttons": [
+            "cross"
+          ],
+          "events": []
+        }
+      ]
+    },
+    {
+      "screen": "passed",
+      "read_delay_ticks": 0,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.55,
+          "actual": "passed",
+          "read": "passed",
+          "action": "wait",
+          "buttons": [],
+          "events": [
+            {
+              "kind": "pass",
+              "time": 0.55
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "loading",
+      "read_delay_ticks": 0,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": []
+    },
+    {
+      "screen": "pause",
+      "read_delay_ticks": 0,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.55,
+          "actual": "pause",
+          "read": "pause",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        },
+        {
+          "time": 0.6,
+          "actual": "pause",
+          "read": "pause",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        }
+      ]
+    },
+    {
+      "screen": "map",
+      "read_delay_ticks": 0,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.55,
+          "actual": "map",
+          "read": "map",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        },
+        {
+          "time": 0.6,
+          "actual": "map",
+          "read": "map",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        },
+        {
+          "time": 0.75,
+          "actual": "pause",
+          "read": "pause",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        },
+        {
+          "time": 0.8,
+          "actual": "pause",
+          "read": "pause",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        }
+      ]
+    },
+    {
+      "screen": "phone",
+      "read_delay_ticks": 0,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.55,
+          "actual": "phone",
+          "read": "phone",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        },
+        {
+          "time": 0.6,
+          "actual": "phone",
+          "read": "phone",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        }
+      ]
+    },
+    {
+      "screen": "weapon_wheel",
+      "read_delay_ticks": 0,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": []
+    },
+    {
+      "screen": "wasted",
+      "read_delay_ticks": 0,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.55,
+          "actual": "wasted",
+          "read": "wasted",
+          "action": "wait",
+          "buttons": [],
+          "events": [
+            {
+              "kind": "failure",
+              "screen": "wasted",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "busted",
+      "read_delay_ticks": 0,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.55,
+          "actual": "busted",
+          "read": "busted",
+          "action": "wait",
+          "buttons": [],
+          "events": [
+            {
+              "kind": "failure",
+              "screen": "busted",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "failed",
+      "read_delay_ticks": 2,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.65,
+          "actual": "failed",
+          "read": "failed",
+          "action": "retry",
+          "buttons": [
+            "cross"
+          ],
+          "events": [
+            {
+              "kind": "failure",
+              "screen": "failed",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "time": 0.7,
+          "actual": "failed",
+          "read": "failed",
+          "action": "retry",
+          "buttons": [
+            "cross"
+          ],
+          "events": []
+        }
+      ]
+    },
+    {
+      "screen": "passed",
+      "read_delay_ticks": 2,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.65,
+          "actual": "passed",
+          "read": "passed",
+          "action": "wait",
+          "buttons": [],
+          "events": [
+            {
+              "kind": "pass",
+              "time": 0.65
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "loading",
+      "read_delay_ticks": 2,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": []
+    },
+    {
+      "screen": "pause",
+      "read_delay_ticks": 2,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.65,
+          "actual": "pause",
+          "read": "pause",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        },
+        {
+          "time": 0.7,
+          "actual": "pause",
+          "read": "pause",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        }
+      ]
+    },
+    {
+      "screen": "map",
+      "read_delay_ticks": 2,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.65,
+          "actual": "map",
+          "read": "map",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        },
+        {
+          "time": 0.7,
+          "actual": "map",
+          "read": "map",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        },
+        {
+          "time": 1.0,
+          "actual": "pause",
+          "read": "pause",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        },
+        {
+          "time": 1.05,
+          "actual": "pause",
+          "read": "pause",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        }
+      ]
+    },
+    {
+      "screen": "phone",
+      "read_delay_ticks": 2,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.65,
+          "actual": "phone",
+          "read": "phone",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        },
+        {
+          "time": 0.7,
+          "actual": "phone",
+          "read": "phone",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        }
+      ]
+    },
+    {
+      "screen": "weapon_wheel",
+      "read_delay_ticks": 2,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": []
+    },
+    {
+      "screen": "wasted",
+      "read_delay_ticks": 2,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.65,
+          "actual": "wasted",
+          "read": "wasted",
+          "action": "wait",
+          "buttons": [],
+          "events": [
+            {
+              "kind": "failure",
+              "screen": "wasted",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "busted",
+      "read_delay_ticks": 2,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.65,
+          "actual": "busted",
+          "read": "busted",
+          "action": "wait",
+          "buttons": [],
+          "events": [
+            {
+              "kind": "failure",
+              "screen": "busted",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "failed",
+      "read_delay_ticks": 4,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.75,
+          "actual": "failed",
+          "read": "failed",
+          "action": "retry",
+          "buttons": [
+            "cross"
+          ],
+          "events": [
+            {
+              "kind": "failure",
+              "screen": "failed",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "time": 0.8,
+          "actual": "failed",
+          "read": "failed",
+          "action": "retry",
+          "buttons": [
+            "cross"
+          ],
+          "events": []
+        }
+      ]
+    },
+    {
+      "screen": "passed",
+      "read_delay_ticks": 4,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.75,
+          "actual": "passed",
+          "read": "passed",
+          "action": "wait",
+          "buttons": [],
+          "events": [
+            {
+              "kind": "pass",
+              "time": 0.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "loading",
+      "read_delay_ticks": 4,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": []
+    },
+    {
+      "screen": "pause",
+      "read_delay_ticks": 4,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.75,
+          "actual": "pause",
+          "read": "pause",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        },
+        {
+          "time": 0.8,
+          "actual": "pause",
+          "read": "pause",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        }
+      ]
+    },
+    {
+      "screen": "map",
+      "read_delay_ticks": 4,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.75,
+          "actual": "map",
+          "read": "map",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        },
+        {
+          "time": 0.8,
+          "actual": "map",
+          "read": "map",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        },
+        {
+          "time": 1.15,
+          "actual": "pause",
+          "read": "pause",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        },
+        {
+          "time": 1.2,
+          "actual": "pause",
+          "read": "pause",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        }
+      ]
+    },
+    {
+      "screen": "phone",
+      "read_delay_ticks": 4,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.75,
+          "actual": "phone",
+          "read": "phone",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        },
+        {
+          "time": 0.8,
+          "actual": "phone",
+          "read": "phone",
+          "action": "back",
+          "buttons": [
+            "circle"
+          ],
+          "events": []
+        }
+      ]
+    },
+    {
+      "screen": "weapon_wheel",
+      "read_delay_ticks": 4,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": []
+    },
+    {
+      "screen": "wasted",
+      "read_delay_ticks": 4,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.75,
+          "actual": "wasted",
+          "read": "wasted",
+          "action": "wait",
+          "buttons": [],
+          "events": [
+            {
+              "kind": "failure",
+              "screen": "wasted",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "busted",
+      "read_delay_ticks": 4,
+      "stuck": false,
+      "recovered": true,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.75,
+          "actual": "busted",
+          "read": "busted",
+          "action": "wait",
+          "buttons": [],
+          "events": [
+            {
+              "kind": "failure",
+              "screen": "busted",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "failed",
+      "read_delay_ticks": 0,
+      "stuck": true,
+      "recovered": false,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.55,
+          "actual": "failed",
+          "read": "failed",
+          "action": "retry",
+          "buttons": [
+            "cross"
+          ],
+          "events": [
+            {
+              "kind": "failure",
+              "screen": "failed",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "time": 0.6,
+          "actual": "failed",
+          "read": "failed",
+          "action": "retry",
+          "buttons": [
+            "cross"
+          ],
+          "events": []
+        },
+        {
+          "time": 1.25,
+          "actual": "failed",
+          "read": "failed",
+          "action": "stuck",
+          "buttons": [],
+          "events": [
+            {
+              "kind": "stuck",
+              "screen": "failed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "failed",
+      "read_delay_ticks": 2,
+      "stuck": true,
+      "recovered": false,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.65,
+          "actual": "failed",
+          "read": "failed",
+          "action": "retry",
+          "buttons": [
+            "cross"
+          ],
+          "events": [
+            {
+              "kind": "failure",
+              "screen": "failed",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "time": 0.7,
+          "actual": "failed",
+          "read": "failed",
+          "action": "retry",
+          "buttons": [
+            "cross"
+          ],
+          "events": []
+        },
+        {
+          "time": 1.35,
+          "actual": "failed",
+          "read": "failed",
+          "action": "stuck",
+          "buttons": [],
+          "events": [
+            {
+              "kind": "stuck",
+              "screen": "failed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "screen": "failed",
+      "read_delay_ticks": 4,
+      "stuck": true,
+      "recovered": false,
+      "wrong_reads_without_press": 2,
+      "trace": [
+        {
+          "time": 0.75,
+          "actual": "failed",
+          "read": "failed",
+          "action": "retry",
+          "buttons": [
+            "cross"
+          ],
+          "events": [
+            {
+              "kind": "failure",
+              "screen": "failed",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "time": 0.8,
+          "actual": "failed",
+          "read": "failed",
+          "action": "retry",
+          "buttons": [
+            "cross"
+          ],
+          "events": []
+        },
+        {
+          "time": 1.45,
+          "actual": "failed",
+          "read": "failed",
+          "action": "stuck",
+          "buttons": [],
+          "events": [
+            {
+              "kind": "stuck",
+              "screen": "failed"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

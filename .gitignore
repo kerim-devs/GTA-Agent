@@ -13,3 +13,7 @@ lab/minimap/data/crops.npy
 # rebuilt by pilot/tools/sim_blip_skills.py and inspect_blip_frames.py, 18 MB
 lab/blips/skill-simulation.json
 lab/blips/*-scenes-*.jpg
+
+# single frames rebuilt by pilot/tools/inspect_flow_clips.py, 65 MB; the contact sheets stay
+lab/flow/*/[0-9]*.jpg
+!lab/flow/failure/0038.030-856.jpg
