@@ -1,0 +1,578 @@
+[
+  {
+    "index": 0,
+    "k": 551,
+    "scene": "off-road",
+    "path_on_road": false,
+    "path_hash": "cd1c9dc30e06b404",
+    "note": "A path is invented on construction/dirt rather than a connected road."
+  },
+  {
+    "index": 1,
+    "k": 558,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "b066f1fd1765adea",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 2,
+    "k": 562,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "8d5e61c00341d549",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 3,
+    "k": 579,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 4,
+    "k": 580,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 5,
+    "k": 583,
+    "scene": "unreadable",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Block corruption or washout prevents judging the road at the arrow."
+  },
+  {
+    "index": 6,
+    "k": 585,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 7,
+    "k": 586,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "56d710d81a4e5659",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 8,
+    "k": 593,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "f956243c62242d73",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 9,
+    "k": 607,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "ca0acc9e98e258c8",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 10,
+    "k": 632,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 11,
+    "k": 638,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 12,
+    "k": 642,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "8f2108d4fc9b95bf",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 13,
+    "k": 648,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "308ff76e182b3fce",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 14,
+    "k": 652,
+    "scene": "unreadable",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Block corruption or washout prevents judging the road at the arrow."
+  },
+  {
+    "index": 15,
+    "k": 653,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "188db9c78bce60f7",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 16,
+    "k": 657,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 17,
+    "k": 662,
+    "scene": "unreadable",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Block corruption or washout prevents judging the road at the arrow."
+  },
+  {
+    "index": 18,
+    "k": 676,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "bd627ad0bc7ee277",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 19,
+    "k": 696,
+    "scene": "unreadable",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Block corruption or washout prevents judging the road at the arrow."
+  },
+  {
+    "index": 20,
+    "k": 726,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 21,
+    "k": 736,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "c91b26d72009c716",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 22,
+    "k": 738,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 23,
+    "k": 756,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "6b7ea9b325689e24",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 24,
+    "k": 1252,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 25,
+    "k": 1253,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 26,
+    "k": 1254,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 27,
+    "k": 1262,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 28,
+    "k": 1268,
+    "scene": "unreadable",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Block corruption or washout prevents judging the road at the arrow."
+  },
+  {
+    "index": 29,
+    "k": 1269,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 30,
+    "k": 1279,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "c772ef41731963a8",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 31,
+    "k": 1287,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "62f60b4a253464a7",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 32,
+    "k": 1289,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 33,
+    "k": 1290,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 34,
+    "k": 1295,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 35,
+    "k": 1303,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 36,
+    "k": 1319,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "1044d4b4c5ed0b05",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 37,
+    "k": 1328,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 38,
+    "k": 1331,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 39,
+    "k": 1336,
+    "scene": "unreadable",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Block corruption or washout prevents judging the road at the arrow."
+  },
+  {
+    "index": 40,
+    "k": 1343,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 41,
+    "k": 1344,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 42,
+    "k": 1355,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "ac065a42f27511e3",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 43,
+    "k": 1444,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "0137cb69952d03a9",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 44,
+    "k": 1446,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "5bef19e9eb7d8d1a",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 45,
+    "k": 1451,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "479b07235ee0d69f",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 46,
+    "k": 1461,
+    "scene": "unreadable",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Block corruption or washout prevents judging the road at the arrow."
+  },
+  {
+    "index": 47,
+    "k": 1463,
+    "scene": "unreadable",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Block corruption or washout prevents judging the road at the arrow."
+  },
+  {
+    "index": 48,
+    "k": 1484,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "2e0da04686e0e23c",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 49,
+    "k": 1522,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 50,
+    "k": 1524,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "b29a3be3935b6333",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 51,
+    "k": 1544,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 52,
+    "k": 1547,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "9a3277ad512774d0",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 53,
+    "k": 1555,
+    "scene": "unreadable",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Block corruption or washout prevents judging the road at the arrow."
+  },
+  {
+    "index": 54,
+    "k": 1557,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "112233497fc421ae",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 55,
+    "k": 1560,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "c505e17b0d374e9d",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 56,
+    "k": 1564,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "dac1ff47b02c485c",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 57,
+    "k": 1570,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 58,
+    "k": 1571,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 59,
+    "k": 1572,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 60,
+    "k": 1573,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 61,
+    "k": 1574,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "a53268442cba3b49",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 62,
+    "k": 1580,
+    "scene": "unreadable",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Block corruption or washout prevents judging the road at the arrow."
+  },
+  {
+    "index": 63,
+    "k": 1591,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 64,
+    "k": 1605,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "2fa2de65178183d4",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 65,
+    "k": 1607,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "aaa0c70128635804",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 66,
+    "k": 1632,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Visible road, but the reader abstains."
+  },
+  {
+    "index": 67,
+    "k": 1644,
+    "scene": "road",
+    "path_on_road": true,
+    "path_hash": "fe6d6d0b1000b0c3",
+    "note": "Path stays on the connected road."
+  },
+  {
+    "index": 68,
+    "k": 1652,
+    "scene": "unreadable",
+    "path_on_road": false,
+    "path_hash": "74234e98afe7498f",
+    "note": "Block corruption or washout prevents judging the road at the arrow."
+  },
+  {
+    "index": 69,
+    "k": 1664,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "bb125c9f9116ba4d",
+    "note": "The path is detached from the car road at the arrow."
+  },
+  {
+    "index": 70,
+    "k": 1665,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "a19ac9415af4bd4f",
+    "note": "The path is detached from the car road at the arrow."
+  },
+  {
+    "index": 71,
+    "k": 1666,
+    "scene": "road",
+    "path_on_road": false,
+    "path_hash": "53038b2e6dd5729b",
+    "note": "The path is detached from the car road at the arrow."
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "labelled_road_frames": 60,
+  "shared_damage_rejected_road_frames": 17,
+  "rejected_indices": [
+    6,
+    10,
+    11,
+    16,
+    20,
+    22,
+    29,
+    34,
+    38,
+    41,
+    51,
+    57,
+    58,
+    59,
+    60,
+    63,
+    66
+  ],
+  "best_possible_recall_with_shared_damage_guard": 0.7166666666666667,
+  "correct_on_not_rejected": 28,
+  "not_rejected_road_frames": 43
+}

@@ -1,0 +1,19 @@
+{
+  "frames": 72,
+  "mean_ms": 1.8558073222222222,
+  "p95_ms": 4.52404935,
+  "width_pixels_p10_p50_p90": [
+    5.5024566650390625,
+    10.125762939453125,
+    16.829052734375
+  ],
+  "labelled": true,
+  "meets_reader_targets": false,
+  "road_frames": 60,
+  "correct_paths": 28,
+  "road_accuracy": 0.4666666666666667,
+  "no_road_frames": 12,
+  "invented_paths": 1,
+  "false_positive_rate": 0.08333333333333333,
+  "excluded_frames": 0
+}
