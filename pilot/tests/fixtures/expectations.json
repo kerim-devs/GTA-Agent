@@ -147,6 +147,465 @@
       "route": "none",
       "arrow": 90,
       "arrow_tolerance": 20
+    },
+    {
+      "name": "p36_recorded_damage_821",
+      "file": "p36-damage-0821.png",
+      "crop_id": 821,
+      "minimap": "tilted",
+      "route": "yellow",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_473",
+      "file": "p36-damage-0473.png",
+      "crop_id": 473,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_624",
+      "file": "p36-damage-0624.png",
+      "crop_id": 624,
+      "minimap": "tilted",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1392",
+      "file": "p36-damage-1392.png",
+      "crop_id": 1392,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_681",
+      "file": "p36-damage-0681.png",
+      "crop_id": 681,
+      "minimap": "tilted",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1419",
+      "file": "p36-damage-1419.png",
+      "crop_id": 1419,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1780",
+      "file": "p36-damage-1780.png",
+      "crop_id": 1780,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_682",
+      "file": "p36-damage-0682.png",
+      "crop_id": 682,
+      "minimap": "tilted",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_883",
+      "file": "p36-damage-0883.png",
+      "crop_id": 883,
+      "minimap": "tilted",
+      "route": "yellow",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1430",
+      "file": "p36-damage-1430.png",
+      "crop_id": 1430,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_810",
+      "file": "p36-damage-0810.png",
+      "crop_id": 810,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1425",
+      "file": "p36-damage-1425.png",
+      "crop_id": 1425,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1414",
+      "file": "p36-damage-1414.png",
+      "crop_id": 1414,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1050",
+      "file": "p36-damage-1050.png",
+      "crop_id": 1050,
+      "minimap": "tilted",
+      "route": "yellow",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1113",
+      "file": "p36-damage-1113.png",
+      "crop_id": 1113,
+      "minimap": "tilted",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_599",
+      "file": "p36-damage-0599.png",
+      "crop_id": 599,
+      "minimap": "tilted",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_655",
+      "file": "p36-damage-0655.png",
+      "crop_id": 655,
+      "minimap": "tilted",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_777",
+      "file": "p36-damage-0777.png",
+      "crop_id": 777,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_955",
+      "file": "p36-damage-0955.png",
+      "crop_id": 955,
+      "minimap": "tilted",
+      "route": "yellow",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1840",
+      "file": "p36-damage-1840.png",
+      "crop_id": 1840,
+      "minimap": "tilted",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1434",
+      "file": "p36-damage-1434.png",
+      "crop_id": 1434,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1802",
+      "file": "p36-damage-1802.png",
+      "crop_id": 1802,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1426",
+      "file": "p36-damage-1426.png",
+      "crop_id": 1426,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_691",
+      "file": "p36-damage-0691.png",
+      "crop_id": 691,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_914",
+      "file": "p36-damage-0914.png",
+      "crop_id": 914,
+      "minimap": "tilted",
+      "route": "yellow",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_261",
+      "file": "p36-damage-0261.png",
+      "crop_id": 261,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1025",
+      "file": "p36-damage-1025.png",
+      "crop_id": 1025,
+      "minimap": "tilted",
+      "route": "yellow",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_2259",
+      "file": "p36-damage-2259.png",
+      "crop_id": 2259,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_693",
+      "file": "p36-damage-0693.png",
+      "crop_id": 693,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_957",
+      "file": "p36-damage-0957.png",
+      "crop_id": 957,
+      "minimap": "tilted",
+      "route": "yellow",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1060",
+      "file": "p36-damage-1060.png",
+      "crop_id": 1060,
+      "minimap": "tilted",
+      "route": "yellow",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_2051",
+      "file": "p36-damage-2051.png",
+      "crop_id": 2051,
+      "minimap": "tilted",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1402",
+      "file": "p36-damage-1402.png",
+      "crop_id": 1402,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_2738",
+      "file": "p36-damage-2738.png",
+      "crop_id": 2738,
+      "minimap": "none",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1447",
+      "file": "p36-damage-1447.png",
+      "crop_id": 1447,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_2584",
+      "file": "p36-damage-2584.png",
+      "crop_id": 2584,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_770",
+      "file": "p36-damage-0770.png",
+      "crop_id": 770,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_2188",
+      "file": "p36-damage-2188.png",
+      "crop_id": 2188,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1317",
+      "file": "p36-damage-1317.png",
+      "crop_id": 1317,
+      "minimap": "tilted",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_1427",
+      "file": "p36-damage-1427.png",
+      "crop_id": 1427,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_491",
+      "file": "p36-damage-0491.png",
+      "crop_id": 491,
+      "minimap": "flat",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_501",
+      "file": "p36-damage-0501.png",
+      "crop_id": 501,
+      "minimap": "tilted",
+      "route": "none",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_recorded_damage_885",
+      "file": "p36-damage-0885.png",
+      "crop_id": 885,
+      "minimap": "tilted",
+      "route": "yellow",
+      "corrupt": true,
+      "confidence_max": 0.35
+    },
+    {
+      "name": "p36_clean_town_40s",
+      "file": "p36-town-040.png",
+      "recording": "20261111-130955",
+      "time": 40,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": false
+    },
+    {
+      "name": "p36_clean_town_78s",
+      "file": "p36-town-078.png",
+      "recording": "20261111-130955",
+      "time": 78,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": false
+    },
+    {
+      "name": "p36_clean_town_80s",
+      "file": "p36-town-080.png",
+      "recording": "20261111-130955",
+      "time": 80,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": false
+    },
+    {
+      "name": "p36_clean_town_100s",
+      "file": "p36-town-100.png",
+      "recording": "20261111-130955",
+      "time": 100,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": false
+    },
+    {
+      "name": "p36_clean_town_150s",
+      "file": "p36-town-150.png",
+      "recording": "20261111-130955",
+      "time": 150,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": false
+    },
+    {
+      "name": "p36_clean_town_155s",
+      "file": "p36-town-155.png",
+      "recording": "20261111-130955",
+      "time": 155,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": false
+    },
+    {
+      "name": "p36_clean_town_165s",
+      "file": "p36-town-165.png",
+      "recording": "20261111-130955",
+      "time": 165,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": false
+    },
+    {
+      "name": "p36_clean_town_179s",
+      "file": "p36-town-179.png",
+      "recording": "20261111-130955",
+      "time": 179,
+      "minimap": "tilted",
+      "route": "purple",
+      "corrupt": false
     }
   ],
   "motion": [

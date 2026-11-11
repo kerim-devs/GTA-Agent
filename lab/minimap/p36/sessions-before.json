@@ -1,0 +1,26 @@
+{
+  "20261111-130955": {
+    "frames": 10790,
+    "corrupt": 6090,
+    "matched_ticks": 5018,
+    "corrupt_ticks": 2835,
+    "recorded_corrupt_ticks": 2907,
+    "unmatched_ticks": 0
+  },
+  "20261111-131346": {
+    "frames": 8994,
+    "corrupt": 1838,
+    "matched_ticks": 4079,
+    "corrupt_ticks": 820,
+    "recorded_corrupt_ticks": 851,
+    "unmatched_ticks": 0
+  },
+  "20261111-131628": {
+    "frames": 6585,
+    "corrupt": 286,
+    "matched_ticks": 2793,
+    "corrupt_ticks": 123,
+    "recorded_corrupt_ticks": 134,
+    "unmatched_ticks": 0
+  }
+}
