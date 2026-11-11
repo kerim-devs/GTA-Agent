@@ -44,6 +44,11 @@ WALK_SLOW = 0.30
 DOOR_WAIT = 4.0
 RETRY_APPROACH = 2.4
 MAX_ATTEMPTS = 4
+# These replacement timings are bounded estimates, not a measured escape time.
+CLEAR_SECONDS = 1.5
+STOP_SECONDS = 1.0
+SETTLE_SECONDS = 0.3
+STOP_DRIFT = 0.018
 
 
 class EnterVehicle:
@@ -51,13 +56,14 @@ class EnterVehicle:
     parameters: ClassVar[dict] = {
         "duration": (0.1, MAX_SECONDS, MAX_SECONDS),
         "kind": ("any", "car", "motorcycle"),
+        "strategy": ("normal", "replace"),
     }
     prompt = (
-        "Approach and enter a nearby detected vehicle (kind any/car/motorcycle; "
-        "duration up to 25). Needs fresh vehicle detections and a readable minimap. "
-        "Waits neutrally during entry; succeeds only after the vehicle map persists. "
-        "Fails if detections or vehicles are absent, approach fails, the door never "
-        "opens, or time runs out."
+        "Enter a nearby vehicle using fresh detections and a readable movement mode. "
+        "strategy replace first exits, moves away and excludes the abandoned car, "
+        "then waits for another vehicle to stop. Normal keeps the usual entry. "
+        "Confirms entry from sustained vehicle mode; fails on missing evidence, "
+        "an unopened door or the duration limit (up to 25 seconds)."
     )
 
     def __init__(self, args: dict):
@@ -73,6 +79,10 @@ class EnterVehicle:
         self.kind = args.get("kind", "any")
         if self.kind not in self.parameters["kind"]:
             raise ValueError("kind must be any, car, or motorcycle")
+        self.strategy = args.get("strategy", "normal")
+        if self.strategy not in self.parameters["strategy"]:
+            raise ValueError("strategy must be normal or replace")
+        self.uninterruptible = self.strategy == "replace"
         self.started = None
         self.finished = None
         self.target = None
@@ -89,6 +99,25 @@ class EnterVehicle:
         self.previous_capture = None
         self.retry_walk = 0.0
         self.was_walking = False
+        self.leaving = self.strategy == "replace"
+        self.exit_pressed = False
+        self.exit_since = None
+        self.mode_since = None
+        self.leave_mode = None
+        self.excluded = None
+        self.excluded_capture = None
+        self.exclusion_visible = False
+        self.clear_walk = 0.0
+        self.clear_side = None
+        self.jump_used = False
+        self.jump_until = None
+        self.path_capture = None
+        self.blocked_since = None
+        self.still_since = None
+        self.stationary = []
+        self.stationary_capture = None
+        self.approach_until = None
+        self.previous_pad = Pad()
 
     def stop(self, reason="interrupted") -> SkillResult:
         self.finished = SkillResult(status="failed", reason=reason)
@@ -126,6 +155,136 @@ class EnterVehicle:
         x0, y0, x1, y1 = obj.box
         return (x0 + x1) / 2, (y0 + y1) / 2
 
+    @classmethod
+    def _match(cls, previous, candidates, *, gate=TARGET_GATE, scale=(0.4, 2.5)):
+        matches = []
+        for obj in candidates:
+            ratio = (obj.box[3] - obj.box[1]) / (previous.box[3] - previous.box[1])
+            distance = math.dist(cls._center(previous), cls._center(obj))
+            # Car/truck labels can alternate on the same pickup.
+            compatible = obj.kind == previous.kind or {obj.kind, previous.kind} <= {"car", "truck"}
+            if compatible and distance <= gate and scale[0] <= ratio <= scale[1]:
+                matches.append((distance + 0.05 * abs(math.log(ratio)), obj))
+        return min(matches, key=lambda pair: pair[0])[1] if matches else None
+
+    def _others(self, candidates, capture):
+        if self.excluded is None:
+            return []
+        if capture != self.excluded_capture:
+            matched = self._match(self.excluded, candidates, gate=0.07, scale=(0.75, 1.35))
+            self.exclusion_visible = matched is not None
+            if matched is not None:
+                self.excluded = matched
+            self.excluded_capture = capture
+        if not self.exclusion_visible:
+            return []
+        # Keep the last exclusion through occlusion; losing the box is not permission to enter it.
+        return [obj for obj in candidates if self._match(self.excluded, [obj]) is None]
+
+    def _answer(self, obs, key):
+        judgment = obs.judgment
+        if judgment is None or not 0 <= obs.time - judgment.capture <= 1.0:
+            return None
+        answer = judgment.answers.get(key)
+        return answer.value if answer is not None else None
+
+    def _leave(self, obs, candidates, fresh, delta):
+        now = obs.time
+        mode = player_mode(obs)
+        if mode != self.leave_mode:
+            self.leave_mode = mode
+            self.mode_since = now
+        if mode == "vehicle":
+            if not self.exit_pressed and now - self.mode_since >= CONFIRM_SECONDS:
+                self.exit_pressed = True
+                self.exit_since = now
+            if self.exit_pressed and now - self.exit_since < PRESS_SECONDS:
+                return SkillResult(Pad(buttons=(self.profile.enter_vehicle,)))
+            return SkillResult()
+        if mode != "foot" or not fresh:
+            return SkillResult()
+        if self.excluded is None:
+            # A passing foreground car is not the abandoned car. Wait for a stable nearby box.
+            nearby = [
+                obj
+                for obj in candidates
+                if obj.box[3] >= 0.35 and (obj.box[2] - obj.box[0]) * (obj.box[3] - obj.box[1]) >= 0.015
+            ]
+            stopped = self._stopped(nearby, obs)
+            if stopped:
+                self.excluded = max(
+                    stopped, key=lambda obj: (obj.box[2] - obj.box[0]) * (obj.box[3] - obj.box[1])
+                )
+                self.excluded_capture = obs.objects_time
+                self.exclusion_visible = True
+            else:
+                return (
+                    SkillResult(Pad(right=(SCAN_TURN, 0)))
+                    if not nearby and (now - self.started) % SCAN_PERIOD < SCAN_PULSE
+                    else SkillResult()
+                )
+        self._others(candidates, obs.objects_time)
+        if now - self.mode_since < CONFIRM_SECONDS:
+            return SkillResult()
+        if self.clear_side is None:
+            # The side opposite the abandoned car leaves room for the figure and the next door.
+            self.clear_side = -1 if self._center(self.excluded)[0] >= 0.5 else 1
+        if self.previous_pad.left != (0, 0):
+            self.clear_walk += delta
+        path = self._answer(obs, "path")
+        if path != "blocked":
+            self.blocked_since = None
+        elif obs.judgment.capture != self.path_capture:
+            self.path_capture = obs.judgment.capture
+            if self.blocked_since is None:
+                self.blocked_since = obs.judgment.capture
+        if self.clear_walk < CLEAR_SECONDS:
+            buttons = ()
+            if (
+                not self.jump_used
+                and self.blocked_since is not None
+                and obs.judgment.capture - self.blocked_since >= 0.5
+                and self.profile.name == "gta5"
+            ):
+                # GTA V's jump can clear a low parapet; a blocked answer cannot tell its height.
+                self.jump_used = True
+                self.jump_until = now + PRESS_SECONDS
+            if self.jump_until is not None and now < self.jump_until:
+                buttons = ("square",)
+            return SkillResult(Pad(left=(0.5 * self.clear_side, -0.4), buttons=buttons))
+        self.leaving = False
+        self.confirmed_since = None
+        self.still_since = now
+        return SkillResult()
+
+    def _stopped(self, candidates, obs):
+        now = obs.time
+        if self.previous_pad.left != (0, 0) or self.previous_pad.right != (0, 0):
+            self.still_since = now
+            self.stationary = []
+        if self.still_since is None:
+            self.still_since = now
+        if now - self.still_since < SETTLE_SECONDS:
+            return []
+        if self.stationary_capture != obs.objects_time:
+            tracks = []
+            available = list(self.stationary)
+            for obj in candidates:
+                prior = next((track for track in available if self._match(track[0], [obj]) is not None), None)
+                if prior is not None:
+                    available.remove(prior)
+                if (
+                    prior is not None
+                    and obs.objects_time - prior[3] <= DETECTION_MAX_AGE
+                    and max(abs(a - b) for a, b in zip(obj.box, prior[1], strict=True)) <= STOP_DRIFT
+                ):
+                    tracks.append((obj, prior[1], prior[2], obs.objects_time))
+                else:
+                    tracks.append((obj, obj.box, obs.objects_time, obs.objects_time))
+            self.stationary = tracks
+            self.stationary_capture = obs.objects_time
+        return [obj for obj, _, since, capture in self.stationary if capture - since >= STOP_SECONDS]
+
     def _select(self, candidates, now):
         if self.target is not None:
             cx, cy = self._center(self.target)
@@ -160,7 +319,9 @@ class EnterVehicle:
         if self.finished is not None:
             return self.finished
         try:
-            return self._step(observation)
+            result = self._step(observation)
+            self.previous_pad = result.pad
+            return result
         except Exception:
             return self.stop("invalid observation")
 
@@ -168,6 +329,7 @@ class EnterVehicle:
         now = obs.time
         if not math.isfinite(now) or (self.last_time is not None and now < self.last_time):
             return self.stop("invalid observation time")
+        delta = 0 if self.last_time is None else min(DETECTION_MAX_AGE, now - self.last_time)
         if self.phase == "retry" and self.was_walking and self.last_time is not None:
             self.retry_walk += min(DETECTION_MAX_AGE, now - self.last_time)
         self.was_walking = False
@@ -176,7 +338,29 @@ class EnterVehicle:
             self.started = now
         elapsed = now - self.started
         if elapsed >= self.limit:
-            return self.stop(self._timeout_reason())
+            return self.stop(
+                "replacement timed out" if self.strategy == "replace" else self._timeout_reason()
+            )
+
+        if self.strategy == "replace":
+            if (
+                obs.reading.corrupt
+                or player_mode(obs) in {None, "none"}
+                or (obs.hud and obs.hud.screen != "game")
+            ):
+                self.mode_since = now
+                self.confirmed_since = None
+                self.stationary = []
+                self.still_since = now
+                return SkillResult()
+            fresh = (
+                obs.objects_time is not None
+                and math.isfinite(obs.objects_time)
+                and 0 <= now - obs.objects_time <= DETECTION_MAX_AGE
+            )
+            candidates = self._candidates(obs) if fresh else []
+            if self.leaving:
+                return self._leave(obs, candidates, fresh, delta)
 
         # Entry owns the pad even if object delivery disappears during the animation.
         if player_mode(obs) == "none":
@@ -188,6 +372,9 @@ class EnterVehicle:
             if self.confirmed_since is not None:
                 return SkillResult()
         elif player_mode(obs) == "vehicle":
+            if self.strategy == "replace" and not self.attempts:
+                # A map glitch or an unsolicited return to the old seat is not a replacement.
+                return SkillResult()
             if self.confirmed_since is None:
                 self.confirmed_since = now
             # Before any press the character sat in a vehicle already, or the reader is wrong.
@@ -221,7 +408,19 @@ class EnterVehicle:
                 return self.stop("no detections delivered at all")
             return SkillResult()
         self.saw_delivery = True
-        target = self._select(self._candidates(obs), now)
+        candidates = self._candidates(obs)
+        if self.strategy == "replace":
+            candidates = self._others(candidates, obs.objects_time)
+            if self.approach_until is None or now >= self.approach_until:
+                self.approach_until = None
+                candidates = self._stopped(candidates, obs)
+                if not candidates:
+                    return SkillResult()
+                self.approach_until = now + 0.35
+            if self._answer(obs, "car") is False and self.phase == "tap":
+                self.phase = "approach"
+                return SkillResult()
+        target = self._select(candidates, now)
         if target is None:
             if self.phase == "tap":
                 self.phase = "approach"

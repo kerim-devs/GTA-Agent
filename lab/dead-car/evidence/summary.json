@@ -1,0 +1,93 @@
+{
+  "baseline": "7aa2464906916c2cd81948d93252d19df3ebbe42",
+  "caveat": "Counterfactual pad outputs do not change recorded pixels. Judge answers and GPS fixes are recorded, not rerun.",
+  "134519": {
+    "requests": 11,
+    "abandon": [
+      {
+        "request": 2,
+        "t": 48.82894704100909,
+        "frame": 2921,
+        "last_skill": {
+          "name": "drive_route",
+          "status": "failed",
+          "reason": "failed-recovery"
+        },
+        "gps_distance": null,
+        "rule": "abandon_vehicle",
+        "plan": [
+          {
+            "name": "enter_vehicle",
+            "args": {
+              "duration": 25,
+              "kind": "any",
+              "strategy": "replace"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      }
+    ],
+    "reader_frames": 10102,
+    "detector_frames": 1684
+  },
+  "135330": {
+    "frames": 1496,
+    "first_target": null,
+    "terminal": {
+      "i": 1494,
+      "t": 25.0077,
+      "status": "failed",
+      "reason": "replacement timed out"
+    },
+    "baseline_pad_status_reason_differences": null,
+    "first_exclusion": {
+      "i": 693,
+      "t": 11.5711,
+      "box": {
+        "kind": "car",
+        "box": [
+          0.3440625,
+          0.2477777777777778,
+          0.48414062500000005,
+          0.41138888888888886
+        ],
+        "confidence": 0.924
+      }
+    },
+    "reader_frames": 1496,
+    "detector_frames": 1496
+  },
+  "122034": {
+    "frames": 2340,
+    "first_target": {
+      "i": 359,
+      "t": 5.9899,
+      "target": {
+        "kind": "car",
+        "box": [
+          0.38351562499999997,
+          0.4884722222222222,
+          0.535859375,
+          0.6673611111111111
+        ],
+        "confidence": 0.901
+      }
+    },
+    "terminal": {
+      "i": 836,
+      "t": 13.9535,
+      "status": "done",
+      "reason": "entered vehicle"
+    },
+    "baseline_pad_status_reason_differences": 0,
+    "first_exclusion": null,
+    "reader_frames": 2699,
+    "detector_frames": 450
+  }
+}

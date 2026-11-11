@@ -300,3 +300,148 @@ def test_a_car_at_the_figures_feet_is_reached_however_low_its_box():
     skill = EnterVehicle({})
     assert skill.step(obs(0, (BUMPER,))).pad == NEUTRAL_PAD  # the release tick before the press
     assert skill.step(obs(0.03, (BUMPER,))).pad.buttons == ("triangle",)
+
+
+DEAD = Detection("car", px(0.03, 0.40, 0.38, 0.85), 0.95)
+OTHER = Detection("truck", px(0.45, 0.45, 0.65, 0.72), 0.95)
+
+
+def replacement_on_foot():
+    skill = EnterVehicle({"strategy": "replace"})
+    for tick in range(-15, 80):
+        skill.step(obs(tick / 30, (DEAD, OTHER)))
+    return skill
+
+
+def test_replacement_exits_only_after_sustained_vehicle_mode_and_waits_for_foot():
+    skill = EnterVehicle({"strategy": "replace"})
+    for tick in range(30):
+        assert skill.step(obs(tick / 30, minimap="tilted")).pad == NEUTRAL_PAD
+    assert skill.step(obs(1, minimap="tilted")).pad.buttons == ("triangle",)
+    assert skill.step(obs(1.1, minimap="tilted")).pad == NEUTRAL_PAD
+    for time in (2, 3, 4):
+        result = skill.step(obs(time, minimap="tilted"))
+        assert result.status == "running" and result.pad == NEUTRAL_PAD
+    assert skill.step(obs(4.1, (DEAD, OTHER))).pad == NEUTRAL_PAD
+    for tick in range(124, 154):
+        assert skill.step(obs(tick / 30, (DEAD, OTHER))).pad == NEUTRAL_PAD
+    for tick in range(154, 169):
+        result = skill.step(obs(tick / 30, (DEAD, OTHER)))
+    assert result.pad.left[0] > 0
+
+
+def test_replacement_refuses_larger_dead_car_and_selects_stopped_neighbor():
+    skill = replacement_on_foot()
+    results = []
+    for tick in range(80, 160):
+        results.append(skill.step(obs(tick / 30, (DEAD, OTHER))))
+        assert skill.target is None or not same(skill.target, DEAD)
+    assert skill.target is not None and same(skill.target, OTHER)
+    assert any(result.pad.buttons == ("triangle",) for result in results)
+
+
+def test_replacement_will_not_chase_a_moving_vehicle_but_accepts_it_after_stopping():
+    skill = replacement_on_foot()
+    for tick in range(80, 170):
+        x = 0.45 + 0.09 * math.sin(tick / 10)
+        traffic = Detection("truck", px(x, 0.45, x + 0.2, 0.72), 0.95)
+        result = skill.step(obs(tick / 30, (DEAD, traffic)))
+        assert result.pad == NEUTRAL_PAD
+        assert skill.target is None
+    for tick in range(170, 220):
+        skill.step(obs(tick / 30, (DEAD, OTHER)))
+    assert same(skill.target, OTHER)
+
+
+def test_replacement_does_not_count_frozen_or_missing_detections_as_stopped():
+    skill = replacement_on_foot()
+    for tick in range(80, 120):
+        now = tick / 30
+        result = skill.step(obs(now, (DEAD, OTHER), age=now - 80 / 30))
+        assert result.pad == NEUTRAL_PAD
+    assert skill.target is None
+    assert skill.step(obs(4.1, (DEAD, OTHER))).pad == NEUTRAL_PAD
+    assert skill.target is None
+
+
+def test_exclusion_survives_label_changes_and_a_short_occlusion():
+    skill = replacement_on_foot()
+    changed = Detection("truck", DEAD.box, DEAD.confidence)
+    for tick in range(80, 100):
+        skill.step(obs(tick / 30, (OTHER,)))
+    for tick in range(100, 150):
+        skill.step(obs(tick / 30, (changed, OTHER)))
+        assert skill.target is None or not same(skill.target, changed)
+
+
+def test_replacement_times_out_neutrally_instead_of_reentering_the_dead_car():
+    skill = EnterVehicle({"strategy": "replace"})
+    for tick in range(751):
+        result = skill.step(obs(tick / 30, (DEAD,)))
+        assert not result.pad.buttons
+    assert result.status == "failed" and result.reason == "replacement timed out"
+    assert result.pad == NEUTRAL_PAD
+
+
+@pytest.mark.parametrize("strategy", [True, [], "unknown"])
+def test_invalid_replacement_strategy_is_rejected(strategy):
+    with pytest.raises(ValueError):
+        EnterVehicle({"strategy": strategy})
+
+
+def test_replacement_releases_exit_on_corrupt_and_blocked_screen_ticks():
+    from dataclasses import replace
+
+    from pilot.contract import Hud
+
+    for bad in (
+        obs(1.03, corrupt=True, minimap="tilted"),
+        replace(obs(1.03, minimap="tilted"), hud=Hud(screen="pause")),
+    ):
+        skill = EnterVehicle({"strategy": "replace"})
+        skill.step(obs(0, minimap="tilted"))
+        assert skill.step(obs(1, minimap="tilted")).pad.buttons == ("triangle",)
+        assert skill.step(bad).pad == NEUTRAL_PAD
+
+
+def test_transient_foot_does_not_start_clearance_and_unrequested_vehicle_cannot_succeed():
+    skill = EnterVehicle({"strategy": "replace"})
+    skill.step(obs(0, minimap="tilted"))
+    skill.step(obs(1, minimap="tilted"))
+    for t in (1.2, 1.9):
+        assert skill.step(obs(t, (DEAD,))).pad == NEUTRAL_PAD
+    assert skill.step(obs(2, minimap="tilted")).pad == NEUTRAL_PAD
+    assert skill.step(obs(2.1, (DEAD,))).pad == NEUTRAL_PAD
+    assert skill.step(obs(2.9, (DEAD,))).pad == NEUTRAL_PAD
+    on_foot = replacement_on_foot()
+    for t in (3, 4, 5):
+        result = on_foot.step(obs(t, minimap="tilted"))
+        assert result.pad == NEUTRAL_PAD and result.status == "running"
+
+
+def test_lost_exclusion_identity_cannot_authorize_the_old_car_at_a_new_location():
+    skill = replacement_on_foot()
+    shifted = Detection("car", px(0.5, 0.4, 0.85, 0.85), 0.95)
+    for tick in range(80, 200):
+        result = skill.step(obs(tick / 30, (shifted, OTHER)))
+        assert skill.target is None and result.pad == NEUTRAL_PAD
+
+
+def test_clearance_jumps_once_only_after_repeated_fresh_blocked_judgments():
+    from dataclasses import replace
+
+    from pilot.contract import Answer, Judgment
+
+    skill = EnterVehicle({"strategy": "replace"})
+    presses = 0
+    held = False
+    for tick in range(100):
+        now = tick / 30
+        judgment = Judgment(now, {"path": Answer("blocked", None)}, {}, 0, "recorded")
+        result = skill.step(replace(obs(now, (DEAD, OTHER)), judgment=judgment))
+        pressing = "square" in result.pad.buttons
+        presses += pressing and not held
+        if pressing:
+            assert result.pad.left[1] < 0
+        held = pressing
+    assert presses == 1

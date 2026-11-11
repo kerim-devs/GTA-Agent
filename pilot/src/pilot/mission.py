@@ -1,5 +1,6 @@
 """Observable mission rules, with an injectable head for ambiguous situations."""
 
+import math
 import re
 import unicodedata
 from collections import Counter
@@ -70,6 +71,11 @@ class MissionHead:
         self.last_rule: str | None = None
         self.sought_mission = False
         self.letterless = 0
+        self.recovery_failures = 0
+        self.route_distance: float | None = None
+        self.recovery_event: dict | None = None
+        self.recovery_latched = False
+        self.replacing_vehicle = False
 
     def decide(self, request: HeadRequest) -> HeadResponse:
         selected = self._rule(request)
@@ -91,6 +97,8 @@ class MissionHead:
             plan = [_call("look", duration=0.5, angle=45), *plan]
             sentence = "Der letzte Versuch ist gescheitert, ich orientiere mich zuerst neu."
         response = parse_response({"plan": plan, "sentence": sentence})
+        if any(call.name == "drive_route" for call in response.plan) and not self.recovery_latched:
+            self.route_distance = self._distance(request)
         self.last_rule = rule
         self.counts[rule] += 1
         self.sought_mission = any(call.args.get("target") == "mission" for call in response.plan)
@@ -110,6 +118,94 @@ class MissionHead:
             self.letterless -= 1
             return "away"
         return "mission"
+
+    @staticmethod
+    def _distance(request: HeadRequest) -> float | None:
+        value = request.minimap.get("gps_distance")
+        if (
+            isinstance(value, (int, float))
+            and not isinstance(value, bool)
+            and math.isfinite(value)
+            and value >= 0
+        ):
+            return value
+        return None
+
+    def _recovery(self, request: HeadRequest, mode: str) -> tuple[str, list[dict], str] | None:
+        last = request.last_skill or {}
+        event = next(
+            (event for event in reversed(request.events) if event.get("kind") == "skill_failed"), None
+        )
+        failure = (event or {}).get("skill") or last
+        if self.replacing_vehicle and last.get("name") == "enter_vehicle":
+            if last.get("status") == "running":
+                # The conductor appends this behind the uninterruptible replacement and its route.
+                return (
+                    "replacement_running",
+                    [_call("wait", duration=0.1)],
+                    "The vehicle change is still running.",
+                )
+            if last.get("status") == "failed":
+                self.replacing_vehicle = False
+                self.recovery_failures = 0
+                return (
+                    "replacement_fallback",
+                    [
+                        _call("enter_vehicle", duration=25, kind="any", strategy="normal"),
+                        _call("drive_route", duration=60),
+                    ],
+                    "I could not take another vehicle, so I try the usual entry.",
+                )
+            if last.get("status") == "done":
+                self.replacing_vehicle = False
+                self.recovery_failures = 0
+        failed = (
+            failure.get("name") == "drive_route"
+            and failure.get("status", "failed") == "failed"
+            and failure.get("reason") == "failed-recovery"
+        )
+        if not failed:
+            self.recovery_latched = False
+            if mode == "on_foot" and not self.replacing_vehicle:
+                self.recovery_failures = 0
+            return None
+        if mode != "vehicle":
+            return None
+        fresh = (event is not None and event is not self.recovery_event) or not self.recovery_latched
+        if self.replacing_vehicle and fresh:
+            # A queued drive can only have run after entry succeeded; this is a different car.
+            self.recovery_failures = 0
+            self.route_distance = None
+            self.replacing_vehicle = False
+        if fresh:
+            self.recovery_failures += 1
+        self.recovery_latched = True
+        self.recovery_event = event
+        distance = self._distance(request)
+        stalled = (
+            fresh
+            and distance is not None
+            and self.route_distance is not None
+            and distance >= self.route_distance
+        )
+        no_progress_evidence = distance is None or self.route_distance is None
+        if self.replacing_vehicle or self.recovery_failures >= 2 or stalled or no_progress_evidence:
+            self.replacing_vehicle = True
+            return (
+                "abandon_vehicle",
+                [
+                    _call("enter_vehicle", duration=25, kind="any", strategy="replace"),
+                    _call("drive_route", duration=60),
+                ],
+                "The car cannot be freed. I get out, move away and take another vehicle.",
+            )
+        if fresh:
+            self.route_distance = distance
+        return (
+            "retry_recovery",
+            [_call("drive_route", duration=60)],
+            "I try to free this car once more without changing the waypoint.",
+        )
 
     @staticmethod
     def _failed(request: HeadRequest) -> str | None:
@@ -148,6 +244,9 @@ class MissionHead:
         if mode == "none":
             # The judge sees a cutscene, a black screen or a figure that is dead: nothing to steer.
             return "judged_wait", [_call("wait", duration=3)], "Gerade läuft etwas ohne mich, ich warte."
+        recovery = self._recovery(request, mode)
+        if recovery is not None:
+            return recovery
         wanted = _wanted(request)
         cars = any(obj.get("kind") in {"car", "truck", "motorcycle"} for obj in request.objects)
         # head_prompt.txt:43-47 and LOG.md:102-106: flee, never fight;
@@ -171,7 +270,7 @@ class MissionHead:
                 if cars:
                     return (
                         "wanted_on_foot_vehicle",
-                        [_call("enter_vehicle", duration=25, kind="any"), *_route("away")],
+                        [_call("enter_vehicle", duration=25, kind="any", strategy="normal"), *_route("away")],
                         "Ein Fahrzeug ist zu sehen, ich steige zur Flucht ein.",
                     )
                 return "wanted_on_foot", [_walk(sprint=True)], "Die Polizei sucht mich, ich laufe weiter."
@@ -259,7 +358,10 @@ class MissionHead:
                 # head_prompt.txt:30-33: on foot with nothing to do, go for a drive in one plan.
                 return (
                     "foot_drive",
-                    [_call("enter_vehicle", duration=25, kind="any"), *_route(self._destination(request))],
+                    [
+                        _call("enter_vehicle", duration=25, kind="any", strategy="normal"),
+                        *_route(self._destination(request)),
+                    ],
                     "Nichts hält mich hier, ich nehme mir ein Fahrzeug und fahre los.",
                 )
             if not request.objective.strip() and not colors and not cars:

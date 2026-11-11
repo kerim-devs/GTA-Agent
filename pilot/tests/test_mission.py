@@ -188,6 +188,115 @@ DRIVING = {"minimap": "tilted", "route": "none"}
 CALM = {"wanted": 0, "health": 1, "screen": "game"}
 
 
+def recovery_request(distance=None, *, event=True):
+    failure = {"name": "drive_route", "status": "failed", "reason": "failed-recovery"}
+    return replace(
+        request("pilot-20261110-231512-01"),
+        minimap={**DRIVING, "route": "purple", "gps_distance": distance},
+        hud=CALM,
+        judgment={"mode": "vehicle"},
+        last_skill=failure,
+        events=[{"kind": "skill_failed", "skill": failure}] if event else [],
+    )
+
+
+def test_one_recovery_gets_one_retry_and_two_abandon_without_replacing_waypoint():
+    head = MissionHead()
+    head.decide(replace(recovery_request(110), last_skill=None, events=[]))
+    first = recovery_request(100)
+    answer = head.decide(first)
+    assert [call.name for call in answer.plan] == ["look", "drive_route"]
+    # A retained last_skill is not a new failed recovery.
+    head.decide(replace(first, events=[]))
+    assert head.recovery_failures == 1
+    answer = head.decide(recovery_request(90))
+    assert [call.name for call in answer.plan] == ["enter_vehicle", "drive_route"]
+    assert answer.plan[0].args["strategy"] == "replace"
+
+
+def test_one_recovery_without_distance_progress_abandons_even_with_wanted_stars():
+    head = MissionHead()
+    baseline = replace(recovery_request(100), last_skill=None, events=[])
+    head.decide(baseline)
+    answer = head.decide(replace(recovery_request(100), hud={**CALM, "wanted": 2}))
+    assert head.last_rule == "abandon_vehicle"
+    assert [call.name for call in answer.plan] == ["enter_vehicle", "drive_route"]
+    assert answer.plan[0].args["strategy"] == "replace"
+
+
+def test_first_failed_recovery_with_no_distance_evidence_abandons_the_car():
+    # 134519 request 2 has failed-recovery but no GPS fix in the head request.
+    head = MissionHead()
+    value = recovery_request()
+    answer = head.decide(value)
+    assert [call.name for call in answer.plan] == ["enter_vehicle", "drive_route"]
+    assert answer.plan[0].args["strategy"] == "replace"
+    head.decide(value)
+    assert head.recovery_failures == 1
+
+
+def test_replacement_failure_returns_to_usual_entry_and_keeps_waypoint():
+    head = MissionHead()
+    head.decide(recovery_request())
+    value = replace(
+        recovery_request(),
+        events=[],
+        judgment={"mode": "foot"},
+        last_skill={"name": "enter_vehicle", "status": "failed", "reason": "replacement timed out"},
+    )
+    answer = head.decide(value)
+    assert [call.name for call in answer.plan] == ["look", "enter_vehicle", "drive_route"]
+    assert answer.plan[1].args.get("strategy", "normal") == "normal"
+
+
+def test_observed_exit_resets_failures_for_a_different_car():
+    head = MissionHead()
+    head.decide(replace(recovery_request(110), last_skill=None, events=[]))
+    head.decide(recovery_request(100))
+    head.decide(replace(recovery_request(), events=[], last_skill=None, judgment={"mode": "foot"}))
+    head.decide(replace(recovery_request(100), events=[], last_skill=None))
+    assert [call.name for call in head.decide(recovery_request(90)).plan] == ["look", "drive_route"]
+
+
+def test_recovery_does_not_exit_into_a_menu_or_on_an_unknown_mode():
+    head = MissionHead()
+    head.decide(recovery_request())
+    paused = replace(recovery_request(), hud={**CALM, "screen": "pause"})
+    assert [call.name for call in head.decide(paused).plan] == ["wait"]
+    unknown = replace(recovery_request(), judgment=None, minimap={"minimap": "none"})
+    assert "enter_vehicle" not in [call.name for call in head.decide(unknown).plan]
+
+
+def test_replacement_survives_exit_events_and_a_new_car_gets_its_own_failure_count():
+    from pilot.contract import Observation, Reading
+    from pilot.skills import SkillRunner
+
+    head = MissionHead()
+    plan = head.decide(recovery_request()).plan
+    runner = SkillRunner()
+    runner.replace(plan)
+    observation = Observation(Reading("tilted", "purple", 0, 0, 0, False, 1), False, 0)
+    runner.tick(observation)
+    runner.tick(observation)
+    active = runner.active
+    assert runner.uninterruptible
+    running = replace(
+        recovery_request(),
+        events=[{"kind": "vehicle_exit"}],
+        last_skill={"name": "enter_vehicle", "status": "running"},
+        judgment={"mode": "foot"},
+    )
+    continuation = head.decide(running)
+    assert [call.name for call in continuation.plan] == ["wait"]
+    runner.append(continuation.plan)
+    assert runner.active is active and active.name == "enter_vehicle"
+    assert [skill.name for skill in runner.queue] == ["drive_route", "wait"]
+    # The runner only starts that queued drive after replacement entry returned done.
+    answer = head.decide(recovery_request(90))
+    assert [call.name for call in answer.plan] == ["enter_vehicle", "drive_route"]
+    assert head.recovery_failures == 1
+
+
 def test_on_foot_with_nothing_to_do_and_a_car_in_view_it_goes_for_a_drive_to_a_mission():
     value = replace(
         request("pilot-20261110-231512-01"),
