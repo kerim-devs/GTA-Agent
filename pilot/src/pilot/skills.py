@@ -4,6 +4,7 @@ from collections import deque
 from math import atan2, degrees, hypot
 from typing import TYPE_CHECKING, ClassVar
 
+from .avoid import Avoider
 from .contract import NEUTRAL_PAD, Observation, Pad, SkillResult, player_mode
 from .drive import Driver
 from .profile import active
@@ -35,6 +36,7 @@ class Skill:
         self.cycle = self.duration + (0.3 if self.name == "shoot" else 0.1)
         self.limit = min(10, self.count * self.cycle) if self.name in ("press", "shoot") else self.duration
         self.driver = (Driver() if driver is None else driver) if self.name == "drive_route" else None
+        self.avoider = Avoider()
         self.started = None
         self.finished = None
         self.missing_since = None
@@ -76,7 +78,7 @@ class Skill:
                         status="done" if command.state == "route-gone" else "failed", reason=command.state
                     )
                     return self.finished
-                return SkillResult(Pad.from_command(command))
+                return SkillResult(self._around(command, observation))
             if self.name == "wait":
                 return SkillResult()
             if self.name == "walk":
@@ -101,6 +103,25 @@ class Skill:
             return SkillResult(Pad(buttons=(self.args["button"],)))
         except Exception as exc:
             return self.stop(f"skill-error: {type(exc).__name__}")
+
+    AROUND_BRAKE = 0.6  # L2 before something close and straight ahead
+    AROUND_BRAKE_SPEED = 5.0  # m/s the speed has to be known above; a brake held at a standstill is reverse
+
+    def _around(self, command, observation: Observation) -> Pad:
+        """The driver's command, bent around what the detector sees in the way while the route is followed."""
+        if command.state not in ("follow", "coast"):
+            return Pad.from_command(command)
+        around = self.avoider.step(observation.objects, observation.objects_time, observation.time)
+        speed = observation.reading.gps_speed
+        brake = command.brake
+        rolling = speed is not None and speed > self.AROUND_BRAKE_SPEED and observation.moving is not False
+        if around.urgent and rolling:
+            brake = max(brake, self.AROUND_BRAKE)
+        return Pad(
+            left=(clamp(command.steer + around.steer, -1, 1), 0.0),
+            l2=brake,
+            r2=0.0 if brake > command.brake else command.throttle * around.pedal,
+        )
 
     def _blip_step(self, observation: Observation, elapsed: float) -> SkillResult:
         reading, now = observation.reading, observation.time
