@@ -824,6 +824,8 @@ class Scheduler:
         event_writer: str = "plain",
         state_reader: SessionReader | None = None,
         head_chat_quota: int | None = 2,
+        # A chat line took the real writer up to 6.3 s; one that cannot make its limit is not begun.
+        chat_write_budget: float = 6.0,
     ):
         ages = {
             "chat": chat_max_age,
@@ -852,6 +854,7 @@ class Scheduler:
         self.work: Work | None = None
         self.state_reader = state_reader
         self.head_chat_quota = head_chat_quota
+        self.chat_write_budget = chat_write_budget if chat_writer == "character" else 0.0
         self.chats_since_head = 0
 
     @property
@@ -876,6 +879,11 @@ class Scheduler:
             stream.write(json.dumps(record, ensure_ascii=False) + "\n")
 
     def submit(self, candidate: Candidate):
+        if candidate.source == "head":
+            # Only the newest sentence says what the pilot is doing now.
+            for old in [item for item in self.pending if item.source == "head" and item.t < candidate.t]:
+                self.pending.remove(old)
+                self.log(old, candidate.t, "dropped", "superseded")
         self.pending.append(candidate)
 
     def accept_chat(self, messages: list[ChatMessage], chat_filter: ChatFilter, session: Path, now: float):
@@ -1007,7 +1015,16 @@ class Scheduler:
             self._advance(now)
         if self.work or now < self.available_at or not self.pending:
             return
-        candidate = max(self.pending, key=lambda item: (item.priority, -item.t))
+        late = max(0.0, self.ages["chat"] - self.chat_write_budget)
+        for candidate in [c for c in self.pending if c.source == "chat" and now - c.t > late]:
+            self.pending.remove(candidate)
+            self.log(candidate, now, "dropped", "too_late")
+        if not self.pending:
+            return
+        # With more chat than one voice can answer, the newest message gets the answer.
+        candidate = max(
+            self.pending, key=lambda item: (item.priority, item.t if item.source == "chat" else -item.t)
+        )
         waiting_heads = [item for item in self.pending if item.source == "head"]
         if (
             candidate.source == "chat"
