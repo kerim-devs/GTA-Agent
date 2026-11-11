@@ -13,11 +13,12 @@ from pathlib import Path
 
 import cv2
 
-from .contract import FRAME_SIZE, HUD_RECT, Pad, player_mode
+from .contract import FRAME_SIZE, HUD_RECT, NEUTRAL_PAD, Pad, player_mode
 from .flow import MENUS
 from .head import HeadRequest, ScriptedHead, build_prompt, parse_response, response_data
 from .judge import ModeFilter
 from .loop import ControllerRuntime, Pipeline, RuntimeInterruptedError, cleanup_runtime, interrupt_handlers
+from .profile import active
 from .scene import EventDetector, SceneText, TextReader
 from .skills import Observation, SkillResult, SkillRunner
 
@@ -67,6 +68,7 @@ class Conductor:
         clock=time.monotonic,
         opening=(),
         judge=None,
+        awake=None,
     ):
         for value in (quiet_seconds, ocr_interval, ocr_timeout):
             if not math.isfinite(value) or value <= 0:
@@ -122,6 +124,11 @@ class Conductor:
         self.judged_mode = None
         self.judge_events = []
         self.judge_log = (self.directory / "judge.jsonl").open("x") if judge is not None else None
+        self.awake = awake
+        self.nudge = active().right_for(self.NUDGE_STICK)
+        self.last_input = None
+        self.nudge_until = None
+        self.own_screen_until = -math.inf
 
     def write(self, row):
         self.log.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -249,7 +256,37 @@ class Conductor:
         self.last_request_time = observation.time
         self.request_times.append(observation.time)
 
-    def tick(self, observation: Observation, rgb, *, text=None, text_time=None, frame_time=None, events=()):
+    # When the controller has rested for half a minute the game leaves the figure and shows scenery,
+    # and from that picture the judge and the object reader tell nothing true: live on 11 November
+    # the judge said "vehicle" to a car park, the skills waited for a figure on foot, and because
+    # they waited the scenery stayed. A touch of the camera brings the figure back.
+    OWN_SCREEN_SECONDS = 2.0  # the minimap is read as back about a second after a map has closed
+    AWAKE_SECONDS = 15.0
+    NUDGE_SECONDS = 0.1  # one tick is easy for the console to miss
+    NUDGE_STICK = 0.5  # as it reaches the console
+
+    def tick(self, observation: Observation, rgb, **reads):
+        result = self._tick(observation, rgb, **reads)
+        if self.awake is None:
+            return result
+        t = observation.time
+        if result.pad != NEUTRAL_PAD:
+            self.last_input, self.nudge_until = t, None
+            return result
+        if observation.hud is not None and observation.hud.screen != "game":
+            self.nudge_until = None
+            return result
+        # A session does not know how long the controller rested before it began.
+        if self.nudge_until is None and (self.last_input is None or t - self.last_input >= self.awake):
+            self.nudge_until = t + self.NUDGE_SECONDS
+        if self.nudge_until is not None:
+            if t < self.nudge_until:
+                return replace(result, pad=Pad(right=(self.nudge, 0.0)))
+            self.last_input, self.nudge_until = t, None
+            self.nudge = -self.nudge  # the next one turns back
+        return result
+
+    def _tick(self, observation: Observation, rgb, *, text=None, text_time=None, frame_time=None, events=()):
         observation = replace(observation, frame=rgb)
         t = observation.time
         if self.judge is not None:
@@ -274,6 +311,13 @@ class Conductor:
                 self.judge_log.flush()
         self._text(rgb, t, text, text_time if text is not None else frame_time)
         detected = self.detector.update(observation.reading, t, text=self.text, mode=observation.mode)
+        # A skill that opens the map hides the minimap, and that is its own doing and no news. Told
+        # of it live on 11 November, the head planned a wait for the screen, the wait replaced the
+        # skill, and the reflex closed the map the skill had just opened.
+        if getattr(self.runner.active, "opens", ()):
+            self.own_screen_until = t + self.OWN_SCREEN_SECONDS
+        if t < self.own_screen_until:
+            detected = [event for event in detected if event.kind not in ("hud_absent", "hud_present")]
         new_events = [asdict(event) for event in detected] + list(events)
         new_events.extend(self._hud_events(observation))
         recovered = self.flow_started is not None
@@ -553,6 +597,7 @@ def run_play(
     flow=None,
     opening=(),
     judge=None,
+    awake=None,
 ):
     pipeline = Pipeline() if pipeline is None else pipeline
     runtime = ControllerRuntime(bridge, shadow=shadow, clock=clock)
@@ -579,6 +624,7 @@ def run_play(
                 **({"flow": flow} if flow is not None else {}),
                 **({"opening": opening} if opening else {}),
                 **({"judge": judge} if judge is not None else {}),
+                **({"awake": awake} if awake is not None else {}),
                 runner=None if driver_factory is None else SkillRunner(driver_factory=driver_factory),
             )
             log = (destination / "play.jsonl").open("x")

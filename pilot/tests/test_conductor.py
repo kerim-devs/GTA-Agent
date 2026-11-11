@@ -9,8 +9,9 @@ import pytest
 
 from pilot.bridge import Bridge, Frame
 from pilot.conductor import Conductor, background, run_play
-from pilot.contract import NEUTRAL_PAD, Command, Pad, Reading
+from pilot.contract import NEUTRAL_PAD, Command, Hud, Pad, Reading, SkillResult
 from pilot.head import CodexHead, HeadRequest, ScriptedHead, SkillCall, parse_response
+from pilot.scene import SceneEvent
 from pilot.skills import Observation, Skill, SkillRunner
 
 RGB = np.zeros((720, 1280, 3), dtype=np.uint8)
@@ -583,3 +584,71 @@ def test_optional_sources_reach_every_tick_and_close_on_error(tmp_path, fail):
     )
     assert bridge.calls[-1][1] == "stop"
     assert [call[2] for call in bridge.calls if call[1] == "pad"][-1] == {}
+
+
+def test_a_rested_controller_gets_a_touch_of_the_camera(tmp_path):
+    # Live on 11 November the game had left the figure for its idle scenery, the judge said
+    # "vehicle" to a car park, every skill waited for a figure on foot, and the scenery stayed.
+    conductor = Conductor(tmp_path / "awake", submit=Pending(), detector=NoEvents(), awake=15.0)
+    quiet = Conductor(tmp_path / "quiet", submit=Pending(), detector=NoEvents())
+    try:
+        sent = [conductor.tick(observation(tick / 30), RGB).pad for tick in range(30 * 40)]
+        touched = [tick for tick, pad in enumerate(sent) if pad != NEUTRAL_PAD]
+        # At once, because a session does not know how long the controller rested, then every 15 s.
+        assert [round(tick / 30) for tick in touched[::3]] == [0, 15, 30] and len(touched) == 9
+        assert all(pad.left == (0.0, 0.0) and not pad.buttons and pad.right[1] == 0 for pad in sent)
+        first, second, third = (sent[tick].right[0] for tick in touched[::3])
+        assert first > 0 > second and third == first  # each one turns the last one back
+        assert all(quiet.tick(observation(tick / 30), RGB).pad == NEUTRAL_PAD for tick in range(90))
+    finally:
+        conductor.close()
+        quiet.close()
+
+
+def test_a_working_controller_and_a_menu_get_no_touch(tmp_path):
+    conductor = Conductor(tmp_path, submit=Pending(), detector=NoEvents(), awake=15.0)
+    try:
+        conductor.last_input = 0.0
+        busy = Observation(READING, True, 20.0)
+        conductor._tick = lambda *args, **reads: SkillResult(Pad(left=(0.0, -1.0)))
+        assert conductor.tick(busy, RGB).pad == Pad(left=(0.0, -1.0)) and conductor.last_input == 20.0
+        conductor._tick = lambda *args, **reads: SkillResult()
+        menu = Observation(READING, True, 40.0, hud=Hud(wanted=0, health=1.0, screen="pause"))
+        assert conductor.tick(menu, RGB).pad == NEUTRAL_PAD
+        assert conductor.tick(Observation(READING, True, 40.1), RGB).pad != NEUTRAL_PAD
+    finally:
+        conductor.close()
+
+
+class Detected:
+    def __init__(self):
+        self.kinds = []
+
+    def update(self, reading, timestamp, **reads):
+        return [SceneEvent(kind, timestamp, "before", "after", "test") for kind in self.kinds]
+
+
+def test_a_map_the_running_skill_opened_is_no_news_for_the_head(tmp_path):
+    # Live on 11 November: told that the minimap had gone, the head planned a wait for the screen,
+    # the wait replaced set_waypoint, and the reflex closed the map the skill had just opened.
+    pending, detector = Pending(), Detected()
+    conductor = Conductor(tmp_path, submit=pending, detector=detector)
+    try:
+        conductor.tick(observation(0), RGB, events=[{"kind": "objective_changed"}])
+        plan = {
+            "plan": [{"name": "set_waypoint", "args": {"target": "away"}}],
+            "sentence": "Ich setze ein Ziel.",
+        }
+        pending.jobs[0][0].set_result(parse_response(plan))
+        conductor.tick(observation(0.03), RGB)  # the tick that lets go of the plan before
+        conductor.tick(observation(0.06), RGB)
+        assert conductor.runner.active.name == "set_waypoint"
+        for tick, kind in enumerate(("hud_absent", "hud_present"), start=3):
+            detector.kinds = [kind]
+            conductor.tick(observation(tick * 0.03), RGB)
+        assert len(pending.jobs) == 1 and conductor.runner.active.name == "set_waypoint"
+        detector.kinds = ["route_vanished"]  # other news still reaches the head
+        conductor.tick(observation(0.15), RGB)
+        assert len(pending.jobs) == 2
+    finally:
+        conductor.close()

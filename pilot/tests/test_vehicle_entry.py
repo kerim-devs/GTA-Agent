@@ -13,7 +13,10 @@ def px(x0, y0, x1, y1):
     return (x0 * 1280, y0 * 720, x1 * 1280, y1 * 720)
 
 
-FAR = Detection("car", px(0.43, 0.50, 0.57, 0.68), 0.9)
+# The boxes the detector gave live on 11 November (session 20261111-121517): cars across the car
+# park, and the saloon the figure stood against with its bumper at the figure's feet.
+FAR = Detection("car", px(0.43, 0.53, 0.57, 0.63), 0.9)
+BUMPER = Detection("car", px(0.41, 0.50, 0.55, 0.68), 0.9)
 NEAR = Detection("car", px(0.30, 0.45, 0.70, 0.90), 0.9)
 
 
@@ -148,7 +151,7 @@ def test_target_stays_on_visible_vehicle_despite_larger_competitor():
     skill.step(obs(0))
     for tick in range(1, 20):
         delta = 0.004 * (-1) ** tick
-        tracked = Detection("car", px(0.43 + delta, 0.50, 0.57 + delta, 0.68), 0.9)
+        tracked = Detection("car", px(0.43 + delta, 0.53, 0.57 + delta, 0.63), 0.9)
         competitor = Detection("car", px(0.57, 0.40, 0.97, 0.94), 0.99)
         skill.step(obs(tick / 30, (competitor, tracked)))
         assert same(skill.target, tracked)
@@ -171,7 +174,7 @@ def test_approach_centers_before_walking_and_slows_down():
     pad = skill.step(obs(0, (side,))).pad
     assert pad.left == (0, 0) and pad.right[0] > 0
     speed_far = -EnterVehicle({}).step(obs(0)).pad.left[1]
-    larger = Detection("car", px(0.4, 0.5, 0.6, 0.76), 0.9)
+    larger = Detection("car", px(0.4, 0.45, 0.6, 0.65), 0.9)
     speed_larger = -EnterVehicle({}).step(obs(0, (larger,))).pad.left[1]
     assert 0 < speed_larger < speed_far
 
@@ -291,3 +294,9 @@ def test_none_releases_entry_button_without_confirming_or_failing():
     for t in (0.05, 0.2, 1.2):
         result = entry.step(replace(obs(t, minimap="tilted"), mode="none"))
         assert result.pad == NEUTRAL_PAD and result.status == "running"
+
+
+def test_a_car_at_the_figures_feet_is_reached_however_low_its_box():
+    skill = EnterVehicle({})
+    assert skill.step(obs(0, (BUMPER,))).pad == NEUTRAL_PAD  # the release tick before the press
+    assert skill.step(obs(0.03, (BUMPER,))).pad.buttons == ("triangle",)

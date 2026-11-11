@@ -13,6 +13,8 @@ from pilot.loop import Pipeline, run_drive
 READING = Reading("tilted", "yellow", 12.0, 20.0, 0.0, False, 0.9)
 COMMAND = Command(0.4, 0.5, 0.0, "follow")
 
+SENT_HALF = pytest.approx(0.675)  # half a pedal as the profile lifts it over the dead zone
+
 
 class Clock:
     def __init__(self):
@@ -104,7 +106,7 @@ def test_frozen_stream_releases_once_then_waits(tmp_path):
     harness.frame_rule = lambda request: harness.frames == 1
     summary = harness.run(seconds=0.85)
     pads = harness.pads()
-    assert pads[0][2]["r2"] == 0.5
+    assert pads[0][2]["r2"] == SENT_HALF
     assert [event[2] for event in pads[1:]] == [{}, {}]  # Stale release, then exit release.
     assert 0.28 <= pads[1][0] - pads[0][0] <= 0.4
     assert pads[2][0] - pads[1][0] > 0.3
@@ -128,7 +130,7 @@ def test_409_waits_a_second_and_resumes_only_after_accepted_neutral(tmp_path):
     assert pads[1][0] - pads[0][0] >= 1
     assert pads[2][0] - pads[1][0] >= 1
     assert pads[2][3] == 200
-    assert pads[3][2]["r2"] == 0.5
+    assert pads[3][2]["r2"] == SENT_HALF
     assert summary.conflicts == 2
     recovery = [row for row in harness.rows() if row["status"] == 200]
     assert recovery and not recovery[0]["sent"]

@@ -68,42 +68,27 @@ PAUSE_UI = _template(
 
 PAUSE_UI_MASK = _template((14, 46), b"c-muNAPF#H0DLl|sz<77k^lfA+5xc").astype(bool)
 
+# The glyphs and their drop shadow as five pause menus share them: the cable tour, calibration
+# frame 2400, Wi-Fi frame 8196, and two from Remote Play on 11 November, by day and by night. The
+# template before this one scored 0.71 and 0.80 on the two live menus, under the 0.88 it has to
+# reach, and the waypoint skill backed out of the menu it had just opened.
 PAUSE_TITLE_UI = _template(
     (28, 178),
-    b"c-rMyS#KOg5N-%Z2;_p?K|%x&As`;Y142l^144i}LXx!|=dc`p9uNougc2bH2_kWXxD7%{h+_xa@!IR%Ir^@qs(NO3#`X#$MdE>d"
-    b"nBD1_?*6*^`@X7PA^sO1>sDy=uFu<JKG<73zm`&I{ck$xE&`)11ORIAvfuhb2ts^RZ=7}6`>UQXyHNyXz8H}Zt9<o{jaEJI#(585"
-    b"gy=T{bedxC-2&=y4$jUkdv(EeRvdy>jGxcEiGXb`4pN|3jo5qjZujPjvJrpYXMoJy*x8%4_<Th>v+UJ&r`=~$`D-!AZS?KjU;Aot"
-    b"`^S%iDu+@(`7p<_&j2n6My$kry~YWc3(JYvaW}TD7~}j8ejFw?Ma1WyM#M$LR~O@|$Z|XREVr6|GX09aq(5C70(r4~JNm5pnhsm&"
-    b"vH#?@LgO!E;Js#sNQ}0oWoTXOh4S=MM?APN@W|ZimYJzT{GQ9_b6Y&}-WtPQj7{d#5RCL;@p5mOUZjx~FhSR!13t^cf||QYx2-Hs"
-    b"7kg8jav=^?btR)xinp~^%Q-}u`&32~%OSM2Q-&rm#-@wX)DhdMVGg1TnL?zzZypx4cAmSKj$UYk@lcTp>hP);Yj{eYB;dO<ZJn|W"
-    b"8MzP^gZ-wrC9G;!@W_`UK1SW0ksMbq8W<=X#wsVput*&uw%X3%Z(T!d3dGu^;<#vW0KA(%Ixz0@l$y=WsQ0Tv+|xy@_I&Hl-z~&@"
-    b"z+lo~kfLos``Rt0v=ons`3lhk?}yEv6-)W&5Zya35#q~F(VZok*$a;dkpLo5=weUOQ(L3tjUmF|%-0X$)Z}6TQ^x)y!b2;1$gZfo"
-    b"^%e5BHVB`tBg7o|EZB|2<7^Kv?$Y|YyYSDCO}1khV(mJQ$F>ijC(U@0I?j%J4(7OkxNKWP?A$aX#&Mp*)daLu9aZINl_JUFq*ZG;"
-    b"udi)DlpO5>vD-i$;88-6ird+edbsG-pY`mzIx7f^o_>Z=T<5_Y97DuWKwdWlL@j$~YKUhBxRIZkU|$n5n3FuEMZP4Fy-;ORV#T^b"
-    b"KwZT5(S!?+aYW)8dp#Cl{x%fMseKWp5pQBRt!As9e4%2y4v@^TC_qUKAYvVLRaqq7%npcxLX?vILEOYV_R%MhC(*HdsHv5=pocgG"
-    b"e=n^%f0&0_iuemcmst)yBYtBN6=yicldpFb1=hk~85~sM0M21nK&)>L^7?$t7Z_J*;o5a$d6iDPYThb%*+U$+Fm--Ci8$ZR89eSv"
-    b"#jpvzEN4Z;Z=t{Qz)oL3P?)(#pEEF24(x#um+`J4o*U*E#`l6bf-y$ZPBr-K1p1g?&LjqtvAxADOl-P|l9Afj2XUax*F(%&bE7!D"
-    b"nQRn|az-fShdDhl+kJyz$JwjY_h$Y`7ctdw!vcNzhcn;(_{%S6PU7^g>~px=NmARiPf%@bew=jdW{k8^+q)KBtDOijgiXbiQBBsJ"
-    b"WW)n(KH6V6Iii#sDl-f^b)y?&TSKfEG4N^t<3GeEvHwUJ&X`l2KRsCXxhOFuV&*j4s9&ro^j3<r-O8Ca_B3@?WX;0PO;m}Cte6;N"
-    b"e}~Jj9!BahVp||S98(I<US)-Bavy#V*?@>KOZEuh3+}_GL)}$ckeN>yY;@gLpy(zRHdT~YVg8>|jKkR4LbthiWeH-`tay<UEFp#>"
-    b"Mu^z;LEMNLBqH{R*yVBEArTNmg+;U|5r67oeBTpAcrC}csq)QaAz@w5-Ks}~b6GPF;?8)ZT4N1SgwM%|0cN9&WF{V$GuneCkL!q?"
-    b"Y#y#6##N&1NLZ5WyJQl$b7hw)CAp;F>I%4smoi&V)kP>Mz!gVTtLb#JD@0@FnC6a;BNL4-C#^N;R3>_GM6BJ9Tx`}5>)As*fR5yH"
-    b"M>(J<Bdb7^elCJc$}Xy?OL*I(y8&eA$5#y_Zo_m;TGc`n{daFkDsWdaKqWBZ>zoZbKBXM(EX^L3>CGV|4RkIw>6BD0EA(uPvE-|B"
-    b"$LVCJe#^n>u>)Pi0G-U0U7E2ezpw@`h<hq?*=COV!k0qa4B-RB*fG0%)1X#cJG(I^xmYF-A|8x73zEuWcMSJgMFH6ctqyAn+<^*W"
-    b"v@=AkLxC7qK0-kVO5w00Z<9fP9utx&#qV4zerv4i=7Y(S6s5R}ZJE6|Eb4R~UH7i4y+LPVcayYDaK~o3O1^j^W>HXBQFl57l}l?#"
-    b"o1?6FugAa7TNT7U8OII)w#oR_+$bIz@ja6+j_xN`%yu23I1<Y=jRl;Z!AkH~Fl}-6r&AHn*j2io4Ox0l?5LhYe*Z>1P`y9V7+HE$"
-    b"8Lpp*dp}1<RyaErdC;dZVRGYfVvAqJF>LD{YsK~@Z4Yj_cS+0rxAZ>`<5=0bO%xS3c#tVJ^FRC_2x4)-f=@)!vkFY;ctuv&49&&n"
-    b"kf%y(rF7bnUYc7D<Zr2GNap",
+    b"c-rll;gZ832!!|jUwS)pZBD>NB{9>RUj5ND5z424fdc<xkgE@$6Y11>fZA^wX&z%r%nQpnMBBB9TqAx-hiPdsqj){0yVjOWVY)=j"
+    b"Hxgq`jO)bgE!{~>rG!1iEgosS&EzH$cXBS$omwL{=7UliSXT2_hrP*=XhUN2{S2`Z7e|I&TibCT=PKq^J_u<M72T}5nG;W}&*J#l"
+    b"ECih{^O{!^VnkxD6Jt9uZNdm*l!*b{OpGEiBQf&`{X@hU6SpipL(HwjSRv*`;-J5sIG!j!)~@X_=X=b3#Cy()w65q~@R7tE5i_GK"
+    b"5@%6i$ySM7irq!boESx7cw+7*h9u@XG3Ue-am;Z&G$xMv=-q1kVQW6~nRQvdG@PZzpxW%^VmqmceU+*^Pl{HJa0iH~u7s7m(Y0$1"
+    b";TVa{%PUklqN&>c55jkR(s%&+8*kS",
 )
 
 PAUSE_TITLE_UI_MASK = _template(
     (28, 178),
-    b"c-rNd+mZtz2t?`s|LLvNB+_8xh?Cuyol4bQL^&!T#Oz;O!0yMZp=>(V-yD;q@wsk^@n9MsQNK5ld&IBC>vv0BQM^Bc?y%mJNf<uP"
-    b"QaU!{kQlUSJz~LM6C3<?M~sESzaxg~WUV!RZ`05;h%cK%@J66|v1zZ8T(I<HOBReNDNQ;8Y3MSXkTtM6Y!a(3f*1v{5*H!E;BzBy"
-    b"MDeVMM_ULX%#>nGGSRoptR)&&UVc~O6ZdCBVaJo4(`(N&NemfXf*EJxY085Vl@rmnWDE{XxeuaIGO-;H)41wc6O$YWLlN7W*fOz?"
-    b"I(o-xxWnENLlfH_u{DXwu107`#PRg)5`)6db7Bi=fL`OAFFYlNB*rOm?h*{AMT`}(^rQ|kYGUAUjh&J<YdXb>;oHP1wmw^9mBpwW"
-    b"b)T3mHslpCwmu;)ts*S%E-?+jr={?sV`6m-(}8E2*yIT^_m{*n9wTS5o5VJ0ToFT_l8{E_H)vu2C$WN6=71Cifh`xNAT}ADAhS(k"
-    b"tcXz)$G8zazb;zf#cmp2CRc*kN@BJKy~cCSkR2@)U#ofr)tf49atcLux><%HX_|??`=`fbhxiRGO(tH+R7}Lu2)a=E*7XA*rUxq",
+    b"c-rll+it`l3`A%C|EH^JL$Jp-)Fgds(MriC1`fVq0{n?a{`BGJMfvI+pf{$G=4e}DK3K*Oo!2IEkNErL=eH%UD6YpeSE9FMBg{F@"
+    b"Qrf@fAu)~7dc+BTO$^S<Au(m9UnXYO3GWb3f26TCi$4gq5;^DT;!AMOH0(^B-4lb(N$f<7Q%ayMiOv0rm<4ero}>(Lu5Co4MrIbJ"
+    b"hSJK>_PLpSj!~bvWa2E|u~hwIwPqOWHC*^Hr?Oy(^T>k`)1(#6F7|OC4*BCIp{{jF3>zC7n7oOR5~EG*HY+CgWv&?RK<R^!Dwf1h"
+    b";yLQw+b`oWF?Pgg5*xp&i2d&Sx{h1KaAiP2%!kBUZ=}RLCDtxZRi`>;&~X|`9b(qRQ&Go$EE;jd(FAA2x_>>6yghNpk7<czx41T)"
+    b"=fpBUrE+T#a}H1tzmwf+jUgvSx`Tu)hL?$v5;Jj>f|%(pNuQn7kG<`*(%2Gfe^C;=Jt!I6<*j%GkkW7$%yqSy$k87slXDvx=N}Ks"
+    b"L(4qunvGCG!xxRL54wKM&bUf!%qvw+0M^<sJ+H9!wc??mO(a$Cw?BIPx3YZ!p4$dW",
 ).astype(bool)
 
 MAP_UI = _template(

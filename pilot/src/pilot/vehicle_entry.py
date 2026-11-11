@@ -32,6 +32,11 @@ TURN_MIN_GAIN = 0.35
 TURN_DAMPING = 0.65
 TURN_REVERSAL_ERROR = 0.025
 REACH_HEIGHT = 0.28
+# With the far camera level the figure's feet stand at 0.73 of the picture's height, and a car whose
+# lower edge comes that near is a step or two away whatever the height of its box. Seen from behind
+# a saloon is 0.18 high with the figure against its bumper: the walk pushed into it for twenty
+# seconds and never came to 0.28 (session 20261111-121517, lower edge at 0.68).
+REACH_BOTTOM = 0.66
 WALK_FAST = 0.55
 WALK_SLOW = 0.30
 # Walking to the door, opening it and sitting down; pulling a driver out takes longer.
@@ -249,7 +254,7 @@ class EnterVehicle:
         turn = 0.0 if abs(error) < TURN_DEADBAND else max(-MAX_TURN, min(MAX_TURN, error * self.turn_gain))
         aligned = abs(error) <= CENTER_TOLERANCE
         retry_ready = self.phase != "retry" or self.retry_walk >= RETRY_APPROACH
-        if aligned and height >= REACH_HEIGHT and retry_ready:
+        if aligned and (height >= REACH_HEIGHT or target.box[3] >= REACH_BOTTOM) and retry_ready:
             # One release tick before the tap also clears queued movement commands.
             self.phase = "tap"
             return SkillResult()
