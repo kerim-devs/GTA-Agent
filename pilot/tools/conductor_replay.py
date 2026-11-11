@@ -11,6 +11,8 @@ from statistics import median
 import cv2
 
 from pilot.conductor import Conductor, background, minimap_crop
+from pilot.contract import NEUTRAL_PAD
+from pilot.head import parse_response
 from pilot.loop import Pipeline
 from pilot.skills import Observation
 
@@ -30,7 +32,47 @@ def immediate(function, *args):
     return future
 
 
-def run_offline(recording: Path, out: Path, *, ocr=False, quiet_seconds=60):
+class DelayedHead:
+    """Complete a deterministic four-step answer after recording-clock latency."""
+
+    def __init__(self, delay):
+        if not math.isfinite(delay) or delay < 0:
+            raise ValueError("head delay must be finite and nonnegative")
+        self.delay = delay
+        self.time = 0.0
+        self.jobs = []
+
+    def submit(self, function, *args):
+        future = Future()
+        self.jobs.append((self.time + self.delay, future))
+        return future
+
+    def advance(self, t):
+        self.time = t
+        for due, future in self.jobs:
+            if due <= t and not future.done():
+                future.set_result(
+                    parse_response(
+                        {
+                            "plan": [
+                                {"name": "walk", "args": {"y": -0.65, "duration": 10}},
+                                {"name": "look", "args": {"angle": 30, "duration": 1}},
+                                {"name": "walk", "args": {"y": -0.65, "duration": 10}},
+                                {"name": "look", "args": {"angle": -30, "duration": 1}},
+                            ],
+                            "sentence": "Ich erkunde die Umgebung.",
+                        }
+                    )
+                )
+        self.jobs = [(due, future) for due, future in self.jobs if not future.done()]
+
+
+def run_offline(recording: Path, out: Path, *, ocr=False, quiet_seconds=60, head_delay=None):
+    if ocr and head_delay is not None:
+        raise ValueError("delayed replay uses recorded time without wall-clock OCR")
+    delayed = None if head_delay is None else DelayedHead(head_delay)
+    judged = neutral = 0
+    first_plan = False
     video = recording / "video.mp4"
     with video.open("rb") as source:
         if source.read(80).startswith(b"version https://git-lfs.github.com/spec/"):
@@ -52,7 +94,8 @@ def run_offline(recording: Path, out: Path, *, ocr=False, quiet_seconds=60):
             notebook=out / "notebook.txt",
             quiet_seconds=quiet_seconds,
             ocr=ocr,
-            submit=immediate if not ocr else background,
+            submit=delayed.submit if delayed else immediate if not ocr else background,
+            **({"clock": lambda: delayed.time} if delayed else {}),
         )
         log = (out / "play.jsonl").open("x")
         with (recording / "frames.jsonl").open() as metadata:
@@ -66,7 +109,13 @@ def run_offline(recording: Path, out: Path, *, ocr=False, quiet_seconds=60):
                     raise ValueError(f"video ended before metadata frame {count}")
                 rgb = cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
                 reading, _moving, _ = pipeline.step(minimap_crop(rgb), t, feedback=False)
+                if delayed:
+                    delayed.advance(t)
                 result = conductor.tick(Observation(reading, None, t), rgb)
+                first_plan = first_plan or conductor.runner.has_plan
+                if first_plan:
+                    judged += 1
+                    neutral += result.pad == NEUTRAL_PAD
                 first = t if first is None else first
                 from dataclasses import asdict
 
@@ -77,7 +126,11 @@ def run_offline(recording: Path, out: Path, *, ocr=False, quiet_seconds=60):
                             "frame_id": item["frame_id"],
                             "fresh": True,
                             "reading": asdict(reading),
-                            "skill": conductor.runner.describe(),
+                            "skill": (
+                                {"name": "carry_on", "status": "running", "reason": "head-pending"}
+                                if result is not None and result.reason == "carry-on"
+                                else conductor.runner.describe()
+                            ),
                             "result": asdict(result),
                             "sent": False,
                             "status": None,
@@ -95,7 +148,20 @@ def run_offline(recording: Path, out: Path, *, ocr=False, quiet_seconds=60):
         times = conductor.request_times
         intervals = [b - a for a, b in pairwise(times)]
         rate = len(times) * 60 / elapsed if elapsed else 0
+        responses = [
+            json.loads(line)
+            for line in (out / "head.jsonl").read_text().splitlines()
+            if json.loads(line).get("type") == "response"
+        ]
         report = {
+            "head_delay": head_delay,
+            "neutral_ticks_after_first_plan": neutral,
+            "ticks_after_first_plan": judged,
+            "neutral_share_after_first_plan": neutral / judged if judged else None,
+            "answers": {
+                kind: sum(row.get("disposition") == kind for row in responses)
+                for kind in ("appended", "replaced", "discarded")
+            },
             "recording": str(recording.resolve()),
             "frames": count,
             "elapsed": elapsed,
@@ -126,10 +192,18 @@ def main():
     parser.add_argument("--out", required=True, type=Path)
     parser.add_argument("--ocr", action="store_true", help="enable asynchronous scene and GPS OCR")
     parser.add_argument("--quiet-seconds", type=float, default=60)
+    parser.add_argument("--head-delay", type=float, help="scripted answer latency in recording seconds")
     args = parser.parse_args()
     print(
         json.dumps(
-            run_offline(args.recording, args.out, ocr=args.ocr, quiet_seconds=args.quiet_seconds), indent=2
+            run_offline(
+                args.recording,
+                args.out,
+                ocr=args.ocr,
+                quiet_seconds=args.quiet_seconds,
+                head_delay=args.head_delay,
+            ),
+            indent=2,
         )
     )
 

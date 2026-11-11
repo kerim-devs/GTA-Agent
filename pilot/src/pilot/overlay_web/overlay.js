@@ -2,6 +2,7 @@
 
 const element = (id) => document.getElementById(id);
 const skillNames = {
+  carry_on: "Weitergehen",
   drive_route: "Route fahren",
   wait: "Warten",
   press: "Taste drücken",
@@ -19,6 +20,7 @@ const text = (id, value, limit = 240) => {
 };
 
 function render(state) {
+  document.body.hidden = state.status === "stale";
   text("sentence", state.sentence || "Warte auf eine Entscheidung.", 360);
   element("thinking").hidden = !state.thinking || ["stale", "ended", "waiting"].includes(state.status);
   text("skill", state.skill ? skillName(state.skill.name) : "Bereit");

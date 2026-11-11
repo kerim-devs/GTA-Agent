@@ -144,7 +144,7 @@ def test_missing_root_new_session_and_idle_end(tmp_path):
         state = fetch(base + "/api/state")
         assert state["session"] == "002"
         assert state["sentence"] == "" and state["skill"]["name"] == "wait"
-        now[0] = 4
+        now[0] = 5
         assert fetch(base + "/api/state")["status"] == "stale"
 
 
@@ -249,3 +249,43 @@ def test_cli_rejects_invalid_overlay_port(port):
     with pytest.raises(SystemExit) as caught:
         cli.main(["overlay", "--port", port])
     assert caught.value.code == 2
+
+
+def test_overlay_page_hides_stale_content_and_resumes(tmp_path):
+    import shutil
+    import subprocess
+    from pathlib import Path
+
+    node = shutil.which("node")
+    if node is None:
+        pytest.skip("Node is needed to exercise the shipped overlay script")
+    script = Path(__file__).parents[1] / "src" / "pilot" / "overlay_web" / "overlay.js"
+    harness = tmp_path / "quiet.cjs"
+    harness.write_text(r"""
+const fs = require("fs");
+const vm = require("vm");
+const assert = require("assert/strict");
+const nodes = new Map();
+global.document = {
+  body: { hidden: false },
+  getElementById(id) {
+    if (!nodes.has(id)) {
+      nodes.set(id, {textContent: "", hidden: false, replaceChildren() {}, appendChild() {}});
+    }
+    return nodes.get(id);
+  },
+  createElement() { return {textContent: ""}; },
+};
+global.EventSource = class {};
+vm.runInThisContext(fs.readFileSync(process.argv[2], "utf8"));
+render({status: "live", sentence: "A current thought"});
+assert.equal(document.body.hidden, false);
+render({status: "stale", sentence: "An old thought"});
+assert.equal(document.body.hidden, true);
+render({status: "live", sentence: "A new thought"});
+assert.equal(document.body.hidden, false);
+assert.equal(document.getElementById("sentence").textContent, "A new thought");
+render({status: "ended", sentence: "Demo finished"});
+assert.equal(document.body.hidden, false);
+""")
+    subprocess.run([node, str(harness), str(script)], check=True, capture_output=True, timeout=5)

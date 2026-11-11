@@ -228,7 +228,7 @@ class OverlayState:
                         "waiting"
                         if self.updated_at is None
                         else "stale"
-                        if self.clock() - self.updated_at > 3
+                        if self.clock() - self.updated_at >= 5
                         else "live"
                     )
             return deepcopy(self.state)
