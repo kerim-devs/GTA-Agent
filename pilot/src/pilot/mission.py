@@ -42,6 +42,22 @@ def movement(request: HeadRequest) -> str:
     return "unknown"
 
 
+# The game orders a kill as "Schalte <somebody> aus." Read over Wi-Fi the verb survives better than
+# its object or the closing "aus" (lab/take-out/cases.json holds "Schalte den Gai ti ie"), so the
+# verb alone carries the order, read with the confusions seen in those texts: e and a as 8, l as i
+# or 1. "Schalte ... ein" and "an" switch something on and are not an order to kill.
+TAKE_OUT = re.compile(r"\b[s5]ch[a8@][l1i|]t[e8]\b(?!.*\b(?:ein|an)\W*$)")
+
+# Seconds of one fight before the rules look again; the first attempt at the Vagos in
+# recordings/20261110-093238 lasted 23 s before it failed.
+FIGHT_SECONDS = 20
+
+
+def take_out(objective: str) -> bool:
+    """Whether the objective on screen orders somebody taken out."""
+    return bool(TAKE_OUT.search(_text(objective)))
+
+
 def _call(name: str, **args: object) -> dict:
     return {"name": name, "args": args}
 
@@ -237,9 +253,23 @@ class MissionHead:
         if mode == "on_foot":
             blips = request.minimap.get("blips", [])
             colors = {blip.get("color") for blip in blips}
+            # head_prompt.txt:42-48: in a mission fight red blips only, and only when the game orders
+            # it; stars and low health have been answered above. A red pinned to the map's border is
+            # out of range at an unknown distance, and fight would fire along its bearing at nothing.
+            # Without a red in range the rules below stay in charge: the minimap shows the same red
+            # whichever way the camera faces, so looking finds nothing, while walking to what the
+            # game marks brings the enemies into range, and with nothing marked the picture decides.
+            if take_out(request.objective) and any(
+                blip.get("color") == "red" and not blip.get("border") for blip in blips
+            ):
+                return (
+                    "take_out_fight",
+                    [_call("fight", duration=FIGHT_SECONDS, cover="no")],
+                    "Der Auftrag lautet ausschalten, ich kämpfe gegen die roten Ziele.",
+                )
             # head_prompt.txt:35-41 and docs/LOG.md:64: red alone is not an
-            # instruction, nor proof of a gun in hand. The recorded OCR has
-            # no combat imperative, so leave combat selection to the fallback.
+            # instruction, nor proof of a gun in hand. Without an order to take
+            # somebody out, leave combat selection to the fallback.
             if "red" in colors:
                 return None
             for color in ("yellow", "blue"):
