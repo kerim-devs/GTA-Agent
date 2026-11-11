@@ -1,0 +1,65 @@
+{
+  "source": "/Users/kerim/recordings/pilot/20261110-231512",
+  "recorded_seconds": 240.1,
+  "wall_seconds": 240.11003224999877,
+  "head_monotonic_origin": 218729.440413041,
+  "time_alignment": "Head startup request and first fresh play row share a run_play tick; their difference is the monotonic origin.",
+  "scripted_chat_messages": 30,
+  "session_candidates": 10,
+  "session_candidates_submitted": 10,
+  "decisions": 40,
+  "spoken": 0,
+  "spoken_by_source": {},
+  "dropped_by_reason": {
+    "chat_link": 4,
+    "chat_blocklist": 3,
+    "chat_too_long": 2,
+    "output_error": 23,
+    "declined": 6,
+    "chat_flood": 2
+  },
+  "gaps_seconds": [],
+  "minimum_gap_seconds": null,
+  "configured_gap_seconds": 2.0,
+  "configured_max_age_seconds": {
+    "chat": 20.0,
+    "head": 6.0,
+    "event": 6.0
+  },
+  "scripted_writer_seconds": 4,
+  "writer_calls": 19,
+  "polls_while_writing": 1319,
+  "chat_messages_read_while_writing": 7,
+  "events_read_while_writing": 0,
+  "maximum_poll_gap_seconds": 0.07523545800358988,
+  "chat_answers": 0,
+  "chat_answer_lateness_seconds": [],
+  "chat_dropped_by_reason": {
+    "chat_link": 4,
+    "chat_blocklist": 3,
+    "chat_too_long": 2,
+    "output_error": 13,
+    "declined": 6,
+    "chat_flood": 2
+  },
+  "overlaps": 0,
+  "all_muted": true,
+  "voice": "Anna",
+  "german_voices": [
+    "Anna",
+    "Eddy (Deutsch (Deutschland))",
+    "Flo (Deutsch (Deutschland))",
+    "Grandma (Deutsch (Deutschland))",
+    "Grandpa (Deutsch (Deutschland))",
+    "Reed (Deutsch (Deutschland))",
+    "Rocko (Deutsch (Deutschland))",
+    "Sandy (Deutsch (Deutschland))",
+    "Shelley (Deutsch (Deutschland))"
+  ],
+  "synthesis_seconds": {
+    "minimum": null,
+    "median": null,
+    "maximum": null
+  },
+  "audio_seconds": []
+}
