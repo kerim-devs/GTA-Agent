@@ -249,6 +249,7 @@ class Face(RegisteredSkill):
 
 # New modules plug in with an import and one entry here.
 from .combat import Fight, Melee  # noqa: E402
+from .level import LevelCamera  # noqa: E402
 from .punch import Punch  # noqa: E402
 from .vehicle_entry import EnterVehicle  # noqa: E402
 from .waypoint import SetWaypoint  # noqa: E402
@@ -269,6 +270,7 @@ REGISTRY = {
         Fight,
         Melee,
         Punch,
+        LevelCamera,
     )
 }
 
@@ -337,6 +339,12 @@ class SkillRunner:
     @property
     def has_plan(self):
         return self.active is not None or bool(self.queue)
+
+    @property
+    def uninterruptible(self):
+        """A move that cannot be cut short is running, or is the next thing to run."""
+        skill = self.active if self.active is not None else (self.queue[0] if self.queue else None)
+        return getattr(skill, "uninterruptible", False)
 
     def append(self, calls):
         additions = [

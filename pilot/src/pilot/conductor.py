@@ -64,6 +64,7 @@ class Conductor:
         ocr_timeout=3.0,
         submit=background,
         clock=time.monotonic,
+        opening=(),
     ):
         for value in (quiet_seconds, ocr_interval, ocr_timeout):
             if not math.isfinite(value) or value <= 0:
@@ -74,6 +75,9 @@ class Conductor:
         self.head = ScriptedHead() if head is None else head
         self.notebook = PLAY_RECORDINGS / "notebook.txt" if notebook is None else Path(notebook)
         self.runner = SkillRunner() if runner is None else runner
+        # What the session does before the head has said anything, such as levelling the camera.
+        if opening:
+            self.runner.replace(tuple(opening))
         self.detector = EventDetector() if detector is None else detector
         self.ocr, self.reader = ocr, text_reader
         self.quiet_seconds, self.ocr_interval, self.ocr_timeout = quiet_seconds, ocr_interval, ocr_timeout
@@ -163,7 +167,7 @@ class Conductor:
             decision = parse_response(response_data(self.future.result()))
             row.update(response_data(decision))
             if not row["overtaken"]:
-                if request["append"]:
+                if request["append"] or getattr(self.runner, "uninterruptible", False):
                     self.runner.append(decision.plan)
                     row["disposition"] = "appended"
                 else:
@@ -505,6 +509,7 @@ def run_play(
     objects=None,
     hud=None,
     flow=None,
+    opening=(),
 ):
     pipeline = Pipeline() if pipeline is None else pipeline
     runtime = ControllerRuntime(bridge, shadow=shadow, clock=clock)
@@ -529,6 +534,7 @@ def run_play(
                 quiet_seconds=quiet_seconds,
                 clock=clock,
                 **({"flow": flow} if flow is not None else {}),
+                **({"opening": opening} if opening else {}),
                 runner=None if driver_factory is None else SkillRunner(driver_factory=driver_factory),
             )
             log = (destination / "play.jsonl").open("x")
