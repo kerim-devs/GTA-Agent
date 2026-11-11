@@ -236,3 +236,63 @@ def test_repeat_calls_are_pure_and_accept_read_only_pixels():
     read(frame("wifi-03424"))
     assert read(pixels) == expected
     np.testing.assert_array_equal(pixels, original)
+
+
+SCREEN_FIXTURES = Path(__file__).resolve().parent / "fixtures" / "screens"
+SCREEN_EVIDENCE = FIXTURES.parent.parent / "screens"
+CABLE_MENUS = [
+    ("tour-00120", "pause"),
+    ("calibration2-02400", "pause"),
+    ("tour-00360", "map"),
+    ("tour-00780", "weapon_wheel"),
+    ("tour-01080", "phone"),
+    ("tour-01380", "interaction_menu"),
+]
+
+
+def cable_frame(name):
+    bgr = cv2.imread(str(SCREEN_FIXTURES / f"{name}.png"))
+    assert bgr is not None, name
+    return cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
+
+
+@pytest.mark.parametrize("name,screen", CABLE_MENUS)
+def test_cable_menu(name, screen):
+    assert read(cable_frame(name)).screen == screen
+
+
+@pytest.mark.parametrize("name", ["kerim-03000", "kerim-07500", "kerim-12000"])
+def test_cable_driving_wanted_and_combat_stay_game(name):
+    assert read(cable_frame(name)).screen == "game"
+
+
+@pytest.mark.parametrize(
+    "name,screen",
+    [
+        *CABLE_MENUS,
+        ("wifi-08196", "pause"),
+        ("wifi-08243", "map"),
+        ("wifi-00332", "weapon_wheel"),
+        ("wifi-03424", "phone"),
+    ],
+)
+@pytest.mark.parametrize("background", ["kerim-03000", "kerim-07500", "kerim-12000"])
+def test_menu_glyphs_survive_replacing_the_entire_game_background(name, screen, background):
+    # Frozen, reviewed foreground masks contain the printed UI glyphs and
+    # their outlines. Every other pixel comes from a different real scene.
+    menu = frame(name) if name.startswith("wifi") else cable_frame(name)
+    mask = cv2.imread(str(SCREEN_EVIDENCE / "masks" / f"{screen}.png"), cv2.IMREAD_GRAYSCALE)
+    assert mask is not None
+    mask = mask > 0
+    composite = cable_frame(background)
+    composite[mask] = menu[mask]
+    assert read(composite).screen == screen
+    # The same scene without those glyphs must never manufacture a menu.
+    composite[mask] = 0
+    assert read(composite).screen == "game"
+
+
+def test_interaction_menu_does_not_emit_gameplay_hud():
+    result = read(cable_frame("tour-01380"))
+    assert result.screen == "interaction_menu"
+    assert result.health is result.armour is result.special is result.wanted is None

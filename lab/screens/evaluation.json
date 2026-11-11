@@ -1,0 +1,738 @@
+{
+  "sources": {
+    "tour": {
+      "frames": 4052,
+      "mean_ms": 0.4523166172260612,
+      "prediction_counts": {
+        "game": 3102,
+        "pause": 275,
+        "map": 189,
+        "weapon_wheel": 140,
+        "phone": 132,
+        "interaction_menu": 214
+      },
+      "non_game_runs": [
+        {
+          "first": 100,
+          "last": 272,
+          "screen": "pause"
+        },
+        {
+          "first": 273,
+          "last": 461,
+          "screen": "map"
+        },
+        {
+          "first": 462,
+          "last": 563,
+          "screen": "pause"
+        },
+        {
+          "first": 723,
+          "last": 862,
+          "screen": "weapon_wheel"
+        },
+        {
+          "first": 1001,
+          "last": 1001,
+          "screen": "phone"
+        },
+        {
+          "first": 1012,
+          "last": 1142,
+          "screen": "phone"
+        },
+        {
+          "first": 1300,
+          "last": 1513,
+          "screen": "interaction_menu"
+        }
+      ],
+      "ordinary_frames": 3059,
+      "false_stops": [],
+      "episodes": [
+        {
+          "first": 92,
+          "last": 272,
+          "screen": "pause",
+          "first_visible_s": 1.553,
+          "last_visible_s": 4.5534,
+          "frames": 181,
+          "hits": 173,
+          "first_detection": 100,
+          "delay_ms": 142.0000000000001
+        },
+        {
+          "first": 273,
+          "last": 461,
+          "screen": "map",
+          "first_visible_s": 4.5817,
+          "last_visible_s": 7.7128,
+          "frames": 189,
+          "hits": 189,
+          "first_detection": 273,
+          "delay_ms": 0.0
+        },
+        {
+          "first": 462,
+          "last": 563,
+          "screen": "pause",
+          "first_visible_s": 7.7332,
+          "last_visible_s": 9.4074,
+          "frames": 102,
+          "hits": 102,
+          "first_detection": 462,
+          "delay_ms": 0.0
+        },
+        {
+          "first": 723,
+          "last": 862,
+          "screen": "weapon_wheel",
+          "first_visible_s": 12.0902,
+          "last_visible_s": 14.3957,
+          "frames": 140,
+          "hits": 140,
+          "first_detection": 723,
+          "delay_ms": 0.0
+        },
+        {
+          "first": 987,
+          "last": 1153,
+          "screen": "phone",
+          "first_visible_s": 16.4829,
+          "last_visible_s": 19.2522,
+          "frames": 167,
+          "hits": 132,
+          "first_detection": 1001,
+          "delay_ms": 235.59999999999803
+        },
+        {
+          "first": 1300,
+          "last": 1513,
+          "screen": "interaction_menu",
+          "first_visible_s": 21.7106,
+          "last_visible_s": 25.2577,
+          "frames": 214,
+          "hits": 214,
+          "first_detection": 1300,
+          "delay_ms": 0.0
+        }
+      ],
+      "classes": {
+        "pause": {
+          "visible_frames": 283,
+          "hits": 275
+        },
+        "map": {
+          "visible_frames": 189,
+          "hits": 189
+        },
+        "weapon_wheel": {
+          "visible_frames": 140,
+          "hits": 140
+        },
+        "phone": {
+          "visible_frames": 167,
+          "hits": 132
+        },
+        "interaction_menu": {
+          "visible_frames": 214,
+          "hits": 214
+        }
+      },
+      "misses": [
+        {
+          "i": 92,
+          "capture_s": 1.553,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 93,
+          "capture_s": 1.5726,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 94,
+          "capture_s": 1.591,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 95,
+          "capture_s": 1.6085,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 96,
+          "capture_s": 1.6279,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 97,
+          "capture_s": 1.6435,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 98,
+          "capture_s": 1.6619,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 99,
+          "capture_s": 1.6786,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 987,
+          "capture_s": 16.4829,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 988,
+          "capture_s": 16.4993,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 989,
+          "capture_s": 16.5167,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 990,
+          "capture_s": 16.5388,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 991,
+          "capture_s": 16.5517,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 992,
+          "capture_s": 16.5689,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 993,
+          "capture_s": 16.5858,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 994,
+          "capture_s": 16.603,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 995,
+          "capture_s": 16.6197,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 996,
+          "capture_s": 16.6351,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 997,
+          "capture_s": 16.6524,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 998,
+          "capture_s": 16.6678,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 999,
+          "capture_s": 16.6866,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1000,
+          "capture_s": 16.702,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1002,
+          "capture_s": 16.7348,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1003,
+          "capture_s": 16.7523,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1004,
+          "capture_s": 16.7677,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1005,
+          "capture_s": 16.7833,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1006,
+          "capture_s": 16.8006,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1007,
+          "capture_s": 16.8179,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1008,
+          "capture_s": 16.8343,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1009,
+          "capture_s": 16.8512,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1010,
+          "capture_s": 16.8672,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1011,
+          "capture_s": 16.8838,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1143,
+          "capture_s": 19.0859,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1144,
+          "capture_s": 19.1045,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1145,
+          "capture_s": 19.1207,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1146,
+          "capture_s": 19.1354,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1147,
+          "capture_s": 19.1527,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1148,
+          "capture_s": 19.1694,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1149,
+          "capture_s": 19.186,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1150,
+          "capture_s": 19.2032,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1151,
+          "capture_s": 19.2184,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1152,
+          "capture_s": 19.2348,
+          "expected": "phone",
+          "actual": "game"
+        },
+        {
+          "i": 1153,
+          "capture_s": 19.2522,
+          "expected": "phone",
+          "actual": "game"
+        }
+      ]
+    },
+    "calibration2": {
+      "frames": 3303,
+      "mean_ms": 0.43239528065395094,
+      "prediction_counts": {
+        "game": 2153,
+        "pause": 1150
+      },
+      "non_game_runs": [
+        {
+          "first": 1872,
+          "last": 1931,
+          "screen": "pause"
+        },
+        {
+          "first": 2030,
+          "last": 2095,
+          "screen": "pause"
+        },
+        {
+          "first": 2279,
+          "last": 3302,
+          "screen": "pause"
+        }
+      ],
+      "ordinary_frames": 2126,
+      "false_stops": [],
+      "episodes": [
+        {
+          "first": 1863,
+          "last": 1931,
+          "screen": "pause",
+          "first_visible_s": 31.1693,
+          "last_visible_s": 32.2973,
+          "frames": 69,
+          "hits": 60,
+          "first_detection": 1872,
+          "delay_ms": 155.79999999999927
+        },
+        {
+          "first": 2021,
+          "last": 2095,
+          "screen": "pause",
+          "first_visible_s": 33.8376,
+          "last_visible_s": 35.0665,
+          "frames": 75,
+          "hits": 66,
+          "first_detection": 2030,
+          "delay_ms": 156.90000000000026
+        },
+        {
+          "first": 2270,
+          "last": 3302,
+          "screen": "pause",
+          "first_visible_s": 38.0256,
+          "last_visible_s": 55.2368,
+          "frames": 1033,
+          "hits": 1024,
+          "first_detection": 2279,
+          "delay_ms": 156.30000000000166
+        }
+      ],
+      "classes": {
+        "pause": {
+          "visible_frames": 1177,
+          "hits": 1150
+        }
+      },
+      "misses": [
+        {
+          "i": 1863,
+          "capture_s": 31.1693,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 1864,
+          "capture_s": 31.1856,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 1865,
+          "capture_s": 31.206,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 1866,
+          "capture_s": 31.2245,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 1867,
+          "capture_s": 31.241,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 1868,
+          "capture_s": 31.2576,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 1869,
+          "capture_s": 31.2749,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 1870,
+          "capture_s": 31.2914,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 1871,
+          "capture_s": 31.3081,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2021,
+          "capture_s": 33.8376,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2022,
+          "capture_s": 33.8561,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2023,
+          "capture_s": 33.8746,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2024,
+          "capture_s": 33.8931,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2025,
+          "capture_s": 33.9117,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2026,
+          "capture_s": 33.9278,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2027,
+          "capture_s": 33.9435,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2028,
+          "capture_s": 33.9613,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2029,
+          "capture_s": 33.9787,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2270,
+          "capture_s": 38.0256,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2271,
+          "capture_s": 38.0441,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2272,
+          "capture_s": 38.0617,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2273,
+          "capture_s": 38.0814,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2274,
+          "capture_s": 38.0977,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2275,
+          "capture_s": 38.1153,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2276,
+          "capture_s": 38.1316,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2277,
+          "capture_s": 38.1494,
+          "expected": "pause",
+          "actual": "game"
+        },
+        {
+          "i": 2278,
+          "capture_s": 38.1671,
+          "expected": "pause",
+          "actual": "game"
+        }
+      ]
+    },
+    "pilot1": {
+      "frames": 14389,
+      "mean_ms": 0.49258745235944124,
+      "prediction_counts": {
+        "game": 14389
+      },
+      "non_game_runs": [],
+      "ordinary_frames": 14389,
+      "false_stops": [],
+      "episodes": [],
+      "classes": {},
+      "misses": []
+    },
+    "pilot2": {
+      "frames": 14312,
+      "mean_ms": 0.5179902359558413,
+      "prediction_counts": {
+        "game": 14312
+      },
+      "non_game_runs": [],
+      "ordinary_frames": 14312,
+      "false_stops": [],
+      "episodes": [],
+      "classes": {},
+      "misses": []
+    },
+    "kerim": {
+      "frames": 22479,
+      "mean_ms": 0.495211748120468,
+      "prediction_counts": {
+        "game": 22445,
+        "weapon_wheel": 34
+      },
+      "non_game_runs": [
+        {
+          "first": 980,
+          "last": 1013,
+          "screen": "weapon_wheel"
+        }
+      ],
+      "ordinary_frames": 22445,
+      "false_stops": [],
+      "episodes": [
+        {
+          "first": 980,
+          "last": 1013,
+          "screen": "weapon_wheel",
+          "first_visible_s": 16.3522,
+          "last_visible_s": 16.8936,
+          "frames": 34,
+          "hits": 34,
+          "first_detection": 980,
+          "delay_ms": 0.0
+        }
+      ],
+      "classes": {
+        "weapon_wheel": {
+          "visible_frames": 34,
+          "hits": 34
+        }
+      },
+      "misses": []
+    },
+    "camera": {
+      "frames": 831,
+      "mean_ms": 0.5461368363417569,
+      "prediction_counts": {
+        "game": 831
+      },
+      "non_game_runs": [],
+      "ordinary_frames": 831,
+      "false_stops": [],
+      "episodes": [],
+      "classes": {},
+      "misses": []
+    },
+    "calibration1": {
+      "frames": 1631,
+      "mean_ms": 0.5383238099325567,
+      "prediction_counts": {
+        "game": 1631
+      },
+      "non_game_runs": [],
+      "ordinary_frames": 1631,
+      "false_stops": [],
+      "episodes": [],
+      "classes": {},
+      "misses": []
+    }
+  },
+  "frames": 60997,
+  "mean_ms": 0.4955328357952031,
+  "ordinary_frames": 58793,
+  "false_stop_count": 0,
+  "missing_cable_classes": [
+    "failed",
+    "passed",
+    "wasted"
+  ],
+  "hud_sha256": "dde72b37872dba961988a5f55ad71e603b46175268da49368332adde0086fe6d",
+  "labels_sha256": "0064ffb145733d393ca4e6a4e5ef6581fec752c8d793f2a8f6477c78a7ccb14b",
+  "passed": true
+}

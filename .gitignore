@@ -52,3 +52,6 @@ lab/wanted/scratch/
 lab/wanted/*.log
 
 /lab/commentator/p20c-*/
+
+# Generated cable-screen contact sheets and scan caches.
+lab/screens/review/

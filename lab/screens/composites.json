@@ -1,0 +1,185 @@
+{
+  "cases": [
+    {
+      "menu": "tour-00120",
+      "background": "kerim-03000",
+      "expected": "pause",
+      "actual": "pause"
+    },
+    {
+      "menu": "tour-00120",
+      "background": "kerim-07500",
+      "expected": "pause",
+      "actual": "pause"
+    },
+    {
+      "menu": "tour-00120",
+      "background": "kerim-12000",
+      "expected": "pause",
+      "actual": "pause"
+    },
+    {
+      "menu": "calibration2-02400",
+      "background": "kerim-03000",
+      "expected": "pause",
+      "actual": "pause"
+    },
+    {
+      "menu": "calibration2-02400",
+      "background": "kerim-07500",
+      "expected": "pause",
+      "actual": "pause"
+    },
+    {
+      "menu": "calibration2-02400",
+      "background": "kerim-12000",
+      "expected": "pause",
+      "actual": "pause"
+    },
+    {
+      "menu": "tour-00360",
+      "background": "kerim-03000",
+      "expected": "map",
+      "actual": "map"
+    },
+    {
+      "menu": "tour-00360",
+      "background": "kerim-07500",
+      "expected": "map",
+      "actual": "map"
+    },
+    {
+      "menu": "tour-00360",
+      "background": "kerim-12000",
+      "expected": "map",
+      "actual": "map"
+    },
+    {
+      "menu": "tour-00780",
+      "background": "kerim-03000",
+      "expected": "weapon_wheel",
+      "actual": "weapon_wheel"
+    },
+    {
+      "menu": "tour-00780",
+      "background": "kerim-07500",
+      "expected": "weapon_wheel",
+      "actual": "weapon_wheel"
+    },
+    {
+      "menu": "tour-00780",
+      "background": "kerim-12000",
+      "expected": "weapon_wheel",
+      "actual": "weapon_wheel"
+    },
+    {
+      "menu": "tour-01080",
+      "background": "kerim-03000",
+      "expected": "phone",
+      "actual": "phone"
+    },
+    {
+      "menu": "tour-01080",
+      "background": "kerim-07500",
+      "expected": "phone",
+      "actual": "phone"
+    },
+    {
+      "menu": "tour-01080",
+      "background": "kerim-12000",
+      "expected": "phone",
+      "actual": "phone"
+    },
+    {
+      "menu": "tour-01380",
+      "background": "kerim-03000",
+      "expected": "interaction_menu",
+      "actual": "interaction_menu"
+    },
+    {
+      "menu": "tour-01380",
+      "background": "kerim-07500",
+      "expected": "interaction_menu",
+      "actual": "interaction_menu"
+    },
+    {
+      "menu": "tour-01380",
+      "background": "kerim-12000",
+      "expected": "interaction_menu",
+      "actual": "interaction_menu"
+    },
+    {
+      "menu": "wifi-08196",
+      "background": "kerim-03000",
+      "expected": "pause",
+      "actual": "pause"
+    },
+    {
+      "menu": "wifi-08196",
+      "background": "kerim-07500",
+      "expected": "pause",
+      "actual": "pause"
+    },
+    {
+      "menu": "wifi-08196",
+      "background": "kerim-12000",
+      "expected": "pause",
+      "actual": "pause"
+    },
+    {
+      "menu": "wifi-08243",
+      "background": "kerim-03000",
+      "expected": "map",
+      "actual": "map"
+    },
+    {
+      "menu": "wifi-08243",
+      "background": "kerim-07500",
+      "expected": "map",
+      "actual": "map"
+    },
+    {
+      "menu": "wifi-08243",
+      "background": "kerim-12000",
+      "expected": "map",
+      "actual": "map"
+    },
+    {
+      "menu": "wifi-00332",
+      "background": "kerim-03000",
+      "expected": "weapon_wheel",
+      "actual": "weapon_wheel"
+    },
+    {
+      "menu": "wifi-00332",
+      "background": "kerim-07500",
+      "expected": "weapon_wheel",
+      "actual": "weapon_wheel"
+    },
+    {
+      "menu": "wifi-00332",
+      "background": "kerim-12000",
+      "expected": "weapon_wheel",
+      "actual": "weapon_wheel"
+    },
+    {
+      "menu": "wifi-03424",
+      "background": "kerim-03000",
+      "expected": "phone",
+      "actual": "phone"
+    },
+    {
+      "menu": "wifi-03424",
+      "background": "kerim-07500",
+      "expected": "phone",
+      "actual": "phone"
+    },
+    {
+      "menu": "wifi-03424",
+      "background": "kerim-12000",
+      "expected": "phone",
+      "actual": "phone"
+    }
+  ],
+  "passed": true
+}
