@@ -1,0 +1,7951 @@
+[
+  {
+    "id": "wifi-0",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 0,
+      "t": -0.0283,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Oh Scheiße! Oh! Oh! Oh! Vamos!",
+      "banner": "",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-5",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 103,
+      "t": 5.0168,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 9
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Hey, Nigga,",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 18.28922158923268,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -1.21,
+            "y": 7.5,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.0,
+        "armour": 0.0,
+        "special": 0.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-5.2415",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 108,
+      "t": 5.2415,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 10
+    },
+    "request": {
+      "events": [],
+      "help": "Laufe über eine fallen gelassene Waffe, um sie aufzuheben.",
+      "objective": "Sammle eine Waffe auf.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 15.441244591751683,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -1.17,
+            "y": 8.09,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.5777777777777777,
+        "armour": 0.0,
+        "special": 0.9761904761904762,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-10",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 225,
+      "t": 9.9001,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 18
+    },
+    "request": {
+      "events": [],
+      "help": "Halte LI gedrückt, um das Waffenrad aufzurufen.",
+      "objective": "",
+      "subtitle": "Schnappheuch die Idiotens",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 21.31654027627974,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.5,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-15",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 336,
+      "t": 14.9486,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 27
+    },
+    "request": {
+      "events": [],
+      "help": "Benutze ® oder das Touchpad, um eine Waffe auszuwählen, und lasse Lil los, um sie auszurüsten.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -85.324828834666,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.32222222222222224,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "weapon_wheel"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-20",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 445,
+      "t": 19.9926,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 36
+    },
+    "request": {
+      "events": [],
+      "help": "Halte in der Deckung R2 gedrückt, um blind mit einer Waffe zu feuern, ohne die Deckung zu verlassen.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -101.61772680080941,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -6.74,
+            "y": -5.06,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -4.74,
+            "y": 14.59,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 0.64,
+            "y": 6.89,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.37777777777777777,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-25",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 545,
+      "t": 25.0482,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 45
+    },
+    "request": {
+      "events": [],
+      "help": "Halte in der Deckung R2 gedrückt, um blind mit einer Waffe zu feuern, ohne die Deckung zu verlassen.",
+      "objective": "",
+      "subtitle": "Scheißel Links von dir!",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -105.4438953491856,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -6.5,
+            "y": -4.05,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -3.58,
+            "y": 15.81,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.26666666666666666,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-30",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 680,
+      "t": 29.9839,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 54
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -82.84194770655125,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "yellow",
+            "x": 91.33,
+            "y": 23.84,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": -10.45,
+            "y": -6.57,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -6.67,
+            "y": 14.67,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-33.7221",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 776,
+      "t": 33.7221,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 61
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "mission Fehlgesch agen",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "failed"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-34.3377",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 787,
+      "t": 34.3377,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 62
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "mission Fehlgeschlagen",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "failed"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-34.8901",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 803,
+      "t": 34.8901,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 63
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "mission Fehlgeschlagen",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "failed"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-35",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 807,
+      "t": 35.0004,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 63
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "mission Fehlgeschlagen",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "failed"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-36.4327",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 834,
+      "t": 36.4327,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 66
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "mission fehlgeschlagen",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "failed"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-40",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 886,
+      "t": 39.9906,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 72
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "mission fehlgeschlagen",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "failed"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-41.5",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 912,
+      "t": 41.4757,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 75
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "loading"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-45",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 974,
+      "t": 45.0025,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 81
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Erschießt diese Putos!",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 10.42026044406353,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 1.5,
+            "y": 6.43,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -9.33,
+            "y": 26.5,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -0.72,
+            "y": 15.17,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": 0.0,
+        "special": 0.9761904761904762,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-50",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 1099,
+      "t": 49.9358,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 90
+    },
+    "request": {
+      "events": [],
+      "help": "Halte in der Deckung R2 gedrückt, um blind mit einer Waffe zu feuern, ohne die Deckung zu verlassen.",
+      "objective": "",
+      "subtitle": "Schieb deinen dummen Arsch in Deckung.",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 55.07624115540284,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 0.31,
+            "y": 4.81,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -4.24,
+            "y": 23.24,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 3.24,
+            "y": 16.57,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-55",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 1165,
+      "t": 54.9792,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 98
+    },
+    "request": {
+      "events": [],
+      "help": "Halte in der Deckung R2 gedrückt, um blind mit einer Waffe zu feuern, ohne die Deckung zu verlassen.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 15.915016802496012,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": 5.59,
+            "y": 17.68,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-60",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 1287,
+      "t": 60.0,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 106
+    },
+    "request": {
+      "events": [],
+      "help": "Halte in der Deckung R2 gedrückt, um blind mit einer Waffe zu feuern, ohne die Deckung zu verlassen.",
+      "objective": "",
+      "subtitle": "Scheiße! Links von dir!",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 62.83245052719795,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -1.15,
+            "y": 7.33,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -8.72,
+            "y": 17.83,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 5.32,
+            "y": 18.33,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9111111111111111,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-65",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 1401,
+      "t": 65.0335,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 115
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.5538221805621788,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -5.79,
+            "y": 6.82,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 1.55,
+            "y": 18.0,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -8.58,
+            "y": 17.36,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.8222222222222222,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-70",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 1494,
+      "t": 70.0107,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 124
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Hey, aus dem Weg, ihr Penner!",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 86.80036643968765,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -2.01,
+            "y": 9.78,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 5.74,
+            "y": 26.47,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.8222222222222222,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-75",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 1605,
+      "t": 74.9922,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 132
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "wir ereaken in dieser Gasse in genfalle!",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 29.347001727799892,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": -5.23,
+            "y": 15.23,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.8222222222222222,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-80",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 1733,
+      "t": 80.001,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 141
+    },
+    "request": {
+      "events": [],
+      "help": "Drücke RI neben einem Fahrzeug, um es als Deckung zu nutzen.",
+      "objective": "",
+      "subtitle": "Die haben mich im Yreuzieuer! Schieß auf den Gasbehälter!",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -57.10772826924455,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -4.38,
+            "y": 4.48,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.8222222222222222,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-85",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 1844,
+      "t": 85.0202,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 151
+    },
+    "request": {
+      "events": [],
+      "help": "Drücke RI neben einem Fahrzeug, um es als Deckung zu nutzen.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -24.221036615688718,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -0.19,
+            "y": 7.04,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -0.7,
+            "y": 11.7,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.8222222222222222,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-90",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 1976,
+      "t": 90.0535,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 159
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -1.353001274905182,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.8222222222222222,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-95",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 2110,
+      "t": 94.9564,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 168
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -6.223760383648141,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 0.04,
+            "y": 4.61,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 10.33,
+            "y": 30.21,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.8,
+        "armour": 0.0,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-100",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 2224,
+      "t": 100.0203,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 176
+    },
+    "request": {
+      "events": [],
+      "help": "Benutze ® oder das Touchpad, um eine Waffe auszuwählen, und lasse LII los, um sie auszurüsten.",
+      "objective": "",
+      "subtitle": "Du machst dir immer Freunde, Nigga, wohin du deinen Arsen auen schiebst",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -1.6676756018357821,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": -2.41,
+            "y": 29.0,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.8222222222222222,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-105",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 2346,
+      "t": 104.9685,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 186
+    },
+    "request": {
+      "events": [],
+      "help": "Benutze ® oder das Touchpad, um eine Waffe auszuwählen, und lasse LIl los, um sie auszurüsten.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -10.55032146848066,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": 4.23,
+            "y": 10.16,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.8222222222222222,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-110",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 2463,
+      "t": 109.9234,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 195
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Pass auf die Tür auf! Die wollen une jentgmasgen!",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 0.9031211386910059,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -4.08,
+            "y": -4.28,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 0.0,
+            "y": 25.73,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 0.0,
+            "y": 18.73,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -2.11,
+            "y": 6.86,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.8222222222222222,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-115",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 2585,
+      "t": 114.9942,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 204
+    },
+    "request": {
+      "events": [],
+      "help": "Wenn du auf eine Benzinspur schießt, entzündet sie sich.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.9102900878800995,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-120",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 2709,
+      "t": 120.0318,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 214
+    },
+    "request": {
+      "events": [],
+      "help": "Wenn du auf eine Benzinspur schießt, entzündet sie sich.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.6618747355135497,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 2.39,
+            "y": -6.22,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4,
+        "armour": 0.0,
+        "special": 0.9761904761904762,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-125",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 2815,
+      "t": 124.9995,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 222
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Scheiße, wir müssen verfluchs nochmal weg von dieser Scheiße hier.",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -19.51208048106173,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.0,
+        "armour": 0.0,
+        "special": 0.023809523809523808,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-130",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 2929,
+      "t": 130.0022,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 231
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Und da hären wir das Ding ja auch Hey, digga, komm her, wir haben deine Fahrzeugpapiere.",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.6475166466283895,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 0.5,
+            "y": 12.5,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-135",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 3046,
+      "t": 135.14,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 240
+    },
+    "request": {
+      "events": [],
+      "help": "Sobald deine Gesundheit unter 50% fällt, erholt sie sich langsam wieder auf 50%, wenn du eine Weile keinen Schaden abbekommst.",
+      "objective": "",
+      "subtitle": "Schnapp dir das Motorrad",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.6662350994392057,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-140",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 3150,
+      "t": 139.9877,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 249
+    },
+    "request": {
+      "events": [],
+      "help": "Sobald deine Gesundheit unter 50% fällt, erholt sie sich langsam wieder auf 50%, wenn du eine Weile keinen Schaden abbekommst.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 0.8516797217747865,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.4,
+        "armour": 0.0,
+        "special": 0.9761904761904762,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-145",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 3263,
+      "t": 144.9848,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 258
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -3.108426528905426,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.43333333333333335,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-150",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 3323,
+      "t": 149.9715,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 266
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "FC1988 Schnappen wir ihn uns, Alter. Ich will bezahlt werden.",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -4.572755780628768,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-155",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 3450,
+      "t": 154.9396,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 275
+    },
+    "request": {
+      "events": [],
+      "help": "Drücke %, um das Radar herauszuzoomen.",
+      "objective": "",
+      "subtitle": "Bezahlung hilft einen Dreck, bei 25 Jahren Knast. Wirhaben diese Wichser abgeschlachtet. Scheiße.",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -2.0826213329832797,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": null,
+        "screen": "phone"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-160",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 3569,
+      "t": 159.9947,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 285
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 9.853524495665738,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 50.3,
+            "y": 66.8,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-165",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 3688,
+      "t": 165.0541,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 295
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Das ist eine verfickte Höllenmaschine, die der fährt, du Idiot.",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.06201802961416547,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": null,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-170",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 3813,
+      "t": 169.9708,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 304
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -7.60684650772464,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -86.52,
+            "y": 36.14,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.5,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-175",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 3939,
+      "t": 174.9964,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 313
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Und wessen Schuld ist das, Mr. PAchtzigerjahre-Acronfilm-Über-Leichen gehendes-Arschloch\"?",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.1590871707655026,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -6.16,
+            "y": 49.69,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.5,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-180",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 4074,
+      "t": 179.974,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 323
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Spiel hier keine Schuldspielchen und konzentrier dich.",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 0.6363312367199114,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 10.46,
+            "y": 58.69,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-185",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 4137,
+      "t": 184.9468,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 331
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.8937532290241847,
+        "corrupt": true,
+        "confidence": 0.304,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.0,
+        "armour": 0.0,
+        "special": 0.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-190",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 4207,
+      "t": 190.0395,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 338
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 17.817606843688083,
+        "corrupt": true,
+        "confidence": 0.236,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-195",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 4292,
+      "t": 195.0011,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 346
+    },
+    "request": {
+      "events": [],
+      "help": "zu fokussieren.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -3.2861526272803587,
+        "corrupt": true,
+        "confidence": 0.236,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": 0.6190476190476191,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-200",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 4406,
+      "t": 200.0043,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 356
+    },
+    "request": {
+      "events": [],
+      "help": "Drücke O, um die Kamera auf das Ziel zu fokussieren.",
+      "objective": "",
+      "subtitle": "Der Wichser haut uns ab.",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 2.8604163983854107,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 0.6,
+            "y": 6.3,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.42857142857142855,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-205",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 4516,
+      "t": 205.0091,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 364
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -105.19836824897072,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -18.61,
+            "y": -14.36,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": null,
+        "special": 0.8095238095238095,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-205.206",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 4520,
+      "t": 205.2057,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 365
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Nimm das Motorrad, wir treffen uns bel der Autowaschanlage.",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -105.28462935286336,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -18.38,
+            "y": -14.7,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.5,
+        "armour": null,
+        "special": 0.8095238095238095,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-206.811",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 4558,
+      "t": 206.8115,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 368
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Nimm das Motorrad, wir treffen uns bei der Autowaschanlage.",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -108.90060514204265,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -13.96,
+            "y": -15.57,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.8333333333333334,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-210",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 4622,
+      "t": 209.9304,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 373
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 13.71329103318783,
+        "corrupt": true,
+        "confidence": 0.304,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.0,
+        "armour": 0.0,
+        "special": 0.8095238095238095,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-215",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 4719,
+      "t": 214.9876,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 380
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -64.74359638030313,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -18.38,
+            "y": 28.95,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.8095238095238095,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-220",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 4845,
+      "t": 219.9558,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 390
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 19.302658659861237,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 0.9,
+            "y": 9.47,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.8095238095238095,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-224.55",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 4906,
+      "t": 224.5501,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 397
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Begib dich zu der Autowaschanlage",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": -159.3045492659367,
+        "far_bearing": -159.3045492659367,
+        "arrow": 174.00639296974157,
+        "corrupt": false,
+        "confidence": 0.678,
+        "path": [
+          [
+            -11.0,
+            -10.0
+          ],
+          [
+            -11.0,
+            -17.0
+          ],
+          [
+            -9.0,
+            -22.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-225",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 4913,
+      "t": 225.0804,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 398
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Begib dich zu der Autowaschanlage,",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": -161.565051177078,
+        "far_bearing": -161.565051177078,
+        "arrow": 174.06867309899565,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -10.0,
+            -12.0
+          ],
+          [
+            -9.0,
+            -19.0
+          ],
+          [
+            -8.0,
+            -23.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.5238095238095238,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-230",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 5030,
+      "t": 230.0431,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 406
+    },
+    "request": {
+      "events": [],
+      "help": "Dein \"Fahren\"-Wert verbessert sich durch Erreichen der Höchstgeschwindigkeit. Fastzusammenstöße, Wheelies, Sprünge und Landungen auf allen vier Rädern.",
+      "objective": "Begib dich zu der Autowaschanlage.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 8.048235182896413,
+        "far_bearing": -12.449451337699427,
+        "arrow": -1.0012733672395484,
+        "corrupt": false,
+        "confidence": 1.0,
+        "path": [
+          [
+            7.0,
+            12.0
+          ],
+          [
+            5.0,
+            19.0
+          ],
+          [
+            4.0,
+            25.0
+          ],
+          [
+            4.0,
+            30.0
+          ],
+          [
+            3.0,
+            37.0
+          ],
+          [
+            1.0,
+            43.0
+          ],
+          [
+            0.0,
+            49.0
+          ],
+          [
+            -7.0,
+            54.0
+          ],
+          [
+            -14.0,
+            59.0
+          ],
+          [
+            -19.0,
+            66.0
+          ],
+          [
+            -21.0,
+            72.0
+          ],
+          [
+            -20.0,
+            79.0
+          ],
+          [
+            -16.0,
+            85.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "yellow",
+            "x": -57.65,
+            "y": 87.23,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-235",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 5122,
+      "t": 234.9359,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 415
+    },
+    "request": {
+      "events": [],
+      "help": "Dein \"Fahren\"-Wert verbessert sich durch Erreichen der Höchstgeschwindigkeit, Fastzusammenstöße, Wheelies, Sprünge und Landungen auf allen vier Rädern.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": -29.594466013233543,
+        "far_bearing": -23.705339307778676,
+        "arrow": 0.1942074970541796,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [
+          [
+            -2.0,
+            13.0
+          ],
+          [
+            -6.0,
+            19.0
+          ],
+          [
+            -12.0,
+            24.0
+          ],
+          [
+            -17.0,
+            30.0
+          ],
+          [
+            -20.0,
+            37.0
+          ],
+          [
+            -22.0,
+            42.0
+          ],
+          [
+            -23.0,
+            48.0
+          ],
+          [
+            -24.0,
+            55.0
+          ],
+          [
+            -22.0,
+            61.0
+          ],
+          [
+            -18.0,
+            67.0
+          ],
+          [
+            -14.0,
+            71.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-240",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 5213,
+      "t": 240.0008,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 424
+    },
+    "request": {
+      "events": [],
+      "help": "Eine Erhöhung deines \"Fahren\"-Werts verleiht dir mehr Kontrolle über das Fahrzeug in der Luft und erlaubt dir. längere Wheelies durchzuführen.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 6.926288961142958,
+        "far_bearing": 9.097027397717321,
+        "arrow": 1.310330588674077,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [
+          [
+            -1.0,
+            13.0
+          ],
+          [
+            0.0,
+            19.0
+          ],
+          [
+            2.0,
+            25.0
+          ],
+          [
+            4.0,
+            31.0
+          ],
+          [
+            8.0,
+            36.0
+          ],
+          [
+            11.0,
+            43.0
+          ],
+          [
+            16.0,
+            49.0
+          ],
+          [
+            16.0,
+            54.0
+          ],
+          [
+            9.0,
+            55.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-245",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 5311,
+      "t": 244.9987,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 434
+    },
+    "request": {
+      "events": [],
+      "help": "Eine Erhöhung deines \"Fahren\"-Werts verleiht dir mehr Kontrolle über das Fahrzeug in der Luft und erlaubt dir, längere Wheelies durchzuführen.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": -47.72631099390627,
+        "far_bearing": -72.5094025332106,
+        "arrow": 1.6393216345904307,
+        "corrupt": false,
+        "confidence": 0.916,
+        "path": [
+          [
+            6.0,
+            12.0
+          ],
+          [
+            1.0,
+            18.0
+          ],
+          [
+            -5.0,
+            21.0
+          ],
+          [
+            -13.0,
+            20.0
+          ],
+          [
+            -19.0,
+            20.0
+          ],
+          [
+            -25.0,
+            19.0
+          ],
+          [
+            -31.0,
+            19.0
+          ],
+          [
+            -37.0,
+            18.0
+          ],
+          [
+            -43.0,
+            18.0
+          ],
+          [
+            -48.0,
+            18.0
+          ],
+          [
+            -55.0,
+            18.0
+          ],
+          [
+            -60.0,
+            19.0
+          ],
+          [
+            -67.0,
+            21.0
+          ],
+          [
+            -73.0,
+            22.0
+          ],
+          [
+            -79.0,
+            24.0
+          ],
+          [
+            -85.0,
+            26.0
+          ],
+          [
+            -89.0,
+            28.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "yellow",
+            "x": -86.81,
+            "y": 87.5,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.24444444444444444,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-250",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 5404,
+      "t": 249.9647,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 442
+    },
+    "request": {
+      "events": [],
+      "help": "Eine Erhöhung deines \"Fahren\"-Werts verleiht dir mehr Kontrolle über das Fahrzeug in der Luft und erlaubt dir. längere Wheelies durchzuführen.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 41.77401539056363,
+        "far_bearing": 46.48962592161525,
+        "arrow": 5.78935688418602,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [
+          [
+            8.0,
+            11.0
+          ],
+          [
+            13.0,
+            16.0
+          ],
+          [
+            20.0,
+            22.0
+          ],
+          [
+            26.0,
+            28.0
+          ],
+          [
+            33.0,
+            32.0
+          ],
+          [
+            40.0,
+            37.0
+          ],
+          [
+            45.0,
+            41.0
+          ],
+          [
+            51.0,
+            44.0
+          ],
+          [
+            57.0,
+            48.0
+          ],
+          [
+            63.0,
+            52.0
+          ],
+          [
+            69.0,
+            53.0
+          ],
+          [
+            76.0,
+            52.0
+          ],
+          [
+            81.0,
+            51.0
+          ],
+          [
+            88.0,
+            47.0
+          ],
+          [
+            92.0,
+            45.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.9047619047619048,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-255",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 5508,
+      "t": 255.0215,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 450
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 11.234444081125266,
+        "far_bearing": 42.27368900609374,
+        "arrow": 1.1506093414888596,
+        "corrupt": false,
+        "confidence": 1.0,
+        "path": [
+          [
+            5.0,
+            12.0
+          ],
+          [
+            4.0,
+            17.0
+          ],
+          [
+            4.0,
+            23.0
+          ],
+          [
+            5.0,
+            30.0
+          ],
+          [
+            5.0,
+            36.0
+          ],
+          [
+            7.0,
+            41.0
+          ],
+          [
+            14.0,
+            44.0
+          ],
+          [
+            21.0,
+            44.0
+          ],
+          [
+            26.0,
+            44.0
+          ],
+          [
+            32.0,
+            44.0
+          ],
+          [
+            38.0,
+            44.0
+          ],
+          [
+            44.0,
+            44.0
+          ],
+          [
+            50.0,
+            44.0
+          ],
+          [
+            57.0,
+            44.0
+          ],
+          [
+            62.0,
+            44.0
+          ],
+          [
+            69.0,
+            45.0
+          ],
+          [
+            74.0,
+            49.0
+          ],
+          [
+            76.0,
+            56.0
+          ],
+          [
+            76.0,
+            62.0
+          ],
+          [
+            75.0,
+            69.0
+          ],
+          [
+            74.0,
+            74.0
+          ],
+          [
+            70.0,
+            81.0
+          ],
+          [
+            65.0,
+            85.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.5,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-260",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 5623,
+      "t": 259.9475,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 460
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 60.55121828672658,
+        "far_bearing": 64.3193761358501,
+        "arrow": 6.227876812609992,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [
+          [
+            11.0,
+            9.0
+          ],
+          [
+            17.0,
+            10.0
+          ],
+          [
+            23.0,
+            12.0
+          ],
+          [
+            28.0,
+            15.0
+          ],
+          [
+            34.0,
+            19.0
+          ],
+          [
+            40.0,
+            21.0
+          ],
+          [
+            46.0,
+            23.0
+          ],
+          [
+            53.0,
+            25.0
+          ],
+          [
+            56.0,
+            32.0
+          ],
+          [
+            51.0,
+            39.0
+          ],
+          [
+            46.0,
+            44.0
+          ],
+          [
+            41.0,
+            51.0
+          ],
+          [
+            36.0,
+            56.0
+          ],
+          [
+            30.0,
+            62.0
+          ],
+          [
+            24.0,
+            67.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-265",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 5723,
+      "t": 265.0152,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 468
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": -46.374834738628884,
+        "far_bearing": -56.66522172759494,
+        "arrow": -0.08832584132008492,
+        "corrupt": false,
+        "confidence": 0.781,
+        "path": [
+          [
+            -7.0,
+            12.0
+          ],
+          [
+            -13.0,
+            15.0
+          ],
+          [
+            -19.0,
+            18.0
+          ],
+          [
+            -25.0,
+            21.0
+          ],
+          [
+            -31.0,
+            25.0
+          ],
+          [
+            -37.0,
+            27.0
+          ],
+          [
+            -44.0,
+            30.0
+          ],
+          [
+            -50.0,
+            33.0
+          ],
+          [
+            -55.0,
+            35.0
+          ],
+          [
+            -62.0,
+            38.0
+          ],
+          [
+            -68.0,
+            40.0
+          ],
+          [
+            -73.0,
+            42.0
+          ],
+          [
+            -80.0,
+            45.0
+          ],
+          [
+            -85.0,
+            46.0
+          ],
+          [
+            -89.0,
+            47.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "yellow",
+            "x": -86.85,
+            "y": 87.44,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.4666666666666667,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-270",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 5842,
+      "t": 270.0286,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 477
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 0.325171196885395,
+        "far_bearing": -12.90842390034546,
+        "arrow": 4.412470614710372,
+        "corrupt": false,
+        "confidence": 1.0,
+        "path": [
+          [
+            1.0,
+            14.0
+          ],
+          [
+            0.0,
+            20.0
+          ],
+          [
+            1.0,
+            25.0
+          ],
+          [
+            0.0,
+            31.0
+          ],
+          [
+            -2.0,
+            37.0
+          ],
+          [
+            -4.0,
+            43.0
+          ],
+          [
+            -8.0,
+            50.0
+          ],
+          [
+            -11.0,
+            55.0
+          ],
+          [
+            -15.0,
+            62.0
+          ],
+          [
+            -18.0,
+            67.0
+          ],
+          [
+            -20.0,
+            72.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "yellow",
+            "x": 42.02,
+            "y": 87.3,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-275",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 5964,
+      "t": 274.9395,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 486
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": -4.763641690726178,
+        "far_bearing": 4.899092453787765,
+        "arrow": -2.4663338750870594,
+        "corrupt": false,
+        "confidence": 0.832,
+        "path": [
+          [
+            -2.0,
+            13.0
+          ],
+          [
+            -2.0,
+            18.0
+          ],
+          [
+            -3.0,
+            25.0
+          ],
+          [
+            -3.0,
+            31.0
+          ],
+          [
+            -3.0,
+            37.0
+          ],
+          [
+            -3.0,
+            43.0
+          ],
+          [
+            -3.0,
+            49.0
+          ],
+          [
+            1.0,
+            53.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4222222222222222,
+        "armour": 0.0,
+        "special": 0.9285714285714286,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-280",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 6068,
+      "t": 279.9075,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 495
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 45.268990752124154,
+        "far_bearing": 68.61636495902886,
+        "arrow": 5.074263168596616,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [
+          [
+            0.0,
+            13.0
+          ],
+          [
+            6.0,
+            19.0
+          ],
+          [
+            13.0,
+            20.0
+          ],
+          [
+            20.0,
+            20.0
+          ],
+          [
+            25.0,
+            21.0
+          ],
+          [
+            31.0,
+            21.0
+          ],
+          [
+            37.0,
+            21.0
+          ],
+          [
+            43.0,
+            21.0
+          ],
+          [
+            49.0,
+            22.0
+          ],
+          [
+            56.0,
+            22.0
+          ],
+          [
+            61.0,
+            23.0
+          ],
+          [
+            67.0,
+            23.0
+          ],
+          [
+            73.0,
+            23.0
+          ],
+          [
+            79.0,
+            23.0
+          ],
+          [
+            85.0,
+            24.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-285",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 6174,
+      "t": 284.9813,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 504
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 9.115289174660925,
+        "far_bearing": 0.15915453848780733,
+        "arrow": 2.0463683796839405,
+        "corrupt": false,
+        "confidence": 1.0,
+        "path": [
+          [
+            2.0,
+            13.0
+          ],
+          [
+            3.0,
+            19.0
+          ],
+          [
+            4.0,
+            25.0
+          ],
+          [
+            4.0,
+            31.0
+          ],
+          [
+            5.0,
+            36.0
+          ],
+          [
+            4.0,
+            42.0
+          ],
+          [
+            4.0,
+            49.0
+          ],
+          [
+            5.0,
+            54.0
+          ],
+          [
+            0.0,
+            60.0
+          ],
+          [
+            -9.0,
+            62.0
+          ],
+          [
+            -15.0,
+            63.0
+          ],
+          [
+            -21.0,
+            63.0
+          ],
+          [
+            -26.0,
+            63.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-290",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 6272,
+      "t": 290.0378,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 513
+    },
+    "request": {
+      "events": [],
+      "help": "OR LEASE",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 2.8624052261117474,
+        "far_bearing": -38.79392693269497,
+        "arrow": -0.19358123998500787,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [
+          [
+            1.0,
+            13.0
+          ],
+          [
+            1.0,
+            19.0
+          ],
+          [
+            1.0,
+            25.0
+          ],
+          [
+            1.0,
+            31.0
+          ],
+          [
+            1.0,
+            37.0
+          ],
+          [
+            -5.0,
+            41.0
+          ],
+          [
+            -13.0,
+            43.0
+          ],
+          [
+            -19.0,
+            43.0
+          ],
+          [
+            -25.0,
+            44.0
+          ],
+          [
+            -30.0,
+            44.0
+          ],
+          [
+            -36.0,
+            46.0
+          ],
+          [
+            -42.0,
+            49.0
+          ],
+          [
+            -46.0,
+            48.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-295",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 6364,
+      "t": 294.9443,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 522
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": -54.10262340055573,
+        "far_bearing": -58.3924977537511,
+        "arrow": -2.386160910237095,
+        "corrupt": true,
+        "confidence": 0.347,
+        "path": [
+          [
+            -8.0,
+            11.0
+          ],
+          [
+            -13.0,
+            13.0
+          ],
+          [
+            -20.0,
+            16.0
+          ],
+          [
+            -26.0,
+            18.0
+          ],
+          [
+            -31.0,
+            20.0
+          ],
+          [
+            -35.0,
+            22.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-300",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 6481,
+      "t": 299.992,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 531
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 34.09873189598446,
+        "far_bearing": 36.93192743160797,
+        "arrow": -8.209466800828523,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [
+          [
+            3.0,
+            12.0
+          ],
+          [
+            6.0,
+            18.0
+          ],
+          [
+            13.0,
+            21.0
+          ],
+          [
+            18.0,
+            23.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.5111111111111111,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-305",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 6567,
+      "t": 305.0129,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 540
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 1.6611417320586668,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-310",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 6673,
+      "t": 310.7771,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 548
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Mann, ich will ne Weile nichts mehr mit dir zu tun haben, Bruder.",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -32.03602926289767,
+        "corrupt": true,
+        "confidence": 0.304,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4777777777777778,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-315",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 6708,
+      "t": 315.063,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 551
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Nigga, das ist das Apachenblut in mir, Alter.",
+      "banner": "",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": true,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-320",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 6837,
+      "t": 320.0346,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 560
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "und deren Arsche skalpiert hab.",
+      "banner": "",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-325",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 6950,
+      "t": 324.9756,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 570
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Nigga, dann machen wir das auch nicht, mein Nigga.",
+      "banner": "",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-330",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 7075,
+      "t": 329.9966,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 579
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Sag Simeon, wir konnten es nicht beschaffen.",
+      "banner": "",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-335",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 7188,
+      "t": 334.9715,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 588
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-340",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 7304,
+      "t": 340.0235,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 597
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "bestanden",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -1.1516110025640387,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 0.9523809523809523,
+        "screen": "passed"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-345",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 7388,
+      "t": 345.0201,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 606
+    },
+    "request": {
+      "events": [],
+      "help": "Story-Charaktere werden im Laufe der GTA V-Story für den Regisseur-Modus des Rockstar Editors freigeschaltet.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -1.030756046833261,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.5,
+        "armour": 0.0,
+        "special": 0.9761904761904762,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-350",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 7502,
+      "t": 349.9646,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 615
+    },
+    "request": {
+      "events": [],
+      "help": "Story-Charaktere werden im Laufe der GTA V-Story für den Regisseur-Modus des Rockstar Editors freigeschaltet.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -80.41288522785567,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.5111111111111111,
+        "armour": 0.023809523809523808,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-355",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 7608,
+      "t": 355.0132,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 624
+    },
+    "request": {
+      "events": [],
+      "help": "Du kannst überall in San Andreas Fremde und Freaks treffen. Du findest sie bei ?.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.7302753622561795,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-360",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 7690,
+      "t": 359.9742,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 631
+    },
+    "request": {
+      "events": [],
+      "help": "Du kannst überall in San Andreas Fremde und Freaks treffen. Du findest sie bei ?.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 1.3941417378194672,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.5333333333333333,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-365",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 7805,
+      "t": 365.0753,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 640
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 0.5765394723780446,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.8095238095238095,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-370",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 7908,
+      "t": 369.7343,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 649
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 1.255509058737971,
+        "corrupt": true,
+        "confidence": 0.315,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-375",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 7988,
+      "t": 374.9618,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 657
+    },
+    "request": {
+      "events": [],
+      "help": "Registriere dich jetzt bei Rockstar Games, um exklusive Spielbelohnungen wie eine Waffe, ein Fahrzeug, sowie Zugang zu den Bestenlisten im Spiel zu erhalten.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.317569874410395,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 0.5238095238095238,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-380",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 8082,
+      "t": 379.7431,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 665
+    },
+    "request": {
+      "events": [],
+      "help": "Registriere dich jetzt bei Rockstar Games, um exklusive Spielbelohnungen wie eine Waffe, ein Fahrzeug, sowie Zugang zu den Bestenlisten im Spiel zu erhalten.",
+      "objective": "",
+      "subtitle": "1988",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.1678107244838145,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.8333333333333334,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-385",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 8192,
+      "t": 385.0703,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 674
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "pause"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-390",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 8268,
+      "t": 390.0212,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 683
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "Markierung wählen Da Interessanter Ort Zoomen L2 R2 Wenig Details R3",
+      "banner": "",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "map"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-395",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 8368,
+      "t": 394.9985,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 692
+    },
+    "request": {
+      "events": [],
+      "help": "Registriere dich jetzt bei Rockstar Games, um exklusive Spielbelohnungen wie eine Waffe, ein Fahrzeug, sowie Zugang zu den Bestenlisten im Spiel zu erhalten.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": 67.21257206721721,
+        "far_bearing": 75.85831666878549,
+        "arrow": -0.1361167376986714,
+        "corrupt": false,
+        "confidence": 1.0,
+        "path": [
+          [
+            6.0,
+            12.0
+          ],
+          [
+            13.0,
+            11.0
+          ],
+          [
+            18.0,
+            11.0
+          ],
+          [
+            24.0,
+            12.0
+          ],
+          [
+            31.0,
+            12.0
+          ],
+          [
+            36.0,
+            13.0
+          ],
+          [
+            43.0,
+            14.0
+          ],
+          [
+            48.0,
+            14.0
+          ],
+          [
+            54.0,
+            14.0
+          ],
+          [
+            61.0,
+            15.0
+          ],
+          [
+            66.0,
+            15.0
+          ],
+          [
+            72.0,
+            15.0
+          ],
+          [
+            79.0,
+            17.0
+          ],
+          [
+            84.0,
+            24.0
+          ],
+          [
+            84.0,
+            30.0
+          ],
+          [
+            78.0,
+            36.0
+          ],
+          [
+            80.0,
+            42.0
+          ],
+          [
+            88.0,
+            43.0
+          ],
+          [
+            93.0,
+            43.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-400",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 8481,
+      "t": 399.9493,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 700
+    },
+    "request": {
+      "events": [],
+      "help": "Du hast eine neue SMS empfangen. Öffne das Handy mit -¿-, um sie zu lesen. Neue SMS und E-Mails erscheinen auch im Feed.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -19.380784823850224,
+        "far_bearing": -33.60033297251178,
+        "arrow": 0.5548509977637934,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [
+          [
+            6.0,
+            12.0
+          ],
+          [
+            5.0,
+            17.0
+          ],
+          [
+            -1.0,
+            23.0
+          ],
+          [
+            -8.0,
+            26.0
+          ],
+          [
+            -15.0,
+            29.0
+          ],
+          [
+            -21.0,
+            30.0
+          ],
+          [
+            -27.0,
+            29.0
+          ],
+          [
+            -33.0,
+            31.0
+          ],
+          [
+            -35.0,
+            37.0
+          ],
+          [
+            -29.0,
+            45.0
+          ],
+          [
+            -31.0,
+            49.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-405",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 8588,
+      "t": 404.9459,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 709
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": 60.48850144290969,
+        "far_bearing": 69.64972524612678,
+        "arrow": -1.4996130594333863,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [
+          [
+            4.0,
+            12.0
+          ],
+          [
+            11.0,
+            12.0
+          ],
+          [
+            17.0,
+            12.0
+          ],
+          [
+            24.0,
+            13.0
+          ],
+          [
+            29.0,
+            13.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.5,
+        "armour": null,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-410",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 8690,
+      "t": 409.9976,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 718
+    },
+    "request": {
+      "events": [],
+      "help": "Benutze X, um dich zu ducken, während du in einem Fahrzeug sitzt.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.9607894789430702,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.5,
+        "armour": null,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-415",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 8782,
+      "t": 415.0123,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 724
+    },
+    "request": {
+      "events": [],
+      "help": "Benutze X, um dich zu ducken, während du in einem Fahrzeug sitzt.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 118.12122330115676,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.5,
+        "armour": 0.0,
+        "special": 0.8095238095238095,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-420",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 8907,
+      "t": 420.0192,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 734
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -3.849626868674477,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.8095238095238095,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-425",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 9015,
+      "t": 424.9696,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 743
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.008065864471774375,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.023809523809523808,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-430",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 9126,
+      "t": 430.0113,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 752
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -11.64313466293811,
+        "corrupt": true,
+        "confidence": 0.304,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.8333333333333334,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-435",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 9192,
+      "t": 435.0432,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 760
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.27424354760003666,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": null,
+        "special": 0.9523809523809523,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-440",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 9302,
+      "t": 440.0816,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 769
+    },
+    "request": {
+      "events": [],
+      "help": "Rolaps.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -5.774109689886927,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-445",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 9397,
+      "t": 444.9977,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 778
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 26.39068211776413,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.9523809523809523,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-450",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 9467,
+      "t": 449.9777,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 786
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 2.053904800905741,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.9285714285714286,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-455",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 9562,
+      "t": 454.9866,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 795
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -4.730401358913468,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.8095238095238095,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-460",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 9677,
+      "t": 460.0252,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 804
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 9.486326400394375,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.9523809523809523,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-465",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 9772,
+      "t": 465.0285,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 813
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -6.326886201923799,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-470",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 9879,
+      "t": 469.9759,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 822
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 6.194850627701811,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-475",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 9945,
+      "t": 474.226,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 828
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -159.95856139482748,
+        "corrupt": true,
+        "confidence": 0.304,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.9285714285714286,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-480",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 10023,
+      "t": 480.0262,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 835
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -3.9674911813135623,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": null,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-485",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 10137,
+      "t": 485.0283,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 844
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 0.562020781998342,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-490",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 10224,
+      "t": 489.9379,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 851
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.8630245989624541,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-495",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 10327,
+      "t": 494.9665,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 861
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.9061049989993251,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.5,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-500",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 10457,
+      "t": 500.0469,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 871
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 19.100887186907073,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-505",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 10516,
+      "t": 505.0433,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 878
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -15.85895862054258,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.8095238095238095,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-510",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 10573,
+      "t": 510.325,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 885
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 13.55286049934034,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.08888888888888889,
+        "armour": null,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-515",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 10664,
+      "t": 514.9455,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 892
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 0.046935755324710726,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-520",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 10735,
+      "t": 519.9781,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 901
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -101.73636158421937,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-525",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 10802,
+      "t": 524.7552,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 909
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 8.584675168034494,
+        "corrupt": true,
+        "confidence": 0.304,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-530",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 10856,
+      "t": 529.9802,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 916
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -43.96387582181586,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.45555555555555555,
+        "armour": 0.0,
+        "special": 0.9761904761904762,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-535",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 10892,
+      "t": 535.0356,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 922
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -7.232012654929804,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-536.761",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 10914,
+      "t": 536.7611,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 924
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 5.473074582658114,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.8571428571428571,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-540",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 10973,
+      "t": 539.8931,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 930
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -90.46809345181686,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -15.0,
+            "y": 16.5,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-545",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 11037,
+      "t": 544.3884,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 937
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -125.61835095740389,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": 81.0,
+            "y": 58.5,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 84.0,
+            "y": 54.0,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.8333333333333334,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-550",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 11128,
+      "t": 549.7142,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 945
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.7938473209384256,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.5333333333333333,
+        "armour": 0.0,
+        "special": 0.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-555",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 11224,
+      "t": 554.9352,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 953
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -5.7042827998513985,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": null,
+        "special": 0.7619047619047619,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-560",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 11300,
+      "t": 560.0057,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 960
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -32.00647870464621,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": 62.95,
+            "y": -24.83,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.16666666666666666,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-565",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 11398,
+      "t": 564.8864,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 970
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -19.690941244598662,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.6666666666666666,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-570",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 11472,
+      "t": 570.048,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 978
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -158.35471966988246,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 0.9047619047619048,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-575",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 11565,
+      "t": 575.0164,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 987
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 2.1810116131128154,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": -6.74,
+            "y": 35.93,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 89.0,
+            "y": -10.5,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.5,
+        "armour": null,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-580",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 11679,
+      "t": 579.9244,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 996
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -132.70950176350777,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": -18.11,
+            "y": 19.42,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.5111111111111111,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-585",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 11772,
+      "t": 584.9787,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1005
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 15.803200795322937,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": -8.28,
+            "y": 22.11,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -8.35,
+            "y": -26.15,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.3333333333333333,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-590",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 11869,
+      "t": 590.005,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1014
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -16.78483002131452,
+        "corrupt": true,
+        "confidence": 0.304,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 3,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-590.005",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 11869,
+      "t": 590.005,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1014
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -16.78483002131452,
+        "corrupt": true,
+        "confidence": 0.304,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 3,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-595",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 11992,
+      "t": 595.0372,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1023
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "RE!",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.2337146585688572,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": -38.88,
+            "y": 86.62,
+            "border": true
+          },
+          {
+            "color": "red",
+            "x": -37.75,
+            "y": -19.58,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 3,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-600",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 12070,
+      "t": 599.9791,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1031
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -19.266342626744404,
+        "corrupt": true,
+        "confidence": 0.35,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 3,
+        "wanted_flashing": false,
+        "health": 0.011111111111111112,
+        "armour": 0.0,
+        "special": 0.9761904761904762,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-605",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 12184,
+      "t": 604.9893,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1040
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -41.00282339200362,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -10.5,
+            "y": -4.0,
+            "border": false
+          },
+          {
+            "color": "blue",
+            "x": -4.0,
+            "y": -9.5,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -77.89,
+            "y": 87.5,
+            "border": true
+          },
+          {
+            "color": "red",
+            "x": -80.91,
+            "y": 61.91,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 12.0,
+            "y": -26.5,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 3,
+        "wanted_flashing": false,
+        "health": 0.25555555555555554,
+        "armour": 0.0,
+        "special": 0.8333333333333334,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-610",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 12277,
+      "t": 609.9558,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1048
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.18343718212378235,
+        "corrupt": true,
+        "confidence": 0.304,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": 0.0,
+        "armour": 0.0,
+        "special": 0.8333333333333334,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-615",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 12328,
+      "t": 614.9208,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1056
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 0.18743131464140106,
+        "corrupt": true,
+        "confidence": 0.304,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 3,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 0.8095238095238095,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-620",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 12428,
+      "t": 619.9862,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1065
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -17.569167768477655,
+        "corrupt": true,
+        "confidence": 0.304,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 3,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-625",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 12558,
+      "t": 624.9613,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1074
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 0.13583666309108366,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 8.17,
+            "y": -14.83,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -35.78,
+            "y": 86.68,
+            "border": true
+          },
+          {
+            "color": "red",
+            "x": -20.87,
+            "y": -6.97,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 12.38,
+            "y": -25.21,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 3,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-628.8",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 12642,
+      "t": 628.8084,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1081
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "wasted"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-630",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 12674,
+      "t": 629.9626,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1083
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "wasted"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-635",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 12797,
+      "t": 634.9623,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1092
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": true,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "wasted"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-640",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 12883,
+      "t": 640.0515,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1101
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "loading"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  },
+  {
+    "id": "wifi-640.5",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 12894,
+      "t": 640.5562,
+      "text_path": "lab/wiring/text-093238.jsonl",
+      "text_line": 1102
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "none",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.0,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": null,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": null,
+        "screen": "game"
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "objects": []
+    },
+    "model": null
+  }
+]

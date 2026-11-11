@@ -1,0 +1,1268 @@
+[
+  {
+    "id": "pilot-20261110-230229-01",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+      "line": 2
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "startup"
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 129.21630915548462,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": null,
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-230229/head-0001.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 5
+          }
+        }
+      ],
+      "sentence": "Ohne sichtbares Ziel oder GPS-Route warte ich kurz auf Orientierung.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-230229-02",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+      "line": 4
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "wait",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 129.37938095560366,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "wait",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-230229/head-0002.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 30
+          }
+        }
+      ],
+      "sentence": "Wir warten auf ein klares Ziel, da keine GPS-Route angezeigt wird.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-230229-03",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+      "line": 6
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "wait",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 129.25790284137838,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "wait",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-230229/head-0003.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 15
+          }
+        }
+      ],
+      "sentence": "Ohne sichtbares Ziel oder GPS-Route warten wir zunächst ab.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-230229-04",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+      "line": 8
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "wait",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 129.35729181357522,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "wait",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-230229/head-0004.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 30
+          }
+        }
+      ],
+      "sentence": "Wir warten auf ein erkennbares Ziel oder eine neue Spielmeldung.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-230229-05",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+      "line": 10
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "wait",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 129.69563789581036,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "wait",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-230229/head-0005.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 30
+          }
+        }
+      ],
+      "sentence": "Ohne sichtbares Ziel oder GPS-Route warten wir vorerst an der Kreuzung.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-230229-06",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+      "line": 12
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "wait",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 129.33160907559238,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "wait",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-230229/head-0006.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 30
+          }
+        }
+      ],
+      "sentence": "Ohne erkennbares Ziel oder GPS-Route warten wir am Straßenrand.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-230229-07",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+      "line": 14
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "wait",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 129.50593152125236,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "wait",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-230229/head-0007.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 30
+          }
+        }
+      ],
+      "sentence": "Ohne erkennbares Ziel oder GPS-Route warte ich am Straßenrand.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-230229-08",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-230229/head.jsonl",
+      "line": 16
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "wait",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 129.52886239820805,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "wait",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-230229/head-0008.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "wait",
+          "args": {
+            "duration": 30
+          }
+        }
+      ],
+      "sentence": "Ohne erkennbares Ziel oder GPS-Route warten wir auf dem Gehweg.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-231512-01",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+      "line": 2
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "startup"
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 129.5651353121193,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": null,
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-231512/head-0001.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "look",
+          "args": {
+            "angle": -55,
+            "duration": 0.8
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "sprint": false,
+            "x": 0,
+            "y": -1
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "angle": 20,
+            "duration": 0.5
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "sprint": true,
+            "x": 0,
+            "y": -1
+          }
+        }
+      ],
+      "sentence": "Ich schaue mich um und gehe auf dem Gehweg entlang der Straße weiter.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-231512-02",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+      "line": 4
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "walk",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 1.191853393035359,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "walk",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-231512/head-0002.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 3,
+            "sprint": true,
+            "x": -0.8,
+            "y": -0.5
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "angle": -35,
+            "duration": 0.6
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 6,
+            "sprint": true,
+            "x": 0,
+            "y": -1
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "sprint": false,
+            "x": 0.3,
+            "y": -0.8
+          }
+        }
+      ],
+      "sentence": "Wir schauen uns um und bewegen uns zum linken Straßenrand.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-231512-03",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+      "line": 6
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "walk",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 0.41563055409932304,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "walk",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-231512/head-0003.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 3,
+            "sprint": false,
+            "x": -0.25,
+            "y": -1
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 10,
+            "sprint": true,
+            "x": 0,
+            "y": -1
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "angle": -20,
+            "duration": 0.6
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 6,
+            "sprint": false,
+            "x": 0.25,
+            "y": -1
+          }
+        }
+      ],
+      "sentence": "Wir laufen den Gehweg entlang und schauen uns an der Straße um.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-231512-04",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+      "line": 8
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "walk",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.4065775610634432,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "walk",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-231512/head-0004.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 1.5,
+            "sprint": false,
+            "x": -1,
+            "y": 0
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 7,
+            "sprint": true,
+            "x": 0,
+            "y": -1
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "angle": 25,
+            "duration": 0.7
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 6,
+            "sprint": true,
+            "x": 0,
+            "y": -1
+          }
+        }
+      ],
+      "sentence": "Wir gehen links am Stromkasten vorbei und erkunden den Weg entlang der Straße.",
+      "lesson": "Direkt vor der Figur steht ein Stromkasten, der den geraden Weg versperrt."
+    }
+  },
+  {
+    "id": "pilot-20261110-231512-05",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+      "line": 10
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "walk",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 0.8754101631378433,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "walk",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n2026-11-10T22:16:36.837785+00:00 Direkt vor der Figur steht ein Stromkasten, der den geraden Weg versperrt.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-231512/head-0005.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 2,
+            "sprint": true,
+            "x": 0.8,
+            "y": -0.4
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 6,
+            "sprint": true,
+            "x": 0,
+            "y": -1
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "angle": 65,
+            "duration": 1
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 6,
+            "sprint": true,
+            "x": 0,
+            "y": -1
+          }
+        }
+      ],
+      "sentence": "Wir laufen rechts am Lastwagen vorbei und schauen uns am Straßenrand um.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-231512-06",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+      "line": 12
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "walk",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 74.40150341604593,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "walk",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n2026-11-10T22:16:36.837785+00:00 Direkt vor der Figur steht ein Stromkasten, der den geraden Weg versperrt.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-231512/head-0006.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 3,
+            "sprint": false,
+            "x": 0.6,
+            "y": -0.8
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "angle": 65,
+            "duration": 0.7
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 6,
+            "sprint": true,
+            "x": 0,
+            "y": -1
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 3,
+            "sprint": false,
+            "x": -0.6,
+            "y": -0.7
+          }
+        }
+      ],
+      "sentence": "Wir bewegen uns vom Auto weg und schauen uns am Straßenrand um.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-231512-07",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+      "line": 14
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "walk",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -30.343817376609707,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "walk",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n2026-11-10T22:16:36.837785+00:00 Direkt vor der Figur steht ein Stromkasten, der den geraden Weg versperrt.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-231512/head-0007.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "sprint": true,
+            "x": 0.8,
+            "y": -0.6
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "angle": 35,
+            "duration": 0.8
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 6,
+            "sprint": true,
+            "x": 0,
+            "y": -1
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "angle": -45,
+            "duration": 1
+          }
+        }
+      ],
+      "sentence": "Wir erkunden den freien Weg rechts an der eingezäunten Anlage vorbei.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-231512-08",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+      "line": 16
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "look",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 33.0074628522226,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "look",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n2026-11-10T22:16:36.837785+00:00 Direkt vor der Figur steht ein Stromkasten, der den geraden Weg versperrt.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-231512/head-0008.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 2.5,
+            "sprint": false,
+            "x": 0.3,
+            "y": -1
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "angle": 75,
+            "duration": 1
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 7,
+            "sprint": true,
+            "x": 0,
+            "y": -1
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "sprint": false,
+            "x": 0,
+            "y": -1
+          }
+        }
+      ],
+      "sentence": "Ich gehe zur Straße und erkunde den Grünstreifen entlang der Fahrbahn.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-231512-09",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+      "line": 18
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "walk",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.8078030707845585,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "walk",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n2026-11-10T22:16:36.837785+00:00 Direkt vor der Figur steht ein Stromkasten, der den geraden Weg versperrt.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-231512/head-0009.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 6,
+            "sprint": true,
+            "x": 0,
+            "y": -1
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "angle": 60,
+            "duration": 1
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 5,
+            "sprint": true,
+            "x": 0,
+            "y": -1
+          }
+        }
+      ],
+      "sentence": "Wir laufen über die freie Grasfläche und schauen uns rechts am Weg um.",
+      "lesson": null
+    }
+  },
+  {
+    "id": "pilot-20261110-231512-10",
+    "provenance": "saved_head_request_and_model_answer",
+    "source": {
+      "path": "/Users/kerim/recordings/pilot/20261110-231512/head.jsonl",
+      "line": 20
+    },
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "walk",
+            "status": "done",
+            "reason": "time-limit"
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -1.2089881144789558,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null
+      },
+      "last_skill": {
+        "name": "walk",
+        "status": "done",
+        "reason": "time-limit"
+      },
+      "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n2026-11-10T22:16:36.837785+00:00 Direkt vor der Figur steht ein Stromkasten, der den geraden Weg versperrt.\n",
+      "jpeg_path": "/Users/kerim/recordings/pilot/20261110-231512/head-0010.jpg"
+    },
+    "model": {
+      "plan": [
+        {
+          "name": "walk",
+          "args": {
+            "duration": 8,
+            "sprint": true,
+            "x": 0,
+            "y": -1
+          }
+        },
+        {
+          "name": "look",
+          "args": {
+            "angle": -15,
+            "duration": 0.5
+          }
+        },
+        {
+          "name": "walk",
+          "args": {
+            "duration": 8,
+            "sprint": true,
+            "x": 0,
+            "y": -1
+          }
+        }
+      ],
+      "sentence": "Wir laufen auf dem Gehweg weiter und schauen uns am Ende der Brücke um.",
+      "lesson": null
+    }
+  }
+]
