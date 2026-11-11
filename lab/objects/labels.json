@@ -1,0 +1,3184 @@
+{
+  "seed": 1414,
+  "annotation": "Manual visual boxes from raw frames, without detector predictions; individual-frame coordinate verification. Borderline small objects retained, scored by size thresholds.",
+  "frames": [
+    {
+      "id": "000",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 52,
+      "video_time": 0.8666666666666667,
+      "file": "frames/000.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            420,
+            381,
+            491,
+            419
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "f09cb2136e8e4f469ab0c1e7672e4b36a0c73cca01595129fae401dc5d0fc154",
+      "damaged": false,
+      "capture_time": 0.8339,
+      "frame_id": 47494
+    },
+    {
+      "id": "001",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 1047,
+      "video_time": 17.45,
+      "file": "frames/001.jpg",
+      "labels": [
+        {
+          "kind": "truck",
+          "box": [
+            376,
+            263,
+            523,
+            373
+          ],
+          "player": false
+        },
+        {
+          "kind": "bus",
+          "box": [
+            1144,
+            570,
+            1222,
+            609
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "716409ed8f70d560025edd61df39f1f3a5776529d981adc713e02140e9c9bf96",
+      "damaged": false,
+      "capture_time": 17.4297,
+      "frame_id": 48489
+    },
+    {
+      "id": "002",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 1368,
+      "video_time": 22.8,
+      "file": "frames/002.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            298,
+            576,
+            373,
+            618
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            384,
+            547,
+            509,
+            623
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            450,
+            588,
+            530,
+            621
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            553,
+            569,
+            628,
+            639
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "a9ecd59d16b309fbaa2942a4c53e950011c58bf59340d7d05fa3095556c74572",
+      "damaged": false,
+      "capture_time": 22.7825,
+      "frame_id": 48810
+    },
+    {
+      "id": "003",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 1533,
+      "video_time": 25.55,
+      "file": "frames/003.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            421,
+            575,
+            490,
+            606
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            617,
+            613,
+            695,
+            672
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            262,
+            676,
+            337,
+            719
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "e946dfae9d714aeba64c2a4bb3b8ec31bdfafdc402d6bdbbabcf9dafbc4c1c18",
+      "damaged": false,
+      "capture_time": 25.5349,
+      "frame_id": 48975
+    },
+    {
+      "id": "004",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 1965,
+      "video_time": 32.75,
+      "file": "frames/004.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            302,
+            586,
+            350,
+            614
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            367,
+            620,
+            426,
+            655
+          ],
+          "player": false
+        },
+        {
+          "kind": "bus",
+          "box": [
+            441,
+            550,
+            502,
+            602
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            373,
+            644,
+            439,
+            678
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            642,
+            574,
+            695,
+            605
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            796,
+            579,
+            855,
+            648
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "b59d7bc2a86bfbf595eb2cb6b7c7bc285941284743f54cdea44d74cacdc5f46a",
+      "damaged": false,
+      "capture_time": 32.7424,
+      "frame_id": 49407
+    },
+    {
+      "id": "005",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 2277,
+      "video_time": 37.95,
+      "file": "frames/005.jpg",
+      "labels": [
+        {
+          "kind": "bus",
+          "box": [
+            222,
+            578,
+            282,
+            621
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            828,
+            568,
+            867,
+            604
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            867,
+            658,
+            926,
+            712
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "ccb87c7f975e20401ab525e992883bdc7a536ba3ec6780060eb5135005c2164f",
+      "damaged": false,
+      "capture_time": 37.9487,
+      "frame_id": 49719
+    },
+    {
+      "id": "006",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 3370,
+      "video_time": 56.166666666666664,
+      "file": "frames/006.jpg",
+      "labels": [
+        {
+          "kind": "truck",
+          "box": [
+            0,
+            29,
+            239,
+            402
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            0,
+            335,
+            237,
+            575
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            441,
+            295,
+            620,
+            401
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "d87e5f644cc9ed91206ef3605f721bd544a4c33188b933f3b32998de22a0920d",
+      "damaged": false,
+      "capture_time": 56.1876,
+      "frame_id": 50812
+    },
+    {
+      "id": "007",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 3805,
+      "video_time": 63.416666666666664,
+      "file": "frames/007.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            161,
+            346,
+            310,
+            410
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            550,
+            314,
+            625,
+            372
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "20200029457784282c3cd6b9c517cbd87be9ac6afa0c2d07a1d108dcc7d3cfb9",
+      "damaged": false,
+      "capture_time": 63.486,
+      "frame_id": 51247
+    },
+    {
+      "id": "008",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 5702,
+      "video_time": 95.03333333333333,
+      "file": "frames/008.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            0,
+            485,
+            77,
+            531
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            497,
+            407,
+            675,
+            462
+          ],
+          "player": false
+        },
+        {
+          "kind": "bus",
+          "box": [
+            787,
+            371,
+            1040,
+            438
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "6e77ebcf116decab8d34bb35884e8ba70d12aaae349f5845cfb298abae94caad",
+      "damaged": false,
+      "capture_time": 95.1104,
+      "frame_id": 53144
+    },
+    {
+      "id": "009",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 5949,
+      "video_time": 99.15,
+      "file": "frames/009.jpg",
+      "labels": [
+        {
+          "kind": "bus",
+          "box": [
+            28,
+            498,
+            230,
+            580
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            839,
+            489,
+            947,
+            538
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "748704348c5f9e40ea269a86ca74734f5cd27a461023007bdb9339390c98b4f4",
+      "damaged": false,
+      "capture_time": 99.2167,
+      "frame_id": 53391
+    },
+    {
+      "id": "010",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 6049,
+      "video_time": 100.81666666666666,
+      "file": "frames/010.jpg",
+      "labels": [
+        {
+          "kind": "bus",
+          "box": [
+            29,
+            499,
+            230,
+            579
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            716,
+            490,
+            785,
+            522
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "b1053422b1e0055d98bde2c64584068d7ef8fbd0a96fbf66467c0f058fe92f1c",
+      "damaged": false,
+      "capture_time": 100.9178,
+      "frame_id": 53491
+    },
+    {
+      "id": "011",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 7299,
+      "video_time": 121.65,
+      "file": "frames/011.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            199,
+            452,
+            419,
+            515
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            857,
+            365,
+            918,
+            423
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            1116,
+            366,
+            1195,
+            421
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "5a37d24bee8bf12a2b088410b1a445a2e85504ed7ce111e3b256004f91176479",
+      "damaged": false,
+      "capture_time": 121.7345,
+      "frame_id": 54741
+    },
+    {
+      "id": "012",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 7689,
+      "video_time": 128.15,
+      "file": "frames/012.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            199,
+            452,
+            420,
+            515
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            574,
+            411,
+            713,
+            449
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            826,
+            385,
+            891,
+            424
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            1022,
+            294,
+            1280,
+            491
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "2e5ab224808fb5f301eabe2e1721f526f95f4f0dec52f959a790c4ea5eb0c552",
+      "damaged": false,
+      "capture_time": 128.2426,
+      "frame_id": 55131
+    },
+    {
+      "id": "013",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 7831,
+      "video_time": 130.51666666666668,
+      "file": "frames/013.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            200,
+            452,
+            421,
+            516
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            830,
+            391,
+            898,
+            431
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            1101,
+            358,
+            1280,
+            410
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "f8b961a65f1535b8ac0d21f2752e8f70cc222c1dee2b3380e73be2495f57e9f2",
+      "damaged": false,
+      "capture_time": 130.6154,
+      "frame_id": 55273
+    },
+    {
+      "id": "014",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 10983,
+      "video_time": 183.05,
+      "file": "frames/014.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            0,
+            349,
+            167,
+            415
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            210,
+            319,
+            394,
+            396
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            444,
+            330,
+            551,
+            379
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            582,
+            326,
+            730,
+            390
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            736,
+            341,
+            895,
+            397
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            824,
+            316,
+            912,
+            350
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "949f914c100fce3b8d03d275f392c5cc27d0ab03aa66385c4f0f40098155a76d",
+      "damaged": false,
+      "capture_time": 183.1974,
+      "frame_id": 58425
+    },
+    {
+      "id": "015",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 11038,
+      "video_time": 183.96666666666667,
+      "file": "frames/015.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            0,
+            350,
+            168,
+            415
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            211,
+            320,
+            393,
+            395
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            445,
+            331,
+            552,
+            379
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            591,
+            336,
+            845,
+            430
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            830,
+            324,
+            917,
+            363
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            932,
+            322,
+            1023,
+            362
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "b21f45dabc77c431cc64285f7d477821bf3183dd8e3aa3a75cca89bca8add328",
+      "damaged": false,
+      "capture_time": 184.1143,
+      "frame_id": 58480
+    },
+    {
+      "id": "016",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 12222,
+      "video_time": 203.7,
+      "file": "frames/016.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            309,
+            405,
+            576,
+            483
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            445,
+            317,
+            716,
+            405
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "7b90516e250bb89c0b0f896633246e956148f4eca4f53d636c888c8bfef2bbb5",
+      "damaged": false,
+      "capture_time": 203.8657,
+      "frame_id": 59664
+    },
+    {
+      "id": "017",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 12276,
+      "video_time": 204.6,
+      "file": "frames/017.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            267,
+            417,
+            541,
+            494
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            65,
+            370,
+            146,
+            439
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            618,
+            326,
+            901,
+            415
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "37952dcb3d512815cf1672b0a188d328cff6d27c790da4dd6cf8a15bcc7bc334",
+      "damaged": false,
+      "capture_time": 204.7696,
+      "frame_id": 59718
+    },
+    {
+      "id": "018",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 12358,
+      "video_time": 205.96666666666667,
+      "file": "frames/018.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            25,
+            446,
+            301,
+            526
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            394,
+            374,
+            475,
+            438
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            881,
+            325,
+            1171,
+            400
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "2da08751f5c5eb53056894e20006ce17dcfec43b770b2ff07af0fa429508a5fa",
+      "damaged": false,
+      "capture_time": 206.1358,
+      "frame_id": 59800
+    },
+    {
+      "id": "019",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 13085,
+      "video_time": 218.08333333333334,
+      "file": "frames/019.jpg",
+      "labels": [
+        {
+          "kind": "truck",
+          "box": [
+            258,
+            270,
+            496,
+            368
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            495,
+            282,
+            760,
+            398
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            762,
+            68,
+            1137,
+            398
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "92303d82c1e0d9e13a9050f6cc9fd0473251aeb96001a40378371186cfde6b85",
+      "damaged": false,
+      "capture_time": 218.2658,
+      "frame_id": 60527
+    },
+    {
+      "id": "020",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 13720,
+      "video_time": 228.66666666666666,
+      "file": "frames/020.jpg",
+      "labels": [
+        {
+          "kind": "bus",
+          "box": [
+            61,
+            295,
+            271,
+            355
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            577,
+            314,
+            641,
+            356
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "39f6f89887d1a497086e94a27f90f388f9676306c59ed506a9c1da9561812546",
+      "damaged": false,
+      "capture_time": 228.8611,
+      "frame_id": 61162
+    },
+    {
+      "id": "021",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 13828,
+      "video_time": 230.46666666666667,
+      "file": "frames/021.jpg",
+      "labels": [
+        {
+          "kind": "bus",
+          "box": [
+            108,
+            304,
+            321,
+            358
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            1186,
+            613,
+            1280,
+            679
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "061f9c5b80208d2b2ca62406108253e1fc4e4e6d8569b535b54c0c5a3eefa63b",
+      "damaged": false,
+      "capture_time": 230.7332,
+      "frame_id": 61270
+    },
+    {
+      "id": "022",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 14117,
+      "video_time": 235.28333333333333,
+      "file": "frames/022.jpg",
+      "labels": [
+        {
+          "kind": "truck",
+          "box": [
+            94,
+            278,
+            274,
+            345
+          ],
+          "player": false
+        },
+        {
+          "kind": "bus",
+          "box": [
+            512,
+            307,
+            689,
+            363
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "6d022bd8331d4d34d47e37fd71c051d66118bd06f7c8f786d1907d28d935bad0",
+      "damaged": false,
+      "capture_time": 235.4796,
+      "frame_id": 61559
+    },
+    {
+      "id": "023",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 14244,
+      "video_time": 237.4,
+      "file": "frames/023.jpg",
+      "labels": [
+        {
+          "kind": "truck",
+          "box": [
+            309,
+            281,
+            489,
+            349
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            664,
+            345,
+            739,
+            401
+          ],
+          "player": false
+        },
+        {
+          "kind": "bus",
+          "box": [
+            786,
+            328,
+            885,
+            379
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "5b9d6ba635dfdb3a5d7bf24f2d389b2d68b2b5fb8b72394e97a68f326ac4acc6",
+      "damaged": false,
+      "capture_time": 237.6062,
+      "frame_id": 61686
+    },
+    {
+      "id": "024",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 11,
+      "video_time": 0.18333333333333332,
+      "file": "frames/024.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            912,
+            590,
+            976,
+            618
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "c4aff2b8f4ca1a64589ad3c0b2377237ddec16a4f445c2da5cf45c64a891ecb0",
+      "damaged": false,
+      "capture_time": 0.179,
+      "frame_id": 93190
+    },
+    {
+      "id": "025",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 140,
+      "video_time": 2.3333333333333335,
+      "file": "frames/025.jpg",
+      "labels": [
+        {
+          "kind": "truck",
+          "box": [
+            967,
+            602,
+            1055,
+            654
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1063,
+            585,
+            1130,
+            620
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "d38501bcb71a4e0f7cb7ec4390ad7d63b5b1ef38abe906dcc2415913dd5dc43b",
+      "damaged": false,
+      "capture_time": 2.4025,
+      "frame_id": 93319
+    },
+    {
+      "id": "026",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 571,
+      "video_time": 9.516666666666667,
+      "file": "frames/026.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            514,
+            336,
+            627,
+            658
+          ],
+          "player": true
+        },
+        {
+          "kind": "truck",
+          "box": [
+            727,
+            529,
+            824,
+            585
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            850,
+            608,
+            944,
+            667
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            1081,
+            559,
+            1238,
+            633
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1134,
+            641,
+            1274,
+            702
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "a32f9183afb7a1c17bcbb6a337f77c7a1178a853d37cbf03e8dd9080dd4d677f",
+      "damaged": false,
+      "capture_time": 9.5594,
+      "frame_id": 93750
+    },
+    {
+      "id": "027",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 1359,
+      "video_time": 22.65,
+      "file": "frames/027.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            510,
+            396,
+            623,
+            623
+          ],
+          "player": true
+        },
+        {
+          "kind": "motorcycle",
+          "box": [
+            700,
+            342,
+            792,
+            394
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1047,
+            327,
+            1122,
+            361
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1165,
+            327,
+            1280,
+            376
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "7d587a55cc54f23b0fb839648e3f08a09d31b539d3a76b0662ffb5fea7230fbe",
+      "damaged": false,
+      "capture_time": 22.7008,
+      "frame_id": 94538
+    },
+    {
+      "id": "028",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 2153,
+      "video_time": 35.88333333333333,
+      "file": "frames/028.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            515,
+            340,
+            640,
+            667
+          ],
+          "player": true
+        }
+      ],
+      "sha256": "813b503fdfabe75075642b21395b0751183b1ed6a348824fa6d8f4aefb80f477",
+      "damaged": false,
+      "capture_time": 35.9711,
+      "frame_id": 95332
+    },
+    {
+      "id": "029",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 3233,
+      "video_time": 53.88333333333333,
+      "file": "frames/029.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            506,
+            331,
+            628,
+            654
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            350,
+            330,
+            416,
+            364
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "c11ffdeed80b7251804ffe5a1d25b1922e6369e70c1744649839382d39172a84",
+      "damaged": false,
+      "capture_time": 53.9868,
+      "frame_id": 96412
+    },
+    {
+      "id": "030",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 3270,
+      "video_time": 54.5,
+      "file": "frames/030.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            515,
+            336,
+            630,
+            662
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            392,
+            329,
+            460,
+            363
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "6d216234067badbd044e348422e53397c3b576b0ed51d5a00f5f68cb43697377",
+      "damaged": false,
+      "capture_time": 54.6046,
+      "frame_id": 96449
+    },
+    {
+      "id": "031",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 3992,
+      "video_time": 66.53333333333333,
+      "file": "frames/031.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            497,
+            327,
+            626,
+            666
+          ],
+          "player": true
+        }
+      ],
+      "sha256": "0703d7ba19a5c945c84b4b6e41d844e5cf78fc07c31af8bbbbfc7f88831539c0",
+      "damaged": false,
+      "capture_time": 66.6616,
+      "frame_id": 97171
+    },
+    {
+      "id": "032",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 4273,
+      "video_time": 71.21666666666667,
+      "file": "frames/032.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            509,
+            324,
+            635,
+            651
+          ],
+          "player": true
+        }
+      ],
+      "sha256": "7c7ec29c59ac108f168a316e2c1a6a46a6635eb8f85c01b895b48cde05a9f42f",
+      "damaged": false,
+      "capture_time": 71.3333,
+      "frame_id": 97452
+    },
+    {
+      "id": "033",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 4614,
+      "video_time": 76.9,
+      "file": "frames/033.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            509,
+            325,
+            634,
+            652
+          ],
+          "player": true
+        }
+      ],
+      "sha256": "762acd3859ab91cf3396d1724b517de2e2bc520b8e5dda8a0fcf503179a5094b",
+      "damaged": false,
+      "capture_time": 77.0197,
+      "frame_id": 97793
+    },
+    {
+      "id": "034",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 4975,
+      "video_time": 82.91666666666667,
+      "file": "frames/034.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            509,
+            325,
+            635,
+            653
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            462,
+            285,
+            550,
+            335
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "437266204f71177ad251cf67c26b6ae885996e358e6a8a2ab12f039342be5a03",
+      "damaged": false,
+      "capture_time": 83.039,
+      "frame_id": 98154
+    },
+    {
+      "id": "035",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 6024,
+      "video_time": 100.4,
+      "file": "frames/035.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            515,
+            322,
+            633,
+            658
+          ],
+          "player": true
+        },
+        {
+          "kind": "truck",
+          "box": [
+            209,
+            212,
+            472,
+            490
+          ],
+          "player": false
+        },
+        {
+          "kind": "bus",
+          "box": [
+            100,
+            320,
+            203,
+            376
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1071,
+            363,
+            1172,
+            410
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "26a6f8986b7254563090e9ef4e18435bc948db75aa56f18b68b2cf4641a5f7c5",
+      "damaged": false,
+      "capture_time": 100.5676,
+      "frame_id": 99203
+    },
+    {
+      "id": "036",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 6133,
+      "video_time": 102.21666666666667,
+      "file": "frames/036.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            514,
+            326,
+            633,
+            645
+          ],
+          "player": true
+        },
+        {
+          "kind": "truck",
+          "box": [
+            262,
+            231,
+            441,
+            432
+          ],
+          "player": false
+        },
+        {
+          "kind": "bus",
+          "box": [
+            99,
+            313,
+            224,
+            359
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1028,
+            355,
+            1097,
+            388
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "1849e1ab8b839fd37aa2cfd4d2218ecb902ed2b1bdd0d86594b60bb1e035b0dd",
+      "damaged": false,
+      "capture_time": 102.3751,
+      "frame_id": 99312
+    },
+    {
+      "id": "037",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 6299,
+      "video_time": 104.98333333333333,
+      "file": "frames/037.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            508,
+            326,
+            635,
+            651
+          ],
+          "player": true
+        },
+        {
+          "kind": "truck",
+          "box": [
+            288,
+            249,
+            435,
+            411
+          ],
+          "player": false
+        },
+        {
+          "kind": "bus",
+          "box": [
+            99,
+            313,
+            223,
+            359
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            909,
+            356,
+            996,
+            387
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "ebe087007733672ea2768df26cb0ce983db5c1655059c0d2e43d66239cd22549",
+      "damaged": false,
+      "capture_time": 105.1667,
+      "frame_id": 99478
+    },
+    {
+      "id": "038",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 7849,
+      "video_time": 130.81666666666666,
+      "file": "frames/038.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            509,
+            326,
+            634,
+            647
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            711,
+            303,
+            900,
+            366
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "3ab69999fffe6793f4b8ff6996147cbb0766d23dafe7dac29f02086fa3b0d7a3",
+      "damaged": false,
+      "capture_time": 131.3769,
+      "frame_id": 101028
+    },
+    {
+      "id": "039",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 7853,
+      "video_time": 130.88333333333333,
+      "file": "frames/039.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            509,
+            326,
+            634,
+            648
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            689,
+            302,
+            870,
+            367
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "c58ef8b7090dcf53bf2612c2187cde78626c6169980e7d44b41008a9b881b938",
+      "damaged": false,
+      "capture_time": 131.3891,
+      "frame_id": 101032
+    },
+    {
+      "id": "040",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 9158,
+      "video_time": 152.63333333333333,
+      "file": "frames/040.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            505,
+            332,
+            628,
+            656
+          ],
+          "player": true
+        }
+      ],
+      "sha256": "ca4abec1074dbf88dfbaadace69c9ebbca41953fc179c8c7fdb8c193aa1dea18",
+      "damaged": false,
+      "capture_time": 153.4454,
+      "frame_id": 102337
+    },
+    {
+      "id": "041",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 9668,
+      "video_time": 161.13333333333333,
+      "file": "frames/041.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            500,
+            352,
+            635,
+            670
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            0,
+            332,
+            106,
+            379
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "c3acb654703b0da22fbc2c9c69d4d67af6f58a9cc2438d31d60a59c815102071",
+      "damaged": false,
+      "capture_time": 162.5135,
+      "frame_id": 102847
+    },
+    {
+      "id": "042",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 10157,
+      "video_time": 169.28333333333333,
+      "file": "frames/042.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            523,
+            326,
+            617,
+            650
+          ],
+          "player": true
+        },
+        {
+          "kind": "truck",
+          "box": [
+            197,
+            335,
+            369,
+            393
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            313,
+            358,
+            441,
+            407
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "82025c5bd3dd2f5047d0a32ab39e281ce644ce36b1497a08371b7942483aa903",
+      "damaged": false,
+      "capture_time": 170.6997,
+      "frame_id": 103336
+    },
+    {
+      "id": "043",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 10167,
+      "video_time": 169.45,
+      "file": "frames/043.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            473,
+            340,
+            652,
+            515
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            468,
+            336,
+            545,
+            379
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            567,
+            303,
+            718,
+            378
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "8ea982d91c9c8390fc325fc5d4bec46cb88638a5c4ef8d00ccf8acaea1ca3a7e",
+      "damaged": false,
+      "capture_time": 170.83,
+      "frame_id": 103346
+    },
+    {
+      "id": "044",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 10798,
+      "video_time": 179.96666666666667,
+      "file": "frames/044.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            510,
+            333,
+            640,
+            662
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            0,
+            343,
+            47,
+            388
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            202,
+            349,
+            370,
+            390
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "159881757fd0146b86587359ccb9b4b8a495ee5a288a791dffb8d3d9b30167c5",
+      "damaged": false,
+      "capture_time": 181.3617,
+      "frame_id": 103977
+    },
+    {
+      "id": "045",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 12568,
+      "video_time": 209.46666666666667,
+      "file": "frames/045.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            510,
+            337,
+            622,
+            639
+          ],
+          "player": true
+        },
+        {
+          "kind": "truck",
+          "box": [
+            0,
+            309,
+            61,
+            355
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "0d689ba29c1c869bcab6e4539fca2ebfc415fed823b373c9e49d736243ddcf9d",
+      "damaged": false,
+      "capture_time": 210.9082,
+      "frame_id": 105747
+    },
+    {
+      "id": "046",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 13576,
+      "video_time": 226.26666666666668,
+      "file": "frames/046.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            500,
+            338,
+            640,
+            638
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            475,
+            346,
+            530,
+            377
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "b5cbe6c402f4012155797f3454a6e752cf835e73705f373e0798f59f8c2e5154",
+      "damaged": false,
+      "capture_time": 227.7407,
+      "frame_id": 106755
+    },
+    {
+      "id": "047",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 13916,
+      "video_time": 231.93333333333334,
+      "file": "frames/047.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            481,
+            345,
+            665,
+            513
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            468,
+            336,
+            545,
+            379
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            568,
+            302,
+            720,
+            377
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "656bb5dd59952bc00fc591114baa4b27ba2b78cf595f06c5900e8ead6b5d33f2",
+      "damaged": false,
+      "capture_time": 233.4134,
+      "frame_id": 107095
+    },
+    {
+      "id": "048",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 33,
+      "video_time": 1.1,
+      "file": "frames/048.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            0,
+            126,
+            300,
+            720
+          ],
+          "player": true
+        },
+        {
+          "kind": "person",
+          "box": [
+            410,
+            300,
+            535,
+            456
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "2b8c6291458f67de3860c43103de16f7037e2373f653667aae896354190e0296",
+      "damaged": true,
+      "capture_time": 1.7722,
+      "frame_id": 25169
+    },
+    {
+      "id": "049",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 80,
+      "video_time": 2.6666666666666665,
+      "file": "frames/049.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            84,
+            35,
+            543,
+            720
+          ],
+          "player": true
+        },
+        {
+          "kind": "person",
+          "box": [
+            873,
+            230,
+            954,
+            416
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "74717bd4c634f50b7ab96b4dc40aa94cfd6a37c58353e9b8625b888f75aa61f2",
+      "damaged": false,
+      "capture_time": 4.0982,
+      "frame_id": 25226
+    },
+    {
+      "id": "050",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 358,
+      "video_time": 11.933333333333334,
+      "file": "frames/050.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            625,
+            396,
+            850,
+            720
+          ],
+          "player": true
+        },
+        {
+          "kind": "truck",
+          "box": [
+            567,
+            218,
+            710,
+            306
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "fd62a8e030acec54aea1b720a29061243279f5f2a5d9ecdff0f66200db9b49e3",
+      "damaged": false,
+      "capture_time": 16.2249,
+      "frame_id": 25558
+    },
+    {
+      "id": "051",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 530,
+      "video_time": 17.666666666666668,
+      "file": "frames/051.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            690,
+            283,
+            1280,
+            720
+          ],
+          "player": true
+        },
+        {
+          "kind": "truck",
+          "box": [
+            412,
+            233,
+            577,
+            339
+          ],
+          "player": false
+        },
+        {
+          "kind": "motorcycle",
+          "box": [
+            574,
+            354,
+            687,
+            413
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "e2a22152536faa200a8da08ec02e33530f59afa3792a5ca8a8492c2a0cdee60e",
+      "damaged": false,
+      "capture_time": 24.1944,
+      "frame_id": 25763
+    },
+    {
+      "id": "052",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 845,
+      "video_time": 28.166666666666668,
+      "file": "frames/052.jpg",
+      "labels": [],
+      "sha256": "2e6db5874c6171aacdcc3a6ee1e8346e891f7439608a62f39b518b73e5e2b174",
+      "damaged": false,
+      "capture_time": 37.3042,
+      "frame_id": 26138
+    },
+    {
+      "id": "053",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 853,
+      "video_time": 28.433333333333334,
+      "file": "frames/053.jpg",
+      "labels": [],
+      "sha256": "428f68aa67a6b951a432d5cfe88ac5935828d4dc1b655c8f3b4b7bbc3c6d833b",
+      "damaged": false,
+      "capture_time": 37.8101,
+      "frame_id": 26151
+    },
+    {
+      "id": "054",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 973,
+      "video_time": 32.43333333333333,
+      "file": "frames/054.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            440,
+            350,
+            690,
+            720
+          ],
+          "player": true
+        },
+        {
+          "kind": "person",
+          "box": [
+            648,
+            300,
+            725,
+            445
+          ],
+          "player": false
+        },
+        {
+          "kind": "person",
+          "box": [
+            1031,
+            394,
+            1115,
+            440
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "3db263781e0b5eaad800321578fb35febb3a327f84dc0b22d7d78224b86967f3",
+      "damaged": false,
+      "capture_time": 44.9963,
+      "frame_id": 26348
+    },
+    {
+      "id": "055",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 1062,
+      "video_time": 35.4,
+      "file": "frames/055.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            475,
+            370,
+            700,
+            720
+          ],
+          "player": true
+        },
+        {
+          "kind": "person",
+          "box": [
+            560,
+            390,
+            635,
+            555
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            799,
+            286,
+            949,
+            376
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "fb903b9a08cb66ebd212d3a309dd81673b7764f04b5e99d67a606b9d1bd66af3",
+      "damaged": true,
+      "capture_time": 48.6399,
+      "frame_id": 26453
+    },
+    {
+      "id": "056",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 1384,
+      "video_time": 46.13333333333333,
+      "file": "frames/056.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            177,
+            295,
+            550,
+            720
+          ],
+          "player": true
+        },
+        {
+          "kind": "truck",
+          "box": [
+            406,
+            326,
+            605,
+            420
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "5c1e606c3b3531fd049894f9bdf3dd4fce0350e70c7d74030e0ff2a1e70d71bc",
+      "damaged": false,
+      "capture_time": 64.1372,
+      "frame_id": 26843
+    },
+    {
+      "id": "057",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 1474,
+      "video_time": 49.13333333333333,
+      "file": "frames/057.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            418,
+            356,
+            642,
+            720
+          ],
+          "player": true
+        },
+        {
+          "kind": "truck",
+          "box": [
+            863,
+            344,
+            1065,
+            419
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1056,
+            337,
+            1280,
+            421
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "54f5c149f51e44db91f5fe55ad0900914ed4aa1269cb14a136775a168f436646",
+      "damaged": false,
+      "capture_time": 69.0827,
+      "frame_id": 26957
+    },
+    {
+      "id": "058",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 2492,
+      "video_time": 83.06666666666666,
+      "file": "frames/058.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            420,
+            335,
+            622,
+            720
+          ],
+          "player": true
+        },
+        {
+          "kind": "person",
+          "box": [
+            156,
+            330,
+            260,
+            465
+          ],
+          "player": false
+        },
+        {
+          "kind": "person",
+          "box": [
+            618,
+            341,
+            672,
+            438
+          ],
+          "player": false
+        },
+        {
+          "kind": "person",
+          "box": [
+            745,
+            345,
+            796,
+            433
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            649,
+            362,
+            788,
+            440
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "a6707adff68ff7c5db6bbcdf81fbe00e0f2842d945fedcdcb2825cdefd425d0c",
+      "damaged": false,
+      "capture_time": 111.0445,
+      "frame_id": 28020
+    },
+    {
+      "id": "059",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 2558,
+      "video_time": 85.26666666666667,
+      "file": "frames/059.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            500,
+            336,
+            650,
+            720
+          ],
+          "player": true
+        },
+        {
+          "kind": "person",
+          "box": [
+            634,
+            364,
+            730,
+            411
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1086,
+            333,
+            1226,
+            420
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "095d817ea30e10297a8af96960eca566c8084e745894ffafd3dddff6b4dd447a",
+      "damaged": false,
+      "capture_time": 114.0381,
+      "frame_id": 28087
+    },
+    {
+      "id": "060",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 2604,
+      "video_time": 86.8,
+      "file": "frames/060.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            543,
+            325,
+            644,
+            516
+          ],
+          "player": true
+        },
+        {
+          "kind": "person",
+          "box": [
+            910,
+            279,
+            983,
+            367
+          ],
+          "player": false
+        },
+        {
+          "kind": "person",
+          "box": [
+            430,
+            416,
+            555,
+            471
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            939,
+            249,
+            1082,
+            347
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "6b6db399b1f29c2ecae490718717d8c9985bade5953afe41e2f0ef3837e6f8c2",
+      "damaged": false,
+      "capture_time": 115.5395,
+      "frame_id": 28136
+    },
+    {
+      "id": "061",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 2652,
+      "video_time": 88.4,
+      "file": "frames/061.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            480,
+            340,
+            642,
+            720
+          ],
+          "player": true
+        },
+        {
+          "kind": "person",
+          "box": [
+            665,
+            394,
+            744,
+            468
+          ],
+          "player": false
+        },
+        {
+          "kind": "person",
+          "box": [
+            997,
+            442,
+            1105,
+            491
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            611,
+            355,
+            808,
+            444
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "05c86d91dc7f7b4e165cded31aee5b312187f43a69a3de99dafac4095e444107",
+      "damaged": false,
+      "capture_time": 117.8601,
+      "frame_id": 28188
+    },
+    {
+      "id": "062",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 3092,
+      "video_time": 103.06666666666666,
+      "file": "frames/062.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            545,
+            344,
+            625,
+            616
+          ],
+          "player": true
+        },
+        {
+          "kind": "person",
+          "box": [
+            552,
+            332,
+            601,
+            397
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "b2fc83b2557f3f1ee5c464dc4923e653d9d4b4d2b009a9b40c3c2291ea0b0ce1",
+      "damaged": false,
+      "capture_time": 136.5367,
+      "frame_id": 28647
+    },
+    {
+      "id": "063",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 5823,
+      "video_time": 194.1,
+      "file": "frames/063.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            548,
+            382,
+            687,
+            630
+          ],
+          "player": true
+        },
+        {
+          "kind": "motorcycle",
+          "box": [
+            504,
+            468,
+            720,
+            655
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            320,
+            347,
+            430,
+            400
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "c3eb62377a74db15c585a0949d60445be4914ed6e17e569d74e74441386a15be",
+      "damaged": false,
+      "capture_time": 269.2002,
+      "frame_id": 31628
+    },
+    {
+      "id": "064",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 5935,
+      "video_time": 197.83333333333334,
+      "file": "frames/064.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            563,
+            363,
+            698,
+            616
+          ],
+          "player": true
+        },
+        {
+          "kind": "motorcycle",
+          "box": [
+            560,
+            470,
+            705,
+            655
+          ],
+          "player": true
+        }
+      ],
+      "sha256": "789c2d9706afc5b316b032f3a865c4da1b69323855a81ea53dbf936dfca0c7e3",
+      "damaged": false,
+      "capture_time": 273.8516,
+      "frame_id": 31749
+    },
+    {
+      "id": "065",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 6739,
+      "video_time": 224.63333333333333,
+      "file": "frames/065.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            560,
+            48,
+            956,
+            720
+          ],
+          "player": true
+        }
+      ],
+      "sha256": "1b5d677396327497472163513fefe42fdffd41df71ade43fc31ab0800d400afc",
+      "damaged": false,
+      "capture_time": 316.1888,
+      "frame_id": 32645
+    },
+    {
+      "id": "066",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 8940,
+      "video_time": 298.0,
+      "file": "frames/066.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            478,
+            418,
+            765,
+            696
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            0,
+            426,
+            304,
+            540
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            846,
+            341,
+            1227,
+            455
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "d3d6b6e6514b0d7b762da42069a7e46406a46a8ca7329542c74078469ef424d5",
+      "damaged": false,
+      "capture_time": 421.6344,
+      "frame_id": 35219
+    },
+    {
+      "id": "067",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 9985,
+      "video_time": 332.8333333333333,
+      "file": "frames/067.jpg",
+      "labels": [
+        {
+          "kind": "car",
+          "box": [
+            498,
+            425,
+            806,
+            700
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            912,
+            416,
+            1027,
+            489
+          ],
+          "player": false
+        },
+        {
+          "kind": "bus",
+          "box": [
+            1110,
+            397,
+            1280,
+            526
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "ea1efe36287be44dcd4cf2da0a9f47fb4cad68ceaa3990b61dfca27e79b9b92d",
+      "damaged": false,
+      "capture_time": 478.0475,
+      "frame_id": 36384
+    },
+    {
+      "id": "068",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 10078,
+      "video_time": 335.93333333333334,
+      "file": "frames/068.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            531,
+            356,
+            622,
+            518
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            452,
+            462,
+            1056,
+            720
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            0,
+            270,
+            350,
+            350
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            238,
+            269,
+            420,
+            309
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "90894b5b8a6a6780a22d96689f93ac882b010a9b91ba19348d296e7e3dd329f0",
+      "damaged": false,
+      "capture_time": 482.5799,
+      "frame_id": 36488
+    },
+    {
+      "id": "069",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 10524,
+      "video_time": 350.8,
+      "file": "frames/069.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            498,
+            315,
+            615,
+            580
+          ],
+          "player": true
+        }
+      ],
+      "sha256": "d8b5f57fd93a6ab26c4591c8f16496ff3051b22966025294811e54a7e8e67693",
+      "damaged": true,
+      "capture_time": 505.3709,
+      "frame_id": 36997
+    },
+    {
+      "id": "070",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 10640,
+      "video_time": 354.6666666666667,
+      "file": "frames/070.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            547,
+            345,
+            650,
+            574
+          ],
+          "player": true
+        },
+        {
+          "kind": "bus",
+          "box": [
+            0,
+            208,
+            423,
+            414
+          ],
+          "player": false
+        },
+        {
+          "kind": "person",
+          "box": [
+            1048,
+            255,
+            1102,
+            355
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "fba399b3867c546df2b712e691a20568407755a3afa48e177f561a0185124884",
+      "damaged": false,
+      "capture_time": 513.9108,
+      "frame_id": 37125
+    },
+    {
+      "id": "071",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 11104,
+      "video_time": 370.1333333333333,
+      "file": "frames/071.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            557,
+            338,
+            660,
+            542
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            120,
+            304,
+            485,
+            376
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            514,
+            264,
+            704,
+            355
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            758,
+            314,
+            895,
+            394
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "0a074f4176e13286964fdcc9c186d8c249b7b3e01e108856bfede2f7903929c2",
+      "damaged": false,
+      "capture_time": 548.4958,
+      "frame_id": 37670
+    },
+    {
+      "id": "072",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 11338,
+      "video_time": 377.93333333333334,
+      "file": "frames/072.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            548,
+            318,
+            641,
+            565
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            177,
+            237,
+            280,
+            291
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            535,
+            214,
+            743,
+            312
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            544,
+            251,
+            700,
+            340
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            776,
+            265,
+            910,
+            342
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            1000,
+            274,
+            1280,
+            354
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "c8c934aac3871ddcfcc8f16967c0dbbc52c68ff20095bca9141e0e79327d3449",
+      "damaged": false,
+      "capture_time": 561.4824,
+      "frame_id": 37940
+    },
+    {
+      "id": "073",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 11546,
+      "video_time": 384.8666666666667,
+      "file": "frames/073.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            558,
+            318,
+            642,
+            524
+          ],
+          "player": true
+        },
+        {
+          "kind": "truck",
+          "box": [
+            327,
+            184,
+            530,
+            281
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            248,
+            258,
+            407,
+            319
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            929,
+            300,
+            1092,
+            394
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "19c6003b3a54c6a19b1d22ef620cfcfb7e8593580c52ce370f6c83ccb68dee45",
+      "damaged": false,
+      "capture_time": 574.2403,
+      "frame_id": 38228
+    },
+    {
+      "id": "074",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 11615,
+      "video_time": 387.1666666666667,
+      "file": "frames/074.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            544,
+            346,
+            643,
+            503
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            112,
+            264,
+            270,
+            324
+          ],
+          "player": false
+        },
+        {
+          "kind": "truck",
+          "box": [
+            605,
+            204,
+            807,
+            279
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "e22f74b254bf69babef9c078e54a4db0fd31611d704deb6446518097b1a80f96",
+      "damaged": true,
+      "capture_time": 577.4214,
+      "frame_id": 38322
+    },
+    {
+      "id": "075",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 12265,
+      "video_time": 408.8333333333333,
+      "file": "frames/075.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            540,
+            343,
+            642,
+            505
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            324,
+            301,
+            530,
+            392
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "95ca16721f41367e105aa170cae30a45a74abfbf31ba247c31d21ce9bd852788",
+      "damaged": false,
+      "capture_time": 608.5926,
+      "frame_id": 39080
+    },
+    {
+      "id": "076",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 12801,
+      "video_time": 426.7,
+      "file": "frames/076.jpg",
+      "labels": [],
+      "sha256": "0d835346d7a75dbec51b67a00ec49f3770c2345471d41cf074cc7bc0e5ef620f",
+      "damaged": true,
+      "capture_time": 635.3635,
+      "frame_id": 39695
+    },
+    {
+      "id": "077",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 13091,
+      "video_time": 436.3666666666667,
+      "file": "frames/077.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            530,
+            317,
+            642,
+            522
+          ],
+          "player": true
+        }
+      ],
+      "sha256": "69a718cc1d577008503f49d0506e65ffba6ca7a384ec75a4d187545d88c79e0b",
+      "damaged": false,
+      "capture_time": 648.9975,
+      "frame_id": 40076
+    },
+    {
+      "id": "078",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 13186,
+      "video_time": 439.53333333333336,
+      "file": "frames/078.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            548,
+            335,
+            650,
+            551
+          ],
+          "player": true
+        },
+        {
+          "kind": "person",
+          "box": [
+            91,
+            248,
+            121,
+            332
+          ],
+          "player": false
+        },
+        {
+          "kind": "person",
+          "box": [
+            143,
+            238,
+            168,
+            327
+          ],
+          "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            353,
+            228,
+            427,
+            275
+          ],
+          "player": false
+        }
+      ],
+      "sha256": "7ca76ee6f1c14e9edc4949ecee752e986aa18300ae098c0d63ca210d1dac1f04",
+      "damaged": false,
+      "capture_time": 652.5305,
+      "frame_id": 40180
+    },
+    {
+      "id": "079",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 14087,
+      "video_time": 469.56666666666666,
+      "file": "frames/079.jpg",
+      "labels": [
+        {
+          "kind": "person",
+          "box": [
+            538,
+            368,
+            650,
+            455
+          ],
+          "player": true
+        },
+        {
+          "kind": "car",
+          "box": [
+            476,
+            385,
+            720,
+            650
+          ],
+          "player": true
+        }
+      ],
+      "sha256": "de6bc6a694d4469147744dc7812f1fab2f4a1f03cfc6eea7417f004552eb10c4",
+      "damaged": false,
+      "capture_time": 690.2508,
+      "frame_id": 41225
+    }
+  ],
+  "box_convention": "Visible object bounds clipped to frame; player person and ridden vehicle separate. Pickups and delivery box vans are trucks; RVs/coaches are buses. Vacated vehicles are not the player."
+}

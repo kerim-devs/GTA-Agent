@@ -1,0 +1,805 @@
+{
+  "seed": 1414,
+  "frames": [
+    {
+      "id": "000",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 52,
+      "video_time": 0.8666666666666667,
+      "capture_time": 0.8339,
+      "frame_id": 47494,
+      "file": "frames/000.jpg",
+      "labels": []
+    },
+    {
+      "id": "001",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 1047,
+      "video_time": 17.45,
+      "capture_time": 17.4297,
+      "frame_id": 48489,
+      "file": "frames/001.jpg",
+      "labels": []
+    },
+    {
+      "id": "002",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 1368,
+      "video_time": 22.8,
+      "capture_time": 22.7825,
+      "frame_id": 48810,
+      "file": "frames/002.jpg",
+      "labels": []
+    },
+    {
+      "id": "003",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 1533,
+      "video_time": 25.55,
+      "capture_time": 25.5349,
+      "frame_id": 48975,
+      "file": "frames/003.jpg",
+      "labels": []
+    },
+    {
+      "id": "004",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 1965,
+      "video_time": 32.75,
+      "capture_time": 32.7424,
+      "frame_id": 49407,
+      "file": "frames/004.jpg",
+      "labels": []
+    },
+    {
+      "id": "005",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 2277,
+      "video_time": 37.95,
+      "capture_time": 37.9487,
+      "frame_id": 49719,
+      "file": "frames/005.jpg",
+      "labels": []
+    },
+    {
+      "id": "006",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 3370,
+      "video_time": 56.166666666666664,
+      "capture_time": 56.1876,
+      "frame_id": 50812,
+      "file": "frames/006.jpg",
+      "labels": []
+    },
+    {
+      "id": "007",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 3805,
+      "video_time": 63.416666666666664,
+      "capture_time": 63.486,
+      "frame_id": 51247,
+      "file": "frames/007.jpg",
+      "labels": []
+    },
+    {
+      "id": "008",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 5702,
+      "video_time": 95.03333333333333,
+      "capture_time": 95.1104,
+      "frame_id": 53144,
+      "file": "frames/008.jpg",
+      "labels": []
+    },
+    {
+      "id": "009",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 5949,
+      "video_time": 99.15,
+      "capture_time": 99.2167,
+      "frame_id": 53391,
+      "file": "frames/009.jpg",
+      "labels": []
+    },
+    {
+      "id": "010",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 6049,
+      "video_time": 100.81666666666666,
+      "capture_time": 100.9178,
+      "frame_id": 53491,
+      "file": "frames/010.jpg",
+      "labels": []
+    },
+    {
+      "id": "011",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 7299,
+      "video_time": 121.65,
+      "capture_time": 121.7345,
+      "frame_id": 54741,
+      "file": "frames/011.jpg",
+      "labels": []
+    },
+    {
+      "id": "012",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 7689,
+      "video_time": 128.15,
+      "capture_time": 128.2426,
+      "frame_id": 55131,
+      "file": "frames/012.jpg",
+      "labels": []
+    },
+    {
+      "id": "013",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 7831,
+      "video_time": 130.51666666666668,
+      "capture_time": 130.6154,
+      "frame_id": 55273,
+      "file": "frames/013.jpg",
+      "labels": []
+    },
+    {
+      "id": "014",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 10983,
+      "video_time": 183.05,
+      "capture_time": 183.1974,
+      "frame_id": 58425,
+      "file": "frames/014.jpg",
+      "labels": []
+    },
+    {
+      "id": "015",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 11038,
+      "video_time": 183.96666666666667,
+      "capture_time": 184.1143,
+      "frame_id": 58480,
+      "file": "frames/015.jpg",
+      "labels": []
+    },
+    {
+      "id": "016",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 12222,
+      "video_time": 203.7,
+      "capture_time": 203.8657,
+      "frame_id": 59664,
+      "file": "frames/016.jpg",
+      "labels": []
+    },
+    {
+      "id": "017",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 12276,
+      "video_time": 204.6,
+      "capture_time": 204.7696,
+      "frame_id": 59718,
+      "file": "frames/017.jpg",
+      "labels": []
+    },
+    {
+      "id": "018",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 12358,
+      "video_time": 205.96666666666667,
+      "capture_time": 206.1358,
+      "frame_id": 59800,
+      "file": "frames/018.jpg",
+      "labels": []
+    },
+    {
+      "id": "019",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 13085,
+      "video_time": 218.08333333333334,
+      "capture_time": 218.2658,
+      "frame_id": 60527,
+      "file": "frames/019.jpg",
+      "labels": []
+    },
+    {
+      "id": "020",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 13720,
+      "video_time": 228.66666666666666,
+      "capture_time": 228.8611,
+      "frame_id": 61162,
+      "file": "frames/020.jpg",
+      "labels": []
+    },
+    {
+      "id": "021",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 13828,
+      "video_time": 230.46666666666667,
+      "capture_time": 230.7332,
+      "frame_id": 61270,
+      "file": "frames/021.jpg",
+      "labels": []
+    },
+    {
+      "id": "022",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 14117,
+      "video_time": 235.28333333333333,
+      "capture_time": 235.4796,
+      "frame_id": 61559,
+      "file": "frames/022.jpg",
+      "labels": []
+    },
+    {
+      "id": "023",
+      "source": "/Users/kerim/recordings/pilot/20261110-230229",
+      "frame_index": 14244,
+      "video_time": 237.4,
+      "capture_time": 237.6062,
+      "frame_id": 61686,
+      "file": "frames/023.jpg",
+      "labels": []
+    },
+    {
+      "id": "024",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 11,
+      "video_time": 0.18333333333333332,
+      "capture_time": 0.179,
+      "frame_id": 93190,
+      "file": "frames/024.jpg",
+      "labels": []
+    },
+    {
+      "id": "025",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 140,
+      "video_time": 2.3333333333333335,
+      "capture_time": 2.4025,
+      "frame_id": 93319,
+      "file": "frames/025.jpg",
+      "labels": []
+    },
+    {
+      "id": "026",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 571,
+      "video_time": 9.516666666666667,
+      "capture_time": 9.5594,
+      "frame_id": 93750,
+      "file": "frames/026.jpg",
+      "labels": []
+    },
+    {
+      "id": "027",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 1359,
+      "video_time": 22.65,
+      "capture_time": 22.7008,
+      "frame_id": 94538,
+      "file": "frames/027.jpg",
+      "labels": []
+    },
+    {
+      "id": "028",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 2153,
+      "video_time": 35.88333333333333,
+      "capture_time": 35.9711,
+      "frame_id": 95332,
+      "file": "frames/028.jpg",
+      "labels": []
+    },
+    {
+      "id": "029",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 3233,
+      "video_time": 53.88333333333333,
+      "capture_time": 53.9868,
+      "frame_id": 96412,
+      "file": "frames/029.jpg",
+      "labels": []
+    },
+    {
+      "id": "030",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 3270,
+      "video_time": 54.5,
+      "capture_time": 54.6046,
+      "frame_id": 96449,
+      "file": "frames/030.jpg",
+      "labels": []
+    },
+    {
+      "id": "031",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 3992,
+      "video_time": 66.53333333333333,
+      "capture_time": 66.6616,
+      "frame_id": 97171,
+      "file": "frames/031.jpg",
+      "labels": []
+    },
+    {
+      "id": "032",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 4273,
+      "video_time": 71.21666666666667,
+      "capture_time": 71.3333,
+      "frame_id": 97452,
+      "file": "frames/032.jpg",
+      "labels": []
+    },
+    {
+      "id": "033",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 4614,
+      "video_time": 76.9,
+      "capture_time": 77.0197,
+      "frame_id": 97793,
+      "file": "frames/033.jpg",
+      "labels": []
+    },
+    {
+      "id": "034",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 4975,
+      "video_time": 82.91666666666667,
+      "capture_time": 83.039,
+      "frame_id": 98154,
+      "file": "frames/034.jpg",
+      "labels": []
+    },
+    {
+      "id": "035",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 6024,
+      "video_time": 100.4,
+      "capture_time": 100.5676,
+      "frame_id": 99203,
+      "file": "frames/035.jpg",
+      "labels": []
+    },
+    {
+      "id": "036",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 6133,
+      "video_time": 102.21666666666667,
+      "capture_time": 102.3751,
+      "frame_id": 99312,
+      "file": "frames/036.jpg",
+      "labels": []
+    },
+    {
+      "id": "037",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 6299,
+      "video_time": 104.98333333333333,
+      "capture_time": 105.1667,
+      "frame_id": 99478,
+      "file": "frames/037.jpg",
+      "labels": []
+    },
+    {
+      "id": "038",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 7849,
+      "video_time": 130.81666666666666,
+      "capture_time": 131.3769,
+      "frame_id": 101028,
+      "file": "frames/038.jpg",
+      "labels": []
+    },
+    {
+      "id": "039",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 7853,
+      "video_time": 130.88333333333333,
+      "capture_time": 131.3891,
+      "frame_id": 101032,
+      "file": "frames/039.jpg",
+      "labels": []
+    },
+    {
+      "id": "040",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 9158,
+      "video_time": 152.63333333333333,
+      "capture_time": 153.4454,
+      "frame_id": 102337,
+      "file": "frames/040.jpg",
+      "labels": []
+    },
+    {
+      "id": "041",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 9668,
+      "video_time": 161.13333333333333,
+      "capture_time": 162.5135,
+      "frame_id": 102847,
+      "file": "frames/041.jpg",
+      "labels": []
+    },
+    {
+      "id": "042",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 10157,
+      "video_time": 169.28333333333333,
+      "capture_time": 170.6997,
+      "frame_id": 103336,
+      "file": "frames/042.jpg",
+      "labels": []
+    },
+    {
+      "id": "043",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 10167,
+      "video_time": 169.45,
+      "capture_time": 170.83,
+      "frame_id": 103346,
+      "file": "frames/043.jpg",
+      "labels": []
+    },
+    {
+      "id": "044",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 10798,
+      "video_time": 179.96666666666667,
+      "capture_time": 181.3617,
+      "frame_id": 103977,
+      "file": "frames/044.jpg",
+      "labels": []
+    },
+    {
+      "id": "045",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 12568,
+      "video_time": 209.46666666666667,
+      "capture_time": 210.9082,
+      "frame_id": 105747,
+      "file": "frames/045.jpg",
+      "labels": []
+    },
+    {
+      "id": "046",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 13576,
+      "video_time": 226.26666666666668,
+      "capture_time": 227.7407,
+      "frame_id": 106755,
+      "file": "frames/046.jpg",
+      "labels": []
+    },
+    {
+      "id": "047",
+      "source": "/Users/kerim/recordings/pilot/20261110-231512",
+      "frame_index": 13916,
+      "video_time": 231.93333333333334,
+      "capture_time": 233.4134,
+      "frame_id": 107095,
+      "file": "frames/047.jpg",
+      "labels": []
+    },
+    {
+      "id": "048",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 33,
+      "video_time": 1.1,
+      "capture_time": 1.7722,
+      "frame_id": 25169,
+      "file": "frames/048.jpg",
+      "labels": []
+    },
+    {
+      "id": "049",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 80,
+      "video_time": 2.6666666666666665,
+      "capture_time": 4.0982,
+      "frame_id": 25226,
+      "file": "frames/049.jpg",
+      "labels": []
+    },
+    {
+      "id": "050",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 358,
+      "video_time": 11.933333333333334,
+      "capture_time": 16.2249,
+      "frame_id": 25558,
+      "file": "frames/050.jpg",
+      "labels": []
+    },
+    {
+      "id": "051",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 530,
+      "video_time": 17.666666666666668,
+      "capture_time": 24.1944,
+      "frame_id": 25763,
+      "file": "frames/051.jpg",
+      "labels": []
+    },
+    {
+      "id": "052",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 845,
+      "video_time": 28.166666666666668,
+      "capture_time": 37.3042,
+      "frame_id": 26138,
+      "file": "frames/052.jpg",
+      "labels": []
+    },
+    {
+      "id": "053",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 853,
+      "video_time": 28.433333333333334,
+      "capture_time": 37.8101,
+      "frame_id": 26151,
+      "file": "frames/053.jpg",
+      "labels": []
+    },
+    {
+      "id": "054",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 973,
+      "video_time": 32.43333333333333,
+      "capture_time": 44.9963,
+      "frame_id": 26348,
+      "file": "frames/054.jpg",
+      "labels": []
+    },
+    {
+      "id": "055",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 1062,
+      "video_time": 35.4,
+      "capture_time": 48.6399,
+      "frame_id": 26453,
+      "file": "frames/055.jpg",
+      "labels": []
+    },
+    {
+      "id": "056",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 1384,
+      "video_time": 46.13333333333333,
+      "capture_time": 64.1372,
+      "frame_id": 26843,
+      "file": "frames/056.jpg",
+      "labels": []
+    },
+    {
+      "id": "057",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 1474,
+      "video_time": 49.13333333333333,
+      "capture_time": 69.0827,
+      "frame_id": 26957,
+      "file": "frames/057.jpg",
+      "labels": []
+    },
+    {
+      "id": "058",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 2492,
+      "video_time": 83.06666666666666,
+      "capture_time": 111.0445,
+      "frame_id": 28020,
+      "file": "frames/058.jpg",
+      "labels": []
+    },
+    {
+      "id": "059",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 2558,
+      "video_time": 85.26666666666667,
+      "capture_time": 114.0381,
+      "frame_id": 28087,
+      "file": "frames/059.jpg",
+      "labels": []
+    },
+    {
+      "id": "060",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 2604,
+      "video_time": 86.8,
+      "capture_time": 115.5395,
+      "frame_id": 28136,
+      "file": "frames/060.jpg",
+      "labels": []
+    },
+    {
+      "id": "061",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 2652,
+      "video_time": 88.4,
+      "capture_time": 117.8601,
+      "frame_id": 28188,
+      "file": "frames/061.jpg",
+      "labels": []
+    },
+    {
+      "id": "062",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 3092,
+      "video_time": 103.06666666666666,
+      "capture_time": 136.5367,
+      "frame_id": 28647,
+      "file": "frames/062.jpg",
+      "labels": []
+    },
+    {
+      "id": "063",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 5823,
+      "video_time": 194.1,
+      "capture_time": 269.2002,
+      "frame_id": 31628,
+      "file": "frames/063.jpg",
+      "labels": []
+    },
+    {
+      "id": "064",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 5935,
+      "video_time": 197.83333333333334,
+      "capture_time": 273.8516,
+      "frame_id": 31749,
+      "file": "frames/064.jpg",
+      "labels": []
+    },
+    {
+      "id": "065",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 6739,
+      "video_time": 224.63333333333333,
+      "capture_time": 316.1888,
+      "frame_id": 32645,
+      "file": "frames/065.jpg",
+      "labels": []
+    },
+    {
+      "id": "066",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 8940,
+      "video_time": 298.0,
+      "capture_time": 421.6344,
+      "frame_id": 35219,
+      "file": "frames/066.jpg",
+      "labels": []
+    },
+    {
+      "id": "067",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 9985,
+      "video_time": 332.8333333333333,
+      "capture_time": 478.0475,
+      "frame_id": 36384,
+      "file": "frames/067.jpg",
+      "labels": []
+    },
+    {
+      "id": "068",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 10078,
+      "video_time": 335.93333333333334,
+      "capture_time": 482.5799,
+      "frame_id": 36488,
+      "file": "frames/068.jpg",
+      "labels": []
+    },
+    {
+      "id": "069",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 10524,
+      "video_time": 350.8,
+      "capture_time": 505.3709,
+      "frame_id": 36997,
+      "file": "frames/069.jpg",
+      "labels": []
+    },
+    {
+      "id": "070",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 10640,
+      "video_time": 354.6666666666667,
+      "capture_time": 513.9108,
+      "frame_id": 37125,
+      "file": "frames/070.jpg",
+      "labels": []
+    },
+    {
+      "id": "071",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 11104,
+      "video_time": 370.1333333333333,
+      "capture_time": 548.4958,
+      "frame_id": 37670,
+      "file": "frames/071.jpg",
+      "labels": []
+    },
+    {
+      "id": "072",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 11338,
+      "video_time": 377.93333333333334,
+      "capture_time": 561.4824,
+      "frame_id": 37940,
+      "file": "frames/072.jpg",
+      "labels": []
+    },
+    {
+      "id": "073",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 11546,
+      "video_time": 384.8666666666667,
+      "capture_time": 574.2403,
+      "frame_id": 38228,
+      "file": "frames/073.jpg",
+      "labels": []
+    },
+    {
+      "id": "074",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 11615,
+      "video_time": 387.1666666666667,
+      "capture_time": 577.4214,
+      "frame_id": 38322,
+      "file": "frames/074.jpg",
+      "labels": []
+    },
+    {
+      "id": "075",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 12265,
+      "video_time": 408.8333333333333,
+      "capture_time": 608.5926,
+      "frame_id": 39080,
+      "file": "frames/075.jpg",
+      "labels": []
+    },
+    {
+      "id": "076",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 12801,
+      "video_time": 426.7,
+      "capture_time": 635.3635,
+      "frame_id": 39695,
+      "file": "frames/076.jpg",
+      "labels": []
+    },
+    {
+      "id": "077",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 13091,
+      "video_time": 436.3666666666667,
+      "capture_time": 648.9975,
+      "frame_id": 40076,
+      "file": "frames/077.jpg",
+      "labels": []
+    },
+    {
+      "id": "078",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 13186,
+      "video_time": 439.53333333333336,
+      "capture_time": 652.5305,
+      "frame_id": 40180,
+      "file": "frames/078.jpg",
+      "labels": []
+    },
+    {
+      "id": "079",
+      "source": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame_index": 14087,
+      "video_time": 469.56666666666666,
+      "capture_time": 690.2508,
+      "frame_id": 41225,
+      "file": "frames/079.jpg",
+      "labels": []
+    }
+  ]
+}
