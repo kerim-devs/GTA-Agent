@@ -6,7 +6,7 @@ Geometry and timing are estimates pending console calibration. No registry wirin
 from math import hypot, isfinite, log
 from typing import ClassVar
 
-from pilot.contract import FRAME_SIZE, Detection, Observation, Pad, SkillResult
+from pilot.contract import FRAME_SIZE, Detection, Observation, Pad, SkillResult, player_mode
 from pilot.profile import active
 
 
@@ -159,9 +159,9 @@ class Punch:
             return self.stop("punch time limit reached; move closer or choose another person")
         hazard = (
             "minimap unreadable; restore an on-foot game view"
-            if obs.reading.corrupt
+            if obs.reading.corrupt or player_mode(obs) == "none"
             else "player is in a vehicle; exit before punching"
-            if obs.reading.minimap == "tilted"
+            if player_mode(obs) == "vehicle"
             else "gameplay interrupted; restore the game screen"
             if obs.hud is not None and obs.hud.screen != "game"
             else None

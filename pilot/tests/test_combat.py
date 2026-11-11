@@ -242,3 +242,17 @@ def test_attacks_are_pulses_and_not_a_held_button(kind, count, pulse):
     longest = max(len(run) for run in "".join("x" if attack else " " for attack in lock).split())
     assert starts == count
     assert longest <= math.ceil(pulse * 30) + 1
+
+
+@pytest.mark.parametrize("kind", [Fight, Melee])
+def test_combat_takes_accepted_mode_over_opposite_map(kind):
+    from dataclasses import replace
+
+    def observed(minimap, accepted):
+        base = observation(0)
+        return replace(base, reading=replace(base.reading, minimap=minimap), mode=accepted)
+
+    assert kind({}).step(observed("tilted", "foot")).pad.l2 == 1
+    assert kind({}).step(observed("flat", "vehicle")).pad == NEUTRAL_PAD
+    result = kind({}).step(observed("flat", "none"))
+    assert result.status == "running" and result.pad == NEUTRAL_PAD

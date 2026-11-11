@@ -345,3 +345,14 @@ def test_a_vehicle_is_not_a_person():
         if result.status != "running":
             break
     assert result.status == "failed" and "no person" in result.reason
+
+
+def test_punch_takes_accepted_mode_over_opposite_map():
+    def with_mode(minimap, mode):
+        value = obs(0)
+        return replace(value, reading=replace(value.reading, minimap=minimap), mode=mode)
+
+    assert Punch({}).step(with_mode("tilted", "foot")).pad != NEUTRAL_PAD
+    assert Punch({}).step(with_mode("flat", "vehicle")).pad == NEUTRAL_PAD
+    result = Punch({}).step(with_mode("flat", "none"))
+    assert result.status == "running" and result.pad == NEUTRAL_PAD

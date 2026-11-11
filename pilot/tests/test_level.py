@@ -105,3 +105,36 @@ def test_the_head_can_plan_it():
     decision = parse_response({"plan": [{"name": "level_camera", "args": {}}], "sentence": "Kamera gerade."})
     assert isinstance(make_skill(decision.plan[0]), LevelCamera)
     assert isinstance(make_skill(SkillCall("level_camera", {"duration": 7})), LevelCamera)
+
+
+def test_level_camera_takes_accepted_mode_over_opposite_map():
+    foot = Observation(TILTED, True, 0, mode="foot")
+    assert LevelCamera({}).step(foot).pad.right == (0.0, -1.0)
+    vehicle = Observation(FLAT, True, 0, mode="vehicle")
+    assert LevelCamera({}).step(vehicle).pad == NEUTRAL
+    absent = Observation(FLAT, True, 0, mode="none")
+    result = LevelCamera({}).step(absent)
+    assert result.pad == NEUTRAL and result.status == "running"
+
+
+@pytest.mark.parametrize("mode", ["vehicle", "none"])
+def test_active_level_camera_releases_and_pauses_when_judge_leaves_foot(mode):
+    skill = LevelCamera({})
+    assert skill.step(Observation(FLAT, True, 0, mode="foot")).pad != NEUTRAL
+    for t in (0.1, 0.2, 0.3):
+        result = skill.step(Observation(FLAT, True, t, mode=mode))
+        assert result.pad == NEUTRAL and result.status == "running"
+    assert skill.progress == 0
+    assert skill.step(Observation(FLAT, True, 0.4, mode="foot")).pad != NEUTRAL
+    assert skill.progress == pytest.approx(0.1)
+
+
+def test_a_judge_that_never_sees_the_figure_on_foot_ends_it_without_a_failure():
+    # Live on 11 November the judge said "vehicle" to the game's idle camera, the move waited for
+    # its whole time limit and failed, and the failure threw the plan behind it away.
+    skill = LevelCamera({})
+    result = None
+    for tick in range(60):
+        result = skill.step(Observation(FLAT, True, tick / 30, mode="vehicle"))
+        assert result.pad == NEUTRAL
+    assert (result.status, result.reason) == ("done", "not on foot")
