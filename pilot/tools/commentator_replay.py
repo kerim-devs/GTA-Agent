@@ -14,11 +14,12 @@ from pathlib import Path
 from pilot.commentator import (
     HERE,
     ChatFilter,
+    CodexWriter,
     FileChat,
     MacVoice,
-    PlainWriter,
     Scheduler,
     SessionReader,
+    WrittenLine,
 )
 
 
@@ -58,9 +59,66 @@ def scripted_chat() -> list[dict]:
     return [{"t": t, "user": user, "text": text} for t, user, text in messages]
 
 
+class ScriptedWriter:
+    """Deterministic answers with the requested four-second writing delay."""
+
+    def __init__(self):
+        self.active = False
+        self.calls = 0
+
+    def write(self, candidate, chat):
+        self.active = True
+        self.calls += 1
+        try:
+            time.sleep(4)
+            if candidate.source != "chat":
+                return WrittenLine(candidate.text, "scripted")
+            if candidate.user == "orders":
+                return WrittenLine("", "scripted", "declined")
+            answers = {
+                "anna": "Hallo Anna, schön, dass du zuschaust.",
+                "flood": "Was als Nächstes passiert, zeigt uns der Spielverlauf.",
+                "ben": "Der Gehweg wirkt auf dich ruhig, Ben.",
+                "clara": "Eine genaue Richtung kann ich daraus noch nicht ablesen.",
+                "dora": "Ein Stadtspaziergang trifft deinen Eindruck wohl ganz gut.",
+                "emil": "Danke Emil, wir verfolgen den nächsten Schritt.",
+                "fritz": "Eine Route kann ich aus deiner Nachricht allein nicht bestätigen.",
+                "greta": "Ob das schon das Ziel ist, steht hier noch nicht fest.",
+                "hans": "Die Aussicht gefällt dir, Hans, das kann ich verstehen.",
+                "iris": "Hallo Iris, Grüße nach Berlin.",
+                "jona": "Schön, dass ihr noch zuschaut, Jona.",
+                "kim": "Gern, Kim, danke fürs Zuschauen.",
+            }
+            return WrittenLine(answers.get(candidate.user, ""), "scripted")
+        finally:
+            self.active = False
+
+
+class Counted:
+    """The real writer, with the marks the counts below read from the scripted one."""
+
+    def __init__(self, writer):
+        self.writer, self.active, self.calls = writer, False, 0
+
+    def write(self, candidate, chat):
+        self.active = True
+        self.calls += 1
+        try:
+            return self.writer.write(candidate, chat)
+        finally:
+            self.active = False
+
+    def cancel(self):
+        self.writer.cancel()
+
+    def close(self):
+        self.writer.close()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--session", type=Path, required=True)
+    parser.add_argument("--writer", choices=("scripted", "codex"), default="scripted")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--mute", action="store_true", required=True)
     parser.add_argument("--voice", default="Anna")
@@ -79,18 +137,34 @@ def main():
     chat_file.write_text("".join(json.dumps(row) + "\n" for row in script))
     source = FileChat(chat_file)
     voice = MacVoice(args.voice, muted=True)
-    scheduler = Scheduler(PlainWriter(), voice)
+    writer = ScriptedWriter() if args.writer == "scripted" else Counted(CodexWriter())
+    scheduler = Scheduler(writer, voice)
     chat_filter = ChatFilter(HERE / "commentator_blocklist.txt")
     index = 0
     started = time.monotonic()
+    polls_while_writing = chat_read_while_writing = events_read_while_writing = 0
+    poll_gaps = []
+    last_poll = 0.0
     while (now := time.monotonic() - started) < duration:
+        poll_gaps.append(now - last_poll)
+        last_poll = now
+        writing = writer.active
+        polls_while_writing += int(writing)
         while index < len(candidates) and candidates[index].t <= now:
+            events_read_while_writing += int(writing and candidates[index].source == "event")
             scheduler.submit(candidates[index])
             index += 1
-        scheduler.accept_chat(source.poll(now), chat_filter, args.output, now)
+        messages = source.poll(now)
+        chat_read_while_writing += len(messages) if writing else 0
+        scheduler.accept_chat(messages, chat_filter, args.output, now)
         scheduler.step(now)
         time.sleep(min(0.05, max(0, duration - (time.monotonic() - started))))
     scheduler.discard(duration, "replay_ended")
+    # Reap the bounded scripted job; discard prevents any late playback.
+    while scheduler.busy:
+        scheduler.step(time.monotonic() - started)
+        time.sleep(0.01)
+    scheduler.close()
     elapsed = time.monotonic() - started
     rows = [json.loads(line) for line in (args.output / "commentary.jsonl").read_text().splitlines()]
     spoken = [row for row in rows if row["decision"] == "spoken"]
@@ -115,7 +189,21 @@ def main():
         "gaps_seconds": gaps,
         "minimum_gap_seconds": min(gaps, default=None),
         "configured_gap_seconds": scheduler.min_gap,
-        "configured_max_age_seconds": scheduler.max_age,
+        "configured_max_age_seconds": scheduler.ages,
+        "writer": args.writer,
+        "scripted_writer_seconds": 4 if args.writer == "scripted" else None,
+        "writer_calls": writer.calls,
+        "polls_while_writing": polls_while_writing,
+        "chat_messages_read_while_writing": chat_read_while_writing,
+        "events_read_while_writing": events_read_while_writing,
+        "maximum_poll_gap_seconds": max(poll_gaps, default=0),
+        "chat_answers": sum(row["source"] == "chat" for row in spoken),
+        "chat_answer_lateness_seconds": [
+            row["start"] - row["candidate_t"] for row in spoken if row["source"] == "chat"
+        ],
+        "chat_dropped_by_reason": dict(
+            Counter(row["reason"] for row in rows if row["source"] == "chat" and row["decision"] == "dropped")
+        ),
         "overlaps": sum(gap < 0 for gap in gaps),
         "all_muted": all(row["muted"] for row in spoken),
         "voice": voice.name,
