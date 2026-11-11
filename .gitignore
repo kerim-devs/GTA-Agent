@@ -58,3 +58,7 @@ lab/screens/review/
 
 # drawn from the recordings by lab/judge/sample.py, 36 MB
 lab/judge/sample/
+
+# rebuilt by lab/notes/contact_sheets.py, 44 MB; raw readings rebuilt by pilot/tools/texts.py
+lab/notes/contact-*/
+lab/notes/out/*/readings.jsonl

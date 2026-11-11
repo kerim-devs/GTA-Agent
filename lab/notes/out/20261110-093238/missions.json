@@ -1,0 +1,269 @@
+{
+  "recording": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+  "missions": [
+    {
+      "start": 5.2415,
+      "end": 33.7221,
+      "steps": [
+        {
+          "objective": "Sammle eine Waffe auf.",
+          "start": 5.2415,
+          "end": 10.6486,
+          "last": 6.7924,
+          "duration": 1.551,
+          "step_duration": 5.407,
+          "section_kinds": [
+            "foot"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 5.407,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 5.407,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 1.167,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 0.0
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 7.9199,
+            "route": "none",
+            "blips": [
+              {
+                "color": "blue",
+                "x": -1.11,
+                "y": 5.42,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": 1.27,
+                "y": 14.05,
+                "border": false
+              }
+            ]
+          }
+        },
+        {
+          "objective": "Schalte die Vagos aus.",
+          "start": 10.6486,
+          "end": 33.7221,
+          "last": 13.1239,
+          "duration": 2.475,
+          "step_duration": 23.073,
+          "section_kinds": [
+            "foot"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 23.073,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 4.808,
+              "running": 0.21,
+              "aiming": 3.168,
+              "firing": 1.069,
+              "looking": 4.647,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 9.406
+            }
+          },
+          "ending": "failed",
+          "sample_observation": {
+            "t": 13.6202,
+            "route": "none",
+            "blips": [
+              {
+                "color": "blue",
+                "x": -7.09,
+                "y": -4.94,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": -2.31,
+                "y": 15.57,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": 0.53,
+                "y": 6.8,
+                "border": false
+              }
+            ]
+          }
+        }
+      ],
+      "ending": "failed",
+      "end_reason": "banner",
+      "notes": "The game asks: Sammle eine Waffe auf. Then Schalte die Vagos aus.. Outcome: failed."
+    },
+    {
+      "start": 45.5541,
+      "end": 108.51859999999999,
+      "steps": [
+        {
+          "objective": "Schalte die Vagos aus.",
+          "start": 45.5541,
+          "end": 108.51859999999999,
+          "last": 48.5186,
+          "duration": 2.965,
+          "step_duration": 62.964,
+          "section_kinds": [
+            "foot"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 62.964,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 11.701,
+              "running": 1.404,
+              "aiming": 29.864,
+              "firing": 4.074,
+              "looking": 13.699,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 12.716
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 48.5267,
+            "route": "none",
+            "blips": [
+              {
+                "color": "red",
+                "x": 3.17,
+                "y": 24.78,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": 7.56,
+                "y": 15.74,
+                "border": false
+              }
+            ]
+          }
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Schalte die Vagos aus.. Outcome: unknown."
+    },
+    {
+      "start": 210.8756,
+      "end": 291.8318,
+      "steps": [
+        {
+          "objective": "Steig auf das Mororrad",
+          "start": 210.8756,
+          "end": 224.5501,
+          "last": 210.8756,
+          "duration": 0.0,
+          "step_duration": 13.674,
+          "section_kinds": [
+            "foot"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 13.674,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 7.048,
+              "running": 2.041,
+              "aiming": 1.079,
+              "firing": 0.342,
+              "looking": 1.036,
+              "map_input": 0.0,
+              "vehicle_input": 0.124,
+              "neutral": 5.244
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 213.8168,
+            "route": "none",
+            "blips": []
+          }
+        },
+        {
+          "objective": "Begib dich zu der Autowaschanlage",
+          "start": 224.5501,
+          "end": 291.8318,
+          "last": 231.8318,
+          "duration": 7.282,
+          "step_duration": 67.282,
+          "section_kinds": [
+            "drive"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 67.282,
+            "seconds": {
+              "driving": 60.857,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 2.636,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 6.425
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 227.5493,
+            "route": "yellow",
+            "blips": [
+              {
+                "color": "yellow",
+                "x": -75.98,
+                "y": 87.07,
+                "border": true
+              }
+            ]
+          }
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Steig auf das Mororrad Then Begib dich zu der Autowaschanlage. Outcome: unknown."
+    }
+  ],
+  "unassigned_endings": [
+    {
+      "kind": "banner",
+      "text": "bestanden",
+      "first": 339.1524,
+      "last": 341.7121
+    }
+  ]
+}

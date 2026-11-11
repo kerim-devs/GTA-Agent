@@ -1,0 +1,7 @@
+{
+  "recording": "20261111-171046",
+  "status": "blocked",
+  "reason": "Vision text recognition failed: Error Domain=NSOSStatusErrorDomain Code=-6662 Failed to create CVPixelBuffer Width = 1280, Height = 720, Format = 420f",
+  "cache_available": false,
+  "native_attempted": false
+}
