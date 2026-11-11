@@ -72,7 +72,7 @@ def picture_shift(before, after):
 class Session:
     def __init__(self, bridge, *, shadow, clock, sleep, detector_factory, head):
         self.bridge, self.clock, self.sleep = bridge, clock, sleep
-        self.runtime = ControllerRuntime(bridge, shadow=shadow, clock=clock)
+        self.runtime = ControllerRuntime(bridge, shadow=shadow, clock=clock, raw=True)
         self.deadline = clock() + LIMIT
         self.started = clock()
         self.shadow = shadow

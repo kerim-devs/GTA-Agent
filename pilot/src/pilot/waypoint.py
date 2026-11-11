@@ -8,6 +8,7 @@ import cv2
 import numpy as np
 
 from .contract import Observation, Pad, SkillResult
+from .profile import active
 from .scene import SceneText, TextReader
 
 
@@ -231,6 +232,7 @@ class SetWaypoint:
     max_exits = 3
 
     def __init__(self, args: dict):
+        self.profile = active()
         if not isinstance(args, dict) or set(args) - self.parameters.keys():
             raise ValueError("expected target, duration, direction and distance")
         self.target = args.get("target", "mission")
@@ -373,13 +375,13 @@ class SetWaypoint:
                     f"{self.failure or 'return-unverified'}; gameplay not observed after 3 exits"
                 )
             self.exits += 1
-            return self._press(Pad(buttons=("circle",)), now, "exit")
+            return self._press(Pad(buttons=(self.profile.back,)), now, "exit")
         if self.phase == "open":
             if not game:
                 # Nothing has been opened yet, so there is nothing to back out of: circle on a
                 # screen this skill has not read quits a failed mission or throws a punch.
                 return self.stop("start-screen-unverified; start from visible gameplay")
-            return self._press(Pad(buttons=("options",)), now, "enter")
+            return self._press(Pad(buttons=(self.profile.pause,)), now, "enter")
         if observation.frame is None or observation.reading.corrupt:
             return self._fail("map-picture-missing-or-damaged")
         if (
@@ -395,7 +397,7 @@ class SetWaypoint:
             return self._fail(f"map-check-failed: {self.phase}")
         if self.phase == "enter":
             if picture.screen == "overview":
-                return self._press(Pad(buttons=("cross",)), now, "acquire")
+                return self._press(Pad(buttons=(self.profile.confirm,)), now, "acquire")
             self.phase = "acquire"
         if picture.screen != "map" or picture.cursor is None:
             return self._fail("interactive-map-or-cursor-unverified")
@@ -432,7 +434,7 @@ class SetWaypoint:
         if distance <= 9:
             if picture.waypoint:
                 return self._fail("existing-waypoint-at-target; avoid toggling it off")
-            return self._press(Pad(buttons=("cross",)), now, "confirm")
+            return self._press(Pad(buttons=(self.profile.confirm,)), now, "confirm")
         if self.previous_distance is not None and distance >= self.previous_distance - 1:
             return self._fail("cursor-did-not-approach-target; check stick direction and map scale")
         if self.moves >= 16:
@@ -478,7 +480,7 @@ class SetWaypoint:
                     if land_at_cursor(frame):
                         if picture.waypoint:
                             return self._fail("existing-waypoint-at-target; avoid toggling it off")
-                        return self._press(Pad(buttons=("cross",)), now, "confirm")
+                        return self._press(Pad(buttons=(self.profile.confirm,)), now, "confirm")
                     self.inland_used = True
                     # One look back toward the land visible before this push, without a coast model.
                     names = tuple(self.directions)

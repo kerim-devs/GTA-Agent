@@ -10,6 +10,7 @@ from math import isfinite
 from typing import ClassVar
 
 from pilot.contract import Observation, Pad, SkillResult
+from pilot.profile import active
 
 
 class LevelCamera:
@@ -32,7 +33,7 @@ class LevelCamera:
     PULSES = 4
     PULSE_SECONDS = 0.3
     GAP_SECONDS = 0.5
-    PULSE_STICK = 0.5
+    PULSE_STICK = 0.5  # as it reached the console; the request is the profile's value for it
     # The reader holds a wrong map class for up to 0.83 s on foot, so one tick does not say "vehicle".
     FOOT_TIMEOUT = 1.5
     # A tick that comes late has not held the stick for all that time.
@@ -46,6 +47,7 @@ class LevelCamera:
         if isinstance(value, bool) or not isinstance(value, (int, float)) or not isfinite(value):
             raise ValueError("duration must be a finite number")
         self.limit = float(max(low, min(high, value)))
+        self.pulse = active().right_for(self.PULSE_STICK)
         self.finished = None
         self.started = None
         self.last_time = None
@@ -90,5 +92,5 @@ class LevelCamera:
             self.finished = SkillResult(status="done", reason="levelled")
             return self.finished
         if within < self.PULSE_SECONDS:
-            return SkillResult(Pad(right=(0.0, self.PULSE_STICK)))
+            return SkillResult(Pad(right=(0.0, self.pulse)))
         return SkillResult()

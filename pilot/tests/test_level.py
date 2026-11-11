@@ -6,6 +6,7 @@ import pytest
 from pilot.contract import Observation, Pad, Reading
 from pilot.head import SkillCall, parse_response
 from pilot.level import LevelCamera
+from pilot.profile import GTA5
 from pilot.skills import REGISTRY, make_skill
 
 FLAT = Reading("flat", "none", None, None, 0.0, False, 0.9)
@@ -14,7 +15,11 @@ NEUTRAL = Pad()
 
 
 def run(skill, reading=FLAT, *, hz=30, seconds=12.0, readings=None):
-    """Tick the skill and return (time, pad) per tick until it ends, and the last result."""
+    """Tick the skill and return (time, pad) per tick until it ends, and the last result.
+
+    The pad is the one that leaves for the console, with the dead zone lifted: the move was
+    measured there, so that is where its numbers have to hold.
+    """
     rows, result = [], None
     for index in range(int(seconds * hz)):
         t = index / hz
@@ -22,7 +27,8 @@ def run(skill, reading=FLAT, *, hz=30, seconds=12.0, readings=None):
         result = skill.step(Observation(now, True, t))
         if result.status != "running":
             break
-        rows.append((t, result.pad))
+        sent = GTA5.shape(result.pad)
+        rows.append((t, replace(sent, right=tuple(round(value, 9) for value in sent.right))))
     return rows, result
 
 

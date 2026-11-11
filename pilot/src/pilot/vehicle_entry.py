@@ -5,6 +5,7 @@ from dataclasses import replace
 from typing import ClassVar
 
 from pilot.contract import FRAME_SIZE, Detection, Observation, Pad, SkillResult
+from pilot.profile import active
 
 # Camera geometry and GTA door timing are estimates, pending live measurement.
 MAX_SECONDS = 25.0
@@ -55,6 +56,7 @@ class EnterVehicle:
     )
 
     def __init__(self, args: dict):
+        self.profile = active()
         if not isinstance(args, dict) or set(args) - self.parameters.keys():
             raise ValueError("unknown enter_vehicle arguments")
         duration = args.get("duration", MAX_SECONDS)
@@ -173,7 +175,7 @@ class EnterVehicle:
 
         # Entry owns the pad even if object delivery disappears during the animation.
         if self.phase == "wait" and now - self.phase_since < PRESS_SECONDS:
-            return SkillResult(Pad(buttons=("triangle",)))
+            return SkillResult(Pad(buttons=(self.profile.enter_vehicle,)))
         if obs.reading.corrupt:
             # A damaged tick says nothing about the map: it neither counts nor starts over.
             if self.confirmed_since is not None:
@@ -228,7 +230,7 @@ class EnterVehicle:
             self.attempts += 1
             self.phase = "wait"
             self.phase_since = now
-            return SkillResult(Pad(buttons=("triangle",)))
+            return SkillResult(Pad(buttons=(self.profile.enter_vehicle,)))
         x, _ = self._center(target)
         error = x - 0.5
         height = target.box[3] - target.box[1]

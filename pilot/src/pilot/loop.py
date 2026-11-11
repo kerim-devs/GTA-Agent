@@ -87,7 +87,20 @@ class Pipeline:
         )
 
 
-def log_row(t, frame_id, frame_age, frame_time, reading, moving, command, sent=False, status=None):
+def log_row(
+    t,
+    frame_id,
+    frame_age,
+    frame_time,
+    reading,
+    moving,
+    command,
+    sent=False,
+    status=None,
+    *,
+    requested_pad=None,
+    sent_pad=None,
+):
     return {
         "t": t,
         "frame_id": frame_id,
@@ -100,6 +113,8 @@ def log_row(t, frame_id, frame_age, frame_time, reading, moving, command, sent=F
         "gps_speed": None if reading is None else reading.gps_speed,
         "gps_time": None if reading is None else reading.gps_time,
         "command": None if command is None else asdict(command),
+        "requested_pad": None if requested_pad is None else asdict(requested_pad),
+        "sent_pad": None if sent_pad is None else asdict(sent_pad),
         "sent": sent,
         "status": status,
     }
@@ -136,7 +151,14 @@ class RuntimeInterruptedError(Exception):
 class ControllerRuntime:
     """The same freshness, lease, conflict and release rules for every local skill."""
 
-    def __init__(self, bridge, *, shadow=False, clock=time.monotonic):
+    def __init__(self, bridge, *, shadow=False, clock=time.monotonic, raw=False):
+        from .profile import active
+
+        self.profile = active()
+        # The calibration measures the console itself, dead zones included: its pads leave as asked.
+        self.raw = raw
+        self.requested_pad = None
+        self.sent_pad = None
         self.bridge, self.shadow, self.clock = bridge, shadow, clock
         self.last_fresh = clock()
         self.last_id = None
@@ -159,6 +181,8 @@ class ControllerRuntime:
         return status
 
     def tick(self, command: Command | Pad | None, *, fresh: bool, received: float):
+        self.requested_pad = Pad.from_command(command) if isinstance(command, Command) else command
+        self.sent_pad = None
         sent, status = False, None
         if not self.shadow:
             if self.blocked_until is not None:
@@ -170,13 +194,17 @@ class ControllerRuntime:
                 status = self.send()
                 self.frozen = True
             elif fresh:
-                status = self.send(command)
+                self.sent_pad = self.requested_pad
+                if self.sent_pad is not None and not self.raw:
+                    self.sent_pad = self.profile.shape(self.sent_pad)
+                status = self.send(self.sent_pad)
                 sent = status != 409
             if status == 409:
                 self.blocked_until = self.clock() + 1
         return sent, status
 
     def release(self):
+        self.requested_pad = self.sent_pad = None
         if not self.shadow:
             self.send()
 
@@ -275,6 +303,8 @@ def run_drive(
                         command,
                         sent,
                         status,
+                        requested_pad=runtime.requested_pad,
+                        sent_pad=runtime.sent_pad,
                     )
                     log.write(json.dumps(row) + "\n")
                     log.flush()
