@@ -50,3 +50,5 @@ lab/objects/holdout/sheets/*
 # P25 reproducible intermediate crops and console output.
 lab/wanted/scratch/
 lab/wanted/*.log
+
+/lab/commentator/p20c-*/
