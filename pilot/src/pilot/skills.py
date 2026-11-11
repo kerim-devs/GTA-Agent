@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING, ClassVar
 from .avoid import Avoider
 from .contract import NEUTRAL_PAD, Observation, Pad, SkillResult, player_mode
 from .drive import Driver
+from .foot import FootGuard, WalkRoad
 from .profile import active
 
 if TYPE_CHECKING:
@@ -40,16 +41,28 @@ class Skill:
         self.started = None
         self.finished = None
         self.missing_since = None
-        self.stopped_since = None
-        self.sidestep_until = None
-        self.sidestep = (0.0, 0.0)
-        self.recoveries = 0
+        # Walking that pushes the stick and gets nowhere turns away and tries again (foot.py).
+        self.guard = FootGuard() if self.name in ("walk", "walk_to") else None
         self.aligned_since = None
         self.turn_sign = None
+
+    @property
+    def recoveries(self):
+        """How many times in a row walking has had to get free."""
+        return 0 if self.guard is None else self.guard.failures
 
     def stop(self, reason="interrupted") -> SkillResult:
         self.finished = SkillResult(status="failed", reason=reason)
         return self.finished
+
+    def _walk(self, observation: Observation, want, buttons) -> SkillResult:
+        steer = self.guard.step(observation, want)
+        if steer.failed:
+            return self.stop(steer.failed)
+        # Sprint belongs to the wanted direction only, not to a way round or a look.
+        return SkillResult(
+            Pad(left=steer.left, right=steer.right, buttons=buttons if steer.state in ("go", "idle") else ())
+        )
 
     def step(self, observation: Observation) -> SkillResult:
         if self.finished is not None:
@@ -84,8 +97,8 @@ class Skill:
             if self.name == "walk":
                 stick = (clamp(self.args.get("x", 0), -1, 1), clamp(self.args.get("y", 0), -1, 1))
                 sprinting = self.args.get("sprint", False)
-                return SkillResult(
-                    Pad(left=stick, buttons=self.profile.sprint_buttons(elapsed) if sprinting else ())
+                return self._walk(
+                    observation, stick, self.profile.sprint_buttons(elapsed) if sprinting else ()
                 )
             if self.name == "look":
                 angle = clamp(self.args.get("angle", 0), -180, 180)
@@ -127,9 +140,9 @@ class Skill:
         reading, now = observation.reading, observation.time
         targets = [b for b in reading.blips if b.color == self.args["color"]]
         # Walking/camera geometry is checked only on foot. Unreadable frames never
-        # inherit a command, including during a sidestep or camera settling.
+        # inherit a command, including during a way round or camera settling.
         if reading.corrupt or player_mode(observation) != "foot" or not targets:
-            self.aligned_since = self.stopped_since = self.sidestep_until = None
+            self.aligned_since = None
             if self.missing_since is None:
                 self.missing_since = now
             if now - self.missing_since >= 2:
@@ -157,32 +170,17 @@ class Skill:
         if distance <= 4 and not target.border:
             self.finished = SkillResult(status="done", reason="arrived")
             return self.finished
-        if self.sidestep_until is not None and now < self.sidestep_until:
-            return SkillResult(Pad(left=self.sidestep))
-        if self.sidestep_until is not None:
-            self.sidestep_until = self.stopped_since = None
-        if observation.moving is False:
-            if self.stopped_since is None:
-                self.stopped_since = now
-            if now - self.stopped_since >= 0.8:
-                if self.recoveries >= 3:
-                    return self.stop("blocked")
-                side = 1 if self.recoveries % 2 == 0 else -1
-                self.sidestep = (side * target.y / distance * 0.65, side * target.x / distance * 0.65)
-                self.sidestep_until = now + 0.5
-                self.stopped_since = None
-                self.recoveries += 1
-                return SkillResult(Pad(left=self.sidestep))
-        else:
-            self.stopped_since = None
         speed = clamp(distance / 14, 0.3, 0.85)
         sprinting = self.args.get("sprint", False) and distance > 14
-        return SkillResult(
-            Pad(
-                left=(target.x / distance * speed, -target.y / distance * speed),
-                buttons=self.profile.sprint_buttons(elapsed) if sprinting else (),
-            )
+        result = self._walk(
+            observation,
+            (target.x / distance * speed, -target.y / distance * speed),
+            self.profile.sprint_buttons(elapsed) if sprinting else (),
         )
+        if result.status == "failed" and result.reason == "stuck":
+            # The head knows "blocked" from walk_to as the end of every way round to a marker.
+            return self.stop("blocked")
+        return result
 
 
 BUTTONS = (
@@ -245,7 +243,10 @@ class Walk(RegisteredSkill):
         "y": (-1, 1, 0),
         "sprint": (False, True),
     }
-    prompt = "Walk on foot: x is right, y is down (forward is negative y); optional sprint."
+    prompt = (
+        "Walk on foot: x is right, y is down (forward is negative y); optional sprint. When the figure "
+        "gets nowhere it walks round to either side and tries again; fails stuck after four ways round."
+    )
 
 
 class Look(RegisteredSkill):
@@ -296,6 +297,7 @@ REGISTRY = {
         Melee,
         Punch,
         LevelCamera,
+        WalkRoad,
     )
 }
 

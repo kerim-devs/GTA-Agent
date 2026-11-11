@@ -50,6 +50,17 @@ def _walk(*, sprint: bool = False) -> dict:
     return _call("walk", duration=5, x=0, y=-1, sprint=sprint)
 
 
+def _explore() -> list[dict]:
+    # pilot/20261110-231512/head.jsonl:2: look and walk through unmarked free roam; do not
+    # reproduce the older wait loop.
+    return [
+        _call("look", duration=0.8, angle=-55),
+        _walk(),
+        _call("look", duration=0.5, angle=20),
+        _walk(),
+    ]
+
+
 def _route(target: str) -> list[dict]:
     return [
         _call("set_waypoint", target=target, duration=45, direction="any", distance="far"),
@@ -110,6 +121,15 @@ class MissionHead:
             self.letterless -= 1
             return "away"
         return "mission"
+
+    @staticmethod
+    def _failure_reason(request: HeadRequest) -> str | None:
+        if request.last_skill and request.last_skill.get("status") == "failed":
+            return request.last_skill.get("reason")
+        for event in reversed(request.events):
+            if event.get("kind") == "skill_failed":
+                return (event.get("skill") or {}).get("reason")
+        return None
 
     @staticmethod
     def _failed(request: HeadRequest) -> str | None:
@@ -205,6 +225,21 @@ class MissionHead:
                     _route("away"),
                     "Der letzte Versuch ist gescheitert, ich setze eine neue Route.",
                 )
+            failed, reason = self._failed(request), self._failure_reason(request)
+            if failed in {"walk", "walk_road"} and reason == "stuck":
+                # Walking found no way round in four tries (foot.py): the way lies behind. A look of
+                # 180 at 1.2 s asks for full stick, which the camera turns at 146 deg/s, about 175 deg.
+                return (
+                    "foot_stuck",
+                    [_call("look", duration=1.2, angle=180), _call("walk_road", duration=15)],
+                    "Hier komme ich nicht weiter, ich drehe um.",
+                )
+            if failed == "walk_road" and reason == "no-road":
+                return (
+                    "foot_explore_roadless",
+                    _explore(),
+                    "Keine Straße auf der Karte, ich schaue mich um und gehe weiter.",
+                )
             return (
                 "failed_skill",
                 [_walk()],
@@ -263,16 +298,11 @@ class MissionHead:
                     "Nichts hält mich hier, ich nehme mir ein Fahrzeug und fahre los.",
                 )
             if not request.objective.strip() and not colors and not cars:
-                # pilot/20261110-231512/head.jsonl:2: look and walk through
-                # unmarked free roam; do not reproduce the older wait loop.
+                # Nothing marked and no car: a road is where cars come by. walk_road fails no-road
+                # when the map shows none, and the rule above then looks and walks as before.
                 return (
                     "foot_explore",
-                    [
-                        _call("look", duration=0.8, angle=-55),
-                        _walk(),
-                        _call("look", duration=0.5, angle=20),
-                        _walk(),
-                    ],
-                    "Ein markiertes Ziel ist nicht zu sehen, ich schaue mich um und gehe weiter.",
+                    [_call("walk_road", duration=15)],
+                    "Ein markiertes Ziel ist nicht zu sehen, ich gehe zur nächsten Straße.",
                 )
         return None
