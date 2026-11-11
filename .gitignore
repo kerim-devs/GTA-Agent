@@ -55,3 +55,6 @@ lab/wanted/*.log
 
 # Generated cable-screen contact sheets and scan caches.
 lab/screens/review/
+
+# drawn from the recordings by lab/judge/sample.py, 36 MB
+lab/judge/sample/

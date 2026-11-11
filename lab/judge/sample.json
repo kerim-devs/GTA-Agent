@@ -1,0 +1,2102 @@
+[
+ {
+  "name": "kerim-00102",
+  "source": "kerim",
+  "frame": 102,
+  "screen": "game",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "cutscene"
+ },
+ {
+  "name": "kerim-00306",
+  "source": "kerim",
+  "frame": 306,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-00510",
+  "source": "kerim",
+  "frame": 510,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-00715",
+  "source": "kerim",
+  "frame": 715,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-00919",
+  "source": "kerim",
+  "frame": 919,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-01123",
+  "source": "kerim",
+  "frame": 1123,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-01328",
+  "source": "kerim",
+  "frame": 1328,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-01532",
+  "source": "kerim",
+  "frame": 1532,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-01737",
+  "source": "kerim",
+  "frame": 1737,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-01941",
+  "source": "kerim",
+  "frame": 1941,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-02145",
+  "source": "kerim",
+  "frame": 2145,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": true,
+  "wanted": 0,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-02350",
+  "source": "kerim",
+  "frame": 2350,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-02554",
+  "source": "kerim",
+  "frame": 2554,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-02758",
+  "source": "kerim",
+  "frame": 2758,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-02963",
+  "source": "kerim",
+  "frame": 2963,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-03167",
+  "source": "kerim",
+  "frame": 3167,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-03371",
+  "source": "kerim",
+  "frame": 3371,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-03576",
+  "source": "kerim",
+  "frame": 3576,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-03780",
+  "source": "kerim",
+  "frame": 3780,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-03984",
+  "source": "kerim",
+  "frame": 3984,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-04189",
+  "source": "kerim",
+  "frame": 4189,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-04393",
+  "source": "kerim",
+  "frame": 4393,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-04597",
+  "source": "kerim",
+  "frame": 4597,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-04802",
+  "source": "kerim",
+  "frame": 4802,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-05006",
+  "source": "kerim",
+  "frame": 5006,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-05211",
+  "source": "kerim",
+  "frame": 5211,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-05415",
+  "source": "kerim",
+  "frame": 5415,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-05619",
+  "source": "kerim",
+  "frame": 5619,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-05824",
+  "source": "kerim",
+  "frame": 5824,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-06028",
+  "source": "kerim",
+  "frame": 6028,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-06232",
+  "source": "kerim",
+  "frame": 6232,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": true,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-06437",
+  "source": "kerim",
+  "frame": 6437,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-06641",
+  "source": "kerim",
+  "frame": 6641,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-06845",
+  "source": "kerim",
+  "frame": 6845,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-07050",
+  "source": "kerim",
+  "frame": 7050,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-07254",
+  "source": "kerim",
+  "frame": 7254,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-07458",
+  "source": "kerim",
+  "frame": 7458,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-07663",
+  "source": "kerim",
+  "frame": 7663,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-07867",
+  "source": "kerim",
+  "frame": 7867,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-08072",
+  "source": "kerim",
+  "frame": 8072,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-08276",
+  "source": "kerim",
+  "frame": 8276,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-08480",
+  "source": "kerim",
+  "frame": 8480,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-08685",
+  "source": "kerim",
+  "frame": 8685,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-08889",
+  "source": "kerim",
+  "frame": 8889,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-09093",
+  "source": "kerim",
+  "frame": 9093,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-09298",
+  "source": "kerim",
+  "frame": 9298,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-09502",
+  "source": "kerim",
+  "frame": 9502,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-09706",
+  "source": "kerim",
+  "frame": 9706,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-09911",
+  "source": "kerim",
+  "frame": 9911,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-10115",
+  "source": "kerim",
+  "frame": 10115,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-10319",
+  "source": "kerim",
+  "frame": 10319,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-10524",
+  "source": "kerim",
+  "frame": 10524,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 2,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-10728",
+  "source": "kerim",
+  "frame": 10728,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-10932",
+  "source": "kerim",
+  "frame": 10932,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-11137",
+  "source": "kerim",
+  "frame": 11137,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": true,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-11341",
+  "source": "kerim",
+  "frame": 11341,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-11546",
+  "source": "kerim",
+  "frame": 11546,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-11750",
+  "source": "kerim",
+  "frame": 11750,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-11954",
+  "source": "kerim",
+  "frame": 11954,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-12159",
+  "source": "kerim",
+  "frame": 12159,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-12363",
+  "source": "kerim",
+  "frame": 12363,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-12567",
+  "source": "kerim",
+  "frame": 12567,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-12772",
+  "source": "kerim",
+  "frame": 12772,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-12976",
+  "source": "kerim",
+  "frame": 12976,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-13180",
+  "source": "kerim",
+  "frame": 13180,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-13385",
+  "source": "kerim",
+  "frame": 13385,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-13589",
+  "source": "kerim",
+  "frame": 13589,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-13793",
+  "source": "kerim",
+  "frame": 13793,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-13998",
+  "source": "kerim",
+  "frame": 13998,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-14202",
+  "source": "kerim",
+  "frame": 14202,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-14406",
+  "source": "kerim",
+  "frame": 14406,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-14611",
+  "source": "kerim",
+  "frame": 14611,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-14815",
+  "source": "kerim",
+  "frame": 14815,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-15020",
+  "source": "kerim",
+  "frame": 15020,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-15224",
+  "source": "kerim",
+  "frame": 15224,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-15428",
+  "source": "kerim",
+  "frame": 15428,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-15633",
+  "source": "kerim",
+  "frame": 15633,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-15837",
+  "source": "kerim",
+  "frame": 15837,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-16041",
+  "source": "kerim",
+  "frame": 16041,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-16246",
+  "source": "kerim",
+  "frame": 16246,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-16450",
+  "source": "kerim",
+  "frame": 16450,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-16654",
+  "source": "kerim",
+  "frame": 16654,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-16859",
+  "source": "kerim",
+  "frame": 16859,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-17063",
+  "source": "kerim",
+  "frame": 17063,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-17267",
+  "source": "kerim",
+  "frame": 17267,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-17472",
+  "source": "kerim",
+  "frame": 17472,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-17676",
+  "source": "kerim",
+  "frame": 17676,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-17881",
+  "source": "kerim",
+  "frame": 17881,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-18085",
+  "source": "kerim",
+  "frame": 18085,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "vehicle"
+ },
+ {
+  "name": "kerim-18289",
+  "source": "kerim",
+  "frame": 18289,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-18494",
+  "source": "kerim",
+  "frame": 18494,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-18698",
+  "source": "kerim",
+  "frame": 18698,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-18902",
+  "source": "kerim",
+  "frame": 18902,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-19107",
+  "source": "kerim",
+  "frame": 19107,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-19311",
+  "source": "kerim",
+  "frame": 19311,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-19515",
+  "source": "kerim",
+  "frame": 19515,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-19720",
+  "source": "kerim",
+  "frame": 19720,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-19924",
+  "source": "kerim",
+  "frame": 19924,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-20128",
+  "source": "kerim",
+  "frame": 20128,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-20333",
+  "source": "kerim",
+  "frame": 20333,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-20537",
+  "source": "kerim",
+  "frame": 20537,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-20741",
+  "source": "kerim",
+  "frame": 20741,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-20946",
+  "source": "kerim",
+  "frame": 20946,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-21150",
+  "source": "kerim",
+  "frame": 21150,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-21355",
+  "source": "kerim",
+  "frame": 21355,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-21559",
+  "source": "kerim",
+  "frame": 21559,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-21763",
+  "source": "kerim",
+  "frame": 21763,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-21968",
+  "source": "kerim",
+  "frame": 21968,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-22172",
+  "source": "kerim",
+  "frame": 22172,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "kerim-22376",
+  "source": "kerim",
+  "frame": 22376,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "tour-00030",
+  "source": "tour",
+  "frame": 30,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "tour-00060",
+  "source": "tour",
+  "frame": 60,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "tour-00122",
+  "source": "tour",
+  "frame": 122,
+  "screen": "pause",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00152",
+  "source": "tour",
+  "frame": 152,
+  "screen": "pause",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00182",
+  "source": "tour",
+  "frame": 182,
+  "screen": "pause",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00212",
+  "source": "tour",
+  "frame": 212,
+  "screen": "pause",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00242",
+  "source": "tour",
+  "frame": 242,
+  "screen": "pause",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00304",
+  "source": "tour",
+  "frame": 304,
+  "screen": "map",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00335",
+  "source": "tour",
+  "frame": 335,
+  "screen": "map",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00367",
+  "source": "tour",
+  "frame": 367,
+  "screen": "map",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00398",
+  "source": "tour",
+  "frame": 398,
+  "screen": "map",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00429",
+  "source": "tour",
+  "frame": 429,
+  "screen": "map",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00478",
+  "source": "tour",
+  "frame": 478,
+  "screen": "pause",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00495",
+  "source": "tour",
+  "frame": 495,
+  "screen": "pause",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00512",
+  "source": "tour",
+  "frame": 512,
+  "screen": "pause",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00529",
+  "source": "tour",
+  "frame": 529,
+  "screen": "pause",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00546",
+  "source": "tour",
+  "frame": 546,
+  "screen": "pause",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00600",
+  "source": "tour",
+  "frame": 600,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "tour-00650",
+  "source": "tour",
+  "frame": 650,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "tour-00746",
+  "source": "tour",
+  "frame": 746,
+  "screen": "weapon_wheel",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00769",
+  "source": "tour",
+  "frame": 769,
+  "screen": "weapon_wheel",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00792",
+  "source": "tour",
+  "frame": 792,
+  "screen": "weapon_wheel",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00815",
+  "source": "tour",
+  "frame": 815,
+  "screen": "weapon_wheel",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00838",
+  "source": "tour",
+  "frame": 838,
+  "screen": "weapon_wheel",
+  "minimap": "flat",
+  "corrupt": true,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-00900",
+  "source": "tour",
+  "frame": 900,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": true,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "tour-00950",
+  "source": "tour",
+  "frame": 950,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": true,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "tour-01014",
+  "source": "tour",
+  "frame": 1014,
+  "screen": "phone",
+  "minimap": "flat",
+  "corrupt": true,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-01042",
+  "source": "tour",
+  "frame": 1042,
+  "screen": "phone",
+  "minimap": "flat",
+  "corrupt": true,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-01070",
+  "source": "tour",
+  "frame": 1070,
+  "screen": "phone",
+  "minimap": "flat",
+  "corrupt": true,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-01097",
+  "source": "tour",
+  "frame": 1097,
+  "screen": "phone",
+  "minimap": "flat",
+  "corrupt": true,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-01125",
+  "source": "tour",
+  "frame": 1125,
+  "screen": "phone",
+  "minimap": "flat",
+  "corrupt": true,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-01200",
+  "source": "tour",
+  "frame": 1200,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": true,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "tour-01250",
+  "source": "tour",
+  "frame": 1250,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": true,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "tour-01335",
+  "source": "tour",
+  "frame": 1335,
+  "screen": "interaction_menu",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-01371",
+  "source": "tour",
+  "frame": 1371,
+  "screen": "interaction_menu",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-01406",
+  "source": "tour",
+  "frame": 1406,
+  "screen": "interaction_menu",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-01442",
+  "source": "tour",
+  "frame": 1442,
+  "screen": "interaction_menu",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-01477",
+  "source": "tour",
+  "frame": 1477,
+  "screen": "interaction_menu",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "menu"
+ },
+ {
+  "name": "tour-01600",
+  "source": "tour",
+  "frame": 1600,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": true,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "tour-01700",
+  "source": "tour",
+  "frame": 1700,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "vehicle"
+ },
+ {
+  "name": "pilot-00357",
+  "source": "pilot",
+  "frame": 357,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-01073",
+  "source": "pilot",
+  "frame": 1073,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-01789",
+  "source": "pilot",
+  "frame": 1789,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-02504",
+  "source": "pilot",
+  "frame": 2504,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-03220",
+  "source": "pilot",
+  "frame": 3220,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-03935",
+  "source": "pilot",
+  "frame": 3935,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-04651",
+  "source": "pilot",
+  "frame": 4651,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-05367",
+  "source": "pilot",
+  "frame": 5367,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-06082",
+  "source": "pilot",
+  "frame": 6082,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-06798",
+  "source": "pilot",
+  "frame": 6798,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-07513",
+  "source": "pilot",
+  "frame": 7513,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-08229",
+  "source": "pilot",
+  "frame": 8229,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-08945",
+  "source": "pilot",
+  "frame": 8945,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-09660",
+  "source": "pilot",
+  "frame": 9660,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-10376",
+  "source": "pilot",
+  "frame": 10376,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-11091",
+  "source": "pilot",
+  "frame": 11091,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-11807",
+  "source": "pilot",
+  "frame": 11807,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-12523",
+  "source": "pilot",
+  "frame": 12523,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-13238",
+  "source": "pilot",
+  "frame": 13238,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "pilot-13954",
+  "source": "pilot",
+  "frame": 13954,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "foot"
+ },
+ {
+  "name": "wifi-00702",
+  "source": "wifi",
+  "frame": 702,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "foot"
+ },
+ {
+  "name": "wifi-00728",
+  "source": "wifi",
+  "frame": 728,
+  "screen": "game",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "cutscene"
+ },
+ {
+  "name": "wifi-00750",
+  "source": "wifi",
+  "frame": 750,
+  "screen": "game",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "cutscene"
+ },
+ {
+  "name": "wifi-00775",
+  "source": "wifi",
+  "frame": 775,
+  "screen": "failed",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "dead_or_failed"
+ },
+ {
+  "name": "wifi-00792",
+  "source": "wifi",
+  "frame": 792,
+  "screen": "failed",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "dead_or_failed"
+ },
+ {
+  "name": "wifi-00819",
+  "source": "wifi",
+  "frame": 819,
+  "screen": "failed",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "dead_or_failed"
+ },
+ {
+  "name": "wifi-00832",
+  "source": "wifi",
+  "frame": 832,
+  "screen": "failed",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "dead_or_failed"
+ },
+ {
+  "name": "wifi-00844",
+  "source": "wifi",
+  "frame": 844,
+  "screen": "failed",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "dead_or_failed"
+ },
+ {
+  "name": "wifi-00859",
+  "source": "wifi",
+  "frame": 859,
+  "screen": "failed",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "dead_or_failed"
+ },
+ {
+  "name": "wifi-00870",
+  "source": "wifi",
+  "frame": 870,
+  "screen": "failed",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "dead_or_failed"
+ },
+ {
+  "name": "wifi-05167",
+  "source": "wifi",
+  "frame": 5167,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": true,
+  "wanted": 0,
+  "situation": "vehicle"
+ },
+ {
+  "name": "wifi-05307",
+  "source": "wifi",
+  "frame": 5307,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "vehicle"
+ },
+ {
+  "name": "wifi-05455",
+  "source": "wifi",
+  "frame": 5455,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "vehicle"
+ },
+ {
+  "name": "wifi-05603",
+  "source": "wifi",
+  "frame": 5603,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "vehicle"
+ },
+ {
+  "name": "wifi-05755",
+  "source": "wifi",
+  "frame": 5755,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": true,
+  "wanted": 0,
+  "situation": "vehicle"
+ },
+ {
+  "name": "wifi-05933",
+  "source": "wifi",
+  "frame": 5933,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 0,
+  "situation": "vehicle"
+ },
+ {
+  "name": "wifi-06080",
+  "source": "wifi",
+  "frame": 6080,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": true,
+  "wanted": 0,
+  "situation": "vehicle"
+ },
+ {
+  "name": "wifi-06238",
+  "source": "wifi",
+  "frame": 6238,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": true,
+  "wanted": 0,
+  "situation": "vehicle"
+ },
+ {
+  "name": "wifi-06372",
+  "source": "wifi",
+  "frame": 6372,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": true,
+  "wanted": null,
+  "situation": "vehicle"
+ },
+ {
+  "name": "wifi-06524",
+  "source": "wifi",
+  "frame": 6524,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": true,
+  "wanted": null,
+  "situation": "vehicle"
+ },
+ {
+  "name": "wifi-11010",
+  "source": "wifi",
+  "frame": 11010,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "vehicle"
+ },
+ {
+  "name": "wifi-11097",
+  "source": "wifi",
+  "frame": 11097,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "wifi-11201",
+  "source": "wifi",
+  "frame": 11201,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "wifi-11300",
+  "source": "wifi",
+  "frame": 11300,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "wifi-11411",
+  "source": "wifi",
+  "frame": 11411,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "wifi-11500",
+  "source": "wifi",
+  "frame": 11500,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "wifi-11627",
+  "source": "wifi",
+  "frame": 11627,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": true,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "wifi-11750",
+  "source": "wifi",
+  "frame": 11750,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 1,
+  "situation": "foot"
+ },
+ {
+  "name": "wifi-11869",
+  "source": "wifi",
+  "frame": 11869,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": true,
+  "wanted": 3,
+  "situation": "foot"
+ },
+ {
+  "name": "wifi-12002",
+  "source": "wifi",
+  "frame": 12002,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "foot"
+ },
+ {
+  "name": "wifi-12103",
+  "source": "wifi",
+  "frame": 12103,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 3,
+  "situation": "foot"
+ },
+ {
+  "name": "wifi-12250",
+  "source": "wifi",
+  "frame": 12250,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": false,
+  "wanted": 3,
+  "situation": "foot"
+ },
+ {
+  "name": "wifi-12311",
+  "source": "wifi",
+  "frame": 12311,
+  "screen": "game",
+  "minimap": "tilted",
+  "corrupt": false,
+  "wanted": 3,
+  "situation": "vehicle"
+ },
+ {
+  "name": "wifi-12428",
+  "source": "wifi",
+  "frame": 12428,
+  "screen": "game",
+  "minimap": "flat",
+  "corrupt": true,
+  "wanted": 3,
+  "situation": "foot"
+ },
+ {
+  "name": "wifi-12689",
+  "source": "wifi",
+  "frame": 12689,
+  "screen": "wasted",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "dead_or_failed"
+ },
+ {
+  "name": "wifi-12716",
+  "source": "wifi",
+  "frame": 12716,
+  "screen": "wasted",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "dead_or_failed"
+ },
+ {
+  "name": "wifi-12759",
+  "source": "wifi",
+  "frame": 12759,
+  "screen": "wasted",
+  "minimap": "none",
+  "corrupt": true,
+  "wanted": null,
+  "situation": "dead_or_failed"
+ },
+ {
+  "name": "wifi-12798",
+  "source": "wifi",
+  "frame": 12798,
+  "screen": "game",
+  "minimap": "none",
+  "corrupt": true,
+  "wanted": null,
+  "situation": "cutscene"
+ },
+ {
+  "name": "wifi-12826",
+  "source": "wifi",
+  "frame": 12826,
+  "screen": "loading",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "cutscene"
+ },
+ {
+  "name": "wifi-12857",
+  "source": "wifi",
+  "frame": 12857,
+  "screen": "loading",
+  "minimap": "none",
+  "corrupt": false,
+  "wanted": null,
+  "situation": "cutscene"
+ }
+]
