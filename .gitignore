@@ -37,3 +37,9 @@ lab/objects/holdout/sheets/*
 !lab/objects/holdout/sheets/labelled-004.jpg
 !lab/objects/holdout/sheets/labelled-008.jpg
 !lab/objects/holdout/sheets/labelled-040.jpg
+
+# Regenerated P22 replay frames and detailed runtime logs.
+/lab/wiring/replay*/
+/lab/wiring/simulations/
+/lab/wiring/mutations/
+/lab/wiring/replay*-command.log

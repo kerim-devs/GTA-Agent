@@ -1,0 +1,743 @@
+[
+  {
+    "initial": "failed",
+    "read_delay": 0,
+    "presses": [
+      {
+        "t": 0.55,
+        "screen": "failed",
+        "buttons": [
+          "cross"
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "type": "request",
+        "id": 1,
+        "t": 1.35,
+        "request": {
+          "events": [
+            {
+              "screen": "failed",
+              "kind": "failure",
+              "count": 1,
+              "seconds": 0.8500000000000001
+            }
+          ],
+          "help": "",
+          "objective": "",
+          "subtitle": "",
+          "banner": "",
+          "minimap": {
+            "minimap": "flat",
+            "route": null,
+            "bearing": null,
+            "far_bearing": null,
+            "arrow": null,
+            "corrupt": false,
+            "confidence": 1,
+            "path": [],
+            "gps_distance": null,
+            "gps_arrow": null,
+            "gps_speed": null,
+            "gps_time": null,
+            "blips": []
+          },
+          "last_skill": {
+            "name": "walk",
+            "status": "failed",
+            "reason": "flow"
+          },
+          "notebook": "",
+          "jpeg_path": "/Users/kerim/Documents/ChatGPT/gta-worktrees/p22-wiring/lab/wiring/simulations/failed-0/head-0001.jpg",
+          "hud": {
+            "wanted": null,
+            "wanted_flashing": false,
+            "health": null,
+            "armour": null,
+            "special": null,
+            "screen": "game"
+          },
+          "objects": []
+        },
+        "frame_file": "head-0001.jpg",
+        "prompt_file": "head-0001.prompt.txt",
+        "plan": [],
+        "sentence": null,
+        "lesson": null,
+        "duration": 0.0,
+        "applied": false,
+        "overtaken": false
+      }
+    ],
+    "flow": [
+      {
+        "type": "flow_enter",
+        "t": 0.5,
+        "screen": "failed",
+        "action": "confirm",
+        "buttons": [],
+        "seconds": 0
+      },
+      {
+        "type": "flow_exit",
+        "t": 1.35,
+        "screen": "failed",
+        "action": "recovered",
+        "seconds": 0.8500000000000001,
+        "actions": [
+          {
+            "screen": "failed",
+            "action": "confirm",
+            "buttons": [],
+            "seconds": 0.0
+          },
+          {
+            "screen": "failed",
+            "action": "retry",
+            "buttons": [
+              "cross"
+            ],
+            "seconds": 0.050000000000000044
+          },
+          {
+            "screen": "failed",
+            "action": "observe",
+            "buttons": [],
+            "seconds": 0.15000000000000002
+          },
+          {
+            "screen": "loading",
+            "action": "confirm",
+            "buttons": [],
+            "seconds": 0.19999999999999996
+          },
+          {
+            "screen": "loading",
+            "action": "wait",
+            "buttons": [],
+            "seconds": 0.25
+          },
+          {
+            "screen": "game",
+            "action": "confirm",
+            "buttons": [],
+            "seconds": 0.8
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "initial": "failed",
+    "read_delay": 2,
+    "presses": [
+      {
+        "t": 0.65,
+        "screen": "failed",
+        "buttons": [
+          "cross"
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "type": "request",
+        "id": 1,
+        "t": 1.6,
+        "request": {
+          "events": [
+            {
+              "screen": "failed",
+              "kind": "failure",
+              "count": 1,
+              "seconds": 1.0
+            }
+          ],
+          "help": "",
+          "objective": "",
+          "subtitle": "",
+          "banner": "",
+          "minimap": {
+            "minimap": "flat",
+            "route": null,
+            "bearing": null,
+            "far_bearing": null,
+            "arrow": null,
+            "corrupt": false,
+            "confidence": 1,
+            "path": [],
+            "gps_distance": null,
+            "gps_arrow": null,
+            "gps_speed": null,
+            "gps_time": null,
+            "blips": []
+          },
+          "last_skill": {
+            "name": "walk",
+            "status": "failed",
+            "reason": "flow"
+          },
+          "notebook": "",
+          "jpeg_path": "/Users/kerim/Documents/ChatGPT/gta-worktrees/p22-wiring/lab/wiring/simulations/failed-2/head-0001.jpg",
+          "hud": {
+            "wanted": null,
+            "wanted_flashing": false,
+            "health": null,
+            "armour": null,
+            "special": null,
+            "screen": "game"
+          },
+          "objects": []
+        },
+        "frame_file": "head-0001.jpg",
+        "prompt_file": "head-0001.prompt.txt",
+        "plan": [],
+        "sentence": null,
+        "lesson": null,
+        "duration": 0.0,
+        "applied": false,
+        "overtaken": false
+      }
+    ],
+    "flow": [
+      {
+        "type": "flow_enter",
+        "t": 0.6,
+        "screen": "failed",
+        "action": "confirm",
+        "buttons": [],
+        "seconds": 0
+      },
+      {
+        "type": "flow_exit",
+        "t": 1.6,
+        "screen": "failed",
+        "action": "recovered",
+        "seconds": 1.0,
+        "actions": [
+          {
+            "screen": "failed",
+            "action": "confirm",
+            "buttons": [],
+            "seconds": 0.0
+          },
+          {
+            "screen": "failed",
+            "action": "retry",
+            "buttons": [
+              "cross"
+            ],
+            "seconds": 0.050000000000000044
+          },
+          {
+            "screen": "failed",
+            "action": "observe",
+            "buttons": [],
+            "seconds": 0.15000000000000002
+          },
+          {
+            "screen": "loading",
+            "action": "confirm",
+            "buttons": [],
+            "seconds": 0.30000000000000004
+          },
+          {
+            "screen": "loading",
+            "action": "wait",
+            "buttons": [],
+            "seconds": 0.35
+          },
+          {
+            "screen": "game",
+            "action": "confirm",
+            "buttons": [],
+            "seconds": 0.9500000000000001
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "initial": "failed",
+    "read_delay": 4,
+    "presses": [
+      {
+        "t": 0.75,
+        "screen": "failed",
+        "buttons": [
+          "cross"
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "type": "request",
+        "id": 1,
+        "t": 1.75,
+        "request": {
+          "events": [
+            {
+              "screen": "failed",
+              "kind": "failure",
+              "count": 1,
+              "seconds": 1.05
+            }
+          ],
+          "help": "",
+          "objective": "",
+          "subtitle": "",
+          "banner": "",
+          "minimap": {
+            "minimap": "flat",
+            "route": null,
+            "bearing": null,
+            "far_bearing": null,
+            "arrow": null,
+            "corrupt": false,
+            "confidence": 1,
+            "path": [],
+            "gps_distance": null,
+            "gps_arrow": null,
+            "gps_speed": null,
+            "gps_time": null,
+            "blips": []
+          },
+          "last_skill": {
+            "name": "walk",
+            "status": "failed",
+            "reason": "flow"
+          },
+          "notebook": "",
+          "jpeg_path": "/Users/kerim/Documents/ChatGPT/gta-worktrees/p22-wiring/lab/wiring/simulations/failed-4/head-0001.jpg",
+          "hud": {
+            "wanted": null,
+            "wanted_flashing": false,
+            "health": null,
+            "armour": null,
+            "special": null,
+            "screen": "game"
+          },
+          "objects": []
+        },
+        "frame_file": "head-0001.jpg",
+        "prompt_file": "head-0001.prompt.txt",
+        "plan": [],
+        "sentence": null,
+        "lesson": null,
+        "duration": 0.0,
+        "applied": false,
+        "overtaken": false
+      }
+    ],
+    "flow": [
+      {
+        "type": "flow_enter",
+        "t": 0.7,
+        "screen": "failed",
+        "action": "confirm",
+        "buttons": [],
+        "seconds": 0
+      },
+      {
+        "type": "flow_exit",
+        "t": 1.75,
+        "screen": "failed",
+        "action": "recovered",
+        "seconds": 1.05,
+        "actions": [
+          {
+            "screen": "failed",
+            "action": "confirm",
+            "buttons": [],
+            "seconds": 0.0
+          },
+          {
+            "screen": "failed",
+            "action": "retry",
+            "buttons": [
+              "cross"
+            ],
+            "seconds": 0.050000000000000044
+          },
+          {
+            "screen": "failed",
+            "action": "observe",
+            "buttons": [],
+            "seconds": 0.15000000000000002
+          },
+          {
+            "screen": "loading",
+            "action": "confirm",
+            "buttons": [],
+            "seconds": 0.40000000000000013
+          },
+          {
+            "screen": "loading",
+            "action": "wait",
+            "buttons": [],
+            "seconds": 0.44999999999999996
+          },
+          {
+            "screen": "game",
+            "action": "confirm",
+            "buttons": [],
+            "seconds": 1.0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "initial": "pause",
+    "read_delay": 0,
+    "presses": [
+      {
+        "t": 0.55,
+        "screen": "pause",
+        "buttons": [
+          "circle"
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "type": "request",
+        "id": 1,
+        "t": 0.75,
+        "request": {
+          "events": [
+            {
+              "kind": "menu_closed",
+              "screen": "pause",
+              "seconds": 0.25
+            }
+          ],
+          "help": "",
+          "objective": "",
+          "subtitle": "",
+          "banner": "",
+          "minimap": {
+            "minimap": "flat",
+            "route": null,
+            "bearing": null,
+            "far_bearing": null,
+            "arrow": null,
+            "corrupt": false,
+            "confidence": 1,
+            "path": [],
+            "gps_distance": null,
+            "gps_arrow": null,
+            "gps_speed": null,
+            "gps_time": null,
+            "blips": []
+          },
+          "last_skill": {
+            "name": "walk",
+            "status": "failed",
+            "reason": "flow"
+          },
+          "notebook": "",
+          "jpeg_path": "/Users/kerim/Documents/ChatGPT/gta-worktrees/p22-wiring/lab/wiring/simulations/pause-0/head-0001.jpg",
+          "hud": {
+            "wanted": null,
+            "wanted_flashing": false,
+            "health": null,
+            "armour": null,
+            "special": null,
+            "screen": "game"
+          },
+          "objects": []
+        },
+        "frame_file": "head-0001.jpg",
+        "prompt_file": "head-0001.prompt.txt",
+        "plan": [],
+        "sentence": null,
+        "lesson": null,
+        "duration": 0.0,
+        "applied": false,
+        "overtaken": false
+      }
+    ],
+    "flow": [
+      {
+        "type": "flow_enter",
+        "t": 0.5,
+        "screen": "pause",
+        "action": "confirm",
+        "buttons": [],
+        "seconds": 0
+      },
+      {
+        "type": "flow_exit",
+        "t": 0.75,
+        "screen": "pause",
+        "action": "recovered",
+        "seconds": 0.25,
+        "actions": [
+          {
+            "screen": "pause",
+            "action": "confirm",
+            "buttons": [],
+            "seconds": 0.0
+          },
+          {
+            "screen": "pause",
+            "action": "back",
+            "buttons": [
+              "circle"
+            ],
+            "seconds": 0.050000000000000044
+          },
+          {
+            "screen": "pause",
+            "action": "observe",
+            "buttons": [],
+            "seconds": 0.15000000000000002
+          },
+          {
+            "screen": "game",
+            "action": "confirm",
+            "buttons": [],
+            "seconds": 0.19999999999999996
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "initial": "pause",
+    "read_delay": 2,
+    "presses": [
+      {
+        "t": 0.65,
+        "screen": "pause",
+        "buttons": [
+          "circle"
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "type": "request",
+        "id": 1,
+        "t": 0.95,
+        "request": {
+          "events": [
+            {
+              "kind": "menu_closed",
+              "screen": "pause",
+              "seconds": 0.35
+            }
+          ],
+          "help": "",
+          "objective": "",
+          "subtitle": "",
+          "banner": "",
+          "minimap": {
+            "minimap": "flat",
+            "route": null,
+            "bearing": null,
+            "far_bearing": null,
+            "arrow": null,
+            "corrupt": false,
+            "confidence": 1,
+            "path": [],
+            "gps_distance": null,
+            "gps_arrow": null,
+            "gps_speed": null,
+            "gps_time": null,
+            "blips": []
+          },
+          "last_skill": {
+            "name": "walk",
+            "status": "failed",
+            "reason": "flow"
+          },
+          "notebook": "",
+          "jpeg_path": "/Users/kerim/Documents/ChatGPT/gta-worktrees/p22-wiring/lab/wiring/simulations/pause-2/head-0001.jpg",
+          "hud": {
+            "wanted": null,
+            "wanted_flashing": false,
+            "health": null,
+            "armour": null,
+            "special": null,
+            "screen": "game"
+          },
+          "objects": []
+        },
+        "frame_file": "head-0001.jpg",
+        "prompt_file": "head-0001.prompt.txt",
+        "plan": [],
+        "sentence": null,
+        "lesson": null,
+        "duration": 0.0,
+        "applied": false,
+        "overtaken": false
+      }
+    ],
+    "flow": [
+      {
+        "type": "flow_enter",
+        "t": 0.6,
+        "screen": "pause",
+        "action": "confirm",
+        "buttons": [],
+        "seconds": 0
+      },
+      {
+        "type": "flow_exit",
+        "t": 0.95,
+        "screen": "pause",
+        "action": "recovered",
+        "seconds": 0.35,
+        "actions": [
+          {
+            "screen": "pause",
+            "action": "confirm",
+            "buttons": [],
+            "seconds": 0.0
+          },
+          {
+            "screen": "pause",
+            "action": "back",
+            "buttons": [
+              "circle"
+            ],
+            "seconds": 0.050000000000000044
+          },
+          {
+            "screen": "pause",
+            "action": "observe",
+            "buttons": [],
+            "seconds": 0.15000000000000002
+          },
+          {
+            "screen": "game",
+            "action": "confirm",
+            "buttons": [],
+            "seconds": 0.30000000000000004
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "initial": "pause",
+    "read_delay": 4,
+    "presses": [
+      {
+        "t": 0.75,
+        "screen": "pause",
+        "buttons": [
+          "circle"
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "type": "request",
+        "id": 1,
+        "t": 1.15,
+        "request": {
+          "events": [
+            {
+              "kind": "menu_closed",
+              "screen": "pause",
+              "seconds": 0.44999999999999996
+            }
+          ],
+          "help": "",
+          "objective": "",
+          "subtitle": "",
+          "banner": "",
+          "minimap": {
+            "minimap": "flat",
+            "route": null,
+            "bearing": null,
+            "far_bearing": null,
+            "arrow": null,
+            "corrupt": false,
+            "confidence": 1,
+            "path": [],
+            "gps_distance": null,
+            "gps_arrow": null,
+            "gps_speed": null,
+            "gps_time": null,
+            "blips": []
+          },
+          "last_skill": {
+            "name": "walk",
+            "status": "failed",
+            "reason": "flow"
+          },
+          "notebook": "",
+          "jpeg_path": "/Users/kerim/Documents/ChatGPT/gta-worktrees/p22-wiring/lab/wiring/simulations/pause-4/head-0001.jpg",
+          "hud": {
+            "wanted": null,
+            "wanted_flashing": false,
+            "health": null,
+            "armour": null,
+            "special": null,
+            "screen": "game"
+          },
+          "objects": []
+        },
+        "frame_file": "head-0001.jpg",
+        "prompt_file": "head-0001.prompt.txt",
+        "plan": [],
+        "sentence": null,
+        "lesson": null,
+        "duration": 0.0,
+        "applied": false,
+        "overtaken": false
+      }
+    ],
+    "flow": [
+      {
+        "type": "flow_enter",
+        "t": 0.7,
+        "screen": "pause",
+        "action": "confirm",
+        "buttons": [],
+        "seconds": 0
+      },
+      {
+        "type": "flow_exit",
+        "t": 1.15,
+        "screen": "pause",
+        "action": "recovered",
+        "seconds": 0.44999999999999996,
+        "actions": [
+          {
+            "screen": "pause",
+            "action": "confirm",
+            "buttons": [],
+            "seconds": 0.0
+          },
+          {
+            "screen": "pause",
+            "action": "back",
+            "buttons": [
+              "circle"
+            ],
+            "seconds": 0.050000000000000044
+          },
+          {
+            "screen": "pause",
+            "action": "observe",
+            "buttons": [],
+            "seconds": 0.15000000000000002
+          },
+          {
+            "screen": "game",
+            "action": "confirm",
+            "buttons": [],
+            "seconds": 0.40000000000000013
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -210,6 +210,7 @@ def land_at_cursor(frame):
 
 class SetWaypoint:
     name = "set_waypoint"
+    opens = ("pause", "map")
     parameters: ClassVar = {
         "target": ("mission", "away"),
         "duration": (1.0, 45.0, 45.0),

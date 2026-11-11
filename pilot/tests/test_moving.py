@@ -189,13 +189,17 @@ def test_hud_events_debounce_and_observation_payload(tmp_path):
         tick(0.91, hud=Hud(wanted=2, health=0.2, screen="pause"))
         assert {event["kind"] for event in conductor.pending} == {
             "wanted_changed",
-            "low_health",
             "screen_changed",
         }
         pending.jobs[0][0].set_result(response(("wait", {})))
         detections = tuple(Detection("person", (0, 0, 1, 1), 0.8) for _ in range(20))
-        tick(1, hud=Hud(wanted=2, health=0.2, screen="pause"), objects=detections)
+        tick(1.5, hud=Hud(wanted=2, health=0.2, screen="pause"), objects=detections)
         request = pending.jobs[1][1]
+        assert {event["kind"] for event in request.events} == {
+            "wanted_changed",
+            "low_health",
+            "screen_changed",
+        }
         assert request.hud["screen"] == "pause"
         assert len(request.objects) == 12
     finally:
