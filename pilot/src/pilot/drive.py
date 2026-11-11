@@ -58,6 +58,15 @@ class DriveConfig:
     outlier_angle: float = 60.0  # Abrupt jumps larger than this require persistence.
     outlier_window: float = 0.3  # Accept a persistent new direction after this interval.
     stop_brake_time: float = 0.7  # Bound L2 use so a stop cannot become indefinite reverse.
+    far_bend: float = (
+        1.0  # Weight of the far bearing in the speed limit; at zero only the route's shape slows.
+    )
+    curve_step: int = 1  # Path points between the three of a curvature estimate; neighbours are pixel noise.
+    curve_trim: int = 0  # Far path points left out of the curvature; the trace bends along the rim.
+    hold_throttle: float = 0.0  # Pedal that about keeps the speed at the limit; the feedback works around it.
+    brake_floor: float = 0.0  # No L2 for speed below this measured m/s.
+    brake_pulse: float = 0.0  # Longest unbroken L2 for speed in seconds; zero does not bound it.
+    brake_rest: float = 1.0  # Seconds without L2 after a pulse, for the speed reading to catch up.
 
     def __post_init__(self) -> None:
         for name in self.__dataclass_fields__:
@@ -79,6 +88,10 @@ class DriveConfig:
                 raise ValueError(f"{name} must be at most one")
         if self.max_recoveries < 1 or not isinstance(self.max_recoveries, int):
             raise ValueError("max_recoveries must be a positive integer")
+        if self.curve_step < 1 or not isinstance(self.curve_step, int):
+            raise ValueError("curve_step must be a positive integer")
+        if not isinstance(self.curve_trim, int):
+            raise ValueError("curve_trim must be an integer")
 
 
 def _number(value: object) -> float | None:
@@ -127,6 +140,7 @@ class Driver:
         self._escape = 0.0
         self._trusted_route: str | None = None
         self._trusted_error: float | None = None
+        self._brake_since: float | None = None
 
     def _emit(self, steer: float, throttle: float, brake: float, state: str) -> Command:
         if (
@@ -360,7 +374,11 @@ class Driver:
         self._steer += alpha * (target - self._steer)
         if abs(self._steer) < self.config.steer_zero and target == 0:
             self._steer = 0.0
-        bend = max(abs(self._filtered_error), abs(self._filtered_far), abs(bend_delta))
+        bend = max(
+            abs(self._filtered_error),
+            self.config.far_bend * abs(self._filtered_far),
+            self.config.far_bend * abs(bend_delta),
+        )
         throttle = max(self.config.bend_throttle, self.config.cruise_throttle - self.config.bend_gain * bend)
         limit = self._speed_limit(path, bend, speed)
         distance = _number(reading.gps_distance)
@@ -370,19 +388,27 @@ class Driver:
         if speed is None:
             throttle *= self.config.unknown_throttle / max(self.config.cruise_throttle, 1e-9)
         else:
-            throttle = _clip(self.config.speed_gain * (limit - speed), 0, self.config.cruise_throttle)
+            throttle = _clip(
+                self.config.hold_throttle + self.config.speed_gain * (limit - speed),
+                0,
+                self.config.cruise_throttle,
+            )
             if speed > self.config.rolling_speed and speed > limit + self.config.brake_margin:
                 brake = _clip(self.config.brake_gain * (speed - limit - self.config.brake_margin), 0, 0.7)
+                brake = self._pulsed(brake, speed, now)
         self._error = error
         return self._emit(self._steer, throttle, brake, "follow")
 
     def _speed_limit(self, path, bend: float, speed: float | None) -> float:
         cfg = self.config
         limit = max(min(cfg.slow_speed, cfg.speed_limit), cfg.speed_limit / (1 + bend / 15))
-        if len(path) < 3:
+        step = cfg.curve_step
+        path = path[: len(path) - cfg.curve_trim]
+        if len(path) < 2 * step + 1:
             return limit
         travel = hypot(*path[0])
-        for a, b, c in zip(path, path[1:], path[2:], strict=False):
+        for index in range(len(path) - 2 * step):
+            a, b, c = path[index], path[index + step], path[index + 2 * step]
             ab, bc = hypot(b[0] - a[0], b[1] - a[1]), hypot(c[0] - b[0], c[1] - b[1])
             if min(ab, bc) < 1:
                 continue
@@ -399,8 +425,19 @@ class Driver:
                 - (speed or 0) * (cfg.command_delay + cfg.gps_window / 2),
             )
             limit = min(limit, sqrt(corner * corner + 2 * cfg.planned_deceleration * remaining))
-            travel += ab
+            travel += hypot(path[index + 1][0] - a[0], path[index + 1][1] - a[1])
         return limit
+
+    def _pulsed(self, brake: float, speed: float, now: float) -> float:
+        """L2 for speed in bounded pulses: the reading lags, and a brake held too long ends in reverse."""
+        cfg = self.config
+        if not brake or not cfg.brake_pulse:
+            return brake
+        if speed < cfg.brake_floor:
+            return 0.0
+        if self._brake_since is None or not 0 <= now - self._brake_since < cfg.brake_pulse + cfg.brake_rest:
+            self._brake_since = now
+        return brake if now - self._brake_since < cfg.brake_pulse else 0.0
 
     def _damage_agrees(self, reading: Reading, now: float, confidence: float | None) -> bool:
         if (

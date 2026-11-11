@@ -144,3 +144,19 @@ Measured besides. On a car park with bollards, planters and a booth the driver r
 Decisions. The driver slows by lifting the pedal and brakes only to stop. The judge runs on the gaming PC; the Mac is no fallback for it as things are.
 
 Open. The waypoint to a mission letter and the measured pan away (P35, a worker is on it); until then the next waypoint is set at the third or fourth try. Clean frames called damaged in town (P36, a worker is on it). Obstacles off the road. `look` and its turn rate. Entering a car three times in a row. The driver at more than twelve metres a second.
+
+### Faster, and around what is in the road, 11 November afternoon
+
+Kerim drove a stretch himself and named the measure: around everything, and keep going (`/Users/kerim/recordings/kerim/20261111-132247`, picture only, about 45 seconds of highway with overtaking).
+
+Why the pilot crawled. Replaying the driver over the morning's drives showed the speed limit at its slowest value on 92 ticks in 100. Two causes, both in how the limit reads the route. The bearing to the far end of the visible trace counted as a bend, and in town the far end nearly always points somewhere else. And the curvature came from three neighbouring points of a trace made of whole pixels, which reads a straight as a curve of some forty pixels radius; the last points of the trace also bend along the minimap's rim. The pedal then switched between full and nothing around a speed reading that lags by a second and a half.
+
+What changed, live only, the defaults and the simulation are as they were. The far bearing no longer limits. The curvature is taken over three points apart and without the last three. The pedal holds a base value at the limit. L2 for speed is back, in pulses of 0.35 seconds with a second of rest and only above 7 m/s, so that it cannot end in reverse. Limit 22 m/s, cornering 7 m/s².
+
+Measured on the coast road north of Pacific Bluffs, by day, waypoint set by hand at 6.8 km. Before: 4 m/s on average in town. Session `20261111-133846` with the first step: 1150 m in 145 s, 7.9 m/s. Session `20261111-134217` with all of it: 1530 m in 150 s, 10.2 m/s on average, a tenth of the ticks above 14.9, in lane through the bends. Session `20261111-134519` with a limit of 26 and cornering 9: off the road on the outside of the first left bend after 15 seconds and onto a parapet, where the car hung; neither the three escapes nor full pedal by hand moved it. So 22 and 7 stay, and a car that cannot be freed is a case for the head: get out and take another.
+
+Around what is in the road. A new module turns the detector's boxes into a push on the stick and a lift of the pedal for whatever lies in the car's own track; the far side of this is that it knows boxes and no road, so the push is bounded to about a lane against the route's pull. On Kerim's drive it marks the cars he overtook and leaves the oncoming lanes and the next lane alone. It ran in the three drives above without a collision with traffic, on a road that had little traffic in the own lane; a busy street has not been driven with it yet.
+
+The waypoint by day. The first round of P35 did not set a waypoint here (`20261111-133505`). The map is drawn over the paused scene, and by day on the coast the bright picture behind washes the roads out, which is the likely reason the pair before and after a push is refused. The card went back to the worker with both recordings.
+
+Open. The avoider in town traffic. Speed in bends above 22 m/s needs a steering that looks further ahead. Leaving a dead car and taking another. P35 second round, P36 in review.

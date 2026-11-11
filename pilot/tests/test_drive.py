@@ -244,3 +244,27 @@ def test_small_map_jitter_does_not_create_predictive_countersteering():
         reading = replace(GOOD, bearing=3 if i % 2 else -3)
         cmd = driver.step(reading, i / 30, True)
         assert cmd.state == "follow" and cmd.steer == 0
+
+
+def test_speed_brake_comes_in_bounded_pulses_and_not_below_the_floor():
+    driver = Driver(DriveConfig(brake_pulse=0.35, brake_rest=1.0, brake_floor=7.0))
+    held = [driver._pulsed(0.5, 12.0, t / 10) for t in range(30)]
+    # 0.35 s on, a second off, and on again: never one unbroken hold.
+    assert held[:4] == [0.5] * 4 and held[4:14] == [0.0] * 10 and held[14] == 0.5
+    assert driver._pulsed(0.5, 6.0, 5.0) == 0.0
+    assert Driver()._pulsed(0.5, 3.0, 0.0) == 0.5  # the defaults leave the brake as it was
+
+
+def test_a_wider_curvature_baseline_and_a_trimmed_tail_lift_the_limit_on_a_straight():
+    # A straight route as the reader gives it: whole pixels, and a hook along the minimap's rim at the end.
+    xs = (0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1)
+    path = (
+        *tuple((float(x), 13.0 + 6 * i) for i, x in enumerate(xs)),
+        (6.0, 78.0),
+        (12.0, 80.0),
+        (18.0, 81.0),
+    )
+    live = {"speed_limit": 22.0, "lateral_acceleration": 7.0, "map_scale_min": 0.7}
+    plain = Driver(DriveConfig(**live))._speed_limit(path, 0.0, 10.0)
+    wide = Driver(DriveConfig(**live, curve_step=3, curve_trim=3))._speed_limit(path, 0.0, 10.0)
+    assert plain < 13 and wide == 22.0
