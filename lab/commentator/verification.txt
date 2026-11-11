@@ -1,0 +1,27 @@
+Working directory: pilot/
+
+.venv/bin/python -m pytest -q tests/test_commentator.py
+36 passed in 0.14s
+
+.venv/bin/python tools/gate.py
+$ ruff check src tests tools
+All checks passed!
+$ ruff format --check src tests tools
+51 files already formatted
+$ pytest -q
+446 passed, 1376 deselected, 4 xfailed in 31.36s
+gate passed in 31.63s (default)
+
+The successful runs used the authorized local execution context because the
+sandbox prohibits binding the temporary localhost IRC fixture. No tests were
+skipped to bypass that restriction. The ordinary sandbox run had 35 passed and
+one PermissionError at the local IRC bind.
+
+MacVoice('Anna', muted=True).synthesize('Wir bleiben auf der Route.', output)
+Sound duration: 1.370204081632653 seconds
+Synthesis time: 0.7146050830197055 seconds
+Output: lab/commentator/direct-probe-authorized.wav
+
+The sandbox returned empty WAV files even though say exited successfully.
+MacVoice rejected those files. Authorized local synthesis produced valid PCM
+audio. Neither the probe nor the replay invokes afplay when muted.

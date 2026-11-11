@@ -13,3 +13,6 @@ lab/minimap/data/crops.npy
 # rebuilt by pilot/tools/sim_blip_skills.py and inspect_blip_frames.py, 18 MB
 lab/blips/skill-simulation.json
 lab/blips/*-scenes-*.jpg
+
+# speech files rebuilt by pilot/tools/commentator_replay.py
+lab/commentator/**/*.wav
