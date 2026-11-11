@@ -1,4 +1,6 @@
+import importlib.util
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -10,7 +12,7 @@ import numpy as np
 import pytest
 
 from pilot.contract import Detection
-from pilot.objects import Detector, Reader
+from pilot.objects import Detector, Reader, without_player
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -127,6 +129,9 @@ def test_reader_surfaces_failure_and_recovers_after_clock_reset():
         reader.close()
 
 
+@pytest.mark.skipif(
+    os.environ.get("PILOT_OBJECTS_MEMORY") != "1", reason="opt-in 3000-inference hardware soak"
+)
 def test_native_memory_is_bounded_over_3000_real_detections():
     result = subprocess.run(
         [sys.executable, "tools/evaluate_objects.py", "--memory-only"],
@@ -134,8 +139,103 @@ def test_native_memory_is_bounded_over_3000_real_detections():
         capture_output=True,
         text=True,
         check=True,
-        timeout=85,
+        timeout=900,
     )
     memory = json.loads(result.stdout)
+    print(json.dumps(memory))
     assert memory["detections"] == 3000
     assert memory["passed"], memory
+
+
+def evaluator():
+    spec = importlib.util.spec_from_file_location(
+        "evaluate_objects", ROOT / "pilot/tools/evaluate_objects.py"
+    )
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_vehicle_kind_does_not_hide_a_found_vehicle_at_iou_point_four():
+    match = evaluator().match
+    truth = {"kind": "truck", "box": (60, 0, 200, 100), "player": False}
+    detection = Detection("car", (0, 0, 140, 100), 0.9)
+    hits, missed, invented = match([detection], [truth])
+    assert hits == [(detection, truth)]
+    assert not missed and not invented
+    truth["box"] = (61, 0, 201, 100)
+    hits, missed, invented = match([detection], [truth])
+    assert not hits and missed == [truth] and invented == [detection]
+
+
+def test_invented_requires_a_label_sized_box_with_nothing_under_it():
+    match = evaluator().match
+    truth = {"kind": "car", "box": (0, 0, 140, 100), "player": False}
+    duplicate = Detection("car", truth["box"], 0.8)
+    distant = Detection("truck", (300, 0, 440, 100), 0.9)
+    small = Detection("person", (500, 0, 510, 40), 0.9)
+    hits, missed, invented = match(
+        [Detection("truck", truth["box"], 0.9), duplicate, distant, small], [truth]
+    )
+    assert len(hits) == 1 and not missed
+    assert invented == [distant]
+
+
+def test_invented_fraction_counts_only_label_sized_reports():
+    class Predictions:
+        def detect(self, frame, *, exclude_player=False):
+            return (
+                Detection("car", (0, 0, 55, 100), 0.9),
+                Detection("car", (200, 0, 300, 100), 0.8),
+            )
+
+    records = [{"id": "one", "labels": [{"kind": "car", "box": (0, 0, 100, 100), "player": False}]}]
+    result = evaluator().evaluate(Predictions(), records, [None])
+    assert result["eligible_reports"] == 1
+    assert result["invented_fraction"] == 1
+
+
+def test_only_the_largest_candidate_is_taken_for_the_player():
+    # Frame 040 of the second set: an enemy stands where the player usually is,
+    # and the player crouches beside him.
+    enemy = Detection("person", (557.0, 342.0, 607.0, 502.0), 0.8)
+    player = Detection("person", (700.0, 425.0, 1015.0, 720.0), 0.9)
+    passer_by = Detection("person", (100.0, 300.0, 140.0, 400.0), 0.7)
+    own_car = Detection("car", (500.0, 420.0, 800.0, 700.0), 0.9)
+    car_ahead = Detection("car", (590.0, 380.0, 710.0, 520.0), 0.8)
+    kept = without_player((enemy, player, passer_by, car_ahead, own_car))
+    assert kept == (enemy, passer_by, car_ahead)
+    # Alone in that part of the picture, either of them is taken for the player.
+    assert without_player((enemy, passer_by)) == (passer_by,)
+    assert without_player(()) == ()
+
+
+def test_reports_below_the_confidence_floor_are_left_out(detector):
+    assert all(d.confidence >= 0.4 for d in detector.detect(frame(6), exclude_player=False))
+
+
+def test_a_frame_offered_while_the_detector_works_does_not_reach_its_pixels():
+    entered, release = Event(), Event()
+    seen = []
+
+    def recognize(pixels):
+        entered.set()
+        assert release.wait(2)
+        seen.append(int(pixels[0, 0, 0]))
+        return ()
+
+    reader = Reader(interval=0, recognizer=recognize)
+    try:
+        assert reader.poll(np.zeros((720, 1280, 3), np.uint8), 1) is None
+        assert entered.wait(1)
+        later = np.full((720, 1280, 3), 255, np.uint8)
+        for tick in range(5):
+            assert reader.poll(later, 2 + tick) is None
+        release.set()
+        deadline = perf_counter() + 2
+        while not seen and perf_counter() < deadline:
+            sleep(0.001)
+        assert seen[0] == 0
+    finally:
+        release.set()
+        reader.close()

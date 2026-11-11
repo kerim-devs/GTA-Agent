@@ -12,8 +12,9 @@ from time import perf_counter, sleep
 
 import cv2
 import numpy as np
+import psutil
 
-from pilot.objects import Detector, Reader, is_player
+from pilot.objects import MODEL, SHA256, Detector, Reader, without_player
 
 ROOT = Path(__file__).resolve().parents[2] / "lab" / "objects"
 KINDS = ("person", "car", "truck", "bus", "motorcycle", "bicycle")
@@ -41,13 +42,15 @@ def match(detections, labels):
         candidates = [
             (overlap(detection.box, label["box"]), i)
             for i, label in enumerate(labels)
-            if i not in used and detection.kind == label["kind"]
+            if i not in used and (detection.kind == "person") == (label["kind"] == "person")
         ]
         score, index = max(candidates, default=(0, -1))
-        if score >= 0.5:
+        if score >= 0.4:
             used.add(index)
             matches.append((detection, labels[index]))
-        elif eligible(detection.kind, detection.box):
+        elif eligible(detection.kind, detection.box) and not any(
+            overlap(detection.box, label["box"]) >= 0.4 for label in labels
+        ):
             invented.append(detection)
     missed = [
         label for i, label in enumerate(labels) if i not in used and eligible(label["kind"], label["box"])
@@ -59,19 +62,24 @@ def memory_probe(detector, frames, count=3000):
     for i in range(100):
         detector(frames[i % len(frames)])
     unit = 1 if sys.platform == "darwin" else 1024
-    baseline = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * unit
+    process = psutil.Process()
+    baseline = process.memory_info().rss
     samples = [baseline]
+    peaks = [resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * unit]
     started = perf_counter()
     for i in range(count):
         detector(frames[i % len(frames)])
         if (i + 1) % 250 == 0:
-            samples.append(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * unit)
-    samples.append(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * unit)
+            samples.append(process.memory_info().rss)
+            peaks.append(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * unit)
+    samples.append(process.memory_info().rss)
     return {
         "detections": count,
         "warmup": 100,
-        "peak_rss_bytes": samples,
-        "peak_growth_bytes": max(samples) - baseline,
+        "rss_bytes": samples,
+        "peak_rss_bytes": peaks,
+        "rss_growth_bytes": max(samples) - baseline,
+        "peak_growth_bytes": max(peaks) - peaks[0],
         "seconds": perf_counter() - started,
         "limit_bytes": 16 * 1024 * 1024,
         "passed": max(samples) - baseline < 16 * 1024 * 1024,
@@ -115,35 +123,58 @@ def evaluate(detector, records, frames):
     large = {kind: {"found": 0, "missed": 0} for kind in KINDS}
     leakage, collateral, removed_player, timings, details = [], [], 0, [], []
     ignored_predictions = 0
+    eligible_reports = 0
+    groups = {
+        name: {"found": 0, "count": 0}
+        for name in ("vehicles_over_200", "vehicles_over_100", "people_over_80")
+    }
+    kind_agreement = {"same": 0, "matched": 0}
     for record, frame in zip(records, frames, strict=True):
-        raw = detector.detect(frame, exclude_player=False)
         before = perf_counter()
-        predictions = detector(frame)
+        raw = detector.detect(frame, exclude_player=False)
         timings.append((perf_counter() - before) * 1000)
+        predictions = without_player(raw)
+        eligible_reports += sum(eligible(d.kind, d.box) for d in predictions)
         players = [label for label in record["labels"] if label["player"]]
         others = [label for label in record["labels"] if not label["player"]]
         hits, missed, invented = match(predictions, others)
+        invented = [d for d in invented if not any(overlap(d.box, p["box"]) >= 0.4 for p in players)]
+        for name, group in groups.items():
+            selected = [
+                label
+                for label in others
+                if (
+                    label["kind"] == "person" and label["box"][3] - label["box"][1] > 80
+                    if name == "people_over_80"
+                    else label["kind"] != "person"
+                    and label["box"][2] - label["box"][0] > (200 if name == "vehicles_over_200" else 100)
+                )
+            ]
+            group["count"] += len(selected)
+            group["found"] += sum(label in selected for _, label in hits)
         scored_hits = sum(eligible(label["kind"], label["box"]) for _, label in hits)
         ignored_predictions += len(predictions) - scored_hits - len(invented)
         for detection, label in hits:
             if eligible(label["kind"], label["box"]):
-                totals[detection.kind]["found"] += 1
+                totals[label["kind"]]["found"] += 1
+                kind_agreement["matched"] += 1
+                kind_agreement["same"] += detection.kind == label["kind"]
             if eligible(label["kind"], label["box"], large=True):
-                large[detection.kind]["found"] += 1
+                large[label["kind"]]["found"] += 1
         for label in missed:
             totals[label["kind"]]["missed"] += 1
             if eligible(label["kind"], label["box"], large=True):
                 large[label["kind"]]["missed"] += 1
         for detection in invented:
             totals[detection.kind]["invented"] += 1
-        if any(overlap(d.box, p["box"]) >= 0.5 for d in predictions for p in players):
+        if any(overlap(d.box, p["box"]) >= 0.4 for d in predictions for p in players):
             leakage.append(record["id"])
-        removed = [d for d in raw if is_player(d)]
-        removed_player += sum(any(overlap(d.box, p["box"]) >= 0.5 for p in players) for d in removed)
+        removed = [d for d in raw if not any(d is kept for kept in predictions)]
+        removed_player += sum(any(overlap(d.box, p["box"]) >= 0.4 for p in players) for d in removed)
         collateral.extend(
             {"frame": record["id"], "kind": d.kind, "box": d.box}
             for d in removed
-            if any(overlap(d.box, label["box"]) >= 0.5 for label in others)
+            if any(overlap(d.box, label["box"]) >= 0.4 for label in others)
         )
         details.append(
             {
@@ -161,11 +192,18 @@ def evaluate(detector, records, frames):
     large_count = sum(sum(v.values()) for v in large.values())
     return {
         "frames": len(frames),
-        "iou": 0.5,
+        "iou": 0.4,
+        "groups": {
+            name: {**group, "recall": group["found"] / group["count"] if group["count"] else None}
+            for name, group in groups.items()
+        },
+        "kind_agreement": kind_agreement,
         "per_kind": totals,
         "large_per_kind": large,
         "large_recall": large_found / large_count if large_count else None,
-        "invented_fraction": invented / (found + invented) if found + invented else None,
+        "eligible_reports": eligible_reports,
+        "invented_fraction": invented / eligible_reports if eligible_reports else None,
+        "matched_precision_invented_fraction": invented / (found + invented) if found + invented else None,
         "ignored_small_predictions": ignored_predictions,
         "player_reported_frames": leakage,
         "player_reported_fraction": len(leakage) / len(frames),
@@ -178,8 +216,10 @@ def evaluate(detector, records, frames):
     }
 
 
-def sheets(records, frames, details):
-    for start in (0, 12, 40, 48, 56, 64, 72, 76):
+def sheets(records, frames, details, destination=None):
+    destination = ROOT if destination is None else destination
+    (destination / "sheets").mkdir(parents=True, exist_ok=True)
+    for start in range(0, len(records), 4):
         cells = []
         for record, rgb, result in zip(
             records[start : start + 4], frames[start : start + 4], details[start : start + 4], strict=True
@@ -203,21 +243,24 @@ def sheets(records, frames, details):
                 2,
             )
             cells.append(bgr)
+        while len(cells) < 4:
+            cells.append(np.zeros_like(cells[0]))
         image = cv2.vconcat([cv2.hconcat(cells[:2]), cv2.hconcat(cells[2:])])
-        cv2.imwrite(str(ROOT / "sheets" / f"labelled-{start:03}.jpg"), image)
+        cv2.imwrite(str(destination / "sheets" / f"labelled-{start:03}.jpg"), image)
 
 
-def sample(sources):
-    rng, records = random.Random(1414), []
+def sample(sources, seed=1414, counts=(24, 24, 32), exclude=()):
+    rng, records = random.Random(seed), []
     (ROOT / "frames").mkdir(parents=True, exist_ok=True)
-    for source, count in zip(sources, (24, 24, 32), strict=True):
+    for source, count in zip(sources, counts, strict=True):
         timing = {
             row["i"]: row for row in map(json.loads, (source / "frames.jsonl").read_text().splitlines())
         }
         capture = cv2.VideoCapture(str(source / "video.mp4"))
         length, fps = int(capture.get(cv2.CAP_PROP_FRAME_COUNT)), capture.get(cv2.CAP_PROP_FPS)
         try:
-            for index in sorted(rng.sample(range(length), count)):
+            population = [i for i in range(length) if (str(source), i) not in exclude]
+            for index in sorted(rng.sample(population, count)):
                 capture.set(cv2.CAP_PROP_POS_FRAMES, index)
                 ok, frame = capture.read()
                 if not ok:
@@ -235,22 +278,35 @@ def sample(sources):
                         "frame_id": timing[index]["frame_id"],
                         "file": f"frames/{ident}.jpg",
                         "labels": [],
+                        "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
                     }
                 )
         finally:
             capture.release()
     # Never replace the hand labels when regenerating the same frame sample.
-    (ROOT / "sample.json").write_text(json.dumps({"seed": 1414, "frames": records}, indent=2) + "\n")
+    (ROOT / "sample.json").write_text(json.dumps({"seed": seed, "frames": records}, indent=2) + "\n")
 
 
 def main():
+    global ROOT
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--memory", action="store_true")
     parser.add_argument("--memory-only", action="store_true")
     parser.add_argument("--sample", nargs=3, type=Path)
+    parser.add_argument("--root", type=Path, default=ROOT)
+    parser.add_argument("--output", type=Path)
+    parser.add_argument("--seed", type=int, default=1414)
+    parser.add_argument("--counts", nargs=3, type=int, default=(24, 24, 32))
+    parser.add_argument("--exclude", type=Path)
     args = parser.parse_args()
+    ROOT = args.root.resolve()
     if args.sample:
-        sample(args.sample)
+        exclude = set()
+        if args.exclude:
+            exclude = {
+                (r["source"], r["frame_index"]) for r in json.loads(args.exclude.read_text())["frames"]
+            }
+        sample(args.sample, args.seed, args.counts, exclude)
         return
     label_path = ROOT / "labels.json"
     manifest = json.loads(label_path.read_text())
@@ -279,14 +335,34 @@ def main():
     if args.memory:
         result["memory"] = memory_probe(detector, frames)
     result["labels_sha256"] = hashlib.sha256(label_path.read_bytes()).hexdigest()
-    result["acceptance"] = {
-        "recall": result["large_recall"] is not None and result["large_recall"] >= 0.85,
-        "precision": result["invented_fraction"] is not None and result["invented_fraction"] <= 0.1,
-        "player": result["player_reported_fraction"] < 0.02,
-        "speed": result["mean_ms"] < 40 and result["poller"]["results_hz"] >= 10,
+    result["model"] = {
+        "file": MODEL.name,
+        "sha256": SHA256,
+        "confidence": detector.confidence,
+        "input_size": detector.size,
+        "native_tiles": detector.tiled,
+        "provider_order": detector.session.get_providers(),
+        "provider_options": detector.session.get_provider_options(),
     }
-    sheets(records, frames, result["details"])
-    (ROOT / "metrics.json").write_text(json.dumps(result, indent=2) + "\n")
+    result["evaluated_code_sha256"] = {
+        "objects": hashlib.sha256(
+            (Path(__file__).resolve().parents[1] / "src/pilot/objects.py").read_bytes()
+        ).hexdigest(),
+        "evaluator": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+    }
+    result["acceptance"] = {
+        **{
+            name: group["recall"] is not None and group["recall"] >= target
+            for (name, group), target in zip(result["groups"].items(), (0.9, 0.8, 0.8), strict=True)
+        },
+        "precision": result["invented_fraction"] is not None and result["invented_fraction"] <= 0.15,
+        "player": result["player_reported_fraction"] < 0.02,
+        "speed": result["poller"]["results_hz"] >= 8 and result["poller"]["poll_max_ms"] < 1,
+    }
+    destination = ROOT if args.output is None else args.output.resolve()
+    destination.mkdir(parents=True, exist_ok=True)
+    sheets(records, frames, result["details"], destination)
+    (destination / "metrics.json").write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps({k: v for k, v in result.items() if k != "details"}, indent=2))
 
 

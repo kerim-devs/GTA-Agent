@@ -1767,6 +1767,16 @@
             378
           ],
           "player": false
+        },
+        {
+          "kind": "car",
+          "box": [
+            310,
+            350,
+            443,
+            401
+          ],
+          "player": false
         }
       ],
       "sha256": "8ea982d91c9c8390fc325fc5d4bec46cb88638a5c4ef8d00ccf8acaea1ca3a7e",
