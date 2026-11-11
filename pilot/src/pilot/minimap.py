@@ -277,7 +277,14 @@ def _flood(seed01: np.ndarray, mask01: np.ndarray):
     return acc, steps
 
 
-def _trace(weak: np.ndarray, strong: np.ndarray, val: np.ndarray, erase: np.ndarray | None = None):
+def _trace(
+    weak: np.ndarray,
+    strong: np.ndarray,
+    val: np.ndarray,
+    erase: np.ndarray | None = None,
+    *,
+    behind: bool = False,
+):
     """Follow the route mask from the arrow. Returns None or a dict with bearings and quality numbers.
 
     With `erase` (world lines) the flood may cross erased pixels next to the arrow, where a world line can
@@ -289,12 +296,19 @@ def _trace(weak: np.ndarray, strong: np.ndarray, val: np.ndarray, erase: np.ndar
     if erase is not None:
         erased_near = int(np.count_nonzero(cv2.bitwise_and(mask, erase).ravel()[_NEAR_ZONE]))
         cv2.bitwise_and(mask, cv2.bitwise_not(cv2.bitwise_and(erase, _FAR_OF_ARROW)), dst=mask)
-    hit = np.flatnonzero(mask.ravel()[_SEED_IDX])
+    seed_idx, seed_d = _SEED_IDX, _SEED_D
+    if behind:
+        # A route behind the car can start beyond the arrow's usual seed circle.
+        # Stay inside the map, above the bars, and only search below the arrow.
+        seed_idx = np.flatnonzero((_DIST_FLAT > SEED_R) & (_DIST_FLAT <= 36) & (_YF >= 0))
+        seed_idx = seed_idx[np.argsort(_DIST_FLAT[seed_idx], kind="stable")]
+        seed_d = _DIST_FLAT[seed_idx]
+    hit = np.flatnonzero(mask.ravel()[seed_idx])
     if hit.size == 0:
         return None
-    d0 = float(_SEED_D[hit[0]])
+    d0 = float(seed_d[hit[0]])
     seed = np.zeros((RH, RW), np.uint8)
-    seed.ravel()[_SEED_IDX[hit[_SEED_D[hit] <= d0 + 3.0]]] = 1
+    seed.ravel()[seed_idx[hit[seed_d[hit] <= d0 + 3.0]]] = 1
     mask01 = (mask > 0).view(np.uint8)
     acc, steps = _flood(seed, mask01)
     reached01 = cv2.threshold(acc, 0, 1, cv2.THRESH_BINARY)[1]
@@ -778,6 +792,15 @@ def _analyse(crop: np.ndarray, keep: bool = False):
     damaged_here = n_local >= 4  # the damage covers the surroundings of the arrow
     oky = _route_ok(ty, world, damaged_here)
     okp = _route_ok(tp, False, damaged_here)
+    if not oky and not okp and has_arrow and bars >= 2 and not corrupt:
+        # Preserve every accepted trace and all quality filters. Seed outside
+        # the failed circle so a small coloured speck cannot hide the line.
+        # Bearings still follow the observed line, including a bend ahead.
+        lower = _trace(wp, sp, val, behind=True)
+        if _route_ok(lower, False, damaged_here):
+            tp, okp = lower, True
+            if keep:
+                info["purple"] = tp
     if oky and okp:
         if ty["n"] * ty["strong"] >= tp["n"] * tp["strong"]:
             okp = False
