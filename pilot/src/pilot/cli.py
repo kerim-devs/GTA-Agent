@@ -8,7 +8,7 @@ from pathlib import Path
 from .bridge import Bridge
 from .conductor import PLAY_RECORDINGS, run_play
 from .drive import DriveConfig, Driver
-from .head import CodexHead, ScriptedHead
+from .head import CodexHead, CodexServerHead, ScriptedHead
 from .loop import RECORDINGS, Pipeline, run_drive
 from .overlay import overlay_port, run_overlay
 from .replay import run_replay
@@ -63,7 +63,7 @@ def main(argv: list[str] | None = None) -> None:
     play.add_argument("--no-ocr", action="store_true")
     play.add_argument("--record-dir", type=absolute_path, default=PLAY_RECORDINGS)
     play.add_argument("--notebook", type=Path)
-    play.add_argument("--head", choices=("scripted", "codex"), default="scripted")
+    play.add_argument("--head", choices=("scripted", "codex", "codex-server"), default="scripted")
     play.add_argument("--head-model")
     play.add_argument("--head-effort", default="low")
     play.add_argument("--head-timeout", type=duration, default=45.0)
@@ -101,7 +101,9 @@ def main(argv: list[str] | None = None) -> None:
         head = (
             ScriptedHead()
             if args.head == "scripted"
-            else CodexHead(model=args.head_model, effort=args.head_effort, timeout=args.head_timeout)
+            else (CodexServerHead if args.head == "codex-server" else CodexHead)(
+                model=args.head_model, effort=args.head_effort, timeout=args.head_timeout
+            )
         )
         with Bridge() as bridge:
             print(

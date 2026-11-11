@@ -3,12 +3,15 @@
 from collections import deque
 from dataclasses import dataclass, field
 from math import atan2, degrees, hypot
+from typing import TYPE_CHECKING, ClassVar
 
 import numpy as np
 
 from .contract import NEUTRAL_PAD, Detection, Hud, Pad, Reading
 from .drive import Driver
-from .head import SkillCall, parse_response
+
+if TYPE_CHECKING:
+    from .head import SkillCall
 
 
 @dataclass(frozen=True)
@@ -36,22 +39,14 @@ def clamp(value, lower, upper):
 
 
 class Skill:
-    def __init__(self, call: SkillCall, *, driver=None):
+    def __init__(self, call: "SkillCall", *, driver=None):
         # Direct callers get the same all-or-nothing validation as a head response.
+        from .head import parse_response
+
         parse_response({"plan": [{"name": call.name, "args": call.args}], "sentence": "Weiter."})
         self.name = call.name
         self.args = dict(call.args)
-        limits = {
-            "drive_route": (0.1, 120, 60),
-            "wait": (0.1, 60, 30),
-            "press": (0.05, 1, 0.1),
-            "walk": (0.1, 10, 1),
-            "look": (0.1, 5, 0.5),
-            "shoot": (0.05, 1, 0.2),
-            "walk_to": (0.1, 10, 10),
-            "face": (0.1, 5, 5),
-        }
-        lower, upper, default = limits[self.name]
+        lower, upper, default = REGISTRY[self.name].parameters["duration"]
         self.duration = clamp(self.args.get("duration", default), lower, upper)
         if self.name == "look":
             angle = clamp(self.args.get("angle", 0), -180, 180)
@@ -188,6 +183,102 @@ class Skill:
         )
 
 
+BUTTONS = (
+    "cross",
+    "circle",
+    "square",
+    "triangle",
+    "l1",
+    "r1",
+    "l3",
+    "r3",
+    "up",
+    "down",
+    "left",
+    "right",
+    "l2",
+    "r2",
+    "options",
+    "touchpad",
+)
+BLIP_COLORS = ("yellow", "blue", "red")
+
+
+class RegisteredSkill(Skill):
+    def __init__(self, args: dict, *, driver=None):
+        from .head import SkillCall
+
+        super().__init__(SkillCall(type(self).name, args), driver=driver)
+        for key, value in self.args.items():
+            rule = self.parameters[key]
+            if not isinstance(value, bool) and isinstance(value, (int, float)):
+                self.args[key] = clamp(value, rule[0], rule[1])
+
+
+class DriveRoute(RegisteredSkill):
+    name = "drive_route"
+    parameters: ClassVar[dict] = {"duration": (0.1, 120, 60)}
+    prompt = "Follow a visible GPS route in a vehicle, for at most duration seconds."
+
+
+class Wait(RegisteredSkill):
+    name = "wait"
+    parameters: ClassVar[dict] = {"duration": (0.1, 60, 30)}
+    prompt = "Wait with a neutral controller for duration seconds."
+
+
+class Press(RegisteredSkill):
+    name = "press"
+    parameters: ClassVar[dict] = {"duration": (0.05, 1, 0.1), "count": (1, 5, 1), "button": BUTTONS}
+    prompt = "Press a permitted button count times, with releases between presses."
+
+
+class Walk(RegisteredSkill):
+    name = "walk"
+    parameters: ClassVar[dict] = {
+        "duration": (0.1, 10, 1),
+        "x": (-1, 1, 0),
+        "y": (-1, 1, 0),
+        "sprint": (False, True),
+    }
+    prompt = "Walk on foot: x is right, y is down (forward is negative y); optional sprint."
+
+
+class Look(RegisteredSkill):
+    name = "look"
+    parameters: ClassVar[dict] = {"duration": (0.1, 5, 0.5), "angle": (-180, 180, 0)}
+    prompt = "Turn the camera by an estimated angle in degrees, positive to the right."
+
+
+class Shoot(RegisteredSkill):
+    name = "shoot"
+    parameters: ClassVar[dict] = {"duration": (0.05, 1, 0.2), "count": (1, 5, 1)}
+    prompt = "Aim and fire count brief bursts, releasing the trigger between bursts."
+
+
+class WalkTo(RegisteredSkill):
+    name = "walk_to"
+    parameters: ClassVar[dict] = {"duration": (0.1, 10, 10), "color": BLIP_COLORS, "sprint": (False, True)}
+    prompt = "Walk toward the nearest visible blip of color on a flat minimap; fail if lost or blocked."
+
+
+class Face(RegisteredSkill):
+    name = "face"
+    parameters: ClassVar[dict] = {"duration": (0.1, 5, 5), "color": BLIP_COLORS}
+    prompt = "Turn to face the nearest visible blip of color on a flat minimap."
+
+
+# New modules plug in with an import and one entry here.
+REGISTRY = {cls.name: cls for cls in (DriveRoute, Wait, Press, Walk, Look, Shoot, WalkTo, Face)}
+
+
+def make_skill(call, *, driver=None):
+    cls = REGISTRY[call.name]
+    if call.name == "drive_route":
+        return cls(call.args, driver=driver)
+    return cls(call.args)
+
+
 class SkillRunner:
     def __init__(self, *, driver_factory=Driver):
         self.driver_factory = driver_factory
@@ -197,10 +288,10 @@ class SkillRunner:
         self.release_pending = False
         self.completed = False
 
-    def replace(self, calls: tuple[SkillCall, ...]) -> Pad:
+    def replace(self, calls: tuple["SkillCall", ...]) -> Pad:
         # Construct all skills before touching the existing plan.
         replacements = [
-            Skill(call, driver=self.driver_factory() if call.name == "drive_route" else None)
+            make_skill(call, driver=self.driver_factory() if call.name == "drive_route" else None)
             for call in calls
         ]
         self.stop("replaced")
@@ -227,6 +318,7 @@ class SkillRunner:
             if not self.queue:
                 return SkillResult(status="done")
             self.active = self.queue.popleft()
+            self.active_started = observation.time
         result = self.active.step(observation)
         if result.status != "running":
             self.last = {"name": self.active.name, "status": result.status, "reason": result.reason}
@@ -240,3 +332,30 @@ class SkillRunner:
         if self.active is not None:
             return {"name": self.active.name, "status": "running", "reason": None}
         return self.last
+
+    @property
+    def has_plan(self):
+        return self.active is not None or bool(self.queue)
+
+    def append(self, calls):
+        additions = [
+            make_skill(call, driver=self.driver_factory() if call.name == "drive_route" else None)
+            for call in calls
+        ]
+        self.queue.extend(additions)
+
+    def remaining_steps(self, t):
+        skills = ([self.active] if self.active is not None else []) + list(self.queue)
+        result = []
+        for skill in skills:
+            limit = getattr(skill, "limit", None)
+            if limit is None:
+                params = REGISTRY[skill.name].parameters
+                # Unknown implementations are bounded conservatively by declared duration.
+                limit = params.get("duration", (0, 120, 120))[1]
+            elapsed = max(0, t - self.active_started) if skill is self.active else 0
+            result.append({"name": skill.name, "remaining_seconds": max(0, limit - elapsed)})
+        return result
+
+    def remaining(self, t):
+        return sum(step["remaining_seconds"] for step in self.remaining_steps(t))

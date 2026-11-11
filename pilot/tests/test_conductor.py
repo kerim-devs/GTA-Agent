@@ -65,7 +65,8 @@ def test_event_one_request_and_sequential_plan(tmp_path):
             if conductor.runner.active:
                 seen.append(conductor.runner.active.name)
         assert seen == ["walk", "look", "press", "press"]
-        assert len(pending.jobs) == 1
+        assert len(pending.jobs) == 2
+        assert pending.jobs[1][2][0].events[0]["kind"] == "plan_ending"
         assert rows(tmp_path)[1]["applied"] is True
         assert (tmp_path / "head-0001.jpg").exists()
         assert "objective_changed" in (tmp_path / "head-0001.prompt.txt").read_text()
@@ -518,3 +519,67 @@ def test_a_replaced_press_is_let_go_before_the_same_button_is_pressed_again():
     # without this gap the game sees one long press instead of two
     assert runner.tick(observation(0.06)).pad == NEUTRAL_PAD
     assert runner.tick(observation(0.09)).pad.buttons == ("cross",)
+
+
+@pytest.mark.parametrize("fail", [False, True])
+def test_optional_sources_reach_every_tick_and_close_on_error(tmp_path, fail):
+    from pilot.contract import Detection, Hud
+
+    clock = Clock()
+    bridge = FakeBridge(tmp_path, clock, error=RuntimeError("source-run") if fail else None)
+    pipeline = FakePipeline()
+    captured = []
+
+    class Objects:
+        closed = 0
+
+        def poll(self, frame, t):
+            assert frame is RGB
+            return t, (Detection("person", (0, 0, 1, 1), 0.9),)
+
+        def close(self):
+            self.closed += 1
+
+    class HUD:
+        def read(self, frame, text=None):
+            assert frame is RGB
+            assert text is not None
+            return Hud(wanted=0, health=1)
+
+    class ObservingRunner(SkillRunner):
+        def tick(self, observation):
+            captured.append(observation)
+            return super().tick(observation)
+
+    def factory(*args, **kwargs):
+        kwargs["runner"] = ObservingRunner()
+        return Conductor(*args, **kwargs, submit=instant, detector=NoEvents())
+
+    objects = Objects()
+    args = dict(
+        seconds=0.3,
+        pipeline=pipeline,
+        ocr=False,
+        clock=clock,
+        sleep=clock.sleep,
+        conductor_factory=factory,
+        objects=objects,
+        hud=HUD(),
+    )
+    if fail:
+        with pytest.raises(RuntimeError, match="source-run"):
+            run_play(bridge, **args)
+    else:
+        run_play(bridge, **args)
+    assert objects.closed == 1
+    assert pipeline.closed
+    assert captured
+    assert all(
+        obs.frame is RGB
+        and obs.objects[0].kind == "person"
+        and obs.hud.health == 1
+        and obs.objects_time is not None
+        for obs in captured
+    )
+    assert bridge.calls[-1][1] == "stop"
+    assert [call[2] for call in bridge.calls if call[1] == "pad"][-1] == {}
