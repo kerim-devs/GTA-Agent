@@ -21,7 +21,9 @@ from pilot.motion import map_motion
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("strengths", type=float, nargs="+")
 parser.add_argument("--seconds", type=float, default=2.5)
-parser.add_argument("--record-dir", type=Path, default=Path("/Users/kerim/recordings/pilot"))
+parser.add_argument(
+    "--record-dir", type=Path, default=Path("/Users/kerim/recordings/pilot")
+)
 args = parser.parse_args()
 if any(not 0 < strength <= 1 for strength in args.strengths):
     parser.error("a strength is above 0 and at most 1")
@@ -64,7 +66,12 @@ with Bridge() as bridge:
                         raise RuntimeError(f"controller returned {status}")
                     log.write(
                         json.dumps(
-                            {"t": received - started, "label": label, "pad": pad.payload(), "speed": shift}
+                            {
+                                "t": received - started,
+                                "label": label,
+                                "pad": pad.payload(),
+                                "speed": shift,
+                            }
                         )
                         + "\n"
                     )
@@ -79,10 +86,19 @@ with Bridge() as bridge:
                     {
                         "r2": strength,
                         "first_motion": next(
-                            (round(t - moved[0][0], 2) for t, speed in moved if speed > 3), None
+                            (
+                                round(t - moved[0][0], 2)
+                                for t, speed in moved
+                                if speed > 3
+                            ),
+                            None,
                         ),
-                        "speed_px_s_second_half": round(statistics.median(late), 1) if late else None,
-                        "speed_px_s_end": round(statistics.median([s for _, s in moved[-8:]]), 1)
+                        "speed_px_s_second_half": round(statistics.median(late), 1)
+                        if late
+                        else None,
+                        "speed_px_s_end": round(
+                            statistics.median([s for _, s in moved[-8:]]), 1
+                        )
                         if moved
                         else None,
                     }
