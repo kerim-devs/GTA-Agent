@@ -1,4 +1,5 @@
 from dataclasses import replace
+from itertools import pairwise
 
 import pytest
 
@@ -27,7 +28,7 @@ def run(skill, reading=FLAT, *, hz=30, seconds=12.0, readings=None):
 
 def held(rows, wanted):
     """Seconds the right stick was at `wanted`, counted tick by tick."""
-    return sum(b[0] - a[0] for a, b in zip(rows, rows[1:], strict=False) if a[1].right == wanted)
+    return sum(b[0] - a[0] for a, b in pairwise(rows) if a[1].right == wanted)
 
 
 def test_the_move_runs_into_the_upper_stop_and_comes_back_by_four_pulses():
