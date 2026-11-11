@@ -271,9 +271,29 @@ class Face(RegisteredSkill):
 
 
 # New modules plug in with an import and one entry here.
+from .combat import Fight, Melee  # noqa: E402
+from .punch import Punch  # noqa: E402
+from .vehicle_entry import EnterVehicle  # noqa: E402
 from .waypoint import SetWaypoint  # noqa: E402
 
-REGISTRY = {cls.name: cls for cls in (DriveRoute, Wait, Press, Walk, Look, Shoot, WalkTo, Face, SetWaypoint)}
+REGISTRY = {
+    cls.name: cls
+    for cls in (
+        DriveRoute,
+        Wait,
+        Press,
+        Walk,
+        Look,
+        Shoot,
+        WalkTo,
+        Face,
+        SetWaypoint,
+        EnterVehicle,
+        Fight,
+        Melee,
+        Punch,
+    )
+}
 
 
 def make_skill(call, *, driver=None):
