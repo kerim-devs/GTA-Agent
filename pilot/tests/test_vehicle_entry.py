@@ -79,23 +79,36 @@ def test_release_before_triangle_and_neutral_for_entire_wait():
     assert result.pad.left[1] < 0 and result.pad.buttons == ()
 
 
-def test_requires_continuous_uncorrupted_vehicle_map():
+def test_a_vehicle_map_after_the_press_must_last_a_second():
     skill = EnterVehicle({})
+    skill.step(obs(0, (NEAR,)))
+    assert skill.step(obs(0.04, (NEAR,))).pad.buttons == ("triangle",)
     for time, minimap, corrupt in (
-        (0, "tilted", False),
-        (0.4, "tilted", False),
-        (0.49, "flat", False),
-        (0.5, "tilted", False),
-        (0.9, "tilted", True),
-        (1, "tilted", False),
-        (1.49, "tilted", False),
+        (0.2, "tilted", False),
+        (1.03, "tilted", False),  # on foot the reader held a false vehicle map for 0.83 s
+        (1.1, "flat", False),
+        (1.2, "tilted", False),
+        (1.6, "flat", True),  # a damaged tick neither counts nor starts over
+        (2.19, "tilted", False),
     ):
-        result = skill.step(obs(time, minimap=minimap, corrupt=corrupt))
-        assert result.status == "running"
-    result = skill.step(obs(1.5, minimap="tilted"))
+        result = skill.step(obs(time, (), minimap=minimap, corrupt=corrupt, delivered=False))
+        assert result.status == "running" and result.pad == NEUTRAL_PAD
+    result = skill.step(obs(2.2, minimap="tilted"))
     assert result.status == "done" and result.reason == "entered vehicle"
     assert result.pad == NEUTRAL_PAD
-    assert skill.step(obs(2)) == result
+    assert skill.step(obs(3)) == result
+
+
+def test_a_vehicle_map_before_any_press_is_believed_only_when_it_stays():
+    skill = EnterVehicle({})
+    for time in (0, 0.5, 0.83):
+        assert skill.step(obs(time, minimap="tilted")).pad == NEUTRAL_PAD
+    # The map is flat again: it was the reader, and the walk to the car goes on.
+    assert skill.step(obs(0.9)).pad.left[1] < 0
+    for time in (1.0, 2.0, 2.99):
+        assert skill.step(obs(time, minimap="tilted")).status == "running"
+    result = skill.step(obs(3.0, minimap="tilted"))
+    assert result.status == "done" and result.reason == "already in a vehicle"
 
 
 @pytest.mark.parametrize("bad", ["stale", "missing", "no_stamp", "future", "corrupt", "no_map"])

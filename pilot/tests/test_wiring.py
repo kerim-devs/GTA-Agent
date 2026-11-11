@@ -1,6 +1,8 @@
 """Screen ownership, recovery and stale answers through the real conductor."""
 
 import json
+import subprocess
+import sys
 from concurrent.futures import Future
 
 import cv2
@@ -10,9 +12,9 @@ import pytest
 from pilot.conductor import Conductor
 from pilot.contract import NEUTRAL_PAD, Hud, Reading
 from pilot.flow import Flow
-from pilot.head import parse_response
+from pilot.head import parse_response, response_schema
 from pilot.scene import SceneText
-from pilot.skills import REGISTRY, Observation, RegisteredSkill, SkillResult
+from pilot.skills import REGISTRY, Observation, RegisteredSkill, SkillResult, SkillRunner
 from pilot.waypoint import SetWaypoint
 from tools.sim_flow import simulate_conductor
 
@@ -205,6 +207,47 @@ def test_the_heads_plan_for_a_stuck_screen_ends_when_the_game_is_back(session):
     assert rows(conductor, "request")[-1]["request"]["events"][0]["kind"] == "menu_closed"
 
 
+@pytest.mark.parametrize("module", ["combat", "punch", "vehicle_entry", "waypoint", "skills", "flow"])
+def test_every_skill_module_imports_on_its_own(module):
+    # The registry imports the skill modules, so none of them may need the registry to load.
+    done = subprocess.run([sys.executable, "-c", f"import pilot.{module}"], capture_output=True, text=True)
+    assert done.returncode == 0, done.stderr
+
+
+NEW_SKILLS = {
+    "enter_vehicle": {"duration": 25, "kind": "any"},
+    "fight": {"duration": 30, "cover": "no"},
+    "melee": {"duration": 10, "cover": "no"},
+    "punch": {"duration": 15, "hits": 3},
+}
+
+
+@pytest.mark.parametrize("name", NEW_SKILLS)
+def test_a_plan_from_the_head_starts_and_stops_every_new_skill(name):
+    args = NEW_SKILLS[name]
+    plan = parse_response({"plan": [{"name": name, "args": args}], "sentence": "Los."}).plan
+    runner = SkillRunner()
+    runner.replace(plan)
+    assert runner.tick(Observation(FLAT, True, 0)).pad == NEUTRAL_PAD
+    assert runner.tick(Observation(FLAT, True, 0.1)).status == "running"
+    assert runner.active.name == name
+    assert runner.remaining(0.1) == args["duration"]
+    runner.stop("flow")
+    assert runner.last == {"name": name, "status": "failed", "reason": "flow"}
+
+
+def test_the_head_can_only_ask_for_whole_punches():
+    variants = {
+        v["properties"]["name"]["enum"][0]: v
+        for v in response_schema()["properties"]["plan"]["items"]["anyOf"]
+    }
+    assert variants["punch"]["properties"]["args"]["properties"]["hits"]["type"] == "integer"
+    with pytest.raises(ValueError, match="hits must be an integer"):
+        parse_response(
+            {"plan": [{"name": "punch", "args": {"duration": 15, "hits": 2.5}}], "sentence": "Los."}
+        )
+
+
 def test_waypoint_owns_both_menus_and_expectation_ends_with_skill(session):
     conductor, _ = session
     assert RegisteredSkill.opens == ()
@@ -307,10 +350,36 @@ def test_cli_attaches_reader_and_flow(monkeypatch, disabled):
     calls = []
     monkeypatch.setattr(cli, "Bridge", Bridge)
     monkeypatch.setattr(cli, "Pipeline", lambda **kwargs: None)
+    monkeypatch.setattr(cli, "ObjectReader", lambda: "detector")
     monkeypatch.setattr(cli, "run_play", lambda *args, **kwargs: calls.append(kwargs))
-    cli.main(["play", "--no-record", "--no-ocr", *(["--no-hud-flow"] if disabled else [])])
+    off = ["--no-hud-flow", "--no-objects"] if disabled else []
+    cli.main(["play", "--no-record", "--no-ocr", *off])
     assert (calls[0]["hud"] is None) is disabled
     assert (calls[0]["flow"] is None) is disabled
+    assert calls[0]["objects"] == (None if disabled else "detector")
+
+
+def test_cli_plays_without_the_detector_when_its_weights_are_missing(monkeypatch, capsys):
+    from pilot import cli
+
+    class Bridge:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            pass
+
+    def missing():
+        raise RuntimeError("YOLOX weights missing or corrupt")
+
+    calls = []
+    monkeypatch.setattr(cli, "Bridge", Bridge)
+    monkeypatch.setattr(cli, "Pipeline", lambda **kwargs: None)
+    monkeypatch.setattr(cli, "ObjectReader", missing)
+    monkeypatch.setattr(cli, "run_play", lambda *args, **kwargs: calls.append(kwargs))
+    cli.main(["play", "--no-record", "--no-ocr"])
+    assert calls[0]["objects"] is None
+    assert "object detector off: YOLOX weights missing" in capsys.readouterr().err
 
 
 def test_replay_hud_once_per_frame_and_text_capture_clock(tmp_path, monkeypatch):

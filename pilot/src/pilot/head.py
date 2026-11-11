@@ -12,6 +12,7 @@ from .skills import BLIP_COLORS, BUTTONS, REGISTRY
 
 # Compatibility views; the registry is the only source of skill metadata.
 SKILLS = REGISTRY.keys()
+WHOLE = ("count", "hits")
 
 
 def parameters():
@@ -85,8 +86,8 @@ def parse_response(value: str | dict) -> HeadResponse:
                     raise ValueError(f"invalid {key}")
             elif isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
                 raise ValueError("skill values must be finite numbers")
-            elif key == "count" and int(value) != value:
-                raise ValueError("count must be an integer")
+            elif key in WHOLE and int(value) != value:
+                raise ValueError(f"{key} must be an integer")
         calls.append(SkillCall(name, dict(args)))
     return HeadResponse(tuple(calls), data["sentence"].strip(), data.get("lesson"))
 
@@ -111,7 +112,7 @@ def response_schema() -> dict:
             else:
                 lower, upper, default = rule
                 properties[key] = {
-                    "type": "integer" if key == "count" else "number",
+                    "type": "integer" if key in WHOLE else "number",
                     "minimum": lower,
                     "maximum": upper,
                     "default": default,
