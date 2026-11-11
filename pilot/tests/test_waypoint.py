@@ -195,7 +195,7 @@ def test_ocr_failure_does_not_leave_any_control_held():
     "picture,reason",
     [
         (MapPicture("map"), "cursor"),
-        (MapPicture("map", (640, 360)), "player"),
+        (MapPicture("map", (640, 360)), "no-visible-mission"),
         (MapPicture("map", (640, 360), (640, 360)), "no-visible-mission"),
         (MapPicture("transition"), "map-check"),
     ],
@@ -541,3 +541,295 @@ def test_a_map_without_detail_gets_no_push():
     skill._picture = lambda image: read_map(image, sim.map_text("map"))
     result = skill.step(observation(0, "map", frame))
     assert result.pad == NEUTRAL_PAD and skill.failure.startswith("map-texture-unverified")
+
+
+LIVE_TEXT = SceneText(
+    (
+        TextLine("Spieler A", 1, (1146, 42, 64, 14), "other"),
+        TextLine("Simeon S", 1, (1142, 364, 68, 17), "other"),
+        TextLine("Wegpunkt (1600m)", 1, (1076, 68, 116, 16), "other"),
+        TextLine("Zoomen Markierung wählen Interessanter Ort Wegpunkt", 1, (670, 666, 530, 15), "other"),
+    )
+)
+
+
+def live_frame(name):
+    return cv2.cvtColor(cv2.imread(str(FIXTURES / "live" / f"{name}.png")), cv2.COLOR_BGR2RGB)
+
+
+def test_live_opening_map_reads_cursor_mission_and_existing_waypoint():
+    from pilot.waypoint import land_at_cursor
+
+    frame = live_frame("124637-2.605")
+    picture = read_map(frame, LIVE_TEXT)
+    assert picture.screen == "map" and picture.cursor == (640, 360)
+    assert picture.player is None
+    assert picture.missions == ((750, 207),)
+    assert picture.waypoint and picture.proof == "waypoint legend: Wegpunkt (1600m)"
+    assert land_at_cursor(frame)
+    # The badge alone cannot invent a mission absent its named legend entry.
+    text = SceneText(tuple(line for line in LIVE_TEXT.lines if "Simeon" not in line.text))
+    assert read_map(frame, text).missions == ()
+
+
+@pytest.mark.parametrize(
+    "before,after,dy",
+    [
+        ("123938-28.145", "123938-28.846", 18.8),
+        ("123938-29.746", "123938-30.648", 68.7),
+        ("125537-4.691", "125537-5.442", 37.4),
+    ],
+)
+def test_live_push_pairs_show_motion_even_when_old_corner_flow_loses_it(before, after, dy):
+    from pilot.waypoint import map_motion, map_shift
+
+    first, second = live_frame(before), live_frame(after)
+    assert map_motion(first, second) == pytest.approx((0, dy), abs=0.6)
+    assert map_motion(first, first) == pytest.approx((0, 0), abs=0.1)
+    if dy > 30:
+        assert map_shift(first, second) is None
+    damaged = np.random.default_rng(71).integers(0, 256, first.shape, dtype=np.uint8)
+    assert map_motion(first, damaged) is None
+
+
+@pytest.mark.parametrize("delay", [0.14, 0.6, 1.1])
+@pytest.mark.parametrize("gain", [125, 165])
+def test_live_zoom_mission_with_unreadable_player_finishes_on_observed_proof(delay, gain):
+    world = sim.MapWorld(zoom="live")
+    world.screen = "map"
+    assert read_map(world.frame(), sim.map_text("map")).player is None
+    result = sim.simulate(target="mission", zoom="live", gain=gain, delay=delay)
+    assert result["status"] == "done", result["reason"]
+    assert "route on the map" in result["reason"]
+    assert result["trace"][-1]["screen"] == "game"
+
+
+@pytest.mark.parametrize("delay", [0.14, 0.6, 1.1])
+@pytest.mark.parametrize("observed_only", [False, True])
+def test_live_zoom_near_and_far_are_distinct_verified_travel(delay, observed_only, monkeypatch):
+    if observed_only:
+        from pilot.waypoint import map_shift
+
+        monkeypatch.setattr(
+            "pilot.waypoint.map_shift", lambda a, b: map_shift(a, b) if np.array_equal(a, b) else None
+        )
+    travel = []
+    for distance in ("near", "far"):
+        result = sim.simulate(target="away", zoom="live", distance=distance, delay=delay, direction="north")
+        assert result["status"] == "done", result["reason"]
+        assert "route on the map" in result["reason"]
+        travel.append(sum(np.linalg.norm(row["pad"]["left"]) * 0.05 for row in result["trace"]))
+        if observed_only:
+            assert any(row["unmeasured"] for row in result["trace"])
+    assert travel[1] >= travel[0] * 1.6
+
+
+def test_stationary_live_grid_never_authorises_waypoint_cross():
+    result = sim.simulate(target="away", zoom="live", edge=True)
+    assert result["status"] == "failed" and "unmoved" in result["reason"]
+    assert not any("cross" in row["pad"]["buttons"] and row["screen"] == "map" for row in result["trace"])
+
+
+@pytest.mark.parametrize("target", ["mission", "away"])
+@pytest.mark.parametrize("phase", ["open", "enter", "acquire", "confirm", "exit"])
+@pytest.mark.parametrize("screen", sim.WRONG_SCREENS)
+def test_live_zoom_wrong_screen_preserves_forward_input_refusals(target, phase, screen):
+    result = sim.simulate(target=target, zoom="live", wrong_at=phase, wrong_screen=screen)
+    assert result["injected"] and result["status"] == "failed"
+
+
+def test_preexisting_route_with_unrelated_picture_change_is_not_new_waypoint_proof():
+    world = sim.MapWorld()
+    world.screen, world.waypoint = "map", True
+    before = world.frame()
+    skill = SetWaypoint({})
+    skill.phase, skill.command_frame = "confirm", before
+    skill.previous_proof = "route on the map"
+    skill._picture = lambda frame: read_map(frame, sim.map_text("map"))
+    after = before.copy()
+    after[200:205, 300:305] = 80
+    result = skill.step(observation(0, "map", after))
+    assert result.pad == NEUTRAL_PAD and not skill.proved_waypoint
+    assert skill.failure == "waypoint-proof-unchanged-after-cross"
+
+
+def test_legend_proof_must_last_before_circle_and_done():
+    skill = SetWaypoint({})
+    skill.phase = "confirm"
+    skill._picture = lambda _: MapPicture("map", (640, 360), proof="waypoint legend: Wegpunkt (1000m)")
+    assert skill.step(observation(0, "map")).pad == NEUTRAL_PAD
+    assert not skill.proved_waypoint
+    assert skill.step(observation(0.1, "map")).pad == NEUTRAL_PAD
+    assert not skill.proved_waypoint
+    assert skill.step(observation(0.2, "map")).pad == NEUTRAL_PAD
+    assert skill.proved_waypoint and skill.phase == "exit"
+    assert skill.step(observation(0.3, "map")).pad.buttons == ("circle",)
+
+
+def test_an_isolated_confirmation_picture_never_becomes_success():
+    skill = SetWaypoint({})
+    skill.phase = "confirm"
+    skill._picture = lambda _: MapPicture("map", (640, 360), proof="route on the map")
+    skill.step(observation(0, "map"))
+    skill._picture = lambda _: MapPicture("map", (640, 360))
+    skill.step(observation(0.2, "map"))
+    assert not skill.proved_waypoint and skill.failure == "waypoint-not-visible-after-cross"
+
+
+def test_split_simeon_legend_still_identifies_live_badge():
+    text = SceneText(
+        tuple(replace(line, text="Simeon") if "Simeon" in line.text else line for line in LIVE_TEXT.lines)
+    )
+    assert read_map(live_frame("124637-2.605"), text).missions == ((750, 207),)
+
+
+def test_recorded_cross_has_both_legend_and_route_confirmation():
+    frame = live_frame("123334-12.795")
+    text = SceneText(
+        tuple(replace(line, text=line.text.replace("1600m", "1531m")) for line in LIVE_TEXT.lines)
+    )
+    picture = read_map(frame, text)
+    assert picture.waypoint and picture.proof == "waypoint legend: Wegpunkt (1531m)"
+    no_legend = SceneText(tuple(line for line in text.lines if line.box[1] > 100))
+    assert read_map(frame, no_legend).proof == "route on the map"
+
+
+def test_cursor_fallback_selects_nearest_visible_mission():
+    world = sim.MapWorld()
+    world.screen = "map"
+    world._letter(world.base, (400, 200))
+    frame = world.frame()
+    skill = SetWaypoint({})
+    skill.phase = "acquire"
+    skill._picture = lambda _: MapPicture("map", (640, 360), missions=((400, 200), (760, 280)))
+    result = skill.step(observation(0, "map", frame))
+    assert skill.point == (760, 280) and skill.failure is None
+    assert result.pad.left[0] > 0 and result.pad.left[1] < 0
+    assert result.pad.buttons == ()
+
+
+def test_observed_only_travel_can_return_inland_without_inventing_distance(monkeypatch):
+    skill = SetWaypoint({"target": "away", "direction": "east"})
+    skill.phase = "acquire"
+    world = sim.MapWorld(markers=False, zoom="live")
+    world.screen = "map"
+    away_picture_step(skill, world, 0)
+    monkeypatch.setattr("pilot.waypoint.map_shift", lambda *_: None)
+    monkeypatch.setattr("pilot.waypoint.map_motion", lambda *_: (40, 0))
+    # If no unique land patch can be read, the original single reverse look remains bounded.
+    monkeypatch.setattr("pilot.waypoint._matches", lambda *_: ())
+    # No signed shift is trusted. Travel time can suffice, but land cannot be assumed.
+    skill.travel_seconds = skill.travel_goal
+    world.offset[0], world.sea = -40, True
+    result = away_picture_step(skill, world, 1.8)
+    assert skill.inland_used and result.pad.left == (-0.65, 0)
+    assert "cross" not in result.pad.buttons
+    world.offset[0], world.sea = -20, False
+    result = away_picture_step(skill, world, 3.6)
+    assert result.pad.buttons == ("cross",) and skill.failure is None
+    assert np.linalg.norm(skill.displacement) == 0
+
+
+PACIFIC = json.loads((FIXTURES / "live/second-round.json").read_text())
+
+
+def pacific_observation(name, time):
+    from pilot.contract import HUD_RECT
+    from pilot.hud import read as read_hud
+    from pilot.minimap import read as read_minimap
+
+    frame = live_frame(name)
+    x, y, w, h = HUD_RECT
+    return Observation(read_minimap(frame[y : y + h, x : x + w]), False, time, frame, hud=read_hud(frame))
+
+
+def pacific_text(name):
+    return SceneText(tuple(TextLine(**line) for line in PACIFIC["frames"][name]["text"]["lines"]))
+
+
+@pytest.mark.parametrize("pair", PACIFIC["pairs"], ids=lambda pair: pair["before"])
+def test_pacific_bluffs_actual_push_pairs_have_coherent_visible_road_motion(pair):
+    from pilot.waypoint import map_motion
+
+    before, after = live_frame(pair["before"]), live_frame(pair["after"])
+    motion = map_motion(before, after)
+    assert motion is not None and np.linalg.norm(motion) > 10
+    assert map_motion(before, before) == pytest.approx((0, 0), abs=0.1)
+    assert read_map(after, pacific_text(pair["after"])).cursor == (640, 360)
+
+
+@pytest.mark.parametrize("name", ["133505-42111", "132729-17393"])
+@pytest.mark.parametrize("phase", ["open", "exit"])
+def test_cinematic_camera_uses_persistent_real_hud_bars_without_an_extra_circle(name, phase):
+    skill = SetWaypoint({"target": "away"})
+    skill.phase, skill.proved_waypoint = phase, True
+    skill.waypoint_proof = "waypoint legend: Wegpunkt (1531m)"
+    first = pacific_observation(name, 0)
+    assert first.reading.corrupt and first.reading.confidence == 0.35
+    assert first.hud.screen == "game" and first.hud.health is not None
+    assert skill.step(first).pad == NEUTRAL_PAD
+    assert skill.step(replace(first, time=0.1)).pad == NEUTRAL_PAD
+    result = skill.step(replace(first, time=0.2))
+    if phase == "open":
+        assert result.pad.buttons == ("options",)
+    else:
+        assert result.status == "done" and result.pad == NEUTRAL_PAD and skill.exits == 0
+
+
+def test_cinematic_return_preserves_failure_and_requires_waypoint_proof():
+    for failure in (None, "map-shift-unverified"):
+        skill = SetWaypoint({"target": "away"})
+        skill.phase, skill.failure = "exit", failure
+        obs = pacific_observation("133505-42111", 0)
+        skill.step(obs)
+        result = skill.step(replace(obs, time=0.2))
+        assert result.status == "failed" and result.pad == NEUTRAL_PAD
+        assert (failure or "without a waypoint") in result.reason
+
+
+@pytest.mark.parametrize("damage", ["bars", "all", "pause", "unchanged"])
+def test_default_game_classification_cannot_authorise_input_without_fresh_hud_pixels(damage):
+    skill = SetWaypoint({"target": "away"})
+    obs = pacific_observation("133505-42111", 0)
+    frame = obs.frame.copy()
+    if damage == "bars":
+        frame[670:685, 55:250] = 0
+    elif damage == "all":
+        frame[:] = np.random.default_rng(92).integers(0, 256, frame.shape, dtype=np.uint8)
+    elif damage == "pause":
+        obs = replace(obs, hud=Hud(screen="pause"))
+    else:
+        skill.command_frame = frame.copy()
+    # The supplied HUD still contains real bar readings from an older picture.
+    obs = replace(obs, frame=frame)
+    assert skill.step(obs).pad == NEUTRAL_PAD
+    result = skill.step(replace(obs, time=2.1))
+    assert result.status == "failed" and result.pad == NEUTRAL_PAD
+
+
+def test_pacific_bluffs_unmeasurable_coastal_pan_aims_at_visible_land_instead_of_aborting():
+    from pilot.waypoint import land_at_cursor
+
+    skill = SetWaypoint({"target": "away", "direction": "north"})
+    skill.phase = "acquire"
+    # Actual settled images from the failed run. This is a decision test, not a
+    # claim that a recording contains the consequence of the new inland command.
+    names = ["133505-41468", "133505-41565", "133505-41685", "133505-41805"]
+    for tick, name in enumerate(names):
+        skill._picture = lambda frame, name=name: read_map(frame, pacific_text(name))
+        result = skill.step(pacific_observation(name, tick * 2.0))
+        assert skill.failure is None
+        assert "cross" not in result.pad.buttons
+    assert skill.unmeasured and skill.inland_used and skill.phase == "aim"
+    assert result.pad.left[1] > 0 and result.pad.left != (0, 0)
+    assert land_at_cursor(live_frame(names[-1]), skill.point)
+    assert not land_at_cursor(live_frame(names[-1]))
+
+
+@pytest.mark.parametrize("delay", [0.14, 0.6, 1.1])
+@pytest.mark.parametrize("distance", ["near", "far"])
+def test_coastal_land_target_and_real_cinematic_return_finish_only_after_map_proof(delay, distance):
+    result = sim.simulate_coast(delay=delay, distance=distance)
+    assert result["status"] == "done", result["reason"]
+    assert "route on the map" in result["reason"]
+    assert result["exits"] == 2 and result["seconds"] < 45

@@ -5,6 +5,7 @@ import json
 from collections import deque
 from dataclasses import asdict
 from pathlib import Path
+from unittest.mock import patch
 
 import cv2
 import numpy as np
@@ -12,7 +13,7 @@ import numpy as np
 from pilot.contract import NEUTRAL_PAD, Hud, Reading
 from pilot.scene import SceneText, TextLine
 from pilot.skills import Observation
-from pilot.waypoint import SetWaypoint, land_at_cursor, read_map
+from pilot.waypoint import SetWaypoint, land_at_cursor, map_shift, read_map
 
 WRONG_SCREENS = (
     "settings",
@@ -45,7 +46,10 @@ def map_text(screen):
 
 
 class MapWorld:
-    def __init__(self, gain=1200, edge=False, sea=False, markers=True):
+    def __init__(self, gain=None, edge=False, sea=False, markers=True, zoom="original", coast=False):
+        if gain is None:
+            # Complete November 11 push groups move about 107 px/s at .65 stick.
+            gain = 165 if zoom == "live" else 1200
         self.gain, self.edge, self.sea = gain, edge, sea
         self.screen = "game"
         self.offset = np.zeros(2)
@@ -53,6 +57,7 @@ class MapWorld:
         self.previous_buttons = ()
         self.route = False
         self.base = np.full((720, 1280, 3), 45, np.uint8)
+        self.zoom = zoom
         # Uneven road junctions make the target observable after panning.
         for points in (
             [(290, 225), (390, 310), (560, 260), (740, 430), (920, 495)],
@@ -70,6 +75,23 @@ class MapWorld:
             for _ in range(300):
                 x, y = rng.integers([40, 40], [1240, 680])
                 cv2.rectangle(self.base, (int(x), int(y)), (int(x + 12), int(y + 8)), (160, 160, 160), 1)
+
+        if zoom == "live":
+            self.base[:] = 45
+            # Approximate the fine grid at the recorded 1007 m opening scale,
+            # with irregular junctions alongside the repeated street pattern.
+            for x in range(20, 1280, 19):
+                cv2.line(self.base, (x, 0), (x + 70, 719), (220, 220, 220), 1)
+            for y in range(15, 720, 23):
+                cv2.line(self.base, (0, y), (1279, y + 35), (220, 220, 220), 1)
+            cv2.ellipse(self.base, (810, 280), (160, 130), 25, 0, 360, (220, 220, 220), 3)
+            if markers:
+                fixture = Path(__file__).parents[1] / "tests/fixtures/waypoint/live/124637-2.605.png"
+                source = cv2.cvtColor(cv2.imread(str(fixture)), cv2.COLOR_BGR2RGB)
+                self.base[195:220, 738:763] = source[195:220, 738:763]
+        if coast:
+            # Model the Pacific Bluffs land/sea boundary, not the captured road layout.
+            self.base[:345, :730] = 80
 
     @staticmethod
     def _arrow(frame, centre):
@@ -124,7 +146,12 @@ class MapWorld:
             cv2.line(frame, (640, 305), (640, 415), (220, 220, 220), 1)
             cv2.line(frame, (585, 360), (695, 360), (220, 220, 220), 1)
             if self.waypoint:
-                cv2.line(frame, (645, 365), (655, 385), (180, 30, 230), 4)
+                cv2.polylines(
+                    frame, [np.array([(645, 365), (655, 385), (720, 410)])], False, (180, 30, 230), 4
+                )
+            if self.zoom == "live":
+                cv2.line(frame, (64, 605), (204, 605), (220, 220, 220), 1)
+                cv2.putText(frame, "1007m", (162, 623), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (220, 220, 220), 1)
         return frame
 
 
@@ -135,14 +162,17 @@ def simulate(
     wrong_screen="settings",
     duration=45,
     exit_works=True,
-    gain=1200,
+    gain=None,
     edge=False,
     sea=False,
     damaged=False,
     direction="east",
     distance="near",
+    zoom="original",
+    coast=False,
+    cinematic=False,
 ):
-    world = MapWorld(gain=gain, edge=edge, sea=sea, markers=target == "mission")
+    world = MapWorld(gain=gain, edge=edge, sea=sea, markers=target == "mission", zoom=zoom, coast=coast)
     skill = SetWaypoint(
         {"target": target, "duration": duration, "direction": direction, "distance": distance}
     )
@@ -186,6 +216,17 @@ def simulate(
             frame,
             hud=Hud(screen="pause" if screen in {"overview", "settings"} else screen),
         )
+        if cinematic and screen == "game":
+            from pilot.contract import HUD_RECT
+            from pilot.hud import read as read_hud
+            from pilot.minimap import read as read_minimap
+
+            fixture = Path(__file__).parents[1] / "tests/fixtures/waypoint/live/133505-42111.png"
+            frame = cv2.cvtColor(cv2.imread(str(fixture)), cv2.COLOR_BGR2RGB)
+            x, y, w, h = HUD_RECT
+            observation = Observation(
+                read_minimap(frame[y : y + h, x : x + w]), False, now, frame, hud=read_hud(frame)
+            )
         result = skill.step(observation)
         trace.append(
             {
@@ -198,11 +239,17 @@ def simulate(
                 "displacement": skill.displacement.tolist(),
                 "moves": skill.moves,
                 "corrupt": corrupt,
+                "unmeasured": skill.unmeasured,
+                "travel_seconds": skill.travel_seconds,
             }
         )
         if target == "away" and "cross" in result.pad.buttons and screen == "map":
             assert not corrupt and land_at_cursor(frame), "cross on damaged picture or sea"
-            assert skill.inland_used or np.linalg.norm(skill.displacement) >= skill.distance
+            assert skill.inland_used or (
+                skill.travel_seconds >= skill.travel_goal
+                if skill.unmeasured
+                else np.linalg.norm(skill.displacement) >= skill.distance
+            )
         assert not set(result.pad.buttons) & {"l1", "r1", "ps", "create"}
         if failure_seen:
             assert set(result.pad.buttons) <= {"circle"} and result.pad.left == (0, 0)
@@ -211,7 +258,10 @@ def simulate(
             assert result.pad == NEUTRAL_PAD
             return {
                 "target": target,
-                "gain": gain,
+                "zoom": zoom,
+                "gain": world.gain,
+                "coast": coast,
+                "cinematic": cinematic,
                 "edge": edge,
                 "sea": sea,
                 "damaged": damaged,
@@ -230,6 +280,22 @@ def simulate(
         if exit_works or "circle" not in result.pad.buttons:
             world.act(result.pad, dt)
     raise AssertionError("unbounded skill")
+
+
+def simulate_coast(delay=0.14, distance="near"):
+    # Reproduce the real road tracker's abstention separately from the modeled coast.
+    with patch("pilot.waypoint.map_shift", lambda a, b: map_shift(a, b) if np.array_equal(a, b) else None):
+        result = simulate(
+            target="away",
+            zoom="live",
+            coast=True,
+            cinematic=True,
+            direction="north",
+            delay=delay,
+            distance=distance,
+        )
+    result["shift_refused"] = True
+    return result
 
 
 if __name__ == "__main__":
@@ -254,6 +320,17 @@ if __name__ == "__main__":
         simulate(target="away", wrong_at=phase, wrong_screen=screen)
         for phase in ("open", "enter", "acquire", "pan", "confirm", "exit")
         for screen in WRONG_SCREENS
+    ]
+    results += [
+        simulate(target=target, zoom="live", delay=delay, distance=distance)
+        for target in ("mission", "away")
+        for delay in (0.14, 0.6, 1.1)
+        for distance in ("near", "far")
+    ]
+    results += [
+        simulate_coast(delay=delay, distance=distance)
+        for delay in (0.14, 0.6, 1.1)
+        for distance in ("near", "far")
     ]
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(results, indent=2) + "\n")

@@ -1,0 +1,6022 @@
+[
+  {
+    "recording": "20261111-124637",
+    "requested_time": 2.605,
+    "frame": {
+      "i": 155,
+      "frame_id": 118921,
+      "t": 2.6052
+    },
+    "text": [
+      {
+        "text": "Spieler A",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          66,
+          15
+        ]
+      },
+      {
+        "text": "Wegpunkt (1600m)",
+        "confidence": 1.0,
+        "box": [
+          1076,
+          68,
+          116,
+          16
+        ]
+      },
+      {
+        "text": "Ammu-Nation P",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          96,
+          106,
+          12
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand G",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          122,
+          206,
+          14
+        ]
+      },
+      {
+        "text": "Autowaschanlage lei",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          150,
+          132,
+          16
+        ]
+      },
+      {
+        "text": "Beekers Garage f",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          174,
+          124,
+          20
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          204,
+          106,
+          18
+        ]
+      },
+      {
+        "text": "Friseursalon <",
+        "confidence": 1.0,
+        "box": [
+          1116,
+          230,
+          96,
+          16
+        ]
+      },
+      {
+        "text": "Kino \u00ae",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          52,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs i",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          284,
+          146,
+          14
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug F",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          312,
+          158,
+          14
+        ]
+      },
+      {
+        "text": "Seilbahn",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          340,
+          58,
+          14
+        ]
+      },
+      {
+        "text": "Simeon S",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          364,
+          68,
+          16
+        ]
+      },
+      {
+        "text": "Stripclub",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          394,
+          64,
+          12
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen Fx",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf fr",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          448,
+          100,
+          16
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          162,
+          612,
+          44,
+          12
+        ]
+      },
+      {
+        "text": "INTERNATIONALER FLUGHAFEN VON LS / DAVIS AVE",
+        "confidence": 1.0,
+        "box": [
+          72,
+          638,
+          322,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen ja Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          780,
+          664,
+          238,
+          18
+        ]
+      },
+      {
+        "text": "Zoomen L2]",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          70,
+          14
+        ]
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          744,
+          666,
+          22,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          60,
+          14
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          750.0,
+          207.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1600m)",
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123334",
+    "requested_time": 3.002,
+    "frame": {
+      "i": 179,
+      "frame_id": 72067,
+      "t": 3.0016
+    },
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          46,
+          14
+        ]
+      },
+      {
+        "text": "Ammu-Nation P",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          70,
+          106,
+          12
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand G",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          96,
+          204,
+          14
+        ]
+      },
+      {
+        "text": "Autowaschanlage lai",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          124,
+          130,
+          14
+        ]
+      },
+      {
+        "text": "Beekers Garage 8",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          150,
+          122,
+          16
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft @",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          176,
+          106,
+          18
+        ]
+      },
+      {
+        "text": "Friseursalon 6%",
+        "confidence": 1.0,
+        "box": [
+          1116,
+          202,
+          98,
+          16
+        ]
+      },
+      {
+        "text": "Kino \u00ae",
+        "confidence": 1.0,
+        "box": [
+          1162,
+          232,
+          50,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs f",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          258,
+          146,
+          14
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          284,
+          138,
+          16
+        ]
+      },
+      {
+        "text": "Seilbahn",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          312,
+          56,
+          14
+        ]
+      },
+      {
+        "text": "Simeon",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          338,
+          50,
+          14
+        ]
+      },
+      {
+        "text": "S",
+        "confidence": 1.0,
+        "box": [
+          1198,
+          338,
+          12,
+          14
+        ]
+      },
+      {
+        "text": "Stripclub A",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          366,
+          78,
+          14
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen Px",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          387,
+          179,
+          23
+        ]
+      },
+      {
+        "text": "Unterschlupf a",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          417,
+          102,
+          21
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          162,
+          612,
+          44,
+          12
+        ]
+      },
+      {
+        "text": "LA PUERTA / DAVIS AVE",
+        "confidence": 1.0,
+        "box": [
+          72,
+          638,
+          146,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen Dia",
+        "confidence": 1.0,
+        "box": [
+          780,
+          658,
+          143,
+          25
+        ]
+      },
+      {
+        "text": "Zoomen (L2",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          70,
+          12
+        ]
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          744,
+          666,
+          22,
+          14
+        ]
+      },
+      {
+        "text": "Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          924,
+          666,
+          94,
+          12
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          60,
+          14
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          741.0,
+          217.0
+        ]
+      ],
+      "waypoint": false,
+      "proof": null,
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123334",
+    "requested_time": 5.404,
+    "frame": {
+      "i": 323,
+      "frame_id": 72211,
+      "t": 5.4043
+    },
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          46,
+          14
+        ]
+      },
+      {
+        "text": "A",
+        "confidence": 1.0,
+        "box": [
+          1196,
+          42,
+          14,
+          16
+        ]
+      },
+      {
+        "text": "Ammu-Nation P",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          70,
+          106,
+          12
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand \u00a9",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          96,
+          204,
+          14
+        ]
+      },
+      {
+        "text": "Autowaschanlage lai",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          124,
+          130,
+          14
+        ]
+      },
+      {
+        "text": "Beekers Garage 8",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          148,
+          122,
+          18
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft @",
+        "confidence": 1.0,
+        "box": [
+          1108,
+          176,
+          106,
+          18
+        ]
+      },
+      {
+        "text": "Friseursalon 6%",
+        "confidence": 1.0,
+        "box": [
+          1116,
+          202,
+          98,
+          18
+        ]
+      },
+      {
+        "text": "Kino",
+        "confidence": 1.0,
+        "box": [
+          1162,
+          232,
+          30,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs (",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          258,
+          146,
+          14
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          284,
+          138,
+          16
+        ]
+      },
+      {
+        "text": "Seilbahn",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          312,
+          56,
+          14
+        ]
+      },
+      {
+        "text": "S",
+        "confidence": 1.0,
+        "box": [
+          1198,
+          338,
+          12,
+          16
+        ]
+      },
+      {
+        "text": "Simeon",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          340,
+          50,
+          12
+        ]
+      },
+      {
+        "text": "Stripclub A",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          365,
+          78,
+          15
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen Px",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          387,
+          179,
+          23
+        ]
+      },
+      {
+        "text": "Unterschlupf a",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          417,
+          102,
+          21
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          162,
+          612,
+          44,
+          12
+        ]
+      },
+      {
+        "text": "LA PUERTA / DAVIS AVE",
+        "confidence": 1.0,
+        "box": [
+          72,
+          638,
+          146,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen o\u00bfa Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          780,
+          662,
+          238,
+          18
+        ]
+      },
+      {
+        "text": "Zoomen L2]",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          70,
+          14
+        ]
+      },
+      {
+        "text": "R2]",
+        "confidence": 1.0,
+        "box": [
+          738,
+          666,
+          28,
+          12
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          60,
+          15
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          741.0,
+          292.0
+        ]
+      ],
+      "waypoint": false,
+      "proof": null,
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123334",
+    "requested_time": 8.957,
+    "frame": {
+      "i": 536,
+      "frame_id": 72424,
+      "t": 8.957
+    },
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          44,
+          44,
+          12
+        ]
+      },
+      {
+        "text": "Ammu-Nation P",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          70,
+          106,
+          12
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand O",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          96,
+          204,
+          14
+        ]
+      },
+      {
+        "text": "Autowaschanlage < 2/2 > lal",
+        "confidence": 1.0,
+        "box": [
+          1034,
+          124,
+          180,
+          14
+        ]
+      },
+      {
+        "text": "Beekers Garage",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          150,
+          100,
+          16
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft C",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          176,
+          106,
+          18
+        ]
+      },
+      {
+        "text": "-Friseursalon e",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          199,
+          108,
+          18
+        ]
+      },
+      {
+        "text": "Kino",
+        "confidence": 1.0,
+        "box": [
+          1162,
+          232,
+          30,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs f",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          258,
+          146,
+          14
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          286,
+          138,
+          14
+        ]
+      },
+      {
+        "text": "Seilbahn",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          314,
+          54,
+          12
+        ]
+      },
+      {
+        "text": "S",
+        "confidence": 1.0,
+        "box": [
+          1196,
+          338,
+          14,
+          18
+        ]
+      },
+      {
+        "text": "Simeon",
+        "confidence": 1.0,
+        "box": [
+          1144,
+          340,
+          54,
+          13
+        ]
+      },
+      {
+        "text": "Stripclub A",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          364,
+          76,
+          16
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen F$",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          390,
+          178,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf P",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          418,
+          102,
+          20
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          158,
+          612,
+          48,
+          12
+        ]
+      },
+      {
+        "text": "LITTLE SEOUL / SOUTH ROCKFORD DR",
+        "confidence": 1.0,
+        "box": [
+          70,
+          638,
+          240,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen ja Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          780,
+          664,
+          238,
+          18
+        ]
+      },
+      {
+        "text": "Zoomen L2",
+        "confidence": 1.0,
+        "box": [
+          558,
+          666,
+          68,
+          12
+        ]
+      },
+      {
+        "text": "Wenig Details R3",
+        "confidence": 1.0,
+        "box": [
+          666,
+          666,
+          98,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          60,
+          15
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          741.0,
+          404.0
+        ]
+      ],
+      "waypoint": false,
+      "proof": null,
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123334",
+    "requested_time": 11.944,
+    "frame": {
+      "i": 715,
+      "frame_id": 72603,
+      "t": 11.9435
+    },
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          44,
+          14
+        ]
+      },
+      {
+        "text": "Ammu-Nation P",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          70,
+          106,
+          12
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand O",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          96,
+          204,
+          14
+        ]
+      },
+      {
+        "text": "Autowaschanlage < 2/2 > lal",
+        "confidence": 1.0,
+        "box": [
+          1034,
+          124,
+          180,
+          14
+        ]
+      },
+      {
+        "text": "Beekers Garage",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          150,
+          100,
+          17
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft C",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          176,
+          106,
+          18
+        ]
+      },
+      {
+        "text": "Friseursalon",
+        "confidence": 1.0,
+        "box": [
+          1114,
+          202,
+          100,
+          16
+        ]
+      },
+      {
+        "text": "Kino",
+        "confidence": 1.0,
+        "box": [
+          1162,
+          232,
+          30,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs f",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          258,
+          146,
+          14
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          286,
+          138,
+          14
+        ]
+      },
+      {
+        "text": "Seilbahn",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          312,
+          54,
+          14
+        ]
+      },
+      {
+        "text": "S",
+        "confidence": 1.0,
+        "box": [
+          1196,
+          338,
+          14,
+          18
+        ]
+      },
+      {
+        "text": "Simeon",
+        "confidence": 1.0,
+        "box": [
+          1144,
+          340,
+          54,
+          13
+        ]
+      },
+      {
+        "text": "Stripclub A",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          364,
+          76,
+          17
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen F$",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          390,
+          178,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf a",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          417,
+          102,
+          21
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          158,
+          612,
+          48,
+          12
+        ]
+      },
+      {
+        "text": "LITTLE SEOUL / SOUTH ROCKFORD DR",
+        "confidence": 1.0,
+        "box": [
+          70,
+          638,
+          240,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen ja Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          780,
+          664,
+          238,
+          18
+        ]
+      },
+      {
+        "text": "Zoomen L2",
+        "confidence": 1.0,
+        "box": [
+          558,
+          666,
+          68,
+          14
+        ]
+      },
+      {
+        "text": "Wenig Details R3",
+        "confidence": 1.0,
+        "box": [
+          666,
+          666,
+          98,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          62,
+          15
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          741.0,
+          438.0
+        ]
+      ],
+      "waypoint": false,
+      "proof": null,
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123334",
+    "requested_time": 12.8,
+    "frame": {
+      "i": 766,
+      "frame_id": 72654,
+      "t": 12.7946
+    },
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          44,
+          14
+        ]
+      },
+      {
+        "text": "Wegpunkt (1531m)",
+        "confidence": 1.0,
+        "box": [
+          1080,
+          70,
+          114,
+          14
+        ]
+      },
+      {
+        "text": "Ammu-Nation F",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          98,
+          104,
+          10
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand O",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          122,
+          206,
+          16
+        ]
+      },
+      {
+        "text": "Autowaschanlage lai",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          152,
+          130,
+          14
+        ]
+      },
+      {
+        "text": "Beekers Garage g",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          174,
+          124,
+          18
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          204,
+          108,
+          18
+        ]
+      },
+      {
+        "text": "Friseursalon",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          230,
+          86,
+          14
+        ]
+      },
+      {
+        "text": "Kino",
+        "confidence": 1.0,
+        "box": [
+          1162,
+          258,
+          30,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs 8",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          284,
+          146,
+          16
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          314,
+          138,
+          12
+        ]
+      },
+      {
+        "text": "Seilbahn",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          340,
+          54,
+          12
+        ]
+      },
+      {
+        "text": "Simeon S",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          366,
+          68,
+          14
+        ]
+      },
+      {
+        "text": "Stripclub",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          394,
+          56,
+          14
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen Fx",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf D",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          446,
+          100,
+          18
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          158,
+          612,
+          48,
+          12
+        ]
+      },
+      {
+        "text": "LITTLE SEOUL / SOUTH ROCKFORD DR",
+        "confidence": 1.0,
+        "box": [
+          70,
+          638,
+          240,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen ja Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          780,
+          664,
+          238,
+          18
+        ]
+      },
+      {
+        "text": "Zoomen L2",
+        "confidence": 1.0,
+        "box": [
+          558,
+          666,
+          68,
+          12
+        ]
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          626,
+          666,
+          28,
+          12
+        ]
+      },
+      {
+        "text": "Wenig Details R3",
+        "confidence": 1.0,
+        "box": [
+          666,
+          666,
+          98,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1054,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt l",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          64,
+          15
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          741.0,
+          438.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1531m)",
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123334",
+    "requested_time": 13.1,
+    "frame": {
+      "i": 784,
+      "frame_id": 72672,
+      "t": 13.095
+    },
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          44,
+          14
+        ]
+      },
+      {
+        "text": "Wegpunkt (1531m)",
+        "confidence": 1.0,
+        "box": [
+          1080,
+          68,
+          118,
+          16
+        ]
+      },
+      {
+        "text": "Ammu-Nation F",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          98,
+          104,
+          12
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand O",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          124,
+          206,
+          14
+        ]
+      },
+      {
+        "text": "Autowaschanlage al",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          152,
+          130,
+          14
+        ]
+      },
+      {
+        "text": "Beekers Garage g",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          174,
+          124,
+          18
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          204,
+          106,
+          18
+        ]
+      },
+      {
+        "text": "Friseursalon",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          230,
+          86,
+          14
+        ]
+      },
+      {
+        "text": "Kino",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          30,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs 8",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          284,
+          146,
+          16
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          312,
+          138,
+          14
+        ]
+      },
+      {
+        "text": "Seilbahn",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          340,
+          56,
+          14
+        ]
+      },
+      {
+        "text": "S",
+        "confidence": 1.0,
+        "box": [
+          1196,
+          364,
+          14,
+          18
+        ]
+      },
+      {
+        "text": "Simeon",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          365,
+          56,
+          13
+        ]
+      },
+      {
+        "text": "Stripclub",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          394,
+          58,
+          14
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen F",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf R",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          445,
+          100,
+          19
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          160,
+          612,
+          46,
+          12
+        ]
+      },
+      {
+        "text": "LITTLE SEOUL / SOUTH ROCKFORD DR",
+        "confidence": 1.0,
+        "box": [
+          70,
+          638,
+          240,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen \u2022ja Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          780,
+          664,
+          238,
+          18
+        ]
+      },
+      {
+        "text": "Zoomen L2",
+        "confidence": 1.0,
+        "box": [
+          558,
+          666,
+          68,
+          12
+        ]
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          630,
+          666,
+          24,
+          14
+        ]
+      },
+      {
+        "text": "Wenig Details R3",
+        "confidence": 1.0,
+        "box": [
+          666,
+          666,
+          98,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          62,
+          15
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          741.0,
+          438.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1531m)",
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123938",
+    "requested_time": 22.95,
+    "frame": {
+      "i": 1375,
+      "frame_id": 95065,
+      "t": 22.9567
+    },
+    "text": [
+      {
+        "text": "FRANKLIN",
+        "confidence": 1.0,
+        "box": [
+          976,
+          64,
+          50,
+          17
+        ]
+      },
+      {
+        "text": "Grand Theft Auto V",
+        "confidence": 1.0,
+        "box": [
+          206,
+          80,
+          180,
+          28
+        ]
+      },
+      {
+        "text": "DONNERSTAG 07:30",
+        "confidence": 1.0,
+        "box": [
+          928,
+          80,
+          96,
+          16
+        ]
+      },
+      {
+        "text": "$379",
+        "confidence": 1.0,
+        "box": [
+          996,
+          96,
+          28,
+          14
+        ]
+      },
+      {
+        "text": "KARTE",
+        "confidence": 1.0,
+        "box": [
+          256,
+          127,
+          44,
+          15
+        ]
+      },
+      {
+        "text": "INFO",
+        "confidence": 1.0,
+        "box": [
+          408,
+          128,
+          32,
+          12
+        ]
+      },
+      {
+        "text": "STATISTIKEN",
+        "confidence": 1.0,
+        "box": [
+          528,
+          128,
+          80,
+          12
+        ]
+      },
+      {
+        "text": "EINSTELLUNGEN",
+        "confidence": 1.0,
+        "box": [
+          660,
+          128,
+          106,
+          12
+        ]
+      },
+      {
+        "text": "SPIEL",
+        "confidence": 1.0,
+        "box": [
+          840,
+          128,
+          36,
+          12
+        ]
+      },
+      {
+        "text": "ONLINE",
+        "confidence": 1.0,
+        "box": [
+          980,
+          128,
+          48,
+          13
+        ]
+      },
+      {
+        "text": "C",
+        "confidence": 1.0,
+        "box": [
+          848,
+          354,
+          16,
+          16
+        ]
+      },
+      {
+        "text": "Weiterbl\u00e4ttern L1 RI",
+        "confidence": 1.0,
+        "box": [
+          780,
+          664,
+          136,
+          16
+        ]
+      },
+      {
+        "text": "Men\u00fc verbergen",
+        "confidence": 1.0,
+        "box": [
+          920,
+          666,
+          94,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1050,
+          666,
+          44,
+          12
+        ]
+      },
+      {
+        "text": "Auswahlen (",
+        "confidence": 1.0,
+        "box": [
+          1126,
+          668,
+          66,
+          10
+        ]
+      }
+    ],
+    "map": {
+      "screen": "overview",
+      "cursor": null,
+      "player": null,
+      "missions": [],
+      "waypoint": false,
+      "proof": null,
+      "land": null
+    }
+  },
+  {
+    "recording": "20261111-123938",
+    "requested_time": 28.145,
+    "frame": {
+      "i": 1686,
+      "frame_id": 95376,
+      "t": 28.1446
+    },
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          44,
+          14
+        ]
+      },
+      {
+        "text": "Wegpunkt (1590m)",
+        "confidence": 1.0,
+        "box": [
+          1076,
+          70,
+          114,
+          14
+        ]
+      },
+      {
+        "text": "Ammu-Nation F",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          98,
+          106,
+          10
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand G",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          122,
+          206,
+          14
+        ]
+      },
+      {
+        "text": "Autowaschanlage lei",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          150,
+          132,
+          16
+        ]
+      },
+      {
+        "text": "Beekers Garage 8",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          176,
+          124,
+          16
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft @",
+        "confidence": 1.0,
+        "box": [
+          1108,
+          204,
+          104,
+          14
+        ]
+      },
+      {
+        "text": "Friseursalon os",
+        "confidence": 1.0,
+        "box": [
+          1114,
+          232,
+          98,
+          12
+        ]
+      },
+      {
+        "text": "Kino",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          30,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs 8",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          284,
+          146,
+          16
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug Fi",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          312,
+          158,
+          16
+        ]
+      },
+      {
+        "text": "Seilbahn 6",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          338,
+          76,
+          16
+        ]
+      },
+      {
+        "text": "Simeon S",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          364,
+          68,
+          17
+        ]
+      },
+      {
+        "text": "Stripclub A",
+        "confidence": 1.0,
+        "box": [
+          1132,
+          393,
+          80,
+          17
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen P",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf #",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          446,
+          102,
+          18
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          162,
+          612,
+          44,
+          12
+        ]
+      },
+      {
+        "text": "INTERNATIONALER FLUGHAFEN VON LS / DAVIS AVE",
+        "confidence": 1.0,
+        "box": [
+          72,
+          638,
+          322,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen oga Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          780,
+          658,
+          239,
+          28
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          665,
+          60,
+          15
+        ]
+      },
+      {
+        "text": "Zoomen L2]",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          70,
+          14
+        ]
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          744,
+          666,
+          22,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          745.0,
+          208.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1590m)",
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123938",
+    "requested_time": 29.746,
+    "frame": {
+      "i": 1782,
+      "frame_id": 95472,
+      "t": 29.7464
+    },
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          44,
+          14
+        ]
+      },
+      {
+        "text": "Wegpunkt (1590m)",
+        "confidence": 1.0,
+        "box": [
+          1076,
+          70,
+          114,
+          14
+        ]
+      },
+      {
+        "text": "Ammu-Nation F",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          98,
+          106,
+          10
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand G",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          122,
+          206,
+          14
+        ]
+      },
+      {
+        "text": "Autowaschanlage lei",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          150,
+          132,
+          16
+        ]
+      },
+      {
+        "text": "Beekers Garage 8",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          176,
+          124,
+          16
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft @",
+        "confidence": 1.0,
+        "box": [
+          1108,
+          204,
+          104,
+          14
+        ]
+      },
+      {
+        "text": "Friseursalon d",
+        "confidence": 1.0,
+        "box": [
+          1116,
+          232,
+          96,
+          12
+        ]
+      },
+      {
+        "text": "Kino",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          30,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs di",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          286,
+          142,
+          14
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug A",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          312,
+          160,
+          16
+        ]
+      },
+      {
+        "text": "Seilbahn 6",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          337,
+          76,
+          17
+        ]
+      },
+      {
+        "text": "Simeon S",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          363,
+          68,
+          17
+        ]
+      },
+      {
+        "text": "C",
+        "confidence": 1.0,
+        "box": [
+          854,
+          372,
+          16,
+          18
+        ]
+      },
+      {
+        "text": "Stripclub A",
+        "confidence": 1.0,
+        "box": [
+          1132,
+          393,
+          80,
+          18
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen Fx",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf R",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          446,
+          102,
+          18
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          164,
+          612,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "LA PUERTA",
+        "confidence": 1.0,
+        "box": [
+          70,
+          638,
+          70,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen ga Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          780,
+          658,
+          239,
+          28
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          665,
+          60,
+          15
+        ]
+      },
+      {
+        "text": "Zoomen L2]",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          70,
+          14
+        ]
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          744,
+          666,
+          22,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          44,
+          12
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          745.0,
+          227.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1590m)",
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123938",
+    "requested_time": 40.8,
+    "frame": {
+      "i": 2444,
+      "frame_id": 96134,
+      "t": 40.8073
+    },
+    "text": [
+      {
+        "text": "FRANKLIN",
+        "confidence": 1.0,
+        "box": [
+          976,
+          64,
+          48,
+          16
+        ]
+      },
+      {
+        "text": "Grand Theft Auto V",
+        "confidence": 1.0,
+        "box": [
+          206,
+          80,
+          180,
+          28
+        ]
+      },
+      {
+        "text": "DONNERSTAG 07:32",
+        "confidence": 1.0,
+        "box": [
+          928,
+          80,
+          96,
+          16
+        ]
+      },
+      {
+        "text": "$379",
+        "confidence": 1.0,
+        "box": [
+          996,
+          96,
+          28,
+          16
+        ]
+      },
+      {
+        "text": "KARTE",
+        "confidence": 1.0,
+        "box": [
+          256,
+          128,
+          44,
+          14
+        ]
+      },
+      {
+        "text": "INFO",
+        "confidence": 1.0,
+        "box": [
+          408,
+          128,
+          32,
+          12
+        ]
+      },
+      {
+        "text": "STATISTIKEN",
+        "confidence": 1.0,
+        "box": [
+          528,
+          128,
+          80,
+          12
+        ]
+      },
+      {
+        "text": "EINSTELLUNGEN",
+        "confidence": 1.0,
+        "box": [
+          660,
+          128,
+          104,
+          12
+        ]
+      },
+      {
+        "text": "SPIEL",
+        "confidence": 1.0,
+        "box": [
+          840,
+          128,
+          36,
+          12
+        ]
+      },
+      {
+        "text": "ONLINE",
+        "confidence": 1.0,
+        "box": [
+          978,
+          128,
+          50,
+          12
+        ]
+      },
+      {
+        "text": "Ausw\u00e4hlen &",
+        "confidence": 1.0,
+        "box": [
+          1124,
+          662,
+          86,
+          23
+        ]
+      },
+      {
+        "text": "Weiterbl\u00e4ttern L1 RI",
+        "confidence": 1.0,
+        "box": [
+          778,
+          664,
+          138,
+          16
+        ]
+      },
+      {
+        "text": "O",
+        "confidence": 1.0,
+        "box": [
+          1094,
+          664,
+          16,
+          18
+        ]
+      },
+      {
+        "text": "Men\u00fc verbergen",
+        "confidence": 1.0,
+        "box": [
+          920,
+          666,
+          94,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck (",
+        "confidence": 1.0,
+        "box": [
+          1050,
+          666,
+          48,
+          12
+        ]
+      }
+    ],
+    "map": {
+      "screen": "overview",
+      "cursor": null,
+      "player": null,
+      "missions": [],
+      "waypoint": false,
+      "proof": null,
+      "land": null
+    }
+  },
+  {
+    "recording": "20261111-123938",
+    "requested_time": 42.042,
+    "frame": {
+      "i": 2518,
+      "frame_id": 96208,
+      "t": 42.0425
+    },
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          44,
+          14
+        ]
+      },
+      {
+        "text": "A",
+        "confidence": 1.0,
+        "box": [
+          1196,
+          42,
+          14,
+          16
+        ]
+      },
+      {
+        "text": "Wegpunkt (1590m)",
+        "confidence": 1.0,
+        "box": [
+          1078,
+          70,
+          112,
+          14
+        ]
+      },
+      {
+        "text": "Ammu-Nation F",
+        "confidence": 1.0,
+        "box": [
+          1108,
+          96,
+          102,
+          14
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          124,
+          186,
+          12
+        ]
+      },
+      {
+        "text": "Autowaschanlage",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          152,
+          108,
+          14
+        ]
+      },
+      {
+        "text": "Beekers Garage",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          178,
+          100,
+          14
+        ]
+      },
+      {
+        "text": "of",
+        "confidence": 1.0,
+        "box": [
+          550,
+          204,
+          18,
+          18
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft #",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          204,
+          106,
+          18
+        ]
+      },
+      {
+        "text": "Friseursalon &",
+        "confidence": 1.0,
+        "box": [
+          1114,
+          230,
+          98,
+          17
+        ]
+      },
+      {
+        "text": "Kino",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          52,
+          14
+        ]
+      },
+      {
+        "text": "Los Santos Customs 87",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          284,
+          146,
+          16
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug A",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          312,
+          160,
+          16
+        ]
+      },
+      {
+        "text": "Seilbahn 6",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          338,
+          76,
+          17
+        ]
+      },
+      {
+        "text": "C",
+        "confidence": 1.0,
+        "box": [
+          854,
+          354,
+          16,
+          16
+        ]
+      },
+      {
+        "text": "Simeon S",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          364,
+          68,
+          16
+        ]
+      },
+      {
+        "text": "Stripclub",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          392,
+          58,
+          16
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen Fx",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf R",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          446,
+          102,
+          18
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          164,
+          612,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "INTERNATIONALER FLUGHAFEN VON LS / DAVIS AVE",
+        "confidence": 1.0,
+        "box": [
+          72,
+          638,
+          322,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen ga",
+        "confidence": 1.0,
+        "box": [
+          780,
+          658,
+          139,
+          25
+        ]
+      },
+      {
+        "text": "Zoomen (L2]",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          70,
+          12
+        ]
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          744,
+          666,
+          22,
+          14
+        ]
+      },
+      {
+        "text": "Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          918,
+          666,
+          100,
+          12
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          60,
+          14
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          745.0,
+          208.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1590m)",
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123938",
+    "requested_time": 43.643,
+    "frame": {
+      "i": 2614,
+      "frame_id": 96304,
+      "t": 43.6431
+    },
+    "text": [
+      {
+        "text": "Spieler A",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          66,
+          14
+        ]
+      },
+      {
+        "text": "Wegpunkt (1590m)",
+        "confidence": 1.0,
+        "box": [
+          1078,
+          70,
+          112,
+          14
+        ]
+      },
+      {
+        "text": "Ammu-Nation",
+        "confidence": 1.0,
+        "box": [
+          1108,
+          96,
+          88,
+          14
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand i",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          124,
+          192,
+          12
+        ]
+      },
+      {
+        "text": "Autowaschanlage",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          152,
+          108,
+          14
+        ]
+      },
+      {
+        "text": "IAl",
+        "confidence": 1.0,
+        "box": [
+          1196,
+          152,
+          16,
+          10
+        ]
+      },
+      {
+        "text": "Beekers Garage",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          178,
+          100,
+          14
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft *",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          204,
+          104,
+          18
+        ]
+      },
+      {
+        "text": "Friseursalon \u00ae",
+        "confidence": 1.0,
+        "box": [
+          1114,
+          230,
+          98,
+          16
+        ]
+      },
+      {
+        "text": "Kino",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          52,
+          14
+        ]
+      },
+      {
+        "text": "Los Santos Customs 87",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          284,
+          146,
+          16
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug A",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          312,
+          160,
+          16
+        ]
+      },
+      {
+        "text": "Seilbahn 6",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          338,
+          76,
+          16
+        ]
+      },
+      {
+        "text": "Simeon S",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          364,
+          68,
+          16
+        ]
+      },
+      {
+        "text": "Stripclub",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          394,
+          58,
+          14
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen Fx",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf R",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          446,
+          102,
+          18
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          164,
+          612,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "INTERNATIONALER FLUGHAFEN VON LS / DAVIS AVE",
+        "confidence": 1.0,
+        "box": [
+          72,
+          638,
+          322,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen ga",
+        "confidence": 1.0,
+        "box": [
+          780,
+          658,
+          137,
+          25
+        ]
+      },
+      {
+        "text": "Zoomen (L2]",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          70,
+          12
+        ]
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          744,
+          666,
+          22,
+          14
+        ]
+      },
+      {
+        "text": "Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          922,
+          666,
+          96,
+          12
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          60,
+          14
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          745.0,
+          186.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1590m)",
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123938",
+    "requested_time": 57.1,
+    "frame": {
+      "i": 3420,
+      "frame_id": 97110,
+      "t": 57.1071
+    },
+    "text": [
+      {
+        "text": "FRANKLIN",
+        "confidence": 1.0,
+        "box": [
+          976,
+          64,
+          50,
+          17
+        ]
+      },
+      {
+        "text": "Grand Theft Auto V",
+        "confidence": 1.0,
+        "box": [
+          206,
+          80,
+          180,
+          28
+        ]
+      },
+      {
+        "text": "DONNERSTAG 07:36",
+        "confidence": 1.0,
+        "box": [
+          928,
+          80,
+          96,
+          16
+        ]
+      },
+      {
+        "text": "$379",
+        "confidence": 1.0,
+        "box": [
+          996,
+          96,
+          28,
+          14
+        ]
+      },
+      {
+        "text": "KARTE",
+        "confidence": 1.0,
+        "box": [
+          256,
+          128,
+          44,
+          15
+        ]
+      },
+      {
+        "text": "INFO",
+        "confidence": 1.0,
+        "box": [
+          408,
+          128,
+          32,
+          14
+        ]
+      },
+      {
+        "text": "STATISTIKEN",
+        "confidence": 1.0,
+        "box": [
+          528,
+          128,
+          80,
+          12
+        ]
+      },
+      {
+        "text": "EINSTELLUNGEN",
+        "confidence": 1.0,
+        "box": [
+          660,
+          128,
+          106,
+          12
+        ]
+      },
+      {
+        "text": "SPIEL",
+        "confidence": 1.0,
+        "box": [
+          840,
+          128,
+          36,
+          12
+        ]
+      },
+      {
+        "text": "ONLINE",
+        "confidence": 1.0,
+        "box": [
+          980,
+          128,
+          48,
+          12
+        ]
+      },
+      {
+        "text": "Ausw\u00e4hlen *",
+        "confidence": 1.0,
+        "box": [
+          1124,
+          662,
+          86,
+          22
+        ]
+      },
+      {
+        "text": "Weiterbl\u00e4ttern L1 R1",
+        "confidence": 1.0,
+        "box": [
+          780,
+          666,
+          128,
+          14
+        ]
+      },
+      {
+        "text": "Men\u00fc verbergen",
+        "confidence": 1.0,
+        "box": [
+          920,
+          666,
+          94,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1050,
+          666,
+          42,
+          12
+        ]
+      }
+    ],
+    "map": {
+      "screen": "overview",
+      "cursor": null,
+      "player": null,
+      "missions": [],
+      "waypoint": false,
+      "proof": null,
+      "land": null
+    }
+  },
+  {
+    "recording": "20261111-123938",
+    "requested_time": 62.2,
+    "frame": {
+      "i": 3724,
+      "frame_id": 97414,
+      "t": 62.1955
+    },
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          42,
+          14
+        ]
+      },
+      {
+        "text": "Wegpunkt (1581m)",
+        "confidence": 1.0,
+        "box": [
+          1080,
+          70,
+          110,
+          14
+        ]
+      },
+      {
+        "text": "Ammu-Nation P",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          96,
+          106,
+          12
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand \u00a9",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          122,
+          204,
+          14
+        ]
+      },
+      {
+        "text": "Autowaschanlage lei",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          150,
+          132,
+          16
+        ]
+      },
+      {
+        "text": "Beekers Garage g",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          174,
+          122,
+          18
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          204,
+          106,
+          16
+        ]
+      },
+      {
+        "text": "Friseursalon",
+        "confidence": 1.0,
+        "box": [
+          1114,
+          232,
+          78,
+          12
+        ]
+      },
+      {
+        "text": "Kino \u00ae",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          52,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs 8",
+        "confidence": 1.0,
+        "box": [
+          1068,
+          284,
+          144,
+          16
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          312,
+          138,
+          14
+        ]
+      },
+      {
+        "text": "Seilbahn",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          340,
+          54,
+          12
+        ]
+      },
+      {
+        "text": "Simeon",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          365,
+          50,
+          14
+        ]
+      },
+      {
+        "text": "Stripclub",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          394,
+          56,
+          12
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen F$",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf d",
+        "confidence": 1.0,
+        "box": [
+          1112,
+          446,
+          98,
+          17
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          162,
+          612,
+          44,
+          13
+        ]
+      },
+      {
+        "text": "LA PUERTA / DAVIS AVE",
+        "confidence": 1.0,
+        "box": [
+          72,
+          638,
+          144,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen ga",
+        "confidence": 1.0,
+        "box": [
+          780,
+          658,
+          139,
+          25
+        ]
+      },
+      {
+        "text": "Zoomen (L2]",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          70,
+          12
+        ]
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          744,
+          666,
+          22,
+          14
+        ]
+      },
+      {
+        "text": "Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          918,
+          666,
+          100,
+          12
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          60,
+          14
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          745.0,
+          210.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1581m)",
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123938",
+    "requested_time": 64.0,
+    "frame": {
+      "i": 3832,
+      "frame_id": 97522,
+      "t": 63.997
+    },
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          44,
+          14
+        ]
+      },
+      {
+        "text": "Wegpunkt (1581m)",
+        "confidence": 1.0,
+        "box": [
+          1080,
+          68,
+          110,
+          16
+        ]
+      },
+      {
+        "text": "Ammu-Nation P",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          96,
+          106,
+          12
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand O",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          122,
+          206,
+          14
+        ]
+      },
+      {
+        "text": "Autowaschanlage lei",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          150,
+          132,
+          16
+        ]
+      },
+      {
+        "text": "Beekers Garage f",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          174,
+          124,
+          18
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft @",
+        "confidence": 1.0,
+        "box": [
+          1108,
+          204,
+          104,
+          14
+        ]
+      },
+      {
+        "text": "Friseursalon",
+        "confidence": 1.0,
+        "box": [
+          1114,
+          232,
+          78,
+          12
+        ]
+      },
+      {
+        "text": "Kino \u00ae",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          52,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs 8",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          284,
+          146,
+          16
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          312,
+          138,
+          14
+        ]
+      },
+      {
+        "text": "Seilbahn",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          340,
+          54,
+          12
+        ]
+      },
+      {
+        "text": "S",
+        "confidence": 1.0,
+        "box": [
+          1196,
+          364,
+          14,
+          16
+        ]
+      },
+      {
+        "text": "Simeon",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          365,
+          48,
+          14
+        ]
+      },
+      {
+        "text": "Stripclub",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          394,
+          56,
+          15
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen F%",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf d",
+        "confidence": 1.0,
+        "box": [
+          1112,
+          446,
+          98,
+          14
+        ]
+      },
+      {
+        "text": "1007ml",
+        "confidence": 1.0,
+        "box": [
+          164,
+          612,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "LA PUERTA / DAVIS AVE",
+        "confidence": 1.0,
+        "box": [
+          70,
+          638,
+          146,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen ga Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          780,
+          658,
+          239,
+          28
+        ]
+      },
+      {
+        "text": "Zoomen (L2]",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          70,
+          12
+        ]
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          742,
+          666,
+          24,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          60,
+          14
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          745.0,
+          231.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1581m)",
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123938",
+    "requested_time": 79.2,
+    "frame": {
+      "i": 4740,
+      "frame_id": 98430,
+      "t": 79.1955
+    },
+    "text": [
+      {
+        "text": "FRANKLIN",
+        "confidence": 1.0,
+        "box": [
+          976,
+          64,
+          50,
+          17
+        ]
+      },
+      {
+        "text": "Grand Theft Auto V",
+        "confidence": 1.0,
+        "box": [
+          206,
+          80,
+          180,
+          28
+        ]
+      },
+      {
+        "text": "DONNERSTAG 07:39",
+        "confidence": 1.0,
+        "box": [
+          928,
+          80,
+          96,
+          16
+        ]
+      },
+      {
+        "text": "$379",
+        "confidence": 1.0,
+        "box": [
+          996,
+          96,
+          28,
+          14
+        ]
+      },
+      {
+        "text": "KARTE",
+        "confidence": 1.0,
+        "box": [
+          256,
+          128,
+          44,
+          15
+        ]
+      },
+      {
+        "text": "INFO",
+        "confidence": 1.0,
+        "box": [
+          408,
+          128,
+          32,
+          12
+        ]
+      },
+      {
+        "text": "STATISTIKEN",
+        "confidence": 1.0,
+        "box": [
+          528,
+          128,
+          80,
+          12
+        ]
+      },
+      {
+        "text": "EINSTELLUNGEN",
+        "confidence": 1.0,
+        "box": [
+          660,
+          128,
+          106,
+          12
+        ]
+      },
+      {
+        "text": "SPIEL",
+        "confidence": 1.0,
+        "box": [
+          840,
+          128,
+          36,
+          12
+        ]
+      },
+      {
+        "text": "ONLINE",
+        "confidence": 1.0,
+        "box": [
+          980,
+          128,
+          48,
+          12
+        ]
+      },
+      {
+        "text": "Zur\u00fcck (",
+        "confidence": 1.0,
+        "box": [
+          1050,
+          665,
+          48,
+          13
+        ]
+      },
+      {
+        "text": "Weiterbl\u00e4ttern L1 R1",
+        "confidence": 1.0,
+        "box": [
+          780,
+          666,
+          128,
+          14
+        ]
+      },
+      {
+        "text": "Men\u00fc verbergen",
+        "confidence": 1.0,
+        "box": [
+          920,
+          666,
+          94,
+          14
+        ]
+      },
+      {
+        "text": "Ausw\u00e4hlen 1",
+        "confidence": 1.0,
+        "box": [
+          1126,
+          666,
+          66,
+          12
+        ]
+      }
+    ],
+    "map": {
+      "screen": "overview",
+      "cursor": null,
+      "player": null,
+      "missions": [],
+      "waypoint": false,
+      "proof": null,
+      "land": null
+    }
+  },
+  {
+    "recording": "20261111-123938",
+    "requested_time": 89.8,
+    "frame": {
+      "i": 5373,
+      "frame_id": 99063,
+      "t": 89.8052
+    },
+    "text": [
+      {
+        "text": "Spieler A",
+        "confidence": 1.0,
+        "box": [
+          1144,
+          41,
+          66,
+          17
+        ]
+      },
+      {
+        "text": "Wegpunkt (1581m)",
+        "confidence": 1.0,
+        "box": [
+          1080,
+          68,
+          112,
+          16
+        ]
+      },
+      {
+        "text": "Ammu-Nation P",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          96,
+          106,
+          14
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand G",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          124,
+          206,
+          12
+        ]
+      },
+      {
+        "text": "Autowaschanlage",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          152,
+          110,
+          14
+        ]
+      },
+      {
+        "text": "lEy",
+        "confidence": 1.0,
+        "box": [
+          1190,
+          152,
+          22,
+          10
+        ]
+      },
+      {
+        "text": "Beekers Garage 0",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          176,
+          122,
+          16
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft #",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          204,
+          104,
+          16
+        ]
+      },
+      {
+        "text": "Friseursalon *f",
+        "confidence": 1.0,
+        "box": [
+          1116,
+          230,
+          96,
+          16
+        ]
+      },
+      {
+        "text": "Kino \u00ae",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          52,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs 81",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          284,
+          144,
+          16
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug A",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          312,
+          160,
+          16
+        ]
+      },
+      {
+        "text": "Seilbahn 6",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          338,
+          76,
+          16
+        ]
+      },
+      {
+        "text": "Simeon S",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          364,
+          68,
+          16
+        ]
+      },
+      {
+        "text": "Stripclub",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          394,
+          56,
+          14
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen F\u00f7",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf R",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          446,
+          102,
+          18
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          164,
+          610,
+          42,
+          14
+        ]
+      },
+      {
+        "text": "LA PUERTA / DAVIS AVE",
+        "confidence": 1.0,
+        "box": [
+          72,
+          638,
+          144,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen Dia",
+        "confidence": 1.0,
+        "box": [
+          780,
+          658,
+          139,
+          25
+        ]
+      },
+      {
+        "text": "Zoomen L2",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          68,
+          12
+        ]
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          744,
+          666,
+          22,
+          14
+        ]
+      },
+      {
+        "text": "Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          918,
+          666,
+          100,
+          12
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          60,
+          14
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          745.0,
+          210.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1581m)",
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123938",
+    "requested_time": 93.4,
+    "frame": {
+      "i": 5588,
+      "frame_id": 99278,
+      "t": 93.3924
+    },
+    "text": [
+      {
+        "text": "Spieler A",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          64,
+          14
+        ]
+      },
+      {
+        "text": "Wegpunkt (1581m)",
+        "confidence": 1.0,
+        "box": [
+          1080,
+          68,
+          110,
+          16
+        ]
+      },
+      {
+        "text": "Ammu-Nation P",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          96,
+          106,
+          12
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand O",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          122,
+          204,
+          14
+        ]
+      },
+      {
+        "text": "Autowaschanlage al",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          152,
+          130,
+          14
+        ]
+      },
+      {
+        "text": "Beekers Garage 8",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          176,
+          122,
+          16
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          204,
+          104,
+          16
+        ]
+      },
+      {
+        "text": "Friseursalon &",
+        "confidence": 1.0,
+        "box": [
+          1114,
+          230,
+          98,
+          14
+        ]
+      },
+      {
+        "text": "Kino \u00ae",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          52,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs 8",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          284,
+          146,
+          16
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug Fi",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          312,
+          158,
+          16
+        ]
+      },
+      {
+        "text": "Seilbahn",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          338,
+          76,
+          14
+        ]
+      },
+      {
+        "text": "S",
+        "confidence": 1.0,
+        "box": [
+          1196,
+          364,
+          14,
+          18
+        ]
+      },
+      {
+        "text": "Simeon",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          366,
+          48,
+          12
+        ]
+      },
+      {
+        "text": "Stripclub",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          394,
+          56,
+          15
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen Fx",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf R",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          446,
+          100,
+          19
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          164,
+          612,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "INTERNATIONALER FLUGHAFEN VON LS",
+        "confidence": 1.0,
+        "box": [
+          72,
+          638,
+          244,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen Dia",
+        "confidence": 1.0,
+        "box": [
+          780,
+          658,
+          139,
+          25
+        ]
+      },
+      {
+        "text": "Zoomen L2",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          68,
+          12
+        ]
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          744,
+          666,
+          22,
+          14
+        ]
+      },
+      {
+        "text": "Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          920,
+          666,
+          98,
+          12
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          60,
+          14
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          826.0,
+          210.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1581m)",
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123938",
+    "requested_time": 105.1,
+    "frame": {
+      "i": 6288,
+      "frame_id": 99978,
+      "t": 105.1044
+    },
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          46,
+          14
+        ]
+      },
+      {
+        "text": "Wegpunkt (1581m)",
+        "confidence": 1.0,
+        "box": [
+          1080,
+          70,
+          110,
+          14
+        ]
+      },
+      {
+        "text": "Ammu-Nation P",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          96,
+          106,
+          12
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand G",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          122,
+          206,
+          14
+        ]
+      },
+      {
+        "text": "Autowaschanlage lal",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          150,
+          132,
+          14
+        ]
+      },
+      {
+        "text": "Beekers Garage g",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          174,
+          122,
+          18
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          204,
+          106,
+          16
+        ]
+      },
+      {
+        "text": "Friseursalon",
+        "confidence": 1.0,
+        "box": [
+          1114,
+          232,
+          78,
+          12
+        ]
+      },
+      {
+        "text": "Kino \u00ae",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          52,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs 8",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          284,
+          146,
+          16
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug Fi",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          312,
+          158,
+          16
+        ]
+      },
+      {
+        "text": "Seilbahn 6",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          338,
+          74,
+          14
+        ]
+      },
+      {
+        "text": "Simeon S",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          364,
+          68,
+          17
+        ]
+      },
+      {
+        "text": "Stripclub A",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          391,
+          78,
+          15
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen F",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf A",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          446,
+          100,
+          19
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          164,
+          612,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "LA PUERTA / DAVIS AVE",
+        "confidence": 1.0,
+        "box": [
+          72,
+          638,
+          144,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen oga Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          780,
+          658,
+          239,
+          28
+        ]
+      },
+      {
+        "text": "Zoomen L2]",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          70,
+          14
+        ]
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          744,
+          666,
+          22,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          60,
+          14
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          745.0,
+          210.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1581m)",
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123938",
+    "requested_time": 121.0,
+    "frame": {
+      "i": 7239,
+      "frame_id": 100929,
+      "t": 121.003
+    },
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          44,
+          14
+        ]
+      },
+      {
+        "text": "Wegpunkt (1582m)",
+        "confidence": 1.0,
+        "box": [
+          1078,
+          70,
+          112,
+          14
+        ]
+      },
+      {
+        "text": "Ammu-Nation P",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          96,
+          106,
+          12
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand G",
+        "confidence": 1.0,
+        "box": [
+          1008,
+          122,
+          204,
+          14
+        ]
+      },
+      {
+        "text": "Autowaschanlage lel",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          150,
+          132,
+          16
+        ]
+      },
+      {
+        "text": "Beekers Garage (",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          173,
+          124,
+          21
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          204,
+          108,
+          18
+        ]
+      },
+      {
+        "text": "Friseursalon |",
+        "confidence": 1.0,
+        "box": [
+          1116,
+          232,
+          78,
+          12
+        ]
+      },
+      {
+        "text": "Kino \u00ae",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          52,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs 8",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          284,
+          146,
+          16
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          312,
+          138,
+          16
+        ]
+      },
+      {
+        "text": "Seilbahn",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          340,
+          54,
+          12
+        ]
+      },
+      {
+        "text": "Simeon",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          366,
+          48,
+          14
+        ]
+      },
+      {
+        "text": "S",
+        "confidence": 1.0,
+        "box": [
+          1190,
+          366,
+          20,
+          14
+        ]
+      },
+      {
+        "text": "Stripclub",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          392,
+          58,
+          17
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen F$",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf R",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          446,
+          102,
+          18
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          160,
+          611,
+          47,
+          13
+        ]
+      },
+      {
+        "text": "LA PUERTA / DAVIS AVE",
+        "confidence": 1.0,
+        "box": [
+          70,
+          638,
+          146,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen oga Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          780,
+          658,
+          239,
+          28
+        ]
+      },
+      {
+        "text": "Zoomen (L2]",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          70,
+          12
+        ]
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          744,
+          666,
+          22,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          60,
+          14
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          745.0,
+          209.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1582m)",
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-123938",
+    "requested_time": 133.1,
+    "frame": {
+      "i": 7963,
+      "frame_id": 101653,
+      "t": 133.0983
+    },
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          44,
+          14
+        ]
+      },
+      {
+        "text": "Wegpunkt (1582m)",
+        "confidence": 1.0,
+        "box": [
+          1078,
+          68,
+          112,
+          16
+        ]
+      },
+      {
+        "text": "Ammu-Nation F",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          98,
+          106,
+          12
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand \u00a9",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          122,
+          204,
+          14
+        ]
+      },
+      {
+        "text": "Autowaschanlage",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          152,
+          108,
+          12
+        ]
+      },
+      {
+        "text": "Beekers Garage",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          178,
+          100,
+          14
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft",
+        "confidence": 1.0,
+        "box": [
+          1108,
+          203,
+          84,
+          17
+        ]
+      },
+      {
+        "text": "Friseursalon",
+        "confidence": 1.0,
+        "box": [
+          1116,
+          232,
+          74,
+          12
+        ]
+      },
+      {
+        "text": "Kino",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          32,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          284,
+          126,
+          14
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          312,
+          138,
+          14
+        ]
+      },
+      {
+        "text": "Seilbahn",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          338,
+          54,
+          14
+        ]
+      },
+      {
+        "text": "Simeon S",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          364,
+          68,
+          16
+        ]
+      },
+      {
+        "text": "Stripclub",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          392,
+          58,
+          17
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen F",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf 9",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          446,
+          102,
+          18
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          164,
+          610,
+          42,
+          15
+        ]
+      },
+      {
+        "text": "LA PUERTA / DAVIS AVE",
+        "confidence": 1.0,
+        "box": [
+          72,
+          638,
+          144,
+          12
+        ]
+      },
+      {
+        "text": "Markierung w\u00e4hlen oga Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          780,
+          658,
+          239,
+          28
+        ]
+      },
+      {
+        "text": "Zoomen L2]",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          70,
+          12
+        ]
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          742,
+          666,
+          24,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          60,
+          14
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          745.0,
+          209.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1582m)",
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-125537",
+    "requested_time": 3.006,
+    "frame": {
+      "i": 179,
+      "frame_id": 151314,
+      "t": 3.0064
+    },
+    "text": [
+      {
+        "text": "Spieler A",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          66,
+          14
+        ]
+      },
+      {
+        "text": "Wegpunkt (1537m) *",
+        "confidence": 1.0,
+        "box": [
+          1078,
+          68,
+          132,
+          16
+        ]
+      },
+      {
+        "text": "Ammu-Nation F",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          98,
+          104,
+          12
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          124,
+          186,
+          12
+        ]
+      },
+      {
+        "text": "Autowaschanlage",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          152,
+          108,
+          14
+        ]
+      },
+      {
+        "text": "lAl",
+        "confidence": 1.0,
+        "box": [
+          1190,
+          152,
+          24,
+          10
+        ]
+      },
+      {
+        "text": "Beekers Garage 8",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          176,
+          124,
+          16
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft \u00ae",
+        "confidence": 1.0,
+        "box": [
+          1108,
+          204,
+          102,
+          16
+        ]
+      },
+      {
+        "text": "Friseursalon 6$",
+        "confidence": 1.0,
+        "box": [
+          1116,
+          229,
+          96,
+          17
+        ]
+      },
+      {
+        "text": "Kino \u00ae",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          52,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs di",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          286,
+          144,
+          14
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug Fi",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          312,
+          158,
+          16
+        ]
+      },
+      {
+        "text": "Seilbahn",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          340,
+          58,
+          12
+        ]
+      },
+      {
+        "text": "Simeon S",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          363,
+          68,
+          17
+        ]
+      },
+      {
+        "text": "Stripclub",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          394,
+          64,
+          12
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen P",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf 0",
+        "confidence": 1.0,
+        "box": [
+          1108,
+          446,
+          104,
+          20
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          164,
+          612,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "INTERNATIONALER FLUGHAFEN VON LS",
+        "confidence": 1.0,
+        "box": [
+          70,
+          638,
+          246,
+          12
+        ]
+      },
+      {
+        "text": "R2 Marklerung w\u00e4hlen ja Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          738,
+          664,
+          280,
+          18
+        ]
+      },
+      {
+        "text": "Zoomen L2]",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          70,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          60,
+          14
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          750.0,
+          216.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1537m) *",
+      "land": true
+    }
+  },
+  {
+    "recording": "20261111-125537",
+    "requested_time": 4.691,
+    "frame": {
+      "i": 280,
+      "frame_id": 151415,
+      "t": 4.6913
+    },
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          46,
+          14
+        ]
+      },
+      {
+        "text": "A",
+        "confidence": 1.0,
+        "box": [
+          1196,
+          42,
+          16,
+          16
+        ]
+      },
+      {
+        "text": "Wegpunkt (1537m) #",
+        "confidence": 1.0,
+        "box": [
+          1078,
+          68,
+          132,
+          16
+        ]
+      },
+      {
+        "text": "Ammu-Nation F",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          98,
+          104,
+          12
+        ]
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          124,
+          184,
+          12
+        ]
+      },
+      {
+        "text": "Autowaschanlage",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          152,
+          108,
+          14
+        ]
+      },
+      {
+        "text": "lal",
+        "confidence": 1.0,
+        "box": [
+          1192,
+          152,
+          22,
+          10
+        ]
+      },
+      {
+        "text": "Beekers Garage 8",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          176,
+          124,
+          16
+        ]
+      },
+      {
+        "text": "Fahrgesch\u00e4ft",
+        "confidence": 1.0,
+        "box": [
+          1108,
+          204,
+          104,
+          16
+        ]
+      },
+      {
+        "text": "Friseursalon 6",
+        "confidence": 1.0,
+        "box": [
+          1116,
+          230,
+          96,
+          17
+        ]
+      },
+      {
+        "text": "Kino \u00ae",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          52,
+          12
+        ]
+      },
+      {
+        "text": "Los Santos Customs 81",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          284,
+          144,
+          16
+        ]
+      },
+      {
+        "text": "Pers\u00f6nliches Fahrzeug Ai",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          312,
+          160,
+          16
+        ]
+      },
+      {
+        "text": "Seilbahn 6",
+        "confidence": 1.0,
+        "box": [
+          1134,
+          338,
+          78,
+          16
+        ]
+      },
+      {
+        "text": "Simeon S",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          363,
+          68,
+          17
+        ]
+      },
+      {
+        "text": "Stripclub A",
+        "confidence": 1.0,
+        "box": [
+          1132,
+          394,
+          80,
+          17
+        ]
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen F",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          418,
+          176,
+          18
+        ]
+      },
+      {
+        "text": "Unterschlupf R",
+        "confidence": 1.0,
+        "box": [
+          1108,
+          446,
+          104,
+          18
+        ]
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          164,
+          612,
+          42,
+          12
+        ]
+      },
+      {
+        "text": "LA PUERTA / AUTOPIA PKWY",
+        "confidence": 1.0,
+        "box": [
+          70,
+          638,
+          176,
+          12
+        ]
+      },
+      {
+        "text": "R2 Markierung w\u00e4hlen a Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          740,
+          664,
+          278,
+          18
+        ]
+      },
+      {
+        "text": "Zoomen L2]",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          70,
+          14
+        ]
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          44,
+          13
+        ]
+      },
+      {
+        "text": "Wegpunkt i",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          64,
+          12
+        ]
+      }
+    ],
+    "map": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [
+        [
+          750.0,
+          235.0
+        ]
+      ],
+      "waypoint": true,
+      "proof": "waypoint legend: Wegpunkt (1537m) #",
+      "land": true
+    }
+  }
+]
