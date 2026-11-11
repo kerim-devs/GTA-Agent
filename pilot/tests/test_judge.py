@@ -375,9 +375,9 @@ def test_conductor_logs_judgments_and_emits_only_accepted_changes(tmp_path):
         assert not [event for event in jobs[0][1].events if event["kind"] == "mode_changed"]
         jobs[0][0].set_result(HeadResponse((SkillCall("wait", {"duration": 5}),), "Wait."))
         conductor.tick(Observation(READING, True, 1.1), RGB)
-        assert jobs[1][1].events == [{"kind": "mode_changed", "old": "foot", "new": "vehicle"}]
-        assert jobs[1][1].judgment["mode"] == "vehicle"
-        assert jobs[1][1].judgment["age"] == pytest.approx(0.1)
+        assert len(jobs) == 1
+        assert conductor.mode_filter.mode == "vehicle"
+        assert not [event for event in conductor.pending if event["kind"] == "mode_changed"]
         # A judge that falls silent lets the mode lapse and tells the head nothing.
         conductor.tick(Observation(READING, True, 2.51), RGB)
         assert conductor.mode_filter.mode is None
@@ -422,3 +422,86 @@ def test_cli_preserves_judge_server_order_and_defaults_to_off(monkeypatch):
     with pytest.raises(SystemExit):
         cli.main(["play", "--judge", "https://8.8.8.8=model"])
     assert len(calls) == 2
+
+
+def test_conductor_passes_mode_and_only_reports_none_edges(tmp_path):
+    from pilot.contract import Answer
+
+    requests = []
+    values = [
+        "foot",
+        "foot",
+        "vehicle",
+        "vehicle",
+        "vehicle",
+        "foot",
+        "foot",
+        "foot",
+        "none",
+        "none",
+        "none",
+        "vehicle",
+        "vehicle",
+        "vehicle",
+    ]
+
+    class Judge:
+        def __init__(self):
+            self.rows = iter(
+                Judgment(i / 10, {"mode": Answer(mode, 0.9)}, {}, 0.1, "test")
+                for i, mode in enumerate(values)
+            )
+
+        def poll(self, rgb, capture):
+            return next(self.rows)
+
+        def drain_failures(self):
+            return []
+
+        def close(self):
+            pass
+
+    class Detector:
+        def __init__(self):
+            self.modes = []
+
+        def update(self, reading, timestamp, *, mode=None, **kwargs):
+            self.modes.append(mode)
+            return ()
+
+    def submit(function, request):
+        future = Future()
+        future.set_result(HeadResponse((SkillCall("wait", {"duration": 5}),), "Wait."))
+        requests.append(request)
+        return future
+
+    detector = Detector()
+    conductor = Conductor(tmp_path, judge=Judge(), detector=detector, submit=submit)
+    try:
+        for tick in range(len(values)):
+            conductor.tick(Observation(READING, True, tick / 10), RGB, frame_time=tick / 10)
+        events = [
+            event for request in requests for event in request.events if event["kind"] == "mode_changed"
+        ]
+        assert detector.modes == [
+            None,
+            "foot",
+            "foot",
+            "foot",
+            "vehicle",
+            "vehicle",
+            "vehicle",
+            "foot",
+            "foot",
+            "foot",
+            "none",
+            "none",
+            "none",
+            "vehicle",
+        ]
+        assert events == [
+            {"kind": "mode_changed", "old": "foot", "new": "none"},
+            {"kind": "mode_changed", "old": "none", "new": "vehicle"},
+        ]
+    finally:
+        conductor.close()

@@ -4,7 +4,7 @@ import math
 from dataclasses import replace
 from typing import ClassVar
 
-from pilot.contract import FRAME_SIZE, Detection, Observation, Pad, SkillResult
+from pilot.contract import FRAME_SIZE, Detection, Observation, Pad, SkillResult, player_mode
 from pilot.profile import active
 
 # Camera geometry and GTA door timing are estimates, pending live measurement.
@@ -174,13 +174,15 @@ class EnterVehicle:
             return self.stop(self._timeout_reason())
 
         # Entry owns the pad even if object delivery disappears during the animation.
+        if player_mode(obs) == "none":
+            return SkillResult()
         if self.phase == "wait" and now - self.phase_since < PRESS_SECONDS:
             return SkillResult(Pad(buttons=(self.profile.enter_vehicle,)))
         if obs.reading.corrupt:
             # A damaged tick says nothing about the map: it neither counts nor starts over.
             if self.confirmed_since is not None:
                 return SkillResult()
-        elif obs.reading.minimap == "tilted":
+        elif player_mode(obs) == "vehicle":
             if self.confirmed_since is None:
                 self.confirmed_since = now
             # Before any press the character sat in a vehicle already, or the reader is wrong.
@@ -202,7 +204,7 @@ class EnterVehicle:
             self.phase_since = now
             self.retry_walk = 0.0
 
-        if obs.reading.corrupt or obs.reading.minimap != "flat":
+        if obs.reading.corrupt or player_mode(obs) != "foot":
             return SkillResult()
         fresh = (
             obs.objects_time is not None

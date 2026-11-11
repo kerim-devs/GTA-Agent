@@ -257,3 +257,37 @@ def test_a_doubtful_detection_is_not_walked_to():
     doubtful = Detection("car", NEAR.box, 0.3)
     result = skill.step(obs(0, (doubtful,)))
     assert skill.target is None and result.pad.left == (0, 0) and result.pad.buttons == ()
+
+
+def test_enter_vehicle_takes_accepted_mode_over_opposite_map():
+    from dataclasses import replace
+
+    entered = EnterVehicle({})
+    entered.step(obs(0, (NEAR,)))
+    assert entered.step(obs(0.04, (NEAR,))).pad.buttons == ("triangle",)
+    assert entered.step(replace(obs(0.2, (), delivered=False), mode="vehicle")).status == "running"
+    result = entered.step(replace(obs(1.2, (), delivered=False), mode="vehicle"))
+    assert result.status == "done" and result.reason == "entered vehicle"
+
+    on_foot = EnterVehicle({})
+
+    def opposite(t):
+        return replace(obs(t, (NEAR,), minimap="tilted"), mode="foot")
+
+    assert EnterVehicle({}).step(replace(obs(0, minimap="tilted"), mode="foot")).pad.left[1] < 0
+    on_foot.step(opposite(0))
+    assert on_foot.step(opposite(0.04)).pad.buttons == ("triangle",)
+    assert on_foot.step(opposite(0.2)).status == "running"
+    assert on_foot.step(opposite(1.2)).status == "running"
+    assert EnterVehicle({}).step(replace(obs(0), mode="vehicle")).pad == NEUTRAL_PAD
+
+
+def test_none_releases_entry_button_without_confirming_or_failing():
+    from dataclasses import replace
+
+    entry = EnterVehicle({})
+    entry.step(obs(0, (NEAR,)))
+    assert entry.step(obs(0.04, (NEAR,))).pad.buttons == ("triangle",)
+    for t in (0.05, 0.2, 1.2):
+        result = entry.step(replace(obs(t, minimap="tilted"), mode="none"))
+        assert result.pad == NEUTRAL_PAD and result.status == "running"

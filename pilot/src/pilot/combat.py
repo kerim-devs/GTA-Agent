@@ -3,7 +3,7 @@
 import math
 from typing import ClassVar
 
-from pilot.contract import NEUTRAL_PAD, Observation, Pad, SkillResult
+from pilot.contract import NEUTRAL_PAD, Observation, Pad, SkillResult, player_mode
 from pilot.profile import active
 
 # Conservative estimates pending a cable trial; provenance is in the P18 report.
@@ -43,11 +43,12 @@ def nearest_red(reading):
     )
 
 
-def readable(reading):
+def readable(observation):
+    reading = observation.reading
     return (
         reading is not None
         and not reading.corrupt
-        and reading.minimap == "flat"
+        and player_mode(observation) == "foot"
         and math.isfinite(reading.confidence)
         and reading.confidence > 0
     )
@@ -116,7 +117,7 @@ class Fight:
             return self.stop("health-depleted")
 
         reading = observation.reading
-        if not readable(reading):
+        if not readable(observation):
             self.clear_since = None
             self.lock_since = None
             self.cover_until = None

@@ -4,7 +4,7 @@ from collections import deque
 from math import atan2, degrees, hypot
 from typing import TYPE_CHECKING, ClassVar
 
-from .contract import NEUTRAL_PAD, Observation, Pad, SkillResult
+from .contract import NEUTRAL_PAD, Observation, Pad, SkillResult, player_mode
 from .drive import Driver
 from .profile import active
 
@@ -107,7 +107,7 @@ class Skill:
         targets = [b for b in reading.blips if b.color == self.args["color"]]
         # Walking/camera geometry is checked only on foot. Unreadable frames never
         # inherit a command, including during a sidestep or camera settling.
-        if reading.corrupt or reading.minimap != "flat" or not targets:
+        if reading.corrupt or player_mode(observation) != "foot" or not targets:
             self.aligned_since = self.stopped_since = self.sidestep_until = None
             if self.missing_since is None:
                 self.missing_since = now

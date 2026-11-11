@@ -265,6 +265,7 @@ class EventDetector:
         reading: Reading,
         timestamp: float,
         *,
+        mode: str | None = None,
         text: SceneText | None = None,
         frame: np.ndarray | None = None,
         reader: TextReader | None = None,
@@ -280,6 +281,19 @@ class EventDetector:
                 state.candidate, state.count = None, 0
         self._last_time = timestamp
         events = []
+        if mode is not None:
+            vehicle = self._states.setdefault("vehicle", _Stable())
+            vehicle.candidate, vehicle.count = None, 0
+            if mode in {"foot", "vehicle"}:
+                # Preserve the existing event vocabulary. Accepted judge modes
+                # have already been filtered and need no map debounce.
+                value = "flat" if mode == "foot" else "tilted"
+                previous, vehicle.value = vehicle.value, value
+                if previous is not None and previous != value:
+                    kind = "vehicle_enter" if mode == "vehicle" else "vehicle_exit"
+                    events.append(
+                        SceneEvent(kind, timestamp, previous, value, "judge mode; occupancy hypothesis")
+                    )
         valid = (
             not reading.corrupt
             and (reading.minimap == "none" or reading.confidence >= 0.45)
@@ -297,7 +311,12 @@ class EventDetector:
                     )
                 )
             if hud == "present":
-                change = self._update("vehicle", reading.minimap, timestamp, self.map_seconds)
+                # Silence starts a fresh map candidate from the judge's last state.
+                change = (
+                    self._update("vehicle", reading.minimap, timestamp, self.map_seconds)
+                    if mode is None
+                    else None
+                )
                 if change:
                     kind = "vehicle_enter" if reading.minimap == "tilted" else "vehicle_exit"
                     events.append(
