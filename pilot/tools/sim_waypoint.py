@@ -12,7 +12,7 @@ import numpy as np
 from pilot.contract import NEUTRAL_PAD, Hud, Reading
 from pilot.scene import SceneText, TextLine
 from pilot.skills import Observation
-from pilot.waypoint import SetWaypoint, read_map
+from pilot.waypoint import SetWaypoint, land_at_cursor, read_map
 
 WRONG_SCREENS = (
     "settings",
@@ -45,7 +45,8 @@ def map_text(screen):
 
 
 class MapWorld:
-    def __init__(self):
+    def __init__(self, gain=1200, edge=False, sea=False, markers=True):
+        self.gain, self.edge, self.sea = gain, edge, sea
         self.screen = "game"
         self.offset = np.zeros(2)
         self.waypoint = False
@@ -60,8 +61,15 @@ class MapWorld:
             [(850, 200), (800, 270), (770, 420), (870, 510)],
         ):
             cv2.polylines(self.base, [np.array(points)], False, (220, 220, 220), 3)
-        self._arrow(self.base, (610, 470))
-        self._letter(self.base, (760, 280))
+        if markers:
+            self._arrow(self.base, (610, 470))
+            self._letter(self.base, (760, 280))
+        if not markers:
+            # Street blocks across a wider area keep away independent of marker templates.
+            rng = np.random.default_rng(19)
+            for _ in range(300):
+                x, y = rng.integers([40, 40], [1240, 680])
+                cv2.rectangle(self.base, (int(x), int(y)), (int(x + 12), int(y + 8)), (160, 160, 160), 1)
 
     @staticmethod
     def _arrow(frame, centre):
@@ -90,8 +98,8 @@ class MapWorld:
                 raise AssertionError("cross outside map")
         if "circle" in pressed:
             self.screen = {"map": "overview", "overview": "game"}.get(self.screen, "game")
-        if self.screen == "map":
-            self.offset -= np.array(pad.left) * 1200 * dt
+        if self.screen == "map" and not self.edge:
+            self.offset -= np.array(pad.left) * self.gain * dt
 
     def frame(self):
         frame = np.zeros_like(self.base)
@@ -108,6 +116,8 @@ class MapWorld:
                 (1280, 720),
                 borderValue=(45, 45, 45),
             )
+            if self.sea:
+                frame[300:420, 580:700] = 80
             frame[:, 1000:] = 45
             self._arrow(frame, (1204, 50))
             self._letter(frame, (1204, 346))
@@ -119,10 +129,23 @@ class MapWorld:
 
 
 def simulate(
-    target="mission", delay=0.14, wrong_at=None, wrong_screen="settings", duration=45, exit_works=True
+    target="mission",
+    delay=0.14,
+    wrong_at=None,
+    wrong_screen="settings",
+    duration=45,
+    exit_works=True,
+    gain=1200,
+    edge=False,
+    sea=False,
+    damaged=False,
+    direction="east",
+    distance="near",
 ):
-    world = MapWorld()
-    skill = SetWaypoint({"target": target, "duration": duration})
+    world = MapWorld(gain=gain, edge=edge, sea=sea, markers=target == "mission")
+    skill = SetWaypoint(
+        {"target": target, "duration": duration, "direction": direction, "distance": distance}
+    )
     text = SceneText()
     skill._picture = lambda frame: read_map(frame, text)
     pending = deque()
@@ -141,6 +164,11 @@ def simulate(
         while len(pending) > 1 and pending[1][0] <= now - delay:
             pending.popleft()
         _, frame, screen, route = pending[0]
+        corrupt = damaged and skill.phase == "pan" and now >= skill.ready_at and not injected
+        if corrupt:
+            injected = True
+            frame = frame.copy()
+            frame[180:540, 250:950] = (0, 255, 80)
         text = map_text(screen)
         reading = Reading(
             "tilted" if screen == "game" else "none",
@@ -148,7 +176,7 @@ def simulate(
             None,
             None,
             None,
-            False,
+            corrupt,
             1.0,
         )
         observation = Observation(
@@ -167,8 +195,14 @@ def simulate(
                 "pad": asdict(result.pad),
                 "status": result.status,
                 "reason": result.reason,
+                "displacement": skill.displacement.tolist(),
+                "moves": skill.moves,
+                "corrupt": corrupt,
             }
         )
+        if target == "away" and "cross" in result.pad.buttons and screen == "map":
+            assert not corrupt and land_at_cursor(frame), "cross on damaged picture or sea"
+            assert skill.inland_used or np.linalg.norm(skill.displacement) >= skill.distance
         assert not set(result.pad.buttons) & {"l1", "r1", "ps", "create"}
         if failure_seen:
             assert set(result.pad.buttons) <= {"circle"} and result.pad.left == (0, 0)
@@ -177,6 +211,12 @@ def simulate(
             assert result.pad == NEUTRAL_PAD
             return {
                 "target": target,
+                "gain": gain,
+                "edge": edge,
+                "sea": sea,
+                "damaged": damaged,
+                "direction": direction,
+                "distance": distance,
                 "delay": delay,
                 "wrong_at": wrong_at,
                 "wrong_screen": wrong_screen,
@@ -199,9 +239,28 @@ if __name__ == "__main__":
     results = [simulate(target, delay) for target in ("mission", "away") for delay in (0.14, 0.6, 1.1)]
     results += [simulate(wrong_at=phase, wrong_screen=screen) for phase in PHASES for screen in WRONG_SCREENS]
     results += [simulate(wrong_at=phase, exit_works=False) for phase in PHASES]
+    results += [
+        simulate(target="away", gain=gain, delay=delay, distance=distance)
+        for gain in (65, 130, 260)
+        for delay in (0.14, 0.6, 1.1)
+        for distance in ("near", "far")
+    ]
+    results += [
+        simulate(target="away", delay=delay, **case)
+        for delay in (0.14, 0.6, 1.1)
+        for case in ({"edge": True}, {"sea": True}, {"damaged": True})
+    ]
+    results += [
+        simulate(target="away", wrong_at=phase, wrong_screen=screen)
+        for phase in ("open", "enter", "acquire", "pan", "confirm", "exit")
+        for screen in WRONG_SCREENS
+    ]
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(results, indent=2) + "\n")
     for result in results:
         print(json.dumps({key: value for key, value in result.items() if key != "trace"}))
-    assert all(r["status"] == ("failed" if r["wrong_at"] else "done") for r in results)
+    assert all(
+        r["status"] == ("failed" if r["wrong_at"] or r["edge"] or r["sea"] or r["damaged"] else "done")
+        for r in results
+    )
     assert all(r["injected"] for r in results if r["wrong_at"])
