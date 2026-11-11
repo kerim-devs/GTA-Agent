@@ -494,17 +494,46 @@ _BV_NEAR = np.hypot(_bv_cx - ARROW_XY[0], _bv_cy - ARROW_XY[1]) <= 48
 _BH_NEAR = np.hypot(_bh_cx - ARROW_XY[0], _bh_cy - ARROW_XY[1]) <= 48
 
 
-def _blocks(crop: np.ndarray):
+def _block_pieces(g: np.ndarray, borders: np.ndarray, start: int, stop: int, route_strokes: bool):
+    """Find block steps, excluding narrow bright road/route strokes."""
+    d = np.abs(g[:, 1:] - g[:, :-1])
+    a, b, c = d[:, borders - 1], d[:, borders - 2], d[:, borders]
+    sharp = (a > 10) & (a > 2.5 * np.maximum(b, c) + 3)
+    pieces = sharp[start:stop].reshape(-1, 16, len(borders)).sum(axis=1) >= 12
+    original = pieces.copy()
+    segments, columns = np.nonzero(pieces)
+    if route_strokes and len(segments):
+        rows = start + 16 * segments[:, None] + np.arange(16)
+        x = borders[columns, None]
+        left, right = g[rows, x - 1], g[rows, x]
+        high = np.maximum(left, right)
+        direction = np.where(right > left, 1, -1)
+        bright_x = np.where(right > left, x, x - 1)
+        inside = g[rows[:, :, None], bright_x[:, :, None] + direction[:, :, None] * np.arange(2, 7)]
+        # A painted stroke returns towards the darker side within six pixels.
+        # A displaced codec block instead sustains its step into the block.
+        narrow = (high >= 180) & ((high[:, :, None] - inside) > 0.5 * np.abs(right - left)[:, :, None]).any(
+            axis=2
+        )
+        road = (narrow & sharp[rows, columns[:, None]]).sum(axis=1) >= 10
+        pieces[segments, columns] &= ~road
+    return pieces, original
+
+
+def _blocks(crop: np.ndarray, *, route_strokes: bool = False):
     """(number of block-border pieces in the crop, number of them within 48 px of the arrow)."""
     g = cv2.cvtColor(crop, cv2.COLOR_RGB2GRAY).astype(np.int16)
-    dx = np.abs(g[14:158, 1:] - g[14:158, :-1])
-    a, b, c = dx[:, _BX - 1], dx[:, _BX - 2], dx[:, _BX]
-    bv = ((a > 10) & (a > 2.5 * np.maximum(b, c) + 3)).reshape(9, 16, len(_BX)).sum(axis=1) >= 12
-    dy = np.abs(g[1:, 2:258] - g[:-1, 2:258])
-    a, b, c = dy[_BY - 1], dy[_BY - 2], dy[_BY]
-    bh = ((a > 10) & (a > 2.5 * np.maximum(b, c) + 3)).reshape(len(_BY), 16, 16).sum(axis=2) >= 12
+    bv, original_v = _block_pieces(g, _BX, 14, 158, route_strokes)
+    horizontal, original_h = _block_pieces(g.T, _BY, 2, 258, route_strokes)
+    bh, original_h = horizontal.T, original_h.T
     bv[:, _BV_SKIP] = False
     bh[_BH_SKIP, :] = False
+    original_v[:, _BV_SKIP] = False
+    original_h[_BH_SKIP, :] = False
+    # Do not let a road discount hide an unexplained step in a damaged crop.
+    # Dismiss an existing alarm only when every piece is explained by a stroke.
+    if original_v.sum() + original_h.sum() >= 2 and (bv.any() or bh.any()):
+        bv, bh = original_v, original_h
     return int(bv.sum() + bh.sum()), int(bv[_BV_NEAR].sum() + bh[_BH_NEAR].sum())
 
 
@@ -809,6 +838,15 @@ def _analyse(crop: np.ndarray, keep: bool = False):
     route, tr = ("yellow", ty) if oky else ("purple", tp) if okp else ("none", None)
 
     if tr is not None:
+        if corrupt:
+            # A connected navigation trace supplies context for narrow painted
+            # strokes. Keep the raw detector for motion and route-free frames;
+            # even with a route, every unexplained step preserves the alarm.
+            info["blocks_raw"] = n_blocks
+            n_blocks, n_local = _blocks(crop, route_strokes=True)
+            corrupt = n_blocks >= 2
+            damaged_here = n_local >= 4
+            info.update(blocks=n_blocks, blocks_near=n_local)
         minimap = "tilted"  # a route is only drawn while driving
         bearing, far_bearing = tr["near"], tr["far"]
         conf = 0.5 + 0.5 * min(1.0, max(0.0, (tr["strong"] - 0.3) / 0.4))
