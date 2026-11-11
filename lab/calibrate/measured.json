@@ -18,7 +18,8 @@
             0.16666666666666666,
             0.16666666666666718,
             0.16666666666666607
-          ]
+          ],
+          "settle_seconds": 1.2
         }
       },
       {
@@ -234,13 +235,13 @@
         "numbers": {
           "enter": {
             "seconds": 2.2000000009998715,
-            "confirmed_seconds": 2.700000000999843,
-            "stable_seconds": 0.5
+            "confirmed_seconds": 3.2000000009998146,
+            "stable_seconds": 1.0
           },
           "exit": {
             "seconds": 2.2000000009998715,
-            "confirmed_seconds": 2.700000000999843,
-            "stable_seconds": 0.5
+            "confirmed_seconds": 3.2000000009998146,
+            "stable_seconds": 1.0
           }
         }
       },
@@ -265,7 +266,7 @@
         }
       }
     ],
-    "elapsed_seconds": 46.750000030999935
+    "elapsed_seconds": 51.350000033999656
   },
   {
     "true": {
@@ -286,7 +287,8 @@
             0.6333333333333333,
             0.6333333333333344,
             0.6333333333333311
-          ]
+          ],
+          "settle_seconds": 1.6666666666666687
         }
       },
       {
@@ -342,18 +344,18 @@
             },
             {
               "stick": 0.65,
-              "pulse_seconds": 0.5999999999999979,
+              "pulse_seconds": 0.6000000000000281,
               "displacement_px": -38.193855922402754,
               "correlation": 0.8489933568239212,
-              "pixels_per_second": 63.65642653733815,
+              "pixels_per_second": 63.656426537334944,
               "moving": true
             },
             {
               "stick": 1.0,
-              "pulse_seconds": 0.5999999999999996,
+              "pulse_seconds": 0.6000000000000298,
               "displacement_px": 71.88644813436036,
               "correlation": 0.7883868366107345,
-              "pixels_per_second": 119.81074689060068,
+              "pixels_per_second": 119.81074689059464,
               "moving": true
             }
           ],
@@ -433,7 +435,7 @@
               "ticks": 3,
               "seconds": 0.1,
               "accepted": true,
-              "response_seconds": 0.7333333343333699
+              "response_seconds": 0.7333333343332882
             },
             {
               "trial": 1,
@@ -555,8 +557,8 @@
         "status": "ran",
         "reason": "",
         "numbers": {
-          "open_seconds": 0.7333333343332882,
-          "close_seconds": 0.7333333343332882
+          "open_seconds": 0.7333333343332953,
+          "close_seconds": 0.7333333343332953
         }
       },
       {
@@ -565,14 +567,14 @@
         "reason": "",
         "numbers": {
           "enter": {
-            "seconds": 5.666666667666341,
-            "confirmed_seconds": 6.166666667666313,
-            "stable_seconds": 0.5
+            "seconds": 5.666666667666348,
+            "confirmed_seconds": 6.666666667666291,
+            "stable_seconds": 1.0
           },
           "exit": {
-            "seconds": 5.666666667666341,
-            "confirmed_seconds": 6.166666667666313,
-            "stable_seconds": 0.5
+            "seconds": 5.666666667666348,
+            "confirmed_seconds": 6.666666667666291,
+            "stable_seconds": 1.0
           }
         }
       },
@@ -597,6 +599,6 @@
         }
       }
     ],
-    "elapsed_seconds": 68.95000003899862
+    "elapsed_seconds": 86.15000004199766
   }
 ]

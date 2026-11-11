@@ -73,7 +73,7 @@ def test_recovers_console_values(tmp_path, images, delay, deadzone, ticks, sign,
         assert checks["car"]["numbers"][name]["seconds"] == pytest.approx(
             door + delay, abs=3 * calibrate.TICK
         )
-        assert checks["car"]["numbers"][name]["confirmed_seconds"] >= door + delay + 0.49
+        assert checks["car"]["numbers"][name]["confirmed_seconds"] >= door + delay + 0.99
     assert checks["detector"]["numbers"]["results_per_second"] == pytest.approx(10, abs=0.21)
     assert checks["detector"]["numbers"]["loop_per_second"] == pytest.approx(30, abs=0.1)
     assert checks["head"]["numbers"]["request_count"] == 1
@@ -124,6 +124,86 @@ def test_unexpected_phone_backs_out_then_next_check_runs(tmp_path, images):
     assert checks["camera"]["status"] == "aborted"
     assert checks["wheel"]["status"] == "ran"
     assert any(call["screen"] == "phone" and call["pad"].buttons == ("circle",) for call in sim.calls)
+
+
+def test_a_frame_that_comes_late_does_not_end_a_check(tmp_path, images):
+    _, checks, _ = run(tmp_path, images, only=["camera"], stale=(0.3, 0.5))
+    assert checks["camera"]["status"] == "ran"
+    assert any(not row["fresh"] for row in checks["camera"]["raw"])
+    assert checks["camera"]["numbers"]["samples"][-1]["pixels_per_second"] == pytest.approx(120, abs=5)
+
+
+def test_a_picture_that_stays_away_ends_the_check_with_a_neutral_pad(tmp_path, images):
+    sim, checks, _ = run(tmp_path, images, only=["camera", "phone"], stale=(0.3, 1.5))
+    assert checks["camera"]["status"] == "aborted"
+    assert checks["camera"]["reason"] == "missing or stale picture"
+    released = [call for call in sim.calls if 0.3 <= call["t"] < 1.5]
+    assert released and all(call["pad"] == NEUTRAL_PAD for call in released)
+    assert checks["phone"]["status"] == "ran"
+
+
+def test_a_menu_that_shows_up_late_is_still_closed(tmp_path, images):
+    # Slower than the wait for the answer: the phone is asked for, given up on, and then appears.
+    sim, checks, _ = run(tmp_path, images, only=["phone"], delay=1.5)
+    assert checks["phone"]["status"] == "aborted"
+    sim.sleep(5)
+    sim.frame()
+    assert sim.screen == "game"
+    assert [call["pad"].buttons for call in sim.calls if call["pad"].buttons][-1] == ("circle",)
+
+
+def test_cross_is_let_go_the_moment_the_map_is_seen(tmp_path, images):
+    # A link faster than the press: the map is in the picture while Cross would still be held.
+    sim, checks, _ = run(tmp_path, images, only=["map"], delay=0.03)
+    assert checks["map"]["status"] == "ran"
+    assert sum("cross" in call["pad"].buttons for call in sim.calls) < 4
+
+
+@pytest.mark.parametrize("name", calibrate.CHECKS[:8])
+def test_an_open_phone_on_foot_is_no_place_to_start(tmp_path, images, name):
+    # The minimap stays on screen behind the phone, so the map alone would let the check run.
+    on_foot = dict(images)
+    on_foot["phone"] = images["phone"].copy()
+    on_foot["phone"][530:700, 30:290] = images["game"][530:700, 30:290]
+    sim, checks, _ = run(tmp_path, on_foot, only=[name], initial="phone")
+    assert checks[name]["status"] == "skipped" and "screen=phone, minimap=flat" in checks[name]["reason"]
+    assert sim.calls == []
+
+
+def test_a_backout_that_loses_the_picture_looks_again(tmp_path, images):
+    _sim, checks, _ = run(tmp_path, images, only=["camera", "wheel"], surprise_at=0.3, stale=(0.45, 1.0))
+    assert checks["camera"]["status"] == "aborted"
+    assert checks["wheel"]["status"] == "ran"
+
+
+def test_later_checks_wait_as_long_as_the_measured_delay_asks(tmp_path, images):
+    _, checks, _ = run(tmp_path, images, only=["delay", "phone", "wheel"], delay=0.9)
+    assert checks["delay"]["numbers"]["settle_seconds"] == pytest.approx(2 * 0.9 + 0.4, abs=0.1)
+    assert checks["phone"]["status"] == checks["wheel"]["status"] == "ran"
+
+
+def test_missing_detector_weights_end_only_that_check(tmp_path, images):
+    sim = sim_console.SimConsole(images=images)
+
+    def missing():
+        raise RuntimeError("YOLOX weights missing or corrupt")
+
+    report = calibrate.run_calibrate(
+        sim,
+        only=["detector", "head"],
+        yes=True,
+        record_dir=tmp_path,
+        clock=sim.clock,
+        sleep=sim.sleep,
+        detector_factory=missing,
+        head=sim_console.SimHead(),
+        output=lambda line: None,
+    )
+    assert [(item["name"], item["status"]) for item in report["checks"]] == [
+        ("detector", "aborted"),
+        ("head", "ran"),
+    ]
+    assert "stop_reason" not in report
 
 
 def test_selection_is_ordered_and_requires_car_flag():

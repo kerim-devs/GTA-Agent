@@ -24,11 +24,16 @@ from .scene import SceneText
 from .waypoint import map_shift
 
 CHECKS = ("delay", "camera", "walk", "press", "map", "wheel", "phone", "car", "detector", "head")
-RECORDINGS = Path(__file__).resolve().parents[3] / "lab" / "calibrate"
+RECORDINGS = Path.home() / "recordings" / "calibrate"
 TICK = 1 / 30
 LIMIT = 240.0
 SETTLE = 1.2
 PULSE = 0.6
+# A frame comes late every couple of minutes even over the cable (three times in each of the
+# eight-minute sessions of 10 November); only a picture that stays away ends a check.
+STALE_LIMIT = 0.5
+# On foot the minimap reader holds a false vehicle map for up to 0.83 s.
+CAR_STABLE = 1.0
 BUTTONS = {"options", "circle", "cross", "l1", "up", "triangle"}
 
 
@@ -78,6 +83,7 @@ class Session:
         self.series = []
         self.commands = False
         self.last_sample = None
+        self.settle = SETTLE
         self.cleanup_pending = []
 
     def close(self):
@@ -96,22 +102,29 @@ class Session:
             self.sleep(max(0, self.last_sample + TICK - self.clock()))
         if self.clock() >= self.deadline:
             raise SessionStoppedError("four-minute session deadline")
-        frame = self.bridge.frame(None, after=self.runtime.last_id)
-        now = self.clock()
-        fresh = self.runtime.observe(frame, now)
-        self.last_sample = now
-        row = {"t": now - self.started, "frame_id": None if frame is None else frame.id, "fresh": fresh}
-        self.series.append(row)
-        if fresh:
-            self.frame = frame
-            self.screen = hud.read(frame.rgb, text=SceneText()).screen
-        row["screen"] = self.screen
-        if self.clock() >= self.deadline:
-            raise SessionStoppedError("four-minute session deadline")
-        if not fresh:
+        stale_since = None
+        while True:
+            frame = self.bridge.frame(None, after=self.runtime.last_id)
+            now = self.clock()
+            fresh = self.runtime.observe(frame, now)
+            self.last_sample = now
+            row = {"t": now - self.started, "frame_id": None if frame is None else frame.id, "fresh": fresh}
+            self.series.append(row)
+            if fresh:
+                self.frame = frame
+                self.screen = hud.read(frame.rgb, text=SceneText()).screen
+            row["screen"] = self.screen
+            if self.clock() >= self.deadline:
+                raise SessionStoppedError("four-minute session deadline")
+            if fresh:
+                break
+            # The runtime lets go of the pad by its own rule once the picture is 0.3 s old.
             if self.commands:
                 self.runtime.tick(NEUTRAL_PAD, fresh=False, received=now)
-            raise CheckAbortedError("missing or stale picture")
+            stale_since = now if stale_since is None else stale_since
+            if now - stale_since >= STALE_LIMIT:
+                raise CheckAbortedError("missing or stale picture")
+            self.sleep(TICK)
         if screens is not None and self.screen not in screens:
             raise CheckAbortedError(f"unexpected screen: {self.screen}")
         if pad is not None:
@@ -143,10 +156,11 @@ class Session:
         self.sleep(TICK)
         return self.clock() - start
 
-    def wait(self, seconds, *, screens=("game",)):
-        self.hold(NEUTRAL_PAD, seconds, screens=screens)
+    def wait(self, seconds=None, *, screens=("game",)):
+        self.hold(NEUTRAL_PAD, self.settle if seconds is None else seconds, screens=screens)
 
-    def transition(self, button, target, *, origin, ticks=4, wait=SETTLE):
+    def transition(self, button, target, *, origin, ticks=4, wait=None):
+        wait = self.settle if wait is None else wait
         start = self.clock()
         for _ in range(ticks):
             if self.screen == target:
@@ -163,15 +177,17 @@ class Session:
 
     def back_out(self):
         # No guesses for death, loading, a wheel or an unknown overlay.
-        for _ in range(3):
-            if self.screen not in {"pause", "map", "phone"}:
-                return
-            origin = self.screen
-            target = "pause" if origin == "map" else "game"
+        for _ in range(4):
             try:
-                self.transition("circle", target, origin=origin)
+                # A menu that was asked for can still be on its way in the picture.
+                self.wait(screens=None)
+                if self.screen not in {"pause", "map", "phone"}:
+                    return
+                origin = self.screen
+                self.transition("circle", "pause" if origin == "map" else "game", origin=origin)
             except CheckAbortedError:
-                return
+                # The picture changed under the press; look again and act on what is there now.
+                continue
 
     def read_side(self, name):
         start = self.clock()
@@ -209,7 +225,9 @@ class Session:
             delays.append(onset)
         if any(value is None for value in delays):
             raise CheckAbortedError("picture did not move after a camera pulse")
-        return {"seconds": statistics.median(delays), "trials_seconds": delays}
+        # Every later check waits for its answer with room for the delay just measured.
+        self.settle = max(SETTLE, 2 * max(delays) + 0.4)
+        return {"seconds": statistics.median(delays), "trials_seconds": delays, "settle_seconds": self.settle}
 
     def camera(self):
         values = []
@@ -218,7 +236,7 @@ class Session:
             direction = 1 if index % 2 == 0 else -1
             duration = self.hold(Pad(right=(strength * direction, 0)), PULSE)
             self.neutral()
-            self.wait(SETTLE)
+            self.wait()
             dx, quality = picture_shift(before, self.frame.rgb)
             value = {
                 "stick": strength,
@@ -248,7 +266,7 @@ class Session:
             start = None
             history = []
             distances = []
-            while start is None or self.clock() < start + PULSE + SETTLE:
+            while start is None or self.clock() < start + PULSE + self.settle:
                 active = start is None or self.clock() < start + PULSE - TICK / 2
                 row = self.sample(Pad(left=(0, -strength)) if active else NEUTRAL_PAD, screens=("game",))
                 now = self.clock()
@@ -323,7 +341,7 @@ class Session:
             before = self.frame.rgb.copy()
             duration = self.hold(Pad(left=stick), PULSE, screens=("map",))
             self.neutral()
-            self.wait(SETTLE, screens=("map",))
+            self.wait(screens=("map",))
             shift = map_shift(before, self.frame.rgb)
             if shift is None:
                 raise CheckAbortedError(f"map {name} shift unreadable")
@@ -343,11 +361,11 @@ class Session:
     def wheel(self):
         seen = False
         start = self.clock()
-        while self.clock() - start < PULSE + SETTLE:
+        while self.clock() - start < PULSE + self.settle:
             self.sample(Pad(buttons=("l1",)), screens=("game", "weapon_wheel"))
             seen |= self.screen == "weapon_wheel"
         self.neutral()
-        self.wait(SETTLE, screens=("game", "weapon_wheel"))
+        self.wait(screens=("game", "weapon_wheel"))
         if not seen or self.screen != "game":
             raise CheckAbortedError("weapon wheel did not open and close")
         return {"while_held": "weapon_wheel", "after_release": self.screen}
@@ -377,11 +395,11 @@ class Session:
                     if stable is None:
                         stable = self.clock()
                         first = stable - start
-                    if self.clock() - stable >= 0.5 - 1e-8:
+                    if self.clock() - stable >= CAR_STABLE - 1e-8:
                         values[name] = {
                             "seconds": first,
                             "confirmed_seconds": self.clock() - start,
-                            "stable_seconds": 0.5,
+                            "stable_seconds": CAR_STABLE,
                         }
                         break
                 else:
@@ -391,7 +409,11 @@ class Session:
         return values
 
     def detector_check(self):
-        self.detector = self.detector_factory()
+        try:
+            self.detector = self.detector_factory()
+        except RuntimeError as error:
+            # Missing weights end this check, not the session.
+            raise CheckAbortedError(str(error)) from error
         start = self.clock()
         stamps = set()
         loops = 0

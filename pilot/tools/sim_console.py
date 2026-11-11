@@ -59,6 +59,7 @@ class SimConsole:
         surprise_at=None,
         surprise_screen="phone",
         interrupt_at=None,
+        stale=None,
         images=None,
     ):
         self.images = images if images is not None else bases()
@@ -67,6 +68,7 @@ class SimConsole:
         self.frozen, self.no_pause = frozen, no_pause
         self.conflict_at, self.surprise_at, self.interrupt_at = conflict_at, surprise_at, interrupt_at
         self.surprise_screen = surprise_screen
+        self.stale = stale  # (from, until): no frame arrives in between
         self.now = self.updated = 0.0
         self.screen = initial
         self.vehicle = False
@@ -151,6 +153,8 @@ class SimConsole:
 
     def frame(self, rect=None, after=None):
         self._advance()
+        if self.stale is not None and self.stale[0] <= self.now < self.stale[1]:
+            return None
         self.id += 1
         key = (
             self.screen,
