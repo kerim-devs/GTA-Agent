@@ -132,3 +132,15 @@ Measured besides. The camera turns at 15 degrees a second plus 133 times the sti
 Decisions. Whatever the picture is needed for, the game is woken first. A fixture's geometry comes from a measured frame, and the entry tests' "far" car was the measured "at the bumper" car.
 
 Open. The minimap reader loses a route that starts behind the car, where only a short purple piece shows at the lower edge, and the head then sets a new waypoint over the one that is there (P34, a worker is on it). The waypoint skill cannot read the player's marker on the live map, so a waypoint on a mission letter fails, and its measured pan away loses the map after the second push. The driver brakes hard and often since the pedals answer: its speed control was tuned on a pedal without a dead zone. `look` still assumes the wrong turn rate. The model server does not start by itself after a restart of the PC.
+
+### The first drive to a waypoint, 11 November
+
+In the afternoon the pilot drove 2.5 km through town along the game's route to the waypoint it had set, at four metres a second on average, in its lane and round the bends, arrived, heard that the route was gone, and set the next waypoint and drove on. No person touched the controller. Sessions `20261111-130447` to `20261111-131628`.
+
+What it took. The minimap reader lost a route that starts behind the car and now seeds a second trace in the lower half (P34). With the pedals answering, the driver held its speed by the brake, and a held brake at a standstill is reverse to the game: the speed it reads lags, the car had stopped while the reading still said fast, and Kerim saw it back up again and again. The brake that holds a speed is off, the limits are higher, and coasting does the slowing. In town the minimap reader called nine clean frames in ten damaged and the driver stood still on them; it now rides out two seconds of such readings, and the reader's fault is P36. These settings come with every run from the command line and leave the driver's own defaults and its replay evidence alone.
+
+Measured besides. On a car park with bollards, planters and a booth the driver ran into each of them: it steers by the route's bearing and sees no obstacle. The judge's question about a free path is asked on every judgment and used by nothing yet. The small model on the Mac did not answer the joint request within a second beside the running pilot, four timeouts in four, so the judge stays on the gaming PC, which answered over Wi-Fi all afternoon at 3.6 judgments a second.
+
+Decisions. The driver slows by lifting the pedal and brakes only to stop. The judge runs on the gaming PC; the Mac is no fallback for it as things are.
+
+Open. The waypoint to a mission letter and the measured pan away (P35, a worker is on it); until then the next waypoint is set at the third or fourth try. Clean frames called damaged in town (P36, a worker is on it). Obstacles off the road. `look` and its turn rate. Entering a car three times in a row. The driver at more than twelve metres a second.
