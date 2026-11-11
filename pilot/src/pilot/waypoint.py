@@ -7,9 +7,8 @@ from typing import ClassVar
 import cv2
 import numpy as np
 
-from .contract import Pad
+from .contract import Observation, Pad, SkillResult
 from .scene import SceneText, TextReader
-from .skills import Observation, SkillResult
 
 
 def map_screen(frame: np.ndarray, text: SceneText) -> str | None:

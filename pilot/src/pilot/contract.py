@@ -8,7 +8,11 @@ Angles are degrees in the picture: 0 = straight up, positive = clockwise (to the
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    import numpy as np
 
 FRAME_SIZE = (1280, 720)
 HUD_RECT = (30, 530, 260, 170)  # x, y, w, h of the HUD crop in a 1280x720 frame
@@ -109,3 +113,25 @@ class Pad:
 
 
 NEUTRAL_PAD = Pad()
+
+
+@dataclass(frozen=True)
+class Observation:
+    """What a skill is handed on every tick."""
+
+    reading: Reading
+    moving: bool | None
+    time: float
+    # Everything below is optional: a caller that has no frame, detector or HUD reader leaves it out,
+    # and a skill that needs it fails with a reason instead of guessing.
+    frame: np.ndarray | None = field(default=None, compare=False)  # 1280x720 RGB of this tick
+    objects: tuple[Detection, ...] = ()  # newest detections; they lag the frame, see `objects_time`
+    objects_time: float | None = None  # capture time of the frame the detections come from
+    hud: Hud | None = None
+
+
+@dataclass(frozen=True)
+class SkillResult:
+    pad: Pad = NEUTRAL_PAD
+    status: str = "running"  # "running" | "done" | "failed"
+    reason: str | None = None

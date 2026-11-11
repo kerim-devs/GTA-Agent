@@ -6,8 +6,7 @@ Geometry and timing are estimates pending console calibration. No registry wirin
 from math import hypot, isfinite, log
 from typing import ClassVar
 
-from pilot.contract import FRAME_SIZE, Detection, Pad
-from pilot.skills import Observation, SkillResult
+from pilot.contract import FRAME_SIZE, Detection, Observation, Pad, SkillResult
 
 
 class Punch:
@@ -60,6 +59,7 @@ class Punch:
         self.target = None
         self.last_seen = None
         self.ground_since = None
+        self.stood = False
         self.pulse_started = None
         self.next_pulse = 0.0
         self.delivered_hits = 0
@@ -215,9 +215,14 @@ class Punch:
                 self.ground_since = stamp
             self.pulse_started = None
             if stamp - self.ground_since >= self.GROUND_DURATION:
+                if not self.stood:
+                    # Nobody went down here: a figure that only ever lay there is no opponent,
+                    # and the player's own, knocked over by a car, looks just like it.
+                    return self.stop("person already on the ground; face a standing person")
                 return self._done("target person remained on the ground")
             return SkillResult()
         self.ground_since = None
+        self.stood = True
         error = (x0 + x1) / 2 - 0.5
         in_reach = abs(error) <= self.CENTER_TOLERANCE and y1 - y0 >= self.REACH_HEIGHT
         if not in_reach:

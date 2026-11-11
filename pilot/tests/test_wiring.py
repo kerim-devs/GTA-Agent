@@ -1,6 +1,8 @@
 """Screen ownership, recovery and stale answers through the real conductor."""
 
 import json
+import subprocess
+import sys
 from concurrent.futures import Future
 
 import cv2
@@ -203,6 +205,13 @@ def test_the_heads_plan_for_a_stuck_screen_ends_when_the_game_is_back(session):
     assert not conductor.runner.has_plan
     assert [row["type"] for row in rows(conductor, "flow_exit")] == ["flow_exit"]
     assert rows(conductor, "request")[-1]["request"]["events"][0]["kind"] == "menu_closed"
+
+
+@pytest.mark.parametrize("module", ["combat", "punch", "vehicle_entry", "waypoint", "skills", "flow"])
+def test_every_skill_module_imports_on_its_own(module):
+    # The registry imports the skill modules, so none of them may need the registry to load.
+    done = subprocess.run([sys.executable, "-c", f"import pilot.{module}"], capture_output=True, text=True)
+    assert done.returncode == 0, done.stderr
 
 
 NEW_SKILLS = {

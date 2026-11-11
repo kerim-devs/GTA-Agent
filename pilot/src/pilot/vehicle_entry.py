@@ -4,8 +4,7 @@ import math
 from dataclasses import replace
 from typing import ClassVar
 
-from pilot.contract import FRAME_SIZE, Detection, Pad
-from pilot.skills import Observation, SkillResult
+from pilot.contract import FRAME_SIZE, Detection, Observation, Pad, SkillResult
 
 # Camera geometry and GTA door timing are estimates, pending live measurement.
 MAX_SECONDS = 25.0
@@ -13,7 +12,10 @@ WIDTH, HEIGHT = FRAME_SIZE  # detections come in pixels of the frame
 # One tick is 33 ms, shorter than a person's press (about 0.14 s) and easy for the console to miss.
 PRESS_SECONDS = 0.09
 DETECTION_MAX_AGE = 0.5
-CONFIRM_SECONDS = 0.5
+# On foot the minimap reader called the map a vehicle's five times in the eight minutes of
+# session 20261110-231512, for 0.83 s at the longest.
+CONFIRM_SECONDS = 1.0
+ALREADY_SECONDS = 2.0
 SCAN_SECONDS = 5.0
 SCAN_PERIOD = 0.7
 SCAN_PULSE = 0.18
@@ -169,19 +171,27 @@ class EnterVehicle:
         if elapsed >= self.limit:
             return self.stop(self._timeout_reason())
 
-        if not obs.reading.corrupt and obs.reading.minimap == "tilted":
+        # Entry owns the pad even if object delivery disappears during the animation.
+        if self.phase == "wait" and now - self.phase_since < PRESS_SECONDS:
+            return SkillResult(Pad(buttons=("triangle",)))
+        if obs.reading.corrupt:
+            # A damaged tick says nothing about the map: it neither counts nor starts over.
+            if self.confirmed_since is not None:
+                return SkillResult()
+        elif obs.reading.minimap == "tilted":
             if self.confirmed_since is None:
                 self.confirmed_since = now
-            if now - self.confirmed_since >= CONFIRM_SECONDS:
-                self.finished = SkillResult(status="done", reason="entered vehicle")
+            # Before any press the character sat in a vehicle already, or the reader is wrong.
+            needed = CONFIRM_SECONDS if self.attempts else ALREADY_SECONDS
+            if now - self.confirmed_since >= needed:
+                reason = "entered vehicle" if self.attempts else "already in a vehicle"
+                self.finished = SkillResult(status="done", reason=reason)
                 return self.finished
             return SkillResult()
-        self.confirmed_since = None
+        else:
+            self.confirmed_since = None
 
-        # Entry owns the pad even if object delivery disappears during the animation.
         if self.phase == "wait":
-            if now - self.phase_since < PRESS_SECONDS:
-                return SkillResult(Pad(buttons=("triangle",)))
             if now - self.phase_since < DOOR_WAIT:
                 return SkillResult()
             if self.attempts >= MAX_ATTEMPTS:

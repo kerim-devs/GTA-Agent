@@ -110,6 +110,16 @@ def test_ground_box_must_persist_and_repeated_frame_is_not_confirmation():
     terminal(skill, safe(skill.step(obs(0.6, [ground]))), "done")
 
 
+def test_a_figure_that_only_ever_lay_there_is_not_a_knockdown():
+    skill = Punch({})
+    ground = person((490, 290, 790, 400))
+    for time in (0, 0.2, 0.4):
+        assert safe(skill.step(obs(time, [ground]))).pad == NEUTRAL_PAD
+    result = safe(skill.step(obs(0.5, [ground])))
+    terminal(skill, result, "failed")
+    assert result.reason == "person already on the ground; face a standing person"
+
+
 def test_one_wide_box_does_not_end_attack():
     skill = Punch({"hits": 6})
     safe(skill.step(obs(0)))
