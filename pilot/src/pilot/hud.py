@@ -3,7 +3,7 @@
 The tiny UI anchors below come from real captures, not a font/OCR engine. They
 recognise only the evidenced layout. Unknown layouts and damaged anchors fall
 back to game; text alone can never stop ordinary input. No history or I/O is
-used in read(). Wanted/death/arrest need separately labelled footage.
+used in read(). Arrest and temporal flashing still need separate evidence.
 """
 
 from __future__ import annotations
@@ -107,6 +107,76 @@ MAP = _template(
 )
 
 
+# Native 1280x720 masks from the real P25 frames; see lab/wanted/README.md.
+STAR_RING = _template(
+    (24, 24),
+    b"c$}?|3km=r3_^SNzjUzZv$=vIi7<82N_hrc>5v=P$@RoQbQ%KH;hizwu~sHMT|?3-<fz;Dyw-T%DCqPwu4euRZzNlNK?P(v09*",
+).astype(bool)
+STAR_CORE = _template((24, 24), b"c${Nk7_@+qkt*Vhj2IG($N+~74lP)X$7VBL<(Lu>5iH^;)ZhaEOOyaa").astype(bool)
+WASTED = _template(
+    (30, 172),
+    b"c%1E(;SPf^2!#9oFU^)^%b?srZPnJK_oFcg$7iKl%GTCakL0b{46Tv}!QR0dcaUa;1FZ7XcXH&vs<61Q"
+    b"=oDil&a~~)h9gu%sY#?x$ys3ujxtX~JBJl}+Bln*l-1odf!xU^Fz1A|YC{=9o~EbvCxNW|parGwiSrpK"
+    b"yd-~DU;~cL>xHbJs^wY9sPwU#FWoq6)oO$lmlnM`mmmO+W0i2uzPjr$>{v+&+*e?vQ#x1$hv%{~C=4;g"
+    b"+VZ;utOXgUFzXSrI#b>%IMP?DVqaOw`&&xSWSvd2wKY#KL?RzV",
+)
+
+
+def _wasted(frame: np.ndarray, banner: str) -> bool:
+    # Require both the actual glyph layout and a desaturated scene. OCR can
+    # confirm weak pixels, but cannot cause a stop on its own.
+    pixels = frame[292:412:4, 296:984:4].astype(np.int16)
+    chroma = np.maximum(pixels[:, :, 0] - pixels[:, :, 1:].max(axis=2), 0).astype(np.uint8)
+    if chroma.max() < 12:
+        return False
+    threshold = 0.76 if "ausser gefecht" in banner or "außer gefecht" in banner else 0.84
+    if _score(chroma, WASTED) < threshold:
+        return False
+    outside = frame[::16, ::16]
+    outside = np.concatenate((outside[:18].reshape(-1, 3), outside[27:].reshape(-1, 3)))
+    return bool((np.ptp(outside, axis=1) <= 12).mean() > 0.9)
+
+
+def _wanted(frame: np.ndarray, game_hud: bool) -> tuple[int | None, bool]:
+    # Slots fill from the right. Pale blue silhouettes have no black outline
+    # and are not lit stars. Never carry a count across frames.
+    gray = _gray(frame, (1119, 34, 1219, 58))
+    hits = []
+    uncertain = False
+    for x in (76, 57, 38, 19, 0):
+        patch = gray[:, x : x + 24]
+        core, ring = patch[STAR_CORE], patch[STAR_RING]
+        contrast = float(core.mean() - ring.mean())
+        lit = (core > 105).mean() > 0.85 and (ring < 115).mean() > 0.8 and contrast > 75
+        hits.append(bool(lit))
+        uncertain |= not lit and (
+            contrast > 90 or (contrast > 45 and (core > 105).mean() > 0.6 and (ring < 115).mean() > 0.65)
+        )
+    count = sum(hits)
+    if uncertain or hits != [True] * count + [False] * (5 - count):
+        return None, False
+    if count:
+        return count, False
+    # A zero needs corroborating gameplay HUD and a readable empty corner.
+    # Codec block edges are not evidence of zero. A lit star keeps its black
+    # outline in front of a white sky (darkest pixel under 25 on all 214
+    # labelled stars), so a bright corner is empty only with nothing dark in
+    # the star row.
+    corner = frame[32:64, 1120:1216]
+    if not game_hud:
+        return None, False
+    if (corner.min(axis=2) > 235).mean() > 0.7:
+        return (0 if gray.min() > 200 else None), False
+    values = corner.astype(np.int16)
+    dy = np.abs(np.diff(values, axis=0)).mean(axis=2)
+    dx = np.abs(np.diff(values, axis=1)).mean(axis=2)
+    if (dy[15].mean() > max(20, float(dy.mean()) * 3)) or (
+        dx[:, 15::16].mean() > max(20, float(dx.mean()) * 3)
+    ):
+        return None, False
+    return 0, False
+
+
 def _score(pixels: np.ndarray, template: np.ndarray) -> float:
     return float(cv2.matchTemplate(pixels, template, cv2.TM_CCOEFF_NORMED).max())
 
@@ -129,6 +199,8 @@ def _screen(frame: np.ndarray, text: SceneText | None) -> str:
     # Colour AND glyph shape are required. This does not confuse red death text
     # with the evidenced mission-failed banner, or a yellow car with success.
     banner = str(getattr(text, "banner", "")).casefold() if text is not None else ""
+    if _wasted(frame, banner):
+        return "wasted"
     red = _colour(frame[292:372:4, 296:984:4], True)
     if _score(red, FAILED) > (0.76 if "fehlgeschlagen" in banner else 0.84):
         return "failed"
@@ -211,17 +283,29 @@ def read(frame: np.ndarray, text: SceneText | None = None) -> Hud:
     """Read RGB pixels without OCR, state, input mutation or external calls.
 
     Unsupported sizes/types and damaged regions abstain. SceneText may be old;
-    it only confirms an already matching banner. wanted intentionally stays
-    None until a separately tested star reader exists.
+    it only confirms an already matching banner. Wanted counts only evidenced
+    star shapes; the flashing field makes no temporal claim.
     """
     try:
         if not isinstance(frame, np.ndarray) or frame.shape != (720, 1280, 3) or frame.dtype != np.uint8:
             return Hud()
         screen = _screen(frame, text)
-        if screen in ("loading", "failed", "pause", "map"):
+        if screen in ("loading", "failed", "pause", "map", "wasted"):
             return Hud(screen=screen)
         health, armour, special = _bars(frame)
-        return Hud(health=health, armour=armour, special=special, screen=screen)
+        wanted, flashing = (
+            _wanted(frame, any(v is not None for v in (health, armour, special)))
+            if screen == "game"
+            else (None, False)
+        )
+        return Hud(
+            wanted=wanted,
+            wanted_flashing=flashing,
+            health=health,
+            armour=armour,
+            special=special,
+            screen=screen,
+        )
     except Exception:
         # A malformed frame/text must not interrupt the conductor's input loop.
         return Hud()
