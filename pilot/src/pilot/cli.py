@@ -1,6 +1,7 @@
 """Command-line entry points for the live runtime and offline replay."""
 
 import argparse
+import json
 import math
 import sys
 from dataclasses import asdict, fields
@@ -81,6 +82,14 @@ def main(argv: list[str] | None = None) -> None:
     play.add_argument("--record-dir", type=absolute_path, default=PLAY_RECORDINGS)
     play.add_argument("--notebook", type=Path)
     play.add_argument("--head", choices=("scripted", "codex", "codex-server"), default="scripted")
+    play.add_argument(
+        "--plan",
+        action="append",
+        default=[],
+        metavar="JSON",
+        help='with the scripted head: a plan to run, e.g. \'[{"name": "enter_vehicle", "args": {}}]\'; '
+        "give it again for the answer to the next request",
+    )
     play.add_argument("--head-model")
     play.add_argument("--head-effort", default="low")
     play.add_argument("--head-timeout", type=duration, default=45.0)
@@ -133,8 +142,14 @@ def main(argv: list[str] | None = None) -> None:
                 config=asdict(config),
             )
     elif args.command == "play":
+        if args.plan and args.head != "scripted":
+            parser.error("--plan needs the scripted head")
+        try:
+            plans = [{"plan": json.loads(plan), "sentence": "Geplanter Schritt."} for plan in args.plan]
+        except json.JSONDecodeError as error:
+            parser.error(f"--plan is not JSON: {error}")
         head = (
-            ScriptedHead()
+            ScriptedHead(plans or None)
             if args.head == "scripted"
             else (CodexServerHead if args.head == "codex-server" else CodexHead)(
                 model=args.head_model, effort=args.head_effort, timeout=args.head_timeout

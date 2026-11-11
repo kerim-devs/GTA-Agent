@@ -169,8 +169,10 @@ class ScriptedHead:
         self.responses = iter(responses) if responses is not None else None
 
     def decide(self, request: HeadRequest) -> HeadResponse:
-        if self.responses is not None:
-            return parse_response(next(self.responses))
+        reply = None if self.responses is None else next(self.responses, None)
+        if reply is not None:
+            return parse_response(reply)
+        # Without replies, or once they are used up, the offline fallback.
         route = request.minimap.get("route") in ("yellow", "purple")
         return parse_response(
             {

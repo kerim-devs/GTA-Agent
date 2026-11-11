@@ -382,6 +382,37 @@ def test_cli_plays_without_the_detector_when_its_weights_are_missing(monkeypatch
     assert "object detector off: YOLOX weights missing" in capsys.readouterr().err
 
 
+def test_cli_levels_the_camera_first_and_runs_a_given_plan(monkeypatch):
+    from pilot import cli
+    from pilot.head import HeadRequest
+
+    class Bridge:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            pass
+
+    calls = []
+    monkeypatch.setattr(cli, "Bridge", Bridge)
+    monkeypatch.setattr(cli, "Pipeline", lambda **kwargs: None)
+    monkeypatch.setattr(cli, "ObjectReader", lambda: "detector")
+    monkeypatch.setattr(cli, "run_play", lambda *args, **kwargs: calls.append(kwargs))
+    plan = '[{"name": "enter_vehicle", "args": {}}]'
+    cli.main(["play", "--no-record", "--no-ocr", "--plan", plan])
+    cli.main(["play", "--no-record", "--no-ocr", "--no-level"])
+    assert [call.name for call in calls[0]["opening"]] == ["level_camera"]
+    assert calls[1]["opening"] == ()
+    request = HeadRequest([], "", "", "", "", {"route": "none"}, None, "", "")
+    head = calls[0]["head"]
+    assert [call.name for call in head.decide(request).plan] == ["enter_vehicle"]
+    assert [call.name for call in head.decide(request).plan] == ["wait"]  # the plan is used up
+    with pytest.raises(SystemExit):
+        cli.main(["play", "--plan", plan, "--head", "codex"])
+    with pytest.raises(SystemExit):
+        cli.main(["play", "--plan", "not json"])
+
+
 def test_replay_hud_once_per_frame_and_text_capture_clock(tmp_path, monkeypatch):
     from tools import conductor_replay
 
