@@ -1,0 +1,95 @@
+[
+  {
+    "i": 732,
+    "t": 32.1522,
+    "screen": "game",
+    "action": "ordinary",
+    "buttons": [],
+    "events": []
+  },
+  {
+    "i": 760,
+    "t": 33.2198,
+    "screen": "failed",
+    "action": "confirm",
+    "buttons": [],
+    "events": []
+  },
+  {
+    "i": 761,
+    "t": 33.2403,
+    "screen": "failed",
+    "action": "observe",
+    "buttons": [],
+    "events": [
+      {
+        "kind": "failure",
+        "screen": "failed",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "i": 829,
+    "t": 36.171,
+    "screen": "failed",
+    "action": "retry",
+    "buttons": [
+      "cross"
+    ],
+    "events": []
+  },
+  {
+    "i": 830,
+    "t": 36.2062,
+    "screen": "failed",
+    "action": "observe",
+    "buttons": [],
+    "events": []
+  },
+  {
+    "i": 859,
+    "t": 38.1716,
+    "screen": "failed",
+    "action": "stuck",
+    "buttons": [],
+    "events": [
+      {
+        "kind": "stuck",
+        "screen": "failed"
+      }
+    ]
+  },
+  {
+    "i": 888,
+    "t": 40.1238,
+    "screen": "loading",
+    "action": "confirm",
+    "buttons": [],
+    "events": []
+  },
+  {
+    "i": 889,
+    "t": 40.2456,
+    "screen": "loading",
+    "action": "wait",
+    "buttons": [],
+    "events": []
+  },
+  {
+    "i": 942,
+    "t": 43.3931,
+    "screen": "game",
+    "action": "confirm",
+    "buttons": [],
+    "events": []
+  },
+  {
+    "i": 943,
+    "t": 43.4147,
+    "screen": "game",
+    "action": "ordinary",
+    "buttons": [],
+    "events": []
+  }
+]
