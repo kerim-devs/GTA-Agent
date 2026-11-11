@@ -45,6 +45,7 @@ class HeadRequest:
     jpeg_path: str
     hud: dict | None = None
     objects: list[dict] = field(default_factory=list)
+    judgment: dict | None = None
 
 
 def parse_response(value: str | dict) -> HeadResponse:

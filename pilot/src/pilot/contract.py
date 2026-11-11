@@ -117,6 +117,23 @@ NEUTRAL_PAD = Pad()
 
 
 @dataclass(frozen=True)
+class Answer:
+    value: str | bool
+    probability: float | None
+
+
+@dataclass(frozen=True)
+class Judgment:
+    """One visual judgment, tied to the captured frame rather than its arrival."""
+
+    capture: float
+    answers: dict[str, Answer]
+    probabilities: dict[str, dict[str, float]]
+    duration: float
+    server: str
+
+
+@dataclass(frozen=True)
 class Observation:
     """What a skill is handed on every tick."""
 
@@ -129,6 +146,15 @@ class Observation:
     objects: tuple[Detection, ...] = ()  # newest detections; they lag the frame, see `objects_time`
     objects_time: float | None = None  # capture time of the frame the detections come from
     hud: Hud | None = None
+    judgment: Judgment | None = None
+    mode: str | None = None
+
+
+def player_mode(observation: Observation) -> str | None:
+    """Prefer the accepted visual mode, falling back to map geometry."""
+    if observation.mode is not None:
+        return observation.mode
+    return {"flat": "foot", "tilted": "vehicle", "none": "none"}.get(observation.reading.minimap)
 
 
 @dataclass(frozen=True)

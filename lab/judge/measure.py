@@ -16,7 +16,7 @@ import statistics
 from pathlib import Path
 
 import cv2
-from questions import QUESTIONS, ask_joint, encode, letters, post
+from pilot.judge import QUESTIONS, ask_joint, encode, letters, post
 
 HERE = Path(__file__).resolve().parent
 SCORED = ("mode", "overlay", "banner", "wanted")
@@ -24,7 +24,9 @@ SCORED = ("mode", "overlay", "banner", "wanted")
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--url", default="http://127.0.0.1:1234")
 parser.add_argument("--model", required=True)
-parser.add_argument("--width", type=int, default=640, help="frame width sent to the model; the height follows")
+parser.add_argument(
+    "--width", type=int, default=640, help="frame width sent to the model; the height follows"
+)
 parser.add_argument("--joint", action="store_true", help="all questions in one request")
 parser.add_argument("--limit", type=int)
 parser.add_argument("--tag", default="")
@@ -67,7 +69,12 @@ def ask(image: str) -> dict:
     for key, (question, meaning) in QUESTIONS.items():
         choice, seconds = post(args.url, args.model, image, question, 2)
         letter, top = (letters(choice) or [("", {})])[0]
-        answers[key] = {"letter": letter, "value": meaning.get(letter), "seconds": round(seconds, 3), "top": top}
+        answers[key] = {
+            "letter": letter,
+            "value": meaning.get(letter),
+            "seconds": round(seconds, 3),
+            "top": top,
+        }
     return answers
 
 

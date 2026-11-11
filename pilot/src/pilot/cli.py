@@ -15,6 +15,7 @@ from .conductor import PLAY_RECORDINGS, run_play
 from .drive import DriveConfig, Driver
 from .flow import Flow
 from .head import CodexHead, CodexServerHead, ScriptedHead, SkillCall
+from .judge import Reader as JudgeReader
 from .loop import RECORDINGS, Pipeline, run_drive
 from .objects import Reader as ObjectReader
 from .overlay import overlay_port, run_overlay
@@ -78,6 +79,13 @@ def main(argv: list[str] | None = None) -> None:
     play.add_argument("--no-ocr", action="store_true")
     play.add_argument("--no-hud-flow", action="store_true", help="disable HUD readings and screen reflexes")
     play.add_argument("--no-objects", action="store_true", help="run without the object detector")
+    play.add_argument(
+        "--judge",
+        action="append",
+        default=[],
+        metavar="URL=MODEL",
+        help="local judge servers in preference order",
+    )
     play.add_argument("--no-level", action="store_true", help="do not level the camera before the first plan")
     play.add_argument("--record-dir", type=absolute_path, default=PLAY_RECORDINGS)
     play.add_argument("--notebook", type=Path)
@@ -145,6 +153,10 @@ def main(argv: list[str] | None = None) -> None:
                 config=asdict(config),
             )
     elif args.command == "play":
+        try:
+            judge = JudgeReader(args.judge) if args.judge else None
+        except ValueError as error:
+            parser.error(str(error))
         if args.plan and args.head != "scripted":
             parser.error("--plan needs the scripted head")
         # Before the first skill, the reflex and the runtime are built: each keeps the profile it was
@@ -183,6 +195,7 @@ def main(argv: list[str] | None = None) -> None:
                     quiet_seconds=args.quiet_seconds,
                     driver_factory=lambda: Driver(config),
                     objects=objects,
+                    judge=judge,
                     hud=None if args.no_hud_flow else hud,
                     flow=None if args.no_hud_flow else Flow(),
                     opening=() if args.no_level else (SkillCall("level_camera", {}),),
