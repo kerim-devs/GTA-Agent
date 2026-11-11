@@ -132,6 +132,7 @@ def read_map(frame: np.ndarray, text: SceneText) -> MapPicture:
 
 class SetWaypoint:
     name = "set_waypoint"
+    opens = ("pause", "map")
     parameters: ClassVar = {"target": ("mission", "away"), "duration": (1.0, 45.0, 45.0)}
     prompt = (
         "Set a waypoint to the nearest visible recognised mission letter, or an away road point. "

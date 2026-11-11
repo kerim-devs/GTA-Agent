@@ -1,6 +1,7 @@
 """Offline screen machine with delayed controls, late reads and transient errors."""
 
 import json
+from dataclasses import asdict
 
 from pilot.contract import Hud, Reading
 from pilot.flow import Flow
@@ -80,7 +81,8 @@ def simulate(initial: str, *, read_delay: int, stuck: bool = False) -> dict:
     assert wrong_reads == 2
     if stuck:
         assert sum(event["kind"] == "stuck" for event in events) == 1
-        assert len(presses) == 1
+        # One press, one more when the picture does not change, then the head is told.
+        assert len(presses) == 2
         assert not recovered
     else:
         assert recovered, (initial, read_delay, trace)
@@ -94,6 +96,122 @@ def simulate(initial: str, *, read_delay: int, stuck: bool = False) -> dict:
         "wrong_reads_without_press": wrong_reads,
         "trace": trace,
     }
+
+
+def simulate_conductor(out, initial="failed", *, read_delay=0, stuck=False):
+    """Exercise the real conductor against a delayed, button-driven screen machine."""
+    import json
+    from concurrent.futures import Future
+
+    import numpy as np
+
+    from pilot.conductor import Conductor
+    from pilot.head import parse_response
+    from pilot.scene import SceneText
+
+    class Head:
+        def decide(self, request):
+            return parse_response(
+                {
+                    "plan": [{"name": "walk", "args": {"y": -0.6, "duration": 30}}],
+                    "sentence": "Ich gehe weiter.",
+                }
+            )
+
+    class NoEvents:
+        def update(self, *args, **kwargs):
+            return []
+
+    jobs = []
+    now = 0.0
+
+    def submit(function, *args):
+        future = Future()
+        jobs.append((now + 0.2, future, function, args))
+        return future
+
+    conductor = Conductor(
+        out,
+        head=Head(),
+        notebook=out / "notebook.txt",
+        flow=Flow(),
+        detector=NoEvents(),
+        submit=submit,
+        clock=lambda: now,
+    )
+    conductor.runner.replace(Head().decide(None).plan)
+    conductor.pending.clear()
+    conductor.last_request_time = 0
+    conductor.head_latency = 0
+    rgb = np.zeros((720, 1280, 3), dtype=np.uint8)
+    reading = Reading("flat", None, None, None, None, False, 1)
+    actual, changed, pending = "game", 0.0, None
+    history, trace, presses = [], [], []
+    held = ()
+    try:
+        for index in range(80):
+            now = round(index * STEP, 6)
+            if index == 10:
+                actual, changed = initial, now
+            if pending is not None and now >= pending[0]:
+                actual, changed = pending[1], now
+                pending = None
+            if actual in {"loading", "passed", "wasted", "busted"} and now - changed >= 0.6 and not stuck:
+                actual, changed = "game", now
+            history.append(actual)
+            screen = history[max(0, index - read_delay)]
+            for due, future, function, args in jobs:
+                if due <= now and not future.done():
+                    future.set_result(function(*args))
+            result = conductor.tick(
+                Observation(reading, True, now, hud=Hud(screen=screen)),
+                rgb,
+                text=SceneText(help="Retry X" if screen == "failed" else ""),
+            )
+            pad = result.pad
+            if pad.buttons and pad.buttons != held:
+                presses.append({"t": now, "screen": actual, "buttons": list(pad.buttons)})
+                destination = (
+                    "loading"
+                    if actual == "failed" and "cross" in pad.buttons
+                    else "pause"
+                    if actual == "map" and "circle" in pad.buttons
+                    else "game"
+                    if actual in {"pause", "phone"} and "circle" in pad.buttons
+                    else None
+                )
+                if destination and not stuck:
+                    pending = (now + CONTROL_DELAY, destination)
+            if (
+                actual == "weapon_wheel"
+                and conductor.flow_result is not None
+                and pending is None
+                and not stuck
+            ):
+                pending = (now + CONTROL_DELAY, "game")
+            held = pad.buttons
+            trace.append(
+                {
+                    "t": now,
+                    "screen": screen,
+                    "actual": actual,
+                    "skill": conductor.describe(result),
+                    "pad": asdict(pad),
+                }
+            )
+    finally:
+        conductor.close()
+    rows = [json.loads(line) for line in (out / "head.jsonl").read_text().splitlines()]
+    report = {
+        "initial": initial,
+        "read_delay": read_delay,
+        "presses": presses,
+        "requests": [row for row in rows if row["type"] == "request"],
+        "flow": [row for row in rows if row["type"].startswith("flow_")],
+        "trace": trace,
+    }
+    (out / "simulation.json").write_text(json.dumps(report, indent=2) + "\n")
+    return report
 
 
 def main():

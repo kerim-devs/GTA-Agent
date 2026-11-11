@@ -5,9 +5,11 @@ import math
 from dataclasses import asdict, fields
 from pathlib import Path
 
+from . import hud
 from .bridge import Bridge
 from .conductor import PLAY_RECORDINGS, run_play
 from .drive import DriveConfig, Driver
+from .flow import Flow
 from .head import CodexHead, CodexServerHead, ScriptedHead
 from .loop import RECORDINGS, Pipeline, run_drive
 from .overlay import overlay_port, run_overlay
@@ -61,6 +63,7 @@ def main(argv: list[str] | None = None) -> None:
     play.add_argument("--shadow", action="store_true")
     play.add_argument("--no-record", action="store_true")
     play.add_argument("--no-ocr", action="store_true")
+    play.add_argument("--no-hud-flow", action="store_true", help="disable HUD readings and screen reflexes")
     play.add_argument("--record-dir", type=absolute_path, default=PLAY_RECORDINGS)
     play.add_argument("--notebook", type=Path)
     play.add_argument("--head", choices=("scripted", "codex", "codex-server"), default="scripted")
@@ -119,6 +122,8 @@ def main(argv: list[str] | None = None) -> None:
                     ocr=not args.no_ocr,
                     quiet_seconds=args.quiet_seconds,
                     driver_factory=lambda: Driver(config),
+                    hud=None if args.no_hud_flow else hud,
+                    flow=None if args.no_hud_flow else Flow(),
                 )
             )
     else:

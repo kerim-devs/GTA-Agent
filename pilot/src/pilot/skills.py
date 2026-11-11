@@ -205,6 +205,8 @@ BLIP_COLORS = ("yellow", "blue", "red")
 
 
 class RegisteredSkill(Skill):
+    opens: ClassVar[tuple[str, ...]] = ()
+
     def __init__(self, args: dict, *, driver=None):
         from .head import SkillCall
 
@@ -269,7 +271,9 @@ class Face(RegisteredSkill):
 
 
 # New modules plug in with an import and one entry here.
-REGISTRY = {cls.name: cls for cls in (DriveRoute, Wait, Press, Walk, Look, Shoot, WalkTo, Face)}
+from .waypoint import SetWaypoint  # noqa: E402
+
+REGISTRY = {cls.name: cls for cls in (DriveRoute, Wait, Press, Walk, Look, Shoot, WalkTo, Face, SetWaypoint)}
 
 
 def make_skill(call, *, driver=None):

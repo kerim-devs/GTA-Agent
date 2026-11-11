@@ -23,3 +23,9 @@ lab/flow/*/[0-9]*.jpg
 
 # rebuilt by pilot/tools/sim_waypoint.py, 4 MB
 lab/waypoint/simulation.json
+
+# Regenerated P22 replay frames and detailed runtime logs.
+/lab/wiring/replay*/
+/lab/wiring/simulations/
+/lab/wiring/mutations/
+/lab/wiring/replay*-command.log
