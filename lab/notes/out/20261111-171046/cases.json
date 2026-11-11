@@ -1,0 +1,117 @@
+[
+  {
+    "objective": "Bring D zu Lamars Haus.",
+    "step_start": 688.5152,
+    "sample_t": 691.5025,
+    "frame": 41206,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "\"Lamars Haus.",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": -44.74364316460795,
+        "far_bearing": -46.79927657255366,
+        "arrow": -17.733292037821684,
+        "corrupt": false,
+        "confidence": 0.761,
+        "path": [
+          [
+            -9.0,
+            11.0
+          ],
+          [
+            -15.0,
+            16.0
+          ],
+          [
+            -21.0,
+            21.0
+          ],
+          [
+            -28.0,
+            26.0
+          ],
+          [
+            -34.0,
+            32.0
+          ],
+          [
+            -40.0,
+            37.0
+          ],
+          [
+            -47.0,
+            42.0
+          ],
+          [
+            -52.0,
+            48.0
+          ],
+          [
+            -58.0,
+            53.0
+          ],
+          [
+            -64.0,
+            58.0
+          ],
+          [
+            -71.0,
+            63.0
+          ],
+          [
+            -76.0,
+            69.0
+          ],
+          [
+            -82.0,
+            74.0
+          ],
+          [
+            -87.0,
+            75.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.6222222222222222,
+        "armour": 0.0,
+        "special": 0.8333333333333334,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_route",
+    "first_skill": "drive_route",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 3.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.0
+      }
+    },
+    "result": "matching"
+  }
+]

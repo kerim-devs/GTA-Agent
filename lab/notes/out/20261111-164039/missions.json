@@ -1,0 +1,403 @@
+{
+  "recording": "/Users/kerim/recordings/kerim/20261111-164039",
+  "missions": [
+    {
+      "start": 435.0086,
+      "end": 502.0512,
+      "steps": [
+        {
+          "objective": "Begib dich nach Vespucci Beach.",
+          "start": 435.0086,
+          "end": 437.0109,
+          "last": 435.5076,
+          "duration": 0.499,
+          "step_duration": 2.002,
+          "section_kinds": [
+            "foot"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 2.002,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 0.644,
+              "running": 0.31,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 0.654,
+              "map_input": 0.0,
+              "vehicle_input": 0.121,
+              "neutral": 0.583
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 436.0094,
+            "route": "none",
+            "blips": [
+              {
+                "color": "yellow",
+                "x": 89.67,
+                "y": 53.91,
+                "border": true
+              }
+            ]
+          }
+        },
+        {
+          "objective": "Begib dich nach Vesp",
+          "start": 437.0109,
+          "end": 437.5105,
+          "last": 437.0109,
+          "duration": 0.0,
+          "step_duration": 0.5,
+          "section_kinds": [
+            "foot"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 0.5,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 0.5,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 0.0
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 437.2288,
+            "route": "none",
+            "blips": []
+          }
+        },
+        {
+          "objective": "Begib dich nBch Vespucci Beach.",
+          "start": 437.5105,
+          "end": 502.0512,
+          "last": 442.0512,
+          "duration": 4.541,
+          "step_duration": 64.541,
+          "section_kinds": [
+            "drive",
+            "foot"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 64.541,
+            "seconds": {
+              "driving": 43.48,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 1.249,
+              "looking": 8.899,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 16.404
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 440.4956,
+            "route": "yellow",
+            "blips": []
+          }
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Begib dich nach Vespucci Beach. Then Begib dich nach Vesp Then Begib dich nBch Vespucci Beach.. Outcome: unknown."
+    },
+    {
+      "start": 628.0127,
+      "end": 685.0077,
+      "steps": [
+        {
+          "objective": "Sammle elne Waffe auf.",
+          "start": 628.0127,
+          "end": 631.0015,
+          "last": 628.0127,
+          "duration": 0.0,
+          "step_duration": 2.989,
+          "section_kinds": [
+            "foot"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 2.989,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 0.949,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 0.472,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 1.056
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 629.4978,
+            "route": "none",
+            "blips": [
+              {
+                "color": "blue",
+                "x": -2.62,
+                "y": 4.25,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": -9.43,
+                "y": 21.03,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": -1.9,
+                "y": 13.7,
+                "border": false
+              }
+            ]
+          }
+        },
+        {
+          "objective": "Schalte dle Vagos aus.",
+          "start": 631.0015,
+          "end": 685.0077,
+          "last": 635.0119,
+          "duration": 4.01,
+          "step_duration": 54.006,
+          "section_kinds": [
+            "banner",
+            "foot",
+            "unknown"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 54.006,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 17.687,
+              "running": 0.729,
+              "aiming": 16.133,
+              "firing": 3.272,
+              "looking": 10.628,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 14.315
+            }
+          },
+          "ending": "failed",
+          "sample_observation": {
+            "t": 633.9901,
+            "route": "none",
+            "blips": [
+              {
+                "color": "blue",
+                "x": 1.75,
+                "y": 4.88,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": -4.58,
+                "y": 23.64,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": 3.5,
+                "y": 17.28,
+                "border": false
+              }
+            ]
+          }
+        }
+      ],
+      "ending": "failed",
+      "end_reason": "banner",
+      "notes": "The game asks: Sammle elne Waffe auf. Then Schalte dle Vagos aus.. Outcome: failed."
+    },
+    {
+      "start": 692.8462,
+      "end": 753.5086,
+      "steps": [
+        {
+          "objective": "Schalte die V8gos aus.",
+          "start": 692.8462,
+          "end": 753.5086,
+          "last": 693.5086,
+          "duration": 0.662,
+          "step_duration": 60.662,
+          "section_kinds": [
+            "foot"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 60.662,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 21.938,
+              "running": 0.0,
+              "aiming": 24.951,
+              "firing": 4.074,
+              "looking": 12.017,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 9.685
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 695.8404,
+            "route": "none",
+            "blips": [
+              {
+                "color": "red",
+                "x": -6.78,
+                "y": 23.05,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": 1.68,
+                "y": 16.84,
+                "border": false
+              }
+            ]
+          }
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Schalte die V8gos aus.. Outcome: unknown."
+    },
+    {
+      "start": 890.0004,
+      "end": 901.5,
+      "steps": [
+        {
+          "objective": "Begib dich zu der Autowaschanlage.",
+          "start": 890.0004,
+          "end": 891.5439,
+          "last": 890.5077,
+          "duration": 0.507,
+          "step_duration": 1.543,
+          "section_kinds": [
+            "foot"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 1.543,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 1.434,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 1.045,
+              "looking": 0.592,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 0.0
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 890.6572,
+            "route": "yellow",
+            "blips": [
+              {
+                "color": "yellow",
+                "x": 79.74,
+                "y": 86.87,
+                "border": true
+              }
+            ]
+          }
+        },
+        {
+          "objective": "Begib dich zu der Autowaschanlage.",
+          "start": 891.5439,
+          "end": 901.5,
+          "last": 896.0711,
+          "duration": 4.527,
+          "step_duration": 9.956,
+          "section_kinds": [
+            "drive"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 9.907,
+            "seconds": {
+              "driving": 9.208,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 0.0,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 0.699
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 894.5433,
+            "route": "yellow",
+            "blips": [
+              {
+                "color": "yellow",
+                "x": 10.5,
+                "y": 87.38,
+                "border": true
+              }
+            ]
+          }
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "recording ended",
+      "notes": "The game asks: Begib dich zu der Autowaschanlage. Then Begib dich zu der Autowaschanlage.. Outcome: unknown."
+    }
+  ],
+  "unassigned_endings": []
+}

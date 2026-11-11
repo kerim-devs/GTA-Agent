@@ -1,0 +1,53 @@
+{
+  "recording": "/Users/kerim/recordings/kerim/20261111-171046",
+  "missions": [
+    {
+      "start": 688.5152,
+      "end": 749.0157,
+      "steps": [
+        {
+          "objective": "Bring D zu Lamars Haus.",
+          "start": 688.5152,
+          "end": 749.0157,
+          "last": 689.0157,
+          "duration": 0.5,
+          "step_duration": 60.5,
+          "section_kinds": [
+            "drive",
+            "unknown"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 60.5,
+            "seconds": {
+              "driving": 39.434,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 2.396,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 18.048
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 691.5025,
+            "route": "yellow",
+            "blips": []
+          }
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Bring D zu Lamars Haus.. Outcome: unknown."
+    }
+  ],
+  "unassigned_endings": []
+}
