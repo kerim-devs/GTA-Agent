@@ -10,7 +10,7 @@ import pytest
 
 from pilot.conductor import Conductor
 from pilot.contract import NEUTRAL_PAD, Detection, Hud, Pad, Reading
-from pilot.head import HeadRequest, build_prompt, parse_response, response_schema
+from pilot.head import HeadRequest, SkillCall, build_prompt, parse_response, response_schema
 from pilot.skills import REGISTRY, Observation, SkillResult, SkillRunner
 
 RGB = np.zeros((720, 1280, 3), dtype=np.uint8)
@@ -270,6 +270,37 @@ def test_the_request_does_not_carry_a_star_level_that_is_old(tmp_path):
         assert conductor._hud_for_head(Observation(FLAT, True, 3.0, hud=Hud()))["wanted"] == 0
         assert conductor._hud_for_head(Observation(FLAT, True, 6.0, hud=Hud()))["wanted"] is None
         assert conductor._hud_for_head(Observation(FLAT, True, 6.0, hud=Hud(wanted=1)))["wanted"] == 1
+    finally:
+        conductor.close()
+
+
+def test_the_opening_runs_first_and_the_first_plan_of_the_head_waits_for_its_end(tmp_path):
+    pending = Pending()
+    now = [0.0]
+    conductor = Conductor(
+        tmp_path,
+        submit=pending,
+        detector=NoEvents(),
+        clock=lambda: now[0],
+        opening=(SkillCall("level_camera", {}),),
+    )
+
+    def tick(t):
+        now[0] = t
+        return conductor.tick(Observation(FLAT, True, t), RGB)
+
+    try:
+        tick(0)
+        assert len(pending.jobs) == 1  # the head is asked at once, as in every session
+        pending.jobs[0][0].set_result(response(("walk", {"y": -1, "duration": 2})))
+        assert tick(1.0).pad.right == (0.0, -1.0)  # the answer is there and the move goes on
+        assert conductor.runner.active.name == "level_camera"
+        t = 1.0
+        while conductor.runner.active is not None and conductor.runner.active.name == "level_camera":
+            t += 1 / 30
+            tick(t)
+        assert 6.5 < t < 6.9  # the move began on the tick at one second and takes 5.7 s
+        assert tick(t + 0.1).pad.left == (0.0, -1.0)  # then the head's walk
     finally:
         conductor.close()
 

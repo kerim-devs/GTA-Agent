@@ -13,7 +13,7 @@ from .calibrate import run_calibrate, selection
 from .conductor import PLAY_RECORDINGS, run_play
 from .drive import DriveConfig, Driver
 from .flow import Flow
-from .head import CodexHead, CodexServerHead, ScriptedHead
+from .head import CodexHead, CodexServerHead, ScriptedHead, SkillCall
 from .loop import RECORDINGS, Pipeline, run_drive
 from .objects import Reader as ObjectReader
 from .overlay import overlay_port, run_overlay
@@ -77,6 +77,7 @@ def main(argv: list[str] | None = None) -> None:
     play.add_argument("--no-ocr", action="store_true")
     play.add_argument("--no-hud-flow", action="store_true", help="disable HUD readings and screen reflexes")
     play.add_argument("--no-objects", action="store_true", help="run without the object detector")
+    play.add_argument("--no-level", action="store_true", help="do not level the camera before the first plan")
     play.add_argument("--record-dir", type=absolute_path, default=PLAY_RECORDINGS)
     play.add_argument("--notebook", type=Path)
     play.add_argument("--head", choices=("scripted", "codex", "codex-server"), default="scripted")
@@ -163,6 +164,7 @@ def main(argv: list[str] | None = None) -> None:
                     objects=objects,
                     hud=None if args.no_hud_flow else hud,
                     flow=None if args.no_hud_flow else Flow(),
+                    opening=() if args.no_level else (SkillCall("level_camera", {}),),
                 )
             )
     else:
