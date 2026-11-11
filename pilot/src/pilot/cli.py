@@ -11,7 +11,7 @@ from . import hud, profile
 from .bridge import Bridge
 from .calibrate import RECORDINGS as CALIBRATIONS
 from .calibrate import run_calibrate, selection
-from .conductor import PLAY_RECORDINGS, run_play
+from .conductor import PLAY_RECORDINGS, Conductor, run_play
 from .drive import DriveConfig, Driver
 from .flow import Flow
 from .head import CodexHead, CodexServerHead, ScriptedHead, SkillCall
@@ -206,6 +206,7 @@ def main(argv: list[str] | None = None) -> None:
                     driver_factory=lambda: Driver(config),
                     objects=objects,
                     judge=judge,
+                    awake=Conductor.AWAKE_SECONDS,
                     hud=None if args.no_hud_flow else hud,
                     flow=None if args.no_hud_flow else Flow(),
                     opening=() if args.no_level else (SkillCall("level_camera", {}),),

@@ -243,6 +243,9 @@ SCREEN_EVIDENCE = FIXTURES.parent.parent / "screens"
 CABLE_MENUS = [
     ("tour-00120", "pause"),
     ("calibration2-02400", "pause"),
+    # Remote Play, 11 November: the two menus the waypoint skill took for the game.
+    ("remote-day-pause", "pause"),
+    ("remote-night-pause", "pause"),
     ("tour-00360", "map"),
     ("tour-00780", "weapon_wheel"),
     ("tour-01080", "phone"),

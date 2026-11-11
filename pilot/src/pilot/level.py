@@ -35,7 +35,9 @@ class LevelCamera:
     GAP_SECONDS = 0.5
     PULSE_STICK = 0.5  # as it reached the console; the request is the profile's value for it
     # The reader holds a wrong map class for up to 0.83 s on foot, so one tick does not say "vehicle".
-    FOOT_TIMEOUT = 1.5
+    # A judge that was looking at the game's idle scenery needs three judgments, a second, to take
+    # its word back once the figure is in the picture again.
+    FOOT_TIMEOUT = 3.0
     # A tick that comes late has not held the stick for all that time.
     LONGEST_TICK = 0.1
 

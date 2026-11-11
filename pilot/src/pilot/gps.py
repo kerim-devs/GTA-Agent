@@ -70,7 +70,7 @@ def turn_arrow(crop: np.ndarray) -> str | None:
 
 def recognize(crop: np.ndarray) -> Fix | None:
     """Accurate Apple Vision OCR; imports and framework errors are optional."""
-    Foundation, objc, q, v = frameworks()
+    foundation, objc, q, v = frameworks()
 
     patch = cv2.resize(crop[118:142, 36:120], None, fx=5, fy=5, interpolation=cv2.INTER_CUBIC)
     pixels = np.ascontiguousarray(patch)
@@ -82,7 +82,7 @@ def recognize(crop: np.ndarray) -> Fix | None:
     results = []
     texts = []
     with objc.autorelease_pool():
-        data = Foundation.NSData.dataWithBytes_length_(pixels.tobytes(), pixels.nbytes)
+        data = foundation.NSData.dataWithBytes_length_(pixels.tobytes(), pixels.nbytes)
         provider = q.CGDataProviderCreateWithCFData(data)
         image = q.CGImageCreate(
             width, height, 8, 24, width * 3, q.CGColorSpaceCreateDeviceRGB(), 0, provider, None, False, 0

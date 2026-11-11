@@ -60,7 +60,7 @@ def test_in_a_vehicle_it_sends_nothing_and_does_not_count_as_a_failure():
     rows, result = run(LevelCamera({}), TILTED)
     assert all(pad == NEUTRAL for _, pad in rows)
     assert result.status == "done" and result.reason == "not on foot"
-    assert rows[-1][0] == pytest.approx(1.5, abs=0.05)
+    assert rows[-1][0] == pytest.approx(LevelCamera.FOOT_TIMEOUT, abs=0.05)
 
 
 def test_a_wrong_map_class_for_most_of_a_second_does_not_call_it_a_vehicle():
@@ -134,7 +134,7 @@ def test_a_judge_that_never_sees_the_figure_on_foot_ends_it_without_a_failure():
     # its whole time limit and failed, and the failure threw the plan behind it away.
     skill = LevelCamera({})
     result = None
-    for tick in range(60):
+    for tick in range(100):
         result = skill.step(Observation(FLAT, True, tick / 30, mode="vehicle"))
         assert result.pad == NEUTRAL
     assert (result.status, result.reason) == ("done", "not on foot")

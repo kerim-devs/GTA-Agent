@@ -140,7 +140,8 @@ def test_outbound_shaping_and_log_keep_request():
     assert sent and status == 200
     assert actual.right == pytest.approx((0.37, -0.755))
     assert actual.left == request.left
-    assert (actual.buttons, actual.l2, actual.r2) == (request.buttons, request.l2, request.r2)
+    # The pedals are lifted over their dead zone of 0.35 as the right stick is over its 0.3.
+    assert (actual.buttons, actual.l2, actual.r2) == (request.buttons, pytest.approx(0.48), 1)
     assert request.right == (0.1, -0.65)
     row = log_row(
         0,

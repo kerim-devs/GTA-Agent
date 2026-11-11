@@ -229,6 +229,8 @@ class SetWaypoint:
         "Fails and backs out on an unverified screen, missing target/cursor, or time limit."
     )
     settle = 1.3  # Exceeds the recorded Wi-Fi picture delay of 0.6-1.1 s.
+    SLOW_TICK = 0.07  # two ticks of the loop
+    LATE = 1.0
     max_exits = 3
 
     def __init__(self, args: dict):
@@ -270,6 +272,8 @@ class SetWaypoint:
         self.phase = "open"
         self.ready_at = 0.0
         self.release_at = 0.0
+        self.hold = None
+        self.pressed = 0.0
         self.held = Pad()
         self.reader = None
         self.failure = None
@@ -290,6 +294,8 @@ class SetWaypoint:
     def _press(self, pad, now, phase, seconds=0.10):
         self.phase = phase
         self.held = pad
+        self.hold = seconds
+        self.pressed = now
         self.release_at = now + seconds
         self.ready_at = self.release_at + self.settle
         self.command_frame = None if self.current_frame is None else self.current_frame.copy()
@@ -300,6 +306,7 @@ class SetWaypoint:
         self.phase = "exit"
         self.held = Pad()
         self.release_at = 0.0
+        self.hold = None
         return SkillResult()
 
     def _picture(self, frame):
@@ -328,6 +335,16 @@ class SetWaypoint:
             self.started = now
         if now - self.started >= self.limit:
             return self.stop(f"time-limit: {self.failure or self.phase}; verify the screen before retrying")
+        if self.hold is not None:
+            # A press goes out when the tick that decided it ends, and a tick that read the map's
+            # text first takes longer than a press lasts (0.12 s against 0.10 s in session
+            # 20261111-122636). Counted from that tick's beginning the press was over as it began:
+            # the console saw one tick of cross and the map stayed shut. So after a slow tick the
+            # next one starts the count, unless it comes so late that the press is long over.
+            if self.SLOW_TICK < now - self.pressed <= self.LATE:
+                self.release_at = now + self.hold
+                self.ready_at = self.release_at + self.settle
+            self.hold = None
         if now < self.release_at:
             if observation.hud is not None and self.held.buttons != ("circle",):
                 allowed = {"game", "pause", "map"} if self.held.buttons == ("options",) else {"pause", "map"}

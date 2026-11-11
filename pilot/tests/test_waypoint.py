@@ -511,9 +511,22 @@ def test_the_next_push_is_as_long_as_the_measured_speed_asks(moved, seconds):
     world.offset[0] -= moved
     result = away_picture_step(skill, world, 1.8)
     assert result.pad.left == (0.65, 0) and skill.push_seconds == pytest.approx(seconds)
-    held = away_picture_step(skill, world, 1.8 + seconds - 0.02)
-    released = away_picture_step(skill, world, 1.8 + seconds + 0.02)
-    assert held.pad.left == (0.65, 0) and released.pad == NEUTRAL_PAD
+    ticks = [away_picture_step(skill, world, 1.8 + tick / 30).pad for tick in range(1, 20)]
+    held = [pad.left == (0.65, 0) for pad in ticks]
+    assert sum(held) == pytest.approx(seconds * 30, abs=1) and held == sorted(held, reverse=True)
+    assert ticks[-1] == NEUTRAL_PAD
+
+
+def test_a_press_decided_by_a_slow_tick_still_lasts_its_time():
+    # Live on 11 November the tick that read the pause menu took 0.12 s, cross went out as it
+    # ended and was let go by the next tick: the console never saw it and the map stayed shut.
+    skill = SetWaypoint({})
+    skill.step(observation())
+    frame = np.full((720, 1280, 3), 7, np.uint8)
+    skill._picture = lambda image: MapPicture("overview")
+    assert skill.step(observation(1.5, "pause", frame)).pad.buttons == ("cross",)
+    sent = [skill.step(observation(1.62 + tick / 30, "pause", frame)).pad.buttons for tick in range(6)]
+    assert sent == [("cross",)] * 3 + [()] * 3
 
 
 def test_a_map_without_detail_gets_no_push():

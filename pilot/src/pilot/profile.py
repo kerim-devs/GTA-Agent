@@ -1,4 +1,4 @@
-"""Game-specific actions and outbound stick calibration."""
+"""Game-specific actions and outbound stick and pedal calibration."""
 
 from dataclasses import dataclass, replace
 from math import copysign
@@ -20,6 +20,11 @@ class Profile:
     retry: str = "cross"
     left_dead_zone: float = 0.0
     right_dead_zone: float = 0.3
+    # Measured in a car on 11 November (lab/pedal): held for three seconds the accelerator moves
+    # nothing at 0.33 and the car at 0.36. Every pedal value the driver asks for below its cruise
+    # lay under that, and the car stood still until the driver took it for stuck and reversed.
+    # The brake is the same kind of trigger and is taken to answer the same way.
+    trigger_dead_zone: float = 0.35
 
     def sprint_buttons(self, elapsed: float) -> tuple[str, ...]:
         if self.sprint_held or elapsed % 0.25 < 0.125:
@@ -31,6 +36,8 @@ class Profile:
             pad,
             left=tuple(_component(value, self.left_dead_zone) for value in pad.left),
             right=tuple(_component(value, self.right_dead_zone) for value in pad.right),
+            l2=_component(pad.l2, self.trigger_dead_zone),
+            r2=_component(pad.r2, self.trigger_dead_zone),
         )
 
     def right_for(self, sent: float) -> float:
