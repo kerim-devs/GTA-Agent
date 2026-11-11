@@ -1,0 +1,24 @@
+{
+  "recording": "/Users/kerim/recordings/kerim/20261111-135510",
+  "seconds": 1103.4,
+  "sample_hz": 10,
+  "has_pad": false,
+  "sections": [
+    {
+      "start": -0.0159,
+      "end": 1103.3636,
+      "first_frame": 0,
+      "last_frame": 66134,
+      "kind": "drive",
+      "screen": "game",
+      "wanted": 0,
+      "route": [
+        "purple"
+      ],
+      "damaged": 0.00018125793003443902,
+      "human": null,
+      "route_share": 1.0,
+      "speed": null
+    }
+  ]
+}

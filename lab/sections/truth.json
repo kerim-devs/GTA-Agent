@@ -1,0 +1,189 @@
+{
+  "method": "Visual annotation of every distinct frame selected nearest to each integer second, before reading section tool output. Labels use printed capture timestamps, not page or cell offsets. Duplicate nearest frames across source gaps are shown once. Boundaries are accurate to approximately one second; entry and exit animations can add one second of uncertainty. PS5 system overlay and unreadable transitions are unknown. No automatic labels were used to create this truth.",
+  "recordings": {
+    "20261111-164039": [
+      {
+        "start": 0,
+        "end": 16,
+        "kind": "foot"
+      },
+      {
+        "start": 16,
+        "end": 22,
+        "kind": "unknown"
+      },
+      {
+        "start": 22,
+        "end": 330,
+        "kind": "foot"
+      },
+      {
+        "start": 330,
+        "end": 337,
+        "kind": "drive"
+      },
+      {
+        "start": 337,
+        "end": 343,
+        "kind": "menu"
+      },
+      {
+        "start": 343,
+        "end": 419,
+        "kind": "drive"
+      },
+      {
+        "start": 419,
+        "end": 437,
+        "kind": "foot"
+      },
+      {
+        "start": 437,
+        "end": 545,
+        "kind": "drive"
+      },
+      {
+        "start": 545,
+        "end": 680,
+        "kind": "foot"
+      },
+      {
+        "start": 680,
+        "end": 689,
+        "kind": "banner"
+      },
+      {
+        "start": 689,
+        "end": 783,
+        "kind": "foot"
+      },
+      {
+        "start": 783,
+        "end": 878,
+        "kind": "drive"
+      },
+      {
+        "start": 878,
+        "end": 890,
+        "kind": "foot"
+      },
+      {
+        "start": 890,
+        "end": 901.5,
+        "kind": "drive"
+      }
+    ],
+    "20261110-093238": [
+      {
+        "start": 0,
+        "end": 32,
+        "kind": "foot"
+      },
+      {
+        "start": 32,
+        "end": 34,
+        "kind": "unknown"
+      },
+      {
+        "start": 34,
+        "end": 43,
+        "kind": "banner"
+      },
+      {
+        "start": 43,
+        "end": 147,
+        "kind": "foot"
+      },
+      {
+        "start": 147,
+        "end": 154,
+        "kind": "drive"
+      },
+      {
+        "start": 154,
+        "end": 157,
+        "kind": "menu"
+      },
+      {
+        "start": 157,
+        "end": 208,
+        "kind": "drive"
+      },
+      {
+        "start": 208,
+        "end": 223,
+        "kind": "foot"
+      },
+      {
+        "start": 223,
+        "end": 311,
+        "kind": "drive"
+      },
+      {
+        "start": 311,
+        "end": 313,
+        "kind": "foot"
+      },
+      {
+        "start": 313,
+        "end": 339,
+        "kind": "cutscene"
+      },
+      {
+        "start": 339,
+        "end": 342,
+        "kind": "banner"
+      },
+      {
+        "start": 342,
+        "end": 350,
+        "kind": "foot"
+      },
+      {
+        "start": 350,
+        "end": 385,
+        "kind": "drive"
+      },
+      {
+        "start": 385,
+        "end": 393,
+        "kind": "menu"
+      },
+      {
+        "start": 393,
+        "end": 482,
+        "kind": "drive"
+      },
+      {
+        "start": 482,
+        "end": 627,
+        "kind": "foot"
+      },
+      {
+        "start": 627,
+        "end": 629,
+        "kind": "unknown"
+      },
+      {
+        "start": 629,
+        "end": 637,
+        "kind": "banner"
+      },
+      {
+        "start": 637,
+        "end": 642,
+        "kind": "loading"
+      },
+      {
+        "start": 642,
+        "end": 693,
+        "kind": "foot"
+      },
+      {
+        "start": 693,
+        "end": 695.9,
+        "kind": "drive"
+      }
+    ]
+  }
+}

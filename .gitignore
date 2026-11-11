@@ -58,3 +58,6 @@ lab/screens/review/
 
 # drawn from the recordings by lab/judge/sample.py, 36 MB
 lab/judge/sample/
+
+# rebuilt by lab/sections/contact.py, 30 MB
+lab/sections/contact/

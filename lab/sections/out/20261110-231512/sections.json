@@ -1,0 +1,22 @@
+{
+  "recording": "/Users/kerim/recordings/pilot/20261110-231512",
+  "seconds": 240.1,
+  "sample_hz": 10,
+  "has_pad": false,
+  "sections": [
+    {
+      "start": -0.0003,
+      "end": 240.0066,
+      "first_frame": 0,
+      "last_frame": 14311,
+      "kind": "foot",
+      "screen": "game",
+      "wanted": 0,
+      "route": [],
+      "damaged": 0.019756200084068937,
+      "human": null,
+      "route_share": null,
+      "speed": null
+    }
+  ]
+}
