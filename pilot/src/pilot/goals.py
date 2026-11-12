@@ -2,11 +2,13 @@
 
 import copy
 import random
+import re
 import secrets
 import time
 from dataclasses import dataclass, field
 
 from .head import HeadRequest, parse_response
+from .legend import kind_of
 
 # Limits cover retries as well as time spent waiting for a head answer.
 LIMITS = {
@@ -24,6 +26,25 @@ TITLES = {
     "road": "eine Straße finden",
 }
 SUCCESSOR = {"vehicle": "drive", "drive": "fight", "fight": "escape", "escape": "vehicle", "road": "vehicle"}
+
+
+# A trip nobody asked for goes to a shop or a pastime. A mission is chosen when an objective asks for
+# one, and an entry the legend prints that is none of these (Chinesen) is of no known sort.
+TRIP_KINDS = ("shop", "pastime")
+# What set_waypoint reports in `reason` (legend.py): where it went and what it read on the way.
+WAYPOINT_SET = re.compile(
+    r"^waypoint set: (.+?) \((?:(\d+(?:\.\d+)?)m|distance not read)\); gameplay observed"
+)
+PLACE_ASKED = re.compile(r"^(place-not-in-legend|legend-selection-skips-the-place): (.+?); gameplay observed")
+PLACES_TAIL = re.compile(r"; places: ?(.*)$", re.S)
+
+
+def read_places(reason: str | None) -> list[str] | None:
+    """The destinations a set_waypoint read in the legend; None where its reason names no list."""
+    found = PLACES_TAIL.search(reason or "")
+    if found is None:
+        return None
+    return [name.strip() for name in re.split(r",\s*", found.group(1)) if name.strip()]
 
 
 # Skills that fit one way of moving only. On foot the stick walks the figure, a minimap blip is
@@ -108,6 +129,11 @@ class Goal:
     seen_wanted: bool = False
     seen_route: bool = False
     last_result: dict | None = field(default=None, repr=False)
+    # Where a drive goal is going, as set_waypoint reported it, and what it was turned away from.
+    place: str | None = None
+    distance: float | None = None
+    tried: set = field(default_factory=set, repr=False)
+    nothing: bool = False
 
     def data(self):
         return {
@@ -117,13 +143,26 @@ class Goal:
             "seed": self.seed,
             "direction": self.direction,
             "attempts": self.attempts,
+            "place": self.place,
+            "distance": self.distance,
         }
 
 
 class Goals:
     # What one decision may change. The conductor can drop the answer it was made for as out of
     # date, and then the state it consumed has to come back or the next one runs short.
-    STATE = ("active", "next", "abandoned", "history", "transition", "road_found")
+    STATE = (
+        "active",
+        "next",
+        "abandoned",
+        "history",
+        "transition",
+        "road_found",
+        "known",
+        "visited",
+        "hint",
+        "learned",
+    )
 
     def __init__(self, seed=None, clock=time.monotonic):
         self.seed = secrets.randbits(32) if seed is None else seed
@@ -135,6 +174,12 @@ class Goals:
         self.history: list[dict] = []
         self.transition = ""
         self.road_found = False
+        # The places a set_waypoint has named, with their sort; where the pilot has been to, in the
+        # order of going, across goals; the list the last failure named; the last result learned from.
+        self.known: dict[str, str] = {}
+        self.visited: list[str] = []
+        self.hint: list[str] | None = None
+        self.learned: dict | None = None
         self._undo = None
 
     def mark(self):
@@ -166,6 +211,11 @@ class Goals:
                 "reason": reason,
             }
         )
+        # A place counts as been to when the trip ended in arrival or ran out its time on the way;
+        # a trip cut short by stars or by health says nothing about the place.
+        if goal.name == "drive" and goal.place and (reached or reason == "limit"):
+            if goal.place not in self.visited:
+                self.visited.append(goal.place)
         self.next = SUCCESSOR[goal.name]
         self.abandoned = None if reached else goal.name
         self.active = None
@@ -191,6 +241,9 @@ class Goals:
             name = "vehicle" if cars or self.road_found else "road"
         if name == self.abandoned:
             name = "fight" if mode == "vehicle" else ("road" if name != "road" else "vehicle")
+        if name == "drive":
+            # The legend differs from place to place; a list from an earlier trip may not hold here.
+            self.hint = None
         self.active = Goal(
             name, self.now(request), self.seed, self.random.choice(("north", "east", "south", "west"))
         )
@@ -203,6 +256,81 @@ class Goals:
             }
         )
         return self.active
+
+    def learn(self, last):
+        """Take the places a finished set_waypoint named, once for each result."""
+        if not last or last.get("name") != "set_waypoint" or last == self.learned:
+            return
+        self.learned = dict(last)
+        reason = last.get("reason") or ""
+        names = read_places(reason)
+        if names:
+            self.known.update({name: kind_of(name) for name in names})
+        if last.get("status") == "done":
+            self.hint = None
+        elif last.get("status") == "failed" and not own_stop(last):
+            asked = PLACE_ASKED.match(reason)
+            if asked:
+                if asked.group(1) == "place-not-in-legend":
+                    self.known.pop(asked.group(2), None)
+                # What this legend holds, as the failure read it, is where the next try looks.
+                self.hint = names
+
+    def _read(self, goal, last):
+        """What a result of set_waypoint means for the trip this goal is."""
+        if goal.name != "drive" or last.get("name") != "set_waypoint":
+            return
+        reason = last.get("reason") or ""
+        if last.get("status") == "done":
+            found = WAYPOINT_SET.match(reason)
+            if found:
+                goal.place = found.group(1)
+                goal.distance = float(found.group(2)) if found.group(2) else None
+        elif last.get("status") == "failed" and not own_stop(last):
+            asked = PLACE_ASKED.match(reason)
+            if asked:
+                goal.tried.add(asked.group(2))
+                names = read_places(reason)
+                if names is not None and not any(kind_of(name) in TRIP_KINDS for name in names):
+                    goal.nothing = True
+
+    def _place(self, tried):
+        """A shop or pastime the pilot has not been to: the list the last failure named first."""
+        pool = self.hint if self.hint is not None else list(self.known)
+        options = sorted(n for n in pool if kind_of(n) in TRIP_KINDS and n not in tried)
+        if not options:
+            return None
+        fresh = [n for n in options if n not in self.visited]
+        if not fresh:
+            # Every one of them has been visited: they are all open again.
+            self.visited = [n for n in self.visited if n not in options]
+            fresh = options
+        return self.random.choice(fresh)
+
+    def trip(self, goal=None, *, follow=120):
+        """The calls of a trip nothing asked for: a place from the legend, else a point on the map.
+
+        A goal asks for the place alone and follows the waypoint in a second step, so that the
+        head sees where set_waypoint went; the rules' own route asks for both at once."""
+        follow_up = [] if goal is not None else [call("drive_route", duration=follow)]
+        if goal is None or not goal.nothing:
+            place = self._place(goal.tried if goal else set())
+            if place:
+                return [call("set_waypoint", place=place, duration=45), *follow_up]
+            if not self.known and self.hint is None:
+                # The first call asks by kind; the legend answers with the places it holds.
+                kind = self.random.choice(TRIP_KINDS)
+                return [call("set_waypoint", kind=kind, duration=45), *follow_up]
+        return [
+            call(
+                "set_waypoint",
+                target="away",
+                duration=45,
+                direction=goal.direction if goal else "any",
+                distance="far",
+            ),
+            call("drive_route", duration=follow),
+        ]
 
     def decide(self, request, mode, *, escape_plan=None, recovery_plan=None, keep_heading=False):
         """Called only for free roam or the existing wanted rules."""
@@ -230,6 +358,8 @@ class Goals:
         fresh = last != goal.last_result
         if fresh:
             goal.last_result = dict(last)
+            self.learn(last)
+            self._read(goal, last)
         if wanted:
             goal.seen_wanted = True
         if request.minimap.get("route") in {"purple", "yellow"}:
@@ -297,7 +427,17 @@ class Goals:
             )
 
         failed = last.get("status") == "failed" and fresh and not own_stop(last)
-        if failed and recovery_plan is not None:
+        # A waypoint that was set is followed without a new try: it is the second half of one trip.
+        trip_on = (
+            goal.name == "drive"
+            and fresh
+            and last.get("name") == "set_waypoint"
+            and last.get("status") == "done"
+            and WAYPOINT_SET.match(last.get("reason") or "") is not None
+        )
+        # Seated in a drive goal a failure is answered by the goal: the next place, and not the
+        # rules' point on the map.
+        if failed and recovery_plan is not None and not (goal.name == "drive" and seat == "vehicle"):
             plan = recovery_plan
         elif goal.name == "escape" and wanted and escape_plan is not None:
             plan = escape_plan
@@ -312,15 +452,10 @@ class Goals:
                     if cars
                     else [call("walk_road", duration=15)]
                 )
-            elif request.minimap.get("route") in {"purple", "yellow"}:
+            elif trip_on or request.minimap.get("route") in {"purple", "yellow"}:
                 plan = [call("drive_route", duration=120)]
             else:
-                plan = [
-                    call(
-                        "set_waypoint", target="away", duration=45, direction=goal.direction, distance="far"
-                    ),
-                    call("drive_route", duration=120),
-                ]
+                plan = self.trip(goal)
         elif goal.name == "fight":
             if seat == "vehicle":
                 plan = [call("press", button="triangle", duration=0.1), call("wait", duration=2)]
@@ -336,27 +471,42 @@ class Goals:
             )
         else:
             plan = [call("walk_road", duration=15)]
-        if failed and not keep_heading and plan[0]["name"] == last.get("name"):
+        # Another place is not the same call again, and needs no look before it.
+        if failed and not keep_heading and plan[0]["name"] == last.get("name") != "set_waypoint":
             plan.insert(0, call("look", duration=1.2, angle=180))
-        goal.attempts += 1
+        if not trip_on:
+            goal.attempts += 1
         goal.step = " → ".join(item["name"] for item in plan)
-        if misfit:
-            misfit_reason = f"step ended: {working} does not fit the figure"
-            misfit_reason += " seated" if seat == "vehicle" else " on foot"
-        reason = self.transition or (
-            "retry: observed skill failure" if failed else misfit_reason if misfit else "start next goal step"
-        )
+        reason = self.transition
+        if not reason:
+            if failed:
+                reason = "retry: observed skill failure"
+            elif misfit:
+                reason = f"step ended: {working} does not fit the figure"
+                reason += " seated" if seat == "vehicle" else " on foot"
+            elif trip_on:
+                reason = "second half of a trip: follow the waypoint that was set"
+            else:
+                reason = "start next goal step"
         self.transition = ""
         return self._reply(goal, plan, "replace", reason)
 
     @staticmethod
-    def _reply(goal, plan, action, reason):
+    def title(goal):
+        """What the sentence names: the place a drive goes to, once set_waypoint has said which."""
+        if goal.name == "drive" and goal.place:
+            far = f", {goal.distance:g} m entfernt" if goal.distance is not None else ""
+            return goal.place + far
+        return TITLES[goal.name]
+
+    @classmethod
+    def _reply(cls, goal, plan, action, reason):
         return parse_response(
             {
                 "plan": plan,
-                "sentence": f"Mein Ziel bleibt: {TITLES[goal.name]}."
+                "sentence": f"Mein Ziel bleibt: {cls.title(goal)}."
                 if action == "go_on"
-                else f"Mein Ziel: {TITLES[goal.name]}.",
+                else f"Mein Ziel: {cls.title(goal)}.",
                 "action": action,
                 "goal": goal.data(),
                 "step": goal.step,

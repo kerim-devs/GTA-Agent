@@ -93,7 +93,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -177,7 +179,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -261,7 +265,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -345,7 +351,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -429,7 +437,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -513,7 +523,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -597,7 +609,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -681,7 +695,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -756,7 +772,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -840,7 +858,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -924,7 +944,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -1008,7 +1030,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -1092,7 +1116,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -1176,7 +1202,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -1260,7 +1288,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -1344,7 +1374,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -1428,7 +1460,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -1512,7 +1546,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -1593,12 +1629,360 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
       },
       "reason": "No screen objective: road now owns the free-roam plan; start next goal step."
+    },
+    {
+      "suite": "mission",
+      "id": "wifi-80",
+      "request": {
+        "events": [],
+        "help": "Drücke RI neben einem Fahrzeug, um es als Deckung zu nutzen.",
+        "objective": "",
+        "subtitle": "Die haben mich im Yreuzieuer! Schieß auf den Gasbehälter!",
+        "banner": "",
+        "minimap": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -57.10772826924455,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -4.38,
+              "y": 4.48,
+              "border": false
+            }
+          ]
+        },
+        "hud": {
+          "wanted": 0,
+          "wanted_flashing": false,
+          "health": 0.8222222222222222,
+          "armour": 0.0,
+          "special": 1.0,
+          "screen": "game"
+        },
+        "last_skill": null,
+        "notebook": "",
+        "jpeg_path": "",
+        "objects": [],
+        "time": 0
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ],
+        "sentence": "Ein Ziel ist auf der Karte markiert, ich gehe dorthin.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "after": {
+        "rule": "foot_explore",
+        "plan": [
+          {
+            "name": "walk_road",
+            "args": {
+              "duration": 30
+            }
+          }
+        ],
+        "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich gehe zur nächsten Straße.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "reason": "rule decision"
+    },
+    {
+      "suite": "mission",
+      "id": "wifi-120",
+      "request": {
+        "events": [],
+        "help": "Wenn du auf eine Benzinspur schießt, entzündet sie sich.",
+        "objective": "",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -0.6618747355135497,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 2.39,
+              "y": -6.22,
+              "border": false
+            }
+          ]
+        },
+        "hud": {
+          "wanted": 0,
+          "wanted_flashing": false,
+          "health": 0.4,
+          "armour": 0.0,
+          "special": 0.9761904761904762,
+          "screen": "game"
+        },
+        "last_skill": null,
+        "notebook": "",
+        "jpeg_path": "",
+        "objects": [],
+        "time": 0
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ],
+        "sentence": "Ein Ziel ist auf der Karte markiert, ich gehe dorthin.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "after": {
+        "rule": "foot_explore",
+        "plan": [
+          {
+            "name": "walk_road",
+            "args": {
+              "duration": 30
+            }
+          }
+        ],
+        "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich gehe zur nächsten Straße.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "reason": "rule decision"
+    },
+    {
+      "suite": "mission",
+      "id": "wifi-130",
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "",
+        "subtitle": "Und da hären wir das Ding ja auch Hey, digga, komm her, wir haben deine Fahrzeugpapiere.",
+        "banner": "",
+        "minimap": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -0.6475166466283895,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 0.5,
+              "y": 12.5,
+              "border": false
+            }
+          ]
+        },
+        "hud": {
+          "wanted": 0,
+          "wanted_flashing": false,
+          "health": 0.4,
+          "armour": 0.0,
+          "special": 1.0,
+          "screen": "game"
+        },
+        "last_skill": null,
+        "notebook": "",
+        "jpeg_path": "",
+        "objects": [],
+        "time": 0
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ],
+        "sentence": "Ein Ziel ist auf der Karte markiert, ich gehe dorthin.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "after": {
+        "rule": "foot_explore",
+        "plan": [
+          {
+            "name": "walk_road",
+            "args": {
+              "duration": 30
+            }
+          }
+        ],
+        "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich gehe zur nächsten Straße.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "reason": "rule decision"
+    },
+    {
+      "suite": "mission",
+      "id": "wifi-160",
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "minimap": "tilted",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 9.853524495665738,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 50.3,
+              "y": 66.8,
+              "border": false
+            }
+          ]
+        },
+        "hud": {
+          "wanted": 0,
+          "wanted_flashing": false,
+          "health": 0.4888888888888889,
+          "armour": 0.0,
+          "special": 1.0,
+          "screen": "game"
+        },
+        "last_skill": null,
+        "notebook": "",
+        "jpeg_path": "",
+        "objects": [],
+        "time": 0
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ],
+        "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "kind": "shop",
+              "duration": 45
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ],
+        "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "reason": "No screen objective: the rules' trip asks the legend for a place, not for a point on the map."
     },
     {
       "suite": "mission",
@@ -1677,16 +2061,8 @@
           {
             "name": "set_waypoint",
             "args": {
-              "target": "away",
-              "duration": 45,
-              "direction": "east",
-              "distance": "far"
-            }
-          },
-          {
-            "name": "drive_route",
-            "args": {
-              "duration": 120
+              "kind": "shop",
+              "duration": 45
             }
           }
         ],
@@ -1699,12 +2075,665 @@
           "deadline": 240,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
-        "step": "set_waypoint → drive_route",
+        "step": "set_waypoint",
         "reason": "start next goal step"
       },
       "reason": "No screen objective: drive now owns the free-roam plan; start next goal step."
+    },
+    {
+      "suite": "mission",
+      "id": "wifi-175",
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "",
+        "subtitle": "Und wessen Schuld ist das, Mr. PAchtzigerjahre-Acronfilm-Über-Leichen gehendes-Arschloch\"?",
+        "banner": "",
+        "minimap": {
+          "minimap": "tilted",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -0.1590871707655026,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -6.16,
+              "y": 49.69,
+              "border": false
+            }
+          ]
+        },
+        "hud": {
+          "wanted": 0,
+          "wanted_flashing": false,
+          "health": 0.5,
+          "armour": 0.0,
+          "special": 1.0,
+          "screen": "game"
+        },
+        "last_skill": null,
+        "notebook": "",
+        "jpeg_path": "",
+        "objects": [],
+        "time": 0
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ],
+        "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "kind": "shop",
+              "duration": 45
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ],
+        "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "reason": "No screen objective: the rules' trip asks the legend for a place, not for a point on the map."
+    },
+    {
+      "suite": "mission",
+      "id": "wifi-180",
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "",
+        "subtitle": "Spiel hier keine Schuldspielchen und konzentrier dich.",
+        "banner": "",
+        "minimap": {
+          "minimap": "tilted",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 0.6363312367199114,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 10.46,
+              "y": 58.69,
+              "border": false
+            }
+          ]
+        },
+        "hud": {
+          "wanted": 0,
+          "wanted_flashing": false,
+          "health": 0.4888888888888889,
+          "armour": 0.0,
+          "special": 1.0,
+          "screen": "game"
+        },
+        "last_skill": null,
+        "notebook": "",
+        "jpeg_path": "",
+        "objects": [],
+        "time": 0
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ],
+        "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "kind": "shop",
+              "duration": 45
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ],
+        "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "reason": "No screen objective: the rules' trip asks the legend for a place, not for a point on the map."
+    },
+    {
+      "suite": "mission",
+      "id": "wifi-200",
+      "request": {
+        "events": [],
+        "help": "Drücke O, um die Kamera auf das Ziel zu fokussieren.",
+        "objective": "",
+        "subtitle": "Der Wichser haut uns ab.",
+        "banner": "",
+        "minimap": {
+          "minimap": "tilted",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 2.8604163983854107,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 0.6,
+              "y": 6.3,
+              "border": false
+            }
+          ]
+        },
+        "hud": {
+          "wanted": 0,
+          "wanted_flashing": false,
+          "health": 0.4888888888888889,
+          "armour": 0.0,
+          "special": 0.42857142857142855,
+          "screen": "game"
+        },
+        "last_skill": null,
+        "notebook": "",
+        "jpeg_path": "",
+        "objects": [],
+        "time": 0
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ],
+        "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "kind": "shop",
+              "duration": 45
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ],
+        "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "reason": "No screen objective: the rules' trip asks the legend for a place, not for a point on the map."
+    },
+    {
+      "suite": "mission",
+      "id": "wifi-205",
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "minimap": "tilted",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -105.19836824897072,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -18.61,
+              "y": -14.36,
+              "border": false
+            }
+          ]
+        },
+        "hud": {
+          "wanted": 0,
+          "wanted_flashing": false,
+          "health": 0.4888888888888889,
+          "armour": null,
+          "special": 0.8095238095238095,
+          "screen": "game"
+        },
+        "last_skill": null,
+        "notebook": "",
+        "jpeg_path": "",
+        "objects": [],
+        "time": 0
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ],
+        "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "kind": "shop",
+              "duration": 45
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ],
+        "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "reason": "No screen objective: the rules' trip asks the legend for a place, not for a point on the map."
+    },
+    {
+      "suite": "mission",
+      "id": "wifi-205.206",
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "",
+        "subtitle": "Nimm das Motorrad, wir treffen uns bel der Autowaschanlage.",
+        "banner": "",
+        "minimap": {
+          "minimap": "tilted",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -105.28462935286336,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -18.38,
+              "y": -14.7,
+              "border": false
+            }
+          ]
+        },
+        "hud": {
+          "wanted": 0,
+          "wanted_flashing": false,
+          "health": 0.5,
+          "armour": null,
+          "special": 0.8095238095238095,
+          "screen": "game"
+        },
+        "last_skill": null,
+        "notebook": "",
+        "jpeg_path": "",
+        "objects": [],
+        "time": 0
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ],
+        "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "kind": "shop",
+              "duration": 45
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ],
+        "sentence": "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "reason": "No screen objective: the rules' trip asks the legend for a place, not for a point on the map."
+    },
+    {
+      "suite": "mission",
+      "id": "wifi-215",
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -64.74359638030313,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -18.38,
+              "y": 28.95,
+              "border": false
+            }
+          ]
+        },
+        "hud": {
+          "wanted": 0,
+          "wanted_flashing": false,
+          "health": 0.4888888888888889,
+          "armour": 0.0,
+          "special": 0.8095238095238095,
+          "screen": "game"
+        },
+        "last_skill": null,
+        "notebook": "",
+        "jpeg_path": "",
+        "objects": [],
+        "time": 0
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ],
+        "sentence": "Ein Ziel ist auf der Karte markiert, ich gehe dorthin.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "after": {
+        "rule": "foot_explore",
+        "plan": [
+          {
+            "name": "walk_road",
+            "args": {
+              "duration": 30
+            }
+          }
+        ],
+        "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich gehe zur nächsten Straße.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "reason": "rule decision"
+    },
+    {
+      "suite": "mission",
+      "id": "wifi-220",
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 19.302658659861237,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 0.9,
+              "y": 9.47,
+              "border": false
+            }
+          ]
+        },
+        "hud": {
+          "wanted": 0,
+          "wanted_flashing": false,
+          "health": 0.4888888888888889,
+          "armour": 0.0,
+          "special": 0.8095238095238095,
+          "screen": "game"
+        },
+        "last_skill": null,
+        "notebook": "",
+        "jpeg_path": "",
+        "objects": [],
+        "time": 0
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ],
+        "sentence": "Ein Ziel ist auf der Karte markiert, ich gehe dorthin.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "after": {
+        "rule": "foot_explore",
+        "plan": [
+          {
+            "name": "walk_road",
+            "args": {
+              "duration": 30
+            }
+          }
+        ],
+        "sentence": "Ein markiertes Ziel ist nicht zu sehen, ich gehe zur nächsten Straße.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "reason": "rule decision"
     },
     {
       "suite": "mission",
@@ -1873,7 +2902,9 @@
           "deadline": 240,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "drive_route",
         "reason": "start next goal step"
@@ -1987,7 +3018,9 @@
           "deadline": 240,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "drive_route",
         "reason": "start next goal step"
@@ -2121,7 +3154,9 @@
           "deadline": 240,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "drive_route",
         "reason": "start next goal step"
@@ -2219,7 +3254,9 @@
           "deadline": 240,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "drive_route",
         "reason": "start next goal step"
@@ -2300,7 +3337,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -2381,7 +3420,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -2458,16 +3499,8 @@
           {
             "name": "set_waypoint",
             "args": {
-              "target": "away",
-              "duration": 45,
-              "direction": "east",
-              "distance": "far"
-            }
-          },
-          {
-            "name": "drive_route",
-            "args": {
-              "duration": 120
+              "kind": "shop",
+              "duration": 45
             }
           }
         ],
@@ -2480,9 +3513,11 @@
           "deadline": 240,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
-        "step": "set_waypoint → drive_route",
+        "step": "set_waypoint",
         "reason": "start next goal step"
       },
       "reason": "No screen objective: drive now owns the free-roam plan; start next goal step."
@@ -2638,7 +3673,9 @@
           "deadline": 240,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "drive_route",
         "reason": "start next goal step"
@@ -2719,7 +3756,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -2796,16 +3835,8 @@
           {
             "name": "set_waypoint",
             "args": {
-              "target": "away",
-              "duration": 45,
-              "direction": "east",
-              "distance": "far"
-            }
-          },
-          {
-            "name": "drive_route",
-            "args": {
-              "duration": 120
+              "kind": "shop",
+              "duration": 45
             }
           }
         ],
@@ -2818,9 +3849,11 @@
           "deadline": 240,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
-        "step": "set_waypoint → drive_route",
+        "step": "set_waypoint",
         "reason": "start next goal step"
       },
       "reason": "No screen objective: drive now owns the free-roam plan; start next goal step."
@@ -2895,16 +3928,8 @@
           {
             "name": "set_waypoint",
             "args": {
-              "target": "away",
-              "duration": 45,
-              "direction": "east",
-              "distance": "far"
-            }
-          },
-          {
-            "name": "drive_route",
-            "args": {
-              "duration": 120
+              "kind": "shop",
+              "duration": 45
             }
           }
         ],
@@ -2917,9 +3942,11 @@
           "deadline": 240,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
-        "step": "set_waypoint → drive_route",
+        "step": "set_waypoint",
         "reason": "start next goal step"
       },
       "reason": "No screen objective: drive now owns the free-roam plan; start next goal step."
@@ -2994,16 +4021,8 @@
           {
             "name": "set_waypoint",
             "args": {
-              "target": "away",
-              "duration": 45,
-              "direction": "east",
-              "distance": "far"
-            }
-          },
-          {
-            "name": "drive_route",
-            "args": {
-              "duration": 120
+              "kind": "shop",
+              "duration": 45
             }
           }
         ],
@@ -3016,9 +4035,11 @@
           "deadline": 240,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
-        "step": "set_waypoint → drive_route",
+        "step": "set_waypoint",
         "reason": "start next goal step"
       },
       "reason": "No screen objective: drive now owns the free-roam plan; start next goal step."
@@ -3093,16 +4114,8 @@
           {
             "name": "set_waypoint",
             "args": {
-              "target": "away",
-              "duration": 45,
-              "direction": "east",
-              "distance": "far"
-            }
-          },
-          {
-            "name": "drive_route",
-            "args": {
-              "duration": 120
+              "kind": "shop",
+              "duration": 45
             }
           }
         ],
@@ -3115,9 +4128,11 @@
           "deadline": 240,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
-        "step": "set_waypoint → drive_route",
+        "step": "set_waypoint",
         "reason": "start next goal step"
       },
       "reason": "No screen objective: drive now owns the free-roam plan; start next goal step."
@@ -3192,16 +4207,8 @@
           {
             "name": "set_waypoint",
             "args": {
-              "target": "away",
-              "duration": 45,
-              "direction": "east",
-              "distance": "far"
-            }
-          },
-          {
-            "name": "drive_route",
-            "args": {
-              "duration": 120
+              "kind": "shop",
+              "duration": 45
             }
           }
         ],
@@ -3214,9 +4221,11 @@
           "deadline": 240,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
-        "step": "set_waypoint → drive_route",
+        "step": "set_waypoint",
         "reason": "start next goal step"
       },
       "reason": "No screen objective: drive now owns the free-roam plan; start next goal step."
@@ -3291,16 +4300,8 @@
           {
             "name": "set_waypoint",
             "args": {
-              "target": "away",
-              "duration": 45,
-              "direction": "east",
-              "distance": "far"
-            }
-          },
-          {
-            "name": "drive_route",
-            "args": {
-              "duration": 120
+              "kind": "shop",
+              "duration": 45
             }
           }
         ],
@@ -3313,9 +4314,11 @@
           "deadline": 240,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
-        "step": "set_waypoint → drive_route",
+        "step": "set_waypoint",
         "reason": "start next goal step"
       },
       "reason": "No screen objective: drive now owns the free-roam plan; start next goal step."
@@ -3390,16 +4393,8 @@
           {
             "name": "set_waypoint",
             "args": {
-              "target": "away",
-              "duration": 45,
-              "direction": "east",
-              "distance": "far"
-            }
-          },
-          {
-            "name": "drive_route",
-            "args": {
-              "duration": 120
+              "kind": "shop",
+              "duration": 45
             }
           }
         ],
@@ -3412,9 +4407,11 @@
           "deadline": 240,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
-        "step": "set_waypoint → drive_route",
+        "step": "set_waypoint",
         "reason": "start next goal step"
       },
       "reason": "No screen objective: drive now owns the free-roam plan; start next goal step."
@@ -3493,7 +4490,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -3574,7 +4573,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -3655,7 +4656,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -3736,7 +4739,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -3817,7 +4822,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -3898,7 +4905,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -3980,7 +4989,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -4069,7 +5080,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -4208,7 +5221,9 @@
           "deadline": 240,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "drive_route",
         "reason": "start next goal step"
@@ -4297,7 +5312,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -4383,7 +5400,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -4553,7 +5572,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -4717,7 +5738,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -4874,7 +5897,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -5031,7 +6056,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -5195,7 +6222,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -5359,7 +6388,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -5516,7 +6547,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -5673,7 +6706,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -5828,7 +6863,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -5990,7 +7027,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -6154,7 +7193,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -6311,7 +7352,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -6479,7 +7522,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -6634,7 +7679,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -6789,7 +7836,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -6944,7 +7993,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -7030,7 +8081,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -7198,7 +8251,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -7366,12 +8421,188 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
       },
       "reason": "No screen objective: road now owns the free-roam plan; start next goal step."
+    },
+    {
+      "suite": "p45-sessions",
+      "id": "20261112-082524:4",
+      "request": {
+        "events": [
+          {
+            "kind": "skill_failed",
+            "skill": {
+              "name": "walk_road",
+              "status": "failed",
+              "reason": "no-road"
+            }
+          }
+        ],
+        "help": "",
+        "objective": "",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -0.8256647938868866,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        },
+        "last_skill": {
+          "name": "walk_road",
+          "status": "failed",
+          "reason": "no-road"
+        },
+        "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n2026-11-10T22:16:36.837785+00:00 Direkt vor der Figur steht ein Stromkasten, der den geraden Weg versperrt.\n2026-11-11T01:43:20.243170+00:00 Must not be stored.\n",
+        "jpeg_path": "/Users/kerim/recordings/pilot/20261112-082524/head-0004.jpg",
+        "hud": {
+          "wanted": 0,
+          "wanted_flashing": false,
+          "health": 0.9888888888888889,
+          "armour": 0.0,
+          "special": null,
+          "screen": "game"
+        },
+        "objects": [],
+        "judgment": {
+          "capture": 338177.174281208,
+          "answers": {
+            "mode": {
+              "value": "foot",
+              "probability": 1.0
+            },
+            "overlay": {
+              "value": false,
+              "probability": 0.908
+            },
+            "banner": {
+              "value": false,
+              "probability": 1.0
+            },
+            "wanted": {
+              "value": false,
+              "probability": 1.0
+            },
+            "path": {
+              "value": "free",
+              "probability": 0.975
+            },
+            "car": {
+              "value": false,
+              "probability": 1.0
+            }
+          },
+          "probabilities": {
+            "mode": {
+              "A": 0.9999999214443211,
+              "B": 7.695845712394698e-08,
+              "C": 1.5972218213890305e-09
+            },
+            "overlay": {
+              "A": 0.09153790629332488,
+              "B": 0.9084620937066751
+            },
+            "banner": {
+              "A": 1.6747781809176208e-08,
+              "B": 0.9999999832522183
+            },
+            "wanted": {
+              "A": 1.2237418163394854e-05,
+              "B": 0.9999877625818365
+            },
+            "path": {
+              "A": 0.9751700553044176,
+              "B": 8.523116475551084e-05,
+              "C": 0.02474471353082694
+            },
+            "car": {
+              "A": 4.970426182935274e-06,
+              "B": 0.999995029573817
+            }
+          },
+          "duration": 0.21034762501949444,
+          "server": "http://192.168.0.248:1234=qwen/qwen3-vl-8b",
+          "age": 0.43469041696516797,
+          "mode": "foot"
+        },
+        "time": 0
+      },
+      "before": {
+        "rule": "foot_explore_roadless",
+        "plan": [
+          {
+            "name": "look",
+            "args": {
+              "duration": 0.8,
+              "angle": -55
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 5,
+              "x": 0,
+              "y": -1,
+              "sprint": false
+            }
+          },
+          {
+            "name": "look",
+            "args": {
+              "duration": 0.5,
+              "angle": 20
+            }
+          },
+          {
+            "name": "walk",
+            "args": {
+              "duration": 5,
+              "x": 0,
+              "y": -1,
+              "sprint": false
+            }
+          }
+        ],
+        "sentence": "Keine Straße auf der Karte, ich schaue mich um und gehe weiter.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "after": {
+        "rule": "foot_explore_roadless",
+        "plan": [
+          {
+            "name": "walk_road",
+            "args": {
+              "duration": 30
+            }
+          }
+        ],
+        "sentence": "Keine Straße auf der Karte, ich halte die Kompassrichtung.",
+        "lesson": null,
+        "action": "replace",
+        "goal": null,
+        "step": null,
+        "reason": "rule decision"
+      },
+      "reason": "rule decision"
     },
     {
       "suite": "p45-sessions",
@@ -7534,7 +8765,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -7732,7 +8965,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "enter_vehicle",
         "reason": "start next goal step"
@@ -7917,7 +9152,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "enter_vehicle",
         "reason": "start next goal step"
@@ -8081,7 +9318,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -8340,7 +9579,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -8516,7 +9757,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -8680,7 +9923,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -8850,7 +10095,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -9012,7 +10259,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -9182,7 +10431,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -9350,7 +10601,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -9514,7 +10767,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -9682,7 +10937,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -9846,7 +11103,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -10008,7 +11267,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -10172,7 +11433,9 @@
           "deadline": 90,
           "seed": 51,
           "direction": "east",
-          "attempts": 1
+          "attempts": 1,
+          "place": null,
+          "distance": null
         },
         "step": "walk_road",
         "reason": "start next goal step"
@@ -10264,7 +11527,9 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "walk_road",
             "reason": "start next goal step"
@@ -10423,7 +11688,9 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
@@ -10630,7 +11897,9 @@
               "deadline": 123.709,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "enter_vehicle",
             "reason": "road reached: vehicle seen while seeking a road"
@@ -10804,7 +12073,9 @@
               "deadline": 123.709,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "retry: observed skill failure"
@@ -10956,7 +12227,9 @@
               "deadline": 123.709,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "kept: running skill and queue still serve this goal"
@@ -11108,7 +12381,9 @@
               "deadline": 123.709,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "kept: running skill and queue still serve this goal"
@@ -11297,7 +12572,9 @@
               "deadline": 123.709,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "kept: running skill and queue still serve this goal"
@@ -11447,7 +12724,9 @@
               "deadline": 123.709,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "kept: running skill and queue still serve this goal"
@@ -11620,7 +12899,9 @@
               "deadline": 123.709,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "kept: running skill and queue still serve this goal"
@@ -11778,7 +13059,9 @@
               "deadline": 123.709,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "kept: running skill and queue still serve this goal"
@@ -11969,7 +13252,9 @@
               "deadline": 123.709,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "kept: running skill and queue still serve this goal"
@@ -12324,7 +13609,9 @@
               "deadline": 230.268,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "walk_road",
             "reason": "start next goal step"
@@ -12554,7 +13841,9 @@
               "deadline": 245.344,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "enter_vehicle",
             "reason": "road reached: vehicle seen while seeking a road"
@@ -12784,7 +14073,9 @@
               "deadline": 245.344,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "enter_vehicle",
             "reason": "kept: running skill and queue still serve this goal"
@@ -12962,25 +14253,10 @@
             "rule": "goal_drive",
             "plan": [
               {
-                "name": "look",
-                "args": {
-                  "duration": 1.2,
-                  "angle": 180
-                }
-              },
-              {
                 "name": "set_waypoint",
                 "args": {
-                  "target": "away",
-                  "duration": 45,
-                  "direction": "any",
-                  "distance": "far"
-                }
-              },
-              {
-                "name": "drive_route",
-                "args": {
-                  "duration": 60
+                  "kind": "pastime",
+                  "duration": 45
                 }
               }
             ],
@@ -12992,10 +14268,12 @@
               "started": 169.584,
               "deadline": 409.584,
               "seed": 51,
-              "direction": "south",
-              "attempts": 1
+              "direction": "west",
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "set_waypoint",
             "reason": "vehicle reached: vehicle observed"
           },
           "before_disposition": "replaced",
@@ -13181,25 +14459,10 @@
             "rule": "goal_drive",
             "plan": [
               {
-                "name": "look",
-                "args": {
-                  "duration": 1.2,
-                  "angle": 180
-                }
-              },
-              {
                 "name": "set_waypoint",
                 "args": {
-                  "target": "away",
-                  "duration": 45,
-                  "direction": "any",
-                  "distance": "far"
-                }
-              },
-              {
-                "name": "drive_route",
-                "args": {
-                  "duration": 60
+                  "kind": "pastime",
+                  "duration": 45
                 }
               }
             ],
@@ -13211,10 +14474,12 @@
               "started": 169.584,
               "deadline": 409.584,
               "seed": 51,
-              "direction": "south",
-              "attempts": 2
+              "direction": "west",
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "set_waypoint",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -13492,10 +14757,12 @@
               "started": 169.584,
               "deadline": 409.584,
               "seed": 51,
-              "direction": "south",
-              "attempts": 2
+              "direction": "west",
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "set_waypoint",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "replaced",
@@ -13751,23 +15018,33 @@
           },
           "after": {
             "rule": "goal_drive",
-            "plan": [],
-            "sentence": "Mein Ziel bleibt: weit fahren und ankommen.",
+            "plan": [
+              {
+                "name": "enter_vehicle",
+                "args": {
+                  "duration": 25,
+                  "kind": "any"
+                }
+              }
+            ],
+            "sentence": "Mein Ziel: weit fahren und ankommen.",
             "lesson": null,
-            "action": "go_on",
+            "action": "replace",
             "goal": {
               "name": "drive",
               "started": 169.584,
               "deadline": 409.584,
               "seed": 51,
-              "direction": "south",
-              "attempts": 2
+              "direction": "west",
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
-            "reason": "kept: running skill and queue still serve this goal"
+            "step": "enter_vehicle",
+            "reason": "step ended: drive_route does not fit the figure on foot"
           },
           "before_disposition": "replaced",
-          "after_disposition": "kept"
+          "after_disposition": "replaced"
         },
         {
           "id": 20,
@@ -14040,10 +15317,12 @@
               "started": 169.584,
               "deadline": 409.584,
               "seed": 51,
-              "direction": "south",
-              "attempts": 2
+              "direction": "west",
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "enter_vehicle",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "replaced",
@@ -14260,10 +15539,12 @@
               "started": 169.584,
               "deadline": 409.584,
               "seed": 51,
-              "direction": "south",
-              "attempts": 2
+              "direction": "west",
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "enter_vehicle",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "replaced",
@@ -14473,10 +15754,12 @@
               "started": 169.584,
               "deadline": 409.584,
               "seed": 51,
-              "direction": "south",
-              "attempts": 2
+              "direction": "west",
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "enter_vehicle",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "replaced",
@@ -14669,22 +15952,13 @@
             "reason": "rule decision"
           },
           "after": {
-            "rule": "goal_drive",
+            "rule": "goal_fight",
             "plan": [
-              {
-                "name": "look",
-                "args": {
-                  "duration": 1.2,
-                  "angle": 180
-                }
-              },
               {
                 "name": "set_waypoint",
                 "args": {
-                  "target": "away",
-                  "duration": 45,
-                  "direction": "any",
-                  "distance": "far"
+                  "kind": "pastime",
+                  "duration": 45
                 }
               },
               {
@@ -14694,19 +15968,21 @@
                 }
               }
             ],
-            "sentence": "Mein Ziel: weit fahren und ankommen.",
+            "sentence": "Mein Ziel: auf der Straße jemanden schlagen.",
             "lesson": null,
             "action": "replace",
             "goal": {
-              "name": "drive",
-              "started": 169.584,
-              "deadline": 409.584,
+              "name": "fight",
+              "started": 227.387,
+              "deadline": 317.387,
               "seed": 51,
               "direction": "south",
-              "attempts": 3
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
-            "reason": "retry: observed skill failure"
+            "step": "set_waypoint → drive_route",
+            "reason": "drive gave_up: limit"
           },
           "before_disposition": "replaced",
           "after_disposition": "replaced"
@@ -14998,19 +16274,10 @@
             "rule": "goal_fight",
             "plan": [
               {
-                "name": "look",
-                "args": {
-                  "duration": 1.2,
-                  "angle": 180
-                }
-              },
-              {
                 "name": "set_waypoint",
                 "args": {
-                  "target": "away",
-                  "duration": 45,
-                  "direction": "any",
-                  "distance": "far"
+                  "kind": "pastime",
+                  "duration": 45
                 }
               },
               {
@@ -15025,14 +16292,16 @@
             "action": "replace",
             "goal": {
               "name": "fight",
-              "started": 237.496,
-              "deadline": 327.496,
+              "started": 227.387,
+              "deadline": 317.387,
               "seed": 51,
-              "direction": "west",
-              "attempts": 1
+              "direction": "south",
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
-            "reason": "drive gave_up: limit"
+            "step": "set_waypoint → drive_route",
+            "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
           "after_disposition": "replaced"
@@ -15341,13 +16610,15 @@
             "action": "go_on",
             "goal": {
               "name": "fight",
-              "started": 237.496,
-              "deadline": 327.496,
+              "started": 227.387,
+              "deadline": 317.387,
               "seed": 51,
-              "direction": "west",
-              "attempts": 1
+              "direction": "south",
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "set_waypoint → drive_route",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "replaced",
@@ -15359,8 +16630,8 @@
         "appended": 9
       },
       "after": {
-        "replaced": 9,
-        "kept": 15,
+        "replaced": 10,
+        "kept": 14,
         "appended": 1
       },
       "recorded_applied": {
@@ -15375,6 +16646,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 0.002,
           "outcome": "started",
           "reason": "round start"
@@ -15386,6 +16659,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 1,
+          "place": null,
+          "distance": null,
           "time": 33.709,
           "outcome": "reached",
           "reason": "vehicle seen while seeking a road"
@@ -15397,6 +16672,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 33.709,
           "outcome": "started",
           "reason": "road reached: vehicle seen while seeking a road"
@@ -15408,6 +16685,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 2,
+          "place": null,
+          "distance": null,
           "time": 130.181,
           "outcome": "gave_up",
           "reason": "limit"
@@ -15419,6 +16698,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 140.268,
           "outcome": "started",
           "reason": "round start"
@@ -15430,6 +16711,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 1,
+          "place": null,
+          "distance": null,
           "time": 155.344,
           "outcome": "reached",
           "reason": "vehicle seen while seeking a road"
@@ -15441,6 +16724,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 155.344,
           "outcome": "started",
           "reason": "road reached: vehicle seen while seeking a road"
@@ -15452,6 +16737,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 1,
+          "place": null,
+          "distance": null,
           "time": 169.584,
           "outcome": "reached",
           "reason": "vehicle observed"
@@ -15461,8 +16748,10 @@
           "started": 169.584,
           "deadline": 409.584,
           "seed": 51,
-          "direction": "south",
+          "direction": "west",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 169.584,
           "outcome": "started",
           "reason": "vehicle reached: vehicle observed"
@@ -15472,20 +16761,24 @@
           "started": 169.584,
           "deadline": 409.584,
           "seed": 51,
-          "direction": "south",
+          "direction": "west",
           "attempts": 3,
-          "time": 237.496,
+          "place": null,
+          "distance": null,
+          "time": 227.387,
           "outcome": "gave_up",
           "reason": "limit"
         },
         {
           "name": "fight",
-          "started": 237.496,
-          "deadline": 327.496,
+          "started": 227.387,
+          "deadline": 317.387,
           "seed": 51,
-          "direction": "west",
+          "direction": "south",
           "attempts": 0,
-          "time": 237.496,
+          "place": null,
+          "distance": null,
+          "time": 227.387,
           "outcome": "started",
           "reason": "drive gave_up: limit"
         }
@@ -15574,7 +16867,9 @@
               "deadline": 90.004,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "walk_road",
             "reason": "start next goal step"
@@ -15811,7 +17106,9 @@
               "deadline": 106.377,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "enter_vehicle",
             "reason": "road reached: vehicle seen while seeking a road"
@@ -16017,16 +17314,8 @@
               {
                 "name": "set_waypoint",
                 "args": {
-                  "target": "away",
-                  "duration": 45,
-                  "direction": "east",
-                  "distance": "far"
-                }
-              },
-              {
-                "name": "drive_route",
-                "args": {
-                  "duration": 120
+                  "kind": "shop",
+                  "duration": 45
                 }
               }
             ],
@@ -16039,9 +17328,11 @@
               "deadline": 258.558,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
-            "step": "set_waypoint → drive_route",
+            "step": "set_waypoint",
             "reason": "vehicle reached: vehicle observed"
           },
           "before_disposition": "replaced",
@@ -16217,25 +17508,10 @@
             "rule": "goal_drive",
             "plan": [
               {
-                "name": "look",
-                "args": {
-                  "duration": 1.2,
-                  "angle": 180
-                }
-              },
-              {
                 "name": "set_waypoint",
                 "args": {
-                  "target": "away",
-                  "duration": 45,
-                  "direction": "any",
-                  "distance": "far"
-                }
-              },
-              {
-                "name": "drive_route",
-                "args": {
-                  "duration": 60
+                  "kind": "pastime",
+                  "duration": 45
                 }
               }
             ],
@@ -16248,9 +17524,11 @@
               "deadline": 258.558,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "set_waypoint",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -16496,25 +17774,10 @@
             "rule": "goal_drive",
             "plan": [
               {
-                "name": "look",
-                "args": {
-                  "duration": 1.2,
-                  "angle": 180
-                }
-              },
-              {
                 "name": "set_waypoint",
                 "args": {
-                  "target": "away",
-                  "duration": 45,
-                  "direction": "any",
-                  "distance": "far"
-                }
-              },
-              {
-                "name": "drive_route",
-                "args": {
-                  "duration": 60
+                  "kind": "pastime",
+                  "duration": 45
                 }
               }
             ],
@@ -16527,9 +17790,11 @@
               "deadline": 258.558,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "set_waypoint",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -17002,9 +18267,11 @@
               "deadline": 258.558,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "set_waypoint",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -17272,9 +18539,11 @@
               "deadline": 258.558,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "set_waypoint",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "replaced",
@@ -17506,8 +18775,10 @@
               "started": 64.169,
               "deadline": 154.16899999999998,
               "seed": 51,
-              "direction": "east",
-              "attempts": 1
+              "direction": "south",
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "drive gave_up: limit"
@@ -17705,23 +18976,39 @@
           },
           "after": {
             "rule": "goal_fight",
-            "plan": [],
-            "sentence": "Mein Ziel bleibt: auf der Straße jemanden schlagen.",
+            "plan": [
+              {
+                "name": "press",
+                "args": {
+                  "button": "triangle",
+                  "duration": 0.1
+                }
+              },
+              {
+                "name": "wait",
+                "args": {
+                  "duration": 2
+                }
+              }
+            ],
+            "sentence": "Mein Ziel: auf der Straße jemanden schlagen.",
             "lesson": null,
-            "action": "go_on",
+            "action": "replace",
             "goal": {
               "name": "fight",
               "started": 64.169,
               "deadline": 154.16899999999998,
               "seed": 51,
-              "direction": "east",
-              "attempts": 1
+              "direction": "south",
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "walk",
-            "reason": "kept: running skill and queue still serve this goal"
+            "step": "press → wait",
+            "reason": "step ended: walk does not fit the figure seated"
           },
           "before_disposition": "replaced",
-          "after_disposition": "kept"
+          "after_disposition": "replaced"
         },
         {
           "id": 11,
@@ -17917,8 +19204,10 @@
               "started": 64.169,
               "deadline": 154.16899999999998,
               "seed": 51,
-              "direction": "east",
-              "attempts": 2
+              "direction": "south",
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "retry: observed skill failure"
@@ -18106,8 +19395,10 @@
               "started": 64.169,
               "deadline": 154.16899999999998,
               "seed": 51,
-              "direction": "east",
-              "attempts": 2
+              "direction": "south",
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "kept: running skill and queue still serve this goal"
@@ -18351,8 +19642,10 @@
               "started": 64.169,
               "deadline": 154.16899999999998,
               "seed": 51,
-              "direction": "east",
-              "attempts": 3
+              "direction": "south",
+              "attempts": 4,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "retry: observed skill failure"
@@ -18580,8 +19873,10 @@
               "started": 64.169,
               "deadline": 154.16899999999998,
               "seed": 51,
-              "direction": "east",
-              "attempts": 3
+              "direction": "south",
+              "attempts": 4,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "kept: running skill and queue still serve this goal"
@@ -18883,8 +20178,10 @@
               "started": 64.169,
               "deadline": 154.16899999999998,
               "seed": 51,
-              "direction": "east",
-              "attempts": 3
+              "direction": "south",
+              "attempts": 4,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "kept: running skill and queue still serve this goal"
@@ -19173,8 +20470,10 @@
               "started": 64.169,
               "deadline": 154.16899999999998,
               "seed": 51,
-              "direction": "east",
-              "attempts": 3
+              "direction": "south",
+              "attempts": 4,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "kept: running skill and queue still serve this goal"
@@ -19429,8 +20728,10 @@
               "started": 172.949,
               "deadline": 412.949,
               "seed": 51,
-              "direction": "south",
-              "attempts": 1
+              "direction": "west",
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "drive_route",
             "reason": "fight gave_up: limit"
@@ -19711,18 +21012,16 @@
             "rule": "goal_drive",
             "plan": [
               {
-                "name": "set_waypoint",
+                "name": "look",
                 "args": {
-                  "target": "away",
-                  "duration": 45,
-                  "direction": "any",
-                  "distance": "far"
+                  "duration": 1.2,
+                  "angle": 180
                 }
               },
               {
                 "name": "drive_route",
                 "args": {
-                  "duration": 60
+                  "duration": 120
                 }
               }
             ],
@@ -19734,10 +21033,12 @@
               "started": 172.949,
               "deadline": 412.949,
               "seed": 51,
-              "direction": "south",
-              "attempts": 2
+              "direction": "west",
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "set_waypoint → drive_route",
+            "step": "look → drive_route",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -19933,25 +21234,10 @@
             "rule": "goal_drive",
             "plan": [
               {
-                "name": "look",
-                "args": {
-                  "duration": 1.2,
-                  "angle": 180
-                }
-              },
-              {
                 "name": "set_waypoint",
                 "args": {
-                  "target": "away",
-                  "duration": 45,
-                  "direction": "any",
-                  "distance": "far"
-                }
-              },
-              {
-                "name": "drive_route",
-                "args": {
-                  "duration": 60
+                  "kind": "shop",
+                  "duration": 45
                 }
               }
             ],
@@ -19963,10 +21249,12 @@
               "started": 172.949,
               "deadline": 412.949,
               "seed": 51,
-              "direction": "south",
-              "attempts": 3
+              "direction": "west",
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "set_waypoint",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -20209,10 +21497,12 @@
               "started": 172.949,
               "deadline": 412.949,
               "seed": 51,
-              "direction": "south",
-              "attempts": 3
+              "direction": "west",
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "set_waypoint",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "replaced",
@@ -20379,10 +21669,12 @@
               "started": 172.949,
               "deadline": 412.949,
               "seed": 51,
-              "direction": "south",
-              "attempts": 3
+              "direction": "west",
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "set_waypoint",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "replaced",
@@ -20788,10 +22080,12 @@
               "started": 172.949,
               "deadline": 412.949,
               "seed": 51,
-              "direction": "south",
-              "attempts": 3
+              "direction": "west",
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "set_waypoint",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "replaced",
@@ -20948,10 +22242,12 @@
               "started": 172.949,
               "deadline": 412.949,
               "seed": 51,
-              "direction": "south",
-              "attempts": 3
+              "direction": "west",
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "set_waypoint",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "replaced",
@@ -21347,10 +22643,12 @@
               "started": 172.949,
               "deadline": 412.949,
               "seed": 51,
-              "direction": "south",
-              "attempts": 3
+              "direction": "west",
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "set_waypoint",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "replaced",
@@ -21583,19 +22881,10 @@
             "rule": "goal_fight",
             "plan": [
               {
-                "name": "look",
-                "args": {
-                  "duration": 1.2,
-                  "angle": 180
-                }
-              },
-              {
                 "name": "set_waypoint",
                 "args": {
-                  "target": "away",
-                  "duration": 45,
-                  "direction": "any",
-                  "distance": "far"
+                  "kind": "shop",
+                  "duration": 45
                 }
               },
               {
@@ -21613,10 +22902,12 @@
               "started": 231.867,
               "deadline": 321.86699999999996,
               "seed": 51,
-              "direction": "west",
-              "attempts": 1
+              "direction": "north",
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
-            "step": "look → set_waypoint → drive_route",
+            "step": "set_waypoint → drive_route",
             "reason": "drive gave_up: limit"
           },
           "before_disposition": "replaced",
@@ -21628,8 +22919,8 @@
         "appended": 4
       },
       "after": {
-        "replaced": 15,
-        "kept": 12
+        "replaced": 16,
+        "kept": 11
       },
       "recorded_applied": {
         "appended": 5,
@@ -21643,6 +22934,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 0.004,
           "outcome": "started",
           "reason": "round start"
@@ -21654,6 +22947,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 1,
+          "place": null,
+          "distance": null,
           "time": 16.377,
           "outcome": "reached",
           "reason": "vehicle seen while seeking a road"
@@ -21665,6 +22960,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 16.377,
           "outcome": "started",
           "reason": "road reached: vehicle seen while seeking a road"
@@ -21676,6 +22973,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 1,
+          "place": null,
+          "distance": null,
           "time": 18.558,
           "outcome": "reached",
           "reason": "vehicle observed"
@@ -21687,6 +22986,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 18.558,
           "outcome": "started",
           "reason": "vehicle reached: vehicle observed"
@@ -21698,6 +22999,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 3,
+          "place": null,
+          "distance": null,
           "time": 64.169,
           "outcome": "gave_up",
           "reason": "limit"
@@ -21707,8 +23010,10 @@
           "started": 64.169,
           "deadline": 154.16899999999998,
           "seed": 51,
-          "direction": "east",
+          "direction": "south",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 64.169,
           "outcome": "started",
           "reason": "drive gave_up: limit"
@@ -21718,8 +23023,10 @@
           "started": 64.169,
           "deadline": 154.16899999999998,
           "seed": 51,
-          "direction": "east",
-          "attempts": 3,
+          "direction": "south",
+          "attempts": 4,
+          "place": null,
+          "distance": null,
           "time": 172.949,
           "outcome": "gave_up",
           "reason": "limit"
@@ -21729,8 +23036,10 @@
           "started": 172.949,
           "deadline": 412.949,
           "seed": 51,
-          "direction": "south",
+          "direction": "west",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 172.949,
           "outcome": "started",
           "reason": "fight gave_up: limit"
@@ -21740,8 +23049,10 @@
           "started": 172.949,
           "deadline": 412.949,
           "seed": 51,
-          "direction": "south",
+          "direction": "west",
           "attempts": 3,
+          "place": null,
+          "distance": null,
           "time": 231.867,
           "outcome": "gave_up",
           "reason": "limit"
@@ -21751,8 +23062,10 @@
           "started": 231.867,
           "deadline": 321.86699999999996,
           "seed": 51,
-          "direction": "west",
+          "direction": "north",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 231.867,
           "outcome": "started",
           "reason": "drive gave_up: limit"
@@ -21842,7 +23155,9 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "walk_road",
             "reason": "start next goal step"
@@ -21994,7 +23309,9 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
@@ -22167,35 +23484,9 @@
             "rule": "goal_road",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -22208,9 +23499,11 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -22360,9 +23653,11 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -22533,35 +23828,9 @@
             "rule": "goal_road",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -22574,9 +23843,11 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -22726,9 +23997,11 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -22899,35 +24172,9 @@
             "rule": "goal_road",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -22940,9 +24187,11 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 4
+              "attempts": 4,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -23179,9 +24428,11 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 4
+              "attempts": 4,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -23352,9 +24603,11 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 4
+              "attempts": 4,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -23520,7 +24773,9 @@
               "deadline": 164.405,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "road gave_up: limit"
@@ -23672,7 +24927,9 @@
               "deadline": 164.405,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "kept: running skill and queue still serve this goal"
@@ -23845,35 +25102,9 @@
             "rule": "goal_vehicle",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -23886,9 +25117,11 @@
               "deadline": 164.405,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -24038,9 +25271,11 @@
               "deadline": 164.405,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -24211,35 +25446,9 @@
             "rule": "goal_vehicle",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -24252,9 +25461,11 @@
               "deadline": 164.405,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -24404,9 +25615,11 @@
               "deadline": 164.405,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -24577,35 +25790,9 @@
             "rule": "goal_road",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -24618,9 +25805,11 @@
               "deadline": 195.822,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "vehicle gave_up: limit"
           },
           "before_disposition": "replaced",
@@ -24780,7 +25969,9 @@
               "deadline": 195.822,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
             "step": "walk_road",
             "reason": "start next goal step"
@@ -24953,35 +26144,9 @@
             "rule": "goal_road",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -24994,9 +26159,11 @@
               "deadline": 195.822,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -25146,9 +26313,11 @@
               "deadline": 195.822,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -25319,35 +26488,9 @@
             "rule": "goal_road",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -25360,9 +26503,11 @@
               "deadline": 195.822,
               "seed": 51,
               "direction": "east",
-              "attempts": 4
+              "attempts": 4,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -25523,9 +26668,11 @@
               "deadline": 195.822,
               "seed": 51,
               "direction": "east",
-              "attempts": 4
+              "attempts": 4,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -25707,35 +26854,9 @@
             "rule": "goal_vehicle",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -25748,9 +26869,11 @@
               "deadline": 233.663,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "road gave_up: limit"
           },
           "before_disposition": "replaced",
@@ -25900,9 +27023,11 @@
               "deadline": 233.663,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -26080,35 +27205,9 @@
             "rule": "goal_vehicle",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -26121,9 +27220,11 @@
               "deadline": 233.663,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -26273,9 +27374,11 @@
               "deadline": 233.663,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -26446,35 +27549,9 @@
             "rule": "goal_vehicle",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -26487,9 +27564,11 @@
               "deadline": 233.663,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -26516,6 +27595,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 0.002,
           "outcome": "started",
           "reason": "round start"
@@ -26527,6 +27608,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 4,
+          "place": null,
+          "distance": null,
           "time": 74.405,
           "outcome": "gave_up",
           "reason": "limit"
@@ -26538,6 +27621,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 74.405,
           "outcome": "started",
           "reason": "road gave_up: limit"
@@ -26549,6 +27634,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 3,
+          "place": null,
+          "distance": null,
           "time": 105.822,
           "outcome": "gave_up",
           "reason": "limit"
@@ -26560,6 +27647,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 105.822,
           "outcome": "started",
           "reason": "vehicle gave_up: limit"
@@ -26571,6 +27660,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 4,
+          "place": null,
+          "distance": null,
           "time": 143.663,
           "outcome": "gave_up",
           "reason": "limit"
@@ -26582,6 +27673,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 143.663,
           "outcome": "started",
           "reason": "road gave_up: limit"
@@ -26671,7 +27764,9 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "walk_road",
             "reason": "start next goal step"
@@ -26844,35 +27939,9 @@
             "rule": "goal_road",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -26885,9 +27954,11 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -27037,9 +28108,11 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -27210,35 +28283,9 @@
             "rule": "goal_road",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -27251,9 +28298,11 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -27442,9 +28491,11 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -27610,7 +28661,9 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 4
+              "attempts": 4,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "retry: observed skill failure"
@@ -27777,7 +28830,9 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 4
+              "attempts": 4,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "kept: running skill and queue still serve this goal"
@@ -27929,7 +28984,9 @@
               "deadline": 90.002,
               "seed": 51,
               "direction": "east",
-              "attempts": 4
+              "attempts": 4,
+              "place": null,
+              "distance": null
             },
             "step": "walk",
             "reason": "kept: running skill and queue still serve this goal"
@@ -28102,35 +29159,9 @@
             "rule": "goal_vehicle",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -28143,9 +29174,11 @@
               "deadline": 142.273,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "road gave_up: limit"
           },
           "before_disposition": "replaced",
@@ -28295,9 +29328,11 @@
               "deadline": 142.273,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -28468,35 +29503,9 @@
             "rule": "goal_vehicle",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -28509,9 +29518,11 @@
               "deadline": 142.273,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -28692,7 +29703,9 @@
               "deadline": 142.273,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
             "step": "walk_road",
             "reason": "start next goal step"
@@ -28896,35 +29909,9 @@
             "rule": "goal_road",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -28937,9 +29924,11 @@
               "deadline": 167.55,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "vehicle gave_up: limit"
           },
           "before_disposition": "replaced",
@@ -29089,9 +30078,11 @@
               "deadline": 167.55,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -29269,35 +30260,9 @@
             "rule": "goal_road",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -29310,9 +30275,11 @@
               "deadline": 167.55,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -29469,9 +30436,11 @@
               "deadline": 167.55,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -29642,35 +30611,9 @@
             "rule": "goal_road",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -29683,9 +30626,11 @@
               "deadline": 167.55,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -29835,9 +30780,11 @@
               "deadline": 167.55,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -30019,35 +30966,9 @@
             "rule": "goal_road",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -30060,9 +30981,11 @@
               "deadline": 167.55,
               "seed": 51,
               "direction": "east",
-              "attempts": 4
+              "attempts": 4,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -30212,9 +31135,11 @@
               "deadline": 167.55,
               "seed": 51,
               "direction": "east",
-              "attempts": 4
+              "attempts": 4,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -30385,35 +31310,9 @@
             "rule": "goal_vehicle",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -30426,9 +31325,11 @@
               "deadline": 218.016,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "road gave_up: limit"
           },
           "before_disposition": "replaced",
@@ -30578,9 +31479,11 @@
               "deadline": 218.016,
               "seed": 51,
               "direction": "east",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -30751,35 +31654,9 @@
             "rule": "goal_vehicle",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -30792,9 +31669,11 @@
               "deadline": 218.016,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -30944,9 +31823,11 @@
               "deadline": 218.016,
               "seed": 51,
               "direction": "east",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -31124,35 +32005,9 @@
             "rule": "goal_vehicle",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -31165,9 +32020,11 @@
               "deadline": 218.016,
               "seed": 51,
               "direction": "east",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -31327,7 +32184,9 @@
               "deadline": 254.693,
               "seed": 51,
               "direction": "south",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "walk_road",
             "reason": "vehicle gave_up: limit"
@@ -31500,35 +32359,9 @@
             "rule": "goal_road",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -31541,9 +32374,11 @@
               "deadline": 254.693,
               "seed": 51,
               "direction": "south",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -31703,7 +32538,9 @@
               "deadline": 254.693,
               "seed": 51,
               "direction": "south",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
             "step": "walk_road",
             "reason": "start next goal step"
@@ -31876,35 +32713,9 @@
             "rule": "goal_road",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -31917,9 +32728,11 @@
               "deadline": 254.693,
               "seed": 51,
               "direction": "south",
-              "attempts": 4
+              "attempts": 4,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -32079,7 +32892,9 @@
               "deadline": 280.188,
               "seed": 51,
               "direction": "west",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
             "step": "walk_road",
             "reason": "road gave_up: limit"
@@ -32252,35 +33067,9 @@
             "rule": "goal_vehicle",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -32293,9 +33082,11 @@
               "deadline": 280.188,
               "seed": 51,
               "direction": "west",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "retry: observed skill failure"
           },
           "before_disposition": "replaced",
@@ -32445,9 +33236,11 @@
               "deadline": 280.188,
               "seed": 51,
               "direction": "west",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -32597,9 +33390,11 @@
               "deadline": 280.188,
               "seed": 51,
               "direction": "west",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -32759,7 +33554,9 @@
               "deadline": 280.188,
               "seed": 51,
               "direction": "west",
-              "attempts": 3
+              "attempts": 3,
+              "place": null,
+              "distance": null
             },
             "step": "walk_road",
             "reason": "start next goal step"
@@ -32939,35 +33736,9 @@
             "rule": "goal_road",
             "plan": [
               {
-                "name": "look",
+                "name": "walk_road",
                 "args": {
-                  "duration": 0.8,
-                  "angle": -55
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
-                }
-              },
-              {
-                "name": "look",
-                "args": {
-                  "duration": 0.5,
-                  "angle": 20
-                }
-              },
-              {
-                "name": "walk",
-                "args": {
-                  "duration": 5,
-                  "x": 0,
-                  "y": -1,
-                  "sprint": false
+                  "duration": 30
                 }
               }
             ],
@@ -32980,9 +33751,11 @@
               "deadline": 324.079,
               "seed": 51,
               "direction": "west",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "vehicle gave_up: limit"
           },
           "before_disposition": "replaced",
@@ -33141,9 +33914,11 @@
               "deadline": 324.079,
               "seed": 51,
               "direction": "west",
-              "attempts": 1
+              "attempts": 1,
+              "place": null,
+              "distance": null
             },
-            "step": "look → walk → look → walk",
+            "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
           },
           "before_disposition": "appended",
@@ -33325,7 +34100,9 @@
               "deadline": 324.079,
               "seed": 51,
               "direction": "west",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
             "step": "walk_road",
             "reason": "start next goal step"
@@ -33505,7 +34282,9 @@
               "deadline": 324.079,
               "seed": 51,
               "direction": "west",
-              "attempts": 2
+              "attempts": 2,
+              "place": null,
+              "distance": null
             },
             "step": "walk_road",
             "reason": "kept: running skill and queue still serve this goal"
@@ -33534,6 +34313,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 0.002,
           "outcome": "started",
           "reason": "round start"
@@ -33545,6 +34326,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 4,
+          "place": null,
+          "distance": null,
           "time": 52.273,
           "outcome": "gave_up",
           "reason": "limit"
@@ -33556,6 +34339,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 52.273,
           "outcome": "started",
           "reason": "road gave_up: limit"
@@ -33567,6 +34352,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 3,
+          "place": null,
+          "distance": null,
           "time": 77.55,
           "outcome": "gave_up",
           "reason": "limit"
@@ -33578,6 +34365,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 77.55,
           "outcome": "started",
           "reason": "vehicle gave_up: limit"
@@ -33589,6 +34378,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 4,
+          "place": null,
+          "distance": null,
           "time": 128.016,
           "outcome": "gave_up",
           "reason": "limit"
@@ -33600,6 +34391,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 128.016,
           "outcome": "started",
           "reason": "road gave_up: limit"
@@ -33611,6 +34404,8 @@
           "seed": 51,
           "direction": "east",
           "attempts": 3,
+          "place": null,
+          "distance": null,
           "time": 164.693,
           "outcome": "gave_up",
           "reason": "limit"
@@ -33622,6 +34417,8 @@
           "seed": 51,
           "direction": "south",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 164.693,
           "outcome": "started",
           "reason": "vehicle gave_up: limit"
@@ -33633,6 +34430,8 @@
           "seed": 51,
           "direction": "south",
           "attempts": 4,
+          "place": null,
+          "distance": null,
           "time": 190.188,
           "outcome": "gave_up",
           "reason": "limit"
@@ -33644,6 +34443,8 @@
           "seed": 51,
           "direction": "west",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 190.188,
           "outcome": "started",
           "reason": "road gave_up: limit"
@@ -33655,6 +34456,8 @@
           "seed": 51,
           "direction": "west",
           "attempts": 3,
+          "place": null,
+          "distance": null,
           "time": 234.079,
           "outcome": "gave_up",
           "reason": "limit"
@@ -33666,6 +34469,8 @@
           "seed": 51,
           "direction": "west",
           "attempts": 0,
+          "place": null,
+          "distance": null,
           "time": 234.079,
           "outcome": "started",
           "reason": "vehicle gave_up: limit"

@@ -7,7 +7,7 @@
   },
   "objective_cases": 15,
   "objective_changes": 0,
-  "changes": 82,
+  "changes": 94,
   "sessions": [
     {
       "recording": "20261112-102851",
@@ -16,8 +16,8 @@
         "appended": 9
       },
       "after": {
-        "replaced": 9,
-        "kept": 15,
+        "replaced": 10,
+        "kept": 14,
         "appended": 1
       },
       "recorded_applied": {
@@ -32,8 +32,8 @@
         "appended": 4
       },
       "after": {
-        "replaced": 15,
-        "kept": 12
+        "replaced": 16,
+        "kept": 11
       },
       "recorded_applied": {
         "appended": 5,

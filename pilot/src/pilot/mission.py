@@ -111,6 +111,7 @@ class MissionHead:
     def decide(self, request: HeadRequest) -> HeadResponse:
         self.goals.mark()
         self._update_intent(request)
+        self.goals.learn(request.last_skill)
         candidates = [
             blip
             for blip in request.minimap.get("blips", [])
@@ -285,6 +286,17 @@ class MissionHead:
         if close is not None:
             close()
 
+    def _trip(self, request: HeadRequest, *, follow: int = 60) -> list[dict]:
+        """Where a route goes when the rules choose it: to the mission the objective names, or, with
+        nothing asked, to a place from the map's legend. Escapes keep their point on the map."""
+        if not self._unasked(request):
+            return _route(self._destination(request))
+        return self.goals.trip(follow=follow)
+
+    def _unasked(self, request: HeadRequest) -> bool:
+        """Nothing on screen and no order kept from before asks for anything."""
+        return not request.objective.strip() and self.objective_class == "unknown"
+
     def _destination(self, request: HeadRequest) -> str:
         """Where a new route goes: to a mission letter, because the story lies there, unless the
         map has just shown none (head_prompt.txt:28-30)."""
@@ -401,7 +413,7 @@ class MissionHead:
                 self._destination(request)
                 return (
                     "failed_vehicle_skill",
-                    _route("away"),
+                    self._trip(request) if self._unasked(request) else _route("away"),
                     "Der letzte Versuch ist gescheitert, ich setze eine neue Route.",
                 )
             failed, reason = self._failed(request), self._failure_reason(request)
@@ -451,7 +463,7 @@ class MissionHead:
                 return None
             return (
                 "vehicle_waypoint",
-                _route(self._destination(request)),
+                self._trip(request),
                 "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
             )
 
@@ -491,7 +503,7 @@ class MissionHead:
                 # head_prompt.txt:30-33: on foot with nothing to do, go for a drive in one plan.
                 return (
                     "foot_drive",
-                    [_call("enter_vehicle", duration=25, kind="any"), *_route(self._destination(request))],
+                    [_call("enter_vehicle", duration=25, kind="any"), *self._trip(request)],
                     "Nichts hält mich hier, ich nehme mir ein Fahrzeug und fahre los.",
                 )
             if not request.objective.strip() and not targets and not cars:

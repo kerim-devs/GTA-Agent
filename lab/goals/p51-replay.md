@@ -4,8 +4,8 @@ Replays reuse recorded observations and runner descriptions, not a counterfactua
 
 | Session | Requests | Before replace | After replace | After go on |
 | --- | ---: | ---: | ---: | ---: |
-| 20261112-102851 | 25 | 16 | 9 | 15 |
-| 20261112-103305 | 27 | 23 | 15 | 12 |
+| 20261112-102851 | 25 | 16 | 10 | 14 |
+| 20261112-103305 | 27 | 23 | 16 | 11 |
 | 20261112-100318 | 26 | 14 | 14 | 12 |
 | 20261112-100713 | 38 | 23 | 23 | 15 |
 
@@ -20,8 +20,8 @@ Replays reuse recorded observations and runner descriptions, not a counterfactua
 | 20261112-102851 | 155.344 | vehicle | started | road reached: vehicle seen while seeking a road |
 | 20261112-102851 | 169.584 | vehicle | reached | vehicle observed |
 | 20261112-102851 | 169.584 | drive | started | vehicle reached: vehicle observed |
-| 20261112-102851 | 237.496 | drive | gave_up | limit |
-| 20261112-102851 | 237.496 | fight | started | drive gave_up: limit |
+| 20261112-102851 | 227.387 | drive | gave_up | limit |
+| 20261112-102851 | 227.387 | fight | started | drive gave_up: limit |
 | 20261112-103305 | 0.004 | road | started | round start |
 | 20261112-103305 | 16.377 | road | reached | vehicle seen while seeking a road |
 | 20261112-103305 | 16.377 | vehicle | started | road reached: vehicle seen while seeking a road |
@@ -75,23 +75,34 @@ Replays reuse recorded observations and runner descriptions, not a counterfactua
 | mission / pilot-20261110-231512-09 | foot_explore: walk_road | goal_road: walk_road | No screen objective: road now owns the free-roam plan; start next goal step. |
 | mission / pilot-20261110-231512-10 | foot_explore: walk_road | goal_road: walk_road | No screen objective: road now owns the free-roam plan; start next goal step. |
 | mission / wifi-10 | foot_explore: walk_road | goal_road: walk_road | No screen objective: road now owns the free-roam plan; start next goal step. |
-| mission / wifi-170 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint, drive_route | No screen objective: drive now owns the free-roam plan; start next goal step. |
+| mission / wifi-80 | foot_target: walk_to | foot_explore: walk_road | rule decision |
+| mission / wifi-120 | foot_target: walk_to | foot_explore: walk_road | rule decision |
+| mission / wifi-130 | foot_target: walk_to | foot_explore: walk_road | rule decision |
+| mission / wifi-160 | vehicle_waypoint: set_waypoint, drive_route | vehicle_waypoint: set_waypoint, drive_route | No screen objective: the rules' trip asks the legend for a place, not for a point on the map. |
+| mission / wifi-170 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint | No screen objective: drive now owns the free-roam plan; start next goal step. |
+| mission / wifi-175 | vehicle_waypoint: set_waypoint, drive_route | vehicle_waypoint: set_waypoint, drive_route | No screen objective: the rules' trip asks the legend for a place, not for a point on the map. |
+| mission / wifi-180 | vehicle_waypoint: set_waypoint, drive_route | vehicle_waypoint: set_waypoint, drive_route | No screen objective: the rules' trip asks the legend for a place, not for a point on the map. |
+| mission / wifi-200 | vehicle_waypoint: set_waypoint, drive_route | vehicle_waypoint: set_waypoint, drive_route | No screen objective: the rules' trip asks the legend for a place, not for a point on the map. |
+| mission / wifi-205 | vehicle_waypoint: set_waypoint, drive_route | vehicle_waypoint: set_waypoint, drive_route | No screen objective: the rules' trip asks the legend for a place, not for a point on the map. |
+| mission / wifi-205.206 | vehicle_waypoint: set_waypoint, drive_route | vehicle_waypoint: set_waypoint, drive_route | No screen objective: the rules' trip asks the legend for a place, not for a point on the map. |
+| mission / wifi-215 | foot_target: walk_to | foot_explore: walk_road | rule decision |
+| mission / wifi-220 | foot_target: walk_to | foot_explore: walk_road | rule decision |
 | mission / wifi-255 | vehicle_route: drive_route | goal_drive: drive_route | No screen objective: drive now owns the free-roam plan; start next goal step. |
 | mission / wifi-275 | vehicle_route: drive_route | goal_drive: drive_route | No screen objective: drive now owns the free-roam plan; start next goal step. |
 | mission / wifi-285 | vehicle_route: drive_route | goal_drive: drive_route | No screen objective: drive now owns the free-roam plan; start next goal step. |
 | mission / wifi-300 | vehicle_route: drive_route | goal_drive: drive_route | No screen objective: drive now owns the free-roam plan; start next goal step. |
 | mission / wifi-345 | foot_explore: walk_road | goal_road: walk_road | No screen objective: road now owns the free-roam plan; start next goal step. |
 | mission / wifi-350 | foot_explore: walk_road | goal_road: walk_road | No screen objective: road now owns the free-roam plan; start next goal step. |
-| mission / wifi-365 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint, drive_route | No screen objective: drive now owns the free-roam plan; start next goal step. |
+| mission / wifi-365 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint | No screen objective: drive now owns the free-roam plan; start next goal step. |
 | mission / wifi-395 | vehicle_route: drive_route | goal_drive: drive_route | No screen objective: drive now owns the free-roam plan; start next goal step. |
 | mission / wifi-410 | foot_explore: walk_road | goal_road: walk_road | No screen objective: road now owns the free-roam plan; start next goal step. |
-| mission / wifi-420 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint, drive_route | No screen objective: drive now owns the free-roam plan; start next goal step. |
-| mission / wifi-425 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint, drive_route | No screen objective: drive now owns the free-roam plan; start next goal step. |
-| mission / wifi-435 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint, drive_route | No screen objective: drive now owns the free-roam plan; start next goal step. |
-| mission / wifi-445 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint, drive_route | No screen objective: drive now owns the free-roam plan; start next goal step. |
-| mission / wifi-450 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint, drive_route | No screen objective: drive now owns the free-roam plan; start next goal step. |
-| mission / wifi-465 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint, drive_route | No screen objective: drive now owns the free-roam plan; start next goal step. |
-| mission / wifi-470 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint, drive_route | No screen objective: drive now owns the free-roam plan; start next goal step. |
+| mission / wifi-420 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint | No screen objective: drive now owns the free-roam plan; start next goal step. |
+| mission / wifi-425 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint | No screen objective: drive now owns the free-roam plan; start next goal step. |
+| mission / wifi-435 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint | No screen objective: drive now owns the free-roam plan; start next goal step. |
+| mission / wifi-445 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint | No screen objective: drive now owns the free-roam plan; start next goal step. |
+| mission / wifi-450 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint | No screen objective: drive now owns the free-roam plan; start next goal step. |
+| mission / wifi-465 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint | No screen objective: drive now owns the free-roam plan; start next goal step. |
+| mission / wifi-470 | vehicle_waypoint: set_waypoint, drive_route | goal_drive: set_waypoint | No screen objective: drive now owns the free-roam plan; start next goal step. |
 | mission / wifi-485 | foot_explore: walk_road | goal_road: walk_road | No screen objective: road now owns the free-roam plan; start next goal step. |
 | mission / wifi-490 | foot_explore: walk_road | goal_road: walk_road | No screen objective: road now owns the free-roam plan; start next goal step. |
 | mission / wifi-500 | foot_explore: walk_road | goal_road: walk_road | No screen objective: road now owns the free-roam plan; start next goal step. |
@@ -122,6 +133,7 @@ Replays reuse recorded observations and runner descriptions, not a counterfactua
 | p45-sessions / 20261112-082524:1 | foot_explore: walk_road | goal_road: walk_road | No screen objective: road now owns the free-roam plan; start next goal step. |
 | p45-sessions / 20261112-082524:2 | foot_explore: walk_road | goal_road: walk_road | No screen objective: road now owns the free-roam plan; start next goal step. |
 | p45-sessions / 20261112-082524:3 | foot_explore: walk_road | goal_road: walk_road | No screen objective: road now owns the free-roam plan; start next goal step. |
+| p45-sessions / 20261112-082524:4 | foot_explore_roadless: look, walk, look, walk | foot_explore_roadless: walk_road | rule decision |
 | p45-sessions / 20261112-082524:5 | foot_explore: walk_road | goal_road: walk_road | No screen objective: road now owns the free-roam plan; start next goal step. |
 | p45-sessions / 20261112-082524:6 | foot_drive: enter_vehicle, set_waypoint, drive_route | goal_vehicle: enter_vehicle | No screen objective: vehicle now owns the free-roam plan; start next goal step. |
 | p45-sessions / 20261112-082524:7 | foot_drive: enter_vehicle, set_waypoint, drive_route | goal_vehicle: enter_vehicle | No screen objective: vehicle now owns the free-roam plan; start next goal step. |

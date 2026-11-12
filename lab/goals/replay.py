@@ -46,6 +46,14 @@ def decide(head, request):
     return {"rule": head.last_rule, **result}
 
 
+def reason(after):
+    if after["goal"]:
+        return f"No screen objective: {after['goal']['name']} now owns the free-roam plan; {after['reason']}."
+    if any({"kind", "place"} & set(call["args"]) for call in after["plan"]):
+        return "No screen objective: the rules' trip asks the legend for a place, not for a point on the map."
+    return after["reason"]
+
+
 def behavior(result):
     return {key: result[key] for key in ("rule", "plan", "action")}
 
@@ -72,7 +80,7 @@ def main():
         if behavior(before) == behavior(after):
             continue
         row = {"suite": suite, "id": ident, "request": request, "before": before, "after": after,
-               "reason": f"No screen objective: {after['goal']['name']} now owns the free-roam plan; {after['reason']}." if after["goal"] else after["reason"]}
+               "reason": reason(after)}
         changed.append(row)
         if request["objective"].strip():
             objective_changes.append(row)

@@ -79,7 +79,16 @@ def parse_response(value: str | dict) -> HeadResponse:
     if goal is not None and not isinstance(goal, dict):
         raise ValueError("invalid goal")
     if goal is not None:
-        if set(goal) != {"name", "started", "deadline", "seed", "direction", "attempts"}:
+        if set(goal) != {
+            "name",
+            "started",
+            "deadline",
+            "seed",
+            "direction",
+            "attempts",
+            "place",
+            "distance",
+        }:
             raise ValueError("invalid goal fields")
         if goal["name"] not in {"vehicle", "drive", "fight", "escape", "road"} or goal["direction"] not in {
             "north",
@@ -98,6 +107,16 @@ def parse_response(value: str | dict) -> HeadResponse:
             or any(not isinstance(goal[key], int) for key in ("seed", "attempts"))
         ):
             raise ValueError("invalid goal bounds")
+        place, distance = goal["place"], goal["distance"]
+        if place is not None and (not isinstance(place, str) or not 1 <= len(place) <= 100):
+            raise ValueError("invalid goal place")
+        if distance is not None and (
+            isinstance(distance, bool)
+            or not isinstance(distance, (int, float))
+            or not math.isfinite(distance)
+            or distance < 0
+        ):
+            raise ValueError("invalid goal distance")
     if data.get("step") is not None and not isinstance(data["step"], str):
         raise ValueError("invalid step")
     if not isinstance(data.get("reason", "rule decision"), str):
