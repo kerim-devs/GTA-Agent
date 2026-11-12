@@ -1,0 +1,223 @@
+{
+ "seed": 43,
+ "collisions": 20,
+ "chosen": [
+  {
+   "recording": "20261111-164039",
+   "t": 410.598,
+   "frame": 23489,
+   "class": "collision",
+   "cause": "carried_on"
+  },
+  {
+   "recording": "20261111-165543",
+   "t": 279.383,
+   "frame": 16685,
+   "class": "collision",
+   "cause": "carried_on"
+  },
+  {
+   "recording": "20261111-165543",
+   "t": 333.713,
+   "frame": 19933,
+   "class": "collision",
+   "cause": "carried_on"
+  },
+  {
+   "recording": "20261111-165543",
+   "t": 339.478,
+   "frame": 20277,
+   "class": "collision",
+   "cause": "unknown"
+  },
+  {
+   "recording": "20261111-165543",
+   "t": 418.12,
+   "frame": 24988,
+   "class": "collision",
+   "cause": "carried_on"
+  },
+  {
+   "recording": "20261111-165543",
+   "t": 529.502,
+   "frame": 31660,
+   "class": "collision",
+   "cause": "carried_on"
+  },
+  {
+   "recording": "20261111-165543",
+   "t": 794.214,
+   "frame": 47464,
+   "class": "collision",
+   "cause": "carried_on"
+  },
+  {
+   "recording": "20261111-165543",
+   "t": 879.199,
+   "frame": 52542,
+   "class": "collision",
+   "cause": "carried_on"
+  },
+  {
+   "recording": "20261111-171046",
+   "t": 191.301,
+   "frame": 11410,
+   "class": "collision",
+   "cause": "unknown"
+  },
+  {
+   "recording": "20261111-171046",
+   "t": 234.29,
+   "frame": 13974,
+   "class": "collision",
+   "cause": "carried_on"
+  },
+  {
+   "recording": "20261111-171046",
+   "t": 752.81,
+   "frame": 44867,
+   "class": "collision",
+   "cause": "carried_on"
+  },
+  {
+   "recording": "20261111-171046",
+   "t": 758.402,
+   "frame": 45208,
+   "class": "collision",
+   "cause": "unknown"
+  },
+  {
+   "recording": "20261111-175312",
+   "t": 587.855,
+   "frame": 35190,
+   "class": "collision",
+   "cause": "unknown"
+  },
+  {
+   "recording": "20261111-182316",
+   "t": 45.633,
+   "frame": 2717,
+   "class": "collision",
+   "cause": "carried_on"
+  },
+  {
+   "recording": "20261111-182316",
+   "t": 125.849,
+   "frame": 7497,
+   "class": "collision",
+   "cause": "carried_on"
+  },
+  {
+   "recording": "20261111-185323",
+   "t": 197.599,
+   "frame": 11809,
+   "class": "collision",
+   "cause": "unknown"
+  },
+  {
+   "recording": "20261111-190825",
+   "t": 330.796,
+   "frame": 19717,
+   "class": "collision",
+   "cause": "reversed"
+  },
+  {
+   "recording": "20261111-190825",
+   "t": 595.826,
+   "frame": 34364,
+   "class": "collision",
+   "cause": "unknown"
+  },
+  {
+   "recording": "20261111-192328",
+   "t": 54.591,
+   "frame": 3267,
+   "class": "collision",
+   "cause": "carried_on"
+  },
+  {
+   "recording": "20261111-192328",
+   "t": 61.812,
+   "frame": 3694,
+   "class": "collision",
+   "cause": "carried_on"
+  },
+  {
+   "recording": "20261111-164039",
+   "t": 677.782,
+   "frame": 39436,
+   "class": "death",
+   "cause": "fight"
+  },
+  {
+   "recording": "20261111-164039",
+   "t": 681.972,
+   "frame": 39684,
+   "class": "mission_failed",
+   "cause": "player_died"
+  },
+  {
+   "recording": "20261111-182316",
+   "t": 349.718,
+   "frame": 20860,
+   "class": "death",
+   "cause": "police"
+  },
+  {
+   "recording": "20261111-182316",
+   "t": 472.631,
+   "frame": 28216,
+   "class": "death",
+   "cause": "police"
+  },
+  {
+   "recording": "20261111-182316",
+   "t": 878.634,
+   "frame": 52503,
+   "class": "death",
+   "cause": "police"
+  },
+  {
+   "recording": "20261111-183820",
+   "t": 271.43,
+   "frame": 16246,
+   "class": "death",
+   "cause": "police"
+  },
+  {
+   "recording": "20261111-185323",
+   "t": 118.09,
+   "frame": 7053,
+   "class": "mission_failed",
+   "cause": "other"
+  },
+  {
+   "recording": "20261111-190825",
+   "t": 82.105,
+   "frame": 4891,
+   "class": "death",
+   "cause": "police"
+  },
+  {
+   "recording": "20261111-190825",
+   "t": 84.906,
+   "frame": 5056,
+   "class": "mission_failed",
+   "cause": "player_died"
+  },
+  {
+   "recording": "20261111-190825",
+   "t": 829.124,
+   "frame": 48318,
+   "class": "death",
+   "cause": "fight"
+  },
+  {
+   "recording": "20261111-190825",
+   "t": 831.94,
+   "frame": 48485,
+   "class": "mission_failed",
+   "cause": "player_died"
+  }
+ ]
+}

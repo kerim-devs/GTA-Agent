@@ -1,0 +1,467 @@
+{
+  "recording": "/Users/kerim/recordings/kerim/20261111-164039",
+  "missions": [
+    {
+      "start": 435.0086,
+      "end": 513.0615,
+      "steps": [
+        {
+          "objective": "Begib dich nach Vespucci Beach.",
+          "start": 435.0086,
+          "end": 446.0034,
+          "last": 442.0512,
+          "duration": 7.043,
+          "step_duration": 10.995,
+          "section_kinds": [
+            "drive",
+            "foot"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 10.995,
+            "seconds": {
+              "driving": 6.343,
+              "walking": 0.644,
+              "running": 0.31,
+              "aiming": 0.0,
+              "firing": 0.644,
+              "looking": 2.426,
+              "map_input": 0.0,
+              "vehicle_input": 0.121,
+              "neutral": 1.983
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 437.9946,
+            "route": "none",
+            "blips": []
+          },
+          "incidents": [],
+          "intent_class": "go_to",
+          "intent_wording": "begib dich",
+          "intent_target": "nach Vespucci Beach."
+        },
+        {
+          "objective": "Kehr zurück zu Lamar.",
+          "start": 446.0034,
+          "end": 513.0615,
+          "last": 453.0615,
+          "duration": 7.058,
+          "step_duration": 67.058,
+          "section_kinds": [
+            "drive",
+            "menu"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 67.058,
+            "seconds": {
+              "driving": 47.048,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 8.085,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 15.724
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 448.6234,
+            "route": "none",
+            "blips": []
+          },
+          "incidents": [],
+          "intent_class": "return_to",
+          "intent_wording": "kehr zurück",
+          "intent_target": "zu Lamar."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Begib dich nach Vespucci Beach. Then Kehr zurück zu Lamar.. Outcome: unknown."
+    },
+    {
+      "start": 545.5151,
+      "end": 608.0157,
+      "steps": [
+        {
+          "objective": "Folge Lamar.",
+          "start": 545.5151,
+          "end": 608.0157,
+          "last": 548.0157,
+          "duration": 2.501,
+          "step_duration": 62.501,
+          "section_kinds": [
+            "foot"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 62.501,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 56.761,
+              "running": 5.974,
+              "aiming": 0.0,
+              "firing": 0.267,
+              "looking": 7.037,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 4.512
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 548.4991,
+            "route": "none",
+            "blips": []
+          },
+          "incidents": [],
+          "intent_class": "follow",
+          "intent_wording": "folge",
+          "intent_target": "Lamar."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Folge Lamar.. Outcome: unknown."
+    },
+    {
+      "start": 628.0127,
+      "end": 682.5025,
+      "steps": [
+        {
+          "objective": "Sammle elne Waffe auf.",
+          "start": 628.0127,
+          "end": 631.0015,
+          "last": 628.0127,
+          "duration": 0.0,
+          "step_duration": 2.989,
+          "section_kinds": [
+            "foot"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 2.989,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 0.949,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 0.472,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 1.056
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 629.4978,
+            "route": "none",
+            "blips": [
+              {
+                "color": "blue",
+                "x": -2.62,
+                "y": 4.25,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": -9.43,
+                "y": 21.03,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": -1.9,
+                "y": 13.7,
+                "border": false
+              }
+            ]
+          },
+          "incidents": [],
+          "intent_class": "pick_up",
+          "intent_wording": "sammle",
+          "intent_target": "elne Waffe auf."
+        },
+        {
+          "objective": "Schalte die Vagos aus.",
+          "start": 631.0015,
+          "end": 682.5025,
+          "last": 635.0119,
+          "duration": 4.01,
+          "step_duration": 51.501,
+          "section_kinds": [
+            "banner",
+            "cutscene",
+            "foot",
+            "unknown"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 51.501,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 16.914,
+              "running": 0.729,
+              "aiming": 16.133,
+              "firing": 3.272,
+              "looking": 10.243,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 12.198
+            }
+          },
+          "ending": "failed",
+          "sample_observation": {
+            "t": 633.9901,
+            "route": "none",
+            "blips": [
+              {
+                "color": "blue",
+                "x": 1.75,
+                "y": 4.88,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": -4.58,
+                "y": 23.64,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": 3.5,
+                "y": 17.28,
+                "border": false
+              }
+            ]
+          },
+          "incidents": [
+            {
+              "t": 632.683,
+              "class": "standstill",
+              "cause": "fight"
+            },
+            {
+              "t": 677.782,
+              "class": "death",
+              "cause": "fight"
+            },
+            {
+              "t": 681.972,
+              "class": "mission_failed",
+              "cause": "player_died"
+            }
+          ],
+          "intent_class": "take_out",
+          "intent_wording": "schalte",
+          "intent_target": "die Vagos aus."
+        }
+      ],
+      "ending": "failed",
+      "end_reason": "banner",
+      "notes": "The game asks: Sammle elne Waffe auf. Then Schalte die Vagos aus.. Outcome: failed."
+    },
+    {
+      "start": 692.3224,
+      "end": 753.5086,
+      "steps": [
+        {
+          "objective": "Schalte die Vagos aus.",
+          "start": 692.3224,
+          "end": 753.5086,
+          "last": 693.5086,
+          "duration": 1.186,
+          "step_duration": 61.186,
+          "section_kinds": [
+            "foot"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 61.186,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 21.938,
+              "running": 0.0,
+              "aiming": 24.951,
+              "firing": 4.074,
+              "looking": 12.423,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 9.803
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 695.3213,
+            "route": "none",
+            "blips": [
+              {
+                "color": "red",
+                "x": -5.13,
+                "y": 23.18,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": 3.18,
+                "y": 16.88,
+                "border": false
+              }
+            ]
+          },
+          "incidents": [
+            {
+              "t": 745.482,
+              "class": "standstill",
+              "cause": "fight"
+            }
+          ],
+          "intent_class": "take_out",
+          "intent_wording": "schalte",
+          "intent_target": "die Vagos aus."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Schalte die Vagos aus.. Outcome: unknown."
+    },
+    {
+      "start": 877.0081,
+      "end": 901.5,
+      "steps": [
+        {
+          "objective": "Steig auf das Motorrad.",
+          "start": 877.0081,
+          "end": 889.0047,
+          "last": 881.0118,
+          "duration": 4.004,
+          "step_duration": 11.997,
+          "section_kinds": [
+            "foot"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 11.997,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 4.955,
+              "running": 0.806,
+              "aiming": 2.125,
+              "firing": 1.008,
+              "looking": 4.215,
+              "map_input": 0.0,
+              "vehicle_input": 0.242,
+              "neutral": 2.211
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 879.9957,
+            "route": "none",
+            "blips": [
+              {
+                "color": "blue",
+                "x": -5.23,
+                "y": 11.54,
+                "border": false
+              }
+            ]
+          },
+          "incidents": [],
+          "intent_class": "enter_vehicle",
+          "intent_wording": "steig",
+          "intent_target": "auf das Motorrad."
+        },
+        {
+          "objective": "Begib dich zu der Autowaschanlage.",
+          "start": 889.0047,
+          "end": 901.5,
+          "last": 896.0711,
+          "duration": 7.066,
+          "step_duration": 12.495,
+          "section_kinds": [
+            "drive",
+            "foot"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 12.446,
+            "seconds": {
+              "driving": 9.208,
+              "walking": 2.292,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 1.295,
+              "looking": 1.517,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 0.699
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 891.9898,
+            "route": "yellow",
+            "blips": []
+          },
+          "incidents": [],
+          "intent_class": "go_to",
+          "intent_wording": "begib dich",
+          "intent_target": "zu der Autowaschanlage."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "recording ended",
+      "notes": "The game asks: Steig auf das Motorrad. Then Begib dich zu der Autowaschanlage.. Outcome: unknown."
+    }
+  ],
+  "unassigned_endings": [
+    {
+      "kind": "banner",
+      "text": "mission FehLgeschLagen",
+      "first": 685.0077,
+      "last": 687.0093,
+      "variants": {
+        "mission FehLgeschLagen": 5
+      }
+    }
+  ]
+}

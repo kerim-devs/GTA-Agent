@@ -1,0 +1,230 @@
+[
+  {
+    "objective": "Begib dich zu dem Treffen bei der Recycling-Anlage.",
+    "step_start": 168.016,
+    "sample_t": 170.9398,
+    "frame": 10216,
+    "request": {
+      "events": [],
+      "help": "Druck8 • ö urn dir Panz8rungen 8nzusèhen.",
+      "objective": "",
+      "subtitle": "Begib dich zu dem Tr¢llen b nlag rlgr*",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -21.869656350274226,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "yellow",
+            "x": 63.85,
+            "y": 87.24,
+            "border": true
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": 0.14285714285714285,
+        "special": 0.9523809523809523,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "foot_target",
+    "first_skill": "walk_to",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 3.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.3,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.0
+      }
+    },
+    "result": "matching",
+    "intent_class": "go_to",
+    "intent_wording": "begib dich",
+    "intent_target": "zu dem Treffen bei der Recycling-Anlage."
+  },
+  {
+    "objective": "Kehr zurück zu Lamar und Stretch.",
+    "step_start": 677.5007,
+    "sample_t": 680.4903,
+    "frame": 40677,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Kehr zurück zu Lamar und Stretch.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -45.72198456082617,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": -37.61,
+            "y": -1.04,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 3,
+        "wanted_flashing": false,
+        "health": 0.8333333333333334,
+        "armour": 0.8095238095238095,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "wanted_on_foot",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 2.636,
+        "running": 0.399,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.588,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.364
+      }
+    },
+    "result": "matching",
+    "intent_class": "return_to",
+    "intent_wording": "kehr zurück",
+    "intent_target": "zu Lamar und Stretch."
+  },
+  {
+    "objective": "Kehr zurück zu Lamar und Stretch.",
+    "step_start": 774.5024,
+    "sample_t": 777.4855,
+    "frame": 46490,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Kehr zurück zu Lamar und Stretch.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 2.5005884816084176,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 39.17,
+            "y": 38.17,
+            "border": false
+          },
+          {
+            "color": "blue",
+            "x": 19.82,
+            "y": 29.18,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 88.78,
+            "y": 68.56,
+            "border": true
+          },
+          {
+            "color": "red",
+            "x": 1.06,
+            "y": 14.34,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -14.1,
+            "y": -26.7,
+            "border": true
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 3,
+        "wanted_flashing": false,
+        "health": 0.5,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "wanted_on_foot",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 3.0,
+        "running": 0.343,
+        "aiming": 1.112,
+        "firing": 0.877,
+        "looking": 0.539,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.0
+      }
+    },
+    "result": "matching",
+    "intent_class": "return_to",
+    "intent_wording": "kehr zurück",
+    "intent_target": "zu Lamar und Stretch."
+  }
+]

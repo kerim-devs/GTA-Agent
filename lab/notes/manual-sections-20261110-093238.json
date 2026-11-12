@@ -1,0 +1,86 @@
+{
+  "recording": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+  "seconds": 695.8283,
+  "sample_hz": 10,
+  "has_pad": true,
+  "sections": [
+    {
+      "start": 5.017,
+      "end": 10.6486,
+      "first_frame": 104,
+      "last_frame": 238,
+      "kind": "foot",
+      "screen": "game",
+      "wanted": 0,
+      "route": [],
+      "damaged": null,
+      "human": 1.0,
+      "route_share": null,
+      "speed": null
+    },
+    {
+      "start": 10.6486,
+      "end": 33.7221,
+      "first_frame": 238,
+      "last_frame": 776,
+      "kind": "foot",
+      "screen": "game",
+      "wanted": 0,
+      "route": [],
+      "damaged": null,
+      "human": 0.6199,
+      "route_share": null,
+      "speed": null
+    },
+    {
+      "start": 45.5541,
+      "end": 108.5186,
+      "first_frame": 989,
+      "last_frame": 2433,
+      "kind": "foot",
+      "screen": "game",
+      "wanted": 0,
+      "route": [],
+      "damaged": null,
+      "human": 0.8259,
+      "route_share": null,
+      "speed": null
+    },
+    {
+      "start": 210.8756,
+      "end": 224.5501,
+      "first_frame": 4638,
+      "last_frame": 4906,
+      "kind": "foot",
+      "screen": "game",
+      "wanted": 0,
+      "route": [],
+      "damaged": null,
+      "human": 0.6256,
+      "route_share": null,
+      "speed": null
+    },
+    {
+      "start": 224.5501,
+      "end": 291.8318,
+      "first_frame": 4906,
+      "last_frame": 6307,
+      "kind": "drive",
+      "screen": "game",
+      "wanted": 0,
+      "route": [
+        "yellow"
+      ],
+      "damaged": null,
+      "human": 0.915,
+      "route_share": null,
+      "speed": null
+    }
+  ],
+  "provenance": {
+    "source": "manual P39 visual review; P38 unavailable",
+    "partial": true,
+    "scope": "Only cached objective step windows; kind boundaries are manual, not P38 measurements. The yellow route was measured at source time 227.5493 in cases.json; route is colours seen, not continuous visibility. Blips are recorded separately per sampled case. Numeric human share is computed from held pad input. sample_hz preserves the P38 contract; these sections were not sampled at 10 Hz.",
+    "evidence": "lab/notes/overview-20261110-093238/changes-01.jpg and changes-02.jpg"
+  }
+}

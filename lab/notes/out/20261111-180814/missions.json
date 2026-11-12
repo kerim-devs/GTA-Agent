@@ -1,0 +1,194 @@
+{
+  "recording": "/Users/kerim/recordings/kerim/20261111-180814",
+  "missions": [
+    {
+      "start": 223.0004,
+      "end": 289.0037,
+      "steps": [
+        {
+          "objective": "Begib dich nach Pacific Bluffs.",
+          "start": 223.0004,
+          "end": 289.0037,
+          "last": 229.0037,
+          "duration": 6.003,
+          "step_duration": 66.003,
+          "section_kinds": [
+            "drive"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 66.003,
+            "seconds": {
+              "driving": 52.522,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 1.412,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 12.253
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 225.9869,
+            "route": "yellow",
+            "blips": [
+              {
+                "color": "yellow",
+                "x": -86.63,
+                "y": 22.51,
+                "border": true
+              }
+            ]
+          },
+          "incidents": [
+            {
+              "t": 289.901,
+              "class": "car_change",
+              "cause": "other"
+            }
+          ],
+          "intent_class": "go_to",
+          "intent_wording": "begib dich",
+          "intent_target": "nach Pacific Bluffs."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Begib dich nach Pacific Bluffs.. Outcome: unknown."
+    },
+    {
+      "start": 311.0047,
+      "end": 376.0339,
+      "steps": [
+        {
+          "objective": "Bring Franklin nahe an die Yacht.",
+          "start": 311.0047,
+          "end": 376.0339,
+          "last": 316.0339,
+          "duration": 5.029,
+          "step_duration": 65.029,
+          "section_kinds": [
+            "drive",
+            "foot",
+            "menu"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 65.029,
+            "seconds": {
+              "driving": 16.772,
+              "walking": 8.013,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 33.024,
+              "looking": 0.0,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 11.26
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 313.9908,
+            "route": "none",
+            "blips": [
+              {
+                "color": "blue",
+                "x": -0.16,
+                "y": 39.78,
+                "border": false
+              }
+            ]
+          },
+          "incidents": [
+            {
+              "t": 369.514,
+              "class": "car_change",
+              "cause": "other"
+            }
+          ],
+          "intent_class": "bring",
+          "intent_wording": "bring",
+          "intent_target": "Franklin nahe an die Yacht."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Bring Franklin nahe an die Yacht.. Outcome: unknown."
+    },
+    {
+      "start": 394.0018,
+      "end": 456.0048,
+      "steps": [
+        {
+          "objective": "Verfolge die Yacht.",
+          "start": 394.0018,
+          "end": 456.0048,
+          "last": 396.0048,
+          "duration": 2.003,
+          "step_duration": 62.003,
+          "section_kinds": [
+            "drive",
+            "foot"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 62.003,
+            "seconds": {
+              "driving": 33.288,
+              "walking": 2.677,
+              "running": 0.0,
+              "aiming": 0.324,
+              "firing": 16.602,
+              "looking": 0.12,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 11.114
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 396.9875,
+            "route": "none",
+            "blips": [
+              {
+                "color": "blue",
+                "x": 1.0,
+                "y": 27.5,
+                "border": false
+              }
+            ]
+          },
+          "incidents": [
+            {
+              "t": 417.91,
+              "class": "car_change",
+              "cause": "other"
+            }
+          ],
+          "intent_class": "follow",
+          "intent_wording": "verfolge",
+          "intent_target": "die Yacht."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Verfolge die Yacht.. Outcome: unknown."
+    }
+  ],
+  "unassigned_endings": []
+}

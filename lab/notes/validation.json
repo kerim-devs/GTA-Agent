@@ -1,0 +1,38 @@
+{
+  "task": "P39-what-a-mission-asks-for",
+  "acceptance": "blocked",
+  "full_gate": {
+    "cwd": "pilot",
+    "command": "env -u PS5_HOST .venv/bin/python tools/gate.py --full",
+    "exit_code": 1,
+    "seconds": 752.63,
+    "passed": 2699,
+    "failed": 5,
+    "skipped": 3,
+    "xfailed": 236,
+    "errors": 5,
+    "failure_causes": [
+      "test_commentator.py and test_overlay.py: loopback socket bind denied with PermissionError errno 1",
+      "test_objects.py: CoreML model compilation cannot create its working directory"
+    ]
+  },
+  "final_targeted_tests": {
+    "command": "env -u PS5_HOST pilot/.venv/bin/python -m pytest -q pilot/tests/test_notes.py",
+    "passed": 11,
+    "exit_code": 0
+  },
+  "final_lint": "ruff check pilot/src pilot/tests pilot/tools: passed",
+  "final_format": "ruff format --check pilot/src pilot/tests pilot/tools: 103 files already formatted",
+  "missing_sections_cli": "exit 1; Missing sections.json: lab/notes/no-such-sections.json; run P38 first.",
+  "native_ocr": "Vision error -6662: Failed to create CVPixelBuffer Width = 1280, Height = 720, Format = 420f",
+  "cached_cases": {"matching": 2, "different": 1, "model-delegated": 2, "unknown": 0},
+  "text_quality": {
+    "recording": "20261110-093238",
+    "status": "failed_start_accuracy",
+    "objective": "Steig auf das Motorrad",
+    "visible_by": 207.343,
+    "first_cached_objective": 210.8756,
+    "minimum_delay_seconds": 3.5326,
+    "continuous_corpus_completeness_verified": false
+  }
+}

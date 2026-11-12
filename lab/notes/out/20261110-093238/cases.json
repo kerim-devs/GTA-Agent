@@ -1,0 +1,416 @@
+[
+  {
+    "objective": "Sammle eine Waffe auf.",
+    "step_start": 5.2415,
+    "sample_t": 7.9199,
+    "frame": 178,
+    "request": {
+      "events": [],
+      "help": "Halte LI gedrückt, um das Waffenrad aufzurufen.",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 51.23825470353219,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -1.11,
+            "y": 5.42,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 1.27,
+            "y": 14.05,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.5777777777777777,
+        "armour": 0.0,
+        "special": 0.9761904761904762,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "moving_default",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 2.729,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 2.729,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.221,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.0
+      }
+    },
+    "result": "model-delegated",
+    "intent_class": "pick_up",
+    "intent_wording": "sammle",
+    "intent_target": "eine Waffe auf."
+  },
+  {
+    "objective": "Schalte die Vagos aus.",
+    "step_start": 10.6486,
+    "sample_t": 13.6202,
+    "frame": 303,
+    "request": {
+      "events": [],
+      "help": "Halte LI gedrückt, um das Waffenrad aufzurufen.",
+      "objective": "Schalte die Vagos aus..",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -92.33724903377464,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -7.09,
+            "y": -4.94,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -2.31,
+            "y": 15.57,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 0.53,
+            "y": 6.8,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.3111111111111111,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "low_health_on_foot",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.395,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 1.384
+      }
+    },
+    "result": "different",
+    "intent_class": "take_out",
+    "intent_wording": "schalte",
+    "intent_target": "die Vagos aus."
+  },
+  {
+    "objective": "Schalte die Vagos aus.",
+    "step_start": 45.5541,
+    "sample_t": 48.5267,
+    "frame": 1060,
+    "request": {
+      "events": [],
+      "help": "Drücke Ri, um in Deckung zu gehen.",
+      "objective": "Schalte die Vagos aus.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 15.337647086925813,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": 3.17,
+            "y": 24.78,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 7.56,
+            "y": 15.74,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "moving_default",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.543,
+        "firing": 0.155,
+        "looking": 0.828,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 1.629
+      }
+    },
+    "result": "model-delegated",
+    "intent_class": "take_out",
+    "intent_wording": "schalte",
+    "intent_target": "die Vagos aus."
+  },
+  {
+    "objective": "Steig auf das Mororrad",
+    "step_start": 210.8756,
+    "sample_t": 213.8168,
+    "frame": 4689,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 37.30883860995212,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 1.0,
+        "armour": 0.0,
+        "special": 0.8095238095238095,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "foot_explore",
+    "first_skill": "look",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 3.0,
+        "running": 0.687,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.795,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.0
+      }
+    },
+    "result": "matching",
+    "intent_class": "enter_vehicle",
+    "intent_wording": "steig",
+    "intent_target": "auf das Mororrad"
+  },
+  {
+    "objective": "Begib dich zu der Autowaschanlage",
+    "step_start": 224.5501,
+    "sample_t": 227.5493,
+    "frame": 4969,
+    "request": {
+      "events": [],
+      "help": "Dein \"Fahren\"-Wert verbessert sich durch Erreichen der Höchstgeschwindigkeit, Fastzusammenstöße, Wheelies, Sprünge und Landungen auf allen vier Rädern.",
+      "objective": "Begib dich zu der Autowaschanlage",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 5.256414959867421,
+        "far_bearing": -9.529636927089555,
+        "arrow": -3.0719692602857833,
+        "corrupt": false,
+        "confidence": 0.85,
+        "path": [
+          [
+            8.0,
+            11.0
+          ],
+          [
+            6.0,
+            17.0
+          ],
+          [
+            4.0,
+            24.0
+          ],
+          [
+            2.0,
+            30.0
+          ],
+          [
+            0.0,
+            36.0
+          ],
+          [
+            -2.0,
+            41.0
+          ],
+          [
+            -5.0,
+            47.0
+          ],
+          [
+            -7.0,
+            54.0
+          ],
+          [
+            -10.0,
+            60.0
+          ],
+          [
+            -17.0,
+            64.0
+          ],
+          [
+            -25.0,
+            68.0
+          ],
+          [
+            -30.0,
+            73.0
+          ],
+          [
+            -35.0,
+            79.0
+          ],
+          [
+            -33.0,
+            85.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "yellow",
+            "x": -75.98,
+            "y": 87.07,
+            "border": true
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 0.9047619047619048,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_route",
+    "first_skill": "drive_route",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 3.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.0
+      }
+    },
+    "result": "matching",
+    "intent_class": "go_to",
+    "intent_wording": "begib dich",
+    "intent_target": "zu der Autowaschanlage"
+  }
+]
