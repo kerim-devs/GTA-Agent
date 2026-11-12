@@ -537,8 +537,12 @@ def _blocks(crop: np.ndarray, *, route_strokes: bool = False):
     return int(bv.sum() + bh.sum()), int(bv[_BV_NEAR].sum() + bh[_BH_NEAR].sum())
 
 
+_ROAD_FLOOR = 180  # a painted road in a bright map
+_ROAD_ABOVE_BODY = 30  # and how far it stands out of a dim one
+
+
 def _continuous_roads(crop: np.ndarray) -> bool:
-    """Explain route-free block steps only with broad, continuing painted roads.
+    """Explain block steps only with broad, continuing painted roads and map polygons.
 
     Inspect weaker steps too: a road cannot excuse a broken block elsewhere in
     the crop. Keep the raw detector for motion and for any unexplained piece.
@@ -549,6 +553,10 @@ def _continuous_roads(crop: np.ndarray) -> bool:
     # Require a visible white road area, beyond the arrow and isolated icons.
     if np.count_nonzero(map_gray >= 210) < 0.05 * map_gray.size:
         return False
+    # Painted means clearly brighter than the body of the map. By day that is white, but the map is
+    # dimmed at night: its body is about 96 and the thin roads and the polygons of car parks are
+    # 140 to 165, so a fixed 180 never saw them as painted and the pieces on their edges stayed alarms.
+    floor = min(_ROAD_FLOOR, int(np.median(map_gray)) + _ROAD_ABOVE_BODY)
     broad = False
     for g, borders, start, stop, skip in (
         (gray, _BX, 14, 158, _BV_SKIP),
@@ -572,14 +580,14 @@ def _continuous_roads(crop: np.ndarray) -> bool:
         xx = bright_x[:, :, None] + direction[:, :, None] * np.arange(2, 25)
         inside = g[rows[:, :, None], np.clip(xx, 0, g.shape[1] - 1)]
         returns = (high[:, :, None] - inside) > 0.5 * np.abs(right - left)[:, :, None]
-        bright = high >= 180
+        bright = high >= floor
         if start == 2:
             # The map fades left of MX0. Only extend a bright road from the
             # immediately adjacent map segment through that one fade segment.
             faded = rows[:, -1] == MX0 - 1
             rr = rows[faded] + 16
             fx = x[faded]
-            bright[faded] |= (np.maximum(g[rr, fx - 1], g[rr, fx]) >= 180).sum(axis=1)[:, None] >= 10
+            bright[faded] |= (np.maximum(g[rr, fx - 1], g[rr, fx]) >= floor).sum(axis=1)[:, None] >= 10
         painted = bright & returns.any(axis=2) & sharp[rows, columns[:, None]]
         if (painted.sum(axis=1) < np.maximum(6, counts[segments, columns] - 2)).any():
             return False
@@ -907,22 +915,24 @@ def _analyse(crop: np.ndarray, keep: bool = False):
             oky = False
     route, tr = ("yellow", ty) if oky else ("purple", tp) if okp else ("none", None)
 
-    if tr is None and corrupt and _continuous_roads(crop):
+    if tr is not None and corrupt:
+        # A connected navigation trace supplies context for narrow painted
+        # strokes. Keep the raw detector for motion and route-free frames;
+        # even with a route, every unexplained step preserves the alarm.
         info["blocks_raw"] = n_blocks
+        n_blocks, n_local = _blocks(crop, route_strokes=True)
+        corrupt = n_blocks >= 2
+        damaged_here = n_local >= 4
+        info.update(blocks=n_blocks, blocks_near=n_local)
+    if corrupt and _continuous_roads(crop):
+        # Roads and polygons of the map stand on block borders for as long as the map stands still,
+        # and a route does not change that. Every piece must be explained, route or no route.
+        info.setdefault("blocks_raw", n_blocks)
         n_blocks = n_local = 0
         corrupt = damaged_here = False
         info.update(blocks=0, blocks_near=0)
 
     if tr is not None:
-        if corrupt:
-            # A connected navigation trace supplies context for narrow painted
-            # strokes. Keep the raw detector for motion and route-free frames;
-            # even with a route, every unexplained step preserves the alarm.
-            info["blocks_raw"] = n_blocks
-            n_blocks, n_local = _blocks(crop, route_strokes=True)
-            corrupt = n_blocks >= 2
-            damaged_here = n_local >= 4
-            info.update(blocks=n_blocks, blocks_near=n_local)
         minimap = "tilted"  # a route is only drawn while driving
         bearing, far_bearing = tr["near"], tr["far"]
         conf = 0.5 + 0.5 * min(1.0, max(0.0, (tr["strong"] - 0.3) / 0.4))

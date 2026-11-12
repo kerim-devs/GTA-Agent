@@ -114,3 +114,50 @@ def test_path_starts_where_the_route_is_visible(case):
     # The arrow hides the route below 11 px, and the driver drops a path with a point nearer than 10.
     assert min(radii) >= 11
     assert radii[0] <= 16
+
+
+P59 = Path(__file__).resolve().parents[2] / "lab/minimap/p59"
+NIGHT_TOWN = ("142428-168.2", "142428-192.2", "142428-220.2", "142428-236.2")
+
+
+def night_town(name):
+    return cv2.cvtColor(cv2.imread(str(P59 / f"{name}.png")), cv2.COLOR_BGR2RGB)
+
+
+@pytest.mark.parametrize("name", NIGHT_TOWN)
+def test_a_clean_night_town_map_with_a_route_is_not_damaged(name):
+    # 20261112-142428: the buggy stood still, the thin roads and the car park polygons of a dimmed map
+    # lay on 16 px borders for seventy seconds, and every tick was called damaged.
+    from pilot.minimap import _blocks
+
+    crop = night_town(name)
+    assert _blocks(crop, route_strokes=True)[0] >= 2  # the pieces are there, the question is what they are
+    reading = read(crop)
+    assert reading.route == "purple"
+    assert reading.minimap == "tilted"
+    assert reading.corrupt is False
+    assert reading.confidence > 0.5
+
+
+def invert(crop, y=62, x=146):
+    crop[y : y + 16, x : x + 16] = 255 - crop[y : y + 16, x : x + 16]
+
+
+@pytest.mark.parametrize(
+    "damage",
+    [
+        lambda crop: crop.__setitem__((slice(46, 62), slice(130, 146)), 0),
+        lambda crop: crop.__setitem__((slice(62, 78), slice(146, 162)), 230),
+        lambda crop: invert(crop),
+        lambda crop: invert(crop, 94, 66),
+        lambda crop: crop.__setitem__((slice(62, 78), slice(146, 162)), crop[2:18, 2:18].copy()),
+    ],
+    ids=["black", "white", "inverted", "inverted-low", "tile-from-outside-the-map"],
+)
+@pytest.mark.parametrize("name", NIGHT_TOWN)
+def test_a_displaced_block_in_a_clean_night_town_map_is_still_damage(name, damage):
+    crop = night_town(name)
+    damage(crop)
+    reading = read(crop)
+    assert reading.corrupt
+    assert reading.confidence <= 0.35
