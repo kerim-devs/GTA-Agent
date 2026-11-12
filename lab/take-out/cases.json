@@ -1,0 +1,1198 @@
+[
+ {
+  "recording": "20261110-093238",
+  "step": "Sammle eine Waffe auf.",
+  "sample_t": 7.9199,
+  "frame": 178,
+  "p39_rule": "moving_default",
+  "request": {
+   "events": [],
+   "help": "Halte LI gedrückt, um das Waffenrad aufzurufen.",
+   "objective": "",
+   "subtitle": "",
+   "banner": "",
+   "minimap": {
+    "minimap": "flat",
+    "route": "none",
+    "bearing": null,
+    "far_bearing": null,
+    "arrow": 51.23825470353219,
+    "corrupt": false,
+    "confidence": 0.9,
+    "path": [],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": [
+     {
+      "color": "blue",
+      "x": -1.11,
+      "y": 5.42,
+      "border": false
+     },
+     {
+      "color": "red",
+      "x": 1.27,
+      "y": 14.05,
+      "border": false
+     }
+    ]
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 0.5777777777777777,
+    "armour": 0.0,
+    "special": 0.9761904761904762,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261110-093238",
+  "step": "Schalte die Vagos aus.",
+  "sample_t": 13.6202,
+  "frame": 303,
+  "p39_rule": "low_health_on_foot",
+  "request": {
+   "events": [],
+   "help": "Halte LI gedrückt, um das Waffenrad aufzurufen.",
+   "objective": "Schalte die Vagos aus..",
+   "subtitle": "",
+   "banner": "",
+   "minimap": {
+    "minimap": "flat",
+    "route": "none",
+    "bearing": null,
+    "far_bearing": null,
+    "arrow": -92.33724903377464,
+    "corrupt": false,
+    "confidence": 0.9,
+    "path": [],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": [
+     {
+      "color": "blue",
+      "x": -7.09,
+      "y": -4.94,
+      "border": false
+     },
+     {
+      "color": "red",
+      "x": -2.31,
+      "y": 15.57,
+      "border": false
+     },
+     {
+      "color": "red",
+      "x": 0.53,
+      "y": 6.8,
+      "border": false
+     }
+    ]
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 0.3111111111111111,
+    "armour": 0.0,
+    "special": 1.0,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261110-093238",
+  "step": "Schalte die Vagos aus.",
+  "sample_t": 48.5267,
+  "frame": 1060,
+  "p39_rule": "moving_default",
+  "request": {
+   "events": [],
+   "help": "Drücke Ri, um in Deckung zu gehen.",
+   "objective": "Schalte die Vagos aus.",
+   "subtitle": "",
+   "banner": "",
+   "minimap": {
+    "minimap": "flat",
+    "route": "none",
+    "bearing": null,
+    "far_bearing": null,
+    "arrow": 15.337647086925813,
+    "corrupt": false,
+    "confidence": 0.9,
+    "path": [],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": [
+     {
+      "color": "red",
+      "x": 3.17,
+      "y": 24.78,
+      "border": false
+     },
+     {
+      "color": "red",
+      "x": 7.56,
+      "y": 15.74,
+      "border": false
+     }
+    ]
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 0.9888888888888889,
+    "armour": 0.0,
+    "special": 1.0,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261110-093238",
+  "step": "Steig auf das Mororrad",
+  "sample_t": 213.8168,
+  "frame": 4689,
+  "p39_rule": "foot_explore",
+  "request": {
+   "events": [],
+   "help": "",
+   "objective": "",
+   "subtitle": "",
+   "banner": "",
+   "minimap": {
+    "minimap": "flat",
+    "route": "none",
+    "bearing": null,
+    "far_bearing": null,
+    "arrow": 37.30883860995212,
+    "corrupt": false,
+    "confidence": 0.9,
+    "path": [],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": []
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 1.0,
+    "armour": 0.0,
+    "special": 0.8095238095238095,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261110-093238",
+  "step": "Begib dich zu der Autowaschanlage",
+  "sample_t": 227.5493,
+  "frame": 4969,
+  "p39_rule": "vehicle_route",
+  "request": {
+   "events": [],
+   "help": "Dein \"Fahren\"-Wert verbessert sich durch Erreichen der Höchstgeschwindigkeit, Fastzusammenstöße, Wheelies, Sprünge und Landungen auf allen vier Rädern.",
+   "objective": "Begib dich zu der Autowaschanlage",
+   "subtitle": "",
+   "banner": "",
+   "minimap": {
+    "minimap": "tilted",
+    "route": "yellow",
+    "bearing": 5.256414959867421,
+    "far_bearing": -9.529636927089555,
+    "arrow": -3.0719692602857833,
+    "corrupt": false,
+    "confidence": 0.85,
+    "path": [
+     [
+      8.0,
+      11.0
+     ],
+     [
+      6.0,
+      17.0
+     ],
+     [
+      4.0,
+      24.0
+     ],
+     [
+      2.0,
+      30.0
+     ],
+     [
+      0.0,
+      36.0
+     ],
+     [
+      -2.0,
+      41.0
+     ],
+     [
+      -5.0,
+      47.0
+     ],
+     [
+      -7.0,
+      54.0
+     ],
+     [
+      -10.0,
+      60.0
+     ],
+     [
+      -17.0,
+      64.0
+     ],
+     [
+      -25.0,
+      68.0
+     ],
+     [
+      -30.0,
+      73.0
+     ],
+     [
+      -35.0,
+      79.0
+     ],
+     [
+      -33.0,
+      85.0
+     ]
+    ],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": [
+     {
+      "color": "yellow",
+      "x": -75.98,
+      "y": 87.07,
+      "border": true
+     }
+    ]
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": null,
+    "armour": 0.0,
+    "special": 0.9047619047619048,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261111-164039",
+  "step": "Begib dich nach Vespucci Beach.",
+  "sample_t": 436.0094,
+  "frame": 25011,
+  "p39_rule": "foot_target",
+  "request": {
+   "events": [],
+   "help": "",
+   "objective": "",
+   "subtitle": "Begib dic L_IufilL.-I¥jc",
+   "banner": "",
+   "minimap": {
+    "minimap": "flat",
+    "route": "none",
+    "bearing": null,
+    "far_bearing": null,
+    "arrow": 0.0690997911979423,
+    "corrupt": false,
+    "confidence": 0.9,
+    "path": [],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": [
+     {
+      "color": "yellow",
+      "x": 89.67,
+      "y": 53.91,
+      "border": true
+     }
+    ]
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": null,
+    "armour": 0.0,
+    "special": 0.9523809523809523,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261111-164039",
+  "step": "Begib dich nach Vesp",
+  "sample_t": 437.2288,
+  "frame": 25078,
+  "p39_rule": "moving_default",
+  "request": {
+   "events": [],
+   "help": "",
+   "objective": "Begib dich nach Vesp",
+   "subtitle": ".&4 Be",
+   "banner": "",
+   "minimap": {
+    "minimap": "flat",
+    "route": "none",
+    "bearing": null,
+    "far_bearing": null,
+    "arrow": -72.19098253195028,
+    "corrupt": false,
+    "confidence": 0.9,
+    "path": [],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": []
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 0.9888888888888889,
+    "armour": 0.0,
+    "special": 1.0,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261111-164039",
+  "step": "Begib dich nBch Vespucci Beach.",
+  "sample_t": 440.4956,
+  "frame": 25274,
+  "p39_rule": "vehicle_route",
+  "request": {
+   "events": [],
+   "help": "",
+   "objective": "Begib dich nach Vespucci Beach.",
+   "subtitle": "",
+   "banner": "",
+   "minimap": {
+    "minimap": "tilted",
+    "route": "yellow",
+    "bearing": 49.26590947096316,
+    "far_bearing": 86.00487746971177,
+    "arrow": -25.154328319267734,
+    "corrupt": false,
+    "confidence": 0.993,
+    "path": [
+     [
+      6.0,
+      12.0
+     ],
+     [
+      13.0,
+      13.0
+     ],
+     [
+      20.0,
+      16.0
+     ],
+     [
+      25.0,
+      19.0
+     ],
+     [
+      32.0,
+      19.0
+     ],
+     [
+      37.0,
+      14.0
+     ],
+     [
+      44.0,
+      12.0
+     ],
+     [
+      49.0,
+      9.0
+     ],
+     [
+      56.0,
+      6.0
+     ],
+     [
+      62.0,
+      4.0
+     ],
+     [
+      68.0,
+      1.0
+     ],
+     [
+      74.0,
+      -2.0
+     ],
+     [
+      79.0,
+      -5.0
+     ],
+     [
+      85.0,
+      -11.0
+     ],
+     [
+      89.0,
+      -19.0
+     ],
+     [
+      89.0,
+      -23.0
+     ]
+    ],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": []
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 0.9888888888888889,
+    "armour": 0.0,
+    "special": 1.0,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261111-164039",
+  "step": "Sammle elne Waffe auf.",
+  "sample_t": 629.4978,
+  "frame": 36549,
+  "p39_rule": "moving_default",
+  "request": {
+   "events": [],
+   "help": "Halte IU gedruckL um das W8ff8nrad aufzurufen",
+   "objective": "",
+   "subtitle": "",
+   "banner": "",
+   "minimap": {
+    "minimap": "flat",
+    "route": "none",
+    "bearing": null,
+    "far_bearing": null,
+    "arrow": 6.900615474609168,
+    "corrupt": false,
+    "confidence": 0.9,
+    "path": [],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": [
+     {
+      "color": "blue",
+      "x": -2.62,
+      "y": 4.25,
+      "border": false
+     },
+     {
+      "color": "red",
+      "x": -9.43,
+      "y": 21.03,
+      "border": false
+     },
+     {
+      "color": "red",
+      "x": -1.9,
+      "y": 13.7,
+      "border": false
+     }
+    ]
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 0.9888888888888889,
+    "armour": 0.0,
+    "special": 1.0,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261111-164039",
+  "step": "Schalte dle Vagos aus.",
+  "sample_t": 633.9901,
+  "frame": 36819,
+  "p39_rule": "moving_default",
+  "request": {
+   "events": [],
+   "help": "Halt8 In der D8ckung ￿ g8druckL um blind mit èiner Waffe zu f8uèrn. ohnè dl Deckung zu verlassen.",
+   "objective": "Schalte die Vagos aus.",
+   "subtitle": "",
+   "banner": "",
+   "minimap": {
+    "minimap": "flat",
+    "route": "none",
+    "bearing": null,
+    "far_bearing": null,
+    "arrow": 54.4981093991978,
+    "corrupt": false,
+    "confidence": 0.9,
+    "path": [],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": [
+     {
+      "color": "blue",
+      "x": 1.75,
+      "y": 4.88,
+      "border": false
+     },
+     {
+      "color": "red",
+      "x": -4.58,
+      "y": 23.64,
+      "border": false
+     },
+     {
+      "color": "red",
+      "x": 3.5,
+      "y": 17.28,
+      "border": false
+     }
+    ]
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 0.9888888888888889,
+    "armour": null,
+    "special": 1.0,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261111-164039",
+  "step": "Schalte die V8gos aus.",
+  "sample_t": 695.8404,
+  "frame": 40514,
+  "p39_rule": "moving_default",
+  "request": {
+   "events": [],
+   "help": "Halt8 in der D8ckung QFJ gedrilckt um blind mit einèr Waffe zu f8uern. ohnè dl Deckung zu verlassen.",
+   "objective": "",
+   "subtitle": "schieb deinen dummen Arsch in Deckung.",
+   "banner": "",
+   "minimap": {
+    "minimap": "flat",
+    "route": "none",
+    "bearing": null,
+    "far_bearing": null,
+    "arrow": -0.9874375665504544,
+    "corrupt": false,
+    "confidence": 0.9,
+    "path": [],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": [
+     {
+      "color": "red",
+      "x": -6.78,
+      "y": 23.05,
+      "border": false
+     },
+     {
+      "color": "red",
+      "x": 1.68,
+      "y": 16.84,
+      "border": false
+     }
+    ]
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 0.9888888888888889,
+    "armour": null,
+    "special": 1.0,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261111-164039",
+  "step": "Begib dich zu der Autowaschanlage.",
+  "sample_t": 890.6572,
+  "frame": 52168,
+  "p39_rule": "vehicle_route",
+  "request": {
+   "events": [],
+   "help": "D8in \"F8hr8n\".Wert verb8S88rt sich durch Erreichen der Höch51ge5chwindigkeit. Fastzusammenstoße. Wh*elles, Sprtinge und Landungen auf allen vier Wern",
+   "objective": "Begib dich zu der Autowaschanlage.",
+   "subtitle": "",
+   "banner": "",
+   "minimap": {
+    "minimap": "tilted",
+    "route": "yellow",
+    "bearing": 13.549981233218178,
+    "far_bearing": 1.588755916846817,
+    "arrow": -56.57241480130307,
+    "corrupt": false,
+    "confidence": 0.994,
+    "path": [
+     [
+      8.0,
+      11.0
+     ],
+     [
+      8.0,
+      17.0
+     ],
+     [
+      7.0,
+      23.0
+     ],
+     [
+      6.0,
+      30.0
+     ],
+     [
+      6.0,
+      36.0
+     ],
+     [
+      6.0,
+      41.0
+     ],
+     [
+      4.0,
+      48.0
+     ],
+     [
+      4.0,
+      53.0
+     ],
+     [
+      2.0,
+      60.0
+     ],
+     [
+      1.0,
+      66.0
+     ],
+     [
+      1.0,
+      71.0
+     ]
+    ],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": [
+     {
+      "color": "yellow",
+      "x": 79.74,
+      "y": 86.87,
+      "border": true
+     }
+    ]
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 0.8777777777777778,
+    "armour": 0.0,
+    "special": 1.0,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261111-164039",
+  "step": "Begib dich zu der Autowaschanlage.",
+  "sample_t": 894.5433,
+  "frame": 52401,
+  "p39_rule": "vehicle_route",
+  "request": {
+   "events": [],
+   "help": "Dein F8hren Wert V8rb8s88rt sich durth Erreichèn der. Höch51ge5chwindigkÈlt. Fastzusamm&ThstÖß8,\"Whse1188, Sprtinge und L4ndUnyen auf allen vier Radern.",
+   "objective": "Begib dich zu der Autowaschanlage.",
+   "subtitle": "",
+   "banner": "",
+   "minimap": {
+    "minimap": "tilted",
+    "route": "yellow",
+    "bearing": -34.28389987107209,
+    "far_bearing": -37.463516991273345,
+    "arrow": -3.572315823796515,
+    "corrupt": false,
+    "confidence": 0.944,
+    "path": [
+     [
+      -6.0,
+      12.0
+     ],
+     [
+      -10.0,
+      17.0
+     ],
+     [
+      -15.0,
+      23.0
+     ],
+     [
+      -19.0,
+      29.0
+     ],
+     [
+      -25.0,
+      36.0
+     ],
+     [
+      -29.0,
+      42.0
+     ],
+     [
+      -35.0,
+      48.0
+     ],
+     [
+      -40.0,
+      53.0
+     ],
+     [
+      -44.0,
+      59.0
+     ],
+     [
+      -39.0,
+      63.0
+     ],
+     [
+      -31.0,
+      66.0
+     ],
+     [
+      -26.0,
+      67.0
+     ],
+     [
+      -21.0,
+      68.0
+     ]
+    ],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": [
+     {
+      "color": "yellow",
+      "x": 10.5,
+      "y": 87.38,
+      "border": true
+     }
+    ]
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 0.8777777777777778,
+    "armour": 0.0,
+    "special": 1.0,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261111-171046",
+  "step": "Bring D zu Lamars Haus.",
+  "sample_t": 691.5025,
+  "frame": 41206,
+  "p39_rule": "vehicle_route",
+  "request": {
+   "events": [],
+   "help": "",
+   "objective": "",
+   "subtitle": "\"Lamars Haus.",
+   "banner": "",
+   "minimap": {
+    "minimap": "tilted",
+    "route": "yellow",
+    "bearing": -44.74364316460795,
+    "far_bearing": -46.79927657255366,
+    "arrow": -17.733292037821684,
+    "corrupt": false,
+    "confidence": 0.761,
+    "path": [
+     [
+      -9.0,
+      11.0
+     ],
+     [
+      -15.0,
+      16.0
+     ],
+     [
+      -21.0,
+      21.0
+     ],
+     [
+      -28.0,
+      26.0
+     ],
+     [
+      -34.0,
+      32.0
+     ],
+     [
+      -40.0,
+      37.0
+     ],
+     [
+      -47.0,
+      42.0
+     ],
+     [
+      -52.0,
+      48.0
+     ],
+     [
+      -58.0,
+      53.0
+     ],
+     [
+      -64.0,
+      58.0
+     ],
+     [
+      -71.0,
+      63.0
+     ],
+     [
+      -76.0,
+      69.0
+     ],
+     [
+      -82.0,
+      74.0
+     ],
+     [
+      -87.0,
+      75.0
+     ]
+    ],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": []
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 0.6222222222222222,
+    "armour": 0.0,
+    "special": 0.8333333333333334,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261111-172549",
+  "step": "Schalte den GafUI",
+  "sample_t": 133.2554,
+  "frame": 7931,
+  "p39_rule": "moving_default",
+  "request": {
+   "events": [],
+   "help": "J lrn schl@￿chn•￿d￿s V8nJrs8chst du bei der BÈwegurYd wèDigfyr Geräus¢ho.",
+   "objective": "Schalte den GafUI",
+   "subtitle": "",
+   "banner": "",
+   "minimap": {
+    "minimap": "flat",
+    "route": "none",
+    "bearing": null,
+    "far_bearing": null,
+    "arrow": 6.133733339197391,
+    "corrupt": false,
+    "confidence": 0.9,
+    "path": [],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": [
+     {
+      "color": "blue",
+      "x": 2.0,
+      "y": 31.38,
+      "border": false
+     },
+     {
+      "color": "red",
+      "x": -1.95,
+      "y": 11.45,
+      "border": false
+     }
+    ]
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 0.6,
+    "armour": 0.0,
+    "special": 0.9761904761904762,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261111-172549",
+  "step": "Schalte den Gartne",
+  "sample_t": 133.6576,
+  "frame": 7955,
+  "p39_rule": "moving_default",
+  "request": {
+   "events": [],
+   "help": "Im Schleichrnodus verurs8chst du b81 der 8wÈgung weniger Gefäus¢hts.",
+   "objective": "Schalte den Gartne",
+   "subtitle": "",
+   "banner": "",
+   "minimap": {
+    "minimap": "flat",
+    "route": "none",
+    "bearing": null,
+    "far_bearing": null,
+    "arrow": -9.97556941715402,
+    "corrupt": false,
+    "confidence": 0.9,
+    "path": [],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": [
+     {
+      "color": "blue",
+      "x": 2.51,
+      "y": 31.4,
+      "border": false
+     },
+     {
+      "color": "red",
+      "x": -1.5,
+      "y": 11.5,
+      "border": false
+     }
+    ]
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 0.6111111111111112,
+    "armour": 0.0,
+    "special": 1.0,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261111-172549",
+  "step": "Schalte den Gai ti ie",
+  "sample_t": 136.9925,
+  "frame": 8155,
+  "p39_rule": "moving_default",
+  "request": {
+   "events": [],
+   "help": "Im Schlèlchmodus 18 dèr BewÈgurtg wÈrii",
+   "objective": "",
+   "subtitle": "",
+   "banner": "",
+   "minimap": {
+    "minimap": "flat",
+    "route": "none",
+    "bearing": null,
+    "far_bearing": null,
+    "arrow": 0.36986286951159286,
+    "corrupt": false,
+    "confidence": 0.9,
+    "path": [],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": [
+     {
+      "color": "blue",
+      "x": 8.54,
+      "y": 26.19,
+      "border": false
+     },
+     {
+      "color": "red",
+      "x": 0.5,
+      "y": 8.5,
+      "border": false
+     }
+    ]
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 0.6111111111111112,
+    "armour": 0.0,
+    "special": 0.9285714285714286,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ },
+ {
+  "recording": "20261111-172549",
+  "step": "Bring das Auto zum Autohaus.",
+  "sample_t": 266.0087,
+  "frame": 15875,
+  "p39_rule": "moving_default",
+  "request": {
+   "events": [],
+   "help": "LillLIIII k",
+   "objective": "Bring das Auto zum Autohaus.",
+   "subtitle": "",
+   "banner": "",
+   "minimap": {
+    "minimap": "flat",
+    "route": "none",
+    "bearing": null,
+    "far_bearing": null,
+    "arrow": -35.353802686646304,
+    "corrupt": false,
+    "confidence": 0.9,
+    "path": [],
+    "gps_distance": null,
+    "gps_arrow": null,
+    "gps_speed": null,
+    "gps_time": null,
+    "blips": []
+   },
+   "last_skill": null,
+   "notebook": "",
+   "jpeg_path": "",
+   "hud": {
+    "wanted": 0,
+    "wanted_flashing": false,
+    "health": 0.6111111111111112,
+    "armour": null,
+    "special": 1.0,
+    "screen": "game"
+   },
+   "objects": [],
+   "judgment": null
+  }
+ }
+]

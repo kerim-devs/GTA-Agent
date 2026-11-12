@@ -1,0 +1,267 @@
+[
+  {
+    "objective": "Begib dich nach Pacific Bluffs.",
+    "step_start": 223.0004,
+    "sample_t": 225.9869,
+    "frame": 13491,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "jr'fl'fiJgi",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": -35.36883020754,
+        "far_bearing": -49.201385790281776,
+        "arrow": -4.7302957274996515,
+        "corrupt": false,
+        "confidence": 0.836,
+        "path": [
+          [
+            -5.0,
+            13.0
+          ],
+          [
+            -11.0,
+            17.0
+          ],
+          [
+            -17.0,
+            21.0
+          ],
+          [
+            -23.0,
+            25.0
+          ],
+          [
+            -30.0,
+            30.0
+          ],
+          [
+            -35.0,
+            33.0
+          ],
+          [
+            -41.0,
+            36.0
+          ],
+          [
+            -48.0,
+            39.0
+          ],
+          [
+            -53.0,
+            41.0
+          ],
+          [
+            -59.0,
+            43.0
+          ],
+          [
+            -65.0,
+            45.0
+          ],
+          [
+            -72.0,
+            46.0
+          ],
+          [
+            -78.0,
+            49.0
+          ],
+          [
+            -84.0,
+            51.0
+          ],
+          [
+            -88.0,
+            51.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "yellow",
+            "x": -86.63,
+            "y": 22.51,
+            "border": true
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_route",
+    "first_skill": "drive_route",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 2.722,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.278
+      }
+    },
+    "result": "matching",
+    "intent_class": "go_to",
+    "intent_wording": "begib dich",
+    "intent_target": "nach Pacific Bluffs."
+  },
+  {
+    "objective": "Bring Franklin nahe an die Yacht.",
+    "step_start": 311.0047,
+    "sample_t": 313.9908,
+    "frame": 18760,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "ring Franklin nahe an die Yacht.",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 1.8565907814651723,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -0.16,
+            "y": 39.78,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_waypoint",
+    "first_skill": "set_waypoint",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 3.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.0
+      }
+    },
+    "result": "different",
+    "intent_class": "bring",
+    "intent_wording": "bring",
+    "intent_target": "Franklin nahe an die Yacht."
+  },
+  {
+    "objective": "Verfolge die Yacht.",
+    "step_start": 394.0018,
+    "sample_t": 396.9875,
+    "frame": 23711,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "rfolge die Yacht.",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -1.5648399697927573,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 1.0,
+            "y": 27.5,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.023809523809523808,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_waypoint",
+    "first_skill": "set_waypoint",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 2.832,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.168
+      }
+    },
+    "result": "different",
+    "intent_class": "follow",
+    "intent_wording": "verfolge",
+    "intent_target": "die Yacht."
+  }
+]

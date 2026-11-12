@@ -1,0 +1,465 @@
+{
+  "recording": "/Users/kerim/recordings/kerim/20261111-190825",
+  "missions": [
+    {
+      "start": 268.1614,
+      "end": 335.0123,
+      "steps": [
+        {
+          "objective": "Begib dich wieder zu Franklins Haus.",
+          "start": 268.1614,
+          "end": 335.0123,
+          "last": 275.0123,
+          "duration": 6.851,
+          "step_duration": 66.851,
+          "section_kinds": [
+            "drive"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 3,
+          "human": {
+            "observed_seconds": 66.851,
+            "seconds": {
+              "driving": 59.11,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 2.022,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 7.348
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 271.158,
+            "route": "yellow",
+            "blips": [
+              {
+                "color": "yellow",
+                "x": -86.76,
+                "y": 56.78,
+                "border": true
+              }
+            ]
+          },
+          "incidents": [
+            {
+              "t": 330.796,
+              "class": "collision",
+              "cause": "reversed"
+            },
+            {
+              "t": 416.604,
+              "class": "mission_passed",
+              "cause": "passed"
+            }
+          ],
+          "intent_class": "return_to",
+          "intent_wording": "begib dich wieder",
+          "intent_target": "zu Franklins Haus."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Begib dich wieder zu Franklins Haus.. Outcome: unknown."
+    },
+    {
+      "start": 519.516,
+      "end": 642.0112,
+      "steps": [
+        {
+          "objective": "Steig in den Pickup.",
+          "start": 519.516,
+          "end": 520.0019,
+          "last": 519.516,
+          "duration": 0.0,
+          "step_duration": 0.486,
+          "section_kinds": [
+            "drive",
+            "foot"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 0.486,
+            "seconds": {
+              "driving": 0.098,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.011,
+              "looking": 0.0,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 0.376
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 519.7041,
+            "route": "none",
+            "blips": [
+              {
+                "color": "red",
+                "x": -0.87,
+                "y": 19.42,
+                "border": false
+              }
+            ]
+          },
+          "incidents": [],
+          "intent_class": "enter_vehicle",
+          "intent_wording": "steig",
+          "intent_target": "in den Pickup."
+        },
+        {
+          "objective": "Folge dem Tennislehrer.",
+          "start": 520.0019,
+          "end": 574.5058,
+          "last": 526.0938,
+          "duration": 6.092,
+          "step_duration": 54.504,
+          "section_kinds": [
+            "drive"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 54.504,
+            "seconds": {
+              "driving": 51.55,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 3.505,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 2.799
+            }
+          },
+          "ending": "next objective",
+          "sample_observation": {
+            "t": 522.9893,
+            "route": "none",
+            "blips": [
+              {
+                "color": "red",
+                "x": 26.22,
+                "y": -0.12,
+                "border": false
+              }
+            ]
+          },
+          "incidents": [],
+          "intent_class": "follow",
+          "intent_wording": "folge",
+          "intent_target": "dem Tennislehrer."
+        },
+        {
+          "objective": "Fahr zum Canyon.",
+          "start": 574.5058,
+          "end": 642.0112,
+          "last": 582.0112,
+          "duration": 7.505,
+          "step_duration": 67.505,
+          "section_kinds": [
+            "drive",
+            "unknown"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 67.505,
+            "seconds": {
+              "driving": 26.907,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 2.466,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 38.723
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 577.4931,
+            "route": "yellow",
+            "blips": []
+          },
+          "incidents": [
+            {
+              "t": 595.826,
+              "class": "collision",
+              "cause": "unknown"
+            }
+          ],
+          "intent_class": "go_to",
+          "intent_wording": "fahr",
+          "intent_target": "zum Canyon."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Steig in den Pickup. Then Folge dem Tennislehrer. Then Fahr zum Canyon.. Outcome: unknown."
+    },
+    {
+      "start": 685.0066,
+      "end": 747.0461,
+      "steps": [
+        {
+          "objective": "Steig in den Pickup.",
+          "start": 685.0066,
+          "end": 747.0461,
+          "last": 687.0461,
+          "duration": 2.039,
+          "step_duration": 62.039,
+          "section_kinds": [
+            "drive",
+            "foot",
+            "unknown"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 62.039,
+            "seconds": {
+              "driving": 34.564,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 2.683,
+              "map_input": 0.0,
+              "vehicle_input": 0.122,
+              "neutral": 25.708
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 687.9954,
+            "route": "none",
+            "blips": []
+          },
+          "incidents": [
+            {
+              "t": 693.702,
+              "class": "standstill",
+              "cause": "stuck_vehicle"
+            }
+          ],
+          "intent_class": "enter_vehicle",
+          "intent_wording": "steig",
+          "intent_target": "in den Pickup."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Steig in den Pickup.. Outcome: unknown."
+    },
+    {
+      "start": 752.583,
+      "end": 819.505,
+      "steps": [
+        {
+          "objective": "Kehr zurück zu Michaels Haus.",
+          "start": 752.583,
+          "end": 819.505,
+          "last": 759.505,
+          "duration": 6.922,
+          "step_duration": 66.922,
+          "section_kinds": [
+            "drive",
+            "unknown"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 66.922,
+            "seconds": {
+              "driving": 38.469,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 9.498,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 15.738
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 755.5676,
+            "route": "yellow",
+            "blips": [
+              {
+                "color": "yellow",
+                "x": 89.26,
+                "y": 29.11,
+                "border": true
+              }
+            ]
+          },
+          "incidents": [
+            {
+              "t": 829.124,
+              "class": "death",
+              "cause": "fight"
+            },
+            {
+              "t": 831.94,
+              "class": "mission_failed",
+              "cause": "player_died"
+            }
+          ],
+          "intent_class": "return_to",
+          "intent_wording": "kehr zurück",
+          "intent_target": "zu Michaels Haus."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Kehr zurück zu Michaels Haus.. Outcome: unknown."
+    },
+    {
+      "start": 840.0054,
+      "end": 900.4,
+      "steps": [
+        {
+          "objective": "Kehr zurück zu Michaels Haus.",
+          "start": 840.0054,
+          "end": 900.4,
+          "last": 847.5072,
+          "duration": 7.502,
+          "step_duration": 60.395,
+          "section_kinds": [
+            "drive",
+            "foot",
+            "menu",
+            "unknown"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 60.307,
+            "seconds": {
+              "driving": 34.898,
+              "walking": 3.151,
+              "running": 0.0,
+              "aiming": 5.109,
+              "firing": 1.091,
+              "looking": 6.575,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 10.971
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 843.0051,
+            "route": "yellow",
+            "blips": [
+              {
+                "color": "yellow",
+                "x": 89.42,
+                "y": 18.53,
+                "border": true
+              }
+            ]
+          },
+          "incidents": [
+            {
+              "t": 864.908,
+              "class": "turn",
+              "cause": "turn"
+            },
+            {
+              "t": 888.498,
+              "class": "standstill",
+              "cause": "fight"
+            }
+          ],
+          "intent_class": "return_to",
+          "intent_wording": "kehr zurück",
+          "intent_target": "zu Michaels Haus."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "recording ended",
+      "notes": "The game asks: Kehr zurück zu Michaels Haus.. Outcome: unknown."
+    }
+  ],
+  "unassigned_endings": [
+    {
+      "kind": "banner",
+      "text": "mission FehLgestr'",
+      "first": 85.0052,
+      "last": 89.0143,
+      "variants": {
+        "mission FehLgestr'": 1
+      }
+    },
+    {
+      "kind": "banner",
+      "text": "besranden ,",
+      "first": 417.5719,
+      "last": 421.5153,
+      "variants": {
+        "besranden ,": 1,
+        "besianden": 2,
+        "besranden": 1
+      }
+    },
+    {
+      "kind": "banner",
+      "text": "'b'esranden",
+      "first": 422.5102,
+      "last": 423.5007,
+      "variants": {
+        "'b'esranden": 3
+      }
+    },
+    {
+      "kind": "banner",
+      "text": "mission FehLgeschLagen",
+      "first": 835.516,
+      "last": 836.0009,
+      "variants": {
+        "mission FehLgeschLagen": 2
+      }
+    }
+  ]
+}

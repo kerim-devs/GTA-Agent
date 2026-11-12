@@ -18,7 +18,7 @@ api=http://127.0.0.1:9395
 state=""
 field() { print -r -- "$state" | grep -o "\"$1\": [^,}]*" | head -n 1 | cut -d' ' -f2- }
 now() { date +%H:%M:%S }
-started=0; chunks=0; since=0; told=""
+started=0; chunks=0; since=0; told=""; gone=0
 
 if ! curl -s -m 2 $api/status >/dev/null; then
   echo "$(now) starting the bridge to $host"
@@ -54,9 +54,18 @@ fi
 while true; do
   state=$(curl -s -m 2 $api/status)
   if [[ -z $state ]]; then
-    echo "$(now) the bridge is gone"
-    finish 1
+    # A network that drops takes the bridge's answer with it for a moment; a bridge that died is started again.
+    (( gone == 0 )) && echo "$(now) the bridge does not answer, waiting"
+    gone=$((gone + 1))
+    if (( gone % 15 == 0 )) && ! pgrep -f "ps5rp.*daemon" >/dev/null; then
+      echo "$(now) starting the bridge again"
+      $rp --host $host --fps 60 daemon >/dev/null 2>&1 &
+      started=1
+    fi
+    sleep 2
+    continue
   fi
+  (( gone )) && { echo "$(now) the bridge answers again"; gone=0; }
   free=$(df -g $out | awk 'NR == 2 { print $4 }')
   if (( free < min_free_gb )); then
     echo "$(now) only $free GB left on the disk"

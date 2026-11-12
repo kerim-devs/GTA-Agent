@@ -69,7 +69,7 @@ def test_unknown_reaches_fallback_by_identity_and_returns_exact_answer():
         ("wifi-160", "vehicle_waypoint", "set_waypoint"),
         ("wifi-230", "vehicle_route", "drive_route"),
         ("wifi-245", "low_health_vehicle", "set_waypoint"),
-        ("wifi-485", "foot_explore", "look"),
+        ("wifi-485", "foot_explore", "walk_road"),
         ("wifi-536.761", "wanted_on_foot", "walk"),
         ("wifi-33.7221", "screen_reflex", "wait"),
         ("objects-071", "wanted_on_foot_vehicle", "enter_vehicle"),
@@ -296,3 +296,178 @@ def test_the_command_line_puts_the_rules_in_front_of_the_model(monkeypatch, choi
     head = calls[0]["head"]
     assert isinstance(head, MissionHead)
     assert behind in (type(head.fallback), type(head.fallback).__name__)
+
+
+# Objective steps P39 reconstructed from Kerim's recordings of 10 and 11 November (lab/take-out).
+STEPS = json.loads((CORPUS.parent / "take-out" / "cases.json").read_text())
+
+
+def step(recording, time):
+    case = next(c for c in STEPS if c["recording"] == recording and abs(c["sample_t"] - time) < 0.01)
+    return HeadRequest(**deepcopy(case["request"]))
+
+
+VAGOS = ("20261110-093238", 48.527)
+
+
+@pytest.mark.parametrize(
+    "recording, time",
+    [VAGOS, ("20261111-164039", 633.990), ("20261111-172549", 133.255), ("20261111-172549", 133.658)],
+)
+def test_on_foot_an_order_to_take_somebody_out_fights_the_red_blips(recording, time):
+    fallback = Fallback()
+    head = MissionHead(fallback)
+    answer = head.decide(step(recording, time))
+    assert head.last_rule == "take_out_fight"
+    assert [(call.name, call.args) for call in answer.plan] == [("fight", {"duration": 20, "cover": "no"})]
+    assert not fallback.requests
+
+
+@pytest.mark.parametrize(
+    "objective",
+    [
+        "Schalte dle Vagos aus.",
+        "Schalte die V8gos aus.",
+        "Schalte den Gai ti ie",
+        "Schalte den GafUI",
+        "Schalte den Gärtner aus.",
+        "Sch8lte die Vagos aus.",
+        "Scha1te die Ballas aus",
+        "SCHAITE DIE VAGOS AUS",
+    ],
+)
+def test_the_order_is_read_from_its_verb_through_misreadings(objective):
+    head = MissionHead(Fallback())
+    assert head.decide(replace(step(*VAGOS), objective=objective)).plan[0].name == "fight"
+    assert head.last_rule == "take_out_fight"
+
+
+@pytest.mark.parametrize(
+    "objective",
+    [
+        "",
+        "Begib dich zu der Autowaschanlage.",
+        "Bring das Auto zum Autohaus.",
+        "Sammle eine Waffe auf.",
+        "Steig auf das Motorrad",
+        "Schalte das Radio ein.",
+        "Schalte die Scheinwerfer an",
+        "Halte L1 gedrückt, um das Waffenrad aufzurufen.",
+        "Folge Lamar.",
+    ],
+)
+def test_other_objectives_with_red_on_the_map_still_go_to_the_model(objective):
+    fallback = Fallback()
+    value = replace(step(*VAGOS), objective=objective)
+    assert MissionHead(fallback).decide(value) is fallback.answer
+    assert fallback.requests == [value]
+
+
+@pytest.mark.parametrize("case", STEPS, ids=lambda c: f"{c['recording']}-{c['sample_t']:.3f}")
+def test_recorded_steps_without_the_order_decide_as_before(case):
+    head = MissionHead()
+    head.decide(HeadRequest(**deepcopy(case["request"])))
+    if head.last_rule != "take_out_fight":
+        assert head.last_rule == case["p39_rule"]
+    else:
+        assert case["request"]["objective"].startswith("Schalte")
+
+
+@pytest.mark.parametrize("stars", [1, 3])
+@pytest.mark.parametrize("car", [False, True])
+def test_with_stars_an_order_to_take_somebody_out_is_never_fought(stars, car):
+    value = replace(
+        step(*VAGOS),
+        hud={"wanted": stars, "health": 1, "screen": "game"},
+        objects=[{"kind": "car", "confidence": 0.9}] if car else [],
+    )
+    head = MissionHead(Fallback())
+    names = [call.name for call in head.decide(value).plan]
+    assert not {"fight", "melee", "punch", "shoot"} & set(names)
+    assert head.last_rule == ("wanted_on_foot_vehicle" if car else "wanted_on_foot")
+
+
+def test_low_health_gets_away_before_the_order_is_fought():
+    # Recorded: the first Vagos objective with a third of the health left.
+    head = MissionHead(Fallback())
+    assert head.decide(step("20261110-093238", 13.620)).plan[0].name == "walk"
+    assert head.last_rule == "low_health_on_foot"
+    unread = replace(
+        step(*VAGOS), hud={"wanted": 0, "health": None, "screen": "game"}, events=[{"kind": "low_health"}]
+    )
+    head.decide(unread)
+    assert head.last_rule == "low_health_on_foot"
+
+
+def test_without_a_red_in_range_the_order_walks_to_what_the_game_marks_or_asks_the_picture():
+    base = step(*VAGOS)
+    head = MissionHead(Fallback())
+    for color in ("yellow", "blue"):
+        marked = replace(
+            base, minimap={**base.minimap, "blips": [{"color": color, "x": 5.0, "y": 20.0, "border": False}]}
+        )
+        answer = head.decide(marked)
+        assert head.last_rule == "foot_target"
+        assert answer.plan[0].args["color"] == color
+    border = replace(
+        base, minimap={**base.minimap, "blips": [{"color": "red", "x": 0.0, "y": 60.0, "border": True}]}
+    )
+    nothing = replace(base, minimap={**base.minimap, "blips": []})
+    for value in (border, nothing):
+        fallback = Fallback()
+        assert MissionHead(fallback).decide(value) is fallback.answer
+
+
+def test_in_a_vehicle_the_order_leaves_the_route_rules_alone():
+    base = replace(step(*VAGOS), hud=CALM)
+    head = MissionHead(Fallback())
+    head.decide(replace(base, minimap={**base.minimap, "minimap": "tilted", "route": "yellow"}))
+    assert head.last_rule == "vehicle_route"
+    head.decide(replace(base, minimap={**base.minimap, "minimap": "tilted", "route": "none"}))
+    assert head.last_rule == "vehicle_waypoint"
+
+
+def test_a_failed_fight_is_not_repeated_at_once():
+    value = replace(
+        step(*VAGOS), last_skill={"name": "fight", "status": "failed", "reason": "combat-timeout"}
+    )
+    head = MissionHead(Fallback())
+    assert head.decide(value).plan[0].name != "fight"
+    assert head.last_rule == "failed_skill"
+
+
+def _on_foot_failure(name, reason):
+    return replace(
+        request("wifi-485"),
+        last_skill={"name": name, "status": "failed", "reason": reason},
+    )
+
+
+def test_unmarked_foot_heads_for_a_road():
+    head = MissionHead()
+    answer = head.decide(request("wifi-485"))
+    assert head.last_rule == "foot_explore"
+    assert [call.name for call in answer.plan] == ["walk_road"]
+
+
+def test_a_map_without_roads_looks_and_walks_as_before():
+    head = MissionHead()
+    answer = head.decide(_on_foot_failure("walk_road", "no-road"))
+    assert head.last_rule == "foot_explore_roadless"
+    assert [call.name for call in answer.plan] == ["look", "walk", "look", "walk"]
+
+
+@pytest.mark.parametrize("name", ["walk", "walk_road"])
+def test_walking_that_found_no_way_round_turns_about(name):
+    head = MissionHead()
+    answer = head.decide(_on_foot_failure(name, "stuck"))
+    assert head.last_rule == "foot_stuck"
+    assert [call.name for call in answer.plan] == ["look", "walk_road"]
+    assert answer.plan[0].args["angle"] == 180
+
+
+def test_a_blocked_walk_to_keeps_its_old_answer():
+    head = MissionHead()
+    answer = head.decide(_on_foot_failure("walk_to", "blocked"))
+    assert head.last_rule == "failed_skill"
+    assert [call.name for call in answer.plan] == ["walk"]

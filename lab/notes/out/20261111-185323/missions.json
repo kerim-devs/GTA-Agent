@@ -1,0 +1,222 @@
+{
+  "recording": "/Users/kerim/recordings/kerim/20261111-185323",
+  "missions": [
+    {
+      "start": 168.016,
+      "end": 234.0081,
+      "steps": [
+        {
+          "objective": "Begib dich zu dem Treffen bei der Recycling-Anlage.",
+          "start": 168.016,
+          "end": 234.0081,
+          "last": 174.0081,
+          "duration": 5.992,
+          "step_duration": 65.992,
+          "section_kinds": [
+            "drive",
+            "foot",
+            "unknown"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 65.992,
+            "seconds": {
+              "driving": 38.406,
+              "walking": 10.427,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 9.657,
+              "map_input": 0.0,
+              "vehicle_input": 0.136,
+              "neutral": 12.262
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 170.9398,
+            "route": "none",
+            "blips": [
+              {
+                "color": "yellow",
+                "x": 63.85,
+                "y": 87.24,
+                "border": true
+              }
+            ]
+          },
+          "incidents": [
+            {
+              "t": 169.301,
+              "class": "standstill",
+              "cause": "waiting"
+            },
+            {
+              "t": 197.599,
+              "class": "collision",
+              "cause": "unknown"
+            }
+          ],
+          "intent_class": "go_to",
+          "intent_wording": "begib dich",
+          "intent_target": "zu dem Treffen bei der Recycling-Anlage."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Begib dich zu dem Treffen bei der Recycling-Anlage.. Outcome: unknown."
+    },
+    {
+      "start": 677.5007,
+      "end": 745.0169,
+      "steps": [
+        {
+          "objective": "Kehr zurück zu Lamar und Stretch.",
+          "start": 677.5007,
+          "end": 745.0169,
+          "last": 685.0169,
+          "duration": 7.516,
+          "step_duration": 67.516,
+          "section_kinds": [
+            "foot"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 3,
+          "human": {
+            "observed_seconds": 67.516,
+            "seconds": {
+              "driving": 0.0,
+              "walking": 62.671,
+              "running": 16.165,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 12.665,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 3.027
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 680.4903,
+            "route": "none",
+            "blips": [
+              {
+                "color": "red",
+                "x": -37.61,
+                "y": -1.04,
+                "border": false
+              }
+            ]
+          },
+          "incidents": [],
+          "intent_class": "return_to",
+          "intent_wording": "kehr zurück",
+          "intent_target": "zu Lamar und Stretch."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Kehr zurück zu Lamar und Stretch.. Outcome: unknown."
+    },
+    {
+      "start": 774.5024,
+      "end": 841.0093,
+      "steps": [
+        {
+          "objective": "Kehr zurück zu Lamar und Stretch.",
+          "start": 774.5024,
+          "end": 841.0093,
+          "last": 781.0093,
+          "duration": 6.507,
+          "step_duration": 66.507,
+          "section_kinds": [
+            "drive",
+            "foot",
+            "unknown"
+          ],
+          "route": [],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 3,
+          "human": {
+            "observed_seconds": 66.507,
+            "seconds": {
+              "driving": 12.68,
+              "walking": 11.16,
+              "running": 2.928,
+              "aiming": 2.817,
+              "firing": 1.985,
+              "looking": 3.704,
+              "map_input": 0.022,
+              "vehicle_input": 0.0,
+              "neutral": 7.226
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 777.4855,
+            "route": "none",
+            "blips": [
+              {
+                "color": "blue",
+                "x": 39.17,
+                "y": 38.17,
+                "border": false
+              },
+              {
+                "color": "blue",
+                "x": 19.82,
+                "y": 29.18,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": 88.78,
+                "y": 68.56,
+                "border": true
+              },
+              {
+                "color": "red",
+                "x": 1.06,
+                "y": 14.34,
+                "border": false
+              },
+              {
+                "color": "red",
+                "x": -14.1,
+                "y": -26.7,
+                "border": true
+              }
+            ]
+          },
+          "incidents": [],
+          "intent_class": "return_to",
+          "intent_wording": "kehr zurück",
+          "intent_target": "zu Lamar und Stretch."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "silence",
+      "notes": "The game asks: Kehr zurück zu Lamar und Stretch.. Outcome: unknown."
+    }
+  ],
+  "unassigned_endings": [
+    {
+      "kind": "banner",
+      "text": "mission FehLgeschLagen",
+      "first": 123.0157,
+      "last": 126.0002,
+      "variants": {
+        "mission FehLgeschLagen": 7
+      }
+    }
+  ]
+}

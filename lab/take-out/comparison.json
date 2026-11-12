@@ -1,0 +1,182 @@
+[
+ {
+  "recording": "20261110-093238",
+  "time": 7.92,
+  "step": "Sammle eine Waffe auf.",
+  "objective": "",
+  "red": 1,
+  "old": "walk (moving_default)",
+  "new": "walk (moving_default)",
+  "with_step_objective": "walk (moving_default)"
+ },
+ {
+  "recording": "20261110-093238",
+  "time": 13.62,
+  "step": "Schalte die Vagos aus.",
+  "objective": "Schalte die Vagos aus..",
+  "red": 2,
+  "old": "walk (low_health_on_foot)",
+  "new": "walk (low_health_on_foot)",
+  "with_step_objective": null
+ },
+ {
+  "recording": "20261110-093238",
+  "time": 48.527,
+  "step": "Schalte die Vagos aus.",
+  "objective": "Schalte die Vagos aus.",
+  "red": 2,
+  "old": "walk (moving_default)",
+  "new": "fight (take_out_fight)",
+  "with_step_objective": null
+ },
+ {
+  "recording": "20261110-093238",
+  "time": 213.817,
+  "step": "Steig auf das Mororrad",
+  "objective": "",
+  "red": 0,
+  "old": "look (foot_explore)",
+  "new": "look (foot_explore)",
+  "with_step_objective": "walk (moving_default)"
+ },
+ {
+  "recording": "20261110-093238",
+  "time": 227.549,
+  "step": "Begib dich zu der Autowaschanlage",
+  "objective": "Begib dich zu der Autowaschanlage",
+  "red": 0,
+  "old": "drive_route (vehicle_route)",
+  "new": "drive_route (vehicle_route)",
+  "with_step_objective": null
+ },
+ {
+  "recording": "20261111-164039",
+  "time": 436.009,
+  "step": "Begib dich nach Vespucci Beach.",
+  "objective": "",
+  "red": 0,
+  "old": "walk_to (foot_target)",
+  "new": "walk_to (foot_target)",
+  "with_step_objective": "walk_to (foot_target)"
+ },
+ {
+  "recording": "20261111-164039",
+  "time": 437.229,
+  "step": "Begib dich nach Vesp",
+  "objective": "Begib dich nach Vesp",
+  "red": 0,
+  "old": "walk (moving_default)",
+  "new": "walk (moving_default)",
+  "with_step_objective": null
+ },
+ {
+  "recording": "20261111-164039",
+  "time": 440.496,
+  "step": "Begib dich nBch Vespucci Beach.",
+  "objective": "Begib dich nach Vespucci Beach.",
+  "red": 0,
+  "old": "drive_route (vehicle_route)",
+  "new": "drive_route (vehicle_route)",
+  "with_step_objective": null
+ },
+ {
+  "recording": "20261111-164039",
+  "time": 629.498,
+  "step": "Sammle elne Waffe auf.",
+  "objective": "",
+  "red": 2,
+  "old": "walk (moving_default)",
+  "new": "walk (moving_default)",
+  "with_step_objective": "walk (moving_default)"
+ },
+ {
+  "recording": "20261111-164039",
+  "time": 633.99,
+  "step": "Schalte dle Vagos aus.",
+  "objective": "Schalte die Vagos aus.",
+  "red": 2,
+  "old": "walk (moving_default)",
+  "new": "fight (take_out_fight)",
+  "with_step_objective": null
+ },
+ {
+  "recording": "20261111-164039",
+  "time": 695.84,
+  "step": "Schalte die V8gos aus.",
+  "objective": "",
+  "red": 2,
+  "old": "walk (moving_default)",
+  "new": "walk (moving_default)",
+  "with_step_objective": "fight (take_out_fight)"
+ },
+ {
+  "recording": "20261111-164039",
+  "time": 890.657,
+  "step": "Begib dich zu der Autowaschanlage.",
+  "objective": "Begib dich zu der Autowaschanlage.",
+  "red": 0,
+  "old": "drive_route (vehicle_route)",
+  "new": "drive_route (vehicle_route)",
+  "with_step_objective": null
+ },
+ {
+  "recording": "20261111-164039",
+  "time": 894.543,
+  "step": "Begib dich zu der Autowaschanlage.",
+  "objective": "Begib dich zu der Autowaschanlage.",
+  "red": 0,
+  "old": "drive_route (vehicle_route)",
+  "new": "drive_route (vehicle_route)",
+  "with_step_objective": null
+ },
+ {
+  "recording": "20261111-171046",
+  "time": 691.503,
+  "step": "Bring D zu Lamars Haus.",
+  "objective": "",
+  "red": 0,
+  "old": "drive_route (vehicle_route)",
+  "new": "drive_route (vehicle_route)",
+  "with_step_objective": "drive_route (vehicle_route)"
+ },
+ {
+  "recording": "20261111-172549",
+  "time": 133.255,
+  "step": "Schalte den GafUI",
+  "objective": "Schalte den GafUI",
+  "red": 1,
+  "old": "walk (moving_default)",
+  "new": "fight (take_out_fight)",
+  "with_step_objective": null
+ },
+ {
+  "recording": "20261111-172549",
+  "time": 133.658,
+  "step": "Schalte den Gartne",
+  "objective": "Schalte den Gartne",
+  "red": 1,
+  "old": "walk (moving_default)",
+  "new": "fight (take_out_fight)",
+  "with_step_objective": null
+ },
+ {
+  "recording": "20261111-172549",
+  "time": 136.993,
+  "step": "Schalte den Gai ti ie",
+  "objective": "",
+  "red": 1,
+  "old": "walk (moving_default)",
+  "new": "walk (moving_default)",
+  "with_step_objective": "fight (take_out_fight)"
+ },
+ {
+  "recording": "20261111-172549",
+  "time": 266.009,
+  "step": "Bring das Auto zum Autohaus.",
+  "objective": "Bring das Auto zum Autohaus.",
+  "red": 0,
+  "old": "walk (moving_default)",
+  "new": "walk (moving_default)",
+  "with_step_objective": null
+ }
+]

@@ -1,0 +1,217 @@
+[
+  {
+    "objective": "Schalte den Gartne",
+    "step_start": 133.005,
+    "sample_t": 135.9915,
+    "frame": 8095,
+    "request": {
+      "events": [],
+      "help": "Im Schleichrnodu3 v8rur8 der Bewégung weniger ￿TaUSchtr.",
+      "objective": "",
+      "subtitle": "Schalte d - riflartner JIJ j.",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 1.1681376379374058,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 8.71,
+            "y": 27.71,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 0.5,
+            "y": 9.5,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.6111111111111112,
+        "armour": 0.0,
+        "special": 0.9761904761904762,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "moving_default",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 3.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.177,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.0
+      }
+    },
+    "result": "model-delegated",
+    "intent_class": "take_out",
+    "intent_wording": "schalte",
+    "intent_target": "den Gartne"
+  },
+  {
+    "objective": "Hol das Auto zurück.",
+    "step_start": 206.0087,
+    "sample_t": 208.9918,
+    "frame": 12464,
+    "request": {
+      "events": [],
+      "help": "Vermeide es. di8 Bewohner zu 8laimièrèn.",
+      "objective": "Hol das Auto zurück.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 98.96993845330479,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 70.43,
+            "y": -20.81,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -8.95,
+            "y": 18.5,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -16.67,
+            "y": -3.92,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.6222222222222222,
+        "armour": 0.0,
+        "special": null,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "moving_default",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 3.0
+      }
+    },
+    "result": "model-delegated",
+    "intent_class": "steal",
+    "intent_wording": "hol",
+    "intent_target": "das Auto zurück."
+  },
+  {
+    "objective": "Bring das Auto zum Autohaus.",
+    "step_start": 263.0124,
+    "sample_t": 266.0087,
+    "frame": 15875,
+    "request": {
+      "events": [],
+      "help": "LillLIIII k",
+      "objective": "Bring das Auto zum Autohaus.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -35.353802686646304,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.6111111111111112,
+        "armour": null,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "moving_default",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 1.621,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 1.379
+      }
+    },
+    "result": "model-delegated",
+    "intent_class": "bring",
+    "intent_wording": "bring",
+    "intent_target": "das Auto zum Autohaus."
+  }
+]

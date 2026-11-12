@@ -58,3 +58,27 @@ lab/screens/review/
 
 # drawn from the recordings by lab/judge/sample.py, 36 MB
 lab/judge/sample/
+
+# rebuilt by lab/sections/contact.py, 30 MB
+lab/sections/contact/
+
+# the judge answers of lab/sections, rebuilt by tools/sections.py --judge, about 100 KB each
+lab/sections/out/*/judge.json
+lab/sections/judged/*/judge.json
+# rebuilt by lab/notes/contact_sheets.py, 44 MB; raw readings rebuilt by pilot/tools/texts.py
+lab/notes/contact-*/
+lab/notes/out/*/readings.jsonl
+
+# HUD and minimap readings at 10 Hz, rebuilt by pilot/tools/incidents.py, 17 MB; contact sheets of
+# the incident check, rebuilt by lab/notes/incident_sheets.py from incidents-check/*.jsonl
+lab/notes/out/*/hud.jsonl
+lab/notes/incidents-check/sheets/
+lab/notes/incidents-check/overview/
+# action labels and their index, rebuilt by lab/actions/process-new.sh, about 15 MB; summary.md stays
+lab/actions/out/*
+!lab/actions/out/summary.md
+# contact sheets rebuilt by lab/actions/sheets.py
+lab/actions/sheets/
+# rebuilt by pilot/tools/human_drive.py, 110 MB
+lab/human-drive/out/*/drive.json
+lab/human-drive/out/*/readings-v3.jsonl

@@ -1,0 +1,71 @@
+{
+  "20261111-164039": {
+    "readers": {
+      "true_sections_ge_3s": 19,
+      "kind_found": 13,
+      "kind_and_bounds_within_2s": 10,
+      "false_sections": 5,
+      "false_per_5_minutes": 1.663893510815308,
+      "unknown_seconds_on_known_truth": 60.743399999999895,
+      "minutes": {
+        "foot": 9.32332,
+        "loading": 0.38600666666666683,
+        "unknown": 1.0123899999999981,
+        "menu": 0.10292499999999999,
+        "drive": 4.113266666666667,
+        "banner": 0.0867400000000013
+      }
+    },
+    "judge": {
+      "true_sections_ge_3s": 19,
+      "kind_found": 14,
+      "kind_and_bounds_within_2s": 8,
+      "false_sections": 5,
+      "false_per_5_minutes": 1.663893510815308,
+      "unknown_seconds_on_known_truth": 1.907699999999977,
+      "minutes": {
+        "foot": 9.504134999999998,
+        "menu": 0.16292833333333312,
+        "loading": 0.38600666666666683,
+        "drive": 4.820011666666668,
+        "cutscene": 0.0330316666666666,
+        "unknown": 0.031794999999999615,
+        "banner": 0.0867400000000013
+      }
+    }
+  },
+  "20261110-093238": {
+    "readers": {
+      "true_sections_ge_3s": 23,
+      "kind_found": 18,
+      "kind_and_bounds_within_2s": 7,
+      "false_sections": 4,
+      "false_per_5_minutes": 1.724385687598793,
+      "unknown_seconds_on_known_truth": 38.75610000000002,
+      "minutes": {
+        "unknown": 0.6979683333333336,
+        "foot": 6.36729,
+        "banner": 0.22458000000000017,
+        "loading": 0.13192833333333276,
+        "menu": 0.5924150000000007,
+        "drive": 3.5834283333333334
+      }
+    },
+    "judge": {
+      "true_sections_ge_3s": 23,
+      "kind_found": 20,
+      "kind_and_bounds_within_2s": 8,
+      "false_sections": 2,
+      "false_per_5_minutes": 0.8621928437993965,
+      "unknown_seconds_on_known_truth": 5.0168,
+      "minutes": {
+        "unknown": 0.084085,
+        "foot": 5.889141666666667,
+        "drive": 4.783561666666667,
+        "banner": 0.22458000000000017,
+        "loading": 0.1484700000000005,
+        "menu": 0.4677716666666669
+      }
+    }
+  }
+}

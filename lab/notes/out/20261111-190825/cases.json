@@ -1,0 +1,716 @@
+[
+  {
+    "objective": "Begib dich wieder zu Franklins Haus.",
+    "step_start": 268.1614,
+    "sample_t": 271.158,
+    "frame": 16165,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Begib dich wieder zu Franklins Haus.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 3.20761667092731,
+        "far_bearing": -15.346840862724648,
+        "arrow": -0.13946035350122088,
+        "corrupt": false,
+        "confidence": 0.954,
+        "path": [
+          [
+            -2.0,
+            13.0
+          ],
+          [
+            -2.0,
+            19.0
+          ],
+          [
+            0.0,
+            25.0
+          ],
+          [
+            2.0,
+            30.0
+          ],
+          [
+            4.0,
+            36.0
+          ],
+          [
+            3.0,
+            43.0
+          ],
+          [
+            -3.0,
+            48.0
+          ],
+          [
+            -10.0,
+            54.0
+          ],
+          [
+            -16.0,
+            57.0
+          ],
+          [
+            -23.0,
+            60.0
+          ],
+          [
+            -29.0,
+            61.0
+          ],
+          [
+            -34.0,
+            62.0
+          ],
+          [
+            -39.0,
+            63.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "yellow",
+            "x": -86.76,
+            "y": 56.78,
+            "border": true
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9222222222222223,
+        "armour": null,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_route",
+    "first_skill": "drive_route",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 2.537,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.463
+      }
+    },
+    "result": "matching",
+    "intent_class": "return_to",
+    "intent_wording": "begib dich wieder",
+    "intent_target": "zu Franklins Haus."
+  },
+  {
+    "objective": "Steig in den Pickup.",
+    "step_start": 519.516,
+    "sample_t": 519.7041,
+    "frame": 29809,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Steig in den Pickup.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -15.23934683980724,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": -0.87,
+            "y": 19.42,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": 0.023809523809523808,
+        "special": null,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "moving_default",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 0.298,
+      "seconds": {
+        "driving": 0.098,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.011,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.188
+      }
+    },
+    "result": "model-delegated",
+    "intent_class": "enter_vehicle",
+    "intent_wording": "steig",
+    "intent_target": "in den Pickup."
+  },
+  {
+    "objective": "Folge dem Tennislehrer.",
+    "step_start": 520.0019,
+    "sample_t": 522.9893,
+    "frame": 30006,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Folge dem Tennislehrer.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 7.0260533602427415,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": 26.22,
+            "y": -0.12,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": 0.0,
+        "special": null,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_waypoint",
+    "first_skill": "set_waypoint",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 2.885,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.94,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.115
+      }
+    },
+    "result": "different",
+    "intent_class": "follow",
+    "intent_wording": "folge",
+    "intent_target": "dem Tennislehrer."
+  },
+  {
+    "objective": "Fahr zum Canyon.",
+    "step_start": 574.5058,
+    "sample_t": 577.4931,
+    "frame": 33270,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Fahr zum Canyon.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 46.374834738628884,
+        "far_bearing": 68.17306910682149,
+        "arrow": 7.760446923629559,
+        "corrupt": false,
+        "confidence": 1.0,
+        "path": [
+          [
+            9.0,
+            11.0
+          ],
+          [
+            14.0,
+            16.0
+          ],
+          [
+            21.0,
+            20.0
+          ],
+          [
+            28.0,
+            21.0
+          ],
+          [
+            33.0,
+            21.0
+          ],
+          [
+            39.0,
+            22.0
+          ],
+          [
+            45.0,
+            22.0
+          ],
+          [
+            51.0,
+            22.0
+          ],
+          [
+            58.0,
+            23.0
+          ],
+          [
+            63.0,
+            24.0
+          ],
+          [
+            70.0,
+            24.0
+          ],
+          [
+            75.0,
+            25.0
+          ],
+          [
+            81.0,
+            27.0
+          ],
+          [
+            87.0,
+            31.0
+          ],
+          [
+            90.0,
+            36.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": null,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_route",
+    "first_skill": "drive_route",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 3.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.0
+      }
+    },
+    "result": "matching",
+    "intent_class": "go_to",
+    "intent_wording": "fahr",
+    "intent_target": "zum Canyon."
+  },
+  {
+    "objective": "Steig in den Pickup.",
+    "step_start": 685.0066,
+    "sample_t": 687.9954,
+    "frame": 39869,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 0.03498572627680119,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": null,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_waypoint",
+    "first_skill": "set_waypoint",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 2.009,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.991
+      }
+    },
+    "result": "different",
+    "intent_class": "enter_vehicle",
+    "intent_wording": "steig",
+    "intent_target": "in den Pickup."
+  },
+  {
+    "objective": "Kehr zurück zu Michaels Haus.",
+    "step_start": 752.583,
+    "sample_t": 755.5676,
+    "frame": 43917,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Kehr zurück zu Michaels Haus.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 41.76030018865225,
+        "far_bearing": 56.63512696513089,
+        "arrow": 2.447198398911098,
+        "corrupt": false,
+        "confidence": 1.0,
+        "path": [
+          [
+            6.0,
+            12.0
+          ],
+          [
+            11.0,
+            18.0
+          ],
+          [
+            18.0,
+            21.0
+          ],
+          [
+            24.0,
+            23.0
+          ],
+          [
+            30.0,
+            25.0
+          ],
+          [
+            36.0,
+            27.0
+          ],
+          [
+            43.0,
+            29.0
+          ],
+          [
+            49.0,
+            32.0
+          ],
+          [
+            54.0,
+            38.0
+          ],
+          [
+            55.0,
+            46.0
+          ],
+          [
+            61.0,
+            51.0
+          ],
+          [
+            68.0,
+            54.0
+          ],
+          [
+            75.0,
+            53.0
+          ],
+          [
+            80.0,
+            50.0
+          ],
+          [
+            86.0,
+            48.0
+          ],
+          [
+            90.0,
+            47.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "yellow",
+            "x": 89.26,
+            "y": 29.11,
+            "border": true
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": 0.42857142857142855,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_route",
+    "first_skill": "drive_route",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 2.308,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.692
+      }
+    },
+    "result": "matching",
+    "intent_class": "return_to",
+    "intent_wording": "kehr zurück",
+    "intent_target": "zu Michaels Haus."
+  },
+  {
+    "objective": "Kehr zurück zu Michaels Haus.",
+    "step_start": 840.0054,
+    "sample_t": 843.0051,
+    "frame": 49152,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Kehr zurück zu Mlchaels Haus.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": 11.234444081125266,
+        "far_bearing": 28.88658077071175,
+        "arrow": 1.0285727008830463,
+        "corrupt": false,
+        "confidence": 1.0,
+        "path": [
+          [
+            4.0,
+            12.0
+          ],
+          [
+            4.0,
+            18.0
+          ],
+          [
+            4.0,
+            23.0
+          ],
+          [
+            5.0,
+            30.0
+          ],
+          [
+            7.0,
+            35.0
+          ],
+          [
+            10.0,
+            42.0
+          ],
+          [
+            16.0,
+            47.0
+          ],
+          [
+            23.0,
+            51.0
+          ],
+          [
+            30.0,
+            52.0
+          ],
+          [
+            35.0,
+            53.0
+          ],
+          [
+            42.0,
+            53.0
+          ],
+          [
+            47.0,
+            54.0
+          ],
+          [
+            53.0,
+            54.0
+          ],
+          [
+            59.0,
+            55.0
+          ],
+          [
+            66.0,
+            55.0
+          ],
+          [
+            72.0,
+            58.0
+          ],
+          [
+            77.0,
+            61.0
+          ],
+          [
+            83.0,
+            65.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "yellow",
+            "x": 89.42,
+            "y": 18.53,
+            "border": true
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_route",
+    "first_skill": "drive_route",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 3.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.0
+      }
+    },
+    "result": "matching",
+    "intent_class": "return_to",
+    "intent_wording": "kehr zurück",
+    "intent_target": "zu Michaels Haus."
+  }
+]

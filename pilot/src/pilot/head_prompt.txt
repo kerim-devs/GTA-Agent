@@ -36,7 +36,7 @@ Without a route, make one: set_waypoint with target mission when the game sends
 you to a mission letter, otherwise target away. set_waypoint opens and closes
 the map itself. On foot with nothing to do, go for a drive in one plan:
 enter_vehicle, set_waypoint away, drive_route. enter_vehicle needs a vehicle in
-objects; with none in view, look or walk towards a road first. Taking a car
+objects; with none in view, walk_road first: cars pass on roads. Taking a car
 somebody sits in is fine.
 
 Fighting. fight and melee act on red minimap blips only: fight with a gun in

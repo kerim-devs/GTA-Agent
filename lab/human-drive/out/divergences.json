@@ -1,0 +1,1972 @@
+[
+  {
+    "rank": 1,
+    "recording": "/Users/kerim/recordings/kerim/20261111-171046",
+    "t": 769.0593,
+    "frame": 45842,
+    "difference": 2.0,
+    "hand": {
+      "t": 768.6663,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -1.0,
+        0.16
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "l2": 0.0,
+      "r2": 1.0
+    },
+    "command": {
+      "steer": 1.0,
+      "throttle": 0.049499999999999995,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 124.23928339854355,
+      "far_bearing": 120.1243179983612,
+      "arrow": -20.82196407991978,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+        [
+          13.0,
+          -5.0
+        ],
+        [
+          19.0,
+          -10.0
+        ],
+        [
+          25.0,
+          -16.0
+        ],
+        [
+          31.0,
+          -19.0
+        ],
+        [
+          37.0,
+          -22.0
+        ],
+        [
+          41.0,
+          -23.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": 88.76,
+          "y": -11.1,
+          "border": true
+        }
+      ]
+    },
+    "sheet": "contact-01.jpg"
+  },
+  {
+    "rank": 2,
+    "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+    "t": 45.903,
+    "frame": 2729,
+    "difference": 2.0,
+    "hand": {
+      "t": 45.0339,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -1.0,
+        0.18
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "l2": 1.0,
+      "r2": 0.0
+    },
+    "command": {
+      "steer": 0.9999999999999999,
+      "throttle": 0,
+      "brake": 0.7,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -34.66191095268631,
+      "far_bearing": -34.028721487764166,
+      "arrow": -150.18246765228218,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+        [
+          -6.0,
+          13.0
+        ],
+        [
+          -10.0,
+          18.0
+        ],
+        [
+          -14.0,
+          24.0
+        ],
+        [
+          -19.0,
+          31.0
+        ],
+        [
+          -24.0,
+          37.0
+        ],
+        [
+          -27.0,
+          43.0
+        ],
+        [
+          -32.0,
+          49.0
+        ],
+        [
+          -36.0,
+          54.0
+        ],
+        [
+          -41.0,
+          61.0
+        ],
+        [
+          -47.0,
+          67.0
+        ],
+        [
+          -52.0,
+          72.0
+        ],
+        [
+          -60.0,
+          77.0
+        ],
+        [
+          -65.0,
+          79.0
+        ],
+        [
+          -73.0,
+          83.0
+        ],
+        [
+          -77.0,
+          85.0
+        ]
+      ],
+      "gps_distance": 1600,
+      "gps_arrow": null,
+      "gps_speed": 21.35324007674895,
+      "gps_time": 44.7681,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": 30.75,
+          "y": 87.23,
+          "border": true
+        }
+      ]
+    },
+    "sheet": "contact-01.jpg"
+  },
+  {
+    "rank": 3,
+    "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+    "t": 340.4091,
+    "frame": 20322,
+    "difference": 1.9999999966632749,
+    "hand": {
+      "t": 339.9681,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        1.0,
+        0.25
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "l2": 1.0,
+      "r2": 0.0
+    },
+    "command": {
+      "steer": -0.9999999966632749,
+      "throttle": 0,
+      "brake": 0.22437693162475883,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -38.736509385665464,
+      "far_bearing": -56.5751888173962,
+      "arrow": 96.45331268486342,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+        [
+          1.0,
+          12.0
+        ],
+        [
+          -5.0,
+          16.0
+        ],
+        [
+          -12.0,
+          18.0
+        ],
+        [
+          -19.0,
+          21.0
+        ],
+        [
+          -25.0,
+          23.0
+        ],
+        [
+          -31.0,
+          25.0
+        ],
+        [
+          -37.0,
+          28.0
+        ],
+        [
+          -42.0,
+          30.0
+        ],
+        [
+          -49.0,
+          32.0
+        ],
+        [
+          -55.0,
+          34.0
+        ],
+        [
+          -61.0,
+          36.0
+        ],
+        [
+          -66.0,
+          37.0
+        ],
+        [
+          -72.0,
+          39.0
+        ],
+        [
+          -79.0,
+          41.0
+        ],
+        [
+          -84.0,
+          42.0
+        ],
+        [
+          -88.0,
+          47.0
+        ],
+        [
+          -87.0,
+          54.0
+        ]
+      ],
+      "gps_distance": 373.0,
+      "gps_arrow": null,
+      "gps_speed": 8.321160014980302,
+      "gps_time": 340.2111,
+      "blips": []
+    },
+    "sheet": "contact-01.jpg"
+  },
+  {
+    "rank": 4,
+    "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+    "t": 309.2774,
+    "frame": 18456,
+    "difference": 1.9999947331209322,
+    "hand": {
+      "t": 308.6515,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -1.0,
+        0.16
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "l2": 1.0,
+      "r2": 0.0
+    },
+    "command": {
+      "steer": 0.9999947331209322,
+      "throttle": 0.049499999999999995,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 61.13668667980302,
+      "far_bearing": 64.44424940020448,
+      "arrow": -32.827976514006025,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [
+        [
+          12.0,
+          7.0
+        ],
+        [
+          17.0,
+          9.0
+        ],
+        [
+          23.0,
+          13.0
+        ],
+        [
+          30.0,
+          15.0
+        ],
+        [
+          35.0,
+          17.0
+        ],
+        [
+          41.0,
+          20.0
+        ],
+        [
+          48.0,
+          22.0
+        ],
+        [
+          54.0,
+          25.0
+        ],
+        [
+          60.0,
+          27.0
+        ],
+        [
+          66.0,
+          30.0
+        ],
+        [
+          71.0,
+          32.0
+        ],
+        [
+          77.0,
+          34.0
+        ],
+        [
+          84.0,
+          37.0
+        ],
+        [
+          89.0,
+          39.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": 54.65,
+          "y": 87.45,
+          "border": true
+        }
+      ]
+    },
+    "sheet": "contact-01.jpg"
+  },
+  {
+    "rank": 5,
+    "recording": "/Users/kerim/recordings/kerim/20261111-171046",
+    "t": 757.9034,
+    "frame": 45178,
+    "difference": 1.999983371067462,
+    "hand": {
+      "t": 756.7277,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -1.0,
+        0.22
+      ],
+      "right": [
+        -1.0,
+        0.0
+      ],
+      "l2": 0.0,
+      "r2": 1.0
+    },
+    "command": {
+      "steer": 0.999983371067462,
+      "throttle": 0.049499999999999995,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 136.1017063620976,
+      "far_bearing": 133.88399005386253,
+      "arrow": 34.212441335879106,
+      "corrupt": false,
+      "confidence": 0.878,
+      "path": [
+        [
+          9.0,
+          -11.0
+        ],
+        [
+          14.0,
+          -16.0
+        ],
+        [
+          20.0,
+          -21.0
+        ],
+        [
+          26.0,
+          -22.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "sheet": "contact-02.jpg"
+  },
+  {
+    "rank": 6,
+    "recording": "/Users/kerim/recordings/kerim/20261111-165543",
+    "t": 0.6491,
+    "frame": 39,
+    "difference": 1.9996120313013335,
+    "hand": {
+      "t": 0.3792,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        1.0,
+        0.0
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "l2": 0.0,
+      "r2": 1.0
+    },
+    "command": {
+      "steer": -0.9996120313013335,
+      "throttle": 0.049499999999999995,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -13.93249337398333,
+      "far_bearing": -7.410718817817419,
+      "arrow": 10.293976822908832,
+      "corrupt": true,
+      "confidence": 0.35,
+      "path": [
+        [
+          -10.0,
+          9.0
+        ],
+        [
+          -9.0,
+          15.0
+        ],
+        [
+          -8.0,
+          22.0
+        ],
+        [
+          -7.0,
+          27.0
+        ],
+        [
+          -7.0,
+          34.0
+        ],
+        [
+          -8.0,
+          39.0
+        ],
+        [
+          -7.0,
+          46.0
+        ],
+        [
+          -7.0,
+          52.0
+        ],
+        [
+          -7.0,
+          57.0
+        ],
+        [
+          -7.0,
+          64.0
+        ],
+        [
+          -7.0,
+          69.0
+        ],
+        [
+          -7.0,
+          76.0
+        ],
+        [
+          -7.0,
+          82.0
+        ],
+        [
+          -6.0,
+          86.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "sheet": "contact-02.jpg"
+  },
+  {
+    "rank": 7,
+    "recording": "/Users/kerim/recordings/kerim/20261111-164039",
+    "t": 506.9475,
+    "frame": 29229,
+    "difference": 1.9899961035571665,
+    "hand": {
+      "t": 506.5612,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -0.99,
+        -0.3
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "l2": 1.0,
+      "r2": 0.0
+    },
+    "command": {
+      "steer": 0.9999961035571666,
+      "throttle": 0.049499999999999995,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -27.442303950934612,
+      "far_bearing": -27.99651912358557,
+      "arrow": -117.59862874276973,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+        [
+          -7.0,
+          11.0
+        ],
+        [
+          -9.0,
+          17.0
+        ],
+        [
+          -12.0,
+          23.0
+        ],
+        [
+          -15.0,
+          29.0
+        ],
+        [
+          -18.0,
+          36.0
+        ],
+        [
+          -22.0,
+          42.0
+        ],
+        [
+          -25.0,
+          47.0
+        ],
+        [
+          -28.0,
+          53.0
+        ],
+        [
+          -31.0,
+          60.0
+        ],
+        [
+          -34.0,
+          65.0
+        ],
+        [
+          -37.0,
+          72.0
+        ],
+        [
+          -40.0,
+          77.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": -87.36,
+          "y": 87.36,
+          "border": true
+        }
+      ]
+    },
+    "sheet": "contact-02.jpg"
+  },
+  {
+    "rank": 8,
+    "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+    "t": 95.8358,
+    "frame": 5694,
+    "difference": 1.979999964660086,
+    "hand": {
+      "t": 95.0808,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -0.98,
+        0.36
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "l2": 1.0,
+      "r2": 0.0
+    },
+    "command": {
+      "steer": 0.9999999646600861,
+      "throttle": 0,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 9.115289174660925,
+      "far_bearing": 1.4320961841646465,
+      "arrow": -13.134424770311398,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+        [
+          5.0,
+          11.0
+        ],
+        [
+          4.0,
+          17.0
+        ],
+        [
+          4.0,
+          23.0
+        ],
+        [
+          4.0,
+          29.0
+        ],
+        [
+          4.0,
+          35.0
+        ],
+        [
+          3.0,
+          41.0
+        ],
+        [
+          3.0,
+          46.0
+        ],
+        [
+          2.0,
+          53.0
+        ],
+        [
+          1.0,
+          59.0
+        ],
+        [
+          2.0,
+          64.0
+        ],
+        [
+          2.0,
+          71.0
+        ],
+        [
+          2.0,
+          77.0
+        ],
+        [
+          4.0,
+          82.0
+        ],
+        [
+          9.0,
+          87.0
+        ]
+      ],
+      "gps_distance": 453.0,
+      "gps_arrow": "right",
+      "gps_speed": 14.71246205772116,
+      "gps_time": 95.6022,
+      "blips": []
+    },
+    "sheet": "contact-02.jpg"
+  },
+  {
+    "rank": 9,
+    "recording": "/Users/kerim/recordings/kerim/20261111-165543",
+    "t": 456.248,
+    "frame": 27275,
+    "difference": 1.9668517958701954,
+    "hand": {
+      "t": 455.9162,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -1.0,
+        0.18
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "l2": 0.0,
+      "r2": 1.0
+    },
+    "command": {
+      "steer": 0.9668517958701954,
+      "throttle": 0,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -37.40535663140855,
+      "far_bearing": -61.977218152259354,
+      "arrow": -6.077863092916687,
+      "corrupt": false,
+      "confidence": 0.997,
+      "path": [
+        [
+          10.0,
+          8.0
+        ],
+        [
+          3.0,
+          14.0
+        ],
+        [
+          -4.0,
+          18.0
+        ],
+        [
+          -10.0,
+          20.0
+        ],
+        [
+          -17.0,
+          22.0
+        ],
+        [
+          -22.0,
+          23.0
+        ],
+        [
+          -29.0,
+          24.0
+        ],
+        [
+          -35.0,
+          24.0
+        ],
+        [
+          -41.0,
+          25.0
+        ],
+        [
+          -47.0,
+          26.0
+        ],
+        [
+          -53.0,
+          28.0
+        ],
+        [
+          -59.0,
+          29.0
+        ],
+        [
+          -65.0,
+          30.0
+        ],
+        [
+          -70.0,
+          31.0
+        ],
+        [
+          -77.0,
+          32.0
+        ],
+        [
+          -83.0,
+          34.0
+        ],
+        [
+          -87.0,
+          34.0
+        ]
+      ],
+      "gps_distance": 405.0,
+      "gps_arrow": null,
+      "gps_speed": 24.987610939429732,
+      "gps_time": 455.3799,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": -86.81,
+          "y": 56.5,
+          "border": true
+        }
+      ]
+    },
+    "sheet": "contact-03.jpg"
+  },
+  {
+    "rank": 10,
+    "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+    "t": 34.9412,
+    "frame": 2077,
+    "difference": 1.9167388838638066,
+    "hand": {
+      "t": 34.4454,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -1.0,
+        0.18
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "l2": 0.0,
+      "r2": 0.0
+    },
+    "command": {
+      "steer": 0.9167388838638065,
+      "throttle": 0.049499999999999995,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 84.60370771700376,
+      "far_bearing": 89.52649194126508,
+      "arrow": -17.445766347859944,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+        [
+          12.0,
+          5.0
+        ],
+        [
+          17.0,
+          5.0
+        ],
+        [
+          23.0,
+          4.0
+        ],
+        [
+          30.0,
+          3.0
+        ],
+        [
+          35.0,
+          3.0
+        ],
+        [
+          41.0,
+          3.0
+        ],
+        [
+          47.0,
+          3.0
+        ],
+        [
+          53.0,
+          2.0
+        ],
+        [
+          59.0,
+          1.0
+        ],
+        [
+          65.0,
+          1.0
+        ],
+        [
+          71.0,
+          1.0
+        ],
+        [
+          78.0,
+          -1.0
+        ],
+        [
+          83.0,
+          -1.0
+        ],
+        [
+          88.0,
+          -2.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": 88.86,
+          "y": 82.12,
+          "border": true
+        }
+      ]
+    },
+    "sheet": "contact-03.jpg"
+  },
+  {
+    "rank": 11,
+    "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+    "t": 30.0703,
+    "frame": 1793,
+    "difference": 1.9033073031826238,
+    "hand": {
+      "t": 29.6277,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -1.0,
+        0.27
+      ],
+      "right": [
+        -0.96,
+        0.27
+      ],
+      "l2": 1.0,
+      "r2": 0.0
+    },
+    "command": {
+      "steer": 0.9033073031826239,
+      "throttle": 0.049499999999999995,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 67.77818867015097,
+      "far_bearing": 88.57973445360095,
+      "arrow": -80.40776217612353,
+      "corrupt": false,
+      "confidence": 0.802,
+      "path": [
+        [
+          13.0,
+          5.0
+        ],
+        [
+          18.0,
+          11.0
+        ],
+        [
+          25.0,
+          11.0
+        ],
+        [
+          31.0,
+          10.0
+        ],
+        [
+          37.0,
+          7.0
+        ],
+        [
+          43.0,
+          6.0
+        ],
+        [
+          49.0,
+          4.0
+        ],
+        [
+          56.0,
+          3.0
+        ],
+        [
+          61.0,
+          2.0
+        ],
+        [
+          67.0,
+          -0.0
+        ],
+        [
+          73.0,
+          -2.0
+        ],
+        [
+          79.0,
+          -4.0
+        ],
+        [
+          85.0,
+          -7.0
+        ],
+        [
+          89.0,
+          -7.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": 89.41,
+          "y": 52.51,
+          "border": true
+        }
+      ]
+    },
+    "sheet": "contact-03.jpg"
+  },
+  {
+    "rank": 12,
+    "recording": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+    "t": 402.5352,
+    "frame": 8528,
+    "difference": 1.8966987586302133,
+    "hand": {
+      "t": 401.7319,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -1.0,
+        0.0
+      ],
+      "right": [
+        0.08,
+        0.0
+      ],
+      "l2": 0.0,
+      "r2": 0.0
+    },
+    "command": {
+      "steer": 0.8966987586302133,
+      "throttle": 0.049499999999999995,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "purple",
+      "bearing": -41.56636989162853,
+      "far_bearing": -13.76918102680261,
+      "arrow": -6.097598266591149,
+      "corrupt": false,
+      "confidence": 0.905,
+      "path": [
+        [
+          9.0,
+          7.0
+        ],
+        [
+          0.0,
+          13.0
+        ],
+        [
+          -6.0,
+          14.0
+        ],
+        [
+          -12.0,
+          17.0
+        ],
+        [
+          -19.0,
+          21.0
+        ],
+        [
+          -21.0,
+          28.0
+        ],
+        [
+          -13.0,
+          32.0
+        ],
+        [
+          -8.0,
+          33.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "sheet": "contact-03.jpg"
+  },
+  {
+    "rank": 13,
+    "recording": "/Users/kerim/recordings/kerim/20261111-164039",
+    "t": 388.5786,
+    "frame": 22171,
+    "difference": 1.890530394699252,
+    "hand": {
+      "t": 387.9067,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -1.0,
+        0.0
+      ],
+      "right": [
+        0.0,
+        -0.11
+      ],
+      "l2": 1.0,
+      "r2": 1.0
+    },
+    "command": {
+      "steer": 0.8905303946992519,
+      "throttle": 0.049499999999999995,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "purple",
+      "bearing": 36.76340044481858,
+      "far_bearing": 18.317298653571065,
+      "arrow": 53.33681661011596,
+      "corrupt": false,
+      "confidence": 0.974,
+      "path": [
+        [
+          12.0,
+          7.0
+        ],
+        [
+          14.0,
+          14.0
+        ],
+        [
+          15.0,
+          21.0
+        ],
+        [
+          16.0,
+          26.0
+        ],
+        [
+          17.0,
+          33.0
+        ],
+        [
+          18.0,
+          38.0
+        ],
+        [
+          19.0,
+          44.0
+        ],
+        [
+          20.0,
+          50.0
+        ],
+        [
+          17.0,
+          57.0
+        ],
+        [
+          9.0,
+          58.0
+        ],
+        [
+          3.0,
+          58.0
+        ],
+        [
+          -3.0,
+          58.0
+        ],
+        [
+          -9.0,
+          58.0
+        ],
+        [
+          -15.0,
+          57.0
+        ],
+        [
+          -21.0,
+          53.0
+        ],
+        [
+          -23.0,
+          46.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "sheet": "contact-04.jpg"
+  },
+  {
+    "rank": 14,
+    "recording": "/Users/kerim/recordings/kerim/20261111-165543",
+    "t": 39.3701,
+    "frame": 2328,
+    "difference": 1.8836094771518668,
+    "hand": {
+      "t": 39.1252,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -1.0,
+        0.0
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "l2": 0.0,
+      "r2": 1.0
+    },
+    "command": {
+      "steer": 0.8836094771518668,
+      "throttle": 0,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -19.968136365600742,
+      "far_bearing": -37.37185033141929,
+      "arrow": -2.0471909881263173,
+      "corrupt": false,
+      "confidence": 0.829,
+      "path": [
+        [
+          7.0,
+          12.0
+        ],
+        [
+          1.0,
+          19.0
+        ],
+        [
+          -5.0,
+          24.0
+        ],
+        [
+          -12.0,
+          30.0
+        ],
+        [
+          -18.0,
+          34.0
+        ],
+        [
+          -24.0,
+          39.0
+        ],
+        [
+          -30.0,
+          42.0
+        ],
+        [
+          -37.0,
+          47.0
+        ],
+        [
+          -43.0,
+          50.0
+        ],
+        [
+          -49.0,
+          54.0
+        ],
+        [
+          -54.0,
+          57.0
+        ],
+        [
+          -61.0,
+          60.0
+        ],
+        [
+          -66.0,
+          61.0
+        ],
+        [
+          -72.0,
+          64.0
+        ],
+        [
+          -79.0,
+          65.0
+        ],
+        [
+          -84.0,
+          68.0
+        ]
+      ],
+      "gps_distance": 778.0,
+      "gps_arrow": "left",
+      "gps_speed": 20.24818537189402,
+      "gps_time": 39.1367,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": -64.12,
+          "y": 87.52,
+          "border": true
+        }
+      ]
+    },
+    "sheet": "contact-04.jpg"
+  },
+  {
+    "rank": 15,
+    "recording": "/Users/kerim/recordings/kerim/20261111-164039",
+    "t": 522.5117,
+    "frame": 30149,
+    "difference": 1.7775822415276479,
+    "hand": {
+      "t": 521.8891,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -1.0,
+        0.22
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "l2": 0.0,
+      "r2": 0.0
+    },
+    "command": {
+      "steer": 0.777582241527648,
+      "throttle": 0,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -34.516823448631044,
+      "far_bearing": -27.508459610018072,
+      "arrow": -12.65793604065243,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+        [
+          1.0,
+          12.0
+        ],
+        [
+          -6.0,
+          16.0
+        ],
+        [
+          -13.0,
+          20.0
+        ],
+        [
+          -18.0,
+          26.0
+        ],
+        [
+          -21.0,
+          33.0
+        ],
+        [
+          -23.0,
+          39.0
+        ],
+        [
+          -23.0,
+          46.0
+        ],
+        [
+          -25.0,
+          51.0
+        ],
+        [
+          -22.0,
+          57.0
+        ],
+        [
+          -18.0,
+          62.0
+        ]
+      ],
+      "gps_distance": 381.0,
+      "gps_arrow": null,
+      "gps_speed": 28.116781906847105,
+      "gps_time": 522.0768,
+      "blips": []
+    },
+    "sheet": "contact-04.jpg"
+  },
+  {
+    "rank": 16,
+    "recording": "/Users/kerim/recordings/kerim/20261111-164039",
+    "t": 492.2126,
+    "frame": 28359,
+    "difference": 1.688838515098527,
+    "hand": {
+      "t": 491.8611,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -1.0,
+        0.22
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "l2": 0.0,
+      "r2": 0.0
+    },
+    "command": {
+      "steer": 0.6888385150985271,
+      "throttle": 0,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -50.974323286480626,
+      "far_bearing": -65.06825254739299,
+      "arrow": -14.540524333486019,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+        [
+          -3.0,
+          14.0
+        ],
+        [
+          -10.0,
+          17.0
+        ],
+        [
+          -17.0,
+          18.0
+        ],
+        [
+          -22.0,
+          19.0
+        ],
+        [
+          -29.0,
+          20.0
+        ],
+        [
+          -34.0,
+          20.0
+        ],
+        [
+          -41.0,
+          22.0
+        ],
+        [
+          -47.0,
+          22.0
+        ],
+        [
+          -53.0,
+          24.0
+        ],
+        [
+          -59.0,
+          25.0
+        ],
+        [
+          -65.0,
+          23.0
+        ],
+        [
+          -70.0,
+          19.0
+        ],
+        [
+          -77.0,
+          15.0
+        ],
+        [
+          -82.0,
+          9.0
+        ],
+        [
+          -87.0,
+          5.0
+        ]
+      ],
+      "gps_distance": 1040,
+      "gps_arrow": "left",
+      "gps_speed": 16.681018722539257,
+      "gps_time": 492.1479,
+      "blips": []
+    },
+    "sheet": "contact-04.jpg"
+  },
+  {
+    "rank": 17,
+    "recording": "/Users/kerim/recordings/kerim/20261111-164039",
+    "t": 517.8722,
+    "frame": 29878,
+    "difference": 1.5924858549488377,
+    "hand": {
+      "t": 517.3025,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        1.0,
+        0.0
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "l2": 0.0,
+      "r2": 1.0
+    },
+    "command": {
+      "steer": -0.5924858549488377,
+      "throttle": 0,
+      "brake": 0.7,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 8.557964656329137,
+      "far_bearing": 5.179076246595565,
+      "arrow": 11.797321067560944,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+        [
+          -1.0,
+          12.0
+        ],
+        [
+          1.0,
+          17.0
+        ],
+        [
+          3.0,
+          23.0
+        ],
+        [
+          4.0,
+          30.0
+        ],
+        [
+          6.0,
+          36.0
+        ],
+        [
+          7.0,
+          41.0
+        ],
+        [
+          5.0,
+          47.0
+        ]
+      ],
+      "gps_distance": 510.0,
+      "gps_arrow": "straight",
+      "gps_speed": 23.25633778592218,
+      "gps_time": 517.7077,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": -56.22,
+          "y": 77.43,
+          "border": false
+        }
+      ]
+    },
+    "sheet": "contact-05.jpg"
+  },
+  {
+    "rank": 18,
+    "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+    "t": 274.8811,
+    "frame": 16405,
+    "difference": 1.521853161941055,
+    "hand": {
+      "t": 274.4466,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -1.0,
+        0.11
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "l2": 0.0,
+      "r2": 1.0
+    },
+    "command": {
+      "steer": 0.5218531619410548,
+      "throttle": 0.11387981560979478,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -52.539445139509304,
+      "far_bearing": -64.47137877477793,
+      "arrow": -11.508918204281827,
+      "corrupt": false,
+      "confidence": 0.853,
+      "path": [
+        [
+          -6.0,
+          11.0
+        ],
+        [
+          -12.0,
+          13.0
+        ],
+        [
+          -19.0,
+          16.0
+        ],
+        [
+          -25.0,
+          18.0
+        ],
+        [
+          -31.0,
+          19.0
+        ],
+        [
+          -36.0,
+          21.0
+        ],
+        [
+          -42.0,
+          23.0
+        ],
+        [
+          -48.0,
+          25.0
+        ],
+        [
+          -55.0,
+          26.0
+        ],
+        [
+          -61.0,
+          28.0
+        ],
+        [
+          -67.0,
+          28.0
+        ],
+        [
+          -72.0,
+          29.0
+        ],
+        [
+          -79.0,
+          30.0
+        ],
+        [
+          -84.0,
+          27.0
+        ],
+        [
+          -87.0,
+          22.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "sheet": "contact-05.jpg"
+  },
+  {
+    "rank": 19,
+    "recording": "/Users/kerim/recordings/kerim/20261111-164039",
+    "t": 532.1047,
+    "frame": 30716,
+    "difference": 1.514826557284702,
+    "hand": {
+      "t": 531.7593,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -1.0,
+        0.11
+      ],
+      "right": [
+        -1.0,
+        0.0
+      ],
+      "l2": 0.0,
+      "r2": 0.24
+    },
+    "command": {
+      "steer": 0.514826557284702,
+      "throttle": 0,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -22.753561133133516,
+      "far_bearing": 22.041578092412156,
+      "arrow": 18.204443526185287,
+      "corrupt": false,
+      "confidence": 0.916,
+      "path": [
+        [
+          2.0,
+          12.0
+        ],
+        [
+          -3.0,
+          17.0
+        ],
+        [
+          -8.0,
+          22.0
+        ],
+        [
+          -10.0,
+          28.0
+        ],
+        [
+          -3.0,
+          32.0
+        ],
+        [
+          3.0,
+          32.0
+        ],
+        [
+          10.0,
+          34.0
+        ],
+        [
+          14.0,
+          34.0
+        ]
+      ],
+      "gps_distance": 145.0,
+      "gps_arrow": "left",
+      "gps_speed": 19.08046850890092,
+      "gps_time": 530.7367,
+      "blips": []
+    },
+    "sheet": "contact-05.jpg"
+  },
+  {
+    "rank": 20,
+    "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+    "t": 279.3009,
+    "frame": 16668,
+    "difference": 1.4829580359198447,
+    "hand": {
+      "t": 277.8657,
+      "src": "human",
+      "buttons": [],
+      "left": [
+        -1.0,
+        0.0
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "l2": 0.0,
+      "r2": 1.0
+    },
+    "command": {
+      "steer": 0.48295803591984465,
+      "throttle": 0.12113651403647954,
+      "brake": 0,
+      "state": "follow"
+    },
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -3.319868322415004,
+      "far_bearing": -21.548809867415507,
+      "arrow": -11.977317432827476,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+        [
+          2.0,
+          12.0
+        ],
+        [
+          2.0,
+          18.0
+        ],
+        [
+          1.0,
+          24.0
+        ],
+        [
+          -1.0,
+          29.0
+        ],
+        [
+          -5.0,
+          36.0
+        ],
+        [
+          -9.0,
+          42.0
+        ],
+        [
+          -14.0,
+          48.0
+        ],
+        [
+          -20.0,
+          53.0
+        ],
+        [
+          -24.0,
+          60.0
+        ],
+        [
+          -28.0,
+          66.0
+        ],
+        [
+          -33.0,
+          71.0
+        ],
+        [
+          -38.0,
+          77.0
+        ],
+        [
+          -44.0,
+          83.0
+        ],
+        [
+          -48.0,
+          87.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": -68.36,
+          "y": 87.56,
+          "border": true
+        }
+      ]
+    },
+    "sheet": "contact-05.jpg"
+  }
+]

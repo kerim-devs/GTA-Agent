@@ -1,0 +1,617 @@
+[
+  {
+    "objective": "Begib dich nach Vespucci Beach.",
+    "step_start": 435.0086,
+    "sample_t": 437.9946,
+    "frame": 25124,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Begib dich nBch Vespucci Beach.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -51.731524122370786,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 0.8571428571428571,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "moving_default",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 1.922,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.644,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.434
+      }
+    },
+    "result": "model-delegated",
+    "intent_class": "go_to",
+    "intent_wording": "begib dich",
+    "intent_target": "nach Vespucci Beach."
+  },
+  {
+    "objective": "Kehr zurück zu Lamar.",
+    "step_start": 446.0034,
+    "sample_t": 448.6234,
+    "frame": 25761,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Kehr zurück zu Lamar.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 17.454951856946366,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_waypoint",
+    "first_skill": "set_waypoint",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 2.897,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.455,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.103
+      }
+    },
+    "result": "different",
+    "intent_class": "return_to",
+    "intent_wording": "kehr zurück",
+    "intent_target": "zu Lamar."
+  },
+  {
+    "objective": "Folge Lamar.",
+    "step_start": 545.5151,
+    "sample_t": 548.4991,
+    "frame": 31697,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "Folge Lamar.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.8722717152790267,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "moving_default",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 3.0,
+        "running": 0.741,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.0
+      }
+    },
+    "result": "model-delegated",
+    "intent_class": "follow",
+    "intent_wording": "folge",
+    "intent_target": "Lamar."
+  },
+  {
+    "objective": "Sammle elne Waffe auf.",
+    "step_start": 628.0127,
+    "sample_t": 629.4978,
+    "frame": 36549,
+    "request": {
+      "events": [],
+      "help": "Halte IU gedruckL um das W8ff8nrad aufzurufen",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 6.900615474609168,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -2.62,
+            "y": 4.25,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -9.43,
+            "y": 21.03,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -1.9,
+            "y": 13.7,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "moving_default",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 1.504,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.472,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.642
+      }
+    },
+    "result": "model-delegated",
+    "intent_class": "pick_up",
+    "intent_wording": "sammle",
+    "intent_target": "elne Waffe auf."
+  },
+  {
+    "objective": "Schalte die Vagos aus.",
+    "step_start": 631.0015,
+    "sample_t": 633.9901,
+    "frame": 36819,
+    "request": {
+      "events": [],
+      "help": "Halt8 In der D8ckung ￿ g8druckL um blind mit èiner Waffe zu f8uèrn. ohnè dl Deckung zu verlassen.",
+      "objective": "Schalte die Vagos aus.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 54.4981093991978,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 1.75,
+            "y": 4.88,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -4.58,
+            "y": 23.64,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 3.5,
+            "y": 17.28,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": null,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "moving_default",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 2.444,
+        "firing": 0.134,
+        "looking": 0.568,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.245
+      }
+    },
+    "result": "model-delegated",
+    "intent_class": "take_out",
+    "intent_wording": "schalte",
+    "intent_target": "die Vagos aus."
+  },
+  {
+    "objective": "Schalte die Vagos aus.",
+    "step_start": 692.3224,
+    "sample_t": 695.3213,
+    "frame": 40483,
+    "request": {
+      "events": [],
+      "help": "Halt8 In der D8ckung QFJ gedruckt um blind mit Èiner Waffe zu feuern. ohnè dl Deckung zu verlassen.",
+      "objective": "",
+      "subtitle": "Schieb deinen dummen Arsch in Deckung.",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 50.12875283266959,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": -5.13,
+            "y": 23.18,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 3.18,
+            "y": 16.88,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "moving_default",
+    "first_skill": "walk",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 2.526,
+        "firing": 0.299,
+        "looking": 0.51,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.062
+      }
+    },
+    "result": "model-delegated",
+    "intent_class": "take_out",
+    "intent_wording": "schalte",
+    "intent_target": "die Vagos aus."
+  },
+  {
+    "objective": "Steig auf das Motorrad.",
+    "step_start": 877.0081,
+    "sample_t": 879.9957,
+    "frame": 51530,
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "'Stèlg auf.ldas Motorrad.",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -13.219408269648966,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -5.23,
+            "y": 11.54,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.8666666666666667,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "foot_target",
+    "first_skill": "walk_to",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 0.0,
+        "walking": 1.428,
+        "running": 0.421,
+        "aiming": 0.036,
+        "firing": 0.0,
+        "looking": 0.873,
+        "map_input": 0.0,
+        "vehicle_input": 0.125,
+        "neutral": 0.714
+      }
+    },
+    "result": "matching",
+    "intent_class": "enter_vehicle",
+    "intent_wording": "steig",
+    "intent_target": "auf das Motorrad."
+  },
+  {
+    "objective": "Begib dich zu der Autowaschanlage.",
+    "step_start": 889.0047,
+    "sample_t": 891.9898,
+    "frame": 52248,
+    "request": {
+      "events": [],
+      "help": "Dein Fak durth Err8ichen der Höch51ge5chwindigkeii. stzusammenstÖße, Wh*81188. Sprtin",
+      "objective": "Begib dich zu der Autowaschanlage.",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "yellow",
+        "bearing": -7.445324534959174,
+        "far_bearing": -18.097605358981355,
+        "arrow": 2.9784202733661402,
+        "corrupt": false,
+        "confidence": 1.0,
+        "path": [
+          [
+            4.0,
+            12.0
+          ],
+          [
+            2.0,
+            17.0
+          ],
+          [
+            -2.0,
+            24.0
+          ],
+          [
+            -4.0,
+            29.0
+          ],
+          [
+            -7.0,
+            36.0
+          ],
+          [
+            -10.0,
+            41.0
+          ],
+          [
+            -13.0,
+            47.0
+          ],
+          [
+            -17.0,
+            54.0
+          ],
+          [
+            -20.0,
+            60.0
+          ],
+          [
+            -23.0,
+            66.0
+          ],
+          [
+            -20.0,
+            71.0
+          ],
+          [
+            -12.0,
+            73.0
+          ],
+          [
+            -7.0,
+            75.0
+          ],
+          [
+            -1.0,
+            75.0
+          ],
+          [
+            5.0,
+            76.0
+          ],
+          [
+            12.0,
+            78.0
+          ],
+          [
+            16.0,
+            79.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": "",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.8777777777777778,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null
+    },
+    "rule": "vehicle_route",
+    "first_skill": "drive_route",
+    "human": {
+      "observed_seconds": 3.0,
+      "seconds": {
+        "driving": 3.0,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.0,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.0
+      }
+    },
+    "result": "matching",
+    "intent_class": "go_to",
+    "intent_wording": "begib dich",
+    "intent_target": "zu der Autowaschanlage."
+  }
+]

@@ -1,0 +1,64 @@
+{
+  "recording": "/Users/kerim/recordings/kerim/20261111-183820",
+  "missions": [
+    {
+      "start": 881.5103,
+      "end": 900.4,
+      "steps": [
+        {
+          "objective": "Begib dich zu Ammu-Nation.",
+          "start": 881.5103,
+          "end": 900.4,
+          "last": 889.042,
+          "duration": 7.532,
+          "step_duration": 18.89,
+          "section_kinds": [
+            "drive",
+            "foot"
+          ],
+          "route": [
+            "yellow"
+          ],
+          "blips": [],
+          "blips_known": false,
+          "wanted": 0,
+          "human": {
+            "observed_seconds": 18.806,
+            "seconds": {
+              "driving": 15.738,
+              "walking": 0.0,
+              "running": 0.0,
+              "aiming": 0.0,
+              "firing": 0.0,
+              "looking": 1.517,
+              "map_input": 0.0,
+              "vehicle_input": 0.0,
+              "neutral": 2.234
+            }
+          },
+          "ending": "unknown",
+          "sample_observation": {
+            "t": 884.5061,
+            "route": "yellow",
+            "blips": [
+              {
+                "color": "yellow",
+                "x": -87.28,
+                "y": -1.47,
+                "border": true
+              }
+            ]
+          },
+          "incidents": [],
+          "intent_class": "go_to",
+          "intent_wording": "begib dich",
+          "intent_target": "zu Ammu-Nation."
+        }
+      ],
+      "ending": "unknown",
+      "end_reason": "recording ended",
+      "notes": "The game asks: Begib dich zu Ammu-Nation.. Outcome: unknown."
+    }
+  ],
+  "unassigned_endings": []
+}
