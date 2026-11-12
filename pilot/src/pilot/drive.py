@@ -1,5 +1,6 @@
 """Defensive path following with a noisy GPS distance speed sensor."""
 
+from collections import deque
 from dataclasses import dataclass
 from math import atan2, degrees, hypot, isfinite, sqrt
 
@@ -55,6 +56,12 @@ class DriveConfig:
     recovery_steer: float = 0.8  # Stick magnitude used to reverse away from the route.
     recovery_throttle: float = 0.45  # Forward pedal during escape.
     max_recoveries: int = 3  # Consecutive failed escapes before a latched stop.
+    queue_wait: float = 30.0  # Longest a stop close behind a vehicle is waited out before it counts as stuck.
+    damage_lasting: float = 1.0  # A damage flag that stays this long is no stream damage, which lasts frames.
+    damage_steady: float = 20.0  # Widest spread of the route bearing, in degrees, of a flag driven on.
+    flagged_speed: float = 4.0  # Speed limit on a map the reader flags, in metres per second.
+    unreadable_time: float = 3.0  # A stopped car that cannot use the picture this long gives the drive up.
+    unreadable_max: float = 10.0  # Longest an unusable picture is coasted on, whether the car stands or not.
     outlier_angle: float = 60.0  # Abrupt jumps larger than this require persistence.
     outlier_window: float = 0.3  # Accept a persistent new direction after this interval.
     stop_brake_time: float = 0.7  # Bound L2 use so a stop cannot become indefinite reverse.
@@ -92,6 +99,10 @@ class DriveConfig:
             raise ValueError("curve_step must be a positive integer")
         if not isinstance(self.curve_trim, int):
             raise ValueError("curve_trim must be an integer")
+
+
+# States in which the driver has given the car up: they last, and the skill ends on them.
+LATCHED = frozenset({"failed-recovery", "dead-or-held", "map-unreadable"})
 
 
 def _number(value: object) -> float | None:
@@ -138,6 +149,17 @@ class Driver:
         self._phase_since = 0.0
         self._attempts = 0
         self._escape = 0.0
+        self._recovery_moved = False
+        self._recovery_still = 0.0
+        self._reverse_duration = self.config.reverse_time
+        self._queue_spent = 0.0
+        self._queue_free: float | None = None
+        self._flag_since: float | None = None
+        self._flag_route: str | None = None
+        self._flag_bearings: deque[tuple[float, float]] = deque()
+        self.flagged_time = 0.0  # Seconds driven on a map the reader flagged, which the skill reports.
+        self._unusable_since: float | None = None
+        self._unusable_still: float | None = None
         self._trusted_route: str | None = None
         self._trusted_error: float | None = None
         self._brake_since: float | None = None
@@ -164,7 +186,9 @@ class Driver:
         self._stuck_since = None
         self._steer = 0.0
         self._speed = None
-        if self._phase != "failed-recovery":
+        self._unusable_since = self._unusable_still = self._flag_since = None
+        self._flag_bearings.clear()
+        if self._phase not in LATCHED:
             self._phase = None
         return self._emit(0, 0, 0, "idle")
 
@@ -174,22 +198,31 @@ class Driver:
                 return self._emit(self._last.steer, self._last.throttle, self._last.brake, "coast")
         self._steer = 0.0
         self._stuck_since = None
-        if self._phase != "failed-recovery":
+        if self._phase not in LATCHED:
             self._phase = None
         return self._emit(0, 0, 0, "coast")
 
     def step(
-        self, reading: Reading, t: float, moving: bool | None = None, speed: float | None = None
+        self,
+        reading: Reading,
+        t: float,
+        moving: bool | None = None,
+        speed: float | None = None,
+        ahead: bool = False,
     ) -> Command:
         """Return bounded controls; invalid/backwards clocks release and reset timers.
 
         Unknown motion never means stuck. A failure latch survives clock changes.
         Picture angles minus the arrow give camera-independent heading errors.
+        `ahead` says that a vehicle stands close ahead in the car's own track (avoid.waits_behind): a
+        stop behind it is waited out for `queue_wait` seconds and counts neither towards a recovery
+        nor towards a dead or held car. Without detections it stays False and nothing changes.
         """
         speed = _number(speed)
         speed = speed if speed is not None and speed >= 0 else None
         self._measured_speed = speed
         moving = moving if isinstance(moving, bool) else None
+        map_moving = moving
         self._stationary = moving is False
         now = _number(t)
         if now is None or (self._time is not None and now < self._time):
@@ -217,19 +250,32 @@ class Driver:
             or reading.minimap != "tilted"
         ):
             return self._idle()
-        if self._phase == "failed-recovery":
-            return self._emit(0, 0, 0, "failed-recovery")
+        if self._phase in LATCHED:
+            return self._emit(0, 0, 0, self._phase)
         confidence = _number(reading.confidence)
         damaged = self._damage_agrees(reading, now, confidence)
-        if not damaged and (
-            reading.corrupt is not False
-            or confidence is None
-            or not self.config.confidence_min <= confidence <= 1
+        flagged = self._flag_lasts(reading, now, confidence)
+        if (
+            not damaged
+            and not flagged
+            and (
+                reading.corrupt is not False
+                or confidence is None
+                or not self.config.confidence_min <= confidence <= 1
+            )
         ):
             self._missing_observed_at = None
-            return self._coast(now)
+            return self._unusable(now, dt, moving, speed)
         if not isinstance(reading.route, str):
-            return self._coast(now)
+            return self._unusable(now, dt, moving, speed)
+        if flagged:
+            # A flagged picture is driven on, and a car that stays standing under it has not been helped.
+            wait = self.config.unreadable_time + (self.config.queue_wait if ahead is True else 0.0)
+            if self._standing(now, dt, moving, speed, stuck_logic=True) >= wait:
+                self._phase = "map-unreadable"
+                return self._emit(0, 0, 0, self._phase)
+        else:
+            self._unusable_since = self._unusable_still = None
         if reading.route == "none":
             if self._missing_observed_at is not None:
                 self._missing_duration += now - self._missing_observed_at
@@ -248,7 +294,7 @@ class Driver:
         self._route_stopped = False
         near, far, arrow = (_number(reading.bearing), _number(reading.far_bearing), _number(reading.arrow))
         if reading.route not in ("yellow", "purple") or near is None or arrow is None:
-            return self._coast(now)
+            return self._unusable(now, dt, moving, speed)
         error = _angle(_angle(near) - _angle(arrow))
         far_error = error if far is None else _angle(_angle(far) - _angle(arrow))
         path = _path(reading.path)
@@ -267,8 +313,14 @@ class Driver:
             self._trusted_route = reading.route
             self._trusted_error = _angle(_angle(_number(reading.bearing)) - _angle(arrow))
 
+        queued = self._queue(ahead is True, moving, now, dt)
+        if self._phase in {"recovery-reverse", "recovery-forward"} and (not reading.corrupt or flagged):
+            # GPS slope lags a collision; only the map can prove a completely held car.
+            self._recovery_moved |= map_moving is True
+            if map_moving is False and not queued:
+                self._recovery_still += dt
         if self._phase == "recovery-reverse":
-            if now - self._phase_since < self.config.reverse_time:
+            if now - self._phase_since < self._reverse_duration:
                 return self._emit(self._escape, 0, 1, "recovery-reverse")
             self._phase, self._phase_since = "recovery-forward", now
         if self._phase == "recovery-forward":
@@ -286,7 +338,9 @@ class Driver:
                             self.config.steer_gain * error,
                             -self.config.recovery_steer,
                             self.config.recovery_steer,
-                        ),
+                        )
+                        if self._attempts == 1
+                        else -self._escape,
                         min(self.config.recovery_throttle, self.config.unknown_throttle)
                         if speed is None
                         else min(
@@ -300,7 +354,12 @@ class Driver:
                         0,
                         "recovery-forward",
                     )
-                if moving is not False:
+                if not self._recovery_moved and self._recovery_still >= 0.8 * (
+                    self._reverse_duration + self.config.forward_time
+                ):
+                    self._phase = "dead-or-held"
+                    return self._emit(0, 0, 0, self._phase)
+                if moving is not False or queued:
                     self._phase = None
                 elif self._attempts >= self.config.max_recoveries:
                     self._phase = "failed-recovery"
@@ -308,7 +367,9 @@ class Driver:
                 else:
                     return self._recover(now, error)
 
-        if moving is False and self._last.throttle > 0:
+        if queued:
+            self._stuck_since = None  # Waiting behind a vehicle is not being stuck.
+        elif moving is False and self._last.throttle > 0:
             if self._stuck_since is None:
                 self._stuck_since = now
             if now - self._stuck_since >= self.config.stuck_time:
@@ -381,6 +442,9 @@ class Driver:
         )
         throttle = max(self.config.bend_throttle, self.config.cruise_throttle - self.config.bend_gain * bend)
         limit = self._speed_limit(path, bend, speed)
+        if flagged:
+            limit = min(limit, self.config.flagged_speed)
+            self.flagged_time += dt
         distance = _number(reading.gps_distance)
         if distance is not None and 0 <= distance <= self.config.arrival_distance:
             limit = min(limit, self.config.arrival_speed)
@@ -461,10 +525,90 @@ class Driver:
             and abs(_angle(error - self._trusted_error)) <= self.config.damage_angle
         )
 
+    def _flag_lasts(self, reading: Reading, now: float, confidence: float | None) -> bool:
+        """The reader's damage flag has stood for `damage_lasting` seconds on the same route, with a
+        confidence in the range of damage and a bearing that holds still: that is a picture it
+        misjudges, not damage from the cable, which lasts a few frames and scrambles the bearing."""
+        route = reading.route
+        near, arrow = _number(reading.bearing), _number(reading.arrow)
+        if (
+            reading.corrupt is not True
+            or route not in ("yellow", "purple")
+            or confidence is None
+            or not 0.3 <= confidence <= 1
+            or near is None
+            or arrow is None
+        ):
+            self._flag_since = self._flag_route = None
+            self._flag_bearings.clear()
+            return False
+        if self._flag_since is None or route != self._flag_route:
+            self._flag_since, self._flag_route = now, route
+            self._flag_bearings.clear()
+        self._flag_bearings.append((now, near))
+        while self._flag_bearings and now - self._flag_bearings[0][0] > self.config.damage_lasting:
+            self._flag_bearings.popleft()
+        if now - self._flag_since < self.config.damage_lasting:
+            return False
+        spread = max(abs(_angle(bearing - near)) for _, bearing in self._flag_bearings)
+        return spread <= self.config.damage_steady
+
+    def _standing(
+        self, now: float, dt: float, moving: bool | None, speed: float | None, *, stuck_logic: bool = False
+    ) -> float:
+        """Seconds the car has stood still on evidence, 0 once it moves; missing evidence pauses the count.
+
+        Where the drive goes on (`stuck_logic`), a map that says the car stands is left to the recovery
+        that stands for it: only the speed counts here, for the car whose map says nothing."""
+        if stuck_logic and moving is False:
+            moving, speed = None, None
+        if moving is False or (moving is None and speed is not None and speed <= self.config.motion_speed):
+            if self._unusable_still is None:
+                self._unusable_still = now
+        elif moving is None and speed is None:
+            if self._unusable_still is not None:
+                self._unusable_still += dt
+        else:
+            self._unusable_still = None
+        return 0.0 if self._unusable_still is None else now - self._unusable_still
+
+    def _unusable(self, now: float, dt: float, moving: bool | None, speed: float | None) -> Command:
+        """A picture the driver cannot use: it coasts, and gives the car up when that has left it standing."""
+        if self._unusable_since is None:
+            self._unusable_since = now
+        standing = self._standing(now, dt, moving, speed)
+        if (
+            standing >= self.config.unreadable_time
+            or now - self._unusable_since >= self.config.unreadable_max
+        ):
+            self._phase = "map-unreadable"
+            return self._emit(0, 0, 0, self._phase)
+        return self._coast(now)
+
+    def _queue(self, ahead: bool, moving: bool | None, now: float, dt: float) -> bool:
+        """Whether this stop is being waited out behind a vehicle, and for how long it has been."""
+        if ahead and moving is False:
+            self._queue_free = None
+            queued = self._queue_spent < self.config.queue_wait
+            self._queue_spent += dt
+            return queued
+        if not ahead or moving is True:
+            # The road ahead cleared or the car rolled on: a new queue gets its whole wait again,
+            # but not at once, so that a recovery that backs off a parked car does not start one.
+            if self._queue_free is None:
+                self._queue_free = now
+            elif now - self._queue_free >= self.config.recovery_clear_time:
+                self._queue_spent = 0.0
+        return False
+
     def _recover(self, now: float, error: float) -> Command:
         self._attempts += 1
         self._phase, self._phase_since = "recovery-reverse", now
-        self._escape = -self.config.recovery_steer if error >= 0 else self.config.recovery_steer
+        # Extend the retreat and change the turning side after a failed exit.
+        side = -1 if error >= 0 else 1
+        self._escape = side * self.config.recovery_steer if self._attempts == 1 else -self._escape
+        self._reverse_duration = self.config.reverse_time * (1 + 0.5 * (self._attempts - 1))
+        self._recovery_moved, self._recovery_still = False, 0.0
         self._stuck_since = self._moving_since = None
         return self._emit(self._escape, 0, 1, "recovery-reverse")
 

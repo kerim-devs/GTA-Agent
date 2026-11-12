@@ -74,7 +74,7 @@ def test_one_outlier_does_not_jerk_the_wheel() -> None:
     assert cmd.steer > 0  # A real, persistent new heading is eventually accepted.
 
 
-def test_three_failed_recoveries_then_latched_neutral() -> None:
+def test_completely_held_car_ends_after_one_try_with_latched_neutral() -> None:
     driver = Driver()
     reading = replace(GOOD, bearing=25, far_bearing=25)
     phases = []
@@ -88,11 +88,11 @@ def test_three_failed_recoveries_then_latched_neutral() -> None:
             assert cmd.brake > 0 and cmd.throttle == 0 and cmd.steer < 0
         if cmd.state == "recovery-forward":
             assert cmd.throttle > 0 and cmd.brake == 0 and cmd.steer > 0
-    assert phases.count("recovery-reverse") == 3
-    assert phases.count("recovery-forward") == 3
-    assert cmd.state == "failed-recovery"
+    assert phases.count("recovery-reverse") == 1
+    assert phases.count("recovery-forward") == 1
+    assert cmd.state == "dead-or-held"
     assert (cmd.throttle, cmd.brake, cmd.steer) == (0, 0, 0)
-    assert driver.step(reading, 30, True).state == "failed-recovery"
+    assert driver.step(reading, 30, True).state == "dead-or-held"
 
 
 def test_unknown_motion_and_brief_damage_do_not_invent_or_hide_stuck() -> None:

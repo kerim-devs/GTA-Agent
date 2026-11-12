@@ -1,0 +1,1738 @@
+{
+ "before": {
+  "ending": null,
+  "seconds": [
+   {
+    "second": 168,
+    "ticks": 25,
+    "states": {
+     "coast": 17,
+     "follow": 8
+    },
+    "mean_r2": 0.01,
+    "mean_l2": 0.19,
+    "mean_steer": 0.0,
+    "speed": 18.5
+   },
+   {
+    "second": 169,
+    "ticks": 24,
+    "states": {
+     "coast": 4,
+     "follow": 20
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.26,
+    "mean_steer": 0.0,
+    "speed": 16.8
+   },
+   {
+    "second": 170,
+    "ticks": 27,
+    "states": {
+     "follow": 12,
+     "coast": 15
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 12.2
+   },
+   {
+    "second": 171,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 2.8
+   },
+   {
+    "second": 172,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.2
+   },
+   {
+    "second": 173,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 174,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 175,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 176,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 177,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 178,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 179,
+    "ticks": 24,
+    "states": {
+     "coast": 24
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 180,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 181,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 182,
+    "ticks": 27,
+    "states": {
+     "coast": 27
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 183,
+    "ticks": 24,
+    "states": {
+     "coast": 24
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 184,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 185,
+    "ticks": 24,
+    "states": {
+     "coast": 24
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 186,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 187,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 188,
+    "ticks": 24,
+    "states": {
+     "coast": 24
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 189,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 190,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 191,
+    "ticks": 24,
+    "states": {
+     "coast": 24
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 192,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 193,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 194,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 195,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 196,
+    "ticks": 24,
+    "states": {
+     "coast": 24
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 197,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 198,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 199,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 200,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 201,
+    "ticks": 24,
+    "states": {
+     "coast": 24
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 202,
+    "ticks": 27,
+    "states": {
+     "coast": 27
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 203,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 204,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 205,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 206,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 207,
+    "ticks": 24,
+    "states": {
+     "coast": 24
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 208,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 209,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 210,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 211,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 212,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 213,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 214,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 215,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 216,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 217,
+    "ticks": 27,
+    "states": {
+     "coast": 27
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 218,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 219,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 220,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 221,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 222,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 223,
+    "ticks": 24,
+    "states": {
+     "coast": 24
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 224,
+    "ticks": 28,
+    "states": {
+     "coast": 28
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 225,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 226,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 227,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 228,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 229,
+    "ticks": 24,
+    "states": {
+     "coast": 24
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 230,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 231,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 232,
+    "ticks": 27,
+    "states": {
+     "coast": 27
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 233,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 234,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 235,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 236,
+    "ticks": 25,
+    "states": {
+     "coast": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 237,
+    "ticks": 24,
+    "states": {
+     "coast": 24
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 238,
+    "ticks": 26,
+    "states": {
+     "coast": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 239,
+    "ticks": 27,
+    "states": {
+     "coast": 27
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 240,
+    "ticks": 2,
+    "states": {
+     "coast": 2
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   }
+  ]
+ },
+ "after": {
+  "ending": {
+   "t": 176.1847732909955,
+   "status": "failed",
+   "reason": "map-unreadable"
+  },
+  "seconds": [
+   {
+    "second": 168,
+    "ticks": 25,
+    "states": {
+     "coast": 17,
+     "follow": 8
+    },
+    "mean_r2": 0.01,
+    "mean_l2": 0.19,
+    "mean_steer": 0.0,
+    "speed": 18.5
+   },
+   {
+    "second": 169,
+    "ticks": 24,
+    "states": {
+     "coast": 4,
+     "follow": 20
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.26,
+    "mean_steer": 0.0,
+    "speed": 16.8
+   },
+   {
+    "second": 170,
+    "ticks": 27,
+    "states": {
+     "follow": 12,
+     "coast": 15
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 12.2
+   },
+   {
+    "second": 171,
+    "ticks": 25,
+    "states": {
+     "coast": 13,
+     "follow": 12
+    },
+    "mean_r2": 0.01,
+    "mean_l2": 0.07,
+    "mean_steer": 0.0,
+    "speed": 2.8
+   },
+   {
+    "second": 172,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.36,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.2
+   },
+   {
+    "second": 173,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.55,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 174,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.57,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 175,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.57,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   },
+   {
+    "second": 176,
+    "ticks": 5,
+    "states": {
+     "follow": 4,
+     "map-unreadable": 1
+    },
+    "mean_r2": 0.46,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 0.0
+   }
+  ]
+ },
+ "after-with-a-car-that-answers": {
+  "ending": null,
+  "seconds": [
+   {
+    "second": 168,
+    "ticks": 25,
+    "states": {
+     "coast": 17,
+     "follow": 8
+    },
+    "mean_r2": 0.01,
+    "mean_l2": 0.19,
+    "mean_steer": 0.0,
+    "speed": 18.5
+   },
+   {
+    "second": 169,
+    "ticks": 24,
+    "states": {
+     "coast": 4,
+     "follow": 20
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.26,
+    "mean_steer": 0.0,
+    "speed": 16.8
+   },
+   {
+    "second": 170,
+    "ticks": 27,
+    "states": {
+     "follow": 12,
+     "coast": 15
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 14.3
+   },
+   {
+    "second": 171,
+    "ticks": 25,
+    "states": {
+     "coast": 13,
+     "follow": 12
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.31,
+    "mean_steer": 0.0,
+    "speed": 11.4
+   },
+   {
+    "second": 172,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.05,
+    "mean_steer": 0.0,
+    "speed": 10.7
+   },
+   {
+    "second": 173,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.17,
+    "mean_steer": 0.0,
+    "speed": 8.6
+   },
+   {
+    "second": 174,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.07,
+    "mean_steer": 0.0,
+    "speed": 7.4
+   },
+   {
+    "second": 175,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.0,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 6.8
+   },
+   {
+    "second": 176,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.03,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 6.5
+   },
+   {
+    "second": 177,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.06,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 6.3
+   },
+   {
+    "second": 178,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.07,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 6.1
+   },
+   {
+    "second": 179,
+    "ticks": 24,
+    "states": {
+     "follow": 24
+    },
+    "mean_r2": 0.08,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 6.0
+   },
+   {
+    "second": 180,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.09,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 6.0
+   },
+   {
+    "second": 181,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.09,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 182,
+    "ticks": 27,
+    "states": {
+     "follow": 27
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 183,
+    "ticks": 24,
+    "states": {
+     "follow": 24
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 184,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 185,
+    "ticks": 24,
+    "states": {
+     "follow": 24
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 186,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 187,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 188,
+    "ticks": 24,
+    "states": {
+     "follow": 24
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 189,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 190,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 191,
+    "ticks": 24,
+    "states": {
+     "follow": 24
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 192,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 193,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 194,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 195,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 196,
+    "ticks": 24,
+    "states": {
+     "follow": 24
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 197,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 198,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 199,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 200,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 201,
+    "ticks": 24,
+    "states": {
+     "follow": 24
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 202,
+    "ticks": 27,
+    "states": {
+     "follow": 27
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 203,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 204,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 205,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 206,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 207,
+    "ticks": 24,
+    "states": {
+     "follow": 24
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 208,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 209,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 210,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 211,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 212,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 213,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 214,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 215,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 216,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 217,
+    "ticks": 27,
+    "states": {
+     "follow": 27
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 218,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 219,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 220,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 221,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 222,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 223,
+    "ticks": 24,
+    "states": {
+     "follow": 24
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 224,
+    "ticks": 28,
+    "states": {
+     "follow": 28
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 225,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 226,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 227,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 228,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 229,
+    "ticks": 24,
+    "states": {
+     "follow": 24
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 230,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 231,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 232,
+    "ticks": 27,
+    "states": {
+     "follow": 27
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 233,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 234,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 235,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 236,
+    "ticks": 25,
+    "states": {
+     "follow": 25
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 237,
+    "ticks": 24,
+    "states": {
+     "follow": 24
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 238,
+    "ticks": 26,
+    "states": {
+     "follow": 26
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 239,
+    "ticks": 27,
+    "states": {
+     "follow": 27
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   },
+   {
+    "second": 240,
+    "ticks": 2,
+    "states": {
+     "follow": 2
+    },
+    "mean_r2": 0.1,
+    "mean_l2": 0.0,
+    "mean_steer": 0.0,
+    "speed": 5.9
+   }
+  ]
+ }
+}

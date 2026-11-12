@@ -1,0 +1,31 @@
+# P61: Walk to a point
+
+## Why
+
+"Walks from where it stands to a point" is one of the eighteen capabilities Kerim accepted on 12 November, and his own example of what has to work. The pilot cannot do it. `walk_to` in `pilot/src/pilot/skills.py` walks towards the nearest yellow, blue or red blip for at most ten seconds and fails when the blip is lost or the figure is blocked; it does not know the waypoint the pilot sets itself, which is purple, it cannot go further than ten seconds, and it has never been measured. `walk_road` walks along a road without a destination. So on foot the pilot can choose a place from the map's legend (`set_waypoint`, 13 of 13 on the console) and then has no way of getting there except in a vehicle.
+
+What there is to build on. On foot the game draws no route line: a waypoint or a mission's marker shows as a blip on the minimap, inside it when near and on its rim in the direction of the target when far. The minimap turns with the camera, and the left stick moves the figure relative to the camera, so the direction from the arrow to the blip is the direction to push the stick. `reading.blips` carries the blips with their colour, their place and whether they sit on the rim. `FootGuard` in `pilot/src/pilot/foot.py` tells from the picture whether the figure gets anywhere and walks round what holds it. The pause map's legend lists "Wegpunkt (Nm)" with the distance in metres as its second row whenever a waypoint is set, and `pilot/src/pilot/legend.py` reads it (`Legend.distances`); that is the only place the game states a distance on foot.
+
+Read `PLAN.md`, in `docs/LOG.md` the entries on walking ("On foot") and "The basics, measured", the reports of P26, P46, P52 and P57, `foot.py`, `legend.py`, `minimap.py` for the blips, `skills.py` for `WalkTo` and how a skill is registered, and their tests.
+
+## What to build
+
+A skill in a module of its own, `pilot/src/pilot/walkto.py`, that walks to a blip: the waypoint by default, or the nearest blip of a colour. It pushes the stick towards the blip, sprints when asked, lets the guard take it round what is in the way, and keeps going for as long as its duration allows, up to three minutes. It ends `done` when the blip lies within a small radius of the arrow and stays there for a moment, and `failed` with a reason of its own when there is no such blip, when the blip has been gone for some seconds, when the guard has tried every way round and the figure is held, when the figure is no longer on foot, and when the time is up; in each case with how far in pixels of the map the blip was at the start and at the end, so that a walk that got nearer and one that did not can be told apart. A blip on the rim only gives a direction: say what the skill knows there and what it does not. Do not guess metres: the radius is a parameter in pixels with a default you derive, and the reviewer measures on the console how many metres it is.
+
+Getting round things is the hard part and the reason the old skill fails: the straight line to a point leads through buildings, fences and water. Say what the guard already does, try the skill in a model town with blocks and a river, and where the guard is not enough give the walk a second way: along the road nearest to the line (the minimap's roads are read in `foot.py`) when the direct way has been blocked twice, and back to the direct way when the road leads away. Measure both ways in the model and keep the second only if it gets there more often.
+
+A second small skill in `legend.py` that only reads: it opens the pause map, reads the waypoint's distance from the legend and closes the map again, changing nothing, and ends `done` with the metres or `failed` with what it saw (no waypoint set, legend not readable, not the game's screen). The pilot uses it to know how far a point is on foot, and the bench uses it as the proof of this capability, before and after the walk.
+
+Neither skill is registered by you: the reviewer wires them in. Give each the `name`, `parameters` and `prompt` the README asks for.
+
+## Judging it
+
+The model town for the walk: open ground, a block in the way, a row of blocks with a gap, a river with a bridge, a blip on the rim that comes inside, a blip that vanishes, a person who takes the figure into a car. For each, whether it arrives and after how long, the two ways compared. Kerim walks to markers in the recordings (`/Users/kerim/recordings/kerim/`, actions in `/Users/kerim/recordings/derived/kerim/*/actions.jsonl`; find the stretches on foot in which a blip comes nearer): over a sample of them compare the stick the skill would push with his, tick by tick, and say on what share they agree in direction and what the disagreements are. The reading skill on the legend frames of 12 November that `lab/legend/` holds and the tests of `legend.py` use. Your sandbox refuses the native text reader and the detector: build as functions of what they return, and for what needs them on fresh frames write the one command and name it in the report under what could not be run.
+
+## Your files
+
+`pilot/src/pilot/walkto.py`, `pilot/src/pilot/legend.py` for the reading skill only, their tests, `lab/walkto/` (under 3 MB) and your report. Not `foot.py`, `skills.py`, `vehicle_entry.py`, `judge.py`, `minimap.py`, `camera.py`, `drive.py`, `goals.py`, `mission.py`, `conductor.py` or `bench.py`, which others are changing right now: import from them what you need, and where one of them would have to change, describe the change exactly and leave it. The console is in use: the rules of `docs/tasks/README.md` about the daemon hold without exception, and nothing under `/Users/kerim/recordings/` is written, moved or deleted.
+
+## Done when
+
+The tests pass, `env -u PS5_HOST .venv/bin/python tools/gate.py --full` in `pilot/` is green or fails only where your sandbox refuses sockets, Vision or CoreML, which you then name test by test, and the report shows the model town's table for both ways, the comparison with Kerim's walking, the reading skill on the stored legend frames, the two skills' names, parameters and prompts ready for wiring, and the exact tries the reviewer should make on the console, the first of them a waypoint on a place about 300 m away, read, walked to, and read again.
