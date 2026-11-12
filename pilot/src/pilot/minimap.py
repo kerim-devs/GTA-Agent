@@ -537,6 +537,69 @@ def _blocks(crop: np.ndarray, *, route_strokes: bool = False):
     return int(bv.sum() + bh.sum()), int(bv[_BV_NEAR].sum() + bh[_BH_NEAR].sum())
 
 
+def _continuous_roads(crop: np.ndarray) -> bool:
+    """Explain route-free block steps only with broad, continuing painted roads.
+
+    Inspect weaker steps too: a road cannot excuse a broken block elsewhere in
+    the crop. Keep the raw detector for motion and for any unexplained piece.
+    """
+    gray = cv2.cvtColor(crop, cv2.COLOR_RGB2GRAY).astype(np.int16)
+    map_gray = gray[MY0:MY1, MX0:MX1]
+    # Terrain visible through a nearly empty map is not a painted road network.
+    # Require a visible white road area, beyond the arrow and isolated icons.
+    if np.count_nonzero(map_gray >= 210) < 0.05 * map_gray.size:
+        return False
+    broad = False
+    for g, borders, start, stop, skip in (
+        (gray, _BX, 14, 158, _BV_SKIP),
+        (gray.T, _BY, 2, 258, _BH_SKIP),
+    ):
+        d = np.abs(g[:, 1:] - g[:, :-1])
+        a, b, c = d[:, borders - 1], d[:, borders - 2], d[:, borders]
+        sharp = (a > 10) & (a > 2.5 * np.maximum(b, c) + 3)
+        counts = sharp[start:stop].reshape(-1, 16, len(borders)).sum(axis=1)
+        pieces = counts >= 8
+        pieces[:, skip] = False
+        segments, columns = np.nonzero(pieces)
+        if not len(segments):
+            continue
+        rows = start + 16 * segments[:, None] + np.arange(16)
+        x = borders[columns, None]
+        left, right = g[rows, x - 1], g[rows, x]
+        high = np.maximum(left, right)
+        direction = np.where(right > left, 1, -1)
+        bright_x = np.where(right > left, x, x - 1)
+        xx = bright_x[:, :, None] + direction[:, :, None] * np.arange(2, 25)
+        inside = g[rows[:, :, None], np.clip(xx, 0, g.shape[1] - 1)]
+        returns = (high[:, :, None] - inside) > 0.5 * np.abs(right - left)[:, :, None]
+        bright = high >= 180
+        if start == 2:
+            # The map fades left of MX0. Only extend a bright road from the
+            # immediately adjacent map segment through that one fade segment.
+            faded = rows[:, -1] == MX0 - 1
+            rr = rows[faded] + 16
+            fx = x[faded]
+            bright[faded] |= (np.maximum(g[rr, fx - 1], g[rr, fx]) >= 180).sum(axis=1)[:, None] >= 10
+        painted = bright & returns.any(axis=2) & sharp[rows, columns[:, None]]
+        if (painted.sum(axis=1) < np.maximum(6, counts[segments, columns] - 2)).any():
+            return False
+        # Follow the same signed edge through at least one end of the block.
+        # A three-pixel cross-edge sample accommodates anti-aliasing and bends.
+        polarity = np.sign(np.median(right - left, axis=1))
+        threshold = np.maximum(10, 0.5 * np.median(np.abs(right - left), axis=1))
+        continued = np.zeros(len(segments), dtype=bool)
+        for rr in (rows[:, :1] + np.arange(-4, 0), rows[:, -1:] + np.arange(1, 5)):
+            valid = (rr[:, 0] >= 0) & (rr[:, -1] < len(g))
+            rr = np.clip(rr, 0, len(g) - 1)
+            xx = x[:, :, None] + np.arange(-2, 3)
+            jump = (g[rr[:, :, None], xx + 1] - g[rr[:, :, None], xx - 2]) * polarity[:, None, None]
+            continued |= valid & ((jump.max(axis=2) > threshold[:, None]).sum(axis=1) >= 3)
+        if not continued.all():
+            return False
+        broad |= bool(((painted & (returns.argmax(axis=2) + 2 > 6)).sum(axis=1) >= 10).any())
+    return broad
+
+
 # ------------------------------------------------------------------ read
 def _blips(hsv: np.ndarray, yellow_path=()) -> tuple[Blip, ...]:
     """Find the outlined colored discs seen in the recordings, not route paint."""
@@ -843,6 +906,12 @@ def _analyse(crop: np.ndarray, keep: bool = False):
         else:
             oky = False
     route, tr = ("yellow", ty) if oky else ("purple", tp) if okp else ("none", None)
+
+    if tr is None and corrupt and _continuous_roads(crop):
+        info["blocks_raw"] = n_blocks
+        n_blocks = n_local = 0
+        corrupt = damaged_here = False
+        info.update(blocks=0, blocks_near=0)
 
     if tr is not None:
         if corrupt:

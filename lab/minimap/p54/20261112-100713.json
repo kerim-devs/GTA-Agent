@@ -1,0 +1,111 @@
+{
+  "session": "20261112-100713",
+  "source": "/Users/kerim/recordings/pilot/20261112-100713",
+  "frames": 17936,
+  "before": {
+    "ticks": 7703,
+    "corrupt": 706,
+    "share": 0.09165260288199403,
+    "longest_ticks": 193,
+    "longest_seconds": 7.345581832982134
+  },
+  "after": {
+    "ticks": 7703,
+    "corrupt": 706,
+    "share": 0.09165260288199403,
+    "longest_ticks": 193,
+    "longest_seconds": 7.345581832982134
+  },
+  "frame_before": {
+    "ticks": 17936,
+    "corrupt": 1600,
+    "share": 0.08920606601248884,
+    "longest_ticks": 441,
+    "longest_seconds": 7.336500000000001
+  },
+  "frame_after": {
+    "ticks": 17936,
+    "corrupt": 1600,
+    "share": 0.08920606601248884,
+    "longest_ticks": 441,
+    "longest_seconds": 7.336500000000001
+  },
+  "lost": 0,
+  "gained": 0,
+  "unmatched_ticks": 0,
+  "sheets": 0,
+  "spans": [
+    {
+      "start": 179.3,
+      "stop": 184.6,
+      "before": {
+        "ticks": 144,
+        "corrupt": 144,
+        "share": 1.0,
+        "longest_ticks": 144,
+        "longest_seconds": 5.272967291006353
+      },
+      "after": {
+        "ticks": 144,
+        "corrupt": 144,
+        "share": 1.0,
+        "longest_ticks": 144,
+        "longest_seconds": 5.272967291006353
+      }
+    },
+    {
+      "start": 194.3,
+      "stop": 197.5,
+      "before": {
+        "ticks": 86,
+        "corrupt": 86,
+        "share": 1.0,
+        "longest_ticks": 86,
+        "longest_seconds": 3.149435417028144
+      },
+      "after": {
+        "ticks": 86,
+        "corrupt": 86,
+        "share": 1.0,
+        "longest_ticks": 86,
+        "longest_seconds": 3.149435417028144
+      }
+    },
+    {
+      "start": 199.5,
+      "stop": 206.8,
+      "before": {
+        "ticks": 190,
+        "corrupt": 190,
+        "share": 1.0,
+        "longest_ticks": 190,
+        "longest_seconds": 7.242497375002131
+      },
+      "after": {
+        "ticks": 190,
+        "corrupt": 190,
+        "share": 1.0,
+        "longest_ticks": 190,
+        "longest_seconds": 7.242497375002131
+      }
+    },
+    {
+      "start": 207.1,
+      "stop": 212.8,
+      "before": {
+        "ticks": 151,
+        "corrupt": 150,
+        "share": 0.9933774834437086,
+        "longest_ticks": 150,
+        "longest_seconds": 5.606324624968693
+      },
+      "after": {
+        "ticks": 151,
+        "corrupt": 150,
+        "share": 0.9933774834437086,
+        "longest_ticks": 150,
+        "longest_seconds": 5.606324624968693
+      }
+    }
+  ]
+}

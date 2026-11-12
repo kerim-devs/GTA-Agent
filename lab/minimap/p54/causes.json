@@ -1,0 +1,219 @@
+[
+  {
+    "session": "20261112-110449",
+    "start": 10.5,
+    "frame": {
+      "i": 660,
+      "frame_id": 338592,
+      "t": 10.9996
+    },
+    "pieces": [
+      {
+        "axis": "h",
+        "edge": 110,
+        "start": 18
+      },
+      {
+        "axis": "h",
+        "edge": 110,
+        "start": 66
+      }
+    ]
+  },
+  {
+    "session": "20261112-102851",
+    "start": 73.6,
+    "frame": {
+      "i": 4439,
+      "frame_id": 213246,
+      "t": 74.0935
+    },
+    "pieces": [
+      {
+        "axis": "v",
+        "edge": 50,
+        "start": 46
+      },
+      {
+        "axis": "v",
+        "edge": 50,
+        "start": 62
+      }
+    ]
+  },
+  {
+    "session": "20261112-100713",
+    "start": 179.3,
+    "frame": {
+      "i": 10733,
+      "frame_id": 141807,
+      "t": 179.8104
+    },
+    "pieces": [
+      {
+        "axis": "v",
+        "edge": 162,
+        "start": 30
+      },
+      {
+        "axis": "h",
+        "edge": 126,
+        "start": 2
+      },
+      {
+        "axis": "h",
+        "edge": 30,
+        "start": 114
+      },
+      {
+        "axis": "h",
+        "edge": 30,
+        "start": 130
+      },
+      {
+        "axis": "h",
+        "edge": 46,
+        "start": 146
+      },
+      {
+        "axis": "h",
+        "edge": 30,
+        "start": 226
+      }
+    ]
+  },
+  {
+    "session": "20261112-100713",
+    "start": 194.3,
+    "frame": {
+      "i": 11630,
+      "frame_id": 142704,
+      "t": 194.7999
+    },
+    "pieces": [
+      {
+        "axis": "v",
+        "edge": 194,
+        "start": 30
+      },
+      {
+        "axis": "v",
+        "edge": 210,
+        "start": 30
+      },
+      {
+        "axis": "v",
+        "edge": 146,
+        "start": 46
+      },
+      {
+        "axis": "v",
+        "edge": 226,
+        "start": 46
+      },
+      {
+        "axis": "h",
+        "edge": 78,
+        "start": 34
+      },
+      {
+        "axis": "h",
+        "edge": 62,
+        "start": 130
+      }
+    ]
+  },
+  {
+    "session": "20261112-100713",
+    "start": 199.5,
+    "frame": {
+      "i": 11942,
+      "frame_id": 143016,
+      "t": 200.006
+    },
+    "pieces": [
+      {
+        "axis": "v",
+        "edge": 130,
+        "start": 30
+      },
+      {
+        "axis": "h",
+        "edge": 30,
+        "start": 130
+      },
+      {
+        "axis": "h",
+        "edge": 46,
+        "start": 130
+      },
+      {
+        "axis": "h",
+        "edge": 126,
+        "start": 194
+      }
+    ]
+  },
+  {
+    "session": "20261112-100713",
+    "start": 207.1,
+    "frame": {
+      "i": 12397,
+      "frame_id": 143471,
+      "t": 207.5988
+    },
+    "pieces": [
+      {
+        "axis": "v",
+        "edge": 66,
+        "start": 30
+      },
+      {
+        "axis": "v",
+        "edge": 162,
+        "start": 30
+      },
+      {
+        "axis": "h",
+        "edge": 46,
+        "start": 130
+      },
+      {
+        "axis": "h",
+        "edge": 46,
+        "start": 146
+      }
+    ]
+  },
+  {
+    "session": "20261112-104424",
+    "start": 121.7,
+    "frame": {
+      "i": 7325,
+      "frame_id": 271888,
+      "t": 122.2007
+    },
+    "pieces": [
+      {
+        "axis": "h",
+        "edge": 62,
+        "start": 34
+      },
+      {
+        "axis": "h",
+        "edge": 110,
+        "start": 50
+      },
+      {
+        "axis": "h",
+        "edge": 126,
+        "start": 66
+      },
+      {
+        "axis": "h",
+        "edge": 62,
+        "start": 178
+      }
+    ]
+  }
+]
