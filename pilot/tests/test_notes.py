@@ -212,6 +212,8 @@ SEEN_OBJECTIVES = [
     ("Begib dich nach Vespucci Beach.", "go_to"),
     ("Begib dich zu dem herrenlosen Auto.", "go_to"),
     ("Fahr zum Canyon.", "go_to"),
+    ("Mach dich auf zur Kanalmündung.", "go_to"),
+    ("Mach dlch auf zur K8nBlmündung.", "go_to"),
     ("Kehr zurück zu Lamar und Stretch.", "return_to"),
     ("Begib dich wieder zu Franklins Haus.", "return_to"),
     ("Folge Lamar.", "follow"),

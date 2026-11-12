@@ -251,7 +251,7 @@ INTENT_CLASSES = (
 )
 
 SEEN = {
-    "go_to": ("begib dich", "fahr"),
+    "go_to": ("begib dich", "fahr", "mach dich auf"),
     "bring": ("bring", "schlepp"),
     "enter_vehicle": ("steig",),
     "take_out": ("schalte",),
