@@ -24,11 +24,38 @@ _SAT_MIN, _VAL_MIN = 80, 85
 _SIDE = (9, 17)
 _AREA = (35, 120)
 _WHITE_MIN = 8
+# By day over bright ground, and on the bottom rim where the marker lies half over the three bars,
+# that purple falls into the marker's four lobes (frames of 23:04 and 23:08: pieces of 6 to 21
+# pixels, 40 and 45 together) and a wider purple gives one component of 70 and 71 pixels in a box
+# of 13 x 12 and 14 x 12. So where the first look finds nothing, the wider one is taken, with at
+# least twenty pixels of the first purple inside it.
+_LOW_HUE = (120, 160)
+_LOW_SAT_MIN, _LOW_VAL_MIN = 50, 60
+_LOW_SIDE = (9, 19)
+_LOW_AREA = (35, 130)
+_LOW_CORE = 20
 # Where a marker can lie: the map with the few pixels a marker on its rim sticks out.
 _X0, _X1, _Y0, _Y1 = 24, 226, 18, 152
 # The centre of a marker held on the rim sat at x 35.3 on the left, x 211.9 on the right and y 29.8
 # at the top; the game's own north marker sat at y 143 at the bottom.
 _RIM = (38.0, 209.0, 33.0, 139.0)
+
+
+def _disc(purple, side, area, enough):
+    """The centre of the largest purple component of a marker's size, in the region's pixels."""
+    count, _, stats, centers = cv2.connectedComponentsWithStats(purple, 8)
+    best = None
+    for index in range(1, count):
+        x, y, width, height, pixels = (int(v) for v in stats[index])
+        if not (side[0] <= width <= side[1] and side[0] <= height <= side[1]):
+            continue
+        if not area[0] <= pixels <= area[1]:
+            continue
+        if not enough(slice(y, y + height), slice(x, x + width)):
+            continue
+        if best is None or pixels > best[0]:
+            best = (pixels, float(centers[index][0]), float(centers[index][1]))
+    return None if best is None else best[1:]
 
 
 def find_waypoint(crop) -> Blip | None:
@@ -38,25 +65,26 @@ def find_waypoint(crop) -> Blip | None:
             return None
         region = np.ascontiguousarray(crop[_Y0:_Y1, _X0:_X1])
         hue, sat, value = cv2.split(cv2.cvtColor(region, cv2.COLOR_RGB2HSV))
-        purple = ((hue >= _HUE[0]) & (hue <= _HUE[1]) & (sat >= _SAT_MIN) & (value >= _VAL_MIN)).astype(
-            np.uint8
+        purple = (hue >= _HUE[0]) & (hue <= _HUE[1]) & (sat >= _SAT_MIN) & (value >= _VAL_MIN)
+        found = _disc(
+            purple.astype(np.uint8),
+            _SIDE,
+            _AREA,
+            lambda rows, cols: int(((sat[rows, cols] < 60) & (value[rows, cols] > 180)).sum()) >= _WHITE_MIN,
         )
-        count, _, stats, centers = cv2.connectedComponentsWithStats(purple, 8)
-        best = None
-        for index in range(1, count):
-            x, y, width, height, area = (int(v) for v in stats[index])
-            if not (_SIDE[0] <= width <= _SIDE[1] and _SIDE[0] <= height <= _SIDE[1]):
-                continue
-            if not _AREA[0] <= area <= _AREA[1]:
-                continue
-            box = (slice(y, y + height), slice(x, x + width))
-            if int(((sat[box] < 60) & (value[box] > 180)).sum()) < _WHITE_MIN:
-                continue
-            if best is None or area > best[0]:
-                best = (area, float(centers[index][0]) + _X0, float(centers[index][1]) + _Y0)
-        if best is None:
+        if found is None:
+            low = (
+                (hue >= _LOW_HUE[0]) & (hue <= _LOW_HUE[1]) & (sat >= _LOW_SAT_MIN) & (value >= _LOW_VAL_MIN)
+            )
+            found = _disc(
+                low.astype(np.uint8),
+                _LOW_SIDE,
+                _LOW_AREA,
+                lambda rows, cols: int(purple[rows, cols].sum()) >= _LOW_CORE,
+            )
+        if found is None:
             return None
-        _, cx, cy = best
+        cx, cy = found[0] + _X0, found[1] + _Y0
         border = cx <= _RIM[0] or cx >= _RIM[1] or cy <= _RIM[2] or cy >= _RIM[3]
         return Blip("purple", round(cx - ARROW_XY[0], 2), round(ARROW_XY[1] - cy, 2), bool(border))
     except Exception:

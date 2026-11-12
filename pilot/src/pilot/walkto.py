@@ -40,7 +40,12 @@ class WalkTo:
     # it went at 33 map pixels, the figure sprinting. A marker last seen inside the map this close
     # and then gone counts as reached.
     GONE_WITHIN = 40.0
-    HOLD = 1.0  # seconds the walk keeps its direction while an icon lies over the marker
+    HOLD = 2.0  # seconds the walk keeps its direction while an icon lies over the marker
+    # The marker goes before the point is reached, so the walk goes on to where it was: for as long
+    # as the last distance takes at the pace seen that evening (64 map pixels in 15 s of sprinting,
+    # 7.4 in 8.4 s of walking), and never longer than CARRY_MAX.
+    SPRINT_PACE, WALK_PACE = 4.3, 0.9
+    CARRY_MAX = 6.0
 
     def __init__(self, args: dict):
         if not isinstance(args, dict) or set(args) - self.parameters.keys():
@@ -229,17 +234,25 @@ class WalkTo:
             if self.last_seen is None:
                 if now - self.started >= self.LOST_AFTER:
                     return self._finish("failed", "no matching blip")
-            elif now - self.last_seen >= self.LOST_AFTER:
-                if (
-                    self.color == "purple"
-                    and not self.end_border
-                    and self.end_distance is not None
-                    and self.end_distance <= self.GONE_WITHIN
-                ):
-                    return self._finish("done", "arrived; the game took the near waypoint off the map")
-                return self._finish("failed", "blip lost; end is last observed distance")
-            elif now - self.last_seen < self.HOLD and self.last_direction is not None:
+                return SkillResult()
+            gone = now - self.last_seen
+            reached = (
+                self.color == "purple"
+                and not self.end_border
+                and self.end_distance is not None
+                and self.end_distance <= self.GONE_WITHIN
+            )
+            pace = self.SPRINT_PACE if self.sprint else self.WALK_PACE
+            keep = min(self.CARRY_MAX, self.end_distance / pace) if reached else self.HOLD
+            if gone < keep and self.last_direction is not None:
                 return self._push(observation, self.last_direction, step)
+            if gone >= self.LOST_AFTER:
+                if reached:
+                    return self._finish(
+                        "done",
+                        f"arrived; the game took the near waypoint off the map, walked on {keep:.1f} s",
+                    )
+                return self._finish("failed", "blip lost; end is last observed distance")
             return SkillResult()
         target = min(targets, key=lambda blip: math.hypot(blip.x, blip.y))
         distance = math.hypot(target.x, target.y)

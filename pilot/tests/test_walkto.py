@@ -229,13 +229,23 @@ def test_the_waypoint_marker_is_read_from_the_frame_when_the_reading_has_no_purp
 
 
 def test_a_near_waypoint_the_game_takes_off_the_map_is_reached_and_a_far_one_is_lost():
-    for x, status, word in ((33, "done", "took the near waypoint"), (60, "failed", "blip lost")):
+    for x, status, word, last in (
+        (33, "done", "took the near waypoint", 6.0),
+        (60, "failed", "blip lost", 3.0),
+    ):
         skill = WalkTo({})
         skill.step(observation(0, x, 0))
-        for time in (0.5, 1, 1.5, 2, 2.5, 3.1):
+        pads = {}
+        for tick in range(1, 14):
+            time = min(tick * 0.5, last)
             result = skill.step(observation(time, blips=()))
-        assert result.status == status and word in result.reason
+            pads[time] = result.pad
+            if result.status != "running":
+                break
+        assert time == last and result.status == status and word in result.reason
         assert result.pad == NEUTRAL_PAD
+        # A near marker that goes is walked on to; a far one only as long as an icon may hide it.
+        assert (pads[2.5] != NEUTRAL_PAD) == (x == 33) and pads[1.5] != NEUTRAL_PAD
     # A marker on the rim that goes is never an arrival, however short its line to the arrow.
     skill = WalkTo({})
     skill.step(observation(0, 10, 0, border=True))
@@ -295,6 +305,7 @@ def test_the_walk_keeps_its_direction_for_a_moment_while_the_marker_is_hidden():
     pushed = skill.step(observation(0, 60, 0)).pad.left
     assert pushed == pytest.approx((1, 0))
     assert skill.step(observation(0.5, blips=())).pad.left == pytest.approx((1, 0))
-    assert skill.step(observation(1.2, blips=())).pad == NEUTRAL_PAD
+    assert skill.step(observation(1.4, blips=())).pad.left == pytest.approx((1, 0))
+    assert skill.step(observation(2.2, blips=())).pad == NEUTRAL_PAD
     # Nothing is pushed for a marker that has never been seen.
     assert WalkTo({}).step(observation(0, blips=())).pad == NEUTRAL_PAD
