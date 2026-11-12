@@ -37,7 +37,8 @@ if (-not (Test-Path "$root\NitroGen-$sha")) {
   Invoke-WebRequest -UseBasicParsing -Uri "https://github.com/MineDojo/NitroGen/archive/$sha.zip" -OutFile "$root\nitrogen.zip"
   Expand-Archive -Force "$root\nitrogen.zip" $root
 }
-Run $py -m pip install --quiet torch --index-url https://download.pytorch.org/whl/cu124
+# torchvision is what the image processor of transformers 5 preprocesses with.
+Run $py -m pip install --quiet torch torchvision --index-url https://download.pytorch.org/whl/cu124
 Run $py -m pip install --quiet numpy pyzmq pyyaml einops transformers pydantic diffusers polars pillow huggingface_hub
 if (-not (Test-Path "$root\ng.pt")) {
   Run $py -c "from huggingface_hub import hf_hub_download; print(hf_hub_download('nvidia/NitroGen', 'ng.pt', local_dir=r'C:\Users\gta\policy'))"
