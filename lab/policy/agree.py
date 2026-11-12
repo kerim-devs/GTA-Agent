@@ -186,6 +186,15 @@ def compare(total, reply, hand, capture):
             total["steer_same_side"] += (
                 abs(model["left"][0]) > 0.1 and model["left"][0] * his["left"][0] > 0
             )
+            # counted apart from a stick at rest: a mirrored axis would show as mostly the other side
+            total["steer_other_side"] += (
+                abs(model["left"][0]) > 0.1 and model["left"][0] * his["left"][0] < 0
+            )
+            total[
+                "model_x_while_he_steers_right"
+                if his["left"][0] > 0
+                else "model_x_while_he_steers_left"
+            ] += model["left"][0]
         for trigger in ("l2", "r2"):
             total[f"{trigger}_kerim"] += his[trigger] > 0.5
             total[f"{trigger}_model"] += model[trigger] > 0.5
@@ -203,6 +212,9 @@ def compare(total, reply, hand, capture):
         total["moments_right" if his_x > 0 else "moments_left"] += 1
         total["steering_moments_same_side"] += (
             abs(model_x) > 0.1 and model_x * his_x > 0
+        )
+        total["steering_moments_other_side"] += (
+            abs(model_x) > 0.1 and model_x * his_x < 0
         )
 
 
@@ -305,6 +317,11 @@ def main():
         )
         print(
             f"  clear steering moments on the same side: {share(total, 'steering_moments_same_side', 'steering_moments')}; one fixed side gets {bar['moments']}"
+        )
+        print(
+            f"  to the other side: {share(total, 'steer_other_side', 'steer_clear')} of the ticks and {share(total, 'steering_moments_other_side', 'steering_moments')} of the moments; "
+            f"the model's mean x is {total['model_x_while_he_steers_left'] / max(total['kerim_steers_left'], 1):+.2f} while he steers left ({total['kerim_steers_left']} ticks) "
+            f"and {total['model_x_while_he_steers_right'] / max(total['kerim_steers_right'], 1):+.2f} while he steers right ({total['kerim_steers_right']} ticks)"
         )
         for trigger, meaning in (("l2", "aim or brake"), ("r2", "fire or throttle")):
             print(
