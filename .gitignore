@@ -79,3 +79,6 @@ lab/actions/out/*
 !lab/actions/out/summary.md
 # contact sheets rebuilt by lab/actions/sheets.py
 lab/actions/sheets/
+# rebuilt by pilot/tools/human_drive.py, 110 MB
+lab/human-drive/out/*/drive.json
+lab/human-drive/out/*/readings-v3.jsonl
