@@ -1,5 +1,5 @@
 {
-"note": "Labels by eye from the frames of Kerim's recordings; frame is the index in frames.jsonl, which is the index in video.mp4. detections.json holds the raw output of Detector.detect(exclude_player=False). unnamed means the view cannot be named: see why.",
+"note": "Labels by eye from the frames of Kerim's recordings; frame is the index in frames.jsonl, which is the index in video.mp4. detections.json holds the raw output of Detector.detect(exclude_player=False). unnamed means the view cannot be named: see why. Frames with source pilot are from the sessions of the pilot itself (/Users/kerim/recordings/pilot), 12 November 14:10 to 14:16, labelled by the presses of play.jsonl and by eye.",
 "frames": [
 {
 "n": 0,
@@ -37,8 +37,8 @@
 "session": "20261112-114541",
 "frame": 9254,
 "time": 154.685,
-"label": "middle",
-"note": "middle by context: the figure sprints past a truck"
+"label": "unnamed",
+"why": "view cannot be named by eye: a sprint past a truck, 0.375 high"
 },
 {
 "n": 5,
@@ -670,6 +670,456 @@
 "frame": 40148,
 "time": 673.49,
 "label": "first"
+},
+{
+"n": 90,
+"session": "20261112-141353",
+"source": "pilot",
+"frame": 17,
+"time": 0.29,
+"label": "near",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 91,
+"session": "20261112-141353",
+"source": "pilot",
+"frame": 76,
+"time": 1.25,
+"label": "near",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 92,
+"session": "20261112-141353",
+"source": "pilot",
+"frame": 123,
+"time": 2.07,
+"label": "near",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 93,
+"session": "20261112-141353",
+"source": "pilot",
+"frame": 157,
+"time": 2.63,
+"label": "middle",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 94,
+"session": "20261112-141353",
+"source": "pilot",
+"frame": 192,
+"time": 3.3,
+"label": "middle",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 95,
+"session": "20261112-141353",
+"source": "pilot",
+"frame": 299,
+"time": 4.99,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 96,
+"session": "20261112-141353",
+"source": "pilot",
+"frame": 380,
+"time": 6.37,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 97,
+"session": "20261112-141353",
+"source": "pilot",
+"frame": 471,
+"time": 7.86,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 98,
+"session": "20261112-141353",
+"source": "pilot",
+"frame": 550,
+"time": 9.17,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 99,
+"session": "20261112-141430",
+"source": "pilot",
+"frame": 9,
+"time": 0.14,
+"label": "first",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 100,
+"session": "20261112-141430",
+"source": "pilot",
+"frame": 47,
+"time": 0.78,
+"label": "first",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 101,
+"session": "20261112-141430",
+"source": "pilot",
+"frame": 84,
+"time": 1.48,
+"label": "first",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 102,
+"session": "20261112-141430",
+"source": "pilot",
+"frame": 128,
+"time": 2.16,
+"label": "near",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 103,
+"session": "20261112-141430",
+"source": "pilot",
+"frame": 189,
+"time": 3.17,
+"label": "near",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 104,
+"session": "20261112-141430",
+"source": "pilot",
+"frame": 248,
+"time": 4.16,
+"label": "near",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 105,
+"session": "20261112-141430",
+"source": "pilot",
+"frame": 322,
+"time": 5.4,
+"label": "middle",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 106,
+"session": "20261112-141430",
+"source": "pilot",
+"frame": 359,
+"time": 6.01,
+"label": "middle",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 107,
+"session": "20261112-141430",
+"source": "pilot",
+"frame": 390,
+"time": 6.55,
+"label": "middle",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 108,
+"session": "20261112-141430",
+"source": "pilot",
+"frame": 478,
+"time": 8.0,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 109,
+"session": "20261112-141430",
+"source": "pilot",
+"frame": 553,
+"time": 9.35,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 110,
+"session": "20261112-141430",
+"source": "pilot",
+"frame": 643,
+"time": 10.75,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 111,
+"session": "20261112-141430",
+"source": "pilot",
+"frame": 730,
+"time": 12.2,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 112,
+"session": "20261112-141510",
+"source": "pilot",
+"frame": 0,
+"time": 0.0,
+"label": "near",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 113,
+"session": "20261112-141510",
+"source": "pilot",
+"frame": 69,
+"time": 1.17,
+"label": "near",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 114,
+"session": "20261112-141510",
+"source": "pilot",
+"frame": 130,
+"time": 2.18,
+"label": "near",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 115,
+"session": "20261112-141510",
+"source": "pilot",
+"frame": 184,
+"time": 3.18,
+"label": "middle",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 116,
+"session": "20261112-141510",
+"source": "pilot",
+"frame": 227,
+"time": 3.78,
+"label": "middle",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 117,
+"session": "20261112-141510",
+"source": "pilot",
+"frame": 273,
+"time": 4.56,
+"label": "middle",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 118,
+"session": "20261112-141510",
+"source": "pilot",
+"frame": 310,
+"time": 5.24,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 119,
+"session": "20261112-141510",
+"source": "pilot",
+"frame": 336,
+"time": 5.68,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 120,
+"session": "20261112-141510",
+"source": "pilot",
+"frame": 370,
+"time": 6.17,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 121,
+"session": "20261112-141554",
+"source": "pilot",
+"frame": 13,
+"time": 0.21,
+"label": "middle",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 122,
+"session": "20261112-141554",
+"source": "pilot",
+"frame": 51,
+"time": 0.93,
+"label": "middle",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 123,
+"session": "20261112-141554",
+"source": "pilot",
+"frame": 97,
+"time": 1.61,
+"label": "middle",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 124,
+"session": "20261112-141554",
+"source": "pilot",
+"frame": 173,
+"time": 2.88,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 125,
+"session": "20261112-141554",
+"source": "pilot",
+"frame": 199,
+"time": 3.31,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 126,
+"session": "20261112-141554",
+"source": "pilot",
+"frame": 233,
+"time": 3.89,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 127,
+"session": "20261112-141056",
+"source": "pilot",
+"frame": 143,
+"time": 2.51,
+"label": "first",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 128,
+"session": "20261112-141056",
+"source": "pilot",
+"frame": 239,
+"time": 4.09,
+"label": "first",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 129,
+"session": "20261112-141056",
+"source": "pilot",
+"frame": 332,
+"time": 5.66,
+"label": "first",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 130,
+"session": "20261112-141056",
+"source": "pilot",
+"frame": 433,
+"time": 7.35,
+"label": "first",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 131,
+"session": "20261112-141056",
+"source": "pilot",
+"frame": 473,
+"time": 8.1,
+"label": "near",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 132,
+"session": "20261112-141056",
+"source": "pilot",
+"frame": 536,
+"time": 9.21,
+"label": "near",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 133,
+"session": "20261112-141056",
+"source": "pilot",
+"frame": 607,
+"time": 10.3,
+"label": "near",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 134,
+"session": "20261112-141056",
+"source": "pilot",
+"frame": 800,
+"time": 13.53,
+"label": "middle",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 135,
+"session": "20261112-141056",
+"source": "pilot",
+"frame": 850,
+"time": 14.37,
+"label": "middle",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 136,
+"session": "20261112-141056",
+"source": "pilot",
+"frame": 907,
+"time": 15.32,
+"label": "middle",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 137,
+"session": "20261112-141056",
+"source": "pilot",
+"frame": 944,
+"time": 15.96,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 138,
+"session": "20261112-141056",
+"source": "pilot",
+"frame": 988,
+"time": 16.67,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
+},
+{
+"n": 139,
+"session": "20261112-141056",
+"source": "pilot",
+"frame": 1034,
+"time": 17.44,
+"label": "far",
+"picked": "settled stretch after the presses of the session"
 }
 ]
 }

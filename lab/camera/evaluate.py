@@ -6,7 +6,8 @@
     pilot/.venv/bin/python lab/camera/evaluate.py --detect F  run the detector again on the sample's frames
                                                               (reads the recordings, writes only F)
 
-The frames are the 90 of lab/camera/sample (Kerim's recordings) and the eight of lab/camera/views.
+The frames are those of lab/camera/sample (90 of Kerim's recordings and 50 of the pilot's own sessions of
+12 November) and the eight of lab/camera/views.
 """
 
 import argparse
@@ -19,7 +20,7 @@ from pilot.contract import Detection
 from pilot.objects import split_player
 
 HERE = Path(__file__).resolve().parent
-RECORDINGS = Path("/Users/kerim/recordings/kerim")
+RECORDINGS = {"": Path("/Users/kerim/recordings/kerim"), "pilot": Path("/Users/kerim/recordings/pilot")}
 SHAPE = (720, 1280)
 COLUMNS = ("far", "middle", "near", "none", "unknown", "rider")
 NAMED = ("far", "middle", "near")
@@ -27,6 +28,11 @@ NAMED = ("far", "middle", "near")
 
 def detections(rows):
     return tuple(Detection(r["kind"], tuple(r["box"]), r["confidence"]) for r in rows)
+
+
+def detections_of(rows):
+    """The compact rows of lab/camera/sessions: kind, x0, y0, x1, y1, confidence."""
+    return tuple(Detection(r[0], tuple(r[1:5]), r[5]) for r in rows)
 
 
 def load():
@@ -107,7 +113,7 @@ def detect(out: Path):
     detector = Detector()
     rows = {}
     for item in json.loads((HERE / "sample/labels.json").read_text())["frames"]:
-        cap = cv2.VideoCapture(str(RECORDINGS / item["session"] / "video.mp4"))
+        cap = cv2.VideoCapture(str(RECORDINGS[item.get("source", "")] / item["session"] / "video.mp4"))
         cap.set(cv2.CAP_PROP_POS_FRAMES, item["frame"])
         ok, frame = cap.read()
         cap.release()
@@ -116,14 +122,18 @@ def detect(out: Path):
             print(f"cannot decode frame {item['frame']} of {item['session']}; skipped")
             continue
         found = detector.detect(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB), exclude_player=False)
-        rows[str(item["n"])] = [{"kind": d.kind, "box": list(d.box), "confidence": d.confidence} for d in found]
+        rows[str(item["n"])] = [
+            {"kind": d.kind, "box": list(d.box), "confidence": d.confidence} for d in found
+        ]
     with out.open("x") as stream:
         json.dump(rows, stream, separators=(",", ":"))
     print(f"wrote raw detections for {len(rows)} frames to {out}")
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     parser.add_argument("--refit", action="store_true")
     parser.add_argument("--detect", type=Path)
     args = parser.parse_args()

@@ -2,10 +2,17 @@
 
 The touchpad steps through four views, on foot in this order: far, first person, near, middle,
 far again. Four presses come back to where they began, so a press costs nothing that the next
-presses do not undo, and the skill does not have to know which view it is in when no figure shows.
-What it does read is the figure: how tall its box stands and where its feet are, as fractions of
-the frame. The bands are fitted on lab/camera/sample (90 frames from ten of Kerim's recordings,
-labelled by eye) and on lab/camera/views.
+presses do not undo. What the skill reads is the figure: how tall its box stands, whether the
+lower edge of the frame cuts it, and where its feet are, as fractions of the frame.
+
+Two ways of reading it. The bands name a view from one figure: they are fitted on lab/camera/sample
+(140 frames from ten recordings of Kerim's and five sessions of the pilot's, labelled by eye) and on
+lab/camera/views, and they are right when the camera is the one they were fitted on and no more.
+The camera's pitch, a pavement or a hill under the figure, the night and a cut box move the numbers
+(fourteen tries on the console on 12 November reached the far view four times with the bands alone),
+so the bands carry only the fast path, a far figure that stands clearly named in the first moments.
+The survey needs no band: it steps once round the four views, measures the figure in each, and takes
+the view whose whole figure is the smallest.
 """
 
 import math
@@ -30,12 +37,15 @@ class ViewBand:
 
 
 # Between the bands lies a gap on purpose: a figure there is on its way from one view to the other,
-# or pushed by a wall, and is named nothing. Far figures stand 0.25 to 0.33 high in the sample,
-# middle ones 0.40 to 0.46, near ones 0.54 to 0.61 and cut by the lower edge.
+# or pushed by a wall, and is named nothing. The camera's pitch moves a view's figure: the game's
+# own camera shows a far figure 0.25 to 0.33 high with its feet at 0.69 to 0.81, the camera that
+# `level_camera` leaves, low and looking slightly up, 0.34 to 0.355 and 0.81 to 0.84. Middle ones
+# stand 0.40 to 0.46 high, near ones 0.53 to 0.61 and cut by the lower edge. The one frame in the
+# gap, a sprint past a truck at 0.375, is neither far nor middle by eye.
 FOOT_BANDS = (
-    ViewBand("far", (0.23, 0.345), (0.66, 0.86)),
-    ViewBand("middle", (0.38, 0.475), (0.82, 0.96)),
-    ViewBand("near", (0.53, 0.65), (0.965, 1.0)),
+    ViewBand("far", (0.23, 0.365), (0.66, 0.87)),
+    ViewBand("middle", (0.385, 0.475), (0.82, 0.975)),
+    ViewBand("near", (0.52, 0.65), (0.95, 1.0)),
 )
 CALIBRATIONS = {"foot": FOOT_BANDS}
 MIN_CONFIDENCE = 0.8
@@ -151,14 +161,6 @@ class Watch:
     def add(self, stamp: float, reading: ViewReading):
         self.samples.append((stamp, reading))
 
-    @property
-    def span(self) -> float:
-        return self.samples[-1][0] - self.samples[0][0] if self.samples else 0.0
-
-    def lasted(self, seconds: float) -> bool:
-        """Readings of at least this long, from at least three detections, are in."""
-        return len(self.samples) >= self.MINIMUM and self.span >= seconds
-
     def view(self) -> str | None:
         """far, middle or near when the readings of the last half second and more agree, else None."""
         if not self.samples:
@@ -172,19 +174,80 @@ class Watch:
         view, count = next(iter(named.items()))
         return view if count >= self.AGREE * len(recent) else None
 
-    def hidden(self) -> float:
-        """How long no figure has shown, up to the last reading."""
-        if not self.samples or self.samples[-1][1].view != "none":
-            return 0.0
-        start = self.samples[-1][0]
-        for stamp, reading in reversed(self.samples):
-            if reading.view != "none":
-                break
-            start = stamp
-        return self.samples[-1][0] - start
 
-    def figure_seen(self) -> bool:
-        return any(r.view != "none" for _, r in self.samples)
+# ------------------------------------------------------------------ the survey
+READABLE = ("in-band", "between-bands")  # a figure that stands where the player's does, whatever its size
+CUT = 0.975  # a box that reaches this far down is cut by the lower edge: a near figure, not a whole one
+WINDOW = 1.0  # seconds of detections that make one measurement
+WINDOW_MOST = 3.0  # and the longest a window waits for a figure it can read
+RECENT = 1.5  # a window is read over its last seconds: the picture may still be moving at its start
+MIN_READINGS = 4
+AGREE = 0.6  # of the readings of a window must show a figure, or none, for it to be called so
+FAR_RATIO = 0.85  # the far figure is at most this much of the next larger one
+SAME = 0.12  # two windows of a figure within this much of each other show one view
+ARRIVED = 0.15  # and the figure of the far view, found again, within this much of the one surveyed
+
+
+@dataclass(frozen=True)
+class Look:
+    """What a window of detections shows: a whole figure of some height, one cut by the lower edge,
+    no figure at all (first person, or a figure hidden), or something no measurement can use."""
+
+    kind: str  # figure, none, unclear
+    height: float = 0.0
+    cut: bool = False
+
+    def text(self) -> str:
+        if self.kind == "figure":
+            return f"{self.height:.2f}" + ("cut" if self.cut else "")
+        return "none" if self.kind == "none" else "?"
+
+
+def look_at(readings: list[ViewReading]) -> Look:
+    """The measurement of a window: the median height of the figures that can be read, if most
+    of the readings are such figures, none if most show no figure, else unclear."""
+    figures = [r for r in readings if r.reason in READABLE and r.height is not None and r.feet is not None]
+    if readings and sum(1 for r in readings if r.view == "none") >= AGREE * len(readings):
+        return Look("none")
+    if not readings or len(figures) < AGREE * len(readings):
+        return Look("unclear")
+    heights = sorted(r.height for r in figures)
+    feet = sorted(r.feet for r in figures)
+    return Look("figure", heights[len(heights) // 2], feet[len(feet) // 2] >= CUT)
+
+
+def alike(a: Look, b: Look) -> bool:
+    """The same view twice: a press that was lost shows as two equal neighbours."""
+    if a.kind != b.kind or a.kind == "unclear":
+        return False
+    return a.kind == "none" or (
+        a.cut == b.cut and abs(a.height - b.height) <= SAME * max(a.height, b.height) + 0.01
+    )
+
+
+def far_of(looks: list[Look]) -> tuple[int | None, str]:
+    """The index of the far view among the looks of one round, in the order the presses went, or why
+    there is none. The far view is the one whose whole figure is the smallest, well below the next
+    larger one. First person is the one without a figure: it comes right after far, which is checked
+    when only one view shows none."""
+    if any(look.kind == "unclear" for look in looks):
+        return None, "views-unread"
+    shown = [(i, look) for i, look in enumerate(looks) if look.kind == "figure"]
+    if not shown:
+        return None, "no-figure"
+    whole = [(i, look) for i, look in shown if not look.cut]
+    if not whole:
+        return None, "no-whole-figure"
+    index, far = min(whole, key=lambda item: item[1].height)
+    larger = [look.height for i, look in shown if i != index]
+    if not larger:
+        return None, "one-view-only"
+    if far.height > FAR_RATIO * min(larger):
+        return None, "views-alike"
+    firsts = [i for i, look in enumerate(looks) if look.kind == "none"]
+    if len(firsts) == 1 and firsts[0] != (index + 1) % len(looks):
+        return None, "views-disagree"
+    return index, "far"
 
 
 TOUCHPAD = Pad(buttons=("touchpad",))
@@ -192,21 +255,38 @@ FORWARD = Pad(left=(0.0, -1.0))
 
 
 class SetFarView:
-    """Press the touchpad until the figure stands in the far view, steady.
+    """Set the camera to the far view behind the figure.
 
-    Far and steady for half a second: done. A named view that is not the far one: a press. No
-    figure for a second and a half: a press as well, because that is first person or a hidden
-    figure and the skill cannot tell them apart and need not. After each press the picture settles
-    for 1.5 s; if no figure is then seen in a readable size, one short step forward swings the
-    camera behind it before the skill reads again. It presses only on the game's screen, only
-    after the mode has read foot for a second, and never with a vehicle under the figure.
+    Fast path: a far figure that the bands name clearly within the first two seconds on foot is
+    done at once, with no press. Else the survey: press, settle, measure the figure for a second,
+    four times, which is one round of the views and ends where it began. The far view is the one of
+    them whose whole figure is the smallest, well below the next larger one (far_of). The skill then
+    presses on to it, measuring after every press and not counting them, so that a press that was
+    lost costs one more and nothing else, and ends done when the figure there is as small as the one
+    it surveyed. A round that shows no figure, or two views it cannot tell apart, fails with the
+    four measurements in the reason.
+
+    A window whose figure no measurement can use (seen from the front, another person by it) gets
+    one short step forward, which swings the camera behind the figure, and is measured again.
+    The skill presses only on the game's screen, only after the mode has read foot for a second, and
+    never with a vehicle under the figure.
+
+    The game's idle camera, which takes over when nobody has touched the pad for a while, shows the
+    figure from the side and off the middle, where no person is taken for it. The first press ends it
+    and the round goes on from there; it ends in the far view like any other (20261112-141056).
     """
 
     name = "set_far_view"
-    parameters: ClassVar = {"duration": (8.0, 40.0, 30.0)}
+    # A survey from first person takes seven presses of 2.8 s each (a press, 1.5 s for the picture to
+    # settle, a second of detections) and two seconds before it, about 22 s; a camera that shows the
+    # figure from the front after every press adds a step and a second to each, about 38 s, and every
+    # lost press 3 s to 5 s more.
+    parameters: ClassVar = {"duration": (10.0, 60.0, 50.0)}
     prompt = (
-        "Press the touchpad until the camera is in the far view behind the figure, on foot only. "
-        "Fails when no view shows a figure, the screen is not the game, or the figure rides a vehicle."
+        "Sets the camera to the far view behind the figure, on foot only: at once when it stands in it, "
+        "else by stepping through the four views and taking the one with the smallest whole figure. "
+        "Fails when no view shows a figure, the views cannot be told apart, the screen is not the game, "
+        "or the figure rides a vehicle."
     )
     # An opening that was cut in half would leave the camera in some other view.
     uninterruptible: ClassVar = True
@@ -215,16 +295,16 @@ class SetFarView:
     SETTLE = 1.5  # the picture after a press; the camera took more than a second in the recordings
     STEP = 0.4  # left stick forward, as a person takes a step
     AFTER_STEP = 1.0
-    STEP_AFTER = 1.0  # readings that name nothing this long: one step
-    HIDDEN = 1.5  # no figure this long: first person, or a figure hidden
-    UNREADABLE = 3.0  # a figure seen but never read this long: given up
+    FAST = 2.0  # seconds on foot in which the bands may name the far view; then the survey
     FOOT_FOR = 1.0  # the minimap reader holds a wrong class for up to 0.83 s
     UNSAFE_LIMIT = 4.0
     MAX_AGE = 0.6  # of the detections, against the tick that reads them
     STALL_LIMIT = 2.0  # no new detection this long: nothing to read
     LATE = 0.3  # a tick later than this has not held the pad for all that time
-    MAX_PRESSES = 5
-    BLIND_PRESSES = 4  # presses that showed no figure at all end the skill
+    ROUND = 4  # presses that make a round of the views
+    SURVEY_PRESSES = 6  # a round and two lost presses
+    LOST = 2  # presses on the way to the far view that may show nothing new
+    MAX_PRESSES = 11
 
     def __init__(self, args: dict):
         if not isinstance(args, dict) or set(args) - self.parameters.keys():
@@ -252,15 +332,27 @@ class SetFarView:
         self.fresh_at = None
         self.last_stamp = None
         self.watch = Watch()
-        self.seen_figure = False
         self.last_view = "unknown"
+        self.phase = "fast"  # fast, survey, goto, verify
+        self.window: list[tuple[float, ViewReading]] = []
+        self.window_from = -math.inf
+        self.looks: list[Look] = []  # the survey, in the order the presses went
+        self.target: Look | None = None
+        self.owed = 0  # presses the far view is still away, by the survey
+        self.last_look: Look | None = None
+        self.goto_presses = 0
+        self.shown = False  # some window of the survey showed a figure
+
+    def _survey_text(self) -> str:
+        return "/".join(look.text() for look in self.looks)
 
     def _finish(self, status, reason):
         self.terminal = SkillResult(status=status, reason=reason)
         return self.terminal
 
     def _fail(self, why):
-        return self._finish("failed", f"{why}; last={self.last_view}; presses={self.presses}")
+        survey = f"; survey={self._survey_text()}" if self.looks else ""
+        return self._finish("failed", f"{why}; last={self.last_view}; presses={self.presses}{survey}")
 
     def stop(self, reason) -> SkillResult:
         return self._finish("failed", str(reason))
@@ -284,6 +376,8 @@ class SetFarView:
             self.settle_until = now + self.SETTLE
         elif self.step_until is not None:
             self.settle_until = now + self.AFTER_STEP
+        if self.pulse_until is not None or self.step_until is not None:
+            self.window, self.window_from = [], self.settle_until
         self.pulse_until = self.step_until = None
         self.watch.reset()
 
@@ -333,10 +427,19 @@ class SetFarView:
             return SkillResult()
         self.last_stamp = stamp
         reading = read_observation(observation)
-        self.watch.add(stamp, reading)
-        self.seen_figure |= reading.view != "none"
         self.last_view = reading.view if reading.view in NAMED or reading.view == "none" else "unknown"
-        return self._decide(now)
+        if self.phase == "fast":
+            self.watch.add(stamp, reading)
+            if self.watch.view() == "far":
+                return self._finish("done", f"far; presses={self.presses}")
+            if now - self.foot_since >= self.FAST:
+                self.phase = "survey"
+                return self._press(now)
+            return SkillResult()
+        if stamp <= self.window_from:
+            return SkillResult()
+        self.window.append((stamp, reading))
+        return self._measure(now)
 
     def _held(self, now) -> Pad:
         """The pad of a press or a step that is under way, released when its time is up."""
@@ -350,45 +453,76 @@ class SetFarView:
             self._release(now)
         return Pad()
 
-    def _decide(self, now) -> SkillResult:
-        view = self.watch.view()
-        if view == "far":
-            return self._finish("done", f"far; presses={self.presses}")
-        settled = now - self.foot_since >= self.FOOT_FOR
-        if view is not None:
-            return self._press(now, settled)
-        # Nothing named. After a press, or with a figure in the picture that no band reads, one
-        # step forward swings the camera behind it; at the start, no figure means first person.
-        if (
-            self.watch.lasted(self.STEP_AFTER)
-            and self.step_allowed
-            and (self.presses or self.watch.figure_seen())
-        ):
-            return self._step(now, settled)
-        if self.watch.hidden() >= self.HIDDEN:
-            if self.presses >= self.BLIND_PRESSES and not self.seen_figure:
-                return self._fail("no-figure")
-            return self._press(now, settled)
-        if self.watch.span >= self.UNREADABLE:
-            return self._fail("view-unknown")
-        return SkillResult()
-
-    def _press(self, now, settled) -> SkillResult:
-        if self.presses >= self.MAX_PRESSES:
-            return self._fail("five-presses")
-        if not settled:
+    def _measure(self, now) -> SkillResult:
+        """The window closes once it has a second of detections and they show something: a figure,
+        or none. A figure that no measurement can use is given one step, then a few seconds."""
+        stamps = [t for t, _ in self.window]
+        span = stamps[-1] - stamps[0]
+        recent = [r for t, r in self.window if t >= stamps[-1] - RECENT]
+        if span < WINDOW or len(recent) < MIN_READINGS:
             return SkillResult()
+        look = look_at(recent)
+        if look.kind == "unclear":
+            if self.step_allowed and self.presses:
+                return self._step(now)
+            if span < WINDOW_MOST:
+                return SkillResult()
+            if self.phase == "survey":
+                self.looks.append(look)  # the round cannot be read: the reason shows which window
+                return self._fail("views-unread")
+        return self._closed(now, look)
+
+    def _closed(self, now, look: Look) -> SkillResult:
+        previous, self.last_look = self.last_look, look
+        if self.phase == "survey":
+            if previous is not None and alike(previous, look):
+                self.looks[-1] = previous  # a press that was lost: the same view twice
+            else:
+                self.looks.append(look)
+            self.shown |= look.kind != "none"
+            if not self.shown and self.presses >= self.ROUND:
+                return self._fail("no-figure")  # a round and no view showed one
+            if len(self.looks) < self.ROUND:
+                return self._press(now) if self.presses < self.SURVEY_PRESSES else self._fail("views-alike")
+            index, why = far_of(self.looks)
+            if index is None:
+                return self._fail(why)
+            self.target = self.looks[index]
+            self.owed = (index - (len(self.looks) - 1)) % len(self.looks)
+            if self.owed == 0:
+                self.phase = "verify"
+                self.window, self.window_from = [], now
+                return SkillResult()
+            self.phase = "goto"
+            return self._press(now)
+        # goto and verify: the figure there is measured after every press and not counted
+        moved = previous is None or not alike(previous, look)
+        if moved:
+            self.owed -= 1
+        if look.kind == "figure" and not look.cut and self.owed <= 0 and self._as_small(look):
+            return self._finish("done", f"far; presses={self.presses}; survey={self._survey_text()}")
+        if self.phase == "verify" or self.goto_presses >= (self.ROUND - 1) + self.LOST:
+            return self._fail("far-lost")
+        return self._press(now)
+
+    def _as_small(self, look: Look) -> bool:
+        return abs(look.height - self.target.height) <= ARRIVED * self.target.height + 0.01
+
+    def _press(self, now) -> SkillResult:
+        if self.presses >= self.MAX_PRESSES:
+            return self._fail("too-many-presses")
         self.presses += 1
+        if self.phase == "goto":
+            self.goto_presses += 1
         self.step_allowed = True
         self.pulse_until = now + self.PULSE
+        self.window = []
         self.watch.reset()
         return SkillResult(pad=TOUCHPAD)
 
-    def _step(self, now, settled) -> SkillResult:
-        if not settled:
-            return SkillResult()
+    def _step(self, now) -> SkillResult:
         self.steps += 1
         self.step_allowed = False
         self.step_until = now + self.STEP
-        self.watch.reset()
+        self.window = []
         return SkillResult(pad=FORWARD)

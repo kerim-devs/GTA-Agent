@@ -1,5 +1,6 @@
 import argparse
 import importlib.util
+import itertools
 import json
 import math
 from collections import Counter
@@ -12,7 +13,19 @@ import numpy as np
 import pytest
 
 from pilot import cli
-from pilot.camera import SetFarView, ViewBand, ViewReading, Watch, read_observation, read_view
+from pilot.camera import (
+    FORWARD,
+    Look,
+    SetFarView,
+    ViewBand,
+    ViewReading,
+    Watch,
+    alike,
+    far_of,
+    look_at,
+    read_observation,
+    read_view,
+)
 from pilot.conductor import Conductor
 from pilot.contract import Detection, Hud, Observation, Pad, Reading, SkillResult
 from pilot.head import SkillCall, parse_response
@@ -45,11 +58,15 @@ def look(view):
 # The frames labelled by eye: the confusion table of the reading, as counts.
 
 
-def evaluation():
-    spec = importlib.util.spec_from_file_location("camera_evaluate", LAB / "evaluate.py")
+def lab_script(name):
+    spec = importlib.util.spec_from_file_location(f"camera_{name}", LAB / f"{name}.py")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
+
+def evaluation():
+    return lab_script("evaluate")
 
 
 def test_the_labelled_frames_are_named_right_or_not_at_all():
@@ -61,11 +78,11 @@ def test_the_labelled_frames_are_named_right_or_not_at_all():
     wrong += sum(counts["first", c] for c in named)
     total = sum(counts[v, c] for v in named for c in ev.COLUMNS)
     right = sum(counts[v, v] for v in named)
-    assert total == 50 and len(found) == 98
+    assert total == 92 and len(found) == 148
     assert wrong == 0
     assert right >= 0.75 * total  # three of four of the far, middle and near frames
-    # No figure in the picture is read as none: all eighteen frames of first person.
-    assert counts["first", "none"] == 18 == sum(c for (label, _), c in counts.items() if label == "first")
+    # No figure in the picture is read as none: all 25 frames of first person.
+    assert counts["first", "none"] == 25 == sum(c for (label, _), c in counts.items() if label == "first")
     # The motorcycle frames of the sample are not read.
     sample = json.loads((LAB / "sample/labels.json").read_text())["frames"]
     stored = json.loads((LAB / "sample/detections.json").read_text())
@@ -87,6 +104,37 @@ def test_the_bands_hold_for_a_recording_they_were_not_fitted_on():
     assert sum(held[v, v] for v in named) >= 0.75 * sum(held[v, c] for v in named for c in ev.COLUMNS)
 
 
+def sessions():
+    return json.loads((LAB / "sessions/pilot-sessions.json").read_text())
+
+
+# The five sessions of the pilot on 12 November, 14:10 to 14:16, with the detector's output at the time.
+# Two of them ended failed although the far view stood for six seconds: in the camera that
+# level_camera leaves the far figure is 0.35 high, and the far band ended at 0.345.
+STANDS = {"20261112-141353": 4.6, "20261112-141430": 7.4}  # when the far view stands, by eye
+
+
+@pytest.mark.parametrize("name", STANDS)
+def test_the_far_view_that_the_levelled_camera_shows_is_named_within_two_seconds(name):
+    ev = evaluation()
+    watch, named = Watch(), None
+    for sample in sessions()[name]["samples"]:
+        if sample["t"] >= STANDS[name]:
+            watch.add(sample["t"], ev.read(ev.detections_of(sample["dets"])))
+            if named is None and watch.view() == "far":
+                named = sample["t"]
+    assert named is not None and named - STANDS[name] <= 2.0
+    # and it stays named, not in and out of it
+    assert watch.view() == "far"
+
+
+def test_a_far_figure_of_the_levelled_camera_and_one_of_a_sprint_are_told_apart():
+    assert read_view(figure(0.352, 0.837), FRAME.shape).view == "far"
+    assert read_view(figure(0.34, 0.825), FRAME.shape).view == "far"
+    assert read_view(figure(0.375, 0.844), FRAME.shape).view == "unknown"  # neither, by eye
+    assert read_view(figure(0.40, 0.87), FRAME.shape).view == "middle"
+
+
 @pytest.mark.parametrize("view", LOOK)
 def test_each_view_is_read_at_any_frame_size(view):
     for shape in ((720, 1280), (360, 640), (1080, 1920)):
@@ -95,8 +143,8 @@ def test_each_view_is_read_at_any_frame_size(view):
 
 def test_no_figure_is_none_and_a_figure_between_the_bands_is_unknown():
     assert read_view(None, FRAME.shape) == ViewReading("none", "no-figure")
-    # Between far (0.345) and middle (0.38) the figure is on its way, or pushed, and is named nothing.
-    assert read_view(figure(0.36, 0.84), FRAME.shape).view == "unknown"
+    # Between far (0.365) and middle (0.385) the figure is on its way, or pushed, and is named nothing.
+    assert read_view(figure(0.375, 0.84), FRAME.shape).view == "unknown"
     assert read_view(figure(0.50, 0.99), FRAME.shape).view == "unknown"
     assert read_view(figure(0.28, 0.72), (10, 10)).reason == "invalid-frame"
 
@@ -160,7 +208,7 @@ def test_a_mode_without_bands_reads_unknown_and_takes_its_own_when_given():
 
 def test_a_view_is_named_over_half_a_second_and_not_by_one_reading():
     watch = Watch()
-    far, near, none = ViewReading("far"), ViewReading("near"), ViewReading("none")
+    far, near = ViewReading("far"), ViewReading("near")
     for stamp in (0.0, 0.1, 0.2, 0.3, 0.4):
         watch.add(stamp, far)
         assert watch.view() is None
@@ -171,27 +219,27 @@ def test_a_view_is_named_over_half_a_second_and_not_by_one_reading():
     for stamp in (0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7):
         watch.add(stamp, far)
     assert watch.view() == "far"  # a second later it is far again
-    watch.reset()
-    for stamp in (0.0, 0.2, 0.4, 0.6):
-        watch.add(stamp, none)
-    assert watch.view() is None and math.isclose(watch.hidden(), 0.6)
-    watch.add(0.8, ViewReading("unknown"))
-    assert watch.hidden() == 0.0 and watch.figure_seen()
 
 
 # A model of the game's camera, as the touchpad steps it: far, first person, near, middle. The
 # picture needs more than a second to follow a press, a press now and then is lost, the figure is
 # hidden for a while, and after a press the camera may look at the figure from the front until a
-# step forward swings it behind.
+# step forward swings it behind. `looks` is how the camera shows the figure in each view: the
+# camera the bands were fitted on by default, or one pitched so that they name the wrong view.
+
+# A camera that looks up at the figure: its far figure stands where the bands put a middle one, its
+# middle one where they put a near one, and its near one is larger than any near band.
+PITCHED = {"far": (0.42, 0.88), "middle": (0.52, 0.97), "near": (0.74, 0.996)}
 
 
 class Game:
     CYCLE = ("far", "first", "near", "middle")
     FOLLOW = 1.2
 
-    def __init__(self, view, *, lose=(), hidden=(), front_after_press=False, swing=True):
+    def __init__(self, view, *, lose=(), hidden=(), front_after_press=False, swing=True, looks=None):
         self.view, self.lose, self.hidden = view, set(lose), tuple(hidden)
         self.front_after_press, self.swing = front_after_press, swing
+        self.looks = LOOK if looks is None else looks
         self.presses = 0
         self.changes = [(-math.inf, view, view)]
         self.front = False
@@ -219,10 +267,10 @@ class Game:
             return None
         at, old, new = max((c for c in self.changes if c[0] <= t), key=lambda c: c[0])
         if t - at < self.FOLLOW:  # the picture is still the old one
-            return None if old == "first" else look(old)
+            return None if old == "first" else figure(*self.looks[old])
         if new == "first":
             return None
-        return figure(0.5, 0.9, aspect=1.3) if self.front else look(new)
+        return figure(0.5, 0.9, aspect=1.3) if self.front else figure(*self.looks[new])
 
 
 def observation(t, game, **changes):
@@ -241,7 +289,7 @@ def observation(t, game, **changes):
     return replace(base, **changes)
 
 
-def run(game, skill=None, *, seconds=45, hz=30, **changes):
+def run(game, skill=None, *, seconds=60, hz=30, **changes):
     skill = SetFarView({}) if skill is None else skill
     rows, held, dt = [], None, 1 / hz
     for index in range(int(seconds * hz)):
@@ -270,92 +318,266 @@ def pads(rows):
     return [r.pad for kind, _, r in rows if kind == "tick"]
 
 
-@pytest.mark.parametrize("start,presses", [("far", 0), ("middle", 1), ("near", 2), ("first", 3)])
-def test_the_loop_ends_in_the_far_view_from_each_view(start, presses):
+def test_a_far_view_that_the_bands_name_clearly_is_done_at_once_without_a_press():
+    game = Game("far")
+    _, rows, end = run(game)
+    last = rows[-1][2]
+    assert last.status == "done" and last.reason == "far; presses=0" and last.pad == Pad()
+    assert game.presses == 0 and 0.4 <= end <= 1.2 and set(pads(rows)) == {Pad()}
+
+
+@pytest.mark.parametrize("start,presses", [("middle", 5), ("near", 6), ("first", 7)])
+def test_from_any_other_view_the_survey_steps_round_once_and_presses_on_to_the_far_one(start, presses):
+    # four presses make a round and end where they began; the far view lies zero to three presses on
     game = Game(start)
     skill, rows, end = run(game)
     last = rows[-1][2]
-    assert last.status == "done" and last.reason == f"far; presses={presses}" and last.pad == Pad()
-    assert game.view == "far" and game.presses == presses == skill.presses
-    assert end < 20
+    assert last.status == "done" and last.reason.startswith(f"far; presses={presses}; survey=")
+    assert last.pad == Pad() and game.view == "far" and game.presses == presses == skill.presses
+    assert 2.0 <= end < 30
 
 
-def test_a_press_is_a_pulse_of_a_tenth_and_the_picture_settles_before_it_is_read_again():
+def test_the_survey_reports_what_it_measured_in_the_order_of_the_presses():
+    game = Game("middle")
+    _, rows, _ = run(game)
+    # far, first person, near and middle again, whole figure, none, cut, whole
+    assert rows[-1][2].reason == "far; presses=5; survey=0.28/none/0.58cut/0.44"
+
+
+@pytest.mark.parametrize("start,presses", [("far", 4), ("middle", 5), ("near", 6), ("first", 7)])
+def test_a_camera_the_bands_misread_is_carried_by_the_survey(start, presses):
+    # Pitched, the camera shows the far figure where the bands put the middle one, and the bands
+    # name the middle view near. The skill names no band during the survey and ends in the far view.
+    assert read_view(figure(*PITCHED["far"]), FRAME.shape).view == "middle"
+    assert read_view(figure(*PITCHED["middle"]), FRAME.shape).view == "near"
+    assert read_view(figure(*PITCHED["near"]), FRAME.shape).view == "unknown"
+    game = Game(start, looks=PITCHED)
+    _, rows, end = run(game)
+    last = rows[-1][2]
+    assert last.status == "done" and last.reason.startswith(f"far; presses={presses}; survey=")
+    assert game.view == "far" and game.presses == presses and end < 30
+
+
+def test_the_survey_does_not_begin_before_the_bands_had_two_seconds_on_foot():
+    game = Game("near")
+    _, rows, _ = run(game)
+    assert 2.0 <= pulses(rows)[0][0] < 2.2
+
+
+def test_a_press_is_a_pulse_of_a_tenth_and_the_picture_settles_before_it_is_measured():
     game = Game("near")
     _, rows, _ = run(game)
     shots = pulses(rows)
-    assert len(shots) == 2
+    assert len(shots) == 6
     for a, b in shots:
         assert 0.09 <= b - a <= 0.14
-    # 1.5 s of settling and then half a second of readings, before the next press
-    assert shots[1][0] - shots[0][1] >= 1.5 + 0.5
+    # 1.5 s of settling and then a second of readings, before the next press
+    assert all(b[0] - a[1] >= 1.5 + 1.0 for a, b in itertools.pairwise(shots))
     assert set(pads(rows)) <= {Pad(), Pad(buttons=("touchpad",))}
 
 
-def test_a_lost_press_is_seen_and_pressed_again():
-    game = Game("near", lose={1})
+def test_a_press_that_was_lost_shows_as_two_equal_neighbours_and_costs_one_more_press():
+    game = Game("middle", lose={2})  # the second press of the round does nothing
     _, rows, _ = run(game)
-    assert rows[-1][2].status == "done" and game.view == "far" and game.presses == 3
+    last = rows[-1][2]
+    assert last.status == "done" and game.view == "far" and game.presses == 6
+    assert last.reason == "far; presses=6; survey=0.28/none/0.58cut/0.44"  # the same four, in the same order
 
 
-def test_a_figure_seen_from_the_front_gets_a_short_step_and_is_then_read():
+def test_a_press_lost_on_the_way_to_the_far_view_is_met_by_measuring_and_not_by_counting():
+    game = Game("near", lose={5})  # the first press after the round
+    _, rows, _ = run(game)
+    assert rows[-1][2].status == "done" and game.view == "far" and game.presses == 7
+
+
+def test_a_figure_seen_from_the_front_gets_a_short_step_and_is_then_measured():
     game = Game("near", front_after_press=True)
     skill, rows, _ = run(game)
-    assert rows[-1][2].reason == "far; presses=2" and skill.steps == 2
-    # one step after each press: the stick is forward for about 0.4 s each time
-    forward = [t for kind, t, r in rows if kind == "tick" and r.pad == Pad(left=(0.0, -1.0))]
+    assert rows[-1][2].status == "done" and game.view == "far"
+    assert skill.steps == game.presses - 1  # one after each press but the one that showed first person
     runs, current = [], []
+    forward = [t for kind, t, r in rows if kind == "tick" and r.pad == FORWARD]
     for t in forward:
         if current and t - current[-1] > 0.1:
             runs.append(current)
             current = []
         current.append(t)
     runs.append(current)
-    assert len(runs) == 2 and all(0.3 <= r[-1] - r[0] + 1 / 30 <= 0.5 for r in runs)
-    assert set(pads(rows)) == {Pad(), Pad(buttons=("touchpad",)), Pad(left=(0.0, -1.0))}
+    assert len(runs) == skill.steps and all(0.3 <= r[-1] - r[0] + 1 / 30 <= 0.5 for r in runs)
+    assert set(pads(rows)) == {Pad(), Pad(buttons=("touchpad",)), FORWARD}
 
 
 def test_a_figure_that_stays_unreadable_ends_the_skill_with_what_it_saw():
     game = Game("middle", front_after_press=True, swing=False)
-    game.front = True  # it begins in front of the figure, and no step swings it
     skill, rows, end = run(game)
     last = rows[-1][2]
-    assert last.status == "failed" and last.reason == "view-unknown; last=unknown; presses=0"
-    assert skill.steps == 1 and end < 6
+    assert last.status == "failed" and last.reason == "views-unread; last=unknown; presses=1; survey=?"
+    assert skill.steps == 1 and end < 12 and last.pad == Pad()
 
 
-def test_a_figure_hidden_for_a_while_is_pressed_around_and_found():
+def test_a_figure_hidden_for_a_while_is_surveyed_when_it_comes_back():
     game = Game("far", hidden=[(0.0, 3.0)])
     _, rows, _ = run(game)
     assert rows[-1][2].status == "done" and game.view == "far"
-    assert 1 <= game.presses <= 5
 
 
-def test_a_figure_hidden_all_the_time_ends_after_four_presses_and_does_not_go_round_again():
+def test_a_figure_hidden_all_the_time_ends_after_a_round_and_does_not_go_round_again():
     game = Game("far", hidden=[(0.0, math.inf)])
     _, rows, end = run(game)
     last = rows[-1][2]
-    assert last.status == "failed" and last.reason == "no-figure; last=none; presses=4"
-    assert game.presses == 4 and last.pad == Pad() and end < 30
+    assert last.status == "failed" and last.reason == "no-figure; last=none; presses=4; survey=none"
+    assert game.presses == 4 and last.pad == Pad() and end < 20
 
 
-def test_never_more_than_five_presses():
-    game = Game("near", lose=set(range(1, 20)))
-    _, rows, end = run(game)
+def test_two_views_that_look_alike_end_the_survey_with_the_measurements():
+    # a middle view as small as the far one: the smallest is not clearly smaller than the next
+    game = Game("near", looks={**LOOK, "middle": (0.30, 0.72)})
+    _, rows, _ = run(game)
     last = rows[-1][2]
-    assert last.status == "failed" and last.reason == "five-presses; last=near; presses=5"
-    assert game.presses == 5 and last.pad == Pad() and end < 20
+    assert (
+        last.status == "failed"
+        and last.reason == "views-alike; last=far; presses=5; survey=0.30/none/0.58cut/0.30"
+    )
+
+
+def test_a_press_that_never_moves_the_camera_ends_after_six_presses():
+    game = Game("near", lose=set(range(1, 20)))
+    _, rows, _ = run(game)
+    last = rows[-1][2]
+    assert last.status == "failed" and last.reason == "views-alike; last=near; presses=6; survey=0.58cut"
+    assert game.presses == 6 and last.pad == Pad()
 
 
 def test_a_hard_time_limit_and_the_longest_a_default_run_can_be():
     game = Game("near", lose=set(range(1, 20)))
-    _, rows, end = run(game, SetFarView({"duration": 8}))
-    assert rows[-1][2].reason.startswith("time-limit") and 8 <= end < 8.1 and rows[-1][2].pad == Pad()
-    assert SetFarView({"duration": 100}).limit == 40 and SetFarView({"duration": 1}).limit == 8
-    assert SetFarView({}).limit == 30
+    _, rows, end = run(game, SetFarView({"duration": 10}))
+    assert rows[-1][2].reason.startswith("time-limit") and 10 <= end < 10.1 and rows[-1][2].pad == Pad()
+    assert SetFarView({"duration": 100}).limit == 60 and SetFarView({"duration": 1}).limit == 10
+    assert SetFarView({}).limit == 50
+    # the longest a survey that finds the far view takes: a round, three presses on, and one lost
+    longest = Game("first", lose={6})
+    assert run(longest)[2] < 30
+    # and with the camera in front of the figure after every press, and a second press lost
+    assert run(Game("first", lose={6}, front_after_press=True))[2] < 50
     # A figure that flickers in and out of every view cannot keep it past the limit either.
     flicker = Game("near", hidden=[(i * 0.7, i * 0.7 + 0.3) for i in range(80)], lose=set(range(1, 20)))
-    assert run(flicker)[2] <= 30.1
+    assert run(flicker)[2] <= 50.1
+
+
+# The pieces of the survey, apart from the skill.
+
+
+def figures(*items):
+    return [ViewReading("unknown", "between-bands", h, f) for h, f in items]
+
+
+def test_a_window_is_a_whole_figure_a_cut_one_none_or_nothing_that_can_be_used():
+    assert look_at(figures(*[(0.35, 0.83)] * 8)) == Look("figure", 0.35, False)
+    assert look_at(figures(*[(0.73, 0.99)] * 8)) == Look("figure", 0.73, True)
+    assert look_at([ViewReading("none", "no-figure")] * 8) == Look("none")
+    # the median of the figures that can be read; the odd reading of the detector does not move it
+    assert look_at(figures(*[(0.35, 0.83)] * 6, (0.6, 0.99), (0.2, 0.7))).height == 0.35
+    # figures that no measurement takes (another person, off the middle) leave a window unread
+    unread = [ViewReading("unknown", "second-person", 0.5, 0.9)] * 5 + figures((0.35, 0.83))
+    assert look_at(unread) == Look("unclear") and look_at([]) == Look("unclear")
+    mixed = [ViewReading("none", "no-figure")] * 4 + figures(*[(0.35, 0.83)] * 4)
+    assert look_at(mixed).kind == "unclear"
+
+
+def test_the_far_view_is_the_smallest_whole_figure_well_below_the_next_larger_one():
+    none, near, middle, far = (
+        Look("none"),
+        Look("figure", 0.57, True),
+        Look("figure", 0.45),
+        Look("figure", 0.35),
+    )
+    assert far_of([none, near, middle, far]) == (3, "far")
+    assert far_of([middle, far, none, near]) == (1, "far")  # the round begins in any view
+    assert far_of([Look("figure", 0.30), none, Look("figure", 0.73, True), Look("figure", 0.42)]) == (
+        0,
+        "far",
+    )
+    # a cut figure is never the far one, and a cut box smaller than its neighbour proves no larger view
+    assert far_of([none, Look("figure", 0.30, True), middle, Look("figure", 0.38)]) == (None, "views-alike")
+    assert far_of([none, near, middle, Look("figure", 0.40)]) == (None, "views-alike")
+    assert far_of([none, none, none, none]) == (None, "no-figure")
+    assert far_of([none, near, Look("figure", 0.60, True), none]) == (None, "no-whole-figure")
+    assert far_of([none, near, none, none]) == (None, "no-whole-figure")
+    assert far_of([none, none, middle, none]) == (None, "one-view-only")
+    assert far_of([none, near, middle, Look("unclear")]) == (None, "views-unread")
+    # first person comes right after far: when the one view without a figure is elsewhere, they disagree
+    assert far_of([far, near, none, middle]) == (None, "views-disagree")
+    assert far_of([far, none, none, middle]) == (0, "far")  # two views without a figure: nothing to check
+
+
+def test_two_neighbouring_windows_of_one_view_are_alike_and_two_views_are_not():
+    assert alike(Look("none"), Look("none"))
+    assert alike(Look("figure", 0.35), Look("figure", 0.37))
+    assert not alike(Look("figure", 0.35), Look("figure", 0.45))  # far and middle
+    assert not alike(Look("figure", 0.57, True), Look("figure", 0.57))
+    assert not alike(Look("unclear"), Look("unclear")) and not alike(Look("none"), Look("figure", 0.3))
+
+
+# What the pilot's own sessions of 12 November show: lab/camera/survey.py reads the first two seconds
+# and the stretches after the recorded presses from the detections stored for sixteen sessions.
+
+
+def survey_lab():
+    return lab_script("survey")
+
+
+def test_the_first_two_seconds_name_far_only_where_the_view_was_far():
+    lab = survey_lab()
+    named = {}
+    for name, session in sessions().items():
+        named[name] = [v for v, _ in lab.opening(lab.readings(session["samples"]))]
+    far = [name for name, views in named.items() if "far" in views]
+    # two sessions began in the far view and the bands named it within a second ...
+    assert set(far) == {"20261112-143047", "20261112-141836"}
+    # ... in the others the far view was not the one the camera showed at the start (every one of
+    # them was done or failed by what came after), so that the bands name it nowhere else
+    for name in far:
+        assert next(t for v, t in lab.opening(lab.readings(sessions()[name]["samples"])) if v == "far") < 1.0
+
+
+@pytest.mark.parametrize(
+    "name,shown",
+    [("20261112-143356", (0.70, 0.78)), ("20261112-143406", (0.62, 0.72)), ("20261112-143436", (0.70, 0.78))],
+)
+def test_a_near_figure_in_daylight_is_a_large_one_cut_by_the_lower_edge_and_is_measured(name, shown):
+    # The skill named nothing for the whole ten seconds: the figure stood 0.66 to 0.74 high, and the
+    # near band ends at 0.65, so every reading was between the bands, and in -143436 a second person
+    # on the pavement made some of them unreadable too. The detector's confidence was 0.95 throughout.
+    lab = survey_lab()
+    session = sessions()[name]
+    seen = [(t, r) for t, r in lab.readings(session["samples"]) if t < 5.0]  # where the figure stood
+    watch, named = Watch(), set()
+    for t, reading in seen:
+        watch.add(t, reading)
+        named.add(watch.view())
+    assert named == {None}  # the bands name nothing, as in the recorded run
+    assert {r.reason for _, r in seen if r.height} <= {"between-bands", "in-band", "second-person"}
+    assert sum(r.reason == "between-bands" for _, r in seen) > 0.6 * len(seen)
+    look = lab.stretches(seen, [])[0][1]
+    assert look.kind == "figure" and look.cut and shown[0] <= look.height <= shown[1]
+    if name == "20261112-143436":
+        assert any(r.reason == "second-person" for _, r in seen)
+
+
+def test_the_survey_replayed_on_the_pictures_of_two_recorded_rounds_ends_far():
+    replay = lab_script("replay")
+    # the game's idle camera first (141056): the first two seconds name nothing, a round, and the far
+    # view where the survey began
+    end, result, made = replay.replay(sessions()["20261112-141056"])
+    assert result.status == "done" and result.reason == "far; presses=4; survey=none/0.57cut/0.49/0.34"
+    assert len(made) == 4 and end < 20
+    # first person first (141430): a round and three presses on to the far view, which the recorded
+    # skill had found but not named
+    end, result, made = replay.replay(sessions()["20261112-141430"])
+    assert result.status == "done" and result.reason == "far; presses=7; survey=0.56cut/0.45/0.35/none"
+    assert len(made) == 7 and end < 25
+    # the other sessions do not show four different views, and are not replayed
+    assert replay.replay(sessions()["20261112-143232"]) is None
 
 
 @pytest.mark.parametrize(
