@@ -10,8 +10,6 @@ from collections import Counter
 from difflib import SequenceMatcher
 from pathlib import Path
 
-import numpy as np
-
 from .scene import _normal, _similar
 
 KINDS = ("objective", "help", "subtitle", "banner")
@@ -158,74 +156,6 @@ def merge_objectives(intervals):
 # First words of the game's German and English instructions, with the ones scene.py leaves out
 # ("Schlepp den Wagen ...", "Mach das Fahrzeug ... los"). A misread first word ("Beglb", "Stelg")
 # still counts when it is a close match.
-INSTRUCTION_VERBS = (
-    "begib folge sammle schalte fahr fahre geh gehe erreiche steig steige verlasse bring bringe töte "
-    "beschaffe kehre kehr rette rett verliere finde find hole hol warte triff schlepp schleppe mach mache "
-    "verfolge verfolg zerstöre zerstör fliehe flieh töt lauf such sprich benutz "
-    "entkomme versteck nimm ruf rufe wähle spring springe klettere benutze lösche besorge hilf folgt "
-    "go follow collect take kill drive find reach enter leave return lose meet wait steal tow"
-).split()
-
-
-def pale_target(frame, box):
-    """Coloured target word in a line of objective text.
-
-    scene.py asks for saturated cyan, yellow, red or green. In the Wi-Fi recordings the target word of an
-    objective is pale after video compression (cyan from 160,233,233 down to 126,170,184, yellow near
-    236,232,155), so only the first test fails there. White text, even with coloured edges from
-    compression, does not pass these.
-    """
-    x, y, w, h = box
-    pixels = frame[max(y, 0) : y + h, max(x, 0) : x + w].astype(np.int16)
-    if not pixels.size:
-        return False
-    r, g, b = pixels[..., 0], pixels[..., 1], pixels[..., 2]
-    cyan = (g > 120) & (b > 120) & (g - r > 30) & (b - r > 30)
-    yellow = (r > 160) & (g > 140) & (r - b > 60) & (g - b > 50)
-    red = (r > 140) & (r - g > 60) & (r - b > 60)
-    green = (g > 120) & (g - r > 30) & (g - b > 30)
-    return float(np.mean(cyan | yellow | red | green)) > 0.012
-
-
-def instruction_like(text):
-    """An instruction by its first word: a listed verb, or a listed verb of five letters or more with
-    one letter misread ("Beglb", "Stelg"). Dialogue starts with words one letter off a verb too
-    ("Machen wir", "Nach dem", "war"), so other fuzzy matches and long lines are refused."""
-    words = text.split()
-    if not words or sum(char.isalpha() for char in text) < 8 or len(text) > 80:
-        return False
-    first = re.sub(r"[^\wäöüß]", "", words[0].casefold())
-    if first in INSTRUCTION_VERBS:
-        return True
-    return len(first) >= 5 and any(
-        len(verb) == len(first) and sum(a != b for a, b in zip(verb, first, strict=True)) <= 1
-        for verb in INSTRUCTION_VERBS
-    )
-
-
-def promote_objectives(scene, frame):
-    """Lines scene.py read as subtitle that are objectives by their words and a coloured target.
-
-    Returns the scene with those lines labelled objective and its joined texts rebuilt.
-    """
-    from dataclasses import replace
-
-    lines = tuple(
-        replace(line, region="objective")
-        if line.region == "subtitle"
-        and line.confidence >= 0.3
-        and instruction_like(line.text)
-        and pale_target(frame, line.box)
-        else line
-        for line in scene.lines
-    )
-    if lines == scene.lines:
-        return scene
-
-    def joined(*labels):
-        return " ".join(line.text for line in lines if line.region in labels and line.confidence >= 0.3)
-
-    return replace(scene, lines=lines, objective=joined("objective"), subtitle=joined("subtitle"))
 
 
 # What an objective asks for. The classes are closed; the rules of a head decide on the class and not on

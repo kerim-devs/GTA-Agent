@@ -1,0 +1,255 @@
+[
+  {
+    "recording": "20261111-164039",
+    "readings": 1767,
+    "known_steps": 8,
+    "found_before": 5,
+    "found_after": 8,
+    "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-164039/sections.json",
+    "timing_ms_per_reading_with_bottom_text": {
+      "before": {
+        "count": 548,
+        "mean": 0.028864483576642338,
+        "median": 0.014562499999999999,
+        "p95": 0.16034605
+      },
+      "after": {
+        "count": 548,
+        "mean": 0.047688810218978105,
+        "median": 0.026854,
+        "p95": 0.17836884999999997
+      }
+    },
+    "wall_seconds": 47.473373290966265
+  },
+  {
+    "recording": "20261111-165543",
+    "readings": 1802,
+    "known_steps": 6,
+    "found_before": 0,
+    "found_after": 6,
+    "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-165543/sections.json",
+    "timing_ms_per_reading_with_bottom_text": {
+      "before": {
+        "count": 564,
+        "mean": 0.022554975177304964,
+        "median": 0.014375,
+        "p95": 0.11774810000000008
+      },
+      "after": {
+        "count": 564,
+        "mean": 0.04432077127659574,
+        "median": 0.0229795,
+        "p95": 0.178841
+      }
+    },
+    "wall_seconds": 62.11913291702513
+  },
+  {
+    "recording": "20261111-171046",
+    "readings": 1801,
+    "known_steps": 5,
+    "found_before": 1,
+    "found_after": 5,
+    "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-171046/sections.json",
+    "timing_ms_per_reading_with_bottom_text": {
+      "before": {
+        "count": 967,
+        "mean": 0.01734792967942089,
+        "median": 0.014542,
+        "p95": 0.021016399999999994
+      },
+      "after": {
+        "count": 967,
+        "mean": 0.026804156153050672,
+        "median": 0.020125,
+        "p95": 0.05527509999999998
+      }
+    },
+    "wall_seconds": 74.02442941599293
+  },
+  {
+    "recording": "20261111-172549",
+    "readings": 1014,
+    "known_steps": 3,
+    "found_before": 2,
+    "found_after": 3,
+    "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-172549/sections.json",
+    "timing_ms_per_reading_with_bottom_text": {
+      "before": {
+        "count": 478,
+        "mean": 0.01896392887029289,
+        "median": 0.014125,
+        "p95": 0.02146424999999998
+      },
+      "after": {
+        "count": 478,
+        "mean": 0.03208889121338912,
+        "median": 0.021792,
+        "p95": 0.0987481999999999
+      }
+    },
+    "wall_seconds": 35.75603916600812
+  },
+  {
+    "recording": "20261111-175312",
+    "readings": 1801,
+    "known_steps": 0,
+    "found_before": 0,
+    "found_after": 0,
+    "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-175312/sections.json",
+    "timing_ms_per_reading_with_bottom_text": {
+      "before": {
+        "count": 333,
+        "mean": 0.014812315315315317,
+        "median": 0.013917,
+        "p95": 0.0205914
+      },
+      "after": {
+        "count": 333,
+        "mean": 0.02390851951951952,
+        "median": 0.017959,
+        "p95": 0.049125
+      }
+    },
+    "wall_seconds": 56.95803449995583
+  },
+  {
+    "recording": "20261111-180814",
+    "readings": 1800,
+    "known_steps": 3,
+    "found_before": 1,
+    "found_after": 3,
+    "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-180814/sections.json",
+    "timing_ms_per_reading_with_bottom_text": {
+      "before": {
+        "count": 831,
+        "mean": 0.0160146293622142,
+        "median": 0.013834,
+        "p95": 0.020167
+      },
+      "after": {
+        "count": 831,
+        "mean": 0.027152583634175692,
+        "median": 0.019875,
+        "p95": 0.0548955
+      }
+    },
+    "wall_seconds": 56.44394041597843
+  },
+  {
+    "recording": "20261111-182316",
+    "readings": 1804,
+    "known_steps": 1,
+    "found_before": 1,
+    "found_after": 1,
+    "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-182316/sections.json",
+    "timing_ms_per_reading_with_bottom_text": {
+      "before": {
+        "count": 325,
+        "mean": 0.014923584615384617,
+        "median": 0.013709,
+        "p95": 0.020350000000000004
+      },
+      "after": {
+        "count": 325,
+        "mean": 0.022694510769230767,
+        "median": 0.018375,
+        "p95": 0.04867500000000001
+      }
+    },
+    "wall_seconds": 59.5828167090076
+  },
+  {
+    "recording": "20261111-183820",
+    "readings": 1801,
+    "known_steps": 1,
+    "found_before": 1,
+    "found_after": 1,
+    "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-183820/sections.json",
+    "timing_ms_per_reading_with_bottom_text": {
+      "before": {
+        "count": 379,
+        "mean": 0.01831409234828496,
+        "median": 0.013875,
+        "p95": 0.020762499999999996
+      },
+      "after": {
+        "count": 379,
+        "mean": 0.02865575725593668,
+        "median": 0.018458,
+        "p95": 0.056316099999999994
+      }
+    },
+    "wall_seconds": 44.45896866696421
+  },
+  {
+    "recording": "20261111-185323",
+    "readings": 1800,
+    "known_steps": 3,
+    "found_before": 1,
+    "found_after": 3,
+    "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-185323/sections.json",
+    "timing_ms_per_reading_with_bottom_text": {
+      "before": {
+        "count": 906,
+        "mean": 0.018314866445916116,
+        "median": 0.013917,
+        "p95": 0.021468749999999998
+      },
+      "after": {
+        "count": 906,
+        "mean": 0.040652406181015455,
+        "median": 0.021375,
+        "p95": 0.18848974999999998
+      }
+    },
+    "wall_seconds": 41.37003504199674
+  },
+  {
+    "recording": "20261111-190825",
+    "readings": 1763,
+    "known_steps": 7,
+    "found_before": 2,
+    "found_after": 7,
+    "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-190825/sections.json",
+    "timing_ms_per_reading_with_bottom_text": {
+      "before": {
+        "count": 901,
+        "mean": 0.020850826859045504,
+        "median": 0.013333,
+        "p95": 0.086167
+      },
+      "after": {
+        "count": 901,
+        "mean": 0.034541055493895675,
+        "median": 0.019917,
+        "p95": 0.139
+      }
+    },
+    "wall_seconds": 38.13010029203724
+  },
+  {
+    "recording": "20261111-192328",
+    "readings": 586,
+    "known_steps": 0,
+    "found_before": 0,
+    "found_after": 0,
+    "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-192328/sections.json",
+    "timing_ms_per_reading_with_bottom_text": {
+      "before": {
+        "count": 379,
+        "mean": 0.01473777308707124,
+        "median": 0.01325,
+        "p95": 0.01925
+      },
+      "after": {
+        "count": 379,
+        "mean": 0.024228678100263853,
+        "median": 0.019792,
+        "p95": 0.048225299999999985
+      }
+    },
+    "wall_seconds": 10.697217749955598
+  }
+]

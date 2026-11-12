@@ -1,0 +1,54 @@
+{
+  "recording": "20261111-192328",
+  "readings": 586,
+  "known_steps": 0,
+  "found_before": 0,
+  "found_after": 0,
+  "steps": [],
+  "changed_labels": [],
+  "stored_label_disagreements": [],
+  "dialogue_candidates": [],
+  "cutscene_readings": [
+    {
+      "t": 254.0025,
+      "i": 15141,
+      "objectives": []
+    },
+    {
+      "t": 254.501,
+      "i": 15171,
+      "objectives": []
+    },
+    {
+      "t": 255.0048,
+      "i": 15201,
+      "objectives": []
+    },
+    {
+      "t": 255.5026,
+      "i": 15231,
+      "objectives": []
+    },
+    {
+      "t": 256.0035,
+      "i": 15261,
+      "objectives": []
+    }
+  ],
+  "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-192328/sections.json",
+  "timing_ms_per_reading_with_bottom_text": {
+    "before": {
+      "count": 379,
+      "mean": 0.01473777308707124,
+      "median": 0.01325,
+      "p95": 0.01925
+    },
+    "after": {
+      "count": 379,
+      "mean": 0.024228678100263853,
+      "median": 0.019792,
+      "p95": 0.048225299999999985
+    }
+  },
+  "wall_seconds": 10.697217749955598
+}
