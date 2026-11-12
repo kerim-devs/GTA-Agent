@@ -1,0 +1,171 @@
+{
+ "server": {
+  "version": 1,
+  "model": "nvidia/NitroGen ng.pt",
+  "flow_steps": 16,
+  "actions": 18,
+  "rate_hz": 60,
+  "first_step": 3,
+  "frame": [
+   256,
+   256
+  ]
+ },
+ "steps": 16,
+ "hz": 5.0,
+ "seconds": 10.0,
+ "stretches": [
+  {
+   "kind": "drive",
+   "recording": "20261111-164039",
+   "begin": 357.164,
+   "covered_s": 10.0,
+   "frames": 50
+  },
+  {
+   "kind": "drive",
+   "recording": "20261111-165543",
+   "begin": 469.811,
+   "covered_s": 10.0,
+   "frames": 50
+  },
+  {
+   "kind": "drive",
+   "recording": "20261111-172549",
+   "begin": 32.62,
+   "covered_s": 10.0,
+   "frames": 50
+  },
+  {
+   "kind": "drive",
+   "recording": "20261111-190825",
+   "begin": 573.328,
+   "covered_s": 10.0,
+   "frames": 50
+  },
+  {
+   "kind": "drive",
+   "recording": "20261111-193105",
+   "begin": 172.391,
+   "covered_s": 10.0,
+   "frames": 50
+  },
+  {
+   "kind": "drive",
+   "recording": "20261111-200111",
+   "begin": 200.3,
+   "covered_s": 10.0,
+   "frames": 50
+  },
+  {
+   "kind": "drive",
+   "recording": "20261111-201615",
+   "begin": 155.101,
+   "covered_s": 10.0,
+   "frames": 50
+  },
+  {
+   "kind": "drive",
+   "recording": "20261111-205309",
+   "begin": 758.546,
+   "covered_s": 10.0,
+   "frames": 50
+  },
+  {
+   "kind": "drive",
+   "recording": "20261111-213150",
+   "begin": 611.832,
+   "covered_s": 10.0,
+   "frames": 50
+  },
+  {
+   "kind": "drive",
+   "recording": "20261112-090514",
+   "begin": 607.1,
+   "covered_s": 10.0,
+   "frames": 50
+  }
+ ],
+ "timing": {
+  "requests": 500,
+  "round_trip_median_ms": 196.7,
+  "round_trip_p90_ms": 277.0,
+  "round_trip_worst_ms": 364.7,
+  "server_median_ms": 185.9
+ },
+ "totals": {
+  "drive": {
+   "stick_clear@-0.3": 3180,
+   "stick_within_45@-0.3": 1054,
+   "stick_clear@-0.15": 3186,
+   "stick_within_45@-0.15": 1001,
+   "stick_clear@0.0": 3121,
+   "stick_within_45@0.0": 868,
+   "ticks": 9000,
+   "kerim_points_15": 120,
+   "kerim_steers_right": 2391,
+   "model_quiet": 236,
+   "kerim_quiet": 1048,
+   "steer_clear": 3407,
+   "steer_same_side": 1223,
+   "steer_other_side": 772,
+   "model_x_while_he_steers_right": 385.9839999999997,
+   "l2_kerim": 0,
+   "l2_model": 336,
+   "l2_both": 0,
+   "r2_kerim": 6014,
+   "r2_model": 6966,
+   "r2_both": 5151,
+   "stick_idle": 1232,
+   "stick_clear@0.3": 3185,
+   "stick_within_45@0.3": 915,
+   "stick_clear@0.15": 3114,
+   "kerim_points_0": 1689,
+   "stick_within_45@0.15": 868,
+   "model_presses_l3": 67,
+   "steering_moments": 166,
+   "moments_right": 120,
+   "steering_moments_same_side": 69,
+   "steering_moments_other_side": 47,
+   "kerim_steers_left": 1016,
+   "model_x_while_he_steers_left": 101.83399999999993,
+   "kerim_points_8": 860,
+   "kerim_points_7": 68,
+   "model_presses_r1": 156,
+   "model_presses_cross": 218,
+   "model_presses_circle": 129,
+   "model_presses_down": 28,
+   "model_presses_r3": 34,
+   "kerim_points_1": 380,
+   "moments_left": 46,
+   "model_presses_l1": 101,
+   "model_presses_square": 69,
+   "model_presses_up": 4,
+   "model_presses_triangle": 32,
+   "model_presses_left": 5,
+   "kerim_presses_r1": 2,
+   "kerim_presses_cross": 821,
+   "model_presses_right": 4,
+   "kerim_points_9": 4
+  },
+  "foot": {},
+  "fight": {}
+ },
+ "fixed": {
+  "drive": {
+   "stick": "2189 of 3121",
+   "steer": "2391 of 3407",
+   "moments": "120 of 166"
+  },
+  "foot": {
+   "stick": "none to count",
+   "steer": "0 of 0",
+   "moments": "0 of 0"
+  },
+  "fight": {
+   "stick": "none to count",
+   "steer": "0 of 0",
+   "moments": "0 of 0"
+  }
+ }
+}
