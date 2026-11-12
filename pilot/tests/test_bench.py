@@ -1,26 +1,44 @@
-"""Tests of the bench's proofs, outcome table, causes, ledger and board on small logs written here and on
-pictures drawn here. Nothing in this file talks to a console."""
+"""Tests of the bench on small logs written here, on pictures drawn here, and on a model of the bridge
+and the pilot. Nothing in this file talks to a console: `bench_run.bridge` and `bench_run.pilot` are the
+only two doors to it, and every test starts with both replaced by functions that fail."""
 
 import ast
+import functools
 import json
+import re
+import signal
+import subprocess
+import threading
+from datetime import UTC, datetime, timedelta
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from types import SimpleNamespace
+from typing import ClassVar
 
 import cv2
 import numpy as np
 import pytest
 
-from pilot import bench
+from pilot import bench, bench_run
 from pilot import bench_proofs as proofs
 from pilot.bench import CATALOGUE, Capability, P, step
 from pilot.contract import Detection
 
 REPO = Path(__file__).resolve().parents[2]
 OFFSET = 4000.0  # head rows carry the monotonic clock, the play rows the session's own
+REAL_BRIDGE, REAL_PILOT = bench_run.bridge, bench_run.pilot  # the doors, before any test replaces them
 
 
 @pytest.fixture(autouse=True)
-def fixed_version(monkeypatch):
+def no_console(monkeypatch):
+    """Whatever a test forgets to replace must fail, never reach a console."""
+
+    def refuse(*args, **kwargs):
+        raise AssertionError("a test reached for the console")
+
+    monkeypatch.setattr(bench_run, "bridge", refuse)
+    monkeypatch.setattr(bench_run, "pilot", refuse)
+    monkeypatch.setattr(bench_run, "BRIDGE_URL", "http://127.0.0.1:1")
     monkeypatch.delenv("PS5_HOST", raising=False)
     monkeypatch.setattr(bench, "version", lambda: {"commit": "abc123", "dirty": False})
 
@@ -766,7 +784,9 @@ def test_a_catalogue_entry_with_named_proofs_is_all_it_takes(tmp_path, monkeypat
     assert row["outcome"] == "ok"
     assert set(row["proof"]["parts"]) == {"on_foot_at_end", "lights_on_at_end"}
     assert "test's own piece" in entry.describe_proof()
-    # the board and the catalogue listing know it without another line
+    # the loop, the dry run, the board and the catalogue listing know it without another line
+    assert bench_run.resolve(["test.stand"]) == ["test.stand"]
+    assert any("test.stand" in line for line in bench_run.plan_lines(["test.stand"], 2, None))
     assert "test.stand" in {c["id"] for c in bench.board_data([row])["capabilities"]}
     assert "test.stand" in bench.catalogue_text()
 
@@ -824,3 +844,544 @@ def test_an_unmeasured_part_keeps_the_cards_wording_and_a_success_does_not_count
         skill=running("enter_vehicle", 9, status="failed", reason="time-limit"),
     )
     assert bench.judge(stayed, "foot.enter")["outcome"] == "failed"  # a no of another piece still counts
+
+
+# ---------------------------------------------------------------- a model of the bridge and the pilot
+class Console:
+    """The bridge and the pilot, on a clock that moves only when the loop pauses.
+
+    Every try the loop starts becomes a session folder, written when the pilot ends: its minimap follows
+    the figure (`mode`), and the plan's first skill says what changes it. `outcomes` lists what happens in
+    the tries of a capability, in order: ok, tech (the skill fails on a clock reason), none (a pilot that
+    leaves no session behind)."""
+
+    def __init__(self, tmp_path, mode="foot"):
+        self.t = 0.0
+        self.mode = mode
+        self.record_dir = tmp_path / "recordings"
+        self.record_dir.mkdir()
+        self.human = lambda t: False
+        self.down = lambda t: False
+        self.recording = lambda t: False
+        self.objective = lambda t: ""
+        self.outcomes = {}
+        self.dies_after = None
+        self.starts = []  # (time, command, status at that moment)
+        self.pads = []  # (time, path, payload)
+        self.interrupted = []
+        self.runs = 0
+        self.live = None
+
+    def clock(self):
+        return self.t
+
+    def pause(self, seconds):
+        self.t += seconds
+
+    def now(self):
+        return datetime(2026, 11, 12, 12, 0, tzinfo=UTC) + timedelta(seconds=self.t)
+
+    def status(self):
+        return {
+            "session_up": True,
+            "human_input": bool(self.human(self.t)),
+            "recording": bool(self.live) or bool(self.recording(self.t)),
+        }
+
+    def bridge(self, path="/status", payload=None):
+        if self.down(self.t):
+            raise OSError("connection refused")
+        if payload is not None:
+            self.pads.append((self.t, path, payload))
+            return {}
+        return self.status()
+
+    def pilot(self, action, *, handle=None, command=None, log=None):
+        if action == "start":
+            self.starts.append((self.t, command, self.status()))
+            self.runs += 1
+            plan = json.loads(command[command.index("--plan") + 1])
+            kind = {"wait": "probe", "press": "leave", "enter_vehicle": "enter"}.get(plan[0]["name"], "other")
+            queue = self.outcomes.get({"leave": "car.leave", "enter": "foot.enter"}.get(kind, kind), [])
+            self.live = SimpleNamespace(
+                began=self.t,
+                seconds=float(command[command.index("--seconds") + 1]),
+                kind=kind,
+                outcome=queue.pop(0) if queue else "ok",
+                code=None,
+                folder=Path(command[command.index("--record-dir") + 1]),
+            )
+            Path(log).write_text("pilot output\n")
+            return self.live
+        if action == "poll":
+            if handle.code is not None:
+                return handle.code
+            if self.dies_after is not None and self.t - handle.began >= self.dies_after:
+                return self.finish(handle, 1, self.dies_after)
+            if self.t - handle.began >= handle.seconds:
+                return self.finish(handle, 0, handle.seconds)
+            return None
+        if action == "interrupt":
+            self.interrupted.append(self.t)
+            return self.finish(handle, 0, self.t - handle.began)
+        raise AssertionError(action)
+
+    def finish(self, handle, code, lasted):
+        handle.code, self.live = code, None
+        if handle.outcome != "none":
+            write_session(handle.folder / f"20261112-{self.runs:06d}", **self.session_for(handle, lasted))
+        if handle.kind == "leave" and handle.outcome == "ok" and lasted >= 1.5:
+            self.mode = "foot"
+        if handle.kind == "enter" and lasted >= 9:
+            self.mode = "vehicle"
+        return code
+
+    def session_for(self, handle, lasted):
+        begin, tech, began, objective = self.mode, handle.outcome == "tech", handle.began, self.objective
+        base = {"seconds": max(lasted, 3.0), "objective": lambda t: objective(began + t)}
+        shown = {"foot": "flat", "vehicle": "tilted"}
+        if handle.kind == "leave":
+            return {
+                **base,
+                "minimap": lambda t: shown[begin] if t < 2 or tech else "flat",
+                "skill": running(
+                    "press",
+                    1.5,
+                    status="failed" if tech else "done",
+                    reason="clock-invalid" if tech else "done",
+                ),
+            }
+        if handle.kind == "enter":
+            return {
+                **base,
+                "minimap": lambda t: "flat" if t < 8 else "tilted",
+                "skill": running("enter_vehicle", 9, reason="entered vehicle"),
+            }
+        return {**base, "minimap": shown[begin], "skill": running("wait", 99)}
+
+
+@pytest.fixture
+def console(tmp_path, monkeypatch):
+    world = Console(tmp_path)
+    monkeypatch.setattr(bench_run, "bridge", world.bridge)
+    monkeypatch.setattr(bench_run, "pilot", world.pilot)
+    return world
+
+
+def make_loop(console, base, ids, **kwargs):
+    return bench_run.Loop(
+        ids,
+        base / "ledger" / "bench.jsonl",
+        record_dir=console.record_dir,
+        clock=console.clock,
+        pause=console.pause,
+        now=console.now,
+        **kwargs,
+    )
+
+
+def ledger_rows(base):
+    return [r for r in bench.read_jsonl(base / "ledger" / "bench.jsonl") if r.get("event_start") is None]
+
+
+def plan_names(console):
+    return [json.loads(c[1][c[1].index("--plan") + 1])[0]["name"] for c in console.starts]
+
+
+# ---------------------------------------------------------------- the loop against the model
+def test_a_missing_start_state_is_made_by_the_capability_that_produces_it(console, tmp_path):
+    loop = make_loop(console, tmp_path, ["car.leave"], tries=1)
+    loop.run()
+    assert plan_names(console) == ["wait", "enter_vehicle", "press"]  # the probe, the producer, the try
+    rows = ledger_rows(tmp_path)
+    assert [(r["capability"], r.get("setup_for")) for r in rows] == [
+        ("foot.enter", "car.leave"),
+        ("car.leave", None),
+    ]
+    assert rows[1]["outcome"] == "ok"
+    assert loop.stopped_because == "every capability had its tries"
+
+
+def test_a_person_on_the_controller_ends_the_try_and_it_is_not_counted(console, tmp_path):
+    console.mode = "vehicle"
+    console.human = lambda t: 12 <= t < 40
+    loop = make_loop(console, tmp_path, ["car.leave"], tries=1)
+    loop.run()
+    assert console.interrupted, "the running pilot was ended"
+    cut = next(r for r in ledger_rows(tmp_path) if r.get("interruption"))
+    assert cut["interruption"] == "human input" and cut["outcome"] == "not_counted"
+    assert "took the controller" in cut["exclusion"]
+    assert console.starts[-1][0] >= 40  # started again once the person was gone
+    last = [r for r in ledger_rows(tmp_path) if r["capability"] == "car.leave"][-1]
+    assert last["outcome"] == "ok" and not last.get("interruption")
+    assert loop.done["car.leave"] == 1  # the cut try did not count toward the tries
+
+
+@pytest.mark.parametrize(
+    "status,waiting",
+    [
+        ({"session_up": False, "recording": False, "human_input": False}, "the session is not up"),
+        ({"session_up": True, "recording": True, "human_input": False}, "a recording runs"),
+        ({"session_up": True, "recording": False, "human_input": True}, "a person is on the controller"),
+        ({"session_up": True, "human_input": False}, "recording is not reported"),
+        ({"session_up": True, "recording": False}, "human_input is not reported"),
+        ([], "the bridge's answer is not a status"),
+    ],
+)
+def test_a_try_starts_only_when_the_bridge_says_it_may(status, waiting):
+    assert bench_run.clear(status) is False
+    assert bench_run.waiting_for(status) == waiting
+    assert bench_run.clear({"session_up": True, "human_input": False, "recording": False}) is True
+
+
+def test_the_pilot_is_never_started_while_the_bridge_is_unclear(console, tmp_path):
+    console.mode = "vehicle"
+    console.recording = lambda t: t < 30
+    console.human = lambda t: 30 <= t < 45
+    loop = make_loop(console, tmp_path, ["car.leave"], tries=1)
+    loop.run()
+    assert console.starts and all(bench_run.clear(status) for _, _, status in console.starts)
+    assert console.starts[0][0] >= 45 and console.pads[0][0] >= 45  # not even the small push before
+
+
+def test_a_bridge_that_does_not_answer_is_waited_out_and_reported_apart(console, tmp_path):
+    console.mode = "vehicle"
+    console.down = lambda t: t < 60
+    loop = make_loop(console, tmp_path, ["car.leave"], tries=1)
+    loop.run()
+    assert console.starts[0][0] >= 60
+    assert [e["where"] for e in loop.errors] == ["bridge"]  # once, not once per poll
+    assert [r["outcome"] for r in ledger_rows(tmp_path)] == ["ok"]
+    report = (loop.run_dir / "report.md").read_text()
+    assert "Problems of the loop itself" in report and "connection refused" in report
+
+
+def test_a_bridge_that_goes_silent_during_a_try_ends_the_try_and_the_loop_goes_on(console, tmp_path):
+    console.down = lambda t: 20 <= t < 80  # foot.enter runs for 53 s, so the bridge is gone for ten of them
+    loop = make_loop(console, tmp_path, ["foot.enter"], tries=1)
+    loop.run()
+    rows = ledger_rows(tmp_path)
+    cut = [r for r in rows if r.get("interruption") == "bridge not answering"]
+    assert cut and cut[0]["outcome"] == "not_counted" and console.interrupted
+    assert "bridge stopped answering" in cut[0]["exclusion"]
+    assert console.starts[-1][0] >= 80 and len(rows) >= 2  # went on once the bridge answered again
+
+
+def test_a_pilot_that_dies_is_a_problem_of_the_loop_and_the_run_ends_on_its_own_account(console, tmp_path):
+    console.mode = "vehicle"
+    console.dies_after = 4.0
+    loop = make_loop(console, tmp_path, ["car.leave"], tries=2)
+    loop.run()
+    assert any(e["where"] == "pilot" and "exit code 1" in e["error"] for e in loop.errors)
+    # the producer dies every time, so the capability that needs its state is left be, not retried forever
+    assert loop.stopped_because.startswith("what was left could not be tried: car.leave")
+    assert (loop.run_dir / "report.md").exists()
+
+
+def test_a_pilot_that_leaves_no_session_is_reported_and_three_in_a_row_stop_the_loop(console, tmp_path):
+    console.mode = "vehicle"
+    console.outcomes = {"car.leave": ["none", "ok"]}
+    loop = make_loop(console, tmp_path, ["car.leave"], tries=1)
+    loop.run()
+    assert [e["where"] for e in loop.errors] == ["session"]
+    assert [r["outcome"] for r in ledger_rows(tmp_path)] == ["ok"]
+    console.outcomes = {"car.leave": ["none"] * 9}
+    other = make_loop(console, tmp_path / "other", ["car.leave"], tries=5)
+    other.run()
+    assert other.stopped_because == "3 tries in a row left no session folder; the loop stops."
+
+
+def test_a_capability_whose_start_state_cannot_be_made_is_left_be_after_three_skips(console, tmp_path):
+    console.mode = "vehicle"
+    # foot.walk_to needs a yellow blip, which nothing in the catalogue makes
+    loop = make_loop(console, tmp_path, ["foot.walk_to", "car.leave"], tries=4)
+    loop.run()
+    assert "foot.walk_to" in loop.given_up and loop.done["car.leave"] == 4
+    assert loop.stopped_because.startswith("what was left could not be tried: foot.walk_to")
+    assert [
+        (s["capability"], s["times"])
+        for s in json.loads((loop.run_dir / "report.json").read_text())["skipped"]
+    ] == [("foot.walk_to", 3)]
+
+
+def test_three_technical_failures_in_a_row_stop_the_loop(console, tmp_path):
+    console.mode = "vehicle"
+    console.outcomes = {"car.leave": ["tech"] * 5}
+    loop = make_loop(console, tmp_path, ["car.leave"], tries=10)
+    summary = loop.run()
+    rows = ledger_rows(tmp_path)
+    assert [(r["outcome"], r["cause"]) for r in rows] == [("failed", "tech")] * 3
+    assert loop.stopped_because.startswith("car.leave: three tries in a row failed for a technical cause")
+    assert "worst capability car.leave" in summary and "most frequent cause `tech`" in summary
+
+
+def test_an_error_of_the_loop_is_reported_with_its_traceback_and_does_not_end_the_run(
+    console, tmp_path, monkeypatch
+):
+    console.mode = "vehicle"
+    real, calls = bench.judge, []
+
+    def broken(*args, **kwargs):
+        calls.append(1)
+        if len(calls) == 1:
+            raise RuntimeError("judging broke")
+        return real(*args, **kwargs)
+
+    monkeypatch.setattr(bench, "judge", broken)
+    loop = make_loop(console, tmp_path, ["car.leave"], tries=1)
+    loop.run()
+    assert len(loop.errors) == 1 and "RuntimeError: judging broke" in loop.errors[0]["error"]
+    assert "Traceback" in loop.errors[0]["traceback"] and "in broken" in loop.errors[0]["traceback"]
+    assert ledger_rows(tmp_path)[-1]["outcome"] == "ok"
+    assert "judging broke" in (loop.run_dir / "report.md").read_text().split("## Failures")[0]
+
+
+def test_an_error_of_the_loop_five_times_in_a_row_stops_it(console, tmp_path, monkeypatch):
+    console.mode = "vehicle"
+
+    def broken(*args, **kwargs):
+        raise RuntimeError("always")
+
+    monkeypatch.setattr(bench, "judge", broken)
+    loop = make_loop(console, tmp_path, ["car.leave"], tries=10)
+    loop.run()
+    assert loop.stopped_because == "the loop itself failed 5 times in a row; it stops."
+    assert len(loop.errors) == 5
+
+
+def test_the_mission_guard_is_off_by_default_and_waits_for_the_objective_when_asked(console, tmp_path):
+    console.mode = "vehicle"
+    console.objective = lambda t: "Follow Franklin" if t < 100 else ""
+    free = make_loop(console, tmp_path / "free", ["car.leave"], tries=1)
+    assert free.guard_mission is False
+    free.run()
+    assert console.starts[1][0] < 100  # it played inside the mission
+    row = ledger_rows(tmp_path / "free")[0]
+    assert row["objective"]["on_screen"] is True and row["objective"]["text"] == "Follow Franklin"
+    console.t, console.mode, console.starts = 0.0, "vehicle", []
+    guarded = make_loop(console, tmp_path / "guard", ["car.leave"], tries=1, guard_mission=True)
+    guarded.run()
+    assert console.starts[-1][0] >= 100  # it waited for the objective to go
+    assert ledger_rows(tmp_path / "guard")[0]["objective"]["on_screen"] is False
+
+
+def test_the_minutes_bound_the_run_and_no_try_starts_that_cannot_end_in_them(console, tmp_path):
+    console.mode = "vehicle"
+    loop = make_loop(console, tmp_path, ["car.leave", "foot.enter"], tries=10, minutes=2)
+    loop.run()
+    assert loop.stopped_because.startswith("the minutes were used up")
+    assert console.t <= 2 * 60 + 1
+    assert not loop.errors  # running out of minutes is no problem of the loop
+
+
+def test_a_small_push_of_the_right_stick_comes_before_every_try(console, tmp_path):
+    console.mode = "vehicle"
+    loop = make_loop(console, tmp_path, ["car.leave"], tries=1)
+    loop.run()
+    for began, _, _ in console.starts:
+        before = [p for p in console.pads if p[0] <= began]
+        assert before and before[-1][2]["right"] == [0, 0]  # the stick was let go again
+        push = next(p for p in reversed(before) if p[2]["right"] == [0.5, 0.0])
+        assert push[1] == "/pad" and push[2]["ttl_ms"] <= 500 and push[0] < began
+
+
+def test_the_status_file_says_what_the_loop_does_and_lies_beside_the_ledger(console, tmp_path):
+    console.mode = "vehicle"
+    loop = make_loop(console, tmp_path, ["car.leave"], tries=1)
+    loop.run()
+    status = json.loads((tmp_path / "ledger" / "bench.status.json").read_text())
+    assert status["state"].startswith("finished") and status["run"] == loop.run_id
+    assert status["tries_done"] == 1 and status["report"].endswith("report.md")
+    assert {"since", "updated", "capability", "minutes_left", "last_line", "pid"} <= set(status)
+
+
+def test_the_report_has_every_section_a_pointer_per_failure_and_ends_on_the_summary(console, tmp_path):
+    console.mode = "vehicle"
+    console.outcomes = {"car.leave": ["tech", "ok"]}
+    loop = make_loop(console, tmp_path, ["car.leave", "foot.enter"], tries=2)
+    loop.run()
+    text = (loop.run_dir / "report.md").read_text()
+    for heading in (
+        "## What was planned",
+        "## What ran",
+        "## What was skipped, and why",
+        "## Problems of the loop itself (not failures of the pilot)",
+        "## The board before and after",
+        "## Failures, each with where to look",
+    ):
+        assert heading in text
+    data = json.loads((loop.run_dir / "report.json").read_text())
+    assert data["summary"] == text.rstrip().splitlines()[-1]
+    assert data["board_before"] != data["board_after"]
+    failure = data["failures"][0]
+    wanted = {"capability", "cause", "skill_reason", "session", "second", "how_found", "readers_said"}
+    assert wanted | {"proof_saw", "picture", "look_first"} <= set(failure)
+    assert failure["capability"] == "car.leave" and failure["cause"] == "tech"
+    assert failure["look_first"].startswith("Look first at ") and "video.mp4" in failure["look_first"]
+    assert failure["readers_said"]["skill"]["reason"] == "clock-invalid"
+
+
+def test_a_failure_with_a_video_gets_the_picture_of_its_second(console, tmp_path, monkeypatch):
+    console.mode = "vehicle"
+    console.outcomes = {"car.leave": ["tech"]}
+    monkeypatch.setattr(proofs.Session, "frame", lambda self, t: picture(BLIP_A))
+    loop = make_loop(console, tmp_path, ["car.leave"], tries=1)
+    loop.run()
+    pointer = loop.pointers[0]
+    assert pointer["picture"] and (loop.run_dir / pointer["picture"]).stat().st_size > 1000
+
+
+def test_the_command_runs_the_loop_with_its_flags_and_names_the_report(
+    console, tmp_path, monkeypatch, capsys
+):
+    console.mode = "vehicle"
+    monkeypatch.setattr(
+        bench_run,
+        "Loop",
+        functools.partial(bench_run.Loop, clock=console.clock, pause=console.pause, now=console.now),
+    )
+    ledger = tmp_path / "ledger" / "bench.jsonl"
+    arguments = ["--ledger", str(ledger), "run", "car.leave", "--tries", "1", "--guard-mission"]
+    arguments += ["--record-dir", str(console.record_dir), "--judge", "http://judge.test=model"]
+    assert bench.main(arguments) == 0
+    out = capsys.readouterr().out
+    assert "Report: " in out and out.rstrip().endswith("report.md")
+    command = console.starts[-1][1]
+    assert command[command.index("--judge") + 1] == "http://judge.test=model"
+    assert command[command.index("--record-dir") + 1] == str(console.record_dir)
+    assert "mission guard on" in next(Path(ledger.parent / "runs").glob("*/report.md")).read_text()
+
+
+# ---------------------------------------------------------------- the dry run
+def test_the_dry_run_prints_the_plan_and_touches_nothing(tmp_path, capsys):
+    ledger = tmp_path / "unwritten" / "bench.jsonl"
+    assert bench.main(["--ledger", str(ledger), "run", "all", "--minutes", "30", "--dry"]) == 0
+    out = capsys.readouterr().out
+    assert "Nothing is touched" in out and "foot.view" in out and "car.arrive" in out
+    assert "foot.walk_to is skipped" in out and "made for" in out
+    assert not (tmp_path / "unwritten").exists()  # not even the folder
+    assert bench.main(["--ledger", str(ledger), "run", "no.such", "--dry"]) == 2
+    assert bench.main(["--ledger", str(ledger), "run", "car.free", "--dry"]) == 2  # harvested: no try to run
+
+
+def test_the_dry_run_follows_the_states_the_entries_leave():
+    lines = bench_run.plan_lines(["car.follow"], 1, None, assume="foot")
+    steps = [line.split()[1] for line in lines if re.match(r"\s*\d+\.", line)]
+    assert steps == ["foot.enter", "map.place", "car.follow"]  # a vehicle, a route, then the try itself
+    body = "\n".join(lines[4:])
+    assert "made for car.follow" in body
+    assert "foot.enter" in "\n".join(bench_run.plan_lines(["car.leave"], 1, None, assume="foot")[4:])
+    assert "foot.enter" not in "\n".join(bench_run.plan_lines(["car.leave"], 1, None, assume="vehicle")[4:])
+
+
+def test_all_means_every_runnable_capability_in_the_order_of_the_chain():
+    ids = bench_run.resolve(["all"])
+    assert ids.index("foot.view") < ids.index("foot.enter") < ids.index("map.place") < ids.index("car.arrive")
+    assert all(CATALOGUE[i].runnable for i in ids)
+    assert "foot.roadside" not in ids and "car.free" not in ids  # not built, harvested
+
+
+# ---------------------------------------------------------------- the command line and the two doors
+def test_the_try_command_line_is_the_one_basics_sh_runs(tmp_path):
+    text = (REPO / "lab" / "live" / "basics.sh").read_text()
+    begin = text.index("env -u PS5_HOST")
+    command_text = text[begin : text.index(">/dev/null", begin)]
+    script_flags = re.findall(r"--[a-z-]+", command_text)
+    assert script_flags == ["--head"] + ["--plan"] * 5 + ["--seconds", "--judge", "--record-dir"]
+    assert "-m pilot.cli play $level" in command_text
+    judge = re.search(r"^judge=(.*)$", text, re.M).group(1)
+    still = re.search(r"^still='(.*)'$", text, re.M).group(1)
+    assert judge == bench_run.JUDGE and still == json.dumps(bench_run.STILL)
+    command = bench_run.pilot_command(CATALOGUE["map.place"], 0, record_dir=tmp_path)
+    assert command[1:4] == ["-m", "pilot.cli", "play"]
+    assert [t for t in command if t.startswith("--")] == ["--no-level", *script_flags]
+    assert command[command.index("--judge") + 1] == judge
+    assert command[command.index("--record-dir") + 1] == str(tmp_path)
+    plans = [command[i + 1] for i, token in enumerate(command) if token == "--plan"]
+    assert plans[1:] == [still] * 4 and json.loads(plans[0])[0]["name"] == "set_waypoint"
+    # `--no-level` only where the map is the subject: basics.sh does it for place and waypoint
+    assert re.search(r"\[\[ \$name == place \|\| \$name == waypoint \]\] && level=\(--no-level\)", text)
+    assert "--no-level" not in bench_run.pilot_command(CATALOGUE["foot.walk"], 0, record_dir=tmp_path)
+    assert "--no-level" not in bench_run.pilot_command(
+        CATALOGUE["map.open_close"], 0, record_dir=tmp_path
+    ) or (not CATALOGUE["map.open_close"].level)
+
+
+def test_the_places_vary_from_try_to_try_so_that_no_waypoint_is_set_twice_on_one_place():
+    places = [bench.plan_for(CATALOGUE["map.place"], n)[0]["args"]["place"] for n in range(8)]
+    assert len(set(places[:4])) == 4 and places[:4] == places[4:]
+    instances = [bench.plan_for(CATALOGUE["map.mission"], n)[0]["args"]["instance"] for n in range(3)]
+    assert len(set(instances)) == 3
+
+
+def test_the_pilot_door_starts_without_ps5_host_in_the_pilot_directory(tmp_path, monkeypatch):
+    monkeypatch.setenv("PS5_HOST", "10.0.0.5")
+    seen = {}
+
+    def popen(command, **kwargs):
+        seen.update(command=command, **kwargs)
+        return SimpleNamespace()
+
+    monkeypatch.setattr(subprocess, "Popen", popen)
+    REAL_PILOT("start", command=["python", "-m", "pilot.cli", "play"], log=tmp_path / "log.txt")
+    assert "PS5_HOST" not in seen["env"] and seen["cwd"] == bench_run.PILOT_DIR
+    assert seen["command"] == ["python", "-m", "pilot.cli", "play"]
+
+
+class Process:
+    """A process that dies after `survives` signals."""
+
+    def __init__(self, survives):
+        self.signals, self.survives = [], survives
+
+    def poll(self):
+        return None if len(self.signals) < self.survives else -9
+
+    def send_signal(self, sig):
+        self.signals.append(sig)
+
+    def wait(self, timeout):
+        if len(self.signals) < self.survives:
+            raise subprocess.TimeoutExpired("x", timeout)
+        return -self.signals[-1]
+
+
+def test_the_pilot_door_ends_a_try_with_sigint_and_only_then_with_more():
+    polite = Process(survives=1)
+    REAL_PILOT("interrupt", handle=polite)
+    assert polite.signals == [signal.SIGINT]
+    stubborn = Process(survives=3)
+    REAL_PILOT("interrupt", handle=stubborn)
+    assert stubborn.signals == [signal.SIGINT, signal.SIGTERM, signal.SIGKILL]
+
+
+class Bridge(BaseHTTPRequestHandler):
+    posted: ClassVar[list] = []
+
+    def do_GET(self):
+        body = json.dumps({"session_up": True, "human_input": False, "recording": False}).encode()
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(body)
+
+    def do_POST(self):
+        length = int(self.headers["Content-Length"])
+        Bridge.posted.append((self.path, self.headers["Content-Type"], json.loads(self.rfile.read(length))))
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"{}")
+
+    def log_message(self, *args):
+        pass
+
+
+def test_the_bridge_door_reads_the_status_and_posts_pad_states(monkeypatch):
+    server = HTTPServer(("127.0.0.1", 0), Bridge)
+    threading.Thread(target=server.serve_forever, daemon=True).start()
+    try:
+        monkeypatch.setattr(bench_run, "BRIDGE_URL", f"http://127.0.0.1:{server.server_address[1]}")
+        assert bench_run.clear(REAL_BRIDGE()) is True
+        REAL_BRIDGE("/pad", {"buttons": ["touchpad"], "ttl_ms": 250})
+        assert Bridge.posted == [("/pad", "application/json", {"buttons": ["touchpad"], "ttl_ms": 250})]
+    finally:
+        server.shutdown()
