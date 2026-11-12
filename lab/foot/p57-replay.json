@@ -1,0 +1,224 @@
+{
+  "scope": "Recorded pictures do not respond to changed commands; endpoints describe observed replay frames, not simulated arrival.",
+  "runs": [
+    {
+      "session": "20261112-122242",
+      "counterfactual_replacement": false,
+      "ticks": 509,
+      "recording_ended_before_deadline": false,
+      "positions": {
+        "unknown": 509
+      },
+      "first_changed_command": {
+        "t": 5.879,
+        "frame_id": 237860,
+        "position": "unknown",
+        "road": {
+          "bearing": -32.30733445488211,
+          "distance": 8.045495634204268,
+          "along": -161.49479789960054,
+          "clearance": null,
+          "outward": null,
+          "width": null
+        },
+        "status": "running",
+        "reason": "road-side-unknown",
+        "left": [
+          0.0,
+          0.0
+        ]
+      },
+      "endpoint": {
+        "t": 25.88,
+        "frame_id": 239057,
+        "position": "unknown",
+        "road": {
+          "bearing": 148.2190849070166,
+          "distance": 10.822661410207754,
+          "along": -105.53486990708488,
+          "clearance": null,
+          "outward": null,
+          "width": null
+        },
+        "status": "failed",
+        "reason": "road-side-unknown",
+        "left": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "session": "20261112-110418",
+      "counterfactual_replacement": false,
+      "ticks": 493,
+      "recording_ended_before_deadline": false,
+      "positions": {
+        "unknown": 428,
+        "lane": 65
+      },
+      "first_changed_command": {
+        "t": 5.882,
+        "frame_id": 336432,
+        "position": "unknown",
+        "road": {
+          "bearing": -32.30733445488211,
+          "distance": 8.045495634204268,
+          "along": -57.651216805185726,
+          "clearance": null,
+          "outward": null,
+          "width": null
+        },
+        "status": "running",
+        "reason": "road-side-unknown",
+        "left": [
+          0.0,
+          0.0
+        ]
+      },
+      "endpoint": {
+        "t": 25.902,
+        "frame_id": 337628,
+        "position": "unknown",
+        "road": {
+          "bearing": 105.94539590092288,
+          "distance": 8.008120878208574,
+          "along": 179.28027816566538,
+          "clearance": null,
+          "outward": null,
+          "width": null
+        },
+        "status": "failed",
+        "reason": "road-side-unknown",
+        "left": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "session": "20261112-110736",
+      "counterfactual_replacement": false,
+      "ticks": 509,
+      "recording_ended_before_deadline": false,
+      "positions": {
+        "unknown": 509
+      },
+      "first_changed_command": {
+        "t": 5.843,
+        "frame_id": 348331,
+        "position": "unknown",
+        "road": {
+          "bearing": 105.94539590092288,
+          "distance": 8.008120878208574,
+          "along": 173.71573434571704,
+          "clearance": null,
+          "outward": null,
+          "width": null
+        },
+        "status": "running",
+        "reason": "road-side-unknown",
+        "left": [
+          0.0,
+          0.0
+        ]
+      },
+      "endpoint": {
+        "t": 25.866,
+        "frame_id": 349531,
+        "position": "unknown",
+        "road": {
+          "bearing": 75.17964792047799,
+          "distance": 26.58439391823707,
+          "along": null,
+          "clearance": null,
+          "outward": null,
+          "width": null
+        },
+        "status": "failed",
+        "reason": "road-side-unknown",
+        "left": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "session": "20261112-111053",
+      "counterfactual_replacement": false,
+      "ticks": 501,
+      "recording_ended_before_deadline": false,
+      "positions": {
+        "unknown": 474,
+        "side": 27
+      },
+      "first_changed_command": {
+        "t": 5.832,
+        "frame_id": 360119,
+        "position": "unknown",
+        "road": {
+          "bearing": 105.94539590092288,
+          "distance": 8.008120878208574,
+          "along": -92.99358351239846,
+          "clearance": null,
+          "outward": null,
+          "width": null
+        },
+        "status": "running",
+        "reason": "road-side-unknown",
+        "left": [
+          0.0,
+          0.0
+        ]
+      },
+      "endpoint": {
+        "t": 25.835,
+        "frame_id": 361317,
+        "position": "unknown",
+        "road": {
+          "bearing": 105.94539590092288,
+          "distance": 8.008120878208574,
+          "along": 179.13598379211322,
+          "clearance": null,
+          "outward": null,
+          "width": null
+        },
+        "status": "failed",
+        "reason": "road-side-unknown",
+        "left": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "session": "20261112-122558",
+      "counterfactual_replacement": true,
+      "ticks": 492,
+      "recording_ended_before_deadline": true,
+      "positions": {
+        "unknown": 492
+      },
+      "first_changed_command": null,
+      "endpoint": {
+        "t": 28.003,
+        "frame_id": 250877,
+        "position": "unknown",
+        "road": {
+          "bearing": -62.50086126895285,
+          "distance": 8.22982381342395,
+          "along": -143.2756578122416,
+          "clearance": null,
+          "outward": null,
+          "width": null
+        },
+        "status": "running",
+        "reason": null,
+        "left": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  ]
+}

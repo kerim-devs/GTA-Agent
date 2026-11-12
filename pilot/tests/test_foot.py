@@ -396,16 +396,88 @@ def test_walk_road_walks_toward_the_road_and_ends_neutral():
         final = skill.step(Observation(FLAT, None, i * DT, frame=frame))
         if final.status != "running":
             break
-    assert final.status == "done" and final.reason == "time-limit" and final.pad == NEUTRAL_PAD
+    assert final.status == "failed" and final.reason == "road-side-unknown" and final.pad == NEUTRAL_PAD
 
 
-def test_walk_road_keeps_going_when_north_is_temporarily_hidden(monkeypatch):
+def test_walk_road_holds_when_road_and_north_are_hidden(monkeypatch):
     monkeypatch.setattr("pilot.foot.north_bearing", lambda _: None)
     skill = WalkRoad({})
     frame = frame_with(crop("foot_pier_still_a"))
     results = [skill.step(Observation(FLAT, None, i * DT, frame=frame)) for i in range(40)]
     assert all(r.status == "running" for r in results)
-    assert all(r.pad.left == (0.0, -skill.STICK) for r in results)
+    assert all(r.pad == NEUTRAL_PAD and r.reason == "road-side-unknown" for r in results)
     assert skill.compass_heading is None
     blind = WalkRoad({}).step(Observation(FLAT, None, 0.0))
     assert blind.status == "failed" and blind.reason == "no-frame" and blind.pad == NEUTRAL_PAD
+
+
+def road_frame(offset=0, width=10, angle=0, crossing=False):
+    """A scaled map band relative to the fixed arrow, preserving real HUD bars."""
+    hud = crop("foot_road_a")
+    hud[32:138, 39:209] = 60
+    yy, xx = np.mgrid[32:138, 39:209]
+    rad = math.radians(angle)
+    cross = (xx - ACX) * math.cos(rad) + (yy - ACY) * math.sin(rad)
+    along = -(xx - ACX) * math.sin(rad) + (yy - ACY) * math.cos(rad)
+    mask = abs(cross - offset) <= width / 2
+    if crossing:
+        mask |= abs(along) <= width / 2
+    hud[32:138, 39:209][mask] = 230
+    # Texture avoids presenting an exact codec-block edge to the corruption reader.
+    noise = np.random.default_rng(57).integers(0, 5, (106, 170, 1), dtype=np.uint8)
+    hud[32:138, 39:209] += noise
+    hud[32:138, 39:209] = cv2.GaussianBlur(hud[32:138, 39:209], (3, 3), 0.7)
+    cv2.circle(hud, (round(ACX), round(ACY)), 5, (255, 255, 255), -1)
+    return frame_with(hud)
+
+
+@pytest.mark.parametrize("angle", [0, 25, -35, 90])
+@pytest.mark.parametrize("offset,position", [(0, "lane"), (12, "side"), (-12, "side")])
+def test_band_width_distinguishes_lane_and_verge_after_camera_rotation(angle, offset, position):
+    from pilot.foot import hud_crop
+
+    road = find_road(hud_crop(road_frame(offset, angle=angle)))
+    # A cross section beyond the radar's lower border cannot certify a side.
+    clipped = (offset, angle) in {(12, 25), (-12, -35), (-12, 90)}
+    if clipped:
+        assert road is None or road.position == "unknown"
+    else:
+        assert road is not None and road.position == position
+        assert 8 <= road.width <= 12
+
+
+def test_walk_leaves_lane_then_follows_outside_and_finishes_with_side_proof():
+    skill = WalkRoad({"duration": 4})
+    first = skill.step(obs(0, frame=road_frame(), moving=True))
+    assert abs(first.pad.left[0]) > 0.8 and abs(first.pad.left[1]) < 0.05
+    # The game responds: the arrow is now outside the road, which lies to its left.
+    for t in (0.2, 0.4, 0.8, 1.2, 2, 3, 4):
+        result = skill.step(obs(t, frame=road_frame(-12), moving=True))
+    assert result.status == "done" and result.reason.startswith("road-side")
+    assert result.pad == NEUTRAL_PAD
+
+
+def test_walk_never_calls_stationary_lane_success_and_corrupt_endpoint_abstains():
+    skill = WalkRoad({"duration": 2})
+    skill.step(obs(0, frame=road_frame()))
+    result = skill.step(obs(2, frame=road_frame()))
+    assert result.status == "failed" and result.reason == "still-in-lane"
+    assert result.pad == NEUTRAL_PAD
+    skill = WalkRoad({"duration": 2})
+    skill.step(obs(0, frame=road_frame(12)))
+    result = skill.step(obs(2, frame=road_frame(12), corrupt=True))
+    assert result.reason == "road-side-unknown" and result.pad == NEUTRAL_PAD
+
+
+def test_one_side_tick_cannot_certify_a_safe_endpoint():
+    skill = WalkRoad({"duration": 2})
+    skill.step(obs(0, frame=road_frame()))
+    result = skill.step(obs(2, frame=road_frame(12)))
+    assert result.status == "failed" and result.reason == "road-side-unknown"
+
+
+def test_crossing_under_arrow_is_not_certified_as_a_kerb():
+    from pilot.foot import hud_crop
+
+    road = find_road(hud_crop(road_frame(12, crossing=True)))
+    assert road is None or road.position == "unknown"

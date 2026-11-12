@@ -1,0 +1,344 @@
+{
+  "scope": "Choice and first-press timing only; no counterfactual entry success is proven.",
+  "frames": true,
+  "runs": [
+    {
+      "session": "20261112-102851",
+      "start": 36.08,
+      "end": 47.99,
+      "original_first_press": null,
+      "changed_first_press": null,
+      "walking_samples": 18,
+      "actions_with_corrupt_map": 0,
+      "last_status": "running",
+      "last_reason": "road-side-unknown",
+      "road_problem": null,
+      "position_counts": {
+        "unknown": 120
+      },
+      "vehicle_sample_kinds": {
+        "unknown": 83,
+        "parked-candidate": 11
+      },
+      "unsafe_lane_presses": 0
+    },
+    {
+      "session": "20261112-102851",
+      "start": 83.31,
+      "end": 101.53,
+      "original_first_press": 99.05,
+      "changed_first_press": {
+        "time": 83.42,
+        "kind": "car",
+        "box": [
+          0.7859375,
+          0.5194444444444445,
+          0.99921875,
+          0.7777777777777778
+        ],
+        "motion": "unknown",
+        "occupancy": "unknown",
+        "position": "unknown"
+      },
+      "walking_samples": 3,
+      "actions_with_corrupt_map": 2,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": null,
+      "position_counts": {
+        "unknown": 181
+      },
+      "vehicle_sample_kinds": {
+        "unknown": 32,
+        "parked-candidate": 65,
+        "occupied": 107
+      },
+      "unsafe_lane_presses": 0
+    },
+    {
+      "session": "20261112-102851",
+      "start": 155.48,
+      "end": 163.21,
+      "original_first_press": 158.4,
+      "changed_first_press": {
+        "time": 155.59,
+        "kind": "bus",
+        "box": [
+          0.00078125,
+          0.016666666666666666,
+          0.21015625,
+          0.9916666666666667
+        ],
+        "motion": "unknown",
+        "occupancy": "unknown",
+        "position": "unknown"
+      },
+      "walking_samples": 0,
+      "actions_with_corrupt_map": 0,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": null,
+      "position_counts": {
+        "unknown": 78
+      },
+      "vehicle_sample_kinds": {
+        "unknown": 309,
+        "parked-candidate": 132,
+        "occupied": 152
+      },
+      "unsafe_lane_presses": 0
+    },
+    {
+      "session": "20261112-102851",
+      "start": 206.65,
+      "end": 220.88,
+      "original_first_press": 209.34,
+      "changed_first_press": {
+        "time": 206.81,
+        "kind": "bus",
+        "box": [
+          0.00078125,
+          0.019444444444444445,
+          0.3359375,
+          0.9333333333333333
+        ],
+        "motion": "unknown",
+        "occupancy": "unknown",
+        "position": "unknown"
+      },
+      "walking_samples": 0,
+      "actions_with_corrupt_map": 0,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": null,
+      "position_counts": {
+        "unknown": 143
+      },
+      "vehicle_sample_kinds": {
+        "unknown": 354,
+        "occupied": 350,
+        "parked-candidate": 33
+      },
+      "unsafe_lane_presses": 0
+    },
+    {
+      "session": "20261112-103305",
+      "start": 39.06,
+      "end": 64.19,
+      "original_first_press": null,
+      "changed_first_press": {
+        "time": 44.47,
+        "kind": "car",
+        "box": [
+          0.83359375,
+          0.4388888888888889,
+          0.99921875,
+          0.6944444444444444
+        ],
+        "motion": "unknown",
+        "occupancy": "unknown",
+        "position": "unknown"
+      },
+      "walking_samples": 151,
+      "actions_with_corrupt_map": 0,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": null,
+      "position_counts": {
+        "unknown": 252
+      },
+      "vehicle_sample_kinds": {
+        "unknown": 608,
+        "occupied": 501,
+        "parked-candidate": 353
+      },
+      "unsafe_lane_presses": 0
+    },
+    {
+      "session": "20261112-103305",
+      "start": 79.94,
+      "end": 112.69,
+      "original_first_press": 110.09,
+      "changed_first_press": {
+        "time": 80.06,
+        "kind": "car",
+        "box": [
+          0.4796875,
+          0.37222222222222223,
+          0.9984375,
+          0.8027777777777778
+        ],
+        "motion": "unknown",
+        "occupancy": "unknown",
+        "position": "unknown"
+      },
+      "walking_samples": 40,
+      "actions_with_corrupt_map": 0,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": null,
+      "position_counts": {
+        "unknown": 277
+      },
+      "vehicle_sample_kinds": {
+        "unknown": 672,
+        "occupied": 978,
+        "parked-candidate": 517
+      },
+      "unsafe_lane_presses": 0
+    },
+    {
+      "session": "20261112-110449",
+      "start": 6.02,
+      "end": 30.9,
+      "original_first_press": null,
+      "changed_first_press": {
+        "time": 12.51,
+        "kind": "car",
+        "box": [
+          0.75859375,
+          0.4861111111111111,
+          0.99921875,
+          0.6555555555555556
+        ],
+        "motion": "unknown",
+        "occupancy": "unknown",
+        "position": "unknown"
+      },
+      "walking_samples": 47,
+      "actions_with_corrupt_map": 22,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": null,
+      "position_counts": {
+        "unknown": 250
+      },
+      "vehicle_sample_kinds": {
+        "unknown": 172,
+        "occupied": 239,
+        "parked-candidate": 46
+      },
+      "unsafe_lane_presses": 0
+    },
+    {
+      "session": "20261112-110806",
+      "start": 5.94,
+      "end": 10.91,
+      "original_first_press": null,
+      "changed_first_press": null,
+      "walking_samples": 1,
+      "actions_with_corrupt_map": 0,
+      "last_status": "running",
+      "last_reason": "road-side-unknown",
+      "road_problem": null,
+      "position_counts": {
+        "unknown": 51
+      },
+      "vehicle_sample_kinds": {},
+      "unsafe_lane_presses": 0
+    },
+    {
+      "session": "20261112-111123",
+      "start": 5.94,
+      "end": 28.56,
+      "original_first_press": 11.02,
+      "changed_first_press": {
+        "time": 6.81,
+        "kind": "car",
+        "box": [
+          0.00546875,
+          0.7722222222222223,
+          0.35,
+          0.9972222222222222
+        ],
+        "motion": "unknown",
+        "occupancy": "unknown",
+        "position": "unknown"
+      },
+      "walking_samples": 30,
+      "actions_with_corrupt_map": 0,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": null,
+      "position_counts": {
+        "side": 113,
+        "unknown": 114
+      },
+      "vehicle_sample_kinds": {
+        "unknown": 356,
+        "parked-candidate": 93,
+        "occupied": 322
+      },
+      "unsafe_lane_presses": 0
+    },
+    {
+      "session": "20261112-122056",
+      "start": 5.91,
+      "end": 11.76,
+      "original_first_press": 6.81,
+      "changed_first_press": {
+        "time": 6.69,
+        "kind": "car",
+        "box": [
+          0.47890625,
+          0.7138888888888889,
+          0.53828125,
+          0.7680555555555556
+        ],
+        "motion": "unknown",
+        "occupancy": "unknown",
+        "position": "unknown"
+      },
+      "walking_samples": 0,
+      "actions_with_corrupt_map": 0,
+      "last_status": "done",
+      "last_reason": "entered vehicle; vehicle=car; occupancy=unknown; road=unknown",
+      "road_problem": null,
+      "position_counts": {
+        "unknown": 59
+      },
+      "vehicle_sample_kinds": {
+        "unknown": 179,
+        "occupied": 34
+      },
+      "unsafe_lane_presses": 0
+    },
+    {
+      "session": "20261112-122312",
+      "start": 7.28,
+      "end": 29.47,
+      "original_first_press": 7.32,
+      "changed_first_press": null,
+      "walking_samples": 44,
+      "actions_with_corrupt_map": 0,
+      "last_status": "done",
+      "last_reason": "already in a vehicle",
+      "road_problem": null,
+      "position_counts": {
+        "unknown": 223
+      },
+      "vehicle_sample_kinds": {
+        "unknown": 686,
+        "occupied": 221
+      },
+      "unsafe_lane_presses": 0
+    },
+    {
+      "session": "20261112-122628",
+      "start": 3.18,
+      "end": 5.21,
+      "original_first_press": null,
+      "changed_first_press": null,
+      "walking_samples": 0,
+      "actions_with_corrupt_map": 0,
+      "last_status": "done",
+      "last_reason": "already in a vehicle",
+      "road_problem": null,
+      "position_counts": {
+        "unknown": 21
+      },
+      "vehicle_sample_kinds": {},
+      "unsafe_lane_presses": 0
+    }
+  ]
+}

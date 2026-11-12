@@ -1,0 +1,3017 @@
+{
+  "summary": {
+    "total": 71,
+    "frozen_scope": "Original 71 from the first enumeration, ending at session 20261112-092019 action index 56 (zero-based). The read-only corpus grew to at least 77 while analysis ran; later events are excluded.",
+    "provenance": "samples map requested t with bisect_left(frames.jsonl t), then decode video.mp4 by CAP_PROP_POS_FRAMES=manifest i. The line field is the zero-based actions.jsonl row index, not a one-based text line number. All 71 source actions and 284 manifest sample records were matched exactly.",
+    "method": "All original 71 exact manifest-matched pairs and follow-up images reviewed; full-resolution targeted refinement is recorded per event. Parked/traffic context does not establish occupancy. Follow-up is one image eight seconds after the action segment ends, not continuous surveillance. Visible forced removal is recorded separately from later retaliation; a body beside a door alone does not establish previous occupancy.",
+    "vehicle": {
+      "occupied_other_context": 3,
+      "standing_occupied": 5,
+      "unknown": 63
+    },
+    "motion_context": {
+      "parked_candidate": 27,
+      "standing_traffic_candidate": 23,
+      "unknown": 21
+    },
+    "occupancy": {
+      "occupied_visible": 8,
+      "unknown": 63
+    },
+    "press_location": {
+      "kerb": 2,
+      "other_off_road": 1,
+      "pavement": 30,
+      "road": 32,
+      "unknown": 6
+    },
+    "outcome": {
+      "unknown": 71
+    },
+    "event_quality": {
+      "already_seated_or_riding": 6,
+      "target_uncertain": 4,
+      "unobservable_entry": 3,
+      "visible_vehicle_context": 58
+    },
+    "entry_interaction": {
+      "forced_driver_removal": 5,
+      "physical_confrontation_with_rider": 1,
+      "unknown": 65
+    }
+  },
+  "events": [
+    {
+      "index": 1,
+      "session": "20261111-065022",
+      "line": 14,
+      "start": 28.6993,
+      "end": 33.204,
+      "samples": {
+        "pre": {
+          "requested_t": 27.6993,
+          "i": 1661,
+          "manifest_t": 27.7148,
+          "frame_id": 93466
+        },
+        "press": {
+          "requested_t": 28.6993,
+          "i": 1720,
+          "manifest_t": 28.6993,
+          "frame_id": 93525
+        },
+        "after": {
+          "requested_t": 29.1993,
+          "i": 1750,
+          "manifest_t": 29.1994,
+          "frame_id": 93555
+        },
+        "post": {
+          "requested_t": 41.204,
+          "i": 2470,
+          "manifest_t": 41.2145,
+          "frame_id": 94275
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "A nearby car and later open-door/seated context are visible, but independent target movement and prior occupancy cannot be established from the sampled frames.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 2,
+      "session": "20261111-164039",
+      "line": 24,
+      "start": 323.78,
+      "end": 330.9729,
+      "samples": {
+        "pre": {
+          "requested_t": 322.78,
+          "i": 18240,
+          "manifest_t": 322.7965,
+          "frame_id": 13849
+        },
+        "press": {
+          "requested_t": 323.78,
+          "i": 18299,
+          "manifest_t": 323.78,
+          "frame_id": 13908
+        },
+        "after": {
+          "requested_t": 324.28,
+          "i": 18306,
+          "manifest_t": 324.2882,
+          "frame_id": 13915
+        },
+        "post": {
+          "requested_t": 338.9729,
+          "i": 19208,
+          "manifest_t": 338.9783,
+          "frame_id": 14817
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "A nearby car and later open-door/seated context are visible, but independent target movement and prior occupancy cannot be established from the sampled frames.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 3,
+      "session": "20261111-164039",
+      "line": 65,
+      "start": 435.975,
+      "end": 439.6773,
+      "samples": {
+        "pre": {
+          "requested_t": 434.975,
+          "i": 24950,
+          "manifest_t": 434.9918,
+          "frame_id": 20559
+        },
+        "press": {
+          "requested_t": 435.975,
+          "i": 25009,
+          "manifest_t": 435.975,
+          "frame_id": 20618
+        },
+        "after": {
+          "requested_t": 436.475,
+          "i": 25038,
+          "manifest_t": 436.4758,
+          "frame_id": 20647
+        },
+        "post": {
+          "requested_t": 447.6773,
+          "i": 25700,
+          "manifest_t": 447.8904,
+          "frame_id": 21309
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "White sports car in a marked workshop bay; cabin occupancy unresolved.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 4,
+      "session": "20261111-164039",
+      "line": 337,
+      "start": 780.5795,
+      "end": 783.0827,
+      "samples": {
+        "pre": {
+          "requested_t": 779.5795,
+          "i": 45527,
+          "manifest_t": 779.5798,
+          "frame_id": 41136
+        },
+        "press": {
+          "requested_t": 780.5795,
+          "i": 45587,
+          "manifest_t": 780.5795,
+          "frame_id": 41196
+        },
+        "after": {
+          "requested_t": 781.0795,
+          "i": 45617,
+          "manifest_t": 781.0816,
+          "frame_id": 41226
+        },
+        "post": {
+          "requested_t": 791.0827,
+          "i": 46213,
+          "manifest_t": 791.0935,
+          "frame_id": 41822
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "White sedan at an alley roadside; cabin unresolved.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 5,
+      "session": "20261111-164039",
+      "line": 371,
+      "start": 885.9846,
+      "end": 888.3864,
+      "samples": {
+        "pre": {
+          "requested_t": 884.9846,
+          "i": 51827,
+          "manifest_t": 885.0592,
+          "frame_id": 47436
+        },
+        "press": {
+          "requested_t": 885.9846,
+          "i": 51888,
+          "manifest_t": 885.9846,
+          "frame_id": 47497
+        },
+        "after": {
+          "requested_t": 886.4846,
+          "i": 51918,
+          "manifest_t": 886.4848,
+          "frame_id": 47527
+        },
+        "post": {
+          "requested_t": 896.3864,
+          "i": 52512,
+          "manifest_t": 896.3971,
+          "frame_id": 48121
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Fallen motorcycle and prone person; prior occupancy and conflict attribution unresolved.",
+      "post_scene": "unresolved",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 6,
+      "session": "20261111-165543",
+      "line": 34,
+      "start": 152.7116,
+      "end": 156.2106,
+      "samples": {
+        "pre": {
+          "requested_t": 151.7116,
+          "i": 9053,
+          "manifest_t": 151.7913,
+          "frame_id": 57609
+        },
+        "press": {
+          "requested_t": 152.7116,
+          "i": 9113,
+          "manifest_t": 152.7116,
+          "frame_id": 57669
+        },
+        "after": {
+          "requested_t": 153.2116,
+          "i": 9143,
+          "manifest_t": 153.2136,
+          "frame_id": 57699
+        },
+        "post": {
+          "requested_t": 164.2106,
+          "i": 9801,
+          "manifest_t": 164.2121,
+          "frame_id": 58357
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "White car in a garage driveway; dark cabin.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 7,
+      "session": "20261111-165543",
+      "line": 45,
+      "start": 216.8017,
+      "end": 222.5695,
+      "samples": {
+        "pre": {
+          "requested_t": 215.8017,
+          "i": 12881,
+          "manifest_t": 215.808,
+          "frame_id": 61437
+        },
+        "press": {
+          "requested_t": 216.8017,
+          "i": 12935,
+          "manifest_t": 216.8017,
+          "frame_id": 61491
+        },
+        "after": {
+          "requested_t": 217.3017,
+          "i": 12967,
+          "manifest_t": 217.3244,
+          "frame_id": 61523
+        },
+        "post": {
+          "requested_t": 230.5695,
+          "i": 13766,
+          "manifest_t": 230.5742,
+          "frame_id": 62322
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "White car alongside the walkway; cabin unresolved.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 8,
+      "session": "20261111-165543",
+      "line": 124,
+      "start": 312.0036,
+      "end": 315.409,
+      "samples": {
+        "pre": {
+          "requested_t": 311.0036,
+          "i": 18578,
+          "manifest_t": 311.1727,
+          "frame_id": 67134
+        },
+        "press": {
+          "requested_t": 312.0036,
+          "i": 18637,
+          "manifest_t": 312.0036,
+          "frame_id": 67193
+        },
+        "after": {
+          "requested_t": 312.5036,
+          "i": 18667,
+          "manifest_t": 312.5041,
+          "frame_id": 67223
+        },
+        "post": {
+          "requested_t": 323.409,
+          "i": 19322,
+          "manifest_t": 323.421,
+          "frame_id": 67878
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Truck in a marked parking area; dark cab.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 9,
+      "session": "20261111-165543",
+      "line": 196,
+      "start": 512.904,
+      "end": 516.2056,
+      "samples": {
+        "pre": {
+          "requested_t": 511.904,
+          "i": 30604,
+          "manifest_t": 511.9603,
+          "frame_id": 79160
+        },
+        "press": {
+          "requested_t": 512.904,
+          "i": 30666,
+          "manifest_t": 512.904,
+          "frame_id": 79222
+        },
+        "after": {
+          "requested_t": 513.404,
+          "i": 30697,
+          "manifest_t": 513.4206,
+          "frame_id": 79253
+        },
+        "post": {
+          "requested_t": 524.2056,
+          "i": 31345,
+          "manifest_t": 524.2196,
+          "frame_id": 79901
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "White coupe in an enclosed paved lot.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 10,
+      "session": "20261111-165543",
+      "line": 320,
+      "start": 818.905,
+      "end": 821.1073,
+      "samples": {
+        "pre": {
+          "requested_t": 817.905,
+          "i": 48884,
+          "manifest_t": 817.9079,
+          "frame_id": 97440
+        },
+        "press": {
+          "requested_t": 818.905,
+          "i": 48944,
+          "manifest_t": 818.905,
+          "frame_id": 97500
+        },
+        "after": {
+          "requested_t": 819.405,
+          "i": 48974,
+          "manifest_t": 819.4066,
+          "frame_id": 97530
+        },
+        "post": {
+          "requested_t": 829.1073,
+          "i": 49548,
+          "manifest_t": 829.1481,
+          "frame_id": 98104
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Dark car among traffic with a door apparently open.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 11,
+      "session": "20261111-171046",
+      "line": 36,
+      "start": 149.3536,
+      "end": 154.6893,
+      "samples": {
+        "pre": {
+          "requested_t": 148.3536,
+          "i": 8841,
+          "manifest_t": 148.3558,
+          "frame_id": 111369
+        },
+        "press": {
+          "requested_t": 149.3536,
+          "i": 8896,
+          "manifest_t": 149.3536,
+          "frame_id": 111424
+        },
+        "after": {
+          "requested_t": 149.8536,
+          "i": 8927,
+          "manifest_t": 149.8772,
+          "frame_id": 111455
+        },
+        "post": {
+          "requested_t": 162.6893,
+          "i": 9701,
+          "manifest_t": 162.692,
+          "frame_id": 112229
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "White van in a yard/driveway outside the lane.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 12,
+      "session": "20261111-171046",
+      "line": 59,
+      "start": 329.4957,
+      "end": 332.899,
+      "samples": {
+        "pre": {
+          "requested_t": 328.4957,
+          "i": 19599,
+          "manifest_t": 328.5108,
+          "frame_id": 122127
+        },
+        "press": {
+          "requested_t": 329.4957,
+          "i": 19658,
+          "manifest_t": 329.4957,
+          "frame_id": 122186
+        },
+        "after": {
+          "requested_t": 329.9957,
+          "i": 19688,
+          "manifest_t": 329.9967,
+          "frame_id": 122216
+        },
+        "post": {
+          "requested_t": 340.899,
+          "i": 20340,
+          "manifest_t": 340.907,
+          "frame_id": 122868
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Vehicle in an industrial forecourt by a gate.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 13,
+      "session": "20261111-172549",
+      "line": 9,
+      "start": 23.7647,
+      "end": 24.0647,
+      "samples": {
+        "pre": {
+          "requested_t": 22.7647,
+          "i": 1358,
+          "manifest_t": 22.7714,
+          "frame_id": 157719
+        },
+        "press": {
+          "requested_t": 23.7647,
+          "i": 1417,
+          "manifest_t": 23.7647,
+          "frame_id": 157778
+        },
+        "after": {
+          "requested_t": 24.2647,
+          "i": 1447,
+          "manifest_t": 24.2654,
+          "frame_id": 157808
+        },
+        "post": {
+          "requested_t": 32.0647,
+          "i": 1910,
+          "manifest_t": 32.0723,
+          "frame_id": 158271
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Light-coloured classic car on a forecourt.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 14,
+      "session": "20261111-175312",
+      "line": 54,
+      "start": 242.8894,
+      "end": 246.9079,
+      "samples": {
+        "pre": {
+          "requested_t": 241.8894,
+          "i": 14488,
+          "manifest_t": 241.9015,
+          "frame_id": 14521
+        },
+        "press": {
+          "requested_t": 242.8894,
+          "i": 14542,
+          "manifest_t": 242.8894,
+          "frame_id": 14575
+        },
+        "after": {
+          "requested_t": 243.3894,
+          "i": 14573,
+          "manifest_t": 243.4069,
+          "frame_id": 14606
+        },
+        "post": {
+          "requested_t": 254.9079,
+          "i": 15262,
+          "manifest_t": 254.9406,
+          "frame_id": 15295
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Police car on the road with a prone person nearby; prior driver unproven.",
+      "post_scene": "unresolved",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 15,
+      "session": "20261111-175312",
+      "line": 166,
+      "start": 465.8135,
+      "end": 470.9968,
+      "samples": {
+        "pre": {
+          "requested_t": 464.8135,
+          "i": 27829,
+          "manifest_t": 464.823,
+          "frame_id": 27862
+        },
+        "press": {
+          "requested_t": 465.8135,
+          "i": 27888,
+          "manifest_t": 465.8135,
+          "frame_id": 27921
+        },
+        "after": {
+          "requested_t": 466.3135,
+          "i": 27919,
+          "manifest_t": 466.3265,
+          "frame_id": 27952
+        },
+        "post": {
+          "requested_t": 478.9968,
+          "i": 28679,
+          "manifest_t": 479.0032,
+          "frame_id": 28712
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "White sports car in a building driveway.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 16,
+      "session": "20261111-175312",
+      "line": 197,
+      "start": 539.1972,
+      "end": 539.2979,
+      "samples": {
+        "pre": {
+          "requested_t": 538.1972,
+          "i": 32225,
+          "manifest_t": 538.2153,
+          "frame_id": 32258
+        },
+        "press": {
+          "requested_t": 539.1972,
+          "i": 32284,
+          "manifest_t": 539.1972,
+          "frame_id": 32317
+        },
+        "after": {
+          "requested_t": 539.6972,
+          "i": 32315,
+          "manifest_t": 539.7126,
+          "frame_id": 32348
+        },
+        "post": {
+          "requested_t": 547.2979,
+          "i": 32767,
+          "manifest_t": 547.3053,
+          "frame_id": 32800
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "White vehicle beside a bus in traffic; player on pavement.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 17,
+      "session": "20261111-175312",
+      "line": 228,
+      "start": 623.1971,
+      "end": 628.3012,
+      "samples": {
+        "pre": {
+          "requested_t": 622.1971,
+          "i": 37251,
+          "manifest_t": 622.1974,
+          "frame_id": 37284
+        },
+        "press": {
+          "requested_t": 623.1971,
+          "i": 37311,
+          "manifest_t": 623.1971,
+          "frame_id": 37344
+        },
+        "after": {
+          "requested_t": 623.6971,
+          "i": 37341,
+          "manifest_t": 623.6973,
+          "frame_id": 37374
+        },
+        "post": {
+          "requested_t": 636.3012,
+          "i": 38097,
+          "manifest_t": 636.312,
+          "frame_id": 38130
+        }
+      },
+      "vehicle": "standing_occupied",
+      "occupancy": "occupied_visible",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "White sports car in a multi-lane roadway. A non-player is visibly pulled out through the open driver door and then lies beside the car.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context",
+      "refinement_manifest_indices": [
+        37372,
+        37431
+      ],
+      "entry_interaction": "forced_driver_removal"
+    },
+    {
+      "index": 18,
+      "session": "20261111-175312",
+      "line": 303,
+      "start": 877.0036,
+      "end": 878.8962,
+      "samples": {
+        "pre": {
+          "requested_t": 876.0036,
+          "i": 52431,
+          "manifest_t": 876.0103,
+          "frame_id": 52464
+        },
+        "press": {
+          "requested_t": 877.0036,
+          "i": 52491,
+          "manifest_t": 877.0036,
+          "frame_id": 52524
+        },
+        "after": {
+          "requested_t": 877.5036,
+          "i": 52521,
+          "manifest_t": 877.5136,
+          "frame_id": 52554
+        },
+        "post": {
+          "requested_t": 886.8962,
+          "i": 53084,
+          "manifest_t": 886.9067,
+          "frame_id": 53117
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Fallen yellow bicycle and nearby figure; movement unresolved.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 19,
+      "session": "20261111-180814",
+      "line": 160,
+      "start": 206.2977,
+      "end": 209.5017,
+      "samples": {
+        "pre": {
+          "requested_t": 205.2977,
+          "i": 12251,
+          "manifest_t": 205.2994,
+          "frame_id": 66305
+        },
+        "press": {
+          "requested_t": 206.2977,
+          "i": 12311,
+          "manifest_t": 206.2977,
+          "frame_id": 66365
+        },
+        "after": {
+          "requested_t": 206.7977,
+          "i": 12341,
+          "manifest_t": 206.8013,
+          "frame_id": 66395
+        },
+        "post": {
+          "requested_t": 217.5017,
+          "i": 12983,
+          "manifest_t": 217.5126,
+          "frame_id": 67037
+        }
+      },
+      "vehicle": "occupied_other_context",
+      "occupancy": "occupied_visible",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Red convertible in a private driveway; aiming a gun alone does not establish driver retaliation. A non-player is visibly pulled out of the red convertible.",
+      "post_scene": "unresolved",
+      "event_quality": "visible_vehicle_context",
+      "refinement_manifest_indices": [
+        12371,
+        12431
+      ],
+      "entry_interaction": "forced_driver_removal"
+    },
+    {
+      "index": 20,
+      "session": "20261111-182316",
+      "line": 50,
+      "start": 198.2257,
+      "end": 199.4284,
+      "samples": {
+        "pre": {
+          "requested_t": 197.2257,
+          "i": 11752,
+          "manifest_t": 197.2413,
+          "frame_id": 119728
+        },
+        "press": {
+          "requested_t": 198.2257,
+          "i": 11811,
+          "manifest_t": 198.2257,
+          "frame_id": 119787
+        },
+        "after": {
+          "requested_t": 198.7257,
+          "i": 11838,
+          "manifest_t": 198.7263,
+          "frame_id": 119814
+        },
+        "post": {
+          "requested_t": 207.4284,
+          "i": 12361,
+          "manifest_t": 207.4356,
+          "frame_id": 120337
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Player already riding a yellow bicycle; not a clearly observed entry.",
+      "post_scene": "unresolved",
+      "event_quality": "already_seated_or_riding"
+    },
+    {
+      "index": 21,
+      "session": "20261111-182316",
+      "line": 157,
+      "start": 277.4231,
+      "end": 277.5255,
+      "samples": {
+        "pre": {
+          "requested_t": 276.4231,
+          "i": 16486,
+          "manifest_t": 276.4367,
+          "frame_id": 124462
+        },
+        "press": {
+          "requested_t": 277.4231,
+          "i": 16545,
+          "manifest_t": 277.4231,
+          "frame_id": 124521
+        },
+        "after": {
+          "requested_t": 277.9231,
+          "i": 16576,
+          "manifest_t": 277.9413,
+          "frame_id": 124552
+        },
+        "post": {
+          "requested_t": 285.5255,
+          "i": 17032,
+          "manifest_t": 285.5363,
+          "frame_id": 125008
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Player already cycling near/on the road; not a clearly observed entry.",
+      "post_scene": "unresolved",
+      "event_quality": "already_seated_or_riding"
+    },
+    {
+      "index": 22,
+      "session": "20261111-182316",
+      "line": 509,
+      "start": 529.318,
+      "end": 535.4336,
+      "samples": {
+        "pre": {
+          "requested_t": 528.318,
+          "i": 31550,
+          "manifest_t": 528.3331,
+          "frame_id": 139526
+        },
+        "press": {
+          "requested_t": 529.318,
+          "i": 31609,
+          "manifest_t": 529.318,
+          "frame_id": 139585
+        },
+        "after": {
+          "requested_t": 529.818,
+          "i": 31639,
+          "manifest_t": 529.8211,
+          "frame_id": 139615
+        },
+        "post": {
+          "requested_t": 543.4336,
+          "i": 32451,
+          "manifest_t": 543.4517,
+          "frame_id": 140427
+        }
+      },
+      "vehicle": "occupied_other_context",
+      "occupancy": "occupied_visible",
+      "motion_context": "unknown",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Dark car beside running player; camera movement obscures vehicle motion. The non-player at the driver side is subsequently pulled out beside the black vehicle.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context",
+      "refinement_manifest_indices": [
+        31609,
+        31729
+      ],
+      "entry_interaction": "forced_driver_removal"
+    },
+    {
+      "index": 23,
+      "session": "20261111-183820",
+      "line": 187,
+      "start": 676.2971,
+      "end": 680.4999,
+      "samples": {
+        "pre": {
+          "requested_t": 675.2971,
+          "i": 40447,
+          "manifest_t": 675.2977,
+          "frame_id": 202442
+        },
+        "press": {
+          "requested_t": 676.2971,
+          "i": 40507,
+          "manifest_t": 676.2971,
+          "frame_id": 202502
+        },
+        "after": {
+          "requested_t": 676.7971,
+          "i": 40538,
+          "manifest_t": 676.8062,
+          "frame_id": 202533
+        },
+        "post": {
+          "requested_t": 688.4999,
+          "i": 41239,
+          "manifest_t": 688.5099,
+          "frame_id": 203234
+        }
+      },
+      "vehicle": "standing_occupied",
+      "occupancy": "occupied_visible",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Dark car stopped at night with player at the door. A non-player is visibly pulled from the dark car and then lies beside its open door.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context",
+      "refinement_manifest_indices": [
+        40507,
+        40628
+      ],
+      "entry_interaction": "forced_driver_removal"
+    },
+    {
+      "index": 24,
+      "session": "20261111-183820",
+      "line": 218,
+      "start": 880.0128,
+      "end": 882.2247,
+      "samples": {
+        "pre": {
+          "requested_t": 879.0128,
+          "i": 52627,
+          "manifest_t": 879.0808,
+          "frame_id": 214622
+        },
+        "press": {
+          "requested_t": 880.0128,
+          "i": 52688,
+          "manifest_t": 880.0128,
+          "frame_id": 214683
+        },
+        "after": {
+          "requested_t": 880.5128,
+          "i": 52719,
+          "manifest_t": 880.5313,
+          "frame_id": 214714
+        },
+        "post": {
+          "requested_t": 890.2247,
+          "i": 53299,
+          "manifest_t": 890.2255,
+          "frame_id": 215294
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "kerb",
+      "outcome": "unknown",
+      "evidence": "Dark estate car at the kerb.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 25,
+      "session": "20261111-185323",
+      "line": 190,
+      "start": 180.299,
+      "end": 182.8004,
+      "samples": {
+        "pre": {
+          "requested_t": 179.299,
+          "i": 10716,
+          "manifest_t": 179.3133,
+          "frame_id": 226747
+        },
+        "press": {
+          "requested_t": 180.299,
+          "i": 10775,
+          "manifest_t": 180.299,
+          "frame_id": 226806
+        },
+        "after": {
+          "requested_t": 180.799,
+          "i": 10806,
+          "manifest_t": 180.8162,
+          "frame_id": 226837
+        },
+        "post": {
+          "requested_t": 190.8004,
+          "i": 11406,
+          "manifest_t": 190.814,
+          "frame_id": 227437
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Dark sedan alongside pavement; player at its side.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 26,
+      "session": "20261111-185323",
+      "line": 687,
+      "start": 803.3977,
+      "end": 809.2047,
+      "samples": {
+        "pre": {
+          "requested_t": 802.3977,
+          "i": 47974,
+          "manifest_t": 802.4119,
+          "frame_id": 264005
+        },
+        "press": {
+          "requested_t": 803.3977,
+          "i": 48033,
+          "manifest_t": 803.3977,
+          "frame_id": 264064
+        },
+        "after": {
+          "requested_t": 803.8977,
+          "i": 48062,
+          "manifest_t": 803.8985,
+          "frame_id": 264093
+        },
+        "post": {
+          "requested_t": 817.2047,
+          "i": 48855,
+          "manifest_t": 817.2108,
+          "frame_id": 264886
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Police cruiser on asphalt with lights; prior occupant unresolved.",
+      "post_scene": "unresolved",
+      "event_quality": "visible_vehicle_context",
+      "refinement_manifest_indices": [
+        48092,
+        48148,
+        48380
+      ]
+    },
+    {
+      "index": 27,
+      "session": "20261111-190825",
+      "line": 24,
+      "start": 94.9968,
+      "end": 100.296,
+      "samples": {
+        "pre": {
+          "requested_t": 93.9968,
+          "i": 5602,
+          "manifest_t": 94.0058,
+          "frame_id": 275544
+        },
+        "press": {
+          "requested_t": 94.9968,
+          "i": 5661,
+          "manifest_t": 94.9968,
+          "frame_id": 275603
+        },
+        "after": {
+          "requested_t": 95.4968,
+          "i": 5691,
+          "manifest_t": 95.4973,
+          "frame_id": 275633
+        },
+        "post": {
+          "requested_t": 108.296,
+          "i": 6458,
+          "manifest_t": 108.2977,
+          "frame_id": 276400
+        }
+      },
+      "vehicle": "standing_occupied",
+      "occupancy": "occupied_visible",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "A green-clothed non-player occupant is visible in the dark coupe; prior seat role unresolved.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context",
+      "refinement_frame_indices": [
+        5721,
+        5781,
+        5979
+      ]
+    },
+    {
+      "index": 28,
+      "session": "20261111-190825",
+      "line": 94,
+      "start": 519.3966,
+      "end": 519.9036,
+      "samples": {
+        "pre": {
+          "requested_t": 518.3966,
+          "i": 29731,
+          "manifest_t": 518.399,
+          "frame_id": 7944
+        },
+        "press": {
+          "requested_t": 519.3966,
+          "i": 29791,
+          "manifest_t": 519.3966,
+          "frame_id": 8004
+        },
+        "after": {
+          "requested_t": 519.8966,
+          "i": 29821,
+          "manifest_t": 519.9036,
+          "frame_id": 8034
+        },
+        "post": {
+          "requested_t": 527.9036,
+          "i": 30299,
+          "manifest_t": 527.9103,
+          "frame_id": 8512
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Pickup in a driveway with opening door; pre-entry seat occupancy unresolved.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 29,
+      "session": "20261111-190825",
+      "line": 124,
+      "start": 685.5096,
+      "end": 687.6938,
+      "samples": {
+        "pre": {
+          "requested_t": 684.5096,
+          "i": 39660,
+          "manifest_t": 684.5099,
+          "frame_id": 17873
+        },
+        "press": {
+          "requested_t": 685.5096,
+          "i": 39720,
+          "manifest_t": 685.5096,
+          "frame_id": 17933
+        },
+        "after": {
+          "requested_t": 686.0096,
+          "i": 39750,
+          "manifest_t": 686.0152,
+          "frame_id": 17963
+        },
+        "post": {
+          "requested_t": 695.6938,
+          "i": 40331,
+          "manifest_t": 695.6991,
+          "frame_id": 18544
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Pickup on a narrow dirt road by a slope.",
+      "post_scene": "unresolved",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 30,
+      "session": "20261111-192328",
+      "line": 21,
+      "start": 32.6027,
+      "end": 36.5063,
+      "samples": {
+        "pre": {
+          "requested_t": 31.6027,
+          "i": 1892,
+          "manifest_t": 31.6171,
+          "frame_id": 32818
+        },
+        "press": {
+          "requested_t": 32.6027,
+          "i": 1951,
+          "manifest_t": 32.6027,
+          "frame_id": 32877
+        },
+        "after": {
+          "requested_t": 33.1027,
+          "i": 1982,
+          "manifest_t": 33.1194,
+          "frame_id": 32908
+        },
+        "post": {
+          "requested_t": 44.5063,
+          "i": 2657,
+          "manifest_t": 44.5122,
+          "frame_id": 33583
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Dark sedan on a forecourt; different-looking vehicle after the action makes target identity uncertain.",
+      "post_scene": "unresolved",
+      "event_quality": "target_uncertain"
+    },
+    {
+      "index": 31,
+      "session": "20261111-193105",
+      "line": 24,
+      "start": 42.0089,
+      "end": 42.1082,
+      "samples": {
+        "pre": {
+          "requested_t": 41.0089,
+          "i": 2447,
+          "manifest_t": 41.024,
+          "frame_id": 2873
+        },
+        "press": {
+          "requested_t": 42.0089,
+          "i": 2506,
+          "manifest_t": 42.0089,
+          "frame_id": 2932
+        },
+        "after": {
+          "requested_t": 42.5089,
+          "i": 2537,
+          "manifest_t": 42.5256,
+          "frame_id": 2963
+        },
+        "post": {
+          "requested_t": 50.1082,
+          "i": 2990,
+          "manifest_t": 50.1646,
+          "frame_id": 3416
+        }
+      },
+      "vehicle": "standing_occupied",
+      "occupancy": "occupied_visible",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Actual target is the white motorcycle with a helmeted non-player rider, not the adjacent silver car.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context",
+      "refinement_frame_indices": [
+        2566,
+        2627
+      ]
+    },
+    {
+      "index": 32,
+      "session": "20261111-193105",
+      "line": 31,
+      "start": 47.113,
+      "end": 52.3004,
+      "samples": {
+        "pre": {
+          "requested_t": 46.113,
+          "i": 2753,
+          "manifest_t": 46.1302,
+          "frame_id": 3179
+        },
+        "press": {
+          "requested_t": 47.113,
+          "i": 2812,
+          "manifest_t": 47.113,
+          "frame_id": 3238
+        },
+        "after": {
+          "requested_t": 47.613,
+          "i": 2842,
+          "manifest_t": 47.6152,
+          "frame_id": 3268
+        },
+        "post": {
+          "requested_t": 60.3004,
+          "i": 3599,
+          "manifest_t": 60.308,
+          "frame_id": 4025
+        }
+      },
+      "vehicle": "standing_occupied",
+      "occupancy": "occupied_visible",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Player grabs/strikes the helmeted motorcycle rider, then rides the motorcycle; physical confrontation during entry, later retaliation unproven.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context",
+      "refinement_frame_indices": [
+        2872,
+        2927,
+        3123
+      ],
+      "entry_interaction": "physical_confrontation_with_rider"
+    },
+    {
+      "index": 33,
+      "session": "20261111-193105",
+      "line": 77,
+      "start": 157.6396,
+      "end": 158.2156,
+      "samples": {
+        "pre": {
+          "requested_t": 156.6396,
+          "i": 9322,
+          "manifest_t": 156.6406,
+          "frame_id": 9748
+        },
+        "press": {
+          "requested_t": 157.6396,
+          "i": 9378,
+          "manifest_t": 157.6396,
+          "frame_id": 9804
+        },
+        "after": {
+          "requested_t": 158.1396,
+          "i": 9409,
+          "manifest_t": 158.1673,
+          "frame_id": 9835
+        },
+        "post": {
+          "requested_t": 166.2156,
+          "i": 9894,
+          "manifest_t": 166.2163,
+          "frame_id": 10320
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Box truck on roadway; cab not visible.",
+      "post_scene": "unresolved",
+      "event_quality": "visible_vehicle_context",
+      "refinement_manifest_indices": [
+        9440,
+        9503,
+        9417
+      ]
+    },
+    {
+      "index": 34,
+      "session": "20261111-193105",
+      "line": 89,
+      "start": 166.8011,
+      "end": 169.7012,
+      "samples": {
+        "pre": {
+          "requested_t": 165.8011,
+          "i": 9870,
+          "manifest_t": 165.8178,
+          "frame_id": 10296
+        },
+        "press": {
+          "requested_t": 166.8011,
+          "i": 9929,
+          "manifest_t": 166.8011,
+          "frame_id": 10355
+        },
+        "after": {
+          "requested_t": 167.3011,
+          "i": 9956,
+          "manifest_t": 167.3082,
+          "frame_id": 10382
+        },
+        "post": {
+          "requested_t": 177.7012,
+          "i": 10579,
+          "manifest_t": 177.7093,
+          "frame_id": 11005
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Player is already riding the white motorcycle alongside the truck; no visible truck entry or occupant interaction.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "already_seated_or_riding",
+      "refinement_manifest_indices": [
+        9986,
+        10045,
+        10094
+      ]
+    },
+    {
+      "index": 35,
+      "session": "20261111-193105",
+      "line": 151,
+      "start": 400.1109,
+      "end": 403.2144,
+      "samples": {
+        "pre": {
+          "requested_t": 399.1109,
+          "i": 23776,
+          "manifest_t": 399.1115,
+          "frame_id": 24202
+        },
+        "press": {
+          "requested_t": 400.1109,
+          "i": 23836,
+          "manifest_t": 400.1109,
+          "frame_id": 24262
+        },
+        "after": {
+          "requested_t": 400.6109,
+          "i": 23866,
+          "manifest_t": 400.6115,
+          "frame_id": 24292
+        },
+        "post": {
+          "requested_t": 411.2144,
+          "i": 24502,
+          "manifest_t": 411.2246,
+          "frame_id": 24928
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "unknown",
+      "outcome": "unknown",
+      "evidence": "No clearly separable immediate target; later motorcycle travel.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "target_uncertain"
+    },
+    {
+      "index": 36,
+      "session": "20261111-193105",
+      "line": 217,
+      "start": 630.9076,
+      "end": 634.7435,
+      "samples": {
+        "pre": {
+          "requested_t": 629.9076,
+          "i": 37447,
+          "manifest_t": 629.9216,
+          "frame_id": 37873
+        },
+        "press": {
+          "requested_t": 630.9076,
+          "i": 37506,
+          "manifest_t": 630.9076,
+          "frame_id": 37932
+        },
+        "after": {
+          "requested_t": 631.4076,
+          "i": 37537,
+          "manifest_t": 631.4201,
+          "frame_id": 37963
+        },
+        "post": {
+          "requested_t": 642.7435,
+          "i": 38214,
+          "manifest_t": 642.7528,
+          "frame_id": 38640
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "unknown",
+      "outcome": "unknown",
+      "evidence": "Target unclear; follow-up has a map overlay.",
+      "post_scene": "unresolved",
+      "event_quality": "target_uncertain"
+    },
+    {
+      "index": 37,
+      "session": "20261111-193105",
+      "line": 223,
+      "start": 668.0078,
+      "end": 671.7125,
+      "samples": {
+        "pre": {
+          "requested_t": 667.0078,
+          "i": 39664,
+          "manifest_t": 667.0248,
+          "frame_id": 40090
+        },
+        "press": {
+          "requested_t": 668.0078,
+          "i": 39723,
+          "manifest_t": 668.0078,
+          "frame_id": 40149
+        },
+        "after": {
+          "requested_t": 668.5078,
+          "i": 39753,
+          "manifest_t": 668.5119,
+          "frame_id": 40179
+        },
+        "post": {
+          "requested_t": 679.7125,
+          "i": 40425,
+          "manifest_t": 679.7226,
+          "frame_id": 40851
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Fallen unattended motorcycle with a nearby person; no seated rider visible, but this does not establish safe parking or prior occupancy.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 38,
+      "session": "20261111-194609",
+      "line": 16,
+      "start": 99.0971,
+      "end": 103.6003,
+      "samples": {
+        "pre": {
+          "requested_t": 98.0971,
+          "i": 5841,
+          "manifest_t": 98.1135,
+          "frame_id": 60078
+        },
+        "press": {
+          "requested_t": 99.0971,
+          "i": 5897,
+          "manifest_t": 99.0971,
+          "frame_id": 60134
+        },
+        "after": {
+          "requested_t": 99.5971,
+          "i": 5928,
+          "manifest_t": 99.6139,
+          "frame_id": 60165
+        },
+        "post": {
+          "requested_t": 111.6003,
+          "i": 6647,
+          "manifest_t": 111.6127,
+          "frame_id": 60884
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Dark sports car stopped in lane.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context",
+      "refinement_manifest_indices": [
+        5957,
+        6017,
+        6167
+      ]
+    },
+    {
+      "index": 39,
+      "session": "20261111-194609",
+      "line": 75,
+      "start": 674.9023,
+      "end": 677.0931,
+      "samples": {
+        "pre": {
+          "requested_t": 673.9023,
+          "i": 40318,
+          "manifest_t": 673.9451,
+          "frame_id": 94555
+        },
+        "press": {
+          "requested_t": 674.9023,
+          "i": 40380,
+          "manifest_t": 674.9023,
+          "frame_id": 94617
+        },
+        "after": {
+          "requested_t": 675.4023,
+          "i": 40411,
+          "manifest_t": 675.4154,
+          "frame_id": 94648
+        },
+        "post": {
+          "requested_t": 685.0931,
+          "i": 40992,
+          "manifest_t": 685.1062,
+          "frame_id": 95229
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Dark luxury car on a mansion driveway; tinted glazing.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 40,
+      "session": "20261111-194609",
+      "line": 98,
+      "start": 723.5953,
+      "end": 728.6989,
+      "samples": {
+        "pre": {
+          "requested_t": 722.5953,
+          "i": 43230,
+          "manifest_t": 722.7027,
+          "frame_id": 97467
+        },
+        "press": {
+          "requested_t": 723.5953,
+          "i": 43289,
+          "manifest_t": 723.5953,
+          "frame_id": 97526
+        },
+        "after": {
+          "requested_t": 724.0953,
+          "i": 43320,
+          "manifest_t": 724.1134,
+          "frame_id": 97557
+        },
+        "post": {
+          "requested_t": 736.6989,
+          "i": 44075,
+          "manifest_t": 736.7078,
+          "frame_id": 98312
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "White sports car in traffic lane.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 41,
+      "session": "20261111-194609",
+      "line": 173,
+      "start": 819.3906,
+      "end": 821.092,
+      "samples": {
+        "pre": {
+          "requested_t": 818.3906,
+          "i": 48960,
+          "manifest_t": 818.4034,
+          "frame_id": 103197
+        },
+        "press": {
+          "requested_t": 819.3906,
+          "i": 49018,
+          "manifest_t": 819.3906,
+          "frame_id": 103255
+        },
+        "after": {
+          "requested_t": 819.8906,
+          "i": 49043,
+          "manifest_t": 819.8913,
+          "frame_id": 103280
+        },
+        "post": {
+          "requested_t": 829.092,
+          "i": 49596,
+          "manifest_t": 829.1364,
+          "frame_id": 103833
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "White supercar in courtyard with a prone person; aiming alone does not prove a prior-driver fight.",
+      "post_scene": "unresolved",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 42,
+      "session": "20261111-200111",
+      "line": 65,
+      "start": 172.4861,
+      "end": 178.9946,
+      "samples": {
+        "pre": {
+          "requested_t": 171.4861,
+          "i": 10254,
+          "manifest_t": 171.501,
+          "frame_id": 118435
+        },
+        "press": {
+          "requested_t": 172.4861,
+          "i": 10313,
+          "manifest_t": 172.4861,
+          "frame_id": 118494
+        },
+        "after": {
+          "requested_t": 172.9861,
+          "i": 10343,
+          "manifest_t": 172.9871,
+          "frame_id": 118524
+        },
+        "post": {
+          "requested_t": 186.9946,
+          "i": 11182,
+          "manifest_t": 187.0776,
+          "frame_id": 119363
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Red truck on roadway; prone person later is not by itself a witnessed driver fight.",
+      "post_scene": "unresolved",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 43,
+      "session": "20261111-200111",
+      "line": 86,
+      "start": 193.1907,
+      "end": 196.292,
+      "samples": {
+        "pre": {
+          "requested_t": 192.1907,
+          "i": 11495,
+          "manifest_t": 192.2069,
+          "frame_id": 119676
+        },
+        "press": {
+          "requested_t": 193.1907,
+          "i": 11554,
+          "manifest_t": 193.1907,
+          "frame_id": 119735
+        },
+        "after": {
+          "requested_t": 193.6907,
+          "i": 11584,
+          "manifest_t": 193.6924,
+          "frame_id": 119765
+        },
+        "post": {
+          "requested_t": 204.292,
+          "i": 12219,
+          "manifest_t": 204.3831,
+          "frame_id": 120400
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Red truck departs; motion alone does not establish a chase.",
+      "post_scene": "unresolved",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 44,
+      "session": "20261111-200111",
+      "line": 113,
+      "start": 327.0624,
+      "end": 328.6933,
+      "samples": {
+        "pre": {
+          "requested_t": 326.0624,
+          "i": 19503,
+          "manifest_t": 326.0758,
+          "frame_id": 127684
+        },
+        "press": {
+          "requested_t": 327.0624,
+          "i": 19558,
+          "manifest_t": 327.0624,
+          "frame_id": 127739
+        },
+        "after": {
+          "requested_t": 327.5624,
+          "i": 19589,
+          "manifest_t": 327.5873,
+          "frame_id": 127770
+        },
+        "post": {
+          "requested_t": 336.6933,
+          "i": 20138,
+          "manifest_t": 336.6991,
+          "frame_id": 128319
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Dark sedan at intersection.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 45,
+      "session": "20261111-200111",
+      "line": 146,
+      "start": 447.791,
+      "end": 452.7018,
+      "samples": {
+        "pre": {
+          "requested_t": 446.791,
+          "i": 26715,
+          "manifest_t": 446.7914,
+          "frame_id": 134896
+        },
+        "press": {
+          "requested_t": 447.791,
+          "i": 26775,
+          "manifest_t": 447.791,
+          "frame_id": 134956
+        },
+        "after": {
+          "requested_t": 448.291,
+          "i": 26805,
+          "manifest_t": 448.2924,
+          "frame_id": 134986
+        },
+        "post": {
+          "requested_t": 460.7018,
+          "i": 27547,
+          "manifest_t": 460.7583,
+          "frame_id": 135728
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "kerb",
+      "outcome": "unknown",
+      "evidence": "Dark hatchback at the kerb; cabin unresolved.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 46,
+      "session": "20261111-200111",
+      "line": 185,
+      "start": 593.0028,
+      "end": 595.2872,
+      "samples": {
+        "pre": {
+          "requested_t": 592.0028,
+          "i": 35405,
+          "manifest_t": 592.0049,
+          "frame_id": 143586
+        },
+        "press": {
+          "requested_t": 593.0028,
+          "i": 35465,
+          "manifest_t": 593.0028,
+          "frame_id": 143646
+        },
+        "after": {
+          "requested_t": 593.5028,
+          "i": 35495,
+          "manifest_t": 593.5071,
+          "frame_id": 143676
+        },
+        "post": {
+          "requested_t": 603.2872,
+          "i": 36077,
+          "manifest_t": 603.3687,
+          "frame_id": 144258
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Dark sedan in loading yard; follow-up map overlay hides outcome.",
+      "post_scene": "unresolved",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 47,
+      "session": "20261111-200111",
+      "line": 223,
+      "start": 657.1981,
+      "end": 661.9875,
+      "samples": {
+        "pre": {
+          "requested_t": 656.1981,
+          "i": 39196,
+          "manifest_t": 656.2131,
+          "frame_id": 147377
+        },
+        "press": {
+          "requested_t": 657.1981,
+          "i": 39255,
+          "manifest_t": 657.1981,
+          "frame_id": 147436
+        },
+        "after": {
+          "requested_t": 657.6981,
+          "i": 39286,
+          "manifest_t": 657.714,
+          "frame_id": 147467
+        },
+        "post": {
+          "requested_t": 669.9875,
+          "i": 40022,
+          "manifest_t": 669.995,
+          "frame_id": 148203
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Dark vehicle at intersection; player reaches/opening door.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 48,
+      "session": "20261111-201615",
+      "line": 9,
+      "start": 38.9044,
+      "end": 42.6924,
+      "samples": {
+        "pre": {
+          "requested_t": 37.9044,
+          "i": 2263,
+          "manifest_t": 37.9724,
+          "frame_id": 164391
+        },
+        "press": {
+          "requested_t": 38.9044,
+          "i": 2324,
+          "manifest_t": 38.9044,
+          "frame_id": 164452
+        },
+        "after": {
+          "requested_t": 39.4044,
+          "i": 2355,
+          "manifest_t": 39.4197,
+          "frame_id": 164483
+        },
+        "post": {
+          "requested_t": 50.6924,
+          "i": 3027,
+          "manifest_t": 50.6992,
+          "frame_id": 165155
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Dark car on mansion brick driveway.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 49,
+      "session": "20261111-201615",
+      "line": 26,
+      "start": 151.0981,
+      "end": 152.8979,
+      "samples": {
+        "pre": {
+          "requested_t": 150.0981,
+          "i": 8969,
+          "manifest_t": 150.1695,
+          "frame_id": 171097
+        },
+        "press": {
+          "requested_t": 151.0981,
+          "i": 9030,
+          "manifest_t": 151.0981,
+          "frame_id": 171158
+        },
+        "after": {
+          "requested_t": 151.5981,
+          "i": 9061,
+          "manifest_t": 151.6144,
+          "frame_id": 171189
+        },
+        "post": {
+          "requested_t": 160.8979,
+          "i": 9618,
+          "manifest_t": 160.9068,
+          "frame_id": 171746
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Player already on a bicycle near rental stand, not an observable non-player occupant.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "already_seated_or_riding"
+    },
+    {
+      "index": 50,
+      "session": "20261111-201615",
+      "line": 218,
+      "start": 558.6935,
+      "end": 560.7913,
+      "samples": {
+        "pre": {
+          "requested_t": 557.6935,
+          "i": 33283,
+          "manifest_t": 557.6975,
+          "frame_id": 195411
+        },
+        "press": {
+          "requested_t": 558.6935,
+          "i": 33342,
+          "manifest_t": 558.6935,
+          "frame_id": 195470
+        },
+        "after": {
+          "requested_t": 559.1935,
+          "i": 33372,
+          "manifest_t": 559.1991,
+          "frame_id": 195500
+        },
+        "post": {
+          "requested_t": 568.7913,
+          "i": 33944,
+          "manifest_t": 568.8078,
+          "frame_id": 196072
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "unknown",
+      "outcome": "unknown",
+      "evidence": "Already ridden jetski on water; original occupant/entry unresolved.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "already_seated_or_riding"
+    },
+    {
+      "index": 51,
+      "session": "20261111-201615",
+      "line": 220,
+      "start": 562.2616,
+      "end": 562.6003,
+      "samples": {
+        "pre": {
+          "requested_t": 561.2616,
+          "i": 33495,
+          "manifest_t": 561.2679,
+          "frame_id": 195623
+        },
+        "press": {
+          "requested_t": 562.2616,
+          "i": 33550,
+          "manifest_t": 562.2616,
+          "frame_id": 195678
+        },
+        "after": {
+          "requested_t": 562.7616,
+          "i": 33581,
+          "manifest_t": 562.7869,
+          "frame_id": 195709
+        },
+        "post": {
+          "requested_t": 570.6003,
+          "i": 34049,
+          "manifest_t": 570.6517,
+          "frame_id": 196177
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "unknown",
+      "outcome": "unknown",
+      "evidence": "Mission-failed scene with jetski; not a clear entry.",
+      "post_scene": "unresolved",
+      "event_quality": "unobservable_entry"
+    },
+    {
+      "index": 52,
+      "session": "20261111-201615",
+      "line": 222,
+      "start": 564.1036,
+      "end": 564.4046,
+      "samples": {
+        "pre": {
+          "requested_t": 563.1036,
+          "i": 33606,
+          "manifest_t": 563.1071,
+          "frame_id": 195734
+        },
+        "press": {
+          "requested_t": 564.1036,
+          "i": 33664,
+          "manifest_t": 564.1036,
+          "frame_id": 195792
+        },
+        "after": {
+          "requested_t": 564.6036,
+          "i": 33694,
+          "manifest_t": 564.6038,
+          "frame_id": 195822
+        },
+        "post": {
+          "requested_t": 572.4046,
+          "i": 34160,
+          "manifest_t": 572.4113,
+          "frame_id": 196288
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "unknown",
+      "outcome": "unknown",
+      "evidence": "Black contact frames, later jetski travel; entry unobservable.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "unobservable_entry"
+    },
+    {
+      "index": 53,
+      "session": "20261111-205309",
+      "line": 91,
+      "start": 319.8495,
+      "end": 324.1482,
+      "samples": {
+        "pre": {
+          "requested_t": 318.8495,
+          "i": 19103,
+          "manifest_t": 318.8609,
+          "frame_id": 43080
+        },
+        "press": {
+          "requested_t": 319.8495,
+          "i": 19157,
+          "manifest_t": 319.8495,
+          "frame_id": 43134
+        },
+        "after": {
+          "requested_t": 320.3495,
+          "i": 19189,
+          "manifest_t": 320.3738,
+          "frame_id": 43166
+        },
+        "post": {
+          "requested_t": 332.1482,
+          "i": 19899,
+          "manifest_t": 332.1545,
+          "frame_id": 43876
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Dark vehicle on lit night roadway, person at side.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 54,
+      "session": "20261111-205309",
+      "line": 112,
+      "start": 338.8456,
+      "end": 340.8198,
+      "samples": {
+        "pre": {
+          "requested_t": 337.8456,
+          "i": 20241,
+          "manifest_t": 337.86,
+          "frame_id": 44218
+        },
+        "press": {
+          "requested_t": 338.8456,
+          "i": 20300,
+          "manifest_t": 338.8456,
+          "frame_id": 44277
+        },
+        "after": {
+          "requested_t": 339.3456,
+          "i": 20330,
+          "manifest_t": 339.3485,
+          "frame_id": 44307
+        },
+        "post": {
+          "requested_t": 348.8198,
+          "i": 20898,
+          "manifest_t": 348.8233,
+          "frame_id": 44875
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Dark sedan at a night junction, door open.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 55,
+      "session": "20261111-205309",
+      "line": 141,
+      "start": 564.2519,
+      "end": 567.3105,
+      "samples": {
+        "pre": {
+          "requested_t": 563.2519,
+          "i": 33747,
+          "manifest_t": 563.2654,
+          "frame_id": 57724
+        },
+        "press": {
+          "requested_t": 564.2519,
+          "i": 33806,
+          "manifest_t": 564.2519,
+          "frame_id": 57783
+        },
+        "after": {
+          "requested_t": 564.7519,
+          "i": 33836,
+          "manifest_t": 564.7528,
+          "frame_id": 57813
+        },
+        "post": {
+          "requested_t": 575.3105,
+          "i": 34469,
+          "manifest_t": 575.3135,
+          "frame_id": 58446
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Dark sedan on a paved roadside forecourt.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 56,
+      "session": "20261111-205309",
+      "line": 171,
+      "start": 592.6454,
+      "end": 595.8449,
+      "samples": {
+        "pre": {
+          "requested_t": 591.6454,
+          "i": 35449,
+          "manifest_t": 591.6589,
+          "frame_id": 59426
+        },
+        "press": {
+          "requested_t": 592.6454,
+          "i": 35508,
+          "manifest_t": 592.6454,
+          "frame_id": 59485
+        },
+        "after": {
+          "requested_t": 593.1454,
+          "i": 35539,
+          "manifest_t": 593.1619,
+          "frame_id": 59516
+        },
+        "post": {
+          "requested_t": 603.8449,
+          "i": 36180,
+          "manifest_t": 603.8584,
+          "frame_id": 60157
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Sedan alongside kerb; player on concrete pavement.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 57,
+      "session": "20261111-205309",
+      "line": 233,
+      "start": 831.4503,
+      "end": 832.849,
+      "samples": {
+        "pre": {
+          "requested_t": 830.4503,
+          "i": 49738,
+          "manifest_t": 830.5029,
+          "frame_id": 73715
+        },
+        "press": {
+          "requested_t": 831.4503,
+          "i": 49799,
+          "manifest_t": 831.4503,
+          "frame_id": 73776
+        },
+        "after": {
+          "requested_t": 831.9503,
+          "i": 49830,
+          "manifest_t": 831.9668,
+          "frame_id": 73807
+        },
+        "post": {
+          "requested_t": 840.849,
+          "i": 50363,
+          "manifest_t": 840.8587,
+          "frame_id": 74340
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Dark sedan in night traffic lane.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 58,
+      "session": "20261111-210812",
+      "line": 110,
+      "start": 455.2145,
+      "end": 459.7784,
+      "samples": {
+        "pre": {
+          "requested_t": 454.2145,
+          "i": 27201,
+          "manifest_t": 454.2152,
+          "frame_id": 105227
+        },
+        "press": {
+          "requested_t": 455.2145,
+          "i": 27261,
+          "manifest_t": 455.2145,
+          "frame_id": 105287
+        },
+        "after": {
+          "requested_t": 455.7145,
+          "i": 27292,
+          "manifest_t": 455.7298,
+          "frame_id": 105318
+        },
+        "post": {
+          "requested_t": 467.7784,
+          "i": 28015,
+          "manifest_t": 467.7963,
+          "frame_id": 106041
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Dark sedan on paved villa driveway.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 59,
+      "session": "20261111-210812",
+      "line": 153,
+      "start": 698.9023,
+      "end": 700.2038,
+      "samples": {
+        "pre": {
+          "requested_t": 697.9023,
+          "i": 41770,
+          "manifest_t": 697.9024,
+          "frame_id": 119796
+        },
+        "press": {
+          "requested_t": 698.9023,
+          "i": 41830,
+          "manifest_t": 698.9023,
+          "frame_id": 119856
+        },
+        "after": {
+          "requested_t": 699.4023,
+          "i": 41860,
+          "manifest_t": 699.4044,
+          "frame_id": 119886
+        },
+        "post": {
+          "requested_t": 708.2038,
+          "i": 42388,
+          "manifest_t": 708.2899,
+          "frame_id": 120414
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Dark sedan next to an armoured truck on roadway.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 60,
+      "session": "20261111-210812",
+      "line": 158,
+      "start": 705.8103,
+      "end": 707.61,
+      "samples": {
+        "pre": {
+          "requested_t": 704.8103,
+          "i": 42184,
+          "manifest_t": 704.8108,
+          "frame_id": 120210
+        },
+        "press": {
+          "requested_t": 705.8103,
+          "i": 42244,
+          "manifest_t": 705.8103,
+          "frame_id": 120270
+        },
+        "after": {
+          "requested_t": 706.3103,
+          "i": 42274,
+          "manifest_t": 706.3113,
+          "frame_id": 120300
+        },
+        "post": {
+          "requested_t": 715.61,
+          "i": 42825,
+          "manifest_t": 715.6343,
+          "frame_id": 120851
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Truck and sedan together; target identity uncertain.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "target_uncertain"
+    },
+    {
+      "index": 61,
+      "session": "20261111-210812",
+      "line": 186,
+      "start": 791.8993,
+      "end": 795.3987,
+      "samples": {
+        "pre": {
+          "requested_t": 790.8993,
+          "i": 47332,
+          "manifest_t": 790.9146,
+          "frame_id": 125358
+        },
+        "press": {
+          "requested_t": 791.8993,
+          "i": 47391,
+          "manifest_t": 791.8993,
+          "frame_id": 125417
+        },
+        "after": {
+          "requested_t": 792.3993,
+          "i": 47421,
+          "manifest_t": 792.4125,
+          "frame_id": 125447
+        },
+        "post": {
+          "requested_t": 803.3987,
+          "i": 48077,
+          "manifest_t": 803.4083,
+          "frame_id": 126103
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Dark sedan on cracked concrete near an overpass.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 62,
+      "session": "20261111-212314",
+      "line": 68,
+      "start": 74.3031,
+      "end": 74.4014,
+      "samples": {
+        "pre": {
+          "requested_t": 73.3031,
+          "i": 4369,
+          "manifest_t": 73.3105,
+          "frame_id": 136393
+        },
+        "press": {
+          "requested_t": 74.3031,
+          "i": 4429,
+          "manifest_t": 74.3031,
+          "frame_id": 136453
+        },
+        "after": {
+          "requested_t": 74.8031,
+          "i": 4459,
+          "manifest_t": 74.8129,
+          "frame_id": 136483
+        },
+        "post": {
+          "requested_t": 82.4014,
+          "i": 4914,
+          "manifest_t": 82.4027,
+          "frame_id": 136938
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Camera already follows a moving player vehicle; entry cohort noise.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "already_seated_or_riding"
+    },
+    {
+      "index": 63,
+      "session": "20261111-212314",
+      "line": 120,
+      "start": 196.2,
+      "end": 199.1012,
+      "samples": {
+        "pre": {
+          "requested_t": 195.2,
+          "i": 11587,
+          "manifest_t": 195.2138,
+          "frame_id": 143611
+        },
+        "press": {
+          "requested_t": 196.2,
+          "i": 11646,
+          "manifest_t": 196.2,
+          "frame_id": 143670
+        },
+        "after": {
+          "requested_t": 196.7,
+          "i": 11677,
+          "manifest_t": 196.7152,
+          "frame_id": 143701
+        },
+        "post": {
+          "requested_t": 207.1012,
+          "i": 12300,
+          "manifest_t": 207.1119,
+          "frame_id": 144324
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Player on pavement beside dark sedan; motion ambiguous.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 64,
+      "session": "20261111-213150",
+      "line": 27,
+      "start": 181.2078,
+      "end": 186.9992,
+      "samples": {
+        "pre": {
+          "requested_t": 180.2078,
+          "i": 10780,
+          "manifest_t": 180.2972,
+          "frame_id": 13561
+        },
+        "press": {
+          "requested_t": 181.2078,
+          "i": 10840,
+          "manifest_t": 181.2078,
+          "frame_id": 13621
+        },
+        "after": {
+          "requested_t": 181.7078,
+          "i": 10871,
+          "manifest_t": 181.7237,
+          "frame_id": 13652
+        },
+        "post": {
+          "requested_t": 194.9992,
+          "i": 11659,
+          "manifest_t": 195.0069,
+          "frame_id": 14440
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "unknown",
+      "outcome": "unknown",
+      "evidence": "Interior/threshold view without visible target vehicle.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "unobservable_entry"
+    },
+    {
+      "index": 65,
+      "session": "20261111-213150",
+      "line": 191,
+      "start": 560.1991,
+      "end": 563.8035,
+      "samples": {
+        "pre": {
+          "requested_t": 559.1991,
+          "i": 33415,
+          "manifest_t": 559.2139,
+          "frame_id": 36196
+        },
+        "press": {
+          "requested_t": 560.1991,
+          "i": 33474,
+          "manifest_t": 560.1991,
+          "frame_id": 36255
+        },
+        "after": {
+          "requested_t": 560.6991,
+          "i": 33504,
+          "manifest_t": 560.7012,
+          "frame_id": 36285
+        },
+        "post": {
+          "requested_t": 571.8035,
+          "i": 34170,
+          "manifest_t": 571.8084,
+          "frame_id": 36951
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Dark sedan on concrete forecourt.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 66,
+      "session": "20261111-214652",
+      "line": 35,
+      "start": 114.8276,
+      "end": 118.8044,
+      "samples": {
+        "pre": {
+          "requested_t": 113.8276,
+          "i": 6811,
+          "manifest_t": 113.8309,
+          "frame_id": 63530
+        },
+        "press": {
+          "requested_t": 114.8276,
+          "i": 6866,
+          "manifest_t": 114.8276,
+          "frame_id": 63585
+        },
+        "after": {
+          "requested_t": 115.3276,
+          "i": 6897,
+          "manifest_t": 115.3684,
+          "frame_id": 63616
+        },
+        "post": {
+          "requested_t": 126.8044,
+          "i": 7588,
+          "manifest_t": 126.8862,
+          "frame_id": 64307
+        }
+      },
+      "vehicle": "occupied_other_context",
+      "occupancy": "occupied_visible",
+      "motion_context": "unknown",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Sedan at city junction; movement unresolved. A non-player male is visible in the driver seat, the player pulls at the door, and the same male then lies beside the open driver door.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context",
+      "refinement_manifest_indices": [
+        6928,
+        6991,
+        7109
+      ],
+      "entry_interaction": "forced_driver_removal"
+    },
+    {
+      "index": 67,
+      "session": "20261112-085011",
+      "line": 84,
+      "start": 201.9543,
+      "end": 204.3572,
+      "samples": {
+        "pre": {
+          "requested_t": 200.9543,
+          "i": 12036,
+          "manifest_t": 200.9688,
+          "frame_id": 185898
+        },
+        "press": {
+          "requested_t": 201.9543,
+          "i": 12095,
+          "manifest_t": 201.9543,
+          "frame_id": 185957
+        },
+        "after": {
+          "requested_t": 202.4543,
+          "i": 12126,
+          "manifest_t": 202.4687,
+          "frame_id": 185988
+        },
+        "post": {
+          "requested_t": 212.3572,
+          "i": 12714,
+          "manifest_t": 212.3945,
+          "frame_id": 186576
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "standing_traffic_candidate",
+      "press_location": "road",
+      "outcome": "unknown",
+      "evidence": "Van on highway with open door/prone person; prior-driver link unresolved.",
+      "post_scene": "unresolved",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 68,
+      "session": "20261112-085011",
+      "line": 304,
+      "start": 884.3575,
+      "end": 886.4594,
+      "samples": {
+        "pre": {
+          "requested_t": 883.3575,
+          "i": 52807,
+          "manifest_t": 883.3743,
+          "frame_id": 226669
+        },
+        "press": {
+          "requested_t": 884.3575,
+          "i": 52866,
+          "manifest_t": 884.3575,
+          "frame_id": 226728
+        },
+        "after": {
+          "requested_t": 884.8575,
+          "i": 52891,
+          "manifest_t": 884.8612,
+          "frame_id": 226753
+        },
+        "post": {
+          "requested_t": 894.4594,
+          "i": 53469,
+          "manifest_t": 894.4892,
+          "frame_id": 227331
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Van on concrete lot with running people; prior-occupant link unresolved.",
+      "post_scene": "unresolved",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 69,
+      "session": "20261112-090514",
+      "line": 326,
+      "start": 379.5886,
+      "end": 381.5929,
+      "samples": {
+        "pre": {
+          "requested_t": 378.5886,
+          "i": 22533,
+          "manifest_t": 378.6051,
+          "frame_id": 250381
+        },
+        "press": {
+          "requested_t": 379.5886,
+          "i": 22592,
+          "manifest_t": 379.5886,
+          "frame_id": 250440
+        },
+        "after": {
+          "requested_t": 380.0886,
+          "i": 22622,
+          "manifest_t": 380.0922,
+          "frame_id": 250470
+        },
+        "post": {
+          "requested_t": 389.5929,
+          "i": 23189,
+          "manifest_t": 389.6029,
+          "frame_id": 251037
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "unknown",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "Player prone below bridge with no visible target/attacker; later mission failure.",
+      "post_scene": "unresolved",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 70,
+      "session": "20261112-090514",
+      "line": 559,
+      "start": 853.3791,
+      "end": 855.8941,
+      "samples": {
+        "pre": {
+          "requested_t": 852.3791,
+          "i": 50851,
+          "manifest_t": 852.3922,
+          "frame_id": 278699
+        },
+        "press": {
+          "requested_t": 853.3791,
+          "i": 50905,
+          "manifest_t": 853.3791,
+          "frame_id": 278753
+        },
+        "after": {
+          "requested_t": 853.8791,
+          "i": 50937,
+          "manifest_t": 853.902,
+          "frame_id": 278785
+        },
+        "post": {
+          "requested_t": 863.8941,
+          "i": 51541,
+          "manifest_t": 863.9032,
+          "frame_id": 279389
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "pavement",
+      "outcome": "unknown",
+      "evidence": "White car alongside concrete path below overpass.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    },
+    {
+      "index": 71,
+      "session": "20261112-092019",
+      "line": 56,
+      "start": 241.0991,
+      "end": 246.6038,
+      "samples": {
+        "pre": {
+          "requested_t": 240.0991,
+          "i": 14151,
+          "manifest_t": 240.1125,
+          "frame_id": 295987
+        },
+        "press": {
+          "requested_t": 241.0991,
+          "i": 14210,
+          "manifest_t": 241.0991,
+          "frame_id": 296046
+        },
+        "after": {
+          "requested_t": 241.5991,
+          "i": 14241,
+          "manifest_t": 241.6167,
+          "frame_id": 296077
+        },
+        "post": {
+          "requested_t": 254.6038,
+          "i": 15015,
+          "manifest_t": 254.6109,
+          "frame_id": 296851
+        }
+      },
+      "vehicle": "unknown",
+      "occupancy": "unknown",
+      "motion_context": "parked_candidate",
+      "press_location": "other_off_road",
+      "outcome": "unknown",
+      "evidence": "Red SUV on sandy unpaved parking ground.",
+      "post_scene": "no_conflict_visible_in_followup_image",
+      "event_quality": "visible_vehicle_context"
+    }
+  ]
+}

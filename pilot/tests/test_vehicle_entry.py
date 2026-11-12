@@ -51,6 +51,8 @@ def obs(time, objects=(FAR,), *, age=0.0, minimap="flat", corrupt=False, deliver
         {"duration": math.inf},
         {"kind": "bus"},
         {"kind": []},
+        {"occupied": True},
+        {"occupied": "yes"},
     ],
 )
 def test_arguments_reject_invalid_values(args):
@@ -99,7 +101,7 @@ def test_seated_proof_survives_corrupt_tick_but_rejects_short_false_map():
         result = skill.step(obs(time, (), minimap=minimap, corrupt=corrupt, delivered=False))
         assert result.status == "running" and result.pad == NEUTRAL_PAD
     result = skill.step(obs(2.2, minimap="tilted"))
-    assert result.status == "done" and result.reason == "entered vehicle"
+    assert result.status == "done" and result.reason.startswith("entered vehicle; vehicle=")
     assert result.pad == NEUTRAL_PAD and skill.step(obs(3)) == result
 
 
@@ -315,10 +317,18 @@ class EntryGame:
         latency=3.1,
         kind="car",
         alternate=False,
+        road_x=None,
+        driver=False,
     ):
         self.distance, self.lost, self.locked = distance, lost, locked
         self.away, self.blocked, self.latency, self.kind = away, blocked, latency, kind
         self.alternate = alternate
+        self.road_x = road_x
+        self.driver = driver
+        self.driver_out = False
+        self.evict_at = None
+        self.lane_idle = 0.0
+        self.longest_lane_idle = 0.0
         self.pending = None
         self.seated = False
         self.held = False
@@ -329,15 +339,40 @@ class EntryGame:
     def observation(self, time):
         if self.pending is not None and time >= self.pending:
             self.seated = True
+            if self.driver and self.evict_at is None:
+                self.evict_at = time + 2
+        if self.evict_at is not None and time >= self.evict_at:
+            self.driver_out = True
+            self.seated = False
         height = 0.65 / (self.distance + 1)
         vehicle = Detection(self.kind, px(0.5 - height, 0.43, 0.5 + height, 0.43 + height), 0.95)
         objects = () if self.away and time > 0.5 else (vehicle,)
         if self.alternate and time > 15:
             # The locked car departs and another car stops at the opposite side.
             objects = (Detection("car", px(0.62, 0.45, 0.85, 0.8), 0.95),)
-        return obs(time, objects, minimap="tilted" if self.seated else "flat")
+        if self.driver and objects:
+            a, b, c, d = vehicle.box
+            person = Detection(
+                "person",
+                (a + 0.35 * (c - a), b + 0.1 * (d - b), a + 0.65 * (c - a), b + 0.55 * (d - b)),
+                0.95,
+            )
+            objects += (person,)
+        observation = obs(time, objects, minimap="tilted" if self.seated else "flat")
+        if self.road_x is not None:
+            from test_foot import road_frame
+
+            observation = replace(observation, frame=road_frame(-self.road_x, angle=15))
+        return observation
 
     def apply(self, time, pad):
+        if self.road_x is not None:
+            self.road_x += pad.left[0] * 1.2
+            if abs(self.road_x) < 7 and pad.left == (0, 0) and not self.seated:
+                self.lane_idle += 0.1
+            else:
+                self.lane_idle = 0
+            self.longest_lane_idle = max(self.longest_lane_idle, self.lane_idle)
         if pad.left != (0, 0):
             if self.pending is not None and not self.seated:
                 self.cancelled += 1
@@ -387,7 +422,7 @@ def play(game, duration=MAX_SECONDS):
 )
 def test_game_model_gets_seated_after_delay_loss_early_press_or_alternate(options):
     result, game, presses = play(EntryGame(**options))
-    assert result.status == "done" and result.reason == "entered vehicle"
+    assert result.status == "done" and result.reason.startswith("entered vehicle; vehicle=")
     assert game.seated and game.cancelled == 0
     assert 1 <= len(presses) <= MAX_ATTEMPTS
     assert all(b - a >= DOOR_WAIT for a, b in pairwise(presses))
@@ -508,3 +543,100 @@ def test_within_reach_a_car_is_taken_before_a_nearer_bus():
     assert choose_vehicle(vehicles).obj.kind == "car"
     far = Detection("car", (0.55, 0.40, 0.65, 0.48), 0.9)
     assert choose_vehicle([Vehicle(bus, 0.0, bus, 0.0), Vehicle(far, 0.0, far, 0.0)]).obj.kind == "bus"
+
+
+def test_parked_candidate_is_preferred_to_a_nearer_occupied_car():
+    normalized = replace(NEAR, box=(0.3, 0.45, 0.7, 0.9))
+    occupied = Vehicle(normalized, 0, normalized, 0, "standing", occupancy="occupied")
+    far = replace(normalized, box=(0.4, 0.4, 0.5, 0.5))
+    parked = Vehicle(far, 0, far, 0, "standing", occupancy="parked-candidate")
+    assert choose_vehicle([occupied, parked], "allow") is parked
+    assert choose_vehicle([occupied], "avoid") is None
+
+
+def test_occupant_confirmation_survives_one_pixel_box_jitter_but_not_a_pedestrian():
+    # Actual first three pickup samples: the occupant's right edge exceeds
+    # the next vehicle box by one pixel. That is detector jitter, not absence.
+    runs = json.loads((Path(__file__).resolve().parents[2] / "lab/enter/runs-console.json").read_text())[
+        "runs"
+    ]
+    run = next(r for r in runs if r["session"].endswith("122312"))
+    samples = [s for s in run["samples"] if s["skill"][0] == "enter_vehicle"]
+    skill = EnterVehicle({})
+    for sample in samples[:8]:
+        assert not skill.step(recorded_observation(sample)).pad.buttons
+    assert any(v.occupancy == "occupied" for v in skill.vehicles)
+    from pilot.vehicle_entry import occupant_visible
+
+    car = replace(NEAR, box=(0.3, 0.45, 0.7, 0.9))
+    pedestrian = Detection("person", px(0.4, 0.3, 0.6, 0.95), 0.99)
+    assert not occupant_visible(car, (pedestrian,))
+
+
+def test_quad_still_gets_first_press_immediately_and_pickup_has_none():
+    runs = json.loads((Path(__file__).resolve().parents[2] / "lab/enter/runs-console.json").read_text())[
+        "runs"
+    ]
+    for run in runs[:2]:
+        skill = EnterVehicle({})
+        samples = [s for s in run["samples"] if s["skill"][0] == "enter_vehicle"]
+        presses = [s["t"] for s in samples if skill.step(recorded_observation(s)).pad.buttons]
+        if run["session"].endswith("122056"):
+            assert presses and presses[0] <= 6.81
+        else:
+            assert presses == []
+
+
+def test_model_leaves_lane_before_waiting_for_an_occupied_vehicle():
+    game = EntryGame(distance=1, road_x=0, driver=True)
+    result, game, presses = play(game, duration=6)
+    assert not presses and not game.driver_out
+    assert abs(game.road_x) >= 7
+    assert game.longest_lane_idle < 1.5
+    assert result.status == "failed" and result.pad == NEUTRAL_PAD
+
+
+def test_model_ineffective_press_in_lane_retreats_without_seven_second_wait():
+    game = EntryGame(distance=1, road_x=0, locked=True)
+    result, game, presses = play(game, duration=6)
+    assert presses and abs(game.road_x) >= 7
+    assert game.longest_lane_idle < 1.5
+    assert "retreated" in result.reason
+
+
+def test_allow_is_explicit_and_driver_can_get_out_after_success():
+    game = EntryGame(distance=1, road_x=12, driver=True)
+    skill = EnterVehicle({"occupied": "allow"})
+    for tick in range(80):
+        t = tick / 10
+        result = skill.step(game.observation(t))
+        game.apply(t, result.pad)
+        if result.status == "done":
+            break
+    assert result.status == "done" and "occupancy=occupied" in result.reason
+    game.observation(t + 3)
+    assert game.driver_out and not game.seated
+
+
+def test_moving_only_waits_at_kerb_and_does_not_enter_road():
+    from test_foot import road_frame
+
+    skill = EnterVehicle({})
+    for tick in range(20):
+        t = tick / 10
+        car = Detection("car", px(0.15 + t * 0.22, 0.35, 0.25 + t * 0.22, 0.45), 0.9)
+        result = skill.step(replace(obs(t, (car,)), frame=road_frame(-12)))
+        assert result.pad.left == (0, 0) and not result.pad.buttons
+    assert any(v.moved for v in skill.vehicles)
+
+
+def test_head_accepts_occupancy_argument_and_exposes_it_in_schema():
+    from pilot.head import parse_response
+
+    answer = parse_response(
+        {
+            "plan": [{"name": "enter_vehicle", "args": {"occupied": "avoid"}}],
+            "sentence": "Wait for a parked vehicle.",
+        }
+    )
+    assert answer.plan[0].args["occupied"] == "avoid"
