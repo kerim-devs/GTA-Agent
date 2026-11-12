@@ -68,7 +68,7 @@ def test_bad_tick_breaks_arrival_evidence(bad):
 def test_no_blip_and_lost_blip_have_distinct_neutral_failures():
     for initially_present in (False, True):
         skill = WalkTo({})
-        skill.step(observation(0, blips=(Blip("purple", 40, 0),) if initially_present else ()))
+        skill.step(observation(0, blips=(Blip("purple", 60, 0),) if initially_present else ()))
         for time in (0.5, 1, 1.5, 2, 2.5, 3.1):
             result = skill.step(observation(time, blips=()))
         assert result.status == "failed" and result.pad == NEUTRAL_PAD
@@ -229,7 +229,7 @@ def test_the_waypoint_marker_is_read_from_the_frame_when_the_reading_has_no_purp
 
 
 def test_a_near_waypoint_the_game_takes_off_the_map_is_reached_and_a_far_one_is_lost():
-    for x, status, word in ((10, "done", "took the near waypoint"), (40, "failed", "blip lost")):
+    for x, status, word in ((33, "done", "took the near waypoint"), (60, "failed", "blip lost")):
         skill = WalkTo({})
         skill.step(observation(0, x, 0))
         for time in (0.5, 1, 1.5, 2, 2.5, 3.1):
@@ -288,3 +288,13 @@ def test_roads_must_be_a_boolean():
     with pytest.raises(ValueError):
         WalkTo({"roads": "yes"})
     assert WalkTo.name == "walk_to_point" and len(WalkTo.prompt) <= 400
+
+
+def test_the_walk_keeps_its_direction_for_a_moment_while_the_marker_is_hidden():
+    skill = WalkTo({})
+    pushed = skill.step(observation(0, 60, 0)).pad.left
+    assert pushed == pytest.approx((1, 0))
+    assert skill.step(observation(0.5, blips=())).pad.left == pytest.approx((1, 0))
+    assert skill.step(observation(1.2, blips=())).pad == NEUTRAL_PAD
+    # Nothing is pushed for a marker that has never been seen.
+    assert WalkTo({}).step(observation(0, blips=())).pad == NEUTRAL_PAD

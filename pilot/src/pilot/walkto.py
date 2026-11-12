@@ -36,9 +36,11 @@ class WalkTo:
     DIRECT_WITHIN = 15.0  # map pixels: this near, the last steps go straight at the point
     OTHER_WAY = 60.0  # degrees between two looks that mean another way, not a bend in the same one
     OTHER_WAY_PLANS = 5
-    # The game takes a waypoint off the map when the figure reaches it. How near that is has not
-    # been measured: a marker last seen inside the map this close and then gone counts as reached.
-    GONE_WITHIN = 20.0
+    # The game takes a waypoint off the map when the figure reaches it: on the console on 12 November
+    # it went at 33 map pixels, the figure sprinting. A marker last seen inside the map this close
+    # and then gone counts as reached.
+    GONE_WITHIN = 40.0
+    HOLD = 1.0  # seconds the walk keeps its direction while an icon lies over the marker
 
     def __init__(self, args: dict):
         if not isinstance(args, dict) or set(args) - self.parameters.keys():
@@ -81,6 +83,7 @@ class WalkTo:
         self.on_road = False
         self.way = None
         self.way_time = 0.0
+        self.last_direction = None
         self.other_ways = 0
         self.road_seconds = 0.0
         self.walk_seconds = 0.0
@@ -235,6 +238,8 @@ class WalkTo:
                 ):
                     return self._finish("done", "arrived; the game took the near waypoint off the map")
                 return self._finish("failed", "blip lost; end is last observed distance")
+            elif now - self.last_seen < self.HOLD and self.last_direction is not None:
+                return self._push(observation, self.last_direction, step)
             return SkillResult()
         target = min(targets, key=lambda blip: math.hypot(blip.x, blip.y))
         distance = math.hypot(target.x, target.y)
@@ -251,11 +256,15 @@ class WalkTo:
         self.close_since = None
         if distance == 0:
             return SkillResult()
-        steer = self.guard.step(observation, self._direction(observation, target, distance))
+        self.last_direction = self._direction(observation, target, distance)
+        return self._push(observation, self.last_direction, step)
+
+    def _push(self, observation, direction, step):
+        steer = self.guard.step(observation, direction)
         if steer.failed:
             return self._finish("failed", "stuck; guard exhausted")
         buttons = (
-            self.profile.sprint_buttons(now - self.started)
+            self.profile.sprint_buttons(observation.time - self.started)
             if self.sprint and steer.state in {"go", "idle"}
             else ()
         )
