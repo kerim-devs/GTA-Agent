@@ -12,6 +12,7 @@ SKILL = {
     "leave": "press",
     "walk": "walk_road",
     "enter": "enter_vehicle",
+    "place": "set_waypoint",
     "waypoint": "set_waypoint",
     "drive": "drive_route",
 }
@@ -56,7 +57,7 @@ def judge(step, folder):
             ok,
             f"{status} ({reason}) after {seconds:.0f} s, {'seated' if seated else 'on foot'} at the end",
         )
-    if step == "waypoint":
+    if step in ("place", "waypoint"):
         return status == "done", f"{status} ({reason}) after {seconds:.0f} s"
     distances = [row["reading"].get("gps_distance") for row in mine]
     distances = [value for value in distances if value is not None]

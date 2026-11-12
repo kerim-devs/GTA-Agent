@@ -445,6 +445,8 @@ class SkillRunner:
         self.last = None
         self.release_pending = False
         self.completed = False
+        self.road_reached = False
+        self.route_seen = False
 
     def replace(self, calls: tuple["SkillCall", ...]) -> Pad:
         # Construct all skills before touching the existing plan.
@@ -462,6 +464,8 @@ class SkillRunner:
             result = self.active.stop(reason)
             self.last = {
                 "name": self.active.name,
+                **({"road_reached": self.road_reached} if self.active.name == "walk_road" else {}),
+                **({"route_seen": self.route_seen} if self.active.name == "drive_route" else {}),
                 "status": result.status,
                 "reason": result.reason,
                 "queue": [],
@@ -484,12 +488,26 @@ class SkillRunner:
                 return SkillResult(status="done")
             self.active = self.queue.popleft()
             self.active_started = observation.time
+            self.route_seen = False
+            self.road_reached = False
         result = self.active.step(observation)
+        self.route_seen |= self.active.name == "drive_route" and observation.reading.route in {
+            "yellow",
+            "purple",
+        }
+        road_since = getattr(self.active, "on_road_since", None)
+        self.road_reached = (
+            self.active.name == "walk_road"
+            and road_since is not None
+            and observation.time - road_since >= self.active.ON_ROAD_SECONDS
+        )
         if result.status != "running":
             queued = [skill.name for skill in self.queue]
             failed = result.status == "failed"
             self.last = {
                 "name": self.active.name,
+                **({"road_reached": self.road_reached} if self.active.name == "walk_road" else {}),
+                **({"route_seen": self.route_seen} if self.active.name == "drive_route" else {}),
                 "status": result.status,
                 "reason": result.reason,
                 "queue": [] if failed else queued,
@@ -503,10 +521,17 @@ class SkillRunner:
         return result
 
     def describe(self):
+        if self.active is None and self.queue:
+            return {
+                **(self.last or {"name": self.queue[0].name, "status": "queued", "reason": None}),
+                "pending": [skill.name for skill in self.queue],
+            }
         if self.active is not None:
             guard = getattr(self.active, "guard", None)
             return {
                 "name": self.active.name,
+                **({"road_reached": self.road_reached} if self.active.name == "walk_road" else {}),
+                **({"route_seen": self.route_seen} if self.active.name == "drive_route" else {}),
                 "status": "running",
                 "reason": guard.diagnostic() if guard is not None else None,
                 "queue": [skill.name for skill in self.queue],

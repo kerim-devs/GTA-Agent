@@ -1,0 +1,184 @@
+{
+  "scope": "Choice and first-press timing only; no counterfactual entry success is proven.",
+  "frames": false,
+  "runs": [
+    {
+      "session": "20261112-102851",
+      "start": 36.08,
+      "end": 47.99,
+      "original_first_press": null,
+      "changed_first_press": null,
+      "walking_samples": 10,
+      "actions_with_corrupt_map": 0,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": "no-frame"
+    },
+    {
+      "session": "20261112-102851",
+      "start": 83.31,
+      "end": 101.53,
+      "original_first_press": 99.05,
+      "changed_first_press": {
+        "time": 83.42,
+        "kind": "car",
+        "box": [
+          0.7859375,
+          0.5194444444444445,
+          0.99921875,
+          0.7777777777777778
+        ],
+        "motion": "unknown"
+      },
+      "walking_samples": 82,
+      "actions_with_corrupt_map": 2,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": null
+    },
+    {
+      "session": "20261112-102851",
+      "start": 155.48,
+      "end": 163.21,
+      "original_first_press": 158.4,
+      "changed_first_press": {
+        "time": 155.59,
+        "kind": "bus",
+        "box": [
+          0.00078125,
+          0.016666666666666666,
+          0.21015625,
+          0.9916666666666667
+        ],
+        "motion": "unknown"
+      },
+      "walking_samples": 0,
+      "actions_with_corrupt_map": 0,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": null
+    },
+    {
+      "session": "20261112-102851",
+      "start": 206.65,
+      "end": 220.88,
+      "original_first_press": 209.34,
+      "changed_first_press": {
+        "time": 206.73,
+        "kind": "bus",
+        "box": [
+          0.0,
+          0.0,
+          0.3296875,
+          0.8833333333333333
+        ],
+        "motion": "unknown"
+      },
+      "walking_samples": 0,
+      "actions_with_corrupt_map": 0,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": "no-frame"
+    },
+    {
+      "session": "20261112-103305",
+      "start": 39.06,
+      "end": 64.19,
+      "original_first_press": null,
+      "changed_first_press": {
+        "time": 39.14,
+        "kind": "car",
+        "box": [
+          0.0015625,
+          0.49722222222222223,
+          0.44765625,
+          0.9763888888888889
+        ],
+        "motion": "unknown"
+      },
+      "walking_samples": 150,
+      "actions_with_corrupt_map": 0,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": null
+    },
+    {
+      "session": "20261112-103305",
+      "start": 79.94,
+      "end": 112.69,
+      "original_first_press": 110.09,
+      "changed_first_press": {
+        "time": 80.06,
+        "kind": "car",
+        "box": [
+          0.4796875,
+          0.37222222222222223,
+          0.9984375,
+          0.8027777777777778
+        ],
+        "motion": "unknown"
+      },
+      "walking_samples": 75,
+      "actions_with_corrupt_map": 0,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": "no-frame"
+    },
+    {
+      "session": "20261112-110449",
+      "start": 6.02,
+      "end": 30.9,
+      "original_first_press": null,
+      "changed_first_press": {
+        "time": 12.51,
+        "kind": "car",
+        "box": [
+          0.75859375,
+          0.4861111111111111,
+          0.99921875,
+          0.6555555555555556
+        ],
+        "motion": "unknown"
+      },
+      "walking_samples": 21,
+      "actions_with_corrupt_map": 3,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": "no-frame"
+    },
+    {
+      "session": "20261112-110806",
+      "start": 5.94,
+      "end": 10.91,
+      "original_first_press": null,
+      "changed_first_press": null,
+      "walking_samples": 0,
+      "actions_with_corrupt_map": 0,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": "no-frame"
+    },
+    {
+      "session": "20261112-111123",
+      "start": 5.94,
+      "end": 28.56,
+      "original_first_press": 11.02,
+      "changed_first_press": {
+        "time": 11.18,
+        "kind": "car",
+        "box": [
+          0.5140625,
+          0.5333333333333333,
+          0.76171875,
+          0.6861111111111111
+        ],
+        "motion": "unknown"
+      },
+      "walking_samples": 10,
+      "actions_with_corrupt_map": 0,
+      "last_status": "running",
+      "last_reason": null,
+      "road_problem": "no-frame"
+    }
+  ]
+}

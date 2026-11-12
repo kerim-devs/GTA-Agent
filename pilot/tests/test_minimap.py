@@ -11,6 +11,44 @@ import pytest
 from pilot.contract import Reading
 from pilot.minimap import read
 
+
+@pytest.mark.parametrize(
+    "name,corrupt",
+    [
+        ("110449-10.5", False),
+        ("102851-73.6", False),
+        ("104424-121.7", False),
+        ("100713-179.3", True),
+        ("100713-194.3", True),
+        ("100713-199.5", True),
+        ("100713-207.1", True),
+        ("100713-217.767", True),
+    ],
+)
+def test_recorded_route_free_roads_and_real_damage(name, corrupt):
+    from pilot.minimap import _blocks
+
+    path = Path(__file__).resolve().parents[2] / "lab/minimap/p54" / f"{name}.png"
+    crop = cv2.cvtColor(cv2.imread(str(path)), cv2.COLOR_BGR2RGB)
+    original = crop.copy()
+    # Motion estimation still sees the original conservative block detector.
+    assert _blocks(crop)[0] >= 2
+    reading = read(crop)
+    assert reading.corrupt is corrupt
+    assert reading.route == "none"
+    assert reading.confidence <= 0.35 if corrupt else reading.confidence > 0.35
+    assert np.array_equal(crop, original)
+
+
+def test_a_continuous_road_does_not_excuse_a_displaced_block():
+    path = Path(__file__).resolve().parents[2] / "lab/minimap/p54/110449-10.5.png"
+    crop = cv2.cvtColor(cv2.imread(str(path)), cv2.COLOR_BGR2RGB)
+    crop[46:62, 130:146] = 0
+    reading = read(crop)
+    assert reading.corrupt
+    assert reading.confidence <= 0.35
+
+
 FIXTURES = Path(__file__).parent / "fixtures"
 CASES = json.loads((FIXTURES / "expectations.json").read_text())["minimap"]
 

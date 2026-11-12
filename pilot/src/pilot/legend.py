@@ -58,6 +58,8 @@ KINDS = {
 }
 DIRECTIONS = {"up", "down", "left", "right"}
 ARROWS = re.compile(r"[<\u2039\u00ab]\s*(\d+)\s*/\s*(\d+)\s*[>\u203a\u00bb]")
+# What follows a name when its arrows are misread ("Los Santos Customs < 114> i" for "< 1/4 >").
+ARROWS_LEFT = re.compile(r"\s*[<\u2039\u00ab]\s*\d.*$")
 COUNTER = re.compile(r"^(\d+)\s*/\s*(\d+)$")
 WAYPOINT = re.compile(r"^Wegpunkt\s*\(\s*(\d+(?:[.,]\d+)?)\s*(km|m)\s*\)", re.I)
 
@@ -135,8 +137,15 @@ def read_legend(lines, frame=None):
     entry_rows = []
     selections = []
     bars = []
+    # The legend is set flush right: all 2,012 rows of the recording by hand end between 1188 and 1215.
+    # Writing of the world behind the map (a sign reading "SANDY'S", session 20261112-121107) does not.
     body = sorted(
-        (row for row in rows if row[1][0] >= 900 and 25 <= row[1][1] < 600), key=lambda row: row[1][1]
+        (
+            row
+            for row in rows
+            if row[1][0] >= 900 and 25 <= row[1][1] < 600 and 1180 <= row[1][0] + row[1][2] <= 1225
+        ),
+        key=lambda row: row[1][1],
     )
     grouped = []
     for row in body:
@@ -165,7 +174,7 @@ def read_legend(lines, frame=None):
                 bars.append(entries[-1])
             continue
         arrows = ARROWS.search(text)
-        name = clean_name(text[: arrows.start()] if arrows else text)
+        name = clean_name(text[: arrows.start()] if arrows else ARROWS_LEFT.sub("", text))
         if not name or not any(c.isalpha() for c in name) or (len(name) <= 2 and kind_of(name) == "other"):
             continue
         entry = Entry(
