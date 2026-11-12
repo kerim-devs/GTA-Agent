@@ -767,3 +767,26 @@ def test_a_map_the_running_skill_opened_is_no_news_for_the_head(tmp_path):
         assert len(pending.jobs) == 2
     finally:
         conductor.close()
+
+
+def test_the_judge_losing_the_mode_over_a_skills_own_map_is_no_news(tmp_path):
+    # Live on 12 November: with the map open the judge went from vehicle to none and back, every
+    # turn asked the head, and the head's wait replaced set_waypoint fourteen times in two minutes.
+    pending = Pending()
+    conductor = Conductor(tmp_path, submit=pending, detector=NoEvents())
+    try:
+        conductor.tick(observation(0), RGB, events=[{"kind": "objective_changed"}])
+        plan = {
+            "plan": [{"name": "set_waypoint", "args": {"target": "away"}}],
+            "sentence": "Ich setze ein Ziel.",
+        }
+        pending.jobs[0][0].set_result(parse_response(plan))
+        conductor.tick(observation(0.03), RGB)
+        conductor.tick(observation(0.06), RGB)
+        assert conductor.runner.active.name == "set_waypoint"
+        for tick, (old, new) in enumerate((("vehicle", "none"), ("none", "vehicle")), start=3):
+            conductor.judge_events.append({"kind": "mode_changed", "old": old, "new": new})
+            conductor.tick(observation(tick * 0.03), RGB)
+        assert len(pending.jobs) == 1 and conductor.runner.active.name == "set_waypoint"
+    finally:
+        conductor.close()
