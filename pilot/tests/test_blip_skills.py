@@ -21,7 +21,7 @@ def test_blip_limits_and_release(name, limit):
     skill = Skill(SkillCall(name, {"color": "blue", "duration": 999}))
     assert skill.step(observation()).status == "running"
     final = skill.step(observation(limit))
-    assert final.status == "failed" and final.reason == "time-limit"
+    assert final.status == "done" and final.reason == "time-limit"
     assert final.pad == NEUTRAL_PAD
     assert skill.step(observation(limit + 1)) == final
 

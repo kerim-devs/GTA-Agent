@@ -75,6 +75,121 @@ def test_event_one_request_and_sequential_plan(tmp_path):
         conductor.close()
 
 
+@pytest.mark.parametrize("name", ["walk_to", "face"])
+def test_appended_plan_survives_plain_time_limit(tmp_path, name):
+    pending = Pending()
+    now = [0.0]
+    conductor = Conductor(tmp_path, submit=pending, detector=NoEvents(), clock=lambda: now[0])
+
+    def tick(t):
+        now[0] = t
+        return conductor.tick(observation(t), RGB)
+
+    try:
+        tick(0)
+        pending.jobs[0][0].set_result(
+            parse_response(
+                {
+                    "plan": [{"name": name, "args": {"color": "blue", "duration": 0.5}}],
+                    "sentence": "Continue.",
+                }
+            )
+        )
+        tick(0.01)
+        assert pending.jobs[1][2][0].events[0]["kind"] == "plan_ending"
+        tick(0.02)
+        pending.jobs[1][0].set_result(
+            parse_response(
+                {
+                    "plan": [
+                        {"name": "enter_vehicle", "args": {"duration": 25}},
+                        {"name": "drive_route", "args": {"duration": 60}},
+                    ],
+                    "sentence": "Enter the car.",
+                }
+            )
+        )
+        tick(0.1)
+        result = tick(0.52)
+        assert (result.status, result.reason, result.pad) == ("done", "time-limit", NEUTRAL_PAD)
+        assert conductor.describe(result)["queue_disposition"] == "kept"
+        assert conductor.describe(result)["queue"] == ["enter_vehicle", "drive_route"]
+        assert conductor.runner.active is None
+        tick(0.53)
+        assert conductor.runner.active.name == "enter_vehicle"
+        assert len(pending.jobs) == 2
+        assert rows(tmp_path)[-1]["disposition"] == "appended"
+    finally:
+        conductor.close()
+
+
+def test_appended_plan_is_cleared_by_target_loss(tmp_path):
+    pending = Pending()
+    conductor = Conductor(tmp_path, submit=pending, detector=NoEvents())
+    try:
+        conductor.tick(observation(0), RGB)
+        pending.jobs[0][0].set_result(
+            parse_response(
+                {
+                    "plan": [{"name": "face", "args": {"color": "blue", "duration": 4}}],
+                    "sentence": "Face the target.",
+                }
+            )
+        )
+        conductor.tick(observation(0.01), RGB)
+        conductor.tick(observation(0.02), RGB)
+        pending.jobs[1][0].set_result(
+            parse_response(
+                {
+                    "plan": [{"name": "enter_vehicle", "args": {"duration": 25}}],
+                    "sentence": "Enter the car.",
+                }
+            )
+        )
+        conductor.tick(observation(0.1), RGB)
+        epoch = conductor.epoch
+        result = conductor.tick(observation(2.03), RGB)
+        assert (result.status, result.reason) == ("failed", "blip-gone")
+        assert conductor.describe(result)["queue_disposition"] == "cleared"
+        assert conductor.describe(result)["dropped"] == ["enter_vehicle"]
+        assert not conductor.runner.has_plan
+        assert conductor.epoch == epoch + 1
+        assert pending.jobs[2][2][0].events[0]["kind"] == "skill_failed"
+    finally:
+        conductor.close()
+
+
+def test_replacement_arrives_on_tick_old_target_would_fail(tmp_path):
+    pending = Pending()
+    runner = SkillRunner()
+    runner.replace((SkillCall("face", {"color": "blue", "duration": 4}),))
+    conductor = Conductor(tmp_path, runner=runner, submit=pending, detector=NoEvents())
+    try:
+        conductor.tick(observation(0), RGB)
+        conductor.tick(observation(0.01), RGB)
+        old = runner.active
+        pending.jobs[0][0].set_result(
+            parse_response(
+                {
+                    "plan": [{"name": "walk", "args": {"x": 1, "duration": 10}}],
+                    "sentence": "Walk right.",
+                }
+            )
+        )
+        epoch = conductor.epoch
+        result = conductor.tick(observation(2.02), RGB)
+        assert result.pad == NEUTRAL_PAD
+        assert old.finished.reason == "replaced"
+        assert conductor.describe(result)["reason"] == "replaced"
+        assert rows(tmp_path)[-1]["disposition"] == "replaced"
+        assert conductor.tick(observation(2.03), RGB).pad.left == (1, 0)
+        assert runner.active.name == "walk"
+        assert conductor.epoch == epoch
+        assert len(pending.jobs) == 1
+    finally:
+        conductor.close()
+
+
 def test_slow_head_does_not_block_and_batches_overtaking_events(tmp_path):
     pending = Pending()
     runner = SkillRunner()

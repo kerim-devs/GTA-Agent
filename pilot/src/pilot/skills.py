@@ -74,8 +74,7 @@ class Skill:
         if elapsed < 0:
             return self.stop("clock-reversed")
         if elapsed >= self.limit:
-            status = "failed" if self.name in ("walk_to", "face") else "done"
-            self.finished = SkillResult(status=status, reason="time-limit")
+            self.finished = SkillResult(status="done", reason="time-limit")
             return self.finished
         try:
             if self.name in ("walk_to", "face"):
@@ -333,7 +332,14 @@ class SkillRunner:
     def stop(self, reason="interrupted") -> Pad:
         if self.active is not None:
             result = self.active.stop(reason)
-            self.last = {"name": self.active.name, "status": result.status, "reason": result.reason}
+            self.last = {
+                "name": self.active.name,
+                "status": result.status,
+                "reason": result.reason,
+                "queue": [],
+                "queue_disposition": "cleared" if self.queue else "empty",
+                "dropped": [skill.name for skill in self.queue],
+            }
         self.active = None
         self.queue.clear()
         self.completed = False
@@ -352,7 +358,16 @@ class SkillRunner:
             self.active_started = observation.time
         result = self.active.step(observation)
         if result.status != "running":
-            self.last = {"name": self.active.name, "status": result.status, "reason": result.reason}
+            queued = [skill.name for skill in self.queue]
+            failed = result.status == "failed"
+            self.last = {
+                "name": self.active.name,
+                "status": result.status,
+                "reason": result.reason,
+                "queue": [] if failed else queued,
+                "queue_disposition": ("cleared" if failed else "kept") if queued else "empty",
+                "dropped": queued if failed else [],
+            }
             self.active = None
             if result.status == "failed":
                 self.queue.clear()
@@ -366,6 +381,7 @@ class SkillRunner:
                 "name": self.active.name,
                 "status": "running",
                 "reason": guard.diagnostic() if guard is not None else None,
+                "queue": [skill.name for skill in self.queue],
             }
         return self.last
 
