@@ -126,3 +126,63 @@ def test_measured_eight_second_ocr_gap_keeps_progress_window_but_does_not_end_in
         if result.status != "running":
             break
     assert result.reason == "no-progress" and t == 20
+
+
+# What the HUD printed, as (capture time, metres), on the two arrivals that are on record. The route
+# vanished while 27 m (a waypoint, the car at walking pace) and 23 m (a mission marker, the car at
+# 13 m/s, the route gone from 39 m) were still printed.
+RECORDED_ARRIVALS = {
+    "20261111-131628": [
+        (48.55, 65),
+        (49.06, 64),
+        (49.59, 62),
+        (49.86, 61),
+        (50.93, 53),
+        (51.46, 49),
+        (51.77, 46),
+        (52.0, 43),
+        (52.31, 41),
+        (52.81, 37),
+        (53.89, 32),
+        (54.43, 31),
+        (56.58, 30),
+        (56.85, 29),
+        (57.1, 28),
+        (57.35, 27),
+    ],
+    "20261112-122056": [
+        (49.38, 76),
+        (50.47, 68),
+        (51.26, 65),
+        (51.82, 63),
+        (52.13, 61),
+        (52.34, 57),
+        (52.66, 53),
+        (52.86, 48),
+        (53.18, 43),
+        (53.37, 39),
+        (54.23, 29),
+        (54.42, 26),
+        (54.66, 24),
+        (54.92, 23),
+    ],
+}
+
+
+@pytest.mark.parametrize("session", RECORDED_ARRIVALS)
+def test_the_recorded_arrivals_end_as_arrived(session):
+    readings = RECORDED_ARRIVALS[session]
+    skill = DriveRoute({})
+    for t, distance in readings:
+        assert tick(skill, t, distance).status == "running"
+    result = lose_route(skill, readings[-1][0] + 0.1)
+    assert (result.status, result.reason) == ("done", "arrived")
+    assert (result.start_distance, result.end_distance) == (readings[0][1], readings[-1][1])
+
+
+def test_a_route_that_goes_while_the_place_is_still_far_is_not_an_arrival():
+    skill = DriveRoute({})
+    for i, distance in enumerate((140, 130, 120, 110, 100, 90)):
+        tick(skill, i / 2, distance)
+    result = lose_route(skill, 3)
+    assert (result.status, result.reason) == ("failed", "route-lost-far")

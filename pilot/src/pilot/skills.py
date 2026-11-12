@@ -236,7 +236,8 @@ class DriveRoute(RegisteredSkill):
     progress_window = 20.0
     progress_gap = 10.0  # The growing-distance town drive has a 7.6 s OCR gap.
     progress_metres = 20.0  # Two kilometre HUD increments, above quantisation noise.
-    arrival_metres = 20.0
+    # The route vanished with 27 m and 23 m still printed on the two recorded arrivals.
+    arrival_metres = 50.0
     arrival_age = 5.0  # Includes the driver's two seconds of confirmed route absence.
 
     def __init__(self, args: dict, *, driver=None):
