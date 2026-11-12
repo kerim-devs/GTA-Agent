@@ -37,7 +37,7 @@ if (-not (Test-Path "$root\NitroGen-$sha")) {
   Invoke-WebRequest -UseBasicParsing -Uri "https://github.com/MineDojo/NitroGen/archive/$sha.zip" -OutFile "$root\nitrogen.zip"
   Expand-Archive -Force "$root\nitrogen.zip" $root
 }
-# torchvision is what the image processor of transformers 5 preprocesses with.
+# torchvision is what the fast image processor of transformers preprocesses with.
 Run $py -m pip install --quiet torch torchvision --index-url https://download.pytorch.org/whl/cu124
 # transformers 4: NitroGen takes the vision tower as `SiglipVisionModel(...).vision_model`, which
 # transformers 5 no longer has. 4.57.6 is the last release of 4 and of the model's own weeks.
