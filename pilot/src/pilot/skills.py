@@ -229,8 +229,9 @@ class DriveRoute(RegisteredSkill):
     name = "drive_route"
     parameters: ClassVar[dict] = {"duration": (0.1, 120, 60)}
     prompt = (
-        "Follow a visible GPS route in a vehicle. Arrives only after small, falling distances and route "
-        "loss. Fails on lost route, no progress, dead-or-held car, exhausted recovery or time limit."
+        "Follow a visible GPS route in a vehicle. Done with arrived after small, falling distances and "
+        "route loss, or with time-limit. Fails on lost route, no progress, dead-or-held car or "
+        "exhausted recovery."
     )
     # The failed town drives made 0-10 m in 25-37 s; useful drives made 350-480 m/min.
     progress_window = 20.0
@@ -330,7 +331,9 @@ class DriveRoute(RegisteredSkill):
         try:
             self._distance(observation)
             if now - self.started >= self.limit:
-                return self.stop("time-limit")
+                # Every skill ends done at its limit; only the reason "arrived" says the place was reached.
+                self.finished = self._result(status="done", reason="time-limit")
+                return self.finished
             command = self.driver.step(
                 observation.reading, now, observation.moving, speed=observation.reading.gps_speed
             )

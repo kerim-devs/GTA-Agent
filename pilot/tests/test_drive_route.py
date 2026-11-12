@@ -97,11 +97,14 @@ def test_silence_does_not_prove_no_progress(moving):
     assert result.status == "running"
 
 
-def test_deadline_is_not_success_and_interrupt_retains_distance():
+def test_deadline_is_not_arrival_and_interrupt_retains_distance():
     skill = DriveRoute({"duration": 2})
     tick(skill, 0, 1500)
     result = tick(skill, 2, 1480)
-    assert (result.status, result.reason, result.pad) == ("failed", "time-limit", NEUTRAL_PAD)
+    # Like every other skill, a drive that runs out of time is done with its reason, so a route that
+    # is still there is followed on; only "arrived" means the place was reached.
+    assert (result.status, result.reason, result.pad) == ("done", "time-limit", NEUTRAL_PAD)
+    assert (result.start_distance, result.end_distance) == (1500, 1480)
     other = DriveRoute({})
     tick(other, 0, 100)
     stopped = other.stop("replaced")
