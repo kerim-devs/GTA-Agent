@@ -2,8 +2,10 @@
 # Keeps the console and the bridge up while nobody plays: starts the bridge when it is gone, waits
 # out a network that drops, and every four minutes turns the camera a little to one side and back,
 # so that the console does not go to rest and the game does not drift into its idle scenery. It
-# touches nothing while the pilot or a person is on the controller. Ends by itself after the given
-# number of seconds, because an agent's background task lives two hours at most.
+# touches nothing while the pilot or a person is on the controller. A console that has gone to rest
+# all the same is woken. Every nudge is printed with what the bridge answered, so that a look at the
+# output tells whether the console is being kept awake or only meant to be. Ends by itself after the
+# given number of seconds, because an agent's background task lives two hours at most.
 #
 #   lab/live/keep-awake.sh [seconds, default 6600] [console address, default 192.168.0.93]
 limit=${1:-6600}
@@ -13,8 +15,8 @@ cd /Users/kerim/Documents/ChatGPT/gta || exit 1
 rp=remoteplay/.venv/bin/ps5rp
 api=http://127.0.0.1:9395
 now() { date +%H:%M:%S }
-post() { curl -s -m 2 -X POST -H 'Content-Type: application/json' -d "$1" $api/pad >/dev/null }
-side=1; last=-$every; down=0; nudges=0
+post() { curl -s -m 2 -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: application/json' -d "$1" $api/pad }
+side=1; last=-$every; down=0; nudges=0; held=0
 
 while (( SECONDS < limit )); do
   state=$(curl -s -m 2 $api/status)
@@ -24,6 +26,12 @@ while (( SECONDS < limit )); do
     sleep 15
     continue
   fi
+  if [[ $state == *'"console": "standby"'* ]]; then
+    echo "$(now) the console is at rest, waking it"
+    curl -s -m 10 -X POST $api/wake >/dev/null
+    sleep 30
+    continue
+  fi
   if [[ $state != *'"session_up": true'* ]]; then
     (( down == 0 )) && echo "$(now) no picture from the console, waiting"
     down=1
@@ -31,10 +39,21 @@ while (( SECONDS < limit )); do
     continue
   fi
   (( down )) && { echo "$(now) the picture is back"; down=0; }
-  if (( SECONDS - last >= every )) && [[ $state == *'"agent_pad": false'* && $state == *'"human_input": false'* ]]; then
-    for i in {1..8}; do post "{\"right\": [$((0.5 * side)), 0], \"ttl_ms\": 300}"; sleep 0.05; done
-    post '{}'
-    side=$((-side)); last=$SECONDS; nudges=$((nudges + 1))
+  if (( SECONDS - last >= every )); then
+    if [[ $state == *'"agent_pad": false'* && $state == *'"human_input": false'* ]]; then
+      for i in {1..8}; do code=$(post "{\"right\": [$((0.5 * side)), 0], \"ttl_ms\": 300}"); sleep 0.05; done
+      post '{}' >/dev/null
+      if [[ $code == 200 ]]; then
+        side=$((-side)); last=$SECONDS; nudges=$((nudges + 1)); held=0
+        echo "$(now) nudge $nudges sent"
+      else
+        echo "$(now) the bridge refused the nudge ($code)"
+      fi
+    elif (( SECONDS - held >= every )); then
+      # a person or the pilot is on the controller, which keeps the console awake by itself
+      echo "$(now) no nudge: somebody is on the controller"
+      held=$SECONDS
+    fi
   fi
   sleep 20
 done
