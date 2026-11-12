@@ -74,3 +74,8 @@ lab/notes/out/*/readings.jsonl
 lab/notes/out/*/hud.jsonl
 lab/notes/incidents-check/sheets/
 lab/notes/incidents-check/overview/
+# action labels and their index, rebuilt by lab/actions/process-new.sh, about 15 MB; summary.md stays
+lab/actions/out/*
+!lab/actions/out/summary.md
+# contact sheets rebuilt by lab/actions/sheets.py
+lab/actions/sheets/
