@@ -3,7 +3,7 @@
 # JSON, in the form of the reaction bench's `POST /policy`, and is reached through the forwarded port.
 # It runs until Ctrl-C or until the SSH session ends, and nothing of it stays behind.
 #
-#   lab/policy/pc.sh -L 18763 lab/policy/serve.ps1
+#   lab/policy/pc.sh -L 18790 lab/policy/serve.ps1
 $root = "C:\Users\gta\policy"
 Set-Location $root
 $env:HF_HOME = "$root\hf"
@@ -25,7 +25,7 @@ from PIL import Image
 from transformers import SiglipVisionConfig, SiglipVisionModel
 
 ROOT = Path(r"C:\Users\gta\policy")
-PORT = 18763
+PORT = 18790  # away from 18762 and its neighbours, where the reaction bench puts its stand-ins
 RATE = 60  # the repository's client plays one action a step at 60 steps a second
 sys.path.insert(0, str(next(ROOT.glob("NitroGen-*"))))
 from nitrogen.inference_session import InferenceSession, load_model  # noqa: E402

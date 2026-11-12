@@ -233,3 +233,24 @@ What the checkpoint says about itself, against what was read in the paper. It ha
 What it took to get there. The environment's own guard refuses the agent every command that writes on the PC over SSH, so Kerim starts `lab/policy/pc.sh` from his terminal and the agent reads the results. Inside an SSH session Windows refuses to follow the link uv makes for the minor version of its Python (error 448), so the environment is built from the interpreter itself and the packages come from pip. transformers 5 has no `SiglipVisionModel(...).vision_model`, which NitroGen is written against, so the last release of 4 is pinned. The vision tower is built from its configuration alone: the checkpoint holds its weights and is loaded strictly, which saves fetching 2.6 GB.
 
 Read against the other ways of control. On the card the judge shares, NitroGen decides in about 0.13 to 0.15 s a frame, the judge in 0.25 s an answer and the readers in about 0.013 s. With the link's 0.135 s an input of NitroGen's would show in the picture about 0.27 to 0.29 s after the frame it answers, before the network between the Mac and the PC is counted. That is fast enough to act and slower than the card's bar of 100 ms a request, which eight flow steps would meet. Whether it plays GTA V at all is the open question, and it is answered next by putting its pad states beside Kerim's on his recordings.
+
+### NitroGen beside Kerim's hand, 12 November evening
+
+Served from the PC's loopback through a forwarded port (`lab/policy/serve.ps1`), NitroGen was shown ten stretches of Kerim's recordings of ten seconds each, five frames a second, 495 frames, and every action of every chunk was compared with what his hand held at that moment (`lab/policy/agree.py`, numbers in `lab/policy/agree.json`). Beside each score stands what one answer held for the whole time would get, because a short stretch in which he steers one way is matched by anything that steers that way.
+
+| | NitroGen | one fixed answer |
+| --- | --- | --- |
+| driving, four stretches: clear steering moments on Kerim's side | 25 of 68 | 58 of 68 |
+| driving: the stick within 45 degrees of his clear stick | 375 of 1308 ticks, at rest on 640 | 1060 of 1308 |
+| on foot, three stretches: the stick within 45 degrees of his | 1543 of 2664 ticks | 2462 of 2664 |
+| fights, three stretches: the stick within 45 degrees of his | 166 of 503 ticks | 368 of 503 |
+
+The plan's bar for calling it usable, eight of ten clear steering moments, is missed: it steers Kerim's way on 37 in a hundred. Shifting his hand by up to 0.3 s either way changes the driving score by two points at most, so a wrong clock is not the reason.
+
+What it does know is the situation. It holds the throttle on 75 ticks in a hundred while he drives (he on 72), on 11 on foot and on 39 in a fight; it aims on 26 in a hundred in a fight and on 5 to 7 elsewhere; on foot it pushes the stick and taps cross. What it does not do is follow the picture inside the situation. Its throttle falls on his no more often than chance has it (1971 ticks together where independence gives 1944). In the fights, where he aims on 83 ticks in a hundred and fires on 48, it aims on 30 in a hundred of his aiming ticks and fires on 45 of his firing ones, and when it fires he fires on 55 in a hundred of those ticks. On foot with nothing to shoot at it holds R2 on 11 ticks in a hundred, which in the game is a punch or a shot.
+
+Through the forwarded port a request took 196 ms in the median, 262 ms at the ninth decile and 738 ms at worst, of which the server reported 184 ms; that is above the 131 to 150 ms timed on the PC alone, and what else used the card or the line in those minutes was not recorded.
+
+What this rests on: a hundred seconds of play, one person as the measure where several inputs can be right, a model that draws its chunk from noise and so answers differently each time, frames sent as JPEG, and no game named to the model, since the checkpoint has no list of games.
+
+Decision. NitroGen as it comes does not play GTA V and does not go into the stream; it stays in the reaction bench as the `policy` row, where the question is only how early it presses anything protective. A model of this kind would have to be trained on Kerim's own recordings to be worth more, which is a different piece of work from timing it. Open-P2P is not set up before the reaction bench has said whether a policy is needed at all.

@@ -1,6 +1,6 @@
 """Puts NitroGen's pad states beside Kerim's on stretches of his recordings (card P63).
 
-    pilot/.venv/bin/python lab/policy/agree.py [--endpoint http://127.0.0.1:18763] [--drive 4] [--foot 3]
+    pilot/.venv/bin/python lab/policy/agree.py [--endpoint http://127.0.0.1:18790] [--drive 4] [--foot 3]
         [--fight 3] [--seconds 10] [--hz 5] [--steps 16] [--out lab/policy/agree.json]
 
 The server of `serve.ps1` has to run with its port forwarded. Every sampled frame is squeezed to 256 by
@@ -231,7 +231,7 @@ def share(total, part, whole):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    parser.add_argument("--endpoint", default="http://127.0.0.1:18763")
+    parser.add_argument("--endpoint", default="http://127.0.0.1:18790")
     parser.add_argument("--drive", type=int, default=4)
     parser.add_argument("--foot", type=int, default=3)
     parser.add_argument("--fight", type=int, default=3)
