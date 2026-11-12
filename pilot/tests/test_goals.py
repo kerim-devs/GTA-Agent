@@ -1029,3 +1029,319 @@ def test_the_conductor_carries_where_the_waypoint_went_to_the_head_and_follows_i
         assert "Kino" in answers[1]["sentence"] and "700 m" in answers[1]["sentence"]
     finally:
         conductor.close()
+
+
+# Part 3: how a drive that ended without arriving is answered (skills.py DriveRoute).
+
+
+def routed(t, route="purple", **kwargs):
+    value = request(t, mode="vehicle", **kwargs)
+    return replace(value, minimap={**value.minimap, "route": route})
+
+
+def failed_drive(reason, n=0):
+    """The nth drive that ended so: results that differ only in n are told apart as new ones."""
+    return {"name": "drive_route", "status": "failed", "reason": reason, "queue": [], "n": n}
+
+
+def on_the_way(head, t=0, place="Kino"):
+    """A drive goal that asked for a place, was told it went to it and has begun to follow the route."""
+    head.decide(request(t, mode="vehicle"))
+    told = head.decide(routed(t + 5, last_skill=waypoint_set(place, 700)))
+    assert [call.name for call in told.plan] == ["drive_route"]
+    return told
+
+
+def names(answer):
+    return [call.name for call in answer.plan]
+
+
+def test_a_car_that_will_not_move_is_left_and_the_same_car_is_not_taken_at_once():
+    head = MissionHead(goal_seed=51)
+    on_the_way(head)
+    tries = head.goals.active.attempts
+    left = head.decide(routed(40, last_skill=failed_drive("dead-or-held")))
+    assert names(left) == ["press", "wait", "walk_road"] and left.plan[0].args["button"] == "triangle"
+    assert left.goal["name"] == "drive" and left.goal["attempts"] == tries  # leaving costs no try
+    assert "dead-or-held" in left.reason
+    # On foot with a car in sight, three seconds later: away from the car first, not into it.
+    early = head.decide(request(43, mode="foot", cars=True, last_skill=done("walk_road", "time-limit")))
+    assert names(early) == ["walk_road"]
+    later = head.decide(request(53, mode="foot", cars=True, last_skill=done("walk_road", "time-limit 2")))
+    assert names(later) == ["enter_vehicle"]
+    # In another car the trip goes on to the same place, and the head asks for no other.
+    again = head.decide(routed(70, last_skill=done("enter_vehicle", "entered vehicle")))
+    assert names(again) == ["drive_route"]
+    assert again.goal["name"] == "drive" and again.goal["place"] == "Kino"
+
+
+def test_an_exit_that_does_not_show_is_pressed_again_but_not_for_ever():
+    head = MissionHead(goal_seed=51)
+    on_the_way(head)
+    answers = [head.decide(routed(40, last_skill=failed_drive("dead-or-held")))]
+    for t in (55, 70, 85, 100):
+        # Still seated at the end of the plan: the figure did not get out.
+        answers.append(head.decide(routed(t, last_skill=done("walk_road", f"time-limit {t}"))))
+    assert [names(a) for a in answers] == [["press", "wait", "walk_road"]] * 3 + [["drive_route"]] * 2
+
+
+def test_a_second_car_that_is_held_is_left_as_well():
+    head = MissionHead(goal_seed=51)
+    on_the_way(head)
+    head.decide(routed(40, last_skill=failed_drive("dead-or-held")))
+    head.decide(request(55, mode="foot", cars=True, last_skill=done("walk_road", "time-limit")))
+    head.decide(routed(70, last_skill=done("enter_vehicle", "entered vehicle")))
+    second = head.decide(routed(100, last_skill=failed_drive("dead-or-held")))
+    assert names(second) == ["press", "wait", "walk_road"] and second.goal["name"] == "drive"
+
+
+def test_a_drive_that_lost_its_route_far_from_the_place_sets_that_waypoint_again_once_and_then_gives_up():
+    head = MissionHead(goal_seed=51)
+    on_the_way(head)
+    first = head.decide(routed(40, route="none", last_skill=failed_drive("route-lost-far")))
+    assert names(first) == ["set_waypoint"]
+    assert first.plan[0].args == {"place": "Kino", "duration": 45}
+    assert "route-lost-far" in first.reason
+    followed = head.decide(routed(55, last_skill=waypoint_set("Kino", 650)))
+    assert names(followed) == ["drive_route"] and followed.goal["name"] == "drive"
+    second = head.decide(routed(100, route="none", last_skill=failed_drive("route-lost-far")))
+    assert second.goal["name"] != "drive"
+    gave_up = [h for h in head.goals.history if h["name"] == "drive" and h["outcome"] == "gave_up"]
+    assert (
+        len(gave_up) == 1
+        and "route-lost-far twice" in gave_up[0]["reason"]
+        and "Kino" in gave_up[0]["reason"]
+    )
+    assert head.goals.abandoned == "drive" and "Kino" not in head.goals.visited
+
+
+def test_a_drive_that_got_no_nearer_is_driven_again_on_its_waypoint_once_and_then_given_up():
+    head = MissionHead(goal_seed=51)
+    on_the_way(head)
+    first = head.decide(routed(40, last_skill=failed_drive("no-progress")))
+    # The waypoint stands and set_waypoint refuses to toggle it off: the drive begins anew.
+    assert names(first)[-1] == "drive_route" and "set_waypoint" not in names(first)
+    assert first.goal["name"] == "drive" and first.goal["place"] == "Kino"
+    second = head.decide(routed(90, last_skill=failed_drive("no-progress", 2)))
+    assert second.goal["name"] != "drive"
+    assert any("twice" in h["reason"] for h in head.goals.history if h["outcome"] == "gave_up")
+
+
+def test_each_place_has_its_own_count_of_drives_that_got_nowhere():
+    head = MissionHead(goal_seed=51)
+    on_the_way(head)
+    head.decide(routed(40, last_skill=failed_drive("no-progress")))
+    # Another place is another trip: it has its own first time.
+    other = head.decide(routed(60, last_skill=waypoint_set("Golf", 300)))
+    assert other.goal["place"] == "Golf"
+    again = head.decide(routed(90, last_skill=failed_drive("no-progress", 2)))
+    assert again.goal["name"] == "drive"
+
+
+def test_arrival_reaches_the_trip_as_route_gone_did():
+    head = MissionHead(goal_seed=51)
+    on_the_way(head)
+    head.decide(routed(60, route="none", last_skill=done("drive_route", "arrived")))
+    assert [h["outcome"] for h in head.goals.history if h["name"] == "drive"] == ["started", "reached"]
+    assert head.goals.visited == ["Kino"]
+
+
+def test_a_drive_out_of_time_on_a_route_that_stands_is_called_again_and_the_goal_decides():
+    head = MissionHead(goal_seed=51)
+    on_the_way(head)
+    started = head.goals.active.started
+    again = head.decide(routed(70, last_skill=done("drive_route", "time-limit")))
+    assert names(again) == ["drive_route"] and again.goal["name"] == "drive"
+    over = head.decide(routed(started + LIMITS["drive"][0], last_skill=done("drive_route", "time-limit 2")))
+    assert over.goal["name"] != "drive"
+    assert any(h["reason"] == "limit" for h in head.goals.history if h["name"] == "drive")
+
+
+DRIVING_ON = {"name": "drive_route", "status": "running", "reason": None, "queue": []}
+
+
+def vanishing(**kwargs):
+    event = {"kind": "route_vanished", "previous": "yellow", "current": "none"}
+    return replace(routed(5, route="none", last_skill=DRIVING_ON, **kwargs), events=[event])
+
+
+def test_with_no_goal_a_running_drive_is_let_run_out_when_its_route_goes():
+    head = MissionHead(goal_seed=1)
+    assert head.goals.active is None
+    answer = head.decide(vanishing())
+    assert answer.action == "go_on" and answer.plan == () and answer.goal is None
+    assert head.last_rule == "drive_ends" and head.goals.active is None
+    # What it ends as is then answered by the rules: a route lost far away is a new waypoint.
+    after = head.decide(routed(7, route="none", last_skill=failed_drive("route-lost-far")))
+    assert names(after)[0] == "set_waypoint"
+
+
+def test_a_mission_drive_is_let_run_out_too_and_wanted_or_a_finished_drive_is_not():
+    mission = replace(vanishing(), objective="Fahre zum Treffpunkt.")
+    head = MissionHead(goal_seed=1)
+    assert head.decide(mission).action == "go_on"
+    stars = replace(vanishing(), hud={"screen": "game", "health": 1, "wanted": 2})
+    assert MissionHead(goal_seed=1).decide(stars).action == "replace"
+    finished = replace(vanishing(), last_skill=done("drive_route", "arrived"))
+    head = MissionHead(goal_seed=1)
+    head.decide(finished)
+    assert head.last_rule != "drive_ends"
+
+
+def test_a_held_car_is_left_by_the_rules_outside_a_goal_too_and_other_failures_keep_their_route():
+    asked = replace(routed(5, route="none", last_skill=failed_drive("dead-or-held")), objective="Fahre los.")
+    head = MissionHead(goal_seed=1)
+    answer = head.decide(asked)
+    assert head.last_rule == "leave_held_vehicle" and names(answer) == ["press", "wait", "walk_road"]
+    other = MissionHead(goal_seed=1)
+    answer = other.decide(replace(asked, last_skill=failed_drive("failed-recovery")))
+    assert other.last_rule == "failed_vehicle_skill" and names(answer)[0] == "set_waypoint"
+
+
+class Scripted(HeldSkill):
+    """A skill for the goal that ends after a moment: drive_route as the script says, the rest done."""
+
+    def __init__(self, call, script, delay):
+        super().__init__(call.name)
+        self.call, self.script, self.delay, self.since = call, script, delay, None
+
+    def step(self, observation):
+        if self.since is None:
+            self.since = observation.time
+        # The plan that leaves a car takes as long as it says; the rest ends after a moment.
+        timed = self.name in ("press", "wait", "walk_road")
+        if observation.time - self.since < (self.call.args["duration"] if timed else self.delay):
+            return SkillResult(Pad(left=(0, 0)))
+        if self.name == "drive_route":
+            if not self.script:
+                return SkillResult(Pad(left=(0, 0)))  # the script is told: it drives on
+            status, reason = self.script.pop(0)
+            return SkillResult(status=status, reason=reason)
+        if self.name == "set_waypoint":
+            return SkillResult(
+                status="done", reason="waypoint set: Kino (700m); gameplay observed; places: Kino, Golf"
+            )
+        return SkillResult(status="done", reason="time-limit")
+
+
+def conducted(tmp_path, monkeypatch, script, *, delay=0.3):
+    monkeypatch.setattr("pilot.skills.make_skill", lambda call, **kwargs: Scripted(call, script, delay))
+    runner = SkillRunner()
+    conductor = Conductor(
+        tmp_path / "session",
+        notebook=tmp_path / "notes",
+        runner=runner,
+        head=MissionHead(goal_seed=7),
+        detector=NoEvents(),
+        submit=immediate,
+    )
+    return conductor, runner
+
+
+def run(conductor, runner, seconds, *, seat, route, events=lambda i: (), **kwargs):
+    """Tick for `seconds`. `seat` and `route` say what the picture shows, from the skill that runs, the
+    names of those that have started and the time; the list of the skills started is the result."""
+    from pilot.contract import Detection
+
+    started = []
+    car = (Detection("car", (500, 300, 700, 420), 0.9),)
+    rgb = np.zeros((720, 1280, 3), dtype=np.uint8)
+    last = None
+    for i in range(int(seconds * 10)):
+        active = None if runner.active is None else runner.active.name
+        names = [name for name, _ in started]
+        shape = "tilted" if seat(active, names, i / 10) == "vehicle" else "flat"
+        reading = Reading(shape, route(active, names, i / 10), 0, 0, 0, False, 1)
+        obs = Observation(reading, True, i * 0.1, hud=Hud(screen="game", wanted=0, health=1), objects=car)
+        conductor._tick(obs, rgb, events=events(i), **kwargs)
+        if runner.active is not None and runner.active.call is not last:
+            last = runner.active.call
+            started.append((last.name, dict(last.args)))
+    return started
+
+
+def test_the_conductor_leaves_a_held_car_and_goes_on_to_the_same_place_in_another(tmp_path, monkeypatch):
+    conductor, runner = conducted(tmp_path, monkeypatch, [("failed", "dead-or-held")])
+
+    def seat(active, names, now):
+        # Seated until the exit has been pressed, on foot while the plan walks, seated in the next car.
+        return "foot" if "press" in names and "enter_vehicle" not in names else "vehicle"
+
+    try:
+        started = run(
+            conductor,
+            runner,
+            40,
+            seat=seat,
+            route=lambda active, names, now: "purple" if "drive_route" in names else "none",
+        )
+        order = [name for name, _ in started]
+        assert order[:7] == [
+            "set_waypoint",
+            "drive_route",
+            "press",
+            "wait",
+            "walk_road",
+            "enter_vehicle",
+            "drive_route",
+        ]
+        assert started[2][1]["button"] == "triangle"
+        assert conductor.goal["name"] == "drive" and conductor.goal["place"] == "Kino"
+        # A held car, a walk and a second entry did not use up the three tries of the trip.
+        assert conductor.goal["attempts"] <= 2
+    finally:
+        conductor.close()
+
+
+def test_the_conductor_sets_the_place_again_once_and_then_moves_on_to_the_next_goal(tmp_path, monkeypatch):
+    conductor, runner = conducted(
+        tmp_path, monkeypatch, [("failed", "route-lost-far"), ("failed", "route-lost-far")]
+    )
+    try:
+        # The route is there while a drive runs and gone when it ended and while the map is open.
+        started = run(
+            conductor,
+            runner,
+            40,
+            seat=lambda active, names, now: "vehicle",
+            route=lambda active, names, now: (
+                "purple" if active == "drive_route" and now - runner.active.since < 0.2 else "none"
+            ),
+        )
+        order = [(name, args.get("place")) for name, args in started]
+        assert order[:4] == [
+            ("set_waypoint", None),
+            ("drive_route", None),
+            ("set_waypoint", "Kino"),
+            ("drive_route", None),
+        ]
+        # The second drive lost its route as well: the trip is given up and the round goes on.
+        history = [(h["name"], h["outcome"]) for h in conductor.head.goals.history]
+        assert history[:3] == [("drive", "started"), ("drive", "gave_up"), ("fight", "started")]
+        assert "twice" in conductor.head.goals.history[1]["reason"]
+    finally:
+        conductor.close()
+
+
+def test_the_conductor_lets_a_drive_end_by_itself_when_a_mission_route_goes(tmp_path, monkeypatch):
+    from pilot.scene import SceneText
+
+    # The drive would end as arrived after 1.5 s; its route goes after half a second.
+    conductor, runner = conducted(tmp_path, monkeypatch, [("done", "arrived")], delay=1.5)
+    try:
+        vanished = [{"kind": "route_vanished", "previous": "yellow", "current": "none"}]
+        started = run(
+            conductor,
+            runner,
+            1.4,
+            seat=lambda active, names, now: "vehicle",
+            route=lambda active, names, now: "purple" if now < 0.5 else "none",
+            events=lambda i: vanished if i == 5 else (),
+            text=SceneText(objective="Fahre zum Treffpunkt."),
+        )
+        assert [name for name, _ in started] == ["drive_route"]
+        rows = [json.loads(line) for line in (tmp_path / "session/head.jsonl").read_text().splitlines()]
+        replies = [r for r in rows if r.get("type") == "response"]
+        assert any(r.get("action") == "go_on" and r.get("disposition") == "kept" for r in replies)
+    finally:
+        conductor.close()

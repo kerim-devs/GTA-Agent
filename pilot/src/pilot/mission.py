@@ -6,7 +6,7 @@ from collections import Counter
 from dataclasses import replace
 
 from .contract import ARROW_XY
-from .goals import Goals, own_stop
+from .goals import HELD, Goals, leave_vehicle, own_stop
 from .head import Head, HeadRequest, HeadResponse, parse_response
 from .notes import intent
 
@@ -104,6 +104,25 @@ class MissionHead:
         self.blip_candidates: list[dict] = []
         self.stable_blips: list[dict] = []
 
+    def _route_going(self, request: HeadRequest, mode: str, interrupted: str | None) -> bool:
+        """A drive follows a route that has just gone and no goal holds the plan: let the drive end.
+
+        drive_route stops on its own after two seconds without the route, as arrived at the place or as
+        a route lost, and the request after that says which. Planning a new waypoint at the first sign
+        of it threw out the drive of the recorded arrivals about a second before it could."""
+        last = request.last_skill or {}
+        return (
+            mode == "vehicle"
+            and self.goals.active is None
+            and last.get("name") == "drive_route"
+            and last.get("status") == "running"
+            and request.minimap.get("minimap") == "tilted"
+            and request.minimap.get("route") not in {"yellow", "purple"}
+            and (request.hud or {}).get("screen", "game") == "game"
+            and not _wanted(request)
+            and interrupted not in {"low_health", "death_or_arrest"}
+        )
+
     def discard(self) -> None:
         """The conductor has dropped the answer to the last request: give back what it consumed."""
         self.goals.undo()
@@ -131,6 +150,17 @@ class MissionHead:
         interrupted = self.goals.guard(request)
         hud = request.hud or {}
         mode = movement(request)
+        if self._route_going(request, mode, interrupted):
+            self.last_rule = "drive_ends"
+            self.counts[self.last_rule] += 1
+            return parse_response(
+                {
+                    "plan": [],
+                    "sentence": "Die Route ist weg, die Fahrt endet gleich von selbst.",
+                    "action": "go_on",
+                    "reason": "kept: the drive ends by itself two seconds after the route went",
+                }
+            )
         free = not request.objective.strip() and self.objective_class == "unknown"
         available = hud.get("screen", "game") == "game" and mode in {"vehicle", "on_foot"}
         colors = {b.get("color") for b in request.minimap.get("blips", []) if not _rim_blip(b)}
@@ -410,6 +440,13 @@ class MissionHead:
             if mode == "unknown":
                 return None
             if mode == "vehicle":
+                if self._failed(request) == "drive_route" and self._failure_reason(request) == HELD:
+                    # The car will not move: out of it and on to another, not a new route in the same car.
+                    return (
+                        "leave_held_vehicle",
+                        leave_vehicle(),
+                        "Das Auto bewegt sich nicht, ich steige aus und nehme ein anderes.",
+                    )
                 self._destination(request)
                 return (
                     "failed_vehicle_skill",
