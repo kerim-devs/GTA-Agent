@@ -838,6 +838,49 @@ def find_standstills(ctx, least=10.0):
 
 
 def find_incidents(*, samples, texts, readings, sections, pads, missions, seconds):
+    """Analyze uninterrupted footage separately, including wanted and controller history."""
+    samples = sorted(samples, key=lambda row: row["t"])
+    boundaries = [0, *(i for i in range(1, len(samples)) if samples[i]["t"] - samples[i - 1]["t"] > 1)]
+    if len(boundaries) == 1:
+        return _find_incidents(
+            samples=samples,
+            texts=texts,
+            readings=readings,
+            sections=sections,
+            pads=pads,
+            missions=missions,
+            seconds=seconds,
+        )
+    boundaries.append(len(samples))
+    found = []
+    for first, stop in itertools.pairwise(boundaries):
+        chunk = samples[first:stop]
+        start, end = chunk[0]["t"], chunk[-1]["t"]
+        local_sections = dict(
+            sections,
+            sections=[
+                dict(row, start=max(start, row["start"]), end=min(end, row["end"]))
+                for row in sections["sections"]
+                if row["start"] <= end and row["end"] >= start
+            ],
+        )
+        run = _find_incidents(
+            samples=chunk,
+            texts=[row for row in texts if start <= row["first"] <= end],
+            readings=[row for row in readings if start <= row["t"] <= end],
+            sections=local_sections,
+            pads=pads if first == 0 else [row for row in pads if start <= row["t"] <= end],
+            missions=missions,
+            seconds=end,
+        )
+        for row in run:
+            if row["cause"] == "recording_end" and stop < len(samples):
+                row["evidence"]["clock_gap"] = True
+        found.extend(row for row in run if start <= row["t"] <= end)
+    return sorted(found, key=lambda row: (row["t"], row["class"]))
+
+
+def _find_incidents(*, samples, texts, readings, sections, pads, missions, seconds):
     """Every incident of one recording in time order, each with its mission and step."""
     ctx = Context(samples, sections, pads, seconds)
     readings = sorted(readings, key=lambda r: r["t"])

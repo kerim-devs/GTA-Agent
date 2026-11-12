@@ -258,3 +258,14 @@ def test_a_recording_without_controller_lines_is_read_from_the_picture_alone():
     rows += samples(50, 55)
     found = run(rows, [(0, 30, "drive"), (30, 55, "foot")], [pad(0)])
     assert classes(found) == [("collision", "carried_on"), ("wanted", "lost")]
+
+
+def test_trimmed_clock_hole_splits_wanted_and_does_not_carry_stuck_input():
+    rows = samples(0, 3, wanted=1) + samples(63, 76, wanted=1)
+    found = run(rows, [(0, 3, "foot"), (63, 76, "foot")], [pad(0, left=(0, -1))], seconds=76)
+    wanted = [row for row in found if row["class"] == "wanted"]
+    assert len(wanted) == 2
+    assert wanted[0]["end"] <= 3
+    assert wanted[0]["evidence"]["clock_gap"]
+    assert wanted[1]["t"] == 63
+    assert not any(row["class"] == "standstill" for row in found)

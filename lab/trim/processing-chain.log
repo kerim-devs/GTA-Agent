@@ -1,0 +1,12 @@
+10:15:06 the judge does not answer, sections from the readers alone
+10:15:06 20261111-183820: sections
+20261111-183820: 25 sections; 26.629s; 1.775s/recording-minute
+10:15:33 texts, missions and incidents
+20261111-183820: classifying
+sysctlbyname for kern.hv_vmm_present failed with status -1Text extraction failed: Vision text recognition failed: Error Domain=NSOSStatusErrorDomain Code=-6662 "Failed to create CVPixelBuffer Width = 1280, Height = 720, Format = '420f'" UserInfo={NSLocalizedDescription=Failed to create CVPixelBuffer Width = 1280, Height = 720, Format = '420f'}
+1 new recordings, 1 failed
+10:15:34 actions
+1 new recording(s) under /Users/kerim/Documents/ChatGPT/gta-worktrees/p40-human-drive/lab/trim/work/trimmed/kerim
+20261111-183820: 218 stretches, lead 0.20 s default (estimate None, r None), 33.8 s, 2.3 s per minute of recording
+index: 1 recordings, 1143 samples
+10:16:08 done
