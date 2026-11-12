@@ -522,6 +522,10 @@ CATALOGUE: dict[str, Capability] = {
 CAUSE_RULES: dict[str, str | None] = {
     # a reader had the picture wrong or nothing
     "map-unreadable": "see",
+    "map unreadable": "see",
+    "route-lost-far": "see",  # the route went from the map with the destination far away
+    "route-lost-unknown": "see",
+    "waiting to see a ": "see",
     "minimap-unreadable": "see",
     "minimap unreadable": "see",
     "nothing found": "see",
@@ -587,6 +591,10 @@ CAUSE_RULES: dict[str, str | None] = {
     "map-did-not-open": "act",
     "menu-not-map": "act",
     "time-limit:": "act",  # the waypoint skills name the phase they were pressing in
+    "still-in-lane": "act",
+    "leaving lane": "act",
+    "no-progress": "act",  # the car moved and the destination came no nearer
+    "dead-or-held": "act",
     # the game came between
     "death_or_arrest": "world",
     "objective": "world",
@@ -624,6 +632,7 @@ CAUSE_RULES: dict[str, str | None] = {
     "aligned": None,
     "no-red-blips": None,
     "far; presses": None,
+    "road-side (map band; kerb unverified)": None,
     "delivered": None,
     "done": None,
 }
