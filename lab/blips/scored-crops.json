@@ -1,0 +1,3528 @@
+[
+  {
+    "id": 236,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -0.08721656337829131,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -6.2,
+          "y": 5.8,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": -8.58,
+          "y": 17.52,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": 1.61,
+          "y": 17.11,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "red",
+        114,
+        100,
+        0.6684309986827341
+      ],
+      [
+        "red",
+        124,
+        100,
+        0.6198386886924687
+      ],
+      [
+        "blue",
+        117,
+        111,
+        0.28284271247462306
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 72,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -91.91325342899148,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -7.31,
+          "y": -3.5,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": -3.0,
+          "y": 15.24,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "red",
+        120,
+        102,
+        0.23999999999999488
+      ],
+      [
+        "blue",
+        115,
+        122,
+        1.6510905486980407
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 368,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -1.7696161496138245,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "red",
+          "x": 1.5,
+          "y": 17.69,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "red",
+        124,
+        101,
+        1.7624131184259815
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 518,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 0.003991076631706392,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 82.22,
+          "y": 22.44,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "blue",
+        206,
+        95,
+        0.8955445270895244
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2470,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -28.259778262647217,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -6.5,
+          "y": 11.5,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "blue",
+        116,
+        106,
+        0.7071067811865476
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 176,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -5.2455020786421755,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 0.04,
+          "y": 6.56,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": 1.35,
+          "y": 24.62,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": 5.54,
+          "y": 17.36,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "red",
+        124,
+        92,
+        0.5166236541235724
+      ],
+      [
+        "red",
+        129,
+        100,
+        0.5841232746604152
+      ],
+      [
+        "blue",
+        124,
+        111,
+        1.1113955191559801
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2087,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 0.669439777747499,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -21.86,
+          "y": -3.36,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": -54.36,
+          "y": 87.49,
+          "border": true
+        },
+        {
+          "color": "red",
+          "x": -1.77,
+          "y": 30.15,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": -5.36,
+          "y": 17.73,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "red",
+        69,
+        30,
+        0.608029604542406
+      ],
+      [
+        "red",
+        121,
+        87,
+        0.27459060435492605
+      ],
+      [
+        "red",
+        118,
+        100,
+        0.8139410298049886
+      ]
+    ],
+    "missed": [
+      [
+        "red",
+        131,
+        127
+      ]
+    ],
+    "invented": [
+      [
+        "blue",
+        101.14,
+        120.36
+      ]
+    ]
+  },
+  {
+    "id": 2092,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 0.41601591334918453,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -1.29,
+          "y": 25.64,
+          "border": false
+        },
+        {
+          "color": "blue",
+          "x": -4.41,
+          "y": 15.98,
+          "border": false
+        },
+        {
+          "color": "blue",
+          "x": -4.41,
+          "y": 10.98,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": -39.33,
+          "y": 85.28,
+          "border": true
+        },
+        {
+          "color": "red",
+          "x": -20.93,
+          "y": -5.7,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": 7.95,
+          "y": -12.92,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": 10.4,
+          "y": -24.42,
+          "border": true
+        }
+      ]
+    },
+    "found": [
+      [
+        "red",
+        84,
+        30,
+        1.751370891616049
+      ],
+      [
+        "red",
+        131,
+        130,
+        0.09433981132058267
+      ],
+      [
+        "blue",
+        122,
+        91,
+        0.4622769732530523
+      ],
+      [
+        "blue",
+        118,
+        102,
+        1.143896848496407
+      ],
+      [
+        "blue",
+        119,
+        107,
+        1.0623088063270514
+      ],
+      [
+        "red",
+        102,
+        124,
+        1.3018832512940597
+      ]
+    ],
+    "missed": [],
+    "invented": [
+      [
+        "red",
+        133.4,
+        141.42000000000002
+      ]
+    ]
+  },
+  {
+    "id": 2544,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -140.68226532721087,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 8.21,
+          "y": 8.79,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "blue",
+        131,
+        110,
+        1.802276338412058
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2545,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -142.4856498872399,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 7.5,
+          "y": 9.5,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "blue",
+        131,
+        108,
+        0.7071067811865476
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2672,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 1.486150865848515,
+      "corrupt": false,
+      "confidence": 0.7,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": -2.28,
+          "y": 12.14,
+          "border": false
+        },
+        {
+          "color": "yellow",
+          "x": -10.62,
+          "y": 8.5,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "yellow",
+        112,
+        109,
+        0.6280127387243005
+      ],
+      [
+        "yellow",
+        121,
+        105,
+        0.31304951684997184
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 397,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -0.1698924655445353,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -2.35,
+          "y": -6.15,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": -1.39,
+          "y": 20.59,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": 0.19,
+          "y": 12.07,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": 0.19,
+          "y": 4.57,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "red",
+        122,
+        97,
+        0.70724818840348
+      ],
+      [
+        "red",
+        123,
+        105,
+        0.20248456731316136
+      ],
+      [
+        "red",
+        123,
+        111,
+        1.4425671561490714
+      ],
+      [
+        "blue",
+        121,
+        123,
+        0.3807886552931924
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 214,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 62.84752588161683,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -1.34,
+          "y": 7.38,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": -9.22,
+          "y": 17.5,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": 5.32,
+          "y": 18.33,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "red",
+        114,
+        99,
+        0.5462600113499061
+      ],
+      [
+        "red",
+        128,
+        99,
+        0.4596737973824422
+      ],
+      [
+        "blue",
+        120,
+        110,
+        1.7029386365926358
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2405,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -10.403719546936372,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -14.9,
+          "y": -4.3,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "blue",
+        108,
+        122,
+        0.7071067811865496
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 304,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 3.2330772337144253,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 0.48,
+          "y": 6.76,
+          "border": false
+        },
+        {
+          "color": "red",
+          "x": 0.0,
+          "y": 12.5,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "red",
+        124,
+        106,
+        1.8027756377319946
+      ],
+      [
+        "blue",
+        123,
+        111,
+        0.8988882021697757
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2716,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -3.6678895688644957,
+      "corrupt": false,
+      "confidence": 0.7,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": 3.54,
+          "y": 6.84,
+          "border": false
+        },
+        {
+          "color": "yellow",
+          "x": -5.62,
+          "y": 4.33,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "yellow",
+        118,
+        114,
+        1.4674126890551278
+      ],
+      [
+        "yellow",
+        127,
+        111,
+        0.9577055915050303
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2485,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -3.900216307761866,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [
+      [
+        "blue",
+        119,
+        108
+      ]
+    ],
+    "invented": []
+  },
+  {
+    "id": 287,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -57.570694928835735,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -4.39,
+          "y": 4.54,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "blue",
+        119,
+        113,
+        0.666108099335241
+      ]
+    ],
+    "missed": [
+      [
+        "red",
+        116,
+        108
+      ]
+    ],
+    "invented": []
+  },
+  {
+    "id": 1905,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -1.9841955822674322,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "red",
+          "x": -87.22,
+          "y": -26.39,
+          "border": true
+        },
+        {
+          "color": "red",
+          "x": 40.85,
+          "y": -26.85,
+          "border": true
+        }
+      ]
+    },
+    "found": [
+      [
+        "red",
+        36,
+        144,
+        0.6484597134749515
+      ],
+      [
+        "red",
+        164,
+        144,
+        0.2121320343559723
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 356,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 2.035218086521411,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "red",
+          "x": 1.98,
+          "y": 27.58,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "red",
+        125,
+        90,
+        0.5803447251418745
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1693,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 0.6344011069892872,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2210,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -1.0931951563904647,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2301,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 15.627621661502872,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1218,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -0.9752375663867952,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2238,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 15.324045601994015,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1726,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -1.3311633134016745,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2339,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -38.19679818438982,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2295,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 24.152004077827087,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2622,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 0.5903762715191476,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1731,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 17.363155391432514,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2250,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 8.737732055067141,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1691,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 0.9766656943220084,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2629,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -1.818200465020567,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2236,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 59.02473974506364,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1732,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 17.819689395188078,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2176,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -1.638556868289129,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2211,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -1.2587814862462494,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2621,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 0.4111215395971328,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1834,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": null,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2256,
+    "map": "flat",
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 0.2443304601819989,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 843,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -7.125016348901798,
+      "far_bearing": -25.09381842577824,
+      "arrow": -1.8566877776348178,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+        [
+          -1.0,
+          14.0
+        ],
+        [
+          -1.0,
+          19.0
+        ],
+        [
+          -3.0,
+          26.0
+        ],
+        [
+          -4.0,
+          32.0
+        ],
+        [
+          -6.0,
+          38.0
+        ],
+        [
+          -11.0,
+          44.0
+        ],
+        [
+          -17.0,
+          49.0
+        ],
+        [
+          -24.0,
+          52.0
+        ],
+        [
+          -30.0,
+          58.0
+        ],
+        [
+          -33.0,
+          64.0
+        ],
+        [
+          -35.0,
+          70.0
+        ],
+        [
+          -33.0,
+          76.0
+        ],
+        [
+          -30.0,
+          81.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": -77.29,
+          "y": 87.38,
+          "border": true
+        }
+      ]
+    },
+    "found": [
+      [
+        "yellow",
+        46,
+        30,
+        0.47801673610868495
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 861,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 13.85342429277464,
+      "far_bearing": 29.35775373824891,
+      "arrow": 5.001524786854048,
+      "corrupt": false,
+      "confidence": 0.893,
+      "path": [
+        [
+          1.0,
+          13.0
+        ],
+        [
+          3.0,
+          19.0
+        ],
+        [
+          5.0,
+          24.0
+        ],
+        [
+          7.0,
+          31.0
+        ],
+        [
+          12.0,
+          36.0
+        ],
+        [
+          17.0,
+          42.0
+        ],
+        [
+          23.0,
+          48.0
+        ],
+        [
+          31.0,
+          54.0
+        ],
+        [
+          35.0,
+          57.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": 20.9,
+          "y": 87.27,
+          "border": true
+        }
+      ]
+    },
+    "found": [
+      [
+        "yellow",
+        144,
+        30,
+        0.28792360097775366
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 552,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -11.979913478276558,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -87.34,
+          "y": 47.43,
+          "border": true
+        }
+      ]
+    },
+    "found": [
+      [
+        "blue",
+        36,
+        70,
+        0.5481788029466373
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2388,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -0.3016425736110193,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -19.59,
+          "y": -0.22,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "blue",
+        103,
+        116,
+        1.2870508925446555
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 869,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 8.164975319695243,
+      "far_bearing": 18.864926806323393,
+      "arrow": 0.13953597693463848,
+      "corrupt": false,
+      "confidence": 0.967,
+      "path": [
+        [
+          -1.0,
+          13.0
+        ],
+        [
+          0.0,
+          19.0
+        ],
+        [
+          2.0,
+          25.0
+        ],
+        [
+          4.0,
+          31.0
+        ],
+        [
+          7.0,
+          36.0
+        ],
+        [
+          12.0,
+          43.0
+        ],
+        [
+          17.0,
+          48.0
+        ],
+        [
+          18.0,
+          53.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": -32.36,
+          "y": 87.32,
+          "border": true
+        }
+      ]
+    },
+    "found": [
+      [
+        "yellow",
+        91,
+        30,
+        0.4816637831516869
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 606,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -0.2819652263266619,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 22.16,
+          "y": 63.0,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "blue",
+        145,
+        54,
+        0.1599999999999966
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 904,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 22.72219534331811,
+      "far_bearing": 24.823938712060272,
+      "arrow": 3.511735608243214,
+      "corrupt": false,
+      "confidence": 0.92,
+      "path": [
+        [
+          4.0,
+          12.0
+        ],
+        [
+          6.0,
+          18.0
+        ],
+        [
+          8.0,
+          24.0
+        ],
+        [
+          11.0,
+          29.0
+        ],
+        [
+          14.0,
+          36.0
+        ],
+        [
+          18.0,
+          41.0
+        ],
+        [
+          21.0,
+          47.0
+        ],
+        [
+          24.0,
+          54.0
+        ],
+        [
+          31.0,
+          58.0
+        ],
+        [
+          37.0,
+          57.0
+        ],
+        [
+          43.0,
+          57.0
+        ],
+        [
+          47.0,
+          57.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": 89.44,
+          "y": 80.56,
+          "border": true
+        }
+      ]
+    },
+    "found": [
+      [
+        "yellow",
+        212,
+        37,
+        0.7121797525905946
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2382,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -0.3029797650835917,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -19.59,
+          "y": -0.22,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "blue",
+        103,
+        118,
+        0.8811923740024077
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2395,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -0.288544518967484,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -19.59,
+          "y": -0.22,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "blue",
+        103,
+        118,
+        0.8811923740024077
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 704,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 29.77972489033982,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -1.37,
+          "y": 35.93,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "blue",
+        122,
+        80,
+        1.1321660655575174
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 888,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -67.86638059418608,
+      "far_bearing": -80.92850242282283,
+      "arrow": 0.7027578712050229,
+      "corrupt": false,
+      "confidence": 0.934,
+      "path": [
+        [
+          -3.0,
+          13.0
+        ],
+        [
+          -10.0,
+          12.0
+        ],
+        [
+          -17.0,
+          12.0
+        ],
+        [
+          -23.0,
+          12.0
+        ],
+        [
+          -29.0,
+          11.0
+        ],
+        [
+          -35.0,
+          9.0
+        ],
+        [
+          -40.0,
+          9.0
+        ],
+        [
+          -47.0,
+          10.0
+        ],
+        [
+          -53.0,
+          9.0
+        ],
+        [
+          -59.0,
+          10.0
+        ],
+        [
+          -65.0,
+          10.0
+        ],
+        [
+          -71.0,
+          12.0
+        ],
+        [
+          -76.0,
+          13.0
+        ],
+        [
+          -83.0,
+          14.0
+        ],
+        [
+          -87.0,
+          16.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": -86.81,
+          "y": 87.5,
+          "border": true
+        }
+      ]
+    },
+    "found": [
+      [
+        "yellow",
+        36,
+        30,
+        0.5348831648126524
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 856,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -20.031013169344693,
+      "far_bearing": 0.47350805873492635,
+      "arrow": -3.3334093690289706,
+      "corrupt": false,
+      "confidence": 0.72,
+      "path": [
+        [
+          -6.0,
+          15.0
+        ],
+        [
+          -7.0,
+          19.0
+        ],
+        [
+          -9.0,
+          26.0
+        ],
+        [
+          -11.0,
+          32.0
+        ],
+        [
+          -11.0,
+          38.0
+        ],
+        [
+          -9.0,
+          44.0
+        ],
+        [
+          -7.0,
+          50.0
+        ],
+        [
+          -4.0,
+          56.0
+        ],
+        [
+          1.0,
+          61.0
+        ],
+        [
+          8.0,
+          68.0
+        ],
+        [
+          12.0,
+          71.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": -23.96,
+          "y": 87.24,
+          "border": true
+        }
+      ]
+    },
+    "found": [
+      [
+        "yellow",
+        100,
+        30,
+        0.9895453501482451
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 937,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 60.377939471514374,
+      "far_bearing": 65.00466790303713,
+      "arrow": 5.384881793988484,
+      "corrupt": false,
+      "confidence": 0.855,
+      "path": [
+        [
+          10.0,
+          10.0
+        ],
+        [
+          15.0,
+          10.0
+        ],
+        [
+          21.0,
+          12.0
+        ],
+        [
+          27.0,
+          15.0
+        ],
+        [
+          33.0,
+          18.0
+        ],
+        [
+          39.0,
+          21.0
+        ],
+        [
+          45.0,
+          23.0
+        ],
+        [
+          52.0,
+          24.0
+        ],
+        [
+          58.0,
+          27.0
+        ],
+        [
+          57.0,
+          34.0
+        ],
+        [
+          51.0,
+          41.0
+        ],
+        [
+          45.0,
+          47.0
+        ],
+        [
+          41.0,
+          52.0
+        ],
+        [
+          35.0,
+          58.0
+        ],
+        [
+          29.0,
+          64.0
+        ],
+        [
+          22.0,
+          69.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": 28.04,
+          "y": 87.32,
+          "border": true
+        }
+      ]
+    },
+    "found": [
+      [
+        "yellow",
+        151,
+        31,
+        1.3206059215375272
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 871,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 11.323636266948684,
+      "far_bearing": 19.129409780722828,
+      "arrow": -0.38335968245783647,
+      "corrupt": false,
+      "confidence": 0.947,
+      "path": [
+        [
+          -1.0,
+          13.0
+        ],
+        [
+          1.0,
+          18.0
+        ],
+        [
+          3.0,
+          25.0
+        ],
+        [
+          6.0,
+          30.0
+        ],
+        [
+          10.0,
+          37.0
+        ],
+        [
+          13.0,
+          43.0
+        ],
+        [
+          17.0,
+          48.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": -36.22,
+          "y": 87.29,
+          "border": true
+        }
+      ]
+    },
+    "found": [
+      [
+        "yellow",
+        87,
+        30,
+        0.36400549446403024
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 938,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 55.64146616987435,
+      "far_bearing": 54.61370585179864,
+      "arrow": 8.702769214741352,
+      "corrupt": false,
+      "confidence": 0.925,
+      "path": [
+        [
+          11.0,
+          9.0
+        ],
+        [
+          17.0,
+          11.0
+        ],
+        [
+          23.0,
+          15.0
+        ],
+        [
+          29.0,
+          19.0
+        ],
+        [
+          35.0,
+          22.0
+        ],
+        [
+          41.0,
+          26.0
+        ],
+        [
+          47.0,
+          31.0
+        ],
+        [
+          43.0,
+          39.0
+        ],
+        [
+          37.0,
+          45.0
+        ],
+        [
+          31.0,
+          51.0
+        ],
+        [
+          25.0,
+          56.0
+        ],
+        [
+          18.0,
+          60.0
+        ],
+        [
+          11.0,
+          65.0
+        ],
+        [
+          5.0,
+          69.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": 3.56,
+          "y": 87.42,
+          "border": true
+        }
+      ]
+    },
+    "found": [
+      [
+        "yellow",
+        128,
+        30,
+        1.4999999999999984
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 759,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -107.9463603743294,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -17.45,
+          "y": -15.02,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "blue",
+        106,
+        132,
+        0.4504442251822116
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 969,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -4.763641690726178,
+      "far_bearing": -16.151224668269144,
+      "arrow": 1.3597014955206248,
+      "corrupt": false,
+      "confidence": 0.995,
+      "path": [
+        [
+          -1.0,
+          13.0
+        ],
+        [
+          -1.0,
+          19.0
+        ],
+        [
+          -3.0,
+          25.0
+        ],
+        [
+          -3.0,
+          31.0
+        ],
+        [
+          -4.0,
+          37.0
+        ],
+        [
+          -6.0,
+          43.0
+        ],
+        [
+          -9.0,
+          48.0
+        ],
+        [
+          -13.0,
+          54.0
+        ],
+        [
+          -18.0,
+          60.0
+        ],
+        [
+          -21.0,
+          66.0
+        ],
+        [
+          -27.0,
+          73.0
+        ],
+        [
+          -27.0,
+          77.0
+        ],
+        [
+          -32.0,
+          83.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": 30.63,
+          "y": 87.31,
+          "border": true
+        }
+      ]
+    },
+    "found": [
+      [
+        "yellow",
+        154,
+        31,
+        1.361249426078854
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 591,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 1.0232185578981046,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 73.06,
+          "y": 27.75,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "blue",
+        196,
+        90,
+        0.7523961722390673
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 750,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -14.408646328675786,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -18.17,
+          "y": 9.86,
+          "border": false
+        }
+      ]
+    },
+    "found": [
+      [
+        "blue",
+        104,
+        107,
+        0.841724420460757
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 822,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -61.11753506277454,
+      "far_bearing": -71.35397512349707,
+      "arrow": -61.68930231769838,
+      "corrupt": false,
+      "confidence": 0.85,
+      "path": [
+        [
+          -9.0,
+          11.0
+        ],
+        [
+          -16.0,
+          11.0
+        ],
+        [
+          -23.0,
+          12.0
+        ],
+        [
+          -29.0,
+          15.0
+        ],
+        [
+          -35.0,
+          15.0
+        ],
+        [
+          -41.0,
+          16.0
+        ],
+        [
+          -47.0,
+          17.0
+        ],
+        [
+          -53.0,
+          19.0
+        ],
+        [
+          -59.0,
+          19.0
+        ],
+        [
+          -65.0,
+          20.0
+        ],
+        [
+          -71.0,
+          20.0
+        ],
+        [
+          -76.0,
+          21.0
+        ],
+        [
+          -83.0,
+          22.0
+        ],
+        [
+          -88.0,
+          22.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "yellow",
+          "x": -86.8,
+          "y": 6.66,
+          "border": true
+        }
+      ]
+    },
+    "found": [
+      [
+        "yellow",
+        36,
+        110,
+        0.3944616584663248
+      ]
+    ],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1628,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -3.5478140062492116,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1442,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 1.6355882635827186,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1656,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -169.52145012288804,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1542,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 9.696182749083334,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2362,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -1.28164898353009,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1645,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 7.361996770779399,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1270,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -2.766988438527733,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1505,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 0.5948719981827253,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1404,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "purple",
+      "bearing": 10.223502306340063,
+      "far_bearing": -31.721010721285566,
+      "arrow": 1.5087639737908773,
+      "corrupt": false,
+      "confidence": 0.992,
+      "path": [
+        [
+          0.0,
+          13.0
+        ],
+        [
+          1.0,
+          19.0
+        ],
+        [
+          3.0,
+          25.0
+        ],
+        [
+          5.0,
+          30.0
+        ],
+        [
+          5.0,
+          36.0
+        ],
+        [
+          -1.0,
+          42.0
+        ],
+        [
+          -9.0,
+          45.0
+        ],
+        [
+          -15.0,
+          47.0
+        ],
+        [
+          -21.0,
+          47.0
+        ],
+        [
+          -27.0,
+          48.0
+        ],
+        [
+          -32.0,
+          50.0
+        ],
+        [
+          -36.0,
+          51.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1316,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 2.4706886576725253,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2361,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -1.3238317317183999,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1102,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -1.1355232651103222,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1460,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 121.17143499718082,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 2354,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -178.70051056285274,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1422,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "purple",
+      "bearing": -37.874983651098205,
+      "far_bearing": -40.49781113824379,
+      "arrow": -9.416054130228531,
+      "corrupt": false,
+      "confidence": 0.742,
+      "path": [
+        [
+          -3.0,
+          13.0
+        ],
+        [
+          -10.0,
+          16.0
+        ],
+        [
+          -17.0,
+          19.0
+        ],
+        [
+          -22.0,
+          25.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 909,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 18.52282620393395,
+      "far_bearing": 17.05827918781231,
+      "arrow": 0.6162181292558273,
+      "corrupt": false,
+      "confidence": 0.453,
+      "path": [
+        [
+          2.0,
+          12.0
+        ],
+        [
+          1.0,
+          18.0
+        ],
+        [
+          4.0,
+          24.0
+        ],
+        [
+          9.0,
+          29.0
+        ],
+        [
+          7.0,
+          36.0
+        ],
+        [
+          8.0,
+          42.0
+        ],
+        [
+          10.0,
+          47.0
+        ],
+        [
+          13.0,
+          54.0
+        ],
+        [
+          20.0,
+          56.0
+        ],
+        [
+          26.0,
+          55.0
+        ],
+        [
+          32.0,
+          55.0
+        ],
+        [
+          38.0,
+          51.0
+        ],
+        [
+          44.0,
+          52.0
+        ],
+        [
+          50.0,
+          56.0
+        ],
+        [
+          56.0,
+          60.0
+        ],
+        [
+          62.0,
+          65.0
+        ],
+        [
+          68.0,
+          66.0
+        ],
+        [
+          75.0,
+          67.0
+        ],
+        [
+          79.0,
+          74.0
+        ],
+        [
+          84.0,
+          79.0
+        ],
+        [
+          89.0,
+          86.0
+        ],
+        [
+          97.0,
+          88.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 908,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 12.016162780655389,
+      "far_bearing": 17.05827918781231,
+      "arrow": 1.4984307617756087,
+      "corrupt": false,
+      "confidence": 0.72,
+      "path": [
+        [
+          2.0,
+          14.0
+        ],
+        [
+          3.0,
+          19.0
+        ],
+        [
+          5.0,
+          25.0
+        ],
+        [
+          7.0,
+          31.0
+        ],
+        [
+          8.0,
+          38.0
+        ],
+        [
+          9.0,
+          43.0
+        ],
+        [
+          11.0,
+          49.0
+        ],
+        [
+          15.0,
+          55.0
+        ],
+        [
+          22.0,
+          57.0
+        ],
+        [
+          29.0,
+          56.0
+        ],
+        [
+          34.0,
+          56.0
+        ],
+        [
+          40.0,
+          56.0
+        ],
+        [
+          46.0,
+          56.0
+        ],
+        [
+          52.0,
+          55.0
+        ],
+        [
+          58.0,
+          55.0
+        ],
+        [
+          65.0,
+          54.0
+        ],
+        [
+          71.0,
+          57.0
+        ],
+        [
+          76.0,
+          63.0
+        ],
+        [
+          80.0,
+          70.0
+        ],
+        [
+          80.0,
+          77.0
+        ],
+        [
+          78.0,
+          83.0
+        ],
+        [
+          74.0,
+          87.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1085,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 41.51067509420361,
+      "far_bearing": 46.227579612369325,
+      "arrow": 0.4528912005093275,
+      "corrupt": false,
+      "confidence": 0.789,
+      "path": [
+        [
+          5.0,
+          12.0
+        ],
+        [
+          11.0,
+          16.0
+        ],
+        [
+          18.0,
+          19.0
+        ],
+        [
+          22.0,
+          21.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1000,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": -4.421805332409189,
+      "far_bearing": 42.967608587697015,
+      "arrow": 1.9455787296600988,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+        [
+          -1.0,
+          13.0
+        ],
+        [
+          -1.0,
+          19.0
+        ],
+        [
+          -2.0,
+          24.0
+        ],
+        [
+          -2.0,
+          30.0
+        ],
+        [
+          -3.0,
+          36.0
+        ],
+        [
+          -1.0,
+          41.0
+        ],
+        [
+          7.0,
+          42.0
+        ],
+        [
+          14.0,
+          42.0
+        ],
+        [
+          19.0,
+          42.0
+        ],
+        [
+          25.0,
+          43.0
+        ],
+        [
+          31.0,
+          43.0
+        ],
+        [
+          38.0,
+          43.0
+        ],
+        [
+          43.0,
+          44.0
+        ],
+        [
+          49.0,
+          45.0
+        ],
+        [
+          55.0,
+          45.0
+        ],
+        [
+          61.0,
+          45.0
+        ],
+        [
+          67.0,
+          46.0
+        ],
+        [
+          73.0,
+          47.0
+        ],
+        [
+          79.0,
+          47.0
+        ],
+        [
+          85.0,
+          47.0
+        ],
+        [
+          89.0,
+          47.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  },
+  {
+    "id": 1019,
+    "map": "tilted",
+    "reading": {
+      "minimap": "tilted",
+      "route": "yellow",
+      "bearing": 42.29989054483845,
+      "far_bearing": 42.90984058171669,
+      "arrow": 15.660820368908446,
+      "corrupt": false,
+      "confidence": 0.916,
+      "path": [
+        [
+          8.0,
+          12.0
+        ],
+        [
+          14.0,
+          17.0
+        ],
+        [
+          21.0,
+          23.0
+        ],
+        [
+          27.0,
+          29.0
+        ],
+        [
+          32.0,
+          36.0
+        ],
+        [
+          38.0,
+          42.0
+        ],
+        [
+          42.0,
+          48.0
+        ],
+        [
+          48.0,
+          54.0
+        ],
+        [
+          46.0,
+          60.0
+        ],
+        [
+          38.0,
+          63.0
+        ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "found": [],
+    "missed": [],
+    "invented": []
+  }
+]

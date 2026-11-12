@@ -8,6 +8,7 @@ import pytest
 from ps5_remoteplay_mcp.backend import Button, ConsoleError, Side
 from ps5_remoteplay_mcp.backend.remoteplay import RemotePlayBackend
 from ps5_remoteplay_mcp.config import Config
+from ps5_remoteplay_mcp.vendor.pyremoteplay.controller import Controller
 from ps5_remoteplay_mcp.vendor.pyremoteplay.stream_packets import FeedbackHeader
 
 
@@ -124,3 +125,53 @@ def test_the_feedback_sequence_number_wraps_at_16_bits():
 
     # 20 repeats a second reach 65536 within an hour: that must not end the session
     assert packed(65536) == packed(0) and packed(65538) == packed(2) and packed(65535) != packed(0)
+
+
+async def test_release_all_keeps_all_five_releases_in_the_resend_window(backend):
+    device = backend.device
+    device.controller = Controller(device.session)
+    controller = device.controller
+    controller.sent = []
+    await backend.set_buttons({Button.CROSS, Button.CIRCLE, Button.SQUARE, Button.TRIANGLE})
+    await backend.set_trigger(Side.RIGHT, 1.0)
+    controller.sent.clear()
+
+    await backend.release_all()
+
+    events = [s for s in controller.sent if s[:2] == ("resend", "EVENT")]
+    assert len(events) == 5
+    expected = {bytes([0x80, button_id, 0]) for button_id in (0x87, 0x88, 0x89, 0x8A, 0x8B)}
+    assert {bytes(event) for event in controller._event_buf} == expected
+    buffered = b"".join(controller._event_buf)
+    sequence = controller._sequence_event - 1
+    controller.sent.clear()
+    await backend.resend_input(force=True)
+    assert ("resend", "EVENT", sequence, buffered) in controller.sent
+
+
+async def test_release_all_does_not_emit_an_unpressed_trigger(backend):
+    await backend.set_buttons({Button.CROSS})
+    backend.device.controller.sent.clear()
+    await backend.release_all()
+    assert not [s for s in backend.device.controller.sent if s[0] == "event"]
+
+
+async def test_force_resends_after_a_long_quiet_period(backend):
+    controller = backend.device.controller
+    await backend.set_trigger(Side.RIGHT, 1.0)
+    await backend.release_all()
+    backend._input_at -= 5
+    controller.sent.clear()
+    await backend.resend_input()
+    assert controller.sent == []
+    await backend.resend_input(force=True)
+    assert [s[1] for s in controller.sent] == ["STATE", "EVENT"]
+
+
+def test_frame_timestamp_is_absent_without_a_decoded_frame(backend):
+    assert backend.frame_ts() is None
+    backend.receiver = SimpleNamespace(frame_id=0, frame_ts=0.0)
+    assert backend.frame_ts() is None
+    backend.receiver.frame_id = 1
+    backend.receiver.frame_ts = 42.5
+    assert backend.frame_ts() == 42.5

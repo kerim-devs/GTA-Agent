@@ -1,0 +1,6158 @@
+[
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.86666666666711,
+    "mean_distance": 0.8857919375666408,
+    "max_distance": 3.3077742435375783,
+    "max_no_progress": 1.2666666666666673,
+    "steering_flips_per_second": 0.5025773195876202,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.09663695517660947,
+      117.01123376435024
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 26.40000000000047,
+    "mean_distance": 1.1638266843196665,
+    "max_distance": 3.3436043785004803,
+    "max_no_progress": 1.2666666666666673,
+    "steering_flips_per_second": 0.0757575757575744,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.3510943012166321,
+      117.07077974149031
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.900000000000446,
+    "mean_distance": 0.86488792744797,
+    "max_distance": 3.302111645974491,
+    "max_no_progress": 1.2666666666666673,
+    "steering_flips_per_second": 0.6563706563706451,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.061013704375291744,
+      117.07211235001834
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 26.300000000000466,
+    "mean_distance": 1.057486787169657,
+    "max_distance": 3.342631101345808,
+    "max_no_progress": 1.2666666666666673,
+    "steering_flips_per_second": 0.30418250950569803,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.40053022523704296,
+      117.20316421088292
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.93333333333378,
+    "mean_distance": 0.8349382920392536,
+    "max_distance": 3.2885920148039163,
+    "max_no_progress": 1.2666666666666673,
+    "steering_flips_per_second": 0.7326478149100131,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.06586764401881637,
+      117.05489750704423
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 26.700000000000486,
+    "mean_distance": 1.0987726396276953,
+    "max_distance": 3.314351655040962,
+    "max_no_progress": 1.2666666666666673,
+    "steering_flips_per_second": 0.44943820224718284,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.02125674467504329,
+      117.08624000747344
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.33333333333375,
+    "mean_distance": 1.2530095752434007,
+    "max_distance": 3.3860230444546042,
+    "max_no_progress": 1.2000000000000004,
+    "steering_flips_per_second": 0.6315789473684106,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.07047226350412807,
+      117.06789170093545
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 25.833333333333776,
+    "mean_distance": 1.6449243279234778,
+    "max_distance": 3.508174660641861,
+    "max_no_progress": 1.2000000000000004,
+    "steering_flips_per_second": 0.27096774193547923,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.31758344091739305,
+      117.12254805476438
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.46666666666709,
+    "mean_distance": 1.3313752138126647,
+    "max_distance": 3.384350915099251,
+    "max_no_progress": 1.2000000000000004,
+    "steering_flips_per_second": 0.5890052356020844,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.035816622067486745,
+      117.06386532365808
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 25.833333333333776,
+    "mean_distance": 1.5576548933021708,
+    "max_distance": 3.5234271274579982,
+    "max_no_progress": 1.2000000000000004,
+    "steering_flips_per_second": 0.34838709677418755,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.5986896892220211,
+      117.10507743077207
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.500000000000426,
+    "mean_distance": 1.1569704748115779,
+    "max_distance": 3.3559155088781045,
+    "max_no_progress": 1.2000000000000004,
+    "steering_flips_per_second": 0.7058823529411646,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.07232758647430242,
+      117.07368830113867
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 26.300000000000466,
+    "mean_distance": 1.5899595122384325,
+    "max_distance": 3.4920094753222855,
+    "max_no_progress": 1.2000000000000004,
+    "steering_flips_per_second": 0.3422053231939103,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.5983484012572855,
+      117.11530717797704
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.06666666666707,
+    "mean_distance": 1.8446674848913767,
+    "max_distance": 3.456594567922405,
+    "max_no_progress": 1.1333333333333335,
+    "steering_flips_per_second": 0.6382978723404152,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.2039026079704023,
+      117.12954073698604
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 25.500000000000426,
+    "mean_distance": 2.9199865239685945,
+    "max_distance": 4.003554817131149,
+    "max_no_progress": 1.1333333333333335,
+    "steering_flips_per_second": 0.23529411764705488,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.6857046291995735,
+      117.13099431998579
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.166666666667076,
+    "mean_distance": 1.915459095476023,
+    "max_distance": 3.4562619298402812,
+    "max_no_progress": 1.166666666666667,
+    "steering_flips_per_second": 0.6754966887417109,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.05725305057189121,
+      117.07220788485022
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 25.46666666666709,
+    "mean_distance": 2.8442532621374803,
+    "max_distance": 3.9025233240003057,
+    "max_no_progress": 1.166666666666667,
+    "steering_flips_per_second": 0.31413612565444504,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.6783035920694312,
+      117.22082176268094
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.233333333333746,
+    "mean_distance": 1.638255514284624,
+    "max_distance": 3.4277111219562193,
+    "max_no_progress": 1.1333333333333335,
+    "steering_flips_per_second": 0.5944517833553403,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.02467270931105421,
+      117.11386192597314
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 25.80000000000044,
+    "mean_distance": 1.7362071934316927,
+    "max_distance": 3.7520965758364766,
+    "max_no_progress": 1.1333333333333335,
+    "steering_flips_per_second": 0.42635658914727953,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.5819676656236538,
+      117.18254654799479
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.93333333333378,
+    "mean_distance": 0.8716542248017841,
+    "max_distance": 3.3019575546082374,
+    "max_no_progress": 1.3333333333333341,
+    "steering_flips_per_second": 0.7326478149100131,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.006010340360776657,
+      117.05606945881578
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 26.433333333333806,
+    "mean_distance": 1.1283021612384287,
+    "max_distance": 3.3346373868592263,
+    "max_no_progress": 1.3333333333333341,
+    "steering_flips_per_second": 0.07566204287515628,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.3918058376210997,
+      117.08177462693092
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 26.100000000000456,
+    "mean_distance": 0.8723201474768457,
+    "max_distance": 3.2968557896187356,
+    "max_no_progress": 1.3333333333333341,
+    "steering_flips_per_second": 0.651340996168571,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.023104320276351033,
+      117.16935011511737
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 26.40000000000047,
+    "mean_distance": 1.061692680443907,
+    "max_distance": 3.333284877243407,
+    "max_no_progress": 1.3333333333333341,
+    "steering_flips_per_second": 0.2272727272727232,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.4497389400849535,
+      117.10494107863111
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 26.06666666666712,
+    "mean_distance": 0.8476967548642987,
+    "max_distance": 3.283823781475345,
+    "max_no_progress": 1.3333333333333341,
+    "steering_flips_per_second": 0.7672634271099611,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.049407983912273544,
+      117.07250552762781
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 26.80000000000049,
+    "mean_distance": 1.0882315934966118,
+    "max_distance": 3.3069168870793364,
+    "max_no_progress": 1.3333333333333341,
+    "steering_flips_per_second": 0.44776119402984255,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.019823973459181465,
+      117.17543636591947
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.53333333333376,
+    "mean_distance": 1.2401200794429625,
+    "max_distance": 3.3764760366731847,
+    "max_no_progress": 1.2666666666666673,
+    "steering_flips_per_second": 0.5874673629242722,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.031751417056448704,
+      117.16854746600367
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 25.900000000000446,
+    "mean_distance": 1.6336910786639511,
+    "max_distance": 3.476017501959456,
+    "max_no_progress": 1.2666666666666673,
+    "steering_flips_per_second": 0.2702702702702656,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.2884478863747019,
+      117.0562709016929
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.6666666666671,
+    "mean_distance": 1.3160400938256418,
+    "max_distance": 3.3730045819204615,
+    "max_no_progress": 1.2666666666666673,
+    "steering_flips_per_second": 0.6623376623376511,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.0044355186612107965,
+      117.0485478123421
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 25.900000000000446,
+    "mean_distance": 1.5255972382768812,
+    "max_distance": 3.500973766910947,
+    "max_no_progress": 1.2666666666666673,
+    "steering_flips_per_second": 0.3474903474903415,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.550092969867249,
+      117.16159841901778
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.60000000000043,
+    "mean_distance": 1.2043251531660595,
+    "max_distance": 3.3478488755735087,
+    "max_no_progress": 1.2666666666666673,
+    "steering_flips_per_second": 0.7031249999999881,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.12055573826473792,
+      117.1159502943922
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 26.40000000000047,
+    "mean_distance": 1.5830177877643241,
+    "max_distance": 3.468938770820047,
+    "max_no_progress": 1.2666666666666673,
+    "steering_flips_per_second": 0.34090909090908483,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.5863403763493766,
+      117.08343159310785
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.20000000000041,
+    "mean_distance": 1.8522420159625517,
+    "max_distance": 3.4436363586505188,
+    "max_no_progress": 1.2000000000000004,
+    "steering_flips_per_second": 0.6349206349206246,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.04340239622457259,
+      117.03809922618309
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 25.60000000000043,
+    "mean_distance": 2.8798721149444555,
+    "max_distance": 3.9717549311274167,
+    "max_no_progress": 1.2000000000000004,
+    "steering_flips_per_second": 0.23437499999999606,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.7319238709838053,
+      117.23303989067472
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.366666666667086,
+    "mean_distance": 1.9221574753553508,
+    "max_distance": 3.440503176746816,
+    "max_no_progress": 1.2333333333333338,
+    "steering_flips_per_second": 0.7095926412614862,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.09639633054660784,
+      117.00711379318638
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 25.46666666666709,
+    "mean_distance": 2.7481406257202847,
+    "max_distance": 3.853584019561364,
+    "max_no_progress": 1.2333333333333338,
+    "steering_flips_per_second": 0.3926701570680563,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.5624253081209354,
+      117.07476943298833
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.300000000000416,
+    "mean_distance": 1.661796754346228,
+    "max_distance": 3.396610045115531,
+    "max_no_progress": 1.2333333333333338,
+    "steering_flips_per_second": 0.5928853754940614,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.09640694308668803,
+      117.00470224647742
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 25.93333333333378,
+    "mean_distance": 1.7090924505692684,
+    "max_distance": 3.7008767197523564,
+    "max_no_progress": 1.2333333333333338,
+    "steering_flips_per_second": 0.42416452442158653,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.568834469970035,
+      117.17823310902085
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 26.300000000000466,
+    "mean_distance": 0.8540960754278801,
+    "max_distance": 3.2950551850281182,
+    "max_no_progress": 1.400000000000001,
+    "steering_flips_per_second": 0.6844106463878206,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.14941012033491305,
+      117.13558376872264
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 26.46666666666714,
+    "mean_distance": 1.0975964710339334,
+    "max_distance": 3.324401605896725,
+    "max_no_progress": 1.400000000000001,
+    "steering_flips_per_second": 0.07556675062972157,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.3632085438733133,
+      117.05648585999771
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 26.3333333333338,
+    "mean_distance": 0.9351844046929992,
+    "max_distance": 3.2904039906510745,
+    "max_no_progress": 1.400000000000001,
+    "steering_flips_per_second": 0.7594936708860625,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.030253205474467734,
+      117.08890825680164
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 26.500000000000476,
+    "mean_distance": 1.0376079220105343,
+    "max_distance": 3.3221922162655626,
+    "max_no_progress": 1.400000000000001,
+    "steering_flips_per_second": 0.22641509433961857,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.2860367943282372,
+      117.18131985406741
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 26.166666666667126,
+    "mean_distance": 0.8438125680863513,
+    "max_distance": 3.278222649235819,
+    "max_no_progress": 1.400000000000001,
+    "steering_flips_per_second": 0.7643312101910694,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.02210415438094951,
+      117.05681839844017
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 26.86666666666716,
+    "mean_distance": 1.0373720262832227,
+    "max_distance": 3.298421572985283,
+    "max_no_progress": 1.400000000000001,
+    "steering_flips_per_second": 0.3722084367245589,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.19753157311214822,
+      117.1675837624243
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.6666666666671,
+    "mean_distance": 1.2559322017422134,
+    "max_distance": 3.3653309775633,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.6623376623376511,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.09722145407610817,
+      117.10258683629246
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 25.966666666667116,
+    "mean_distance": 1.6130372144967742,
+    "max_distance": 3.450446817708683,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.2695763799743214,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.24443695245730823,
+      117.01710086908663
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.93333333333378,
+    "mean_distance": 1.3299759851629431,
+    "max_distance": 3.360515923833481,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.7712082262210663,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.07254146612103156,
+      117.02861020261552
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 25.93333333333378,
+    "mean_distance": 1.463248434858055,
+    "max_distance": 3.4764447891801673,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.34704370179947985,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.43379520804160815,
+      117.05956810174455
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.700000000000436,
+    "mean_distance": 1.2039252477211866,
+    "max_distance": 3.338722154715003,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.5836575875486282,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.010487547177365077,
+      117.08596184432903
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 26.500000000000476,
+    "mean_distance": 1.5467805575968894,
+    "max_distance": 3.4432707032299845,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.33962264150942784,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.6257014110959529,
+      117.1160564719742
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.433333333333756,
+    "mean_distance": 1.8222626592856257,
+    "max_distance": 3.4281532564078203,
+    "max_no_progress": 1.3000000000000007,
+    "steering_flips_per_second": 0.5504587155963211,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.15337381653220483,
+      117.1168099803622
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 25.633333333333766,
+    "mean_distance": 2.8342984314020083,
+    "max_distance": 3.933177664326849,
+    "max_no_progress": 1.3000000000000007,
+    "steering_flips_per_second": 0.23407022106631595,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.739348806274139,
+      117.0931476377484
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.700000000000436,
+    "mean_distance": 1.9011198701860677,
+    "max_distance": 3.418944514201061,
+    "max_no_progress": 1.3000000000000007,
+    "steering_flips_per_second": 0.7782101167315043,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.15999731164991993,
+      117.08551466606754
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 25.566666666667096,
+    "mean_distance": 2.7008899599118537,
+    "max_distance": 3.8141715007218386,
+    "max_no_progress": 1.3000000000000007,
+    "steering_flips_per_second": 0.3911342894393676,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.578713342730084,
+      117.13446972047656
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 25.433333333333756,
+    "mean_distance": 1.626109807357445,
+    "max_distance": 3.382096688635431,
+    "max_no_progress": 1.3000000000000007,
+    "steering_flips_per_second": 0.5897771952817726,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.06490018652172201,
+      117.10437918840957
+    ]
+  },
+  {
+    "name": "straight",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 26.06666666666712,
+    "mean_distance": 1.6936321629575248,
+    "max_distance": 3.6616050955191617,
+    "max_no_progress": 1.3000000000000007,
+    "steering_flips_per_second": 0.4219948849104786,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.4998098323550399,
+      117.20585628215996
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 43.100000000000115,
+    "mean_distance": 0.7375801768667507,
+    "max_distance": 5.947065446812772,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.626450116009279,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.03704373272184,
+      100.1489078057481
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.766666666666744,
+    "mean_distance": 0.7077873952820978,
+    "max_distance": 5.456526396912295,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.3198781416603193,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.07937398917633,
+      100.0426656766635
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 42.90000000000013,
+    "mean_distance": 0.7686290160707079,
+    "max_distance": 6.145917166189491,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.6993006993006973,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.04401424328489,
+      100.02137615836263
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 44.20000000000005,
+    "mean_distance": 0.7560621124842077,
+    "max_distance": 5.5078094821102646,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.22624434389140244,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.19327215085956,
+      99.44352381051725
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 43.23333333333344,
+    "mean_distance": 0.7637304970462291,
+    "max_distance": 6.066505308570014,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.8789514263685406,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.00014005468226,
+      100.02041895568037
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 44.16666666666672,
+    "mean_distance": 0.862861174991887,
+    "max_distance": 5.68842047822686,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.45283018867924474,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.06798747445225,
+      100.29704249184556
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.19999999999988,
+    "mean_distance": 2.7201485871711526,
+    "max_distance": 13.248260816093941,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.5084745762711878,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.15549195934395,
+      99.83771167472806
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 48.79999999999979,
+    "mean_distance": 2.221035974297826,
+    "max_distance": 12.292438704176135,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.3483606557377064,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.17205417701354,
+      100.60692505410502
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.699999999999854,
+    "mean_distance": 2.7637734268034806,
+    "max_distance": 13.188716240279756,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.5870020964360605,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.16279968509708,
+      99.54031808251914
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 49.46666666666642,
+    "mean_distance": 2.289981563183053,
+    "max_distance": 12.221927337964814,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.262803234501349,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.13293054247792,
+      100.51395672163096
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.83333333333318,
+    "mean_distance": 2.757838083677359,
+    "max_distance": 13.309057596595906,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.7944250871080165,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.02312068478587,
+      99.86791747075111
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 49.66666666666641,
+    "mean_distance": 2.7668099970278526,
+    "max_distance": 12.80139813993135,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.3221476510067131,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.21911190242639,
+      100.59545628197068
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 52.03333333333294,
+    "mean_distance": 6.992984500080274,
+    "max_distance": 27.541023511598752,
+    "max_no_progress": 1.2333333333333338,
+    "steering_flips_per_second": 0.5381165919282552,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.21554718758954,
+      98.9810016992657
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.199999999999484,
+    "mean_distance": 6.427760125577077,
+    "max_distance": 25.898662972739046,
+    "max_no_progress": 1.2333333333333338,
+    "steering_flips_per_second": 0.2767527675276779,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.14275564656923,
+      99.81132005553941
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 52.29999999999959,
+    "mean_distance": 7.045640755407685,
+    "max_distance": 27.46776124410435,
+    "max_no_progress": 1.2333333333333338,
+    "steering_flips_per_second": 0.573613766730406,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.30413322091044,
+      98.87435683886505
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.26666666666615,
+    "mean_distance": 6.475470900823896,
+    "max_distance": 25.85557900444876,
+    "max_no_progress": 1.2333333333333338,
+    "steering_flips_per_second": 0.3132678132678163,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.01562237822098,
+      99.90175832394112
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 52.26666666666626,
+    "mean_distance": 7.137976230930778,
+    "max_distance": 27.486025223460405,
+    "max_no_progress": 1.2333333333333338,
+    "steering_flips_per_second": 0.7079081632653116,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.1759654750935,
+      99.16593460109642
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.199999999999484,
+    "mean_distance": 6.756814887591496,
+    "max_distance": 26.050801755059567,
+    "max_no_progress": 1.2333333333333338,
+    "steering_flips_per_second": 0.3321033210332135,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.13744885078664,
+      99.93284558836973
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 43.13333333333345,
+    "mean_distance": 0.7431549158909626,
+    "max_distance": 5.904607615649823,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.5795981452859336,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.11689382257264,
+      100.10478528789041
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.73333333333341,
+    "mean_distance": 0.7021392746728554,
+    "max_distance": 5.438138833179006,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.3201219512195116,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.04026580873777,
+      100.01621868793036
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 43.066666666666784,
+    "mean_distance": 0.7383722803935147,
+    "max_distance": 6.096616223133751,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.6733746130030941,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.1444931088914,
+      100.02329953325216
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 44.16666666666672,
+    "mean_distance": 0.7515333319077258,
+    "max_distance": 5.508975897395814,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.22641509433962237,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.12375382836343,
+      99.45241890554843
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 43.4000000000001,
+    "mean_distance": 0.7532289393388965,
+    "max_distance": 6.086904220966872,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.668202764976957,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.1313708474336,
+      99.9385748152143
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 44.20000000000005,
+    "mean_distance": 0.8552049585257973,
+    "max_distance": 5.689031523143029,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.4524886877828049,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.10694981046707,
+      100.27438490085873
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.266666666666545,
+    "mean_distance": 2.7333747622199036,
+    "max_distance": 13.163782128184891,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.4442877291960519,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.04106480430947,
+      99.89936634325126
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 48.76666666666646,
+    "mean_distance": 2.234347285317437,
+    "max_distance": 12.292357040324433,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.3485987696514027,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.1318733544342,
+      100.61245446040839
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.79999999999985,
+    "mean_distance": 2.722086548385266,
+    "max_distance": 13.223596507279638,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.6276150627615082,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.0960757521988,
+      99.5460396595724
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 49.46666666666642,
+    "mean_distance": 2.300255361611562,
+    "max_distance": 12.21859892780165,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.262803234501349,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.10266888220025,
+      100.52046052584717
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.89999999999984,
+    "mean_distance": 2.779560782980625,
+    "max_distance": 13.327729924538986,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.7098121085595013,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.14045166293202,
+      99.77556283675081
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 49.63333333333308,
+    "mean_distance": 2.767129182725895,
+    "max_distance": 12.789537346961708,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.3626595030221644,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.19544411642232,
+      100.64013156230857
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 52.1999999999996,
+    "mean_distance": 6.989036967581478,
+    "max_distance": 27.58266573205337,
+    "max_no_progress": 1.3000000000000007,
+    "steering_flips_per_second": 0.4597701149425323,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.17620458480384,
+      99.17478770964567
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.26666666666615,
+    "mean_distance": 6.433858220743573,
+    "max_distance": 25.92136991934285,
+    "max_no_progress": 1.3000000000000007,
+    "steering_flips_per_second": 0.3132678132678163,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.01655862465954,
+      99.80235594125507
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 52.39999999999959,
+    "mean_distance": 7.077528813577788,
+    "max_distance": 27.450300543194544,
+    "max_no_progress": 1.3000000000000007,
+    "steering_flips_per_second": 0.5725190839694702,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.37637856618022,
+      98.81518215019328
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.36666666666614,
+    "mean_distance": 6.472410187190807,
+    "max_distance": 25.887626570353547,
+    "max_no_progress": 1.3000000000000007,
+    "steering_flips_per_second": 0.31269160024525133,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.09188711149365,
+      99.94721681384844
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 52.39999999999959,
+    "mean_distance": 7.174339285081965,
+    "max_distance": 27.536544987548154,
+    "max_no_progress": 1.3000000000000007,
+    "steering_flips_per_second": 0.6870229007633643,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.18240137295732,
+      98.97580546291152
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.29999999999948,
+    "mean_distance": 6.753868772014822,
+    "max_distance": 26.0871950183654,
+    "max_no_progress": 1.3000000000000007,
+    "steering_flips_per_second": 0.3314917127071855,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.0770119959991,
+      99.90813740610665
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 43.23333333333344,
+    "mean_distance": 0.7515014779787152,
+    "max_distance": 5.906290392097219,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.6707787201233599,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.09186973403986,
+      100.03231004689273
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.766666666666744,
+    "mean_distance": 0.7108456672951355,
+    "max_distance": 5.429984012663868,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.3198781416603193,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.01179759934425,
+      100.0675234832581
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 43.13333333333345,
+    "mean_distance": 0.7474752210309058,
+    "max_distance": 6.068589808016995,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.6259659969088083,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.06727419608038,
+      99.99488691710756
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 44.20000000000005,
+    "mean_distance": 0.7509923699690046,
+    "max_distance": 5.506510256002613,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.22624434389140244,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.18104074214224,
+      99.41114749929352
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 43.46666666666676,
+    "mean_distance": 0.7370630785212,
+    "max_distance": 6.020656304870457,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.7592024539877285,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.05529147821976,
+      99.93195249427941
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 44.233333333333384,
+    "mean_distance": 0.8500016405824292,
+    "max_distance": 5.670202918531663,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.4069329314242648,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.08522978828157,
+      100.30210635898906
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.4333333333332,
+    "mean_distance": 2.707049220964951,
+    "max_distance": 13.186636059814433,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.4638088545326787,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.11947599565535,
+      99.88598892151663
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 48.79999999999979,
+    "mean_distance": 2.2321072362478507,
+    "max_distance": 12.291918945210682,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.3483606557377064,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.14282258001802,
+      100.60021285799488
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.79999999999985,
+    "mean_distance": 2.7750213057293864,
+    "max_distance": 13.208843334312931,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.5648535564853574,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.11989627555059,
+      99.74454380085545
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 49.566666666666414,
+    "mean_distance": 2.303575494453612,
+    "max_distance": 12.201141354681113,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.2622730329522542,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.21330359305809,
+      100.53986520124808
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 48.0666666666665,
+    "mean_distance": 2.760316397929165,
+    "max_distance": 13.250574141732017,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.7281553398058278,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.0957064809023,
+      99.60398373089104
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 49.63333333333308,
+    "mean_distance": 2.756331480314998,
+    "max_distance": 12.773717404655685,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.3626595030221644,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.10086303902644,
+      100.6951143338452
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 52.366666666666255,
+    "mean_distance": 6.990552953169773,
+    "max_distance": 27.562657007121956,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.5155951623169996,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.20325956288816,
+      99.1461337670021
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.433333333332804,
+    "mean_distance": 6.431604699783602,
+    "max_distance": 25.915780254609658,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.3123086344151898,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.07443334104724,
+      99.8292309747256
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 52.46666666666625,
+    "mean_distance": 7.058041848084685,
+    "max_distance": 27.49291244255312,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.5336721728081364,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.35513492593903,
+      98.86188563058003
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.5333333333328,
+    "mean_distance": 6.470916712348235,
+    "max_distance": 25.849509113372747,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.3117359413202965,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.1285060530342,
+      100.00088031588044
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 52.63333333333291,
+    "mean_distance": 7.160842051562161,
+    "max_distance": 27.62617216210441,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.664977834072203,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.2922023058627,
+      99.05017391256277
+    ]
+  },
+  {
+    "name": "left",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.39999999999947,
+    "mean_distance": 6.774456612485053,
+    "max_distance": 26.08716685520565,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.367647058823533,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -97.01825232865806,
+      99.89240681435625
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 42.833333333333464,
+    "mean_distance": 0.8033614867334405,
+    "max_distance": 6.281328919513988,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.560311284046691,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.03852963073906,
+      99.98497996911925
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.533333333333424,
+    "mean_distance": 0.7151867593808874,
+    "max_distance": 5.865099436100317,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.36753445635528253,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.15438024263669,
+      100.05099510052973
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 42.90000000000013,
+    "mean_distance": 0.7694425124597944,
+    "max_distance": 6.054311767146984,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.7692307692307669,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.07043695607051,
+      99.86121814467573
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.63333333333342,
+    "mean_distance": 0.7804307362220775,
+    "max_distance": 5.7954543803036955,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.41252864782276466,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.03412804213309,
+      100.30076419218135
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 42.833333333333464,
+    "mean_distance": 0.8144784143914288,
+    "max_distance": 6.212688274451793,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.7704280155642,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.15818747906096,
+      100.02010399006652
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 44.13333333333339,
+    "mean_distance": 0.8237308802424974,
+    "max_distance": 5.674691016905519,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.5438066465256791,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.15267713041509,
+      99.61459259637037
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.499999999999865,
+    "mean_distance": 2.879446869726994,
+    "max_distance": 13.41573023714217,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.6315789473684228,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.08538305543763,
+      99.87398745937037
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 49.133333333333105,
+    "mean_distance": 2.416272145665512,
+    "max_distance": 12.498109935697046,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.2442333785617379,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.05889063190827,
+      100.57050044582807
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.13333333333322,
+    "mean_distance": 2.8303780750930785,
+    "max_distance": 13.493906904509572,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.636492220650638,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.16184028749647,
+      100.04638720305488
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 48.99999999999978,
+    "mean_distance": 2.387649530695827,
+    "max_distance": 12.545179845502489,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.24489795918367457,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.16807777867848,
+      100.78685426934929
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.533333333333196,
+    "mean_distance": 2.82489140227727,
+    "max_distance": 13.36251204537703,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.7152875175315588,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.12913432717029,
+      99.69362876726689
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 49.73333333333307,
+    "mean_distance": 2.4479378853390727,
+    "max_distance": 12.03001361451679,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.3418230563002699,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.19246143337982,
+      100.6055778974718
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 52.06666666666627,
+    "mean_distance": 7.156069475361901,
+    "max_distance": 27.78018620291543,
+    "max_no_progress": 1.2333333333333338,
+    "steering_flips_per_second": 0.5953905249679943,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.36204645772465,
+      98.89725986420333
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.16666666666615,
+    "mean_distance": 6.4899150503591425,
+    "max_distance": 26.011305499095613,
+    "max_no_progress": 1.2333333333333338,
+    "steering_flips_per_second": 0.2584615384615409,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.15194236376091,
+      99.88488406068818
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 51.49999999999964,
+    "mean_distance": 7.117533790381999,
+    "max_distance": 27.84190989930879,
+    "max_no_progress": 1.166666666666667,
+    "steering_flips_per_second": 0.5825242718446643,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.10390183556022,
+      99.22753602203716
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 53.8999999999995,
+    "mean_distance": 6.44935368263058,
+    "max_distance": 25.89552737235003,
+    "max_no_progress": 1.166666666666667,
+    "steering_flips_per_second": 0.25974025974026216,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.15211143412557,
+      99.88397751912072
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 52.03333333333294,
+    "mean_distance": 7.084989322184189,
+    "max_distance": 27.634030348854523,
+    "max_no_progress": 1.2000000000000004,
+    "steering_flips_per_second": 0.5957719410634253,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.3279822403999,
+      99.01668621124766
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.39999999999947,
+    "mean_distance": 6.418049268603575,
+    "max_distance": 25.77445624773807,
+    "max_no_progress": 1.2000000000000004,
+    "steering_flips_per_second": 0.3860294117647096,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.10242367576566,
+      99.88805684909832
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 43.03333333333345,
+    "mean_distance": 0.8049914729655653,
+    "max_distance": 6.293232391541293,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.5112316034082093,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.0667724355708,
+      99.98757374196849
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.60000000000009,
+    "mean_distance": 0.7163094305403981,
+    "max_distance": 5.862865461711973,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.3669724770642194,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.07543851800159,
+      100.02514608812506
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 42.90000000000013,
+    "mean_distance": 0.7702979448509668,
+    "max_distance": 6.054115021946842,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.675990675990674,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.0717586281448,
+      99.88757219792679
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.63333333333342,
+    "mean_distance": 0.7672571679635015,
+    "max_distance": 5.790328536575387,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.41252864782276466,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.01428098398063,
+      100.20702345748997
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 42.866666666666795,
+    "mean_distance": 0.815614649786769,
+    "max_distance": 6.1858021445319755,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.6298600311041972,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.02111772855439,
+      100.05726806745317
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 44.13333333333339,
+    "mean_distance": 0.821445870874173,
+    "max_distance": 5.6660873194885335,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.5438066465256791,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.13710357393265,
+      99.60196389881516
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.4333333333332,
+    "mean_distance": 2.9425253881189413,
+    "max_distance": 13.48464288548324,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.6113843991567128,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.0867565396157,
+      99.80283183316925
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 49.133333333333105,
+    "mean_distance": 2.429587524916199,
+    "max_distance": 12.5186001308994,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.2442333785617379,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.1244379066966,
+      100.58510950821983
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.19999999999988,
+    "mean_distance": 2.8079583652095166,
+    "max_distance": 13.48137023902882,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.677966101694917,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.0826855262314,
+      100.12087676557988
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 48.99999999999978,
+    "mean_distance": 2.389307722356285,
+    "max_distance": 12.568064604654964,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.24489795918367457,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.21655385522573,
+      100.75449589108398
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.63333333333319,
+    "mean_distance": 2.7963286533876714,
+    "max_distance": 13.336429612478545,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.629811056682997,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.0511617694735,
+      99.85080019757416
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 49.73333333333307,
+    "mean_distance": 2.458376914358923,
+    "max_distance": 12.018415644940632,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.3418230563002699,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.17733033231387,
+      100.61190696490893
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 52.1999999999996,
+    "mean_distance": 7.161472272981192,
+    "max_distance": 27.821188826392998,
+    "max_no_progress": 1.3000000000000007,
+    "steering_flips_per_second": 0.5747126436781653,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.2461518863495,
+      98.92406905118985
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.29999999999948,
+    "mean_distance": 6.483803981315541,
+    "max_distance": 26.024074438246316,
+    "max_no_progress": 1.3000000000000007,
+    "steering_flips_per_second": 0.25782688766114426,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.15550405282,
+      99.88305764982083
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 51.59999999999963,
+    "mean_distance": 7.120501540440857,
+    "max_distance": 27.83378917893471,
+    "max_no_progress": 1.2333333333333338,
+    "steering_flips_per_second": 0.5426356589147325,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.12717272758937,
+      99.23767277721163
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.03333333333283,
+    "mean_distance": 6.457081907550679,
+    "max_distance": 25.904204566338706,
+    "max_no_progress": 1.2333333333333338,
+    "steering_flips_per_second": 0.2590993214065416,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.14132443359104,
+      99.86846055202331
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 52.1999999999996,
+    "mean_distance": 7.084956073202446,
+    "max_distance": 27.596371360708304,
+    "max_no_progress": 1.2666666666666673,
+    "steering_flips_per_second": 0.5938697318007709,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.2344826326686,
+      99.08140452716903
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.5333333333328,
+    "mean_distance": 6.416349552649666,
+    "max_distance": 25.790077800140335,
+    "max_no_progress": 1.2666666666666673,
+    "steering_flips_per_second": 0.38508557457213094,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.10211386126322,
+      99.91733792188681
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 43.16666666666678,
+    "mean_distance": 0.8129865892628119,
+    "max_distance": 6.267278298773988,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.5559845559845545,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.15062598262752,
+      100.06320094222806
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.73333333333341,
+    "mean_distance": 0.7135666991392254,
+    "max_distance": 5.863509060726415,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.3658536585365847,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.14774579837778,
+      100.02583817841406
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 43.066666666666784,
+    "mean_distance": 0.7830763079922629,
+    "max_distance": 6.03027673478573,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.7662538699690382,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.15933903976597,
+      100.01391277023072
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.63333333333342,
+    "mean_distance": 0.7625215659779402,
+    "max_distance": 5.767817645175156,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.41252864782276466,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.02512842278419,
+      100.23504240103763
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 43.066666666666784,
+    "mean_distance": 0.8223968962910466,
+    "max_distance": 6.185170130136072,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.7198142414860662,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.0218533922769,
+      100.07623771886337
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 44.13333333333339,
+    "mean_distance": 0.8173342451948878,
+    "max_distance": 5.688687841361002,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.5438066465256791,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.16480302792974,
+      99.6090911110252
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.533333333333196,
+    "mean_distance": 2.942689874129632,
+    "max_distance": 13.49780805734413,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.5680224403927085,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.1530123436137,
+      99.73595950608285
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 49.099999999999774,
+    "mean_distance": 2.4403774743075415,
+    "max_distance": 12.511192956487974,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.24439918533605,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.07367692951858,
+      100.61857699153272
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.39999999999987,
+    "mean_distance": 2.8060807874512563,
+    "max_distance": 13.489301033943661,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.6118143459915628,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.13955383682529,
+      99.88260742803438
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 48.96666666666645,
+    "mean_distance": 2.3955911919573634,
+    "max_distance": 12.565050970431704,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.245064669843432,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.12717692583641,
+      100.79781555818157
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 47.63333333333319,
+    "mean_distance": 2.8551068826671258,
+    "max_distance": 13.432123520376443,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.6508047585724303,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.12179978284405,
+      99.95015177073438
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 49.7666666666664,
+    "mean_distance": 2.459565121174809,
+    "max_distance": 12.002365596438352,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.3415941058271954,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.18446940858436,
+      100.6063889696299
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 52.333333333332924,
+    "mean_distance": 7.179963952138511,
+    "max_distance": 27.86755860379013,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.5732484076433166,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.37292959542111,
+      98.92017786955863
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.433333333332804,
+    "mean_distance": 6.476164266110027,
+    "max_distance": 26.043572216257395,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.25719534598897986,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.1439432885979,
+      99.93718864291901
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 51.79999999999962,
+    "mean_distance": 7.14841601991095,
+    "max_distance": 27.880528380193496,
+    "max_no_progress": 1.3333333333333341,
+    "steering_flips_per_second": 0.5791505791505834,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.26028144518226,
+      99.28398358144123
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.199999999999484,
+    "mean_distance": 6.454268134136855,
+    "max_distance": 25.87485298362394,
+    "max_no_progress": 1.3333333333333341,
+    "steering_flips_per_second": 0.2583025830258327,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.16511469297441,
+      99.83050503530515
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 52.366666666666255,
+    "mean_distance": 7.0827383296932505,
+    "max_distance": 27.67864889974294,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.591979630808407,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.22323799504078,
+      98.9023306457318
+    ]
+  },
+  {
+    "name": "right",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 54.699999999999456,
+    "mean_distance": 6.408698743143055,
+    "max_distance": 25.812169359514414,
+    "max_no_progress": 1.3666666666666676,
+    "steering_flips_per_second": 0.3839122486288886,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      97.1381456673848,
+      99.93884416013687
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 78.33333333333145,
+    "mean_distance": 1.1525629675776663,
+    "max_distance": 6.207728742421898,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.5744680851063968,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.12215061138430919,
+      277.0323362013172
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 82.8333333333312,
+    "mean_distance": 0.9964877922873491,
+    "max_distance": 5.685184518127091,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.3018108651911547,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.6015037292185939,
+      277.0869797504383
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 78.7999999999981,
+    "mean_distance": 1.1554981473541597,
+    "max_distance": 6.056764331499238,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.583756345177679,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.11037463962676615,
+      277.01332095075276
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 83.03333333333119,
+    "mean_distance": 1.09448930499165,
+    "max_distance": 5.958010077370821,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.2167804094741124,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.18861774413157995,
+      277.1249120877862
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 78.73333333333143,
+    "mean_distance": 1.1161108400477466,
+    "max_distance": 6.14368663809543,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.6731583403895167,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.21498493694746346,
+      277.1286290092473
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 83.09999999999785,
+    "mean_distance": 1.0822202600918394,
+    "max_distance": 5.85681140887863,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.3610108303249191,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.39136956711697457,
+      277.11205178629046
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 85.93333333333102,
+    "mean_distance": 3.52836262631833,
+    "max_distance": 12.95357622405593,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.5003878975950484,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.014349251180361157,
+      277.0116193187754
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 90.73333333333075,
+    "mean_distance": 2.9843190846396594,
+    "max_distance": 12.583829910727413,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.2094048493754652,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.614823637681137,
+      277.1106189337066
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 85.5999999999977,
+    "mean_distance": 3.59044329075389,
+    "max_distance": 13.064276547885093,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.4439252336448717,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.17104856067270557,
+      277.0629872057181
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 90.06666666666412,
+    "mean_distance": 2.989541282915255,
+    "max_distance": 12.78118815182559,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.1665433012583319,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.6135347072580373,
+      277.20749192044065
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 86.03333333333102,
+    "mean_distance": 3.4996073990056447,
+    "max_distance": 13.190142282393767,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.6276636962417836,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.342043664389339,
+      277.0934511415489
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 90.9999999999974,
+    "mean_distance": 2.9740648455162932,
+    "max_distance": 12.719296973940848,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.19780219780220346,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.5808635174237827,
+      277.09616337791044
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 80.36666666666467,
+    "mean_distance": 8.485814512885737,
+    "max_distance": 22.04008677696921,
+    "max_no_progress": 0.8666666666666666,
+    "steering_flips_per_second": 0.5972625466611513,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.40885131369544875,
+      277.0478060049464
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 82.99999999999785,
+    "mean_distance": 7.402756329509557,
+    "max_distance": 21.480970144686914,
+    "max_no_progress": 0.8666666666666666,
+    "steering_flips_per_second": 0.2771084337349469,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.5507745339578123,
+      277.18400645023877
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 81.79999999999792,
+    "mean_distance": 8.585195788792527,
+    "max_distance": 22.343438981769197,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.5378973105134611,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.35129023890485783,
+      277.12808918695885
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 84.03333333333113,
+    "mean_distance": 7.473255272170559,
+    "max_distance": 21.761661224179438,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.20230067433558643,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.08752645841673755,
+      277.0471006452908
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 80.83333333333131,
+    "mean_distance": 8.451029274045727,
+    "max_distance": 22.672416600734238,
+    "max_no_progress": 0.8666666666666666,
+    "steering_flips_per_second": 0.5938144329897056,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.1152089875248169,
+      277.0819782596887
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 83.3666666666645,
+    "mean_distance": 7.3325507788977236,
+    "max_distance": 21.62084719250888,
+    "max_no_progress": 0.8666666666666666,
+    "steering_flips_per_second": 0.2878848460615829,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.4168071601502621,
+      277.0750558234987
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 78.29999999999812,
+    "mean_distance": 1.1961457677852085,
+    "max_distance": 6.205256276090244,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.5236270753512259,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.05042416300105477,
+      277.02203338602567
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 82.76666666666453,
+    "mean_distance": 0.9814422798954727,
+    "max_distance": 5.660885929282475,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.30205396697544074,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.5354150532877272,
+      277.2126854127038
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 78.89999999999809,
+    "mean_distance": 1.1399268815191994,
+    "max_distance": 5.998574937273203,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.5830164765526124,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.043727096354121635,
+      277.06859527058265
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 82.89999999999786,
+    "mean_distance": 1.0916796360476846,
+    "max_distance": 5.953490957240032,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.22919179734620615,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.24390258158149708,
+      277.10316942097387
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 78.93333333333142,
+    "mean_distance": 1.1150134586126907,
+    "max_distance": 6.142497858560358,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.6207770270270421,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.34025587584520933,
+      277.0292584109261
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 83.09999999999785,
+    "mean_distance": 1.0670642589619876,
+    "max_distance": 5.849457681705861,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.385078219013247,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.3407654792876841,
+      277.1885101513963
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 85.93333333333102,
+    "mean_distance": 3.546730517555056,
+    "max_distance": 12.928092256725186,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.5469356089992389,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.10561317778878704,
+      277.11144282183
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 90.69999999999742,
+    "mean_distance": 2.994055709054149,
+    "max_distance": 12.598833790771007,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.23153252480706282,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.6362944001169196,
+      277.2258602086481
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 85.83333333333103,
+    "mean_distance": 3.5884178510826326,
+    "max_distance": 12.893564809947781,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.44271844660195364,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.14141465476001613,
+      277.1722093058229
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 90.03333333333079,
+    "mean_distance": 2.9820067675705184,
+    "max_distance": 12.739910694444882,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.1666049611255138,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.6160383904953152,
+      277.0907978099005
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 86.16666666666434,
+    "mean_distance": 3.4998109239158204,
+    "max_distance": 13.174236432921413,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.6266924564797074,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.32277121451808166,
+      277.1856681656444
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 90.9999999999974,
+    "mean_distance": 2.982991090687864,
+    "max_distance": 12.752226472295895,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.19780219780220346,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.5637229765261186,
+      277.1570456169347
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 80.46666666666466,
+    "mean_distance": 8.491132949818907,
+    "max_distance": 22.074649152241964,
+    "max_no_progress": 0.9333333333333332,
+    "steering_flips_per_second": 0.5716652858326572,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.3159567427824859,
+      277.15846849985627
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 82.99999999999785,
+    "mean_distance": 7.401024844332743,
+    "max_distance": 21.472957014303084,
+    "max_no_progress": 0.9333333333333332,
+    "steering_flips_per_second": 0.2771084337349469,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.5577153889839853,
+      277.1271841431689
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 82.03333333333124,
+    "mean_distance": 8.571588178987804,
+    "max_distance": 22.29884372480396,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.5119869971556409,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.4303709192243948,
+      277.1601869698898
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 84.09999999999779,
+    "mean_distance": 7.468184956990296,
+    "max_distance": 21.76803866624828,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.20214030915577225,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.09573214308438598,
+      277.0680736837771
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 81.16666666666463,
+    "mean_distance": 8.500349730353943,
+    "max_distance": 22.79057377983304,
+    "max_no_progress": 0.9333333333333332,
+    "steering_flips_per_second": 0.6160164271047383,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.08753128881048783,
+      277.08948290133634
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 83.43333333333116,
+    "mean_distance": 7.318695497526116,
+    "max_distance": 21.687759524322477,
+    "max_no_progress": 0.9333333333333332,
+    "steering_flips_per_second": 0.28765481422294,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.43113352833049845,
+      277.08338742028263
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 78.33333333333145,
+    "mean_distance": 1.188892250030725,
+    "max_distance": 6.206957722972054,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.5234042553191615,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.015403713948201494,
+      277.0500608187989
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 82.7333333333312,
+    "mean_distance": 0.9775592087561576,
+    "max_distance": 5.631944048008109,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.32634971796938794,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.4878233968840998,
+      277.1958970873675
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 78.66666666666477,
+    "mean_distance": 1.1553270829373765,
+    "max_distance": 5.996195792207436,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.5974576271186585,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.01424760722342203,
+      277.10150733864305
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 82.8333333333312,
+    "mean_distance": 1.0960027944003425,
+    "max_distance": 5.966589424949877,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.22937625754527755,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.2838233886183637,
+      277.07066097067855
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 79.19999999999807,
+    "mean_distance": 1.1149647510600416,
+    "max_distance": 6.109582499470941,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.6691919191919355,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.3883589033464986,
+      277.1894497517348
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 82.99999999999785,
+    "mean_distance": 1.0572122184729036,
+    "max_distance": 5.807358113711529,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.36144578313253944,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.4082432943510951,
+      277.06849217000894
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 85.89999999999769,
+    "mean_distance": 3.558030537820679,
+    "max_distance": 12.96134904172306,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.4307334109429685,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.05426279591467526,
+      277.0370535044168
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 90.66666666666409,
+    "mean_distance": 2.9882248272527137,
+    "max_distance": 12.581825285922086,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.23161764705883012,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.43102000405622937,
+      277.1793174652426
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 85.86666666666436,
+    "mean_distance": 3.6204092373974532,
+    "max_distance": 13.02245232235302,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.4658385093167827,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.16691677977888564,
+      277.0637453361138
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 90.06666666666412,
+    "mean_distance": 2.9806697950921732,
+    "max_distance": 12.702014666647202,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.14433752775722095,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.6489235275354762,
+      277.15720140042015
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 86.233333333331,
+    "mean_distance": 3.5311769704480853,
+    "max_distance": 13.051737400794126,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.6146115191341488,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.30024446496669405,
+      277.1611506695779
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 91.03333333333073,
+    "mean_distance": 2.9786130220762903,
+    "max_distance": 12.684763722654262,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.19772976931527478,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.6042378255855915,
+      277.20271481456683
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 80.66666666666465,
+    "mean_distance": 8.502755753976153,
+    "max_distance": 22.042166507619214,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.5950413223140645,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.4220039239015686,
+      277.08060985255645
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 83.09999999999785,
+    "mean_distance": 7.370613496977504,
+    "max_distance": 21.571575787968666,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.27677496991577133,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.601961386478446,
+      277.13786811407175
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 82.1999999999979,
+    "mean_distance": 8.594358419245449,
+    "max_distance": 22.38809574295886,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.6326034063260503,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.5051039957453956,
+      277.1588782586818
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 84.23333333333112,
+    "mean_distance": 7.4430332881310814,
+    "max_distance": 21.737268398014415,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.20182034032450075,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.1356750825228072,
+      277.14860793481824
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 81.33333333333128,
+    "mean_distance": 8.476165774854808,
+    "max_distance": 22.6960573556237,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.6147540983606712,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -0.07538747592850194,
+      277.08156586786686
+    ]
+  },
+  {
+    "name": "s_bend",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 83.4666666666645,
+    "mean_distance": 7.313254023977407,
+    "max_distance": 21.712636043975717,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.28753993610224393,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      0.4632641244250165,
+      277.13725606632875
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 111.73333333332955,
+    "mean_distance": 1.1584051832360278,
+    "max_distance": 6.281328919513988,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.5011933174224513,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.849694370751628,
+      17.122552492751755
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 115.33333333332935,
+    "mean_distance": 1.110556131546475,
+    "max_distance": 5.963569627139808,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.2774566473988535,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -30.567316373701555,
+      17.2016096882974
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 111.49999999999623,
+    "mean_distance": 1.1281698703808327,
+    "max_distance": 6.16393120040177,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.6726457399103366,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.737470425944498,
+      17.160916149887257
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 115.29999999999602,
+    "mean_distance": 1.065903988882805,
+    "max_distance": 5.7954543803036955,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.3295750216825786,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -30.55095020750396,
+      17.182898213007668
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 111.5666666666629,
+    "mean_distance": 1.123498508345995,
+    "max_distance": 6.212688274451793,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.6543172990738195,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -30.04153489926696,
+      17.046560649119012
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 115.96666666666265,
+    "mean_distance": 1.1335772121350571,
+    "max_distance": 5.8415183893857545,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.327680367921828,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.71699714128168,
+      17.154227869696516
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 128.56666666666194,
+    "mean_distance": 4.048733122571662,
+    "max_distance": 13.831236778494713,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.4744620171117623,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.214714412511345,
+      17.25679858092611
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 136.2666666666615,
+    "mean_distance": 3.1711893078475444,
+    "max_distance": 12.498109935697046,
+    "max_no_progress": 0.7999999999999999,
+    "steering_flips_per_second": 0.19080234833660215,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.782775788197334,
+      17.077497960701784
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 128.16666666666197,
+    "mean_distance": 4.037931921642366,
+    "max_distance": 13.789209971951763,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.4837451235370789,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.059442562685117,
+      17.331640619077252
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 136.09999999999485,
+    "mean_distance": 3.1407714612828266,
+    "max_distance": 12.545179845502489,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.17634092578986707,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.841654513020725,
+      17.132432846082533
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 128.66666666666194,
+    "mean_distance": 4.015587103634266,
+    "max_distance": 13.875803504828212,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.5129533678756665,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.205615996931375,
+      17.28192228598758
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 136.63333333332815,
+    "mean_distance": 3.1659397229301316,
+    "max_distance": 12.246959920655584,
+    "max_no_progress": 0.8333333333333333,
+    "steering_flips_per_second": 0.25616003903392043,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.7886676501354,
+      17.078088106203694
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 18.572850299267483,
+    "max_distance": 35.46046406078098,
+    "max_no_progress": 115.59999999999344,
+    "steering_flips_per_second": 0.5124288293292835,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      10.609290573596368,
+      7.542170672512931
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 16.118937268262297,
+    "max_distance": 32.87754021977415,
+    "max_no_progress": 115.16666666666013,
+    "steering_flips_per_second": 0.14997916955979027,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      39.7615893733122,
+      -14.421263225386662
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 18.644881335702564,
+    "max_distance": 35.46052762050728,
+    "max_no_progress": 122.2333333333264,
+    "steering_flips_per_second": 0.47910012498266336,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      10.353299326846097,
+      7.69993602853118
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 16.234143783167635,
+    "max_distance": 32.83071087364276,
+    "max_no_progress": 115.43333333332679,
+    "steering_flips_per_second": 0.15414525760311779,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      37.52244409675687,
+      -15.229997803520401
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 18.567525766791114,
+    "max_distance": 35.60142543673388,
+    "max_no_progress": 121.93333333332642,
+    "steering_flips_per_second": 0.4207748923760783,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      10.4962204171703,
+      7.354872601111219
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 16.162169765966418,
+    "max_distance": 33.1237796192182,
+    "max_no_progress": 114.76666666666016,
+    "steering_flips_per_second": 0.12914872934315275,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      38.59611164722165,
+      -14.81200505097587
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 111.86666666666288,
+    "mean_distance": 1.1504888938413793,
+    "max_distance": 6.293232391541293,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.4290822407628274,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.887671157932076,
+      17.018099188501765
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 115.09999999999603,
+    "mean_distance": 1.084915710463086,
+    "max_distance": 5.862865461711973,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.2780191138140843,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -30.600684488464637,
+      17.208945435462272
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 111.4666666666629,
+    "mean_distance": 1.1442124328956624,
+    "max_distance": 6.163756244148907,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.6369617224880598,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.645331176467316,
+      17.168468015733136
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 115.0666666666627,
+    "mean_distance": 1.0531342621263364,
+    "max_distance": 5.790328536575387,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.33024333719583987,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -30.573526707384666,
+      17.173539344846716
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 111.53333333332957,
+    "mean_distance": 1.1373578718240362,
+    "max_distance": 6.1858021445319755,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.6365809922295493,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -30.130500495552692,
+      17.149195384404976
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 115.73333333332933,
+    "mean_distance": 1.122113546119487,
+    "max_distance": 5.789361752092628,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.32834101382489617,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.691674203495086,
+      17.12713782076153
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 128.3999999999953,
+    "mean_distance": 4.078768618317968,
+    "max_distance": 13.854004973729445,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.48286604361372487,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.223442526092438,
+      17.267183799743933
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 136.09999999999485,
+    "mean_distance": 3.1866293069868386,
+    "max_distance": 12.5186001308994,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.19103600293902265,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.77018321229625,
+      17.117833239424346
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 128.16666666666197,
+    "mean_distance": 4.049959754604233,
+    "max_distance": 13.813915152140538,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.4993498049415008,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.038613750154795,
+      17.305701112351887
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 135.96666666666152,
+    "mean_distance": 3.151337516389125,
+    "max_distance": 12.568064604654964,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.17651385143418172,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.811362467090277,
+      17.082950335132068
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 128.59999999999528,
+    "mean_distance": 4.011485751550129,
+    "max_distance": 13.846429961465802,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.5132192846034404,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.2071941849206,
+      17.2623402637263
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 136.49999999999483,
+    "mean_distance": 3.1789539242677987,
+    "max_distance": 12.270396235960462,
+    "max_no_progress": 0.8999999999999999,
+    "steering_flips_per_second": 0.24175824175825092,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.806558868217525,
+      17.154459469895887
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 18.59258058077905,
+    "max_distance": 35.52628666708645,
+    "max_no_progress": 122.26666666665973,
+    "steering_flips_per_second": 0.5040966532426284,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      10.613482043378676,
+      7.8642374045140855
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 16.128910004166972,
+    "max_distance": 32.8846308380691,
+    "max_no_progress": 115.09999999999347,
+    "steering_flips_per_second": 0.15831134564644528,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      39.82020656877216,
+      -14.39777197444758
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 18.654967333938327,
+    "max_distance": 35.46018564301578,
+    "max_no_progress": 122.16666666665974,
+    "steering_flips_per_second": 0.5124288293292835,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      10.402397831405576,
+      7.609728694640162
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 16.136996354874512,
+    "max_distance": 32.79056164720882,
+    "max_no_progress": 115.33333333332679,
+    "steering_flips_per_second": 0.1624774336897728,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      38.006523499812,
+      -15.124975133287512
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 18.56200329388692,
+    "max_distance": 35.568962855979876,
+    "max_no_progress": 121.79999999999309,
+    "steering_flips_per_second": 0.41244271628942325,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      10.807231650370314,
+      6.9115624889721206
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 16.184576920757095,
+    "max_distance": 33.153695249957664,
+    "max_no_progress": 114.53333333332684,
+    "steering_flips_per_second": 0.12914872934315275,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      38.52519693327937,
+      -14.814485922350945
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 112.26666666666286,
+    "mean_distance": 1.145319411975932,
+    "max_distance": 6.267278298773988,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.48990498812353206,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.818484905939492,
+      17.11800455392514
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 114.93333333332937,
+    "mean_distance": 1.0864859566267846,
+    "max_distance": 5.925725113560425,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.24361948955917312,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -30.554304823201804,
+      17.078861763068176
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 111.83333333332955,
+    "mean_distance": 1.129557855462242,
+    "max_distance": 6.17448394769961,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.6885245901639577,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.65508206018408,
+      17.10514144592142
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 114.76666666666272,
+    "mean_distance": 1.0414553132335325,
+    "max_distance": 5.767817645175156,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.3311065930874352,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -30.57346928847531,
+      17.072208081504563
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 111.79999999999622,
+    "mean_distance": 1.1392097432864847,
+    "max_distance": 6.185170130136072,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.6887298747764097,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -30.17779582652344,
+      17.128091032204697
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 115.63333333332933,
+    "mean_distance": 1.1296114860991138,
+    "max_distance": 5.803760722341057,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.3286249639665723,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.652855771189433,
+      17.086388174887233
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 128.66666666666194,
+    "mean_distance": 4.0508881423275245,
+    "max_distance": 13.781449189698904,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.5207253886010554,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.131965939883628,
+      17.185309999340703
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 135.79999999999487,
+    "mean_distance": 3.19322999543759,
+    "max_distance": 12.511192956487974,
+    "max_no_progress": 0.9666666666666666,
+    "steering_flips_per_second": 0.1767304860088432,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.785364247787754,
+      17.04325279555175
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 128.23333333332863,
+    "mean_distance": 4.060987785410242,
+    "max_distance": 13.769196495012793,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.5146867689108585,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.00981521364854,
+      17.258198556199442
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 135.86666666666153,
+    "mean_distance": 3.1552301979010857,
+    "max_distance": 12.565050970431704,
+    "max_no_progress": 1.0333333333333332,
+    "steering_flips_per_second": 0.16192345436703262,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.88712335396558,
+      17.116386272593253
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 128.56666666666194,
+    "mean_distance": 4.03315100027409,
+    "max_distance": 13.803756496925601,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.544464609800383,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.201971898985278,
+      17.11572160304716
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 136.39999999999483,
+    "mean_distance": 3.180650565705803,
+    "max_distance": 12.243281407026302,
+    "max_no_progress": 0.9999999999999999,
+    "steering_flips_per_second": 0.22727272727273587,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      -29.808582909668196,
+      17.018720083722332
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 18.589498457578134,
+    "max_distance": 35.54547293983386,
+    "max_no_progress": 122.09999999999307,
+    "steering_flips_per_second": 0.5040966532426284,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      10.892721480789357,
+      7.268608037865176
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 16.142655516566524,
+    "max_distance": 32.92599745472194,
+    "max_no_progress": 114.93333333332681,
+    "steering_flips_per_second": 0.1666435217331003,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      39.88071309561776,
+      -14.384249642211476
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 18.675654713922075,
+    "max_distance": 35.457049047611875,
+    "max_no_progress": 122.06666666665974,
+    "steering_flips_per_second": 0.5290931815025934,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      10.362306479138619,
+      7.419183389786674
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 16.31530252789997,
+    "max_distance": 32.941721076937014,
+    "max_no_progress": 115.16666666666013,
+    "steering_flips_per_second": 0.17914178586308283,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      37.05708730441159,
+      -15.417645474834204
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 18.556542928714265,
+    "max_distance": 35.58567579587259,
+    "max_no_progress": 121.66666666665976,
+    "steering_flips_per_second": 0.41244271628942325,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      10.795946987652565,
+      6.803274680730997
+    ]
+  },
+  {
+    "name": "block",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": false,
+    "elapsed": 240.03333333332228,
+    "mean_distance": 16.311787213268726,
+    "max_distance": 33.254562412454135,
+    "max_no_progress": 114.29999999999352,
+    "steering_flips_per_second": 0.15414525760311779,
+    "recoveries": 0,
+    "collisions": 0,
+    "final_position": [
+      37.76369702409053,
+      -15.071085759522928
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 44.90000000000001,
+    "mean_distance": 1.300774484300521,
+    "max_distance": 5.985708128370796,
+    "max_no_progress": 7.633333333333307,
+    "steering_flips_per_second": 0.5790645879732738,
+    "recoveries": 1,
+    "collisions": 123,
+    "final_position": [
+      59.97124412975853,
+      97.092931513706
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 46.16666666666661,
+    "mean_distance": 1.3199133390165414,
+    "max_distance": 5.352347396904349,
+    "max_no_progress": 7.633333333333307,
+    "steering_flips_per_second": 0.30324909747292456,
+    "recoveries": 1,
+    "collisions": 123,
+    "final_position": [
+      59.82691992954858,
+      97.05595987514586
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 44.86666666666668,
+    "mean_distance": 1.2802757080741687,
+    "max_distance": 6.109467000742413,
+    "max_no_progress": 7.633333333333307,
+    "steering_flips_per_second": 0.4680534918276373,
+    "recoveries": 1,
+    "collisions": 125,
+    "final_position": [
+      60.06586101598934,
+      97.08215043888482
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 46.46666666666659,
+    "mean_distance": 1.3361970996034818,
+    "max_distance": 5.5032253292397195,
+    "max_no_progress": 7.66666666666664,
+    "steering_flips_per_second": 0.1721664275466287,
+    "recoveries": 1,
+    "collisions": 125,
+    "final_position": [
+      59.491696283420715,
+      97.18695192541695
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 44.90000000000001,
+    "mean_distance": 1.3461164928317422,
+    "max_distance": 6.125703168532695,
+    "max_no_progress": 7.599999999999974,
+    "steering_flips_per_second": 0.6681514476614697,
+    "recoveries": 1,
+    "collisions": 123,
+    "final_position": [
+      59.92710609274526,
+      97.09784373974573
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 46.29999999999993,
+    "mean_distance": 1.4106734037328643,
+    "max_distance": 5.537123398287693,
+    "max_no_progress": 7.633333333333307,
+    "steering_flips_per_second": 0.30237580993520563,
+    "recoveries": 1,
+    "collisions": 123,
+    "final_position": [
+      60.12082580827301,
+      97.03265436053293
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 50.36666666666637,
+    "mean_distance": 3.3276403544629916,
+    "max_distance": 13.502665015899069,
+    "max_no_progress": 7.599999999999974,
+    "steering_flips_per_second": 0.4963600264725377,
+    "recoveries": 1,
+    "collisions": 123,
+    "final_position": [
+      60.0296981738996,
+      97.03621032118801
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 51.99999999999961,
+    "mean_distance": 3.3738162163044674,
+    "max_distance": 13.023791355189509,
+    "max_no_progress": 7.633333333333307,
+    "steering_flips_per_second": 0.2500000000000019,
+    "recoveries": 1,
+    "collisions": 123,
+    "final_position": [
+      60.72686873898799,
+      97.17354613407265
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 50.499999999999694,
+    "mean_distance": 3.434501046825744,
+    "max_distance": 13.46288351208021,
+    "max_no_progress": 7.633333333333307,
+    "steering_flips_per_second": 0.4554455445544582,
+    "recoveries": 1,
+    "collisions": 125,
+    "final_position": [
+      59.7890178350133,
+      97.0080812788415
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 52.29999999999959,
+    "mean_distance": 3.3056529930624334,
+    "max_distance": 12.891749145126788,
+    "max_no_progress": 7.633333333333307,
+    "steering_flips_per_second": 0.1720841300191218,
+    "recoveries": 1,
+    "collisions": 125,
+    "final_position": [
+      60.608412174048695,
+      97.08613025406812
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 50.63333333333302,
+    "mean_distance": 3.42003175564397,
+    "max_distance": 13.589010337176955,
+    "max_no_progress": 7.599999999999974,
+    "steering_flips_per_second": 0.6517445687952641,
+    "recoveries": 1,
+    "collisions": 123,
+    "final_position": [
+      59.93153632652594,
+      97.00396424323574
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 52.1999999999996,
+    "mean_distance": 3.4261519570319887,
+    "max_distance": 13.123412216441395,
+    "max_no_progress": 7.599999999999974,
+    "steering_flips_per_second": 0.21072796934866062,
+    "recoveries": 1,
+    "collisions": 123,
+    "final_position": [
+      60.77819963766376,
+      97.14023602197011
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 41.36666666666688,
+    "mean_distance": 10.005931733049765,
+    "max_distance": 28.215111512483837,
+    "max_no_progress": 7.76666666666664,
+    "steering_flips_per_second": 0.5560032232070882,
+    "recoveries": 1,
+    "collisions": 128,
+    "final_position": [
+      59.01232917397858,
+      97.20927586835174
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.16666666666678,
+    "mean_distance": 9.280858471350365,
+    "max_distance": 26.76103361055528,
+    "max_no_progress": 7.733333333333307,
+    "steering_flips_per_second": 0.3243243243243235,
+    "recoveries": 1,
+    "collisions": 120,
+    "final_position": [
+      59.561879819939875,
+      97.16356242107074
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 41.16666666666689,
+    "mean_distance": 10.007818358287969,
+    "max_distance": 28.24295894883717,
+    "max_no_progress": 7.799999999999973,
+    "steering_flips_per_second": 0.5344129554655841,
+    "recoveries": 1,
+    "collisions": 127,
+    "final_position": [
+      58.89880172938074,
+      97.25199309358784
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.43333333333343,
+    "mean_distance": 9.309356439915126,
+    "max_distance": 26.710052665090167,
+    "max_no_progress": 7.76666666666664,
+    "steering_flips_per_second": 0.1611665387567149,
+    "recoveries": 1,
+    "collisions": 127,
+    "final_position": [
+      59.67518324819973,
+      97.11704894754932
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 55.96666666666605,
+    "mean_distance": 8.0472604870425,
+    "max_distance": 28.12658486887822,
+    "max_no_progress": 14.9333333333339,
+    "steering_flips_per_second": 0.6432400238237117,
+    "recoveries": 3,
+    "collisions": 365,
+    "final_position": [
+      58.88389041412725,
+      97.33729096702767
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.14,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 48.33333333333315,
+    "mean_distance": 8.588289156967143,
+    "max_distance": 26.655759272804715,
+    "max_no_progress": 7.76666666666664,
+    "steering_flips_per_second": 0.31034482758620807,
+    "recoveries": 2,
+    "collisions": 239,
+    "final_position": [
+      59.788904423126624,
+      97.06937001823587
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 44.90000000000001,
+    "mean_distance": 1.2724128742345533,
+    "max_distance": 5.955274915142496,
+    "max_no_progress": 7.499999999999974,
+    "steering_flips_per_second": 0.4899777282850778,
+    "recoveries": 1,
+    "collisions": 126,
+    "final_position": [
+      59.91564170600586,
+      97.0972562424757
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 45.866666666666625,
+    "mean_distance": 1.3060332612246448,
+    "max_distance": 5.39322332857212,
+    "max_no_progress": 7.499999999999974,
+    "steering_flips_per_second": 0.32703488372093054,
+    "recoveries": 1,
+    "collisions": 126,
+    "final_position": [
+      59.990156407293654,
+      97.08422558483083
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 44.76666666666669,
+    "mean_distance": 1.2588695616690924,
+    "max_distance": 6.0763690651585165,
+    "max_no_progress": 7.433333333333308,
+    "steering_flips_per_second": 0.46909903201787023,
+    "recoveries": 1,
+    "collisions": 126,
+    "final_position": [
+      60.136012554553865,
+      97.04870053215414
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 46.23333333333327,
+    "mean_distance": 1.320361588214773,
+    "max_distance": 5.49601427344913,
+    "max_no_progress": 7.433333333333308,
+    "steering_flips_per_second": 0.173035328046143,
+    "recoveries": 1,
+    "collisions": 126,
+    "final_position": [
+      59.41090681040564,
+      97.16290529716073
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 44.83333333333335,
+    "mean_distance": 1.3107057795824992,
+    "max_distance": 6.091183089216811,
+    "max_no_progress": 7.433333333333308,
+    "steering_flips_per_second": 0.6914498141263938,
+    "recoveries": 1,
+    "collisions": 126,
+    "final_position": [
+      59.9549830909973,
+      97.15891337670365
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 46.099999999999945,
+    "mean_distance": 1.4022234844796926,
+    "max_distance": 5.504814594272069,
+    "max_no_progress": 7.433333333333308,
+    "steering_flips_per_second": 0.2819956616052064,
+    "recoveries": 1,
+    "collisions": 126,
+    "final_position": [
+      60.23068353540936,
+      97.01915452582773
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 50.16666666666638,
+    "mean_distance": 3.3603577446409223,
+    "max_distance": 13.495307667324084,
+    "max_no_progress": 7.466666666666641,
+    "steering_flips_per_second": 0.4983388704318965,
+    "recoveries": 1,
+    "collisions": 126,
+    "final_position": [
+      60.02623775887705,
+      97.16079704722532
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 51.83333333333295,
+    "mean_distance": 3.343149072752593,
+    "max_distance": 12.999548894313676,
+    "max_no_progress": 7.499999999999974,
+    "steering_flips_per_second": 0.25080385852090215,
+    "recoveries": 1,
+    "collisions": 126,
+    "final_position": [
+      60.727396722045356,
+      97.11136574964198
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 50.36666666666637,
+    "mean_distance": 3.4091584253628566,
+    "max_distance": 13.439001161974602,
+    "max_no_progress": 7.399999999999975,
+    "steering_flips_per_second": 0.5360688285903407,
+    "recoveries": 1,
+    "collisions": 126,
+    "final_position": [
+      59.80185877137654,
+      97.14167852935823
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 52.133333333332935,
+    "mean_distance": 3.2709809687714775,
+    "max_distance": 12.82497960858319,
+    "max_no_progress": 7.399999999999975,
+    "steering_flips_per_second": 0.17263427109974555,
+    "recoveries": 1,
+    "collisions": 126,
+    "final_position": [
+      60.60428684080462,
+      97.1826269793127
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 50.533333333333026,
+    "mean_distance": 3.4248286249519904,
+    "max_distance": 13.56842294159975,
+    "max_no_progress": 7.399999999999975,
+    "steering_flips_per_second": 0.7124010554089754,
+    "recoveries": 1,
+    "collisions": 126,
+    "final_position": [
+      59.6465950634332,
+      97.14074408899003
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 52.06666666666627,
+    "mean_distance": 3.4113437218929805,
+    "max_distance": 13.110338685584153,
+    "max_no_progress": 7.399999999999975,
+    "steering_flips_per_second": 0.2496798975672234,
+    "recoveries": 1,
+    "collisions": 126,
+    "final_position": [
+      60.766341362849396,
+      97.13209527803895
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 41.43333333333354,
+    "mean_distance": 10.001386538806377,
+    "max_distance": 28.191729028143797,
+    "max_no_progress": 7.633333333333307,
+    "steering_flips_per_second": 0.6275140788415093,
+    "recoveries": 1,
+    "collisions": 127,
+    "final_position": [
+      58.85504181071253,
+      97.34016922921101
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.13333333333345,
+    "mean_distance": 9.280875932602823,
+    "max_distance": 26.77229961292707,
+    "max_no_progress": 7.633333333333307,
+    "steering_flips_per_second": 0.3245749613601228,
+    "recoveries": 1,
+    "collisions": 128,
+    "final_position": [
+      59.54224909004266,
+      97.19497187374837
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 41.13333333333356,
+    "mean_distance": 10.008016473489702,
+    "max_distance": 28.17016184324891,
+    "max_no_progress": 7.566666666666641,
+    "steering_flips_per_second": 0.36466774716369327,
+    "recoveries": 1,
+    "collisions": 126,
+    "final_position": [
+      58.96705557469363,
+      97.23349099837633
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.36666666666677,
+    "mean_distance": 9.287004681934144,
+    "max_distance": 26.648848753775077,
+    "max_no_progress": 7.566666666666641,
+    "steering_flips_per_second": 0.20753266717909252,
+    "recoveries": 1,
+    "collisions": 126,
+    "final_position": [
+      59.717641598953996,
+      97.17551943739005
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 56.26666666666603,
+    "mean_distance": 8.05772498676411,
+    "max_distance": 28.168921786351483,
+    "max_no_progress": 15.266666666667241,
+    "steering_flips_per_second": 0.6398104265402915,
+    "recoveries": 3,
+    "collisions": 384,
+    "final_position": [
+      58.853393388317706,
+      97.29749322551207
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.21,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.43333333333343,
+    "mean_distance": 9.346856272164013,
+    "max_distance": 26.65971087744981,
+    "max_no_progress": 7.566666666666641,
+    "steering_flips_per_second": 0.20721412125863345,
+    "recoveries": 1,
+    "collisions": 126,
+    "final_position": [
+      59.858184339041166,
+      97.0235281757906
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 45.166666666666664,
+    "mean_distance": 1.2725680888510968,
+    "max_distance": 5.973789266015286,
+    "max_no_progress": 7.733333333333307,
+    "steering_flips_per_second": 0.4870848708487085,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      59.886345948831206,
+      97.15669682211227
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 46.16666666666661,
+    "mean_distance": 1.2934301025038568,
+    "max_distance": 5.333523165680056,
+    "max_no_progress": 7.76666666666664,
+    "steering_flips_per_second": 0.30324909747292456,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      59.82940888267045,
+      97.02002348893076
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 45.06666666666667,
+    "mean_distance": 1.264451575731973,
+    "max_distance": 6.089315878586629,
+    "max_no_progress": 7.733333333333307,
+    "steering_flips_per_second": 0.46597633136094674,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      60.06362569116472,
+      97.10891123655728
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 46.53333333333325,
+    "mean_distance": 1.3186182721604573,
+    "max_distance": 5.50701820524629,
+    "max_no_progress": 7.76666666666664,
+    "steering_flips_per_second": 0.17191977077363926,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      59.41456321870496,
+      97.10441206589
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 45.433333333333316,
+    "mean_distance": 1.3219965542595313,
+    "max_distance": 6.136893994452607,
+    "max_no_progress": 7.733333333333307,
+    "steering_flips_per_second": 0.7483492296404992,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      59.8773742679558,
+      97.11040648476575
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 0.5,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 46.53333333333325,
+    "mean_distance": 1.397835685179595,
+    "max_distance": 5.501003161663019,
+    "max_no_progress": 7.76666666666664,
+    "steering_flips_per_second": 0.3438395415472785,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      60.254296057529366,
+      97.17245033385797
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 50.69999999999968,
+    "mean_distance": 3.2438224090133305,
+    "max_distance": 13.455649673034031,
+    "max_no_progress": 7.733333333333307,
+    "steering_flips_per_second": 0.4142011834319553,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      60.01816335556915,
+      97.05636853381031
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 52.0999999999996,
+    "mean_distance": 3.3604486613215356,
+    "max_distance": 13.022116646385534,
+    "max_no_progress": 7.733333333333307,
+    "steering_flips_per_second": 0.24952015355086563,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      60.73607099290886,
+      97.11357423783683
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 50.83333333333301,
+    "mean_distance": 3.3712908708175804,
+    "max_distance": 13.388922349943094,
+    "max_no_progress": 7.6999999999999735,
+    "steering_flips_per_second": 0.49180327868852775,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      59.86791056666432,
+      97.08010672339655
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 52.49999999999958,
+    "mean_distance": 3.2569367054932714,
+    "max_distance": 12.8162248475886,
+    "max_no_progress": 7.733333333333307,
+    "steering_flips_per_second": 0.1714285714285728,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      60.64789211232333,
+      97.08178457313494
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 50.999999999999666,
+    "mean_distance": 3.3863218299929003,
+    "max_distance": 13.527703565562803,
+    "max_no_progress": 7.6999999999999735,
+    "steering_flips_per_second": 0.7058823529411811,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      59.67120824971151,
+      97.05937077777345
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 1.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 52.39999999999959,
+    "mean_distance": 3.385562093528267,
+    "max_distance": 13.090760246214643,
+    "max_no_progress": 7.733333333333307,
+    "steering_flips_per_second": 0.3244274809160331,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      60.80580293547658,
+      97.16792561125494
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 41.933333333333515,
+    "mean_distance": 9.926023983691712,
+    "max_distance": 28.186880022465147,
+    "max_no_progress": 7.86666666666664,
+    "steering_flips_per_second": 0.620031796502382,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      58.90168244313835,
+      97.35031252652101
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 0,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.46666666666676,
+    "mean_distance": 9.232733822481196,
+    "max_distance": 26.734399954156054,
+    "max_no_progress": 7.833333333333306,
+    "steering_flips_per_second": 0.32208588957055145,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      59.552223682368925,
+      97.06101041715388
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 41.500000000000206,
+    "mean_distance": 9.957316727937673,
+    "max_distance": 28.214768153998122,
+    "max_no_progress": 7.86666666666664,
+    "steering_flips_per_second": 0.5301204819277082,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      58.93466931433397,
+      97.27763026727742
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 1,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.70000000000008,
+    "mean_distance": 9.290049953403338,
+    "max_distance": 26.657274257156857,
+    "max_no_progress": 7.86666666666664,
+    "steering_flips_per_second": 0.16018306636155577,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      59.61660617291006,
+      97.15524221895336
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.0,
+    "reached": true,
+    "elapsed": 64.29999999999892,
+    "mean_distance": 7.231318426722577,
+    "max_distance": 28.144088834889317,
+    "max_no_progress": 23.30000000000053,
+    "steering_flips_per_second": 0.5443234836703047,
+    "recoveries": 4,
+    "collisions": 277,
+    "final_position": [
+      58.79986814304269,
+      97.25708581574528
+    ]
+  },
+  {
+    "name": "wall",
+    "delay": 0.3,
+    "scale": 2.0,
+    "seed": 2,
+    "dead_zone": 0.25,
+    "reached": true,
+    "elapsed": 43.90000000000007,
+    "mean_distance": 9.257476372476054,
+    "max_distance": 26.625712204488494,
+    "max_no_progress": 7.86666666666664,
+    "steering_flips_per_second": 0.29612756264236856,
+    "recoveries": 1,
+    "collisions": 68,
+    "final_position": [
+      59.87708612250957,
+      97.14775799992259
+    ]
+  }
+]

@@ -1,0 +1,517 @@
+"""Defensive path following with a noisy GPS distance speed sensor."""
+
+from dataclasses import dataclass
+from math import atan2, degrees, hypot, isfinite, sqrt
+
+from pilot.contract import NEUTRAL, Command, Reading
+
+
+@dataclass(frozen=True)
+class DriveConfig:
+    """Controller timing and gains; validate changes against replay and simulation."""
+
+    steer_gain: float = 0.02  # Heading error to stick deflection per degree.
+    steer_zero: float = 0.005  # Snap a decayed stick to zero below this magnitude.
+    max_step_time: float = 0.5  # Bound feedback integration after a scheduling pause.
+    steer_smoothing: float = 0.05  # Low-pass time constant for stick output.
+    bearing_smoothing: float = 0.1  # Reject rapid angle noise before feedback.
+    steer_deadband: float = 8.0  # Ignore small filtered heading errors.
+    steering_bias: float = 0.25  # Minimum active stick to tolerate a physical dead zone.
+    command_delay: float = 0.21  # Capture-to-control latency used for prediction.
+    prediction_limit: float = 8.0  # Maximum angle extrapolation across the delay.
+    cruise_throttle: float = 0.58  # Pedal on a straight, legible route.
+    bend_throttle: float = 0.22  # Minimum pedal while following a bend.
+    bend_gain: float = 0.013  # Pedal reduction per degree of upcoming bend.
+    lookahead_px: float = 8.0  # First visible route target, in crop pixels.
+    speed_limit: float = 7.0  # Straight-line limit in metres per second.
+    slow_speed: float = 2.0  # Lowest planned corner speed, in metres per second.
+    lateral_acceleration: float = 1.2  # Conservative m/s^2 cornering budget.
+    planned_deceleration: float = 2.0  # Metres/s^2 used to lift ahead of a bend.
+    speed_smoothing: float = 0.25  # Suppress frame-pair sensor noise before pedal feedback.
+    speed_gain: float = 0.18  # Throttle feedback per m/s below the target.
+    brake_gain: float = 0.18  # Brake feedback per m/s above the target.
+    brake_margin: float = 1.0  # Sensor-error allowance before applying L2.
+    motion_speed: float = 0.5  # Filtered m/s evidence of motion, below the L2 safety threshold.
+    rolling_speed: float = 1.0  # Never use L2 below this measured m/s speed.
+    unknown_throttle: float = 0.18  # Slow pedal fallback when the sensor abstains.
+    gps_interval: float = 0.25  # One optional OCR job at most every quarter second.
+    gps_window: float = 3.0  # Robust distance slope window in seconds.
+    gps_stale: float = 1.5  # Expired GPS cannot authorize braking.
+    gps_max_speed: float = 50.0  # Reject impossible distance changes, m/s.
+    gps_tolerance: float = 8.0  # Metres of OCR scatter around a consistent trend.
+    gps_acceleration: float = 8.0  # Plausible m/s^2 change before quarantining a jump.
+    map_scale_min: float = 0.35  # Low-speed 0.7 m/px with a factor-of-two safety band.
+    arrival_distance: float = 8.0  # Enter the approach speed in the last metres.
+    arrival_speed: float = 1.5  # Approach at walking pace; route loss ends the run.
+    damage_hold: float = 0.5  # Conservative bound below replay gap p90 .555s; damage cannot renew it.
+    damage_angle: float = 25.0  # Reject direction changes beyond recent clean evidence.
+    confidence_min: float = 0.5  # Lowest accepted perception confidence.
+    hold_time: float = 0.3  # Last follow command survives only this long without evidence.
+    route_gone_time: float = 2.0  # Time of observed route absence before stopping.
+    stuck_time: float = 2.0  # Throttle plus explicitly absent movement before escape.
+    reverse_time: float = 1.25  # Duration of the reverse pedal phase.
+    forward_time: float = 4.0  # Forward escape observation window.
+    recovery_clear_time: float = 2.0  # Sustained forward motion clears failed-attempt count.
+    recovery_steer: float = 0.8  # Stick magnitude used to reverse away from the route.
+    recovery_throttle: float = 0.45  # Forward pedal during escape.
+    max_recoveries: int = 3  # Consecutive failed escapes before a latched stop.
+    outlier_angle: float = 60.0  # Abrupt jumps larger than this require persistence.
+    outlier_window: float = 0.3  # Accept a persistent new direction after this interval.
+    stop_brake_time: float = 0.7  # Bound L2 use so a stop cannot become indefinite reverse.
+    far_bend: float = (
+        1.0  # Weight of the far bearing in the speed limit; at zero only the route's shape slows.
+    )
+    curve_step: int = 1  # Path points between the three of a curvature estimate; neighbours are pixel noise.
+    curve_trim: int = 0  # Far path points left out of the curvature; the trace bends along the rim.
+    hold_throttle: float = 0.0  # Pedal that about keeps the speed at the limit; the feedback works around it.
+    brake_floor: float = 0.0  # No L2 for speed below this measured m/s.
+    brake_pulse: float = 0.0  # Longest unbroken L2 for speed in seconds; zero does not bound it.
+    brake_rest: float = 1.0  # Seconds without L2 after a pulse, for the speed reading to catch up.
+
+    def __post_init__(self) -> None:
+        for name in self.__dataclass_fields__:
+            value = getattr(self, name)
+            if isinstance(value, bool) or not isinstance(value, (int, float)) or not isfinite(value):
+                raise ValueError(f"{name} must be finite")
+            if value < 0:
+                raise ValueError(f"{name} must be nonnegative")
+        for name in (
+            "unknown_throttle",
+            "cruise_throttle",
+            "bend_throttle",
+            "confidence_min",
+            "recovery_steer",
+            "recovery_throttle",
+            "steering_bias",
+        ):
+            if getattr(self, name) > 1:
+                raise ValueError(f"{name} must be at most one")
+        if self.max_recoveries < 1 or not isinstance(self.max_recoveries, int):
+            raise ValueError("max_recoveries must be a positive integer")
+        if self.curve_step < 1 or not isinstance(self.curve_step, int):
+            raise ValueError("curve_step must be a positive integer")
+        if not isinstance(self.curve_trim, int):
+            raise ValueError("curve_trim must be an integer")
+
+
+def _number(value: object) -> float | None:
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return None
+    try:
+        return float(value) if isfinite(value) else None
+    except (OverflowError, ValueError):
+        return None
+
+
+def _angle(value: float) -> float:
+    return (value + 180.0) % 360.0 - 180.0
+
+
+def _clip(value: float, low: float = -1.0, high: float = 1.0) -> float:
+    return max(low, min(high, value))
+
+
+class Driver:
+    """Clock-driven state machine; step is total over malformed scalar fields."""
+
+    def __init__(self, config: DriveConfig | None = None) -> None:
+        self.config = config if config is not None else DriveConfig()
+        self._time: float | None = None
+        self._speed: float | None = None
+        self._speed_at: float | None = None
+        self._measured_speed: float | None = None
+        self._stationary = False
+        self._last_good: float | None = None
+        self._missing_duration = 0.0
+        self._missing_observed_at: float | None = None
+        self._route_stop_time: float | None = None
+        self._route_stopped = False
+        self._error: float | None = None
+        self._outlier_since: float | None = None
+        self._filtered_error: float | None = None
+        self._filtered_far: float | None = None
+        self._moving_since: float | None = None
+        self._steer = 0.0
+        self._last = NEUTRAL
+        self._stuck_since: float | None = None
+        self._phase: str | None = None
+        self._phase_since = 0.0
+        self._attempts = 0
+        self._escape = 0.0
+        self._trusted_route: str | None = None
+        self._trusted_error: float | None = None
+        self._brake_since: float | None = None
+
+    def _emit(self, steer: float, throttle: float, brake: float, state: str) -> Command:
+        if (
+            state in {"follow", "coast", "route-gone"}
+            and self._measured_speed is not None
+            and self._measured_speed <= self.config.rolling_speed
+        ):
+            brake = 0
+        if state in {"follow", "coast"} and (self._measured_speed is None or self._stationary):
+            brake = 0
+        self._last = Command(_clip(steer), _clip(throttle, 0), _clip(brake, 0), state)
+        return self._last
+
+    def _idle(self) -> Command:
+        self._trusted_route = self._trusted_error = None
+        self._last_good = self._missing_observed_at = self._route_stop_time = None
+        self._missing_duration = 0.0
+        self._route_stopped = False
+        self._error = self._outlier_since = None
+        self._filtered_error = self._filtered_far = self._moving_since = None
+        self._stuck_since = None
+        self._steer = 0.0
+        self._speed = None
+        if self._phase != "failed-recovery":
+            self._phase = None
+        return self._emit(0, 0, 0, "idle")
+
+    def _coast(self, now: float) -> Command:
+        if self._last_good is not None and now - self._last_good <= self.config.hold_time:
+            if self._last.state in {"follow", "coast", "recovery-reverse", "recovery-forward"}:
+                return self._emit(self._last.steer, self._last.throttle, self._last.brake, "coast")
+        self._steer = 0.0
+        self._stuck_since = None
+        if self._phase != "failed-recovery":
+            self._phase = None
+        return self._emit(0, 0, 0, "coast")
+
+    def step(
+        self, reading: Reading, t: float, moving: bool | None = None, speed: float | None = None
+    ) -> Command:
+        """Return bounded controls; invalid/backwards clocks release and reset timers.
+
+        Unknown motion never means stuck. A failure latch survives clock changes.
+        Picture angles minus the arrow give camera-independent heading errors.
+        """
+        speed = _number(speed)
+        speed = speed if speed is not None and speed >= 0 else None
+        self._measured_speed = speed
+        moving = moving if isinstance(moving, bool) else None
+        self._stationary = moving is False
+        now = _number(t)
+        if now is None or (self._time is not None and now < self._time):
+            self._time = now
+            return self._idle()
+        dt = 0.0 if self._time is None else min(now - self._time, self.config.max_step_time)
+        self._time = now
+        if speed is not None:
+            fresh = self._speed_at is None or now - self._speed_at > self.config.max_step_time
+            alpha_speed = (
+                1.0 if self._speed is None or fresh else dt / max(dt + self.config.speed_smoothing, 1e-9)
+            )
+            self._speed_at = now
+            self._speed = speed if self._speed is None else self._speed + alpha_speed * (speed - self._speed)
+            speed = self._speed
+            if moving is not None and speed > self.config.motion_speed:
+                moving = True
+        if moving is False:
+            self._moving_since = None
+        elif moving is None and self._moving_since is not None:
+            self._moving_since += dt
+        if (
+            not isinstance(reading, Reading)
+            or not isinstance(reading.minimap, str)
+            or reading.minimap != "tilted"
+        ):
+            return self._idle()
+        if self._phase == "failed-recovery":
+            return self._emit(0, 0, 0, "failed-recovery")
+        confidence = _number(reading.confidence)
+        damaged = self._damage_agrees(reading, now, confidence)
+        if not damaged and (
+            reading.corrupt is not False
+            or confidence is None
+            or not self.config.confidence_min <= confidence <= 1
+        ):
+            self._missing_observed_at = None
+            return self._coast(now)
+        if not isinstance(reading.route, str):
+            return self._coast(now)
+        if reading.route == "none":
+            if self._missing_observed_at is not None:
+                self._missing_duration += now - self._missing_observed_at
+            self._missing_observed_at = now
+            if self._missing_duration >= self.config.route_gone_time:
+                self._stuck_since = None
+                self._phase = None
+                if self._route_stop_time is None:
+                    self._route_stop_time = now
+                if moving is False or now - self._route_stop_time >= self.config.stop_brake_time:
+                    self._route_stopped = True
+                return self._emit(0, 0, int(not self._route_stopped), "route-gone")
+            return self._coast(now)
+        self._missing_observed_at = self._route_stop_time = None
+        self._missing_duration = 0.0
+        self._route_stopped = False
+        near, far, arrow = (_number(reading.bearing), _number(reading.far_bearing), _number(reading.arrow))
+        if reading.route not in ("yellow", "purple") or near is None or arrow is None:
+            return self._coast(now)
+        error = _angle(_angle(near) - _angle(arrow))
+        far_error = error if far is None else _angle(_angle(far) - _angle(arrow))
+        path = _path(reading.path)
+        if path:
+            target = _target(path, self.config.lookahead_px)
+            error = _angle(degrees(atan2(target[0], target[1])) - arrow)
+            far_error = _angle(degrees(atan2(path[-1][0], path[-1][1])) - arrow)
+        if self._error is not None and abs(_angle(error - self._error)) > self.config.outlier_angle:
+            if self._outlier_since is None:
+                self._outlier_since = now
+            if now - self._outlier_since < self.config.outlier_window:
+                return self._coast(now)
+        self._outlier_since = None
+        if not damaged:
+            self._last_good = now
+            self._trusted_route = reading.route
+            self._trusted_error = _angle(_angle(_number(reading.bearing)) - _angle(arrow))
+
+        if self._phase == "recovery-reverse":
+            if now - self._phase_since < self.config.reverse_time:
+                return self._emit(self._escape, 0, 1, "recovery-reverse")
+            self._phase, self._phase_since = "recovery-forward", now
+        if self._phase == "recovery-forward":
+            if moving is True:
+                if self._moving_since is None:
+                    self._moving_since = now
+                if now - self._moving_since >= self.config.recovery_clear_time:
+                    self._attempts = 0
+                    self._phase = None
+                    self._stuck_since = None
+            if self._phase is not None:
+                if now - self._phase_since < self.config.forward_time:
+                    return self._emit(
+                        _clip(
+                            self.config.steer_gain * error,
+                            -self.config.recovery_steer,
+                            self.config.recovery_steer,
+                        ),
+                        min(self.config.recovery_throttle, self.config.unknown_throttle)
+                        if speed is None
+                        else min(
+                            self.config.recovery_throttle,
+                            max(
+                                0,
+                                self.config.speed_gain
+                                * (self._speed_limit(path, max(abs(error), abs(far_error)), speed) - speed),
+                            ),
+                        ),
+                        0,
+                        "recovery-forward",
+                    )
+                if moving is not False:
+                    self._phase = None
+                elif self._attempts >= self.config.max_recoveries:
+                    self._phase = "failed-recovery"
+                    return self._emit(0, 0, 0, "failed-recovery")
+                else:
+                    return self._recover(now, error)
+
+        if moving is False and self._last.throttle > 0:
+            if self._stuck_since is None:
+                self._stuck_since = now
+            if now - self._stuck_since >= self.config.stuck_time:
+                if self._attempts >= self.config.max_recoveries:
+                    self._phase = "failed-recovery"
+                    return self._emit(0, 0, 0, "failed-recovery")
+                return self._recover(now, error)
+        elif moving is None and self._stuck_since is not None:
+            self._stuck_since += dt  # Missing evidence pauses, rather than proves, a standstill.
+        else:
+            self._stuck_since = None
+
+        if moving is True and self._last.throttle > 0:
+            if self._moving_since is None:
+                self._moving_since = now
+            if now - self._moving_since >= self.config.recovery_clear_time:
+                self._attempts = 0
+        elif moving is False or self._last.throttle <= 0:
+            self._moving_since = None
+        previous = self._filtered_error
+        alpha = (
+            1.0
+            if previous is None
+            else dt
+            / max(
+                dt + self.config.bearing_smoothing,
+                1e-9,
+            )
+        )
+        self._filtered_error = (
+            error if previous is None else _angle(previous + alpha * _angle(error - previous))
+        )
+        self._filtered_far = (
+            far_error
+            if self._filtered_far is None
+            else _angle(self._filtered_far + alpha * _angle(far_error - self._filtered_far))
+        )
+        rate = 0.0 if previous is None or dt <= 0 else _angle(self._filtered_error - previous) / dt
+        correction = _clip(
+            rate * self.config.command_delay, -self.config.prediction_limit, self.config.prediction_limit
+        )
+        # Predict turns only outside the neutral band; differentiated map jitter
+        # otherwise caused up to 7.7 steering sign changes per second in the grid.
+        if abs(self._filtered_error) <= self.config.steer_deadband:
+            correction = 0.0
+        adjusted = self._filtered_error + correction
+        bend_delta = _angle(self._filtered_far - self._filtered_error)
+        adjusted = (1 if adjusted >= 0 else -1) * max(0.0, abs(adjusted) - self.config.steer_deadband)
+        target = _clip(self.config.steer_gain * adjusted)
+        if target:
+            target = (1 if target > 0 else -1) * (
+                self.config.steering_bias + (1 - self.config.steering_bias) * abs(target)
+            )
+        alpha = (
+            1.0
+            if self._error is None
+            else dt
+            / max(
+                dt + self.config.steer_smoothing,
+                1e-9,
+            )
+        )
+        self._steer += alpha * (target - self._steer)
+        if abs(self._steer) < self.config.steer_zero and target == 0:
+            self._steer = 0.0
+        bend = max(
+            abs(self._filtered_error),
+            self.config.far_bend * abs(self._filtered_far),
+            self.config.far_bend * abs(bend_delta),
+        )
+        throttle = max(self.config.bend_throttle, self.config.cruise_throttle - self.config.bend_gain * bend)
+        limit = self._speed_limit(path, bend, speed)
+        distance = _number(reading.gps_distance)
+        if distance is not None and 0 <= distance <= self.config.arrival_distance:
+            limit = min(limit, self.config.arrival_speed)
+        brake = 0.0
+        if speed is None:
+            throttle *= self.config.unknown_throttle / max(self.config.cruise_throttle, 1e-9)
+        else:
+            throttle = _clip(
+                self.config.hold_throttle + self.config.speed_gain * (limit - speed),
+                0,
+                self.config.cruise_throttle,
+            )
+            if speed > self.config.rolling_speed and speed > limit + self.config.brake_margin:
+                brake = _clip(self.config.brake_gain * (speed - limit - self.config.brake_margin), 0, 0.7)
+                brake = self._pulsed(brake, speed, now)
+        self._error = error
+        return self._emit(self._steer, throttle, brake, "follow")
+
+    def _speed_limit(self, path, bend: float, speed: float | None) -> float:
+        cfg = self.config
+        limit = max(min(cfg.slow_speed, cfg.speed_limit), cfg.speed_limit / (1 + bend / 15))
+        step = cfg.curve_step
+        path = path[: len(path) - cfg.curve_trim]
+        if len(path) < 2 * step + 1:
+            return limit
+        travel = hypot(*path[0])
+        for index in range(len(path) - 2 * step):
+            a, b, c = path[index], path[index + step], path[index + 2 * step]
+            ab, bc = hypot(b[0] - a[0], b[1] - a[1]), hypot(c[0] - b[0], c[1] - b[1])
+            if min(ab, bc) < 1:
+                continue
+            cross = abs((b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0]))
+            curvature = 2 * cross / max(ab * bc * hypot(c[0] - a[0], c[1] - a[1]), 1e-6)
+            corner = max(
+                min(cfg.slow_speed, cfg.speed_limit),
+                sqrt(cfg.lateral_acceleration * cfg.map_scale_min / max(curvature, 1e-6)),
+            )
+            # Reserve the hidden near-arrow section and the command delay for turning in.
+            remaining = max(
+                0,
+                (travel - cfg.lookahead_px) * cfg.map_scale_min
+                - (speed or 0) * (cfg.command_delay + cfg.gps_window / 2),
+            )
+            limit = min(limit, sqrt(corner * corner + 2 * cfg.planned_deceleration * remaining))
+            travel += hypot(path[index + 1][0] - a[0], path[index + 1][1] - a[1])
+        return limit
+
+    def _pulsed(self, brake: float, speed: float, now: float) -> float:
+        """L2 for speed in bounded pulses: the reading lags, and a brake held too long ends in reverse."""
+        cfg = self.config
+        if not brake or not cfg.brake_pulse:
+            return brake
+        if speed < cfg.brake_floor:
+            return 0.0
+        if self._brake_since is None or not 0 <= now - self._brake_since < cfg.brake_pulse + cfg.brake_rest:
+            self._brake_since = now
+        return brake if now - self._brake_since < cfg.brake_pulse else 0.0
+
+    def _damage_agrees(self, reading: Reading, now: float, confidence: float | None) -> bool:
+        if (
+            reading.corrupt is not True
+            or confidence is None
+            or not 0.3 <= confidence <= 1
+            or self._last_good is None
+            or now - self._last_good > self.config.damage_hold
+            or not isinstance(reading.route, str)
+            or reading.route != self._trusted_route
+            or self._trusted_error is None
+        ):
+            return False
+        near, arrow = _number(reading.bearing), _number(reading.arrow)
+        if near is None or arrow is None:
+            return False
+        error = _angle(_angle(near) - _angle(arrow))
+        return (
+            abs(error) > 5
+            and error * self._trusted_error > 0
+            and abs(_angle(error - self._trusted_error)) <= self.config.damage_angle
+        )
+
+    def _recover(self, now: float, error: float) -> Command:
+        self._attempts += 1
+        self._phase, self._phase_since = "recovery-reverse", now
+        self._escape = -self.config.recovery_steer if error >= 0 else self.config.recovery_steer
+        self._stuck_since = self._moving_since = None
+        return self._emit(self._escape, 0, 1, "recovery-reverse")
+
+
+def _path(value: object) -> tuple[tuple[float, float], ...]:
+    """Reject malformed paths as a whole, preserving the legacy bearing fallback."""
+    if not isinstance(value, (tuple, list)) or len(value) > 256:
+        return ()
+    points = []
+    for point in value:
+        if not isinstance(point, (tuple, list)) or len(point) != 2:
+            return ()
+        x, y = (_number(v) for v in point)
+        if x is None or y is None or not 10 <= hypot(x, y) <= 240:
+            return ()
+        if points and hypot(x - points[-1][0], y - points[-1][1]) < 0.5:
+            continue
+        points.append((x, y))
+    return tuple(points)
+
+
+def _target(path, radius: float):
+    previous = path[0]
+    if len(path) >= 2 and hypot(*previous) > radius:
+        # Continue only the first visible straight segment under the arrow.
+        # This short aiming point avoids cutting a wide corner as the map zooms.
+        x, y = previous
+        dx, dy = path[1][0] - x, path[1][1] - y
+        length = hypot(dx, dy)
+        if length > 0:
+            dx, dy = dx / length, dy / length
+            projection = x * dx + y * dy
+            discriminant = projection * projection - x * x - y * y + radius * radius
+            if discriminant < 0 and projection > 0:
+                # Aim at the line's nearest point until the short circle reaches
+                # it; the first visible point would start cutting the corner.
+                return x - projection * dx, y - projection * dy
+            if discriminant >= 0:
+                along = -projection + sqrt(discriminant)
+                if along < 0:
+                    return x + along * dx, y + along * dy
+    for point in path[1:]:
+        before, after = hypot(*previous), hypot(*point)
+        if before <= radius <= after and after > before:
+            fraction = (radius - before) / (after - before)
+            return tuple(a + fraction * (b - a) for a, b in zip(previous, point, strict=True))
+        if before >= radius:
+            return previous
+        previous = point
+    return previous

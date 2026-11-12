@@ -1,0 +1,122 @@
+[
+ {
+  "id": "G04-01",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 12.5,
+  "far_clock": 10.5,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G04-02",
+  "minimap": "none",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": false,
+  "note": "motorcycle wheel on white, no HUD"
+ },
+ {
+  "id": "G04-03",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G04-04",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "yellow diagonal streak is a world marking"
+ },
+ {
+  "id": "G04-05",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": ""
+ },
+ {
+  "id": "G04-06",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11.5,
+  "corrupt": false,
+  "note": "map faint; yellow lines are world markings"
+ },
+ {
+  "id": "G04-07",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 11,
+  "far_clock": 10,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "mild blocks at the edges; route runs along the top of the near circle (corner at about 1) before leaving at about 11"
+ },
+ {
+  "id": "G04-08",
+  "minimap": "none",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": false,
+  "note": "only game world (brick wall)"
+ },
+ {
+  "id": "G04-09",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "upper half washed out"
+ },
+ {
+  "id": "G04-10",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 10.5,
+  "far_clock": 12,
+  "arrow_clock": 11.5,
+  "corrupt": false,
+  "note": "route first heads right, then doubles back up-left; ends at the blip inside the far circle"
+ },
+ {
+  "id": "G04-11",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 2,
+  "far_clock": 2,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "heavily damaged; route ends at the blip about on the near circle"
+ },
+ {
+  "id": "G04-12",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "blocks at the left and bottom-left"
+ }
+]

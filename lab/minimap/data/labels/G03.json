@@ -1,0 +1,122 @@
+[
+ {
+  "id": "G03-01",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "mild: bars smeared, block-edged patch at the left"
+ },
+ {
+  "id": "G03-02",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "blocks at top and right; arrow partly covered by a red blip"
+ },
+ {
+  "id": "G03-03",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 10,
+  "far_clock": 10.5,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "route ends at the blip inside the far circle"
+ },
+ {
+  "id": "G03-04",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11.5,
+  "corrupt": false,
+  "note": "map faint; yellow lines are world markings"
+ },
+ {
+  "id": "G03-05",
+  "minimap": "none",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": false,
+  "note": "only game world"
+ },
+ {
+  "id": "G03-06",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11.5,
+  "corrupt": true,
+  "note": "mild: bottom rows and bars smeared"
+ },
+ {
+  "id": "G03-07",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12.5,
+  "corrupt": false,
+  "note": "pink flash tint; arrow partly hidden by car icon"
+ },
+ {
+  "id": "G03-08",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "heavily damaged; purple streaks at the top are damage, not a route"
+ },
+ {
+  "id": "G03-09",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 8.5,
+  "corrupt": true,
+  "note": "red tint only on a block-aligned rectangle; arrow partly under a red blip"
+ },
+ {
+  "id": "G03-10",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 12,
+  "far_clock": 11.5,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G03-11",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 9,
+  "corrupt": true,
+  "note": "red tint only on a block-aligned rectangle; arrow tip under a blue blip"
+ },
+ {
+  "id": "G03-12",
+  "minimap": "none",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": false,
+  "note": "dark frame"
+ }
+]

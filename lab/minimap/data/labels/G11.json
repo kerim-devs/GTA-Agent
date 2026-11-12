@@ -1,0 +1,122 @@
+[
+ {
+  "id": "G11-01",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 12.5,
+  "far_clock": 12,
+  "arrow_clock": 11.5,
+  "corrupt": true,
+  "note": "damaged, speckled route, about 12.25 on both circles; purple blocks are damage"
+ },
+ {
+  "id": "G11-02",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "arrow partly under a car icon; yellow object is world"
+ },
+ {
+  "id": "G11-03",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11.5,
+  "corrupt": false,
+  "note": "yellow and white lines are road markings of the world"
+ },
+ {
+  "id": "G11-04",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "yellow streaks are road markings of the world"
+ },
+ {
+  "id": "G11-05",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "washed out"
+ },
+ {
+  "id": "G11-06",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 12,
+  "far_clock": 11.5,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G11-07",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 2.5,
+  "corrupt": true,
+  "note": "arrow between 2 and 2.5; blocky, parts shifted"
+ },
+ {
+  "id": "G11-08",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 2,
+  "far_clock": 2,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "short route, blip sits on the near circle"
+ },
+ {
+  "id": "G11-09",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 2,
+  "far_clock": 2,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G11-10",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "light streak across the map is world"
+ },
+ {
+  "id": "G11-11",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 12.5,
+  "far_clock": 1,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G11-12",
+  "minimap": "none",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": false,
+  "note": "scale bar with district name"
+ }
+]

@@ -1,0 +1,398 @@
+{
+  "source": "lab/gps/093238-a.jsonl",
+  "method": "Manually selected plausible OCR anchors, preserving the route jump. Text evidence only, not independently labelled game telemetry. Linear interpolation supplies the centered four-second distance difference.",
+  "anchors": [
+    {
+      "t": 238.183,
+      "distance": 1420.0,
+      "texts": [
+        "1.42km"
+      ]
+    },
+    {
+      "t": 239.037,
+      "distance": 1390.0,
+      "texts": [
+        "1 1.39km"
+      ]
+    },
+    {
+      "t": 240.036,
+      "distance": 1350.0,
+      "texts": [
+        "t 1.35km"
+      ]
+    },
+    {
+      "t": 240.919,
+      "distance": 1330.0,
+      "texts": [
+        "t 1.33km"
+      ]
+    },
+    {
+      "t": 243.936,
+      "distance": 1230.0,
+      "texts": [
+        "- 1.23km"
+      ]
+    },
+    {
+      "t": 245.027,
+      "distance": 1210.0,
+      "texts": [
+        "1.21km"
+      ]
+    },
+    {
+      "t": 245.975,
+      "distance": 1180.0,
+      "texts": [
+        "+ 1.18km"
+      ]
+    },
+    {
+      "t": 247.372,
+      "distance": 1160.0,
+      "texts": [
+        "1 1,16km"
+      ]
+    },
+    {
+      "t": 249.993,
+      "distance": 1080.0,
+      "texts": [
+        "1.08km"
+      ]
+    },
+    {
+      "t": 251.034,
+      "distance": 1070.0,
+      "texts": [
+        "t 1.07km"
+      ]
+    },
+    {
+      "t": 251.606,
+      "distance": 1050.0,
+      "texts": [
+        "t 1.05km"
+      ]
+    },
+    {
+      "t": 252.677,
+      "distance": 1040.0,
+      "texts": [
+        "1.04KM"
+      ]
+    },
+    {
+      "t": 254.181,
+      "distance": 1010.0,
+      "texts": [
+        "t 1.01km"
+      ]
+    },
+    {
+      "t": 254.995,
+      "distance": 988.0,
+      "texts": [
+        "t 988m"
+      ]
+    },
+    {
+      "t": 258.024,
+      "distance": 918.0,
+      "texts": [
+        "918m-"
+      ]
+    },
+    {
+      "t": 259.007,
+      "distance": 898.0,
+      "texts": [
+        "898m"
+      ]
+    },
+    {
+      "t": 260.092,
+      "distance": 875.0,
+      "texts": [
+        "875m"
+      ]
+    },
+    {
+      "t": 261.002,
+      "distance": 854.0,
+      "texts": [
+        "I 854m"
+      ]
+    },
+    {
+      "t": 262.048,
+      "distance": 830.0,
+      "texts": [
+        "830m"
+      ]
+    },
+    {
+      "t": 262.98,
+      "distance": 805.0,
+      "texts": [
+        "805m"
+      ]
+    },
+    {
+      "t": 265.053,
+      "distance": 766.0,
+      "texts": [
+        "766m"
+      ]
+    },
+    {
+      "t": 266.897,
+      "distance": 716.0,
+      "texts": [
+        "o1 716m"
+      ]
+    },
+    {
+      "t": 268.004,
+      "distance": 697.0,
+      "texts": [
+        "01 697m"
+      ]
+    },
+    {
+      "t": 268.912,
+      "distance": 673.0,
+      "texts": [
+        "0 1 673m"
+      ]
+    },
+    {
+      "t": 270.136,
+      "distance": 647.0,
+      "texts": [
+        "0\u0442 647m"
+      ]
+    },
+    {
+      "t": 270.986,
+      "distance": 626.0,
+      "texts": [
+        "1 626m"
+      ]
+    },
+    {
+      "t": 272.013,
+      "distance": 602.0,
+      "texts": [
+        "602m"
+      ]
+    },
+    {
+      "t": 272.86,
+      "distance": 583.0,
+      "texts": [
+        "1 583m"
+      ]
+    },
+    {
+      "t": 274.105,
+      "distance": 554.0,
+      "texts": [
+        "554m"
+      ]
+    },
+    {
+      "t": 274.968,
+      "distance": 531.0,
+      "texts": [
+        "1 531m"
+      ]
+    },
+    {
+      "t": 276.031,
+      "distance": 505.0,
+      "texts": [
+        "1 505m"
+      ]
+    },
+    {
+      "t": 276.795,
+      "distance": 480.0,
+      "texts": [
+        "480m"
+      ]
+    },
+    {
+      "t": 278.84,
+      "distance": 408.0,
+      "texts": [
+        "408m"
+      ]
+    },
+    {
+      "t": 279.936,
+      "distance": 384.0,
+      "texts": [
+        "384m"
+      ]
+    },
+    {
+      "t": 280.991,
+      "distance": 353.0,
+      "texts": [
+        "353m"
+      ]
+    },
+    {
+      "t": 282.165,
+      "distance": 328.0,
+      "texts": [
+        "328m"
+      ]
+    },
+    {
+      "t": 283.023,
+      "distance": 310.0,
+      "texts": [
+        "+ 310m"
+      ]
+    },
+    {
+      "t": 284.262,
+      "distance": 303.0,
+      "texts": [
+        "303m"
+      ]
+    },
+    {
+      "t": 285.007,
+      "distance": 294.0,
+      "texts": [
+        "t294m"
+      ]
+    },
+    {
+      "t": 286.016,
+      "distance": 286.0,
+      "texts": [
+        "-1-286m-"
+      ]
+    },
+    {
+      "t": 286.99,
+      "distance": 276.0,
+      "texts": [
+        "276m"
+      ]
+    },
+    {
+      "t": 288.037,
+      "distance": 260.0,
+      "texts": [
+        "t 260m"
+      ]
+    },
+    {
+      "t": 289.034,
+      "distance": 243.0,
+      "texts": [
+        "t 243m"
+      ]
+    },
+    {
+      "t": 292.993,
+      "distance": 243.0,
+      "texts": [
+        "243m"
+      ]
+    },
+    {
+      "t": 293.756,
+      "distance": 130.0,
+      "texts": [
+        "130m"
+      ]
+    },
+    {
+      "t": 294.925,
+      "distance": 123.0,
+      "texts": [
+        "T 123m"
+      ]
+    },
+    {
+      "t": 295.716,
+      "distance": 93.0,
+      "texts": [
+        "1 93m"
+      ]
+    },
+    {
+      "t": 296.659,
+      "distance": 79.0,
+      "texts": [
+        "79m"
+      ]
+    },
+    {
+      "t": 298.043,
+      "distance": 68.0,
+      "texts": [
+        "68m"
+      ]
+    },
+    {
+      "t": 299.048,
+      "distance": 62.0,
+      "texts": [
+        "t 62m"
+      ]
+    },
+    {
+      "t": 299.803,
+      "distance": 58.0,
+      "texts": [
+        "58M"
+      ]
+    },
+    {
+      "t": 302.016,
+      "distance": 56.0,
+      "texts": [
+        "1 56m"
+      ]
+    },
+    {
+      "t": 303.03,
+      "distance": 45.0,
+      "texts": [
+        "45m"
+      ]
+    },
+    {
+      "t": 303.606,
+      "distance": 44.0,
+      "texts": [
+        "44m"
+      ]
+    },
+    {
+      "t": 305.041,
+      "distance": 32.0,
+      "texts": [
+        "32m"
+      ]
+    },
+    {
+      "t": 305.953,
+      "distance": 16.0,
+      "texts": [
+        "16m"
+      ]
+    }
+  ]
+}

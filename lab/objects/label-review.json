@@ -1,0 +1,18 @@
+{
+  "before_sha256": "73a5e9b9ab805c8c78ae591411cee068c1ec69822dcce65944605f3628f6751f",
+  "after_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+  "added": {
+    "frame": "043",
+    "label": {
+      "kind": "car",
+      "box": [
+        310,
+        350,
+        443,
+        401
+      ],
+      "player": false
+    }
+  },
+  "review": "Raw 1280x720 visual audit confirmed an omitted black sedan. No edits to localization disagreements in 011, 015, 059, 067. Ten of eleven large NPC boxes confirmed; 048 remains uncertain due to compression damage and was retained."
+}

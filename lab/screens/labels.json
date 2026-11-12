@@ -1,0 +1,100 @@
+{
+  "method": "Visual inspection of decoded frames, including partial UI fades/slides. Inclusive first/last ordinals; timestamps come from frames.jsonl t. All unlisted frames are game, including tint-only transitions. Controller event times were not used as labels. Calibration2 final pause remains open at EOF.",
+  "sources": {
+    "tour": {
+      "recording": "screen-tour/20261111-070239",
+      "intervals": [
+        {
+          "first": 92,
+          "last": 272,
+          "screen": "pause"
+        },
+        {
+          "first": 273,
+          "last": 461,
+          "screen": "map"
+        },
+        {
+          "first": 462,
+          "last": 563,
+          "screen": "pause"
+        },
+        {
+          "first": 723,
+          "last": 862,
+          "screen": "weapon_wheel"
+        },
+        {
+          "first": 987,
+          "last": 1153,
+          "screen": "phone"
+        },
+        {
+          "first": 1300,
+          "last": 1513,
+          "screen": "interaction_menu"
+        }
+      ],
+      "frames": 4052,
+      "metadata_sha256": "0ea4c9e1ba52cec0a37cad5a0b24aedae06c78ad63632eac3fc8ce783eded684"
+    },
+    "calibration2": {
+      "recording": "calibrate/20261111-065642",
+      "intervals": [
+        {
+          "first": 1863,
+          "last": 1931,
+          "screen": "pause"
+        },
+        {
+          "first": 2021,
+          "last": 2095,
+          "screen": "pause"
+        },
+        {
+          "first": 2270,
+          "last": 3302,
+          "screen": "pause"
+        }
+      ],
+      "frames": 3303,
+      "metadata_sha256": "2b3d469e83858c2563deef09a0afce13b83f9b715d981ed44f5dc448f3674efa"
+    },
+    "pilot1": {
+      "recording": "pilot/20261110-230229",
+      "intervals": [],
+      "frames": 14389,
+      "metadata_sha256": "bdf85d0e71ad76b809fcfca82a7a6b796736f1e20bc698eea913ee1ebe34c8d1"
+    },
+    "pilot2": {
+      "recording": "pilot/20261110-231512",
+      "intervals": [],
+      "frames": 14312,
+      "metadata_sha256": "d9e045b82710b4f4cdae6ed11dc32707afd5f0da39c1b4c5eabea3da8cdd2e6c"
+    },
+    "kerim": {
+      "recording": "kerim/20261111-065022",
+      "intervals": [
+        {
+          "first": 980,
+          "last": 1013,
+          "screen": "weapon_wheel"
+        }
+      ],
+      "frames": 22479,
+      "metadata_sha256": "442c3748d300f8460dbb343924daf222c68bf43d9449ac75be79a3b425b5bfee"
+    },
+    "camera": {
+      "recording": "camera-probe/20261111-065904",
+      "intervals": [],
+      "frames": 831,
+      "metadata_sha256": "3c2a2d829f10572bf2045fbf10a31c84b8c8fa4b318a2cf74611f9e006991532"
+    },
+    "calibration1": {
+      "recording": "calibrate/20261111-063233",
+      "intervals": [],
+      "frames": 1631,
+      "metadata_sha256": "0d4cb990b8b385e40f0ead3cffae31afea4cec5b19d11f4d0f0afb8bb9064484"
+    }
+  }
+}

@@ -1,0 +1,118 @@
+F..FF....FF...............                                               [100%]
+=================================== FAILURES ===================================
+__________ test_recorded_lower_edge_route_points_behind[123938-1011] ___________
+
+session = '123938', index = 1011
+
+    @pytest.mark.parametrize(
+        "session,index",
+        [
+            ("123938", 1011),
+            ("123938", 1038),
+            ("123938", 1215),
+            ("123938", 1228),
+            ("123938", 1269),
+            ("123334", 1002),
+            ("123334", 1210),
+            ("123334", 1384),
+            ("123334", 1627),
+        ],
+    )
+    def test_recorded_lower_edge_route_points_behind(session, index):
+        result = read(crop(f"p34-20261111-{session}-{index}.png"))
+>       assert result.route == "purple"
+E       AssertionError: assert 'none' == 'purple'
+E         
+E         - purple
+E         + none
+
+tests/test_minimap_behind.py:33: AssertionError
+__________ test_recorded_lower_edge_route_points_behind[123938-1228] ___________
+
+session = '123938', index = 1228
+
+    @pytest.mark.parametrize(
+        "session,index",
+        [
+            ("123938", 1011),
+            ("123938", 1038),
+            ("123938", 1215),
+            ("123938", 1228),
+            ("123938", 1269),
+            ("123334", 1002),
+            ("123334", 1210),
+            ("123334", 1384),
+            ("123334", 1627),
+        ],
+    )
+    def test_recorded_lower_edge_route_points_behind(session, index):
+        result = read(crop(f"p34-20261111-{session}-{index}.png"))
+>       assert result.route == "purple"
+E       AssertionError: assert 'none' == 'purple'
+E         
+E         - purple
+E         + none
+
+tests/test_minimap_behind.py:33: AssertionError
+__________ test_recorded_lower_edge_route_points_behind[123938-1269] ___________
+
+session = '123938', index = 1269
+
+    @pytest.mark.parametrize(
+        "session,index",
+        [
+            ("123938", 1011),
+            ("123938", 1038),
+            ("123938", 1215),
+            ("123938", 1228),
+            ("123938", 1269),
+            ("123334", 1002),
+            ("123334", 1210),
+            ("123334", 1384),
+            ("123334", 1627),
+        ],
+    )
+    def test_recorded_lower_edge_route_points_behind(session, index):
+        result = read(crop(f"p34-20261111-{session}-{index}.png"))
+>       assert result.route == "purple"
+E       AssertionError: assert 'none' == 'purple'
+E         
+E         - purple
+E         + none
+
+tests/test_minimap_behind.py:33: AssertionError
+___________________ test_detached_route_can_bend_ahead[984] ____________________
+
+index = 984
+
+    @pytest.mark.parametrize("index", [984, 998])
+    def test_detached_route_can_bend_ahead(index):
+        result = read(crop(f"p34-20261111-123938-{index}.png"))
+>       assert result.route == "purple"
+E       AssertionError: assert 'none' == 'purple'
+E         
+E         - purple
+E         + none
+
+tests/test_minimap_behind.py:42: AssertionError
+___________________ test_detached_route_can_bend_ahead[998] ____________________
+
+index = 998
+
+    @pytest.mark.parametrize("index", [984, 998])
+    def test_detached_route_can_bend_ahead(index):
+        result = read(crop(f"p34-20261111-123938-{index}.png"))
+>       assert result.route == "purple"
+E       AssertionError: assert 'none' == 'purple'
+E         
+E         - purple
+E         + none
+
+tests/test_minimap_behind.py:42: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_minimap_behind.py::test_recorded_lower_edge_route_points_behind[123938-1011]
+FAILED tests/test_minimap_behind.py::test_recorded_lower_edge_route_points_behind[123938-1228]
+FAILED tests/test_minimap_behind.py::test_recorded_lower_edge_route_points_behind[123938-1269]
+FAILED tests/test_minimap_behind.py::test_detached_route_can_bend_ahead[984]
+FAILED tests/test_minimap_behind.py::test_detached_route_can_bend_ahead[998]
+5 failed, 21 passed in 0.12s

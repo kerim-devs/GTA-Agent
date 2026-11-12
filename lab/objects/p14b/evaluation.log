@@ -1,0 +1,110 @@
+{
+  "frames": 80,
+  "iou": 0.4,
+  "groups": {
+    "vehicles_over_200": {
+      "found": 29,
+      "count": 35,
+      "recall": 0.8285714285714286
+    },
+    "vehicles_over_100": {
+      "found": 66,
+      "count": 93,
+      "recall": 0.7096774193548387
+    },
+    "people_over_80": {
+      "found": 3,
+      "count": 11,
+      "recall": 0.2727272727272727
+    }
+  },
+  "kind_agreement": {
+    "same": 79,
+    "matched": 90
+  },
+  "per_kind": {
+    "person": {
+      "found": 3,
+      "missed": 14,
+      "invented": 10
+    },
+    "car": {
+      "found": 46,
+      "missed": 29,
+      "invented": 34
+    },
+    "truck": {
+      "found": 29,
+      "missed": 15,
+      "invented": 7
+    },
+    "bus": {
+      "found": 11,
+      "missed": 3,
+      "invented": 0
+    },
+    "motorcycle": {
+      "found": 1,
+      "missed": 1,
+      "invented": 0
+    },
+    "bicycle": {
+      "found": 0,
+      "missed": 0,
+      "invented": 0
+    }
+  },
+  "large_per_kind": {
+    "person": {
+      "found": 3,
+      "missed": 8
+    },
+    "car": {
+      "found": 34,
+      "missed": 15
+    },
+    "truck": {
+      "found": 23,
+      "missed": 9
+    },
+    "bus": {
+      "found": 9,
+      "missed": 2
+    },
+    "motorcycle": {
+      "found": 0,
+      "missed": 1
+    },
+    "bicycle": {
+      "found": 0,
+      "missed": 0
+    }
+  },
+  "large_recall": 0.6634615384615384,
+  "invented_fraction": 0.3617021276595745,
+  "ignored_small_predictions": 55,
+  "player_reported_frames": [],
+  "player_reported_fraction": 0.0,
+  "player_present_frames": 51,
+  "removed_player_detections": 48,
+  "collateral_removed": [],
+  "mean_ms": 40.01051813647791,
+  "p95_ms": 40.24763956404058,
+  "poller": {
+    "loop_hz": 30.0,
+    "results_hz": 15.0,
+    "poll_mean_ms": 0.03885332003442778,
+    "poll_p95_ms": 0.11467719887150452,
+    "poll_max_ms": 0.1265419996343553
+  },
+  "load": "one separate CPU-bound Python process",
+  "labels_sha256": "e93db3f54ea027541db7a5c6fc6bd4c4273f48ed661907feefc9368aee215e5d",
+  "acceptance": {
+    "vehicles_over_200": false,
+    "vehicles_over_100": false,
+    "people_over_80": false,
+    "precision": false,
+    "player": true,
+    "speed": true
+  }
+}

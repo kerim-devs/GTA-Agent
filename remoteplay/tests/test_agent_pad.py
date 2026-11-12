@@ -141,7 +141,7 @@ async def test_held_state_is_repeated_to_the_console_until_shortly_after_release
     assert fake.resends > before  # the release is repeated too
     settled = fake.resends
     await asyncio.sleep(0.3)
-    assert fake.resends == settled
+    assert 1 <= fake.resends - settled <= 2  # only the slow idle heartbeat remains
 
 
 async def test_a_frozen_stream_keeps_repeating_the_release_until_the_picture_is_back(client, daemon, fake):
@@ -157,7 +157,7 @@ async def test_a_frozen_stream_keeps_repeating_the_release_until_the_picture_is_
     await asyncio.sleep(RESEND_SETTLE_S + 0.2)
     settled = fake.resends
     await asyncio.sleep(0.2)
-    assert fake.resends == settled
+    assert fake.resends - settled <= 1  # healing ended; at most one slow heartbeat
 
 
 async def test_a_sequence_drops_a_loop_state_that_slipped_in_while_it_waited(

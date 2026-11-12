@@ -1,0 +1,122 @@
+[
+ {
+  "id": "G06-01",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 1,
+  "far_clock": 1,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "route ends at blip close to near circle"
+ },
+ {
+  "id": "G06-02",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 11,
+  "far_clock": 11,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "mild block damage at the edges; far = blip end point"
+ },
+ {
+  "id": "G06-03",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11.5,
+  "corrupt": false,
+  "note": "map tinted red"
+ },
+ {
+  "id": "G06-04",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "arrow partly covered by car icon"
+ },
+ {
+  "id": "G06-05",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 11.5,
+  "far_clock": 10,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "near circle hits the corner of the route"
+ },
+ {
+  "id": "G06-06",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 10.5,
+  "corrupt": true,
+  "note": "heavy damage; map type and arrow uncertain"
+ },
+ {
+  "id": "G06-07",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 12,
+  "far_clock": 10.5,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": ""
+ },
+ {
+  "id": "G06-08",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "red circle is an area, not a route"
+ },
+ {
+  "id": "G06-09",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "blurry and blocky, unsure about damage"
+ },
+ {
+  "id": "G06-10",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 10.5,
+  "corrupt": true,
+  "note": "mild: faint duplicate of the bars below, block next to arrow; arrow partly covered by blip"
+ },
+ {
+  "id": "G06-11",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "yellow smears are damaged world markings, not a route"
+ },
+ {
+  "id": "G06-12",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "red band is a world marking; arrow partly covered by car icon"
+ }
+]

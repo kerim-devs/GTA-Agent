@@ -6,3 +6,55 @@ __pycache__/
 .venv/
 .pytest_cache/
 .ruff_cache/
+
+# rebuilt by lab/minimap/prep.py, 367 MB
+lab/minimap/data/crops.npy
+
+# rebuilt by pilot/tools/sim_blip_skills.py and inspect_blip_frames.py, 18 MB
+lab/blips/skill-simulation.json
+lab/blips/*-scenes-*.jpg
+
+# Fetch with pilot/tools/fetch_models.py (20 MB).
+pilot/models/*.onnx
+pilot/models/*.pth
+
+# contact sheets rebuilt by lab/hud/prepare.py, 15 MB
+lab/hud/review/
+
+# single frames rebuilt by pilot/tools/inspect_flow_clips.py, 65 MB; the contact sheets stay
+lab/flow/*/[0-9]*.jpg
+!lab/flow/failure/0038.030-856.jpg
+
+# rebuilt by pilot/tools/sim_waypoint.py, 4 MB
+lab/waypoint/simulation.json
+
+# speech files rebuilt by pilot/tools/commentator_replay.py
+lab/commentator/**/*.wav
+
+# sheets rebuilt by pilot/tools/evaluate_objects.py, 42 MB; the three the report and its review show stay
+lab/objects/p14b/sheets/
+lab/objects/holdout/sheets/*
+!lab/objects/holdout/sheets/labelled-004.jpg
+!lab/objects/holdout/sheets/labelled-008.jpg
+!lab/objects/holdout/sheets/labelled-040.jpg
+
+# Regenerated P22 replay frames and detailed runtime logs.
+/lab/wiring/replay*/
+/lab/wiring/simulations/
+/lab/wiring/mutations/
+/lab/wiring/replay*-command.log
+
+# Console calibration sessions and reproducible extraction scratch files.
+/lab/calibrate/*/
+
+# P25 reproducible intermediate crops and console output.
+lab/wanted/scratch/
+lab/wanted/*.log
+
+/lab/commentator/p20c-*/
+
+# Generated cable-screen contact sheets and scan caches.
+lab/screens/review/
+
+# drawn from the recordings by lab/judge/sample.py, 36 MB
+lab/judge/sample/

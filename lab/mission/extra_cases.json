@@ -1,0 +1,837 @@
+[
+  {
+    "id": "objects-071",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 11104,
+      "t": 548.4958,
+      "object_label": "071",
+      "object_source": "lab/objects/labels.json",
+      "text_source": "lab/wiring/text-093238.jsonl"
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 0.008203359537532151,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -20.1,
+            "y": 87.3,
+            "border": true
+          },
+          {
+            "color": "red",
+            "x": 77.0,
+            "y": -26.5,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": null,
+        "screen": "game"
+      },
+      "objects": [
+        {
+          "kind": "car",
+          "box": [
+            120,
+            304,
+            485,
+            376
+          ]
+        },
+        {
+          "kind": "truck",
+          "box": [
+            514,
+            264,
+            704,
+            355
+          ]
+        },
+        {
+          "kind": "car",
+          "box": [
+            758,
+            314,
+            895,
+            394
+          ]
+        }
+      ],
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": ""
+    },
+    "model": null
+  },
+  {
+    "id": "objects-072",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 11338,
+      "t": 561.4824,
+      "object_label": "072",
+      "object_source": "lab/objects/labels.json",
+      "text_source": "lab/wiring/text-093238.jsonl"
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 8.12906289573661,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.4888888888888889,
+        "armour": 0.0,
+        "special": 0.047619047619047616,
+        "screen": "game"
+      },
+      "objects": [
+        {
+          "kind": "car",
+          "box": [
+            177,
+            237,
+            280,
+            291
+          ]
+        },
+        {
+          "kind": "truck",
+          "box": [
+            535,
+            214,
+            743,
+            312
+          ]
+        },
+        {
+          "kind": "car",
+          "box": [
+            544,
+            251,
+            700,
+            340
+          ]
+        },
+        {
+          "kind": "car",
+          "box": [
+            776,
+            265,
+            910,
+            342
+          ]
+        },
+        {
+          "kind": "car",
+          "box": [
+            1000,
+            274,
+            1280,
+            354
+          ]
+        }
+      ],
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": ""
+    },
+    "model": null
+  },
+  {
+    "id": "objects-073",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 11546,
+      "t": 574.2403,
+      "object_label": "073",
+      "object_source": "lab/objects/labels.json",
+      "text_source": "lab/wiring/text-093238.jsonl"
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.4382937532301412,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 28.5,
+            "y": 1.5,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 88.89,
+            "y": -6.58,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.5,
+        "armour": null,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [
+        {
+          "kind": "truck",
+          "box": [
+            327,
+            184,
+            530,
+            281
+          ]
+        },
+        {
+          "kind": "car",
+          "box": [
+            248,
+            258,
+            407,
+            319
+          ]
+        },
+        {
+          "kind": "car",
+          "box": [
+            929,
+            300,
+            1092,
+            394
+          ]
+        }
+      ],
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": ""
+    },
+    "model": null
+  },
+  {
+    "id": "objects-075",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/Documents/ChatGPT/gta/recordings/20261110-093238",
+      "frame": 12265,
+      "t": 608.5926,
+      "object_label": "075",
+      "object_source": "lab/objects/labels.json",
+      "text_source": "lab/wiring/text-093238.jsonl"
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 45.24620812148919,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": 19.05,
+            "y": 34.05,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 3,
+        "wanted_flashing": false,
+        "health": 0.5,
+        "armour": 0.0,
+        "special": null,
+        "screen": "game"
+      },
+      "objects": [
+        {
+          "kind": "car",
+          "box": [
+            324,
+            301,
+            530,
+            392
+          ]
+        }
+      ],
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": ""
+    },
+    "model": null
+  },
+  {
+    "id": "kerim-2758",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/recordings/kerim/20261111-065022",
+      "frame": 2758,
+      "t": 46.0173,
+      "object_label": null,
+      "object_source": null,
+      "text_source": "not_read"
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": null,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": ""
+    },
+    "model": null
+  },
+  {
+    "id": "kerim-3780",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/recordings/kerim/20261111-065022",
+      "frame": 3780,
+      "t": 63.0685,
+      "object_label": null,
+      "object_source": null,
+      "text_source": "not_read"
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -0.5352806377203763,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": 13.0,
+            "y": 40.5,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 2,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": 0.0,
+        "special": 0.9761904761904762,
+        "screen": "game"
+      },
+      "objects": [],
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": ""
+    },
+    "model": null
+  },
+  {
+    "id": "kerim-9706",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/recordings/kerim/20261111-065022",
+      "frame": 9706,
+      "t": 161.9978,
+      "object_label": null,
+      "object_source": null,
+      "text_source": "not_read"
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 2.3675102233236487,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": -8.19,
+            "y": 63.14,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": 89.25,
+            "y": 52.25,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 2,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": ""
+    },
+    "model": null
+  },
+  {
+    "id": "kerim-10115",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/recordings/kerim/20261111-065022",
+      "frame": 10115,
+      "t": 168.8232,
+      "object_label": null,
+      "object_source": null,
+      "text_source": "not_read"
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 0.18888712926781182,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": -87.15,
+            "y": 69.25,
+            "border": true
+          },
+          {
+            "color": "red",
+            "x": -87.17,
+            "y": -26.83,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 2,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 0.9761904761904762,
+        "screen": "game"
+      },
+      "objects": [],
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": ""
+    },
+    "model": null
+  },
+  {
+    "id": "kerim-10524",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/recordings/kerim/20261111-065022",
+      "frame": 10524,
+      "t": 175.6441,
+      "object_label": null,
+      "object_source": null,
+      "text_source": "not_read"
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 8.35014321675635,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": -53.08,
+            "y": 37.92,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -18.38,
+            "y": -26.33,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 2,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": ""
+    },
+    "model": null
+  },
+  {
+    "id": "kerim-12772",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/recordings/kerim/20261111-065022",
+      "frame": 12772,
+      "t": 213.1805,
+      "object_label": null,
+      "object_source": null,
+      "text_source": "not_read"
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 36.10482394726955,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": -10.9,
+            "y": 87.0,
+            "border": true
+          },
+          {
+            "color": "red",
+            "x": -18.5,
+            "y": 78.5,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -83.0,
+            "y": -20.0,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.6222222222222222,
+        "armour": 0.0,
+        "special": 0.9761904761904762,
+        "screen": "game"
+      },
+      "objects": [],
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": ""
+    },
+    "model": null
+  },
+  {
+    "id": "kerim-15020",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/recordings/kerim/20261111-065022",
+      "frame": 15020,
+      "t": 250.8697,
+      "object_label": null,
+      "object_source": null,
+      "text_source": "not_read"
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 25.125272007803204,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": 88.5,
+            "y": 19.5,
+            "border": true
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.6222222222222222,
+        "armour": 0.0,
+        "special": null,
+        "screen": "game"
+      },
+      "objects": [],
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": ""
+    },
+    "model": null
+  },
+  {
+    "id": "kerim-15633",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/recordings/kerim/20261111-065022",
+      "frame": 15633,
+      "t": 261.0962,
+      "object_label": null,
+      "object_source": null,
+      "text_source": "not_read"
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 34.579349576429905,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "red",
+            "x": 60.33,
+            "y": -18.21,
+            "border": false
+          }
+        ]
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.37777777777777777,
+        "armour": 0.0,
+        "special": 0.8333333333333334,
+        "screen": "game"
+      },
+      "objects": [],
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": ""
+    },
+    "model": null
+  },
+  {
+    "id": "kerim-17400",
+    "provenance": "reconstructed_recorded_frame",
+    "source": {
+      "path": "/Users/kerim/recordings/kerim/20261111-065022",
+      "frame": 17400,
+      "t": 290.5756,
+      "object_label": null,
+      "object_source": null,
+      "text_source": "not_read"
+    },
+    "request": {
+      "events": [],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 3.278114053669867,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": []
+      },
+      "hud": {
+        "wanted": 1,
+        "wanted_flashing": false,
+        "health": 0.4444444444444444,
+        "armour": 0.0,
+        "special": 1.0,
+        "screen": "game"
+      },
+      "objects": [],
+      "last_skill": null,
+      "notebook": "",
+      "jpeg_path": ""
+    },
+    "model": null
+  }
+]

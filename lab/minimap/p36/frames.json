@@ -1,0 +1,578 @@
+[
+  {
+    "sample_t": 80,
+    "i": 4796,
+    "frame_id": 207218,
+    "t": 80.0065,
+    "file": "frame-080.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 81,
+    "i": 4856,
+    "frame_id": 207278,
+    "t": 81.008,
+    "file": "frame-081.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 82,
+    "i": 4915,
+    "frame_id": 207337,
+    "t": 81.9915,
+    "file": "frame-082.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 83,
+    "i": 4975,
+    "frame_id": 207397,
+    "t": 82.9934,
+    "file": "frame-083.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 84,
+    "i": 5035,
+    "frame_id": 207457,
+    "t": 83.9939,
+    "file": "frame-084.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 85,
+    "i": 5095,
+    "frame_id": 207517,
+    "t": 84.994,
+    "file": "frame-085.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 86,
+    "i": 5155,
+    "frame_id": 207577,
+    "t": 85.9954,
+    "file": "frame-086.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 87,
+    "i": 5215,
+    "frame_id": 207637,
+    "t": 86.9957,
+    "file": "frame-087.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 88,
+    "i": 5275,
+    "frame_id": 207697,
+    "t": 87.9969,
+    "file": "frame-088.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 89,
+    "i": 5335,
+    "frame_id": 207757,
+    "t": 88.9976,
+    "file": "frame-089.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 90,
+    "i": 5395,
+    "frame_id": 207817,
+    "t": 89.9993,
+    "file": "frame-090.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 91,
+    "i": 5455,
+    "frame_id": 207877,
+    "t": 91.0015,
+    "file": "frame-091.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 92,
+    "i": 5514,
+    "frame_id": 207936,
+    "t": 91.9969,
+    "file": "frame-092.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 93,
+    "i": 5575,
+    "frame_id": 207997,
+    "t": 93.0049,
+    "file": "frame-093.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 94,
+    "i": 5635,
+    "frame_id": 208057,
+    "t": 94.0043,
+    "file": "frame-094.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 95,
+    "i": 5695,
+    "frame_id": 208117,
+    "t": 95.0058,
+    "file": "frame-095.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 96,
+    "i": 5755,
+    "frame_id": 208177,
+    "t": 96.0067,
+    "file": "frame-096.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 97,
+    "i": 5815,
+    "frame_id": 208237,
+    "t": 97.0062,
+    "file": "frame-097.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 98,
+    "i": 5874,
+    "frame_id": 208296,
+    "t": 97.9924,
+    "file": "frame-098.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 99,
+    "i": 5934,
+    "frame_id": 208356,
+    "t": 98.9958,
+    "file": "frame-099.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 100,
+    "i": 5994,
+    "frame_id": 208416,
+    "t": 99.9933,
+    "file": "frame-100.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 101,
+    "i": 6054,
+    "frame_id": 208476,
+    "t": 100.9941,
+    "file": "frame-101.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 102,
+    "i": 6114,
+    "frame_id": 208536,
+    "t": 101.9982,
+    "file": "frame-102.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 103,
+    "i": 6174,
+    "frame_id": 208596,
+    "t": 102.9978,
+    "file": "frame-103.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 104,
+    "i": 6234,
+    "frame_id": 208656,
+    "t": 103.9958,
+    "file": "frame-104.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 105,
+    "i": 6294,
+    "frame_id": 208716,
+    "t": 104.9977,
+    "file": "frame-105.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 106,
+    "i": 6354,
+    "frame_id": 208776,
+    "t": 105.9988,
+    "file": "frame-106.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 107,
+    "i": 6414,
+    "frame_id": 208836,
+    "t": 106.999,
+    "file": "frame-107.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 108,
+    "i": 6473,
+    "frame_id": 208895,
+    "t": 107.9944,
+    "file": "frame-108.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 109,
+    "i": 6533,
+    "frame_id": 208955,
+    "t": 108.9976,
+    "file": "frame-109.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 150,
+    "i": 8991,
+    "frame_id": 211413,
+    "t": 149.9944,
+    "file": "frame-150.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 151,
+    "i": 9051,
+    "frame_id": 211473,
+    "t": 150.9926,
+    "file": "frame-151.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 152,
+    "i": 9111,
+    "frame_id": 211533,
+    "t": 151.9948,
+    "file": "frame-152.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 153,
+    "i": 9171,
+    "frame_id": 211593,
+    "t": 152.9962,
+    "file": "frame-153.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 154,
+    "i": 9231,
+    "frame_id": 211653,
+    "t": 153.996,
+    "file": "frame-154.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 155,
+    "i": 9291,
+    "frame_id": 211713,
+    "t": 154.9973,
+    "file": "frame-155.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 156,
+    "i": 9351,
+    "frame_id": 211773,
+    "t": 155.9974,
+    "file": "frame-156.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 157,
+    "i": 9411,
+    "frame_id": 211833,
+    "t": 156.9998,
+    "file": "frame-157.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 158,
+    "i": 9471,
+    "frame_id": 211893,
+    "t": 158.0016,
+    "file": "frame-158.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 159,
+    "i": 9531,
+    "frame_id": 211953,
+    "t": 159.002,
+    "file": "frame-159.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 160,
+    "i": 9591,
+    "frame_id": 212013,
+    "t": 160.006,
+    "file": "frame-160.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 161,
+    "i": 9650,
+    "frame_id": 212072,
+    "t": 160.9975,
+    "file": "frame-161.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 162,
+    "i": 9710,
+    "frame_id": 212132,
+    "t": 161.9914,
+    "file": "frame-162.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 163,
+    "i": 9770,
+    "frame_id": 212192,
+    "t": 163.0014,
+    "file": "frame-163.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 164,
+    "i": 9830,
+    "frame_id": 212252,
+    "t": 164.0017,
+    "file": "frame-164.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 165,
+    "i": 9890,
+    "frame_id": 212312,
+    "t": 164.9912,
+    "file": "frame-165.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 166,
+    "i": 9950,
+    "frame_id": 212372,
+    "t": 165.9937,
+    "file": "frame-166.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 167,
+    "i": 10010,
+    "frame_id": 212432,
+    "t": 166.9929,
+    "file": "frame-167.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 168,
+    "i": 10070,
+    "frame_id": 212492,
+    "t": 167.9949,
+    "file": "frame-168.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 169,
+    "i": 10130,
+    "frame_id": 212552,
+    "t": 168.9975,
+    "file": "frame-169.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 170,
+    "i": 10190,
+    "frame_id": 212612,
+    "t": 169.9972,
+    "file": "frame-170.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 171,
+    "i": 10250,
+    "frame_id": 212672,
+    "t": 170.9969,
+    "file": "frame-171.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 172,
+    "i": 10310,
+    "frame_id": 212732,
+    "t": 171.9991,
+    "file": "frame-172.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 173,
+    "i": 10370,
+    "frame_id": 212792,
+    "t": 172.9996,
+    "file": "frame-173.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 174,
+    "i": 10430,
+    "frame_id": 212852,
+    "t": 173.9998,
+    "file": "frame-174.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 175,
+    "i": 10490,
+    "frame_id": 212912,
+    "t": 175.0004,
+    "file": "frame-175.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 176,
+    "i": 10550,
+    "frame_id": 212972,
+    "t": 176.0013,
+    "file": "frame-176.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 177,
+    "i": 10610,
+    "frame_id": 213032,
+    "t": 177.0025,
+    "file": "frame-177.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 178,
+    "i": 10670,
+    "frame_id": 213092,
+    "t": 178.0031,
+    "file": "frame-178.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 179,
+    "i": 10729,
+    "frame_id": 213151,
+    "t": 178.9994,
+    "file": "frame-179.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 40,
+    "i": 2398,
+    "frame_id": 204820,
+    "t": 40.0016,
+    "file": "frame-040.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 70,
+    "i": 4196,
+    "frame_id": 206618,
+    "t": 69.9974,
+    "file": "frame-070.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 78,
+    "i": 4675,
+    "frame_id": 207097,
+    "t": 78.0,
+    "file": "frame-078.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  },
+  {
+    "sample_t": 140,
+    "i": 8392,
+    "frame_id": 210814,
+    "t": 140.0017,
+    "file": "frame-140.png",
+    "corrupt": false,
+    "label_reason": "Intact road grid, route, arrow and HUD; no displaced codec blocks or torn HUD."
+  }
+]

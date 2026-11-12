@@ -1,0 +1,61 @@
+/* The game keeps its own picture: subtitles and objectives at the bottom centre, its help box at the
+   top left, the map at the bottom left, money and wanted stars at the top right. The panels stay off those. */
+:root {
+  --panel-bg: rgb(13 20 29 / 84%);
+  --text-color: #f5f7fa;
+  --muted-color: #bdc9d7;
+  --accent-color: #a8e6cb;
+  --border-color: rgb(255 255 255 / 16%);
+  --font-family: Arial, Helvetica, sans-serif;
+  --body-size: 24px;
+  --sentence-size: 34px;
+  --skill-size: 29px;
+  --label-size: 16px;
+  --speed-size: 40px;
+  --panel-radius: 16px;
+  --panel-padding: 22px;
+  --decision-x: 470px;
+  --decision-y: 36px;
+  --decision-width: 980px;
+  --decision-height: 168px;
+  --activity-x: 1454px;
+  --activity-y: 230px;
+  --activity-width: 422px;
+  --activity-height: 340px;
+  --context-x: 1454px;
+  --context-y: 590px;
+  --context-width: 422px;
+  --context-height: 250px;
+  --telemetry-x: 1510px;
+  --telemetry-y: 864px;
+  --telemetry-width: 366px;
+  --telemetry-height: 172px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+body { font: var(--body-size)/1.35 var(--font-family); color: var(--text-color); }
+[hidden] { display: none !important; }
+.overlay { position: relative; width: 1920px; height: 1080px; }
+.panel { position: absolute; padding: var(--panel-padding); background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: var(--panel-radius); overflow: hidden; }
+.decision { left: var(--decision-x); top: var(--decision-y); width: var(--decision-width); height: var(--decision-height); }
+.activity { left: var(--activity-x); top: var(--activity-y); width: var(--activity-width); max-height: var(--activity-height); }
+.context { left: var(--context-x); top: var(--context-y); width: var(--context-width); max-height: var(--context-height); }
+.telemetry { left: var(--telemetry-x); top: var(--telemetry-y); width: var(--telemetry-width); height: var(--telemetry-height); }
+.eyebrow { color: var(--muted-color); font-size: var(--label-size); letter-spacing: .04em; margin-bottom: 10px; }
+p, h1 { margin: 0; overflow-wrap: anywhere; }
+p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+#sentence { font-size: var(--sentence-size); font-weight: 600; }
+#help { -webkit-line-clamp: 2; }
+h1 { font-size: var(--skill-size); line-height: 1.2; }
+#thinking { color: var(--accent-color); float: right; }
+#skill-state { font-size: var(--label-size); color: var(--muted-color); margin-top: 8px; }
+ol { padding-left: 28px; margin: 18px 0 0; font-size: 20px; }
+li { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+li + li { margin-top: 4px; }
+#help-panel:not(:first-child) { margin-top: 18px; }
+.metrics { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; white-space: nowrap; }
+#speed { font-size: var(--speed-size); font-variant-numeric: tabular-nums; }
+small, #distance { color: var(--muted-color); font-size: 20px; }
+.indicators { margin-top: 8px; font-size: var(--label-size); color: var(--muted-color); }
+.indicators span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#takeover, #shadow { color: var(--accent-color); }

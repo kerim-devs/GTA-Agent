@@ -1,0 +1,111 @@
+{
+ "impl": "impl_model/minimap.py",
+ "split": "dev",
+ "labelled": {
+  "n": 120,
+  "minimap_acc": 0.975,
+  "route": {
+   "tp": 33,
+   "fp": 0,
+   "fn": 1,
+   "precision": 1.0,
+   "recall": 0.971,
+   "colour_acc": 1.0
+  },
+  "near_bearing": {
+   "n": 33,
+   "median_err": 3.3,
+   "within_45": 0.97
+  },
+  "far_bearing": {
+   "n": 33,
+   "median_err": 5.1,
+   "within_45": 1.0
+  },
+  "bearing_missing": 0,
+  "arrow": {
+   "n": 109,
+   "median_err": 1.4,
+   "within_45": 0.991
+  },
+  "corrupt": {
+   "tp": 32,
+   "fp": 3,
+   "fn": 9
+  }
+ },
+ "disagreements": [
+  {
+   "id": "G04-07",
+   "k": 883,
+   "diff": [
+    "near bearing 17 vs label -30"
+   ]
+  },
+  {
+   "id": "G06-06",
+   "k": 1113,
+   "diff": [
+    "arrow 78 vs label -45"
+   ]
+  },
+  {
+   "id": "G10-03",
+   "k": 691,
+   "diff": [
+    "minimap flat != tilted"
+   ]
+  },
+  {
+   "id": "G11-05",
+   "k": 1437,
+   "diff": [
+    "minimap flat != tilted"
+   ]
+  },
+  {
+   "id": "G13-02",
+   "k": 693,
+   "diff": [
+    "minimap flat != tilted"
+   ]
+  },
+  {
+   "id": "G13-11",
+   "k": 1060,
+   "diff": [
+    "no route but label yellow"
+   ]
+  }
+ ],
+ "speed_ms": {
+  "mean": 0.34,
+  "p95": 0.84,
+  "max": 1.53
+ },
+ "rates": {
+  "minimap": {
+   "none": 274,
+   "flat": 1471,
+   "tilted": 1023
+  },
+  "route": {
+   "none": 2471,
+   "yellow": 253,
+   "purple": 44
+  },
+  "corrupt": 730
+ },
+ "steering": {
+  "n": 237,
+  "spearman": 0.493,
+  "strong_n": 46,
+  "sign_agreement": 0.826
+ },
+ "jitter_deg": {
+  "n": 279,
+  "median": 3.8,
+  "p90": 13.6,
+  "over_60": 4
+ }
+}

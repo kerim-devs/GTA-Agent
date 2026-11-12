@@ -1,0 +1,122 @@
+[
+ {
+  "id": "G09-01",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 3,
+  "corrupt": false,
+  "note": "dark vignette"
+ },
+ {
+  "id": "G09-02",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 11,
+  "far_clock": 12,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "thick yellow diagonals are world markings; route is the line along the curved road"
+ },
+ {
+  "id": "G09-03",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "map tinted red"
+ },
+ {
+  "id": "G09-04",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "red dots and red circle are blips/area"
+ },
+ {
+  "id": "G09-05",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "washed out"
+ },
+ {
+  "id": "G09-06",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11.5,
+  "corrupt": false,
+  "note": "greyscale picture"
+ },
+ {
+  "id": "G09-07",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 2,
+  "far_clock": 2,
+  "arrow_clock": 12.5,
+  "corrupt": false,
+  "note": "route runs along the far circle before turning back"
+ },
+ {
+  "id": "G09-08",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "block damage at the edges"
+ },
+ {
+  "id": "G09-09",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 10.5,
+  "far_clock": 10.5,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "route ends at blip inside far circle"
+ },
+ {
+  "id": "G09-10",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11,
+  "corrupt": false,
+  "note": "map half faded; yellow lines are world markings"
+ },
+ {
+  "id": "G09-11",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "dark vignette"
+ },
+ {
+  "id": "G09-12",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "horizontal smears at the left of the bars and inside the map"
+ }
+]

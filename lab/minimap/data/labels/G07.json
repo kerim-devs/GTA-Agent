@@ -1,0 +1,122 @@
+[
+ {
+  "id": "G07-01",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "yellow streaks are world markings"
+ },
+ {
+  "id": "G07-02",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 12,
+  "far_clock": 11.5,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "block damage at top and right"
+ },
+ {
+  "id": "G07-03",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "dark vignette"
+ },
+ {
+  "id": "G07-04",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 1.5,
+  "far_clock": 12,
+  "arrow_clock": 12.5,
+  "corrupt": false,
+  "note": ""
+ },
+ {
+  "id": "G07-05",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11,
+  "corrupt": false,
+  "note": "map half faded; yellow lines are world markings"
+ },
+ {
+  "id": "G07-06",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 10,
+  "far_clock": 10.5,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "route ends at blip inside far circle"
+ },
+ {
+  "id": "G07-07",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": false,
+  "note": "dark vignette"
+ },
+ {
+  "id": "G07-08",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12.5,
+  "corrupt": true,
+  "note": "map type uncertain because of damage"
+ },
+ {
+  "id": "G07-09",
+  "minimap": "tilted",
+  "route": "yellow",
+  "near_clock": 10.5,
+  "far_clock": 10,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "heavy damage; straight yellow line from arrow to upper left taken as route"
+ },
+ {
+  "id": "G07-10",
+  "minimap": "none",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": false,
+  "note": "scale bar with district name"
+ },
+ {
+  "id": "G07-11",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11,
+  "corrupt": false,
+  "note": "map half faded; yellow lines are world markings"
+ },
+ {
+  "id": "G07-12",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "mild: N blip and top edge of map smeared; unsure"
+ }
+]

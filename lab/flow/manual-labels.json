@@ -1,0 +1,11 @@
+[
+  {"start": 33.21, "end": 36.10, "screen": "failed", "text": "Mission fehlgeschlagen. Franklin ist tot.", "evidence": "failure-frames: first banner i760; footer absent through i827"},
+  {"start": 36.10, "end": 40.08, "screen": "failed", "text": "Verlassen Circle | Erneut versuchen X", "evidence": "failure-frames: footer visible i828; banner fading through i887"},
+  {"start": 40.08, "end": 43.30, "screen": "loading", "evidence": "failure-frames: black i888 through i941; loading inferred from restart context"},
+  {"start": 338.655, "end": 341.73, "screen": "passed", "text": "bestanden. Rückführung.", "evidence": "passed-frames: banner i7273 through i7338"},
+  {"start": 153.50, "end": 157.16, "screen": "phone", "evidence": "phone/contact.jpg sampled bounds; home screen closes after Circle"},
+  {"start": 385.07, "end": 387.00, "screen": "pause", "evidence": "map/contact.jpg sampled bounds; pause menu with map tab"},
+  {"start": 387.00, "end": 392.47, "screen": "map", "evidence": "map/contact.jpg sampled bounds; expanded map"},
+  {"start": 392.47, "end": 392.99, "screen": "pause", "evidence": "map/contact.jpg sampled bounds; top-level map tab returns"},
+  {"start": 538.03, "end": 539.89, "screen": "weapon_wheel", "evidence": "wheel/contact.jpg sampled bounds; closes following L1 release"}
+]

@@ -1,0 +1,787 @@
+2026-11-11 03:15:48.745 Python[89442:8921674] 2026-11-11 03:15:48.745740 [I:onnxruntime:, inference_session.cc:777 TraceSessionOptions] Session Options {  execution_mode:0 execution_order:DEFAULT enable_profiling:0 optimized_model_filepath:"" enable_mem_pattern:1 enable_mem_reuse:1 enable_cpu_mem_arena:1 profile_file_prefix:onnxruntime_profile_ session_logid: session_log_severity_level:1 session_log_verbosity_level:0 max_num_graph_transformation_steps:10 graph_optimization_level:4 intra_op_param:OrtThreadPoolParams { thread_pool_size: 2 auto_set_affinity: 0 allow_spinning: 1 spin_duration_us: -1 spin_backoff_max: 1 dynamic_block_base_: 0 stack_size: 0 affinity_str:  set_denormal_as_zero: 0 } inter_op_param:OrtThreadPoolParams { thread_pool_size: 1 auto_set_affinity: 0 allow_spinning: 1 spin_duration_us: -1 spin_backoff_max: 1 dynamic_block_base_: 0 stack_size: 0 affinity_str:  set_denormal_as_zero: 0 } use_per_session_threads:1 thread_pool_allow_spinning:1 use_deterministic_compute:0 ep_selection_policy:0 config_options: {  } }
+2026-11-11 03:15:48.745 Python[89442:8921674] 2026-11-11 03:15:48.745815 [I:onnxruntime:, inference_session.cc:539 operator()] Flush-to-zero and denormal-as-zero are off
+2026-11-11 03:15:48.745 Python[89442:8921674] 2026-11-11 03:15:48.745830 [I:onnxruntime:, inference_session.cc:547 ConstructorCommon] Creating and using per session threadpools since use_per_session_threads_ is true
+2026-11-11 03:15:48.745 Python[89442:8921674] 2026-11-11 03:15:48.745843 [I:onnxruntime:, inference_session.cc:592 ConstructorCommon] Dynamic block base set to 0
+2026-11-11 03:15:48.779 Python[89442:8921674] 2026-11-11 03:15:48.779426 [I:onnxruntime:, inference_session.cc:2767 operator()] Initializing session.
+2026-11-11 03:15:48.780 Python[89442:8921674] 2026-11-11 03:15:48.780510 [I:onnxruntime:, graph_partitioner.cc:2284 InlineFunctionsAOT] This model does not have any local functions defined. AOT Inlining is not performed
+2026-11-11 03:15:48.787 Python[89442:8921674] 2026-11-11 03:15:48.787021 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer EnsureUniqueDQForNodeUnit modified: 0 with status: OK
+2026-11-11 03:15:48.787 Python[89442:8921674] 2026-11-11 03:15:48.787126 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer Level1_RuleBasedTransformer modified: 0 with status: OK
+2026-11-11 03:15:48.787 Python[89442:8921674] 2026-11-11 03:15:48.787165 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer DoubleQDQPairsRemover modified: 0 with status: OK
+2026-11-11 03:15:48.787 Python[89442:8921674] 2026-11-11 03:15:48.787228 [I:onnxruntime:, constant_sharing.cc:248 ApplyImpl] Total shared scalar initializer count: 2
+2026-11-11 03:15:48.787 Python[89442:8921674] 2026-11-11 03:15:48.787239 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer ConstantSharing modified: 1 with status: OK
+2026-11-11 03:15:48.788 Python[89442:8921674] 2026-11-11 03:15:48.788335 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer CommonSubexpressionElimination modified: 1 with status: OK
+2026-11-11 03:15:48.789 Python[89442:8921674] 2026-11-11 03:15:48.789384 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer ConstantFolding modified: 0 with status: OK
+2026-11-11 03:15:48.789 Python[89442:8921674] 2026-11-11 03:15:48.789431 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer MatMulAddFusion modified: 0 with status: OK
+2026-11-11 03:15:48.789 Python[89442:8921674] 2026-11-11 03:15:48.789464 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer ReshapeFusion modified: 0 with status: OK
+2026-11-11 03:15:48.789 Python[89442:8921674] 2026-11-11 03:15:48.789473 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer FreeDimensionOverrideTransformer modified: 0 with status: OK
+2026-11-11 03:15:48.789 Python[89442:8921674] 2026-11-11 03:15:48.789508 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer SliceConcatToSpaceToDepthFusion modified: 0 with status: OK
+2026-11-11 03:15:48.789 Python[89442:8921674] 2026-11-11 03:15:48.789517 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer GeluFusionL1 modified: 0 with status: OK
+2026-11-11 03:15:48.789 Python[89442:8921674] 2026-11-11 03:15:48.789532 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer LayerNormFusionL1 modified: 0 with status: OK
+2026-11-11 03:15:48.789 Python[89442:8921674] 2026-11-11 03:15:48.789563 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer QDQPropagationTransformer modified: 0 with status: OK
+2026-11-11 03:15:48.789 Python[89442:8921674] 2026-11-11 03:15:48.789596 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer WeightBiasQuantization modified: 0 with status: OK
+2026-11-11 03:15:48.789 Python[89442:8921674] 2026-11-11 03:15:48.789623 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer EnsureUniqueDQForNodeUnit modified: 0 with status: OK
+2026-11-11 03:15:48.789 Python[89442:8921674] 2026-11-11 03:15:48.789650 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer WhereDummyDq modified: 0 with status: OK
+2026-11-11 03:15:48.789 Python[89442:8921674] 2026-11-11 03:15:48.789773 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer TransposeOptimizer modified: 0 with status: OK
+2026-11-11 03:15:48.789 Python[89442:8921674] 2026-11-11 03:15:48.789818 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer Level1_RuleBasedTransformer modified: 0 with status: OK
+2026-11-11 03:15:48.789 Python[89442:8921674] 2026-11-11 03:15:48.789846 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer DoubleQDQPairsRemover modified: 0 with status: OK
+2026-11-11 03:15:48.789 Python[89442:8921674] 2026-11-11 03:15:48.789983 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer CommonSubexpressionElimination modified: 0 with status: OK
+2026-11-11 03:15:48.790 Python[89442:8921674] 2026-11-11 03:15:48.790015 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer ConstantFolding modified: 0 with status: OK
+2026-11-11 03:15:48.790 Python[89442:8921674] 2026-11-11 03:15:48.790041 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer MatMulAddFusion modified: 0 with status: OK
+2026-11-11 03:15:48.790 Python[89442:8921674] 2026-11-11 03:15:48.790068 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer ReshapeFusion modified: 0 with status: OK
+2026-11-11 03:15:48.790 Python[89442:8921674] 2026-11-11 03:15:48.790074 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer FreeDimensionOverrideTransformer modified: 0 with status: OK
+2026-11-11 03:15:48.790 Python[89442:8921674] 2026-11-11 03:15:48.790102 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer SliceConcatToSpaceToDepthFusion modified: 0 with status: OK
+2026-11-11 03:15:48.790 Python[89442:8921674] 2026-11-11 03:15:48.790107 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer GeluFusionL1 modified: 0 with status: OK
+2026-11-11 03:15:48.790 Python[89442:8921674] 2026-11-11 03:15:48.790113 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer LayerNormFusionL1 modified: 0 with status: OK
+2026-11-11 03:15:48.790 Python[89442:8921674] 2026-11-11 03:15:48.790142 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer QDQPropagationTransformer modified: 0 with status: OK
+2026-11-11 03:15:48.790 Python[89442:8921674] 2026-11-11 03:15:48.790172 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer WeightBiasQuantization modified: 0 with status: OK
+2026-11-11 03:15:48.790 Python[89442:8921674] 2026-11-11 03:15:48.790198 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer EnsureUniqueDQForNodeUnit modified: 0 with status: OK
+2026-11-11 03:15:48.790 Python[89442:8921674] 2026-11-11 03:15:48.790224 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer WhereDummyDq modified: 0 with status: OK
+2026-11-11 03:15:48.790 Python[89442:8921674] 2026-11-11 03:15:48.790426 [I:onnxruntime:, coreml_execution_provider.cc:143 GetCapability] CoreMLExecutionProvider::GetCapability, number of partitions supported by CoreML: 1 number of nodes in the graph: 435 number of nodes supported by CoreML: 435
+2026-11-11 03:15:48.976 Python[89442:8921674] 2026-11-11 03:15:48.976655 [I:onnxruntime:, model_builder.cc:1127 SaveModel] Writing CoreML Model to /var/folders/n1/_jxqq5494mg9m33y1c3xvkx00000gn/T/onnxruntime-4F529C45-601F-4A49-9A49-286840DD96C3-89442-00000516E9D9663B/Data/com.microsoft.OnnxRuntime/model.mlmodel
+2026-11-11 03:15:50.128 Python[89442:8921675] profile function : main
+2026-11-11 03:15:50.130 Python[89442:8921675] Operation: ios18.slice_by_index, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001661
+2026-11-11 03:15:50.130 Python[89442:8921675] Operation: ios18.slice_by_index, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000831
+2026-11-11 03:15:50.130 Python[89442:8921675] Operation: ios18.slice_by_index, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000831
+2026-11-11 03:15:50.130 Python[89442:8921675] Operation: ios18.slice_by_index, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001661
+2026-11-11 03:15:50.130 Python[89442:8921675] Operation: ios18.slice_by_index, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000831
+2026-11-11 03:15:50.130 Python[89442:8921675] Operation: ios18.slice_by_index, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000831
+2026-11-11 03:15:50.131 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002021
+2026-11-11 03:15:50.131 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.011395
+2026-11-11 03:15:50.131 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.011811
+2026-11-11 03:15:50.131 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.014373
+2026-11-11 03:15:50.131 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.030273
+2026-11-11 03:15:50.131 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.005906
+2026-11-11 03:15:50.131 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.007187
+2026-11-11 03:15:50.131 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000773
+2026-11-11 03:15:50.131 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.131 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.132 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000388
+2026-11-11 03:15:50.132 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.132 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.132 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.015136
+2026-11-11 03:15:50.132 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.132 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.132 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003932
+2026-11-11 03:15:50.133 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000388
+2026-11-11 03:15:50.133 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.133 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.133 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.015136
+2026-11-11 03:15:50.133 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.133 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.133 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003932
+2026-11-11 03:15:50.134 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000388
+2026-11-11 03:15:50.134 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.134 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.134 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.015136
+2026-11-11 03:15:50.134 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.134 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.134 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003932
+2026-11-11 03:15:50.135 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000773
+2026-11-11 03:15:50.135 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.135 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.135 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.005390
+2026-11-11 03:15:50.135 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001546
+2026-11-11 03:15:50.135 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.005906
+2026-11-11 03:15:50.135 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.007187
+2026-11-11 03:15:50.136 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.013557
+2026-11-11 03:15:50.136 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.136 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.136 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000771
+2026-11-11 03:15:50.136 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.136 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.136 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.136 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.137 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.137 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006778
+2026-11-11 03:15:50.137 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.137 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.137 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001966
+2026-11-11 03:15:50.137 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.137 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.138 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.138 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006778
+2026-11-11 03:15:50.138 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.138 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.138 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001966
+2026-11-11 03:15:50.138 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.138 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.138 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.139 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006778
+2026-11-11 03:15:50.139 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.139 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.139 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001966
+2026-11-11 03:15:50.139 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.139 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.139 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.139 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006778
+2026-11-11 03:15:50.139 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.139 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.140 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001966
+2026-11-11 03:15:50.140 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.140 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.140 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.140 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006778
+2026-11-11 03:15:50.140 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.140 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.140 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001966
+2026-11-11 03:15:50.140 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.141 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.141 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.141 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006778
+2026-11-11 03:15:50.141 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.141 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.141 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001966
+2026-11-11 03:15:50.141 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.141 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.141 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.142 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006778
+2026-11-11 03:15:50.142 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.142 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.142 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001966
+2026-11-11 03:15:50.142 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.142 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.142 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.142 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006778
+2026-11-11 03:15:50.142 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.143 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.143 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001966
+2026-11-11 03:15:50.143 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.143 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.143 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.143 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006778
+2026-11-11 03:15:50.143 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.143 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.143 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001966
+2026-11-11 03:15:50.143 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000771
+2026-11-11 03:15:50.144 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.144 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.144 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002695
+2026-11-11 03:15:50.144 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001543
+2026-11-11 03:15:50.144 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.144 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.144 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.013554
+2026-11-11 03:15:50.144 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.144 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.145 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000771
+2026-11-11 03:15:50.145 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.145 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.145 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.145 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.145 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.145 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.145 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.145 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.146 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000983
+2026-11-11 03:15:50.146 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.146 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.146 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.146 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.146 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.146 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.146 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000983
+2026-11-11 03:15:50.146 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.147 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.147 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.147 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.147 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.147 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.147 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000983
+2026-11-11 03:15:50.147 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.147 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.147 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.148 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.148 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.148 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.148 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000983
+2026-11-11 03:15:50.148 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.148 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.148 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.148 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.148 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.148 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.149 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000983
+2026-11-11 03:15:50.149 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.149 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.149 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.149 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.149 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.149 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.149 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000983
+2026-11-11 03:15:50.150 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.150 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.150 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.150 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.150 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.150 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.150 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000983
+2026-11-11 03:15:50.150 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.150 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.151 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.151 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.151 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.151 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.151 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000983
+2026-11-11 03:15:50.151 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.151 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.151 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.151 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.152 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.152 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.152 Python[89442:8921675] Operation: ios18.add, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000983
+2026-11-11 03:15:50.152 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000771
+2026-11-11 03:15:50.152 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.152 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.152 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001348
+2026-11-11 03:15:50.152 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001541
+2026-11-11 03:15:50.152 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.152 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.153 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.013552
+2026-11-11 03:15:50.153 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.153 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.153 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000770
+2026-11-11 03:15:50.153 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.153 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.153 Python[89442:8921675] Operation: ios18.max_pool, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.153 Python[89442:8921675] Operation: ios18.max_pool, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.153 Python[89442:8921675] Operation: ios18.max_pool, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.154 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001348
+2026-11-11 03:15:50.154 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003080
+2026-11-11 03:15:50.154 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.154 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.154 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000770
+2026-11-11 03:15:50.154 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.154 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.154 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000385
+2026-11-11 03:15:50.154 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.155 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.155 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006776
+2026-11-11 03:15:50.155 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.155 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.155 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000385
+2026-11-11 03:15:50.155 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.155 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.155 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006776
+2026-11-11 03:15:50.155 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.156 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.156 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000385
+2026-11-11 03:15:50.156 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.156 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.156 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006776
+2026-11-11 03:15:50.156 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.156 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.156 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000770
+2026-11-11 03:15:50.156 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.156 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.157 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000674
+2026-11-11 03:15:50.157 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001540
+2026-11-11 03:15:50.157 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.157 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.157 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000770
+2026-11-11 03:15:50.157 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.157 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.157 Python[89442:8921675] Operation: upsample_nearest_neighbor, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000923
+2026-11-11 03:15:50.157 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002695
+2026-11-11 03:15:50.158 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001540
+2026-11-11 03:15:50.158 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.158 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.158 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.158 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.158 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.158 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.158 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.158 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.158 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.159 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.159 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.159 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.159 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.159 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.159 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.159 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.159 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.159 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.159 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.160 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.160 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001540
+2026-11-11 03:15:50.160 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.160 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.160 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001348
+2026-11-11 03:15:50.160 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001541
+2026-11-11 03:15:50.160 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.160 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.160 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000771
+2026-11-11 03:15:50.160 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.160 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.160 Python[89442:8921675] Operation: upsample_nearest_neighbor, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001846
+2026-11-11 03:15:50.160 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.005390
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001541
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006778
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006778
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006778
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.161 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001541
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002695
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001543
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001348
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000771
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.162 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000386
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000771
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001348
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001541
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001476
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001797
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006776
+2026-11-11 03:15:50.163 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000674
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000770
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000385
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006776
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000385
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006776
+2026-11-11 03:15:50.164 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000385
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006776
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000770
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000369
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000449
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000674
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001540
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000385
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000185
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000225
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001694
+2026-11-11 03:15:50.165 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000185
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000225
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001694
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000185
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000225
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000264
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000058
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001694
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000185
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000225
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001694
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000185
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000225
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000017
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000001
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000068
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000056
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.reshape, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000061
+2026-11-11 03:15:50.166 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000771
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000190
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000231
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.006777
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000738
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000898
+2026-11-11 03:15:50.167 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000068
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000003
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000270
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000224
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.reshape, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000245
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001543
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.027107
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.027107
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000482
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000923
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.027107
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.168 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.169 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.027107
+2026-11-11 03:15:50.169 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.002953
+2026-11-11 03:15:50.169 Python[89442:8921675] Operation: ios18.mul, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.003593
+2026-11-11 03:15:50.169 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000270
+2026-11-11 03:15:50.169 Python[89442:8921675] Operation: ios18.sigmoid, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000012
+2026-11-11 03:15:50.169 Python[89442:8921675] Operation: ios18.conv, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000211
+2026-11-11 03:15:50.169 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000895
+2026-11-11 03:15:50.169 Python[89442:8921675] Operation: ios18.reshape, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.000980
+2026-11-11 03:15:50.169 Python[89442:8921675] Operation: ios18.concat, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001174
+2026-11-11 03:15:50.169 Python[89442:8921675] Operation: ios18.transpose, Device Usage: <MLGPUComputeDevice: 0xa923d7630> Apple M5, Estimated Cost: 0.001440
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574409 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1367'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574449 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1096'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574460 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '767'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574469 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '751'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574475 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '732'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574482 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '730'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574492 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '729'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574500 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '727'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574506 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '725'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574511 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '724'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574517 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '721'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574523 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '720'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574528 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '718'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574533 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '717'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574538 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '716'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574544 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '728'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574549 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '715'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574555 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1737'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574559 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1736'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574564 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1733'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574569 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1732'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574574 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1730'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574580 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1723'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574585 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1720'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574590 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1718'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574595 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1715'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574600 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1714'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574605 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1711'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574609 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1709'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574614 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1700'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574619 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1697'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574624 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1696'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574628 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1691'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574633 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1688'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574639 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1726'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574644 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1724'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574649 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1682'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574653 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1679'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574658 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1678'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574663 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1676'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574668 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1673'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574672 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1672'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574677 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1669'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574683 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1663'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574687 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1694'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574692 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1661'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574697 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1658'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574701 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1471'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574706 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1396'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574711 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1517'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574715 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1654'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574720 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1421'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574724 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1613'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574729 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1652'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574734 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1651'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574738 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1657'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574743 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1541'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574748 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1649'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574752 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1568'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574757 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1607'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574762 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1646'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574766 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1727'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574771 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1375'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574776 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1643'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574781 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1639'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574787 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1564'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574792 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1627'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574796 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '722'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574801 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1619'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574806 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1735'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574811 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1615'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574816 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1606'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574821 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1604'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574826 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1432'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574830 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1589'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574835 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1702'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574840 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1490'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574844 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1528'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574849 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1588'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574853 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1585'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574858 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '723'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574863 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1415'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574867 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1636'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574872 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '756'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574877 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1580'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574881 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1579'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574886 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1544'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574890 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1609'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574895 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1465'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574899 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1622'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574904 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1577'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574909 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1511'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574913 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1576'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574918 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1721'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574924 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1573'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574928 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1429'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574933 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1567'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574937 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1514'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574942 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1565'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574947 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1556'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574951 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1562'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574956 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1561'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574961 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1667'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574965 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1558'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574970 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1555'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574975 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1474'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574980 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1616'. It is no longer used by any node.
+2026-11-11 03:15:50.574 Python[89442:8921674] 2026-11-11 03:15:50.574984 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1552'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.574993 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1610'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.574999 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1550'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575004 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1595'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575010 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1505'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575015 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1597'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575020 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1535'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575025 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1534'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575031 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1690'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575037 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1532'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575042 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1574'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575047 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1529'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575052 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1492'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575057 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1586'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575062 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1526'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575067 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1436'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575073 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1660'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575078 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1582'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575083 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '726'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575088 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1523'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575093 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1519'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575098 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1508'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575103 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1601'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575107 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1459'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575112 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1645'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575117 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1408'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575122 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1510'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575127 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1507'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575132 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1412'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575138 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1693'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575143 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1469'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575148 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1502'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575153 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1390'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575157 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1499'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575162 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1664'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575167 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1703'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575172 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1540'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575177 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1486'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575182 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1498'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575187 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1675'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575192 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1570'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575197 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1451'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575201 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1496'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575206 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1538'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575211 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1495'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575216 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1598'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575221 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1493'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575226 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1633'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575230 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1592'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575236 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1406'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575241 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1484'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575246 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1666'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575251 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1483'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575256 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1537'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575261 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1670'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575266 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1480'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575271 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1655'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575276 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1603'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575281 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1433'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575286 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1478'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575291 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1681'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575295 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1475'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575300 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1706'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575305 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1439'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575310 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1423'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575315 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1501'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575320 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1376'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575325 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '753'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575329 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1462'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575334 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1717'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575339 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1699'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575344 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1642'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575349 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1547'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575354 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1457'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575359 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1454'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575364 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1559'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575369 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1621'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575374 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1684'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575380 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1453'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575385 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1520'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575390 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1378'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575395 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1448'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575399 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1631'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575404 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1391'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575409 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1463'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575414 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1594'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575419 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1571'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575424 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1549'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575429 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1445'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575434 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1685'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575439 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1468'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575444 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1444'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575449 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1420'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575453 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1504'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575458 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1417'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575463 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1513'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575468 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1472'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575473 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1624'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575478 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1477'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575483 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1427'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575488 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1373'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575494 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1438'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575498 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1381'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575507 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1424'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575514 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1460'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575518 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1708'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575524 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1637'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575529 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '752'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575534 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1411'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575539 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1385'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575544 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1387'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575548 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1379'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575553 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1418'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575558 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1414'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575563 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1516'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575568 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1442'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575573 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1705'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575578 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1583'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575582 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1546'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575587 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1687'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575592 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1409'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575597 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1625'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575602 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1441'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575607 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1729'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575612 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1630'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575617 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1481'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575621 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1399'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575626 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1634'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575631 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1384'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575635 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1543'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575640 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '719'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575645 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1531'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575649 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1397'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575654 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1612'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575659 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1447'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575663 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1712'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575668 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1525'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575673 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1522'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575677 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1393'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575682 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1640'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575687 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '731'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575691 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1426'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575696 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1618'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575700 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1382'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575706 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1372'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575711 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1388'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575716 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1648'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575721 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1403'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575726 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1405'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575730 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1450'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575736 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1600'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575740 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1456'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575745 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1466'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575750 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1400'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575754 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1489'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575759 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1430'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575764 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1628'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575768 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1394'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575773 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1435'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575778 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1402'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575782 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1591'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575787 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1553'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575792 [I:onnxruntime:, graph.cc:5780 CleanUnusedInitializersAndNodeArgs] Removing initializer '1487'. It is no longer used by any node.
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575980 [I:onnxruntime:, inference_session.cc:2017 TransformGraph] Running graph optimizations in loop 1 time/s (Graph Optimizations Loop Level : 1)
+2026-11-11 03:15:50.575 Python[89442:8921674] 2026-11-11 03:15:50.575991 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer Level2_RuleBasedTransformer modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576001 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer TransposeOptimizer_CPUExecutionProvider modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576009 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer QDQSelectorActionTransformer modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576017 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer GemmActivationFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576023 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer MatMulIntegerToFloatFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576030 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer DynamicQuantizeMatMulFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576036 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer ConvActivationFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576043 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer GeluFusionL2 modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576049 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer LayerNormFusionL2 modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576055 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer SimplifiedLayerNormFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576064 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer AttentionFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576071 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer EmbedLayerNormFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576077 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer GatherSliceToSplitFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576082 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer GatherToSliceFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576090 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer MatmulTransposeFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576097 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer BiasGeluFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576103 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer GroupQueryAttentionFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576109 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer MatMulAddFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576114 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer SkipLayerNormFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576120 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer BiasSkipLayerNormFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576126 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer FastGeluFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576131 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer QuickGeluFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576137 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer BiasSoftmaxFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576142 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer BiasDropoutFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576148 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer MatMulScaleFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576154 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer MatMulActivationFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576159 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer MatMulNBitsFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576172 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer GroupQueryAttentionPreNormFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576179 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer QDQFinalCleanupTransformer modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576186 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer NhwcTransformer modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576192 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer ConvAddActivationFusion modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576201 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer RemoveDuplicateCastTransformer modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576206 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer CastFloat16Transformer modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576212 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer FuseFp16InitializerToFp32NodeTransformer modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576219 [I:onnxruntime:, graph_transformer.cc:15 Apply] GraphTransformer MemcpyTransformer modified: 0 with status: OK
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576241 [I:onnxruntime:, allocation_planner.cc:2719 CreateGraphPartitioner] Use DeviceBasedPartition as default
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576265 [I:onnxruntime:, session_state_utils.cc:265 SaveInitializedTensors] Saving initialized tensors.
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576273 [I:onnxruntime:, session_state_utils.cc:465 SaveInitializedTensors] Done saving initialized tensors
+2026-11-11 03:15:50.576 Python[89442:8921674] 2026-11-11 03:15:50.576296 [I:onnxruntime:, inference_session.cc:3296 operator()] Session successfully initialized.
+['CoreMLExecutionProvider', 'CPUExecutionProvider']

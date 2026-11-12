@@ -1,0 +1,125 @@
+{
+ "impl": "impl_rings/minimap.py",
+ "split": "held",
+ "labelled": {
+  "n": 48,
+  "minimap_acc": 0.875,
+  "route": {
+   "tp": 11,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "colour_acc": 1.0
+  },
+  "near_bearing": {
+   "n": 11,
+   "median_err": 4.5,
+   "within_45": 1.0
+  },
+  "far_bearing": {
+   "n": 11,
+   "median_err": 7.5,
+   "within_45": 0.909
+  },
+  "bearing_missing": 0,
+  "arrow": {
+   "n": 43,
+   "median_err": 1.9,
+   "within_45": 0.977
+  },
+  "corrupt": {
+   "tp": 6,
+   "fp": 1,
+   "fn": 4
+  }
+ },
+ "disagreements": [
+  {
+   "id": "G02-02",
+   "k": 1820,
+   "diff": [
+    "arrow -49 vs label 75"
+   ]
+  },
+  {
+   "id": "G02-05",
+   "k": 1294,
+   "diff": [
+    "minimap flat != tilted"
+   ]
+  },
+  {
+   "id": "G02-07",
+   "k": 2051,
+   "diff": [
+    "minimap tilted != flat"
+   ]
+  },
+  {
+   "id": "G05-05",
+   "k": 2372,
+   "diff": [
+    "minimap flat != tilted"
+   ]
+  },
+  {
+   "id": "G09-08",
+   "k": 1447,
+   "diff": [
+    "minimap flat != tilted"
+   ]
+  },
+  {
+   "id": "G12-01",
+   "k": 1423,
+   "diff": [
+    "far bearing -38 vs label 15"
+   ]
+  },
+  {
+   "id": "G12-02",
+   "k": 2480,
+   "diff": [
+    "minimap tilted != flat"
+   ]
+  },
+  {
+   "id": "G12-09",
+   "k": 283,
+   "diff": [
+    "minimap tilted != flat"
+   ]
+  }
+ ],
+ "speed_ms": {
+  "mean": 0.6,
+  "p95": 0.76,
+  "max": 1.45
+ },
+ "rates": {
+  "minimap": {
+   "none": 274,
+   "flat": 1475,
+   "tilted": 1019
+  },
+  "route": {
+   "none": 2460,
+   "yellow": 265,
+   "purple": 43
+  },
+  "corrupt": 670
+ },
+ "steering": {
+  "n": 241,
+  "spearman": 0.51,
+  "strong_n": 48,
+  "sign_agreement": 0.833
+ },
+ "jitter_deg": {
+  "n": 298,
+  "median": 3.8,
+  "p90": 13.5,
+  "over_60": 2
+ }
+}

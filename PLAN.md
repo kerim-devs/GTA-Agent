@@ -1,0 +1,57 @@
+# Plan
+
+An AI plays GTA on a PS5 in a live stream, with an AI commentator who reads the chat. The stream goes public on 17 November 2026 with GTA V, to show that it works, and switches to GTA VI on 19 November. The measure for the stream is that the story moves forward. Flawless play is not the measure: the agent may hit a lamp post, but it has to free itself within about ten seconds and carry on, and it must never hold an input that the picture no longer justifies.
+
+This file is the current plan. Earlier versions sit in `archive/`. Measurements and decisions are logged in `docs/LOG.md`, task cards live in `docs/tasks/`, and every finished task leaves a report in `docs/reports/`.
+
+## How the agent is built
+
+Nothing of the game can be read on a console except its picture, so everything the agent knows comes from the frame. No single model plays GTA by itself today. Three parts share the work, each on its own clock, and none waits for another.
+
+The hands run on the Mac at 30 Hz without any language model. Readers take the minimap, the HUD, the screen the game shows and the objects in the frame, and skills built on them follow a route, walk to a blip, enter a vehicle, fight, set a waypoint or get unstuck. A reflex beside them closes menus nobody asked for and presses the retry after a failed mission.
+
+The judge is new. A small vision model on a gaming PC with an RTX 4090 is asked the same fixed questions about the current frame several times a second: how the figure is moving, whether the way ahead is blocked, whether a car is within reach, which of a handful of skills fits the objective right now. Every question has fixed answers and the model returns one of them with a probability, which the overlay shows as bars. The running skill changes only when the same answer comes twice or leads clearly. When the server does not answer, the smaller model on the Mac takes over at about half the speed, and without either the pilot falls back to what the readers say.
+
+The head stays in the background. It is a strong model, today the Codex CLI with five and a half to nine seconds an answer, that understands the mission and writes the task in words into the state the judge reads. Nothing that has to happen within a second depends on it. A commentator process reads what all three are doing and turns it into speech for the stream.
+
+The picture comes from Remote Play over a wired connection, and the inputs go back the same way through the bridge in `remoteplay/`. A capture card feeds OBS, and it replaces Remote Play as the agent's eyes only if a measurement shows a clear gain. The pilot stays on the Mac because its text and object recognition depend on macOS. The gaming PC runs LM Studio as a model server that the Mac asks over the local network.
+
+Three things are built so that the move to GTA VI is a matter of a day. A game profile holds, per game, the buttons, the HUD regions, the screen classes and the dead zones of the sticks in one place; sprint is hard-wired to Cross in the skills today and is reported to sit on L3 in the new game. The mission loop is general: read the objective, follow the marker or the route, fight what is red, lose the police, retry after a failure. No mission is rehearsed by hand. And the launch-day workflow is practised on GTA V first: Kerim plays an hour with the recorder running, the frames are labelled automatically, small classifiers and the readers are retrained on them, and the pilot takes over.
+
+Every run is recorded: video, frame times, controller states, and one log line per tick with what the pilot read and what it commanded. These recordings train classifiers of our own. NitroGen, an open model from NVIDIA that maps a frame to gamepad inputs, is tried as an experiment against Kerim's recordings; its licence is non-commercial, so whether it may play in a public stream is Kerim's decision, and the plan does not depend on it.
+
+## Where things stand on 11 November
+
+The bridge works. Over the cable, with the game in performance mode, the time from an input to the changed picture is 120 to 156 ms at 60 fps. It repeats the whole input state several times a second, so a lost release cannot leave a button held. It has to be started from the agent's session until Kerim allows Python the local network in macOS.
+
+The pilot is a package with a gate. It reads the minimap in about 1 ms, the distance the game prints on the vehicle map, health and armour, the wanted level, the German help, objective and banner texts, and it finds vehicles and people with a detector that runs beside the loop. Since this morning it knows the game's menus on the cable picture, the interaction menu included, and the reflex closes them. The conductor runs a session, asks the head on events and ahead of the end of a plan, and carries the answer out as a plan of up to five skills from a registry of fourteen. `pilot play --plan` runs a given plan without a head, which is how single skills are tried on the console. The commentator follows a session's logs, speaks the head's sentences and the events and answers the chat.
+
+The gaming PC is set up as the model server: an i9-13900KF, 32 GB of memory and an RTX 4090 with 24 GB, LM Studio on port 1234, reachable from the Mac inside the local network only. The first measurements of the judge are in the log.
+
+What has run on the console is still little: the figure walked around for four minutes on the night of 10 November, and the calibration measured the picture delay and the camera's dead zone. No car has been driven by the pilot, no skill of the second wave has run live, and the reviews keep finding faults that only real pictures show. Parked by decision: the reflex that keeps the camera behind the figure (the game recentres the camera by itself while walking, and the tilt is levelled once by a skill), the rest of `pilot calibrate`, and driving along a road without a route, which waits for footage.
+
+## Work packages
+
+The largest lever is time at the console. The live ladder is climbed one rung at a time, each rung three times in a row without a hand on it before the next: walking and small turns, getting into a vehicle, a waypoint and a drive to it, the chain from standing in the street to arriving, stars and getting away, walking into a mission marker, one whole mission, and an endurance run.
+
+Beside it, Codex builds in worktrees of its own. P28 is the game profile with the dead zones applied in one place. P29 is the judge beside the loop, asked about four frames a second and never waited for; its first job is to say how the figure moves, which the minimap gets wrong on foot whenever stars are lit. P30 is the general mission loop as a head of rules, which decides the plain cases at once and asks the model only where the rules do not know. P31 puts the judge's bars on the overlay. P32 teaches the reader the banners for a failed and a passed mission, a death and an arrest on the cable picture, for which Kerim records footage. P33 lets the skills take the judge's word for how the figure moves.
+
+By day: on 11 November the first live rungs up to driving, the measurement of the judge and the cards for the profile and the judge. On the 12th the chain and the escape live, and the NitroGen experiment. On the 13th the judge live and a first mission with the general loop; the platform is decided. On the 14th an endurance run of thirty to sixty minutes, the launch-day workflow rehearsed on GTA V, OBS and the overlay. On the 15th a rehearsal of two hours with a list of every failure. On the 16th the blockers and a dress rehearsal with the commentator and its voice. On the morning of the 17th the code is frozen and the stream starts with GTA V. On the 18th the profile for GTA VI is written from Kerim's research, and a second PC takes over the training so the RTX 4090 stays free for the stream. On the 19th the launch-day workflow runs on GTA VI and the stream switches.
+
+## How the work is done
+
+Claude plans, writes the task cards and reviews. Codex implements each card in its own worktree on a branch of its own. Nothing is merged into the integration branch `feat/pilot` before the gate of the package is green and the diff has been read. Changes on the path that sends inputs to the console get a second review whose only job is to break them. Every new skill is run over a recorded session with the real readers before it is trusted. Pull requests go from `feat/pilot` to `main`, and `main` only moves when Kerim has accepted the change.
+
+Measure first, then build. Several assumptions in this project turned out wrong once they were measured, so a number without a measurement is marked as an estimate in the log.
+
+The judge goes live when it names how the figure is moving correctly on at least nine of ten recorded frames and answers in under half a second. NitroGen counts as usable when its steering matches Kerim's direction on at least eight of ten clear steering moments of his recorded drives. The rehearsal on the 15th counts when the pilot plays for two hours without standing still, frees itself after every snag in about ten seconds and never holds an input the picture no longer justifies.
+
+## Limits
+
+The files `profiles.json` and `console.json` under `~/.config/ps5-remoteplay-mcp/` hold credentials and are never read; only `daemon.log` there may be. Inputs may go to the real console without Kerim since he allowed it on 11 November; before any input the picture is checked, and a run starts only on the game itself, never on the console's home screen. Before a live run the bridge's `/pad` is read, and a controller that reports anything blocks the pilot. No sound is played while he sleeps next to the machine; the commentator is rehearsed with `--mute`. Reading status and frames is always fine. System and privacy settings of macOS are changed by Kerim, not by an agent. His email address and project details go to no outside service. Automated tests never run with `PS5_HOST` set, because that switches on the hardware tests.
+
+The gaming PC belongs to a colleague. The agent works there only in Kerim's own account `gta`, reaches it only with a key and only from the local network, and installs nothing outside that account. The account has to stay signed in for the model server to run.
+
+## Open decisions
+
+The platform and the commentator's voice and role. Whether the Codex quota carries a two hour stream next to the build work, with an API key or a local head on the RTX 4090 as the fallback. Whether the capture card replaces Remote Play as the agent's eyes. Whether NitroGen may be used in public. Preloading GTA VI, and the risk from the rules of PSN and Rockstar.

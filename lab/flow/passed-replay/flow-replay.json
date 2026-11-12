@@ -1,0 +1,47 @@
+[
+  {
+    "i": 7076,
+    "t": 330.3715,
+    "screen": "game",
+    "action": "ordinary",
+    "buttons": [],
+    "events": []
+  },
+  {
+    "i": 7273,
+    "t": 338.6568,
+    "screen": "passed",
+    "action": "confirm",
+    "buttons": [],
+    "events": []
+  },
+  {
+    "i": 7274,
+    "t": 338.7332,
+    "screen": "passed",
+    "action": "wait",
+    "buttons": [],
+    "events": [
+      {
+        "kind": "pass",
+        "time": 338.7332
+      }
+    ]
+  },
+  {
+    "i": 7339,
+    "t": 341.7342,
+    "screen": "game",
+    "action": "confirm",
+    "buttons": [],
+    "events": []
+  },
+  {
+    "i": 7340,
+    "t": 341.7423,
+    "screen": "game",
+    "action": "ordinary",
+    "buttons": [],
+    "events": []
+  }
+]

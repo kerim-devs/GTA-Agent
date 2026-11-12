@@ -1,0 +1,153 @@
+{
+  "frames": 60,
+  "iou": 0.4,
+  "groups": {
+    "vehicles_over_200": {
+      "found": 24,
+      "count": 27,
+      "recall": 0.8888888888888888
+    },
+    "vehicles_over_100": {
+      "found": 61,
+      "count": 72,
+      "recall": 0.8472222222222222
+    },
+    "people_over_80": {
+      "found": 1,
+      "count": 8,
+      "recall": 0.125
+    }
+  },
+  "kind_agreement": {
+    "same": 60,
+    "matched": 76
+  },
+  "per_kind": {
+    "person": {
+      "found": 3,
+      "missed": 12,
+      "invented": 3
+    },
+    "car": {
+      "found": 43,
+      "missed": 17,
+      "invented": 7
+    },
+    "truck": {
+      "found": 23,
+      "missed": 10,
+      "invented": 13
+    },
+    "bus": {
+      "found": 7,
+      "missed": 3,
+      "invented": 0
+    },
+    "motorcycle": {
+      "found": 0,
+      "missed": 1,
+      "invented": 0
+    },
+    "bicycle": {
+      "found": 0,
+      "missed": 0,
+      "invented": 0
+    }
+  },
+  "large_per_kind": {
+    "person": {
+      "found": 1,
+      "missed": 7
+    },
+    "car": {
+      "found": 38,
+      "missed": 4
+    },
+    "truck": {
+      "found": 19,
+      "missed": 4
+    },
+    "bus": {
+      "found": 4,
+      "missed": 3
+    },
+    "motorcycle": {
+      "found": 0,
+      "missed": 0
+    },
+    "bicycle": {
+      "found": 0,
+      "missed": 0
+    }
+  },
+  "large_recall": 0.775,
+  "invented_fraction": 0.23232323232323232,
+  "ignored_small_predictions": 60,
+  "player_reported_frames": [
+    "041"
+  ],
+  "player_reported_fraction": 0.016666666666666666,
+  "player_present_frames": 39,
+  "removed_player_detections": 35,
+  "collateral_removed": [
+    {
+      "frame": "006",
+      "kind": "truck",
+      "box": [
+        549.2999877929688,
+        441.4058837890625,
+        715.8524780273438,
+        552.686279296875
+      ]
+    },
+    {
+      "frame": "040",
+      "kind": "person",
+      "box": [
+        557.5914306640625,
+        342.6503601074219,
+        607.5513916015625,
+        502.2322082519531
+      ]
+    },
+    {
+      "frame": "041",
+      "kind": "person",
+      "box": [
+        591.8041381835938,
+        478.0997619628906,
+        663.6100463867188,
+        667.6337280273438
+      ]
+    },
+    {
+      "frame": "042",
+      "kind": "person",
+      "box": [
+        602.635498046875,
+        527.3815307617188,
+        668.9534912109375,
+        719.2219848632812
+      ]
+    }
+  ],
+  "mean_ms": 40.395592381537426,
+  "p95_ms": 40.87712676700903,
+  "poller": {
+    "loop_hz": 30.0,
+    "results_hz": 14.666666666666666,
+    "poll_mean_ms": 0.036916633447011314,
+    "poll_p95_ms": 0.08512949571013445,
+    "poll_max_ms": 0.16920801135711372
+  },
+  "load": "one separate CPU-bound Python process",
+  "labels_sha256": "90fcb53cfd482e1b929569aefc52739d56f1de74d5052854d92d0d33f6ce09b9",
+  "acceptance": {
+    "vehicles_over_200": false,
+    "vehicles_over_100": true,
+    "people_over_80": false,
+    "precision": false,
+    "player": true,
+    "speed": true
+  }
+}

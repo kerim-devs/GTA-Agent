@@ -1,0 +1,83 @@
+[
+  {
+    "id": "tour-00120",
+    "source": "tour",
+    "recording": "screen-tour/20261111-070239",
+    "i": 120,
+    "capture_s": 2.0203,
+    "rgb_sha256": "aff8b7103102e7d519924ee844a2099ebf3b7a565eb8f10efa23ecc439dbce14",
+    "screen": "pause"
+  },
+  {
+    "id": "calibration2-02400",
+    "source": "calibration2",
+    "recording": "calibrate/20261111-065642",
+    "i": 2400,
+    "capture_s": 40.1879,
+    "rgb_sha256": "e1f90563b4c8fc204ef952709dc054d87b7dd4912e0aabc0befb6ae9fd0658bb",
+    "screen": "pause"
+  },
+  {
+    "id": "tour-00360",
+    "source": "tour",
+    "recording": "screen-tour/20261111-070239",
+    "i": 360,
+    "capture_s": 6.023,
+    "rgb_sha256": "2c674b767b98859e4e2a9c31b3cad7ba020ac459af52f450905cc495486f1e83",
+    "screen": "map"
+  },
+  {
+    "id": "tour-00780",
+    "source": "tour",
+    "recording": "screen-tour/20261111-070239",
+    "i": 780,
+    "capture_s": 13.029,
+    "rgb_sha256": "08d5dd0a76cb2347a9983b7a811ac90b4a7a7bce0b1066dab905686cad4a8069",
+    "screen": "weapon_wheel"
+  },
+  {
+    "id": "tour-01080",
+    "source": "tour",
+    "recording": "screen-tour/20261111-070239",
+    "i": 1080,
+    "capture_s": 18.0369,
+    "rgb_sha256": "d9c10e6e8d5b304ad9d47549a64a4150ee476924d413db093bb9ab15af61d18e",
+    "screen": "phone"
+  },
+  {
+    "id": "tour-01380",
+    "source": "tour",
+    "recording": "screen-tour/20261111-070239",
+    "i": 1380,
+    "capture_s": 23.042,
+    "rgb_sha256": "ed234bd33d15e96395921a148317d2418a0979aeaf2708b4141d8911851c09ee",
+    "screen": "interaction_menu"
+  },
+  {
+    "id": "kerim-03000",
+    "source": "kerim",
+    "recording": "kerim/20261111-065022",
+    "i": 3000,
+    "capture_s": 50.0545,
+    "rgb_sha256": "ca17400ee392612f7c571a975b59d8c76dcb1045c4e51ff36420fab7f5d64bd8",
+    "screen": "game"
+  },
+  {
+    "id": "kerim-07500",
+    "source": "kerim",
+    "recording": "kerim/20261111-065022",
+    "i": 7500,
+    "capture_s": 125.1967,
+    "rgb_sha256": "a82f3a28ae7340394dc5f667f97424a0cda3c0a1f3a3db33e8fda6e4836c3131",
+    "screen": "game"
+  },
+  {
+    "id": "kerim-12000",
+    "source": "kerim",
+    "recording": "kerim/20261111-065022",
+    "i": 12000,
+    "capture_s": 200.299,
+    "rgb_sha256": "2d2ca6fa254cc560458cfa6ebeb094d4c12786717ebc943786e8ac65574a4820",
+    "screen": "game"
+  }
+]

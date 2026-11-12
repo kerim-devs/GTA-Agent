@@ -1,0 +1,2311 @@
+[
+  {
+    "recording": "20261110-091812",
+    "i": 673,
+    "frame_id": 23057,
+    "t": 39.9971,
+    "label": "non-map",
+    "screen": null,
+    "file": "20261110-091812-673.png",
+    "text": []
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 827,
+    "frame_id": 26099,
+    "t": 36.0487,
+    "label": "non-map",
+    "screen": null,
+    "file": "20261110-093238-827.png",
+    "text": [
+      {
+        "text": "mission fehlgeschlagen",
+        "confidence": 1.0,
+        "box": [
+          302,
+          300,
+          674,
+          64
+        ],
+        "region": "banner"
+      },
+      {
+        "text": "Franklin ist tot.",
+        "confidence": 1.0,
+        "box": [
+          580,
+          384,
+          122,
+          14
+        ],
+        "region": "menu"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 2141,
+    "frame_id": 27664,
+    "t": 96.0066,
+    "label": "non-map",
+    "screen": null,
+    "file": "20261110-093238-2141.png",
+    "text": [
+      {
+        "text": "51,10",
+        "confidence": 1.0,
+        "box": [
+          1164,
+          38,
+          56,
+          20
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Benutze \u00ae oder das Touchpad, um eine",
+        "confidence": 1.0,
+        "box": [
+          72,
+          44,
+          272,
+          16
+        ],
+        "region": "help"
+      },
+      {
+        "text": "Waffe auszuw\u00e4hlen, und lasse Lil los, um",
+        "confidence": 1.0,
+        "box": [
+          72,
+          64,
+          274,
+          14
+        ],
+        "region": "help"
+      },
+      {
+        "text": "sie auszur\u00fcsten.",
+        "confidence": 1.0,
+        "box": [
+          72,
+          84,
+          108,
+          12
+        ],
+        "region": "help"
+      },
+      {
+        "text": "Irgendwer sollte den Niggas klarmachen, dass dies eine legale",
+        "confidence": 1.0,
+        "box": [
+          346,
+          640,
+          586,
+          24
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Autor\u00fcckf\u00fchrung ist.",
+        "confidence": 1.0,
+        "box": [
+          546,
+          664,
+          190,
+          26
+        ],
+        "region": "subtitle"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 2316,
+    "frame_id": 27840,
+    "t": 103.9257,
+    "label": "non-map",
+    "screen": null,
+    "file": "20261110-093238-2316.png",
+    "text": [
+      {
+        "text": "Benutze \u00ae oder das Touchpad, um eine",
+        "confidence": 1.0,
+        "box": [
+          72,
+          44,
+          272,
+          16
+        ],
+        "region": "help"
+      },
+      {
+        "text": "Waffe auszuw\u00e4hlen, und lasse Lil los, um",
+        "confidence": 1.0,
+        "box": [
+          72,
+          64,
+          274,
+          14
+        ],
+        "region": "help"
+      },
+      {
+        "text": "sie auszur\u00fcsten.",
+        "confidence": 1.0,
+        "box": [
+          72,
+          84,
+          108,
+          12
+        ],
+        "region": "help"
+      },
+      {
+        "text": "N",
+        "confidence": 1.0,
+        "box": [
+          220,
+          554,
+          14,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Da oben! Schalt ihn aus! Knips diesen Arsch aus!",
+        "confidence": 1.0,
+        "box": [
+          414,
+          666,
+          454,
+          22
+        ],
+        "region": "subtitle"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 6919,
+    "frame_id": 32840,
+    "t": 324.0091,
+    "label": "non-map",
+    "screen": null,
+    "file": "20261110-093238-6919.png",
+    "text": [
+      {
+        "text": "gro\u00dfer Hauptling D\u00e4mliches Arschloch!",
+        "confidence": 1.0,
+        "box": [
+          460,
+          666,
+          362,
+          22
+        ],
+        "region": "subtitle"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 8191,
+    "frame_id": 34310,
+    "t": 384.9028,
+    "label": "map",
+    "screen": "overview",
+    "file": "20261110-093238-8191.png",
+    "text": [
+      {
+        "text": "FRANKLIN",
+        "confidence": 1.0,
+        "box": [
+          976,
+          64,
+          50,
+          16
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Grand Theft Auto V",
+        "confidence": 1.0,
+        "box": [
+          204,
+          80,
+          184,
+          28
+        ],
+        "region": "other"
+      },
+      {
+        "text": "IMONTAG 14:55",
+        "confidence": 1.0,
+        "box": [
+          948,
+          80,
+          76,
+          16
+        ],
+        "region": "other"
+      },
+      {
+        "text": "$432",
+        "confidence": 1.0,
+        "box": [
+          996,
+          96,
+          30,
+          16
+        ],
+        "region": "other"
+      },
+      {
+        "text": "ONLINE",
+        "confidence": 1.0,
+        "box": [
+          980,
+          127,
+          50,
+          13
+        ],
+        "region": "other"
+      },
+      {
+        "text": "SPIE",
+        "confidence": 1.0,
+        "box": [
+          840,
+          128,
+          28,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "KARTE",
+        "confidence": 1.0,
+        "box": [
+          258,
+          130,
+          42,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "SUDS LAR",
+        "confidence": 1.0,
+        "box": [
+          326,
+          267,
+          72,
+          30
+        ],
+        "region": "menu"
+      },
+      {
+        "text": "Menu verbergen",
+        "confidence": 1.0,
+        "box": [
+          920,
+          666,
+          96,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1048,
+          666,
+          44,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Ausw\u00e4hlen",
+        "confidence": 1.0,
+        "box": [
+          1126,
+          666,
+          64,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Iterblattern",
+        "confidence": 1.0,
+        "box": [
+          798,
+          668,
+          62,
+          10
+        ],
+        "region": "subtitle"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 8192,
+    "frame_id": 34312,
+    "t": 385.0703,
+    "label": "map",
+    "screen": "overview",
+    "file": "20261110-093238-8192.png",
+    "text": [
+      {
+        "text": "FRANKLIN",
+        "confidence": 1.0,
+        "box": [
+          976,
+          64,
+          50,
+          16
+        ],
+        "region": "other"
+      },
+      {
+        "text": "MONTAG 14:55",
+        "confidence": 1.0,
+        "box": [
+          948,
+          79,
+          78,
+          17
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Grand Theit Auto V",
+        "confidence": 1.0,
+        "box": [
+          206,
+          80,
+          182,
+          30
+        ],
+        "region": "other"
+      },
+      {
+        "text": "$432",
+        "confidence": 1.0,
+        "box": [
+          996,
+          96,
+          30,
+          16
+        ],
+        "region": "other"
+      },
+      {
+        "text": "KARTE",
+        "confidence": 1.0,
+        "box": [
+          256,
+          128,
+          44,
+          15
+        ],
+        "region": "other"
+      },
+      {
+        "text": "INFO",
+        "confidence": 1.0,
+        "box": [
+          406,
+          128,
+          34,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "STATISTIKEN",
+        "confidence": 1.0,
+        "box": [
+          528,
+          128,
+          82,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "EINSTELLUNGEN",
+        "confidence": 1.0,
+        "box": [
+          662,
+          128,
+          106,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "SPIEL",
+        "confidence": 1.0,
+        "box": [
+          840,
+          128,
+          38,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "ONLINE",
+        "confidence": 1.0,
+        "box": [
+          980,
+          128,
+          50,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Ausw\u00e4hlen *",
+        "confidence": 1.0,
+        "box": [
+          1124,
+          662,
+          86,
+          22
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1050,
+          665,
+          42,
+          13
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Weiterbl\u00e4ttern L1 R1",
+        "confidence": 1.0,
+        "box": [
+          778,
+          666,
+          138,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Men\u00fc verbergen",
+        "confidence": 1.0,
+        "box": [
+          920,
+          666,
+          94,
+          14
+        ],
+        "region": "subtitle"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 8216,
+    "frame_id": 34358,
+    "t": 386.6196,
+    "label": "map",
+    "screen": "overview",
+    "file": "20261110-093238-8216.png",
+    "text": [
+      {
+        "text": "FRANKLIN",
+        "confidence": 1.0,
+        "box": [
+          976,
+          64,
+          50,
+          16
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Grand Theft Auto V",
+        "confidence": 1.0,
+        "box": [
+          206,
+          79,
+          182,
+          31
+        ],
+        "region": "other"
+      },
+      {
+        "text": "MONTAG 14:55",
+        "confidence": 1.0,
+        "box": [
+          948,
+          80,
+          78,
+          17
+        ],
+        "region": "other"
+      },
+      {
+        "text": "$432",
+        "confidence": 1.0,
+        "box": [
+          996,
+          96,
+          30,
+          16
+        ],
+        "region": "other"
+      },
+      {
+        "text": "ONLINE",
+        "confidence": 1.0,
+        "box": [
+          980,
+          127,
+          48,
+          13
+        ],
+        "region": "other"
+      },
+      {
+        "text": "KARTE",
+        "confidence": 1.0,
+        "box": [
+          256,
+          128,
+          44,
+          16
+        ],
+        "region": "other"
+      },
+      {
+        "text": "INFO",
+        "confidence": 1.0,
+        "box": [
+          408,
+          128,
+          32,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "STATISTIKEN",
+        "confidence": 1.0,
+        "box": [
+          528,
+          128,
+          82,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "EINSTELLUNGEN",
+        "confidence": 1.0,
+        "box": [
+          662,
+          128,
+          106,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "SPIEL",
+        "confidence": 1.0,
+        "box": [
+          840,
+          128,
+          38,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Ausw\u00e4hlen",
+        "confidence": 1.0,
+        "box": [
+          1124,
+          660,
+          88,
+          26
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "O",
+        "confidence": 1.0,
+        "box": [
+          1094,
+          664,
+          18,
+          18
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Weiterbl\u00e4ttern L1 R1",
+        "confidence": 1.0,
+        "box": [
+          780,
+          666,
+          136,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Men\u00fc verbergen",
+        "confidence": 1.0,
+        "box": [
+          920,
+          666,
+          94,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Zur\u00fcck (",
+        "confidence": 1.0,
+        "box": [
+          1050,
+          666,
+          46,
+          12
+        ],
+        "region": "phone"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 8221,
+    "frame_id": 34367,
+    "t": 387.0035,
+    "label": "map",
+    "screen": "overview",
+    "file": "20261110-093238-8221.png",
+    "text": [
+      {
+        "text": "Spieler A",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          62,
+          16
+        ],
+        "region": "other"
+      },
+      {
+        "text": "ranc len Aung\"",
+        "confidence": 1.0,
+        "box": [
+          220,
+          80,
+          168,
+          30
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Autowaschanlage < 1/2 \u203a lal",
+        "confidence": 1.0,
+        "box": [
+          1034,
+          124,
+          178,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "ISLLUNGEN",
+        "confidence": 1.0,
+        "box": [
+          692,
+          126,
+          76,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "KARTE",
+        "confidence": 1.0,
+        "box": [
+          254,
+          128,
+          46,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "STAT",
+        "confidence": 1.0,
+        "box": [
+          528,
+          128,
+          36,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "\"IKEN",
+        "confidence": 1.0,
+        "box": [
+          564,
+          128,
+          46,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "SPIEL",
+        "confidence": 1.0,
+        "box": [
+          840,
+          128,
+          38,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Or INE",
+        "confidence": 1.0,
+        "box": [
+          982,
+          128,
+          44,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "....0",
+        "confidence": 1.0,
+        "box": [
+          400,
+          150,
+          46,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Ausw\u00e4hlen",
+        "confidence": 1.0,
+        "box": [
+          1124,
+          660,
+          88,
+          26
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Weiterbl\u00e4ttern L1 R1 Men\u00fc verbergen",
+        "confidence": 1.0,
+        "box": [
+          780,
+          664,
+          236,
+          16
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "O",
+        "confidence": 1.0,
+        "box": [
+          1094,
+          664,
+          18,
+          18
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Zoomen L2",
+        "confidence": 1.0,
+        "box": [
+          556,
+          666,
+          70,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Zur\u00fcck (",
+        "confidence": 1.0,
+        "box": [
+          1050,
+          666,
+          46,
+          12
+        ],
+        "region": "phone"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 8230,
+    "frame_id": 34384,
+    "t": 387.4334,
+    "label": "map",
+    "screen": "overview",
+    "file": "20261110-093238-8230.png",
+    "text": [
+      {
+        "text": "Spielen",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          54,
+          17
+        ],
+        "region": "other"
+      },
+      {
+        "text": "LE55",
+        "confidence": 1.0,
+        "box": [
+          994,
+          82,
+          32,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "all",
+        "confidence": 1.0,
+        "box": [
+          220,
+          88,
+          40,
+          22
+        ],
+        "region": "other"
+      },
+      {
+        "text": "432",
+        "confidence": 1.0,
+        "box": [
+          1002,
+          96,
+          24,
+          16
+        ],
+        "region": "other"
+      },
+      {
+        "text": "A Lewas Enlage lai",
+        "confidence": 1.0,
+        "box": [
+          1080,
+          124,
+          132,
+          16
+        ],
+        "region": "other"
+      },
+      {
+        "text": "1 ELLUNGEN",
+        "confidence": 1.0,
+        "box": [
+          688,
+          126,
+          80,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "KARTE",
+        "confidence": 1.0,
+        "box": [
+          256,
+          128,
+          44,
+          13
+        ],
+        "region": "other"
+      },
+      {
+        "text": "SPIEL",
+        "confidence": 1.0,
+        "box": [
+          840,
+          130,
+          38,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Stripclub",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          366,
+          54,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "PILLBOX HILL",
+        "confidence": 1.0,
+        "box": [
+          72,
+          638,
+          80,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Ausw\u00e4hlen",
+        "confidence": 1.0,
+        "box": [
+          1124,
+          660,
+          88,
+          26
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "O",
+        "confidence": 1.0,
+        "box": [
+          1094,
+          664,
+          18,
+          18
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Zoomen L2",
+        "confidence": 1.0,
+        "box": [
+          556,
+          666,
+          70,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "I R2",
+        "confidence": 1.0,
+        "box": [
+          624,
+          666,
+          28,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "183",
+        "confidence": 1.0,
+        "box": [
+          746,
+          666,
+          18,
+          12
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Weiterbl\u00e4ttern L1 R1 Men\u00fc verbergen",
+        "confidence": 1.0,
+        "box": [
+          780,
+          666,
+          234,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Zur\u00fcck (",
+        "confidence": 1.0,
+        "box": [
+          1050,
+          666,
+          46,
+          12
+        ],
+        "region": "phone"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 8252,
+    "frame_id": 34428,
+    "t": 389.0037,
+    "label": "map",
+    "screen": "map",
+    "file": "20261110-093238-8252.png",
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          44,
+          46,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Ammu-Nation",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          70,
+          86,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "P",
+        "confidence": 1.0,
+        "box": [
+          1194,
+          70,
+          18,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          96,
+          184,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Autowaschanlage",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          124,
+          110,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Beekers Garage",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          150,
+          102,
+          17
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "of",
+        "confidence": 1.0,
+        "box": [
+          628,
+          158,
+          18,
+          18
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Fahrgesch\u00e4ft \u00ae",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          176,
+          102,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Fremde und Freaks",
+        "confidence": 1.0,
+        "box": [
+          1070,
+          204,
+          120,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Friseursalon",
+        "confidence": 1.0,
+        "box": [
+          1116,
+          232,
+          74,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Kino",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          30,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Los Santos Customs 8",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          284,
+          146,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Seilbahn",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          312,
+          56,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Simeon S",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          338,
+          68,
+          17
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Stripclub A",
+        "confidence": 1.0,
+        "box": [
+          1132,
+          365,
+          80,
+          18
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen F$",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          392,
+          176,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Unterschlupf R",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          420,
+          102,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          164,
+          612,
+          42,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "STRAWBERRY",
+        "confidence": 1.0,
+        "box": [
+          70,
+          638,
+          86,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Wegpunkt X",
+        "confidence": 1.0,
+        "box": [
+          1126,
+          663,
+          82,
+          20
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Markierung w\u00e4hlen ja Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          780,
+          664,
+          238,
+          18
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Zoomen L2",
+        "confidence": 1.0,
+        "box": [
+          556,
+          666,
+          70,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          626,
+          666,
+          36,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Wenig Details R3",
+        "confidence": 1.0,
+        "box": [
+          666,
+          666,
+          100,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Zur\u00fcck l",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          46,
+          12
+        ],
+        "region": "phone"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 8286,
+    "frame_id": 34476,
+    "t": 391.0008,
+    "label": "map",
+    "screen": "map",
+    "file": "20261110-093238-8286.png",
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          44,
+          44,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Ammu-Nation",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          70,
+          84,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          96,
+          184,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Autowaschanlage",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          124,
+          110,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Beekers Garage",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          150,
+          100,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Fahrgesch\u00e4ft @",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          176,
+          106,
+          18
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Fremde und Freaks?",
+        "confidence": 1.0,
+        "box": [
+          1070,
+          202,
+          140,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Friseursalon",
+        "confidence": 1.0,
+        "box": [
+          1116,
+          232,
+          74,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Kino",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          258,
+          30,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Los Santos Customs 8",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          284,
+          146,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Seilbahn",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          312,
+          56,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "SD",
+        "confidence": 1.0,
+        "box": [
+          598,
+          316,
+          26,
+          24
+        ],
+        "region": "menu"
+      },
+      {
+        "text": "S",
+        "confidence": 1.0,
+        "box": [
+          1196,
+          338,
+          14,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Simeon",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          340,
+          50,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Stripclub",
+        "confidence": 1.0,
+        "box": [
+          1132,
+          366,
+          58,
+          17
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen Fr",
+        "confidence": 1.0,
+        "box": [
+          1036,
+          392,
+          176,
+          18
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Unterschlupf d",
+        "confidence": 1.0,
+        "box": [
+          1108,
+          418,
+          102,
+          18
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          164,
+          612,
+          42,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "STRAWBERRY",
+        "confidence": 1.0,
+        "box": [
+          70,
+          638,
+          88,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Markierung w\u00e4hlen ja Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          780,
+          664,
+          238,
+          18
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Wegpunkt X",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          664,
+          80,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Zoomen L2 R2 Wenig Details R3",
+        "confidence": 1.0,
+        "box": [
+          556,
+          666,
+          210,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          44,
+          12
+        ],
+        "region": "phone"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 8305,
+    "frame_id": 34509,
+    "t": 392.09,
+    "label": "map",
+    "screen": "map",
+    "file": "20261110-093238-8305.png",
+    "text": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          44,
+          46,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Wegpunkt (260m)",
+        "confidence": 1.0,
+        "box": [
+          1080,
+          70,
+          110,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Ammu-Nation P",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          96,
+          106,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          124,
+          184,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Autowaschanlage",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          152,
+          108,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Beekers Garage O",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          176,
+          122,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Fahrgesch\u00e4ft",
+        "confidence": 1.0,
+        "box": [
+          1108,
+          204,
+          104,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "?",
+        "confidence": 1.0,
+        "box": [
+          1198,
+          230,
+          12,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Fremde und Freaks",
+        "confidence": 1.0,
+        "box": [
+          1070,
+          232,
+          122,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Friseursalon c",
+        "confidence": 1.0,
+        "box": [
+          1114,
+          258,
+          98,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Kino",
+        "confidence": 1.0,
+        "box": [
+          1160,
+          286,
+          30,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Los Santos Customs f",
+        "confidence": 1.0,
+        "box": [
+          1066,
+          312,
+          146,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "SP",
+        "confidence": 1.0,
+        "box": [
+          598,
+          320,
+          24,
+          20
+        ],
+        "region": "menu"
+      },
+      {
+        "text": "Seilbahn 6",
+        "confidence": 1.0,
+        "box": [
+          1136,
+          338,
+          76,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Simeon S",
+        "confidence": 1.0,
+        "box": [
+          1142,
+          366,
+          68,
+          15
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Stripclub 1",
+        "confidence": 1.0,
+        "box": [
+          1132,
+          394,
+          78,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Stuntflugzeug-Zeitrennen F",
+        "confidence": 1.0,
+        "box": [
+          1034,
+          418,
+          178,
+          20
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Unterschlupf R",
+        "confidence": 1.0,
+        "box": [
+          1110,
+          445,
+          102,
+          22
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          164,
+          612,
+          42,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "STRAWBERRY",
+        "confidence": 1.0,
+        "box": [
+          70,
+          638,
+          86,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Markierung w\u00e4hlen ja Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          780,
+          664,
+          238,
+          18
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Wegpunkt X",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          664,
+          80,
+          17
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Zoomen L2",
+        "confidence": 1.0,
+        "box": [
+          556,
+          666,
+          70,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "R2",
+        "confidence": 1.0,
+        "box": [
+          626,
+          666,
+          34,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Wenig Details R3",
+        "confidence": 1.0,
+        "box": [
+          666,
+          666,
+          100,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Zur\u00fcck I",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          46,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "O",
+        "confidence": 1.0,
+        "box": [
+          1096,
+          666,
+          16,
+          14
+        ],
+        "region": "phone"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 8315,
+    "frame_id": 34524,
+    "t": 392.4772,
+    "label": "map",
+    "screen": "overview",
+    "file": "20261110-093238-8315.png",
+    "text": [
+      {
+        "text": "FRANKLIN",
+        "confidence": 1.0,
+        "box": [
+          976,
+          64,
+          50,
+          16
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Grand Theit Auto Y",
+        "confidence": 1.0,
+        "box": [
+          206,
+          79,
+          182,
+          32
+        ],
+        "region": "other"
+      },
+      {
+        "text": "MONTAG 14:55",
+        "confidence": 1.0,
+        "box": [
+          948,
+          80,
+          78,
+          16
+        ],
+        "region": "other"
+      },
+      {
+        "text": "$432",
+        "confidence": 1.0,
+        "box": [
+          996,
+          96,
+          30,
+          16
+        ],
+        "region": "other"
+      },
+      {
+        "text": "KARTE",
+        "confidence": 1.0,
+        "box": [
+          256,
+          128,
+          46,
+          16
+        ],
+        "region": "other"
+      },
+      {
+        "text": "INFO",
+        "confidence": 1.0,
+        "box": [
+          406,
+          128,
+          34,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "STATISTIKEN",
+        "confidence": 1.0,
+        "box": [
+          528,
+          128,
+          82,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "EINSTELLUNGEN",
+        "confidence": 1.0,
+        "box": [
+          662,
+          128,
+          104,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "SPIEL",
+        "confidence": 1.0,
+        "box": [
+          840,
+          128,
+          38,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "ONLINE",
+        "confidence": 1.0,
+        "box": [
+          980,
+          128,
+          48,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Ausw\u00e4hlen",
+        "confidence": 1.0,
+        "box": [
+          1124,
+          660,
+          88,
+          26
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "O",
+        "confidence": 1.0,
+        "box": [
+          1094,
+          664,
+          16,
+          18
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Zur\u00fcck (",
+        "confidence": 1.0,
+        "box": [
+          1050,
+          665,
+          46,
+          13
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Weiterbl\u00e4ttern L1 R1",
+        "confidence": 1.0,
+        "box": [
+          780,
+          666,
+          138,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Men\u00fc verbergen",
+        "confidence": 1.0,
+        "box": [
+          920,
+          666,
+          94,
+          14
+        ],
+        "region": "subtitle"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 8481,
+    "frame_id": 34701,
+    "t": 399.9493,
+    "label": "non-map",
+    "screen": null,
+    "file": "20261110-093238-8481.png",
+    "text": [
+      {
+        "text": "Du hast eine neue SMS empfangen.",
+        "confidence": 1.0,
+        "box": [
+          74,
+          44,
+          238,
+          16
+        ],
+        "region": "help"
+      },
+      {
+        "text": "\u00d6ffne das Handy mit -2, um sie zu lesen.",
+        "confidence": 1.0,
+        "box": [
+          72,
+          62,
+          272,
+          18
+        ],
+        "region": "help"
+      },
+      {
+        "text": "Neue SMS und E-Mails erscheinen auch",
+        "confidence": 1.0,
+        "box": [
+          70,
+          82,
+          270,
+          16
+        ],
+        "region": "help"
+      },
+      {
+        "text": "im Feed.",
+        "confidence": 1.0,
+        "box": [
+          70,
+          104,
+          64,
+          12
+        ],
+        "region": "help"
+      },
+      {
+        "text": "Davia",
+        "confidence": 1.0,
+        "box": [
+          1166,
+          640,
+          50,
+          20
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "- 216m",
+        "confidence": 1.0,
+        "box": [
+          72,
+          656,
+          40,
+          12
+        ],
+        "region": "other"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 856,
+    "frame_id": 26158,
+    "t": 38.0299,
+    "label": "non-map",
+    "screen": null,
+    "file": "20261110-093238-856.png",
+    "text": [
+      {
+        "text": "mission fehlgeschlagen",
+        "confidence": 1.0,
+        "box": [
+          302,
+          300,
+          674,
+          64
+        ],
+        "region": "banner"
+      },
+      {
+        "text": "Franklin ist tot.",
+        "confidence": 1.0,
+        "box": [
+          580,
+          384,
+          122,
+          14
+        ],
+        "region": "menu"
+      },
+      {
+        "text": "Verlassen",
+        "confidence": 1.0,
+        "box": [
+          998,
+          666,
+          56,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "O",
+        "confidence": 1.0,
+        "box": [
+          1056,
+          666,
+          16,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Erneut versuchen",
+        "confidence": 1.0,
+        "box": [
+          1088,
+          666,
+          102,
+          12
+        ],
+        "region": "phone"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 7172,
+    "frame_id": 33129,
+    "t": 333.986,
+    "label": "non-map",
+    "screen": null,
+    "file": "20261110-093238-7172.png",
+    "text": [
+      {
+        "text": "Sag du's ihm selber, verfickt nochmal, du verfickter Vollidiot!",
+        "confidence": 1.0,
+        "box": [
+          362,
+          664,
+          568,
+          24
+        ],
+        "region": "subtitle"
+      }
+    ]
+  },
+  {
+    "recording": "20261110-093238",
+    "i": 10940,
+    "frame_id": 37465,
+    "t": 538.0373,
+    "label": "non-map",
+    "screen": null,
+    "file": "20261110-093238-10940.png",
+    "text": [
+      {
+        "text": "74/12",
+        "confidence": 1.0,
+        "box": [
+          628,
+          152,
+          30,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Unbewaffnet",
+        "confidence": 1.0,
+        "box": [
+          608,
+          224,
+          66,
+          16
+        ],
+        "region": "menu"
+      },
+      {
+        "text": "3208",
+        "confidence": 1.0,
+        "box": [
+          520,
+          434,
+          34,
+          16
+        ],
+        "region": "menu"
+      }
+    ]
+  }
+]

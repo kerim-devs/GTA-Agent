@@ -1,0 +1,22 @@
+{
+  "provider_order": [
+    "CoreMLExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "provider_kernel_events": {
+    "CoreMLExecutionProvider": 3
+  },
+  "provider_options": {
+    "CPUExecutionProvider": {},
+    "CoreMLExecutionProvider": {
+      "MLComputeUnits": "ALL",
+      "ProfileComputePlan": "0",
+      "ModelFormat": "MLProgram",
+      "RequireStaticInputShapes": "0",
+      "SpecializationStrategy": "Default",
+      "EnableOnSubgraphs": "0",
+      "AllowLowPrecisionAccumulationOnGPU": "0"
+    }
+  },
+  "scope": "ORT provider attribution; CoreML chooses the hardware device within ALL."
+}

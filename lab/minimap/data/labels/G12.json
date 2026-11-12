@@ -1,0 +1,122 @@
+[
+ {
+  "id": "G12-01",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 10.5,
+  "far_clock": 12.5,
+  "arrow_clock": 11.5,
+  "corrupt": false,
+  "note": "near about 10.7: route runs up-left, its corner lies on the near circle, then right to the blip"
+ },
+ {
+  "id": "G12-02",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11.5,
+  "corrupt": true,
+  "note": "arrow 11.5 to 12; lower half smeared"
+ },
+ {
+  "id": "G12-03",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12.5,
+  "corrupt": true,
+  "note": "heavy damage; arrow garbled"
+ },
+ {
+  "id": "G12-04",
+  "minimap": "none",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": false,
+  "note": "black"
+ },
+ {
+  "id": "G12-05",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "mild smear at the right edge of the map"
+ },
+ {
+  "id": "G12-06",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11.5,
+  "corrupt": false,
+  "note": "yellow and white lines are road markings of the world"
+ },
+ {
+  "id": "G12-07",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": "yellow and red blocks are world and damage"
+ },
+ {
+  "id": "G12-08",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 11,
+  "corrupt": false,
+  "note": "bright world with motion streaks at lower right, no block damage seen"
+ },
+ {
+  "id": "G12-09",
+  "minimap": "flat",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 9.5,
+  "corrupt": false,
+  "note": "map faint over bright ground"
+ },
+ {
+  "id": "G12-10",
+  "minimap": "tilted",
+  "route": "purple",
+  "near_clock": 1.5,
+  "far_clock": 1.5,
+  "arrow_clock": 12,
+  "corrupt": true,
+  "note": ""
+ },
+ {
+  "id": "G12-11",
+  "minimap": "none",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": null,
+  "corrupt": false,
+  "note": "wall, world only"
+ },
+ {
+  "id": "G12-12",
+  "minimap": "tilted",
+  "route": "none",
+  "near_clock": null,
+  "far_clock": null,
+  "arrow_clock": 8.5,
+  "corrupt": false,
+  "note": "arrow drawn flattened, tip to the left"
+ }
+]
