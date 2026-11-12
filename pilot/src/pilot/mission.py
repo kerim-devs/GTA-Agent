@@ -58,14 +58,7 @@ def _walk(*, sprint: bool = False) -> dict:
 
 
 def _explore() -> list[dict]:
-    # pilot/20261110-231512/head.jsonl:2: look and walk through unmarked free roam; do not
-    # reproduce the older wait loop.
-    return [
-        _call("look", duration=0.8, angle=-55),
-        _walk(),
-        _call("look", duration=0.5, angle=20),
-        _walk(),
-    ]
+    return [_call("walk_road", duration=30)]
 
 
 def _route(target: str) -> list[dict]:
@@ -102,9 +95,27 @@ class MissionHead:
         self.objective_class: str | None = None
         self.pending_class: str | None = None
         self.pending_reads = 0
+        self.blip_candidates: list[dict] = []
+        self.stable_blips: list[dict] = []
 
     def decide(self, request: HeadRequest) -> HeadResponse:
         self._update_intent(request)
+        candidates = [
+            blip
+            for blip in request.minimap.get("blips", [])
+            if blip.get("color") in {"yellow", "blue"} and not _rim_blip(blip)
+        ]
+        self.stable_blips = [
+            blip
+            for blip in candidates
+            if any(
+                old.get("color") == blip.get("color")
+                and (old.get("x", 0) - blip.get("x", 0)) ** 2 + (old.get("y", 0) - blip.get("y", 0)) ** 2
+                <= 12**2
+                for old in self.blip_candidates
+            )
+        ]
+        self.blip_candidates = candidates
         selected = self._rule(request)
         if selected is None:
             if self.fallback is not None:
@@ -119,7 +130,11 @@ class MissionHead:
         rule, plan, sentence = selected
         # head_prompt.txt:58-60: never immediately repeat a failed skill call.
         failed = self._failed(request)
-        if failed and plan[0]["name"] == failed and rule not in {"screen_wait", "screen_reflex"}:
+        if (
+            failed
+            and plan[0]["name"] == failed
+            and rule not in {"screen_wait", "screen_reflex", "foot_explore_roadless"}
+        ):
             rule += "_after_failure"
             plan = [_call("look", duration=0.5, angle=45), *plan]
             sentence = "Der letzte Versuch ist gescheitert, ich orientiere mich zuerst neu."
@@ -319,14 +334,14 @@ class MissionHead:
                 # 180 at 1.2 s asks for full stick, which the camera turns at 146 deg/s, about 175 deg.
                 return (
                     "foot_stuck",
-                    [_call("look", duration=1.2, angle=180), _call("walk_road", duration=15)],
-                    "Hier komme ich nicht weiter, ich drehe um.",
+                    [_call("look", duration=1, angle=60), _call("walk_road", duration=30)],
+                    "Hier komme ich nicht weiter, ich versuche eine neue Richtung.",
                 )
             if failed == "walk_road" and reason == "no-road":
                 return (
                     "foot_explore_roadless",
                     _explore(),
-                    "Keine Straße auf der Karte, ich schaue mich um und gehe weiter.",
+                    "Keine Straße auf der Karte, ich halte die Kompassrichtung.",
                 )
             return (
                 "failed_skill",
@@ -378,8 +393,11 @@ class MissionHead:
             # somebody out, leave combat selection to the fallback.
             if "red" in colors:
                 return None
+            targets = (
+                colors if request.objective.strip() else {blip.get("color") for blip in self.stable_blips}
+            )
             for color in ("yellow", "blue"):
-                if color in colors:
+                if color in targets:
                     return (
                         "foot_target",
                         [_call("walk_to", color=color, duration=10, sprint=False)],
@@ -391,19 +409,19 @@ class MissionHead:
                     [_walk()],
                     "Der vorige Abschnitt ist vorbei, ich orientiere mich neu.",
                 )
-            if not request.objective.strip() and not colors and cars:
+            if not request.objective.strip() and not targets and cars:
                 # head_prompt.txt:30-33: on foot with nothing to do, go for a drive in one plan.
                 return (
                     "foot_drive",
                     [_call("enter_vehicle", duration=25, kind="any"), *_route(self._destination(request))],
                     "Nichts hält mich hier, ich nehme mir ein Fahrzeug und fahre los.",
                 )
-            if not request.objective.strip() and not colors and not cars:
+            if not request.objective.strip() and not targets and not cars:
                 # Nothing marked and no car: a road is where cars come by. walk_road fails no-road
                 # when the map shows none, and the rule above then looks and walks as before.
                 return (
                     "foot_explore",
-                    [_call("walk_road", duration=15)],
+                    [_call("walk_road", duration=30)],
                     "Ein markiertes Ziel ist nicht zu sehen, ich gehe zur nächsten Straße.",
                 )
         return None
