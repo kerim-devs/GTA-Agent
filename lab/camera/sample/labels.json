@@ -1,0 +1,675 @@
+{
+"note": "Labels by eye from the frames of Kerim's recordings; frame is the index in frames.jsonl, which is the index in video.mp4. detections.json holds the raw output of Detector.detect(exclude_player=False). unnamed means the view cannot be named: see why.",
+"frames": [
+{
+"n": 0,
+"session": "20261112-114541",
+"frame": 179,
+"time": 3.126,
+"label": "near",
+"picked": "1 s after a touchpad press in the pad log"
+},
+{
+"n": 1,
+"session": "20261112-114541",
+"frame": 299,
+"time": 5.13,
+"label": "unnamed",
+"why": "the camera is still moving after a press",
+"picked": "1 s after a touchpad press in the pad log"
+},
+{
+"n": 2,
+"session": "20261112-114541",
+"frame": 341,
+"time": 5.884,
+"label": "middle"
+},
+{
+"n": 3,
+"session": "20261112-114541",
+"frame": 7875,
+"time": 131.713,
+"label": "middle"
+},
+{
+"n": 4,
+"session": "20261112-114541",
+"frame": 9254,
+"time": 154.685,
+"label": "middle",
+"note": "middle by context: the figure sprints past a truck"
+},
+{
+"n": 5,
+"session": "20261112-114541",
+"frame": 17440,
+"time": 292.147,
+"label": "middle"
+},
+{
+"n": 6,
+"session": "20261112-114541",
+"frame": 19826,
+"time": 332.017,
+"label": "middle"
+},
+{
+"n": 7,
+"session": "20261112-114541",
+"frame": 20795,
+"time": 348.379,
+"label": "unnamed",
+"why": "cutscene or no HUD"
+},
+{
+"n": 8,
+"session": "20261112-114541",
+"frame": 22019,
+"time": 369.083,
+"label": "unnamed",
+"why": "cutscene or no HUD"
+},
+{
+"n": 9,
+"session": "20261112-114541",
+"frame": 22897,
+"time": 383.9,
+"label": "unnamed",
+"why": "cutscene or no HUD"
+},
+{
+"n": 10,
+"session": "20261112-114541",
+"frame": 25914,
+"time": 434.993,
+"label": "middle"
+},
+{
+"n": 11,
+"session": "20261112-114541",
+"frame": 26591,
+"time": 446.286,
+"label": "middle"
+},
+{
+"n": 12,
+"session": "20261112-114541",
+"frame": 28171,
+"time": 472.704,
+"label": "first",
+"note": "no figure, quad in view"
+},
+{
+"n": 13,
+"session": "20261112-114541",
+"frame": 31635,
+"time": 530.494,
+"label": "first",
+"note": "no figure"
+},
+{
+"n": 14,
+"session": "20261112-114541",
+"frame": 32430,
+"time": 543.948,
+"label": "middle"
+},
+{
+"n": 15,
+"session": "20261112-114541",
+"frame": 34354,
+"time": 576.123,
+"label": "first",
+"note": "no figure"
+},
+{
+"n": 16,
+"session": "20261112-114541",
+"frame": 37015,
+"time": 620.516,
+"label": "first",
+"note": "no figure"
+},
+{
+"n": 17,
+"session": "20261112-114541",
+"frame": 38052,
+"time": 637.819,
+"label": "first",
+"note": "no figure"
+},
+{
+"n": 18,
+"session": "20261112-111357",
+"frame": 203,
+"time": 3.446,
+"label": "far"
+},
+{
+"n": 19,
+"session": "20261112-111357",
+"frame": 599,
+"time": 10.018,
+"label": "far"
+},
+{
+"n": 20,
+"session": "20261112-111357",
+"frame": 1662,
+"time": 27.753,
+"label": "far"
+},
+{
+"n": 21,
+"session": "20261112-111357",
+"frame": 7634,
+"time": 127.468,
+"label": "far"
+},
+{
+"n": 22,
+"session": "20261112-111357",
+"frame": 9584,
+"time": 179.656,
+"label": "near"
+},
+{
+"n": 23,
+"session": "20261112-111357",
+"frame": 15084,
+"time": 271.457,
+"label": "first"
+},
+{
+"n": 24,
+"session": "20261112-111357",
+"frame": 19923,
+"time": 352.186,
+"label": "first"
+},
+{
+"n": 25,
+"session": "20261112-111357",
+"frame": 23366,
+"time": 409.621,
+"label": "first"
+},
+{
+"n": 26,
+"session": "20261112-101320",
+"frame": 102,
+"time": 1.746,
+"label": "near"
+},
+{
+"n": 27,
+"session": "20261112-101320",
+"frame": 2608,
+"time": 43.513,
+"label": "far"
+},
+{
+"n": 28,
+"session": "20261112-101320",
+"frame": 3362,
+"time": 56.123,
+"label": "unnamed",
+"why": "aiming or close-up"
+},
+{
+"n": 29,
+"session": "20261112-101320",
+"frame": 4399,
+"time": 73.424,
+"label": "far"
+},
+{
+"n": 30,
+"session": "20261112-101320",
+"frame": 5522,
+"time": 92.176,
+"label": "unnamed",
+"why": "view cannot be named by eye"
+},
+{
+"n": 31,
+"session": "20261112-101320",
+"frame": 15152,
+"time": 253.032,
+"label": "first"
+},
+{
+"n": 32,
+"session": "20261112-101320",
+"frame": 19142,
+"time": 319.597,
+"label": "first"
+},
+{
+"n": 33,
+"session": "20261112-101320",
+"frame": 25821,
+"time": 431.119,
+"label": "first"
+},
+{
+"n": 34,
+"session": "20261111-194609",
+"frame": 39494,
+"time": 660.113,
+"label": "near",
+"picked": "1 s after a touchpad press in the pad log"
+},
+{
+"n": 35,
+"session": "20261111-194609",
+"frame": 10603,
+"time": 177.969,
+"label": "unnamed",
+"why": "cutscene or no HUD"
+},
+{
+"n": 36,
+"session": "20261111-194609",
+"frame": 28602,
+"time": 478.39,
+"label": "unnamed",
+"why": "cutscene or no HUD"
+},
+{
+"n": 37,
+"session": "20261111-194609",
+"frame": 38098,
+"time": 636.787,
+"label": "first"
+},
+{
+"n": 38,
+"session": "20261111-194609",
+"frame": 40163,
+"time": 671.327,
+"label": "near"
+},
+{
+"n": 39,
+"session": "20261111-194609",
+"frame": 45072,
+"time": 753.359,
+"label": "far"
+},
+{
+"n": 40,
+"session": "20261111-194609",
+"frame": 46413,
+"time": 775.717,
+"label": "far"
+},
+{
+"n": 41,
+"session": "20261111-194609",
+"frame": 47253,
+"time": 789.818,
+"label": "middle"
+},
+{
+"n": 42,
+"session": "20261111-200111",
+"frame": 31240,
+"time": 522.302,
+"label": "unnamed",
+"why": "pause menu",
+"picked": "1 s after a touchpad press in the pad log"
+},
+{
+"n": 43,
+"session": "20261111-200111",
+"frame": 6989,
+"time": 116.983,
+"label": "first"
+},
+{
+"n": 44,
+"session": "20261111-200111",
+"frame": 8438,
+"time": 141.186,
+"label": "far"
+},
+{
+"n": 45,
+"session": "20261111-200111",
+"frame": 11574,
+"time": 193.525,
+"label": "far"
+},
+{
+"n": 46,
+"session": "20261111-200111",
+"frame": 18846,
+"time": 315.079,
+"label": "far"
+},
+{
+"n": 47,
+"session": "20261111-200111",
+"frame": 19554,
+"time": 326.912,
+"label": "far"
+},
+{
+"n": 48,
+"session": "20261111-200111",
+"frame": 26939,
+"time": 450.525,
+"label": "far"
+},
+{
+"n": 49,
+"session": "20261111-200111",
+"frame": 35410,
+"time": 592.084,
+"label": "near"
+},
+{
+"n": 50,
+"session": "20261111-205309",
+"frame": 6372,
+"time": 106.365,
+"label": "far"
+},
+{
+"n": 51,
+"session": "20261111-205309",
+"frame": 9460,
+"time": 157.918,
+"label": "far"
+},
+{
+"n": 52,
+"session": "20261111-205309",
+"frame": 13096,
+"time": 218.662,
+"label": "unnamed",
+"why": "view cannot be named by eye"
+},
+{
+"n": 53,
+"session": "20261111-205309",
+"frame": 18382,
+"time": 306.768,
+"label": "far"
+},
+{
+"n": 54,
+"session": "20261111-205309",
+"frame": 19921,
+"time": 332.522,
+"label": "far"
+},
+{
+"n": 55,
+"session": "20261111-205309",
+"frame": 33954,
+"time": 566.787,
+"label": "far"
+},
+{
+"n": 56,
+"session": "20261111-205309",
+"frame": 35478,
+"time": 592.141,
+"label": "far"
+},
+{
+"n": 57,
+"session": "20261111-205309",
+"frame": 48478,
+"time": 809.36,
+"label": "far"
+},
+{
+"n": 58,
+"session": "20261112-090514",
+"frame": 7993,
+"time": 133.867,
+"label": "unnamed",
+"why": "view cannot be named by eye"
+},
+{
+"n": 59,
+"session": "20261112-090514",
+"frame": 11450,
+"time": 192.141,
+"label": "unnamed",
+"why": "aiming or close-up"
+},
+{
+"n": 60,
+"session": "20261112-090514",
+"frame": 14730,
+"time": 247.514,
+"label": "near"
+},
+{
+"n": 61,
+"session": "20261112-090514",
+"frame": 25240,
+"time": 423.87,
+"label": "unnamed",
+"why": "on a motorcycle"
+},
+{
+"n": 62,
+"session": "20261112-090514",
+"frame": 26335,
+"time": 442.205,
+"label": "unnamed",
+"why": "on a motorcycle"
+},
+{
+"n": 63,
+"session": "20261112-090514",
+"frame": 27331,
+"time": 458.924,
+"label": "unnamed",
+"why": "on a motorcycle"
+},
+{
+"n": 64,
+"session": "20261112-090514",
+"frame": 29311,
+"time": 491.955,
+"label": "unnamed",
+"why": "on a motorcycle"
+},
+{
+"n": 65,
+"session": "20261112-090514",
+"frame": 44042,
+"time": 738.558,
+"label": "unnamed",
+"why": "view cannot be named by eye"
+},
+{
+"n": 66,
+"session": "20261111-164039",
+"frame": 225,
+"time": 3.748,
+"label": "first"
+},
+{
+"n": 67,
+"session": "20261111-164039",
+"frame": 2870,
+"time": 57.022,
+"label": "middle"
+},
+{
+"n": 68,
+"session": "20261111-164039",
+"frame": 5778,
+"time": 114.711,
+"label": "middle"
+},
+{
+"n": 69,
+"session": "20261111-164039",
+"frame": 9468,
+"time": 176.312,
+"label": "first"
+},
+{
+"n": 70,
+"session": "20261111-164039",
+"frame": 24616,
+"time": 429.466,
+"label": "unnamed",
+"why": "cutscene or no HUD"
+},
+{
+"n": 71,
+"session": "20261111-164039",
+"frame": 32452,
+"time": 561.097,
+"label": "middle"
+},
+{
+"n": 72,
+"session": "20261111-164039",
+"frame": 43079,
+"time": 738.639,
+"label": "unnamed",
+"why": "view cannot be named by eye"
+},
+{
+"n": 73,
+"session": "20261111-164039",
+"frame": 51956,
+"time": 887.159,
+"label": "unnamed",
+"why": "view cannot be named by eye"
+},
+{
+"n": 74,
+"session": "20261111-183820",
+"frame": 5255,
+"time": 87.766,
+"label": "middle"
+},
+{
+"n": 75,
+"session": "20261111-183820",
+"frame": 11864,
+"time": 198.09,
+"label": "middle"
+},
+{
+"n": 76,
+"session": "20261111-183820",
+"frame": 14184,
+"time": 236.929,
+"label": "middle"
+},
+{
+"n": 77,
+"session": "20261111-183820",
+"frame": 15903,
+"time": 265.667,
+"label": "unnamed",
+"why": "aiming or close-up"
+},
+{
+"n": 78,
+"session": "20261111-183820",
+"frame": 18116,
+"time": 302.638,
+"label": "middle"
+},
+{
+"n": 79,
+"session": "20261111-183820",
+"frame": 25560,
+"time": 426.88,
+"label": "unnamed",
+"why": "view cannot be named by eye"
+},
+{
+"n": 80,
+"session": "20261111-183820",
+"frame": 40411,
+"time": 674.694,
+"label": "middle"
+},
+{
+"n": 81,
+"session": "20261111-183820",
+"frame": 44748,
+"time": 747.194,
+"label": "unnamed",
+"why": "cutscene or no HUD"
+},
+{
+"n": 82,
+"session": "20261112-093524",
+"frame": 5751,
+"time": 96.775,
+"label": "unnamed",
+"why": "view cannot be named by eye"
+},
+{
+"n": 83,
+"session": "20261112-093524",
+"frame": 8135,
+"time": 137.024,
+"label": "unnamed",
+"why": "view cannot be named by eye"
+},
+{
+"n": 84,
+"session": "20261112-093524",
+"frame": 10279,
+"time": 172.944,
+"label": "unnamed",
+"why": "cutscene or no HUD"
+},
+{
+"n": 85,
+"session": "20261112-093524",
+"frame": 24265,
+"time": 407.537,
+"label": "unnamed",
+"why": "cutscene or no HUD"
+},
+{
+"n": 86,
+"session": "20261112-093524",
+"frame": 27292,
+"time": 458.196,
+"label": "unnamed",
+"why": "cutscene or no HUD"
+},
+{
+"n": 87,
+"session": "20261112-093524",
+"frame": 34041,
+"time": 571.567,
+"label": "unnamed",
+"why": "cutscene or no HUD"
+},
+{
+"n": 88,
+"session": "20261112-093524",
+"frame": 35318,
+"time": 592.877,
+"label": "unnamed",
+"why": "cutscene or no HUD"
+},
+{
+"n": 89,
+"session": "20261112-093524",
+"frame": 40148,
+"time": 673.49,
+"label": "first"
+}
+]
+}

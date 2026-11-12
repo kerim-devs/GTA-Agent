@@ -112,7 +112,14 @@ def main(argv: list[str] | None = None) -> None:
         metavar="URL=MODEL",
         help="local judge servers in preference order",
     )
-    play.add_argument("--no-level", action="store_true", help="do not level the camera before the first plan")
+    play.add_argument(
+        "--no-level",
+        action="store_true",
+        help="do not set the view or level the camera before the first plan",
+    )
+    play.add_argument(
+        "--no-view", action="store_true", help="do not set the far view before levelling the camera"
+    )
     play.add_argument("--record-dir", type=absolute_path, default=PLAY_RECORDINGS)
     play.add_argument("--notebook", type=Path)
     play.add_argument(
@@ -234,11 +241,22 @@ def main(argv: list[str] | None = None) -> None:
                     awake=Conductor.AWAKE_SECONDS,
                     hud=None if args.no_hud_flow else hud,
                     flow=None if args.no_hud_flow else Flow(),
-                    opening=() if args.no_level else (SkillCall("level_camera", {}),),
+                    opening=opening(args),
                 )
             )
     else:
         run_replay(args.recording, out=args.out, pipeline=pipeline)
+
+
+def opening(args) -> tuple[SkillCall, ...]:
+    """What a session does before the head's first plan: the far view, then the camera levelled.
+
+    The view is read from the detector and the HUD, so without either there is nothing to set it by.
+    """
+    if args.no_level:
+        return ()
+    view = not (args.no_view or args.no_objects or args.no_hud_flow)
+    return ((SkillCall("set_far_view", {}),) if view else ()) + (SkillCall("level_camera", {}),)
 
 
 if __name__ == "__main__":
