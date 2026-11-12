@@ -309,3 +309,15 @@ def test_the_walk_keeps_its_direction_for_a_moment_while_the_marker_is_hidden():
     assert skill.step(observation(2.2, blips=())).pad == NEUTRAL_PAD
     # Nothing is pushed for a marker that has never been seen.
     assert WalkTo({}).step(observation(0, blips=())).pad == NEUTRAL_PAD
+
+
+def test_a_tick_that_says_nothing_does_not_stop_a_running_figure():
+    skill = WalkTo({"sprint": True})
+    pushed = skill.step(observation(0, 60, 0)).pad
+    assert pushed.left == pytest.approx((1, 0))
+    damaged = observation(0.1, 60, 0, corrupt=True)
+    assert skill.step(damaged).pad == pushed
+    assert skill.step(replace(observation(0.2, 60, 0), reading=None)).pad == pushed
+    # Not for longer than half a second, and never before anything was pushed.
+    assert skill.step(observation(0.8, 60, 0, corrupt=True)).pad == NEUTRAL_PAD
+    assert WalkTo({}).step(observation(0, 60, 0, corrupt=True)).pad == NEUTRAL_PAD

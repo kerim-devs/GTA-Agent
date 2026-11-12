@@ -41,6 +41,7 @@ class WalkTo:
     # and then gone counts as reached.
     GONE_WITHIN = 40.0
     HOLD = 2.0  # seconds the walk keeps its direction while an icon lies over the marker
+    COAST = 0.5  # seconds the last pad is kept over ticks that say nothing: a damaged or repeated frame
     # The marker goes before the point is reached, so the walk goes on to where it was: for as long
     # as the last distance takes at the pace seen that evening (64 map pixels in 15 s of sprinting,
     # 7.4 in 8.4 s of walking), and never longer than CARRY_MAX.
@@ -89,6 +90,8 @@ class WalkTo:
         self.way = None
         self.way_time = 0.0
         self.last_direction = None
+        self.last_pad = None
+        self.last_pad_time = 0.0
         self.other_ways = 0
         self.road_seconds = 0.0
         self.walk_seconds = 0.0
@@ -188,7 +191,7 @@ class WalkTo:
         if self.last_tick is not None and now <= self.last_tick:
             self.close_since = None
             self.bad_since = None
-            return SkillResult()
+            return self._coast(now)
         gap = self.last_tick is not None and now - self.last_tick > 1.0
         step = 0.0 if self.last_tick is None or gap else now - self.last_tick
         self.last_tick = now
@@ -200,14 +203,14 @@ class WalkTo:
             repeated = self.last_frame is not None and np.array_equal(frame, self.last_frame)
             if not valid_frame or repeated:
                 self.close_since = self.bad_since = None
-                return SkillResult()
+                return self._coast(now)
             self.last_frame = frame.copy()
         reading = observation.reading
         mode = player_mode(observation) if reading is not None else None
         if reading is None or reading.corrupt or reading.confidence < 0.6:
             self.close_since = None
             self.bad_since = None
-            return SkillResult()
+            return self._coast(now)
         if gap:
             self.close_since = None
             self.bad_since = None
@@ -272,6 +275,12 @@ class WalkTo:
         self.last_direction = self._direction(observation, target, distance)
         return self._push(observation, self.last_direction, step)
 
+    def _coast(self, now):
+        """A tick that says nothing decides nothing, and does not stop a figure that is running."""
+        if self.last_pad is not None and abs(now - self.last_pad_time) <= self.COAST:
+            return SkillResult(pad=self.last_pad)
+        return SkillResult()
+
     def _push(self, observation, direction, step):
         steer = self.guard.step(observation, direction)
         if steer.failed:
@@ -283,9 +292,11 @@ class WalkTo:
         )
         self.walk_seconds += step
         self.road_seconds += step if self.on_road else 0.0
+        pad = (
+            Pad(left=steer.left, right=steer.right, buttons=buttons) if steer.state != "odd" else NEUTRAL_PAD
+        )
+        self.last_pad, self.last_pad_time = pad, observation.time
         return SkillResult(
-            pad=Pad(left=steer.left, right=steer.right, buttons=buttons)
-            if steer.state != "odd"
-            else NEUTRAL_PAD,
+            pad=pad,
             reason=self._reason("following road" if self.road_mode or self.on_road else "walking"),
         )
