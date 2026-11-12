@@ -1,0 +1,139 @@
+{
+  "recording": "20261111-183820",
+  "readings": 1801,
+  "known_steps": 1,
+  "found_before": 1,
+  "found_after": 1,
+  "steps": [
+    {
+      "step": {
+        "objective": "Begib dich zu Ammu-Nation.",
+        "start": 881.5103,
+        "end": 900.4,
+        "last": 889.042,
+        "duration": 7.532,
+        "step_duration": 18.89,
+        "section_kinds": [
+          "drive",
+          "foot"
+        ],
+        "route": [
+          "yellow"
+        ],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 18.806,
+          "seconds": {
+            "driving": 15.738,
+            "walking": 0.0,
+            "running": 0.0,
+            "aiming": 0.0,
+            "firing": 0.0,
+            "looking": 1.517,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 2.234
+          }
+        },
+        "ending": "unknown",
+        "sample_observation": {
+          "t": 884.5061,
+          "route": "yellow",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": -87.28,
+              "y": -1.47,
+              "border": true
+            }
+          ]
+        },
+        "incidents": [],
+        "intent_class": "go_to",
+        "intent_wording": "begib dich",
+        "intent_target": "zu Ammu-Nation."
+      },
+      "before": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Begib dich zu Ammu-Nation.",
+          "t": 882.5154,
+          "i": 52838
+        }
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Begib dich zu Ammu-Nation.",
+          "t": 882.5154,
+          "i": 52838
+        }
+      }
+    }
+  ],
+  "changed_labels": [
+    {
+      "text": "8egib dich zu Ammu-Nation.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 882.0127,
+      "first_i": 52808,
+      "count": 2,
+      "last_t": 883.0146,
+      "last_i": 52868
+    },
+    {
+      "text": "Begib dich zu Ammu-Natio",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 883.5134,
+      "first_i": 52898,
+      "count": 1,
+      "last_t": 883.5134,
+      "last_i": 52898
+    },
+    {
+      "text": "Begib dich zu Ammu-",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 885.5011,
+      "first_i": 53017,
+      "count": 1,
+      "last_t": 885.5011,
+      "last_i": 53017
+    },
+    {
+      "text": "Beglb dich zu Ammu-Nation.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 888.0062,
+      "first_i": 53167,
+      "count": 1,
+      "last_t": 888.0062,
+      "last_i": 53167
+    }
+  ],
+  "stored_label_disagreements": [],
+  "dialogue_candidates": [],
+  "cutscene_readings": [],
+  "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-183820/sections.json",
+  "timing_ms_per_reading_with_bottom_text": {
+    "before": {
+      "count": 379,
+      "mean": 0.01831409234828496,
+      "median": 0.013875,
+      "p95": 0.020762499999999996
+    },
+    "after": {
+      "count": 379,
+      "mean": 0.02865575725593668,
+      "median": 0.018458,
+      "p95": 0.056316099999999994
+    }
+  },
+  "wall_seconds": 44.45896866696421
+}

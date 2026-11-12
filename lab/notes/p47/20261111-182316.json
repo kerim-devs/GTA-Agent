@@ -1,0 +1,108 @@
+{
+  "recording": "20261111-182316",
+  "readings": 1804,
+  "known_steps": 1,
+  "found_before": 1,
+  "found_after": 1,
+  "steps": [
+    {
+      "step": {
+        "objective": "Begib dich zu Michaels H",
+        "start": 45.0096,
+        "end": 105.0096,
+        "last": 45.0096,
+        "duration": 0.0,
+        "step_duration": 60.0,
+        "section_kinds": [
+          "drive"
+        ],
+        "route": [
+          "yellow"
+        ],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 60.0,
+          "seconds": {
+            "driving": 46.045,
+            "walking": 0.0,
+            "running": 0.0,
+            "aiming": 0.0,
+            "firing": 0.0,
+            "looking": 1.202,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 13.861
+          }
+        },
+        "ending": "unknown",
+        "sample_observation": {
+          "t": 47.9952,
+          "route": "yellow",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": -86.63,
+              "y": 42.5,
+              "border": true
+            }
+          ]
+        },
+        "incidents": [
+          {
+            "t": 45.633,
+            "class": "collision",
+            "cause": "carried_on"
+          },
+          {
+            "t": 199.428,
+            "class": "mission_passed",
+            "cause": "passed"
+          }
+        ],
+        "intent_class": "go_to",
+        "intent_wording": "begib dich",
+        "intent_target": "zu Michaels H"
+      },
+      "before": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Begib dich zu Michaels H",
+          "t": 45.0096,
+          "i": 2685
+        }
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Begib dich zu Michaels H",
+          "t": 45.0096,
+          "i": 2685
+        }
+      }
+    }
+  ],
+  "changed_labels": [],
+  "stored_label_disagreements": [],
+  "dialogue_candidates": [],
+  "cutscene_readings": [],
+  "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-182316/sections.json",
+  "timing_ms_per_reading_with_bottom_text": {
+    "before": {
+      "count": 325,
+      "mean": 0.014923584615384617,
+      "median": 0.013709,
+      "p95": 0.020350000000000004
+    },
+    "after": {
+      "count": 325,
+      "mean": 0.022694510769230767,
+      "median": 0.018375,
+      "p95": 0.04867500000000001
+    }
+  },
+  "wall_seconds": 59.5828167090076
+}

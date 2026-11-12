@@ -1,0 +1,74 @@
+{
+  "recording": "20261111-165543",
+  "iterations_after_warmup": 500,
+  "cases": [
+    {
+      "t": 72.8317,
+      "i": 4308,
+      "texts": [
+        "Mann, ich will 'ne Weile nichts mehr mit dir zu tun haben. Bruder."
+      ],
+      "milliseconds": {
+        "before": {
+          "median": 0.000334,
+          "p95": 0.000375
+        },
+        "after": {
+          "median": 0.002208,
+          "p95": 0.002333
+        }
+      }
+    },
+    {
+      "t": 221.0052,
+      "i": 13193,
+      "texts": [
+        "Beglb dlch zum Abschleppwagen."
+      ],
+      "milliseconds": {
+        "before": {
+          "median": 0.000459,
+          "p95": 0.0013770499999999982
+        },
+        "after": {
+          "median": 0.075042,
+          "p95": 0.16596519999999998
+        }
+      }
+    },
+    {
+      "t": 373.0324,
+      "i": 22288,
+      "texts": [
+        "Begib dich zu dem herrenlosen Auto."
+      ],
+      "milliseconds": {
+        "before": {
+          "median": 0.043625,
+          "p95": 0.09400829999999999
+        },
+        "after": {
+          "median": 0.0765415,
+          "p95": 0.1652521
+        }
+      }
+    },
+    {
+      "t": 418.0083,
+      "i": 24987,
+      "texts": [
+        "Schlepp den Wagen zum Abschleppplatz.."
+      ],
+      "milliseconds": {
+        "before": {
+          "median": 0.000458,
+          "p95": 0.000625
+        },
+        "after": {
+          "median": 0.082041,
+          "p95": 0.09264164999999998
+        }
+      }
+    }
+  ]
+}

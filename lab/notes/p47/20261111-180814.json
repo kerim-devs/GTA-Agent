@@ -1,0 +1,283 @@
+{
+  "recording": "20261111-180814",
+  "readings": 1800,
+  "known_steps": 3,
+  "found_before": 1,
+  "found_after": 3,
+  "steps": [
+    {
+      "step": {
+        "objective": "Begib dich nach Pacific Bluffs.",
+        "start": 223.0004,
+        "end": 289.0037,
+        "last": 229.0037,
+        "duration": 6.003,
+        "step_duration": 66.003,
+        "section_kinds": [
+          "drive"
+        ],
+        "route": [
+          "yellow"
+        ],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 66.003,
+          "seconds": {
+            "driving": 52.522,
+            "walking": 0.0,
+            "running": 0.0,
+            "aiming": 0.0,
+            "firing": 0.0,
+            "looking": 1.412,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 12.253
+          }
+        },
+        "ending": "unknown",
+        "sample_observation": {
+          "t": 225.9869,
+          "route": "yellow",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": -86.63,
+              "y": 22.51,
+              "border": true
+            }
+          ]
+        },
+        "incidents": [
+          {
+            "t": 289.901,
+            "class": "car_change",
+            "cause": "other"
+          }
+        ],
+        "intent_class": "go_to",
+        "intent_wording": "begib dich",
+        "intent_target": "nach Pacific Bluffs."
+      },
+      "before": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Begib dich nach Pacific Bluffs.",
+          "t": 223.5171,
+          "i": 13343
+        }
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Begib dich nach Pacific Bluffs.",
+          "t": 223.5171,
+          "i": 13343
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Bring Franklin nahe an die Yacht.",
+        "start": 311.0047,
+        "end": 376.0339,
+        "last": 316.0339,
+        "duration": 5.029,
+        "step_duration": 65.029,
+        "section_kinds": [
+          "drive",
+          "foot",
+          "menu"
+        ],
+        "route": [],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 65.029,
+          "seconds": {
+            "driving": 16.772,
+            "walking": 8.013,
+            "running": 0.0,
+            "aiming": 0.0,
+            "firing": 33.024,
+            "looking": 0.0,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 11.26
+          }
+        },
+        "ending": "unknown",
+        "sample_observation": {
+          "t": 313.9908,
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": -0.16,
+              "y": 39.78,
+              "border": false
+            }
+          ]
+        },
+        "incidents": [
+          {
+            "t": 369.514,
+            "class": "car_change",
+            "cause": "other"
+          }
+        ],
+        "intent_class": "bring",
+        "intent_wording": "bring",
+        "intent_target": "Franklin nahe an die Yacht."
+      },
+      "before": {
+        "found": false,
+        "score": 0,
+        "reading": null
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Bring Franklin nahe an die Yacht.",
+          "t": 311.5051,
+          "i": 18611
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Verfolge die Yacht.",
+        "start": 394.0018,
+        "end": 456.0048,
+        "last": 396.0048,
+        "duration": 2.003,
+        "step_duration": 62.003,
+        "section_kinds": [
+          "drive",
+          "foot"
+        ],
+        "route": [],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 62.003,
+          "seconds": {
+            "driving": 33.288,
+            "walking": 2.677,
+            "running": 0.0,
+            "aiming": 0.324,
+            "firing": 16.602,
+            "looking": 0.12,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 11.114
+          }
+        },
+        "ending": "unknown",
+        "sample_observation": {
+          "t": 396.9875,
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 1.0,
+              "y": 27.5,
+              "border": false
+            }
+          ]
+        },
+        "incidents": [
+          {
+            "t": 417.91,
+            "class": "car_change",
+            "cause": "other"
+          }
+        ],
+        "intent_class": "follow",
+        "intent_wording": "verfolge",
+        "intent_target": "die Yacht."
+      },
+      "before": {
+        "found": false,
+        "score": 0,
+        "reading": null
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Verfolge die Yacht.",
+          "t": 394.0018,
+          "i": 23532
+        }
+      }
+    }
+  ],
+  "changed_labels": [
+    {
+      "text": "Beglb dlch nach. Pp.¢ifl",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 229.0037,
+      "first_i": 13667,
+      "count": 1,
+      "last_t": 229.0037,
+      "last_i": 13667
+    },
+    {
+      "text": "Bring Franklin nahe an dle Yacht.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 311.0047,
+      "first_i": 18581,
+      "count": 1,
+      "last_t": 311.0047,
+      "last_i": 18581
+    },
+    {
+      "text": "Bring Franklin nahe an die Yacht.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 311.5051,
+      "first_i": 18611,
+      "count": 4,
+      "last_t": 316.0339,
+      "last_i": 18877
+    },
+    {
+      "text": "Verfolge die Yacht.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 394.0018,
+      "first_i": 23532,
+      "count": 4,
+      "last_t": 396.0048,
+      "last_i": 23652
+    }
+  ],
+  "stored_label_disagreements": [],
+  "dialogue_candidates": [],
+  "cutscene_readings": [],
+  "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-180814/sections.json",
+  "timing_ms_per_reading_with_bottom_text": {
+    "before": {
+      "count": 831,
+      "mean": 0.0160146293622142,
+      "median": 0.013834,
+      "p95": 0.020167
+    },
+    "after": {
+      "count": 831,
+      "mean": 0.027152583634175692,
+      "median": 0.019875,
+      "p95": 0.0548955
+    }
+  },
+  "wall_seconds": 56.44394041597843
+}

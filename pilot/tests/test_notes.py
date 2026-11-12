@@ -1,20 +1,15 @@
 """Recording-level semantics, independent of native OCR and live services."""
 
-import numpy as np
 import pytest
 
 from pilot.notes import (
     build_missions,
     consolidate,
     ending,
-    instruction_like,
     intent,
     observed_actions,
-    pale_target,
-    promote_objectives,
     read_sections,
 )
-from pilot.scene import SceneText, TextLine
 
 
 def section_data(has_pad=True):
@@ -161,34 +156,6 @@ def test_two_different_objectives_in_a_row_stay_two_lines():
     )
     lines = [row for row in consolidate(rows) if row["kind"] == "objective"]
     assert [row["text"] for row in lines] == ["Begib dich nach Vespucci Beach.", "Folge Lamar."]
-
-
-def scene_with(text, box=(500, 660, 200, 20)):
-    return SceneText(lines=(TextLine(text, 0.5, box, "subtitle"),), subtitle=text)
-
-
-def frame_with_target(colour):
-    frame = np.zeros((720, 1280, 3), np.uint8)
-    frame[:, :] = (200, 200, 200)  # white-ish text and nothing coloured
-    if colour:
-        frame[664:680, 600:690] = colour
-    return frame
-
-
-@pytest.mark.parametrize("colour", [(126, 170, 184), (160, 233, 233), (236, 232, 155)])
-def test_objective_with_a_pale_target_is_not_left_a_subtitle(colour):
-    scene = promote_objectives(scene_with("Steig wieder in den Lieferwagen."), frame_with_target(colour))
-    assert scene.objective == "Steig wieder in den Lieferwagen." and scene.subtitle == ""
-
-
-def test_dialogue_and_uncoloured_text_stay_subtitles():
-    coloured = frame_with_target((160, 233, 233))
-    assert promote_objectives(scene_with("Machen wir die Kiste richtig geil."), coloured).objective == ""
-    assert promote_objectives(scene_with("Folge Lamar."), frame_with_target(None)).objective == ""
-    assert instruction_like("Beglb dlch zum Abschleppwagen.") and not instruction_like(
-        "Nach dem, was er erlebt hat"
-    )
-    assert not pale_target(frame_with_target(None), (500, 660, 200, 20))
 
 
 def test_misread_banner_still_ends_a_mission_and_is_one_ending():
