@@ -11,6 +11,7 @@ import pytest
 from pilot.contract import NEUTRAL_PAD, Detection, Observation, Pad, Reading, SkillResult
 from pilot.vehicle_entry import (
     DOOR_WAIT,
+    HOLD_SECONDS,
     MAX_ATTEMPTS,
     MAX_SECONDS,
     EnterVehicle,
@@ -319,11 +320,13 @@ class EntryGame:
         alternate=False,
         road_x=None,
         driver=False,
+        road_width=10,
     ):
         self.distance, self.lost, self.locked = distance, lost, locked
         self.away, self.blocked, self.latency, self.kind = away, blocked, latency, kind
         self.alternate = alternate
         self.road_x = road_x
+        self.road_width = road_width  # 10: a band the edge reader can use, 3: a thin line it cannot
         self.driver = driver
         self.driver_out = False
         self.evict_at = None
@@ -362,7 +365,9 @@ class EntryGame:
         if self.road_x is not None:
             from test_foot import road_frame
 
-            observation = replace(observation, frame=road_frame(-self.road_x, angle=15))
+            observation = replace(
+                observation, frame=road_frame(-self.road_x, width=self.road_width, angle=15)
+            )
         return observation
 
     def apply(self, time, pad):
@@ -438,7 +443,7 @@ def test_game_model_gets_seated_after_delay_loss_early_press_or_alternate(option
 )
 def test_game_model_failures_are_bounded_actionable_and_neutral(options, reason):
     result, game, presses = play(EntryGame(**options))
-    assert result.status == "failed" and result.reason == reason
+    assert result.status == "failed" and result.reason.startswith(reason)
     assert not game.seated and len(presses) <= MAX_ATTEMPTS
 
 
@@ -545,13 +550,61 @@ def test_within_reach_a_car_is_taken_before_a_nearer_bus():
     assert choose_vehicle([Vehicle(bus, 0.0, bus, 0.0), Vehicle(far, 0.0, far, 0.0)]).obj.kind == "bus"
 
 
-def test_parked_candidate_is_preferred_to_a_nearer_occupied_car():
-    normalized = replace(NEAR, box=(0.3, 0.45, 0.7, 0.9))
-    occupied = Vehicle(normalized, 0, normalized, 0, "standing", occupancy="occupied")
-    far = replace(normalized, box=(0.4, 0.4, 0.5, 0.5))
-    parked = Vehicle(far, 0, far, 0, "standing", occupancy="parked-candidate")
-    assert choose_vehicle([occupied, parked], "allow") is parked
-    assert choose_vehicle([occupied], "avoid") is None
+def vehicle_at(box, motion="unknown", occupancy="unknown", kind="car"):
+    obj = Detection(kind, box, 0.9)
+    return Vehicle(obj, 0, obj, 0, motion, occupancy=occupancy)
+
+
+NEAR_BOX = (0.30, 0.45, 0.70, 0.90)  # within reach
+FAR_BOX = (0.45, 0.40, 0.55, 0.48)  # not
+
+
+def test_ranking_puts_a_moving_vehicle_last_then_reach_then_evidence():
+    near_unknown = vehicle_at(NEAR_BOX)
+    far_parked = vehicle_at(FAR_BOX, "standing", "parked-candidate")
+    near_moving = vehicle_at(NEAR_BOX, "moving")
+    # within reach comes before standing evidence: the unknown vehicle beside the figure is taken first
+    assert choose_vehicle([far_parked, near_unknown]) is near_unknown
+    # a vehicle seen moving comes last, even within reach
+    assert choose_vehicle([near_moving, far_parked]) is far_parked
+    assert choose_vehicle([near_moving]) is near_moving  # last, not gone
+    # among those within reach, the evidence decides, and the person-box hint only lowers
+    parked = vehicle_at(NEAR_BOX, "standing", "parked-candidate")
+    hinted = vehicle_at(NEAR_BOX, "standing", "occupied")
+    assert choose_vehicle([hinted, near_unknown, parked]) is parked
+    assert choose_vehicle([hinted, near_unknown]) is near_unknown
+    assert choose_vehicle([hinted]) is hinted  # lowered, and still taken under allow
+    assert choose_vehicle([hinted], "avoid") is None  # and passed over under avoid
+
+
+def test_a_far_standing_car_does_not_draw_the_figure_past_a_vehicle_beside_it():
+    """A world seen in perspective: the figure stands, then walks to the far car seen standing. A quad
+    (a motorcycle here, to tell them apart) comes into view beside the path. It is taken, not passed."""
+
+    def box(z, x, kind, width, height):
+        h, w = height * 0.9 / z, width * 0.9 / z
+        cx, y1 = 0.5 + 0.9 * x / z, 0.43 + 1.6 * 0.9 / z
+        if not 0 <= cx - w / 2 < cx + w / 2 <= 1 or y1 > 1:
+            return None
+        return Detection(kind, px(cx - w / 2, y1 - h, cx + w / 2, y1), 0.95)
+
+    for appears in (0.0, 0.5, 1.0, 2.0):
+        skill = EnterVehicle({})
+        far_z, far_x, quad_z, quad_x = 16.0, 1.0, 7.0, -0.8
+        taken = None
+        for tick in range(400):
+            t = tick * 0.05
+            seen = [box(far_z, far_x, "car", 2.0, 1.5)]
+            if t >= appears:
+                seen.append(box(quad_z, quad_x, "motorcycle", 1.2, 1.0))
+            result = skill.step(obs(t, tuple(d for d in seen if d is not None)))
+            if result.pad.buttons:
+                taken = skill.entry_target.obj.kind
+                break
+            step = max(0.0, -result.pad.left[1]) * 1.6 * 0.05
+            far_z, quad_z = far_z - step, quad_z - step
+            far_x, quad_x = far_x - result.pad.left[0] * 1.6 * 0.05, quad_x - result.pad.left[0] * 1.6 * 0.05
+        assert taken == "motorcycle", appears
 
 
 def test_occupant_confirmation_survives_one_pixel_box_jitter_but_not_a_pedestrian():
@@ -618,25 +671,139 @@ def test_allow_is_explicit_and_driver_can_get_out_after_success():
     assert game.driver_out and not game.seated
 
 
-def test_moving_only_waits_at_kerb_and_does_not_enter_road():
+@pytest.mark.parametrize("speed, longest, moving", [(0.25, 1.0, True), (0.12, HOLD_SECONDS + 0.25, False)])
+def test_traffic_alone_neither_draws_a_press_nor_holds_the_search(speed, longest, moving):
+    """A car crossing the picture beside a figure at the roadside. One seen moving holds nothing; one not
+    yet clear (slow) is waited for at most HOLD_SECONDS, and then the search goes on."""
     from test_foot import road_frame
 
     skill = EnterVehicle({})
-    for tick in range(20):
+    still = 0.0
+    for tick in range(60):
         t = tick / 10
-        car = Detection("car", px(0.15 + t * 0.22, 0.35, 0.25 + t * 0.22, 0.45), 0.9)
-        result = skill.step(replace(obs(t, (car,)), frame=road_frame(-12)))
-        assert result.pad.left == (0, 0) and not result.pad.buttons
-    assert any(v.moved for v in skill.vehicles)
+        x = 0.02 + t * speed
+        objects = (Detection("car", px(x, 0.35, x + 0.1, 0.45), 0.9),) if x + 0.1 <= 1 else ()
+        result = skill.step(replace(obs(t, objects), frame=road_frame(-12)))
+        assert not result.pad.buttons
+        still = still + 0.1 if result.pad == NEUTRAL_PAD else 0.0
+        assert still <= longest
+    assert any(v.moved for v in skill.ever) is moving
 
 
-def test_head_accepts_occupancy_argument_and_exposes_it_in_schema():
-    from pilot.head import parse_response
+def test_head_accepts_occupancy_argument_and_the_schema_offers_it():
+    from pilot.head import parse_response, response_schema
 
     answer = parse_response(
         {
             "plan": [{"name": "enter_vehicle", "args": {"occupied": "avoid"}}],
-            "sentence": "Wait for a parked vehicle.",
+            "sentence": "Leave a car with a driver.",
         }
     )
     assert answer.plan[0].args["occupied"] == "avoid"
+    with pytest.raises(ValueError):
+        parse_response({"plan": [{"name": "enter_vehicle", "args": {"occupied": "yes"}}], "sentence": "x"})
+    variant = next(
+        v
+        for v in response_schema()["properties"]["plan"]["items"]["anyOf"]
+        if v["properties"]["name"]["enum"] == ["enter_vehicle"]
+    )
+    assert variant["properties"]["args"]["properties"]["occupied"] == {
+        "type": "string",
+        "enum": ["allow", "avoid"],
+    }
+
+
+# ------------------------------------------- a map that cannot tell the side never stops the search
+def run_game(game, duration=MAX_SECONDS, **args):
+    """Like play(), keeping every tick: (result, game, presses, [(time, result), ...])."""
+    skill = EnterVehicle({"duration": duration, **args})
+    ticks, presses, held = [], [], False
+    for tick in range(int(duration * 10) + 2):
+        time = tick / 10
+        result = skill.step(game.observation(time))
+        ticks.append((time, result))
+        if result.pad.buttons and not held:
+            presses.append(time)
+        held = bool(result.pad.buttons)
+        game.apply(time, result.pad)
+        if result.status != "running":
+            break
+    return result, game, presses, ticks
+
+
+def longest_idle(ticks, after=0.0):
+    """Seconds of the longest run of ticks on which the figure stands with the camera still."""
+    longest = start = None
+    for time, result in ticks:
+        if time >= after and result.status == "running" and result.pad == NEUTRAL_PAD:
+            start = time if start is None else start
+            longest = max(longest or 0.0, time - start)
+        else:
+            start = None
+    return longest or 0.0
+
+
+def test_a_locked_car_does_not_hold_the_search_when_the_map_cannot_tell_the_side():
+    # A thin road line: the map shows a road and not which side of it the figure is on.
+    result, _game, presses, ticks = run_game(EntryGame(distance=1, road_x=20, locked=True, road_width=3))
+    assert len(presses) == 3 and result.status == "failed"
+    assert result.reason.startswith("door locked or blocked")
+    assert "saw 1 vehicle (rejected 1, avoided 0, moving 0)" in result.reason
+    rejected_at = presses[-1] + DOOR_WAIT
+    assert longest_idle(ticks, after=rejected_at) <= HOLD_SECONDS + 0.25  # it was 29 s
+    walked = [t for t, r in ticks if t > rejected_at and r.pad.left != (0, 0)]
+    assert len(walked) > 10 * 10  # and it walked on, looking for another
+
+
+def test_a_driver_seen_is_passed_over_and_the_search_goes_on_when_the_map_cannot_tell():
+    result, game, presses, ticks = run_game(
+        EntryGame(distance=1, road_x=20, driver=True, road_width=3), duration=20
+    )
+    assert not presses and result.status == "failed" and not game.driver_out
+    assert "saw 1 vehicle (rejected 0, avoided 1, moving 0)" in result.reason
+    assert longest_idle(ticks) <= HOLD_SECONDS + 0.25
+    assert sum(r.pad.left != (0, 0) for _, r in ticks) > 100
+
+
+def test_the_same_driver_is_taken_when_the_rules_allow_it():
+    result, _game, presses, _ticks = run_game(
+        EntryGame(distance=1, road_x=20, driver=True, road_width=3), occupied="allow"
+    )
+    assert presses and result.status == "done" and "occupancy=occupied" in result.reason
+
+
+def test_a_retreat_from_a_lane_ends_when_the_map_stops_saying_lane():
+    game = EntryGame(distance=1, road_x=0, locked=True)  # a band the edges can be read on, the figure in it
+    skill = EnterVehicle({})
+    for tick in range(200):
+        time = tick / 10
+        result = skill.step(game.observation(time))
+        game.apply(time, result.pad)
+        if skill.retreating:
+            break
+    assert skill.retreating and result.reason == "leaving lane"
+    game.road_width = 3  # from here the map cannot be read
+    result = skill.step(game.observation(time + 0.1))
+    assert not skill.retreating and result.reason != "leaving lane"
+
+
+def test_parked_is_claimed_only_for_a_vehicle_seen_standing_with_no_person_box():
+    inside = Detection("person", px(0.47, 0.43, 0.53, 0.47), 0.9)
+
+    def run(hint_at):
+        skill = EnterVehicle({})
+        claims = {}
+        for tick in range(30):
+            time = tick * 0.05
+            objects = (FAR, inside) if time in hint_at else (FAR,)
+            skill.step(obs(time, objects))
+            claims[round(time, 2)] = skill.ever[0].occupancy
+        return claims
+
+    clear = run(hint_at=())
+    assert clear[0.35] == "unknown" and clear[0.45] == "parked-candidate"
+    # One detection of a person box inside, 0.2 s in: no driver is confirmed (that takes 0.1 s of them), and
+    # still the car is not called parked for a span that had a person box in it.
+    hinted = run(hint_at=(0.2,))
+    assert hinted[0.45] == "unknown" and hinted[0.75] == "unknown"
+    assert hinted[0.85] == "parked-candidate"  # a clear span of 0.4 s after the hint, and only then

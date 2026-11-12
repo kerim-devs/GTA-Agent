@@ -1,5 +1,5 @@
 {
-  "scope": "Recorded pictures do not respond to changed commands; endpoints describe observed replay frames, not simulated arrival.",
+  "scope": "Recorded pictures do not respond to either walk's commands. 'before' is foot.py at f9922f1; 'now' is the walk in this tree. Both run with their own real guard on the same ticks.",
   "runs": [
     {
       "session": "20261112-122242",
@@ -9,43 +9,27 @@
       "positions": {
         "unknown": 509
       },
-      "first_changed_command": {
-        "t": 5.879,
-        "frame_id": 237860,
-        "position": "unknown",
-        "road": {
-          "bearing": -32.30733445488211,
-          "distance": 8.045495634204268,
-          "along": -161.49479789960054,
-          "clearance": null,
-          "outward": null,
-          "width": null
-        },
-        "status": "running",
-        "reason": "road-side-unknown",
-        "left": [
-          0.0,
-          0.0
-        ]
-      },
-      "endpoint": {
+      "moving_ticks_before": 507,
+      "moving_ticks_now": 507,
+      "old_moving_ticks_where_now_moves": 507,
+      "old_moving_ticks_lane": 0,
+      "share_of_old_moving_ticks_kept_outside_lane": 1.0,
+      "ticks_where_the_pad_differs_from_before": 0,
+      "of_which_on_a_lane_reading": 0,
+      "longest_neutral_hold_now_s": 0.0,
+      "longest_hold_now_where_before_moved_s": 0.0,
+      "longest_neutral_hold_before_s": 0.0,
+      "ending_before": {
         "t": 25.88,
-        "frame_id": 239057,
-        "position": "unknown",
-        "road": {
-          "bearing": 148.2190849070166,
-          "distance": 10.822661410207754,
-          "along": -105.53486990708488,
-          "clearance": null,
-          "outward": null,
-          "width": null
-        },
-        "status": "failed",
-        "reason": "road-side-unknown",
-        "left": [
-          0.0,
-          0.0
-        ]
+        "status": "done",
+        "reason": "time-limit; side unknown",
+        "before_status": "done",
+        "before_reason": "time-limit"
+      },
+      "ending_now": {
+        "t": 25.88,
+        "status": "done",
+        "reason": "time-limit; side unknown"
       }
     },
     {
@@ -57,43 +41,27 @@
         "unknown": 428,
         "lane": 65
       },
-      "first_changed_command": {
-        "t": 5.882,
-        "frame_id": 336432,
-        "position": "unknown",
-        "road": {
-          "bearing": -32.30733445488211,
-          "distance": 8.045495634204268,
-          "along": -57.651216805185726,
-          "clearance": null,
-          "outward": null,
-          "width": null
-        },
-        "status": "running",
-        "reason": "road-side-unknown",
-        "left": [
-          0.0,
-          0.0
-        ]
-      },
-      "endpoint": {
+      "moving_ticks_before": 492,
+      "moving_ticks_now": 492,
+      "old_moving_ticks_where_now_moves": 492,
+      "old_moving_ticks_lane": 65,
+      "share_of_old_moving_ticks_kept_outside_lane": 1.0,
+      "ticks_where_the_pad_differs_from_before": 221,
+      "of_which_on_a_lane_reading": 65,
+      "longest_neutral_hold_now_s": 0.0,
+      "longest_hold_now_where_before_moved_s": 0.0,
+      "longest_neutral_hold_before_s": 0.0,
+      "ending_before": {
         "t": 25.902,
-        "frame_id": 337628,
-        "position": "unknown",
-        "road": {
-          "bearing": 105.94539590092288,
-          "distance": 8.008120878208574,
-          "along": 179.28027816566538,
-          "clearance": null,
-          "outward": null,
-          "width": null
-        },
-        "status": "failed",
-        "reason": "road-side-unknown",
-        "left": [
-          0.0,
-          0.0
-        ]
+        "status": "done",
+        "reason": "time-limit; side unknown",
+        "before_status": "done",
+        "before_reason": "time-limit"
+      },
+      "ending_now": {
+        "t": 25.902,
+        "status": "done",
+        "reason": "time-limit; side unknown"
       }
     },
     {
@@ -104,43 +72,27 @@
       "positions": {
         "unknown": 509
       },
-      "first_changed_command": {
-        "t": 5.843,
-        "frame_id": 348331,
-        "position": "unknown",
-        "road": {
-          "bearing": 105.94539590092288,
-          "distance": 8.008120878208574,
-          "along": 173.71573434571704,
-          "clearance": null,
-          "outward": null,
-          "width": null
-        },
-        "status": "running",
-        "reason": "road-side-unknown",
-        "left": [
-          0.0,
-          0.0
-        ]
-      },
-      "endpoint": {
+      "moving_ticks_before": 446,
+      "moving_ticks_now": 446,
+      "old_moving_ticks_where_now_moves": 446,
+      "old_moving_ticks_lane": 0,
+      "share_of_old_moving_ticks_kept_outside_lane": 1.0,
+      "ticks_where_the_pad_differs_from_before": 0,
+      "of_which_on_a_lane_reading": 0,
+      "longest_neutral_hold_now_s": 2.375,
+      "longest_hold_now_where_before_moved_s": 0.0,
+      "longest_neutral_hold_before_s": 2.375,
+      "ending_before": {
         "t": 25.866,
-        "frame_id": 349531,
-        "position": "unknown",
-        "road": {
-          "bearing": 75.17964792047799,
-          "distance": 26.58439391823707,
-          "along": null,
-          "clearance": null,
-          "outward": null,
-          "width": null
-        },
-        "status": "failed",
-        "reason": "road-side-unknown",
-        "left": [
-          0.0,
-          0.0
-        ]
+        "status": "done",
+        "reason": "time-limit; side unknown",
+        "before_status": "done",
+        "before_reason": "time-limit"
+      },
+      "ending_now": {
+        "t": 25.866,
+        "status": "done",
+        "reason": "time-limit; side unknown"
       }
     },
     {
@@ -149,46 +101,30 @@
       "ticks": 501,
       "recording_ended_before_deadline": false,
       "positions": {
-        "unknown": 474,
-        "side": 27
+        "unknown": 497,
+        "side": 4
       },
-      "first_changed_command": {
-        "t": 5.832,
-        "frame_id": 360119,
-        "position": "unknown",
-        "road": {
-          "bearing": 105.94539590092288,
-          "distance": 8.008120878208574,
-          "along": -92.99358351239846,
-          "clearance": null,
-          "outward": null,
-          "width": null
-        },
-        "status": "running",
-        "reason": "road-side-unknown",
-        "left": [
-          0.0,
-          0.0
-        ]
-      },
-      "endpoint": {
+      "moving_ticks_before": 499,
+      "moving_ticks_now": 499,
+      "old_moving_ticks_where_now_moves": 499,
+      "old_moving_ticks_lane": 0,
+      "share_of_old_moving_ticks_kept_outside_lane": 1.0,
+      "ticks_where_the_pad_differs_from_before": 0,
+      "of_which_on_a_lane_reading": 0,
+      "longest_neutral_hold_now_s": 0.0,
+      "longest_hold_now_where_before_moved_s": 0.0,
+      "longest_neutral_hold_before_s": 0.0,
+      "ending_before": {
         "t": 25.835,
-        "frame_id": 361317,
-        "position": "unknown",
-        "road": {
-          "bearing": 105.94539590092288,
-          "distance": 8.008120878208574,
-          "along": 179.13598379211322,
-          "clearance": null,
-          "outward": null,
-          "width": null
-        },
-        "status": "failed",
-        "reason": "road-side-unknown",
-        "left": [
-          0.0,
-          0.0
-        ]
+        "status": "done",
+        "reason": "time-limit; side unknown",
+        "before_status": "done",
+        "before_reason": "time-limit"
+      },
+      "ending_now": {
+        "t": 25.835,
+        "status": "done",
+        "reason": "time-limit; side unknown"
       }
     },
     {
@@ -199,26 +135,18 @@
       "positions": {
         "unknown": 492
       },
-      "first_changed_command": null,
-      "endpoint": {
-        "t": 28.003,
-        "frame_id": 250877,
-        "position": "unknown",
-        "road": {
-          "bearing": -62.50086126895285,
-          "distance": 8.22982381342395,
-          "along": -143.2756578122416,
-          "clearance": null,
-          "outward": null,
-          "width": null
-        },
-        "status": "running",
-        "reason": null,
-        "left": [
-          0.0,
-          0.0
-        ]
-      }
+      "moving_ticks_before": 0,
+      "moving_ticks_now": 0,
+      "old_moving_ticks_where_now_moves": 0,
+      "old_moving_ticks_lane": 0,
+      "share_of_old_moving_ticks_kept_outside_lane": 0.0,
+      "ticks_where_the_pad_differs_from_before": 0,
+      "of_which_on_a_lane_reading": 0,
+      "longest_neutral_hold_now_s": 19.873,
+      "longest_hold_now_where_before_moved_s": 0.0,
+      "longest_neutral_hold_before_s": 19.873,
+      "ending_before": null,
+      "ending_now": null
     }
   ]
 }

@@ -40,7 +40,7 @@ you to a mission letter, otherwise target away. set_waypoint opens and closes
 the map itself. On foot with nothing to do, go for a drive in one plan:
 enter_vehicle, set_waypoint away, drive_route. enter_vehicle needs a vehicle in
 objects; with none in view, walk_road first: cars pass on roads. Taking a car
-somebody sits in is fine.
+somebody sits in is not wanted: enter_vehicle passes it over unless occupied is allow.
 
 Fighting. fight and melee act on red minimap blips only: fight with a gun in
 hand, melee without one. punch walks up to a person listed in objects and hits

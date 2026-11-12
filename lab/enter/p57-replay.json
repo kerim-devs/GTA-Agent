@@ -8,10 +8,10 @@
       "end": 47.99,
       "original_first_press": null,
       "changed_first_press": null,
-      "walking_samples": 18,
+      "walking_samples": 91,
       "actions_with_corrupt_map": 0,
       "last_status": "running",
-      "last_reason": "road-side-unknown",
+      "last_reason": "side unknown",
       "road_problem": null,
       "position_counts": {
         "unknown": 120
@@ -40,7 +40,7 @@
         "occupancy": "unknown",
         "position": "unknown"
       },
-      "walking_samples": 3,
+      "walking_samples": 80,
       "actions_with_corrupt_map": 2,
       "last_status": "running",
       "last_reason": null,
@@ -49,8 +49,8 @@
         "unknown": 181
       },
       "vehicle_sample_kinds": {
-        "unknown": 32,
-        "parked-candidate": 65,
+        "unknown": 42,
+        "parked-candidate": 55,
         "occupied": 107
       },
       "unsafe_lane_presses": 0
@@ -106,7 +106,7 @@
         "occupancy": "unknown",
         "position": "unknown"
       },
-      "walking_samples": 0,
+      "walking_samples": 1,
       "actions_with_corrupt_map": 0,
       "last_status": "running",
       "last_reason": null,
@@ -139,7 +139,7 @@
         "occupancy": "unknown",
         "position": "unknown"
       },
-      "walking_samples": 151,
+      "walking_samples": 129,
       "actions_with_corrupt_map": 0,
       "last_status": "running",
       "last_reason": null,
@@ -172,18 +172,18 @@
         "occupancy": "unknown",
         "position": "unknown"
       },
-      "walking_samples": 40,
+      "walking_samples": 12,
       "actions_with_corrupt_map": 0,
-      "last_status": "running",
-      "last_reason": null,
+      "last_status": "failed",
+      "last_reason": "vehicle drove away or was lost",
       "road_problem": null,
       "position_counts": {
         "unknown": 277
       },
       "vehicle_sample_kinds": {
-        "unknown": 672,
-        "occupied": 978,
-        "parked-candidate": 517
+        "unknown": 701,
+        "occupied": 1001,
+        "parked-candidate": 464
       },
       "unsafe_lane_presses": 0
     },
@@ -206,7 +206,7 @@
         "position": "unknown"
       },
       "walking_samples": 47,
-      "actions_with_corrupt_map": 22,
+      "actions_with_corrupt_map": 20,
       "last_status": "running",
       "last_reason": null,
       "road_problem": null,
@@ -214,8 +214,8 @@
         "unknown": 250
       },
       "vehicle_sample_kinds": {
-        "unknown": 172,
-        "occupied": 239,
+        "unknown": 129,
+        "occupied": 282,
         "parked-candidate": 46
       },
       "unsafe_lane_presses": 0
@@ -226,10 +226,10 @@
       "end": 10.91,
       "original_first_press": null,
       "changed_first_press": null,
-      "walking_samples": 1,
+      "walking_samples": 35,
       "actions_with_corrupt_map": 0,
       "last_status": "running",
-      "last_reason": "road-side-unknown",
+      "last_reason": "side unknown",
       "road_problem": null,
       "position_counts": {
         "unknown": 51
@@ -255,14 +255,14 @@
         "occupancy": "unknown",
         "position": "unknown"
       },
-      "walking_samples": 30,
+      "walking_samples": 78,
       "actions_with_corrupt_map": 0,
       "last_status": "running",
-      "last_reason": null,
+      "last_reason": "leaving lane",
       "road_problem": null,
       "position_counts": {
-        "side": 113,
-        "unknown": 114
+        "side": 112,
+        "unknown": 115
       },
       "vehicle_sample_kinds": {
         "unknown": 356,

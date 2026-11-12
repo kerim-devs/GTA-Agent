@@ -1,15 +1,17 @@
 """Walking that gets nowhere: found after about two seconds, never on one tick, freed in bounded,
 alternating turns, and released at every end."""
 
+import json
 import math
 from pathlib import Path
+from types import SimpleNamespace
 
 import cv2
 import numpy as np
 import pytest
 
 from pilot.contract import NEUTRAL_PAD, Answer, Judgment, Observation, Reading
-from pilot.foot import FootGuard, WalkRoad, find_road, map_shift
+from pilot.foot import FootGuard, Steer, WalkRoad, find_road, map_shift
 from pilot.head import SkillCall
 from pilot.minimap import ACX, ACY
 from pilot.motion import map_motion
@@ -396,23 +398,25 @@ def test_walk_road_walks_toward_the_road_and_ends_neutral():
         final = skill.step(Observation(FLAT, None, i * DT, frame=frame))
         if final.status != "running":
             break
-    assert final.status == "failed" and final.reason == "road-side-unknown" and final.pad == NEUTRAL_PAD
+    # The map shows a road and not which side the figure is on: it ends as the walk always ended, and says so.
+    assert final.status == "done" and final.reason == "time-limit; side unknown" and final.pad == NEUTRAL_PAD
 
 
-def test_walk_road_holds_when_road_and_north_are_hidden(monkeypatch):
+def test_walk_road_keeps_going_when_north_is_temporarily_hidden(monkeypatch):
     monkeypatch.setattr("pilot.foot.north_bearing", lambda _: None)
     skill = WalkRoad({})
     frame = frame_with(crop("foot_pier_still_a"))
     results = [skill.step(Observation(FLAT, None, i * DT, frame=frame)) for i in range(40)]
     assert all(r.status == "running" for r in results)
-    assert all(r.pad == NEUTRAL_PAD and r.reason == "road-side-unknown" for r in results)
+    assert all(r.pad.left == (0.0, -skill.STICK) for r in results)
     assert skill.compass_heading is None
     blind = WalkRoad({}).step(Observation(FLAT, None, 0.0))
     assert blind.status == "failed" and blind.reason == "no-frame" and blind.pad == NEUTRAL_PAD
 
 
-def road_frame(offset=0, width=10, angle=0, crossing=False):
-    """A scaled map band relative to the fixed arrow, preserving real HUD bars."""
+def road_frame(offset=0, width=10, angle=0, crossing=False, sheet=0):
+    """A scaled map band relative to the fixed arrow, preserving real HUD bars; `sheet` is the radius of a
+    white sheet (car park, plaza) drawn around the arrow."""
     hud = crop("foot_road_a")
     hud[32:138, 39:209] = 60
     yy, xx = np.mgrid[32:138, 39:209]
@@ -422,6 +426,8 @@ def road_frame(offset=0, width=10, angle=0, crossing=False):
     mask = abs(cross - offset) <= width / 2
     if crossing:
         mask |= abs(along) <= width / 2
+    if sheet:
+        mask |= (xx - ACX) ** 2 + (yy - ACY) ** 2 <= sheet**2
     hud[32:138, 39:209][mask] = 230
     # Texture avoids presenting an exact codec-block edge to the corruption reader.
     noise = np.random.default_rng(57).integers(0, 5, (106, 170, 1), dtype=np.uint8)
@@ -433,17 +439,21 @@ def road_frame(offset=0, width=10, angle=0, crossing=False):
 
 @pytest.mark.parametrize("angle", [0, 25, -35, 90])
 @pytest.mark.parametrize("offset,position", [(0, "lane"), (12, "side"), (-12, "side")])
-def test_band_width_distinguishes_lane_and_verge_after_camera_rotation(angle, offset, position):
+def test_a_reading_of_lane_or_side_is_never_the_wrong_one_after_camera_rotation(angle, offset, position):
     from pilot.foot import hud_crop
 
     road = find_road(hud_crop(road_frame(offset, angle=angle)))
-    # A cross section beyond the radar's lower border cannot certify a side.
-    clipped = (offset, angle) in {(12, 25), (-12, -35), (-12, 90)}
-    if clipped:
-        assert road is None or road.position == "unknown"
-    else:
-        assert road is not None and road.position == position
+    # Abstaining is allowed (the readers see only what is inside the radar); a wrong answer is not.
+    assert road is None or road.position in {position, "unknown"}
+    if road is not None and road.position != "unknown":
         assert 8 <= road.width <= 12
+
+
+def test_a_straight_road_is_read_at_the_camera_angle_it_was_written_for():
+    from pilot.foot import hud_crop
+
+    for offset, position in ((0, "lane"), (12, "side"), (-12, "side")):
+        assert find_road(hud_crop(road_frame(offset))).position == position
 
 
 def test_walk_leaves_lane_then_follows_outside_and_finishes_with_side_proof():
@@ -457,7 +467,7 @@ def test_walk_leaves_lane_then_follows_outside_and_finishes_with_side_proof():
     assert result.pad == NEUTRAL_PAD
 
 
-def test_walk_never_calls_stationary_lane_success_and_corrupt_endpoint_abstains():
+def test_a_lane_at_the_limit_is_said_and_a_corrupt_last_tick_is_no_roadside():
     skill = WalkRoad({"duration": 2})
     skill.step(obs(0, frame=road_frame()))
     result = skill.step(obs(2, frame=road_frame()))
@@ -466,14 +476,15 @@ def test_walk_never_calls_stationary_lane_success_and_corrupt_endpoint_abstains(
     skill = WalkRoad({"duration": 2})
     skill.step(obs(0, frame=road_frame(12)))
     result = skill.step(obs(2, frame=road_frame(12), corrupt=True))
-    assert result.reason == "road-side-unknown" and result.pad == NEUTRAL_PAD
+    assert result.status == "done" and result.reason == "time-limit; side unknown"
+    assert result.pad == NEUTRAL_PAD
 
 
-def test_one_side_tick_cannot_certify_a_safe_endpoint():
+def test_one_side_tick_cannot_certify_a_roadside():
     skill = WalkRoad({"duration": 2})
     skill.step(obs(0, frame=road_frame()))
     result = skill.step(obs(2, frame=road_frame(12)))
-    assert result.status == "failed" and result.reason == "road-side-unknown"
+    assert result.status == "done" and not result.reason.startswith("road-side")
 
 
 def test_crossing_under_arrow_is_not_certified_as_a_kerb():
@@ -492,3 +503,170 @@ def test_the_runner_sees_the_road_reached_when_the_edges_are_readable(offset, re
     for i in range(12):
         runner.tick(obs(i * 0.1, frame=frame, moving=True))
     assert runner.describe()["road_reached"] is reached
+
+
+# ----------------------------------------------------------- a map that cannot tell never stops the walk
+def pad_is_neutral(result):
+    return result.pad.left == (0.0, 0.0)
+
+
+class WalkGame:
+    """A straight road at a lateral distance from the arrow, drawn on the map as the game would: the
+    figure's left stick moves it, the camera never turns. `width` 3 is a thin line the edge reader
+    cannot use (the common case), 10 a band it can; `sheet` is a white plaza around the arrow."""
+
+    SPEED = 8.0  # map pixels a second at full stick
+
+    def __init__(self, offset, width=10, sheet=0):
+        self.offset, self.width, self.sheet = offset, width, sheet
+
+    def observation(self, t):
+        return obs(t, frame=road_frame(self.offset, width=self.width, sheet=self.sheet), moving=True)
+
+    def apply(self, pad, dt):
+        self.offset -= pad.left[0] * self.SPEED * dt
+
+
+def play_walk(game, seconds, dt=0.1, duration=None):
+    skill = WalkRoad({"duration": duration or seconds})
+    skill.guard = SimpleNamespace(
+        step=lambda observation, want: Steer(want)
+    )  # the synthetic map has no texture
+    results, offsets = [], []
+    for tick in range(int(seconds / dt) + 1):
+        t = round(tick * dt, 3)
+        result = skill.step(game.observation(t))
+        results.append((t, result))
+        offsets.append(game.offset)
+        game.apply(result.pad, dt)
+        if result.status != "running":
+            break
+    return results, offsets
+
+
+def longest_neutral(results):
+    longest = start = None
+    for t, result in results:
+        if result.status == "running" and pad_is_neutral(result):
+            start = t if start is None else start
+            longest = max(longest or 0.0, t - start)
+        else:
+            start = None
+    return longest or 0.0
+
+
+def test_a_thin_road_the_edges_cannot_be_read_is_walked_to_and_along_without_standing():
+    game = WalkGame(40.3, width=3)
+    results, offsets = play_walk(game, 10)
+    assert all(not pad_is_neutral(result) for _, result in results[:-1])
+    assert min(abs(offset) for offset in offsets) <= 11  # it got to the road
+    # a tick the map could not be read on says nothing; every other one says the side is unknown
+    assert {result.reason for _, result in results[:-1]} <= {"side unknown", None}
+    final = results[-1][1]
+    assert final.status == "done" and final.reason == "time-limit; side unknown"
+
+
+def test_a_lane_reading_leaves_the_carriageway_and_the_walk_ends_at_the_roadside():
+    game = WalkGame(2.7, width=10)
+    results, offsets = play_walk(game, 8)
+    assert abs(offsets[-2]) >= 7.5  # outside the band, whose edge is at 5
+    assert longest_neutral(results) < 1.5
+    final = results[-1][1]
+    assert final.status == "done" and final.reason.startswith("road-side")
+
+
+def test_a_known_side_far_from_the_road_keeps_walking_toward_it_and_is_not_called_the_roadside():
+    game = WalkGame(-28.3, width=10)  # the band is on the left, 23 px away
+    results, offsets = play_walk(game, 5, duration=40)
+    first = results[0][1]
+    assert first.pad.left[0] < -0.5  # toward the road, not along it
+    assert abs(offsets[-1]) < abs(offsets[0]) - 10
+    # and when the time is up before it got there, that is what it says
+    short = WalkGame(-26.3, width=10)
+    short.SPEED = 5.0
+    ended, _ = play_walk(short, 2.1, duration=2.0)
+    assert ended[-1][1].status == "done" and ended[-1][1].reason == "time-limit; roadside not reached"
+
+
+def test_a_white_sheet_around_the_arrow_is_no_side():
+    from pilot.foot import hud_crop
+
+    plaza = find_road(hud_crop(road_frame(29.3, sheet=14)))
+    assert plaza is None or plaza.position == "unknown"
+    beside = find_road(hud_crop(road_frame(20.3)))
+    assert beside is not None and beside.position == "side"  # the same band without the sheet is read
+
+
+def test_a_lane_reading_is_acted_on_for_a_moment_when_the_next_ticks_cannot_be_read(monkeypatch):
+    monkeypatch.setattr("pilot.foot.north_bearing", lambda _: 0.0)
+    skill = WalkRoad({"duration": 20})
+    first = skill.step(obs(0, frame=road_frame(2), moving=True))
+    assert first.reason == "leaving lane" and abs(first.pad.left[0]) > 0.8
+    side = 1 if first.pad.left[0] > 0 else -1
+    for t in (0.1, 0.5, 1.0, 1.4):
+        result = skill.step(obs(t, frame=road_frame(2, width=3), moving=True))  # thin: unreadable
+        assert result.pad.left[0] * side > 0.8 and not pad_is_neutral(result)
+    later = skill.step(obs(2.0, frame=road_frame(2, width=3), moving=True))
+    assert later.reason == "side unknown" and not pad_is_neutral(later)
+
+
+def test_a_map_that_cannot_be_read_holds_for_a_moment_and_then_says_so():
+    skill = WalkRoad({"duration": 10})
+    blank = frame_with(np.zeros((170, 260, 3), np.uint8))
+    results = []
+    for tick in range(40):
+        t = tick * 0.1
+        result = skill.step(obs(t, frame=blank, moving=True))
+        results.append((t, result))
+        if result.status != "running":
+            break
+    final_t, final = results[-1]
+    assert final.status == "failed" and final.reason == "map-unreadable"
+    assert final_t <= WalkRoad.UNREADABLE_WAIT + 0.2
+    assert all(pad_is_neutral(result) for _, result in results)
+
+
+def test_the_recorded_walks_keep_moving_where_the_old_walk_moved_and_never_hold():
+    """Twenty-odd ticks of each of four recorded walks (lab/foot/p57_fixture.py): the pictures, and what
+    the walk as it was before P57 did on them. Where the map says lane the new walk leaves the carriageway;
+    everywhere else it does what the old one did, and the map never makes it stand for long."""
+    data = np.load(FIXTURES / "p57-walks.npz")
+    for name, count in json.loads(str(data["meta"])).items():
+        times, before = data[name + "_t"], data[name + "_before"]
+        skill = WalkRoad({"duration": 30})
+        skill.guard = SimpleNamespace(step=lambda observation, want: Steer(want))
+        kept = lanes = old_moves = 0
+        results, identical = [], True
+        for index in range(count):
+            image = cv2.cvtColor(
+                cv2.imdecode(data[f"{name}_{index:02d}"], cv2.IMREAD_COLOR), cv2.COLOR_BGR2RGB
+            )
+            result = skill.step(obs(float(times[index]), frame=frame_with(image)))
+            results.append((float(times[index]), result))
+            old = tuple(float(v) for v in before[index])
+            if skill.position == "lane":
+                lanes += 1
+                continue
+            identical &= result.pad.left == pytest.approx(old)
+            if old != (0.0, 0.0):
+                old_moves += 1
+                kept += not pad_is_neutral(result)
+        assert old_moves and kept / old_moves >= 0.9, name
+        if not lanes:
+            assert identical, name  # without a lane reading it is the old walk, pad included
+        assert longest_neutral(results) <= WalkRoad.UNREADABLE_WAIT, name
+        assert name != "110418" or lanes > 0  # the fixture does hold lane readings
+
+
+def test_a_way_round_that_turns_toward_the_carriageway_is_not_taken_at_a_known_edge():
+    skill = WalkRoad({"duration": 20})
+    # a guard that has the figure turn about at once, as an escape does when it is stuck
+    skill.guard = SimpleNamespace(step=lambda observation, want: Steer((-want[0], -want[1]), state="escape"))
+    from pilot.foot import hud_crop
+
+    road = find_road(hud_crop(road_frame(2)))
+    result = skill.step(obs(0, frame=road_frame(2), moving=True))
+    assert result.reason == "leaving lane"
+    assert result.pad.left == pytest.approx(
+        (math.sin(math.radians(road.outward)) * 0.85, -math.cos(math.radians(road.outward)) * 0.85)
+    )

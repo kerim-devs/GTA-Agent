@@ -29,6 +29,7 @@ BUS_DOOR_WAIT = 13.0  # Recorded bus entry took 11.6 s before the seated event.
 RETRY_APPROACH = 0.8
 MAX_ATTEMPTS = 4
 LANE_WAIT = 1.0  # No seven-second door wait with sustained on-foot proof in a lane.
+HOLD_SECONDS = 3.0  # Longest the search stands still for one vehicle it may still take and cannot yet judge.
 
 
 def center(obj):
@@ -62,9 +63,12 @@ class Vehicle:
     motion: str = "unknown"
     tries: int = 0
     rejected: bool = False
-    occupancy: str = "unknown"
+    occupancy: str = "unknown"  # unknown | parked-candidate | occupied
     driver_since: float | None = None
+    last_hint: float | None = None  # capture time of the last person box inside this vehicle's
+    stood_clear: bool = False  # seen standing for a whole span of 0.4 s with no person box in it
     moved: bool = False
+    held: float = 0.0  # seconds the search has stood still for this vehicle
 
 
 def occupant_visible(obj, objects):
@@ -89,7 +93,9 @@ def occupant_visible(obj, objects):
 
 
 def choose_vehicle(vehicles, occupied="allow"):
-    """Prefer a vehicle seen to stand, then one within reach, then a car before a bus, then the nearer."""
+    """A vehicle seen moving comes last. Of the others one within reach comes before one that is not,
+    and only then standing or parked evidence, a car before a bus, and the nearer. The person-box hint
+    lowers a vehicle (evidence) and under occupied=avoid takes it out; it decides nothing else."""
 
     def rank(vehicle):
         obj = vehicle.obj
@@ -97,19 +103,16 @@ def choose_vehicle(vehicles, occupied="allow"):
         size = 1.5 if obj.kind in {"bus", "truck"} else 1.0
         proximity = y1 + (y1 - y0) / size * 0.5
         return (
+            vehicle.motion != "moving" and not vehicle.moved,
+            within_reach(obj),
             {"parked-candidate": 2, "unknown": 1, "occupied": 0}[vehicle.occupancy],
             {"standing": 2, "unknown": 1, "moving": 0}[vehicle.motion],
-            within_reach(obj),
             obj.kind in {"car", "motorcycle"},
             proximity - abs(center(obj)[0] - 0.5) * 0.1,
         )
 
     return max(
-        (
-            v
-            for v in vehicles
-            if not v.rejected and v.motion != "moving" and (occupied == "allow" or v.occupancy != "occupied")
-        ),
+        (v for v in vehicles if not v.rejected and (occupied == "allow" or v.occupancy != "occupied")),
         key=rank,
         default=None,
     )
@@ -125,10 +128,10 @@ class EnterVehicle:
         "occupied": ("avoid", "allow"),
     }
     prompt = (
-        "Enter a reachable vehicle, preferring a parked candidate. occupied=avoid (default) "
-        "rejects driver evidence; allow permits it only outside a known lane. Moving vehicles "
-        "are never chased. Wait at the side; abandon an ineffective lane press after one second. "
-        "Reports occupancy evidence and roadside uncertainty; only sustained seated proof succeeds."
+        "Enter a reachable vehicle, one within reach first. occupied=avoid (default) passes over one with "
+        "a driver seen, allow takes it. A moving, locked or avoided vehicle does not hold the search: it "
+        "stands at most 3 s per vehicle to see one clearly, then looks on. Only sustained seated proof "
+        "succeeds; a timeout says what was seen."
     )
 
     def __init__(self, args: dict):
@@ -171,6 +174,8 @@ class EnterVehicle:
         self.retreating = False
         self.taken_kind = None
         self.taken_vehicle = None
+        self.ever = []  # every vehicle tracked, for the account when time runs out
+        self.gap = 0.0
 
     def stop(self, reason="interrupted") -> SkillResult:
         if self.road is not None:
@@ -182,12 +187,30 @@ class EnterVehicle:
         if not self.saw_delivery:
             return "no detections delivered at all"
         if self.last_problem:
-            return self.last_problem
-        if self.saw_target:
-            return "vehicle out of reach"
-        if self.road_problem:
-            return f"nothing found; road search unavailable: {self.road_problem}"
-        return "nothing found"
+            reason = self.last_problem
+        elif self.saw_target:
+            reason = "vehicle out of reach"
+        elif self.road_problem:
+            reason = f"nothing found; road search unavailable: {self.road_problem}"
+        else:
+            reason = "nothing found"
+        return reason + self._saw()
+
+    def _saw(self):
+        """What the run saw, so that whoever plans next knows why nothing was taken."""
+        if not self.ever:
+            return ""
+        rejected = sum(v.rejected for v in self.ever)
+        moving = sum(not v.rejected and (v.moved or v.motion == "moving") for v in self.ever)
+        avoided = sum(
+            not v.rejected
+            and not (v.moved or v.motion == "moving")
+            and v.occupancy == "occupied"
+            and self.occupied == "avoid"
+            for v in self.ever
+        )
+        noun = "vehicle" if len(self.ever) == 1 else "vehicles"
+        return f"; saw {len(self.ever)} {noun} (rejected {rejected}, avoided {avoided}, moving {moving})"
 
     def _candidates(self, obs):
         kinds = {"car", "truck", "bus", "motorcycle"} if self.kind == "any" else {self.kind}
@@ -225,10 +248,19 @@ class EnterVehicle:
                 used.add(old)
         for index, obj in enumerate(candidates):
             vehicle = assigned.get(index)
+            # A person box inside the vehicle's is a hint, not proof: it lowers the vehicle in the ranking
+            # and, seen for 0.1 s, makes occupied=avoid pass it over. It is never the only reason to stand
+            # and wait; the detector misses many drivers, so no hint is not "empty" either.
+            hint = occupant_visible(obj, obs.objects)
             if vehicle is None:
                 vehicle = Vehicle(obj, obs.time, obj, self.capture)
+                self.ever.append(vehicle)
+                if hint:
+                    vehicle.last_hint = self.capture
             else:
                 unmatched.remove(vehicle)
+                if hint:
+                    vehicle.last_hint = self.capture
                 span = self.capture - vehicle.anchor_time
                 if span >= 0.4:
                     # Large camera turns make box displacement ambiguous; do not call it traffic.
@@ -240,11 +272,13 @@ class EnterVehicle:
                             vehicle.moved |= vehicle.motion == "moving"
                         elif drift < 0.06 and 0.85 <= scale <= 1.20:
                             vehicle.motion = "standing"
+                            if vehicle.last_hint is None or vehicle.last_hint < vehicle.anchor_time:
+                                vehicle.stood_clear = True
                         else:
                             vehicle.motion = "unknown"
                     vehicle.anchor, vehicle.anchor_time = obj, self.capture
                 vehicle.obj, vehicle.seen = obj, obs.time
-            if occupant_visible(obj, obs.objects):
+            if hint:
                 if vehicle.driver_since is None:
                     vehicle.driver_since = obs.time
                 if obs.time - vehicle.driver_since >= 0.1:
@@ -253,31 +287,40 @@ class EnterVehicle:
                 vehicle.driver_since = None
             if vehicle.moved:
                 vehicle.occupancy = "occupied"  # stopped traffic, not evidence of parking
-            elif vehicle.occupancy != "occupied" and vehicle.motion == "standing":
+            elif vehicle.occupancy != "occupied" and vehicle.stood_clear:
                 vehicle.occupancy = "parked-candidate"
             visible.append(vehicle)
         self.vehicles = visible + [v for v in unmatched if obs.time - v.seen <= TARGET_GRACE]
-        best = choose_vehicle(visible, self.occupied)
         if self.phase == "wait":
             return
-        if self.target is None or self.target.rejected or obs.time - self.target.seen > TARGET_GRACE:
+        best = choose_vehicle([v for v in visible if self._eligible(v)], self.occupied)
+        current = self.target
+        if (
+            current is None
+            or current.rejected
+            or obs.time - current.seen > TARGET_GRACE
+            or not self._eligible(current)
+        ):
             self.target = best
             if best is not None:
                 self.last_problem = None
-        elif best is not None and choose_vehicle([self.target, best], self.occupied) is best:
+        elif best is not None and choose_vehicle([current, best], self.occupied) is best:
             self.target = best
-        elif best is None and not self._eligible(self.target):
-            self.target = None
         if self.target is not None and not self.target.rejected and self.road is not None:
             self.road.stop("vehicle found")
             self.road = None
             self.road_problem = None
 
     def _search(self, obs, elapsed):
-        if self.location is not None and self.location.position == "lane":
+        if self._in_lane():
             return self._retreat()
-        if self.vehicles:
-            return SkillResult(reason="waiting at side" if self._at_side() else "road-side-unknown")
+        # Stand still only for a vehicle that may still be taken and is not yet seen clearly, and for
+        # HOLD_SECONDS at most per vehicle. A moving, locked or avoided one holds nothing: look on.
+        holding = [v for v in self.vehicles if self._may_take(v) and v.held < HOLD_SECONDS]
+        if holding:
+            for vehicle in holding:
+                vehicle.held += self.gap
+            return SkillResult(reason=f"waiting to see a {holding[0].obj.kind} clearly")
         if elapsed < SCAN_SECONDS:
             return SkillResult(Pad(right=(0.4 if elapsed < SCAN_SECONDS / 2 else -0.4, 0.0)))
         if self.road is None:
@@ -289,26 +332,36 @@ class EnterVehicle:
             return SkillResult()
         return result
 
+    def _in_lane(self):
+        return self.location is not None and self.location.position == "lane"
+
     def _at_side(self):
         return self.location is not None and self.location.position == "side"
 
+    def _may_take(self, vehicle):
+        """Not rejected, not moving now, and not one that occupied=avoid passes over."""
+        return not (
+            vehicle.rejected
+            or vehicle.motion == "moving"
+            or (vehicle.occupancy == "occupied" and self.occupied == "avoid")
+        )
+
     def _eligible(self, vehicle):
-        if vehicle is None or vehicle.rejected or vehicle.motion == "moving":
+        if vehicle is None or not self._may_take(vehicle):
             return False
         if vehicle.driver_since is not None and vehicle.occupancy != "occupied":
-            return False  # release while the possible driver is being confirmed
-        if vehicle.occupancy == "occupied" and self.occupied == "avoid":
-            return False
-        if self.location is not None and self.location.position == "lane":
+            return False  # a person box was just seen inside: the next detection says if it stays
+        if self._in_lane():
             return vehicle.motion == "standing" and vehicle.occupancy != "occupied"
         if self._at_side() and not within_reach(vehicle.obj) and vehicle.motion != "standing":
             return False
         return True
 
     def _retreat(self):
-        if self.location is not None and self.location.outward is not None:
-            return SkillResult(Pad(left=stick_for(self.location.outward, 0.85)), reason="leaving lane")
-        return SkillResult(reason="road-side-unknown")
+        """Out of the carriageway toward its nearer edge; only on a lane reading, which has the edge."""
+        if not self._in_lane() or self.location.outward is None:
+            return SkillResult()
+        return SkillResult(Pad(left=stick_for(self.location.outward, 0.85)), reason="leaving lane")
 
     def step(self, observation: Observation) -> SkillResult:
         if self.finished is not None:
@@ -324,6 +377,7 @@ class EnterVehicle:
         now = obs.time
         if not math.isfinite(now) or (self.last_time is not None and now < self.last_time):
             return self.stop("invalid observation time")
+        self.gap = 0.0 if self.last_time is None else min(DETECTION_MAX_AGE, now - self.last_time)
         if self.phase == "retry" and self.was_walking and self.last_time is not None:
             self.retry_walk += min(DETECTION_MAX_AGE, now - self.last_time)
         self.was_walking = False
@@ -336,8 +390,6 @@ class EnterVehicle:
             location = road_position(obs)
             if location is not None and location.position == "lane":
                 reason += "; still-in-lane"
-            elif self.retreating:
-                reason += "; road-side-unknown"
             return self.stop(reason)
         if not obs.reading.corrupt and player_mode(obs) == "none":
             return SkillResult()
@@ -378,8 +430,9 @@ class EnterVehicle:
             self.saw_delivery = True
             self._observe(obs)
         if self.retreating:
-            if not self._at_side():
+            if in_lane:
                 return self._retreat()
+            # At the side, or the map says nothing: a retreat needs a lane reading, without one it is over.
             self.retreating = False
             self.phase = "approach"
         if self.phase == "wait" and in_lane and self.lane_since is not None:
@@ -416,14 +469,14 @@ class EnterVehicle:
             if not self.saw_delivery and elapsed >= DELIVERY_WAIT:
                 return self.stop("no detections delivered at all")
             return self._retreat() if in_lane else SkillResult()
-        if not self._eligible(self.target):
-            self.phase = "approach"
-            self.walk_pad = None
-            return self._search(obs, elapsed)
         if self.target is None or self.target.rejected or now - self.target.seen > TARGET_GRACE:
             if self.saw_target and self.last_problem is None:
                 self.last_problem = "vehicle drove away or was lost"
             self.phase = "approach"
+            return self._search(obs, elapsed)
+        if not self._eligible(self.target):
+            self.phase = "approach"
+            self.walk_pad = None
             return self._search(obs, elapsed)
         if self.target.seen != now:
             # Detections come twenty times a second and ticks thirty: on a tick between two of
