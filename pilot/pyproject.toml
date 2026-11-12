@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Reads the GTA HUD from video frames and drives the car through the Remote Play bridge"
 requires-python = ">=3.12"
 dependencies = [
+    "av>=14",
     "httpx>=0.27",
     "numpy>=1.26",
     "onnxruntime==1.31.1",

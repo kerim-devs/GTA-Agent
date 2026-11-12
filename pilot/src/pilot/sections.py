@@ -180,6 +180,25 @@ def sections(
     events: list[tuple[float, Pad]],
     decision: Callable[[Sample], str] = decide,
 ) -> list[dict]:
+    """A missing stretch of the recording clock is not observed play."""
+    from .trimming import frame_runs
+
+    output = []
+    for first, stop in frame_runs(rows):
+        chunk = rows[first:stop]
+        start, end = chunk[0]["t"], chunk[-1]["t"]
+        run_samples = [sample for sample in samples if start <= sample.time <= end]
+        run_events = events if first == 0 else [(t, pad) for t, pad in events if start <= t <= end]
+        output.extend(_sections(run_samples, chunk, run_events, decision))
+    return output
+
+
+def _sections(
+    samples: list[Sample],
+    rows: list[dict],
+    events: list[tuple[float, Pad]],
+    decision: Callable[[Sample], str] = decide,
+) -> list[dict]:
     if not samples or not rows or rows[-1]["t"] - rows[0]["t"] < 1:
         return []
     start, end = rows[0]["t"], rows[-1]["t"]

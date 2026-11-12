@@ -1,0 +1,449 @@
+{
+  "version": 1,
+  "recording": "/Users/kerim/Documents/ChatGPT/gta-worktrees/p40-human-drive/lab/trim/work/source/20261111-194609",
+  "index_meaning": "position in this video",
+  "no_human_input": false,
+  "whole_recording_would_be_cut": false,
+  "stretches": [
+    {
+      "start": 167.7451,
+      "end": 182.1646,
+      "rest_start": 167.7451,
+      "rest_end": 182.1646,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 182.1646,
+      "end": 187.0975,
+      "rest_start": 182.1646,
+      "rest_end": 187.0975,
+      "decision": "keep",
+      "reason": "section: banner; text: subtitle"
+    },
+    {
+      "start": 187.0975,
+      "end": 189.101,
+      "rest_start": 187.0975,
+      "rest_end": 189.101,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 189.101,
+      "end": 202.0846,
+      "rest_start": 189.101,
+      "rest_end": 202.0846,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 202.0846,
+      "end": 209.0042,
+      "rest_start": 202.0846,
+      "rest_end": 209.0042,
+      "decision": "keep",
+      "reason": "section: banner; text: subtitle"
+    },
+    {
+      "start": 209.0042,
+      "end": 214.1436,
+      "rest_start": 209.0042,
+      "rest_end": 214.1436,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 214.1436,
+      "end": 216.092,
+      "rest_start": 214.1436,
+      "rest_end": 216.092,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 216.092,
+      "end": 226.0051,
+      "rest_start": 216.092,
+      "rest_end": 226.0051,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 226.0051,
+      "end": 229.0042,
+      "rest_start": 226.0051,
+      "rest_end": 229.0042,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 229.0042,
+      "end": 231.0922,
+      "rest_start": 229.0042,
+      "rest_end": 231.0922,
+      "decision": "keep",
+      "reason": "section: banner; text: subtitle"
+    },
+    {
+      "start": 231.0922,
+      "end": 236.1651,
+      "rest_start": 231.0922,
+      "rest_end": 236.1651,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 236.1651,
+      "end": 238.0956,
+      "rest_start": 236.1651,
+      "rest_end": 238.0956,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 238.0956,
+      "end": 249.0913,
+      "rest_start": 238.0956,
+      "rest_end": 249.0913,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 249.0913,
+      "end": 252.0949,
+      "rest_start": 249.0913,
+      "rest_end": 252.0949,
+      "decision": "keep",
+      "reason": "section: banner; text: subtitle"
+    },
+    {
+      "start": 252.0949,
+      "end": 262.0061,
+      "rest_start": 252.0949,
+      "rest_end": 262.0061,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 262.0061,
+      "end": 265.0931,
+      "rest_start": 262.0061,
+      "rest_end": 265.0931,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 265.0931,
+      "end": 277.0599,
+      "rest_start": 265.0931,
+      "rest_end": 277.0599,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 277.0599,
+      "end": 279.1555,
+      "rest_start": 277.0599,
+      "rest_end": 279.1555,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 279.1555,
+      "end": 288.0712,
+      "rest_start": 279.1555,
+      "rest_end": 288.0712,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 288.0712,
+      "end": 290.1663,
+      "rest_start": 288.0712,
+      "rest_end": 290.1663,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 290.1663,
+      "end": 294.0043,
+      "rest_start": 290.1663,
+      "rest_end": 294.0043,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 294.0043,
+      "end": 296.0903,
+      "rest_start": 294.0043,
+      "rest_end": 296.0903,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 296.0903,
+      "end": 307.1022,
+      "rest_start": 296.0903,
+      "rest_end": 307.1022,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 307.1022,
+      "end": 309.041,
+      "rest_start": 307.1022,
+      "rest_end": 309.041,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 309.041,
+      "end": 312.0883,
+      "rest_start": 309.041,
+      "rest_end": 312.0883,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 312.0883,
+      "end": 314.0893,
+      "rest_start": 312.0883,
+      "rest_end": 314.0893,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 314.0893,
+      "end": 321.1006,
+      "rest_start": 314.0893,
+      "rest_end": 321.1006,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 321.1006,
+      "end": 323.0974,
+      "rest_start": 321.1006,
+      "rest_end": 323.0974,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 323.0974,
+      "end": 333.1614,
+      "rest_start": 323.0974,
+      "rest_end": 333.1614,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 333.1614,
+      "end": 335.0932,
+      "rest_start": 333.1614,
+      "rest_end": 335.0932,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 335.0932,
+      "end": 340.0979,
+      "rest_start": 335.0932,
+      "rest_end": 340.0979,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 340.0979,
+      "end": 344.0016,
+      "rest_start": 340.0979,
+      "rest_end": 344.0016,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 344.0016,
+      "end": 346.4237,
+      "rest_start": 344.0016,
+      "rest_end": 346.4237,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 360.1106,
+      "end": 372.0971,
+      "rest_start": 360.1106,
+      "rest_end": 372.0971,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 372.0971,
+      "end": 375.0,
+      "rest_start": 372.0971,
+      "rest_end": 375.0,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 375.0,
+      "end": 382.0883,
+      "rest_start": 375.0,
+      "rest_end": 382.0883,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 382.0883,
+      "end": 384.0151,
+      "rest_start": 382.0883,
+      "rest_end": 384.0151,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 384.0151,
+      "end": 388.0954,
+      "rest_start": 384.0151,
+      "rest_end": 388.0954,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 388.0954,
+      "end": 393.0038,
+      "rest_start": 388.0954,
+      "rest_end": 393.0038,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 393.0038,
+      "end": 410.0007,
+      "rest_start": 393.0038,
+      "rest_end": 410.0007,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 410.0007,
+      "end": 412.0038,
+      "rest_start": 410.0007,
+      "rest_end": 412.0038,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 412.0038,
+      "end": 416.106,
+      "rest_start": 412.0038,
+      "rest_end": 416.106,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 416.106,
+      "end": 418.092,
+      "rest_start": 416.106,
+      "rest_end": 418.092,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 418.092,
+      "end": 437.0926,
+      "rest_start": 418.092,
+      "rest_end": 437.0926,
+      "decision": "keep",
+      "reason": "section: cutscene; text: subtitle"
+    },
+    {
+      "start": 437.0926,
+      "end": 439.6853,
+      "rest_start": 437.0926,
+      "rest_end": 439.6853,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 500.0367,
+      "end": 504.5108,
+      "rest_start": 500.0367,
+      "rest_end": 504.5108,
+      "decision": "keep",
+      "reason": "text: banner; text: subtitle"
+    },
+    {
+      "start": 504.5108,
+      "end": 546.0086,
+      "rest_start": 504.5108,
+      "rest_end": 546.0086,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 546.0086,
+      "end": 559.0028,
+      "rest_start": 546.0086,
+      "rest_end": 559.0028,
+      "decision": "keep",
+      "reason": "Unprotected rest is shorter than 60 seconds"
+    },
+    {
+      "start": 559.0028,
+      "end": 576.0057,
+      "rest_start": 559.0028,
+      "rest_end": 576.0057,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 576.0057,
+      "end": 594.5043,
+      "rest_start": 576.0057,
+      "rest_end": 594.5043,
+      "decision": "keep",
+      "reason": "Unprotected rest is shorter than 60 seconds"
+    },
+    {
+      "start": 594.5043,
+      "end": 604.5043,
+      "rest_start": 594.5043,
+      "rest_end": 604.5043,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 604.5043,
+      "end": 619.5155,
+      "rest_start": 604.5043,
+      "rest_end": 619.5155,
+      "decision": "keep",
+      "reason": "Unprotected rest is shorter than 60 seconds"
+    },
+    {
+      "start": 619.5155,
+      "end": 646.0145,
+      "rest_start": 619.5155,
+      "rest_end": 646.0145,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 646.0145,
+      "end": 654.0083,
+      "rest_start": 646.0145,
+      "rest_end": 654.0083,
+      "decision": "keep",
+      "reason": "Unprotected rest is shorter than 60 seconds"
+    },
+    {
+      "start": 654.0083,
+      "end": 659.1081,
+      "rest_start": 654.0083,
+      "rest_end": 659.1081,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    }
+  ]
+}

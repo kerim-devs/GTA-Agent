@@ -604,10 +604,17 @@ def _blips(hsv: np.ndarray, yellow_path=()) -> tuple[Blip, ...]:
             core = float(
                 np.median(value[y : y + height, x : x + width][pixels[y : y + height, x : x + width]])
             )
+            # Radar yellow is near full brightness; translucent grass and flowers
+            # can have the same hue and outline but much darker colored cores.
+            if color == "yellow" and core < 240:
+                continue
             outlined = np.mean(ring < core - 18) >= 0.55
             core_sat = float(
                 np.median(sat[y : y + height, x : x + width][pixels[y : y + height, x : x + width]])
             )
+            # Dark codec speckles and weakly red terrain are not radar targets.
+            if color == "red" and (core < 70 or core_sat < 130):
+                continue
             if (
                 color == "blue"
                 and core < 150

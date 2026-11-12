@@ -294,7 +294,8 @@ class Conductor:
         t = observation.time
         if self.judge is not None:
             judgment = self.judge.poll(rgb, t if frame_time is None else frame_time)
-            mode = self.mode_filter.update(judgment, t)
+            flat = observation.reading.minimap == "flat" and not observation.reading.corrupt
+            mode = self.mode_filter.update(judgment, t, flat=flat)
             if judgment is not None:
                 self.judgment = judgment
             observation = replace(observation, judgment=self.judgment, mode=mode)
@@ -331,6 +332,11 @@ class Conductor:
             return SkillResult(flow_result.pad, reason="flow")
         if recovered:
             new_events = []
+        # The judge names no mode for a map. While a skill has its own map open that turn of its
+        # word is the skill's doing as well: on 12 November fourteen of them each replaced
+        # set_waypoint with a wait, and the reflex closed the map it had left open.
+        if t < self.own_screen_until:
+            self.judge_events.clear()
         new_events.extend(self.judge_events)
         self.judge_events.clear()
         if new_events:

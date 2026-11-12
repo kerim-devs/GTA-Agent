@@ -1,0 +1,8 @@
+20261111-171046: copied and cut; checking
+{"recording": "20261111-171046", "ok": true, "sampled_frames": 50, "frames_before": 53705, "frames_after": 53705, "seconds_before": 895.0830078125, "seconds_after": 895.0833333333334, "bytes_before": 900696680, "bytes_after": 900697184, "pad_lines_kept": 12118}
+20261111-194609: copied and cut; checking
+{"recording": "20261111-194609", "ok": true, "sampled_frames": 50, "frames_before": 53809, "frames_after": 53809, "seconds_before": 896.8166666666667, "seconds_after": 896.8166666666667, "bytes_before": 468533442, "bytes_after": 468533947, "pad_lines_kept": 7080}
+20261111-183820: copied and cut; checking
+{"recording": "20261111-183820", "ok": true, "sampled_frames": 52, "frames_before": 53904, "frames_after": 34163, "seconds_before": 898.4, "seconds_after": 569.3833333333333, "bytes_before": 447054801, "bytes_after": 367287923, "pad_lines_kept": 9346}
+Last trimmed copy retained for the processing-chain check; remove work contents afterwards.
+Final 183820 check after preserving original meta.seconds: ok=true, sampled_frames=52, frames=53904->34163, bytes=447054801->367287911, video_seconds=898.4->569.3833333333333, pad_lines_kept=9346. Full current result is in 20261111-183820-result.json.
