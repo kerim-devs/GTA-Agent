@@ -72,7 +72,7 @@ def test_pulses_release_and_end_after_exact_attempt_count():
     skill = Punch({"hits": 3})
     rises = []
     pressed = False
-    for index in range(61):
+    for index in range(121):
         now = index / 30
         result = safe(skill.step(obs(now)))
         circle = "circle" in result.pad.buttons
@@ -83,8 +83,9 @@ def test_pulses_release_and_end_after_exact_attempt_count():
         pressed = circle
         if result.status != "running":
             break
-    assert len(rises) == 3
-    assert all(b - a >= 0.6 for a, b in pairwise(rises))
+    # Kerim's rhythm, four presses for every punch asked for.
+    assert len(rises) == 12
+    assert all(0.2 <= b - a <= 0.27 for a, b in pairwise(rises))
     terminal(skill, result, "done")
 
 
@@ -96,7 +97,13 @@ def test_follows_departing_person_then_attacks_again():
         result = safe(skill.step(obs(time, [distant])))
         assert result.pad.left[1] < 0 and result.pad.l2 == 0
     assert safe(skill.step(obs(0.8))).pad.buttons == ("circle",)
-    terminal(skill, safe(skill.step(obs(0.94))), "done")
+    presses, pressed, time = 2, True, 0.8
+    while (result := safe(skill.step(obs(time := time + 1 / 30)))).status == "running":
+        circle = "circle" in result.pad.buttons
+        presses += circle and not pressed
+        pressed = circle
+    assert presses == 8
+    terminal(skill, result, "done")
 
 
 def test_ground_box_must_persist_and_repeated_frame_is_not_confirmation():
@@ -231,7 +238,7 @@ def test_a_damaged_tick_now_and_then_does_not_end_the_skill():
         held = pressed
         if result.status != "running":
             break
-    assert result.status == "done" and pulses == 2
+    assert result.status == "done" and pulses == 8
 
 
 def test_stop_releases_mid_pulse():

@@ -14,9 +14,9 @@ class Punch:
     name = "punch"
     parameters: ClassVar = {"duration": (0.1, 20.0, 15.0), "hits": (1, 6, 3)}
     prompt = (
-        "Walk up to the nearest person in view and punch: L2 to lock on, Circle in pulses, never a gun. "
-        "hits is the number of attempts. On foot only. Done after the attempts or when the person is down. "
-        "Fails when nobody is seen, the person is lost, health is low or time is up. Reach is not tuned yet."
+        "Walk up to the nearest person in view and punch: L2 to lock on, Circle in a quick rhythm, never a "
+        "gun. hits is the number of punches asked for. On foot only. Done when the person is down or the "
+        "presses are used up. Fails when nobody is seen, the person is lost, health is low or time is up."
     )
 
     FRESHNESS = 0.5
@@ -35,8 +35,14 @@ class Punch:
     # Held near a person, L2 makes the figure face and target that person by itself (Kerim, who
     # plays it, on 12 November), so within reach the box need not sit in the middle of the frame.
     LOCK_TOLERANCE = 0.2
+    # The game runs one punch per animation however often Circle is pressed, and takes the next press
+    # only in its own time: of four presses 0.65 s apart it ran one (session 20261112-220332). Kerim
+    # presses in a quick rhythm and lets the game pick: over the 590 punches of his recordings a
+    # press lasts 0.12 s and the next follows 0.21 s after it began (0.17 to 0.27 s), up to five in
+    # a row. Four presses are asked of the game for every punch wanted.
     PULSE_DURATION = 0.12
-    PULSE_PERIOD = 0.65
+    PULSE_PERIOD = 0.21
+    PRESSES_PER_PUNCH = 4
     GROUND_DURATION = 0.45
     # The minimap reader calls a clean cable picture damaged for a tick or two about once a
     # second (2 to 3 in 100 frames of the sessions of 10 November, 16 ticks at the longest).
@@ -260,8 +266,8 @@ class Punch:
             if now - self.pulse_started < self.PULSE_DURATION:
                 return SkillResult(pad=Pad(buttons=(self.profile.melee,), l2=1.0))
             self.pulse_started = None
-        if self.delivered_hits >= self.hits:
-            return self._done(f"delivered {self.delivered_hits} punch pulses in reach")
+        if self.delivered_hits >= self.hits * self.PRESSES_PER_PUNCH:
+            return self._done(f"pressed {self.delivered_hits} times in reach; nobody seen going down")
         if now >= self.next_pulse:
             self.pulse_started = now
             self.next_pulse = now + self.PULSE_PERIOD
