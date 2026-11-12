@@ -399,12 +399,13 @@ def test_walk_road_walks_toward_the_road_and_ends_neutral():
     assert final.status == "done" and final.reason == "time-limit" and final.pad == NEUTRAL_PAD
 
 
-def test_walk_road_says_no_road_over_open_water_and_needs_a_frame():
+def test_walk_road_keeps_going_when_north_is_temporarily_hidden(monkeypatch):
+    monkeypatch.setattr("pilot.foot.north_bearing", lambda _: None)
     skill = WalkRoad({})
     frame = frame_with(crop("foot_pier_still_a"))
     results = [skill.step(Observation(FLAT, None, i * DT, frame=frame)) for i in range(40)]
-    assert all(r.pad == NEUTRAL_PAD for r in results)
-    final = next(r for r in results if r.status != "running")
-    assert final.status == "failed" and final.reason == "no-road"
+    assert all(r.status == "running" for r in results)
+    assert all(r.pad.left == (0.0, -skill.STICK) for r in results)
+    assert skill.compass_heading is None
     blind = WalkRoad({}).step(Observation(FLAT, None, 0.0))
     assert blind.status == "failed" and blind.reason == "no-frame" and blind.pad == NEUTRAL_PAD
