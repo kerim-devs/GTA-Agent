@@ -3,8 +3,10 @@
 import re
 import unicodedata
 from collections import Counter
+from dataclasses import replace
 
 from .contract import ARROW_XY
+from .goals import Goals, own_stop
 from .head import Head, HeadRequest, HeadResponse, parse_response
 from .notes import intent
 
@@ -85,9 +87,13 @@ class MissionHead:
     # After a map without a mission letter, this many routes go somewhere else before the map is
     # asked for a letter again: a new one appears when the game has moved on, not at once.
     LETTERLESS_ROUTES = 4
+    # The conductor takes a goal from a head that says so, and from no other: a model behind the
+    # rules answers with the plan alone.
+    owns_goals = True
 
-    def __init__(self, fallback: Head | None = None) -> None:
+    def __init__(self, fallback: Head | None = None, *, goal_seed=None) -> None:
         self.fallback = fallback
+        self.goals = Goals(seed=goal_seed)
         self.counts: Counter[str] = Counter()
         self.last_rule: str | None = None
         self.sought_mission = False
@@ -98,8 +104,14 @@ class MissionHead:
         self.blip_candidates: list[dict] = []
         self.stable_blips: list[dict] = []
 
+    def discard(self) -> None:
+        """The conductor has dropped the answer to the last request: give back what it consumed."""
+        self.goals.undo()
+
     def decide(self, request: HeadRequest) -> HeadResponse:
+        self.goals.mark()
         self._update_intent(request)
+        self.goals.learn(request.last_skill)
         candidates = [
             blip
             for blip in request.minimap.get("blips", [])
@@ -116,12 +128,73 @@ class MissionHead:
             )
         ]
         self.blip_candidates = candidates
+        interrupted = self.goals.guard(request)
+        hud = request.hud or {}
+        mode = movement(request)
+        free = not request.objective.strip() and self.objective_class == "unknown"
+        available = hud.get("screen", "game") == "game" and mode in {"vehicle", "on_foot"}
+        colors = {b.get("color") for b in request.minimap.get("blips", []) if not _rim_blip(b)}
+        # The goal's waypoint skill owns its map/menu and must finish closing it.
+        last = request.last_skill or {}
+        # A temporarily unreadable movement mode is not evidence against the running goal.
+        if (
+            self.goals.active is not None
+            and last.get("status") == "running"
+            and hud.get("screen", "game") == "game"
+        ):
+            available = True
+        if (
+            free
+            and self.goals.active is not None
+            and interrupted is None
+            and last.get("name") == "set_waypoint"
+            and last.get("status") == "running"
+            and hud.get("screen") in {"map", "pause"}
+        ):
+            response = self.goals.decide(request, mode)
+            self.last_rule = "goal_" + response.goal["name"]
+            self.counts[self.last_rule] += 1
+            return response
+        if (
+            free
+            and available
+            and interrupted not in {"low_health", "death_or_arrest"}
+            and (self.goals.active is not None or not self._failed(request))
+        ):
+            if _wanted(request) and not (self.goals.active is None and self.goals.abandoned == "escape"):
+                selected = self._rule(request)
+                if selected is not None:
+                    response = self.goals.decide(request, mode, escape_plan=selected[1])
+                    self.last_rule = selected[0]
+                    self.counts[self.last_rule] += 1
+                    return response
+            elif not _wanted(request) and (
+                self.goals.active is not None or not colors & {"red", "yellow", "blue"}
+            ):
+                recovery = self._rule(request) if self._failed(request) else None
+                response = self.goals.decide(
+                    request,
+                    mode,
+                    recovery_plan=recovery[1] if recovery else None,
+                    # A map without roads keeps its compass heading: no turn is put before the walk.
+                    keep_heading=bool(recovery) and recovery[0] == "foot_explore_roadless",
+                )
+                self.last_rule = "goal_" + response.goal["name"]
+                self.counts[self.last_rule] += 1
+                return response
         selected = self._rule(request)
         if selected is None:
             if self.fallback is not None:
                 self.last_rule = "fallback"
                 self.counts[self.last_rule] += 1
-                return self.fallback.decide(request)
+                # What the model answers is a plan; a goal belongs to the rules.
+                response = self.fallback.decide(request)
+                if response.goal is not None:
+                    response = replace(response, goal=None)
+                if self.goals.transition:
+                    response = replace(response, reason=self.goals.transition)
+                    self.goals.transition = ""
+                return response
             selected = (
                 "moving_default",
                 [_walk(sprint=bool(_wanted(request)))],
@@ -139,6 +212,9 @@ class MissionHead:
             plan = [_call("look", duration=0.5, angle=45), *plan]
             sentence = "Der letzte Versuch ist gescheitert, ich orientiere mich zuerst neu."
         response = parse_response({"plan": plan, "sentence": sentence})
+        if self.goals.transition:
+            response = replace(response, reason=self.goals.transition)
+            self.goals.transition = ""
         self.last_rule = rule
         self.counts[rule] += 1
         self.sought_mission = any(call.args.get("target") == "mission" for call in response.plan)
@@ -210,6 +286,17 @@ class MissionHead:
         if close is not None:
             close()
 
+    def _trip(self, request: HeadRequest, *, follow: int = 60) -> list[dict]:
+        """Where a route goes when the rules choose it: to the mission the objective names, or, with
+        nothing asked, to a place from the map's legend. Escapes keep their point on the map."""
+        if not self._unasked(request):
+            return _route(self._destination(request))
+        return self.goals.trip(follow=follow)
+
+    def _unasked(self, request: HeadRequest) -> bool:
+        """Nothing on screen and no order kept from before asks for anything."""
+        return not request.objective.strip() and self.objective_class == "unknown"
+
     def _destination(self, request: HeadRequest) -> str:
         """Where a new route goes: to a mission letter, because the story lies there, unless the
         map has just shown none (head_prompt.txt:28-30)."""
@@ -223,18 +310,21 @@ class MissionHead:
     @staticmethod
     def _failure_reason(request: HeadRequest) -> str | None:
         if request.last_skill and request.last_skill.get("status") == "failed":
-            return request.last_skill.get("reason")
+            if not own_stop(request.last_skill):
+                return request.last_skill.get("reason")
         for event in reversed(request.events):
-            if event.get("kind") == "skill_failed":
+            if event.get("kind") == "skill_failed" and not own_stop(event.get("skill")):
                 return (event.get("skill") or {}).get("reason")
         return None
 
     @staticmethod
     def _failed(request: HeadRequest) -> str | None:
+        # A skill the conductor stopped for the goal (goal_limit, goal_stars) did not fail.
         if request.last_skill and request.last_skill.get("status") == "failed":
-            return request.last_skill.get("name")
+            if not own_stop(request.last_skill):
+                return request.last_skill.get("name")
         for event in reversed(request.events):
-            if event.get("kind") == "skill_failed":
+            if event.get("kind") == "skill_failed" and not own_stop(event.get("skill")):
                 return (event.get("skill") or {}).get("name")
         return None
 
@@ -323,7 +413,7 @@ class MissionHead:
                 self._destination(request)
                 return (
                     "failed_vehicle_skill",
-                    _route("away"),
+                    self._trip(request) if self._unasked(request) else _route("away"),
                     "Der letzte Versuch ist gescheitert, ich setze eine neue Route.",
                 )
             failed, reason = self._failed(request), self._failure_reason(request)
@@ -373,7 +463,7 @@ class MissionHead:
                 return None
             return (
                 "vehicle_waypoint",
-                _route(self._destination(request)),
+                self._trip(request),
                 "Eine Route fehlt, ich setze ein neues Ziel auf der Karte.",
             )
 
@@ -413,7 +503,7 @@ class MissionHead:
                 # head_prompt.txt:30-33: on foot with nothing to do, go for a drive in one plan.
                 return (
                     "foot_drive",
-                    [_call("enter_vehicle", duration=25, kind="any"), *_route(self._destination(request))],
+                    [_call("enter_vehicle", duration=25, kind="any"), *self._trip(request)],
                     "Nichts hält mich hier, ich nehme mir ein Fahrzeug und fahre los.",
                 )
             if not request.objective.strip() and not targets and not cars:
