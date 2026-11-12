@@ -1,29 +1,43 @@
-"""Offline capability evidence, an append-only bench, and an injectable runner.
+"""The capability bench: a catalogue that names every capability and what counts as done, a judge that
+decides a recorded session against it, an append-only ledger and a board that shows where it hurts.
 
-Nothing connects to the console on import. Only bridge() and pilot() can do so.
-Historical sessions are inputs, never output directories.
+Nothing here talks to the console. The loop that does (`bench_run.py`) goes through two small functions
+that tests replace. A new capability is one entry in CATALOGUE (see lab/bench/README.md); its proof is a
+tuple of the named pieces of `bench_proofs.py`, so a new proof is a new piece and one line in the entry.
 """
 
 from __future__ import annotations
 
 import argparse
-import base64
 import html
+import itertools
 import json
 import statistics
 import subprocess
 import sys
-import time
 from collections import Counter, defaultdict
+from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import UTC, datetime
-from itertools import pairwise
 from pathlib import Path
 from typing import Any
-from urllib.request import urlopen
+
+from . import bench_proofs as proofs
+from .bench_proofs import Evidence, Session, Try, as_numbers, read_jsonl
 
 DEFAULT_LEDGER = Path("/Users/kerim/recordings/pilot/bench.jsonl")
 CAUSES = ("see", "decide", "act", "proof", "world", "tech", "unclear")
+OUTCOMES = ("ok", "failed", "not_counted")
+REPO = Path(__file__).resolve().parents[3]
+
+
+def step(name: str, **args: Any) -> dict:
+    return {"name": name, "args": args}
+
+
+def P(name: str, **params: Any) -> tuple[str, dict]:  # noqa: N802
+    """One named proof piece with its parameters, as an entry lists it."""
+    return (name, params)
 
 
 @dataclass(frozen=True)
@@ -31,45 +45,207 @@ class Capability:
     id: str
     group: str
     title: str
-    german: str
-    start: tuple[str, ...]
-    plan: tuple[dict, ...]
-    seconds: int
-    proof: str
-    missing: str = ""
+    german: str  # the board is read by Kerim; the catalogue's German titles are the only German in the code
+    start: tuple[str, ...]  # names in START_STATES
+    plan: tuple[dict, ...]  # the head's plan that tries it; empty for an opening or a harvested capability
+    seconds: int  # what a try gets
+    proof: tuple[tuple[str, dict], ...]  # named pieces, all of which have to hold
+    mark: int = 9  # successes in the last ten counted tries that make it green
+    skills: tuple[str, ...] = ()  # whose verdict is the skill's; defaults to the plan's skills
+    done_reasons: tuple[str, ...] = ()  # when set, a skill that is done for another reason has not done it
+    opening: bool = False  # tried as the session's own opening, not as the head's plan
+    vary: tuple[tuple[int, str, tuple], ...] = ()  # (plan step, argument, values) that change try by try
+    scramble: bool = False  # the loop presses the touchpad first so that the view differs from try to try
+    level: bool = (
+        True  # the session opens with the far view and the levelled camera; off where the map is the subject
+    )
+    ends: tuple[tuple[str, bool], ...] = ()  # start states a try is expected to leave; only `--dry` reads it
     built: bool = True
-    mark: int = 9
-    harvested: bool = False
+    harvested: bool = False  # cannot be staged; every session is searched for its moments
+
+    @property
+    def skill_names(self) -> tuple[str, ...]:
+        return self.skills or tuple(dict.fromkeys(s["name"] for s in self.plan))
+
+    @property
+    def plan_names(self) -> tuple[str, ...]:
+        return tuple(s["name"] for s in self.plan) or self.skill_names
+
+    @property
+    def runnable(self) -> bool:
+        return self.built and not self.harvested and bool(self.plan or self.opening)
+
+    def unmeasured(self) -> list[str]:
+        """What the card's "done when" asks for that no log can show: the entry's `unmeasured` pieces."""
+        return [
+            params.get("missing") or params.get("what", "")
+            for name, params in self.proof
+            if name == "unmeasured"
+        ]
+
+    def describe_proof(self) -> str:
+        return proofs.describe(self.proof)
 
 
-def step(name: str, **args: Any) -> dict:
-    return {"name": name, "args": args}
+def plan_for(cap: Capability, number: int) -> tuple[dict, ...]:
+    """The plan of the `number`-th try of a capability: its steps with the arguments that vary."""
+    steps = [{"name": s["name"], "args": dict(s["args"])} for s in cap.plan]
+    for index, argument, values in cap.vary:
+        steps[index]["args"][argument] = values[number % len(values)]
+    return tuple(steps)
 
 
-CATALOGUE = {
+# ---- the start states a capability needs, read from the first seconds of a session
+@dataclass(frozen=True)
+class StartState:
+    check: Callable[..., bool | None]  # (session, from, to, end=bool) -> yes / no / not clear
+    producer: str | None  # the capability whose try makes this state, None where nothing can
+    text: str
+
+
+def _mode_is(want: str):
+    def check(session: Session, t0: float, t1: float, end: bool = False):
+        return None if (mode := session.mode_over(t0, t1)).mode is None else mode.mode == want
+
+    return check
+
+
+def _route_there(session: Session, t0: float, t1: float, end: bool = False):
+    rows = [read for read in map(proofs.minimap_read, session.ticks(t0, t1)) if read]
+    if len(rows) < proofs.MIN_MINIMAP:
+        return None
+    return sum(r.get("route") in ("purple", "yellow") for r in rows) / len(rows) >= 0.6
+
+
+def _route_metres(session: Session, t0: float, t1: float, end: bool) -> float | None:
+    """The route distance the game prints on the vehicle map: the first reading just after the start, or
+    the last one in the final seconds."""
+    span = (max(t0, t1 - 6.0), t1) if end else (t0, t0 + 3.0)
+    readings = [
+        r["reading"]["gps_distance"]
+        for r in session.ticks(*span)
+        if isinstance((r.get("reading") or {}).get("gps_distance"), (int, float))
+    ]
+    if not readings:
+        return None
+    return readings[-1] if end else readings[0]
+
+
+def _far_route(session: Session, t0: float, t1: float, end: bool = False):
+    metres = _route_metres(session, t0, t1, end)
+    return None if metres is None else metres >= 150
+
+
+def _near_route(session: Session, t0: float, t1: float, end: bool = False):
+    metres = _route_metres(session, t0, t1, end)
+    return None if metres is None else metres <= 600
+
+
+def _yellow_blip(session: Session, t0: float, t1: float, end: bool = False):
+    rows = [read for read in map(proofs.minimap_read, session.ticks(t0, t1)) if read]
+    if len(rows) < proofs.MIN_MINIMAP:
+        return None
+    seen = sum(any(b.get("color") == "yellow" for b in r.get("blips", [])) for r in rows)
+    return seen / len(rows) >= 0.6
+
+
+def _game_screen(session: Session, t0: float, t1: float, end: bool = False):
+    screens = (
+        session.screens(max(t0, t1 - 0.5), t1, 0.25) if end else session.screens(t0, min(t1, t0 + 0.5), 0.25)
+    )
+    if not screens:
+        return None
+    return all(screen == "game" for _, screen in screens)
+
+
+START_STATES: dict[str, StartState] = {
+    "foot": StartState(_mode_is("foot"), "car.leave", "the figure on foot"),
+    "vehicle": StartState(_mode_is("vehicle"), "foot.enter", "the figure in a vehicle"),
+    "route": StartState(_route_there, "map.place", "a route on the minimap"),
+    # A try that follows or arrives needs a destination that a drive of 30 or 60 s can get nearer to or reach.
+    "route_far": StartState(_far_route, "map.place", "a route of at least 150 m"),
+    "route_near": StartState(_near_route, "map.place", "a route of at most 600 m"),
+    "yellow_target": StartState(
+        _yellow_blip, None, "a yellow blip on the minimap; nothing in the catalogue makes one"
+    ),
+    "game": StartState(_game_screen, None, "the game's own screen, no menu"),
+    "behind": StartState(lambda *_, **__: None, None, "the route behind the vehicle; not readable"),
+}
+
+
+def state_of(session: Session, *, end: bool = False) -> dict[str, bool | None]:
+    """Every start state over the first (or the last) seconds of a session."""
+    if not session.play:
+        return {name: None for name in START_STATES}
+    if end:
+        t0, t1 = max(session.start, session.end - proofs.END_STRETCH), session.end
+    else:
+        t0, t1 = session.start, session.start + proofs.START_STRETCH
+    return {name: state.check(session, t0, t1, end=end) for name, state in START_STATES.items()}
+
+
+def meets(state: dict[str, bool | None], needed: tuple[str, ...]) -> bool:
+    return all(state.get(name) is True for name in needed)
+
+
+def objective_on_screen(session: Session) -> dict:
+    """Whether the game showed an objective during the session: the head's requests carry the text the
+    reader found. None where no request was made."""
+    texts = [str(r["objective"]).strip() for r in session.requests if "objective" in r]
+    if not texts:
+        return {"on_screen": None, "text": ""}
+    shown = [t for t in texts if t]
+    return {"on_screen": bool(shown), "text": shown[0][:120] if shown else "", "at_start": bool(texts[0])}
+
+
+def mission_signs(session: Session) -> dict:
+    """Whether a mission is active at the end of a session, as far as the logs can tell: an objective text
+    that the head's last request read in the last ten seconds, and a yellow route on the minimap (the
+    mission's own colour). A purple route or a blip alone proves nothing: a waypoint of the player's looks
+    the same. None where the log has no reading."""
+    recent = [r for r in session.requests if "objective" in r and session.end - r["t"] <= 10]
+    objective = None if not recent else bool(str(recent[-1]["objective"]).strip())
+    rows = [
+        read
+        for read in map(
+            proofs.minimap_read,
+            session.ticks(max(session.start, session.end - proofs.END_STRETCH), session.end),
+        )
+        if read
+    ]
+    yellow = (
+        None
+        if len(rows) < proofs.MIN_MINIMAP
+        else sum(r.get("route") == "yellow" for r in rows) / len(rows) >= 0.6
+    )
+    return {"objective": objective, "yellow_route": yellow, "active": bool(objective) or bool(yellow)}
+
+
+CATALOGUE: dict[str, Capability] = {
     c.id: c
     for c in (
         Capability(
             "foot.view",
             "foot",
-            "Set the view",
+            "Set the far view",
             "Sicht einstellen",
             ("foot",),
-            (step("level_camera"),),
-            15,
-            "Final independent camera pose and follow distance.",
-            "Camera pose/distance missing: perception reader and cli play logger.",
+            (),
+            45,
+            (P("view_far_at_end"),),
+            skills=("set_far_view",),
+            opening=True,
+            scramble=True,
         ),
         Capability(
             "foot.walk",
             "foot",
-            "Walk",
+            "Walk along the road",
             "Laufen",
             ("foot",),
             (step("walk_road", duration=20),),
             28,
-            "Independent moving observations over 20 seconds; >50% moving, no 3-second hold.",
-            "Independent moving field missing: flow reader and conductor play logger.",
+            (P("moving_on_most_ticks", seconds=20, share=0.5, hold=3.0),),
         ),
         Capability(
             "foot.walk_to",
@@ -79,72 +255,100 @@ CATALOGUE = {
             ("foot", "yellow_target"),
             (step("walk_to", duration=10, color="yellow", sprint=False),),
             18,
-            "Independent distance to the selected yellow blip <=10m.",
-            "Blip distance in metres missing: minimap reader and cli play logger.",
+            (P("within_metres_of_blip", metres=10),),
         ),
         Capability(
             "foot.roadside",
             "foot",
-            "Stay roadside",
+            "Stay at the roadside",
             "Am Straßenrand bleiben",
             ("foot",),
             (),
             28,
-            "Every sampled foot position is outside the carriageway.",
-            "Roadside position missing: road reader and cli play logger; no roadside skill.",
+            (
+                P(
+                    "unmeasured",
+                    what="never standing or waiting on the carriageway",
+                    missing=(
+                        "no roadside skill and no road position in any log: the road reader would have to "
+                        "write where the figure stands relative to the carriageway per tick"
+                    ),
+                ),
+            ),
             built=False,
         ),
         Capability(
             "foot.enter",
             "foot",
-            "Enter a vehicle",
+            "Get into a vehicle",
             "Einsteigen",
             ("foot",),
             (step("enter_vehicle", duration=20, kind="any"),),
             28,
-            "Stable vehicle mode within 20s; target was stationary and unoccupied.",
-            "Target speed and driver occupancy missing: vehicle detector and cli/head logger.",
+            (
+                P("seated_within", seconds=20),
+                P("seated_at_end", step=0),  # when the skill ended, not when the session did
+                P(
+                    "unmeasured",
+                    what="the vehicle stood still and had no driver",
+                    missing=(
+                        "speed and occupancy of the vehicle that was entered are in no log: the vehicle "
+                        "reader or cli play would have to write the chosen vehicle's box per tick"
+                    ),
+                ),
+            ),
+            ends=(("vehicle", True), ("foot", False)),
         ),
         Capability(
             "car.leave",
             "car",
-            "Leave a vehicle",
+            "Get out of a vehicle",
             "Aussteigen",
             ("vehicle",),
             (step("press", button="triangle", duration=1),),
             8,
-            "Final stable flat minimap, initially tilted; independent of press result.",
+            (P("on_foot_at_end"),),
+            ends=(("foot", True), ("vehicle", False), ("route", False)),
         ),
         Capability(
             "car.follow",
             "car",
             "Follow the route",
             "Der Route folgen",
-            ("vehicle", "route"),
+            ("vehicle", "route", "route_far"),
             (step("drive_route", duration=30),),
             38,
-            "GPS distance drops >=100m within 30s; speed never held for 5s.",
+            (P("distance_fell", metres=100, within=30), P("never_held", seconds=5, within=30)),
         ),
         Capability(
             "car.arrive",
             "car",
             "Arrive",
             "Ankommen",
-            ("vehicle", "route"),
+            ("vehicle", "route", "route_far", "route_near"),
             (step("drive_route", duration=60),),
             66,
-            "Final GPS <=30m, speed stopped, arrival sentence in head response.",
+            (P("arrived", metres=30),),
+            done_reasons=("route-gone", "arrived"),
         ),
         Capability(
             "car.free",
             "car",
-            "Get unstuck",
+            "Get free",
             "Sich befreien",
             ("vehicle",),
             (),
             10,
-            "Held vehicle moves again within 10s.",
-            "Recovery attempt identity/start missing: driver and cli play logger.",
+            (
+                P(
+                    "unmeasured",
+                    what="moving again within 10 s of being held",
+                    missing=(
+                        "no independent movement field and no record of when a recovery began: the "
+                        "driver would have to log its recoveries with a start time"
+                    ),
+                ),
+            ),
             harvested=True,
         ),
         Capability(
@@ -155,8 +359,13 @@ CATALOGUE = {
             ("vehicle", "route", "behind"),
             (),
             15,
-            "Route-relative heading aligned within 15s.",
-            "No standalone turn skill; route-relative heading missing from play logger.",
+            (
+                P(
+                    "unmeasured",
+                    what="heading along the route within 15 s",
+                    missing="no turn skill and no route-relative heading in the play log",
+                ),
+            ),
             built=False,
         ),
         Capability(
@@ -171,18 +380,30 @@ CATALOGUE = {
                 step("press", button="circle", duration=0.2),
             ),
             8,
-            "Independent HUD screen visits map and returns to game.",
+            (P("map_opened"), P("game_back")),
+            skills=("press",),
+            level=False,
         ),
         Capability(
             "map.place",
             "map",
-            "Choose a listed place",
+            "Choose a place from the legend",
             "Ort aus der Liste wählen",
             ("game",),
-            (step("set_waypoint", kind="shop"),),
+            (step("set_waypoint"),),
             52,
-            "Real legend entry selected and purple route persists in final minimap.",
-            "Selected legend entry identity/type missing: legend reader and conductor head/play logger.",
+            (P("game_back"), P("waypoint_changed")),
+            # The places the legend showed at the console on 12 November; consecutive tries name
+            # different ones, because a waypoint set again on the same place proves nothing.
+            vary=(
+                (
+                    0,
+                    "place",
+                    ("Ammu-Nation", "Beekers Garage", "Los Santos Customs", "Ammu-Nation mit Schießstand"),
+                ),
+            ),
+            level=False,
+            ends=(("route", True),),
         ),
         Capability(
             "map.mission",
@@ -192,11 +413,10 @@ CATALOGUE = {
             ("game",),
             (step("set_waypoint", kind="mission"),),
             52,
-            "Mission legend entry and resulting route.",
-            (
-                "Independent selected legend identity/type missing: legend reader and conductor "
-                "head/play logger."
-            ),
+            (P("game_back"), P("waypoint_changed")),
+            vary=((0, "instance", (0, 1, 2)),),
+            level=False,
+            ends=(("route", True),),
         ),
         Capability(
             "goal.keep",
@@ -206,49 +426,72 @@ CATALOGUE = {
             ("game",),
             (),
             60,
-            "Stable goal id through completion or listed interrupt, no plan replacement.",
-            "Goal lifecycle/id/end condition missing from head/play logger; no fixed goal plan.",
+            (
+                P(
+                    "unmeasured",
+                    what="a goal ends by its own condition or a listed event, not by a replaced plan",
+                    missing=(
+                        "no goal id, end condition or replaced-plan marker in the play log, and no fixed "
+                        "plan that holds a goal: the conductor would have to log goals with their end"
+                    ),
+                ),
+            ),
         ),
         Capability(
             "incident.menu",
             "incident",
-            "Close an unexpected menu",
+            "Close a foreign menu",
             "Fremdes Menü schließen",
             (),
             (),
             5,
-            "HUD menu onset to game <=5s.",
-            "Recovery handler result/attempt id missing: conductor play/head logger.",
+            (
+                P(
+                    "unmeasured",
+                    what="the game is back within 5 s",
+                    missing="the reflex's result and attempt are not logged: the conductor would have to",
+                ),
+            ),
             harvested=True,
         ),
         Capability(
             "incident.down",
             "incident",
-            "Resume after death or arrest",
+            "Carry on after death or arrest",
             "Nach Tod oder Verhaftung weiter",
             (),
             (),
             30,
-            "Death/arrest, respawn, then playing within 30s.",
-            "Explicit respawn timestamp and resumed control missing: HUD reader and cli logger.",
+            (
+                P(
+                    "unmeasured",
+                    what="playing again within 30 s of the respawn",
+                    missing="no respawn timestamp or resumed-control marker in the logs",
+                ),
+            ),
             harvested=True,
         ),
         Capability(
             "incident.wanted",
             "incident",
-            "Lose wanted stars",
+            "Lose the stars",
             "Sterne loswerden",
             (),
             (),
             180,
-            "HUD wanted rises above zero and reaches zero within 180s.",
-            "Recovery handler result/attempt id missing: conductor play/head logger.",
+            (
+                P(
+                    "unmeasured",
+                    what="no stars within 3 minutes",
+                    missing="the escape's result and attempt are not logged: the conductor would have to",
+                ),
+            ),
             harvested=True,
         ),
         Capability(
             "chain.basic",
             "chain",
-            "Basic chain",
+            "The basic chain",
             "Grundkette",
             ("foot",),
             (
@@ -258,381 +501,189 @@ CATALOGUE = {
                 step("press", button="triangle", duration=1),
             ),
             150,
-            "Ordered entry, real place route, stopped arrival, exit in one session.",
-            "Real legend selection and arrival declaration missing; depends on map.place proof.",
+            (
+                P("seated_within", seconds=20, step=0),
+                P("game_back", step=1),
+                P("waypoint_changed", step=1),
+                P("arrived", metres=30, step=2),
+                P("on_foot_at_end"),
+            ),
+            done_reasons=("route-gone", "arrived"),
+            ends=(("foot", True), ("vehicle", False), ("route", False)),
         ),
     )
 }
 
-# Exact terminal reasons, plus documented dynamic prefixes below. Success reasons
-# have no cause unless evidence contradicts them; do not call a timeout a cause.
-REASONS: dict[str, str | None] = {
-    "interrupted": "decide",
-    "replaced": "decide",
-    "clock-reversed": "tech",
-    "clock-invalid": "tech",
-    "invalid observation": "tech",
-    "invalid observation time": "tech",
-    "invalid-observation-time": "tech",
-    "time-limit": None,
-    "route-gone": None,
-    "failed-recovery": "act",
-    "arrived": None,
-    "blocked": "act",
-    "stuck": "act",
-    "no-frame": "tech",
+
+# ---- the reasons a skill can end on, and the part of the pilot each points at
+# A rule is a prefix of the reason; the longest matching prefix wins. The values are the causes, or None
+# where the reason says what happened but not whose fault it was (a time limit, a success): the log
+# decides then. tests/test_bench.py scans the skills' code for reasons and fails on one no rule covers.
+CAUSE_RULES: dict[str, str | None] = {
+    # a reader had the picture wrong or nothing
     "map-unreadable": "see",
     "minimap-unreadable": "see",
-    "entered vehicle": None,
-    "already in a vehicle": "decide",
-    "no detections delivered at all": "tech",
-    "vehicle out of reach": "act",
+    "minimap unreadable": "see",
     "nothing found": "see",
     "detections lost after entry press": "see",
-    "vehicle drove away or was lost": None,
+    "map-picture-missing-or-damaged": "see",
+    "interactive-map-or-cursor-unverified": "see",
+    "player-marker-unreadable": "see",
+    "target-not-uniquely-trackable": "see",
+    "target-tracking-unverified": "see",
+    "map-texture-unverified": "see",
+    "map-shift-unverified": "see",
+    "sea-or-distance-unverified": "see",
+    "target person lost": "see",
+    "no person found": "see",
+    "blip-gone": "see",
+    "blip-bearing-undefined": "see",
+    "waypoint-unproven-on-a-later-page": "see",
+    "return-unverified": "see",
+    "map-check-failed:": "see",
+    "no-visible-": "see",
+    "place-not-in-legend:": "see",
+    "picture-error:": "see",
+    "view-unknown": "see",
+    "no-figure": "see",
+    "hud-unread": "see",
+    "menu-not-map; inspect the screen": "see",
+    # the wrong target or skill, a plan replaced, a start nobody checked
+    "interrupted": "decide",
+    "replaced": "decide",
+    "already in a vehicle": "decide",
+    "not on foot": "decide",
+    "not-on-foot": "decide",
+    "rider": "decide",
+    "wrong-screen-while-exiting": "decide",
+    "wrong-screen:": "decide",
+    "wrong-screen-during-input:": "decide",
+    "start-screen-unverified": "decide",
+    "existing-waypoint-at-target": "decide",
+    "player is in a vehicle": "decide",
+    "person already on the ground": "decide",
+    "selection-changed-before-waypoint": "decide",
+    "place-instance-not-present": "decide",
+    "goal_": "decide",
+    # seen and decided rightly and the movement did not do it
+    "failed-recovery": "act",
+    "blocked": "act",
+    "stuck": "act",
+    "vehicle out of reach": "act",
     "door locked or blocked": "act",
     "entry press had no effect": "act",
     "could not reach it": "act",
-    "not on foot": "decide",
-    "levelled": None,
-    "combat-timeout": None,
-    "wrong-screen-while-exiting; gameplay observed": "decide",
-    "waypoint set; route on the minimap": None,
-    "waypoint set; no route yet": None,
     "gameplay returned without a waypoint": "act",
-    "picture-unchanged-after-input; check the video feed": "tech",
-    "start-screen-unverified; start from visible gameplay": "decide",
-    "map-picture-missing-or-damaged": "see",
-    "interactive-map-or-cursor-unverified": "see",
-    "player-marker-unreadable; centre the map manually": "see",
-    "target-not-uniquely-trackable; inspect the map manually": "see",
-    "target-tracking-unverified; inspect the selected marker": "see",
     "waypoint-not-visible-after-cross": "act",
-    "existing-waypoint-at-target; avoid toggling it off": "decide",
-    "cursor-did-not-approach-target; check stick direction and map scale": "act",
+    "cursor-did-not-approach-target": "act",
     "cursor-move-limit": "act",
-    "map-texture-unverified; need a clean detailed map": "see",
-    "map-shift-unverified; damaged or ambiguous map pair": "see",
-    "map-unmoved-after-alternate; check map edge or video feed": "act",
-    "map-shift-wrong-direction; check stick mapping": "act",
-    "sea-or-distance-unverified-after-inland-look": "see",
+    "map-unmoved-after-alternate": "act",
+    "map-shift-wrong-direction": "act",
     "map-move-limit": "act",
+    "melee-target-too-far": "act",
+    "legend-selection-did-not-move": "act",
+    "legend-selection-skips-the-place": "act",
+    "five-presses": "act",
+    "map-did-not-open": "act",
+    "menu-not-map": "act",
+    "time-limit:": "act",  # the waypoint skills name the phase they were pressing in
+    # the game came between
     "death_or_arrest": "world",
     "objective": "world",
     "low_health": "world",
     "stars": "world",
-    "limit": None,
-    "invalid observation; check detector and HUD readings": "tech",
-    "punch time limit reached; move closer or choose another person": None,
-    "minimap unreadable; restore an on-foot game view": "see",
-    "player is in a vehicle; exit before punching": "decide",
-    "gameplay interrupted; restore the game screen": "world",
-    "target person lost; restore visibility before retrying": "see",
-    "no person found; face a visible person before retrying": "see",
-    "target person remained on the ground": None,
-    "blip-gone": "see",
-    "blip-bearing-undefined": "see",
-    "aligned": None,
+    "gameplay interrupted": "world",
     "health-depleted": "world",
-    "no-red-blips": None,
     "health-still-low": "world",
-    "melee-target-too-far": "act",
-    "health below 30%; retreat and recover": "world",
-    "person detector unavailable or stale; check detector delivery": "tech",
-    "person already on the ground; face a standing person": "decide",
-    "selection-changed-before-waypoint": "decide",
-    "waypoint-unproven-on-a-later-page": "see",
-    "legend-selection-did-not-move": "act",
-    "legend-selection-skips-the-place": "act",
-    "return-unverified": "see",
-}
-
-REASON_PREFIXES = {
+    "health below 30%": "world",
+    "screen-": "world",
+    # the bridge, the stream, gaps in the frames
+    "clock-reversed": "tech",
+    "clock-invalid": "tech",
+    "invalid-clock": "tech",
+    "invalid observation": "tech",
+    "invalid-observation-time": "tech",
+    "no-frame": "tech",
+    "no detections delivered at all": "tech",
+    "no-detections": "tech",
+    "picture-unchanged-after-input": "tech",
+    "person detector unavailable or stale": "tech",
     "skill-error:": "tech",
-    "wrong-screen:": "decide",
-    "map-check-failed:": "see",
-    "no-visible-": "see",
-    "legend-selection-skips-the-place:": "act",
-    "place-not-in-legend:": "see",
-    "nothing found; road search unavailable:": "see",
-    "goal_": "decide",
-    "waypoint set:": None,
-    "time-limit:": None,
+    # what the reason alone does not say; the log decides (see `cause`)
+    "time-limit": None,
+    "route-gone": None,
+    "arrived": None,
+    "entered vehicle": None,
+    "vehicle drove away or was lost": None,
+    "levelled": None,
+    "combat-timeout": None,
+    "waypoint set": None,
+    "limit": None,
+    "punch time limit reached": None,
+    "target person remained on the ground": None,
+    "aligned": None,
+    "no-red-blips": None,
+    "far; presses": None,
+    "delivered": None,
+    "done": None,
 }
 
 
-def read_jsonl(path: Path) -> list[dict]:
-    if not path.exists():
-        return []
-    rows = []
-    with path.open() as stream:
-        for number, line in enumerate(stream, 1):
-            if line.strip():
-                try:
-                    rows.append(json.loads(line))
-                except json.JSONDecodeError as exc:
-                    raise ValueError(f"{path}:{number}: invalid JSON") from exc
-    return rows
+def reason_rule(reason: str) -> tuple[bool, str | None]:
+    """(known, cause): the longest rule that is a prefix of the reason."""
+    text = (reason or "").strip()
+    best = max((rule for rule in CAUSE_RULES if text.startswith(rule)), key=len, default=None)
+    return (False, None) if best is None else (True, CAUSE_RULES[best])
 
 
-def load_session(folder: Path) -> dict:
-    return {name: read_jsonl(folder / f"{name}.jsonl") for name in ("play", "head", "judge", "frames")}
+# ---- the skill's own verdict
+@dataclass(frozen=True)
+class Verdict:
+    ok: bool | None
+    reason: str
+    at: float | None = None
 
 
-def requests(log: dict) -> list[dict]:
-    rows = [row for row in log["head"] if row.get("request")]
-    if not rows:
-        return []
-    first = min(row.get("t", 0) for row in rows)
-    play_start = log["play"][0]["t"] if log["play"] else 0
-    # Head records use absolute monotonic time; play records are relative.
-    offset = first - play_start
-    result = []
-    seen = set()
-    for row in rows:
-        key = row.get("id", (row.get("t"), row.get("type")))
-        if key in seen:
-            continue
-        seen.add(key)
-        result.append(dict(row["request"], t=row.get("t", 0) - offset))
-    return result
+def reason_stem(reason: str) -> str:
+    return reason.split(";", 1)[0].strip()
 
 
-def mode(row: dict) -> str | None:
-    reading = row.get("reading") or row.get("minimap") or {}
-    if reading.get("corrupt"):
-        return None
-    return {"flat": "foot", "tilted": "vehicle"}.get(reading.get("minimap"))
+def skill_verdict(run: Try, cap: Capability) -> Verdict:
+    """What the skill said at its end: the last done or failed of each skill the capability names, from
+    the play log, the head's requests and the conductor's opening_failed rows. All done is done."""
+    session = run.session
+    last: dict[str, tuple[float, bool, str]] = {}
 
+    def see(t: float, skill: dict) -> None:
+        name = skill.get("name")
+        if name in cap.skill_names and skill.get("status") in ("done", "failed"):
+            if name not in last or t >= last[name][0]:
+                last[name] = (t, skill["status"] == "done", str(skill.get("reason") or "done"))
 
-def state(log: dict, *, end: bool = False) -> dict:
-    play = log["play"]
-    if not play:
-        return {"known": False}
-    anchor = play[-1 if end else 0]["t"]
-    rows = [r for r in play if abs(r["t"] - anchor) <= 1]
-    modes = [mode(r) for r in rows]
-    known = [m for m in modes if m]
-    dominant = Counter(known).most_common(1)
-    current_mode = dominant[0][0] if dominant and dominant[0][1] / len(rows) >= 0.8 else None
-    req = [r for r in requests(log) if r["t"] <= anchor + 0.1 and (end or abs(r["t"] - anchor) <= 1)]
-    reading = rows[-1 if end else 0].get("reading") or {}
-    hud = next((r.get("hud") for r in reversed(req) if r.get("hud")), {})
-    objective = next((r.get("objective") for r in reversed(req) if r.get("objective")), "")
-    return {
-        "known": current_mode is not None,
-        "mode": current_mode,
-        "route": reading.get("route") in ("yellow", "purple"),
-        "target": bool(reading.get("blips")) or reading.get("route") in ("yellow", "purple"),
-        "yellow_target": any(b.get("color") == "yellow" for b in reading.get("blips", [])),
-        "game": hud.get("screen") == "game" if hud else None,
-        "mission": bool(str(objective).strip()) or reading.get("route") == "yellow",
-        "mission_known": bool(req) and "objective" in req[-1] and anchor - req[-1]["t"] <= 5,
-        "behind": None,
-    }
-
-
-def meets(current: dict, needed: tuple[str, ...]) -> bool:
-    return all(
-        current.get("mode") == item if item in ("foot", "vehicle") else current.get(item) is True
-        for item in needed
-    )
-
-
-def terminal(log: dict, cap: Capability) -> tuple[bool | None, str]:
-    names = {s["name"] for s in cap.plan}
-    candidates = []
-    for row in log["play"]:
-        skill = row.get("skill") or {}
-        if skill.get("name") in names and skill.get("status") in ("done", "failed"):
-            candidates.append((row["t"], skill))
-    for req in requests(log):
-        skills = [req.get("last_skill") or {}]
-        skills += [e.get("skill") or {} for e in req.get("events", [])]
-        for skill in skills:
-            if skill.get("name") in names and skill.get("status") in ("done", "failed"):
-                candidates.append((req["t"], skill))
-    if not candidates:
-        return None, "terminal skill result missing"
-    _, result = max(candidates, key=lambda pair: pair[0])
-    return result["status"] == "done", result.get("reason") or "done"
-
-
-def hold_seconds(samples: list[tuple[float, bool]], end: float) -> float:
-    longest = 0.0
-    start = None
-    for t, moving in samples:
-        if not moving and start is None:
-            start = t
-        if moving and start is not None:
-            longest = max(longest, t - start)
-            start = None
-    return max(longest, end - start if start is not None else 0.0)
-
-
-def prove(log: dict, capability: str) -> dict:
-    cap = CATALOGUE[capability]
-    rows = log["play"]
-    numbers: dict = {}
-    result = None
-    missing = cap.missing
-    if not rows:
-        return {"ok": None, "numbers": {}, "missing": "play.jsonl: cli play logger"}
-    end_state = state(log, end=True)
-    numbers["end_mode"] = end_state.get("mode")
-    if capability == "car.leave":
-        result = end_state.get("mode") == "foot" if end_state.get("known") else None
-    elif capability == "foot.enter":
-        entered = next((r["t"] for r in rows if mode(r) == "vehicle"), None)
-        numbers["entered_seconds"] = entered
-        if entered is None or entered > 20 or end_state.get("mode") != "vehicle":
-            result = False
-    elif capability == "foot.walk":
-        # Only a measured movement field qualifies. Skill reason motion=going
-        # and stick commands are deliberately not independent evidence.
-        samples = [(r["t"], r["moving"]) for r in rows if isinstance(r.get("moving"), bool)]
-        if not samples:
-            samples = [(r["t"], r["moving"]) for r in requests(log) if isinstance(r.get("moving"), bool)]
-        samples = [(t, m) for t, m in samples if t <= 20.5]
-        if len(samples) >= 2 and samples[-1][0] - samples[0][0] >= 19:
-            duration = samples[-1][0] - samples[0][0]
-            fraction = sum((b[0] - a[0]) for a, b in pairwise(samples) if a[1]) / duration
-            hold = hold_seconds(samples, samples[-1][0])
-            gap = max(b[0] - a[0] for a, b in pairwise(samples))
-            numbers.update(
-                moving_fraction=round(fraction, 4),
-                longest_hold=round(hold, 3),
-                observed_seconds=duration,
-                max_sample_gap=gap,
-            )
-            result = fraction > 0.5 and hold < 3 if gap < 3 else None
-        if result is None:
-            missing = "Independent moving field at <3s intervals for 20s: flow reader and cli play logger."
-    elif capability == "foot.walk_to":
-        reading = rows[-1].get("reading") or {}
-        distance = reading.get("target_distance_metres")
-        if isinstance(distance, (int, float)) and reading.get("target_color") == "yellow":
-            numbers["target_metres"] = distance
-            result = distance <= 10
-    elif capability in ("car.follow", "car.arrive"):
-        gps = [
-            (r["t"], r.get("reading", {}).get("gps_distance"), r.get("reading", {}).get("gps_speed"))
-            for r in rows
-        ]
-        gps = [(t, d, s) for t, d, s in gps if isinstance(d, (int, float))]
-        if gps:
-            numbers.update(first_metres=gps[0][1], final_metres=gps[-1][1], final_speed=gps[-1][2])
-            if capability == "car.arrive":
-                said = any(
-                    str(r.get("sentence", "")).strip().casefold().rstrip(".!")
-                    in {"arrived", "arrived at destination", "arrived at the destination"}
-                    for r in log["head"]
-                )
-                numbers["arrival_declared"] = said
-                if gps[-1][2] is not None:
-                    result = gps[-1][1] <= 30 and gps[-1][2] <= 1 and said
-            else:
-                window = [p for p in gps if p[0] <= gps[0][0] + 30]
-                progress = window[0][1] - min(p[1] for p in window)
-                speeds = [(t, s > 1) for t, _, s in window if s is not None]
-                numbers["progress_metres"] = progress
-                if len(speeds) >= 2:
-                    hold = hold_seconds(speeds, window[-1][0])
-                    gap = max(b[0] - a[0] for a, b in pairwise(speeds))
-                    numbers.update(longest_hold=hold, max_sample_gap=gap)
-                    result = progress >= 100 and hold < 5 if gap < 5 else None
-        if result is None:
-            missing = (
-                "GPS distance/speed in metres at sufficient cadence: minimap/OCR reader and cli play logger."
-            )
-    elif capability in ("map.place", "map.mission"):
-        final = [r for r in rows if r["t"] >= rows[-1]["t"] - 1]
-        routes = [r.get("reading", {}).get("route") for r in final]
-        numbers.update(
-            final_route_samples=len(routes),
-            final_route_fraction=sum(r == "purple" for r in routes) / len(routes),
-        )
-        if all(r == "none" for r in routes):
-            result = False
-    elif capability == "map.open_close":
-        screens = [r.get("hud", {}).get("screen") for r in requests(log)]
-        numbers["screens"] = screens
-        if screens:
-            hud_requests = requests(log)
-            recent = rows[-1]["t"] - hud_requests[-1]["t"] <= 1
-            gap = max((b["t"] - a["t"] for a, b in pairwise(hud_requests)), default=float("inf"))
-            if recent and ("map" in screens or gap <= 1):
-                result = "map" in screens and screens[-1] == "game"
-            else:
-                missing = "Continuous HUD screen transitions/final screen: conductor head/play logger."
-        else:
-            missing = "HUD screen transitions: HUD reader and head logger."
-    return {
-        "ok": result,
-        "numbers": numbers,
-        "missing": missing if result is None else "",
-        "limitation": cap.missing,
-    }
-
-
-def cause(reason: str, log: dict) -> str:
-    stale = [(r["t"], r.get("fresh") is not False) for r in log["play"]]
-    if stale and hold_seconds(stale, stale[-1][0]) >= 2:
-        return "tech"
-    reqs = requests(log)
-    huds = [r.get("hud") or {} for r in reqs]
-    health = [h["health"] for h in huds if isinstance(h.get("health"), (int, float))]
-    if any(
-        h.get("screen") in ("wasted", "busted", "failed") or (h.get("wanted") or 0) > 0 for h in huds
-    ) or any(b < a - 0.02 for a, b in pairwise(health)):
-        return "world"
-    if any(
-        e.get("kind") in ("death", "arrest", "wasted", "busted", "failure", "mission_ended")
-        for r in reqs
-        for e in r.get("events", [])
-    ):
-        return "world"
-    if any((r.get("status") or 200) >= 400 for r in log["play"]):
-        return "tech"
-    if reason.startswith("nothing found; road search unavailable:"):
-        return "see"
-    if reason.startswith("goal_") or "plan replaced" in reason:
-        return "decide"
-    mapped = REASONS.get(reason)
-    if mapped:
-        return mapped
-    for known, mapped in sorted(REASONS.items(), key=lambda item: -len(item[0])):
-        if mapped and reason.startswith(known + ";"):
-            return mapped
-    stem = reason.split(";", 1)[0]
-    if REASONS.get(stem):
-        return REASONS[stem]
-    for prefix, mapped in REASON_PREFIXES.items():
-        if reason.startswith(prefix) and mapped:
-            return mapped
-    if reason.startswith("time-limit:"):
-        detail = reason.split(":", 1)[1].split(";", 1)[0].strip()
-        matches = [value for key, value in REASONS.items() if key.split(";", 1)[0] == detail and value]
-        if matches:
-            return matches[0]
-    if "time" in reason or reason == "vehicle drove away or was lost":
-        objects = [
-            o
-            for r in reqs
-            for o in r.get("objects", [])
-            if o.get("kind") in {"car", "truck", "bus", "motorcycle"}
-        ]
-        entry = any((r.get("last_skill") or {}).get("name") == "enter_vehicle" for r in reqs)
-        if entry and reqs and all("objects" in r for r in reqs) and not objects:
-            return "see"
-        distances = [r.get("reading", {}).get("gps_distance") for r in log["play"]]
-        distances = [d for d in distances if isinstance(d, (int, float))]
-        if len(distances) > 1 and min(distances) < distances[0] - 1:
-            return "act"
-    return "unclear"
+    for row in session.play:
+        see(row["t"], row.get("skill") or {})
+    for request in session.requests:
+        see(request["t"], request.get("last_skill") or {})
+        for event in request.get("events", []):
+            see(request["t"], event.get("skill") or {})
+    for failure in session.opening_failures:
+        if failure["t"] is not None:
+            see(failure["t"], {"name": failure["name"], "status": "failed", "reason": failure["reason"]})
+    if any(name not in last for name in cap.skill_names):
+        return Verdict(None, "terminal skill result missing")
+    failed = [item for item in last.values() if not item[1]]
+    if failed:
+        t, _, reason = min(failed)
+        return Verdict(False, reason, t)
+    t, _, reason = max(last.values())
+    if cap.done_reasons and reason_stem(reason) not in cap.done_reasons:
+        return Verdict(False, reason, t)
+    return Verdict(True, reason, t)
 
 
 def outcome(skill: bool | None, proof: bool | None) -> tuple[str, str | None]:
+    """The table of the card: both yes is ok; one yes and one no is failed for a cause of `proof`; both no
+    is failed and the cause is left to `cause`; anything not known is not counted."""
     if skill is None or proof is None:
         return "not_counted", None
     if skill and proof:
@@ -640,56 +691,226 @@ def outcome(skill: bool | None, proof: bool | None) -> tuple[str, str | None]:
     return "failed", "proof" if skill != proof else None
 
 
+# ---- the cause of a failure
+def stale_seconds(session: Session) -> float:
+    """The longest stretch of ticks whose frame was not fresh."""
+    longest, start = 0.0, None
+    for row in session.play:
+        if row.get("fresh") is False:
+            start = row["t"] if start is None else start
+            longest = max(longest, row["t"] - start)
+        else:
+            start = None
+    return longest
+
+
+def world_evidence(session: Session, t0: float, t1: float) -> str | None:
+    """What the game did in the stretch, where the logs show it: health falling, stars, a banner of a
+    death, an arrest or a failed mission, an event of the conductor; the judge's answers count when three
+    in a row agree."""
+    huds = [(r["t"], r.get("hud") or {}) for r in session.requests if t0 <= r["t"] <= t1]
+    health = [h["health"] for _, h in huds if isinstance(h.get("health"), (int, float))]
+    for _, hud in huds:
+        if hud.get("screen") in ("wasted", "busted", "failed"):
+            return f"the HUD showed {hud['screen']}"
+        if (hud.get("wanted") or 0) > 0:
+            return "stars were lit"
+    if any(b < a - 0.1 for a, b in itertools.pairwise(health)):
+        return "health fell"
+    for request in session.requests:
+        if t0 <= request["t"] <= t1:
+            for event in request.get("events", []):
+                if event.get("kind") in ("death", "arrest", "wasted", "busted", "failure", "mission_ended"):
+                    return f"the conductor reported {event['kind']}"
+    for key, needed, text in (("banner", 2, "a banner was on the screen"), ("wanted", 3, "stars were lit")):
+        run_length = 0
+        for t, answers in session.judgments:
+            if t0 <= t <= t1 and (answers.get(key) or {}).get("value") is True:
+                run_length += 1
+                if run_length >= needed:
+                    return f"the judge saw it: {text}"
+            else:
+                run_length = 0
+    return None
+
+
+VEHICLE_KINDS = {"car", "truck", "bus", "motorcycle"}
+
+
+def cause(reason: str, run: Try, cap: Capability, proof: Evidence) -> str:
+    """The part of the pilot at fault, for a failure on which skill and proof agree it failed."""
+    session = run.session
+    window = proofs.Window(run.t0, session.end)
+    if stale_seconds(session) >= 2.0 or any((r.get("status") or 200) >= 400 for r in session.play):
+        return "tech"
+    _known, mapped = reason_rule(reason)
+    if mapped in ("tech", "see", "decide"):
+        return mapped
+    if world_evidence(session, window.t0, window.t1):
+        return "world"
+    if mapped:
+        return mapped
+    # A time limit and the reasons that say only how it ended: the log shows what was going on.
+    numbers = proof.numbers
+    requests = [r for r in session.requests if window.t0 <= r["t"] <= window.t1]
+    entry = any(s["name"] == "enter_vehicle" for s in cap.plan)
+    if entry and requests and all("objects" in r for r in requests):
+        vehicles = [o for r in requests for o in r["objects"] if o.get("kind") in VEHICLE_KINDS]
+        if not vehicles:
+            return "see"  # no vehicle was ever detected
+        return "act"  # a vehicle was in the picture and the figure did not get in
+    distances = [d for _, d in proofs._distances(run, window.t0, window.t1)]
+    if len(distances) > 1:
+        return (
+            "act" if min(distances) < distances[0] - 1 else "decide"
+        )  # approached and not there / never moved
+    if cap.id.startswith("map.") and (numbers.get("waypoint_changed") or {}).get("blip_after_share") == 0.0:
+        return "act"  # the map was handled and no waypoint came out of it
+    return "unclear"
+
+
+LOOK_FIRST = {
+    "see": (
+        "compare what the readers logged at that second with the picture: minimap class, blips, "
+        "detections and the judge's answers"
+    ),
+    "decide": (
+        "read what the head or the plan asked for at that second and why the skill was replaced or refused"
+    ),
+    "act": (
+        "watch the video from a few seconds before: the pad was sent, then see what the figure or the "
+        "cursor did"
+    ),
+    "proof": (
+        "skill and proof disagree: look at the picture at that second to see which of the two was right, "
+        "then mark the try"
+    ),
+    "world": "something in the game came between (stars, health, a banner): look at the HUD at that second",
+    "tech": "the bridge or the stream: look for stale frames and errors in the play log around that second",
+    "unclear": "the log does not say whose fault it was: look at the picture and mark the try with a cause",
+}
+
+
+def failure_moment(row: dict, run: Try, cap: Capability, proof: Evidence, verdict: Verdict) -> dict | None:
+    """The second of the session where a failure went wrong, and how it was found: the failing piece's own
+    moment; where the proof says it happened and the skill failed, the second from which it held; else
+    the second the skill said it failed."""
+    if row["outcome"] != "failed":
+        return None
+    if proof.moment is not None and proof.ok is False:
+        t, how = proof.moment
+        return {"t": round(float(t), 2), "how": f"proof: {how}"}
+    if proof.ok:
+        for name, _params in cap.proof:
+            if name in proofs.SINCE:
+                found = proofs.SINCE[name](run)
+                if found:
+                    return {"t": round(float(found[0]), 2), "how": f"proof: {found[1]}"}
+    if verdict.at is not None:
+        return {"t": round(float(verdict.at), 2), "how": "the second the skill ended and said it failed"}
+    return {
+        "t": round(float(run.session.end), 2),
+        "how": "the end of the session; nothing narrower is in the log",
+    }
+
+
+# ---- version, judging, the ledger
 def version() -> dict:
+    """The commit and whether the code of the pilot is dirty; the tree's own bench output is not code."""
+
     def git(*args: str) -> str:
-        return subprocess.check_output(["git", *args], text=True, stderr=subprocess.DEVNULL).strip()
+        return subprocess.check_output(
+            ["git", "-C", str(REPO), *args], text=True, stderr=subprocess.DEVNULL
+        ).strip()
 
     try:
-        return {"commit": git("rev-parse", "HEAD"), "dirty": bool(git("status", "--porcelain"))}
+        return {
+            "commit": git("rev-parse", "HEAD"),
+            "dirty": bool(git("status", "--porcelain", "--", "pilot/src")),
+        }
     except (OSError, subprocess.CalledProcessError):
         return {"commit": "unknown", "dirty": None}
 
 
-def judge(folder: Path, capability: str, *, code: dict | None = None) -> dict:
+def judge(
+    folder: Path,
+    capability: str,
+    *,
+    code: dict | None = None,
+    session: Session | None = None,
+    started: str | None = None,
+) -> dict:
+    """One ledger row for the session in `folder` as a try of `capability`."""
     cap = CATALOGUE[capability]
-    log = load_session(folder)
-    start = state(log)
-    proof = prove(log, capability)
-    skill, reason = terminal(log, cap)
-    status, why = outcome(skill, proof["ok"])
-    valid_start = meets(start, cap.start)
-    exclusion = ""
-    if not cap.built:
-        status, why, exclusion = "not_counted", None, "not built"
-    elif not valid_start:
-        status, why, exclusion = "not_counted", "decide", "start state not established in first second"
-    elif skill is None or proof["ok"] is None:
-        exclusion = proof["missing"] or "terminal skill result missing: cli/head logger"
-    if status == "failed" and why is None:
-        why = cause(reason, log)
-    rows = log["play"]
-    stamp = datetime.now(UTC).isoformat()
-    meta_path = folder / "meta.json"
-    meta = json.loads(meta_path.read_text()) if meta_path.exists() else {}
-    return {
-        "capability": capability,
-        "time": meta.get("started", stamp),
-        "judged_at": stamp,
-        **(code or {"commit": "unknown", "dirty": None}),
-        "judged_with": version(),
-        "session": str(folder.resolve()),
-        "start_state": {"held": valid_start, "observed": start},
-        "outcome": status,
-        "cause": why,
-        "skill_reason": reason,
-        "skill_ok": skill,
-        "seconds": round(rows[-1]["t"] - rows[0]["t"], 3) if rows else 0,
-        "proof": proof,
-        "exclusion": exclusion,
-    }
+    own = session is None
+    session = session or Session(folder)
+    try:
+        run = Try(session, cap.skill_names, cap.plan_names)
+        start = state_of(session)
+        held = meets(start, cap.start)
+        verdict = skill_verdict(run, cap)
+        proof = proofs.run_pieces(run, cap.proof)
+        status, why = outcome(verdict.ok, proof.ok)
+        exclusion = ""
+        if not cap.built:
+            status, why, exclusion = "not_counted", None, "not built"
+        elif not session.play:
+            status, why, exclusion = "not_counted", None, "no ticks in play.jsonl"
+        elif not held:
+            unclear = [name for name in cap.start if start.get(name) is None]
+            status, why = "not_counted", None
+            exclusion = "start state not established: " + ", ".join(
+                f"{name} {'unclear' if start.get(name) is None else 'no'}"
+                for name in cap.start
+                if start.get(name) is not True
+            )
+            if unclear and len(unclear) == len([n for n in cap.start if start.get(n) is not True]):
+                exclusion += " (the class of the minimap and the judge do not agree, or the stretch is thin)"
+        elif verdict.ok is None or proof.ok is None:
+            exclusion = proof.missing or "terminal skill result missing: cli/head logger"
+        if status == "failed" and why is None:
+            why = cause(verdict.reason, run, cap, proof)
+        elif status == "failed" and why == "proof" and not verdict.ok:
+            # The skill failed and the proof says it happened. When the skill's own reason is a reading
+            # that failed, the pilot did not see what was there: that is `see`, not a wrong proof.
+            if reason_rule(verdict.reason)[1] == "see":
+                why = "see"
+        stamp = datetime.now(UTC).isoformat()
+        meta_path = Path(folder) / "meta.json"
+        meta = json.loads(meta_path.read_text()) if meta_path.exists() else {}
+        row = {
+            "capability": capability,
+            "time": started or meta.get("started", stamp),
+            "judged_at": stamp,
+            **(code or {"commit": "unknown", "dirty": None}),
+            "judged_with": version(),
+            "session": str(Path(folder).resolve()),
+            "start_state": {"held": held, "observed": start},
+            "outcome": status,
+            "cause": why,
+            "skill_reason": verdict.reason,
+            "skill_ok": verdict.ok,
+            "seconds": round(session.end - session.start, 3) if session.play else 0,
+            "proof": {
+                "ok": proof.ok,
+                "numbers": as_numbers(proof.numbers),
+                "missing": proof.missing if proof.ok is None else "",
+                "parts": dict(proof.parts),
+                # every piece that could be measured held, and one could not: a success nobody can certify
+                "partial": proof.ok is None and any(ok for _, ok in proof.parts),
+            },
+            "objective": objective_on_screen(session),
+            "exclusion": exclusion,
+        }
+        row["moment"] = failure_moment(row, run, cap, proof, verdict)
+        return row
+    finally:
+        if own:
+            session.close()
 
 
 def append(path: Path, row: dict) -> None:
+    """The one way into a ledger: a line at the end. Nothing is ever rewritten."""
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a") as stream:
         stream.write(json.dumps(row, ensure_ascii=False, allow_nan=False) + "\n")
@@ -700,13 +921,13 @@ def marks_path(ledger: Path) -> Path:
 
 
 def apply_marks(rows: list[dict], marks: list[dict]) -> list[dict]:
-    # Rejudging appends a revision; rates count each attempt exactly once.
+    """The rows as the board counts them: the latest judgement of each try, then the reviewer's marks.
+    A rejudged session appends a row; only the newest of a (session, capability, event) is counted."""
     latest = {}
     for row in rows:
         latest[(row["session"], row["capability"], row.get("event_start"))] = row
-    rows = list(latest.values())
     result = []
-    for original in rows:
+    for original in latest.values():
         row = dict(original)
         for mark in marks:
             if mark["session"] == row["session"] and (
@@ -717,316 +938,133 @@ def apply_marks(rows: list[dict], marks: list[dict]) -> list[dict]:
     return result
 
 
-def import_basics(source: Path, ledger: Path) -> list[dict]:
-    mapping = {
-        "leave": "car.leave",
-        "walk": "foot.walk",
-        "enter": "foot.enter",
-        "place": "map.place",
-        "waypoint": "map.place",
-        "drive": "car.follow",
-    }
+IMPORT_STEPS = {
+    "leave": "car.leave",
+    "walk": "foot.walk",
+    "enter": "foot.enter",
+    "place": "map.place",
+    "waypoint": "map.place",
+    "drive": "car.follow",
+    "view": "foot.view",
+}
+
+
+def import_basics(source: Path, ledger: Path, *, harvest_too: bool = True) -> list[dict]:
+    """Take over the tries a list names (cycle, step, folder per line, as lab/live/basics.sh writes it).
+    A session already in the ledger for a capability is not imported twice."""
     seen = {(r["session"], r["capability"]) for r in read_jsonl(ledger)}
     added = []
     for line in source.read_text().splitlines():
         fields = line.split("\t")
-        if len(fields) < 3 or fields[1] not in mapping:
+        if len(fields) < 3 or fields[1] not in IMPORT_STEPS:
             continue
         folder = Path(fields[2])
         if not folder.is_absolute():
             folder = source.parent / folder
-        cap = mapping[fields[1]]
-        key = (str(folder.resolve()), cap)
-        if key in seen:
+        capability = IMPORT_STEPS[fields[1]]
+        if (str(folder.resolve()), capability) in seen:
             continue
-        row = judge(folder, cap)
+        row = judge(folder, capability)
         row["source"] = {"file": str(source), "cycle": fields[0], "step": fields[1]}
         append(ledger, row)
         added.append(row)
-        seen.add(key)
+        seen.add((row["session"], capability))
+    if harvest_too:
+        for session in dict.fromkeys(r["session"] for r in added):
+            for incident in harvest(Path(session)):
+                if (incident["session"], incident["capability"], incident["event_start"]) not in {
+                    (r["session"], r["capability"], r.get("event_start")) for r in read_jsonl(ledger)
+                }:
+                    append(ledger, incident)
     return added
 
 
-def harvest(folder: Path, *, code: dict | None = None) -> list[dict]:
-    """Discover incident edges once, retaining unmeasurable attempts explicitly."""
-    log = load_session(folder)
-    reqs = requests(log)
-    events: list[tuple[str, float, int]] = []
-    previous = {}
-    for index, req in enumerate(reqs):
-        hud = req.get("hud") or {}
-        screen = hud.get("screen")
-        if screen in ("pause", "map", "menu") and previous.get("screen") == "game":
-            # A map intentionally opened by set_waypoint is not an incident.
-            if (req.get("last_skill") or {}).get("name") != "set_waypoint":
-                events.append(("incident.menu", req["t"], index))
-        if screen in ("wasted", "busted") and previous.get("screen") not in ("wasted", "busted"):
-            events.append(("incident.down", req["t"], index))
-        if (hud.get("wanted") or 0) > 0 and previous.get("wanted") == 0:
-            events.append(("incident.wanted", req["t"], index))
-        previous = hud
-    held_since = None
-    harvested_hold = False
-    for row in log["play"]:
-        if mode(row) == "vehicle" and row.get("moving") is False:
-            if held_since is None:
-                held_since = row["t"]
-            if row["t"] - held_since >= 3 and not harvested_hold:
-                events.append(("car.free", held_since, -1))
-                harvested_hold = True
-        else:
-            held_since, harvested_hold = None, False
-    records = []
-    for cap, onset, index in events:
-        deadline = onset + CATALOGUE[cap].seconds
-        tail = [r for r in reqs[index + 1 :] if r["t"] <= deadline] if index >= 0 else []
-        resolved = None
-        if cap == "incident.menu":
-            resolved = next((r["t"] for r in tail if (r.get("hud") or {}).get("screen") == "game"), None)
-        elif cap == "incident.wanted":
-            resolved = next((r["t"] for r in tail if (r.get("hud") or {}).get("wanted") == 0), None)
-        elif cap == "car.free":
-            resolved = next(
-                (r["t"] for r in log["play"] if onset < r["t"] <= deadline and r.get("moving") is True), None
-            )
-        observed_end = log["play"][-1]["t"] if log["play"] else onset
-        proof = (
-            True
-            if resolved is not None
-            else False
-            if observed_end >= deadline and cap != "incident.down"
-            else None
+def rejudge(ledger: Path) -> int:
+    """Judge every try of the ledger again with the proofs as they are now and append the rows: the
+    board counts the newest row of each try, so a repaired proof shows without a line being changed."""
+    count = 0
+    for key in dict.fromkeys(
+        (r["session"], r["capability"]) for r in read_jsonl(ledger) if r.get("event_start") is None
+    ):
+        session, capability = key
+        if not Path(session).is_dir() or capability not in CATALOGUE:
+            continue
+        old = next(
+            r
+            for r in reversed(read_jsonl(ledger))
+            if (r["session"], r["capability"]) == key and r.get("event_start") is None
         )
-        # Existing logs lack a recovery-handler result tied to this event. Do
-        # not fabricate skill success from the same HUD transition as the proof.
-        records.append(
-            {
-                "capability": cap,
-                "time": datetime.now(UTC).isoformat(),
-                **(code or {"commit": "unknown", "dirty": None}),
-                "session": str(folder.resolve()),
-                "event_start": onset,
-                "start_state": {"held": True, "observed": {"harvested": True}},
-                "outcome": "not_counted",
-                "cause": None,
-                "skill_reason": "recovery handler terminal result missing",
-                "skill_ok": None,
-                "seconds": round((resolved or min(deadline, observed_end)) - onset, 3),
-                "proof": {
-                    "ok": proof,
-                    "numbers": {"onset": onset, "resolved": resolved},
-                    "missing": CATALOGUE[cap].missing,
-                },
-                "exclusion": "Recovery handler result/attempt id missing: conductor play/head logger.",
-            }
+        row = judge(
+            Path(session),
+            capability,
+            code={"commit": old.get("commit", "unknown"), "dirty": old.get("dirty")},
+            started=old.get("time"),
         )
-    return records
-
-
-def bridge() -> dict:
-    """The sole bridge boundary. Never called by offline commands or tests."""
-    with urlopen("http://127.0.0.1:9395/status", timeout=2) as response:
-        return json.load(response)
-
-
-def pilot(
-    action: str,
-    *,
-    handle: Any = None,
-    plan: tuple[dict, ...] = (),
-    seconds: int = 0,
-    folder: Path | None = None,
-) -> Any:
-    """The sole pilot boundary; start/poll/stop are replaced as one test seam."""
-    if action == "start":
-        assert folder is not None
-        folder.mkdir(parents=True, exist_ok=False)
-        args = [
-            sys.executable,
-            "-m",
-            "pilot.cli",
-            "play",
-            "--head",
-            "scripted",
-            "--seconds",
-            str(seconds),
-            "--no-level",
-            "--record-dir",
-            str(folder),
-            "--plan",
-            json.dumps(plan),
-        ]
-        for _ in range(4):
-            args += ["--plan", json.dumps([step("wait", duration=120)])]
-        stream = (folder / "bench-process.log").open("w")
-        try:
-            process = subprocess.Popen(args, stdout=stream, stderr=subprocess.STDOUT)
-        finally:
-            stream.close()
-        return process
-    if action == "poll":
-        return handle.poll()
-    if action == "stop":
-        handle.terminate()
-        try:
-            handle.wait(timeout=3)
-        except subprocess.TimeoutExpired:
-            handle.kill()
-            handle.wait(timeout=3)
-        return handle.returncode
-    raise ValueError(f"Unknown pilot action: {action}")
-
-
-class BenchStoppedError(RuntimeError):
-    pass
-
-
-def run(
-    capabilities: list[str], tries: int, ledger: Path, *, allow_mission: bool = False, pause=time.sleep
-) -> list[dict]:
-    if tries < 1:
-        raise ValueError("tries must be positive")
-    for name in capabilities:
-        cap = CATALOGUE[name]
-        if not cap.built or not cap.plan or cap.harvested:
-            raise ValueError(
-                f"{name}: no runnable standalone plan; {cap.missing or 'harvested from other sessions'}"
-            )
-    results = []
-    current: dict = {"known": False}
-    streak: Counter = Counter()
-    serial = 0
-    run_id = datetime.now(UTC).strftime("%Y%m%dT%H%M%S%f")
-
-    def execute(cap: Capability | None) -> tuple[Path, str | None]:
-        nonlocal serial
-        status = bridge()
-        if status.get("human_input") is True:
-            raise BenchStoppedError("Controller input: no try started.")
-        if (
-            status.get("session_up") is not True
-            or status.get("recording") is not False
-            or status.get("human_input") is not False
-        ):
-            raise BenchStoppedError(
-                "Bridge must explicitly report session_up, no human input and no recording."
-            )
-        serial += 1
-        folder = ledger.parent / "sessions" / f"{run_id}-{serial:04d}"
-        handle = pilot(
-            "start",
-            plan=cap.plan if cap else (step("wait", duration=2),),
-            seconds=cap.seconds if cap else 3,
-            folder=folder,
-        )
-        interruption = None
-        try:
-            deadline = time.monotonic() + (cap.seconds if cap else 3) + 30
-            while (exit_code := pilot("poll", handle=handle)) is None:
-                status = bridge()
-                if status.get("human_input") is True:
-                    interruption = "human input"
-                    pilot("stop", handle=handle)
-                    break
-                if status.get("session_up") is not True:
-                    interruption = "bridge session lost"
-                    pilot("stop", handle=handle)
-                    break
-                if time.monotonic() > deadline:
-                    interruption = "pilot process timeout"
-                    pilot("stop", handle=handle)
-                    break
-                pause(0.25)
-        except OSError as exc:
-            pilot("stop", handle=handle)
-            interruption = f"bridge or pilot error: {type(exc).__name__}"
-        except BaseException:
-            pilot("stop", handle=handle)
-            raise
-        if interruption is None and exit_code not in (None, 0):
-            interruption = f"pilot exited with status {exit_code}"
-        # --record-dir is a parent; the recorder creates its own session child.
-        # Fake pilots may write directly to the supplied root.
-        sessions = sorted(folder.glob("*/play.jsonl"))
-        if len(sessions) == 1:
-            folder = sessions[0].parent
-        elif len(sessions) > 1:
-            raise BenchStoppedError(f"Multiple recording sessions under {folder}; cannot identify this try.")
-        return folder, interruption
-
-    def mission_guard() -> None:
-        nonlocal current
-        if not allow_mission and not current.get("mission_known"):
-            observed, interrupted = execute(None)
-            if interrupted:
-                raise BenchStoppedError(f"State probe stopped: {interrupted}")
-            current = state(load_session(observed), end=True)
-        if not allow_mission:
-            if current.get("mission"):
-                raise BenchStoppedError(
-                    "Mission guard: objective text or yellow route is active; --allow-mission lifts it."
-                )
-            if not current.get("mission_known"):
-                raise BenchStoppedError(
-                    "Mission guard: objective reading missing from head log; --allow-mission lifts it."
-                )
-
-    def trial(name: str) -> None:
-        nonlocal current
-        mission_guard()
-        trial_code = version()
-        folder, interruption = execute(CATALOGUE[name])
-        row = judge(folder, name, code=trial_code)
-        if interruption:
-            row.update(
-                outcome="not_counted" if interruption == "human input" else "failed",
-                cause="decide" if interruption == "human input" else "tech",
-                exclusion=interruption,
-                skill_reason=interruption,
-            )
+        row["source"] = old.get("source", {})
+        row["revision"] = True
         append(ledger, row)
-        results.append(row)
-        for incident in harvest(folder, code=trial_code):
-            append(ledger, incident)
-            results.append(incident)
-        current = state(load_session(folder), end=True)
-        streak[name] = streak[name] + 1 if row["outcome"] == "failed" and row["cause"] == "tech" else 0
-        if interruption == "human input":
-            raise BenchStoppedError("Controller input: stopped the pilot and excluded the try.")
-        if streak[name] >= 3:
-            raise BenchStoppedError(f"{name}: three consecutive tech failures; loop stopped.")
-
-    def prepare(name: str, visiting: tuple[str, ...] = ()) -> None:
-        nonlocal current
-        if name in visiting:
-            raise BenchStoppedError(f"Cannot establish start state for {name}.")
-        for needed in CATALOGUE[name].start:
-            if meets(current, (needed,)):
-                continue
-            producer = {
-                "foot": "car.leave",
-                "vehicle": "foot.enter",
-                "route": "map.place",
-            }.get(needed)
-            if not producer:
-                raise BenchStoppedError(f"{name}: missing start state {needed}; no safe producer.")
-            prepare(producer, (*visiting, name))
-            trial(producer)
-            if not meets(current, (needed,)):
-                raise BenchStoppedError(f"{producer} did not establish {needed} for {name}.")
-
-    folder, interrupted = execute(None)
-    if interrupted:
-        raise BenchStoppedError(f"State probe stopped: {interrupted}")
-    current = state(load_session(folder), end=True)
-    for _ in range(tries):
-        for name in capabilities:
-            mission_guard()
-            prepare(name)
-            trial(name)
-    return results
+        count += 1
+    return count
 
 
+def harvest(folder: Path, *, code: dict | None = None) -> list[dict]:
+    """Moments in a session that are tries of the capabilities that cannot be staged: a menu opened, a
+    death, stars, a vehicle held. Each is kept with its own event second. They are never counted today:
+    the logs hold no result of the reflex or the escape to set against the proof."""
+    session = Session(folder)
+    try:
+        events: list[tuple[str, float, int]] = []
+        previous: dict = {}
+        requests = session.requests
+        for index, request in enumerate(requests):
+            hud = request.get("hud") or {}
+            screen = hud.get("screen")
+            if screen in ("pause", "map", "menu") and previous.get("screen") == "game":
+                if (request.get("last_skill") or {}).get("name") != "set_waypoint":
+                    events.append(("incident.menu", request["t"], index))
+            if screen in ("wasted", "busted") and previous.get("screen") not in ("wasted", "busted"):
+                events.append(("incident.down", request["t"], index))
+            if (hud.get("wanted") or 0) > 0 and previous.get("wanted") == 0:
+                events.append(("incident.wanted", request["t"], index))
+            previous = hud
+        records = []
+        for capability, onset, index in events:
+            deadline = onset + CATALOGUE[capability].seconds
+            tail = [r for r in requests[index + 1 :] if r["t"] <= deadline]
+            resolved = None
+            if capability == "incident.menu":
+                resolved = next((r["t"] for r in tail if (r.get("hud") or {}).get("screen") == "game"), None)
+            elif capability == "incident.wanted":
+                resolved = next((r["t"] for r in tail if (r.get("hud") or {}).get("wanted") == 0), None)
+            records.append(
+                {
+                    "capability": capability,
+                    "time": datetime.now(UTC).isoformat(),
+                    **(code or {"commit": "unknown", "dirty": None}),
+                    "session": str(Path(folder).resolve()),
+                    "event_start": onset,
+                    "start_state": {"held": True, "observed": {"harvested": True}},
+                    "outcome": "not_counted",
+                    "cause": None,
+                    "skill_reason": "recovery handler terminal result missing",
+                    "skill_ok": None,
+                    "seconds": round((resolved or min(deadline, session.end)) - onset, 3),
+                    "proof": {
+                        "ok": None,
+                        "numbers": {"onset": onset, "resolved": resolved},
+                        "missing": CATALOGUE[capability].unmeasured()[0],
+                    },
+                    "objective": {"on_screen": None, "text": ""},
+                    "exclusion": "recovery handler result and attempt id missing: conductor play/head logger",
+                    "moment": None,
+                }
+            )
+        return records
+    finally:
+        session.close()
+
+
+# ---- the board
 def board_data(rows: list[dict]) -> dict:
     capabilities = []
     ranking: Counter = Counter()
@@ -1038,44 +1076,52 @@ def board_data(rows: list[dict]) -> dict:
         recent = counted[-10:]
         failed = [r for r in counted if r["outcome"] == "failed"]
         wins = sum(r["outcome"] == "ok" for r in recent)
-        missing = next(
-            (
-                r["proof"].get("missing")
-                for r in reversed(selected)
-                if r["proof"].get("ok") is None and r["proof"].get("missing")
-            ),
-            cap.missing,
-        )
-        label = (
-            "not built"
-            if not cap.built
-            else "not measurable"
-            if missing
-            else "too few tries"
-            if len(recent) < 10
-            else "green"
-            if wins >= cap.mark
-            else "red"
-        )
+        unmeasured = cap.unmeasured()
+        silent = bool(selected) and all(r["proof"].get("ok") is None for r in selected)
+        reason = next((r["proof"]["missing"] for r in reversed(selected) if r["proof"].get("missing")), "")
+        if not cap.built:
+            label, why = "not built", unmeasured[0] if unmeasured else ""
+        elif unmeasured or silent:
+            label, why = "not measurable", (unmeasured[0] if unmeasured else reason)
+        elif len(recent) < 10:
+            label, why = "too few tries", ""
+        else:
+            label, why = ("green" if wins >= cap.mark else "red"), ""
         capabilities.append(
             {
                 "id": cap.id,
                 "title": cap.title,
                 "german": cap.german,
                 "state": label,
-                "reason": missing or cap.missing,
+                "reason": why,
                 "last10": [wins, len(recent)],
                 "all": [sum(r["outcome"] == "ok" for r in counted), len(counted)],
                 "excluded": len(selected) - len(counted),
-                "median_seconds": statistics.median(r["seconds"] for r in counted) if counted else None,
+                "unverified": sum(
+                    r["outcome"] == "not_counted"
+                    and r["proof"].get("partial")
+                    and r.get("skill_ok") is True
+                    and r["start_state"].get("held")
+                    for r in selected
+                ),
+                "silent_failures": sum(
+                    r["outcome"] == "not_counted"
+                    and r.get("skill_ok") is False
+                    and r["proof"].get("ok") is None
+                    and r["start_state"].get("held")
+                    for r in selected
+                ),
+                "median_seconds": round(statistics.median(r["seconds"] for r in counted), 3)
+                if counted
+                else None,
                 "causes": dict(Counter(r["cause"] for r in failed)),
-                "top_reasons": Counter(r["skill_reason"] for r in failed).most_common(3),
+                "top_reasons": Counter(reason_stem(r["skill_reason"]) for r in failed).most_common(3),
                 "newest_failures": [r["session"] for r in failed[-3:][::-1]],
                 "marked": sum(bool(r.get("marked")) for r in selected),
             }
         )
         for row in failed:
-            ranking[(cap.id, row["cause"], row["skill_reason"])] += 1
+            ranking[(cap.id, row["cause"], reason_stem(row["skill_reason"]))] += 1
         for row in counted:
             by_commit[(cap.id, row["commit"], row["dirty"])].append(row)
     return {
@@ -1094,214 +1140,272 @@ def board_data(rows: list[dict]) -> dict:
             }
             for key, value in by_commit.items()
         ],
+        "exclusions": [
+            {"capability": key[0], "why": key[1], "count": count}
+            for key, count in sorted(
+                Counter(
+                    (r["capability"], r.get("exclusion") or "the proof could not say")
+                    for r in rows
+                    if r["outcome"] == "not_counted"
+                ).items(),
+                key=lambda pair: (-pair[1], pair[0]),
+            )
+        ],
         "unclear": sum(r["cause"] == "unclear" for r in failures),
         "failures": len(failures),
         "total": len(rows),
+        "counted": sum(r["outcome"] != "not_counted" for r in rows),
+        "not_counted": sum(r["outcome"] == "not_counted" for r in rows),
     }
 
 
-def framesheet(session: Path, output: Path) -> str | None:
-    """Four frames, including the final decodable video frame, written locally."""
-    video = session / "video.mp4"
-    if not video.exists():
-        return None
+def sheet(folder: Path, output: Path) -> Path | None:
+    """Four frames of a session, the last decodable frame among them, as one JPEG beside the ledger."""
     import hashlib
 
-    target = output / (hashlib.sha256(str(session).encode()).hexdigest()[:16] + ".jpg")
-    output.mkdir(parents=True, exist_ok=True)
-    if not target.exists():
-        try:
-            data = json.loads(
-                subprocess.check_output(
-                    [
-                        "ffprobe",
-                        "-v",
-                        "error",
-                        "-select_streams",
-                        "v:0",
-                        "-count_frames",
-                        "-show_entries",
-                        "stream=nb_read_frames",
-                        "-of",
-                        "json",
-                        str(video),
-                    ],
-                    text=True,
-                )
-            )
-            count = int(data["streams"][0]["nb_read_frames"])
-            indices = sorted({0, (count - 1) // 3, 2 * (count - 1) // 3, count - 1})
-            select = "+".join(f"eq(n\\,{i})" for i in indices)
-            subprocess.run(
-                [
-                    "ffmpeg",
-                    "-v",
-                    "error",
-                    "-i",
-                    str(video),
-                    "-vf",
-                    f"select='{select}',scale=320:-2,tile=2x2",
-                    "-frames:v",
-                    "1",
-                    "-q:v",
-                    "6",
-                    "-y",
-                    str(target),
-                ],
-                check=True,
-                capture_output=True,
-            )
-        except (OSError, ValueError, KeyError, IndexError, subprocess.CalledProcessError):
+    import cv2
+    import numpy as np
+
+    video = Path(folder) / "video.mp4"
+    if not video.exists():
+        return None
+    target = output / (hashlib.sha256(str(folder).encode()).hexdigest()[:16] + ".jpg")
+    if target.exists():
+        return target
+    capture = cv2.VideoCapture(str(video))
+    try:
+        count = int(capture.get(cv2.CAP_PROP_FRAME_COUNT))
+        if count < 4:
             return None
-    return base64.b64encode(target.read_bytes()).decode()
+        tiles = []
+        for index in sorted({0, (count - 1) // 3, 2 * (count - 1) // 3, count - 1}):
+            tile = None
+            for back in range(0, 8):  # the last frames of a video are sometimes not decodable
+                capture.set(cv2.CAP_PROP_POS_FRAMES, max(index - back, 0))
+                ok, frame = capture.read()
+                if ok:
+                    tile = cv2.resize(frame, (320, 180), interpolation=cv2.INTER_AREA)
+                    break
+            tiles.append(tile if tile is not None else np.zeros((180, 320, 3), np.uint8))
+        while len(tiles) < 4:
+            tiles.append(tiles[-1])
+        grid = np.vstack([np.hstack(tiles[:2]), np.hstack(tiles[2:4])])
+        output.mkdir(parents=True, exist_ok=True)
+        cv2.imwrite(str(target), grid, [cv2.IMWRITE_JPEG_QUALITY, 70])
+        return target
+    finally:
+        capture.release()
 
 
-def write_board(ledger: Path, *, sheets: bool = True) -> dict:
-    rows = apply_marks(read_jsonl(ledger), read_jsonl(marks_path(ledger)))
-    data = board_data(rows)
+def board_markdown(data: dict) -> str:
+    share = f"{data['unclear'] / data['failures']:.1%}" if data["failures"] else "undefined"
     lines = [
         "# Capability bench",
         "",
-        f"{data['total']} tries; {data['failures']} counted failures; unclear "
-        f"{data['unclear']}/{data['failures']} ({data['unclear'] / data['failures']:.1%})."
-        if data["failures"]
-        else f"{data['total']} tries; no counted failures; unclear share undefined.",
+        f"{data['total']} tries, {data['counted']} counted, {data['not_counted']} not counted; "
+        f"{data['failures']} counted failures, of which {data['unclear']} unclear ({share}).",
         "",
-        (
-            "Historical code versions are unknown unless recorded at execution. Missing evidence "
-            "is excluded, never converted into a pass."
-        ),
+        "A try is not counted where the start state did not hold or where the proof cannot say. Code "
+        "versions of tries judged from old logs are unknown. `unverified` counts tries whose skill said "
+        "done and whose proof could not be measured; `failed, proof silent` counts tries whose skill said "
+        "failed and whose proof could not say (a waypoint that stands where it stood before, for one), "
+        "which are not counted but are not successes either.",
         "",
-        "| Capability | State | Last ten | All | Median s | Excluded | Causes | Top reasons |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+        "| Capability | State | Last ten | All | Median s | Not counted | Unverified | Failed, proof silent "
+        "| Causes | Reasons |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for cap in data["capabilities"]:
         lines.append(
-            f"| {cap['id']} | {cap['state']} | {cap['last10'][0]}/{cap['last10'][1]} | "
+            f"| {cap['id']} ({cap['german']}) | {cap['state']} | {cap['last10'][0]}/{cap['last10'][1]} | "
             f"{cap['all'][0]}/{cap['all'][1]} | {cap['median_seconds']} | {cap['excluded']} | "
-            f"{cap['causes']} | {str(cap['top_reasons']).replace('|', '/')} |"
+            f"{cap['unverified']} | {cap['silent_failures']} | "
+            f"{', '.join(f'{k} {v}' for k, v in cap['causes'].items()) or '-'} | "
+            f"{'; '.join(f'{r} ({n})' for r, n in cap['top_reasons']).replace('|', '/') or '-'} |"
         )
-    lines += ["", "## Evidence and newest failures", ""]
+    lines += ["", "## Why a capability is not measurable, and what its rate leaves out", ""]
     for cap in data["capabilities"]:
-        lines.append(
-            f"{cap['id']}: {cap['reason'] or CATALOGUE[cap['id']].proof} Marked: {cap['marked']}. "
-            f"Newest failures: {', '.join(cap['newest_failures']) or 'none'}."
-        )
-        lines.append("")
-    lines += ["## Repair ranking", "", "| Capability | Cause | Reason | Count |", "| --- | --- | --- | --- |"]
+        if cap["reason"]:
+            lines.append(f"- {cap['id']}: {cap['reason']}")
+        elif cap["unverified"] or cap["silent_failures"]:
+            lines.append(
+                f"- {cap['id']}: the proof could not confirm {cap['unverified']} tries the skill called done "
+                f"and {cap['silent_failures']} it called failed; they are in no rate"
+            )
+    lines += ["", "## Newest failures", ""]
+    for cap in data["capabilities"]:
+        if cap["newest_failures"]:
+            lines.append(f"- {cap['id']}: {', '.join(cap['newest_failures'])}")
+    lines += [
+        "",
+        "## What to repair next",
+        "",
+        "| Capability | Cause | Reason | Count |",
+        "| --- | --- | --- | --- |",
+    ]
     for rank in data["ranking"]:
         lines.append(
-            f"| {rank['capability']} | {rank['cause']} | {rank['reason'].replace('|', '/')} | "
-            f"{rank['count']} |"
+            f"| {rank['capability']} | {rank['cause']} | "
+            f"{rank['reason'].replace('|', '/')} | {rank['count']} |"
         )
+    lines += ["", "## Why tries were not counted", "", "| Capability | Why | Tries |", "| --- | --- | --- |"]
+    for item in data["exclusions"]:
+        lines.append(f"| {item['capability']} | {item['why'].replace('|', '/')} | {item['count']} |")
     lines += ["", "## Rates by commit", ""]
     for commit in data["commits"]:
         lines.append(
-            f"{commit['capability']}: {commit['commit']} (dirty={commit['dirty']}), "
-            f"{commit['ok']}/{commit['counted']}."
+            f"- {commit['capability']}: {str(commit['commit'])[:10]} (dirty {commit['dirty']}): "
+            f"{commit['ok']}/{commit['counted']}"
         )
-        lines.append("")
-    markdown = "\n".join(lines) + "\n"
+    return "\n".join(lines) + "\n"
+
+
+def write_board(ledger: Path, *, sheets: bool = True, echo: bool = True) -> dict:
+    rows = apply_marks(read_jsonl(ledger), read_jsonl(marks_path(ledger)))
+    data = board_data(rows)
+    markdown = board_markdown(data)
     ledger.parent.mkdir(parents=True, exist_ok=True)
     ledger.with_suffix(".md").write_text(markdown)
-    page = [
-        (
-            '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" '
-            'content="width=device-width"><title>Capability bench</title><style>'
-            "body{font:15px system-ui;background:#111821;color:#e4eaf0;margin:2rem;max-width:1400px}"
-            "table{border-collapse:collapse;width:100%}"
-            "td,th{padding:.6rem;border-bottom:1px solid #344252;text-align:left;vertical-align:top}"
-            "pre{white-space:pre-wrap;overflow-wrap:anywhere}"
-            ".green{color:#78db93}"
-            ".red{color:#ff8b87}"
-            "img{max-width:640px;width:100%}"
-            "article{border-top:1px solid #344252;margin-top:2rem}"
-            "small{display:block;color:#adbace}"
-            "</style><h1>Capability bench</h1>"
-        ),
-        (
-            f"<p>{html.escape(lines[2])}</p><table><tr><th>Capability</th><th>State</th><th>Last "
-            f"ten / all</th><th>Median seconds</th><th>Failures</th></tr>"
-        ),
-    ]
+    head = (
+        '<!doctype html><html lang="en"><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width">'
+        "<title>Capability bench</title><style>"
+        "body{font:15px system-ui;background:#111821;color:#e4eaf0;margin:2rem;max-width:1400px}"
+        "table{border-collapse:collapse;width:100%}"
+        "td,th{padding:.6rem;border-bottom:1px solid #344252;text-align:left;vertical-align:top}"
+        "pre{white-space:pre-wrap;overflow-wrap:anywhere}.green{color:#78db93}.red{color:#ff8b87}"
+        "img{max-width:640px;width:100%}article{border-top:1px solid #344252;margin-top:2rem}"
+        "small{display:block;color:#adbace}</style><h1>Capability bench</h1>"
+    )
+    page = [head, f"<p>{html.escape(markdown.splitlines()[2])}</p>"]
+    page.append(
+        "<table><tr><th>Capability</th><th>State</th><th>Last ten / all</th><th>Median s</th>"
+        "<th>Failures</th></tr>"
+    )
     for cap in data["capabilities"]:
         page.append(
-            f"<tr><td>{html.escape(cap['id'])}<small>{html.escape(cap['german'])}</small></td><td "
-            f"class='{cap['state']}'>{cap['state']}<small>{html.escape(cap['reason'])}</small></td>"
-            f"<td>{cap['last10'][0]}/{cap['last10'][1]} / {cap['all'][0]}/{cap['all'][1]}<small>"
-            f"excluded {cap['excluded']}; marked {cap['marked']}</small></td><td>"
-            f"{cap['median_seconds']}</td><td>{html.escape(str(cap['causes']))}<small>"
-            f"{html.escape(str(cap['top_reasons']))}</small></td></tr>"
+            f"<tr><td>{html.escape(cap['id'])}<small>{html.escape(cap['german'])}</small></td>"
+            f"<td class='{cap['state'].replace(' ', '-')}'>{cap['state']}"
+            f"<small>{html.escape(cap['reason'])}</small></td>"
+            f"<td>{cap['last10'][0]}/{cap['last10'][1]} / {cap['all'][0]}/{cap['all'][1]}<small>not counted "
+            f"{cap['excluded']}; unverified {cap['unverified']}; failed, proof silent "
+            f"{cap['silent_failures']}; marked {cap['marked']}</small></td>"
+            f"<td>{cap['median_seconds']}</td><td>{html.escape(str(cap['causes']))}"
+            f"<small>{html.escape(str(cap['top_reasons']))}</small></td></tr>"
         )
-    page += [
-        "</table><h2>Repair ranking and rates by commit</h2><pre>",
-        html.escape(markdown[markdown.index("## Evidence and newest failures") :]),
-        "</pre><h2>Failure evidence</h2>",
-    ]
-    cache = {}
+    page.append("</table><h2>What to repair next, and rates by commit</h2><pre>")
+    page.append(html.escape(markdown[markdown.index("## What to repair next") :]))
+    page.append("</pre><h2>Failures</h2>")
+    cache: dict = {}
     for row in rows:
         if row["outcome"] != "failed":
             continue
-        session = row["session"]
-        if session not in cache:
-            cache[session] = framesheet(Path(session), ledger.parent / "frames") if sheets else None
+        folder = row["session"]
+        if folder not in cache:
+            made = sheet(Path(folder), ledger.parent / "frames") if sheets else None
+            cache[folder] = made.read_bytes() if made else None
         page.append(
             f"<article><h3>{html.escape(row['capability'])}: {html.escape(str(row['cause']))}</h3>"
-            f"<p>{html.escape(session)}</p><p>{html.escape(row['skill_reason'])}</p><pre>"
-            f"{html.escape(json.dumps(row['proof'], ensure_ascii=False, indent=2))}</pre>"
+            f"<p>{html.escape(folder)}</p><p>{html.escape(row['skill_reason'])}</p>"
         )
+        if row.get("moment"):
+            page.append(f"<p>Went wrong at {row['moment']['t']} s: {html.escape(row['moment']['how'])}</p>")
+        page.append(f"<pre>{html.escape(json.dumps(row['proof'], ensure_ascii=False, indent=1))}</pre>")
         if row.get("marked"):
             page.append(f"<p>Marked: {html.escape(row['mark_note'])}</p>")
-        page.append(
-            f'<img alt="Four session frames including the last video frame" '
-            f'src="data:image/jpeg;base64,{cache[session]}">'
-            if cache[session]
-            else "<p>Frames unavailable: missing video or ffmpeg/ffprobe extraction failed.</p>"
-        )
+        if cache[folder]:
+            import base64
+
+            page.append(
+                '<img alt="four frames of the session, the last one last" '
+                f'src="data:image/jpeg;base64,{base64.b64encode(cache[folder]).decode()}">'
+            )
+        else:
+            page.append("<p>No frames: the video is missing or could not be read.</p>")
         page.append("</article>")
     page.append("</html>")
     ledger.with_suffix(".html").write_text("\n".join(page))
-    print(markdown)
+    if echo:
+        print(markdown)
     return data
+
+
+# ---- the command line
+def catalogue_text() -> str:
+    lines = []
+    for cap in CATALOGUE.values():
+        state = (
+            "not built"
+            if not cap.built
+            else "harvested"
+            if cap.harvested
+            else "opening"
+            if cap.opening
+            else "plan"
+        )
+        lines.append(
+            f"{cap.id} ({cap.german}; {state}; start {', '.join(cap.start) or 'any'}; {cap.seconds} s)"
+        )
+        lines.append(f"    proof: {cap.describe_proof()}")
+    return "\n".join(lines)
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ledger", type=Path, default=DEFAULT_LEDGER)
     commands = parser.add_subparsers(dest="command", required=True)
-    command = commands.add_parser("judge")
+    command = commands.add_parser("judge", help="judge a session that exists as a try of one capability")
     command.add_argument("session", type=Path)
     command.add_argument("--capability", choices=CATALOGUE, required=True)
-    command = commands.add_parser("import")
+    command = commands.add_parser("import", help="take over the tries of a basics.sh list")
     command.add_argument("source", type=Path)
-    command = commands.add_parser("mark")
+    commands.add_parser("rejudge", help="judge every try of the ledger again with the proofs as they are")
+    command = commands.add_parser("mark", help="overrule a line; written beside the ledger")
     command.add_argument("session", type=Path)
     command.add_argument("--capability", choices=CATALOGUE)
-    command.add_argument("--outcome", choices=("ok", "failed", "not_counted"), required=True)
+    command.add_argument("--outcome", choices=OUTCOMES, required=True)
     command.add_argument("--cause", choices=CAUSES)
     command.add_argument("--note", required=True)
-    command = commands.add_parser("run")
-    command.add_argument("capabilities", nargs="+", choices=CATALOGUE)
-    command.add_argument("--tries", type=int, default=10)
-    command.add_argument("--allow-mission", action="store_true")
-    command = commands.add_parser("board")
+    command = commands.add_parser("run", help="try capabilities in a loop; `all` goes through the catalogue")
+    command.add_argument("capabilities", nargs="+", help="ids, or `all`")
+    command.add_argument("--tries", type=int, default=10, help="tries per capability")
+    command.add_argument("--minutes", type=float, default=None, help="stop when this many minutes are used")
+    command.add_argument(
+        "--guard-mission", action="store_true", help="do not run while an objective is on the screen"
+    )
+    command.add_argument("--dry", action="store_true", help="print what the loop would do and touch nothing")
+    command.add_argument(
+        "--assume", choices=("foot", "vehicle"), default="foot", help="--dry: the state the first probe finds"
+    )
+    command.add_argument(
+        "--judge", default=None, help="URL=MODEL of the judge server (default: the one basics.sh uses)"
+    )
+    command.add_argument(
+        "--record-dir",
+        type=Path,
+        default=None,
+        help="where the sessions go (default: ~/recordings/pilot, where basics.sh puts them)",
+    )
+    command = commands.add_parser("board", help="print and write the board")
     command.add_argument("--no-sheets", action="store_true")
+    commands.add_parser("catalogue", help="print the catalogue with every proof")
     args = parser.parse_args(argv)
-    if args.command == "judge":
+    if args.command == "catalogue":
+        print(catalogue_text())
+    elif args.command == "judge":
         row = judge(args.session, args.capability)
         append(args.ledger, row)
-        print(json.dumps(row, indent=2))
+        print(json.dumps(row, indent=2, ensure_ascii=False))
     elif args.command == "import":
         rows = import_basics(args.source, args.ledger)
-        for session in dict.fromkeys(r["session"] for r in rows):
-            for incident in harvest(Path(session)):
-                append(args.ledger, incident)
-        print(f"Imported {len(rows)} trials.")
+        print(f"Imported {len(rows)} tries.")
+    elif args.command == "rejudge":
+        print(f"Judged {rejudge(args.ledger)} tries again.")
     elif args.command == "mark":
         if args.outcome == "failed" and args.cause is None:
-            parser.error("failed marks require --cause")
+            parser.error("a failed mark needs --cause")
         if not args.note.strip():
-            parser.error("marks require a nonempty note")
+            parser.error("a mark needs a note")
         append(
             marks_path(args.ledger),
             {
@@ -1314,11 +1418,13 @@ def main(argv: list[str] | None = None) -> int:
             },
         )
     elif args.command == "run":
-        try:
-            run(args.capabilities, args.tries, args.ledger, allow_mission=args.allow_mission)
-        except (BenchStoppedError, ValueError, OSError) as exc:
-            print(str(exc), file=sys.stderr)
-            return 1
+        from . import bench_run
+
+        return bench_run.main_run(args)
     else:
         write_board(args.ledger, sheets=not args.no_sheets)
     return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
