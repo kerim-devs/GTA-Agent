@@ -54,8 +54,9 @@ KINDS = {
         "Flugschule",
         "Fallschirmsprung",
     ),
-    "none": ("Spieler", "Wegpunkt", "Persönliches Fahrzeug"),
+    "none": ("Spieler", "Wegpunkt", "Persönliches Fahrzeug", "Fahrzeug"),
 }
+DIRECTIONS = {"up", "down", "left", "right"}
 ARROWS = re.compile(r"[<\u2039\u00ab]\s*(\d+)\s*/\s*(\d+)\s*[>\u203a\u00bb]")
 COUNTER = re.compile(r"^(\d+)\s*/\s*(\d+)$")
 WAYPOINT = re.compile(r"^Wegpunkt\s*\(\s*(\d+(?:[.,]\d+)?)\s*(km|m)\s*\)", re.I)
@@ -94,6 +95,9 @@ class Legend:
     position: int | None = None
     total: int | None = None
     distance: float | None = None
+    distances: tuple[
+        float, ...
+    ] = ()  # of every waypoint row: after a cross the old one lingers beside the new
 
 
 def white_bar(frame, box):
@@ -127,6 +131,7 @@ def read_legend(lines, frame=None):
     pause = any(text.upper() == "KARTE" and box[1] < 160 for text, box in rows)
     screen = "map" if map_open else "pause" if pause else None
     entries, selected, position, total, distance = [], None, None, None, None
+    distances = []
     entry_rows = []
     selections = []
     bars = []
@@ -153,6 +158,7 @@ def read_legend(lines, frame=None):
         waypoint = WAYPOINT.match(text)
         if waypoint:
             distance = float(waypoint[1].replace(",", ".")) * (1000 if waypoint[2].lower() == "km" else 1)
+            distances.append(distance)
             entries.append(Entry("Wegpunkt", "none"))
             entry_rows.append(box[1])
             if barred:
@@ -187,7 +193,7 @@ def read_legend(lines, frame=None):
         and all(18 <= b - a <= 35 for a, b in pairwise(entry_rows))
     ):
         selected = entries[position - 1]
-    return Legend(screen, tuple(entries), selected, position, total, distance)
+    return Legend(screen, tuple(entries), selected, position, total, distance, tuple(distances))
 
 
 class LegendWaypoint:
@@ -196,6 +202,9 @@ class LegendWaypoint:
     settle = 0.35  # More than twice the measured clean-cable frame delay (0.14 s).
     stable_for = 0.15
     max_attempts = 3
+    # The legend showed a new waypoint 0.7 s after its cross (session 20261112-115941).
+    legend_lag = 2.0
+    max_steps = 80
 
     def __init__(self, args):
         self.profile = active()
@@ -222,8 +231,9 @@ class LegendWaypoint:
         self.destination = None
         self.distance = None
         self.before = None
+        self.standing = None
         self.total_before = None
-        self.cleared = False
+        self.steps = 0
 
     def stop(self, reason="interrupted"):
         self.finished = SkillResult(status="failed", reason=reason)
@@ -247,7 +257,7 @@ class LegendWaypoint:
 
     def _press(self, button, observation, pending):
         self.held = Pad(buttons=(button,))
-        self.release_at = observation.time + 0.10
+        self.release_at = observation.time + (0.06 if button in DIRECTIONS else 0.10)
         self.pressed = observation.time
         self.hold = True
         self.ready_at = self.release_at + self.settle
@@ -316,7 +326,10 @@ class LegendWaypoint:
             return SkillResult()
         screen = "game" if game else picture.screen
         if self.hold:
-            if 0.07 < now - self.pressed <= 1.0:
+            # A direction that is held moves the selection again: in session 20261112-115658 holds of
+            # 0.25 s and 0.35 s each stepped over an entry, one of 0.19 s did not. A tick with the text
+            # reader in it takes 0.08 to 0.17 s, so a direction is let go on the tick after its press.
+            if self.held.buttons[0] not in DIRECTIONS and 0.07 < now - self.pressed <= 1.0:
                 self.release_at = now + 0.10
                 self.ready_at = self.release_at + self.settle
             self.hold = False
@@ -339,7 +352,10 @@ class LegendWaypoint:
                     if now - since >= self.stable_for:
                         self.observed_places[entry.name] = entry.kind
         self.candidate_places = candidates
-        key = (screen, picture.selected, picture.position, picture.distance)
+        if screen == "map" and picture.entries and picture.entries[0].name == "Spieler":
+            # The waypoint's row is the second of the list: with the list's head in sight it is known.
+            self.standing = picture.distances[-1] if picture.distances else None
+        key = (screen, picture.selected, picture.position, picture.distances)
         if not self._stable(key, now):
             return SkillResult()
         if self.phase == "exit":
@@ -371,28 +387,32 @@ class LegendWaypoint:
             self.phase = "browse"
             return self._press(self.profile.confirm, observation, ("enter",))
         if self.phase == "confirm":
-            # A waypoint that stood before is no proof: the new one shows in a distance that changed,
-            # or in one that comes back after the cross took the old one off this very place.
-            if picture.distance is not None and (
-                self.before is None or self.cleared or picture.distance != self.before
-            ):
-                self.distance = picture.distance
+            # The cross moves a waypoint that stands elsewhere and takes away one that stands on this
+            # very place: in session 20261112-115941 a second cross on Los Santos Customs took the new
+            # waypoint away again, and the skill called it set. The legend follows a press late and
+            # lists the old waypoint beside the new for a while. So the proof is a distance that was
+            # not there before the press, and the cross is pressed again only when the legend has had
+            # its time and shows that the first one took a waypoint away or did nothing.
+            fresh = [value for value in picture.distances if value != self.before]
+            if fresh:
+                self.distance = fresh[0]
                 self.phase = "exit"
                 return SkillResult()
-            if picture.distance is None and self.before is not None:
-                self.cleared = True
             if picture.selected is None or picture.selected.name != self.destination:
                 return self._fail("selection-changed-before-waypoint")
             if not picture.entries or picture.entries[0].name != "Spieler":
-                # The waypoint's row is the second of the list and out of sight on a later page. A
-                # new waypoint shows there as one entry more in the counter; a second cross would
-                # take it away again, so without that sign the try ends here.
+                # On a later page the waypoint's row is out of sight. A new waypoint shows there as
+                # one entry more in the counter; without that sign the try ends here.
                 if self.total_before is not None and picture.total == self.total_before + 1:
                     self.phase = "exit"
                     return SkillResult()
-                if now - self.pressed < 1.5:
+                if now - self.pressed < self.legend_lag:
                     return SkillResult()
                 return self._fail("waypoint-unproven-on-a-later-page")
+            if now - self.pressed < self.legend_lag:
+                return SkillResult()
+            if not picture.distances and self.before is not None:
+                self.before = None  # it stood on this very place and is gone: the next cross sets it
             self.attempts += 1
             if self.attempts > self.max_attempts:
                 return self._fail("waypoint-not-visible-after-cross")
@@ -411,10 +431,7 @@ class LegendWaypoint:
                 return self._press(self.pending[2], observation, self.pending)
             self.attempts = 0
             self.pending = None
-        matches = (
-            selected.name.casefold() == self.place.casefold() if self.place else selected.kind == self.kind
-        )
-        if matches and selected.kind != "none":
+        if self._wanted(selected):
             if self.instance and selected.instance != self.instance:
                 if selected.count is None or self.instance > selected.count:
                     return self._fail("place-instance-not-present")
@@ -422,13 +439,32 @@ class LegendWaypoint:
                 self.attempts = 1
                 return self._press(button, observation, ("move", identity, button))
             self.destination = selected.name
-            self.before = picture.distance
+            self.before = self.standing
             self.total_before = picture.total
             self.phase = "confirm"
             self.attempts = 1
             return self._press(self.profile.confirm, observation, ("confirm",))
-        if selected.name in self.visited:
-            return self._fail(f"place-not-in-legend: {self.place or self.kind}")
-        self.visited.add(selected.name)
+        self.steps += 1
+        if self.steps > self.max_steps:
+            return self._fail("legend-selection-skips-the-place")
+        # A press now and then moves the selection by two (the third of 20261112-115941, held for
+        # 0.15 s), so the way is read off the page: towards the place while it is in sight.
+        names = [entry.name for entry in picture.entries]
+        here = names.index(selected.name) if selected.name in names else None
+        there = next((i for i, entry in enumerate(picture.entries) if self._wanted(entry)), None)
+        button = "down"
+        if there is None:
+            if selected.name in self.visited:
+                seen = any(self._wanted(Entry(name, kind)) for name, kind in self.observed_places.items())
+                reason = "legend-selection-skips-the-place" if seen else "place-not-in-legend"
+                return self._fail(f"{reason}: {self.place or self.kind}")
+            self.visited.add(selected.name)
+        elif here is not None and there < here:
+            button = "up"
         self.attempts = 1
-        return self._press("down", observation, ("move", identity, "down"))
+        return self._press(button, observation, ("move", identity, button))
+
+    def _wanted(self, entry):
+        if entry.kind == "none":
+            return False
+        return entry.name.casefold() == self.place.casefold() if self.place else entry.kind == self.kind

@@ -1,5 +1,6 @@
 import json
 from dataclasses import replace
+from itertools import pairwise
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -33,13 +34,16 @@ def lines(names, selected=0, offset=0, distance=None, total=None, instance=1):
 class Model:
     """The legend as the recording by hand shows it: a waypoint adds a row under the player's."""
 
-    def __init__(self, names, *, lost=(), stuck=False, confirm=True, wrong_menu=False, moves=True):
+    def __init__(self, names, *, lost=(), stuck=False, confirm=True, wrong_menu=False, moves=True, double=()):
         self.names = names
         self.screen = "game"
         self.selected = 0  # among rows()
         self.instance = 1
         self.distance = None  # of the waypoint that stands
         self.moves = moves  # a cross on another place moves a waypoint; otherwise it only takes it away
+        self.double = set(double)  # presses that the game takes for two
+        self.lingering = None  # the old waypoint's row, which the legend shows on beside the new one
+        self.linger = 0
         self.previous = ()
         self.presses = []
         self.lost = set(lost)
@@ -53,6 +57,11 @@ class Model:
             return read_legend([line("KARTE", 100, 100)])
         if self.screen == "wrong":
             return read_legend([line("STATISTIKEN", 100, 100)])
+        if self.lingering is not None:
+            self.linger -= 1
+            if self.linger <= 0:
+                self.lingering = None
+                self.selected -= 1
         rows = self.rows()
         offset = (self.selected // 5) * 5
         self.scroll_seen |= offset > 0
@@ -65,9 +74,8 @@ class Model:
         return legend
 
     def rows(self):
-        if self.distance is None:
-            return list(self.names)
-        return [self.names[0], f"Wegpunkt ({self.distance}m)", *self.names[1:]]
+        waypoints = [f"Wegpunkt ({value}m)" for value in (self.distance, self.lingering) if value is not None]
+        return [self.names[0], *waypoints, *self.names[1:]]
 
     def observation(self, tick, *, corrupt=False):
         game = self.screen == "game"
@@ -90,7 +98,8 @@ class Model:
                 elif self.screen == "map":
                     rows = self.rows()
                     if button in {"up", "down"} and not self.stuck:
-                        self.selected = (self.selected + (1 if button == "down" else -1)) % len(rows)
+                        step = 2 if len(self.presses) in self.double else 1
+                        self.selected = (self.selected + (step if button == "down" else -step)) % len(rows)
                     elif button in {"left", "right"} and not self.stuck:
                         self.instance += 1 if button == "right" else -1
                     elif (
@@ -100,7 +109,9 @@ class Model:
                             self.distance = 532
                             self.selected += 1  # the new row pushes the selected one down
                         elif self.moves and self.distance != 532:
+                            self.lingering, self.linger = self.distance, 25
                             self.distance = 532
+                            self.selected += 1
                         else:
                             self.distance = None
                             self.selected -= 1
@@ -279,6 +290,15 @@ def test_a_waypoint_that_stands_elsewhere_is_replaced(moves, crosses):
     assert model.screen == "game"
 
 
+def test_a_press_that_counts_twice_does_not_lose_the_place():
+    # The third press is the first direction; it steps over Ammu-Nation, and the way back is up.
+    model = Model(["Spieler", "Ammu-Nation", "Golf", "Kino"], double=(3,))
+    _, result, _ = run({"place": "Ammu-Nation"}, model)
+    assert result.status == "done", result.reason
+    assert "Ammu-Nation (532m)" in result.reason
+    assert model.presses.count("up") == 1
+
+
 def test_a_waypoint_that_stands_on_the_place_itself_comes_back():
     model = Model(["Spieler", "Golf"])
     model.distance = 532
@@ -325,6 +345,17 @@ def test_missing_or_ambiguous_arrows_on_a_scrolled_page_are_unknown():
     rows[0]["text"] = "Golf < 1/2 >"
     rows[1]["text"] = "Kino < 1/3 >"
     assert read_legend(rows).selected is None
+
+
+def test_a_direction_is_let_go_on_the_tick_after_its_press():
+    model = Model(["Spieler", "Ammu-Nation", "Golf", "Kino"])
+    observe = model.observation
+    model.observation = lambda tick, corrupt=False: replace(observe(tick, corrupt=corrupt), time=tick * 0.12)
+    _, result, outputs = run({"place": "Kino"}, model)
+    assert result.status == "done", result.reason
+    held = ["down" in output.pad.buttons for output in outputs]
+    assert sum(held) == 3  # with the text reader in it a tick takes 0.08 to 0.17 s
+    assert not any(a and b for a, b in pairwise(held))
 
 
 def test_the_white_bar_names_the_selection_where_no_arrows_stand():
