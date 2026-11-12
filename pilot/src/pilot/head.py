@@ -235,27 +235,8 @@ def response_schema() -> dict:
             "sentence": {"type": "string"},
             "lesson": {"type": ["string", "null"]},
             "action": {"type": "string", "enum": ["replace", "go_on"]},
-            "goal": {
-                "anyOf": [
-                    {"type": "null"},
-                    {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "type": "string",
-                                "enum": ["vehicle", "drive", "fight", "escape", "road"],
-                            },
-                            "started": {"type": "number"},
-                            "deadline": {"type": "number"},
-                            "seed": {"type": "integer"},
-                            "direction": {"type": "string", "enum": ["north", "east", "south", "west"]},
-                            "attempts": {"type": "integer"},
-                        },
-                        "required": ["name", "started", "deadline", "seed", "direction", "attempts"],
-                        "additionalProperties": False,
-                    },
-                ]
-            },
+            # The rules keep the goal; a model that answers is not asked for one.
+            "goal": {"type": "null"},
             "step": {"type": ["string", "null"]},
             "reason": {"type": "string"},
         },

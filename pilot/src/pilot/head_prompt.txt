@@ -82,9 +82,11 @@ and the attached image. Add a lesson only when the observation supports it.
 Goal continuity: the local goal controller owns the bounded free-roam round and its seed.
 The JSON response also contains action, goal, step and reason. Use action "replace"
 for a new plan (one to five calls). Use action "go_on" with plan [] only when the
-currently running skill and remaining queue should continue unchanged. A go_on
+currently running skill and remaining queue should continue unchanged; with nothing
+running, go_on is refused and answer with a plan instead. A go_on
 answer neither replaces nor appends steps, including on plan_ending. State why the
-plan is kept or changed in reason. For this fallback, goal is null; step may be null.
+plan is kept or changed in reason. For this fallback, goal must be null (the rules keep
+the goal and a goal from you is ignored); step may be null.
 The local controller logs its active goal, step, seed and reason with every answer.
 Screen objectives, stars, health below one third, death/arrest and the goal's limit
 interrupt free roam. An objective always belongs to the existing mission rules.

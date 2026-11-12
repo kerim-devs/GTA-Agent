@@ -15,7 +15,8 @@ from pilot.mission import MissionHead
 from pilot.skills import Observation, SkillRunner
 
 
-def request(t=0, *, mode="foot", wanted=0, last=None, cars=False, people=False, **kwargs):
+def request(t=0, *, mode="foot", wanted=0, last=None, last_skill=None, cars=False, people=False, **kwargs):
+    last = last if last is not None else last_skill
     return HeadRequest(
         [],
         "",
@@ -86,23 +87,62 @@ def test_road_observation_and_car_sighting_advance_without_restarting_on_noise()
     assert car.plan[0].name == "enter_vehicle"
 
 
-@pytest.mark.parametrize("name", LIMITS)
+# The card's limits, written out: seconds and tries per goal.
+SECONDS = {"vehicle": 90, "drive": 240, "fight": 90, "escape": 180, "road": 90}
+TRIES = {"vehicle": 3, "drive": 3, "fight": 4, "escape": 4, "road": 4}
+# Each goal's first step in its own situation, and the skill whose failure the goal answers.
+SETUP = {
+    "vehicle": ({"cars": True}, "enter_vehicle"),
+    "drive": ({"mode": "vehicle"}, "set_waypoint"),
+    "fight": ({"people": True}, "punch"),
+    "escape": ({"wanted": 1}, "walk"),
+    "road": ({}, "walk_road"),
+}
+
+
+def test_the_limits_are_those_of_the_card():
+    assert {name: seconds for name, (seconds, _) in LIMITS.items()} == SECONDS
+    assert {name: tries for name, (_, tries) in LIMITS.items()} == TRIES
+
+
+@pytest.mark.parametrize("name", SECONDS)
 def test_each_goal_gives_up_at_its_deadline_and_is_not_reselected(name):
     head = MissionHead(goal_seed=12)
     head.goals.next = name
-    initial = request(
-        mode="vehicle" if name == "drive" else "foot",
-        cars=name == "vehicle",
-        wanted=1 if name == "escape" else 0,
-    )
+    situation, _ = SETUP[name]
+    initial = request(**situation)
     first = head.decide(initial)
     assert first.goal["name"] == name
-    expired = replace(initial, time=first.goal["deadline"], hud={"screen": "game", "health": 1, "wanted": 0})
+    assert first.goal["deadline"] - first.goal["started"] == SECONDS[name]
+    just_before = head.decide(replace(initial, time=SECONDS[name] - 0.5, last_skill=running(name)))
+    assert just_before.goal["name"] == name
+    expired = replace(initial, time=SECONDS[name], hud={"screen": "game", "health": 1, "wanted": 0})
     after = head.decide(expired)
     assert after.goal["name"] != name
     assert any(
         h["name"] == name and h["outcome"] == "gave_up" and h["reason"] == "limit" for h in head.goals.history
     )
+
+
+def running(name):
+    return {"name": SETUP[name][1], "status": "running", "queue": []}
+
+
+@pytest.mark.parametrize("name", TRIES)
+def test_each_goal_is_tried_as_often_as_the_card_says_and_no_more(name):
+    head = MissionHead(goal_seed=12)
+    head.goals.next = name
+    situation, skill = SETUP[name]
+    issued = [head.decide(request(**situation))]
+    for t in range(1, 8):
+        failed = {"name": skill, "status": "failed", "reason": f"try {t}", "queue": []}
+        answer = head.decide(request(t, last=failed, **situation))
+        if answer.goal is None or answer.goal["name"] != name:
+            break
+        issued.append(answer)
+    assert len(issued) == TRIES[name]
+    assert [a.goal["attempts"] for a in issued] == list(range(1, TRIES[name] + 1))
+    assert any(h["name"] == name and h["outcome"] == "gave_up" for h in head.goals.history)
 
 
 def test_failed_attempt_budget_and_seeded_choices_are_reproducible():
@@ -177,14 +217,15 @@ def immediate(function, *args):
     return future
 
 
-def setup_conductor(tmp_path, monkeypatch, *, submit=immediate):
+def setup_conductor(tmp_path, monkeypatch, *, submit=immediate, head=None, opening=()):
     monkeypatch.setattr("pilot.skills.make_skill", lambda call, **kwargs: HeldSkill(call.name))
     runner = SkillRunner()
     conductor = Conductor(
         tmp_path / "session",
         notebook=tmp_path / "notes",
         runner=runner,
-        head=MissionHead(goal_seed=7),
+        head=MissionHead(goal_seed=7) if head is None else head,
+        opening=opening,
         detector=NoEvents(),
         submit=submit,
     )
@@ -201,12 +242,13 @@ def test_conductor_go_on_preserves_active_identity_queue_and_controller_input(tm
             conductor._tick(replace(obs, time=t), rgb)
         runner.append((SkillCall("look", {"duration": 1}),))
         active, queued = runner.active, tuple(runner.queue)
+        # What the sessions of 12 November brought while a plan ran, none of it a reason to change it.
         for i, kind in enumerate(
             (
-                "subtitle_changed",
+                "route_appeared",
+                "route_vanished",
                 "help_changed",
-                "route_changed",
-                "blips_changed",
+                "menu_closed",
                 "mode_changed",
                 "plan_ending",
             ),
@@ -220,7 +262,7 @@ def test_conductor_go_on_preserves_active_identity_queue_and_controller_input(tm
             assert result.pad.left == (0, -0.5)
         rows = [json.loads(line) for line in (tmp_path / "session/head.jsonl").read_text().splitlines()]
         kept = [r for r in rows if r.get("disposition") == "kept"]
-        assert len(kept) >= 4
+        assert len(kept) == 6
         assert all(r["goal"]["name"] == "road" and r["step"] and r["reason"] for r in kept)
     finally:
         conductor.close()
@@ -402,3 +444,329 @@ def test_unreadable_mode_does_not_replace_a_running_goal():
     )
     kept = head.decide(unreadable)
     assert kept.action == "go_on" and kept.goal == first.goal
+
+
+# D1: a stop the conductor made for the goal is no failure of the skill.
+
+
+@pytest.mark.parametrize("reason", ["goal_limit", "goal_stars", "goal_objective"])
+def test_a_stop_made_for_the_goal_is_not_met_as_a_failure(reason):
+    head = MissionHead(goal_seed=5)
+    first = head.decide(request())
+    stopped = {"name": "walk_road", "status": "failed", "reason": reason, "queue": []}
+    after = head.decide(request(first.goal["deadline"] + 0.1, last_skill=stopped))
+    assert after.goal is not None and after.goal["name"] != "road"
+    assert after.reason != "retry: observed skill failure"
+    assert head.last_rule.startswith("goal_")
+    # The same words from a skill that stopped by itself are a failure and are answered as one.
+    own = {**stopped, "reason": "stuck"}
+    head = MissionHead(goal_seed=5)
+    head.decide(request())
+    assert head.decide(request(5, last_skill=own)).reason == "retry: observed skill failure"
+
+
+def test_the_stop_at_the_deadline_leads_to_the_next_goal_and_not_to_a_failure_step(tmp_path, monkeypatch):
+    conductor, _runner, obs, rgb = setup_conductor(tmp_path, monkeypatch)
+    try:
+        for t in (0, 0.1, 0.2):
+            conductor._tick(replace(obs, time=t), rgb)
+        deadline = conductor.goal["deadline"]
+        for t in (deadline, deadline + 0.1, deadline + 0.2, deadline + 0.3):
+            conductor._tick(replace(obs, time=t), rgb)
+        rows = [json.loads(line) for line in (tmp_path / "session/head.jsonl").read_text().splitlines()]
+        stopped = [r for r in rows if r.get("type") == "request" and r["request"]["last_skill"]]
+        assert stopped[0]["request"]["last_skill"]["reason"] == "goal_limit"
+        answer = [r for r in rows if r.get("type") == "response"][-1]
+        assert answer["goal"] is not None and answer["goal"]["name"] == "vehicle"
+        assert answer["reason"] != "retry: observed skill failure"
+        assert "failed_skill" not in conductor.head.counts
+    finally:
+        conductor.close()
+
+
+# D2: go_on only while the running skill fits what the figure is doing.
+
+
+@pytest.mark.parametrize(
+    "skill,seat,fits_it",
+    [
+        ("drive_route", "vehicle", True),
+        ("drive_route", "on_foot", False),
+        ("drive_route", "unknown", True),
+        ("walk", "on_foot", True),
+        ("walk", "vehicle", False),
+        ("walk_road", "vehicle", False),
+        ("walk_to", "vehicle", False),
+        ("punch", "vehicle", False),
+        ("punch", "on_foot", True),
+        ("walk_road", "none", True),
+        # the entry crosses from one to the other, and these do the same in both
+        ("enter_vehicle", "vehicle", True),
+        ("enter_vehicle", "on_foot", True),
+        ("set_waypoint", "vehicle", True),
+        ("set_waypoint", "on_foot", True),
+        ("look", "vehicle", True),
+        ("wait", "on_foot", True),
+        ("press", "vehicle", True),
+    ],
+)
+def test_which_skills_fit_which_way_of_moving(skill, seat, fits_it):
+    from pilot.goals import fits
+
+    assert fits(skill, seat) is fits_it
+
+
+def drive_head():
+    head = MissionHead(goal_seed=3)
+    first = head.decide(request(mode="vehicle"))
+    assert first.goal["name"] == "drive"
+    return head, first
+
+
+DRIVING_ON = {"name": "drive_route", "status": "running", "queue": []}
+
+
+def test_a_drive_goal_does_not_go_on_with_the_figure_on_foot():
+    head, _first = drive_head()
+    seated = head.decide(request(5, mode="vehicle", last_skill=DRIVING_ON))
+    assert seated.action == "go_on"
+    afoot = head.decide(request(10, mode="foot", last_skill=DRIVING_ON))
+    assert afoot.action == "replace" and afoot.goal["name"] == "drive"
+    assert afoot.plan[0].name in {"enter_vehicle", "walk_road"}
+    assert "drive_route does not fit" in afoot.reason
+
+
+def test_a_vehicle_exit_event_ends_the_drive_step_before_the_judge_has_changed_its_word():
+    head, _ = drive_head()
+    exit_event = [{"kind": "vehicle_exit", "old": "tilted", "new": "flat"}]
+    answer = head.decide(replace(request(10, mode="vehicle", last_skill=DRIVING_ON), events=exit_event))
+    assert answer.action == "replace" and answer.plan[0].name in {"enter_vehicle", "walk_road"}
+    # An exit that a later entry made good is no exit.
+    back = [*exit_event, {"kind": "vehicle_enter", "old": "flat", "new": "tilted"}]
+    head, _ = drive_head()
+    assert (
+        head.decide(replace(request(10, mode="vehicle", last_skill=DRIVING_ON), events=back)).action
+        == "go_on"
+    )
+
+
+def test_a_walk_does_not_go_on_with_the_figure_seated():
+    head = MissionHead(goal_seed=3)
+    head.goals.next = "fight"
+    head.decide(request(mode="foot", people=True))
+    walking = {"name": "walk_road", "status": "running", "queue": []}
+    assert head.decide(request(3, mode="foot", last_skill=walking, people=True)).action == "go_on"
+    seated = head.decide(request(6, mode="vehicle", last_skill=walking))
+    assert seated.action == "replace" and seated.goal["name"] == "fight"
+    assert [call.name for call in seated.plan] == ["press", "wait"]
+    assert "walk_road does not fit" in seated.reason
+
+
+def test_an_unreadable_mode_does_not_end_a_step_that_fits_either_way():
+    head, _ = drive_head()
+    unreadable = replace(
+        request(5, last_skill=DRIVING_ON), judgment=None, minimap={"minimap": "none", "corrupt": True}
+    )
+    assert head.decide(unreadable).action == "go_on"
+
+
+# D3: the event reaches the head once.
+
+
+def test_the_goal_interruption_reaches_the_head_once(tmp_path, monkeypatch):
+    conductor, _runner, obs, rgb = setup_conductor(tmp_path, monkeypatch)
+    try:
+        for t in (0, 0.1, 0.2):
+            conductor._tick(replace(obs, time=t), rgb)
+        conductor._tick(replace(obs, time=1, hud=Hud(screen="game", wanted=1, health=1)), rgb)
+        rows = [json.loads(line) for line in (tmp_path / "session/head.jsonl").read_text().splitlines()]
+        events = [e["kind"] for r in rows if r.get("type") == "request" for e in r["request"]["events"]]
+        assert events.count("goal_interrupted") == 1
+    finally:
+        conductor.close()
+
+
+# D4: a goal is the rules' own.
+
+
+def goal_reply(**changes):
+    goal = {
+        "name": "escape",
+        "started": 0,
+        "deadline": 999,
+        "seed": 1,
+        "direction": "north",
+        "attempts": 1,
+    }
+    return {
+        "plan": [{"name": "wait", "args": {"duration": 5}}],
+        "sentence": "Ich warte.",
+        "goal": goal,
+        **changes,
+    }
+
+
+def test_the_schema_for_a_model_has_no_goal_to_fill_in():
+    from pilot.head import response_schema
+
+    schema = response_schema()
+    assert schema["properties"]["goal"] == {"type": "null"}
+    assert "goal" in schema["required"]
+
+
+def test_a_goal_from_a_head_that_is_not_the_rules_is_ignored(tmp_path, monkeypatch):
+    from pilot.head import ScriptedHead
+
+    conductor, runner, obs, rgb = setup_conductor(tmp_path, monkeypatch, head=ScriptedHead([goal_reply()]))
+    try:
+        for t in (0, 0.1, 0.2):
+            conductor._tick(replace(obs, time=t), rgb)
+        assert conductor.goal is None
+        rows = [json.loads(line) for line in (tmp_path / "session/head.jsonl").read_text().splitlines()]
+        assert [r["goal"] for r in rows if r.get("type") == "response"] == [None]
+        # With no goal held, nothing the conductor stops for one: stars leave the plan to the head.
+        active = runner.active
+        conductor._tick(replace(obs, time=1, hud=Hud(screen="game", wanted=2, health=1)), rgb)
+        assert not active.stops
+    finally:
+        conductor.close()
+
+
+def test_a_goal_the_model_behind_the_rules_hands_in_is_dropped():
+    class Model:
+        answer = parse_response(goal_reply())
+
+        def decide(self, request):
+            return self.answer
+
+    unclear = replace(request(), judgment=None, minimap={"minimap": "none", "corrupt": True})
+    answer = MissionHead(Model()).decide(unclear)
+    assert answer.goal is None and answer.plan[0].name == "wait"
+
+
+def test_a_go_on_with_nothing_running_does_not_loop(tmp_path, monkeypatch):
+    from pilot.head import ScriptedHead
+
+    idle = {"plan": [], "sentence": "Ich bleibe dabei.", "action": "go_on"}
+    head = ScriptedHead([idle] * 200)
+    conductor, _runner, obs, rgb = setup_conductor(tmp_path, monkeypatch, head=head)
+    try:
+        for i in range(300):
+            conductor._tick(replace(obs, time=i * 0.1), rgb)
+        # Thirty seconds of ticks: a request at the start and one at the end of each short wait.
+        assert conductor.request_count <= 12
+        rows = [json.loads(line) for line in (tmp_path / "session/head.jsonl").read_text().splitlines()]
+        assert {r["disposition"] for r in rows if r.get("type") == "response"} == {"refused"}
+        assert not any(
+            r["request"]["events"] == [{"kind": "plan_finished"}] for r in rows if r.get("type") == "request"
+        )
+    finally:
+        conductor.close()
+
+
+# D8: a goal's answer never kills a skill that cannot be cut short.
+
+
+class Uninterruptible(HeldSkill):
+    uninterruptible = True
+
+    def __init__(self, name):
+        super().__init__(name)
+        self.limit = 1.0
+
+    def step(self, observation):
+        if observation.time >= 1.0:
+            return SkillResult(status="done", reason="time-limit")
+        return SkillResult(Pad(left=(0, -0.5)))
+
+
+def test_a_goal_answer_waits_behind_the_opening_that_cannot_be_cut_short(tmp_path, monkeypatch):
+    monkeypatch.setattr(
+        "pilot.skills.make_skill",
+        lambda call, **kwargs: (Uninterruptible if call.name == "level_camera" else HeldSkill)(call.name),
+    )
+    runner = SkillRunner()
+    conductor = Conductor(
+        tmp_path / "session",
+        notebook=tmp_path / "notes",
+        runner=runner,
+        head=MissionHead(goal_seed=7),
+        opening=(SkillCall("level_camera", {}),),
+        detector=NoEvents(),
+        submit=immediate,
+    )
+    obs = Observation(
+        Reading("flat", "none", 0, 0, 0, False, 1), True, 0, hud=Hud(screen="game", wanted=0, health=1)
+    )
+    rgb = np.zeros((720, 1280, 3), dtype=np.uint8)
+    try:
+        seen = []
+        for i in range(40):
+            conductor._tick(replace(obs, time=i * 0.1), rgb)
+            if runner.active is not None and runner.active.name not in seen:
+                seen.append(runner.active.name)
+        assert seen[:2] == ["level_camera", "walk_road"]
+        rows = [json.loads(line) for line in (tmp_path / "session/head.jsonl").read_text().splitlines()]
+        assert next(r["disposition"] for r in rows if r.get("type") == "response") == "appended"
+    finally:
+        conductor.close()
+
+
+# D5: an answer the conductor dropped consumed nothing.
+
+
+def test_deciding_again_on_the_same_failure_after_a_dropped_answer_gives_the_same_answer():
+    failed = {"name": "enter_vehicle", "status": "failed", "reason": "could not reach it", "queue": []}
+
+    def settle(drop):
+        head = MissionHead(goal_seed=3)
+        head.decide(request(cars=True))
+        first = head.decide(request(5, cars=True, last_skill=failed))
+        if drop:
+            head.discard()
+        second = head.decide(request(5.2, cars=True, last_skill=failed))
+        return first, second, head
+
+    first, second, head = settle(drop=True)
+    assert first.plan == second.plan and first.goal == second.goal and first.reason == second.reason
+    assert first.reason == "retry: observed skill failure" and first.goal["attempts"] == 2
+    assert sum(h["outcome"] == "started" for h in head.goals.history) == 1
+    # Without the take-back the failure is spent: no recovery, one try gone for nothing.
+    spent_first, spent_second, _ = settle(drop=False)
+    assert spent_second.reason != spent_first.reason and spent_second.goal["attempts"] == 3
+
+
+def test_the_conductor_gives_back_what_an_overtaken_answer_consumed(tmp_path, monkeypatch):
+    dropped = []
+
+    class Spy(MissionHead):
+        def discard(self):
+            dropped.append(self.goals.active and self.goals.active.attempts)
+            super().discard()
+
+    pending = []
+
+    def submit(fn, *args):
+        future = Future()
+        pending.append((future, fn, args))
+        return future
+
+    conductor, _runner, obs, rgb = setup_conductor(
+        tmp_path, monkeypatch, submit=submit, head=Spy(goal_seed=7)
+    )
+    try:
+        conductor._tick(obs, rgb)
+        future, fn, args = pending.pop(0)
+        future.set_result(fn(*args))
+        conductor._tick(replace(obs, time=0.1), rgb)
+        conductor._tick(replace(obs, time=0.2), rgb)
+        conductor._tick(replace(obs, time=0.3), rgb, events=[{"kind": "help_changed"}])
+        future, fn, args = pending.pop(0)
+        response = fn(*args)
+        # An event while that answer is on its way overtakes it.
+        conductor._tick(replace(obs, time=0.4), rgb, events=[{"kind": "route_appeared"}])
+        future.set_result(response)
+        conductor._tick(replace(obs, time=0.5), rgb)
+        assert len(dropped) == 1
+    finally:
+        conductor.close()

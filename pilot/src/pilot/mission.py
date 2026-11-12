@@ -6,7 +6,7 @@ from collections import Counter
 from dataclasses import replace
 
 from .contract import ARROW_XY
-from .goals import Goals
+from .goals import Goals, own_stop
 from .head import Head, HeadRequest, HeadResponse, parse_response
 from .notes import intent
 
@@ -87,6 +87,9 @@ class MissionHead:
     # After a map without a mission letter, this many routes go somewhere else before the map is
     # asked for a letter again: a new one appears when the game has moved on, not at once.
     LETTERLESS_ROUTES = 4
+    # The conductor takes a goal from a head that says so, and from no other: a model behind the
+    # rules answers with the plan alone.
+    owns_goals = True
 
     def __init__(self, fallback: Head | None = None, *, goal_seed=None) -> None:
         self.fallback = fallback
@@ -101,7 +104,12 @@ class MissionHead:
         self.blip_candidates: list[dict] = []
         self.stable_blips: list[dict] = []
 
+    def discard(self) -> None:
+        """The conductor has dropped the answer to the last request: give back what it consumed."""
+        self.goals.undo()
+
     def decide(self, request: HeadRequest) -> HeadResponse:
+        self.goals.mark()
         self._update_intent(request)
         candidates = [
             blip
@@ -178,7 +186,10 @@ class MissionHead:
             if self.fallback is not None:
                 self.last_rule = "fallback"
                 self.counts[self.last_rule] += 1
+                # What the model answers is a plan; a goal belongs to the rules.
                 response = self.fallback.decide(request)
+                if response.goal is not None:
+                    response = replace(response, goal=None)
                 if self.goals.transition:
                     response = replace(response, reason=self.goals.transition)
                     self.goals.transition = ""
@@ -287,18 +298,21 @@ class MissionHead:
     @staticmethod
     def _failure_reason(request: HeadRequest) -> str | None:
         if request.last_skill and request.last_skill.get("status") == "failed":
-            return request.last_skill.get("reason")
+            if not own_stop(request.last_skill):
+                return request.last_skill.get("reason")
         for event in reversed(request.events):
-            if event.get("kind") == "skill_failed":
+            if event.get("kind") == "skill_failed" and not own_stop(event.get("skill")):
                 return (event.get("skill") or {}).get("reason")
         return None
 
     @staticmethod
     def _failed(request: HeadRequest) -> str | None:
+        # A skill the conductor stopped for the goal (goal_limit, goal_stars) did not fail.
         if request.last_skill and request.last_skill.get("status") == "failed":
-            return request.last_skill.get("name")
+            if not own_stop(request.last_skill):
+                return request.last_skill.get("name")
         for event in reversed(request.events):
-            if event.get("kind") == "skill_failed":
+            if event.get("kind") == "skill_failed" and not own_stop(event.get("skill")):
                 return (event.get("skill") or {}).get("name")
         return None
 

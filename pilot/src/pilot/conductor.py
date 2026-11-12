@@ -16,7 +16,7 @@ import cv2
 from .contract import FRAME_SIZE, HUD_RECT, NEUTRAL_PAD, Pad, player_mode
 from .flow import MENUS
 from .goals import interruption
-from .head import HeadRequest, ScriptedHead, build_prompt, parse_response, response_data
+from .head import HeadRequest, ScriptedHead, SkillCall, build_prompt, parse_response, response_data
 from .judge import ModeFilter
 from .loop import ControllerRuntime, Pipeline, RuntimeInterruptedError, cleanup_runtime, interrupt_handlers
 from .profile import active
@@ -180,16 +180,32 @@ class Conductor:
             "overtaken": discard or request["epoch"] != self.epoch,
             "disposition": "discarded",
         }
+        discarded = getattr(self.head, "discard", None)
         try:
             decision = parse_response(response_data(self.future.result()))
+            # A goal is the rules' own; whatever else answers brings a plan and no goal.
+            if not getattr(self.head, "owns_goals", False) and decision.goal is not None:
+                decision = replace(decision, goal=None)
             row.update(response_data(decision))
-            if not row["overtaken"]:
+            if row["overtaken"]:
+                if discarded is not None:
+                    discarded()
+            else:
                 if decision.action == "go_on":
-                    row["disposition"] = "kept"
-                    if not self.runner.has_plan:
+                    if self.runner.has_plan:
+                        row["disposition"] = "kept"
+                    elif decision.goal is not None:
+                        # The skill ended while the answer was on its way: ask for the next step now.
+                        row["disposition"] = "kept"
                         self.pending.append({"kind": "plan_finished"})
-                elif decision.goal is None and (
-                    request["append"] or getattr(self.runner, "uninterruptible", False)
+                    else:
+                        # Nothing runs for it to go on with, and asking again at once would only
+                        # bring the same answer: a short wait, and the end of it asks.
+                        row["disposition"] = "refused"
+                        row["error"] = "go_on without a running plan"
+                        self.runner.append((SkillCall("wait", {"duration": 3}),))
+                elif getattr(self.runner, "uninterruptible", False) or (
+                    decision.goal is None and request["append"]
                 ):
                     self.runner.append(decision.plan)
                     row["disposition"] = "appended"
@@ -209,6 +225,8 @@ class Conductor:
         except Exception as exc:
             row["error"] = f"{type(exc).__name__}: {exc}"
             self.pending.append({"kind": "head_failed", "error": row["error"]})
+            if discarded is not None:
+                discarded()
         finally:
             self.write(row)
             self.future = self.inflight = None
@@ -355,10 +373,10 @@ class Conductor:
                 self.runner.stop("goal_" + reason)
                 self.write({"type": "goal_end", "t": t, "goal": self.goal, "reason": reason})
                 self.goal = None
-                new_events.append({"kind": "goal_interrupted", "reason": reason})
                 # Flow can return early. Invalidate the pending answer before it gets that chance.
+                # The event goes to pending here and nowhere else: new_events reaches it below.
                 self.epoch += 1
-                self.pending.append(new_events[-1])
+                self.pending.append({"kind": "goal_interrupted", "reason": reason})
                 self.carry_allowed = False
                 self.carry_started = None
         recovered = self.flow_started is not None

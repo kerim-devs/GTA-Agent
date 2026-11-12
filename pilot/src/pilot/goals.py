@@ -1,5 +1,6 @@
 """A bounded free-roam round. Progress needs observations, not a new head event."""
 
+import copy
 import random
 import secrets
 import time
@@ -25,8 +26,42 @@ TITLES = {
 SUCCESSOR = {"vehicle": "drive", "drive": "fight", "fight": "escape", "escape": "vehicle", "road": "vehicle"}
 
 
+# Skills that fit one way of moving only. On foot the stick walks the figure, a minimap blip is
+# followed on a flat map and the face buttons strike; seated, the same pad steers and accelerates
+# the vehicle. drive_route is the converse: its throttle and wheel mean nothing to a figure on foot.
+# enter_vehicle crosses from one to the other by design, and set_waypoint, look, press, wait,
+# shoot and level_camera do the same thing in either.
+FOOT_ONLY = {"walk", "walk_road", "walk_to", "face", "punch", "melee", "fight"}
+VEHICLE_ONLY = {"drive_route"}
+
+
 def call(name, **args):
     return {"name": name, "args": args}
+
+
+def own_stop(last: dict | None) -> bool:
+    """The conductor stopped this skill for the goal; that is no failure of the skill."""
+    return bool(last) and last.get("status") == "failed" and str(last.get("reason") or "").startswith("goal_")
+
+
+def occupancy(mode: str, events) -> str:
+    """Where the figure sits: the latest change the events report outranks the mode named before it."""
+    seat = mode
+    for event in events:
+        if event.get("kind") == "vehicle_exit":
+            seat = "on_foot"
+        elif event.get("kind") == "vehicle_enter":
+            seat = "vehicle"
+    return seat
+
+
+def fits(skill: str, seat: str) -> bool:
+    """A mode nobody could read says nothing against the skill."""
+    if skill in FOOT_ONLY:
+        return seat != "vehicle"
+    if skill in VEHICLE_ONLY:
+        return seat != "on_foot"
+    return True
 
 
 def interruption(request: HeadRequest, goal: dict | None = None) -> str | None:
@@ -86,6 +121,10 @@ class Goal:
 
 
 class Goals:
+    # What one decision may change. The conductor can drop the answer it was made for as out of
+    # date, and then the state it consumed has to come back or the next one runs short.
+    STATE = ("active", "next", "abandoned", "history", "transition", "road_found")
+
     def __init__(self, seed=None, clock=time.monotonic):
         self.seed = secrets.randbits(32) if seed is None else seed
         self.random = random.Random(self.seed)
@@ -96,6 +135,20 @@ class Goals:
         self.history: list[dict] = []
         self.transition = ""
         self.road_found = False
+        self._undo = None
+
+    def mark(self):
+        self._undo = (copy.deepcopy({key: getattr(self, key) for key in self.STATE}), self.random.getstate())
+
+    def undo(self):
+        """Take back everything the last decision consumed."""
+        if self._undo is None:
+            return
+        state, generator = self._undo
+        for key, value in state.items():
+            setattr(self, key, value)
+        self.random.setstate(generator)
+        self._undo = None
 
     def now(self, request):
         return self.clock() if request.time is None else request.time
@@ -160,12 +213,19 @@ class Goals:
                 (e.get("wanted", 0) for e in reversed(request.events) if e.get("kind") == "wanted_changed"),
                 None,
             )
-        goal = self.active or self._start(request, mode, cars, wanted)
+        seat = occupancy(mode, request.events)
+        goal = self.active or self._start(request, seat, cars, wanted)
         last = request.last_skill or {}
-        running = goal.attempts > 0 and (
-            last.get("status") in {"running", "queued"}
-            or bool(last.get("queue"))
-            or bool(last.get("pending"))
+        working = last.get("name") if last.get("status") == "running" else None
+        misfit = working is not None and not fits(working, seat)
+        running = (
+            goal.attempts > 0
+            and not misfit
+            and (
+                last.get("status") in {"running", "queued"}
+                or bool(last.get("queue"))
+                or bool(last.get("pending"))
+            )
         )
         fresh = last != goal.last_result
         if fresh:
@@ -177,7 +237,7 @@ class Goals:
         reached = None
         if (
             goal.name == "vehicle"
-            and mode == "vehicle"
+            and seat == "vehicle"
             and not (last.get("name") == "enter_vehicle" and last.get("status") == "running")
         ):
             reached = "vehicle observed"
@@ -202,7 +262,7 @@ class Goals:
         elif (
             goal.name == "road"
             and goal.attempts > 0
-            and (mode == "vehicle" or cars or last.get("road_reached"))
+            and (seat == "vehicle" or cars or last.get("road_reached"))
         ):
             reached = (
                 "road observed under player"
@@ -214,7 +274,7 @@ class Goals:
             reached = "wanted cleared"
         if reached:
             self.end(request, reached, reached=True)
-            goal = self._start(request, mode, cars, wanted)
+            goal = self._start(request, seat, cars, wanted)
             running = False
         if self.now(request) >= goal.data()["deadline"] or (
             not running and goal.attempts >= LIMITS[goal.name][1]
@@ -229,14 +289,14 @@ class Goals:
                         "step": "escape rules",
                     }
                 )
-            goal = self._start(request, mode, cars, wanted)
+            goal = self._start(request, seat, cars, wanted)
             running = False
         if running:
             return self._reply(
                 goal, [], "go_on", self.transition or "kept: running skill and queue still serve this goal"
             )
 
-        failed = last.get("status") == "failed" and fresh
+        failed = last.get("status") == "failed" and fresh and not own_stop(last)
         if failed and recovery_plan is not None:
             plan = recovery_plan
         elif goal.name == "escape" and wanted and escape_plan is not None:
@@ -246,7 +306,7 @@ class Goals:
                 [call("enter_vehicle", duration=25, kind="any")] if cars else [call("walk_road", duration=15)]
             )
         elif goal.name == "drive":
-            if mode != "vehicle":
+            if seat != "vehicle":
                 plan = (
                     [call("enter_vehicle", duration=25, kind="any")]
                     if cars
@@ -262,7 +322,7 @@ class Goals:
                     call("drive_route", duration=120),
                 ]
         elif goal.name == "fight":
-            if mode == "vehicle":
+            if seat == "vehicle":
                 plan = [call("press", button="triangle", duration=0.1), call("wait", duration=2)]
             elif any(o.get("kind") == "person" for o in request.objects):
                 plan = [call("punch", duration=20, hits=3)]
@@ -271,7 +331,7 @@ class Goals:
         elif goal.name == "escape":
             plan = (
                 [call("walk", duration=5, x=0, y=-1, sprint=True)]
-                if mode == "on_foot"
+                if seat == "on_foot"
                 else [call("drive_route", duration=60)]
             )
         else:
@@ -280,7 +340,12 @@ class Goals:
             plan.insert(0, call("look", duration=1.2, angle=180))
         goal.attempts += 1
         goal.step = " → ".join(item["name"] for item in plan)
-        reason = self.transition or ("retry: observed skill failure" if failed else "start next goal step")
+        if misfit:
+            misfit_reason = f"step ended: {working} does not fit the figure"
+            misfit_reason += " seated" if seat == "vehicle" else " on foot"
+        reason = self.transition or (
+            "retry: observed skill failure" if failed else misfit_reason if misfit else "start next goal step"
+        )
         self.transition = ""
         return self._reply(goal, plan, "replace", reason)
 
