@@ -69,7 +69,7 @@ def test_unknown_reaches_fallback_by_identity_and_returns_exact_answer():
         ("wifi-160", "vehicle_waypoint", "set_waypoint"),
         ("wifi-230", "vehicle_route", "drive_route"),
         ("wifi-245", "low_health_vehicle", "set_waypoint"),
-        ("wifi-485", "foot_explore", "look"),
+        ("wifi-485", "foot_explore", "walk_road"),
         ("wifi-536.761", "wanted_on_foot", "walk"),
         ("wifi-33.7221", "screen_reflex", "wait"),
         ("objects-071", "wanted_on_foot_vehicle", "enter_vehicle"),
@@ -434,3 +434,40 @@ def test_a_failed_fight_is_not_repeated_at_once():
     head = MissionHead(Fallback())
     assert head.decide(value).plan[0].name != "fight"
     assert head.last_rule == "failed_skill"
+
+
+def _on_foot_failure(name, reason):
+    return replace(
+        request("wifi-485"),
+        last_skill={"name": name, "status": "failed", "reason": reason},
+    )
+
+
+def test_unmarked_foot_heads_for_a_road():
+    head = MissionHead()
+    answer = head.decide(request("wifi-485"))
+    assert head.last_rule == "foot_explore"
+    assert [call.name for call in answer.plan] == ["walk_road"]
+
+
+def test_a_map_without_roads_looks_and_walks_as_before():
+    head = MissionHead()
+    answer = head.decide(_on_foot_failure("walk_road", "no-road"))
+    assert head.last_rule == "foot_explore_roadless"
+    assert [call.name for call in answer.plan] == ["look", "walk", "look", "walk"]
+
+
+@pytest.mark.parametrize("name", ["walk", "walk_road"])
+def test_walking_that_found_no_way_round_turns_about(name):
+    head = MissionHead()
+    answer = head.decide(_on_foot_failure(name, "stuck"))
+    assert head.last_rule == "foot_stuck"
+    assert [call.name for call in answer.plan] == ["look", "walk_road"]
+    assert answer.plan[0].args["angle"] == 180
+
+
+def test_a_blocked_walk_to_keeps_its_old_answer():
+    head = MissionHead()
+    answer = head.decide(_on_foot_failure("walk_to", "blocked"))
+    assert head.last_rule == "failed_skill"
+    assert [call.name for call in answer.plan] == ["walk"]

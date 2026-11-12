@@ -87,12 +87,14 @@ def test_blocked_walk_alternates_then_fails():
     side = []
     for tick in range(301):
         result = skill.step(observation(tick / 30, (Blip("blue", 0, 50),), moving=False))
-        if result.pad.left[0] and (not side or side[-1] != result.pad.left[0]):
-            side.append(result.pad.left[0])
+        x = result.pad.left[0]
+        if abs(x) > 0.5 and (not side or side[-1] != (x > 0)):
+            side.append(x > 0)
             assert not result.pad.buttons
         if result.status != "running":
             break
-    assert side == [0.65, -0.65, 0.65]
+    # The ways round go right, left, right, left (foot.FootGuard.ESCAPES), then walk_to gives up.
+    assert side == [True, False, True, False]
     assert result.reason == "blocked" and result.pad == NEUTRAL_PAD
 
 
