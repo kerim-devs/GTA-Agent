@@ -80,9 +80,10 @@ class Conductor:
         self.head = ScriptedHead() if head is None else head
         self.notebook = PLAY_RECORDINGS / "notebook.txt" if notebook is None else Path(notebook)
         self.runner = SkillRunner() if runner is None else runner
-        # What the session does before the head has said anything, such as levelling the camera.
+        # What the session does before the head has said anything, such as setting the view and
+        # levelling the camera. An opening skill that fails costs the head's first plan nothing.
         if opening:
-            self.runner.replace(tuple(opening))
+            self.runner.replace(tuple(opening), opening=True)
         self.detector = EventDetector() if detector is None else detector
         self.ocr, self.reader = ocr, text_reader
         self.quiet_seconds, self.ocr_interval, self.ocr_timeout = quiet_seconds, ocr_interval, ocr_timeout
@@ -401,6 +402,9 @@ class Conductor:
             self.carry_started = None
         self._finish_head(t)
         result = self.runner.tick(observation)
+        failures = getattr(self.runner, "opening_failures", None)
+        while failures:
+            self.write({"type": "opening_failed", "t": t, **failures.pop(0)})
         self._expect_skill()
         if self.runner.completed:
             last = self.runner.describe()
@@ -677,6 +681,7 @@ def run_play(
     started = clock()
     ticks = 0
     detections, capture_time = (), None
+    figure = figure_vehicle = None
     with interrupt_handlers():
         try:
             if record:
@@ -715,6 +720,9 @@ def run_play(
                         if newest is not None:
                             capture_time, detections = newest
                             detections = tuple(detections)
+                            # The person and the vehicle the reader cut out belong to these detections.
+                            figure = getattr(objects, "figure", None)
+                            figure_vehicle = getattr(objects, "figure_vehicle", None)
                     result = conductor.tick(
                         Observation(
                             reading,
@@ -723,6 +731,8 @@ def run_play(
                             frame=frame.rgb,
                             objects=detections,
                             objects_time=capture_time,
+                            figure=figure,
+                            figure_vehicle=figure_vehicle,
                             hud=None
                             if hud is None
                             else hud.read(frame.rgb, text=getattr(conductor, "text", None)),

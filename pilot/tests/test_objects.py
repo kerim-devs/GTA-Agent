@@ -12,7 +12,7 @@ import numpy as np
 import pytest
 
 from pilot.contract import Detection
-from pilot.objects import Detector, Reader, without_player
+from pilot.objects import Detector, Reader, split_player, without_player
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -238,4 +238,66 @@ def test_a_frame_offered_while_the_detector_works_does_not_reach_its_pixels():
         assert seen[0] == 0
     finally:
         release.set()
+        reader.close()
+
+
+def test_the_person_and_the_vehicle_cut_out_come_back_beside_what_is_left():
+    figure = Detection("person", (540, 330, 640, 600), 0.9)
+    onlooker = Detection("person", (600, 340, 650, 520), 0.8)  # stands in the figure's place, smaller
+    bystander = Detection("person", (20, 400, 60, 520), 0.8)
+    rider_bike = Detection("motorcycle", (560, 450, 700, 640), 0.8)
+    parked = Detection("car", (900, 380, 1100, 520), 0.9)
+    everything = (onlooker, parked, figure, bystander, rider_bike)
+    kept, person, vehicle = split_player(everything)
+    assert person is figure and vehicle is rider_bike
+    assert kept == (onlooker, parked, bystander)
+    assert without_player(everything) == kept  # what the avoider sees is as it was
+    assert split_player((parked, bystander)) == ((parked, bystander), None, None)
+
+
+def test_the_real_detector_gives_the_cut_out_figure_beside_the_filtered_list(detector):
+    for number, player in [(40, (505, 330, 625, 655)), (60, (542, 322, 642, 520))]:
+        kept, figure, _ = detector.detect_split(frame(number))
+        assert kept == detector(frame(number))
+        assert figure is not None and iou(figure.box, player) > 0.5 and figure.kind == "person"
+        assert all(d is not figure for d in kept)
+
+
+def test_the_reader_keeps_the_figure_with_the_detections_it_belongs_to():
+    first = Detection("person", (540, 330, 640, 600), 0.9)
+    results = iter([((), first, None), ((), None, Detection("car", (560, 450, 700, 640), 0.8))])
+
+    class Recognizer:
+        def detect_split(self, frame):
+            return next(results)
+
+    pixels = np.zeros((720, 1280, 3), np.uint8)
+    reader = Reader(interval=0, recognizer=Recognizer())
+    try:
+        assert reader.figure is None and reader.figure_vehicle is None
+        got = []
+        deadline = perf_counter() + 2
+        while len(got) < 2 and perf_counter() < deadline:
+            result = reader.poll(pixels, perf_counter())
+            if result is not None:
+                got.append((result, reader.figure, reader.figure_vehicle))
+            sleep(0.001)
+        assert [g[0][1] for g in got] == [(), ()]
+        assert got[0][1:] == (first, None)
+        assert got[1][1] is None and got[1][2].kind == "car"
+    finally:
+        reader.close()
+
+
+def test_a_recognizer_that_does_not_split_leaves_the_figure_unknown():
+    pixels = np.zeros((720, 1280, 3), np.uint8)
+    reader = Reader(interval=0, recognizer=lambda frame: (Detection("car", (0, 0, 9, 9), 0.9),))
+    try:
+        deadline = perf_counter() + 2
+        result = None
+        while result is None and perf_counter() < deadline:
+            result = reader.poll(pixels, perf_counter())
+            sleep(0.001)
+        assert result[1][0].kind == "car" and reader.figure is None and reader.figure_vehicle is None
+    finally:
         reader.close()

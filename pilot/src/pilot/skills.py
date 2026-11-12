@@ -274,6 +274,7 @@ class Face(RegisteredSkill):
 
 
 # New modules plug in with an import and one entry here.
+from .camera import SetFarView  # noqa: E402
 from .combat import Fight, Melee  # noqa: E402
 from .level import LevelCamera  # noqa: E402
 from .punch import Punch  # noqa: E402
@@ -297,6 +298,7 @@ REGISTRY = {
         Melee,
         Punch,
         LevelCamera,
+        SetFarView,
         WalkRoad,
     )
 }
@@ -319,8 +321,12 @@ class SkillRunner:
         self.completed = False
         self.road_reached = False
         self.route_seen = False
+        # The skills a session begins with. One that fails leaves the queue alone: whatever
+        # follows it, the next opening skill and then the head's first plan, still runs.
+        self.opening: tuple = ()
+        self.opening_failures: list[dict] = []
 
-    def replace(self, calls: tuple["SkillCall", ...]) -> Pad:
+    def replace(self, calls: tuple["SkillCall", ...], *, opening: bool = False) -> Pad:
         # Construct all skills before touching the existing plan.
         replacements = [
             make_skill(call, driver=self.driver_factory() if call.name == "drive_route" else None)
@@ -328,6 +334,7 @@ class SkillRunner:
         ]
         self.stop("replaced")
         self.queue.extend(replacements)
+        self.opening = tuple(replacements) if opening else ()
         self.release_pending = True
         return NEUTRAL_PAD
 
@@ -346,6 +353,7 @@ class SkillRunner:
             }
         self.active = None
         self.queue.clear()
+        self.opening = ()
         self.completed = False
         self.release_pending = True
         return NEUTRAL_PAD
@@ -374,6 +382,14 @@ class SkillRunner:
             and observation.time - road_since >= self.active.ON_ROAD_SECONDS
         )
         if result.status != "running":
+            if result.status == "failed" and any(self.active is skill for skill in self.opening):
+                # Not the plan's failure: it is logged, and neither the head nor the queue hears of it.
+                self.opening_failures.append(
+                    {"name": self.active.name, "reason": result.reason, "queue": [s.name for s in self.queue]}
+                )
+                self.active = None
+                self.completed = False
+                return result
             queued = [skill.name for skill in self.queue]
             failed = result.status == "failed"
             self.last = {
