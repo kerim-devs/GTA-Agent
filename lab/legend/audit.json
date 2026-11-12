@@ -1,0 +1,1623 @@
+{
+  "summary": {
+    "samples": 185,
+    "counters": 102,
+    "selected": {
+      "Spieler": 28,
+      "Ammu-Nation": 26,
+      "Ammu-Nation mit Schießstand": 3,
+      "Autowaschanlage": 2,
+      "Beekers Garage": 3,
+      "Binco Bekleidung": 2,
+      "Discount Store": 3,
+      "Fahrgeschäft": 2,
+      "Fremde und Freaks": 3,
+      "Friseursalon": 31
+    },
+    "waypoint_samples": 5,
+    "unreadable_selection": 3
+  },
+  "readings": [
+    {
+      "t": -0.0099,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 0.4886,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 0.9917,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 1.4912,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 1.9924,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 2.4917,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 2.9926,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 3.4928,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 3.9966,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 4.4941,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 4.9946,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 5.4935,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 5.9956,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 6.4961,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 6.9962,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 7.4981,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 8.0067,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 8.5232,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 9.0444,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 9.569,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 10.0896,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 10.5017,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 11.0006,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 11.5009,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 12.001,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 12.5041,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 13.0172,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 13.5139,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 14.0137,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 14.5148,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 15.0155,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 15.515,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 16.0154,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 16.5169,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 17.0177,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 17.5178,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 18.0211,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 18.5188,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 19.0256,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 19.5412,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 20.0617,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 20.5766,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 21.1035,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 21.5208,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 22.0241,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 22.5226,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 23.0231,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 23.5355,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 24.0241,
+      "screen": null,
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 24.5256,
+      "screen": null,
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 25.0248,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 25.5254,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 26.0258,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 26.5268,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 27.0267,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 27.5269,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 28.0287,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 28.5284,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 29.031,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 29.53,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 30.0307,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 30.541,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 31.0634,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 31.5873,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 32.1088,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 32.5329,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 33.0315,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 33.5338,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 34.0333,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 34.5344,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 35.0356,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 35.5351,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 36.0356,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 36.5371,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 37.0387,
+      "screen": "map",
+      "selected": "Spieler",
+      "counter": [
+        1,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 37.5447,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 38.0564,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 38.5543,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 39.0584,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 39.5562,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 40.0555,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 40.5566,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 41.0582,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 41.5596,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 42.0716,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 42.6008,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 43.119,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 43.6422,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 44.0603,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 44.5626,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 45.0621,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 45.5632,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 46.0621,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 46.5637,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 47.0631,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 47.5646,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 48.064,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 48.5656,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 49.0655,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 49.5666,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 50.0667,
+      "screen": "map",
+      "selected": "Ammu-Nation",
+      "counter": [
+        2,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 50.5687,
+      "screen": "map",
+      "selected": "Ammu-Nation mit Schießstand",
+      "counter": [
+        3,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 51.0843,
+      "screen": "map",
+      "selected": "Ammu-Nation mit Schießstand",
+      "counter": [
+        3,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 51.5845,
+      "screen": "map",
+      "selected": "Ammu-Nation mit Schießstand",
+      "counter": [
+        3,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 52.0854,
+      "screen": "map",
+      "selected": "Autowaschanlage",
+      "counter": [
+        4,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 52.5853,
+      "screen": "map",
+      "selected": "Autowaschanlage",
+      "counter": [
+        4,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 53.0919,
+      "screen": "map",
+      "selected": "Beekers Garage",
+      "counter": [
+        5,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 53.6099,
+      "screen": "map",
+      "selected": "Beekers Garage",
+      "counter": [
+        5,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 54.1309,
+      "screen": "map",
+      "selected": "Beekers Garage",
+      "counter": [
+        5,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 54.6568,
+      "screen": "map",
+      "selected": "Binco Bekleidung",
+      "counter": [
+        6,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 55.1807,
+      "screen": "map",
+      "selected": "Binco Bekleidung",
+      "counter": [
+        6,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 55.7037,
+      "screen": "map",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 56.1063,
+      "screen": "map",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 56.6069,
+      "screen": "map",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 57.1236,
+      "screen": "map",
+      "selected": "Discount Store",
+      "counter": [
+        8,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 57.6239,
+      "screen": "map",
+      "selected": "Discount Store",
+      "counter": [
+        8,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 58.1259,
+      "screen": "map",
+      "selected": "Discount Store",
+      "counter": [
+        8,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 58.6428,
+      "screen": "map",
+      "selected": "Fahrgeschäft",
+      "counter": [
+        9,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 59.1431,
+      "screen": "map",
+      "selected": "Fahrgeschäft",
+      "counter": [
+        9,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 59.6569,
+      "screen": "map",
+      "selected": "Fremde und Freaks",
+      "counter": [
+        10,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 60.1427,
+      "screen": "map",
+      "selected": "Fremde und Freaks",
+      "counter": [
+        10,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 60.6451,
+      "screen": "map",
+      "selected": "Fremde und Freaks",
+      "counter": [
+        10,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 61.1612,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 61.6626,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 62.162,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 62.6626,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 63.1645,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 63.6635,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 64.1642,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 64.6638,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 65.1662,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 65.6655,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 66.1904,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 66.7143,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 67.2374,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 67.6674,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 68.1676,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 68.6672,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 69.1683,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 69.6712,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 70.1711,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 70.6705,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 71.1701,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 71.6705,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 72.172,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 72.6726,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 73.1727,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 73.6724,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        11,
+        28
+      ],
+      "distance_m": null
+    },
+    {
+      "t": 74.1722,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        12,
+        29
+      ],
+      "distance_m": 532.0
+    },
+    {
+      "t": 74.6733,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        12,
+        29
+      ],
+      "distance_m": 532.0
+    },
+    {
+      "t": 75.1745,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        12,
+        29
+      ],
+      "distance_m": 532.0
+    },
+    {
+      "t": 75.6749,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        12,
+        29
+      ],
+      "distance_m": 532.0
+    },
+    {
+      "t": 76.1768,
+      "screen": "map",
+      "selected": "Friseursalon",
+      "counter": [
+        12,
+        29
+      ],
+      "distance_m": 532.0
+    },
+    {
+      "t": 76.6766,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 77.2012,
+      "screen": "pause",
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 77.7262,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 78.2507,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 78.7712,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 79.1864,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 79.6836,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 80.1836,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 80.683,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 81.1851,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 81.6871,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 82.185,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 82.6871,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 83.1913,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 83.6892,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 84.1879,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 84.687,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 85.1899,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 85.6915,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 86.1952,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 86.6934,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 87.1942,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 87.6926,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 88.2156,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 88.7367,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 89.2588,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 89.7808,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 90.1938,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 90.6945,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 91.1965,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 91.6935,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    },
+    {
+      "t": 92.1985,
+      "screen": null,
+      "selected": null,
+      "counter": null,
+      "distance_m": null
+    }
+  ]
+}
