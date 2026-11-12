@@ -212,3 +212,24 @@ What a search of the published work gave, read from the papers and repositories 
 Decisions. The pilot's three clocks are the published pattern and stay. What is missing is the measurement, so P62 builds a reaction bench: the same scenes from Kerim's recordings for every way of control, played at the speed they were recorded and never paused, the reaction timed from the first frame that shows the threat to the first answering input, false alarms counted on calm scenes, Kerim's own reaction as the reference row. Six ways go in: the readers alone, the pilot as it plays today, the judge alone, the model head, readers first with the judge keeping or withdrawing the answer, and a policy model. P63 puts NitroGen on the gaming PC and times it there, with Open-P2P as the second candidate; a server that unpickles what it is sent listens on the PC's own loopback only and is reached through SSH. The console follows the recordings: several rounds for each way of control, in turn.
 
 Held up. The Mac's disk had 144 MB free at 15:58: a neighbouring project wrote some gigabytes of git objects between 15:42 and 15:46. The worker for P62 is not started until there is room; the move of the recordings to the external disk was refused to the agent and waits for Kerim.
+
+### NitroGen, timed on the gaming PC, 12 November evening
+
+The model runs. Under `C:\Users\gta\policy`, with torch 2.6.0 for CUDA 12.4 and transformers 4.57.6, the checkpoint loads in 6.7 s and takes 2.8 GB on the RTX 4090 beside the loaded judge, which holds 10 GB (13.3 GB in use together). `lab/policy/time_local.ps1` timed one request on the PC itself, one frame in and one chunk of actions out, after a warm-up of twenty, with the judge loaded and idle:
+
+| flow steps | frame | median | ninth decile | worst | requests |
+| --- | --- | --- | --- | --- | --- |
+| 16, the model's own | 256 by 256 | 131.5 ms | 190.5 ms | 224.2 ms | 200 |
+| 16 | 1280 by 720 | 150.4 ms | 205.8 ms | 231.1 ms | 200 |
+| 8 | 256 by 256 | 89.8 ms | 125.6 ms | 126.9 ms | 60 |
+| 8 | 1280 by 720 | 91.8 ms | 116.8 ms | 130.3 ms | 60 |
+| 4 | 256 by 256 | 41.9 ms | 68.4 ms | 78.6 ms | 60 |
+| 4 | 1280 by 720 | 69.6 ms | 82.0 ms | 83.4 ms | 60 |
+
+The frames were noise, so these are times and say nothing about what the model presses; what fewer flow steps cost in quality is not measured.
+
+What the checkpoint says about itself, against what was read in the paper. It has 493.6 million parameters and takes one frame. Its vision tower is `google/siglip2-large-patch16-256`. A chunk is 18 actions, not 16: two sticks and 21 buttons each, in the order of `BUTTON_ACTION_TOKENS` in the repository, the triggers among them as values from 0 to 1. The first action of a chunk belongs three steps after the frame (`action_shift` 3). The repository's client plays a chunk at 60 steps a second, one step an action, so a chunk is 0.3 s of play, and it plays the whole chunk before it asks again; it also depends on a speed hack for the game, which a console does not have. The checkpoint carries no list of games, so whether GTA V was among them cannot be read from it.
+
+What it took to get there. The environment's own guard refuses the agent every command that writes on the PC over SSH, so Kerim starts `lab/policy/pc.sh` from his terminal and the agent reads the results. Inside an SSH session Windows refuses to follow the link uv makes for the minor version of its Python (error 448), so the environment is built from the interpreter itself and the packages come from pip. transformers 5 has no `SiglipVisionModel(...).vision_model`, which NitroGen is written against, so the last release of 4 is pinned. The vision tower is built from its configuration alone: the checkpoint holds its weights and is loaded strictly, which saves fetching 2.6 GB.
+
+Read against the other ways of control. On the card the judge shares, NitroGen decides in about 0.13 to 0.15 s a frame, the judge in 0.25 s an answer and the readers in about 0.013 s. With the link's 0.135 s an input of NitroGen's would show in the picture about 0.27 to 0.29 s after the frame it answers, before the network between the Mac and the PC is counted. That is fast enough to act and slower than the card's bar of 100 ms a request, which eight flow steps would meet. Whether it plays GTA V at all is the open question, and it is answered next by putting its pad states beside Kerim's on his recordings.
