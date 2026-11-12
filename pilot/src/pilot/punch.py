@@ -24,8 +24,17 @@ class Punch:
     SEARCH_TIMEOUT = 3.0
     LOST_TIMEOUT = 1.0
     CENTER_TOLERANCE = 0.09
-    # Nominal-camera simulation estimate, not a calibrated console reach signal.
+    # Nominal-camera simulation estimate, not a calibrated console reach signal. Only used while the
+    # figure's own box is unknown.
     REACH_HEIGHT = 0.62
+    # A fixed share of the frame holds for one camera view only: with the far view the figure's own
+    # box is 0.27 to 0.30 of the frame and no person ever reaches 0.62, so the skill walked into a man
+    # for nine seconds without a punch (session 20261112-215851). There the man's box was 0.79 to
+    # 0.93 of the figure's own at contact and 0.52 of it five steps away.
+    REACH_RATIO = 0.75
+    # Held near a person, L2 makes the figure face and target that person by itself (Kerim, who
+    # plays it, on 12 November), so within reach the box need not sit in the middle of the frame.
+    LOCK_TOLERANCE = 0.2
     PULSE_DURATION = 0.12
     PULSE_PERIOD = 0.65
     GROUND_DURATION = 0.45
@@ -65,6 +74,7 @@ class Punch:
         self.pulse_started = None
         self.next_pulse = 0.0
         self.delivered_hits = 0
+        self.own_height = None
 
     def stop(self, reason: str = "interrupted") -> SkillResult:
         if self.finished is None:
@@ -138,6 +148,16 @@ class Punch:
             if distance <= 0.22 and (0.20 <= ratio <= 2.5 or fallen):
                 candidates.append((distance + 0.08 * abs(log(ratio)), box))
         return min(candidates, default=(0, None), key=lambda entry: entry[0])[1]
+
+    def _reach(self, obs):
+        """How tall a person's box is at arm's length: a share of the figure's own, which stands at
+        the same depth in any camera view; the last one seen is kept while the detector misses it."""
+        figure = obs.figure
+        if figure is not None and figure.kind == "person" and len(figure.box) == 4:
+            height = (figure.box[3] - figure.box[1]) / FRAME_SIZE[1]
+            if isfinite(height) and 0.1 <= height <= 1:
+                self.own_height = height
+        return self.REACH_HEIGHT if self.own_height is None else self.REACH_RATIO * self.own_height
 
     def _release(self):
         self.pulse_started = None
@@ -226,11 +246,13 @@ class Punch:
         self.ground_since = None
         self.stood = True
         error = (x0 + x1) / 2 - 0.5
-        in_reach = abs(error) <= self.CENTER_TOLERANCE and y1 - y0 >= self.REACH_HEIGHT
+        near = y1 - y0 >= self._reach(obs)
+        tolerance = self.CENTER_TOLERANCE if self.own_height is None else self.LOCK_TOLERANCE
+        in_reach = abs(error) <= tolerance and near
         if not in_reach:
             self.pulse_started = None
             turn = max(-0.35, min(0.35, error * 1.5))
-            speed = 0.0 if y1 - y0 >= self.REACH_HEIGHT else 0.65
+            speed = 0.0 if near else 0.65
             if abs(error) > 0.18:
                 speed *= 0.45
             return SkillResult(pad=Pad(left=(0.0, -speed), right=(turn, 0.0)))

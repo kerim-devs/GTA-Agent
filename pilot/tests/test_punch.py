@@ -356,3 +356,24 @@ def test_punch_takes_accepted_mode_over_opposite_map():
     assert Punch({}).step(with_mode("flat", "vehicle")).pad == NEUTRAL_PAD
     result = Punch({}).step(with_mode("flat", "none"))
     assert result.status == "running" and result.pad == NEUTRAL_PAD
+
+
+def test_reach_is_judged_against_the_figures_own_size():
+    # The boxes of session 20261112-215851: the figure 0.28 of the frame high in the far view, the
+    # man 0.25 at contact and 0.14 five steps away. Neither comes near the fixed 0.62.
+    own = Detection("person", (563, 317, 640, 518), 0.9)
+    near, far = person((640, 302, 704, 482)), person((704, 281, 768, 382))
+    walking = Punch({}).step(obs(0, [far], figure=own))
+    assert walking.pad.left[1] < 0 and not walking.pad.buttons and walking.pad.l2 == 0
+    punching = safe(Punch({}).step(obs(0, [near], figure=own)))
+    assert punching.pad.l2 == 1 and punching.pad.buttons == ("circle",)
+    # Without the figure's own box the fixed share stays the rule.
+    assert not Punch({}).step(obs(0, [near])).pad.buttons
+
+
+def test_the_figures_size_is_kept_while_the_detector_misses_it():
+    own = Detection("person", (563, 317, 640, 518), 0.9)
+    skill = Punch({})
+    near = person((640, 302, 704, 482))
+    assert skill.step(obs(0, [near], figure=own)).pad.buttons == ("circle",)
+    assert safe(skill.step(obs(0.05, [near]))).pad.l2 == 1
