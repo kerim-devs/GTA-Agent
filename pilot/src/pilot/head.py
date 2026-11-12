@@ -124,7 +124,18 @@ def parse_response(value: str | dict) -> HeadResponse:
             raise ValueError("unknown blip color")
         for key, value in args.items():
             rule = REGISTRY[name].parameters[key]
-            if all(isinstance(item, bool) for item in rule):
+            if name == "set_waypoint" and key == "place":
+                if not isinstance(value, str) or len(value) > 100 or (value and not value.strip()):
+                    raise ValueError("invalid place")
+            elif name == "set_waypoint" and key == "instance":
+                if (
+                    isinstance(value, bool)
+                    or not isinstance(value, (int, float))
+                    or not math.isfinite(value)
+                    or int(value) != value
+                ):
+                    raise ValueError("instance must be a finite integer")
+            elif all(isinstance(item, bool) for item in rule):
                 if not isinstance(value, bool):
                     raise ValueError(f"{key} must be boolean")
             elif all(isinstance(item, str) for item in rule):
@@ -134,6 +145,8 @@ def parse_response(value: str | dict) -> HeadResponse:
                 raise ValueError("skill values must be finite numbers")
             elif key in WHOLE and int(value) != value:
                 raise ValueError(f"{key} must be an integer")
+        if name == "set_waypoint" and args.get("place") and args.get("kind", "none") != "none":
+            raise ValueError("choose either place or kind")
         calls.append(SkillCall(name, dict(args)))
     return HeadResponse(
         tuple(calls),
@@ -163,7 +176,11 @@ def response_schema() -> dict:
     for name in sorted(SKILLS):
         properties = {}
         for key, rule in sorted(REGISTRY[name].parameters.items()):
-            if all(isinstance(item, bool) for item in rule):
+            if name == "set_waypoint" and key == "place":
+                properties[key] = {"type": "string"}
+            elif name == "set_waypoint" and key == "instance":
+                properties[key] = {"type": "integer", "minimum": 0, "maximum": 100, "default": 0}
+            elif all(isinstance(item, bool) for item in rule):
                 properties[key] = {"type": "boolean"}
             elif all(isinstance(item, str) for item in rule):
                 properties[key] = {"type": "string", "enum": sorted(rule)}
@@ -191,6 +208,26 @@ def response_schema() -> dict:
                 "additionalProperties": False,
             }
         )
+    # Short legend calls retain defaults without weakening strict schemas' required properties.
+    waypoint = next((v for v in variants if v["properties"]["name"]["enum"] == ["set_waypoint"]), None)
+    if waypoint is not None:
+        for argument in ("place", "kind"):
+            variants.append(
+                {
+                    **waypoint,
+                    "properties": {
+                        **waypoint["properties"],
+                        "args": {
+                            "type": "object",
+                            "properties": {
+                                argument: waypoint["properties"]["args"]["properties"][argument],
+                            },
+                            "required": [argument],
+                            "additionalProperties": False,
+                        },
+                    },
+                }
+            )
     return {
         "type": "object",
         "properties": {

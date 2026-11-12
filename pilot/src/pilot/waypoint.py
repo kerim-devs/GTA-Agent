@@ -214,19 +214,24 @@ BLIND_SECONDS = 2.0
 class SetWaypoint:
     name = "set_waypoint"
     opens = ("pause", "map")
+    uninterruptible = True
     parameters: ClassVar = {
         "target": ("mission", "away"),
         "duration": (1.0, 45.0, 45.0),
         "direction": ("any", "north", "east", "south", "west"),
         "distance": ("near", "far"),
+        "place": ("",),
+        "kind": ("none", "mission", "shop", "pastime"),
+        "instance": (0, 100, 0),
     }
     directions: ClassVar = {"north": (0, -1), "east": (1, 0), "south": (0, 1), "west": (-1, 0)}
     distances: ClassVar = {"near": 100.0, "far": 220.0}
     counter = 0
     prompt = (
-        "Set a waypoint to a recognised mission letter, or pan away by a measured near/far distance. "
-        "Away needs no player marker; direction any rotates. Needs fresh readable German map pictures. "
-        "Fails and backs out on an unverified screen, missing target/cursor, or time limit."
+        "Set a waypoint by free-text place name or kind mission/shop/pastime in the German legend. "
+        "instance 0 keeps the offered location. Empty place and kind none use legacy target mission/away. "
+        "Needs readable gameplay/menu frames. Fails on absent places, stuck selection or timeout; "
+        "returns the place, distance and observed names after closing the map."
     )
     settle = 1.3  # Exceeds the recorded Wi-Fi picture delay of 0.6-1.1 s.
     SLOW_TICK = 0.07  # two ticks of the loop
@@ -236,7 +241,24 @@ class SetWaypoint:
     def __init__(self, args: dict):
         self.profile = active()
         if not isinstance(args, dict) or set(args) - self.parameters.keys():
-            raise ValueError("expected target, duration, direction and distance")
+            raise ValueError("unknown waypoint arguments")
+        place = args.get("place", "")
+        if not isinstance(place, str) or len(place) > 100 or (place and not place.strip()):
+            raise ValueError("place must be a printed name of at most 100 characters")
+        kind = args.get("kind", "none")
+        if not isinstance(kind, str) or kind not in self.parameters["kind"]:
+            raise ValueError("invalid kind")
+        if place and kind != "none":
+            raise ValueError("choose either place or kind")
+        instance = args.get("instance", 0)
+        if (
+            isinstance(instance, bool)
+            or not isinstance(instance, (int, float))
+            or not math.isfinite(instance)
+            or int(instance) != instance
+        ):
+            raise ValueError("instance must be a finite integer")
+        instance = min(100, max(0, int(instance)))
         self.target = args.get("target", "mission")
         if not isinstance(self.target, str) or self.target not in self.parameters["target"]:
             raise ValueError("target must be mission or away")
@@ -266,6 +288,9 @@ class SetWaypoint:
         ):
             raise ValueError("duration must be finite")
         self.limit = min(45.0, max(1.0, duration))
+        from .legend import LegendWaypoint
+
+        self.legend = LegendWaypoint({**args, "instance": instance}) if place or kind != "none" else None
         self.started = None
         self.last_time = None
         self.finished = None
@@ -288,6 +313,8 @@ class SetWaypoint:
         self.blind_since = None
 
     def stop(self, reason="interrupted") -> SkillResult:
+        if self.legend is not None:
+            return self.legend.stop(reason)
         self.finished = SkillResult(status="failed", reason=reason)
         return self.finished
 
@@ -325,6 +352,8 @@ class SetWaypoint:
         )
 
     def step(self, observation: Observation) -> SkillResult:
+        if self.legend is not None:
+            return self.legend.step(observation)
         if self.finished is not None:
             return self.finished
         now = observation.time
