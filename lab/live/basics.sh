@@ -20,7 +20,7 @@ still='[{"name": "wait", "args": {"duration": 30}}]'
 steps=(
   'leave 8 [{"name": "press", "args": {"button": "triangle", "duration": 1}}]'
   'walk 28 [{"name": "walk_road", "args": {"duration": 20}}]'
-  'enter 33 [{"name": "enter_vehicle", "args": {"duration": 25, "kind": "any"}}]'
+  'enter 52 [{"name": "enter_vehicle", "args": {"duration": 40, "kind": "any"}}]'
   'place 32 next'
   'waypoint 52 [{"name": "set_waypoint", "args": {"target": "away"}}]'
   'drive 66 [{"name": "drive_route", "args": {"duration": 60}}]'
