@@ -28,6 +28,29 @@ TITLES = {
 SUCCESSOR = {"vehicle": "drive", "drive": "fight", "fight": "escape", "escape": "vehicle", "road": "vehicle"}
 
 
+# How a drive_route that ended without arriving is answered (skills.py DriveRoute). A car that will not
+# move is left: the figure gets out, walks away from it and takes another before the trip goes on. A
+# drive that got no nearer, or lost its route far from the place, sets the waypoint again on the same
+# place once; the second time on that place the trip is given up and the round moves on. A drive that
+# stood because it could not read the map is begun again after a look round, the same car once, and
+# the second time the car is left like a held one.
+HELD = "dead-or-held"
+UNREADABLE = "map-unreadable"
+STALLED = ("no-progress", "route-lost-far")
+EXIT_TRIES = 3  # presses of the exit before the car is taken to be one the figure cannot leave
+AWAY = 12.0  # seconds after leaving a car in which no vehicle is taken, so that it is not taken again
+WALK_AWAY = 10.0
+
+
+def leave_vehicle():
+    """Out of a car that will not move, and away from it: the vehicle entry takes the nearest standing one."""
+    return [
+        call("press", button="triangle", duration=0.1),
+        call("wait", duration=2),
+        call("walk_road", duration=WALK_AWAY),
+    ]
+
+
 # A trip nobody asked for goes to a shop or a pastime. A mission is chosen when an objective asks for
 # one, and an entry the legend prints that is none of these (Chinesen) is of no known sort.
 TRIP_KINDS = ("shop", "pastime")
@@ -134,6 +157,14 @@ class Goal:
     distance: float | None = None
     tried: set = field(default_factory=set, repr=False)
     nothing: bool = False
+    # Drives that got nowhere on the way to each place; the time a car was left and whether the exit is
+    # still to be seen, and how often it has been pressed.
+    stalled: dict = field(default_factory=dict, repr=False)
+    left_at: float | None = None
+    exiting: bool = False
+    exits: int = 0
+    replacing: bool = False
+    unreadable: int = 0  # drives of this goal in this car that ended for a map they could not read
 
     def data(self):
         return {
@@ -355,7 +386,14 @@ class Goals:
                 or bool(last.get("pending"))
             )
         )
-        fresh = last != goal.last_result
+        # A result the goal has not read yet; and a failure the conductor reports in this very request is
+        # one more even when it looks like the last (a drive that ends for the same reason twice).
+        fresh = last != goal.last_result or any(
+            e.get("kind") == "skill_failed"
+            and (e.get("skill") or {}).get("name") == last.get("name")
+            and (e.get("skill") or {}).get("reason") == last.get("reason")
+            for e in request.events
+        )
         if fresh:
             goal.last_result = dict(last)
             self.learn(last)
@@ -427,6 +465,41 @@ class Goals:
             )
 
         failed = last.get("status") == "failed" and fresh and not own_stop(last)
+        ended = last.get("reason") if failed and last.get("name") == "drive_route" else None
+        now = self.now(request)
+        note = ""
+        if goal.name == "drive" and ended in STALLED:
+            where = goal.place or ""
+            goal.stalled[where] = goal.stalled.get(where, 0) + 1
+            if goal.stalled[where] >= 2:
+                # The second drive to the same place that got no nearer, or lost its route far from it.
+                self.end(request, f"{ended} twice on the way to {goal.place or 'the waypoint'}")
+                goal = self._start(request, seat, cars, wanted)
+                failed = ended = None
+        if goal.name == "drive" and ended == UNREADABLE:
+            goal.unreadable += 1
+        if goal.exiting and seat != "vehicle":
+            goal.exiting, goal.exits = False, 0  # the figure is out
+        # A car that will not move is left; if the exit has not shown by the end of its plan, it is
+        # pressed again, as often as EXIT_TRIES allows.
+        leaving = (
+            goal.name == "drive"
+            and seat == "vehicle"
+            and (
+                ended == HELD
+                or (ended == UNREADABLE and goal.unreadable >= 2)
+                or (goal.exiting and goal.exits < EXIT_TRIES)
+            )
+        )
+        away = (
+            goal.name == "drive"
+            and seat != "vehicle"
+            and goal.left_at is not None
+            and now - goal.left_at < AWAY
+        )
+        # Leaving a car, walking away from it and the entry of the car that replaces it are no tries of
+        # the trip: it is the same trip in another car.
+        free_step = leaving or away
         # A waypoint that was set is followed without a new try: it is the second half of one trip.
         trip_on = (
             goal.name == "drive"
@@ -446,14 +519,35 @@ class Goals:
                 [call("enter_vehicle", duration=25, kind="any")] if cars else [call("walk_road", duration=15)]
             )
         elif goal.name == "drive":
-            if seat != "vehicle":
+            if away:
+                # Not the car just left: the vehicle entry takes the nearest one standing.
+                plan = [call("walk_road", duration=max(2.0, AWAY - (now - goal.left_at)))]
+            elif seat != "vehicle":
                 plan = (
                     [call("enter_vehicle", duration=25, kind="any")]
                     if cars
                     else [call("walk_road", duration=15)]
                 )
-            elif trip_on or request.minimap.get("route") in {"purple", "yellow"}:
+                if cars and goal.replacing:
+                    free_step, goal.replacing = True, False
+            elif leaving:
+                plan = leave_vehicle()
+                goal.exiting, goal.left_at, goal.replacing = True, now, True
+                goal.exits += 1
+                goal.unreadable = 0  # the next car is read afresh
+                note = f"{ended or 'exit not seen'}: the figure leaves the car and takes another"
+            elif ended == UNREADABLE or trip_on or request.minimap.get("route") in {"purple", "yellow"}:
+                # A waypoint that stands is not set again (set_waypoint refuses to toggle it off): the
+                # drive starts anew, with a window of its own. After a map that could not be read the
+                # look round changes the picture, and the route is still the one that stands.
                 plan = [call("drive_route", duration=120)]
+                if ended == UNREADABLE:
+                    plan.insert(0, call("look", duration=1.2, angle=180))
+                    note = f"{ended}: a look round, and the drive begins again"
+            elif ended in STALLED and goal.place and goal.stalled.get(goal.place) == 1:
+                # The route is gone: the same place is asked for again, and not another one.
+                plan = [call("set_waypoint", place=goal.place, duration=45)]
+                note = f"{ended}: the waypoint is set again on {goal.place}"
             else:
                 plan = self.trip(goal)
         elif goal.name == "fight":
@@ -474,12 +568,14 @@ class Goals:
         # Another place is not the same call again, and needs no look before it.
         if failed and not keep_heading and plan[0]["name"] == last.get("name") != "set_waypoint":
             plan.insert(0, call("look", duration=1.2, angle=180))
-        if not trip_on:
+        if not trip_on and not free_step:
             goal.attempts += 1
         goal.step = " → ".join(item["name"] for item in plan)
         reason = self.transition
         if not reason:
-            if failed:
+            if note:
+                reason = note
+            elif failed:
                 reason = "retry: observed skill failure"
             elif misfit:
                 reason = f"step ended: {working} does not fit the figure"

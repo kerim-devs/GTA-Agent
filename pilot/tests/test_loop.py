@@ -227,6 +227,22 @@ def test_the_run_ends_when_the_driver_has_given_up_and_let_go(tmp_path):
     assert summary.ended == "route-gone"
 
 
+def test_the_run_ends_when_the_driver_calls_the_car_dead_or_held(tmp_path):
+    harness = Harness(tmp_path)
+    harness.driver.command = Command(0, 0, 0, "dead-or-held")
+    summary = harness.run(seconds=5)
+    assert summary.elapsed < 0.5
+    assert summary.ended == "dead-or-held"
+
+
+def test_the_run_ends_when_the_driver_cannot_read_the_map_and_has_let_go(tmp_path):
+    harness = Harness(tmp_path)
+    harness.driver.command = Command(0, 0, 0, "map-unreadable")
+    summary = harness.run(seconds=5)
+    assert summary.elapsed < 0.5
+    assert summary.ended == "map-unreadable"
+
+
 def test_the_run_goes_on_while_the_driver_still_brakes(tmp_path):
     harness = Harness(tmp_path)
     harness.driver.command = Command(0, 0, 1, "route-gone")

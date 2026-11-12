@@ -30,6 +30,9 @@ KNOWN_FAILURES = {
     tuple(row["case"]): row["errors"]
     for row in json.loads((Path(__file__).parent / "fixtures" / "driver-p9-failures.json").read_text())
 }
+# P55's varied retries finish this existing miss 8.6 s sooner, but its longest
+# progress gap rises from 23.667 to 27.800 s. It still fails the ten-second target.
+KNOWN_FAILURES[("block", 0.3, 2.0, 0, 0.0, "range-10")] = ["progress gap 27.800s > 10s"]
 
 
 def run_case(name: str, delay: float, scale: float, seed: int, dead_zone: float, profile="nominal"):

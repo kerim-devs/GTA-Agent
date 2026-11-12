@@ -2,6 +2,7 @@
 
 from collections import deque
 from dataclasses import dataclass
+from itertools import pairwise
 from math import isfinite
 from threading import Thread
 
@@ -22,7 +23,16 @@ def parse(texts) -> Fix | None:
     """Require a complete distance token; do not repair ambiguous OCR digits."""
     import re
 
-    for text in texts:
+    # Vision sometimes separates the unit or inserts spaces around the decimal.
+    # Join only a number followed by its unit, never guessed/repaired digits.
+    texts = list(texts)
+    candidates = texts + [
+        a + b
+        for a, b in pairwise(texts)
+        if re.fullmatch(r"\s*\d+(?:[.,]\s*\d{1,2})?\s*", a) and re.fullmatch(r"\s*(?:km|m)\s*", b, re.I)
+    ]
+    for text in candidates:
+        text = re.sub(r"(?<=\d)\s*([.,])\s*(?=\d)", r"\1", text)
         match = re.fullmatch(
             r"\s*([↑↓←→↰↱tT+•\u203a*I|\-]{1,3}\s*|1\s+)?(\d+(?:[.,]\d{1,2})?)\s*(km|m)[.)\-]*\s*", text, re.I
         )
@@ -167,6 +177,20 @@ class Speedometer:
         self.speed = None
         self.segment = 0
         self._last_input = None
+        self._distance_samples = deque(maxlen=3)
+        self._speed_fix = self._speed_time = None
+
+    def _distance(self, at, fix):
+        """Three coherent captures can locate us before a speed fit is available."""
+        self._distance_samples.append((at, fix))
+        samples = self._distance_samples
+        if len(samples) < 3 or not 0.5 <= at - samples[0][0] <= self.window:
+            return
+        if (self._speed_time is None or at - self._speed_time > self.stale) and all(
+            abs(b.distance - a.distance) <= self.max_speed * (tb - ta) + max(a.quantum, b.quantum)
+            for (ta, a), (tb, b) in zip(samples, list(samples)[1:], strict=False)
+        ):
+            self.time, self.fix = at, fix
 
     def update(self, t: float, fix: Fix | None = None, *, sampled_at=None):
         if not isfinite(t):
@@ -182,9 +206,10 @@ class Speedometer:
             and (self._last_input is None or at - self._last_input >= 0.1)
         ):
             self._last_input = at
-            if self.fix is not None and self.time is not None and self._slope is not None:
-                dt = at - self.time
-                predicted = self.fix.distance + self._slope * dt
+            self._distance(at, fix)
+            if self._speed_fix is not None and self._speed_time is not None and self._slope is not None:
+                dt = at - self._speed_time
+                predicted = self._speed_fix.distance + self._slope * dt
                 allowance = max(2 * fix.quantum, self.tolerance + self.acceleration * dt * dt / 2)
                 if abs(fix.distance - predicted) > allowance:
                     self.pending.append((at, fix))
@@ -227,14 +252,20 @@ class Speedometer:
                         fit = np.polyfit(times[inside], values[inside], 1)
                         self._slope = float(fit[0])
                         self.speed = abs(self._slope)
-                        self.time, self.fix = self.samples[int(good[-1])]
+                        self._speed_time, self._speed_fix = self.samples[int(good[-1])]
+                        # Keep the established speed/approach pair while that fit is fresh.
+                        self.time, self.fix = self._speed_time, self._speed_fix
         return self.value(t)
 
     def value(self, t):
-        return self.speed if self.time is not None and 0 <= t - self.time <= self.stale else None
+        return (
+            self.speed if self._speed_time is not None and 0 <= t - self._speed_time <= self.stale else None
+        )
 
     def reset(self):
         self.samples.clear()
         self.pending.clear()
+        self._distance_samples.clear()
         self._slope = None
         self.fix = self.time = self.speed = self.last_clock = self._last_input = None
+        self._speed_fix = self._speed_time = None
