@@ -481,6 +481,29 @@ def ending(text):
 
 
 def observed_actions(pads, sections, start, end):
+    """Do not carry an unobserved controller state through a clock hole."""
+    groups = []
+    for section in sections:
+        if not groups or section["start"] - groups[-1][-1]["end"] > 1:
+            groups.append([])
+        groups[-1].append(section)
+    results = []
+    for i, group in enumerate(groups):
+        run_pads = pads if i == 0 else [pad for pad in pads if pad["t"] >= group[0]["start"]]
+        result = _observed_actions(run_pads, group, start, end)
+        if result:
+            results.append(result)
+    if not results:
+        return None
+    return {
+        "observed_seconds": round(sum(result["observed_seconds"] for result in results), 3),
+        "seconds": {
+            key: round(sum(result["seconds"][key] for result in results), 3) for key in results[0]["seconds"]
+        },
+    }
+
+
+def _observed_actions(pads, sections, start, end):
     """Integrate held human inputs, disambiguating triggers by section kind."""
     rows = sorted((row for row in pads if row.get("src") == "human"), key=lambda row: row["t"])
     if not rows or end <= start:
@@ -553,6 +576,16 @@ def build_missions(intervals, sections, pads=()):
         next_start = objectives[index + 1]["first"] if index + 1 < len(objectives) else float("inf")
         silence = objective["last"] + 60
         limit = min(next_start, silence, sections["seconds"])
+        gap_start = next(
+            (
+                left["end"]
+                for left, right in zip(sections["sections"], sections["sections"][1:], strict=False)
+                if right["start"] - left["end"] > 1 and start <= left["end"] < limit
+            ),
+            None,
+        )
+        if gap_start is not None:
+            limit = gap_start
         banner = next(
             (row for row in sorted(banners, key=lambda x: x["first"]) if start <= row["first"] <= limit),
             None,
@@ -565,6 +598,8 @@ def build_missions(intervals, sections, pads=()):
             if banner
             else ("next objective" if next_start <= min(silence, sections["seconds"]) else "unknown")
         )
+        if gap_start is not None and banner is None:
+            outcome = "unknown"
         overlapping = [row for row in sections["sections"] if row["start"] < stop and row["end"] > start]
         if current is None:
             current = {"start": start, "end": stop, "steps": []}
@@ -583,7 +618,9 @@ def build_missions(intervals, sections, pads=()):
                 "blips": sorted({colour for row in overlapping for colour in row.get("blips", [])}),
                 "blips_known": all("blips" in row for row in overlapping) and bool(overlapping),
                 "wanted": max((row["wanted"] or 0 for row in overlapping), default=0),
-                "human": observed_actions(pads, overlapping, start, stop) if sections["has_pad"] else None,
+                "human": observed_actions(pads, sections["sections"], start, stop)
+                if sections["has_pad"]
+                else None,
                 "ending": outcome,
                 "intent_class": asked["class"],
                 "intent_wording": asked["wording"],
@@ -596,6 +633,8 @@ def build_missions(intervals, sections, pads=()):
             current["end_reason"] = (
                 "banner" if banner else "silence" if silence <= sections["seconds"] else "recording ended"
             )
+            if gap_start is not None and banner is None:
+                current["end_reason"] = "recording gap"
             current = None
     for mission in missions:
         wording = " Then ".join(step["objective"] for step in mission["steps"])

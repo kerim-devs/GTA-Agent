@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "recording": "/Users/kerim/Documents/ChatGPT/gta-worktrees/p40-human-drive/lab/trim/work/source/20261111-183820",
+  "index_meaning": "position in this video",
+  "no_human_input": false,
+  "whole_recording_would_be_cut": false,
+  "stretches": [
+    {
+      "start": 313.7107,
+      "end": 314.5204,
+      "rest_start": 313.7107,
+      "rest_end": 314.5204,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 319.5204,
+      "end": 654.5788,
+      "rest_start": 314.5204,
+      "rest_end": 659.5788,
+      "decision": "cut",
+      "reason": "Human controller rests for at least 60 seconds; keep five seconds at each end"
+    },
+    {
+      "start": 740.4772,
+      "end": 876.5103,
+      "rest_start": 740.4772,
+      "rest_end": 876.5103,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    },
+    {
+      "start": 876.5103,
+      "end": 878.294,
+      "rest_start": 876.5103,
+      "rest_end": 878.294,
+      "decision": "keep",
+      "reason": "text: objective; text: subtitle"
+    }
+  ]
+}

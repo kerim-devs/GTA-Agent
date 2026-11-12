@@ -1,0 +1,32 @@
+{
+  "recording": "/Users/kerim/Documents/ChatGPT/gta-worktrees/p40-human-drive/lab/trim/work/trimmed/kerim/20261111-183820",
+  "seconds": 900.4,
+  "sample_hz": 10,
+  "has_pad": true,
+  "lead": 0.2,
+  "lead_source": "default",
+  "lead_estimate": null,
+  "lead_correlation": null,
+  "game": "gta5",
+  "sections": null,
+  "stretches": 218,
+  "minutes": {
+    "aim": 0.279,
+    "drive_free": 0.08,
+    "enter_vehicle": 0.107,
+    "fire": 0.067,
+    "follow_route": 0.64,
+    "idle": 0.474,
+    "look": 0.132,
+    "map": 0.051,
+    "melee": 0.021,
+    "menu": 0.121,
+    "reverse_or_turn": 0.027,
+    "sprint": 2.873,
+    "unknown": 0.469,
+    "use_phone": 0.348,
+    "wait": 2.763,
+    "walk": 1.063
+  },
+  "elapsed": 33.8
+}

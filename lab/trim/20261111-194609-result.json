@@ -1,0 +1,26 @@
+{
+  "source": "/Users/kerim/recordings/kerim/20261111-194609",
+  "cut": {
+    "source": "/Users/kerim/Documents/ChatGPT/gta-worktrees/p40-human-drive/lab/trim/work/source/20261111-194609",
+    "index_meaning": "position in this video",
+    "cuts": [],
+    "frames_before": 53809,
+    "frames_after": 53809,
+    "seconds_before": 896.8166666666667,
+    "seconds_after": 896.8166666666667,
+    "recording_clock_start": -0.0119,
+    "recording_clock_end": 899.8214,
+    "derived_data": "Rebuild for the new video indices with lab/process-recordings.sh"
+  },
+  "check": {
+    "ok": true,
+    "sampled_frames": 50,
+    "frames_before": 53809,
+    "frames_after": 53809,
+    "seconds_before": 896.8166666666667,
+    "seconds_after": 896.8166666666667,
+    "bytes_before": 468533442,
+    "bytes_after": 468533947,
+    "pad_lines_kept": 7080
+  }
+}

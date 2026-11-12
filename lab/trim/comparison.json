@@ -1,0 +1,64 @@
+{
+  "recording": "20261111-183820",
+  "clock_gaps": [
+    [
+      322.4528,
+      651.8646
+    ]
+  ],
+  "sections": {
+    "source_intervals": 15,
+    "rebuilt_intervals": 25,
+    "kept_frames": 34163,
+    "matching_frames": 23958,
+    "agreement": 0.7012850159529316,
+    "disagreements": {
+      "foot -> unknown": 10046,
+      "foot -> menu": 70,
+      "loading -> unknown": 62,
+      "drive -> foot": 26,
+      "foot -> unmatched": 1
+    },
+    "gap_crossings": 0
+  },
+  "actions": {
+    "source_intervals": 220,
+    "rebuilt_intervals": 218,
+    "kept_frames": 34163,
+    "matching_frames": 33390,
+    "agreement": 0.9773731815121622,
+    "disagreements": {
+      "idle -> unknown": 469,
+      "walk -> sprint": 35,
+      "sprint -> walk": 33,
+      "look -> unknown": 28,
+      "unknown -> walk": 18,
+      "idle -> walk": 18,
+      "walk -> look": 16,
+      "walk -> unknown": 16,
+      "look -> aim": 15,
+      "melee -> unknown": 13,
+      "wait -> unknown": 13,
+      "walk -> idle": 12,
+      "unknown -> fire": 12,
+      "fire -> aim": 12,
+      "unknown -> melee": 10,
+      "aim -> fire": 8,
+      "unknown -> aim": 8,
+      "aim -> walk": 6,
+      "melee -> sprint": 6,
+      "walk -> melee": 6,
+      "unknown -> look": 6,
+      "reverse_or_turn -> follow_route": 6,
+      "aim -> look": 5,
+      "idle -> unmatched": 1,
+      "follow_route -> unmatched": 1
+    },
+    "gap_crossings": 0
+  },
+  "unavailable": [
+    "texts.jsonl",
+    "missions.json",
+    "incidents.jsonl"
+  ]
+}

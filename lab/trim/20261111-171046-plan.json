@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "recording": "/Users/kerim/Documents/ChatGPT/gta-worktrees/p40-human-drive/lab/trim/work/source/20261111-171046",
+  "index_meaning": "position in this video",
+  "no_human_input": false,
+  "whole_recording_would_be_cut": false,
+  "stretches": [
+    {
+      "start": 47.4565,
+      "end": 119.5512,
+      "rest_start": 47.4565,
+      "rest_end": 119.5512,
+      "decision": "keep",
+      "reason": "text: subtitle"
+    }
+  ]
+}

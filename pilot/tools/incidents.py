@@ -118,8 +118,12 @@ def trace(recording, destination):
                         move = round(value / (t - before[0]), 1)
                 before = (t, crop)
                 small = rgb[::16, ::16].mean(axis=2)
-                change = None if previous is None else round(float(np.abs(small - previous).mean()), 2)
-                previous = small
+                change = (
+                    None
+                    if previous is None or t - previous[0] > 1
+                    else round(float(np.abs(small - previous[1]).mean()), 2)
+                )
+                previous = (t, small)
                 row = {
                     "t": round(t, 4),
                     "i": index,
