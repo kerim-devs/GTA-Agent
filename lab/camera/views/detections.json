@@ -1,0 +1,204 @@
+{
+ "foot-1-far.jpg": [
+  {
+   "kind": "motorcycle",
+   "box": [
+    539,
+    362,
+    896,
+    622
+   ],
+   "confidence": 0.83,
+   "player": true
+  },
+  {
+   "kind": "person",
+   "box": [
+    246,
+    489,
+    281,
+    574
+   ],
+   "confidence": 0.82,
+   "player": false
+  },
+  {
+   "kind": "person",
+   "box": [
+    0,
+    464,
+    29,
+    577
+   ],
+   "confidence": 0.76,
+   "player": false
+  }
+ ],
+ "foot-2-first.jpg": [
+  {
+   "kind": "person",
+   "box": [
+    11,
+    460,
+    81,
+    591
+   ],
+   "confidence": 0.89,
+   "player": false
+  }
+ ],
+ "foot-3-near.jpg": [
+  {
+   "kind": "person",
+   "box": [
+    307,
+    300,
+    606,
+    717
+   ],
+   "confidence": 0.95,
+   "player": true
+  },
+  {
+   "kind": "person",
+   "box": [
+    7,
+    385,
+    72,
+    513
+   ],
+   "confidence": 0.92,
+   "player": false
+  },
+  {
+   "kind": "car",
+   "box": [
+    1020,
+    354,
+    1279,
+    501
+   ],
+   "confidence": 0.62,
+   "player": false
+  }
+ ],
+ "foot-4-middle.jpg": [
+  {
+   "kind": "person",
+   "box": [
+    510,
+    338,
+    627,
+    661
+   ],
+   "confidence": 0.94,
+   "player": true
+  },
+  {
+   "kind": "person",
+   "box": [
+    89,
+    377,
+    137,
+    490
+   ],
+   "confidence": 0.91,
+   "player": false
+  },
+  {
+   "kind": "truck",
+   "box": [
+    790,
+    375,
+    879,
+    428
+   ],
+   "confidence": 0.56,
+   "player": false
+  }
+ ],
+ "foot-5-far.jpg": [
+  {
+   "kind": "person",
+   "box": [
+    542,
+    345,
+    631,
+    582
+   ],
+   "confidence": 0.93,
+   "player": true
+  },
+  {
+   "kind": "person",
+   "box": [
+    96,
+    373,
+    149,
+    482
+   ],
+   "confidence": 0.91,
+   "player": false
+  },
+  {
+   "kind": "car",
+   "box": [
+    741,
+    387,
+    777,
+    413
+   ],
+   "confidence": 0.72,
+   "player": false
+  }
+ ],
+ "foot-6-first.jpg": [],
+ "foot-7-near.jpg": [
+  {
+   "kind": "person",
+   "box": [
+    320,
+    298,
+    598,
+    717
+   ],
+   "confidence": 0.95,
+   "player": true
+  },
+  {
+   "kind": "person",
+   "box": [
+    89,
+    314,
+    162,
+    470
+   ],
+   "confidence": 0.92,
+   "player": false
+  }
+ ],
+ "foot-8-middle.jpg": [
+  {
+   "kind": "person",
+   "box": [
+    124,
+    328,
+    193,
+    472
+   ],
+   "confidence": 0.92,
+   "player": false
+  },
+  {
+   "kind": "person",
+   "box": [
+    514,
+    354,
+    610,
+    656
+   ],
+   "confidence": 0.9,
+   "player": true
+  }
+ ]
+}

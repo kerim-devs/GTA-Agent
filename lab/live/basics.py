@@ -1,6 +1,6 @@
 """Counts the tries of lab/live/basics.sh: per basic skill how many worked, and how each of the others ended.
 
-    pilot/.venv/bin/python lab/live/basics.py [/Users/kerim/recordings/pilot/basics.tsv]
+pilot/.venv/bin/python lab/live/basics.py [/Users/kerim/recordings/pilot/basics.tsv]
 """
 
 import json
@@ -12,13 +12,14 @@ SKILL = {
     "leave": "press",
     "walk": "walk_road",
     "enter": "enter_vehicle",
+    "place": "set_waypoint",
     "waypoint": "set_waypoint",
     "drive": "drive_route",
 }
 
 
 def judge(step, folder):
-    """(worked, what happened) for one try, from the session's own log."""
+    """(worked, what happened) for one try, from the session's own log; worked is None where nothing was tried."""
     rows = [json.loads(line) for line in (folder / "play.jsonl").open()]
     if not rows:
         return False, "no ticks"
@@ -28,8 +29,14 @@ def judge(step, folder):
     last = mine[-1]["skill"]
     status, reason = last.get("status"), str(last.get("reason") or "").split(";")[0]
     seconds = mine[-1]["t"] - mine[0]["t"]
+    head = [row["reading"].get("minimap") for row in rows[:30]]
     tail = [row["reading"].get("minimap") for row in rows[-30:]]
-    seated = tail.count("tilted") > tail.count("flat")
+    sat, seated = (
+        head.count("tilted") > head.count("flat"),
+        tail.count("tilted") > tail.count("flat"),
+    )
+    if step in ("leave", "drive") and not sat:
+        return None, "on foot at the start"
     if step == "leave":
         return (not seated), "on foot afterwards" if not seated else "still seated"
     if step == "walk":
@@ -40,11 +47,17 @@ def judge(step, folder):
         )
         moved = motion["going"] / max(1, sum(motion.values()))
         ok = status in ("done", "running") and motion["going"] > motion["still"]
-        return ok, f"{status} ({reason}), going on {moved:.0%} of ticks, still on {motion['still']}"
+        return (
+            ok,
+            f"{status} ({reason}), going on {moved:.0%} of ticks, still on {motion['still']}",
+        )
     if step == "enter":
         ok = status == "done" and seated
-        return ok, f"{status} ({reason}) after {seconds:.0f} s, {'seated' if seated else 'on foot'} at the end"
-    if step == "waypoint":
+        return (
+            ok,
+            f"{status} ({reason}) after {seconds:.0f} s, {'seated' if seated else 'on foot'} at the end",
+        )
+    if step in ("place", "waypoint"):
         return status == "done", f"{status} ({reason}) after {seconds:.0f} s"
     distances = [row["reading"].get("gps_distance") for row in mine]
     distances = [value for value in distances if value is not None]
@@ -61,13 +74,23 @@ def main(path):
         try:
             tries[step].append((cycle, Path(folder).name, *judge(step, Path(folder))))
         except (OSError, ValueError, KeyError) as error:
-            tries[step].append((cycle, Path(folder).name, False, f"unreadable: {error}"))
+            tries[step].append(
+                (cycle, Path(folder).name, False, f"unreadable: {error}")
+            )
     for step in SKILL:
         rows = tries.get(step, [])
-        print(f"{step}: {sum(row[2] for row in rows)} of {len(rows)} worked")
+        tried = [row for row in rows if row[2] is not None]
+        untried = (
+            f", {len(rows) - len(tried)} not tried" if len(tried) < len(rows) else ""
+        )
+        print(f"{step}: {sum(row[2] for row in tried)} of {len(tried)} worked{untried}")
         for cycle, name, ok, what in rows:
-            print(f"  {cycle} {name} {'ok ' if ok else 'NO '} {what}")
+            print(
+                f"  {cycle} {name} {'-- ' if ok is None else 'ok ' if ok else 'NO '} {what}"
+            )
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else "/Users/kerim/recordings/pilot/basics.tsv")
+    main(
+        sys.argv[1] if len(sys.argv) > 1 else "/Users/kerim/recordings/pilot/basics.tsv"
+    )

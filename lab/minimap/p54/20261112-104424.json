@@ -1,0 +1,57 @@
+{
+  "session": "20261112-104424",
+  "source": "/Users/kerim/recordings/pilot/20261112-104424",
+  "frames": 14382,
+  "before": {
+    "ticks": 5513,
+    "corrupt": 119,
+    "share": 0.02158534373299474,
+    "longest_ticks": 66,
+    "longest_seconds": 2.6302445830078796
+  },
+  "after": {
+    "ticks": 5513,
+    "corrupt": 52,
+    "share": 0.009432251042989299,
+    "longest_ticks": 17,
+    "longest_seconds": 0.702869875007309
+  },
+  "frame_before": {
+    "ticks": 14382,
+    "corrupt": 285,
+    "share": 0.019816437213183144,
+    "longest_ticks": 159,
+    "longest_seconds": 2.6362000000000023
+  },
+  "frame_after": {
+    "ticks": 14382,
+    "corrupt": 125,
+    "share": 0.008691419830343486,
+    "longest_ticks": 45,
+    "longest_seconds": 0.7310999999999979
+  },
+  "lost": 160,
+  "gained": 0,
+  "unmatched_ticks": 1,
+  "sheets": 4,
+  "spans": [
+    {
+      "start": 121.7,
+      "stop": 124.3,
+      "before": {
+        "ticks": 64,
+        "corrupt": 64,
+        "share": 1.0,
+        "longest_ticks": 64,
+        "longest_seconds": 2.573190000024624
+      },
+      "after": {
+        "ticks": 64,
+        "corrupt": 0,
+        "share": 0.0,
+        "longest_ticks": 0,
+        "longest_seconds": 0.0
+      }
+    }
+  ]
+}
