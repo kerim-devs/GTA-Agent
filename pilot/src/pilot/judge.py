@@ -204,7 +204,8 @@ class ModeFilter:
         self.candidate = None
         self.run = 0
 
-    def update(self, judgment: Judgment | None, t: float) -> str | None:
+    def update(self, judgment: Judgment | None, t: float, *, flat: bool = False) -> str | None:
+        """`flat`: the minimap of this tick lies flat and is sound, which it only does on foot."""
         if self.capture is not None and t - self.capture > self.LAPSE:
             self.mode = self.candidate = None
             self.capture = None
@@ -216,6 +217,11 @@ class ModeFilter:
         ):
             answer = judgment.answers.get("mode")
             mode = None if answer is None else answer.value
+            if mode == "vehicle" and flat:
+                # Standing next to a car the judge says vehicle, three times in a row and more
+                # (session 20261112-103305: the head opened the map on foot four times). The map
+                # tilts in every vehicle: of 14,000 ticks of driving none lay flat and sound.
+                mode = "foot"
             if mode in {"foot", "vehicle", "none"}:
                 self.run = self.run + 1 if mode == self.candidate else 1
                 self.candidate, self.capture = mode, judgment.capture
