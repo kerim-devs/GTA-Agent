@@ -15,6 +15,7 @@ t - lead, so that every label stays on the clock of the frames and describes wha
 
 from __future__ import annotations
 
+import itertools
 import json
 import math
 import random
@@ -267,7 +268,19 @@ def frame_rows(recording: Path) -> list[dict]:
 def attach_hands(samples: list[Sample], controller: Controller | None, lead: float) -> list[Sample]:
     if controller is None:
         return [replace(sample, hand=None) for sample in samples]
-    return [replace(s, hand=controller.window(s.time - lead, s.end - lead)) for s in samples]
+    output = []
+    run_start = -math.inf
+    for i, sample in enumerate(samples):
+        if i and sample.time - samples[i - 1].end > 1:
+            run_start = sample.time
+        known = bisect_right(controller.times, sample.time - lead) - 1
+        hand = (
+            controller.window(sample.time - lead, sample.end - lead)
+            if run_start == -math.inf or (known >= 0 and controller.times[known] >= run_start)
+            else None
+        )
+        output.append(replace(sample, hand=hand))
+    return output
 
 
 # --- the lead of the hand
@@ -661,6 +674,16 @@ def label(
     """Stretches of one action over the samples, with what each was decided from."""
     if not samples:
         return []
+    boundaries = [0, *(i for i in range(1, len(samples)) if samples[i].time - samples[i - 1].end > 1)]
+    if len(boundaries) > 1:
+        boundaries.append(len(samples))
+        return [
+            stretch
+            for first, stop in itertools.pairwise(boundaries)
+            for stretch in label(
+                samples[first:stop], layout=layout, has_pad=has_pad, decision=decision, lead=lead
+            )
+        ]
     decided = [
         decision(s, c, layout) for s, c in zip(samples, contexts(samples, layout, has_pad, lead), strict=True)
     ]
@@ -776,6 +799,19 @@ PAN_RECT = (160, 120, 960, 360)  # x, y, w, h: the middle of the picture, clear 
 PAN_SIZE = (256, 96)
 
 
+def sample_windows(rows: list[dict], picks: list[int]) -> tuple[list[float], list[int]]:
+    """Use the recorded clock, ending each window before any missing footage."""
+    from .trimming import frame_runs
+
+    run_ends = {i: stop for first, stop in frame_runs(rows) for i in range(first, stop)}
+    ends, lasts = [], []
+    for position, first in enumerate(picks):
+        stop = min(picks[position + 1] if position + 1 < len(picks) else len(rows), run_ends[first])
+        lasts.append(stop - 1)
+        ends.append(rows[stop]["t"] if stop < run_ends[first] else rows[stop - 1]["t"])
+    return ends, lasts
+
+
 def read_recording(recording: Path, sections: list[tuple[float, float, str]] | None = None) -> list[Sample]:
     """Run the cheap readers over a recording at SAMPLE_HZ. Every frame is decoded once and only the sampled
     ones are converted; nothing is kept beyond the last few crops."""
@@ -789,8 +825,7 @@ def read_recording(recording: Path, sections: list[tuple[float, float, str]] | N
     picks = sample_indices(rows)
     if not picks:
         return []
-    ends = [*(rows[i]["t"] for i in picks[1:]), rows[-1]["t"] + 1 / 60]
-    lasts = [*(i - 1 for i in picks[1:]), len(rows) - 1]
+    ends, lasts = sample_windows(rows, picks)
     wanted = set(picks)
     capture = cv2.VideoCapture(str(recording / "video.mp4"))
     if not capture.isOpened():
@@ -812,6 +847,9 @@ def read_recording(recording: Path, sections: list[tuple[float, float, str]] | N
             if not ok:
                 raise ValueError(f"cannot decode frame {row['i']}")
             t = row["t"]
+            if previous is not None and t - previous[0] > 1:
+                previous = None
+                crops = []
             rgb = cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
             if rgb.shape[:2] != (720, 1280):
                 rgb = cv2.resize(rgb, (1280, 720), interpolation=cv2.INTER_AREA)
@@ -882,7 +920,8 @@ def label_recording(
     samples = read_recording(recording, load_sections(sections) if sections else None)
     events = load_controller(recording)
     controller = Controller(events) if events else None
-    estimated, correlation = estimate_lead(samples, controller)
+    has_gaps = any(right.time - left.end > 1 for left, right in itertools.pairwise(samples))
+    estimated, correlation = (None, None) if has_gaps else estimate_lead(samples, controller)
     if lead is not None:
         used, source = lead, "given"
     elif estimated is not None and correlation is not None and correlation >= LEAD_MIN_CORRELATION:

@@ -78,9 +78,16 @@ def test_frame_clock_sampling_handles_gaps(tmp_path):
     assert sample_indices(rows) == [0, 2, 4, 6]
     samples = [Sample(t, i, reading(), Hud(wanted=0)) for i, t in enumerate(times)]
     result = sections(samples, rows, [], decision=lambda _: "foot")
-    assert result[0]["start"] == 2
-    assert result[-1]["end"] == 5.41
-    assert [part["kind"] for part in result] == ["unknown"]
+    assert result == []  # Neither observed run is long enough to classify; the hole is not footage.
+
+
+def test_trimmed_clock_hole_splits_sections_and_controller_state():
+    times = [i / 10 for i in range(21)] + [61 + i / 10 for i in range(21)]
+    rows = [{"i": i, "t": t} for i, t in enumerate(times)]
+    samples = [Sample(t, i, reading(), Hud(wanted=0)) for i, t in enumerate(times)]
+    result = sections(samples, rows, [(0.0, Pad(buttons=("cross",)))], decision=lambda _: "foot")
+    assert [(row["start"], row["end"]) for row in result] == [(0.0, 2.0), (61.0, 63.0)]
+    assert result[1]["human"] is None
 
 
 def test_neighbours_with_same_kind_merge_across_menu_screens():

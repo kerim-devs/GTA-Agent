@@ -151,7 +151,7 @@ class Goals:
         )
         return self.active
 
-    def decide(self, request, mode, *, escape_plan=None, recovery_plan=None):
+    def decide(self, request, mode, *, escape_plan=None, recovery_plan=None, keep_heading=False):
         """Called only for free roam or the existing wanted rules."""
         cars = any(o.get("kind") in {"car", "truck", "motorcycle"} for o in request.objects)
         wanted = (request.hud or {}).get("wanted")
@@ -276,7 +276,7 @@ class Goals:
             )
         else:
             plan = [call("walk_road", duration=15)]
-        if failed and plan[0]["name"] == last.get("name"):
+        if failed and not keep_heading and plan[0]["name"] == last.get("name"):
             plan.insert(0, call("look", duration=1.2, angle=180))
         goal.attempts += 1
         goal.step = " → ".join(item["name"] for item in plan)

@@ -284,3 +284,18 @@ def test_steps_carry_their_class_and_target():
         "steps"
     ][0]
     assert (step["intent_class"], step["intent_target"]) == ("take_out", "die Vagos aus.")
+
+
+def test_trimmed_gap_ends_mission_and_does_not_carry_human_input():
+    data = section_data()
+    data["sections"] = [
+        dict(data["sections"][0], start=0, end=30),
+        dict(data["sections"][0], start=90, end=120),
+    ]
+    intervals = [objective(start=20, last=20), objective(start=95, last=95)]
+    pads = [{"t": 0, "src": "human", "left": [0, 1], "buttons": []}]
+    result = build_missions(intervals, data, pads)
+    assert len(result["missions"]) == 2
+    assert result["missions"][0]["end"] == 30
+    assert result["missions"][0]["end_reason"] == "recording gap"
+    assert result["missions"][1]["steps"][0]["human"] is None

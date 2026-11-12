@@ -98,6 +98,80 @@ def map_shift(prev: np.ndarray, cur: np.ndarray) -> float | None:
 # ------------------------------------------------------------------ roads on the minimap
 # A road on the minimap is a white band about ten crop pixels wide. Open water around the pier is
 # white too, but as a sheet: an opening wider than any road keeps the sheet and drops the bands.
+
+# The north disc stays upright while moving around the radar with the camera.
+# Its recorded 11-pixel core excludes the variable translucent surroundings.
+_NORTH = np.array(
+    [
+        [107, 31, 7, 12, 4, 0, 8, 10, 6, 97, 118],
+        [41, 8, 14, 8, 8, 7, 7, 8, 8, 19, 113],
+        [3, 5, 52, 169, 20, 16, 27, 99, 6, 5, 44],
+        [7, 5, 78, 247, 84, 0, 24, 132, 5, 5, 14],
+        [14, 4, 71, 120, 154, 18, 19, 119, 7, 6, 12],
+        [10, 4, 69, 83, 25, 157, 63, 110, 6, 5, 5],
+        [10, 4, 72, 104, 5, 84, 240, 113, 4, 6, 13],
+        [15, 1, 67, 86, 2, 3, 207, 118, 0, 7, 53],
+        [33, 1, 26, 13, 1, 1, 26, 20, 5, 11, 119],
+        [120, 27, 3, 6, 1, 1, 3, 0, 17, 88, 146],
+        [150, 112, 36, 6, 0, 2, 15, 35, 121, 153, 148],
+    ],
+    dtype=np.uint8,
+)
+
+
+def north_bearing(crop) -> float | None:
+    """Picture bearing of the radar's N disc, never the player arrow."""
+    if not crop_ok(crop):
+        return None
+    gray = cv2.cvtColor(crop[15:155, 25:235], cv2.COLOR_RGB2GRAY)
+    scores = cv2.matchTemplate(gray, _NORTH, cv2.TM_CCOEFF_NORMED)
+    _, score, _, point = cv2.minMaxLoc(scores)
+    x, y = point[0] + 30, point[1] + 20
+    if score < 0.72 or math.hypot(x - ACX, y - ACY) < 20:
+        return None
+    return math.degrees(math.atan2(x - ACX, ACY - y))
+
+
+def world_view(frame) -> np.ndarray | None:
+    """Small world-only view for guard evidence, excluding HUD and the figure."""
+    if not isinstance(frame, np.ndarray) or frame.ndim != 3 or frame.shape[2] != 3:
+        return None
+    return cv2.cvtColor(cv2.resize(frame, (320, 180)), cv2.COLOR_RGB2GRAY)
+
+
+_WORLD_MASK = np.zeros((180, 320), np.uint8)
+_WORLD_MASK[45:165, 15:305] = 255
+_WORLD_MASK[55:, 115:205] = 0
+_WORLD_MASK[125:, :75] = 0
+
+
+def world_shift(prev: np.ndarray, cur: np.ndarray) -> float | None:
+    """Median tracked background displacement over half a second, in 320px pixels.
+
+    Forward/backward checks reject occlusion; separated background patches keep
+    the player's idle animation and a single moving object out of the vote.
+    This is translation evidence during a walking command, not odometry.
+    """
+    points = cv2.goodFeaturesToTrack(prev, 60, 0.03, 8, mask=_WORLD_MASK)
+    if points is None or len(points) < 12:
+        return None
+    moved, status, error = cv2.calcOpticalFlowPyrLK(prev, cur, points, None, winSize=(15, 15), maxLevel=2)
+    if moved is None:
+        return None
+    back, back_status, _ = cv2.calcOpticalFlowPyrLK(cur, prev, moved, None, winSize=(15, 15), maxLevel=2)
+    if back is None:
+        return None
+    valid = (status.ravel() > 0) & (back_status.ravel() > 0) & (error.ravel() < 20)
+    valid &= np.linalg.norm(points - back, axis=2).ravel() < 0.8
+    src = points.reshape(-1, 2)[valid]
+    dst = moved.reshape(-1, 2)[valid]
+    if len(src) < 12 or len({(int(x // 80), int(y // 60)) for x, y in src}) < 3:
+        return None
+    distance = float(np.median(np.linalg.norm(dst - src, axis=1)))
+    # A fast camera swing cannot establish walking progress.
+    return distance if distance < 12 else None
+
+
 _ROAD_OPEN = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (19, 19))
 _ARROW_R = 8  # the white arrow itself
 _ON_ROAD_R = 11  # a road pixel this close to the arrow puts the figure on the road
@@ -215,6 +289,7 @@ class FootGuard:
 
     def __init__(self, *, first_side: int = 1):
         self.crops: deque = deque()
+        self.worlds: deque = deque()
         self.evidence: deque = deque()  # (time, "still" | "going" | None)
         self.state = "go"
         self.state_since = None
@@ -238,19 +313,28 @@ class FootGuard:
     def _evidence(self, observation: Observation) -> str | None:
         now = observation.time
         crop = hud_crop(observation.frame)
+        world = world_view(observation.frame)
         shift = None
-        if crop is not None:
-            while self.crops and self.crops[0][0] < now - self.SHIFT_SPAN[1]:
-                self.crops.popleft()
-            if self.crops and now - self.crops[0][0] >= self.SHIFT_SPAN[0]:
-                shift = map_shift(self.crops[0][1], crop)
-            self.crops.append((now, crop.copy()))
+        image_shift = None
+        for history, current, measure in ((self.crops, crop, map_shift), (self.worlds, world, world_shift)):
+            while history and history[0][0] < now - self.SHIFT_SPAN[1]:
+                history.popleft()
+            if current is not None:
+                if history and now - history[0][0] >= self.SHIFT_SPAN[0]:
+                    if history is self.crops:
+                        shift = measure(history[0][1], current)
+                    elif shift is None and self.state not in {"look", "ahead"}:
+                        image_shift = measure(history[0][1], current)
+                history.append((now, current.copy()))
         if shift is not None:
             if shift < self.STILL_SHIFT:
                 return "still"
             return "going" if shift >= self.GOING_SHIFT else None
-        # Without a followable map: the pipeline's stationary band, which a camera turn cannot fake.
-        # Its "moving" can be the camera turning the map and says nothing about the figure.
+        if image_shift is not None:
+            if image_shift < 0.25:
+                return "still"
+            if image_shift >= 0.65:
+                return "going"
         return "still" if observation.moving is False else None
 
     def _verdict(self, now: float, since: float, after: float) -> bool:
@@ -309,6 +393,7 @@ class FootGuard:
         if player_mode(observation) != "foot":
             # Nothing to guard: the wanted stick passes, and nothing seen here counts.
             self.crops.clear()
+            self.worlds.clear()
             self.evidence.clear()
             self.push_since = None
             return Steer(want, state="idle")
@@ -316,6 +401,7 @@ class FootGuard:
             # A damaged tick is stood out with a released left stick and decides nothing; the clocks
             # run on, so a run of them cannot stretch a stretch.
             self.crops.clear()
+            self.worlds.clear()
             return Steer((0.0, 0.0), state="odd")
         kind = self._evidence(observation)
         self.evidence.append((now, kind))
@@ -395,7 +481,7 @@ class WalkRoad:
     parameters: ClassVar = {"duration": (2.0, 30.0, 15.0), "sprint": (False, True)}
     prompt = (
         "On foot: walk to the nearest road the minimap shows, then along it the way the figure faces; "
-        "turns away from walls by itself. Fails no-road when the map shows no road, stuck when "
+        "holds a compass heading off-road and turns away from walls. Fails stuck when "
         "four ways round have failed. Cars pass on roads. duration is the time limit."
     )
 
@@ -426,7 +512,9 @@ class WalkRoad:
         self.road_seen = False
         self.on_road_since = None
         self.sense = None  # the way along the road, kept once chosen
-        self.heading = None  # the last bearing walked, kept through ticks without a reading
+        self.heading = None  # picture bearing, transported by the north disc
+        self.compass_heading = None
+        self.north = None
 
     def stop(self, reason: str = "interrupted") -> SkillResult:
         self.finished = SkillResult(status="failed", reason=reason)
@@ -454,23 +542,30 @@ class WalkRoad:
         if crop is None:
             # The road is only in the picture; without one there is nothing to walk by.
             return self.stop("no-frame")
+        north = north_bearing(crop)
+        if north is not None:
+            self.north = north
         road = find_road(crop)
-        if road is None:
-            if crop_ok(crop):
-                self.readable += gap
-            else:
-                self.unreadable += gap
-            if not self.road_seen and self.readable >= self.ROAD_WAIT:
-                self.finished = SkillResult(status="failed", reason="no-road")
-                return self.finished
-            if self.heading is None and self.unreadable >= self.UNREADABLE_WAIT:
-                return self.stop("map-unreadable")
-        else:
+        if road is not None:
             self.road_seen = True
             self.readable = 0.0
             self.heading = self._bearing(road, observation.reading.arrow, now)
+            if self.north is not None:
+                self.compass_heading = _wrap(self.heading - self.north)
+        elif crop_ok(crop):
+            self.readable += gap
+            if self.heading is None:
+                self.heading = 0.0
+            if north is not None:
+                if self.compass_heading is None:
+                    self.compass_heading = _wrap(self.heading - north)
+                self.heading = _wrap(self.compass_heading + north)
+        else:
+            self.unreadable += gap
         if self.heading is None:
             self.guard.step(observation, (0.0, 0.0))
+            if self.unreadable >= self.UNREADABLE_WAIT:
+                return self.stop("map-unreadable")
             return SkillResult()
         steer = self.guard.step(observation, stick_for(self.heading, self.STICK))
         if steer.failed:

@@ -14,6 +14,7 @@ from pilot.actions import (
     label,
     load_controller,
     sample_indices,
+    sample_windows,
     write_index,
 )
 from pilot.contract import Pad
@@ -254,13 +255,27 @@ def test_a_short_rest_between_two_inputs_is_no_idle():
 def test_times_and_frames_come_from_frames_jsonl_with_gaps():
     rows = [{"i": i, "t": t} for i, t in enumerate([0.0, 0.016, 0.05, 0.1, 0.12, 1.7, 1.71, 1.8, 1.9])]
     assert sample_indices(rows, 10) == [0, 3, 5, 7, 8]
-    times = [rows[i]["t"] for i in sample_indices(rows, 10)]
+    picks = sample_indices(rows, 10)
+    ends, lasts = sample_windows(rows, picks)
+    observed = [
+        Sample(index=i, time=rows[i]["t"], end=end, last=last, look=FOOT)
+        for i, end, last in zip(picks, ends, lasts, strict=True)
+    ]
     events = [(0.0, Pad()), (0.5, Pad(buttons=("circle",))), (0.52, Pad())]
-    stretches = run([FOOT] * 5, events, times=times)
-    # The press fell into the gap after 0.1 s, so the sample at 0.1 holds it until the next frame at 1.7.
-    assert at(stretches, 0.1) == "melee"
-    assert [s["start"] for s in stretches] == [0.0, 0.1, 1.7]
-    assert stretches[1]["end"] == 1.7
+    stretches = label(attach_hands(observed, Controller(events), 0), has_pad=True)
+    assert all(row["action"] != "melee" for row in stretches)
+    assert all(row["end"] <= 0.12 or row["start"] >= 1.7 for row in stretches)
+    assert ends[1] == 0.12
+
+
+def test_hands_become_unknown_after_cut_until_a_new_recorded_state():
+    observed = samples([FOOT, FOOT], times=[0.0, 0.1]) + samples([CAR, CAR, CAR], times=[61, 61.1, 61.2])
+    controller = Controller([(0.0, Pad(r2=1)), (61.1, Pad())])
+    attached = attach_hands(observed, controller, 0)
+    assert attached[2].hand is None
+    assert attached[3].hand is not None
+    stretches = label(attached, has_pad=True)
+    assert all(row["end"] < 1 or row["start"] >= 61 for row in stretches)
 
 
 def test_the_decision_can_be_replaced():

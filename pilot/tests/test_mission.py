@@ -229,6 +229,8 @@ def test_inner_marker_or_objective_keeps_walk_to(objective, border):
         objects=[{"kind": "car", "confidence": 0.9}],
     )
     head = MissionHead(Fallback())
+    if not objective:
+        assert head.decide(value).plan[0].name != "walk_to"
     answer = head.decide(value)
     assert head.last_rule == "foot_target"
     assert [call.name for call in answer.plan] == ["walk_to"]
@@ -250,10 +252,11 @@ def test_rim_glyph_fragments_with_false_border_do_not_become_targets(x, y):
     assert head.decide(replace(value, objective="Go to the marker.")).plan[0].name == "walk_to"
     # A separate interior marker is not discarded with the rim glyph's color.
     value.minimap["blips"].append({"color": "blue", "x": 10, "y": 25, "border": False})
+    assert head.decide(value).plan[0].name == "walk_road"
     assert head.decide(value).plan[0].name == "walk_to"
 
 
-P45_REPLAYS = json.loads((CORPUS.parent / "foot" / "p45-decisions.json").read_text())["sessions"]
+P45_REPLAYS = json.loads((CORPUS.parent / "foot" / "p50" / "decisions.json").read_text())["p45"]
 
 
 @pytest.mark.parametrize("session", P45_REPLAYS, ids=lambda session: session["recording"])
@@ -534,20 +537,21 @@ def test_unmarked_foot_heads_for_a_road():
     assert [call.name for call in answer.plan] == ["walk_road"]
 
 
-def test_a_map_without_roads_looks_and_walks_as_before():
+def test_a_map_without_roads_keeps_a_long_heading_without_accumulating_looks():
     head = MissionHead()
     answer = head.decide(_on_foot_failure("walk_road", "no-road"))
     assert head.last_rule == "foot_explore_roadless"
-    assert [call.name for call in answer.plan] == ["look", "walk", "look", "walk"]
+    assert [call.name for call in answer.plan] == ["walk_road"]
+    assert answer.plan[0].args["duration"] == 30
 
 
 @pytest.mark.parametrize("name", ["walk", "walk_road"])
-def test_walking_that_found_no_way_round_turns_about(name):
+def test_walking_that_found_no_way_round_changes_heading_by_a_fixed_step(name):
     head = MissionHead()
     answer = head.decide(_on_foot_failure(name, "stuck"))
     assert head.last_rule == "foot_stuck"
     assert [call.name for call in answer.plan] == ["look", "walk_road"]
-    assert answer.plan[0].args["angle"] == 180
+    assert answer.plan[0].args["angle"] == 60
 
 
 def test_a_blocked_walk_to_turns_back_toward_the_road():
@@ -555,4 +559,46 @@ def test_a_blocked_walk_to_turns_back_toward_the_road():
     answer = head.decide(_on_foot_failure("walk_to", "blocked"))
     assert head.last_rule == "foot_stuck"
     assert [call.name for call in answer.plan] == ["look", "walk_road"]
-    assert answer.plan[0].args["angle"] == 180
+    assert answer.plan[0].args["angle"] == 60
+
+
+@pytest.mark.parametrize("color", ["yellow", "blue"])
+def test_unasked_target_must_survive_two_observations_and_loss_resets_it(color):
+    value = replace(
+        request("wifi-485"),
+        objective="",
+        hud=CALM,
+        objects=[],
+        minimap={
+            "minimap": "flat",
+            "route": "none",
+            "blips": [{"color": color, "x": 10, "y": 25, "border": False}],
+        },
+    )
+    head = MissionHead()
+    assert head.decide(value).plan[0].name == "walk_road"
+    assert head.decide(value).plan[0].name == "walk_to"
+    empty = replace(value, minimap={"minimap": "flat", "route": "none", "blips": []})
+    assert head.decide(empty).plan[0].name == "walk_road"
+    assert head.decide(value).plan[0].name == "walk_road"
+    jumped = replace(
+        value,
+        minimap={
+            "minimap": "flat",
+            "route": "none",
+            "blips": [{"color": color, "x": -40, "y": 25, "border": False}],
+        },
+    )
+    assert head.decide(jumped).plan[0].name == "walk_road"
+
+
+def test_a_road_goal_that_meets_a_map_without_roads_keeps_its_heading():
+    head = MissionHead()
+    base = replace(request("wifi-485"), objective="", hud=CALM, time=1.0)
+    assert head.decide(base).goal["name"] == "road"
+    answer = head.decide(
+        replace(base, time=5.0, last_skill={"name": "walk_road", "status": "failed", "reason": "no-road"})
+    )
+    assert answer.goal["name"] == "road"
+    assert [call.name for call in answer.plan] == ["walk_road"]
+    assert answer.plan[0].args["duration"] == 30
