@@ -83,7 +83,8 @@ def test_no_road_keeps_compass_heading_across_camera_turns(monkeypatch):
         assert skill.compass_heading == -30
         bearing = math.degrees(math.atan2(result.pad.left[0], -result.pad.left[1]))
         assert (bearing - north + 180) % 360 - 180 == pytest.approx(-30)
-    assert skill.step(Observation(FLAT, None, 30, frame=crop)).reason == "time-limit"
+    final = skill.step(Observation(FLAT, None, 30, frame=crop))
+    assert final.status == "done" and final.reason == "time-limit"
 
 
 def test_road_direction_survives_road_loss_and_missing_compass(monkeypatch):

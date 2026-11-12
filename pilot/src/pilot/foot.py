@@ -626,7 +626,9 @@ class WalkRoad:
                 self.finished = SkillResult(status="done", reason="road-side (map band; kerb unverified)")
                 return self.finished
             if road is None and not self.road_seen and self.compass_heading is not None:
-                return self.stop("time-limit")
+                # No road was ever on the map: the compass walk ends as it always did.
+                self.finished = SkillResult(status="done", reason="time-limit")
+                return self.finished
             return self.stop("still-in-lane" if self.position == "lane" else "road-side-unknown")
         if road is not None:
             self.road_seen = True
