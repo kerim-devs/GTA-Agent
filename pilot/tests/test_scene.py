@@ -9,7 +9,7 @@ import numpy as np
 import pytest
 
 from pilot.contract import Reading
-from pilot.scene import EventDetector, SceneText, TextReader, VisionUnavailableError
+from pilot.scene import EventDetector, SceneText, TextReader, VisionUnavailableError, _objective
 
 
 def reading(minimap="flat", route="none", corrupt=False, confidence=0.9):
@@ -195,3 +195,80 @@ def test_judge_vehicle_mode_does_not_depend_on_map_integrity():
     detector.update(reading("none", corrupt=True), 0, mode="foot")
     events = detector.update(reading("none", corrupt=True), 0.1, mode="vehicle")
     assert [e.kind for e in events] == ["vehicle_enter"]
+
+
+def objective_frame(colour):
+    frame = np.full((720, 1280, 3), 200, dtype=np.uint8)
+    if colour is not None:
+        frame[664:680, 600:690] = colour
+    return frame
+
+
+@pytest.mark.parametrize(
+    "colour",
+    [
+        (173, 210, 221),
+        (126, 170, 184),
+        (160, 233, 233),
+        (236, 232, 155),
+        (240, 200, 40),
+        (30, 220, 220),
+        (220, 40, 40),
+        (40, 220, 40),
+        (180, 135, 110),
+        (115, 145, 145),
+        (150, 110, 110),
+    ],
+)
+def test_objective_accepts_pale_and_original_target_colours(colour):
+    assert _objective(objective_frame(colour), (500, 660, 200, 20), "Steig wieder in den Lieferwagen.")
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Begib dich zu dem herrenlosen Auto.",
+        "Beglb dlch zum Abschleppwagen.",
+        "8egib dich zu Michaels Haus.",
+        "Stelg in den Lieferwagen.",
+        "Folge Chop.",
+        "Schlepp das Auto ab.",
+        "Mach den Wagen fertig.",
+        "Kehr zu Lamar zurück.",
+        "Halte den Wagen an.",
+    ],
+)
+def test_objective_accepts_recorded_instructions_and_bounded_ocr_errors(text):
+    assert _objective(objective_frame((160, 233, 233)), (500, 660, 200, 20), text)
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Machen wir die Kiste richtig geil.",
+        "hafte, Nlgg",
+        "hatte, Nlgg",
+        "Fahrt ihr noch weiter?",
+        "Macht ihr das jetzt?",
+        "Nach dem, was er erlebt hat",
+        "Das ist dein Auto.",
+        "war",
+        "",
+        "Beglb",
+        "Stelg",
+        "Beglb " + "x" * 80,
+    ],
+)
+def test_coloured_dialogue_is_not_an_objective(text):
+    assert not _objective(objective_frame((160, 233, 233)), (500, 660, 200, 20), text)
+
+
+def test_instruction_requires_target_colour_inside_its_own_box():
+    assert not _objective(objective_frame(None), (500, 660, 200, 20), "Folge Lamar.")
+    assert not _objective(objective_frame((160, 233, 233)), (500, 660, 50, 20), "Folge Lamar.")
+    assert not _objective(objective_frame((160, 233, 233)), (500, 660, 0, 20), "Folge Lamar.")
+
+
+@pytest.mark.parametrize("text", ["Go!", "Warte!", "Folge X.", "Begib " + "x" * 80])
+def test_exact_instruction_keeps_original_reader_length_tolerance(text):
+    assert _objective(objective_frame((30, 220, 220)), (500, 660, 200, 20), text)

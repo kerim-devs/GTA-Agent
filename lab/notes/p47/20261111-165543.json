@@ -1,0 +1,722 @@
+{
+  "recording": "20261111-165543",
+  "readings": 1802,
+  "known_steps": 6,
+  "found_before": 0,
+  "found_after": 6,
+  "steps": [
+    {
+      "step": {
+        "objective": "Beglb dlch zum Abschleppwagen.",
+        "start": 221.0052,
+        "end": 222.5695,
+        "last": 222.0432,
+        "duration": 1.038,
+        "step_duration": 1.564,
+        "section_kinds": [
+          "foot"
+        ],
+        "route": [],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 1.564,
+          "seconds": {
+            "driving": 0.0,
+            "walking": 0.0,
+            "running": 0.0,
+            "aiming": 0.0,
+            "firing": 0.0,
+            "looking": 0.0,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 1.564
+          }
+        },
+        "ending": "next objective",
+        "sample_observation": {
+          "t": 221.7775,
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": -12.34,
+              "y": 87.29,
+              "border": true
+            }
+          ]
+        },
+        "incidents": [],
+        "intent_class": "go_to",
+        "intent_wording": "begib dich",
+        "intent_target": "zum Abschleppwagen."
+      },
+      "before": {
+        "found": false,
+        "score": 0,
+        "reading": null
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Beglb dlch zum Abschleppwagen.",
+          "t": 221.0052,
+          "i": 13193
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Warte auf Tonya.",
+        "start": 222.5695,
+        "end": 284.50210000000004,
+        "last": 224.5021,
+        "duration": 1.933,
+        "step_duration": 61.933,
+        "section_kinds": [
+          "drive"
+        ],
+        "route": [],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 61.933,
+          "seconds": {
+            "driving": 23.605,
+            "walking": 0.0,
+            "running": 0.0,
+            "aiming": 0.0,
+            "firing": 0.0,
+            "looking": 7.299,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 14.16
+          }
+        },
+        "ending": "unknown",
+        "sample_observation": {
+          "t": 225.5598,
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 88.43,
+              "y": 85.34,
+              "border": true
+            },
+            {
+              "color": "blue",
+              "x": 74.0,
+              "y": 86.5,
+              "border": true
+            }
+          ]
+        },
+        "incidents": [
+          {
+            "t": 235.149,
+            "class": "standstill",
+            "cause": "waiting"
+          },
+          {
+            "t": 274.996,
+            "class": "standstill",
+            "cause": "waiting"
+          },
+          {
+            "t": 279.383,
+            "class": "collision",
+            "cause": "carried_on"
+          }
+        ],
+        "intent_class": "wait",
+        "intent_wording": "warte",
+        "intent_target": "auf Tonya."
+      },
+      "before": {
+        "found": false,
+        "score": 0,
+        "reading": null
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Warte auf Tonya.",
+          "t": 222.5695,
+          "i": 13281
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Warte auf Tonya.",
+        "start": 316.0092,
+        "end": 372.5079,
+        "last": 322.5032,
+        "duration": 6.494,
+        "step_duration": 56.499,
+        "section_kinds": [
+          "drive",
+          "foot"
+        ],
+        "route": [
+          "yellow"
+        ],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 56.499,
+          "seconds": {
+            "driving": 45.954,
+            "walking": 0.137,
+            "running": 0.0,
+            "aiming": 0.0,
+            "firing": 0.466,
+            "looking": 2.405,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 9.107
+          }
+        },
+        "ending": "next objective",
+        "sample_observation": {
+          "t": 318.9263,
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 2.87,
+              "y": 4.4,
+              "border": false
+            }
+          ]
+        },
+        "incidents": [
+          {
+            "t": 333.713,
+            "class": "collision",
+            "cause": "carried_on"
+          },
+          {
+            "t": 339.478,
+            "class": "collision",
+            "cause": "unknown"
+          }
+        ],
+        "intent_class": "wait",
+        "intent_wording": "warte",
+        "intent_target": "auf Tonya."
+      },
+      "before": {
+        "found": false,
+        "score": 0,
+        "reading": null
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Warte auf Tonya.",
+          "t": 316.0092,
+          "i": 18877
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Begib dich zu dem herrenlosen Auto.",
+        "start": 372.5079,
+        "end": 417.5945,
+        "last": 379.5042,
+        "duration": 6.996,
+        "step_duration": 45.087,
+        "section_kinds": [
+          "drive"
+        ],
+        "route": [
+          "yellow"
+        ],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 45.087,
+          "seconds": {
+            "driving": 33.226,
+            "walking": 0.0,
+            "running": 0.0,
+            "aiming": 0.0,
+            "firing": 0.0,
+            "looking": 4.405,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 8.533
+          }
+        },
+        "ending": "next objective",
+        "sample_observation": {
+          "t": 375.5025,
+          "route": "none",
+          "blips": []
+        },
+        "incidents": [
+          {
+            "t": 397.147,
+            "class": "standstill",
+            "cause": "waiting"
+          }
+        ],
+        "intent_class": "go_to",
+        "intent_wording": "begib dich",
+        "intent_target": "zu dem herrenlosen Auto."
+      },
+      "before": {
+        "found": false,
+        "score": 0,
+        "reading": null
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Begib dich zu dem herrenlosen Auto.",
+          "t": 372.5079,
+          "i": 22256
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Schlepp den Wagen zum Abschleppplatz.",
+        "start": 417.5945,
+        "end": 479.5054,
+        "last": 424.5151,
+        "duration": 6.921,
+        "step_duration": 61.911,
+        "section_kinds": [
+          "drive"
+        ],
+        "route": [
+          "yellow"
+        ],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 61.911,
+          "seconds": {
+            "driving": 55.354,
+            "walking": 0.0,
+            "running": 0.0,
+            "aiming": 0.0,
+            "firing": 0.0,
+            "looking": 1.534,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 5.831
+          }
+        },
+        "ending": "next objective",
+        "sample_observation": {
+          "t": 420.5939,
+          "route": "yellow",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": -67.8,
+              "y": 87.36,
+              "border": true
+            }
+          ]
+        },
+        "incidents": [
+          {
+            "t": 418.12,
+            "class": "collision",
+            "cause": "carried_on"
+          }
+        ],
+        "intent_class": "bring",
+        "intent_wording": "schlepp",
+        "intent_target": "den Wagen zum Abschleppplatz."
+      },
+      "before": {
+        "found": false,
+        "score": 0,
+        "reading": null
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Schlepp den Wagen zum Abschleppplatz.",
+          "t": 417.5945,
+          "i": 24957
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Mach das Fahrzeug in der Ablieferzone lo",
+        "start": 479.5054,
+        "end": 508.01,
+        "last": 486.5087,
+        "duration": 7.003,
+        "step_duration": 28.505,
+        "section_kinds": [
+          "banner",
+          "drive",
+          "foot"
+        ],
+        "route": [
+          "yellow"
+        ],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 28.505,
+          "seconds": {
+            "driving": 14.946,
+            "walking": 3.937,
+            "running": 2.036,
+            "aiming": 0.0,
+            "firing": 1.173,
+            "looking": 2.558,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 4.85
+          }
+        },
+        "ending": "passed",
+        "sample_observation": {
+          "t": 482.504,
+          "route": "none",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": 16.02,
+              "y": 15.87,
+              "border": false
+            }
+          ]
+        },
+        "incidents": [
+          {
+            "t": 492.567,
+            "class": "standstill",
+            "cause": "stuck_vehicle"
+          },
+          {
+            "t": 507.815,
+            "class": "mission_passed",
+            "cause": "passed"
+          }
+        ],
+        "intent_class": "use",
+        "intent_wording": "mach",
+        "intent_target": "das Fahrzeug in der Ablieferzone lo"
+      },
+      "before": {
+        "found": false,
+        "score": 0,
+        "reading": null
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Mach das Fahrzeug in der Ablieferzone lo",
+          "t": 485.0099,
+          "i": 28999
+        }
+      }
+    }
+  ],
+  "changed_labels": [
+    {
+      "text": "Beglb dlch zum Abschleppwagen.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 221.0052,
+      "first_i": 13193,
+      "count": 2,
+      "last_t": 221.5147,
+      "last_i": 13219
+    },
+    {
+      "text": ".Begib dlch zum Akchleppwagen.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 222.0432,
+      "first_i": 13250,
+      "count": 1,
+      "last_t": 222.0432,
+      "last_i": 13250
+    },
+    {
+      "text": "Warte auf Tonya.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 222.5695,
+      "first_i": 13281,
+      "count": 14,
+      "last_t": 320.5037,
+      "last_i": 19147
+    },
+    {
+      "text": "Warte auf Tony,a..",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 319.0331,
+      "first_i": 19053,
+      "count": 1,
+      "last_t": 319.0331,
+      "last_i": 19053
+    },
+    {
+      "text": "\"Warte auf Topya.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 321.007,
+      "first_i": 19177,
+      "count": 1,
+      "last_t": 321.007,
+      "last_i": 19177
+    },
+    {
+      "text": "Warte auf Topya.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 321.5037,
+      "first_i": 19207,
+      "count": 3,
+      "last_t": 322.5032,
+      "last_i": 19267
+    },
+    {
+      "text": "Begib dich zu dem herrenlosen Auto.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 372.5079,
+      "first_i": 22256,
+      "count": 9,
+      "last_t": 379.5042,
+      "last_i": 22681
+    },
+    {
+      "text": "Beglb dlch zu dem herrenlosen Auto.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 376.5034,
+      "first_i": 22501,
+      "count": 1,
+      "last_t": 376.5034,
+      "last_i": 22501
+    },
+    {
+      "text": "Begib dich zu dem herrenlosen A to.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 377.0052,
+      "first_i": 22531,
+      "count": 1,
+      "last_t": 377.0052,
+      "last_i": 22531
+    },
+    {
+      "text": "Begib dich zu dem herrenlosen Auto.K",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 378.5046,
+      "first_i": 22621,
+      "count": 1,
+      "last_t": 378.5046,
+      "last_i": 22621
+    },
+    {
+      "text": "Schlepp den Wagen zum Abschleppplatz.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 417.5945,
+      "first_i": 24957,
+      "count": 7,
+      "last_t": 424.5151,
+      "last_i": 25375
+    },
+    {
+      "text": "Schlepp den Wagen zum Abschleppplatz..",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 418.0083,
+      "first_i": 24987,
+      "count": 1,
+      "last_t": 418.0083,
+      "last_i": 24987
+    },
+    {
+      "text": "Schlepp den Wagen zum Abschleppplatt",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 418.5096,
+      "first_i": 25017,
+      "count": 1,
+      "last_t": 418.5096,
+      "last_i": 25017
+    },
+    {
+      "text": "Schlepp den Wagen zum Absch",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 419.0075,
+      "first_i": 25047,
+      "count": 1,
+      "last_t": 419.0075,
+      "last_i": 25047
+    },
+    {
+      "text": "Schlepp den Wagen zum Abschle",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 420.0104,
+      "first_i": 25107,
+      "count": 1,
+      "last_t": 420.0104,
+      "last_i": 25107
+    },
+    {
+      "text": "Schlepp den Wagen zum Abschlepppla",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 420.5111,
+      "first_i": 25137,
+      "count": 1,
+      "last_t": 420.5111,
+      "last_i": 25137
+    },
+    {
+      "text": "Mach das FahrzelYg,in der Ablieferzone los.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 479.5054,
+      "first_i": 28669,
+      "count": 1,
+      "last_t": 479.5054,
+      "last_i": 28669
+    },
+    {
+      "text": "Mach das Fahrzeug in der Ablief2rzone los.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 480.0028,
+      "first_i": 28699,
+      "count": 1,
+      "last_t": 480.0028,
+      "last_i": 28699
+    },
+    {
+      "text": "Mach das-Fahrzeug in der Ablieferzone los.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 481.0294,
+      "first_i": 28755,
+      "count": 1,
+      "last_t": 481.0294,
+      "last_i": 28755
+    },
+    {
+      "text": "Mach das Fahrzeug in der Ablleferzone",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 481.5534,
+      "first_i": 28787,
+      "count": 1,
+      "last_t": 481.5534,
+      "last_i": 28787
+    },
+    {
+      "text": "Mach. das Fahrzeys in der Ablieferzone I",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 482.0777,
+      "first_i": 28818,
+      "count": 1,
+      "last_t": 482.0777,
+      "last_i": 28818
+    },
+    {
+      "text": "Mach das Fahrzeug in der Ablieferzone los.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 482.504,
+      "first_i": 28849,
+      "count": 4,
+      "last_t": 486.5087,
+      "last_i": 29089
+    },
+    {
+      "text": "Mach das Fahrzeug in der Ablleferz",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 483.5063,
+      "first_i": 28909,
+      "count": 1,
+      "last_t": 483.5063,
+      "last_i": 28909
+    },
+    {
+      "text": "Mach das Fahrzeug In dePAblleferzone los.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 484.0068,
+      "first_i": 28939,
+      "count": 1,
+      "last_t": 484.0068,
+      "last_i": 28939
+    },
+    {
+      "text": "Mach das Fahrzeug in der Ablleferzone los.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 484.507,
+      "first_i": 28969,
+      "count": 1,
+      "last_t": 484.507,
+      "last_i": 28969
+    },
+    {
+      "text": "Mach das Fahrzeug in der Ablieferzone lo",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 485.0099,
+      "first_i": 28999,
+      "count": 1,
+      "last_t": 485.0099,
+      "last_i": 28999
+    }
+  ],
+  "stored_label_disagreements": [],
+  "dialogue_candidates": [],
+  "cutscene_readings": [],
+  "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-165543/sections.json",
+  "timing_ms_per_reading_with_bottom_text": {
+    "before": {
+      "count": 564,
+      "mean": 0.022554975177304964,
+      "median": 0.014375,
+      "p95": 0.11774810000000008
+    },
+    "after": {
+      "count": 564,
+      "mean": 0.04432077127659574,
+      "median": 0.0229795,
+      "p95": 0.178841
+    }
+  },
+  "wall_seconds": 62.11913291702513
+}

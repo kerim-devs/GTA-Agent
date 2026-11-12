@@ -1,0 +1,695 @@
+{
+  "recording": "20261111-164039",
+  "readings": 1767,
+  "known_steps": 8,
+  "found_before": 5,
+  "found_after": 8,
+  "steps": [
+    {
+      "step": {
+        "objective": "Begib dich nach Vespucci Beach.",
+        "start": 435.0086,
+        "end": 446.0034,
+        "last": 442.0512,
+        "duration": 7.043,
+        "step_duration": 10.995,
+        "section_kinds": [
+          "drive",
+          "foot"
+        ],
+        "route": [
+          "yellow"
+        ],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 10.995,
+          "seconds": {
+            "driving": 6.343,
+            "walking": 0.644,
+            "running": 0.31,
+            "aiming": 0.0,
+            "firing": 0.644,
+            "looking": 2.426,
+            "map_input": 0.0,
+            "vehicle_input": 0.121,
+            "neutral": 1.983
+          }
+        },
+        "ending": "next objective",
+        "sample_observation": {
+          "t": 437.9946,
+          "route": "none",
+          "blips": []
+        },
+        "incidents": [],
+        "intent_class": "go_to",
+        "intent_wording": "begib dich",
+        "intent_target": "nach Vespucci Beach."
+      },
+      "before": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Begib dich nach Vespucci Beach.",
+          "t": 435.0086,
+          "i": 24951
+        }
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Begib dich nach Vespucci Beach.",
+          "t": 435.0086,
+          "i": 24951
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Kehr zurück zu Lamar.",
+        "start": 446.0034,
+        "end": 513.0615,
+        "last": 453.0615,
+        "duration": 7.058,
+        "step_duration": 67.058,
+        "section_kinds": [
+          "drive",
+          "menu"
+        ],
+        "route": [
+          "yellow"
+        ],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 67.058,
+          "seconds": {
+            "driving": 47.048,
+            "walking": 0.0,
+            "running": 0.0,
+            "aiming": 0.0,
+            "firing": 0.0,
+            "looking": 8.085,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 15.724
+          }
+        },
+        "ending": "unknown",
+        "sample_observation": {
+          "t": 448.6234,
+          "route": "none",
+          "blips": []
+        },
+        "incidents": [],
+        "intent_class": "return_to",
+        "intent_wording": "kehr zurück",
+        "intent_target": "zu Lamar."
+      },
+      "before": {
+        "found": false,
+        "score": 0,
+        "reading": null
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Kehr zurück zu Lamar.",
+          "t": 446.0034,
+          "i": 25604
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Folge Lamar.",
+        "start": 545.5151,
+        "end": 608.0157,
+        "last": 548.0157,
+        "duration": 2.501,
+        "step_duration": 62.501,
+        "section_kinds": [
+          "foot"
+        ],
+        "route": [],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 62.501,
+          "seconds": {
+            "driving": 0.0,
+            "walking": 56.761,
+            "running": 5.974,
+            "aiming": 0.0,
+            "firing": 0.267,
+            "looking": 7.037,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 4.512
+          }
+        },
+        "ending": "unknown",
+        "sample_observation": {
+          "t": 548.4991,
+          "route": "none",
+          "blips": []
+        },
+        "incidents": [],
+        "intent_class": "follow",
+        "intent_wording": "folge",
+        "intent_target": "Lamar."
+      },
+      "before": {
+        "found": false,
+        "score": 0,
+        "reading": null
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Folge Lamar.",
+          "t": 545.5151,
+          "i": 31518
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Sammle elne Waffe auf.",
+        "start": 628.0127,
+        "end": 631.0015,
+        "last": 628.0127,
+        "duration": 0.0,
+        "step_duration": 2.989,
+        "section_kinds": [
+          "foot"
+        ],
+        "route": [],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 2.989,
+          "seconds": {
+            "driving": 0.0,
+            "walking": 0.949,
+            "running": 0.0,
+            "aiming": 0.0,
+            "firing": 0.0,
+            "looking": 0.472,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 1.056
+          }
+        },
+        "ending": "next objective",
+        "sample_observation": {
+          "t": 629.4978,
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": -2.62,
+              "y": 4.25,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": -9.43,
+              "y": 21.03,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": -1.9,
+              "y": 13.7,
+              "border": false
+            }
+          ]
+        },
+        "incidents": [],
+        "intent_class": "pick_up",
+        "intent_wording": "sammle",
+        "intent_target": "elne Waffe auf."
+      },
+      "before": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Sammle elne Waffe auf.",
+          "t": 628.0127,
+          "i": 36460
+        }
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Sammle elne Waffe auf.",
+          "t": 628.0127,
+          "i": 36460
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Schalte die Vagos aus.",
+        "start": 631.0015,
+        "end": 682.5025,
+        "last": 635.0119,
+        "duration": 4.01,
+        "step_duration": 51.501,
+        "section_kinds": [
+          "banner",
+          "cutscene",
+          "foot",
+          "unknown"
+        ],
+        "route": [],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 51.501,
+          "seconds": {
+            "driving": 0.0,
+            "walking": 16.914,
+            "running": 0.729,
+            "aiming": 16.133,
+            "firing": 3.272,
+            "looking": 10.243,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 12.198
+          }
+        },
+        "ending": "failed",
+        "sample_observation": {
+          "t": 633.9901,
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 1.75,
+              "y": 4.88,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": -4.58,
+              "y": 23.64,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": 3.5,
+              "y": 17.28,
+              "border": false
+            }
+          ]
+        },
+        "incidents": [
+          {
+            "t": 632.683,
+            "class": "standstill",
+            "cause": "fight"
+          },
+          {
+            "t": 677.782,
+            "class": "death",
+            "cause": "fight"
+          },
+          {
+            "t": 681.972,
+            "class": "mission_failed",
+            "cause": "player_died"
+          }
+        ],
+        "intent_class": "take_out",
+        "intent_wording": "schalte",
+        "intent_target": "die Vagos aus."
+      },
+      "before": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Schalte die Vagos aus.",
+          "t": 632.0281,
+          "i": 36680
+        }
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Schalte die Vagos aus.",
+          "t": 632.0281,
+          "i": 36680
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Schalte die Vagos aus.",
+        "start": 692.3224,
+        "end": 753.5086,
+        "last": 693.5086,
+        "duration": 1.186,
+        "step_duration": 61.186,
+        "section_kinds": [
+          "foot"
+        ],
+        "route": [],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 61.186,
+          "seconds": {
+            "driving": 0.0,
+            "walking": 21.938,
+            "running": 0.0,
+            "aiming": 24.951,
+            "firing": 4.074,
+            "looking": 12.423,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 9.803
+          }
+        },
+        "ending": "unknown",
+        "sample_observation": {
+          "t": 695.3213,
+          "route": "none",
+          "blips": [
+            {
+              "color": "red",
+              "x": -5.13,
+              "y": 23.18,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": 3.18,
+              "y": 16.88,
+              "border": false
+            }
+          ]
+        },
+        "incidents": [
+          {
+            "t": 745.482,
+            "class": "standstill",
+            "cause": "fight"
+          }
+        ],
+        "intent_class": "take_out",
+        "intent_wording": "schalte",
+        "intent_target": "die Vagos aus."
+      },
+      "before": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Schalte die Vagos aus.",
+          "t": 693.2339,
+          "i": 40340
+        }
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "-schalte die Vagos aus.",
+          "t": 692.3224,
+          "i": 40278
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Steig auf das Motorrad.",
+        "start": 877.0081,
+        "end": 889.0047,
+        "last": 881.0118,
+        "duration": 4.004,
+        "step_duration": 11.997,
+        "section_kinds": [
+          "foot"
+        ],
+        "route": [
+          "yellow"
+        ],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 11.997,
+          "seconds": {
+            "driving": 0.0,
+            "walking": 4.955,
+            "running": 0.806,
+            "aiming": 2.125,
+            "firing": 1.008,
+            "looking": 4.215,
+            "map_input": 0.0,
+            "vehicle_input": 0.242,
+            "neutral": 2.211
+          }
+        },
+        "ending": "next objective",
+        "sample_observation": {
+          "t": 879.9957,
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": -5.23,
+              "y": 11.54,
+              "border": false
+            }
+          ]
+        },
+        "incidents": [],
+        "intent_class": "enter_vehicle",
+        "intent_wording": "steig",
+        "intent_target": "auf das Motorrad."
+      },
+      "before": {
+        "found": false,
+        "score": 0,
+        "reading": null
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Steig auf das Motorrad.",
+          "t": 877.0081,
+          "i": 51351
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Begib dich zu der Autowaschanlage.",
+        "start": 889.0047,
+        "end": 901.5,
+        "last": 896.0711,
+        "duration": 7.066,
+        "step_duration": 12.495,
+        "section_kinds": [
+          "drive",
+          "foot"
+        ],
+        "route": [
+          "yellow"
+        ],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 12.446,
+          "seconds": {
+            "driving": 9.208,
+            "walking": 2.292,
+            "running": 0.0,
+            "aiming": 0.0,
+            "firing": 1.295,
+            "looking": 1.517,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 0.699
+          }
+        },
+        "ending": "unknown",
+        "sample_observation": {
+          "t": 891.9898,
+          "route": "yellow",
+          "blips": []
+        },
+        "incidents": [],
+        "intent_class": "go_to",
+        "intent_wording": "begib dich",
+        "intent_target": "zu der Autowaschanlage."
+      },
+      "before": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Begib dich zu der Autowaschanlage.",
+          "t": 890.0004,
+          "i": 52118
+        }
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Begib dich zu der Autowaschanlage.",
+          "t": 889.0047,
+          "i": 52069
+        }
+      }
+    }
+  ],
+  "changed_labels": [
+    {
+      "text": "Kehr zurück zu Lamar.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 446.0034,
+      "first_i": 25604,
+      "count": 13,
+      "last_t": 453.0615,
+      "last_i": 26019
+    },
+    {
+      "text": "Folge Lamar.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 545.5151,
+      "first_i": 31518,
+      "count": 4,
+      "last_t": 548.0157,
+      "last_i": 31668
+    },
+    {
+      "text": "-schalte die Vagos aus.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 692.3224,
+      "first_i": 40278,
+      "count": 1,
+      "last_t": 692.3224,
+      "last_i": 40278
+    },
+    {
+      "text": "Steig auf das Motorrad.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 877.0081,
+      "first_i": 51351,
+      "count": 3,
+      "last_t": 880.0113,
+      "last_i": 51531
+    },
+    {
+      "text": "Steig auf das Motorrad. ¥ .",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 878.0111,
+      "first_i": 51411,
+      "count": 1,
+      "last_t": 878.0111,
+      "last_i": 51411
+    },
+    {
+      "text": "Stelg auf das Motorrad.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 878.5108,
+      "first_i": 51441,
+      "count": 1,
+      "last_t": 878.5108,
+      "last_i": 51441
+    },
+    {
+      "text": "Stelg auf das Motorrad",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 879.0133,
+      "first_i": 51471,
+      "count": 1,
+      "last_t": 879.0133,
+      "last_i": 51471
+    },
+    {
+      "text": "Stelg auf das Motorrad.-",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 881.0118,
+      "first_i": 51590,
+      "count": 1,
+      "last_t": 881.0118,
+      "last_i": 51590
+    },
+    {
+      "text": "Begib dich zu der Autowaschanlage.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 889.0047,
+      "first_i": 52069,
+      "count": 2,
+      "last_t": 889.5059,
+      "last_i": 52099
+    },
+    {
+      "text": "Beglb dich zu der Autowaschanlage.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 891.0064,
+      "first_i": 52189,
+      "count": 1,
+      "last_t": 891.0064,
+      "last_i": 52189
+    }
+  ],
+  "stored_label_disagreements": [],
+  "dialogue_candidates": [],
+  "cutscene_readings": [
+    {
+      "t": 678.5161,
+      "i": 39479,
+      "objectives": []
+    },
+    {
+      "t": 679.0141,
+      "i": 39504,
+      "objectives": []
+    }
+  ],
+  "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-164039/sections.json",
+  "timing_ms_per_reading_with_bottom_text": {
+    "before": {
+      "count": 548,
+      "mean": 0.028864483576642338,
+      "median": 0.014562499999999999,
+      "p95": 0.16034605
+    },
+    "after": {
+      "count": 548,
+      "mean": 0.047688810218978105,
+      "median": 0.026854,
+      "p95": 0.17836884999999997
+    }
+  },
+  "wall_seconds": 47.473373290966265
+}

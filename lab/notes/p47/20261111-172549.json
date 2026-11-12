@@ -1,0 +1,303 @@
+{
+  "recording": "20261111-172549",
+  "readings": 1014,
+  "known_steps": 3,
+  "found_before": 2,
+  "found_after": 3,
+  "steps": [
+    {
+      "step": {
+        "objective": "Schalte den Gartne",
+        "start": 133.005,
+        "end": 194.0074,
+        "last": 134.0074,
+        "duration": 1.002,
+        "step_duration": 61.002,
+        "section_kinds": [
+          "foot"
+        ],
+        "route": [],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 61.002,
+          "seconds": {
+            "driving": 0.0,
+            "walking": 58.41,
+            "running": 0.0,
+            "aiming": 1.511,
+            "firing": 0.0,
+            "looking": 5.833,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 2.365
+          }
+        },
+        "ending": "unknown",
+        "sample_observation": {
+          "t": 135.9915,
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 8.71,
+              "y": 27.71,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": 0.5,
+              "y": 9.5,
+              "border": false
+            }
+          ]
+        },
+        "incidents": [
+          {
+            "t": 185.272,
+            "class": "standstill",
+            "cause": "stuck_foot"
+          }
+        ],
+        "intent_class": "take_out",
+        "intent_wording": "schalte",
+        "intent_target": "den Gartne"
+      },
+      "before": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Schalte den Gartne",
+          "t": 133.5071,
+          "i": 7946
+        }
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Schalte den Gartne",
+          "t": 133.5071,
+          "i": 7946
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Hol das Auto zurück.",
+        "start": 206.0087,
+        "end": 263.0124,
+        "last": 212.5985,
+        "duration": 6.59,
+        "step_duration": 57.004,
+        "section_kinds": [
+          "drive",
+          "foot",
+          "menu"
+        ],
+        "route": [],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 57.004,
+          "seconds": {
+            "driving": 0.0,
+            "walking": 24.997,
+            "running": 0.0,
+            "aiming": 0.0,
+            "firing": 0.0,
+            "looking": 11.303,
+            "map_input": 0.0,
+            "vehicle_input": 0.145,
+            "neutral": 26.123
+          }
+        },
+        "ending": "next objective",
+        "sample_observation": {
+          "t": 208.9918,
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 70.43,
+              "y": -20.81,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": -8.95,
+              "y": 18.5,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": -16.67,
+              "y": -3.92,
+              "border": false
+            }
+          ]
+        },
+        "incidents": [],
+        "intent_class": "steal",
+        "intent_wording": "hol",
+        "intent_target": "das Auto zurück."
+      },
+      "before": {
+        "found": false,
+        "score": 0,
+        "reading": null
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Hol das Auto zurück.",
+          "t": 207.512,
+          "i": 12375
+        }
+      }
+    },
+    {
+      "step": {
+        "objective": "Bring das Auto zum Autohaus.",
+        "start": 263.0124,
+        "end": 330.0777,
+        "last": 270.0777,
+        "duration": 7.065,
+        "step_duration": 67.065,
+        "section_kinds": [
+          "drive",
+          "foot",
+          "menu"
+        ],
+        "route": [
+          "yellow"
+        ],
+        "blips": [],
+        "blips_known": false,
+        "wanted": 0,
+        "human": {
+          "observed_seconds": 67.065,
+          "seconds": {
+            "driving": 44.447,
+            "walking": 0.0,
+            "running": 0.0,
+            "aiming": 0.0,
+            "firing": 0.0,
+            "looking": 1.412,
+            "map_input": 0.0,
+            "vehicle_input": 0.0,
+            "neutral": 8.831
+          }
+        },
+        "ending": "unknown",
+        "sample_observation": {
+          "t": 266.0087,
+          "route": "none",
+          "blips": []
+        },
+        "incidents": [
+          {
+            "t": 480.361,
+            "class": "mission_passed",
+            "cause": "passed"
+          }
+        ],
+        "intent_class": "bring",
+        "intent_wording": "bring",
+        "intent_target": "das Auto zum Autohaus."
+      },
+      "before": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Bring das Auto zum Autohaus.",
+          "t": 263.0124,
+          "i": 15695
+        }
+      },
+      "after": {
+        "found": true,
+        "score": 1.0,
+        "reading": {
+          "text": "Bring das Auto zum Autohaus.",
+          "t": 263.0124,
+          "i": 15695
+        }
+      }
+    }
+  ],
+  "changed_labels": [
+    {
+      "text": "Hol das Auto zur(ick.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 206.0087,
+      "first_i": 12286,
+      "count": 1,
+      "last_t": 206.0087,
+      "last_i": 12286
+    },
+    {
+      "text": "Hol das Auto zurück.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 207.512,
+      "first_i": 12375,
+      "count": 6,
+      "last_t": 211.024,
+      "last_i": 12581
+    },
+    {
+      "text": "Hol das Aut",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 210.003,
+      "first_i": 12525,
+      "count": 1,
+      "last_t": 210.003,
+      "last_i": 12525
+    },
+    {
+      "text": "Hol das Au",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 212.0751,
+      "first_i": 12644,
+      "count": 2,
+      "last_t": 212.5985,
+      "last_i": 12675
+    },
+    {
+      "text": "Bring das Auto zum Autohaus.",
+      "before": "subtitle",
+      "after": "objective",
+      "first_t": 269.5512,
+      "first_i": 16081,
+      "count": 2,
+      "last_t": 270.0777,
+      "last_i": 16113
+    }
+  ],
+  "stored_label_disagreements": [],
+  "dialogue_candidates": [],
+  "cutscene_readings": [],
+  "sections_source": "/Users/kerim/recordings/derived/kerim/20261111-172549/sections.json",
+  "timing_ms_per_reading_with_bottom_text": {
+    "before": {
+      "count": 478,
+      "mean": 0.01896392887029289,
+      "median": 0.014125,
+      "p95": 0.02146424999999998
+    },
+    "after": {
+      "count": 478,
+      "mean": 0.03208889121338912,
+      "median": 0.021792,
+      "p95": 0.0987481999999999
+    }
+  },
+  "wall_seconds": 35.75603916600812
+}

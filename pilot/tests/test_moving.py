@@ -396,7 +396,8 @@ def test_walk_to_carries_only_after_observed_arrival(tmp_path):
         tick(9)
         tick(9.1)
         assert tick(9.7).pad == NEUTRAL_PAD
-        assert conductor.runner.describe()["status"] == "failed"
+        assert conductor.runner.describe()["status"] == "done"
+        assert conductor.runner.describe()["reason"] == "time-limit"
         assert not conductor.carry_allowed
     finally:
         conductor.close()

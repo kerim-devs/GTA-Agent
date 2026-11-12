@@ -59,29 +59,57 @@ def _inside(box: tuple[int, int, int, int], rect: tuple[int, int, int, int]) -> 
     return a <= x + w / 2 <= a + c and b <= y + h / 2 <= b + d
 
 
-def _objective(frame: np.ndarray, box: tuple[int, int, int, int], text: str) -> bool:
-    """Conservative instruction cue plus coloured target; never colour alone.
+_INSTRUCTION_VERBS = (
+    "begib folge halte sammle schalte fahr fahre geh gehe erreiche steig steige verlasse bring bringe töte "
+    "beschaffe kehre kehr rette rett verliere finde find hole hol warte triff schlepp schleppe mach mache "
+    "verfolge verfolg zerstöre zerstör fliehe flieh töt lauf such sprich benutz "
+    "entkomme versteck nimm ruf rufe wähle spring springe klettere benutze lösche besorge hilf folgt "
+    "go follow collect take kill drive find reach enter leave return lose meet wait steal tow"
+).split()
 
-    This is a bounded German/English heuristic, not semantic mission parsing.
-    Other bottom text is still retained as subtitle context for the head.
+
+def _instruction_like(text):
+    """Require a listed verb, allowing one bounded OCR glyph confusion.
+
+    Exact verbs retain the reader's original length tolerance. Fuzzy matches
+    need context and only allow i/l or b/8, as observed in recorded objectives;
+    arbitrary substitutions also turn dialogue fragments into instructions.
     """
-    if not re.match(
-        r"^(begib|folge|sammle|schalte|fahre?|geh|gehe|erreiche|steig|steige|verlasse|bring|bringe|"
-        r"töte|beschaffe|kehre|rette|verliere|finde|hole|warte|halte|triff|go|follow|collect|"
-        r"take|kill|drive|find|reach|enter|leave|return|lose|meet|wait|steal)\b",
-        text.casefold(),
-    ):
+    words = text.split()
+    if not words:
         return False
+    first = re.sub(r"[^\wäöüß]", "", words[0].casefold())
+    if first in _INSTRUCTION_VERBS:
+        return True
+    if sum(char.isalpha() for char in text) < 8 or len(text) > 80:
+        return False
+    return len(first) >= 5 and any(
+        len(verb) == len(first)
+        and sum(a != b for a, b in zip(verb, first, strict=True)) == 1
+        and all(a == b or a + b in ("il", "li", "b8", "8b") for a, b in zip(verb, first, strict=True))
+        for verb in _INSTRUCTION_VERBS
+    )
+
+
+def _coloured_target(frame, box):
+    """Recognise target colours even when video compression makes them pale."""
     x, y, w, h = box
     pixels = frame[max(y, 0) : y + h, max(x, 0) : x + w].astype(np.int16)
     if not pixels.size:
         return False
     r, g, b = pixels[..., 0], pixels[..., 1], pixels[..., 2]
-    yellow = (r > 160) & (g > 130) & (b < 130) & (r - b > 65)
-    cyan = (g > 140) & (b > 140) & (r < 120)
-    red = (r > 140) & (g < 120) & (b < 120)
+    cyan = ((g > 120) & (b > 120) & (g - r > 30) & (b - r > 30)) | ((g > 140) & (b > 140) & (r < 120))
+    yellow = ((r > 160) & (g > 140) & (r - b > 60) & (g - b > 50)) | (
+        (r > 160) & (g > 130) & (b < 130) & (r - b > 65)
+    )
+    red = ((r > 140) & (r - g > 60) & (r - b > 60)) | ((r > 140) & (g < 120) & (b < 120))
     green = (g > 120) & (g - r > 30) & (g - b > 30)
-    return float(np.mean(yellow | cyan | red | green)) > 0.012
+    return float(np.mean(cyan | yellow | red | green)) > 0.012
+
+
+def _objective(frame: np.ndarray, box: tuple[int, int, int, int], text: str) -> bool:
+    """Require both an instruction and a coloured target, including pale targets."""
+    return _instruction_like(text) and _coloured_target(frame, box)
 
 
 def _banner(text: str) -> bool:
