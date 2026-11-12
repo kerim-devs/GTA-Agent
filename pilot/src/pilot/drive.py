@@ -55,6 +55,7 @@ class DriveConfig:
     recovery_steer: float = 0.8  # Stick magnitude used to reverse away from the route.
     recovery_throttle: float = 0.45  # Forward pedal during escape.
     max_recoveries: int = 3  # Consecutive failed escapes before a latched stop.
+    queue_wait: float = 30.0  # Longest a stop close behind a vehicle is waited out before it counts as stuck.
     outlier_angle: float = 60.0  # Abrupt jumps larger than this require persistence.
     outlier_window: float = 0.3  # Accept a persistent new direction after this interval.
     stop_brake_time: float = 0.7  # Bound L2 use so a stop cannot become indefinite reverse.
@@ -141,6 +142,8 @@ class Driver:
         self._recovery_moved = False
         self._recovery_still = 0.0
         self._reverse_duration = self.config.reverse_time
+        self._queue_spent = 0.0
+        self._queue_free: float | None = None
         self._trusted_route: str | None = None
         self._trusted_error: float | None = None
         self._brake_since: float | None = None
@@ -182,12 +185,20 @@ class Driver:
         return self._emit(0, 0, 0, "coast")
 
     def step(
-        self, reading: Reading, t: float, moving: bool | None = None, speed: float | None = None
+        self,
+        reading: Reading,
+        t: float,
+        moving: bool | None = None,
+        speed: float | None = None,
+        ahead: bool = False,
     ) -> Command:
         """Return bounded controls; invalid/backwards clocks release and reset timers.
 
         Unknown motion never means stuck. A failure latch survives clock changes.
         Picture angles minus the arrow give camera-independent heading errors.
+        `ahead` says that a vehicle stands close ahead in the car's own track (avoid.waits_behind): a
+        stop behind it is waited out for `queue_wait` seconds and counts neither towards a recovery
+        nor towards a dead or held car. Without detections it stays False and nothing changes.
         """
         speed = _number(speed)
         speed = speed if speed is not None and speed >= 0 else None
@@ -271,10 +282,11 @@ class Driver:
             self._trusted_route = reading.route
             self._trusted_error = _angle(_angle(_number(reading.bearing)) - _angle(arrow))
 
+        queued = self._queue(ahead is True, moving, now, dt)
         if self._phase in {"recovery-reverse", "recovery-forward"} and not reading.corrupt:
             # GPS slope lags a collision; only the map can prove a completely held car.
             self._recovery_moved |= map_moving is True
-            if map_moving is False:
+            if map_moving is False and not queued:
                 self._recovery_still += dt
         if self._phase == "recovery-reverse":
             if now - self._phase_since < self._reverse_duration:
@@ -316,7 +328,7 @@ class Driver:
                 ):
                     self._phase = "dead-or-held"
                     return self._emit(0, 0, 0, self._phase)
-                if moving is not False:
+                if moving is not False or queued:
                     self._phase = None
                 elif self._attempts >= self.config.max_recoveries:
                     self._phase = "failed-recovery"
@@ -324,7 +336,9 @@ class Driver:
                 else:
                     return self._recover(now, error)
 
-        if moving is False and self._last.throttle > 0:
+        if queued:
+            self._stuck_since = None  # Waiting behind a vehicle is not being stuck.
+        elif moving is False and self._last.throttle > 0:
             if self._stuck_since is None:
                 self._stuck_since = now
             if now - self._stuck_since >= self.config.stuck_time:
@@ -476,6 +490,22 @@ class Driver:
             and error * self._trusted_error > 0
             and abs(_angle(error - self._trusted_error)) <= self.config.damage_angle
         )
+
+    def _queue(self, ahead: bool, moving: bool | None, now: float, dt: float) -> bool:
+        """Whether this stop is being waited out behind a vehicle, and for how long it has been."""
+        if ahead and moving is False:
+            self._queue_free = None
+            queued = self._queue_spent < self.config.queue_wait
+            self._queue_spent += dt
+            return queued
+        if not ahead or moving is True:
+            # The road ahead cleared or the car rolled on: a new queue gets its whole wait again,
+            # but not at once, so that a recovery that backs off a parked car does not start one.
+            if self._queue_free is None:
+                self._queue_free = now
+            elif now - self._queue_free >= self.config.recovery_clear_time:
+                self._queue_spent = 0.0
+        return False
 
     def _recover(self, now: float, error: float) -> Command:
         self._attempts += 1

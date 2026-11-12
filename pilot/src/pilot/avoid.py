@@ -22,6 +22,8 @@ PUSH = 0.45  # the stick at the full push; against the route's pull that is abou
 LIFT = 0.7  # the share of the pedal taken away at the full push
 STALE = 0.6  # seconds after which boxes say nothing about the road
 HOLD = 1.0  # seconds a chosen side is kept after the last thing in the way
+VEHICLES = ("car", "truck", "bus", "motorcycle")
+QUEUE = 0.5  # nearness from which a vehicle ahead is the one the car waits behind, about six metres
 
 
 @dataclass(frozen=True)
@@ -50,6 +52,21 @@ def _seen(item) -> tuple[float, float, float]:
 
 def _minimap(box) -> bool:
     return (box[0] + box[2]) / 2 < 0.22 * WIDTH and (box[1] + box[3]) / 2 > 0.75 * HEIGHT
+
+
+def waits_behind(objects, objects_time: float | None, now: float) -> bool:
+    """A vehicle close ahead in the car's own track: a stop behind it is waiting, not being stuck.
+
+    False without fresh boxes, so that a car with no detector is judged as it was before."""
+    if not objects or objects_time is None or not 0 <= now - objects_time <= STALE:
+        return False
+    for item in objects:
+        if item.kind not in VEHICLES or _minimap(item.box):
+            continue
+        offset, wide, near = _seen(item)
+        if near >= QUEUE and abs(offset) < TRACK * wide:
+            return True
+    return False
 
 
 class Avoider:

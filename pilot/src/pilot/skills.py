@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from math import atan2, degrees, hypot
 from typing import TYPE_CHECKING, ClassVar
 
-from .avoid import Avoider
+from .avoid import Avoider, waits_behind
 from .contract import NEUTRAL_PAD, Observation, Pad, SkillResult, player_mode
 from .drive import Driver
 from .foot import FootGuard, WalkRoad
@@ -334,7 +334,11 @@ class DriveRoute(RegisteredSkill):
                 self.finished = self._result(status="done", reason="time-limit")
                 return self.finished
             command = self.driver.step(
-                observation.reading, now, observation.moving, speed=observation.reading.gps_speed
+                observation.reading,
+                now,
+                observation.moving,
+                speed=observation.reading.gps_speed,
+                ahead=waits_behind(observation.objects, observation.objects_time, now),
             )
             if command.state == "route-gone":
                 return self._route_end()
