@@ -39,7 +39,9 @@ if (-not (Test-Path "$root\NitroGen-$sha")) {
 }
 # torchvision is what the image processor of transformers 5 preprocesses with.
 Run $py -m pip install --quiet torch torchvision --index-url https://download.pytorch.org/whl/cu124
-Run $py -m pip install --quiet numpy pyzmq pyyaml einops transformers pydantic diffusers polars pillow huggingface_hub
+# transformers 4: NitroGen takes the vision tower as `SiglipVisionModel(...).vision_model`, which
+# transformers 5 no longer has. 4.57.6 is the last release of 4 and of the model's own weeks.
+Run $py -m pip install --quiet numpy pyzmq pyyaml einops transformers==4.57.6 pydantic diffusers polars pillow huggingface_hub
 if (-not (Test-Path "$root\ng.pt")) {
   Run $py -c "from huggingface_hub import hf_hub_download; print(hf_hub_download('nvidia/NitroGen', 'ng.pt', local_dir=r'C:\Users\gta\policy'))"
 }
