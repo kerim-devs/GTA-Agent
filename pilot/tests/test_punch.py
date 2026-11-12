@@ -384,3 +384,21 @@ def test_the_figures_size_is_kept_while_the_detector_misses_it():
     near = person((640, 302, 704, 482))
     assert skill.step(obs(0, [near], figure=own)).pad.buttons == ("circle",)
     assert safe(skill.step(obs(0.05, [near]))).pad.l2 == 1
+
+
+def test_free_aim_holds_the_stick_at_the_person_and_never_the_lock():
+    own = Detection("person", (563, 317, 640, 518), 0.9)
+    skill = Punch({"aim": "free"})
+    pads = [skill.step(obs(tick / 30, [person((704, 302, 768, 482))], figure=own)).pad for tick in range(12)]
+    assert all(pad.l2 == 0 and pad.r2 == 0 and pad.right == (0, 0) for pad in pads)
+    # The man stands right of the middle and ahead: the stick is held to the right and forward.
+    assert all(pad.left[0] > 0 and pad.left[1] < 0 for pad in pads)
+    assert any(pad.buttons == ("circle",) for pad in pads) and any(not pad.buttons for pad in pads)
+    assert Punch({}).step(obs(0, [person((704, 302, 768, 482))], figure=own)).pad.left == (0, 0)
+
+
+def test_aim_takes_only_its_two_words():
+    with pytest.raises(ValueError):
+        Punch({"aim": "wild"})
+    with pytest.raises(ValueError):
+        Punch({"aim": 1})

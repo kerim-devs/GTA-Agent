@@ -12,11 +12,12 @@ from pilot.profile import active
 
 class Punch:
     name = "punch"
-    parameters: ClassVar = {"duration": (0.1, 20.0, 15.0), "hits": (1, 6, 3)}
+    parameters: ClassVar = {"duration": (0.1, 20.0, 15.0), "hits": (1, 6, 3), "aim": ("lock", "free")}
     prompt = (
         "Walk up to the nearest person in view and punch: L2 to lock on, Circle in a quick rhythm, never a "
         "gun. hits is the number of punches asked for. On foot only. Done when the person is down or the "
-        "presses are used up. Fails when nobody is seen, the person is lost, health is low or time is up."
+        "presses are used up. Fails when nobody is seen, the person is lost, health is low or time is up. "
+        "aim=free punches without the lock, the stick held at the person; untried."
     )
 
     FRESHNESS = 0.5
@@ -43,6 +44,11 @@ class Punch:
     PULSE_DURATION = 0.12
     PULSE_PERIOD = 0.21
     PRESSES_PER_PUNCH = 4
+    # Kerim punches without the lock on 479 of those 590 presses: he sees where the man stands and
+    # holds the stick that way. aim=free is the place for that, in its plainest form and untried at
+    # the console: the stick points at the person's box, fully sideways from this offset on. How he
+    # really holds it is to be measured on his recordings before this is anything but a switch.
+    FREE_SIDE = 0.2
     GROUND_DURATION = 0.45
     # The minimap reader calls a clean cable picture damaged for a tick or two about once a
     # second (2 to 3 in 100 frames of the sessions of 10 November, 16 ticks at the longest).
@@ -51,9 +57,15 @@ class Punch:
     def __init__(self, args: dict):
         self.profile = active()
         if not isinstance(args, dict) or set(args) - self.parameters.keys():
-            raise ValueError("punch accepts only duration and hits")
+            raise ValueError("punch accepts only duration, hits and aim")
         values = {}
-        for key, (low, high, default) in self.parameters.items():
+        for key, spec in self.parameters.items():
+            if isinstance(spec[0], str):
+                values[key] = args.get(key, spec[0])
+                if not isinstance(values[key], str) or values[key] not in spec:
+                    raise ValueError(f"{key} must be one of: {', '.join(spec)}")
+                continue
+            low, high, default = spec
             value = args.get(key, default)
             if (
                 isinstance(value, bool)
@@ -66,6 +78,7 @@ class Punch:
             values[key] = max(low, min(high, value))
         self.limit = float(values["duration"])
         self.hits = int(values["hits"])
+        self.free = values["aim"] == "free"
         self.finished = None
         self.started = None
         self.last_time = None
@@ -164,6 +177,14 @@ class Punch:
             if isfinite(height) and 0.1 <= height <= 1:
                 self.own_height = height
         return self.REACH_HEIGHT if self.own_height is None else self.REACH_RATIO * self.own_height
+
+    def _stance(self, target, *, pressed):
+        """The pad of a punch: the lock, or without it the stick held at the person."""
+        buttons = (self.profile.melee,) if pressed else ()
+        if not self.free:
+            return Pad(buttons=buttons, l2=1.0)
+        side = max(-1.0, min(1.0, ((target[0] + target[2]) / 2 - 0.5) / self.FREE_SIDE))
+        return Pad(buttons=buttons, left=(side, -((1 - side * side) ** 0.5)))
 
     def _release(self):
         self.pulse_started = None
@@ -264,7 +285,7 @@ class Punch:
             return SkillResult(pad=Pad(left=(0.0, -speed), right=(turn, 0.0)))
         if self.pulse_started is not None:
             if now - self.pulse_started < self.PULSE_DURATION:
-                return SkillResult(pad=Pad(buttons=(self.profile.melee,), l2=1.0))
+                return SkillResult(pad=self._stance(target, pressed=True))
             self.pulse_started = None
         if self.delivered_hits >= self.hits * self.PRESSES_PER_PUNCH:
             return self._done(f"pressed {self.delivered_hits} times in reach; nobody seen going down")
@@ -272,5 +293,5 @@ class Punch:
             self.pulse_started = now
             self.next_pulse = now + self.PULSE_PERIOD
             self.delivered_hits += 1
-            return SkillResult(pad=Pad(buttons=(self.profile.melee,), l2=1.0))
-        return SkillResult(pad=Pad(l2=1.0))
+            return SkillResult(pad=self._stance(target, pressed=True))
+        return SkillResult(pad=self._stance(target, pressed=False))
