@@ -218,9 +218,137 @@ class RegisteredSkill(Skill):
 
 
 class DriveRoute(RegisteredSkill):
+    from dataclasses import dataclass
+
+    @dataclass(frozen=True)
+    class Result(SkillResult):
+        start_distance: float | None = None
+        end_distance: float | None = None
+        distance_age: float | None = None
+
     name = "drive_route"
     parameters: ClassVar[dict] = {"duration": (0.1, 120, 60)}
-    prompt = "Follow a visible GPS route in a vehicle, for at most duration seconds."
+    prompt = (
+        "Follow a visible GPS route in a vehicle. Arrives only after small, falling distances and route "
+        "loss. Fails on lost route, no progress, dead-or-held car, exhausted recovery or time limit."
+    )
+    # The failed town drives made 0-10 m in 25-37 s; useful drives made 350-480 m/min.
+    progress_window = 20.0
+    progress_gap = 10.0  # The growing-distance town drive has a 7.6 s OCR gap.
+    progress_metres = 20.0  # Two kilometre HUD increments, above quantisation noise.
+    arrival_metres = 20.0
+    arrival_age = 5.0  # Includes the driver's two seconds of confirmed route absence.
+
+    def __init__(self, args: dict, *, driver=None):
+        super().__init__(args, driver=driver)
+        self.start_distance = self.end_distance = self.distance_time = None
+        self._distances = deque()
+        self._now = self._previous_time = None
+        self._moving_time = 0.0
+        self._was_moving = False
+
+    def _result(self, *, pad=NEUTRAL_PAD, status="running", reason=None):
+        return self.Result(
+            pad,
+            status,
+            reason,
+            self.start_distance,
+            self.end_distance,
+            None if self.distance_time is None else self._now - self.distance_time,
+        )
+
+    def stop(self, reason="interrupted") -> SkillResult:
+        self.finished = self._result(status="failed", reason=reason)
+        return self.finished
+
+    def _distance(self, observation):
+        from .drive import _number
+
+        reading, now = observation.reading, observation.time
+        distance, at = _number(reading.gps_distance), _number(reading.gps_time)
+        if (
+            reading.corrupt
+            or reading.minimap != "tilted"
+            or distance is None
+            or at is None
+            or not 0 <= distance < 100000
+            or not 0 <= now - at <= self.driver.config.gps_stale
+            or (self.distance_time is not None and at <= self.distance_time)
+        ):
+            return
+        if self.distance_time is not None and (
+            at - self.distance_time > self.progress_gap
+            or abs(distance - self.end_distance)
+            > self.driver.config.gps_max_speed * (at - self.distance_time) + 20
+        ):
+            # A reroute or OCR gap starts a new progress window, never an arrival trend.
+            self._distances.clear()
+        if self.start_distance is None:
+            self.start_distance = distance
+        self.end_distance, self.distance_time = distance, at
+        self._distances.append((at, distance, self._moving_time))
+        while len(self._distances) > 1 and at - self._distances[1][0] >= self.progress_window:
+            self._distances.popleft()
+
+    def _route_end(self):
+        from itertools import pairwise
+
+        if self.distance_time is None or self._now - self.distance_time > self.arrival_age:
+            return self.stop("route-lost-unknown")
+        if self.end_distance > self.arrival_metres:
+            return self.stop("route-lost-far")
+        close = [(t, d) for t, d, _ in self._distances if self.distance_time - t <= 5]
+        if (
+            len(close) >= 3
+            and close[-1][0] - close[0][0] >= 0.5
+            and all(d <= 2 * self.arrival_metres for _, d in close)
+            and close[0][1] - close[-1][1] >= 3
+            and all(b[1] <= a[1] + 1 for a, b in pairwise(close))
+        ):
+            self.finished = self._result(status="done", reason="arrived")
+            return self.finished
+        return self.stop("route-lost-unknown")
+
+    def step(self, observation: Observation) -> SkillResult:
+        from .drive import _number
+
+        if self.finished is not None:
+            return self.finished
+        now = _number(observation.time)
+        if now is None:
+            return self.stop("invalid-clock")
+        if self._previous_time is not None and now < self._previous_time:
+            return self.stop("clock-reversed")
+        self._now = now
+        if self.started is None:
+            self.started = now
+        moving = observation.moving is True and not observation.reading.corrupt
+        if moving and self._was_moving and self._previous_time is not None:
+            self._moving_time += min(now - self._previous_time, self.driver.config.max_step_time)
+        self._was_moving, self._previous_time = moving, now
+        try:
+            self._distance(observation)
+            if now - self.started >= self.limit:
+                return self.stop("time-limit")
+            command = self.driver.step(
+                observation.reading, now, observation.moving, speed=observation.reading.gps_speed
+            )
+            if command.state == "route-gone":
+                return self._route_end()
+            if command.state in ("dead-or-held", "failed-recovery"):
+                return self.stop(command.state)
+            if len(self._distances) >= 3 and self.distance_time is not None:
+                first, last = self._distances[0], self._distances[-1]
+                if (
+                    now - self.distance_time <= self.driver.config.gps_stale
+                    and last[0] - first[0] >= self.progress_window
+                    and last[2] - first[2] >= self.progress_window / 2
+                    and first[1] - last[1] < self.progress_metres
+                ):
+                    return self.stop("no-progress")
+            return self._result(pad=self._around(command, observation))
+        except Exception as exc:
+            return self.stop(f"skill-error: {type(exc).__name__}")
 
 
 class Wait(RegisteredSkill):

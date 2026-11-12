@@ -1,0 +1,459 @@
+[
+  {
+    "session": "102851",
+    "start": 199.018,
+    "end": 206.61,
+    "ticks": 201,
+    "recorded_start": null,
+    "recorded_end": null,
+    "read_before": 0,
+    "read_after": 0,
+    "retained_with_age": 0,
+    "fresh_with_age": 0,
+    "clock_offset": 345547.66361,
+    "clock_matches": 25,
+    "motion": {
+      "None": 75,
+      "True": 56,
+      "False": 70
+    },
+    "ended_at": null,
+    "ending": {
+      "status": "running",
+      "reason": "recording-ended-or-replaced",
+      "start_distance": null,
+      "end_distance": null
+    }
+  },
+  {
+    "session": "103305",
+    "start": 112.997,
+    "end": 172.985,
+    "ticks": 1569,
+    "recorded_start": 1850,
+    "recorded_end": 1370,
+    "read_before": 1127,
+    "read_after": 1127,
+    "retained_with_age": 1425,
+    "fresh_with_age": 1126,
+    "clock_offset": 345801.363988,
+    "clock_matches": 27,
+    "motion": {
+      "None": 390,
+      "True": 1151,
+      "False": 28
+    },
+    "ended_at": null,
+    "ending": {
+      "status": "running",
+      "reason": "recording-ended-or-replaced",
+      "start_distance": 1850.0,
+      "end_distance": 1370.0
+    }
+  },
+  {
+    "session": "103305",
+    "start": 173.024,
+    "end": 198.435,
+    "ticks": 675,
+    "recorded_start": 1350,
+    "recorded_end": 1340,
+    "read_before": 383,
+    "read_after": 383,
+    "retained_with_age": 568,
+    "fresh_with_age": 382,
+    "clock_offset": 345801.363988,
+    "clock_matches": 27,
+    "motion": {
+      "False": 374,
+      "True": 271,
+      "None": 30
+    },
+    "ended_at": null,
+    "ending": {
+      "status": "running",
+      "reason": "recording-ended-or-replaced",
+      "start_distance": 1350.0,
+      "end_distance": 1340.0
+    }
+  },
+  {
+    "session": "104424",
+    "start": 3.11,
+    "end": 63.124,
+    "ticks": 1515,
+    "recorded_start": 1390,
+    "recorded_end": 1040,
+    "read_before": 744,
+    "read_after": 744,
+    "retained_with_age": 1386,
+    "fresh_with_age": 744,
+    "clock_offset": 346479.962769,
+    "clock_matches": 31,
+    "motion": {
+      "False": 137,
+      "True": 1303,
+      "None": 75
+    },
+    "ended_at": 63.12444450001931,
+    "ending": {
+      "pad": {
+        "buttons": [],
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "l2": 0.0,
+        "r2": 0.0
+      },
+      "status": "failed",
+      "reason": "time-limit",
+      "start_distance": 1390.0,
+      "end_distance": 1040.0,
+      "distance_age": 8.2519712090143
+    }
+  },
+  {
+    "session": "104424",
+    "start": 63.163,
+    "end": 99.902,
+    "ticks": 929,
+    "recorded_start": 521.0,
+    "recorded_end": 522.0,
+    "read_before": 515,
+    "read_after": 515,
+    "retained_with_age": 515,
+    "fresh_with_age": 515,
+    "clock_offset": 346479.962769,
+    "clock_matches": 31,
+    "motion": {
+      "False": 755,
+      "True": 127,
+      "None": 47
+    },
+    "ended_at": 70.48954337503528,
+    "ending": {
+      "pad": {
+        "buttons": [],
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "l2": 0.0,
+        "r2": 0.0
+      },
+      "status": "failed",
+      "reason": "dead-or-held",
+      "start_distance": null,
+      "end_distance": null,
+      "distance_age": null
+    }
+  },
+  {
+    "session": "104424",
+    "start": 155.304,
+    "end": 173.418,
+    "ticks": 409,
+    "recorded_start": 1990,
+    "recorded_end": 1990,
+    "read_before": 354,
+    "read_after": 354,
+    "retained_with_age": 409,
+    "fresh_with_age": 363,
+    "clock_offset": 346479.962769,
+    "clock_matches": 31,
+    "motion": {
+      "None": 43,
+      "False": 366
+    },
+    "ended_at": 168.67382562503917,
+    "ending": {
+      "pad": {
+        "buttons": [],
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "l2": 0.0,
+        "r2": 0.0
+      },
+      "status": "failed",
+      "reason": "dead-or-held",
+      "start_distance": 1990.0,
+      "end_distance": 1990.0,
+      "distance_age": 0.54968562501017
+    }
+  },
+  {
+    "session": "104827",
+    "start": 25.474,
+    "end": 65.308,
+    "ticks": 882,
+    "recorded_start": 1810,
+    "recorded_end": 2370,
+    "read_before": 512,
+    "read_after": 512,
+    "retained_with_age": 830,
+    "fresh_with_age": 533,
+    "clock_offset": 346723.577247,
+    "clock_matches": 11,
+    "motion": {
+      "None": 71,
+      "False": 120,
+      "True": 690
+    },
+    "ended_at": 50.110990791989025,
+    "ending": {
+      "pad": {
+        "buttons": [],
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "l2": 0.0,
+        "r2": 0.0
+      },
+      "status": "failed",
+      "reason": "no-progress",
+      "start_distance": 1810.0,
+      "end_distance": 1850.0,
+      "distance_age": 0.07783975097117946
+    }
+  },
+  {
+    "session": "104827",
+    "start": 65.408,
+    "end": 125.336,
+    "ticks": 1410,
+    "recorded_start": 2370,
+    "recorded_end": 2270,
+    "read_before": 637,
+    "read_after": 637,
+    "retained_with_age": 1395,
+    "fresh_with_age": 636,
+    "clock_offset": 346723.577247,
+    "clock_matches": 11,
+    "motion": {
+      "True": 981,
+      "None": 115,
+      "False": 314
+    },
+    "ended_at": null,
+    "ending": {
+      "status": "running",
+      "reason": "recording-ended-or-replaced",
+      "start_distance": 2370.0,
+      "end_distance": 2270.0
+    }
+  },
+  {
+    "session": "104827",
+    "start": 125.346,
+    "end": 171.183,
+    "ticks": 1079,
+    "recorded_start": 2230,
+    "recorded_end": 2030,
+    "read_before": 430,
+    "read_after": 430,
+    "retained_with_age": 1075,
+    "fresh_with_age": 442,
+    "clock_offset": 346723.577247,
+    "clock_matches": 11,
+    "motion": {
+      "None": 154,
+      "True": 845,
+      "False": 80
+    },
+    "ended_at": null,
+    "ending": {
+      "status": "running",
+      "reason": "recording-ended-or-replaced",
+      "start_distance": 2230.0,
+      "end_distance": 2030.0
+    }
+  },
+  {
+    "session": "104827",
+    "start": 174.896,
+    "end": 234.877,
+    "ticks": 1514,
+    "recorded_start": 2010,
+    "recorded_end": 1830,
+    "read_before": 812,
+    "read_after": 812,
+    "retained_with_age": 1514,
+    "fresh_with_age": 810,
+    "clock_offset": 346723.577247,
+    "clock_matches": 11,
+    "motion": {
+      "None": 301,
+      "True": 1095,
+      "False": 118
+    },
+    "ended_at": null,
+    "ending": {
+      "status": "running",
+      "reason": "recording-ended-or-replaced",
+      "start_distance": 2010.0,
+      "end_distance": 1830.0
+    }
+  },
+  {
+    "session": "105230",
+    "start": 4.329,
+    "end": 36.872,
+    "ticks": 832,
+    "recorded_start": 1770,
+    "recorded_end": 1820,
+    "read_before": 577,
+    "read_after": 577,
+    "retained_with_age": 635,
+    "fresh_with_age": 576,
+    "clock_offset": 346966.186747,
+    "clock_matches": 4,
+    "motion": {
+      "False": 521,
+      "None": 11,
+      "True": 300
+    },
+    "ended_at": 32.01037329097744,
+    "ending": {
+      "pad": {
+        "buttons": [],
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "l2": 0.0,
+        "r2": 0.0
+      },
+      "status": "failed",
+      "reason": "dead-or-held",
+      "start_distance": 1770.0,
+      "end_distance": 1820.0,
+      "distance_age": 0.19206087500788271
+    }
+  },
+  {
+    "session": "105230",
+    "start": 36.949,
+    "end": 54.972,
+    "ticks": 453,
+    "recorded_start": 1820,
+    "recorded_end": 1820,
+    "read_before": 241,
+    "read_after": 241,
+    "retained_with_age": 241,
+    "fresh_with_age": 241,
+    "clock_offset": 346966.186747,
+    "clock_matches": 4,
+    "motion": {
+      "False": 363,
+      "True": 90
+    },
+    "ended_at": 44.39440991601441,
+    "ending": {
+      "pad": {
+        "buttons": [],
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "l2": 0.0,
+        "r2": 0.0
+      },
+      "status": "failed",
+      "reason": "dead-or-held",
+      "start_distance": null,
+      "end_distance": null,
+      "distance_age": null
+    }
+  },
+  {
+    "session": "105230",
+    "start": 55.053,
+    "end": 59.992,
+    "ticks": 124,
+    "recorded_start": 1820,
+    "recorded_end": 1820,
+    "read_before": 124,
+    "read_after": 124,
+    "retained_with_age": 124,
+    "fresh_with_age": 124,
+    "clock_offset": 346966.186747,
+    "clock_matches": 4,
+    "motion": {
+      "False": 69,
+      "True": 55
+    },
+    "ended_at": null,
+    "ending": {
+      "status": "running",
+      "reason": "recording-ended-or-replaced",
+      "start_distance": 1820.0,
+      "end_distance": 1820.0
+    }
+  },
+  {
+    "session": "105332",
+    "start": 3.229,
+    "end": 21.109,
+    "ticks": 452,
+    "recorded_start": 1820,
+    "recorded_end": 1820,
+    "read_before": 440,
+    "read_after": 440,
+    "retained_with_age": 452,
+    "fresh_with_age": 440,
+    "clock_offset": 347028.535478,
+    "clock_matches": 2,
+    "motion": {
+      "False": 452
+    },
+    "ended_at": 10.536472958046943,
+    "ending": {
+      "pad": {
+        "buttons": [],
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "l2": 0.0,
+        "r2": 0.0
+      },
+      "status": "failed",
+      "reason": "dead-or-held",
+      "start_distance": 1820.0,
+      "end_distance": 1820.0,
+      "distance_age": 0.138160917093046
+    }
+  }
+]

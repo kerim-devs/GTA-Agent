@@ -207,3 +207,45 @@ def test_native_recognition_reads_a_real_crop_without_keeping_its_images():
         native_recognize(crop)
     # one enlarged patch is 150 KB; a reader that keeps them grows by 45 MB here
     assert resource.getrusage(resource.RUSAGE_SELF).ru_maxrss - before < 15e6
+
+
+@pytest.mark.parametrize(
+    "texts,expected",
+    [
+        (["1.08", "km"], 1080),
+        (["914", "m"], 914),
+        (["1 . 82 km"], 1820),
+        (["4", "km"], None),
+        (["9", "14m"], 14),
+        (["3I0", "m"], None),
+    ],
+)
+def test_split_units_and_decimal_spacing_without_guessing_digits(texts, expected):
+    fix = parse(texts)
+    assert (None if fix is None else fix.distance) == expected
+
+
+def test_distance_is_available_before_speed_but_never_refreshes_a_stale_speed():
+    meter = Speedometer()
+    for i in range(3):
+        assert meter.update(i / 4, Fix(100 - i)) is None
+    assert meter.fix.distance == 98 and meter.time == 0.5
+    for i in range(3, 12):
+        meter.update(i / 4, Fix(100 - i))
+    assert meter.value(2.75) == pytest.approx(4)
+    # Consistent rerouted distances can locate us while the old speed expires.
+    for t in (4.5, 4.75, 5):
+        meter.update(t, Fix(800))
+    assert meter.fix.distance == 800 and meter.time == 5
+    assert meter.value(5) is None
+
+
+def test_an_isolated_bad_distance_does_not_renew_its_capture_time():
+    meter = Speedometer()
+    for i in range(8):
+        meter.update(i / 4, Fix(500 - i))
+    before = meter.time
+    meter.update(2, Fix(5))
+    assert meter.time == before and meter.fix.distance == 493
+    meter.update(5)
+    assert meter.fix.distance == 493 and meter.time == before

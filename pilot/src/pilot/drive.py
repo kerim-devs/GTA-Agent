@@ -138,6 +138,9 @@ class Driver:
         self._phase_since = 0.0
         self._attempts = 0
         self._escape = 0.0
+        self._recovery_moved = False
+        self._recovery_still = 0.0
+        self._reverse_duration = self.config.reverse_time
         self._trusted_route: str | None = None
         self._trusted_error: float | None = None
         self._brake_since: float | None = None
@@ -164,7 +167,7 @@ class Driver:
         self._stuck_since = None
         self._steer = 0.0
         self._speed = None
-        if self._phase != "failed-recovery":
+        if self._phase not in {"failed-recovery", "dead-or-held"}:
             self._phase = None
         return self._emit(0, 0, 0, "idle")
 
@@ -174,7 +177,7 @@ class Driver:
                 return self._emit(self._last.steer, self._last.throttle, self._last.brake, "coast")
         self._steer = 0.0
         self._stuck_since = None
-        if self._phase != "failed-recovery":
+        if self._phase not in {"failed-recovery", "dead-or-held"}:
             self._phase = None
         return self._emit(0, 0, 0, "coast")
 
@@ -190,6 +193,7 @@ class Driver:
         speed = speed if speed is not None and speed >= 0 else None
         self._measured_speed = speed
         moving = moving if isinstance(moving, bool) else None
+        map_moving = moving
         self._stationary = moving is False
         now = _number(t)
         if now is None or (self._time is not None and now < self._time):
@@ -217,8 +221,8 @@ class Driver:
             or reading.minimap != "tilted"
         ):
             return self._idle()
-        if self._phase == "failed-recovery":
-            return self._emit(0, 0, 0, "failed-recovery")
+        if self._phase in {"failed-recovery", "dead-or-held"}:
+            return self._emit(0, 0, 0, self._phase)
         confidence = _number(reading.confidence)
         damaged = self._damage_agrees(reading, now, confidence)
         if not damaged and (
@@ -267,8 +271,13 @@ class Driver:
             self._trusted_route = reading.route
             self._trusted_error = _angle(_angle(_number(reading.bearing)) - _angle(arrow))
 
+        if self._phase in {"recovery-reverse", "recovery-forward"} and not reading.corrupt:
+            # GPS slope lags a collision; only the map can prove a completely held car.
+            self._recovery_moved |= map_moving is True
+            if map_moving is False:
+                self._recovery_still += dt
         if self._phase == "recovery-reverse":
-            if now - self._phase_since < self.config.reverse_time:
+            if now - self._phase_since < self._reverse_duration:
                 return self._emit(self._escape, 0, 1, "recovery-reverse")
             self._phase, self._phase_since = "recovery-forward", now
         if self._phase == "recovery-forward":
@@ -286,7 +295,9 @@ class Driver:
                             self.config.steer_gain * error,
                             -self.config.recovery_steer,
                             self.config.recovery_steer,
-                        ),
+                        )
+                        if self._attempts == 1
+                        else -self._escape,
                         min(self.config.recovery_throttle, self.config.unknown_throttle)
                         if speed is None
                         else min(
@@ -300,6 +311,11 @@ class Driver:
                         0,
                         "recovery-forward",
                     )
+                if not self._recovery_moved and self._recovery_still >= 0.8 * (
+                    self._reverse_duration + self.config.forward_time
+                ):
+                    self._phase = "dead-or-held"
+                    return self._emit(0, 0, 0, self._phase)
                 if moving is not False:
                     self._phase = None
                 elif self._attempts >= self.config.max_recoveries:
@@ -464,7 +480,11 @@ class Driver:
     def _recover(self, now: float, error: float) -> Command:
         self._attempts += 1
         self._phase, self._phase_since = "recovery-reverse", now
-        self._escape = -self.config.recovery_steer if error >= 0 else self.config.recovery_steer
+        # Extend the retreat and change the turning side after a failed exit.
+        side = -1 if error >= 0 else 1
+        self._escape = side * self.config.recovery_steer if self._attempts == 1 else -self._escape
+        self._reverse_duration = self.config.reverse_time * (1 + 0.5 * (self._attempts - 1))
+        self._recovery_moved, self._recovery_still = False, 0.0
         self._stuck_since = self._moving_since = None
         return self._emit(self._escape, 0, 1, "recovery-reverse")
 
