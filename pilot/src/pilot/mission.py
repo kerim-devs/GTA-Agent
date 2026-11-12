@@ -4,6 +4,7 @@ import re
 import unicodedata
 from collections import Counter
 
+from .contract import ARROW_XY
 from .head import Head, HeadRequest, HeadResponse, parse_response
 
 
@@ -82,6 +83,17 @@ def _route(target: str) -> list[dict]:
         _call("set_waypoint", target=target, duration=45, direction="any", distance="far"),
         _call("drive_route", duration=60),
     ]
+
+
+def _rim_blip(blip: dict) -> bool:
+    # The reader tests component centres, but a rim glyph can straddle that
+    # threshold. Include its five-pixel footprint, not every blip of its color.
+    if blip.get("border"):
+        return True
+    if "x" not in blip or "y" not in blip:
+        return False
+    cx, cy = ARROW_XY[0] + blip["x"], ARROW_XY[1] - blip["y"]
+    return cx <= 43 or cx >= 206 or cy <= 37 or cy >= 134
 
 
 class MissionHead:
@@ -242,7 +254,9 @@ class MissionHead:
                     "Der letzte Versuch ist gescheitert, ich setze eine neue Route.",
                 )
             failed, reason = self._failed(request), self._failure_reason(request)
-            if failed in {"walk", "walk_road"} and reason == "stuck":
+            if (failed in {"walk", "walk_road"} and reason == "stuck") or (
+                failed == "walk_to" and reason == "blocked"
+            ):
                 # Walking found no way round in four tries (foot.py): the way lies behind. A look of
                 # 180 at 1.2 s asks for full stick, which the camera turns at 146 deg/s, about 175 deg.
                 return (
@@ -287,7 +301,9 @@ class MissionHead:
 
         if mode == "on_foot":
             blips = request.minimap.get("blips", [])
-            colors = {blip.get("color") for blip in blips}
+            # A rim marker gives a bearing, not a nearby destination. Without an
+            # objective only markers inside the map should interrupt free roam.
+            colors = {blip.get("color") for blip in blips if request.objective.strip() or not _rim_blip(blip)}
             # head_prompt.txt:42-48: in a mission fight red blips only, and only when the game orders
             # it; stars and low health have been answered above. A red pinned to the map's border is
             # out of range at an unknown distance, and fight would fire along its bearing at nothing.

@@ -150,8 +150,9 @@ def test_ways_round_alternate_grow_and_end_in_a_failure_with_its_reason():
     assert failed[0][0] < 2.0 + 4 * (FootGuard.ESCAPE_SECONDS + 0.1)
 
 
-def test_after_a_way_round_the_old_direction_is_tried_again():
+def test_after_a_way_round_the_old_direction_is_tried_again(monkeypatch):
     guard = FootGuard()
+    monkeypatch.setattr(guard, "_evidence", lambda observation: "still" if guard.state == "go" else "going")
     # Stuck for two seconds, then the way round walks (the map moves), then the old direction.
     t = 0.0
     states = []
@@ -162,6 +163,48 @@ def test_after_a_way_round_the_old_direction_is_tried_again():
         t += DT
     back = [left for t, state, left in states if t > 4.0 and state == "go"]
     assert back and all(left == FORWARD for left in back)
+
+
+def test_small_motion_spikes_do_not_restart_four_failed_turns(monkeypatch):
+    guard = FootGuard()
+    # Most map samples remain still even though turning creates occasional flow.
+    monkeypatch.setattr(
+        guard, "_evidence", lambda observation: "going" if round(observation.time / DT) % 10 == 0 else "still"
+    )
+    steers = run(guard, 10)
+    failed = [(t, steer) for t, steer in steers if steer.failed]
+    assert failed and failed[0][0] < 9
+    assert failed[0][1].failed == "stuck"
+    assert [state for t, state in guard.events if t < failed[0][0]].count("escape") == 4
+
+
+def test_uncertain_escape_needs_progress_before_retrying_original_direction(monkeypatch):
+    guard = FootGuard()
+    monkeypatch.setattr(guard, "_evidence", lambda observation: "still" if observation.time < 2.1 else None)
+    steers = run(guard, 10)
+    assert any(steer.failed == "stuck" and t < 9 for t, steer in steers)
+
+
+def test_walking_diagnostic_reaches_the_logged_skill_description():
+    runner = SkillRunner()
+    runner.replace((SkillCall("walk", {"duration": 10, "y": -1}),))
+    runner.tick(obs(0))
+    result = runner.tick(obs(DT))
+    assert result.reason == runner.describe()["reason"]
+    assert "state=go;attempts=0;motion=still" in result.reason
+    for i in range(2, 300):
+        result = runner.tick(obs(i * DT))
+        if result.status == "failed":
+            break
+    assert result.reason == "stuck"
+    assert runner.describe()["reason"] == "stuck"
+
+
+def test_standalone_vehicle_skill_description_does_not_require_a_foot_guard():
+    runner = SkillRunner()
+    runner.replace((SkillCall("enter_vehicle", {"duration": 25, "kind": "any"}),))
+    runner.active = runner.queue.popleft()
+    assert runner.describe() == {"name": "enter_vehicle", "status": "running", "reason": None}
 
 
 def test_progress_clears_the_count_of_failures():
