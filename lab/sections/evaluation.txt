@@ -1,0 +1,149 @@
+{
+  "judge": {
+    "20261111-065022": {
+      "count": 103,
+      "correct": 61,
+      "unknown": 41,
+      "agreement": 0.5922330097087378
+    },
+    "20261110-093238": {
+      "count": 37,
+      "correct": 31,
+      "unknown": 0,
+      "agreement": 0.8378378378378378
+    },
+    "20261110-231512": {
+      "count": 18,
+      "correct": 18,
+      "unknown": 0,
+      "agreement": 1.0
+    },
+    "total": {
+      "count": 158,
+      "correct": 110,
+      "unknown": 41,
+      "agreement": 0.6962025316455697
+    }
+  },
+  "afternoon_minutes": {
+    "foot": 17.602749999999997,
+    "loading": 0.38600666666666683,
+    "unknown": 13.309193333333331,
+    "menu": 1.2807600000000015,
+    "drive": 20.667115000000003,
+    "banner": 0.2484499999999997
+  },
+  "timing": {
+    "20261111-164039": {
+      "sections": 27,
+      "elapsed": 53.807,
+      "seconds_per_minute": 3.581
+    },
+    "20261111-165543": {
+      "sections": 43,
+      "elapsed": 51.77,
+      "seconds_per_minute": 3.447
+    },
+    "20261111-171046": {
+      "sections": 48,
+      "elapsed": 47.598,
+      "seconds_per_minute": 3.171
+    },
+    "20261111-172549": {
+      "sections": 17,
+      "elapsed": 24.189,
+      "seconds_per_minute": 2.864
+    },
+    "20261111-065022": {
+      "sections": 13,
+      "elapsed": 16.604,
+      "seconds_per_minute": 2.654
+    },
+    "20261110-093238": {
+      "sections": 28,
+      "elapsed": 20.947,
+      "seconds_per_minute": 1.806
+    },
+    "20261110-231512": {
+      "sections": 1,
+      "elapsed": 11.079,
+      "seconds_per_minute": 2.769
+    },
+    "20261111-135510": {
+      "sections": 1,
+      "elapsed": 51.131,
+      "seconds_per_minute": 2.78
+    }
+  },
+  "initial_truth_recordings": {
+    "20261111-164039": {
+      "true_sections_ge_3s": 13,
+      "kind_found": 10,
+      "kind_and_bounds_within_2s": 5,
+      "false_sections": 9,
+      "false_per_5_minutes": 2.995008319467554,
+      "unknown_seconds_on_known_truth": 60.743399999999895,
+      "matches": {
+        "2": 4,
+        "7": 12,
+        "10": 23,
+        "11": 24,
+        "8": 19,
+        "5": 8,
+        "0": 0,
+        "12": 25,
+        "6": 9,
+        "13": 26,
+        "4": 6,
+        "9": 21
+      },
+      "false_indices": [
+        2,
+        3,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        22
+      ]
+    },
+    "20261110-093238": {
+      "true_sections_ge_3s": 18,
+      "kind_found": 14,
+      "kind_and_bounds_within_2s": 3,
+      "false_sections": 7,
+      "false_per_5_minutes": 3.0176749532978877,
+      "unknown_seconds_on_known_truth": 38.75610000000002,
+      "matches": {
+        "3": 5,
+        "16": 21,
+        "8": 9,
+        "6": 7,
+        "20": 26,
+        "15": 18,
+        "13": 12,
+        "0": 1,
+        "7": 8,
+        "12": 11,
+        "14": 13,
+        "18": 23,
+        "2": 3,
+        "19": 24,
+        "21": 27,
+        "5": 6
+      },
+      "false_indices": [
+        4,
+        14,
+        15,
+        16,
+        17,
+        19,
+        20
+      ]
+    }
+  },
+  "afternoon_metadata_minutes": 53.498333333333335
+}

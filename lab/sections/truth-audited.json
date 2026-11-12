@@ -1,0 +1,249 @@
+{
+  "method": "Supplementary visual audit after the first run. The original pre-run annotation remains unchanged in truth.json; this revision is explicitly not pre-run truth. A second independent reader inspected all afternoon sheets without access to outputs or the original truth, then disagreements and missed short overlays were adjudicated directly from the contact images. Wi-Fi transition/overlay images were also rechecked. No classifier or threshold was changed based on this revision. Approximate one-second boundaries; source gaps and system overlays are unknown. Printed target seconds can differ from actual frame time across gaps; frames1077/1078 bracket17.9507\u201327.1275s. The 80\u201391.2s system interruption includes a second source gap. Short scripted HUD-free handshake/window-entry animations are cutscene, while ordinary entering/exiting vehicles remains foot until seated.",
+  "recordings": {
+    "20261111-164039": [
+      {
+        "start": 0,
+        "end": 16,
+        "kind": "foot"
+      },
+      {
+        "start": 16,
+        "end": 27.13,
+        "kind": "unknown"
+      },
+      {
+        "start": 27.13,
+        "end": 80,
+        "kind": "foot"
+      },
+      {
+        "start": 80,
+        "end": 91.2,
+        "kind": "unknown"
+      },
+      {
+        "start": 91.2,
+        "end": 330,
+        "kind": "foot"
+      },
+      {
+        "start": 330,
+        "end": 337,
+        "kind": "drive"
+      },
+      {
+        "start": 337,
+        "end": 343,
+        "kind": "menu"
+      },
+      {
+        "start": 343,
+        "end": 419,
+        "kind": "drive"
+      },
+      {
+        "start": 419,
+        "end": 429,
+        "kind": "foot"
+      },
+      {
+        "start": 429,
+        "end": 432,
+        "kind": "cutscene"
+      },
+      {
+        "start": 432,
+        "end": 440,
+        "kind": "foot"
+      },
+      {
+        "start": 440,
+        "end": 545,
+        "kind": "drive"
+      },
+      {
+        "start": 545,
+        "end": 624,
+        "kind": "foot"
+      },
+      {
+        "start": 624,
+        "end": 627,
+        "kind": "cutscene"
+      },
+      {
+        "start": 627,
+        "end": 631,
+        "kind": "foot"
+      },
+      {
+        "start": 631,
+        "end": 633,
+        "kind": "menu"
+      },
+      {
+        "start": 633,
+        "end": 680,
+        "kind": "foot"
+      },
+      {
+        "start": 680,
+        "end": 689,
+        "kind": "banner"
+      },
+      {
+        "start": 689,
+        "end": 783,
+        "kind": "foot"
+      },
+      {
+        "start": 783,
+        "end": 878,
+        "kind": "drive"
+      },
+      {
+        "start": 878,
+        "end": 890,
+        "kind": "foot"
+      },
+      {
+        "start": 890,
+        "end": 901.5,
+        "kind": "drive"
+      }
+    ],
+    "20261110-093238": [
+      {
+        "start": 0,
+        "end": 32,
+        "kind": "foot"
+      },
+      {
+        "start": 32,
+        "end": 34,
+        "kind": "unknown"
+      },
+      {
+        "start": 34,
+        "end": 41,
+        "kind": "banner"
+      },
+      {
+        "start": 41,
+        "end": 44,
+        "kind": "loading"
+      },
+      {
+        "start": 44,
+        "end": 148,
+        "kind": "foot"
+      },
+      {
+        "start": 148,
+        "end": 154,
+        "kind": "drive"
+      },
+      {
+        "start": 154,
+        "end": 157,
+        "kind": "menu"
+      },
+      {
+        "start": 157,
+        "end": 208,
+        "kind": "drive"
+      },
+      {
+        "start": 208,
+        "end": 224,
+        "kind": "foot"
+      },
+      {
+        "start": 224,
+        "end": 309,
+        "kind": "drive"
+      },
+      {
+        "start": 309,
+        "end": 339,
+        "kind": "cutscene"
+      },
+      {
+        "start": 339,
+        "end": 342,
+        "kind": "banner"
+      },
+      {
+        "start": 342,
+        "end": 351,
+        "kind": "foot"
+      },
+      {
+        "start": 351,
+        "end": 385,
+        "kind": "drive"
+      },
+      {
+        "start": 385,
+        "end": 393,
+        "kind": "menu"
+      },
+      {
+        "start": 393,
+        "end": 482,
+        "kind": "drive"
+      },
+      {
+        "start": 482,
+        "end": 538,
+        "kind": "foot"
+      },
+      {
+        "start": 538,
+        "end": 541,
+        "kind": "menu"
+      },
+      {
+        "start": 541,
+        "end": 627,
+        "kind": "foot"
+      },
+      {
+        "start": 627,
+        "end": 629,
+        "kind": "unknown"
+      },
+      {
+        "start": 629,
+        "end": 636,
+        "kind": "banner"
+      },
+      {
+        "start": 636,
+        "end": 642,
+        "kind": "loading"
+      },
+      {
+        "start": 642,
+        "end": 658,
+        "kind": "foot"
+      },
+      {
+        "start": 658,
+        "end": 659,
+        "kind": "menu"
+      },
+      {
+        "start": 659,
+        "end": 690,
+        "kind": "foot"
+      },
+      {
+        "start": 690,
+        "end": 695.9,
+        "kind": "drive"
+      }
+    ]
+  }
+}
