@@ -1,0 +1,86 @@
+{
+  "reflex": {
+    "compute_s": 0.0031014685082482174,
+    "source": "median of per-scene median step compute, final serial realtime ledger",
+    "trials": 12,
+    "implementation_sha256": "f4e0a1a16dcf905cb52114fed45550ccdf2915c7f4bde2904e636e18a88fbc36",
+    "scenes_sha256": "ed22b3eae3945168474bac3acc22b2f65a0f0f2e616d5a435942a00e026d29f9",
+    "machine": {
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "processor": "arm",
+      "python": "3.12.13"
+    }
+  },
+  "pilot": {
+    "compute_s": 0.003991156001575291,
+    "source": "median of per-scene median step compute, final serial realtime ledger",
+    "trials": 12,
+    "implementation_sha256": "f4e0a1a16dcf905cb52114fed45550ccdf2915c7f4bde2904e636e18a88fbc36",
+    "scenes_sha256": "ed22b3eae3945168474bac3acc22b2f65a0f0f2e616d5a435942a00e026d29f9",
+    "machine": {
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "processor": "arm",
+      "python": "3.12.13"
+    }
+  },
+  "judge": {
+    "compute_s": 0.0007660210103495046,
+    "source": "median of per-scene median step compute, final serial realtime ledger",
+    "trials": 12,
+    "implementation_sha256": "f4e0a1a16dcf905cb52114fed45550ccdf2915c7f4bde2904e636e18a88fbc36",
+    "scenes_sha256": "ed22b3eae3945168474bac3acc22b2f65a0f0f2e616d5a435942a00e026d29f9",
+    "machine": {
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "processor": "arm",
+      "python": "3.12.13"
+    }
+  },
+  "judge-second": {
+    "compute_s": 0.000752656240365468,
+    "source": "median of per-scene median step compute, final serial realtime ledger",
+    "trials": 12,
+    "implementation_sha256": "f4e0a1a16dcf905cb52114fed45550ccdf2915c7f4bde2904e636e18a88fbc36",
+    "scenes_sha256": "ed22b3eae3945168474bac3acc22b2f65a0f0f2e616d5a435942a00e026d29f9",
+    "machine": {
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "processor": "arm",
+      "python": "3.12.13"
+    }
+  },
+  "head": {
+    "compute_s": 0.0033093750244006515,
+    "source": "median of per-scene median step compute, final serial realtime ledger",
+    "trials": 12,
+    "implementation_sha256": "f4e0a1a16dcf905cb52114fed45550ccdf2915c7f4bde2904e636e18a88fbc36",
+    "scenes_sha256": "ed22b3eae3945168474bac3acc22b2f65a0f0f2e616d5a435942a00e026d29f9",
+    "machine": {
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "processor": "arm",
+      "python": "3.12.13"
+    }
+  },
+  "reflex+judge": {
+    "compute_s": 0.0030555314879165962,
+    "source": "median of per-scene median step compute, final serial realtime ledger",
+    "trials": 12,
+    "implementation_sha256": "f4e0a1a16dcf905cb52114fed45550ccdf2915c7f4bde2904e636e18a88fbc36",
+    "scenes_sha256": "ed22b3eae3945168474bac3acc22b2f65a0f0f2e616d5a435942a00e026d29f9",
+    "machine": {
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "processor": "arm",
+      "python": "3.12.13"
+    }
+  },
+  "policy": {
+    "compute_s": 0.0007567602297058329,
+    "source": "median of per-scene median step compute, final serial realtime ledger",
+    "trials": 12,
+    "implementation_sha256": "f4e0a1a16dcf905cb52114fed45550ccdf2915c7f4bde2904e636e18a88fbc36",
+    "scenes_sha256": "ed22b3eae3945168474bac3acc22b2f65a0f0f2e616d5a435942a00e026d29f9",
+    "machine": {
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "processor": "arm",
+      "python": "3.12.13"
+    }
+  }
+}

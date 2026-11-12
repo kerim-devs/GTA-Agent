@@ -1,0 +1,327 @@
+{
+  "scenes": [
+    {
+      "id": "enemy-01",
+      "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+      "onset": 412.498,
+      "kind": "enemy",
+      "onset_method": "10 Hz label and human action proposal; RGB reader refinement; native adjacent-frame contact sheet inspected, first visible change selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.4,
+        "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty.",
+        "answer_t": 412.498,
+        "void_pre_onset": true
+      },
+      "notes": "Replaced 065022 candidate: red was already present under player arrow. First readable red with HUD appearing at native frame 24610, preceding frame 24609 has no HUD."
+    },
+    {
+      "id": "enemy-02",
+      "recording": "/Users/kerim/recordings/kerim/20261112-092019",
+      "onset": 395.999,
+      "kind": "enemy",
+      "onset_method": "10 Hz label and human action proposal; RGB reader refinement; native adjacent-frame contact sheet inspected, first visible change selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.49,
+        "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty.",
+        "answer_t": 395.999,
+        "void_pre_onset": true
+      },
+      "notes": "Moved from reader proposal 396.100: native frame 23428 first visible red blips, frame 23427 has map but no red."
+    },
+    {
+      "id": "enemy-03",
+      "recording": "/Users/kerim/recordings/kerim/20261111-185323",
+      "onset": 356.219,
+      "kind": "enemy",
+      "onset_method": "10 Hz label and human action proposal; RGB reader refinement; native adjacent-frame contact sheet inspected, first visible change selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.301,
+        "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty.",
+        "answer_t": 356.219,
+        "void_pre_onset": true
+      },
+      "notes": "Native frame 21301 first red blips and muzzle flash, frame 21300 has neither."
+    },
+    {
+      "id": "hit-01",
+      "recording": "/Users/kerim/recordings/kerim/20261111-190825",
+      "onset": 396.3643,
+      "kind": "hit",
+      "onset_method": "10 Hz label and human action proposal; RGB reader refinement; native adjacent-frame contact sheet inspected, first visible change selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.331,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty.",
+        "answer_t": 397.5575,
+        "void_pre_onset": true
+      },
+      "notes": "Label proposal 396.3980; native reader initial=0.6222222222222222; first change=396.3821."
+    },
+    {
+      "id": "hit-02",
+      "recording": "/Users/kerim/recordings/kerim/20261111-065022",
+      "onset": 210.8304,
+      "kind": "hit",
+      "onset_method": "10 Hz label and human action proposal; RGB reader refinement; native adjacent-frame contact sheet inspected, first visible change selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.517,
+        "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty.",
+        "answer_t": 210.8304,
+        "void_pre_onset": true
+      },
+      "notes": "Label proposal 210.8982; native first change 210.8304."
+    },
+    {
+      "id": "hit-03",
+      "recording": "/Users/kerim/recordings/kerim/20261112-092019",
+      "onset": 565.0997,
+      "kind": "hit",
+      "onset_method": "10 Hz label and human action proposal; RGB reader refinement; native adjacent-frame contact sheet inspected, first visible change selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.49,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty.",
+        "answer_t": 565.1265,
+        "void_pre_onset": true
+      },
+      "notes": "Label proposal 565.0997; native reader initial=None; first change=565.0997."
+    },
+    {
+      "id": "wanted-01",
+      "recording": "/Users/kerim/recordings/kerim/20261112-085011",
+      "onset": 161.6769,
+      "kind": "wanted",
+      "onset_method": "10 Hz label and human action proposal; RGB reader refinement; native adjacent-frame contact sheet inspected, first visible change selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.14,
+        "lead_source": "estimated",
+        "lead_correlation": 0.404,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty.",
+        "answer_t": 162.05739999999997,
+        "void_pre_onset": true
+      },
+      "notes": "Label proposal 161.7632; native reader initial=0; first change=161.6769."
+    },
+    {
+      "id": "wanted-02",
+      "recording": "/Users/kerim/recordings/kerim/20261111-182316",
+      "onset": 391.3316,
+      "kind": "wanted",
+      "onset_method": "10 Hz label and human action proposal; RGB reader refinement; native adjacent-frame contact sheet inspected, first visible change selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.315,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty.",
+        "answer_t": 392.11620000000005,
+        "void_pre_onset": false
+      },
+      "notes": "Label proposal 391.3316; native reader initial=0; first change=391.3316."
+    },
+    {
+      "id": "wanted-03",
+      "recording": "/Users/kerim/recordings/kerim/20261111-065022",
+      "onset": 209.4257,
+      "kind": "wanted",
+      "onset_method": "10 Hz label and human action proposal; RGB reader refinement; native adjacent-frame contact sheet inspected, first visible change selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.517,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty.",
+        "answer_t": 209.4257,
+        "void_pre_onset": true
+      },
+      "notes": "Label proposal 209.4917; native reader initial=0; first change=209.4257."
+    },
+    {
+      "id": "calm-walk-01",
+      "recording": "/Users/kerim/recordings/kerim/20261111-065022",
+      "onset": 12,
+      "kind": "calm",
+      "onset_method": "Whole-window flat-map, health, red and stars label filter, no aim/fire labels; start/center/end visual sheet. Control center has no physical onset.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.517,
+        "residual_error": "Uncalibrated offset on 20 ms estimator grid plus capture/input timestamp uncertainty.",
+        "answer_t": null,
+        "void_pre_onset": false
+      },
+      "notes": "Ordinary on-foot idle/look/walk. Null wanted samples allowed only with continuous flat HUD. No vehicle controls scored as combat inputs."
+    },
+    {
+      "id": "calm-walk-02",
+      "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+      "onset": 489,
+      "kind": "calm",
+      "onset_method": "Whole-window flat-map, health, red and stars label filter, no aim/fire labels; start/center/end visual sheet. Control center has no physical onset.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.4,
+        "residual_error": "Uncalibrated offset on 20 ms estimator grid plus capture/input timestamp uncertainty.",
+        "answer_t": null,
+        "void_pre_onset": false
+      },
+      "notes": "Ordinary on-foot idle/look/walk. Null wanted samples allowed only with continuous flat HUD. No vehicle controls scored as combat inputs."
+    },
+    {
+      "id": "calm-walk-03",
+      "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+      "onset": 499,
+      "kind": "calm",
+      "onset_method": "Whole-window flat-map, health, red and stars label filter, no aim/fire labels; start/center/end visual sheet. Control center has no physical onset.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.4,
+        "residual_error": "Uncalibrated offset on 20 ms estimator grid plus capture/input timestamp uncertainty.",
+        "answer_t": null,
+        "void_pre_onset": false
+      },
+      "notes": "Ordinary on-foot idle/look/walk. Null wanted samples allowed only with continuous flat HUD. No vehicle controls scored as combat inputs."
+    }
+  ],
+  "answer_sets": {
+    "enemy": [
+      {
+        "l2": 0.5,
+        "why": "aim at the new threat"
+      },
+      {
+        "r2": 0.5,
+        "why": "fire at the new threat"
+      },
+      {
+        "buttons": [
+          "r1"
+        ],
+        "why": "take cover from the threat"
+      },
+      {
+        "buttons": [
+          "cross"
+        ],
+        "left_y": -0.5,
+        "why": "sprint away from danger"
+      }
+    ],
+    "hit": [
+      {
+        "l2": 0.5,
+        "why": "aim at the new threat"
+      },
+      {
+        "r2": 0.5,
+        "why": "fire at the new threat"
+      },
+      {
+        "buttons": [
+          "r1"
+        ],
+        "why": "take cover from the threat"
+      },
+      {
+        "buttons": [
+          "cross"
+        ],
+        "left_y": -0.5,
+        "why": "sprint away from danger"
+      }
+    ],
+    "wanted": [
+      {
+        "l2": 0.5,
+        "why": "aim at the new threat"
+      },
+      {
+        "r2": 0.5,
+        "why": "fire at the new threat"
+      },
+      {
+        "buttons": [
+          "r1"
+        ],
+        "why": "take cover from the threat"
+      },
+      {
+        "buttons": [
+          "cross"
+        ],
+        "left_y": -0.5,
+        "why": "sprint away from danger"
+      }
+    ],
+    "calm": [
+      {
+        "l2": 0.5,
+        "why": "aim at the new threat"
+      },
+      {
+        "r2": 0.5,
+        "why": "fire at the new threat"
+      },
+      {
+        "buttons": [
+          "r1"
+        ],
+        "why": "take cover from the threat"
+      },
+      {
+        "buttons": [
+          "cross"
+        ],
+        "left_y": -0.5,
+        "why": "sprint away from danger"
+      }
+    ]
+  },
+  "selection": {
+    "threat_scenes": 9,
+    "calm_scenes": 3,
+    "target_threats": 30,
+    "limitation": "Nine visually bounded threats and three true on-foot controls retained. Twenty-one additional independent verified threats and twenty-seven genuine playable controls are missing. Thirty initially proposed controls were rejected as cutscenes without a HUD; stale health values had survived their absent maps. Strict flat-map search of all integer-second centers in these seven sources yielded only three disjoint windows without aim/fire. Vehicle controls are excluded because R2 is throttle, not fire; a context-aware vehicle answer set needs a separate reviewed dataset.",
+    "rejected": [
+      "164039 red transitions 632.986,648.6848,670.8731: red visible before reader change",
+      "065022 red transition 197.497: red already present under player marker",
+      "092019 health transition 547.7011: transparency and moving background, not clear health loss",
+      "Initial 30 calm label proposals: cutscenes or no continuous playable HUD"
+    ],
+    "clock": "frames.jsonl t, not video FPS; human pad.t + labels.lead; all retained lead values estimated"
+  }
+}
