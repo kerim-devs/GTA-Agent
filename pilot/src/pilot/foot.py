@@ -230,6 +230,11 @@ class FootGuard:
         self.events: list[tuple[float, str]] = []  # what the guard decided, for logs and replays
 
     # -- evidence
+    def diagnostic(self) -> str:
+        motion = self.evidence[-1][1] if self.evidence else None
+        attempts = min(self.failures, len(self.ESCAPES))
+        return f"foot:state={self.state};attempts={attempts};motion={motion or 'unknown'}"
+
     def _evidence(self, observation: Observation) -> str | None:
         now = observation.time
         crop = hud_crop(observation.frame)
@@ -258,7 +263,9 @@ class FootGuard:
             return False
         still = window.count("still")
         going = window.count("going")
-        return still >= self.STILL_SHARE * len(window) and going <= 0.1 * still
+        # A few translated pixels while the figure turns do not establish travel.
+        # Keep requiring a still majority, but tolerate short movement spikes.
+        return still >= self.STILL_SHARE * len(window) and going <= 0.25 * len(window)
 
     def _going(self, now: float) -> bool:
         window = [kind for t, kind in self.evidence if t >= now - self.WINDOW]
@@ -326,6 +333,11 @@ class FootGuard:
                 return self._stuck(now)
             if now - self.state_since < self.ESCAPE_SECONDS:
                 return Steer(stick, state="escape")
+            # Once a stall is established, an expired turn needs evidence of
+            # progress. Starting a new two-second push on every uncertain turn
+            # lets skill timeouts erase all four attempts indefinitely.
+            if not self._going(now):
+                return self._stuck(now)
             self._back_to_go(now)
         if self.state == "look":
             turned = (now - self.state_since) * self.LOOK_RATE
@@ -366,6 +378,7 @@ class FootGuard:
     def _stuck(self, now: float) -> Steer:
         self.failures += 1
         if self.failures > len(self.ESCAPES):
+            self.state, self.state_since = "failed", now
             self.events.append((now, "stuck"))
             return Steer((0.0, 0.0), state="failed", failed="stuck")
         side, angle = self.ESCAPES[self.failures - 1]

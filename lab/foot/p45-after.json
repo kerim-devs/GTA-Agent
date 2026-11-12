@@ -1,0 +1,1903 @@
+{
+ "recording": "20261112-082524",
+ "walking_ticks": 3168,
+ "walking_runs": 19,
+ "first_decisions": 12,
+ "first_decision_kinds": {
+  "escape": 12
+ },
+ "judgments": 638,
+ "blocked_judgments": 8,
+ "decisions": [
+  {
+   "t": 39.87,
+   "run": 1,
+   "skill": "walk",
+   "first": true,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.64,
+     0.77
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0.9396926207859083,
+     -0.3420201433256688
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 41.08,
+   "run": 1,
+   "skill": "walk",
+   "first": false,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.0,
+     -1.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.9396926207859083,
+     -0.3420201433256688
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 42.29,
+   "run": 1,
+   "skill": "walk",
+   "first": false,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     -0.17,
+     0.98
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0.8660254037844387,
+     0.49999999999999983
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 48.39,
+   "run": 2,
+   "skill": "walk",
+   "first": true,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.94,
+     -0.34
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0,
+     -1
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 70.14,
+   "run": 3,
+   "skill": "walk_to",
+   "first": true,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     1.0,
+     0.05
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0.3270637811681588,
+     -0.7845567430390147
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 71.37,
+   "run": 3,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     -0.74,
+     -0.68
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0.9999794405209889,
+     -0.006412373611232813
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 72.58,
+   "run": 3,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.61,
+     0.79
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0.9999794405209889,
+     -0.006412373611232813
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 77.46,
+   "run": 4,
+   "skill": "walk",
+   "first": true,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.64,
+     0.77
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0.9396926207859083,
+     -0.3420201433256688
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 78.67,
+   "run": 4,
+   "skill": "walk",
+   "first": false,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.0,
+     -1.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0.9396926207859083,
+     -0.3420201433256688
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 89.42,
+   "run": 7,
+   "skill": "walk",
+   "first": true,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.94,
+     -0.34
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0,
+     -1
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 91.05,
+   "run": 7,
+   "skill": "walk",
+   "first": false,
+   "decision": "go",
+   "would_send": {
+    "left": [
+     0,
+     -1
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0,
+     -1
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 105.98,
+   "run": 9,
+   "skill": "walk",
+   "first": true,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.94,
+     -0.34
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0,
+     -1
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 109.61,
+   "run": 10,
+   "skill": "walk_to",
+   "first": true,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.96,
+     0.26
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0.5764954194871981,
+     -0.8171003801922255
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 110.81,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     -0.57,
+     -0.82
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.9668431128394355,
+     0.25537109302924355
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 112.05,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.42,
+     0.91
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0.9964993184040734,
+     -0.08360088767601082
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 113.27,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     -1.0,
+     -0.09
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6024098720280179,
+     -0.5996685301757857
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 114.91,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.38,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.42,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.46,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.5,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.53,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.57,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.6,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.64,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.68,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.72,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.76,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.79,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.9,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.9,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.95,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 115.99,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6044460117454833,
+     -0.597616113307681
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.03,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.07,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.11,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.14,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.18,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.23,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.27,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.31,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.42,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.42,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.46,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.51,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.55,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.58,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.62,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.65,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.69,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.73,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.77,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.81,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.84,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.95,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.96,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 116.99,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 117.03,
+   "run": 10,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.2533267411325057,
+     0.9673807741666074
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 144.54,
+   "run": 14,
+   "skill": "walk_to",
+   "first": true,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.99,
+     0.11
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0.4420562596428565,
+     -0.896987326170536
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 145.77,
+   "run": 14,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     -0.69,
+     -0.72
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.9152070805536494,
+     0.4029838702782852
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 147.39,
+   "run": 14,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.56,
+     0.83
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6047180117429418,
+     -0.5973408794596794
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 151.39,
+   "run": 15,
+   "skill": "walk",
+   "first": true,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.94,
+     -0.34
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0,
+     -1
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 162.44,
+   "run": 16,
+   "skill": "walk_to",
+   "first": true,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.41,
+     -0.91
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6064982288300497,
+     -0.595533289099789
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 165.64,
+   "run": 17,
+   "skill": "walk",
+   "first": true,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.94,
+     -0.34
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0,
+     -1
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 166.87,
+   "run": 17,
+   "skill": "walk",
+   "first": false,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     -0.94,
+     -0.34
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0.9396926207859083,
+     -0.3420201433256688
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 171.07,
+   "run": 18,
+   "skill": "walk_to",
+   "first": true,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     1.0,
+     0.08
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0.4134372951567971,
+     -0.9105325930319197
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 172.29,
+   "run": 18,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     -0.71,
+     -0.7
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.9019904115496795,
+     0.43175606246171
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 173.56,
+   "run": 18,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     0.58,
+     0.81
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     0.9632608038799217,
+     -0.26856772648366906
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 174.77,
+   "run": 18,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "escape",
+   "would_send": {
+    "left": [
+     -1.0,
+     0.1
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.24904392816847304,
+     0.9684921898716667
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "t": 176.39,
+   "run": 18,
+   "skill": "walk_to",
+   "first": false,
+   "decision": "stuck",
+   "would_send": {
+    "left": [
+     0.0,
+     0.0
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   },
+   "sent": {
+    "left": [
+     -0.6107418648242202,
+     -0.5911804923634015
+    ],
+    "right": [
+     0.0,
+     0.0
+    ]
+   }
+  }
+ ]
+}
