@@ -10,7 +10,7 @@ Two things hold for every station. What the game does by itself (the lock of L2,
 |---|---|---|---|---|
 | 1 | Walking along a road | runs; hangs on knee-high walls in front gardens, `walk_road` gave up thirteen times in one afternoon; the bench cannot measure it yet | open | |
 | 2 | Setting the view from behind | right 4 times of 14 with the first reader; the game's idle camera after thirty quiet seconds fools every reader | open | |
-| 3 | Walking to a point on the map | half built (P61) | open | |
+| 3 | Walking to a point on the map | `walk_to_point` with `roads=true` and sprint: 318 m to Ammu-Nation in 66 s in one go (23:08), the way found on the minimap's roads; before that a walk of 60 s cut off by the test frame and a sprint with stops | 12 Nov, on the first two runs: far too slow, the sprint good but with a stop again and again; it has to be quick and fluid, the way worked out first and then run in one go. On the third run: open | the stops are out (log of 12 November); open are the swing of the stick while turning round at the start, a way read from the pause map before setting off, walking beside the road, and buildings |
 | 4 | Getting into a vehicle | seated after 8.4 s in a truck that came past (22:19); once followed a moving pickup onto a junction and stood there | 12 Nov: taking the next vehicle at once is very good | the reviewer's note that an empty vehicle should come first, because pulling a driver out added a star, is his to confirm or drop |
 | 5 | Getting out | 2 of 2 | open | |
 | 6 | Following a route and arriving | two kilometres in one go at about 9 m/s; stood twice for 70 s short of the goal because the reader called every map damaged | open | |
