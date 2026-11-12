@@ -1,0 +1,979 @@
+{
+  "runs_schema": {
+    "step_seconds": 0.1,
+    "sample": {
+      "t": "seconds",
+      "map": "reader string",
+      "corrupt": "boolean",
+      "skill": "[name,status,reason|null]",
+      "left": "[x,y]",
+      "right": "[x,y]",
+      "buttons": "array[str]",
+      "objects": "[[kind,[x0,y0,x1,y1],confidence],...]"
+    }
+  },
+  "near_definition": {
+    "kinds": [
+      "car",
+      "truck",
+      "bus",
+      "motorcycle"
+    ],
+    "min_confidence": 0.45,
+    "height_normalized_min": 0.28,
+    "bottom_normalized_min": 0.66,
+    "join_gap_seconds": 0.25
+  },
+  "near_spans": [
+    {
+      "session": "20261112-102851",
+      "from": 83.31,
+      "to": 89.12,
+      "samples": 59,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          946,
+          337,
+          1279,
+          506
+        ],
+        "confidence": 0.95
+      }
+    },
+    {
+      "session": "20261112-102851",
+      "from": 98.95,
+      "to": 99.05,
+      "samples": 2,
+      "triangle_times": [
+        99.05
+      ],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          545,
+          314,
+          754,
+          502
+        ],
+        "confidence": 0.91
+      }
+    },
+    {
+      "session": "20261112-102851",
+      "from": 99.85,
+      "to": 99.85,
+      "samples": 1,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          404,
+          291,
+          948,
+          713
+        ],
+        "confidence": 0.52
+      }
+    },
+    {
+      "session": "20261112-102851",
+      "from": 100.37,
+      "to": 100.37,
+      "samples": 1,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          0,
+          293,
+          1278,
+          714
+        ],
+        "confidence": 0.84
+      }
+    },
+    {
+      "session": "20261112-102851",
+      "from": 155.48,
+      "to": 156.09,
+      "samples": 7,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "bus",
+        "box_px": [
+          1,
+          79,
+          488,
+          710
+        ],
+        "confidence": 0.62
+      }
+    },
+    {
+      "session": "20261112-102851",
+      "from": 156.69,
+      "to": 162.4,
+      "samples": 57,
+      "triangle_times": [
+        158.4
+      ],
+      "largest_candidate": {
+        "kind": "bus",
+        "box_px": [
+          0,
+          93,
+          725,
+          674
+        ],
+        "confidence": 0.61
+      }
+    },
+    {
+      "session": "20261112-102851",
+      "from": 162.7,
+      "to": 163.21,
+      "samples": 6,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "bus",
+        "box_px": [
+          2,
+          303,
+          751,
+          714
+        ],
+        "confidence": 0.96
+      }
+    },
+    {
+      "session": "20261112-102851",
+      "from": 206.65,
+      "to": 215.35,
+      "samples": 87,
+      "triangle_times": [
+        209.34,
+        209.51
+      ],
+      "largest_candidate": {
+        "kind": "bus",
+        "box_px": [
+          0,
+          100,
+          745,
+          686
+        ],
+        "confidence": 0.87
+      }
+    },
+    {
+      "session": "20261112-102851",
+      "from": 215.64,
+      "to": 220.88,
+      "samples": 54,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "bus",
+        "box_px": [
+          1,
+          96,
+          703,
+          561
+        ],
+        "confidence": 0.85
+      }
+    },
+    {
+      "session": "20261112-103305",
+      "from": 39.06,
+      "to": 43.77,
+      "samples": 48,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "bus",
+        "box_px": [
+          187,
+          110,
+          1096,
+          433
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "session": "20261112-103305",
+      "from": 44.36,
+      "to": 44.47,
+      "samples": 2,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          1067,
+          316,
+          1279,
+          500
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "session": "20261112-103305",
+      "from": 45.65,
+      "to": 45.94,
+      "samples": 4,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          1038,
+          316,
+          1279,
+          496
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "session": "20261112-103305",
+      "from": 47.76,
+      "to": 48.96,
+      "samples": 13,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "bus",
+        "box_px": [
+          886,
+          164,
+          1279,
+          509
+        ],
+        "confidence": 0.95
+      }
+    },
+    {
+      "session": "20261112-103305",
+      "from": 61.03,
+      "to": 64.19,
+      "samples": 33,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          0,
+          368,
+          869,
+          715
+        ],
+        "confidence": 0.97
+      }
+    },
+    {
+      "session": "20261112-103305",
+      "from": 79.94,
+      "to": 80.65,
+      "samples": 8,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          601,
+          264,
+          1279,
+          575
+        ],
+        "confidence": 0.95
+      }
+    },
+    {
+      "session": "20261112-103305",
+      "from": 83.58,
+      "to": 90.16,
+      "samples": 67,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          44,
+          294,
+          682,
+          532
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "session": "20261112-103305",
+      "from": 91.05,
+      "to": 94.46,
+      "samples": 35,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          68,
+          313,
+          665,
+          490
+        ],
+        "confidence": 0.91
+      }
+    },
+    {
+      "session": "20261112-103305",
+      "from": 94.88,
+      "to": 94.88,
+      "samples": 1,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          1013,
+          274,
+          1279,
+          482
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "session": "20261112-103305",
+      "from": 110.09,
+      "to": 111.88,
+      "samples": 18,
+      "triangle_times": [
+        110.09
+      ],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          349,
+          335,
+          888,
+          507
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "session": "20261112-110449",
+      "from": 12.42,
+      "to": 12.71,
+      "samples": 3,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          842,
+          351,
+          1265,
+          478
+        ],
+        "confidence": 0.92
+      }
+    },
+    {
+      "session": "20261112-110449",
+      "from": 15.65,
+      "to": 15.82,
+      "samples": 2,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          904,
+          341,
+          1280,
+          476
+        ],
+        "confidence": 0.93
+      }
+    },
+    {
+      "session": "20261112-110449",
+      "from": 23.23,
+      "to": 24.57,
+      "samples": 12,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          711,
+          365,
+          1279,
+          643
+        ],
+        "confidence": 0.94
+      }
+    },
+    {
+      "session": "20261112-110449",
+      "from": 25.21,
+      "to": 25.21,
+      "samples": 1,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          1110,
+          398,
+          1279,
+          480
+        ],
+        "confidence": 0.51
+      }
+    },
+    {
+      "session": "20261112-110449",
+      "from": 25.55,
+      "to": 25.62,
+      "samples": 2,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "truck",
+        "box_px": [
+          845,
+          203,
+          1277,
+          481
+        ],
+        "confidence": 0.46
+      }
+    },
+    {
+      "session": "20261112-111123",
+      "from": 6.62,
+      "to": 6.81,
+      "samples": 2,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          39,
+          481,
+          551,
+          705
+        ],
+        "confidence": 0.5
+      }
+    },
+    {
+      "session": "20261112-111123",
+      "from": 7.23,
+      "to": 7.3,
+      "samples": 2,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "bus",
+        "box_px": [
+          53,
+          555,
+          246,
+          684
+        ],
+        "confidence": 0.66
+      }
+    },
+    {
+      "session": "20261112-111123",
+      "from": 7.89,
+      "to": 8.21,
+      "samples": 4,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          12,
+          558,
+          453,
+          715
+        ],
+        "confidence": 0.89
+      }
+    },
+    {
+      "session": "20261112-111123",
+      "from": 8.56,
+      "to": 8.61,
+      "samples": 2,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "truck",
+        "box_px": [
+          3,
+          556,
+          490,
+          715
+        ],
+        "confidence": 0.61
+      }
+    },
+    {
+      "session": "20261112-111123",
+      "from": 9.41,
+      "to": 12.12,
+      "samples": 28,
+      "triangle_times": [
+        11.02
+      ],
+      "largest_candidate": {
+        "kind": "car",
+        "box_px": [
+          785,
+          396,
+          1256,
+          535
+        ],
+        "confidence": 0.9
+      }
+    },
+    {
+      "session": "20261112-111123",
+      "from": 15.12,
+      "to": 18.44,
+      "samples": 34,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "truck",
+        "box_px": [
+          903,
+          255,
+          1278,
+          462
+        ],
+        "confidence": 0.89
+      }
+    },
+    {
+      "session": "20261112-111123",
+      "from": 19.66,
+      "to": 20.98,
+      "samples": 14,
+      "triangle_times": [],
+      "largest_candidate": {
+        "kind": "truck",
+        "box_px": [
+          5,
+          234,
+          533,
+          437
+        ],
+        "confidence": 0.94
+      }
+    }
+  ],
+  "pilot_triangle_samples": [
+    {
+      "session": "20261112-102851",
+      "t": 99.05,
+      "objects": [
+        [
+          "car",
+          [
+            545,
+            314,
+            754,
+            502
+          ],
+          0.91
+        ],
+        [
+          "person",
+          [
+            647,
+            335,
+            695,
+            369
+          ],
+          0.45
+        ]
+      ],
+      "map": "flat",
+      "corrupt": false,
+      "left": [
+        0.0,
+        0.0
+      ],
+      "right": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "session": "20261112-102851",
+      "t": 158.4,
+      "objects": [
+        [
+          "bus",
+          [
+            129,
+            155,
+            1058,
+            476
+          ],
+          0.95
+        ]
+      ],
+      "map": "flat",
+      "corrupt": false,
+      "left": [
+        0.0,
+        0.0
+      ],
+      "right": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "session": "20261112-102851",
+      "t": 209.34,
+      "objects": [
+        [
+          "bus",
+          [
+            183,
+            160,
+            1121,
+            536
+          ],
+          0.96
+        ],
+        [
+          "car",
+          [
+            0,
+            308,
+            150,
+            380
+          ],
+          0.83
+        ],
+        [
+          "person",
+          [
+            759,
+            312,
+            808,
+            377
+          ],
+          0.58
+        ],
+        [
+          "car",
+          [
+            0,
+            304,
+            41,
+            337
+          ],
+          0.48
+        ]
+      ],
+      "map": "flat",
+      "corrupt": false,
+      "left": [
+        0.0,
+        0.0
+      ],
+      "right": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "session": "20261112-102851",
+      "t": 209.51,
+      "objects": [
+        [
+          "bus",
+          [
+            241,
+            144,
+            1272,
+            555
+          ],
+          0.96
+        ],
+        [
+          "car",
+          [
+            33,
+            317,
+            194,
+            377
+          ],
+          0.83
+        ],
+        [
+          "car",
+          [
+            0,
+            302,
+            90,
+            351
+          ],
+          0.75
+        ],
+        [
+          "person",
+          [
+            848,
+            313,
+            907,
+            390
+          ],
+          0.65
+        ]
+      ],
+      "map": "flat",
+      "corrupt": false,
+      "left": [
+        0.0,
+        0.0
+      ],
+      "right": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "session": "20261112-103305",
+      "t": 110.09,
+      "objects": [
+        [
+          "car",
+          [
+            17,
+            276,
+            350,
+            375
+          ],
+          0.93
+        ],
+        [
+          "car",
+          [
+            383,
+            326,
+            903,
+            483
+          ],
+          0.92
+        ],
+        [
+          "car",
+          [
+            448,
+            253,
+            725,
+            345
+          ],
+          0.92
+        ],
+        [
+          "car",
+          [
+            637,
+            190,
+            670,
+            211
+          ],
+          0.59
+        ],
+        [
+          "car",
+          [
+            100,
+            177,
+            139,
+            205
+          ],
+          0.51
+        ],
+        [
+          "car",
+          [
+            669,
+            192,
+            730,
+            221
+          ],
+          0.43
+        ]
+      ],
+      "map": "flat",
+      "corrupt": false,
+      "left": [
+        0.0,
+        0.0
+      ],
+      "right": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "session": "20261112-111123",
+      "t": 11.02,
+      "objects": [
+        [
+          "car",
+          [
+            638,
+            382,
+            924,
+            488
+          ],
+          0.91
+        ],
+        [
+          "car",
+          [
+            370,
+            373,
+            427,
+            407
+          ],
+          0.79
+        ],
+        [
+          "car",
+          [
+            391,
+            351,
+            442,
+            388
+          ],
+          0.62
+        ]
+      ],
+      "map": "flat",
+      "corrupt": false,
+      "left": [
+        0.0,
+        0.0
+      ],
+      "right": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "human_press_holds_first_down_to_first_release": [
+    {
+      "ordinal": 1,
+      "session": "20261111-190825",
+      "triangle_down": 94.9464,
+      "triangle_up": 95.0656,
+      "hold_seconds": 0.1192,
+      "entry_observed_seconds": 5.2992
+    },
+    {
+      "ordinal": 11,
+      "session": "20261111-165543",
+      "triangle_down": 216.6667,
+      "triangle_up": 216.8343,
+      "hold_seconds": 0.1676,
+      "entry_observed_seconds": 5.7678
+    },
+    {
+      "ordinal": 31,
+      "session": "20261111-171046",
+      "triangle_down": 149.2357,
+      "triangle_up": 149.3838,
+      "hold_seconds": 0.1481,
+      "entry_observed_seconds": 5.3357
+    },
+    {
+      "ordinal": 61,
+      "session": "20261112-085011",
+      "triangle_down": 884.2341,
+      "triangle_up": 884.4293,
+      "hold_seconds": 0.1952,
+      "entry_observed_seconds": 2.1019
+    },
+    {
+      "ordinal": 71,
+      "session": "20261111-185323",
+      "triangle_down": 803.3072,
+      "triangle_up": 803.4628,
+      "hold_seconds": 0.1556,
+      "entry_observed_seconds": 5.807
+    }
+  ],
+  "fresh_dump_command": "pilot/.venv/bin/python lab/enter/dump.py /Users/kerim/recordings/pilot/20261112-102851 /Users/kerim/recordings/pilot/20261112-103305 /Users/kerim/recordings/pilot/20261112-110449 /Users/kerim/recordings/pilot/20261112-110806 /Users/kerim/recordings/pilot/20261112-111123 > /private/tmp/p53-fresh-detections.json",
+  "dump_options": "No CLI options. Positional recording folders only. It samples every 6 frames (0.1s), adds 180-frame (3s) margins, and requires the native Detector.",
+  "human_original_frames": {
+    "resolution_px": [
+      1280,
+      720
+    ],
+    "manifest": "/private/tmp/p53-enter-audit/original-human-frames/manifest.json",
+    "note": "Read target box and motion from these original frames; earlier manual boxes removed because contact-sheet coordinate spaces were mixed."
+  },
+  "manual_human_boxes_px": [
+    {
+      "ordinal": 1,
+      "session": "20261111-190825",
+      "box_px_approx": [
+        320,
+        400,
+        760,
+        565
+      ],
+      "stopped_before_press": true,
+      "approach": "running; Cross present"
+    },
+    {
+      "ordinal": 11,
+      "session": "20261111-165543",
+      "box_px_approx": [
+        360,
+        325,
+        725,
+        480
+      ],
+      "stopped_before_press": true,
+      "approach": "walking; no Cross"
+    },
+    {
+      "ordinal": 31,
+      "session": "20261111-171046",
+      "box_px_approx": [
+        340,
+        280,
+        640,
+        495
+      ],
+      "stopped_before_press": true,
+      "approach": "walking; no Cross"
+    },
+    {
+      "ordinal": 61,
+      "session": "20261112-085011",
+      "box_px_approx": [
+        405,
+        225,
+        880,
+        445
+      ],
+      "stopped_before_press": true,
+      "approach": "running; Cross present"
+    },
+    {
+      "ordinal": 71,
+      "session": "20261111-185323",
+      "box_px_approx": [
+        610,
+        320,
+        1020,
+        480
+      ],
+      "stopped_before_press": true,
+      "approach": "running; Cross present"
+    }
+  ]
+}
