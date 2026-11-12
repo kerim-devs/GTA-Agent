@@ -76,6 +76,9 @@ def replay(run, with_frames=False):
     skill = EnterVehicle({})
     first = None
     walking = corrupt_actions = 0
+    unsafe_presses = 0
+    positions = {}
+    kinds = {}
     last = None
     for sample in samples:
         observation = Observation(
@@ -90,6 +93,15 @@ def replay(run, with_frames=False):
             objects_time=sample["t"],
         )
         last = skill.step(observation)
+        position = skill.location.position if skill.location else "unknown"
+        positions[position] = positions.get(position, 0) + 1
+        for vehicle in skill.vehicles:
+            kinds[vehicle.occupancy] = kinds.get(vehicle.occupancy, 0) + 1
+        if last.pad.buttons and skill.entry_target is not None:
+            unsafe_presses += position == "lane" and (
+                skill.entry_target.motion == "moving"
+                or skill.entry_target.occupancy == "occupied"
+            )
         walking += last.pad.left != (0, 0)
         corrupt_actions += sample["corrupt"] and (
             last.pad.left != (0, 0) or bool(last.pad.buttons)
@@ -100,6 +112,8 @@ def replay(run, with_frames=False):
                 "kind": skill.entry_target.obj.kind,
                 "box": list(skill.entry_target.obj.box),
                 "motion": skill.entry_target.motion,
+                "occupancy": skill.taken_kind,
+                "position": position,
             }
     old = [s["t"] for s in samples if "triangle" in s["buttons"]]
     if frames is not None:
@@ -115,6 +129,9 @@ def replay(run, with_frames=False):
         "last_status": last.status,
         "last_reason": last.reason,
         "road_problem": skill.road_problem,
+        "position_counts": positions,
+        "vehicle_sample_kinds": kinds,
+        "unsafe_lane_presses": unsafe_presses,
     }
 
 
@@ -126,7 +143,9 @@ if __name__ == "__main__":
         help="feed the matching original RGB frame to WalkRoad",
     )
     args = parser.parse_args()
-    runs = json.loads((Path(__file__).with_name("runs.json")).read_text())["runs"]
+    runs = []
+    for name in ("runs.json", "runs-console.json"):
+        runs.extend(json.loads(Path(__file__).with_name(name).read_text())["runs"])
     print(
         json.dumps(
             {

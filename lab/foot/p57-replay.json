@@ -1,0 +1,152 @@
+{
+  "scope": "Recorded pictures do not respond to either walk's commands. 'before' is foot.py at f9922f1; 'now' is the walk in this tree. Both run with their own real guard on the same ticks.",
+  "runs": [
+    {
+      "session": "20261112-122242",
+      "counterfactual_replacement": false,
+      "ticks": 509,
+      "recording_ended_before_deadline": false,
+      "positions": {
+        "unknown": 509
+      },
+      "moving_ticks_before": 507,
+      "moving_ticks_now": 507,
+      "old_moving_ticks_where_now_moves": 507,
+      "old_moving_ticks_lane": 0,
+      "share_of_old_moving_ticks_kept_outside_lane": 1.0,
+      "ticks_where_the_pad_differs_from_before": 0,
+      "of_which_on_a_lane_reading": 0,
+      "longest_neutral_hold_now_s": 0.0,
+      "longest_hold_now_where_before_moved_s": 0.0,
+      "longest_neutral_hold_before_s": 0.0,
+      "ending_before": {
+        "t": 25.88,
+        "status": "done",
+        "reason": "time-limit; side unknown",
+        "before_status": "done",
+        "before_reason": "time-limit"
+      },
+      "ending_now": {
+        "t": 25.88,
+        "status": "done",
+        "reason": "time-limit; side unknown"
+      }
+    },
+    {
+      "session": "20261112-110418",
+      "counterfactual_replacement": false,
+      "ticks": 493,
+      "recording_ended_before_deadline": false,
+      "positions": {
+        "unknown": 428,
+        "lane": 65
+      },
+      "moving_ticks_before": 492,
+      "moving_ticks_now": 492,
+      "old_moving_ticks_where_now_moves": 492,
+      "old_moving_ticks_lane": 65,
+      "share_of_old_moving_ticks_kept_outside_lane": 1.0,
+      "ticks_where_the_pad_differs_from_before": 221,
+      "of_which_on_a_lane_reading": 65,
+      "longest_neutral_hold_now_s": 0.0,
+      "longest_hold_now_where_before_moved_s": 0.0,
+      "longest_neutral_hold_before_s": 0.0,
+      "ending_before": {
+        "t": 25.902,
+        "status": "done",
+        "reason": "time-limit; side unknown",
+        "before_status": "done",
+        "before_reason": "time-limit"
+      },
+      "ending_now": {
+        "t": 25.902,
+        "status": "done",
+        "reason": "time-limit; side unknown"
+      }
+    },
+    {
+      "session": "20261112-110736",
+      "counterfactual_replacement": false,
+      "ticks": 509,
+      "recording_ended_before_deadline": false,
+      "positions": {
+        "unknown": 509
+      },
+      "moving_ticks_before": 446,
+      "moving_ticks_now": 446,
+      "old_moving_ticks_where_now_moves": 446,
+      "old_moving_ticks_lane": 0,
+      "share_of_old_moving_ticks_kept_outside_lane": 1.0,
+      "ticks_where_the_pad_differs_from_before": 0,
+      "of_which_on_a_lane_reading": 0,
+      "longest_neutral_hold_now_s": 2.375,
+      "longest_hold_now_where_before_moved_s": 0.0,
+      "longest_neutral_hold_before_s": 2.375,
+      "ending_before": {
+        "t": 25.866,
+        "status": "done",
+        "reason": "time-limit; side unknown",
+        "before_status": "done",
+        "before_reason": "time-limit"
+      },
+      "ending_now": {
+        "t": 25.866,
+        "status": "done",
+        "reason": "time-limit; side unknown"
+      }
+    },
+    {
+      "session": "20261112-111053",
+      "counterfactual_replacement": false,
+      "ticks": 501,
+      "recording_ended_before_deadline": false,
+      "positions": {
+        "unknown": 497,
+        "side": 4
+      },
+      "moving_ticks_before": 499,
+      "moving_ticks_now": 499,
+      "old_moving_ticks_where_now_moves": 499,
+      "old_moving_ticks_lane": 0,
+      "share_of_old_moving_ticks_kept_outside_lane": 1.0,
+      "ticks_where_the_pad_differs_from_before": 0,
+      "of_which_on_a_lane_reading": 0,
+      "longest_neutral_hold_now_s": 0.0,
+      "longest_hold_now_where_before_moved_s": 0.0,
+      "longest_neutral_hold_before_s": 0.0,
+      "ending_before": {
+        "t": 25.835,
+        "status": "done",
+        "reason": "time-limit; side unknown",
+        "before_status": "done",
+        "before_reason": "time-limit"
+      },
+      "ending_now": {
+        "t": 25.835,
+        "status": "done",
+        "reason": "time-limit; side unknown"
+      }
+    },
+    {
+      "session": "20261112-122558",
+      "counterfactual_replacement": true,
+      "ticks": 492,
+      "recording_ended_before_deadline": true,
+      "positions": {
+        "unknown": 492
+      },
+      "moving_ticks_before": 0,
+      "moving_ticks_now": 0,
+      "old_moving_ticks_where_now_moves": 0,
+      "old_moving_ticks_lane": 0,
+      "share_of_old_moving_ticks_kept_outside_lane": 0.0,
+      "ticks_where_the_pad_differs_from_before": 0,
+      "of_which_on_a_lane_reading": 0,
+      "longest_neutral_hold_now_s": 19.873,
+      "longest_hold_now_where_before_moved_s": 0.0,
+      "longest_neutral_hold_before_s": 19.873,
+      "ending_before": null,
+      "ending_now": null
+    }
+  ]
+}
