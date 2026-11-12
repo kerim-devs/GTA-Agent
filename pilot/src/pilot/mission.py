@@ -3,8 +3,10 @@
 import re
 import unicodedata
 from collections import Counter
+from dataclasses import replace
 
 from .contract import ARROW_XY
+from .goals import Goals
 from .head import Head, HeadRequest, HeadResponse, parse_response
 from .notes import intent
 
@@ -93,8 +95,9 @@ class MissionHead:
     # asked for a letter again: a new one appears when the game has moved on, not at once.
     LETTERLESS_ROUTES = 4
 
-    def __init__(self, fallback: Head | None = None) -> None:
+    def __init__(self, fallback: Head | None = None, *, goal_seed=None) -> None:
         self.fallback = fallback
+        self.goals = Goals(seed=goal_seed)
         self.counts: Counter[str] = Counter()
         self.last_rule: str | None = None
         self.sought_mission = False
@@ -105,12 +108,64 @@ class MissionHead:
 
     def decide(self, request: HeadRequest) -> HeadResponse:
         self._update_intent(request)
+        interrupted = self.goals.guard(request)
+        hud = request.hud or {}
+        mode = movement(request)
+        free = not request.objective.strip() and self.objective_class == "unknown"
+        available = hud.get("screen", "game") == "game" and mode in {"vehicle", "on_foot"}
+        colors = {b.get("color") for b in request.minimap.get("blips", []) if not _rim_blip(b)}
+        # The goal's waypoint skill owns its map/menu and must finish closing it.
+        last = request.last_skill or {}
+        # A temporarily unreadable movement mode is not evidence against the running goal.
+        if (
+            self.goals.active is not None
+            and last.get("status") == "running"
+            and hud.get("screen", "game") == "game"
+        ):
+            available = True
+        if (
+            free
+            and self.goals.active is not None
+            and interrupted is None
+            and last.get("name") == "set_waypoint"
+            and last.get("status") == "running"
+            and hud.get("screen") in {"map", "pause"}
+        ):
+            response = self.goals.decide(request, mode)
+            self.last_rule = "goal_" + response.goal["name"]
+            self.counts[self.last_rule] += 1
+            return response
+        if (
+            free
+            and available
+            and interrupted not in {"low_health", "death_or_arrest"}
+            and (self.goals.active is not None or not self._failed(request))
+        ):
+            if _wanted(request) and not (self.goals.active is None and self.goals.abandoned == "escape"):
+                selected = self._rule(request)
+                if selected is not None:
+                    response = self.goals.decide(request, mode, escape_plan=selected[1])
+                    self.last_rule = selected[0]
+                    self.counts[self.last_rule] += 1
+                    return response
+            elif not _wanted(request) and (
+                self.goals.active is not None or not colors & {"red", "yellow", "blue"}
+            ):
+                recovery = self._rule(request) if self._failed(request) else None
+                response = self.goals.decide(request, mode, recovery_plan=recovery[1] if recovery else None)
+                self.last_rule = "goal_" + response.goal["name"]
+                self.counts[self.last_rule] += 1
+                return response
         selected = self._rule(request)
         if selected is None:
             if self.fallback is not None:
                 self.last_rule = "fallback"
                 self.counts[self.last_rule] += 1
-                return self.fallback.decide(request)
+                response = self.fallback.decide(request)
+                if self.goals.transition:
+                    response = replace(response, reason=self.goals.transition)
+                    self.goals.transition = ""
+                return response
             selected = (
                 "moving_default",
                 [_walk(sprint=bool(_wanted(request)))],
@@ -124,6 +179,9 @@ class MissionHead:
             plan = [_call("look", duration=0.5, angle=45), *plan]
             sentence = "Der letzte Versuch ist gescheitert, ich orientiere mich zuerst neu."
         response = parse_response({"plan": plan, "sentence": sentence})
+        if self.goals.transition:
+            response = replace(response, reason=self.goals.transition)
+            self.goals.transition = ""
         self.last_rule = rule
         self.counts[rule] += 1
         self.sought_mission = any(call.args.get("target") == "mission" for call in response.plan)

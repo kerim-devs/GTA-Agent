@@ -15,6 +15,7 @@ import cv2
 
 from .contract import FRAME_SIZE, HUD_RECT, NEUTRAL_PAD, Pad, player_mode
 from .flow import MENUS
+from .goals import interruption
 from .head import HeadRequest, ScriptedHead, build_prompt, parse_response, response_data
 from .judge import ModeFilter
 from .loop import ControllerRuntime, Pipeline, RuntimeInterruptedError, cleanup_runtime, interrupt_handlers
@@ -94,6 +95,7 @@ class Conductor:
         self.epoch = 0
         self.future = None
         self.inflight = None
+        self.goal = None
         self.request_count = 0
         self.last_request_time = None
         self.request_times = []
@@ -182,13 +184,20 @@ class Conductor:
             decision = parse_response(response_data(self.future.result()))
             row.update(response_data(decision))
             if not row["overtaken"]:
-                if request["append"] or getattr(self.runner, "uninterruptible", False):
+                if decision.action == "go_on":
+                    row["disposition"] = "kept"
+                    if not self.runner.has_plan:
+                        self.pending.append({"kind": "plan_finished"})
+                elif decision.goal is None and (
+                    request["append"] or getattr(self.runner, "uninterruptible", False)
+                ):
                     self.runner.append(decision.plan)
                     row["disposition"] = "appended"
                 else:
                     self.runner.replace(decision.plan)
                     row["disposition"] = "replaced"
-                if self.carry_allowed and self.carry_started is not None:
+                self.goal = decision.goal
+                if decision.action != "go_on" and self.carry_allowed and self.carry_started is not None:
                     self.runner.release_pending = True
                 row["applied"] = True
                 self.carry_started = None
@@ -221,6 +230,7 @@ class Conductor:
             self.runner.describe(),
             notebook,
             str(jpeg),
+            time=observation.time,
             hud=self._hud_for_head(observation),
             objects=[asdict(item) for item in observation.objects[:12]],
             judgment=(
@@ -324,6 +334,33 @@ class Conductor:
             detected = [event for event in detected if event.kind not in self.OWN_SCREEN_NEWS]
         new_events = [asdict(event) for event in detected] + list(events)
         new_events.extend(self._hud_events(observation))
+        if self.goal is not None:
+            reason = interruption(
+                HeadRequest(
+                    new_events,
+                    self.text.help,
+                    self.text.objective,
+                    self.text.subtitle,
+                    self.text.banner,
+                    asdict(observation.reading),
+                    self.runner.describe(),
+                    "",
+                    "",
+                    hud=asdict(observation.hud) if observation.hud is not None else None,
+                    time=t,
+                ),
+                self.goal,
+            )
+            if reason:
+                self.runner.stop("goal_" + reason)
+                self.write({"type": "goal_end", "t": t, "goal": self.goal, "reason": reason})
+                self.goal = None
+                new_events.append({"kind": "goal_interrupted", "reason": reason})
+                # Flow can return early. Invalidate the pending answer before it gets that chance.
+                self.epoch += 1
+                self.pending.append(new_events[-1])
+                self.carry_allowed = False
+                self.carry_started = None
         recovered = self.flow_started is not None
         flow_result = self._flow_tick(observation, rgb)
         # A stuck screen is where the reflex has done what it knows. From there the head's

@@ -30,6 +30,10 @@ class HeadResponse:
     plan: tuple[SkillCall, ...]
     sentence: str
     lesson: str | None = None
+    action: str = "replace"
+    goal: dict | None = None
+    step: str | None = None
+    reason: str = "rule decision"
 
 
 @dataclass(frozen=True)
@@ -46,12 +50,21 @@ class HeadRequest:
     hud: dict | None = None
     objects: list[dict] = field(default_factory=list)
     judgment: dict | None = None
+    time: float | None = None
 
 
 def parse_response(value: str | dict) -> HeadResponse:
     """Validate the whole response before allowing any of its plan to run."""
     data = json.loads(value) if isinstance(value, str) else value
-    if not isinstance(data, dict) or set(data) - {"plan", "sentence", "lesson"}:
+    if not isinstance(data, dict) or set(data) - {
+        "plan",
+        "sentence",
+        "lesson",
+        "action",
+        "goal",
+        "step",
+        "reason",
+    }:
         raise ValueError("invalid response object")
     if not isinstance(data.get("sentence"), str) or not 1 <= len(data["sentence"].strip()) <= 500:
         raise ValueError("sentence must be nonempty text of at most 500 characters")
@@ -59,8 +72,40 @@ def parse_response(value: str | dict) -> HeadResponse:
         not isinstance(data["lesson"], str) or not 1 <= len(data["lesson"].strip()) <= 1000
     ):
         raise ValueError("invalid lesson")
+    action = data.get("action", "replace")
+    if action not in {"replace", "go_on"}:
+        raise ValueError("invalid action")
+    goal = data.get("goal")
+    if goal is not None and not isinstance(goal, dict):
+        raise ValueError("invalid goal")
+    if goal is not None:
+        if set(goal) != {"name", "started", "deadline", "seed", "direction", "attempts"}:
+            raise ValueError("invalid goal fields")
+        if goal["name"] not in {"vehicle", "drive", "fight", "escape", "road"} or goal["direction"] not in {
+            "north",
+            "east",
+            "south",
+            "west",
+        }:
+            raise ValueError("invalid goal choice")
+        for key in ("started", "deadline", "seed", "attempts"):
+            value = goal[key]
+            if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
+                raise ValueError("invalid goal number")
+        if (
+            goal["deadline"] <= goal["started"]
+            or goal["attempts"] < 0
+            or any(not isinstance(goal[key], int) for key in ("seed", "attempts"))
+        ):
+            raise ValueError("invalid goal bounds")
+    if data.get("step") is not None and not isinstance(data["step"], str):
+        raise ValueError("invalid step")
+    if not isinstance(data.get("reason", "rule decision"), str):
+        raise ValueError("invalid reason")
     plan = data.get("plan")
-    if not isinstance(plan, list) or not 1 <= len(plan) <= 5:
+    if action == "go_on" and plan != []:
+        raise ValueError("go_on must have an empty plan")
+    if not isinstance(plan, list) or not (0 if action == "go_on" else 1) <= len(plan) <= 5:
         raise ValueError("plan must contain one to five calls")
     calls = []
     for call in plan:
@@ -90,7 +135,15 @@ def parse_response(value: str | dict) -> HeadResponse:
             elif key in WHOLE and int(value) != value:
                 raise ValueError(f"{key} must be an integer")
         calls.append(SkillCall(name, dict(args)))
-    return HeadResponse(tuple(calls), data["sentence"].strip(), data.get("lesson"))
+    return HeadResponse(
+        tuple(calls),
+        data["sentence"].strip(),
+        data.get("lesson"),
+        action,
+        goal,
+        data.get("step"),
+        data.get("reason", "rule decision"),
+    )
 
 
 def response_data(response: HeadResponse) -> dict:
@@ -98,6 +151,10 @@ def response_data(response: HeadResponse) -> dict:
         "plan": [asdict(call) for call in response.plan],
         "sentence": response.sentence,
         "lesson": response.lesson,
+        "action": response.action,
+        "goal": response.goal,
+        "step": response.step,
+        "reason": response.reason,
     }
 
 
@@ -137,11 +194,35 @@ def response_schema() -> dict:
     return {
         "type": "object",
         "properties": {
-            "plan": {"type": "array", "minItems": 1, "maxItems": 5, "items": {"anyOf": variants}},
+            "plan": {"type": "array", "minItems": 0, "maxItems": 5, "items": {"anyOf": variants}},
             "sentence": {"type": "string"},
             "lesson": {"type": ["string", "null"]},
+            "action": {"type": "string", "enum": ["replace", "go_on"]},
+            "goal": {
+                "anyOf": [
+                    {"type": "null"},
+                    {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "enum": ["vehicle", "drive", "fight", "escape", "road"],
+                            },
+                            "started": {"type": "number"},
+                            "deadline": {"type": "number"},
+                            "seed": {"type": "integer"},
+                            "direction": {"type": "string", "enum": ["north", "east", "south", "west"]},
+                            "attempts": {"type": "integer"},
+                        },
+                        "required": ["name", "started", "deadline", "seed", "direction", "attempts"],
+                        "additionalProperties": False,
+                    },
+                ]
+            },
+            "step": {"type": ["string", "null"]},
+            "reason": {"type": "string"},
         },
-        "required": ["plan", "sentence", "lesson"],
+        "required": ["plan", "sentence", "lesson", "action", "goal", "step", "reason"],
         "additionalProperties": False,
     }
 

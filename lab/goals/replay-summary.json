@@ -1,0 +1,74 @@
+{
+  "corpus_counts": {
+    "mission": 173,
+    "take-out": 18,
+    "p45-changes": 1,
+    "p45-sessions": 51
+  },
+  "objective_cases": 15,
+  "objective_changes": 0,
+  "changes": 82,
+  "sessions": [
+    {
+      "recording": "20261112-102851",
+      "before": {
+        "replaced": 16,
+        "appended": 9
+      },
+      "after": {
+        "replaced": 9,
+        "kept": 15,
+        "appended": 1
+      },
+      "recorded_applied": {
+        "appended": 10,
+        "replaced": 15
+      }
+    },
+    {
+      "recording": "20261112-103305",
+      "before": {
+        "replaced": 23,
+        "appended": 4
+      },
+      "after": {
+        "replaced": 15,
+        "kept": 12
+      },
+      "recorded_applied": {
+        "appended": 5,
+        "replaced": 21
+      }
+    },
+    {
+      "recording": "20261112-100318",
+      "before": {
+        "replaced": 14,
+        "appended": 12
+      },
+      "after": {
+        "replaced": 14,
+        "kept": 12
+      },
+      "recorded_applied": {
+        "appended": 13,
+        "replaced": 13
+      }
+    },
+    {
+      "recording": "20261112-100713",
+      "before": {
+        "replaced": 23,
+        "appended": 15
+      },
+      "after": {
+        "replaced": 23,
+        "kept": 15
+      },
+      "recorded_applied": {
+        "appended": 16,
+        "replaced": 22
+      }
+    }
+  ]
+}

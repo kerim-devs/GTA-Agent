@@ -69,7 +69,7 @@ def test_unknown_reaches_fallback_by_identity_and_returns_exact_answer():
         ("wifi-160", "vehicle_waypoint", "set_waypoint"),
         ("wifi-230", "vehicle_route", "drive_route"),
         ("wifi-245", "low_health_vehicle", "set_waypoint"),
-        ("wifi-485", "foot_explore", "walk_road"),
+        ("wifi-485", "goal_road", "walk_road"),
         ("wifi-536.761", "wanted_on_foot", "walk"),
         ("wifi-33.7221", "screen_reflex", "wait"),
         ("objects-071", "wanted_on_foot_vehicle", "enter_vehicle"),
@@ -159,11 +159,11 @@ def test_after_reflex_replans_from_current_request(event):
     value = replace(request("pilot-20261110-231512-01"), events=[{"kind": event}])
     head = MissionHead()
     head.decide(value)
-    assert head.last_rule == "restart_on_foot"
+    assert head.last_rule == "goal_road"
     head.decide(
         replace(value, events=[], minimap={"minimap": "tilted", "route": "yellow"}, hud={"wanted": 0})
     )
-    assert head.last_rule == "vehicle_route"
+    assert head.last_rule == "goal_drive"
 
 
 def test_corrupt_or_unreadable_map_cannot_authorize_vehicle():
@@ -188,7 +188,7 @@ DRIVING = {"minimap": "tilted", "route": "none"}
 CALM = {"wanted": 0, "health": 1, "screen": "game"}
 
 
-def test_on_foot_with_nothing_to_do_and_a_car_in_view_it_goes_for_a_drive_to_a_mission():
+def test_free_roam_takes_a_vehicle_before_choosing_its_drive():
     value = replace(
         request("pilot-20261110-231512-01"),
         objective="",
@@ -198,9 +198,9 @@ def test_on_foot_with_nothing_to_do_and_a_car_in_view_it_goes_for_a_drive_to_a_m
     )
     head = MissionHead(Fallback())
     answer = head.decide(value)
-    assert head.last_rule == "foot_drive"
-    assert [call.name for call in answer.plan] == ["enter_vehicle", "set_waypoint", "drive_route"]
-    assert answer.plan[1].args["target"] == "mission"
+    assert head.last_rule == "goal_vehicle"
+    assert [call.name for call in answer.plan] == ["enter_vehicle"]
+    assert answer.goal["name"] == "vehicle"
 
 
 @pytest.mark.parametrize("color", ["blue", "yellow"])
@@ -215,10 +215,8 @@ def test_unasked_rim_marker_keeps_free_roam(color, vehicle):
     )
     head = MissionHead(Fallback())
     answer = head.decide(value)
-    assert head.last_rule == ("foot_drive" if vehicle else "foot_explore")
-    assert [call.name for call in answer.plan] == (
-        ["enter_vehicle", "set_waypoint", "drive_route"] if vehicle else ["walk_road"]
-    )
+    assert head.last_rule == ("goal_vehicle" if vehicle else "goal_road")
+    assert [call.name for call in answer.plan] == (["enter_vehicle"] if vehicle else ["walk_road"])
 
 
 @pytest.mark.parametrize("objective,border", [("", False), ("Go to the marker.", True)])
@@ -264,15 +262,24 @@ def test_recorded_free_roam_requests_ignore_rim_and_take_visible_vehicles(sessio
     for row in session["requests"]:
         value = HeadRequest(**deepcopy(row["request"]))
         answer = head.decide(value)
-        assert {"rule": head.last_rule, "plan": list(asdict(answer)["plan"])} == row["after"]
+        assert answer.goal is not None
+        assert answer.goal["name"] in {"road", "vehicle"}
+        assert answer.action in {"replace", "go_on"}
         names = [call.name for call in answer.plan]
         assert "walk_to" not in names, (session["recording"], row["id"])
         if any(obj["kind"] in {"car", "truck", "motorcycle"} for obj in value.objects):
-            assert names == ["enter_vehicle", "set_waypoint", "drive_route"]
+            assert answer.goal["name"] == "vehicle"
+            assert names in (["enter_vehicle"], [])
 
 
 def test_a_map_without_a_mission_letter_is_not_asked_again_at_once():
-    base = replace(request("pilot-20261110-231512-01"), minimap=DRIVING, hud=CALM, objects=[])
+    base = replace(
+        request("pilot-20261110-231512-01"),
+        objective="Go to a mission.",
+        minimap=DRIVING,
+        hud=CALM,
+        objects=[],
+    )
     head = MissionHead()
     assert head.decide(base).plan[0].args["target"] == "mission"
     failed = replace(base, last_skill={"name": "set_waypoint", "status": "failed", "reason": "no letter"})
@@ -283,9 +290,10 @@ def test_a_map_without_a_mission_letter_is_not_asked_again_at_once():
     assert targets == ["away"] * (MissionHead.LETTERLESS_ROUTES - 1) + ["mission"]
 
 
-def test_where_a_route_ended_the_picture_decides_and_not_a_new_waypoint():
+def test_where_an_objective_route_ended_the_picture_decides_and_not_a_new_waypoint():
     value = replace(
         request("pilot-20261110-231512-01"),
+        objective="Go to a mission.",
         minimap=DRIVING,
         hud=CALM,
         last_skill={"name": "drive_route", "status": "done", "reason": "route-gone"},
@@ -442,6 +450,8 @@ def test_recorded_steps_without_the_order_decide_as_before(case):
             if case["recording"] == "20261111-164039" and round(case["sample_t"], 3) == 436.009
             else case["p39_rule"]
         )
+        if not case["request"]["objective"].strip():
+            expected = {"foot_explore": "goal_road", "vehicle_route": "goal_drive"}.get(expected, expected)
         assert head.last_rule == expected
     else:
         assert case["request"]["objective"].startswith("Schalte")
@@ -520,7 +530,7 @@ def _on_foot_failure(name, reason):
 def test_unmarked_foot_heads_for_a_road():
     head = MissionHead()
     answer = head.decide(request("wifi-485"))
-    assert head.last_rule == "foot_explore"
+    assert head.last_rule == "goal_road"
     assert [call.name for call in answer.plan] == ["walk_road"]
 
 
