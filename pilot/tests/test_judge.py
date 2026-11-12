@@ -124,6 +124,21 @@ def test_a_mode_needs_judgments_in_a_row_and_lapses_with_its_frame():
     assert modes.update(judgment(1.75, "A", 0.99), 3.05) is None
 
 
+def test_a_flat_map_overrules_a_judge_that_says_vehicle():
+    modes = ModeFilter()
+    assert modes.update(judgment(0), 0, flat=True) is None
+    assert modes.update(judgment(0.25), 0.25, flat=True) == "foot"
+    # Next to a car the judge names the vehicle for as long as the figure stands there.
+    for i in range(2, 10):
+        assert modes.update(judgment(0.25 * i, "B"), 0.25 * i, flat=True) == "foot"
+    # Seated, the map tilts, and the same answers now turn the mode.
+    assert modes.update(judgment(2.5, "B"), 2.5) == "foot"
+    assert modes.update(judgment(2.75, "B"), 2.75) == "foot"
+    assert modes.update(judgment(3, "B"), 3) == "vehicle"
+    # A single flat reading in the car does not take the mode back: that needs the judge.
+    assert modes.update(judgment(3.25, "B"), 3.25, flat=True) == "vehicle"
+
+
 def test_pulling_a_driver_out_of_a_car_turns_the_mode_once():
     modes = ModeFilter()
     rows = [row for row in recorded() if 1300 <= row["frame"] <= 2600]
