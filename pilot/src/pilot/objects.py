@@ -37,18 +37,25 @@ def is_player(detection: Detection) -> bool:
     return 550 <= cx <= 750 and y1 >= 510 and x1 - x0 >= 100 and y0 >= 300
 
 
-def without_player(detections) -> tuple[Detection, ...]:
-    """Drop the one person and the one vehicle that look most like the player's own.
+def split_player(detections) -> tuple[tuple[Detection, ...], Detection | None, Detection | None]:
+    """Cut the player's own person and vehicle out of the detections.
 
-    The camera sits behind the character, so of several boxes where the player usually is,
-    the largest is the player; an enemy standing in the same part of the picture stays.
+    Returns what is left, the person and the vehicle that were cut. The camera sits behind the
+    character, so of several boxes where the player usually is, the largest is the player; an
+    enemy standing in the same part of the picture stays.
     """
-    dropped = []
+    dropped = {}
     for people in (True, False):
         candidates = [d for d in detections if (d.kind == "person") == people and is_player(d)]
         if candidates:
-            dropped.append(max(candidates, key=lambda d: (d.box[2] - d.box[0]) * (d.box[3] - d.box[1])))
-    return tuple(d for d in detections if not any(d is other for other in dropped))
+            dropped[people] = max(candidates, key=lambda d: (d.box[2] - d.box[0]) * (d.box[3] - d.box[1]))
+    kept = tuple(d for d in detections if not any(d is other for other in dropped.values()))
+    return kept, dropped.get(True), dropped.get(False)
+
+
+def without_player(detections) -> tuple[Detection, ...]:
+    """Drop the one person and the one vehicle that look most like the player's own."""
+    return split_player(detections)[0]
 
 
 class Detector:
@@ -150,6 +157,12 @@ class Detector:
             order = order[overlap <= 0.45]
         return without_player(results) if exclude_player else tuple(results)
 
+    def detect_split(
+        self, frame: np.ndarray
+    ) -> tuple[tuple[Detection, ...], Detection | None, Detection | None]:
+        """What `detect` returns, and the person and the vehicle it cut out as the player's."""
+        return split_player(self.detect(frame, exclude_player=False))
+
     __call__ = detect
 
 
@@ -160,6 +173,9 @@ class Reader:
         self.interval = interval
         self.recognizer = Detector() if recognizer is None else recognizer
         self.error = None
+        # The person and the vehicle cut out of the detections that `poll` returned last.
+        self.figure = None
+        self.figure_vehicle = None
         self._condition = Condition()
         self._job = None
         self._result = None
@@ -178,15 +194,21 @@ class Reader:
                     return
                 frame, t = self._job
                 self._job = None
+            figure = vehicle = None
             try:
-                result, error = tuple(self.recognizer(frame)), None
+                split = getattr(self.recognizer, "detect_split", None)
+                if split is not None:
+                    kept, figure, vehicle = split(frame)
+                    result, error = tuple(kept), None
+                else:
+                    result, error = tuple(self.recognizer(frame)), None
             except Exception as exc:
-                result, error = (), str(exc)
+                result, error, figure, vehicle = (), str(exc), None, None
             del frame
             with self._condition:
                 self._busy = False
                 if not self._closed:
-                    self._result = (t, result)
+                    self._result = (t, result, figure, vehicle)
                     self.error = error
 
     def poll(self, frame: np.ndarray, t: float):
@@ -195,6 +217,9 @@ class Reader:
             if self._closed:
                 return None
             result, self._result = self._result, None
+            if result is not None:
+                # The figure belongs to the detections returned with it, and to no later ones.
+                result, self.figure, self.figure_vehicle = result[:2], result[2], result[3]
             due = self._started is None or t < self._started or t - self._started >= self.interval
             if not self._busy and due:
                 self._busy = True

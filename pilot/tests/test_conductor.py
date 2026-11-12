@@ -637,6 +637,55 @@ def test_a_replaced_press_is_let_go_before_the_same_button_is_pressed_again():
     assert runner.tick(observation(0.09)).pad.buttons == ("cross",)
 
 
+def test_the_figure_the_object_reader_cut_out_reaches_the_observation_with_its_detections(tmp_path):
+    from pilot.contract import Detection
+
+    clock = Clock()
+    figure = Detection("person", (540, 330, 640, 600), 0.9)
+    bike = Detection("motorcycle", (560, 450, 700, 640), 0.8)
+    captured = []
+
+    class Objects:
+        figure = None
+        figure_vehicle = None
+
+        def __init__(self):
+            self.calls = 0
+
+        def poll(self, frame, t):
+            self.calls += 1
+            if self.calls == 3:  # the third look finds it, with the person and vehicle cut out
+                self.figure, self.figure_vehicle = figure, bike
+                return t, ()
+            return None
+
+        def close(self):
+            pass
+
+    class ObservingRunner(SkillRunner):
+        def tick(self, observation):
+            captured.append(observation)
+            return super().tick(observation)
+
+    def factory(*args, **kwargs):
+        kwargs["runner"] = ObservingRunner()
+        return Conductor(*args, **kwargs, submit=instant, detector=NoEvents())
+
+    run_play(
+        FakeBridge(tmp_path, clock),
+        seconds=0.3,
+        pipeline=FakePipeline(),
+        ocr=False,
+        clock=clock,
+        sleep=clock.sleep,
+        conductor_factory=factory,
+        objects=Objects(),
+    )
+    assert captured[0].figure is None and captured[0].objects_time is None
+    arrived = [o for o in captured if o.objects_time is not None]
+    assert arrived and all(o.figure is figure and o.figure_vehicle is bike for o in arrived)
+
+
 @pytest.mark.parametrize("fail", [False, True])
 def test_optional_sources_reach_every_tick_and_close_on_error(tmp_path, fail):
     from pilot.contract import Detection, Hud
