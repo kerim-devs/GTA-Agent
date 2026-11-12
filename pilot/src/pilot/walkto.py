@@ -43,8 +43,8 @@ class WalkTo:
     HOLD = 2.0  # seconds the walk keeps its direction while an icon lies over the marker
     COAST = 0.5  # seconds the last pad is kept over ticks that say nothing: a damaged or repeated frame
     # The marker goes before the point is reached, so the walk goes on to where it was: for as long
-    # as the last distance takes at the pace seen that evening (64 map pixels in 15 s of sprinting,
-    # 7.4 in 8.4 s of walking), and never longer than CARRY_MAX.
+    # as the last distance takes at the rate the marker came nearer that evening (64 map pixels in
+    # 15 s of sprinting; 7.4 in 8.4 s of walking, not straight at it), and never longer than CARRY_MAX.
     SPRINT_PACE, WALK_PACE = 4.3, 0.9
     CARRY_MAX = 6.0
 
