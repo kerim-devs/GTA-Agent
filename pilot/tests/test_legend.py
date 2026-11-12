@@ -14,7 +14,7 @@ from pilot.waypoint import SetWaypoint
 
 
 def line(text, y, x=1050):
-    return {"text": text, "box": [x, y, 180, 14], "confidence": 1.0}
+    return {"text": text, "box": [x, y, 160, 14], "confidence": 1.0}
 
 
 def lines(names, selected=0, offset=0, distance=None, total=None, instance=1):
@@ -356,6 +356,13 @@ def test_a_direction_is_let_go_on_the_tick_after_its_press():
     held = ["down" in output.pad.buttons for output in outputs]
     assert sum(held) == 3  # with the text reader in it a tick takes 0.08 to 0.17 s
     assert not any(a and b for a, b in pairwise(held))
+
+
+def test_writing_behind_the_map_and_misread_arrows_make_no_place():
+    rows = lines(["Spieler", "Golf", "Los Santos Customs"], selected=0)
+    rows[2]["text"] = "Los Santos Customs < 114> i"
+    rows.insert(1, {"text": "ANDY", "box": [968, 60, 89, 32], "confidence": 1.0})
+    assert [entry.name for entry in read_legend(rows).entries] == ["Spieler", "Golf", "Los Santos Customs"]
 
 
 def test_the_white_bar_names_the_selection_where_no_arrows_stand():
