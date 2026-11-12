@@ -525,7 +525,7 @@ CAUSE_RULES: dict[str, str | None] = {
     "map unreadable": "see",
     "route-lost-far": "see",  # the route went from the map with the destination far away
     "route-lost-unknown": "see",
-    "waiting to see a ": "see",
+    "waiting to see a": "see",
     "minimap-unreadable": "see",
     "minimap unreadable": "see",
     "nothing found": "see",
