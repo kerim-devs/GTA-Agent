@@ -1,0 +1,38 @@
+{
+  "session": "20261111-165543",
+  "source": "/Users/kerim/recordings/kerim/20261111-165543",
+  "frames": 53838,
+  "before": {
+    "ticks": 53838,
+    "corrupt": 3629,
+    "share": 0.06740592146810803,
+    "longest_ticks": 291,
+    "longest_seconds": 4.846900000000005
+  },
+  "after": {
+    "ticks": 53838,
+    "corrupt": 3226,
+    "share": 0.05992050224748319,
+    "longest_ticks": 291,
+    "longest_seconds": 4.846900000000005
+  },
+  "frame_before": {
+    "ticks": 53838,
+    "corrupt": 3629,
+    "share": 0.06740592146810803,
+    "longest_ticks": 291,
+    "longest_seconds": 4.846900000000005
+  },
+  "frame_after": {
+    "ticks": 53838,
+    "corrupt": 3226,
+    "share": 0.05992050224748319,
+    "longest_ticks": 291,
+    "longest_seconds": 4.846900000000005
+  },
+  "lost": 403,
+  "gained": 0,
+  "unmatched_ticks": 0,
+  "sheets": 9,
+  "spans": []
+}
