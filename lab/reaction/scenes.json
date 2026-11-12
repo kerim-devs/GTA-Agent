@@ -1,0 +1,1076 @@
+{
+  "scenes": [
+    {
+      "id": "enemy-01",
+      "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+      "onset": 412.498,
+      "kind": "enemy",
+      "onset_method": "10 Hz label and human action proposal; RGB reader refinement; native adjacent-frame contact sheet inspected, first visible change selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.4,
+        "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty.",
+        "answer_t": 412.498,
+        "void_pre_onset": true
+      },
+      "notes": "Replaced 065022 candidate: red was already present under player arrow. First readable red with HUD appearing at native frame 24610, preceding frame 24609 has no HUD.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-02",
+      "recording": "/Users/kerim/recordings/kerim/20261112-092019",
+      "onset": 395.999,
+      "kind": "enemy",
+      "onset_method": "10 Hz label and human action proposal; RGB reader refinement; native adjacent-frame contact sheet inspected, first visible change selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.49,
+        "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty.",
+        "answer_t": 395.999,
+        "void_pre_onset": true
+      },
+      "notes": "Moved from reader proposal 396.100: native frame 23428 first visible red blips, frame 23427 has map but no red.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-03",
+      "recording": "/Users/kerim/recordings/kerim/20261111-185323",
+      "onset": 356.219,
+      "kind": "enemy",
+      "onset_method": "10 Hz label and human action proposal; RGB reader refinement; native adjacent-frame contact sheet inspected, first visible change selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.301,
+        "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty.",
+        "answer_t": 356.219,
+        "void_pre_onset": true
+      },
+      "notes": "Native frame 21301 first red blips and muzzle flash, frame 21300 has neither.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "wanted-02",
+      "recording": "/Users/kerim/recordings/kerim/20261111-182316",
+      "onset": 391.3316,
+      "kind": "wanted",
+      "onset_method": "10 Hz label and human action proposal; RGB reader refinement; native adjacent-frame contact sheet inspected, first visible change selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.315,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty.",
+        "answer_t": 392.11620000000005,
+        "void_pre_onset": false
+      },
+      "notes": "Label proposal 391.3316; native reader initial=0; first change=391.3316.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "wanted-03",
+      "recording": "/Users/kerim/recordings/kerim/20261111-065022",
+      "onset": 209.4257,
+      "kind": "wanted",
+      "onset_method": "10 Hz label and human action proposal; RGB reader refinement; native adjacent-frame contact sheet inspected, first visible change selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.517,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty.",
+        "answer_t": 209.4257,
+        "void_pre_onset": true
+      },
+      "notes": "Label proposal 209.4917; native reader initial=0; first change=209.4257. Not from calm (P64): red markers are on the map up to 0.018 s before the stars light, in the fight of 065022.",
+      "calm_before_s": 0.018
+    },
+    {
+      "id": "calm-walk-01",
+      "recording": "/Users/kerim/recordings/kerim/20261111-065022",
+      "onset": 12,
+      "kind": "calm",
+      "onset_method": "Whole-window flat-map, health, red and stars label filter, no aim/fire labels; start/center/end visual sheet. Control center has no physical onset.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.517,
+        "residual_error": "Uncalibrated offset on 20 ms estimator grid plus capture/input timestamp uncertainty.",
+        "answer_t": null,
+        "void_pre_onset": false
+      },
+      "notes": "Ordinary on-foot idle/look/walk. Null wanted samples allowed only with continuous flat HUD. No vehicle controls scored as combat inputs.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-02",
+      "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+      "onset": 489,
+      "kind": "calm",
+      "onset_method": "Whole-window flat-map, health, red and stars label filter, no aim/fire labels; start/center/end visual sheet. Control center has no physical onset.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.4,
+        "residual_error": "Uncalibrated offset on 20 ms estimator grid plus capture/input timestamp uncertainty.",
+        "answer_t": null,
+        "void_pre_onset": false
+      },
+      "notes": "Ordinary on-foot idle/look/walk. Null wanted samples allowed only with continuous flat HUD. No vehicle controls scored as combat inputs.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-03",
+      "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+      "onset": 499,
+      "kind": "calm",
+      "onset_method": "Whole-window flat-map, health, red and stars label filter, no aim/fire labels; start/center/end visual sheet. Control center has no physical onset.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.4,
+        "residual_error": "Uncalibrated offset on 20 ms estimator grid plus capture/input timestamp uncertainty.",
+        "answer_t": null,
+        "void_pre_onset": false
+      },
+      "notes": "Ordinary on-foot idle/look/walk. Null wanted samples allowed only with continuous flat HUD. No vehicle controls scored as combat inputs.",
+      "calm_before_s": null
+    },
+    {
+      "id": "enemy-04",
+      "recording": "/Users/kerim/recordings/kerim/20261111-185323",
+      "onset": 410.8448,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.301,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "Reader proposal 410.8606 moved one frame earlier: the red blip first shows at native frame 410.8448. Health bar is red (low) throughout.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-05",
+      "recording": "/Users/kerim/recordings/kerim/20261111-185323",
+      "onset": 425.5192,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.301,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "Red blip at the upper edge of the map first shows at 425.5192, absent at 425.5185; the two frames are one capture batch 0.7 ms apart, so the true display time lies in the gap before the batch.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-06",
+      "recording": "/Users/kerim/recordings/kerim/20261111-185323",
+      "onset": 461.1198,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.301,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "Reader proposal 461.1383 moved one frame earlier: at 461.1198 the blip is half visible at the upper edge.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-07",
+      "recording": "/Users/kerim/recordings/kerim/20261111-185323",
+      "onset": 364.5049,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.301,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "Red blip first shows at 364.5049 inside a capture batch (364.5030, .5040, .5049). The HUD reader's health falls in the lead-in are the N icon over the bar, not hits.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-08",
+      "recording": "/Users/kerim/recordings/kerim/20261111-185323",
+      "onset": 320.0648,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.301,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "Reader proposal 320.0958 moved one frame earlier: the blip first shows at 320.0648 on a dimmed map that the minimap reader mostly calls absent.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-09",
+      "recording": "/Users/kerim/recordings/kerim/20261111-213150",
+      "onset": 690.9524,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": 0.224,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "Red blip at the lower edge of the map first shows at 690.9524, inside a capture batch (690.9504, .9517, .9524).",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-10",
+      "recording": "/Users/kerim/recordings/kerim/20261111-213150",
+      "onset": 803.4657,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": 0.224,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "Red blip first shows at 803.4657, absent at 803.4439.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-11",
+      "recording": "/Users/kerim/recordings/kerim/20261111-213150",
+      "onset": 659.2403,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": 0.224,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "Red blip first shows at 659.2403, absent at 659.2193.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-12",
+      "recording": "/Users/kerim/recordings/kerim/20261111-213150",
+      "onset": 771.1649,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": 0.224,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "Red blip first shows at 771.1649, absent at 771.0671 (a 0.1 s gap in capture before it).",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-13",
+      "recording": "/Users/kerim/recordings/kerim/20261111-164039",
+      "onset": 627.1173,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.425,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "Red blip first shows beside the player arrow at 627.1173, absent at 627.1158.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-14",
+      "recording": "/Users/kerim/recordings/kerim/20261111-171046",
+      "onset": 417.9513,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.427,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "The HUD returns after a cutscene at 417.9513 with a red blip on it; the frame before has no HUD.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-15",
+      "recording": "/Users/kerim/recordings/kerim/20261111-201615",
+      "onset": 539.9306,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": 0.239,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "The HUD returns after a black screen at 539.9306 with red blips at the lower edge of the map.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-16",
+      "recording": "/Users/kerim/recordings/kerim/20261111-201615",
+      "onset": 621.6941,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": 0.239,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "The HUD returns after a black screen at 621.6941 with red blips at the lower edge of the map.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-17",
+      "recording": "/Users/kerim/recordings/kerim/20261112-090514",
+      "onset": 154.0146,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": 0.237,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "The HUD returns at 154.0146 with a red marker among green ones inside a building; the frame before has no HUD.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-18",
+      "recording": "/Users/kerim/recordings/kerim/20261112-090514",
+      "onset": 205.163,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": 0.237,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "Reader proposal 205.1646 moved one frame earlier: the HUD returns at 205.1630 with the red marker on it.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-19",
+      "recording": "/Users/kerim/recordings/kerim/20261112-092019",
+      "onset": 672.9469,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.49,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "Reader proposal 672.9733 moved one frame earlier: the HUD returns after a black screen at 672.9469 with dim red blips on it.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "enemy-20",
+      "recording": "/Users/kerim/recordings/kerim/20261112-092019",
+      "onset": 819.0693,
+      "kind": "enemy",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first visible red marker selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.49,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "Reader proposal 819.0709 moved one frame earlier: the HUD returns after a black screen at 819.0693 with dim red blips on it; 819.0675 to .0693 is one capture batch.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "wanted-04",
+      "recording": "/Users/kerim/recordings/kerim/20261111-164039",
+      "onset": 300.22,
+      "kind": "wanted",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first lit star selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.425,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "One star first lit at 300.2200, none at 300.2045.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "wanted-05",
+      "recording": "/Users/kerim/recordings/kerim/20261111-182316",
+      "onset": 291.8504,
+      "kind": "wanted",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first lit star selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.315,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "One star first lit at 291.8504, none at 291.8335.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "wanted-06",
+      "recording": "/Users/kerim/recordings/kerim/20261111-193105",
+      "onset": 163.943,
+      "kind": "wanted",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first lit star selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.46,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "One star first lit at 163.9430 against a bright sky. The 2.509 s of calm are what the readers give: at 161.43 they read red at the map's edge, which is the brick wall behind the transparent map; in the lead-in the figure gets out of a truck.",
+      "calm_before_s": 2.509
+    },
+    {
+      "id": "wanted-07",
+      "recording": "/Users/kerim/recordings/kerim/20261111-200111",
+      "onset": 655.3635,
+      "kind": "wanted",
+      "onset_method": "P64: 10 Hz label proposal after at least two calm seconds; native-frame reader refinement; native adjacent-frame sheet of the minimap (or the stars) at 2.4x inspected; first lit star selected.",
+      "confidence": "visually-confirmed",
+      "uncertainty_frames": 1,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.406,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "One star first lit at 655.3635.",
+      "calm_before_s": 6.0
+    },
+    {
+      "id": "calm-walk-04",
+      "recording": "/Users/kerim/recordings/kerim/20261111-065022",
+      "onset": 328.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.517,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-05",
+      "recording": "/Users/kerim/recordings/kerim/20261111-065022",
+      "onset": 358.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.517,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-06",
+      "recording": "/Users/kerim/recordings/kerim/20261111-164039",
+      "onset": 156.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.425,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-07",
+      "recording": "/Users/kerim/recordings/kerim/20261111-164039",
+      "onset": 186.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.425,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-08",
+      "recording": "/Users/kerim/recordings/kerim/20261111-164039",
+      "onset": 216.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.425,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-09",
+      "recording": "/Users/kerim/recordings/kerim/20261111-165543",
+      "onset": 142.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.367,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-10",
+      "recording": "/Users/kerim/recordings/kerim/20261111-171046",
+      "onset": 513.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.427,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-11",
+      "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+      "onset": 162.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.4,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-12",
+      "recording": "/Users/kerim/recordings/kerim/20261111-175312",
+      "onset": 500.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": null,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-13",
+      "recording": "/Users/kerim/recordings/kerim/20261111-175312",
+      "onset": 732.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": null,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-14",
+      "recording": "/Users/kerim/recordings/kerim/20261111-175312",
+      "onset": 767.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": null,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-15",
+      "recording": "/Users/kerim/recordings/kerim/20261111-190825",
+      "onset": 683.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.331,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-16",
+      "recording": "/Users/kerim/recordings/kerim/20261111-192328",
+      "onset": 277.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": 0.266,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-17",
+      "recording": "/Users/kerim/recordings/kerim/20261111-193105",
+      "onset": 773.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.46,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-18",
+      "recording": "/Users/kerim/recordings/kerim/20261111-200111",
+      "onset": 141.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.406,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-19",
+      "recording": "/Users/kerim/recordings/kerim/20261111-205309",
+      "onset": 67.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": 0.295,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-20",
+      "recording": "/Users/kerim/recordings/kerim/20261111-205309",
+      "onset": 111.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": 0.295,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-21",
+      "recording": "/Users/kerim/recordings/kerim/20261111-210812",
+      "onset": 131.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.379,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-22",
+      "recording": "/Users/kerim/recordings/kerim/20261111-210812",
+      "onset": 276.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.379,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-23",
+      "recording": "/Users/kerim/recordings/kerim/20261111-212314",
+      "onset": 82.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.411,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-24",
+      "recording": "/Users/kerim/recordings/kerim/20261111-212314",
+      "onset": 242.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.16,
+        "lead_source": "estimated",
+        "lead_correlation": 0.411,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-25",
+      "recording": "/Users/kerim/recordings/kerim/20261111-213150",
+      "onset": 88.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": 0.224,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-26",
+      "recording": "/Users/kerim/recordings/kerim/20261111-213150",
+      "onset": 164.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": 0.224,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-27",
+      "recording": "/Users/kerim/recordings/kerim/20261112-085011",
+      "onset": 780.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.14,
+        "lead_source": "estimated",
+        "lead_correlation": 0.404,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-28",
+      "recording": "/Users/kerim/recordings/kerim/20261111-164039",
+      "onset": 31.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.18,
+        "lead_source": "estimated",
+        "lead_correlation": 0.425,
+        "residual_error": "Not calibrated; correlation estimate on a 20 ms grid, plus capture/input timestamp uncertainty."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    },
+    {
+      "id": "calm-walk-29",
+      "recording": "/Users/kerim/recordings/kerim/20261111-205309",
+      "onset": 20.0,
+      "kind": "calm",
+      "onset_method": "P64: 10 s window from the 10 Hz labels with a flat minimap on 98 % of samples, no red marker, no stars, no health fall, the game screen, and no aim, fire or melee within 15 s; four frames looked at.",
+      "confidence": "visually-confirmed-control",
+      "uncertainty_frames": 0,
+      "human": {
+        "lead_s": 0.2,
+        "lead_source": "default",
+        "lead_correlation": 0.295,
+        "residual_error": "Default lead, not estimated for this recording; offset unknown."
+      },
+      "notes": "On foot, nothing hostile in sight; the figure walks, runs or stands.",
+      "calm_before_s": null
+    }
+  ],
+  "answer_sets": {
+    "enemy": [
+      {
+        "l2": 0.5,
+        "why": "aim at the new threat"
+      },
+      {
+        "r2": 0.5,
+        "why": "fire at the new threat"
+      },
+      {
+        "buttons": [
+          "r1"
+        ],
+        "why": "take cover from the threat"
+      },
+      {
+        "buttons": [
+          "cross"
+        ],
+        "left_y": -0.5,
+        "why": "sprint away from danger"
+      }
+    ],
+    "hit": [
+      {
+        "l2": 0.5,
+        "why": "aim at the new threat"
+      },
+      {
+        "r2": 0.5,
+        "why": "fire at the new threat"
+      },
+      {
+        "buttons": [
+          "r1"
+        ],
+        "why": "take cover from the threat"
+      },
+      {
+        "buttons": [
+          "cross"
+        ],
+        "left_y": -0.5,
+        "why": "sprint away from danger"
+      }
+    ],
+    "wanted": [
+      {
+        "l2": 0.5,
+        "why": "aim at the new threat"
+      },
+      {
+        "r2": 0.5,
+        "why": "fire at the new threat"
+      },
+      {
+        "buttons": [
+          "r1"
+        ],
+        "why": "take cover from the threat"
+      },
+      {
+        "buttons": [
+          "cross"
+        ],
+        "left_y": -0.5,
+        "why": "sprint away from danger"
+      }
+    ],
+    "calm": [
+      {
+        "l2": 0.5,
+        "why": "aim at the new threat"
+      },
+      {
+        "r2": 0.5,
+        "why": "fire at the new threat"
+      },
+      {
+        "buttons": [
+          "r1"
+        ],
+        "why": "take cover from the threat"
+      },
+      {
+        "buttons": [
+          "cross"
+        ],
+        "left_y": -0.5,
+        "why": "sprint away from danger"
+      }
+    ]
+  },
+  "selection": {
+    "threat_scenes": 26,
+    "calm_scenes": 29,
+    "target_threats": 30,
+    "p64": "Widened by P64 towards thirty threats and thirty calm scenes on foot, preferring onsets that start from calm. 109 fight beginnings in 22 labelled recordings (first aim, fire or melee after ten seconds without one) were the starting point; almost all of them begin with red already on the map, so the threat onsets were searched as the first red marker or lit star after at least two calm seconds on foot (calm may run through a cutscene or black screen). 88 proposals after six calm seconds and 99 enemy and star proposals after two were refined on native frames and looked at. Kept: 17 new enemy onsets and 4 new star onsets, 26 new calm windows.",
+    "dropped_from_p62": {
+      "hit-01": "False onset: the green end of the health bar stays at the same column (pixel measure, 1 s before to 1.5 s after); the HUD reader took the N icon sliding over the bar for a fall. The frame is a camera cut; no red marker follows.",
+      "hit-02": "False onset: the health bar keeps its length (0.8 before and 0.8 half a second after); the N icon slides over its end.",
+      "hit-03": "False onset: the health bar stays full; the bright sand behind the transparent bar made the HUD reader read a fall.",
+      "wanted-01": "In a vehicle: the scene set holds scenes on foot until vehicles have an answer set of their own."
+    },
+    "hits": "No health fall that starts from calm was confirmed. Of 61 label proposals for a fall on foot after six calm seconds, 41 got a native onset; the pixel measure of the bar's green end and the magnified bars show no lasting fall in any of them, or an icon covers the bar's end so that a fall cannot be told within two frames. The HUD reader reads a fall whenever a map icon (N, a flag, a question mark, a car) slides over the bar's end, and on damaged frames.",
+    "rejected": [
+      "164039 red transitions 632.986,648.6848,670.8731: red visible before reader change",
+      "065022 red transition 197.497: red already present under player marker",
+      "092019 health transition 547.7011: transparency and moving background, not clear health loss",
+      "Initial 30 calm label proposals: cutscenes or no continuous playable HUD",
+      "P64 enemy proposals: red already under the player arrow before the reader saw it (065022 197.45, 182316 500.52, 093524 241.88, 093524 228.47, 171046 618.68)",
+      "P64 enemy proposals: no red marker, the reader took red behind the transparent map for one (172549 185.67 and 195.72, 194609 603.22, 205309 313.04 and 336.30, 210812 405.78 and 328.40, 114541 601.75 and 615.63, 175312 218.57 and 823.39, 193105 790.99)",
+      "P64 enemy proposals: blip already visible two frames earlier on a dim map (164039 688.88, 092019 629.46 and 877.54)",
+      "P64 star proposals: grey stars already shown (190825 93.30, 090514 395.36)",
+      "P64 calm windows: figure not in view or idle scenery camera (194609 567 and 597, 093524 751 and 781, 114541 498 and 528, 213150 28), maybe in a parked car (132247 69 and 99), swimming (201615 313 and 343)"
+    ],
+    "vehicles": null,
+    "limitation": "Below thirty threats: the recordings hold few threats that start from calm on foot, no confirmed health fall from calm, and only six star onsets on foot. More would need footage of Kerim on foot meeting enemies and the police without a mission cutscene before, and being shot at from calm.",
+    "clock": "frames.jsonl t, not video FPS; human pad.t + labels.lead; all retained lead values estimated"
+  }
+}
