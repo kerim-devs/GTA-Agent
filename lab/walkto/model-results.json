@@ -1,0 +1,117 @@
+{
+  "perception": "Synthetic blips and nearest-road geometry; real FootGuard state machine with model motion evidence. No game physics or image perception claim.",
+  "cases": {
+    "open ground": {
+      "direct": {
+        "status": "done",
+        "seconds": 15.4,
+        "distance": 4.0,
+        "road_entries": 0,
+        "reason": "arrived; stable interior blip; start=70.00px (rim; direction only); end=4.00px; pixels are not metres; rim target distance and arrival are unknown"
+      },
+      "road": {
+        "status": "done",
+        "seconds": 15.4,
+        "distance": 4.0,
+        "road_entries": 0,
+        "reason": "arrived; stable interior blip; start=70.00px (rim; direction only); end=4.00px; pixels are not metres; rim target distance and arrival are unknown"
+      }
+    },
+    "block": {
+      "direct": {
+        "status": "failed",
+        "seconds": 20.6,
+        "distance": 66.43,
+        "road_entries": 0,
+        "reason": "stuck; guard exhausted; start=70.00px (rim; direction only); end=66.43px; pixels are not metres; rim target distance and arrival are unknown"
+      },
+      "road": {
+        "status": "failed",
+        "seconds": 20.6,
+        "distance": 66.43,
+        "road_entries": 3,
+        "reason": "stuck; guard exhausted; start=70.00px (rim; direction only); end=66.43px; pixels are not metres; rim target distance and arrival are unknown"
+      }
+    },
+    "blocks with gap": {
+      "direct": {
+        "status": "failed",
+        "seconds": 20.6,
+        "distance": 73.53,
+        "road_entries": 0,
+        "reason": "stuck; guard exhausted; start=70.00px (rim; direction only); end=70.00px (rim; direction only); pixels are not metres; rim target distance and arrival are unknown"
+      },
+      "road": {
+        "status": "failed",
+        "seconds": 20.6,
+        "distance": 73.53,
+        "road_entries": 3,
+        "reason": "stuck; guard exhausted; start=70.00px (rim; direction only); end=70.00px (rim; direction only); pixels are not metres; rim target distance and arrival are unknown"
+      }
+    },
+    "river and bridge": {
+      "direct": {
+        "status": "failed",
+        "seconds": 21.7,
+        "distance": 62.6,
+        "road_entries": 0,
+        "reason": "stuck; guard exhausted; start=70.00px (rim; direction only); end=62.60px; pixels are not metres; rim target distance and arrival are unknown"
+      },
+      "road": {
+        "status": "done",
+        "seconds": 29.1,
+        "distance": 3.99,
+        "road_entries": 2,
+        "reason": "arrived; stable interior blip; start=70.00px (rim; direction only); end=3.99px; pixels are not metres; rim target distance and arrival are unknown"
+      }
+    },
+    "rim comes inside": {
+      "direct": {
+        "status": "done",
+        "seconds": 31.6,
+        "distance": 3.74,
+        "road_entries": 0,
+        "reason": "arrived; stable interior blip; start=70.00px (rim; direction only); end=3.74px; pixels are not metres; rim target distance and arrival are unknown"
+      },
+      "road": {
+        "status": "done",
+        "seconds": 31.6,
+        "distance": 3.74,
+        "road_entries": 0,
+        "reason": "arrived; stable interior blip; start=70.00px (rim; direction only); end=3.74px; pixels are not metres; rim target distance and arrival are unknown"
+      }
+    },
+    "vanishing blip": {
+      "direct": {
+        "status": "failed",
+        "seconds": 5.9,
+        "distance": 98.62,
+        "road_entries": 0,
+        "reason": "blip lost; end is last observed distance; start=70.00px (rim; direction only); end=70.00px (rim; direction only); pixels are not metres; rim target distance and arrival are unknown"
+      },
+      "road": {
+        "status": "failed",
+        "seconds": 5.9,
+        "distance": 98.62,
+        "road_entries": 0,
+        "reason": "blip lost; end is last observed distance; start=70.00px (rim; direction only); end=70.00px (rim; direction only); pixels are not metres; rim target distance and arrival are unknown"
+      }
+    },
+    "enters car": {
+      "direct": {
+        "status": "failed",
+        "seconds": 3.6,
+        "distance": 98.62,
+        "road_entries": 0,
+        "reason": "no longer on foot; start=70.00px (rim; direction only); end=70.00px (rim; direction only); pixels are not metres; rim target distance and arrival are unknown"
+      },
+      "road": {
+        "status": "failed",
+        "seconds": 3.6,
+        "distance": 98.62,
+        "road_entries": 0,
+        "reason": "no longer on foot; start=70.00px (rim; direction only); end=70.00px (rim; direction only); pixels are not metres; rim target distance and arrival are unknown"
+      }
+    }
+  }
+}

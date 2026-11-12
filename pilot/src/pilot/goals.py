@@ -75,7 +75,7 @@ def read_places(reason: str | None) -> list[str] | None:
 # the vehicle. drive_route is the converse: its throttle and wheel mean nothing to a figure on foot.
 # enter_vehicle crosses from one to the other by design, and set_waypoint, look, press, wait,
 # shoot and level_camera do the same thing in either.
-FOOT_ONLY = {"walk", "walk_road", "walk_to", "face", "punch", "melee", "fight"}
+FOOT_ONLY = {"walk", "walk_road", "walk_to", "walk_to_point", "face", "punch", "melee", "fight"}
 VEHICLE_ONLY = {"drive_route"}
 
 
