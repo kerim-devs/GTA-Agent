@@ -203,6 +203,74 @@ def test_on_foot_with_nothing_to_do_and_a_car_in_view_it_goes_for_a_drive_to_a_m
     assert answer.plan[1].args["target"] == "mission"
 
 
+@pytest.mark.parametrize("color", ["blue", "yellow"])
+@pytest.mark.parametrize("vehicle", [False, True])
+def test_unasked_rim_marker_keeps_free_roam(color, vehicle):
+    value = replace(
+        request("pilot-20261110-231512-01"),
+        objective="",
+        minimap={"minimap": "flat", "route": "none", "blips": [{"color": color, "border": True}]},
+        hud=CALM,
+        objects=[{"kind": "car", "confidence": 0.9}] if vehicle else [],
+    )
+    head = MissionHead(Fallback())
+    answer = head.decide(value)
+    assert head.last_rule == ("foot_drive" if vehicle else "foot_explore")
+    assert [call.name for call in answer.plan] == (
+        ["enter_vehicle", "set_waypoint", "drive_route"] if vehicle else ["walk_road"]
+    )
+
+
+@pytest.mark.parametrize("objective,border", [("", False), ("Go to the marker.", True)])
+def test_inner_marker_or_objective_keeps_walk_to(objective, border):
+    value = replace(
+        request("pilot-20261110-231512-01"),
+        objective=objective,
+        minimap={"minimap": "flat", "route": "none", "blips": [{"color": "blue", "border": border}]},
+        hud=CALM,
+        objects=[{"kind": "car", "confidence": 0.9}],
+    )
+    head = MissionHead(Fallback())
+    answer = head.decide(value)
+    assert head.last_rule == "foot_target"
+    assert [call.name for call in answer.plan] == ["walk_to"]
+
+
+@pytest.mark.parametrize("x,y", [(85.67, 39.2), (-81, 53.5), (5, -21.5)])
+def test_rim_glyph_fragments_with_false_border_do_not_become_targets(x, y):
+    value = replace(
+        request("wifi-485"),
+        minimap={
+            "minimap": "flat",
+            "route": "none",
+            "blips": [{"color": "blue", "x": x, "y": y, "border": False}],
+        },
+    )
+    head = MissionHead()
+    assert head.decide(value).plan[0].name == "walk_road"
+    # The same location remains a valid target when the game gives an objective.
+    assert head.decide(replace(value, objective="Go to the marker.")).plan[0].name == "walk_to"
+    # A separate interior marker is not discarded with the rim glyph's color.
+    value.minimap["blips"].append({"color": "blue", "x": 10, "y": 25, "border": False})
+    assert head.decide(value).plan[0].name == "walk_to"
+
+
+P45_REPLAYS = json.loads((CORPUS.parent / "foot" / "p45-decisions.json").read_text())["sessions"]
+
+
+@pytest.mark.parametrize("session", P45_REPLAYS, ids=lambda session: session["recording"])
+def test_recorded_free_roam_requests_ignore_rim_and_take_visible_vehicles(session):
+    head = MissionHead()
+    for row in session["requests"]:
+        value = HeadRequest(**deepcopy(row["request"]))
+        answer = head.decide(value)
+        assert {"rule": head.last_rule, "plan": list(asdict(answer)["plan"])} == row["after"]
+        names = [call.name for call in answer.plan]
+        assert "walk_to" not in names, (session["recording"], row["id"])
+        if any(obj["kind"] in {"car", "truck", "motorcycle"} for obj in value.objects):
+            assert names == ["enter_vehicle", "set_waypoint", "drive_route"]
+
+
 def test_a_map_without_a_mission_letter_is_not_asked_again_at_once():
     base = replace(request("pilot-20261110-231512-01"), minimap=DRIVING, hud=CALM, objects=[])
     head = MissionHead()
@@ -368,7 +436,13 @@ def test_recorded_steps_without_the_order_decide_as_before(case):
     head = MissionHead()
     head.decide(HeadRequest(**deepcopy(case["request"])))
     if head.last_rule != "take_out_fight":
-        assert head.last_rule == case["p39_rule"]
+        # P45: this unprompted rim marker is a bearing, not a walking target.
+        expected = (
+            "foot_explore"
+            if case["recording"] == "20261111-164039" and round(case["sample_t"], 3) == 436.009
+            else case["p39_rule"]
+        )
+        assert head.last_rule == expected
     else:
         assert case["request"]["objective"].startswith("Schalte")
 
@@ -466,8 +540,9 @@ def test_walking_that_found_no_way_round_turns_about(name):
     assert answer.plan[0].args["angle"] == 180
 
 
-def test_a_blocked_walk_to_keeps_its_old_answer():
+def test_a_blocked_walk_to_turns_back_toward_the_road():
     head = MissionHead()
     answer = head.decide(_on_foot_failure("walk_to", "blocked"))
-    assert head.last_rule == "failed_skill"
-    assert [call.name for call in answer.plan] == ["walk"]
+    assert head.last_rule == "foot_stuck"
+    assert [call.name for call in answer.plan] == ["look", "walk_road"]
+    assert answer.plan[0].args["angle"] == 180

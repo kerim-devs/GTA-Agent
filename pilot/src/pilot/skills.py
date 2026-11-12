@@ -61,7 +61,8 @@ class Skill:
             return self.stop(steer.failed)
         # Sprint belongs to the wanted direction only, not to a way round or a look.
         return SkillResult(
-            Pad(left=steer.left, right=steer.right, buttons=buttons if steer.state in ("go", "idle") else ())
+            Pad(left=steer.left, right=steer.right, buttons=buttons if steer.state in ("go", "idle") else ()),
+            reason=self.guard.diagnostic(),
         )
 
     def step(self, observation: Observation) -> SkillResult:
@@ -360,7 +361,12 @@ class SkillRunner:
 
     def describe(self):
         if self.active is not None:
-            return {"name": self.active.name, "status": "running", "reason": None}
+            guard = getattr(self.active, "guard", None)
+            return {
+                "name": self.active.name,
+                "status": "running",
+                "reason": guard.diagnostic() if guard is not None else None,
+            }
         return self.last
 
     @property
