@@ -1,0 +1,6792 @@
+{
+  "baseline": "f28da2e2230bb504a72f4ce4726dcb8c0db52d37",
+  "generated_at": "2026-11-12T08:53:45.786474+00:00",
+  "source_sha256": {
+    "/Users/kerim/Documents/ChatGPT/gta-worktrees/p42-action-labels/lab/mission/saved_cases.json": "7010c856a43a2652850487a6a6dca9ddfe419e508d821016c51928a9e50e72ad",
+    "/Users/kerim/Documents/ChatGPT/gta-worktrees/p42-action-labels/lab/mission/frame_cases.json": "b66d66d9b4cd77e52f8cc6a45aebb1baf01e03be989b440d39bfaf122112a760",
+    "/Users/kerim/Documents/ChatGPT/gta-worktrees/p42-action-labels/lab/mission/extra_cases.json": "1c2fa61652ade926a85e75d270820abe24b98d14f48ea91af3065105ed0beebd",
+    "/Users/kerim/Documents/ChatGPT/gta-worktrees/p42-action-labels/lab/take-out/cases.json": "e1756625b24c63bcaddad56a3ee2cdd0dd12d4c9fc817d54727bd3b69b619907",
+    "/Users/kerim/Documents/ChatGPT/gta-worktrees/p42-action-labels/lab/foot/p45-decisions.json": "008d0d478e36f67322351e7bd38caf5c50f99beefc9227dd5c6b8c3704fe7857",
+    "/Users/kerim/recordings/derived/kerim/20261111-065022/missions.json": "3b73884e9c94fabdf0a7cab438bf5a71af588b391ea4394741292c4cf495ed3d",
+    "/Users/kerim/recordings/derived/kerim/20261111-065022/sections.json": "594fd077a5fcb163add32f7f1b1556c3825d53929cf94f092b55440d81bf0c83",
+    "/Users/kerim/recordings/derived/kerim/20261111-065022/cases.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "/Users/kerim/recordings/derived/kerim/20261111-132247/missions.json": "3a643c8b715decdc2371a8b7d58ee69a731033b817cf6f09ac2ce4cead07eb4c",
+    "/Users/kerim/recordings/derived/kerim/20261111-132247/sections.json": "139683c67dde1112a7f3809565e695cb3620c64fc6c54be0512e0079b4798f00",
+    "/Users/kerim/recordings/derived/kerim/20261111-132247/cases.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "/Users/kerim/recordings/derived/kerim/20261111-135020/missions.json": "dcb8ec34b1c40e3d56b5ad5e775033d378c84a61029ac1af763eed1ecd7a1114",
+    "/Users/kerim/recordings/derived/kerim/20261111-135020/sections.json": "370a5d82a19120b25a116545ce1b0649df1549aafbf082530fa5b639ed912a0e",
+    "/Users/kerim/recordings/derived/kerim/20261111-135020/cases.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "/Users/kerim/recordings/derived/kerim/20261111-135510/missions.json": "87fe7b33e030aa4ae75d531eb46c28a1c7766b2fb6216750d2c519fb648628dd",
+    "/Users/kerim/recordings/derived/kerim/20261111-135510/sections.json": "808c53057611d20f91bcf8fa177c15e5581f3474cfb10d17749eb4fb573e3e80",
+    "/Users/kerim/recordings/derived/kerim/20261111-135510/cases.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "/Users/kerim/recordings/derived/kerim/20261111-164039/missions.json": "e0491706b6613eeae7f20313119803b278eb31f70f8cbb87d9860b6c526cf930",
+    "/Users/kerim/recordings/derived/kerim/20261111-164039/sections.json": "258c2f6624e0a060b85644dbb902656d917c27f27efb4d9e0dbae52acabc6b1c",
+    "/Users/kerim/recordings/derived/kerim/20261111-164039/cases.json": "62869e9afd0723d9dcdf21031f664c09de4406ffd8ce51ddc249eef35d4c3092",
+    "/Users/kerim/recordings/derived/kerim/20261111-165543/missions.json": "d33caf058eb0742ab306da1743907132f9bbc991630c4472fb57ad778f6896b2",
+    "/Users/kerim/recordings/derived/kerim/20261111-165543/sections.json": "b54ba3062b87ad3702dd365bb48e268498c71c1a8858512f420b2beda9a0be9a",
+    "/Users/kerim/recordings/derived/kerim/20261111-165543/cases.json": "7f065630c65b2055b2c74ab14210b66fb78f81c69272eb472b318c40a61b2919",
+    "/Users/kerim/recordings/derived/kerim/20261111-171046/missions.json": "66a265cbadf556aefd7d7a565e7758f0d2bc75426832fb333a0e6d9410b4a744",
+    "/Users/kerim/recordings/derived/kerim/20261111-171046/sections.json": "392e8662190045f651ab6d6cec93873665b8573bf2ee3d675e038246ff31b9b6",
+    "/Users/kerim/recordings/derived/kerim/20261111-171046/cases.json": "8e6b4447dbe9599ca7c86d4cc70e841f4ac394030f79a7a6bcded4225184714b",
+    "/Users/kerim/recordings/derived/kerim/20261111-172549/missions.json": "3d67f2f5da3aa4a971ad8301046f4b5bbe59af1fb0dee327ac2ebd45ec752b4b",
+    "/Users/kerim/recordings/derived/kerim/20261111-172549/sections.json": "14cae43cab8e9ab1a579eeedb2d9cabbc9dc6870ac353981bce42c003e28fdd0",
+    "/Users/kerim/recordings/derived/kerim/20261111-172549/cases.json": "74dfcc9e5753a6aa3e6f51c298c585cc55018f3772e2bf8200a3559d71da0151",
+    "/Users/kerim/recordings/derived/kerim/20261111-175312/missions.json": "e137cc781d46e1e801365332f87c2bbb35d50661584ac8655651662967aa8a23",
+    "/Users/kerim/recordings/derived/kerim/20261111-175312/sections.json": "4fec3b81f2354eb654a2e96269621fdca93d80c353628b81b1db55bf1a2e08eb",
+    "/Users/kerim/recordings/derived/kerim/20261111-175312/cases.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "/Users/kerim/recordings/derived/kerim/20261111-180814/missions.json": "59da07f9793ac2094790c80d358d7394a05f9390f016874f2cfb6cbff4cf8c17",
+    "/Users/kerim/recordings/derived/kerim/20261111-180814/sections.json": "672af20cf1b572b0ae3d3804f3b97e2fdebfb5e911a9d522088221bf3d06837c",
+    "/Users/kerim/recordings/derived/kerim/20261111-180814/cases.json": "984247755efeea69025205af7d62d792adb6c6c38155ae37d2f5f804c8471cdd",
+    "/Users/kerim/recordings/derived/kerim/20261111-182316/missions.json": "16a85f4deb78b1986a8ca2f7ff3950755021c96981dcbfa290dcc028a356e036",
+    "/Users/kerim/recordings/derived/kerim/20261111-182316/sections.json": "c80097abb03df387b705d825d98f8103cb463c30d755ff5b7486eb529141115e",
+    "/Users/kerim/recordings/derived/kerim/20261111-182316/cases.json": "d164697b22c0931af87fc1377afaffa340a2babaedb0ba4370520e4f9f0a15ea",
+    "/Users/kerim/recordings/derived/kerim/20261111-183820/missions.json": "9a23c96e7134776ca553fd1badc842cd3620b328308997860c129a88e27b0991",
+    "/Users/kerim/recordings/derived/kerim/20261111-183820/sections.json": "dcaf6aef59f661827444705b0c0f04ff8b17cba142132797a233de767b5800ed",
+    "/Users/kerim/recordings/derived/kerim/20261111-183820/cases.json": "21b4d444241ea0c0bec87362e1e9e0b96371f6c1fd3ab223da173c6f8a7da38a",
+    "/Users/kerim/recordings/derived/kerim/20261111-185323/missions.json": "060bf3e1319b57f1c051c930a570e1282def41bdc0dbbb6b05235f3f1e61d173",
+    "/Users/kerim/recordings/derived/kerim/20261111-185323/sections.json": "18b6a55ec9b24d8656dd3b79d1837fb376c2cc22155633c9bc6d28f208583678",
+    "/Users/kerim/recordings/derived/kerim/20261111-185323/cases.json": "578e55aa56376b84c38e7397ff85c1030646940f9df6679f9f4e178e7e854906",
+    "/Users/kerim/recordings/derived/kerim/20261111-190825/missions.json": "7c690c906caf4215fa9eaa3c339a023e57e53828ee35b928f172f22341f01a3d",
+    "/Users/kerim/recordings/derived/kerim/20261111-190825/sections.json": "d8652daabbec4b68dc4c525563811ef49bb41a4c2e1bc4a6702af5f5cca9ce05",
+    "/Users/kerim/recordings/derived/kerim/20261111-190825/cases.json": "622f0704425daddcfad23377d14419c62f78168ca7894dc042df855e8f8d4bd1",
+    "/Users/kerim/recordings/derived/kerim/20261111-192328/missions.json": "17fd29a6f5225ace6eab3f9d763288f60e080a3b52d0927af15b7964e9fbbb83",
+    "/Users/kerim/recordings/derived/kerim/20261111-192328/sections.json": "065dfc9a8a813ebc12db4e397676b06313d50b828c66e4a4cbde5f3164ba2efc",
+    "/Users/kerim/recordings/derived/kerim/20261111-192328/cases.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "/Users/kerim/recordings/derived/kerim/20261111-193105/missions.json": "17fdbb0a0a4fed3735500eeef33360f0c344d99a0a4bf36274a7ec766e659c86",
+    "/Users/kerim/recordings/derived/kerim/20261111-193105/sections.json": "a4555c12ce710bc220f76dafb2b4de25eb2f6de9c27b4a476167a65dbe21b30d",
+    "/Users/kerim/recordings/derived/kerim/20261111-193105/cases.json": "e6ec08fc09a7852cef67769d9ff38849fd7f6dd97c462b2f663323ce5346be89",
+    "/Users/kerim/recordings/derived/kerim/20261111-194609/missions.json": "ba0d4ecb019c31470ec4d596646772b0b4cc967b52596b14cfb0a4b9e52b4626",
+    "/Users/kerim/recordings/derived/kerim/20261111-194609/sections.json": "8174f345684c2dbeb8772728d38caeb104b802317ae5457490df16351a6cab5e",
+    "/Users/kerim/recordings/derived/kerim/20261111-194609/cases.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "/Users/kerim/recordings/derived/kerim/20261111-200111/missions.json": "afd8efe97f066dcc0ffab2f144bd84f5e416b8798506e9f391daf2495958717f",
+    "/Users/kerim/recordings/derived/kerim/20261111-200111/sections.json": "f8f4f32442b517469991ab2f4eca9d726d20368950d61fbe09f39a4fc91417a0",
+    "/Users/kerim/recordings/derived/kerim/20261111-200111/cases.json": "4a27d3a6ae4e02efca9831d999a5ea06d5d51c318a705329ebf95a18049e0781",
+    "/Users/kerim/recordings/derived/kerim/20261111-201615/missions.json": "bdcc86671e74aa06ed11ab66e56c44ef1b701f26e520b449c939d5db252407f2",
+    "/Users/kerim/recordings/derived/kerim/20261111-201615/sections.json": "46ae5a86ae871fcff1dea7000b115e878cd1dcfdd68dc52e75515ae31e672cfb",
+    "/Users/kerim/recordings/derived/kerim/20261111-201615/cases.json": "dcafba8ddd7626716db27355958e8f174060e99fff65099256f47e40f669d261",
+    "/Users/kerim/recordings/derived/kerim/20261111-203117/missions.json": "523a3b2f4c23846f4e8e7fa33f61f9d086778e0347c5290caf061a407a4a9a16",
+    "/Users/kerim/recordings/derived/kerim/20261111-203117/sections.json": "d866e80587abbb7cc75761f04d2179c54aac0c5f6cda18fa9c7cc51465f06cea",
+    "/Users/kerim/recordings/derived/kerim/20261111-203117/cases.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "/Users/kerim/recordings/derived/kerim/20261111-205309/missions.json": "e91390ffaa15453395ce12191055132adc2aef4d6721486aaf0dc879bd9f256f",
+    "/Users/kerim/recordings/derived/kerim/20261111-205309/sections.json": "01b188debe865bb79c9163ecd3fadff56b72e98a27d585780fcef062bb4efc00",
+    "/Users/kerim/recordings/derived/kerim/20261111-205309/cases.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "/Users/kerim/recordings/derived/kerim/20261111-210812/missions.json": "cb474ba0bb8775b39457cf3d7cbda3dcc5d3f17b666ba2a0ad12200e35412a4a",
+    "/Users/kerim/recordings/derived/kerim/20261111-210812/sections.json": "83c2d248e8982307f3dcabd8d4d58246df7d2cab1baade936c446d7a5264d902",
+    "/Users/kerim/recordings/derived/kerim/20261111-210812/cases.json": "08f3bfb81c52b198167b65618b492df157c1be27ddb281c5be04314729f275f6",
+    "/Users/kerim/recordings/derived/kerim/20261111-212314/missions.json": "e6aaba453fecbc5df5c2b3244ec652dad68860fe6001747a27d6abd16cca88b4",
+    "/Users/kerim/recordings/derived/kerim/20261111-212314/sections.json": "240c7be8eba6fb3ceec76fea24871effd88c71b9d5a33206ea1087595a98fb3e",
+    "/Users/kerim/recordings/derived/kerim/20261111-212314/cases.json": "2bb29015da011621eaca52850f377a712b6924da8cb4054e2bd7fc2ed7083e59",
+    "/Users/kerim/recordings/derived/kerim/20261111-213150/missions.json": "37dc6175ed773dbfe61181dbef16a61a5ca86c257a7e0bb9e4e207775bdc257a",
+    "/Users/kerim/recordings/derived/kerim/20261111-213150/sections.json": "d1225c65ca9195d5670c6e6f5b78477ca599cde72f8e9d405957c233c995a7fa",
+    "/Users/kerim/recordings/derived/kerim/20261111-213150/cases.json": "6929df28af162d06f7498447cec50e8d0c93a43df9d3fbece224e13ddd9b1d3b",
+    "/Users/kerim/recordings/derived/kerim/20261111-214652/missions.json": "b832df61e100c15e9cf7dd5a0391dfc7d558c99ae8b6d882b4843d5e911da7de",
+    "/Users/kerim/recordings/derived/kerim/20261111-214652/sections.json": "d1d0d7b3c421df1ff8aea94d2ac0ac7d6d30c512e641ab7ed1058e1d3d79cc2d",
+    "/Users/kerim/recordings/derived/kerim/20261111-214652/cases.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "/Users/kerim/recordings/derived/kerim/20261112-085011/missions.json": "524966ea2ce19c9384ed2981f89bbc181e231be5eb916689b03ab33bbd8f5da7",
+    "/Users/kerim/recordings/derived/kerim/20261112-085011/sections.json": "cccab3c8bb2fd2efbfb5b6adc8959818d9ed0a53ccef19964b65be49115d3fb8",
+    "/Users/kerim/recordings/derived/kerim/20261112-085011/cases.json": "1e13cfd05211047ac99821b7c66621f4299f2cf19893263a97e88dc12fdd7f8a",
+    "/Users/kerim/recordings/derived/kerim/20261112-090514/missions.json": "09210beb4d770467ce8c546b722d0a52f966d05c028fea66821495e95567af68",
+    "/Users/kerim/recordings/derived/kerim/20261112-090514/sections.json": "2947b6cddbccabc7574ecde9bb48c6db09c695fb80c0452b60eab876a20b0255",
+    "/Users/kerim/recordings/derived/kerim/20261112-090514/cases.json": "b9eb3c3671089114472f8799a9ff7fc016359b1851670c93efe51fb46078e5c7"
+  },
+  "data_root": "/Users/kerim/recordings/derived/kerim",
+  "mission_files": 27,
+  "actions_files": 11,
+  "corpus_counts": {
+    "mission": 173,
+    "take-out": 18,
+    "p45-changes": 1,
+    "p45-sessions": 51,
+    "derived-steps": 66
+  },
+  "changes": [
+    {
+      "suite": "derived-steps",
+      "id": "20261111-165543:222.5695",
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Warte auf Tonya.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 88.43,
+              "y": 85.34,
+              "border": true
+            },
+            {
+              "color": "blue",
+              "x": 74.0,
+              "y": 86.5,
+              "border": true
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "objective_wait",
+        "plan": [
+          {
+            "name": "look",
+            "args": {
+              "duration": 0.5,
+              "angle": 20
+            }
+          },
+          {
+            "name": "wait",
+            "args": {
+              "duration": 3
+            }
+          }
+        ]
+      },
+      "reason": "The wait objective selects its existing-skill class mapping instead of the generic route/blip default."
+    },
+    {
+      "suite": "derived-steps",
+      "id": "20261111-165543:316.0092",
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Warte auf Tonya.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 2.87,
+              "y": 4.4,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "objective_wait",
+        "plan": [
+          {
+            "name": "look",
+            "args": {
+              "duration": 0.5,
+              "angle": 20
+            }
+          },
+          {
+            "name": "wait",
+            "args": {
+              "duration": 3
+            }
+          }
+        ]
+      },
+      "reason": "The wait objective selects its existing-skill class mapping instead of the generic route/blip default."
+    }
+  ],
+  "classes": {
+    "go_to": {
+      "steps": 26,
+      "recordings": [
+        "20261111-164039",
+        "20261111-165543",
+        "20261111-171046",
+        "20261111-180814",
+        "20261111-182316",
+        "20261111-183820",
+        "20261111-185323",
+        "20261111-190825",
+        "20261111-193105",
+        "20261111-200111",
+        "20261111-201615",
+        "20261111-210812",
+        "20261111-212314",
+        "20261111-213150",
+        "20261112-085011",
+        "20261112-090514"
+      ],
+      "observed_seconds": 1351.37,
+      "coarse_seconds": {
+        "driving": 697.3040000000001,
+        "walking": 255.56300000000002,
+        "running": 37.274,
+        "aiming": 4.594,
+        "firing": 30.069,
+        "looking": 99.883,
+        "map_input": 0.0,
+        "vehicle_input": 0.9500000000000001,
+        "neutral": 300.64099999999996
+      },
+      "first20_action_labels": null,
+      "whole_step_action_labels": null,
+      "coarse_shares": {
+        "driving": 0.5159978392298188,
+        "walking": 0.1891140102266589,
+        "running": 0.02758237936316479,
+        "aiming": 0.0033995130867194036,
+        "firing": 0.022250752939609434,
+        "looking": 0.07391240000887989,
+        "map_input": 0.0,
+        "vehicle_input": 0.0007029902987338776,
+        "neutral": 0.22247126989647542
+      },
+      "insufficient": false
+    },
+    "return_to": {
+      "steps": 6,
+      "recordings": [
+        "20261111-164039",
+        "20261111-185323",
+        "20261111-190825"
+      ],
+      "observed_seconds": 395.16100000000006,
+      "coarse_seconds": {
+        "driving": 201.191,
+        "walking": 86.48899999999999,
+        "running": 20.558999999999997,
+        "aiming": 12.512,
+        "firing": 5.823,
+        "looking": 48.301,
+        "map_input": 0.022,
+        "vehicle_input": 0.156,
+        "neutral": 60.034000000000006
+      },
+      "first20_action_labels": null,
+      "whole_step_action_labels": null,
+      "coarse_shares": {
+        "driving": 0.509136782222942,
+        "walking": 0.21887028325163663,
+        "running": 0.05202689536669862,
+        "aiming": 0.03166304367080759,
+        "firing": 0.014735765928317823,
+        "looking": 0.12223119184332461,
+        "map_input": 5.5673510290742245e-05,
+        "vehicle_input": 0.000394775800243445,
+        "neutral": 0.1519228871270191
+      },
+      "insufficient": false
+    },
+    "follow": {
+      "steps": 8,
+      "recordings": [
+        "20261111-164039",
+        "20261111-171046",
+        "20261111-180814",
+        "20261111-190825",
+        "20261111-193105",
+        "20261112-090514"
+      ],
+      "observed_seconds": 418.601,
+      "coarse_seconds": {
+        "driving": 105.88899999999998,
+        "walking": 106.54,
+        "running": 10.522,
+        "aiming": 0.0,
+        "firing": 1.7189999999999999,
+        "looking": 19.360999999999997,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 127.55100000000002
+      },
+      "first20_action_labels": null,
+      "whole_step_action_labels": null,
+      "coarse_shares": {
+        "driving": 0.25295926192245116,
+        "walking": 0.25451444215374547,
+        "running": 0.025136108131609814,
+        "aiming": 0.0,
+        "firing": 0.004106535818117969,
+        "looking": 0.04625168119521931,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.30470782439602395
+      },
+      "insufficient": false
+    },
+    "pick_up": {
+      "steps": 1,
+      "recordings": [
+        "20261111-164039"
+      ],
+      "observed_seconds": 2.989,
+      "coarse_seconds": {
+        "driving": 0.0,
+        "walking": 0.949,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.472,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 1.056
+      },
+      "first20_action_labels": null,
+      "whole_step_action_labels": null,
+      "coarse_shares": {
+        "driving": 0.0,
+        "walking": 0.31749749079959855,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.15791234526597525,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.35329541652726665
+      },
+      "insufficient": true
+    },
+    "take_out": {
+      "steps": 4,
+      "recordings": [
+        "20261111-164039",
+        "20261111-172549",
+        "20261112-090514"
+      ],
+      "observed_seconds": 240.726,
+      "coarse_seconds": {
+        "driving": 15.722,
+        "walking": 97.262,
+        "running": 0.729,
+        "aiming": 42.595000000000006,
+        "firing": 7.346,
+        "looking": 28.499000000000002,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 37.213
+      },
+      "first20_action_labels": null,
+      "whole_step_action_labels": null,
+      "coarse_shares": {
+        "driving": 0.0653107682593488,
+        "walking": 0.4040361240580577,
+        "running": 0.0030283392736970664,
+        "aiming": 0.1769439113348787,
+        "firing": 0.03051602236567716,
+        "looking": 0.11838771050904348,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.15458654237597932
+      },
+      "insufficient": true
+    },
+    "enter_vehicle": {
+      "steps": 8,
+      "recordings": [
+        "20261111-164039",
+        "20261111-171046",
+        "20261111-190825",
+        "20261111-212314",
+        "20261112-085011"
+      ],
+      "observed_seconds": 324.342,
+      "coarse_seconds": {
+        "driving": 140.975,
+        "walking": 78.70899999999999,
+        "running": 25.208,
+        "aiming": 2.125,
+        "firing": 1.937,
+        "looking": 35.93,
+        "map_input": 0.0,
+        "vehicle_input": 0.823,
+        "neutral": 84.224
+      },
+      "first20_action_labels": null,
+      "whole_step_action_labels": null,
+      "coarse_shares": {
+        "driving": 0.4346492282837252,
+        "walking": 0.2426728576625907,
+        "running": 0.07772043090318244,
+        "aiming": 0.006551726264251932,
+        "firing": 0.0059720911876969375,
+        "looking": 0.11077812925862207,
+        "map_input": 0.0,
+        "vehicle_input": 0.002537445042578513,
+        "neutral": 0.2596765142966375
+      },
+      "insufficient": false
+    },
+    "wait": {
+      "steps": 2,
+      "recordings": [
+        "20261111-165543"
+      ],
+      "observed_seconds": 118.432,
+      "coarse_seconds": {
+        "driving": 69.559,
+        "walking": 0.137,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.466,
+        "looking": 9.704,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 23.267
+      },
+      "first20_action_labels": null,
+      "whole_step_action_labels": null,
+      "coarse_shares": {
+        "driving": 0.5873328154552824,
+        "walking": 0.0011567819508241017,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0039347473655768715,
+        "looking": 0.08193731423939477,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.1964587273709808
+      },
+      "insufficient": true
+    },
+    "bring": {
+      "steps": 4,
+      "recordings": [
+        "20261111-165543",
+        "20261111-171046",
+        "20261111-172549",
+        "20261111-180814"
+      ],
+      "observed_seconds": 254.99,
+      "coarse_seconds": {
+        "driving": 194.03900000000002,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 6.771,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 44.455
+      },
+      "first20_action_labels": null,
+      "whole_step_action_labels": null,
+      "coarse_shares": {
+        "driving": 0.7609670967488922,
+        "walking": 0.0,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.026553982509118005,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.17434017020275303
+      },
+      "insufficient": true
+    },
+    "use": {
+      "steps": 1,
+      "recordings": [
+        "20261111-165543"
+      ],
+      "observed_seconds": 28.505,
+      "coarse_seconds": {
+        "driving": 14.946,
+        "walking": 3.937,
+        "running": 2.036,
+        "aiming": 0.0,
+        "firing": 1.173,
+        "looking": 2.558,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 4.85
+      },
+      "first20_action_labels": null,
+      "whole_step_action_labels": null,
+      "coarse_shares": {
+        "driving": 0.5243290650763024,
+        "walking": 0.13811611997895107,
+        "running": 0.07142606560252587,
+        "aiming": 0.0,
+        "firing": 0.04115067532011928,
+        "looking": 0.08973864234344851,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.1701455884932468
+      },
+      "insufficient": true
+    },
+    "steal": {
+      "steps": 1,
+      "recordings": [
+        "20261111-172549"
+      ],
+      "observed_seconds": 57.004,
+      "coarse_seconds": {
+        "driving": 0.0,
+        "walking": 24.997,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 11.303,
+        "map_input": 0.0,
+        "vehicle_input": 0.145,
+        "neutral": 26.123
+      },
+      "first20_action_labels": null,
+      "whole_step_action_labels": null,
+      "coarse_shares": {
+        "driving": 0.0,
+        "walking": 0.43851308680092627,
+        "running": 0.0,
+        "aiming": 0.0,
+        "firing": 0.0,
+        "looking": 0.19828433092414569,
+        "map_input": 0.0,
+        "vehicle_input": 0.002543681145182794,
+        "neutral": 0.45826608659041473
+      },
+      "insufficient": true
+    },
+    "unknown": {
+      "steps": 5,
+      "recordings": [
+        "20261111-212314",
+        "20261112-090514"
+      ],
+      "observed_seconds": 173.059,
+      "coarse_seconds": {
+        "driving": 2.556,
+        "walking": 62.051,
+        "running": 10.438,
+        "aiming": 2.553,
+        "firing": 0.392,
+        "looking": 22.250999999999998,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 94.174
+      },
+      "first20_action_labels": null,
+      "whole_step_action_labels": null,
+      "coarse_shares": {
+        "driving": 0.014769529466829232,
+        "walking": 0.3585540191495386,
+        "running": 0.06031469036571343,
+        "aiming": 0.014752194338347038,
+        "firing": 0.0022651234550066742,
+        "looking": 0.1285746479524324,
+        "map_input": 0.0,
+        "vehicle_input": 0.0,
+        "neutral": 0.5441727965607106
+      },
+      "insufficient": true
+    },
+    "escape": {
+      "steps": 0,
+      "recordings": [],
+      "observed_seconds": 0,
+      "coarse_seconds": {},
+      "first20_action_labels": null,
+      "whole_step_action_labels": null,
+      "coarse_shares": {},
+      "insufficient": true
+    },
+    "protect": {
+      "steps": 0,
+      "recordings": [],
+      "observed_seconds": 0,
+      "coarse_seconds": {},
+      "first20_action_labels": null,
+      "whole_step_action_labels": null,
+      "coarse_shares": {},
+      "insufficient": true
+    },
+    "destroy": {
+      "steps": 0,
+      "recordings": [],
+      "observed_seconds": 0,
+      "coarse_seconds": {},
+      "first20_action_labels": null,
+      "whole_step_action_labels": null,
+      "coarse_shares": {},
+      "insufficient": true
+    },
+    "sneak": {
+      "steps": 0,
+      "recordings": [],
+      "observed_seconds": 0,
+      "coarse_seconds": {},
+      "first20_action_labels": null,
+      "whole_step_action_labels": null,
+      "coarse_shares": {},
+      "insufficient": true
+    }
+  },
+  "steps": [
+    {
+      "recording": "20261111-164039",
+      "start": 435.0086,
+      "end": 446.0034,
+      "objective": "Begib dich nach Vespucci Beach.",
+      "class": "go_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 437.9946,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich nach Vespucci Beach.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 10.995,
+        "seconds": {
+          "driving": 6.343,
+          "walking": 0.644,
+          "running": 0.31,
+          "aiming": 0.0,
+          "firing": 0.644,
+          "looking": 2.426,
+          "map_input": 0.0,
+          "vehicle_input": 0.121,
+          "neutral": 1.983
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 1.922,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.644,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.434
+        }
+      },
+      "human_category": "drive",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-164039",
+      "start": 446.0034,
+      "end": 513.0615,
+      "objective": "Kehr zurück zu Lamar.",
+      "class": "return_to",
+      "section_mode": "drive",
+      "minimap_sample_t": 448.6234,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Kehr zurück zu Lamar.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 67.058,
+        "seconds": {
+          "driving": 47.048,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 8.085,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 15.724
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 2.897,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.455,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.103
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-164039",
+      "start": 545.5151,
+      "end": 608.0157,
+      "objective": "Folge Lamar.",
+      "class": "follow",
+      "section_mode": "foot",
+      "minimap_sample_t": 548.4991,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Folge Lamar.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 62.501,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 56.761,
+          "running": 5.974,
+          "aiming": 0.0,
+          "firing": 0.267,
+          "looking": 7.037,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 4.512
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.0,
+          "running": 0.741,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-164039",
+      "start": 628.0127,
+      "end": 631.0015,
+      "objective": "Sammle elne Waffe auf.",
+      "class": "pick_up",
+      "section_mode": "foot",
+      "minimap_sample_t": 629.4978,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Sammle elne Waffe auf.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": -2.62,
+              "y": 4.25,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": -9.43,
+              "y": 21.03,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": -1.9,
+              "y": 13.7,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 2.989,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 0.949,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.472,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 1.056
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 1.504,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.472,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.642
+        }
+      },
+      "human_category": "neutral",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-164039",
+      "start": 631.0015,
+      "end": 682.5025,
+      "objective": "Schalte die Vagos aus.",
+      "class": "take_out",
+      "section_mode": "foot",
+      "minimap_sample_t": 633.9901,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Schalte die Vagos aus.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 1.75,
+              "y": 4.88,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": -4.58,
+              "y": 23.64,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": 3.5,
+              "y": 17.28,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "take_out_fight",
+        "plan": [
+          {
+            "name": "fight",
+            "args": {
+              "duration": 20,
+              "cover": "no"
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "take_out_fight",
+        "plan": [
+          {
+            "name": "fight",
+            "args": {
+              "duration": 20,
+              "cover": "no"
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 51.501,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 16.914,
+          "running": 0.729,
+          "aiming": 16.133,
+          "firing": 3.272,
+          "looking": 10.243,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 12.198
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 2.444,
+          "firing": 0.134,
+          "looking": 0.568,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.245
+        }
+      },
+      "human_category": "combat",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-164039",
+      "start": 692.3224,
+      "end": 753.5086,
+      "objective": "Schalte die Vagos aus.",
+      "class": "take_out",
+      "section_mode": "foot",
+      "minimap_sample_t": 695.3213,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Schalte die Vagos aus.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "red",
+              "x": -5.13,
+              "y": 23.18,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": 3.18,
+              "y": 16.88,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "take_out_fight",
+        "plan": [
+          {
+            "name": "fight",
+            "args": {
+              "duration": 20,
+              "cover": "no"
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "take_out_fight",
+        "plan": [
+          {
+            "name": "fight",
+            "args": {
+              "duration": 20,
+              "cover": "no"
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 61.186,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 21.938,
+          "running": 0.0,
+          "aiming": 24.951,
+          "firing": 4.074,
+          "looking": 12.423,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 9.803
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 2.526,
+          "firing": 0.299,
+          "looking": 0.51,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.062
+        }
+      },
+      "human_category": "combat",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-164039",
+      "start": 877.0081,
+      "end": 889.0047,
+      "objective": "Steig auf das Motorrad.",
+      "class": "enter_vehicle",
+      "section_mode": "foot",
+      "minimap_sample_t": 879.9957,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Steig auf das Motorrad.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": -5.23,
+              "y": 11.54,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 11.997,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 4.955,
+          "running": 0.806,
+          "aiming": 2.125,
+          "firing": 1.008,
+          "looking": 4.215,
+          "map_input": 0.0,
+          "vehicle_input": 0.242,
+          "neutral": 2.211
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 1.428,
+          "running": 0.421,
+          "aiming": 0.036,
+          "firing": 0.0,
+          "looking": 0.873,
+          "map_input": 0.0,
+          "vehicle_input": 0.125,
+          "neutral": 0.714
+        }
+      },
+      "human_category": "foot",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-164039",
+      "start": 889.0047,
+      "end": 901.5,
+      "objective": "Begib dich zu der Autowaschanlage.",
+      "class": "go_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 891.9898,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich zu der Autowaschanlage.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "yellow",
+          "blips": [],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 12.446,
+        "seconds": {
+          "driving": 9.208,
+          "walking": 2.292,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 1.295,
+          "looking": 1.517,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.699
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 3.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "drive",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-165543",
+      "start": 221.0052,
+      "end": 222.5695,
+      "objective": "Beglb dlch zum Abschleppwagen.",
+      "class": "go_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 221.7775,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Beglb dlch zum Abschleppwagen.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": -12.34,
+              "y": 87.29,
+              "border": true
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 1.564,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 1.564
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 0.792,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.792
+        }
+      },
+      "human_category": "neutral",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-165543",
+      "start": 222.5695,
+      "end": 284.50210000000004,
+      "objective": "Warte auf Tonya.",
+      "class": "wait",
+      "section_mode": "drive",
+      "minimap_sample_t": 225.5598,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Warte auf Tonya.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 88.43,
+              "y": 85.34,
+              "border": true
+            },
+            {
+              "color": "blue",
+              "x": 74.0,
+              "y": 86.5,
+              "border": true
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "objective_wait",
+        "plan": [
+          {
+            "name": "look",
+            "args": {
+              "duration": 0.5,
+              "angle": 20
+            }
+          },
+          {
+            "name": "wait",
+            "args": {
+              "duration": 3
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 61.933,
+        "seconds": {
+          "driving": 23.605,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 7.299,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 14.16
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 3.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "drive",
+      "agreement": "different category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-165543",
+      "start": 316.0092,
+      "end": 372.5079,
+      "objective": "Warte auf Tonya.",
+      "class": "wait",
+      "section_mode": "foot",
+      "minimap_sample_t": 318.9263,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Warte auf Tonya.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 2.87,
+              "y": 4.4,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "objective_wait",
+        "plan": [
+          {
+            "name": "look",
+            "args": {
+              "duration": 0.5,
+              "angle": 20
+            }
+          },
+          {
+            "name": "wait",
+            "args": {
+              "duration": 3
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 56.499,
+        "seconds": {
+          "driving": 45.954,
+          "walking": 0.137,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.466,
+          "looking": 2.405,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 9.107
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.233,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.346,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 2.421
+        }
+      },
+      "human_category": "neutral",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-165543",
+      "start": 372.5079,
+      "end": 417.5945,
+      "objective": "Begib dich zu dem herrenlosen Auto.",
+      "class": "go_to",
+      "section_mode": "drive",
+      "minimap_sample_t": 375.5025,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich zu dem herrenlosen Auto.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 45.087,
+        "seconds": {
+          "driving": 33.226,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 4.405,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 8.533
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 3.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-165543",
+      "start": 417.5945,
+      "end": 479.5054,
+      "objective": "Schlepp den Wagen zum Abschleppplatz.",
+      "class": "bring",
+      "section_mode": "drive",
+      "minimap_sample_t": 420.5939,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Schlepp den Wagen zum Abschleppplatz.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "yellow",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": -67.8,
+              "y": 87.36,
+              "border": true
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 61.911,
+        "seconds": {
+          "driving": 55.354,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 1.534,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 5.831
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 3.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-165543",
+      "start": 479.5054,
+      "end": 508.01,
+      "objective": "Mach das Fahrzeug in der Ablieferzone lo",
+      "class": "use",
+      "section_mode": "drive",
+      "minimap_sample_t": 482.504,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Mach das Fahrzeug in der Ablieferzone lo",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": 16.02,
+              "y": 15.87,
+              "border": false
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 28.505,
+        "seconds": {
+          "driving": 14.946,
+          "walking": 3.937,
+          "running": 2.036,
+          "aiming": 0.0,
+          "firing": 1.173,
+          "looking": 2.558,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 4.85
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 1.276,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 1.173,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.551
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-171046",
+      "start": 153.5496,
+      "end": 213.5496,
+      "objective": "Stelg In den Liefemagen.",
+      "class": "enter_vehicle",
+      "section_mode": "drive",
+      "minimap_sample_t": 156.5492,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Stelg In den Liefemagen.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 60.0,
+        "seconds": {
+          "driving": 34.93,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 3.089,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 24.319
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 3.0
+        }
+      },
+      "human_category": "neutral",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-171046",
+      "start": 329.0122,
+      "end": 391.0006,
+      "objective": "Steig wieder in den Lieferwagen.",
+      "class": "enter_vehicle",
+      "section_mode": "foot",
+      "minimap_sample_t": 331.9964,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Steig wieder in den Lieferwagen.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 2.64,
+              "y": 4.09,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 61.988,
+        "seconds": {
+          "driving": 53.254,
+          "walking": 0.37,
+          "running": 0.196,
+          "aiming": 0.0,
+          "firing": 0.819,
+          "looking": 5.568,
+          "map_input": 0.0,
+          "vehicle_input": 0.137,
+          "neutral": 4.967
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 2.803,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.1,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.097
+        }
+      },
+      "human_category": "drive",
+      "agreement": "different category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-171046",
+      "start": 482.013,
+      "end": 542.0129999999999,
+      "objective": "Folge Chop.",
+      "class": "follow",
+      "section_mode": "foot",
+      "minimap_sample_t": 484.9838,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Folge Chop.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 60.0,
+        "seconds": {
+          "driving": 0.5,
+          "walking": 14.21,
+          "running": 4.179,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 3.185,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 36.503
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 0.812,
+          "running": 0.404,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.746
+        }
+      },
+      "human_category": "foot",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-171046",
+      "start": 591.5054,
+      "end": 651.5054,
+      "objective": "Begib dlch zu Chop und. zieh ihn von d",
+      "class": "go_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 594.4912,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dlch zu Chop und. zieh ihn von d",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 60.0,
+        "seconds": {
+          "driving": 0.721,
+          "walking": 36.685,
+          "running": 4.1,
+          "aiming": 3.6,
+          "firing": 0.0,
+          "looking": 5.767,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 18.232
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 0.575,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 2.425
+        }
+      },
+      "human_category": "neutral",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-171046",
+      "start": 688.5152,
+      "end": 749.5003,
+      "objective": "Bring D zu Lamars Haus.",
+      "class": "bring",
+      "section_mode": "drive",
+      "minimap_sample_t": 691.5025,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Bring D zu Lamars Haus.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "yellow",
+          "blips": [],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 60.985,
+        "seconds": {
+          "driving": 40.469,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 3.825,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 18.533
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 3.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-172549",
+      "start": 133.005,
+      "end": 194.0074,
+      "objective": "Schalte den Gartne",
+      "class": "take_out",
+      "section_mode": "foot",
+      "minimap_sample_t": 135.9915,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Schalte den Gartne",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 8.71,
+              "y": 27.71,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": 0.5,
+              "y": 9.5,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "take_out_fight",
+        "plan": [
+          {
+            "name": "fight",
+            "args": {
+              "duration": 20,
+              "cover": "no"
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "take_out_fight",
+        "plan": [
+          {
+            "name": "fight",
+            "args": {
+              "duration": 20,
+              "cover": "no"
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 61.002,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 58.41,
+          "running": 0.0,
+          "aiming": 1.511,
+          "firing": 0.0,
+          "looking": 5.833,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 2.365
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.177,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "different category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-172549",
+      "start": 206.0087,
+      "end": 263.0124,
+      "objective": "Hol das Auto zurück.",
+      "class": "steal",
+      "section_mode": "foot",
+      "minimap_sample_t": 208.9918,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Hol das Auto zurück.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 70.43,
+              "y": -20.81,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": -8.95,
+              "y": 18.5,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": -16.67,
+              "y": -3.92,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 57.004,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 24.997,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 11.303,
+          "map_input": 0.0,
+          "vehicle_input": 0.145,
+          "neutral": 26.123
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 3.0
+        }
+      },
+      "human_category": "neutral",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-172549",
+      "start": 263.0124,
+      "end": 330.0777,
+      "objective": "Bring das Auto zum Autohaus.",
+      "class": "bring",
+      "section_mode": "drive",
+      "minimap_sample_t": 266.0087,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Bring das Auto zum Autohaus.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 67.065,
+        "seconds": {
+          "driving": 44.447,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 1.412,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 8.831
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 1.621,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 1.379
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-180814",
+      "start": 223.0004,
+      "end": 289.0037,
+      "objective": "Begib dich nach Pacific Bluffs.",
+      "class": "go_to",
+      "section_mode": "drive",
+      "minimap_sample_t": 225.9869,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich nach Pacific Bluffs.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "yellow",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": -86.63,
+              "y": 22.51,
+              "border": true
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 66.003,
+        "seconds": {
+          "driving": 52.522,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 1.412,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 12.253
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 2.722,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.278
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-180814",
+      "start": 311.0047,
+      "end": 376.0339,
+      "objective": "Bring Franklin nahe an die Yacht.",
+      "class": "bring",
+      "section_mode": "drive",
+      "minimap_sample_t": 313.9908,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Bring Franklin nahe an die Yacht.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": -0.16,
+              "y": 39.78,
+              "border": false
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 65.029,
+        "seconds": {
+          "driving": 53.769,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 11.26
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 3.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-180814",
+      "start": 394.0018,
+      "end": 456.0048,
+      "objective": "Verfolge die Yacht.",
+      "class": "follow",
+      "section_mode": "drive",
+      "minimap_sample_t": 396.9875,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Verfolge die Yacht.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 1.0,
+              "y": 27.5,
+              "border": false
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 62.003,
+        "seconds": {
+          "driving": 48.995,
+          "walking": 0.323,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 1.452,
+          "looking": 0.12,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 11.114
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 2.832,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.168
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-182316",
+      "start": 45.0096,
+      "end": 105.0096,
+      "objective": "Begib dich zu Michaels H",
+      "class": "go_to",
+      "section_mode": "menu",
+      "minimap_sample_t": 47.9952,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich zu Michaels H",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "yellow",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": -86.63,
+              "y": 42.5,
+              "border": true
+            }
+          ]
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 60.0,
+        "seconds": {
+          "driving": 44.091,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 1.202,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 13.861
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 2.216,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "drive",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-183820",
+      "start": 881.5103,
+      "end": 900.4,
+      "objective": "Begib dich zu Ammu-Nation.",
+      "class": "go_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 884.5061,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich zu Ammu-Nation.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "yellow",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": -87.28,
+              "y": -1.47,
+              "border": true
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "yellow",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "yellow",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 18.806,
+        "seconds": {
+          "driving": 15.738,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 1.517,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 2.234
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 3.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "drive",
+      "agreement": "different category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-185323",
+      "start": 168.016,
+      "end": 234.0081,
+      "objective": "Begib dich zu dem Treffen bei der Recycling-Anlage.",
+      "class": "go_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 170.9398,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich zu dem Treffen bei der Recycling-Anlage.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": 63.85,
+              "y": 87.24,
+              "border": true
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "yellow",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "yellow",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 65.992,
+        "seconds": {
+          "driving": 38.406,
+          "walking": 7.52,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 9.061,
+          "map_input": 0.0,
+          "vehicle_input": 0.136,
+          "neutral": 12.262
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.3,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-185323",
+      "start": 677.5007,
+      "end": 745.0169,
+      "objective": "Kehr zurück zu Lamar und Stretch.",
+      "class": "return_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 680.4903,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Kehr zurück zu Lamar und Stretch.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "red",
+              "x": -37.61,
+              "y": -1.04,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 3
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "wanted_on_foot",
+        "plan": [
+          {
+            "name": "walk",
+            "args": {
+              "duration": 5,
+              "x": 0,
+              "y": -1,
+              "sprint": true
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "wanted_on_foot",
+        "plan": [
+          {
+            "name": "walk",
+            "args": {
+              "duration": 5,
+              "x": 0,
+              "y": -1,
+              "sprint": true
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 67.516,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 62.671,
+          "running": 16.165,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 12.665,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 3.027
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 2.636,
+          "running": 0.399,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.588,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.364
+        }
+      },
+      "human_category": "foot",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-185323",
+      "start": 774.5024,
+      "end": 841.0093,
+      "objective": "Kehr zurück zu Lamar und Stretch.",
+      "class": "return_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 777.4855,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Kehr zurück zu Lamar und Stretch.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 39.17,
+              "y": 38.17,
+              "border": false
+            },
+            {
+              "color": "blue",
+              "x": 19.82,
+              "y": 29.18,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": 88.78,
+              "y": 68.56,
+              "border": true
+            },
+            {
+              "color": "red",
+              "x": 1.06,
+              "y": 14.34,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": -14.1,
+              "y": -26.7,
+              "border": true
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 3
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "wanted_on_foot",
+        "plan": [
+          {
+            "name": "walk",
+            "args": {
+              "duration": 5,
+              "x": 0,
+              "y": -1,
+              "sprint": true
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "wanted_on_foot",
+        "plan": [
+          {
+            "name": "walk",
+            "args": {
+              "duration": 5,
+              "x": 0,
+              "y": -1,
+              "sprint": true
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 66.507,
+        "seconds": {
+          "driving": 29.477,
+          "walking": 20.667,
+          "running": 4.394,
+          "aiming": 7.403,
+          "firing": 4.732,
+          "looking": 10.07,
+          "map_input": 0.022,
+          "vehicle_input": 0.156,
+          "neutral": 7.226
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.0,
+          "running": 0.343,
+          "aiming": 1.112,
+          "firing": 0.877,
+          "looking": 0.539,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-190825",
+      "start": 268.1614,
+      "end": 335.0123,
+      "objective": "Begib dich wieder zu Franklins Haus.",
+      "class": "return_to",
+      "section_mode": "drive",
+      "minimap_sample_t": 271.158,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich wieder zu Franklins Haus.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "yellow",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": -86.76,
+              "y": 56.78,
+              "border": true
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 3
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 66.851,
+        "seconds": {
+          "driving": 59.11,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 2.022,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 7.348
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 2.537,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.463
+        }
+      },
+      "human_category": "drive",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-190825",
+      "start": 519.516,
+      "end": 520.0019,
+      "objective": "Steig in den Pickup.",
+      "class": "enter_vehicle",
+      "section_mode": "foot",
+      "minimap_sample_t": 519.7041,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Steig in den Pickup.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "red",
+              "x": -0.87,
+              "y": 19.42,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 0.486,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.11,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.376
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 0.298,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.11,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.188
+        }
+      },
+      "human_category": "neutral",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-190825",
+      "start": 520.0019,
+      "end": 574.5058,
+      "objective": "Folge dem Tennislehrer.",
+      "class": "follow",
+      "section_mode": "drive",
+      "minimap_sample_t": 522.9893,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Folge dem Tennislehrer.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "red",
+              "x": 26.22,
+              "y": -0.12,
+              "border": false
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 54.504,
+        "seconds": {
+          "driving": 51.55,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 3.505,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 2.799
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 2.885,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.94,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.115
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-190825",
+      "start": 574.5058,
+      "end": 642.0112,
+      "objective": "Fahr zum Canyon.",
+      "class": "go_to",
+      "section_mode": "drive",
+      "minimap_sample_t": 577.4931,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Fahr zum Canyon.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "yellow",
+          "blips": [],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 67.505,
+        "seconds": {
+          "driving": 26.907,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 2.466,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 38.723
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 3.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-190825",
+      "start": 685.0066,
+      "end": 747.0461,
+      "objective": "Steig in den Pickup.",
+      "class": "enter_vehicle",
+      "section_mode": "foot",
+      "minimap_sample_t": 687.9954,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Steig in den Pickup.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 62.039,
+        "seconds": {
+          "driving": 34.564,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 2.683,
+          "map_input": 0.0,
+          "vehicle_input": 0.122,
+          "neutral": 25.708
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 2.009,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.991
+        }
+      },
+      "human_category": "drive",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-190825",
+      "start": 752.583,
+      "end": 819.505,
+      "objective": "Kehr zurück zu Michaels Haus.",
+      "class": "return_to",
+      "section_mode": "drive",
+      "minimap_sample_t": 755.5676,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Kehr zurück zu Michaels Haus.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "yellow",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": 89.26,
+              "y": 29.11,
+              "border": true
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 66.922,
+        "seconds": {
+          "driving": 34.246,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 9.481,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 15.738
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 2.308,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.692
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-190825",
+      "start": 840.0054,
+      "end": 900.4,
+      "objective": "Kehr zurück zu Michaels Haus.",
+      "class": "return_to",
+      "section_mode": "drive",
+      "minimap_sample_t": 843.0051,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Kehr zurück zu Michaels Haus.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "yellow",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": 89.42,
+              "y": 18.53,
+              "border": true
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 60.307,
+        "seconds": {
+          "driving": 31.31,
+          "walking": 3.151,
+          "running": 0.0,
+          "aiming": 5.109,
+          "firing": 1.091,
+          "looking": 5.978,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 10.971
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 3.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-193105",
+      "start": 386.0131,
+      "end": 449.5151,
+      "objective": "Begib dich zum Suburban-Laden in Vinewood.",
+      "class": "go_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 389.001,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich zum Suburban-Laden in Vinewood.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 63.502,
+        "seconds": {
+          "driving": 36.699,
+          "walking": 12.587,
+          "running": 1.768,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 9.203,
+          "map_input": 0.0,
+          "vehicle_input": 0.135,
+          "neutral": 10.019
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.128,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-193105",
+      "start": 460.5037,
+      "end": 528.0198,
+      "objective": "Begib dich zum Suburban-Laden In Vinewood.",
+      "class": "go_to",
+      "section_mode": "drive",
+      "minimap_sample_t": 463.4922,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich zum Suburban-Laden In Vinewood.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "yellow",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": 89.39,
+              "y": 22.5,
+              "border": true
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 67.516,
+        "seconds": {
+          "driving": 60.241,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 2.958,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 6.947
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 3.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-193105",
+      "start": 631.596,
+      "end": 692.5174,
+      "objective": "Beglb dich zu den Büros von Llfeinvader.",
+      "class": "go_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 634.5924,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Beglb dich zu den Büros von Llfeinvader.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "yellow",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": 89.38,
+              "y": 4.38,
+              "border": true
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "yellow",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "yellow",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 60.921,
+        "seconds": {
+          "driving": 23.775,
+          "walking": 5.23,
+          "running": 0.0,
+          "aiming": 0.994,
+          "firing": 1.336,
+          "looking": 3.968,
+          "map_input": 0.0,
+          "vehicle_input": 0.134,
+          "neutral": 9.007
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 2.583,
+          "walking": 0.158,
+          "running": 0.0,
+          "aiming": 0.417,
+          "firing": 0.0,
+          "looking": 0.88,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "drive",
+      "agreement": "different category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-193105",
+      "start": 692.5174,
+      "end": 758.006,
+      "objective": "Geh zum Hintereingang.",
+      "class": "go_to",
+      "section_mode": "drive",
+      "minimap_sample_t": 695.4554,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Geh zum Hintereingang.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": 2.89,
+              "y": 10.96,
+              "border": false
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 65.489,
+        "seconds": {
+          "driving": 1.069,
+          "walking": 7.457,
+          "running": 2.319,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 1.39,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 56.838
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.964,
+          "walking": 1.455,
+          "running": 1.019,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.457
+        }
+      },
+      "human_category": "foot",
+      "agreement": "different category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-193105",
+      "start": 766.5056,
+      "end": 770.533,
+      "objective": "Folge dem Programmierer.",
+      "class": "follow",
+      "section_mode": "foot",
+      "minimap_sample_t": 768.51,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Folge dem Programmierer.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": -6.03,
+              "y": 28.44,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 4.027,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 4.027,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.811,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 2.023,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 2.023,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.425,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-193105",
+      "start": 770.533,
+      "end": 833.5129,
+      "objective": "Folge dem Programmierer.",
+      "class": "follow",
+      "section_mode": "foot",
+      "minimap_sample_t": 773.5285,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Folge dem Programmierer.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 62.98,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 26.736,
+          "running": 0.369,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 4.703,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 24.159
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.0,
+          "running": 0.369,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-200111",
+      "start": 154.5734,
+      "end": 222.0089,
+      "objective": "Geh zu Amanda.",
+      "class": "go_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 157.5584,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Geh zu Amanda.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 89.48,
+              "y": 39.16,
+              "border": true
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 67.436,
+        "seconds": {
+          "driving": 24.633,
+          "walking": 26.428,
+          "running": 6.63,
+          "aiming": 0.0,
+          "firing": 1.301,
+          "looking": 6.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.284,
+          "neutral": 10.647
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.0,
+          "running": 2.378,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-201615",
+      "start": 29.5848,
+      "end": 91.0117,
+      "objective": "Begib dich zum Fahrradverleih.",
+      "class": "go_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 32.5795,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich zum Fahrradverleih.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 61.427,
+        "seconds": {
+          "driving": 43.062,
+          "walking": 9.292,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.36,
+          "looking": 1.537,
+          "map_input": 0.0,
+          "vehicle_input": 0.14,
+          "neutral": 8.226
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-201615",
+      "start": 448.0034,
+      "end": 508.0034,
+      "objective": "Mach dlch auf zur K8nBlmündung.",
+      "class": "go_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 450.9921,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Mach dlch auf zur K8nBlmündung.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "red",
+              "x": -0.72,
+              "y": -22.81,
+              "border": true
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 60.0,
+        "seconds": {
+          "driving": 42.034,
+          "walking": 3.914,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 15.61,
+          "looking": 2.973,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 1.425
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 3.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "drive",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-210812",
+      "start": 801.5054,
+      "end": 865.0088,
+      "objective": "Begib dich nach Rockford Hil!¥",
+      "class": "go_to",
+      "section_mode": "drive",
+      "minimap_sample_t": 804.4908,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich nach Rockford Hil!¥",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "yellow",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": 88.89,
+              "y": 65.32,
+              "border": true
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 63.503,
+        "seconds": {
+          "driving": 51.367,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 2.521,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 11.486
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 3.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-212314",
+      "start": 29.5003,
+      "end": 69.5433,
+      "objective": "Sprich mit der Verkäuferin.",
+      "class": "unknown",
+      "section_mode": "foot",
+      "minimap_sample_t": 32.4888,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Sprich mit der Verkäuferin.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 40.043,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 18.035,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 7.966,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 15.928
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 1.682,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.249,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 1.318
+        }
+      },
+      "human_category": "foot",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-212314",
+      "start": 73.5073,
+      "end": 116.0044,
+      "objective": "Begib dlch zum Juweller.",
+      "class": "go_to",
+      "section_mode": "drive",
+      "minimap_sample_t": 76.4966,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dlch zum Juweller.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": 30.91,
+              "y": 22.47,
+              "border": false
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 42.497,
+        "seconds": {
+          "driving": 0.457,
+          "walking": 27.962,
+          "running": 17.361,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 1.765,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 8.468
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.0,
+          "running": 2.517,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "different category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-212314",
+      "start": 116.0044,
+      "end": 176.0129,
+      "objective": "Sprich mit der Verkäuferin.",
+      "class": "unknown",
+      "section_mode": "menu",
+      "minimap_sample_t": 118.9894,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Sprich mit der Verkäuferin.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 0.14,
+              "y": 20.89,
+              "border": false
+            }
+          ]
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 60.008,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 6.971,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 2.63,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 51.879
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 1.913,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.433,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 1.087
+        }
+      },
+      "human_category": "foot",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-212314",
+      "start": 176.0129,
+      "end": 232.5014,
+      "objective": "Steig wieder In dein Auto.",
+      "class": "enter_vehicle",
+      "section_mode": "foot",
+      "minimap_sample_t": 178.9993,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Steig wieder In dein Auto.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": -30.17,
+              "y": 16.0,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 56.488,
+        "seconds": {
+          "driving": 18.227,
+          "walking": 20.21,
+          "running": 15.93,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 8.581,
+          "map_input": 0.0,
+          "vehicle_input": 0.127,
+          "neutral": 12.735
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.0,
+          "running": 1.996,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.173,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-212314",
+      "start": 232.5014,
+      "end": 236.5033,
+      "objective": "Begib dich auf das Dach,.",
+      "class": "go_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 234.4853,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich auf das Dach,.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": 8.05,
+              "y": 16.7,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "yellow",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "yellow",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 4.002,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 4.002,
+          "running": 0.315,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 2.018,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 2.018,
+          "running": 0.315,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-212314",
+      "start": 236.5033,
+      "end": 299.0047,
+      "objective": "Begib dlch auf das Dach.",
+      "class": "go_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 239.4899,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dlch auf das Dach.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": 13.62,
+              "y": 50.8,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "yellow",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "yellow",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 62.501,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 58.232,
+          "running": 1.411,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 18.177,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 1.525
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 1.011,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-212314",
+      "start": 324.5104,
+      "end": 384.5104,
+      "objective": "Beglb dlch zum AusslchtsP&",
+      "class": "go_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 327.5,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Beglb dlch zum AusslchtsP&",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 60.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 51.816,
+          "running": 3.06,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 13.916,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 3.975
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.548,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-212314",
+      "start": 402.0011,
+      "end": 448.8,
+      "objective": "Steig wieder in deln Auto.",
+      "class": "enter_vehicle",
+      "section_mode": "foot",
+      "minimap_sample_t": 404.9888,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Steig wieder in deln Auto.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": -0.54,
+              "y": 58.46,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 37.697,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 36.809,
+          "running": 2.887,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 5.914,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.878
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.0,
+          "running": 0.717,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.288,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261111-213150",
+      "start": 194.0048,
+      "end": 257.5992,
+      "objective": "Begib dich zur Textilfabrik.",
+      "class": "go_to",
+      "section_mode": "drive",
+      "minimap_sample_t": 196.975,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich zur Textilfabrik.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "yellow",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": 89.38,
+              "y": 70.52,
+              "border": true
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_route",
+        "plan": [
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 63.594,
+        "seconds": {
+          "driving": 52.827,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.554,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 10.44
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 2.691,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.309
+        }
+      },
+      "human_category": "drive",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261112-085011",
+      "start": 677.5106,
+      "end": 743.5349,
+      "objective": "Begib dich zur Textilfabrik.",
+      "class": "go_to",
+      "section_mode": "foot",
+      "minimap_sample_t": 680.4763,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich zur Textilfabrik.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 3
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "wanted_on_foot",
+        "plan": [
+          {
+            "name": "walk",
+            "args": {
+              "duration": 5,
+              "x": 0,
+              "y": -1,
+              "sprint": true
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "wanted_on_foot",
+        "plan": [
+          {
+            "name": "walk",
+            "args": {
+              "duration": 5,
+              "x": 0,
+              "y": -1,
+              "sprint": true
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 66.024,
+        "seconds": {
+          "driving": 39.792,
+          "walking": 1.502,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 9.523,
+          "looking": 0.854,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 16.435
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 0.205,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 3.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "combat",
+      "agreement": "different category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261112-085011",
+      "start": 867.034,
+      "end": 900.8,
+      "objective": "Steig in den Transporter.",
+      "class": "enter_vehicle",
+      "section_mode": "foot",
+      "minimap_sample_t": 870.029,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Steig in den Transporter.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": 89.07,
+              "y": 17.74,
+              "border": true
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 33.647,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 16.365,
+          "running": 5.389,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 5.88,
+          "map_input": 0.0,
+          "vehicle_input": 0.195,
+          "neutral": 13.03
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.664,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261112-090514",
+      "start": 1.0068,
+      "end": 68.5536,
+      "objective": "Begib dich zum Juwelier.",
+      "class": "go_to",
+      "section_mode": "unknown",
+      "minimap_sample_t": 3.9205,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich zum Juwelier.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "yellow",
+          "blips": []
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 67.547,
+        "seconds": {
+          "driving": 54.306,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 10.296
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 2.28,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.72
+        }
+      },
+      "human_category": "drive",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261112-090514",
+      "start": 157.0062,
+      "end": 160.0767,
+      "objective": "Halte die Wac\"",
+      "class": "unknown",
+      "section_mode": "foot",
+      "minimap_sample_t": 158.5252,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Halte die Wac\"",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "red",
+              "x": -87.39,
+              "y": -18.78,
+              "border": true
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 3.07,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.07,
+          "running": 0.262,
+          "aiming": 0.754,
+          "firing": 0.0,
+          "looking": 1.308,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 1.551,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 1.551,
+          "running": 0.0,
+          "aiming": 0.754,
+          "firing": 0.0,
+          "looking": 0.847,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261112-090514",
+      "start": 160.0767,
+      "end": 172.0077,
+      "objective": "Halte die Wache auf.",
+      "class": "unknown",
+      "section_mode": "foot",
+      "minimap_sample_t": 163.0607,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Halte die Wache auf.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 11.931,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 4.442,
+          "running": 2.458,
+          "aiming": 1.799,
+          "firing": 0.392,
+          "looking": 0.599,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 6.623
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 1.639,
+          "running": 0.97,
+          "aiming": 0.68,
+          "firing": 0.392,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.676
+        }
+      },
+      "human_category": "foot",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261112-090514",
+      "start": 207.0062,
+      "end": 265.0134,
+      "objective": "Halte die V\"vtJi5 Iv auf.",
+      "class": "unknown",
+      "section_mode": "drive",
+      "minimap_sample_t": 209.9746,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Halte die V\"vtJi5 Iv auf.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": -4.5,
+              "y": 11.5,
+              "border": false
+            }
+          ],
+          "minimap": "tilted"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "vehicle_waypoint",
+        "plan": [
+          {
+            "name": "set_waypoint",
+            "args": {
+              "target": "mission",
+              "duration": 45,
+              "direction": "any",
+              "distance": "far"
+            }
+          },
+          {
+            "name": "drive_route",
+            "args": {
+              "duration": 60
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 58.007,
+        "seconds": {
+          "driving": 2.556,
+          "walking": 29.533,
+          "running": 7.718,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 9.748,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 19.744
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 3.0,
+          "running": 1.513,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "foot",
+      "agreement": "different category",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261112-090514",
+      "start": 265.0134,
+      "end": 311.5931,
+      "objective": "Folge der Crew.",
+      "class": "follow",
+      "section_mode": "unknown",
+      "minimap_sample_t": 267.9842,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Folge der Crew.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": []
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 4
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 46.58,
+        "seconds": {
+          "driving": 4.844,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 2.37
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "unknown",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261112-090514",
+      "start": 524.0018,
+      "end": 591.0392,
+      "objective": "Schalte dle Cops aus, bevor du den Treffpunkt erreichst.",
+      "class": "take_out",
+      "section_mode": "unknown",
+      "minimap_sample_t": 526.9704,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Schalte dle Cops aus, bevor du den Treffpunkt erreichst.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": -86.74,
+              "y": 16.87,
+              "border": true
+            },
+            {
+              "color": "blue",
+              "x": -2.45,
+              "y": 13.16,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": 4.61,
+              "y": 6.83,
+              "border": false
+            }
+          ]
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 4
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 67.037,
+        "seconds": {
+          "driving": 15.722,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 12.847
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.0
+        }
+      },
+      "human_category": "unknown",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261112-090514",
+      "start": 591.0392,
+      "end": 658.0526,
+      "objective": "Begib dich zur Garage.",
+      "class": "go_to",
+      "section_mode": "unknown",
+      "minimap_sample_t": 594.035,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Begib dich zur Garage.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "yellow",
+              "x": 89.24,
+              "y": 42.41,
+              "border": true
+            }
+          ]
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "fallback",
+        "plan": [
+          {
+            "name": "wait",
+            "args": {
+              "duration": 1
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 67.013,
+        "seconds": {
+          "driving": 39.88,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 4.294,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 24.563
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 2.338,
+          "walking": 0.0,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.425,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.287
+        }
+      },
+      "human_category": "drive",
+      "agreement": "unknown",
+      "frozen_case_matches": 1
+    },
+    {
+      "recording": "20261112-090514",
+      "start": 751.5061,
+      "end": 817.5123,
+      "objective": "Folge Sapphire ins Séparee.",
+      "class": "follow",
+      "section_mode": "foot",
+      "minimap_sample_t": 754.4882,
+      "request": {
+        "events": [],
+        "help": "",
+        "objective": "Folge Sapphire ins Séparee.",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "route": "none",
+          "blips": [
+            {
+              "color": "blue",
+              "x": -1.77,
+              "y": 7.7,
+              "border": false
+            }
+          ],
+          "minimap": "flat"
+        },
+        "last_skill": null,
+        "notebook": {},
+        "jpeg_path": "unused-derived-only.jpg",
+        "hud": {
+          "screen": "game",
+          "wanted": 0
+        },
+        "objects": []
+      },
+      "before": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "after": {
+        "rule": "foot_target",
+        "plan": [
+          {
+            "name": "walk_to",
+            "args": {
+              "color": "blue",
+              "duration": 10,
+              "sprint": false
+            }
+          }
+        ]
+      },
+      "human_whole_step": {
+        "observed_seconds": 66.006,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 4.483,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 46.094
+        }
+      },
+      "human_frozen_3s": {
+        "observed_seconds": 3.0,
+        "seconds": {
+          "driving": 0.0,
+          "walking": 2.418,
+          "running": 0.0,
+          "aiming": 0.0,
+          "firing": 0.0,
+          "looking": 0.0,
+          "map_input": 0.0,
+          "vehicle_input": 0.0,
+          "neutral": 0.582
+        }
+      },
+      "human_category": "foot",
+      "agreement": "same category",
+      "frozen_case_matches": 1
+    }
+  ],
+  "limitations": [
+    "P42 actions.jsonl absent: 18-label shares and first-20-second action/drive/walk shares cannot be measured.",
+    "Whole-step coarse human signals overlap; they are not mutually exclusive action labels.",
+    "Three-second human categories use maxima of overlapping signals (walking/running and aiming/firing), not dominant action labels. They are frozen sample windows, not the first 20 seconds; neutral is not proof of intentional waiting.",
+    "Minimap comes from the derived sample at its recorded timestamp, not necessarily objective onset; objects and absent state stay empty.",
+    "Replay is one independent initial decision per step; it does not demonstrate live skill success."
+  ]
+}

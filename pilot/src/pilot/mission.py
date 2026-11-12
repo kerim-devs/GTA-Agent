@@ -6,6 +6,7 @@ from collections import Counter
 
 from .contract import ARROW_XY
 from .head import Head, HeadRequest, HeadResponse, parse_response
+from .notes import intent
 
 
 def _text(value: str) -> str:
@@ -43,20 +44,9 @@ def movement(request: HeadRequest) -> str:
     return "unknown"
 
 
-# The game orders a kill as "Schalte <somebody> aus." Read over Wi-Fi the verb survives better than
-# its object or the closing "aus" (lab/take-out/cases.json holds "Schalte den Gai ti ie"), so the
-# verb alone carries the order, read with the confusions seen in those texts: e and a as 8, l as i
-# or 1. "Schalte ... ein" and "an" switch something on and are not an order to kill.
-TAKE_OUT = re.compile(r"\b[s5]ch[a8@][l1i|]t[e8]\b(?!.*\b(?:ein|an)\W*$)")
-
 # Seconds of one fight before the rules look again; the first attempt at the Vagos in
 # recordings/20261110-093238 lasted 23 s before it failed.
 FIGHT_SECONDS = 20
-
-
-def take_out(objective: str) -> bool:
-    """Whether the objective on screen orders somebody taken out."""
-    return bool(TAKE_OUT.search(_text(objective)))
 
 
 def _call(name: str, **args: object) -> dict:
@@ -109,8 +99,12 @@ class MissionHead:
         self.last_rule: str | None = None
         self.sought_mission = False
         self.letterless = 0
+        self.objective_class: str | None = None
+        self.pending_class: str | None = None
+        self.pending_reads = 0
 
     def decide(self, request: HeadRequest) -> HeadResponse:
+        self._update_intent(request)
         selected = self._rule(request)
         if selected is None:
             if self.fallback is not None:
@@ -134,6 +128,67 @@ class MissionHead:
         self.counts[rule] += 1
         self.sought_mission = any(call.args.get("target") == "mission" for call in response.plan)
         return response
+
+    def _update_intent(self, request: HeadRequest) -> None:
+        """Require a second observation before replacing an established class."""
+        observed = intent(request.objective)["class"]
+        if self.objective_class is None or any(
+            event.get("kind") in {"failure", "pass", "mission_ended"} for event in request.events
+        ):
+            self.objective_class = observed
+            self.pending_class = observed
+            self.pending_reads = 0
+        elif observed == self.objective_class:
+            self.pending_class = observed
+            self.pending_reads = 0
+        else:
+            if observed != self.pending_class:
+                self.pending_class = observed
+                self.pending_reads = 0
+            self.pending_reads += 1
+            if self.pending_reads >= 2:
+                self.objective_class = observed
+                self.pending_reads = 0
+
+    def _intent_rule(self, request: HeadRequest, mode: str, cars: bool):
+        """What the class of the objective settles by itself; None leaves it to the rules below."""
+        objective_class = self.objective_class
+        if objective_class == "wait":
+            return (
+                "objective_wait",
+                [_call("look", duration=0.5, angle=20), _call("wait", duration=3)],
+                "Der Auftrag verlangt zu warten, ich bleibe hier.",
+            )
+        if objective_class == "escape":
+            # A route or a marker the game gives is the way out and belongs to the rules below.
+            marked = {blip.get("color") for blip in request.minimap.get("blips", [])} & {"yellow", "blue"}
+            if mode == "vehicle" and request.minimap.get("route") not in {"yellow", "purple"}:
+                return "objective_escape_vehicle", _route("away"), "Ich fahre aus dem Gebiet."
+            if mode == "on_foot" and not marked:
+                return "objective_escape_foot", [_walk(sprint=True)], "Ich laufe aus dem Gebiet."
+        if mode == "on_foot" and objective_class in {"enter_vehicle", "steal"} and cars:
+            return (
+                "objective_" + objective_class,
+                [_call("enter_vehicle", duration=25, kind="any")],
+                "Ich gehe zum sichtbaren Fahrzeug und steige ein.",
+            )
+        if (
+            mode == "on_foot"
+            and objective_class == "take_out"
+            and any(
+                blip.get("color") == "red" and not blip.get("border")
+                for blip in request.minimap.get("blips", [])
+            )
+        ):
+            return (
+                "take_out_fight",
+                [_call("fight", duration=FIGHT_SECONDS, cover="no")],
+                "Der Auftrag lautet ausschalten, ich kämpfe gegen die roten Ziele.",
+            )
+        # Going somewhere, bringing, following, picking up and using are answered by the route and
+        # the marked target as the rules below do for any objective; protecting, destroying and
+        # sneaking have no skill of their own yet and get the same.
+        return None
 
     def close(self) -> None:
         close = getattr(self.fallback, "close", None)
@@ -243,6 +298,9 @@ class MissionHead:
 
         # head_prompt.txt:49-60: failure/retry must not replay the old plan.
         # Menu confirmation belongs to the existing reflex, not this head.
+        if self.objective_class == "wait":
+            return self._intent_rule(request, mode, cars)
+
         if self._failed(request):
             if mode == "unknown":
                 return None
@@ -275,6 +333,11 @@ class MissionHead:
                 [_walk()],
                 "Der letzte Versuch ist gescheitert, ich suche einen anderen Weg.",
             )
+
+        # A class with no rule of its own for this situation is answered by the rules below.
+        selected = self._intent_rule(request, mode, cars)
+        if selected is not None:
+            return selected
 
         text = _text(" ".join([request.objective, request.help, request.subtitle, request.banner]))
         restart = bool(kinds & {"failure", "pass", "menu_closed", "screen_cleared"}) or bool(
@@ -310,14 +373,6 @@ class MissionHead:
             # Without a red in range the rules below stay in charge: the minimap shows the same red
             # whichever way the camera faces, so looking finds nothing, while walking to what the
             # game marks brings the enemies into range, and with nothing marked the picture decides.
-            if take_out(request.objective) and any(
-                blip.get("color") == "red" and not blip.get("border") for blip in blips
-            ):
-                return (
-                    "take_out_fight",
-                    [_call("fight", duration=FIGHT_SECONDS, cover="no")],
-                    "Der Auftrag lautet ausschalten, ich kämpfe gegen die roten Ziele.",
-                )
             # head_prompt.txt:35-41 and docs/LOG.md:64: red alone is not an
             # instruction, nor proof of a gun in hand. Without an order to take
             # somebody out, leave combat selection to the fallback.
