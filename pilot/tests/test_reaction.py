@@ -194,6 +194,196 @@ def test_real_pilot_path_produces_pad_and_cleans_scratch(tmp_path):
     assert not list(tmp_path.glob("scratch-*"))
 
 
+class TurnsFirst:
+    """Sees the threat at once and turns towards it, as Fight does; the replayed picture never
+    turns, so it never aims."""
+
+    def step(self, frame, capture, now):
+        if capture >= 0.1:
+            return Decision(Pad(right=(0.4, 0.0)), "turning to the blip", noticed="red blip")
+        return Decision()
+
+    def close(self):
+        pass
+
+
+def test_noticed_and_answered_are_two_times():
+    turning = replay(scene(), TurnsFirst(), recording=Frames())
+    assert turning["metrics"]["noticed_s"] == pytest.approx(0, abs=0.04)
+    assert turning["metrics"]["reaction_s"] is None
+    # Noticed from the decision's own field, not guessed from the pad: an answer without it is
+    # answered and not noticed.
+    plain = replay(scene(), Slow(), recording=Frames())
+    assert plain["metrics"]["reaction_s"] is not None
+    assert plain["metrics"]["noticed_s"] is None
+
+
+def test_notice_before_the_onset_voids_and_counts_as_false():
+    rows = [
+        {"t": 0.05, "matches": False, "noticed": "red blip", "decision_s": 0.01},
+        {"t": 0.12, "matches": True, "noticed": "red blip", "decision_s": 0.01},
+    ]
+    metrics = measure(scene(), rows)
+    assert metrics["noticed_s"] is None and metrics["notice_void_pre_onset"]
+    assert metrics["false_notices"] == 1
+    assert metrics["reaction_s"] == pytest.approx(0.02)
+
+
+def test_board_shows_both_times_and_says_which(tmp_path):
+    row = replay(scene(), TurnsFirst(), recording=Frames())
+    row["approach"] = "turns"
+    content = board([row], tmp_path)
+    assert "Noticed median" in content and "Answered median" in content
+    line = next(line for line in content.splitlines() if line.startswith("| turns |"))
+    cells = [cell.strip() for cell in line.strip("|").split("|")]
+    assert cells[3] == "100.0%" and cells[5] == "0.0%"
+
+
+def test_second_answer_judge_notices_at_the_first_and_answers_at_the_second():
+    judge = Judge(Config(second=True), transport=lambda frame, capture: {"action": "fight", "why": "x"})
+    pixels = np.zeros((8, 8, 3), np.uint8)
+    seen = []
+    try:
+        for tick in range(200):
+            decision = judge.step(pixels, tick, tick)
+            seen.append((judge.answers, decision))
+            if judge.answers >= 2:
+                break
+            time.sleep(0.005)
+    finally:
+        judge.close()
+    after_first = next(decision for count, decision in seen if count == 1)
+    assert after_first.noticed == "model named fight" and after_first.pad == Pad()
+    assert seen[-1][1].pad.r2 == 1
+    assert [row["action"] for row in judge.answer_log] == ["fight", "fight"]
+    assert all(row["duration_s"] >= 0 for row in judge.answer_log)
+
+
+def test_letter_reply_is_one_fixed_answer_or_a_failure():
+    from pilot.approaches import letter_answer
+
+    choice = {
+        "message": {"content": " B\n"},
+        "logprobs": {
+            "content": [
+                {
+                    "token": "B",
+                    "logprob": -0.1,
+                    "top_logprobs": [{"token": "B", "logprob": -0.1}, {"token": "A", "logprob": -2.4}],
+                }
+            ]
+        },
+    }
+    answer = letter_answer(choice)
+    assert answer["action"] == "fight" and answer["letter"] == "B"
+    assert 0.9 < answer["p"] < 1
+    assert letter_answer({"message": {"content": "c."}})["action"] == "flee"
+    for content in ("B D", "Yes", '{"action":"fight"}', "E", ""):
+        with pytest.raises(ValueError):
+            letter_answer({"message": {"content": content}})
+
+
+def test_letter_question_goes_out_as_the_pilot_judge_asks(tmp_path):
+    import base64
+    from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+    from threading import Thread
+
+    import cv2
+
+    from pilot import judge as judge_questions
+    from pilot.approaches import LETTER_TOKENS, THREAT_QUESTION, request
+
+    seen = []
+
+    class Handler(BaseHTTPRequestHandler):
+        def do_POST(self):
+            data = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+            seen.append(data)
+            body = json.dumps({"choices": [{"message": {"content": "C"}}]}).encode()
+            self.send_response(200)
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+
+        def log_message(self, *args):
+            pass
+
+    server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+    thread = Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    try:
+        config = Config(endpoint=f"http://127.0.0.1:{server.server_port}", model="m", question="letter")
+        answer = request(config, np.zeros((720, 1280, 3), np.uint8), 5)
+    finally:
+        server.shutdown()
+        server.server_close()
+        thread.join()
+    assert answer["action"] == "flee" and answer["p"] is None
+    data = seen[0]
+    assert data["max_tokens"] == LETTER_TOKENS and data["temperature"] == 0
+    assert data["messages"][0] == {"role": "system", "content": judge_questions.SYSTEM}
+    image, text = data["messages"][1]["content"]
+    assert text == {"type": "text", "text": THREAT_QUESTION}
+    jpeg = base64.b64decode(image["image_url"]["url"].split(",", 1)[1])
+    assert cv2.imdecode(np.frombuffer(jpeg, np.uint8), cv2.IMREAD_COLOR).shape[:2] == (360, 640)
+
+
+def test_kerim_looser_reading_counts_a_new_press_while_another_is_held(tmp_path):
+    from pilot.reaction import human_result
+
+    rows = [(-0.1, 1, 0), (0.15, 1, 1), (0.25, 1, 0)]  # aim held from before, fire pressed after
+    (tmp_path / "pad.jsonl").write_text(
+        "\n".join(
+            json.dumps(
+                {"t": t, "src": "human", "buttons": [], "left": [0, 0], "right": [0, 0], "l2": l2, "r2": r2}
+            )
+            for t, l2, r2 in rows
+        )
+    )
+    answers = [{"l2": 0.5, "why": "aim"}, {"r2": 0.5, "why": "fire"}]
+    s = replace(
+        scene(), recording=str(tmp_path), answers=answers, human={"lead_s": 0.0, "lead_source": "estimated"}
+    )
+    metrics = human_result(s)["metrics"]
+    assert metrics["void_pre_onset"] and metrics["reaction_s"] is None
+    assert metrics["loose_reaction_s"] == pytest.approx(0.05)
+    assert metrics["loose_answer"]["why"] == "fire"
+    # A held input that is never pressed anew gives no looser answer either.
+    (tmp_path / "pad.jsonl").write_text(
+        json.dumps(
+            {"t": -0.1, "src": "human", "buttons": [], "left": [0, 0], "right": [0, 0], "l2": 1, "r2": 0}
+        )
+    )
+    assert human_result(s)["metrics"]["loose_reaction_s"] is None
+
+
+def test_answer_statistics_count_naming_and_false_calls():
+    from pilot.reaction import answer_stats
+
+    def answer(capture, action, duration=0.3):
+        return {"capture": capture, "action": action, "duration_s": duration}
+
+    threat = {
+        "scene": {"kind": "enemy", "onset": 10.0},
+        "model_answers": [
+            answer(3.5, "fight"),  # outside the six seconds before the onset
+            answer(5, "neutral"),
+            answer(9, "fight"),  # a false call before the onset
+            answer(10.1, "neutral"),
+            answer(10.4, "fight", 0.5),
+        ],
+    }
+    calm = {
+        "scene": {"kind": "calm", "onset": 20.0},
+        "model_answers": [answer(18, "neutral"), answer(19, "flee")],
+    }
+    s = answer_stats([threat, calm])
+    assert s["named_share"] == 1 and s["named_needed_median"] == 2
+    assert s["lead_false_share"] == pytest.approx(0.5) and s["lead_answers"] == 2
+    assert s["calm_false_share"] == pytest.approx(0.5)
+    assert s["answer_worst_s"] == pytest.approx(0.5)
+
+
 def test_local_delayed_http_judge_policy_and_head(tmp_path):
     from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
     from threading import Thread

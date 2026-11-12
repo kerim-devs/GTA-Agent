@@ -1,0 +1,3765 @@
+{
+ "wanted-03": [
+  {
+   "from": -0.4983,
+   "until": -0.0512,
+   "frames": 28,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-5,-4"
+   ],
+   "health": 0.8,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.0336,
+   "until": -0.0336,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@73,88",
+    "red@-4,-4"
+   ],
+   "health": 0.8,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.0183,
+   "until": -0.0183,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@88,30",
+    "red@-4,-4"
+   ],
+   "health": 0.8,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.0,
+   "until": 0.0331,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-4,-4"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.0495,
+   "until": 0.0495,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@92,89",
+    "red@-4,-4"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.066,
+   "until": 0.2144,
+   "frames": 10,
+   "map": "tilted",
+   "damaged": false,
+   "blips": [
+    "red@-4,-4"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.2316,
+   "until": 0.3486,
+   "frames": 8,
+   "map": "tilted",
+   "damaged": false,
+   "blips": [
+    "blue@86,17",
+    "red@-3,-3"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.3654,
+   "until": 0.4172,
+   "frames": 4,
+   "map": "tilted",
+   "damaged": false,
+   "blips": [
+    "red@-4,-3"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.4318,
+   "until": 0.4318,
+   "frames": 1,
+   "map": "tilted",
+   "damaged": false,
+   "blips": [
+    "blue@85,72",
+    "red@-3,-3"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.4486,
+   "until": 0.4659,
+   "frames": 2,
+   "map": "tilted",
+   "damaged": false,
+   "blips": [
+    "red@-3,-3"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.4866,
+   "until": 0.4866,
+   "frames": 1,
+   "map": "tilted",
+   "damaged": false,
+   "blips": [
+    "red-border@-8,-23",
+    "red@-4,-3",
+    "red@48,-3",
+    "red@85,18"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.5001,
+   "until": 0.5001,
+   "frames": 1,
+   "map": "tilted",
+   "damaged": false,
+   "blips": [
+    "red-border@-10,85",
+    "red-border@-9,-23",
+    "red@-4,-3",
+    "red@65,36"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.5177,
+   "until": 0.5177,
+   "frames": 1,
+   "map": "tilted",
+   "damaged": false,
+   "blips": [
+    "red-border@-9,-22",
+    "red-border@-9,86",
+    "red@-4,-2"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.5329,
+   "until": 0.5329,
+   "frames": 1,
+   "map": "tilted",
+   "damaged": false,
+   "blips": [
+    "red-border@-9,-22",
+    "red@-38,56",
+    "red@-4,-2"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.5509,
+   "until": 0.5509,
+   "frames": 1,
+   "map": "tilted",
+   "damaged": false,
+   "blips": [
+    "red@-4,-2"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.5683,
+   "until": 0.5683,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-10,-22",
+    "red@-4,-3"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.5845,
+   "until": 0.5845,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-4,-3"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.6017,
+   "until": 0.6017,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-11,-22",
+    "red@-4,-2"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.6191,
+   "until": 0.6191,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-4,-1"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.6356,
+   "until": 0.6356,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@30,-23",
+    "red-border@88,-0",
+    "red@-4,-1",
+    "red@-84,55"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.6523,
+   "until": 0.669,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@88,-4",
+    "red@-4,-1"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.6872,
+   "until": 0.7707,
+   "frames": 6,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-4,-1"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.786,
+   "until": 0.786,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-5,-0",
+    "red@79,-13"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.8038,
+   "until": 0.8038,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.86,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.8193,
+   "until": 0.8193,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.8364,
+   "until": 0.8364,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@46,82"
+   ],
+   "health": 0.74,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.8543,
+   "until": 0.8543,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.71,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.8696,
+   "until": 0.8696,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-20,12"
+   ],
+   "health": 0.66,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.8863,
+   "until": 0.8863,
+   "frames": 1,
+   "map": "flat",
+   "damaged": true,
+   "blips": [],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.9034,
+   "until": 0.919,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-36,-6",
+    "red@-40,-12"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.9387,
+   "until": 0.9387,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-36,-2",
+    "red@-4,-0",
+    "red@64,61"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.9551,
+   "until": 0.9551,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.9715,
+   "until": 0.9715,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-26,-6",
+    "red@-41,-3",
+    "red@72,56",
+    "red@76,62"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.988,
+   "until": 0.988,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@32,49"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.0045,
+   "until": 1.0209,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.0382,
+   "until": 1.0382,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@92,8"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.054,
+   "until": 1.3203,
+   "frames": 17,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.3366,
+   "until": 1.3869,
+   "frames": 4,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.4047,
+   "until": 1.4047,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.77,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.4199,
+   "until": 1.4199,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.72,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.4385,
+   "until": 1.4385,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-88,-19"
+   ],
+   "health": 0.71,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.4551,
+   "until": 1.4551,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-86,-16"
+   ],
+   "health": 0.67,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.4725,
+   "until": 1.4725,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.63,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.4883,
+   "until": 1.5385,
+   "frames": 4,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.5557,
+   "until": 1.5557,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@5,63"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.5716,
+   "until": 1.5716,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-19,33",
+    "red@-58,22",
+    "red@-6,65",
+    "red@7,63"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.5865,
+   "until": 1.5865,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.6056,
+   "until": 1.6542,
+   "frames": 4,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@0,4"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.6715,
+   "until": 1.6715,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-3,17",
+    "red@27,9",
+    "red@42,-1",
+    "red@64,-17"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.6886,
+   "until": 1.6886,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.7054,
+   "until": 1.7054,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-52,52"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.7222,
+   "until": 1.7222,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.7385,
+   "until": 1.7385,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-62,49"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.756,
+   "until": 1.756,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-60,52",
+    "red@28,6"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.7706,
+   "until": 1.7706,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-60,65"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.7867,
+   "until": 1.8044,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.8207,
+   "until": 1.8207,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-49,65"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.8371,
+   "until": 1.8371,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-58,60",
+    "red@40,-12"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.8535,
+   "until": 1.8849,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@8,28"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.902,
+   "until": 1.902,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-36,86",
+    "red@-1,40"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.9184,
+   "until": 1.9184,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-36,86",
+    "red@-1,40",
+    "red@3,-5"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.9361,
+   "until": 1.9361,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-34,86",
+    "red@3,-5"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.9506,
+   "until": 1.9506,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@5,-8"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.9668,
+   "until": 1.9668,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.9846,
+   "until": 1.9846,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-36,47",
+    "red@0,40"
+   ],
+   "health": 0.8,
+   "stars": 1,
+   "screen": "game"
+  }
+ ],
+ "enemy-05": [
+  {
+   "from": -0.4853,
+   "until": -0.0007,
+   "frames": 28,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.27,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.0,
+   "until": 0.1655,
+   "frames": 12,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-33,87"
+   ],
+   "health": 0.27,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.1834,
+   "until": 0.2159,
+   "frames": 3,
+   "map": "flat",
+   "damaged": true,
+   "blips": [],
+   "health": 0.27,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.325,
+   "until": 0.4002,
+   "frames": 11,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-20,87"
+   ],
+   "health": 0.27,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.4153,
+   "until": 0.4153,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.27,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.5206,
+   "until": 0.9365,
+   "frames": 31,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-9,88"
+   ],
+   "health": 0.27,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.0441,
+   "until": 1.0441,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.27,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.0452,
+   "until": 1.0532,
+   "frames": 6,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@2,87"
+   ],
+   "health": 0.27,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.0675,
+   "until": 1.0675,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.27,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.0848,
+   "until": 1.1026,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-1,85"
+   ],
+   "health": 0.27,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.1177,
+   "until": 1.1177,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-2,85"
+   ],
+   "health": 0.28,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.1342,
+   "until": 1.1553,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.28,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.1682,
+   "until": 1.2182,
+   "frames": 4,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-3,85"
+   ],
+   "health": 0.28,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.2362,
+   "until": 1.3737,
+   "frames": 4,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.28,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.3745,
+   "until": 1.3837,
+   "frames": 6,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-0,88",
+    "red@-7,83"
+   ],
+   "health": 0.28,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.3992,
+   "until": 1.6022,
+   "frames": 13,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@0,88",
+    "red@-8,82"
+   ],
+   "health": 0.29,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.6176,
+   "until": 1.6176,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-4,82",
+    "red@3,85"
+   ],
+   "health": 0.29,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.6347,
+   "until": 1.6347,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-4,82",
+    "red@3,84"
+   ],
+   "health": 0.3,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.6515,
+   "until": 1.684,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.3,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.7008,
+   "until": 1.7008,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@1,82"
+   ],
+   "health": 0.3,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.7167,
+   "until": 1.8005,
+   "frames": 6,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.3,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.8977,
+   "until": 1.8985,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@2,80"
+   ],
+   "health": 0.3,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.8996,
+   "until": 1.8996,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.3,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.9007,
+   "until": 1.904,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@3,79"
+   ],
+   "health": 0.31,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.9214,
+   "until": 1.9214,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.31,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.9377,
+   "until": 1.9377,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@4,78"
+   ],
+   "health": 0.31,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.9565,
+   "until": 1.9863,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.31,
+   "stars": 0,
+   "screen": "game"
+  }
+ ],
+ "enemy-06": [
+  {
+   "from": -0.4846,
+   "until": -0.2763,
+   "frames": 13,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-80,-12"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.2594,
+   "until": -0.2594,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-79,-14",
+    "blue@5,34"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.1498,
+   "until": -0.1479,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-79,-15"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.1468,
+   "until": -0.1468,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-79,-15",
+    "blue@6,35"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.1455,
+   "until": -0.1455,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.1443,
+   "until": -0.1148,
+   "frames": 5,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-79,-15"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.0992,
+   "until": -0.0992,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.082,
+   "until": 0.0,
+   "frames": 6,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-77,-16"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.0185,
+   "until": 0.0185,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-76,-16",
+    "red-border@-7,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.035,
+   "until": 0.035,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-7,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.052,
+   "until": 0.052,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-75,-17",
+    "red-border@-7,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.0692,
+   "until": 0.0692,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-76,-17",
+    "blue@8,40",
+    "red-border@-7,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.0857,
+   "until": 0.187,
+   "frames": 7,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-75,-19",
+    "red-border@-9,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.2015,
+   "until": 0.2195,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-11,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.2343,
+   "until": 0.2343,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-12,88",
+    "red-border@-59,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.2557,
+   "until": 0.2557,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-12,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.2701,
+   "until": 0.378,
+   "frames": 4,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-74,-21",
+    "red-border@-14,88",
+    "red-border@-62,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.379,
+   "until": 0.379,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-19,87",
+    "red-border@-65,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.3799,
+   "until": 0.3799,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@2,45",
+    "red-border@-19,87",
+    "red-border@-65,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.381,
+   "until": 0.381,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-19,87",
+    "red-border@-65,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.3863,
+   "until": 0.3863,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@1,47",
+    "red-border@-21,87",
+    "red-border@-68,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.4023,
+   "until": 0.4348,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-21,87",
+    "red-border@-68,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.4525,
+   "until": 0.52,
+   "frames": 5,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@0,48",
+    "red-border@-21,87",
+    "red-border@-68,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.5359,
+   "until": 0.5684,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-25,87",
+    "red-border@-72,86"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.5863,
+   "until": 0.5863,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-4,48",
+    "red-border@-28,87",
+    "red-border@-75,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.601,
+   "until": 0.601,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-4,48",
+    "red-border@-28,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.6189,
+   "until": 0.7529,
+   "frames": 9,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-28,87",
+    "red-border@-75,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.7714,
+   "until": 0.7714,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-6,47",
+    "red-border@-36,87",
+    "red-border@-80,88"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.7871,
+   "until": 0.9008,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-36,87",
+    "red-border@-80,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.902,
+   "until": 0.902,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-7,48",
+    "red-border@-38,88",
+    "red-border@-82,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.903,
+   "until": 1.0056,
+   "frames": 10,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-39,88",
+    "red-border@-82,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.0194,
+   "until": 1.0194,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-10,47",
+    "red-border@-46,87",
+    "red-border@-85,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.0371,
+   "until": 1.0542,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-46,87",
+    "red-border@-85,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.0721,
+   "until": 1.0721,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-12,45",
+    "red-border@-48,87",
+    "red-border@-85,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.0882,
+   "until": 1.1043,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-48,88",
+    "red-border@-84,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.1213,
+   "until": 1.1392,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-12,45",
+    "red-border@-51,87",
+    "red-border@-86,88"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.1543,
+   "until": 1.1706,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-53,87",
+    "red-border@-86,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.1873,
+   "until": 1.2226,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-11,45",
+    "red-border@-51,87",
+    "red-border@-83,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.238,
+   "until": 1.238,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-52,87",
+    "red-border@-83,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.2571,
+   "until": 1.2571,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-11,43",
+    "red-border@-52,87",
+    "red-border@-83,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.2707,
+   "until": 1.2707,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-53,87",
+    "red-border@-83,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.289,
+   "until": 1.289,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-11,42",
+    "red-border@-53,87",
+    "red-border@-83,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.3058,
+   "until": 1.3058,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-53,87",
+    "red-border@-83,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.3221,
+   "until": 1.3221,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-11,42",
+    "red-border@-53,87",
+    "red-border@-83,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.4256,
+   "until": 1.4256,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-53,88",
+    "red-border@-82,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.4266,
+   "until": 1.4266,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-11,41",
+    "red-border@-53,88",
+    "red-border@-82,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.4275,
+   "until": 1.4292,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-51,88",
+    "red-border@-80,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.43,
+   "until": 1.43,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-10,41",
+    "red-border@-52,88",
+    "red-border@-80,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.4354,
+   "until": 1.5236,
+   "frames": 6,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-52,87",
+    "red-border@-80,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.5371,
+   "until": 1.5867,
+   "frames": 4,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-9,39",
+    "red-border@-51,87",
+    "red-border@-77,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.6046,
+   "until": 1.6046,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-8,39",
+    "red-border@-49,87",
+    "red-border@-75,87"
+   ],
+   "health": 0.51,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.6213,
+   "until": 1.6368,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-8,38",
+    "red-border@-47,88",
+    "red-border@-73,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.6525,
+   "until": 1.6525,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-8,39",
+    "red-border@-47,88",
+    "red-border@-73,87"
+   ],
+   "health": 0.39,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.6721,
+   "until": 1.6721,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-45,88",
+    "red-border@-71,88"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.6874,
+   "until": 1.7369,
+   "frames": 4,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-7,38",
+    "red-border@-45,88",
+    "red-border@-71,88"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.7531,
+   "until": 1.77,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-41,88",
+    "red-border@-67,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.7858,
+   "until": 1.7858,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-41,88",
+    "red-border@-67,87"
+   ],
+   "health": 0.39,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.8031,
+   "until": 1.8031,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-4,37",
+    "red-border@-39,87",
+    "red-border@-65,87"
+   ],
+   "health": 0.38,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.8196,
+   "until": 1.8196,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-5,37",
+    "red-border@-39,87",
+    "red-border@-64,87"
+   ],
+   "health": 0.39,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.837,
+   "until": 1.837,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-36,87",
+    "red-border@-63,87"
+   ],
+   "health": 0.49,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.8531,
+   "until": 1.971,
+   "frames": 8,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-36,87",
+    "red-border@-62,87"
+   ],
+   "health": 0.39,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.9868,
+   "until": 1.9868,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-30,87",
+    "red-border@-56,87"
+   ],
+   "health": 0.5,
+   "stars": 0,
+   "screen": "game"
+  }
+ ],
+ "enemy-09": [
+  {
+   "from": -0.5,
+   "until": -0.4823,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@26,52"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.4606,
+   "until": -0.4606,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-79,58",
+    "blue@26,52"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.443,
+   "until": -0.443,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-79,58"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.4248,
+   "until": -0.4248,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-79,58",
+    "blue@26,52"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.41,
+   "until": -0.41,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-79,58",
+    "blue@26,53",
+    "blue@46,62"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.3927,
+   "until": -0.3927,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-79,58",
+    "blue@46,62"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.3792,
+   "until": -0.3792,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-79,58",
+    "blue@26,52",
+    "blue@49,62"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.3598,
+   "until": -0.3598,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@74,20"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.3432,
+   "until": -0.3432,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.325,
+   "until": -0.325,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-87,-7"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.3078,
+   "until": -0.2931,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@74,20"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.2763,
+   "until": -0.0007,
+   "frames": 14,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.0,
+   "until": 0.0,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@43,44",
+    "red-border@20,-27"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.0009,
+   "until": 0.0016,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@20,-27"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.0042,
+   "until": 0.0042,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@8,-14",
+    "red-border@20,-27"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.0233,
+   "until": 0.0233,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@20,-27"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.0354,
+   "until": 0.0551,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-80,14",
+    "red-border@20,-27"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.066,
+   "until": 0.5256,
+   "frames": 24,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@20,-27"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.5263,
+   "until": 0.5263,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@92,-20",
+    "red-border@20,-27"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.5272,
+   "until": 0.72,
+   "frames": 15,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@20,-27"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.7371,
+   "until": 0.7905,
+   "frames": 4,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-87,-18",
+    "red-border@20,-27"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.8061,
+   "until": 0.8061,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@20,-26"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.825,
+   "until": 0.8573,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.8748,
+   "until": 0.8748,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@22,-26"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.8914,
+   "until": 0.9431,
+   "frames": 4,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.0501,
+   "until": 1.0501,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@26,-26"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.0514,
+   "until": 1.0514,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-12,-26",
+    "red-border@26,-26"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.0528,
+   "until": 1.0554,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-11,-27"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.0565,
+   "until": 1.0593,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-8,-26",
+    "red-border@31,-27"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.0783,
+   "until": 1.0783,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@33,-26"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.0939,
+   "until": 1.0939,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-4,-26",
+    "red-border@35,-27"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.1108,
+   "until": 1.1108,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-80,86",
+    "red-border@-4,-26",
+    "red-border@36,-26"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.1266,
+   "until": 1.3618,
+   "frames": 15,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@-3,-26",
+    "red-border@38,-26"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.3782,
+   "until": 1.3782,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@24,-26"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.3949,
+   "until": 1.3949,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@24,-26",
+    "red-border@60,-24"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.4119,
+   "until": 1.5799,
+   "frames": 8,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@26,-26",
+    "red@62,-21"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.5822,
+   "until": 1.5822,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-88,48",
+    "red-border@40,-27",
+    "red@65,3"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.5833,
+   "until": 1.5849,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@41,-24",
+    "red@65,6"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.596,
+   "until": 1.596,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@44,-21",
+    "red@64,14"
+   ],
+   "health": null,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.6117,
+   "until": 1.6117,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-88,-4",
+    "red@44,-18",
+    "red@63,16"
+   ],
+   "health": null,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.6292,
+   "until": 1.645,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@46,-15",
+    "red@62,20"
+   ],
+   "health": null,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.6606,
+   "until": 1.6606,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@48,-10",
+    "red@60,26"
+   ],
+   "health": 0.72,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.6769,
+   "until": 1.6769,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@48,-8",
+    "red@58,29"
+   ],
+   "health": 0.78,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.6956,
+   "until": 1.7306,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@48,-6",
+    "red@56,32"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.746,
+   "until": 1.746,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@48,0",
+    "red@50,40"
+   ],
+   "health": null,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.7626,
+   "until": 1.7626,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@48,42"
+   ],
+   "health": null,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.7777,
+   "until": 1.88,
+   "frames": 7,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@46,44",
+    "red@49,6"
+   ],
+   "health": null,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.8942,
+   "until": 1.8942,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@76,84",
+    "red@27,57",
+    "red@42,22"
+   ],
+   "health": 0.56,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.9105,
+   "until": 1.9105,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@26,58"
+   ],
+   "health": 0.59,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.9281,
+   "until": 1.9281,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@22,59",
+    "red@42,26"
+   ],
+   "health": 0.64,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.9446,
+   "until": 1.9446,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@18,60",
+    "red@40,27"
+   ],
+   "health": 0.7,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.9612,
+   "until": 1.9612,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@16,60",
+    "red@38,30"
+   ],
+   "health": 0.76,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.9796,
+   "until": 1.9796,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@14,61",
+    "red@37,31"
+   ],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.9958,
+   "until": 1.9958,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-29,46",
+    "red@11,61",
+    "red@35,33"
+   ],
+   "health": 0.8,
+   "stars": 0,
+   "screen": "game"
+  }
+ ],
+ "enemy-13": [
+  {
+   "from": -0.4875,
+   "until": -0.324,
+   "frames": 11,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.99,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.3071,
+   "until": -0.0015,
+   "frames": 18,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-3,7"
+   ],
+   "health": 0.99,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.0,
+   "until": 0.5182,
+   "frames": 28,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-2,7",
+    "red@-7,13"
+   ],
+   "health": 0.99,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.5192,
+   "until": 0.5202,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-4,13"
+   ],
+   "health": 0.99,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.5217,
+   "until": 1.4112,
+   "frames": 56,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-1,7",
+    "red@-4,13"
+   ],
+   "health": 0.99,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.4279,
+   "until": 1.6464,
+   "frames": 14,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-3,5",
+    "red@-10,10",
+    "red@-22,10"
+   ],
+   "health": 0.99,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.6621,
+   "until": 1.6621,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@-11,10",
+    "red@-22,11"
+   ],
+   "health": 0.99,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.6792,
+   "until": 1.6956,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-4,4",
+    "red@-10,9",
+    "red@-22,11"
+   ],
+   "health": 0.99,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.7113,
+   "until": 1.7113,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-5,3",
+    "red@-10,9",
+    "red@-21,12"
+   ],
+   "health": 0.99,
+   "stars": null,
+   "screen": "game"
+  },
+  {
+   "from": 1.7291,
+   "until": 1.7291,
+   "frames": 1,
+   "map": "flat",
+   "damaged": true,
+   "blips": [],
+   "health": 0.99,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 1.744,
+   "until": 1.9954,
+   "frames": 16,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-4,3",
+    "red@-10,10",
+    "red@-21,11"
+   ],
+   "health": 0.99,
+   "stars": 0,
+   "screen": "game"
+  }
+ ],
+ "wanted-07": [
+  {
+   "from": -0.4808,
+   "until": -0.4671,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.99,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.4497,
+   "until": -0.4497,
+   "frames": 1,
+   "map": "flat",
+   "damaged": true,
+   "blips": [],
+   "health": 0.99,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.4315,
+   "until": -0.4315,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.93,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.4153,
+   "until": -0.4153,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-86,80"
+   ],
+   "health": 0.89,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.4003,
+   "until": -0.4003,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.84,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.3833,
+   "until": -0.3833,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.79,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.366,
+   "until": -0.366,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.77,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.3486,
+   "until": -0.3486,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.73,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.3328,
+   "until": -0.2323,
+   "frames": 7,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.71,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": -0.217,
+   "until": -0.217,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.71,
+   "stars": null,
+   "screen": "game"
+  },
+  {
+   "from": -0.1991,
+   "until": -0.0816,
+   "frames": 5,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": null,
+   "stars": null,
+   "screen": "game"
+  },
+  {
+   "from": -0.0791,
+   "until": -0.0162,
+   "frames": 7,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": null,
+   "stars": 0,
+   "screen": "game"
+  },
+  {
+   "from": 0.0,
+   "until": 0.0344,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.0507,
+   "until": 0.2488,
+   "frames": 13,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-85,83"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.2655,
+   "until": 0.4454,
+   "frames": 11,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.4512,
+   "until": 0.4992,
+   "frames": 4,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@27,43",
+    "red-border@89,87",
+    "red@33,60"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.5167,
+   "until": 0.7496,
+   "frames": 15,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@89,87",
+    "red@26,39",
+    "red@26,46",
+    "red@33,60"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.7661,
+   "until": 0.7661,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-86,82",
+    "red-border@88,87",
+    "red@33,60"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.7832,
+   "until": 0.7832,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-86,82",
+    "red-border@88,87"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.8004,
+   "until": 0.8004,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@89,87",
+    "red@33,60"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.8188,
+   "until": 0.8188,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@88,87"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.8331,
+   "until": 0.8331,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@88,87",
+    "red@33,55",
+    "red@33,63"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.8496,
+   "until": 0.9609,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@89,87"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.9634,
+   "until": 0.9649,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@89,87",
+    "red@32,58"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.9668,
+   "until": 0.9668,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-86,82",
+    "red-border@88,88"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.9684,
+   "until": 0.9684,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-86,82",
+    "red-border@89,87",
+    "red@27,40",
+    "red@27,45"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.9711,
+   "until": 0.9711,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@88,87",
+    "red@26,40",
+    "red@26,45"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.9736,
+   "until": 0.9736,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@88,87",
+    "red@26,42"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 0.9857,
+   "until": 0.9857,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-86,1"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.0017,
+   "until": 1.0017,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-86,1",
+    "red@27,42"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.0192,
+   "until": 1.0364,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-86,1"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.054,
+   "until": 1.054,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-86,-21",
+    "blue-border@-86,1"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.0682,
+   "until": 1.0682,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-86,1"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.0847,
+   "until": 1.1348,
+   "frames": 4,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.1513,
+   "until": 1.1513,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": null,
+   "stars": null,
+   "screen": "game"
+  },
+  {
+   "from": 1.1692,
+   "until": 1.2026,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.2172,
+   "until": 1.2172,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue@-80,81"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.2356,
+   "until": 1.2679,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.2856,
+   "until": 1.2856,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.77,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.303,
+   "until": 1.3176,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-86,-3",
+    "blue-border@-89,82"
+   ],
+   "health": 0.79,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.3358,
+   "until": 1.3358,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.81,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.3691,
+   "until": 1.3691,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-89,82"
+   ],
+   "health": 0.82,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.371,
+   "until": 1.371,
+   "frames": 1,
+   "map": "flat",
+   "damaged": true,
+   "blips": [],
+   "health": 0.82,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.3866,
+   "until": 1.3866,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.84,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.4856,
+   "until": 1.4856,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.87,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.4877,
+   "until": 1.4877,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.86,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.489,
+   "until": 1.491,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.87,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.493,
+   "until": 1.493,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [],
+   "health": 0.89,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.4943,
+   "until": 1.5036,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "blue-border@-86,78"
+   ],
+   "health": 0.91,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.5204,
+   "until": 1.5361,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@68,87",
+    "red@18,58"
+   ],
+   "health": 0.92,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.5563,
+   "until": 1.5697,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@64,87",
+    "red@14,43",
+    "red@16,59"
+   ],
+   "health": 0.96,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.5867,
+   "until": 1.6028,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red@14,42",
+    "red@14,59"
+   ],
+   "health": 0.99,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.62,
+   "until": 1.6367,
+   "frames": 2,
+   "map": "flat",
+   "damaged": true,
+   "blips": [],
+   "health": 0.98,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.6534,
+   "until": 1.6534,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@58,87",
+    "red@12,43",
+    "red@12,60"
+   ],
+   "health": 0.98,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.6718,
+   "until": 1.6718,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@58,87",
+    "red@12,42",
+    "red@12,59"
+   ],
+   "health": 0.99,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.6857,
+   "until": 1.6857,
+   "frames": 1,
+   "map": "flat",
+   "damaged": true,
+   "blips": [],
+   "health": 0.99,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.7035,
+   "until": 1.7035,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@57,87",
+    "red@11,42",
+    "red@11,59"
+   ],
+   "health": 0.98,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.7199,
+   "until": 1.7357,
+   "frames": 2,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@57,87",
+    "red@11,42",
+    "red@11,59"
+   ],
+   "health": 0.99,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.7526,
+   "until": 1.7526,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@55,87",
+    "red@10,59",
+    "red@11,42"
+   ],
+   "health": 0.98,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.7691,
+   "until": 1.8015,
+   "frames": 3,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@55,87",
+    "red@11,42"
+   ],
+   "health": 0.98,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.8194,
+   "until": 1.8194,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@55,87"
+   ],
+   "health": null,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.8346,
+   "until": 1.8861,
+   "frames": 4,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@55,87"
+   ],
+   "health": 0.99,
+   "stars": 1,
+   "screen": "game"
+  },
+  {
+   "from": 1.9029,
+   "until": 1.9029,
+   "frames": 1,
+   "map": "flat",
+   "damaged": false,
+   "blips": [
+    "red-border@57,88",
+    "red@12,40",
+    "red@12,57",
+    "red@12,63"
+   ],
+   "health": 0.99,
+   "stars": 1,
+   "screen": "game"
+  }
+ ]
+}
