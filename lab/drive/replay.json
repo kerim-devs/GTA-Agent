@@ -114,7 +114,8 @@
       "reason": "time-limit",
       "start_distance": 1390.0,
       "end_distance": 1040.0,
-      "distance_age": 8.2519712090143
+      "distance_age": 8.2519712090143,
+      "flagged_seconds": 0.0
     }
   },
   {
@@ -154,7 +155,8 @@
       "reason": "dead-or-held",
       "start_distance": null,
       "end_distance": null,
-      "distance_age": null
+      "distance_age": null,
+      "flagged_seconds": 0.0
     }
   },
   {
@@ -193,7 +195,8 @@
       "reason": "dead-or-held",
       "start_distance": 1990.0,
       "end_distance": 1990.0,
-      "distance_age": 0.54968562501017
+      "distance_age": 0.54968562501017,
+      "flagged_seconds": 0.0
     }
   },
   {
@@ -233,7 +236,8 @@
       "reason": "no-progress",
       "start_distance": 1810.0,
       "end_distance": 1850.0,
-      "distance_age": 0.07783975097117946
+      "distance_age": 0.07783975097117946,
+      "flagged_seconds": 0.0
     }
   },
   {
@@ -351,7 +355,8 @@
       "reason": "dead-or-held",
       "start_distance": 1770.0,
       "end_distance": 1820.0,
-      "distance_age": 0.19206087500788271
+      "distance_age": 0.19206087500788271,
+      "flagged_seconds": 0.0
     }
   },
   {
@@ -390,7 +395,8 @@
       "reason": "dead-or-held",
       "start_distance": null,
       "end_distance": null,
-      "distance_age": null
+      "distance_age": null,
+      "flagged_seconds": 0.0
     }
   },
   {
@@ -453,7 +459,8 @@
       "reason": "dead-or-held",
       "start_distance": 1820.0,
       "end_distance": 1820.0,
-      "distance_age": 0.138160917093046
+      "distance_age": 0.138160917093046,
+      "flagged_seconds": 0.0
     }
   }
 ]

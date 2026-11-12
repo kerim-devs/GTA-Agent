@@ -69,7 +69,10 @@ def crops_for(folder, play):
 
 
 def motion_for(folder, play):
-    cache = OUT / f"{folder.name}-motion.json.gz"
+    return motion_for_rows(folder, play, OUT / f"{folder.name}-motion.json.gz")
+
+
+def motion_for_rows(folder, play, cache):
     if cache.exists():
         with gzip.open(cache, "rt") as f:
             return {int(k): v for k, v in json.load(f).items()}

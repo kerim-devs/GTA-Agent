@@ -23,7 +23,7 @@ from .motion import map_motion, motion_state
 
 RECORDINGS = Path(__file__).resolve().parents[3] / "recordings"
 # States in which drive.Driver has given the car up.
-END_STATES = ("route-gone", "failed-recovery", "dead-or-held")
+END_STATES = ("route-gone", "failed-recovery", "dead-or-held", "map-unreadable")
 
 
 class Pipeline:

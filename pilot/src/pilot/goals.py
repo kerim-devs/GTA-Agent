@@ -31,8 +31,11 @@ SUCCESSOR = {"vehicle": "drive", "drive": "fight", "fight": "escape", "escape": 
 # How a drive_route that ended without arriving is answered (skills.py DriveRoute). A car that will not
 # move is left: the figure gets out, walks away from it and takes another before the trip goes on. A
 # drive that got no nearer, or lost its route far from the place, sets the waypoint again on the same
-# place once; the second time on that place the trip is given up and the round moves on.
+# place once; the second time on that place the trip is given up and the round moves on. A drive that
+# stood because it could not read the map is begun again after a look round, the same car once, and
+# the second time the car is left like a held one.
 HELD = "dead-or-held"
+UNREADABLE = "map-unreadable"
 STALLED = ("no-progress", "route-lost-far")
 EXIT_TRIES = 3  # presses of the exit before the car is taken to be one the figure cannot leave
 AWAY = 12.0  # seconds after leaving a car in which no vehicle is taken, so that it is not taken again
@@ -161,6 +164,7 @@ class Goal:
     exiting: bool = False
     exits: int = 0
     replacing: bool = False
+    unreadable: int = 0  # drives of this goal in this car that ended for a map they could not read
 
     def data(self):
         return {
@@ -382,7 +386,14 @@ class Goals:
                 or bool(last.get("pending"))
             )
         )
-        fresh = last != goal.last_result
+        # A result the goal has not read yet; and a failure the conductor reports in this very request is
+        # one more even when it looks like the last (a drive that ends for the same reason twice).
+        fresh = last != goal.last_result or any(
+            e.get("kind") == "skill_failed"
+            and (e.get("skill") or {}).get("name") == last.get("name")
+            and (e.get("skill") or {}).get("reason") == last.get("reason")
+            for e in request.events
+        )
         if fresh:
             goal.last_result = dict(last)
             self.learn(last)
@@ -465,6 +476,8 @@ class Goals:
                 self.end(request, f"{ended} twice on the way to {goal.place or 'the waypoint'}")
                 goal = self._start(request, seat, cars, wanted)
                 failed = ended = None
+        if goal.name == "drive" and ended == UNREADABLE:
+            goal.unreadable += 1
         if goal.exiting and seat != "vehicle":
             goal.exiting, goal.exits = False, 0  # the figure is out
         # A car that will not move is left; if the exit has not shown by the end of its plan, it is
@@ -472,7 +485,11 @@ class Goals:
         leaving = (
             goal.name == "drive"
             and seat == "vehicle"
-            and (ended == HELD or (goal.exiting and goal.exits < EXIT_TRIES))
+            and (
+                ended == HELD
+                or (ended == UNREADABLE and goal.unreadable >= 2)
+                or (goal.exiting and goal.exits < EXIT_TRIES)
+            )
         )
         away = (
             goal.name == "drive"
@@ -517,11 +534,16 @@ class Goals:
                 plan = leave_vehicle()
                 goal.exiting, goal.left_at, goal.replacing = True, now, True
                 goal.exits += 1
+                goal.unreadable = 0  # the next car is read afresh
                 note = f"{ended or 'exit not seen'}: the figure leaves the car and takes another"
-            elif trip_on or request.minimap.get("route") in {"purple", "yellow"}:
+            elif ended == UNREADABLE or trip_on or request.minimap.get("route") in {"purple", "yellow"}:
                 # A waypoint that stands is not set again (set_waypoint refuses to toggle it off): the
-                # drive starts anew, with a window of its own.
+                # drive starts anew, with a window of its own. After a map that could not be read the
+                # look round changes the picture, and the route is still the one that stands.
                 plan = [call("drive_route", duration=120)]
+                if ended == UNREADABLE:
+                    plan.insert(0, call("look", duration=1.2, angle=180))
+                    note = f"{ended}: a look round, and the drive begins again"
             elif ended in STALLED and goal.place and goal.stalled.get(goal.place) == 1:
                 # The route is gone: the same place is asked for again, and not another one.
                 plan = [call("set_waypoint", place=goal.place, duration=45)]

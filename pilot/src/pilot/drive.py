@@ -1,5 +1,6 @@
 """Defensive path following with a noisy GPS distance speed sensor."""
 
+from collections import deque
 from dataclasses import dataclass
 from math import atan2, degrees, hypot, isfinite, sqrt
 
@@ -56,6 +57,11 @@ class DriveConfig:
     recovery_throttle: float = 0.45  # Forward pedal during escape.
     max_recoveries: int = 3  # Consecutive failed escapes before a latched stop.
     queue_wait: float = 30.0  # Longest a stop close behind a vehicle is waited out before it counts as stuck.
+    damage_lasting: float = 1.0  # A damage flag that stays this long is no stream damage, which lasts frames.
+    damage_steady: float = 20.0  # Widest spread of the route bearing, in degrees, of a flag driven on.
+    flagged_speed: float = 4.0  # Speed limit on a map the reader flags, in metres per second.
+    unreadable_time: float = 3.0  # A stopped car that cannot use the picture this long gives the drive up.
+    unreadable_max: float = 10.0  # Longest an unusable picture is coasted on, whether the car stands or not.
     outlier_angle: float = 60.0  # Abrupt jumps larger than this require persistence.
     outlier_window: float = 0.3  # Accept a persistent new direction after this interval.
     stop_brake_time: float = 0.7  # Bound L2 use so a stop cannot become indefinite reverse.
@@ -93,6 +99,10 @@ class DriveConfig:
             raise ValueError("curve_step must be a positive integer")
         if not isinstance(self.curve_trim, int):
             raise ValueError("curve_trim must be an integer")
+
+
+# States in which the driver has given the car up: they last, and the skill ends on them.
+LATCHED = frozenset({"failed-recovery", "dead-or-held", "map-unreadable"})
 
 
 def _number(value: object) -> float | None:
@@ -144,6 +154,12 @@ class Driver:
         self._reverse_duration = self.config.reverse_time
         self._queue_spent = 0.0
         self._queue_free: float | None = None
+        self._flag_since: float | None = None
+        self._flag_route: str | None = None
+        self._flag_bearings: deque[tuple[float, float]] = deque()
+        self.flagged_time = 0.0  # Seconds driven on a map the reader flagged, which the skill reports.
+        self._unusable_since: float | None = None
+        self._unusable_still: float | None = None
         self._trusted_route: str | None = None
         self._trusted_error: float | None = None
         self._brake_since: float | None = None
@@ -170,7 +186,9 @@ class Driver:
         self._stuck_since = None
         self._steer = 0.0
         self._speed = None
-        if self._phase not in {"failed-recovery", "dead-or-held"}:
+        self._unusable_since = self._unusable_still = self._flag_since = None
+        self._flag_bearings.clear()
+        if self._phase not in LATCHED:
             self._phase = None
         return self._emit(0, 0, 0, "idle")
 
@@ -180,7 +198,7 @@ class Driver:
                 return self._emit(self._last.steer, self._last.throttle, self._last.brake, "coast")
         self._steer = 0.0
         self._stuck_since = None
-        if self._phase not in {"failed-recovery", "dead-or-held"}:
+        if self._phase not in LATCHED:
             self._phase = None
         return self._emit(0, 0, 0, "coast")
 
@@ -232,19 +250,32 @@ class Driver:
             or reading.minimap != "tilted"
         ):
             return self._idle()
-        if self._phase in {"failed-recovery", "dead-or-held"}:
+        if self._phase in LATCHED:
             return self._emit(0, 0, 0, self._phase)
         confidence = _number(reading.confidence)
         damaged = self._damage_agrees(reading, now, confidence)
-        if not damaged and (
-            reading.corrupt is not False
-            or confidence is None
-            or not self.config.confidence_min <= confidence <= 1
+        flagged = self._flag_lasts(reading, now, confidence)
+        if (
+            not damaged
+            and not flagged
+            and (
+                reading.corrupt is not False
+                or confidence is None
+                or not self.config.confidence_min <= confidence <= 1
+            )
         ):
             self._missing_observed_at = None
-            return self._coast(now)
+            return self._unusable(now, dt, moving, speed)
         if not isinstance(reading.route, str):
-            return self._coast(now)
+            return self._unusable(now, dt, moving, speed)
+        if flagged:
+            # A flagged picture is driven on, and a car that stays standing under it has not been helped.
+            wait = self.config.unreadable_time + (self.config.queue_wait if ahead is True else 0.0)
+            if self._standing(now, dt, moving, speed, stuck_logic=True) >= wait:
+                self._phase = "map-unreadable"
+                return self._emit(0, 0, 0, self._phase)
+        else:
+            self._unusable_since = self._unusable_still = None
         if reading.route == "none":
             if self._missing_observed_at is not None:
                 self._missing_duration += now - self._missing_observed_at
@@ -263,7 +294,7 @@ class Driver:
         self._route_stopped = False
         near, far, arrow = (_number(reading.bearing), _number(reading.far_bearing), _number(reading.arrow))
         if reading.route not in ("yellow", "purple") or near is None or arrow is None:
-            return self._coast(now)
+            return self._unusable(now, dt, moving, speed)
         error = _angle(_angle(near) - _angle(arrow))
         far_error = error if far is None else _angle(_angle(far) - _angle(arrow))
         path = _path(reading.path)
@@ -283,7 +314,7 @@ class Driver:
             self._trusted_error = _angle(_angle(_number(reading.bearing)) - _angle(arrow))
 
         queued = self._queue(ahead is True, moving, now, dt)
-        if self._phase in {"recovery-reverse", "recovery-forward"} and not reading.corrupt:
+        if self._phase in {"recovery-reverse", "recovery-forward"} and (not reading.corrupt or flagged):
             # GPS slope lags a collision; only the map can prove a completely held car.
             self._recovery_moved |= map_moving is True
             if map_moving is False and not queued:
@@ -411,6 +442,9 @@ class Driver:
         )
         throttle = max(self.config.bend_throttle, self.config.cruise_throttle - self.config.bend_gain * bend)
         limit = self._speed_limit(path, bend, speed)
+        if flagged:
+            limit = min(limit, self.config.flagged_speed)
+            self.flagged_time += dt
         distance = _number(reading.gps_distance)
         if distance is not None and 0 <= distance <= self.config.arrival_distance:
             limit = min(limit, self.config.arrival_speed)
@@ -490,6 +524,66 @@ class Driver:
             and error * self._trusted_error > 0
             and abs(_angle(error - self._trusted_error)) <= self.config.damage_angle
         )
+
+    def _flag_lasts(self, reading: Reading, now: float, confidence: float | None) -> bool:
+        """The reader's damage flag has stood for `damage_lasting` seconds on the same route, with a
+        confidence in the range of damage and a bearing that holds still: that is a picture it
+        misjudges, not damage from the cable, which lasts a few frames and scrambles the bearing."""
+        route = reading.route
+        near, arrow = _number(reading.bearing), _number(reading.arrow)
+        if (
+            reading.corrupt is not True
+            or route not in ("yellow", "purple")
+            or confidence is None
+            or not 0.3 <= confidence <= 1
+            or near is None
+            or arrow is None
+        ):
+            self._flag_since = self._flag_route = None
+            self._flag_bearings.clear()
+            return False
+        if self._flag_since is None or route != self._flag_route:
+            self._flag_since, self._flag_route = now, route
+            self._flag_bearings.clear()
+        self._flag_bearings.append((now, near))
+        while self._flag_bearings and now - self._flag_bearings[0][0] > self.config.damage_lasting:
+            self._flag_bearings.popleft()
+        if now - self._flag_since < self.config.damage_lasting:
+            return False
+        spread = max(abs(_angle(bearing - near)) for _, bearing in self._flag_bearings)
+        return spread <= self.config.damage_steady
+
+    def _standing(
+        self, now: float, dt: float, moving: bool | None, speed: float | None, *, stuck_logic: bool = False
+    ) -> float:
+        """Seconds the car has stood still on evidence, 0 once it moves; missing evidence pauses the count.
+
+        Where the drive goes on (`stuck_logic`), a map that says the car stands is left to the recovery
+        that stands for it: only the speed counts here, for the car whose map says nothing."""
+        if stuck_logic and moving is False:
+            moving, speed = None, None
+        if moving is False or (moving is None and speed is not None and speed <= self.config.motion_speed):
+            if self._unusable_still is None:
+                self._unusable_still = now
+        elif moving is None and speed is None:
+            if self._unusable_still is not None:
+                self._unusable_still += dt
+        else:
+            self._unusable_still = None
+        return 0.0 if self._unusable_still is None else now - self._unusable_still
+
+    def _unusable(self, now: float, dt: float, moving: bool | None, speed: float | None) -> Command:
+        """A picture the driver cannot use: it coasts, and gives the car up when that has left it standing."""
+        if self._unusable_since is None:
+            self._unusable_since = now
+        standing = self._standing(now, dt, moving, speed)
+        if (
+            standing >= self.config.unreadable_time
+            or now - self._unusable_since >= self.config.unreadable_max
+        ):
+            self._phase = "map-unreadable"
+            return self._emit(0, 0, 0, self._phase)
+        return self._coast(now)
 
     def _queue(self, ahead: bool, moving: bool | None, now: float, dt: float) -> bool:
         """Whether this stop is being waited out behind a vehicle, and for how long it has been."""

@@ -224,13 +224,15 @@ class DriveRoute(RegisteredSkill):
         start_distance: float | None = None
         end_distance: float | None = None
         distance_age: float | None = None
+        # Seconds driven on a map the reader flagged as damaged, that stood for longer than damage does.
+        flagged_seconds: float = 0.0
 
     name = "drive_route"
     parameters: ClassVar[dict] = {"duration": (0.1, 120, 60)}
     prompt = (
         "Follow a visible GPS route in a vehicle. Done with arrived after small, falling distances and "
-        "route loss, or with time-limit. Fails on lost route, no progress, dead-or-held car or "
-        "exhausted recovery."
+        "route loss, or with time-limit. Fails on lost route, no progress, dead-or-held car, "
+        "exhausted recovery or a picture it cannot read (map-unreadable)."
     )
     # The failed town drives made 0-10 m in 25-37 s; useful drives made 350-480 m/min.
     progress_window = 20.0
@@ -256,6 +258,7 @@ class DriveRoute(RegisteredSkill):
             self.start_distance,
             self.end_distance,
             None if self.distance_time is None else self._now - self.distance_time,
+            self.driver.flagged_time,
         )
 
     def stop(self, reason="interrupted") -> SkillResult:
@@ -342,7 +345,7 @@ class DriveRoute(RegisteredSkill):
             )
             if command.state == "route-gone":
                 return self._route_end()
-            if command.state in ("dead-or-held", "failed-recovery"):
+            if command.state in ("dead-or-held", "failed-recovery", "map-unreadable"):
                 return self.stop(command.state)
             if len(self._distances) >= 3 and self.distance_time is not None:
                 first, last = self._distances[0], self._distances[-1]

@@ -1095,6 +1095,26 @@ def test_a_second_car_that_is_held_is_left_as_well():
     assert names(second) == ["press", "wait", "walk_road"] and second.goal["name"] == "drive"
 
 
+def test_an_unreadable_map_is_answered_with_a_look_round_and_the_second_time_by_leaving_the_car():
+    head = MissionHead(goal_seed=51)
+    on_the_way(head)
+    tries = head.goals.active.attempts
+    # The map is the trouble: the route may read as gone, and the answer is still the drive.
+    first = head.decide(routed(40, route="none", last_skill=failed_drive("map-unreadable")))
+    assert names(first) == ["look", "drive_route"]
+    assert first.plan[0].args["angle"] == 180 and first.plan[1].args["duration"] == 120
+    assert first.goal["name"] == "drive" and first.goal["place"] == "Kino"
+    assert first.goal["attempts"] == tries + 1
+    assert "map-unreadable" in first.reason
+    # The drive runs again, and ends for the same map again: this car is left, like a held one.
+    head.decide(routed(55, last_skill={"name": "drive_route", "status": "running", "queue": []}))
+    second = head.decide(routed(70, last_skill=failed_drive("map-unreadable", 2)))
+    assert names(second) == ["press", "wait", "walk_road"] and second.plan[0].args["button"] == "triangle"
+    assert second.goal["name"] == "drive" and second.goal["attempts"] == tries + 1  # leaving costs no try
+    assert "map-unreadable" in second.reason
+    assert head.goals.active.unreadable == 0  # the next car is read afresh
+
+
 def test_a_drive_that_lost_its_route_far_from_the_place_sets_that_waypoint_again_once_and_then_gives_up():
     head = MissionHead(goal_seed=51)
     on_the_way(head)
@@ -1289,6 +1309,42 @@ def test_the_conductor_leaves_a_held_car_and_goes_on_to_the_same_place_in_anothe
         assert conductor.goal["name"] == "drive" and conductor.goal["place"] == "Kino"
         # A held car, a walk and a second entry did not use up the three tries of the trip.
         assert conductor.goal["attempts"] <= 2
+    finally:
+        conductor.close()
+
+
+def test_the_conductor_looks_round_after_an_unreadable_map_and_leaves_the_car_the_second_time(
+    tmp_path, monkeypatch
+):
+    conductor, runner = conducted(
+        tmp_path, monkeypatch, [("failed", "map-unreadable"), ("failed", "map-unreadable")]
+    )
+
+    def seat(active, names, now):
+        return "foot" if "press" in names and "enter_vehicle" not in names else "vehicle"
+
+    try:
+        started = run(
+            conductor,
+            runner,
+            50,
+            seat=seat,
+            route=lambda active, names, now: "purple" if "drive_route" in names else "none",
+        )
+        order = [name for name, _ in started]
+        assert order[:9] == [
+            "set_waypoint",
+            "drive_route",
+            "look",
+            "drive_route",
+            "press",
+            "wait",
+            "walk_road",
+            "enter_vehicle",
+            "drive_route",
+        ]
+        assert started[2][1]["angle"] == 180
+        assert conductor.goal["name"] == "drive" and conductor.goal["place"] == "Kino"
     finally:
         conductor.close()
 
