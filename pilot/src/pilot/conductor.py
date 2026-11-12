@@ -51,6 +51,8 @@ def minimap_crop(rgb):
 
 
 class Conductor:
+    OCR_SLOW_SECONDS = 3.0
+
     def __init__(
         self,
         directory: Path,
@@ -64,7 +66,7 @@ class Conductor:
         text_reader=None,
         quiet_seconds=60.0,
         ocr_interval=0.5,
-        ocr_timeout=3.0,
+        ocr_timeout=20.0,
         submit=background,
         clock=time.monotonic,
         opening=(),
@@ -91,6 +93,7 @@ class Conductor:
         self.text = SceneText()
         self.ocr_future = None
         self.ocr_started = None
+        self.ocr_slow = False
         self.next_ocr = float("-inf")
         self.pending = [{"kind": "startup"}]
         self.epoch = 0
@@ -161,7 +164,15 @@ class Conductor:
             elif self.clock() - self.ocr_started >= self.ocr_timeout:
                 self.write({"type": "ocr_error", "t": t, "error": "timeout"})
                 raise TimeoutError("scene OCR exceeded its time limit")
+            elif not self.ocr_slow and self.clock() - self.ocr_started >= self.OCR_SLOW_SECONDS:
+                # On 12 November a reading took over three seconds while the Mac classified
+                # recordings beside the pilot, and that ended the session. A late reading only
+                # leaves the pilot without fresh text, which it treats as no text; a reader that
+                # stays away for ocr_timeout still ends it.
+                self.ocr_slow = True
+                self.write({"type": "ocr_slow", "t": t, "seconds": self.clock() - self.ocr_started})
         if self.ocr_future is None and t >= self.next_ocr:
+            self.ocr_slow = False
             self.ocr_started = self.clock()
             self.ocr_capture_time = captured
             self.ocr_future = self.submit(self._read_text, rgb.copy())

@@ -417,6 +417,28 @@ def test_ocr_timeout_releases_live_pad_and_stops_recorder(tmp_path):
     assert any(row["type"] == "ocr_error" for row in rows(tmp_path))
 
 
+def test_a_late_text_reading_is_noted_once_and_does_not_end_the_session(tmp_path):
+    clock = Clock()
+    bridge = FakeBridge(tmp_path, clock)
+    pending = Pending()
+
+    def factory(*args, **kwargs):
+        kwargs["ocr"] = True
+        return Conductor(*args, **kwargs, submit=pending, detector=NoEvents())
+
+    run_play(
+        bridge,
+        seconds=6,
+        pipeline=FakePipeline(),
+        clock=clock,
+        sleep=clock.sleep,
+        conductor_factory=factory,
+    )
+    kinds = [row["type"] for row in rows(tmp_path)]
+    assert kinds.count("ocr_slow") == 1
+    assert "ocr_error" not in kinds
+
+
 def test_offline_video_writes_decisions_and_frame_log_without_bridge(tmp_path, monkeypatch):
     import runpy
     from pathlib import Path
