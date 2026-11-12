@@ -1,6 +1,7 @@
 """Local, bounded skills. Every result describes the entire controller state."""
 
 from collections import deque
+from dataclasses import dataclass
 from math import atan2, degrees, hypot
 from typing import TYPE_CHECKING, ClassVar
 
@@ -218,8 +219,6 @@ class RegisteredSkill(Skill):
 
 
 class DriveRoute(RegisteredSkill):
-    from dataclasses import dataclass
-
     @dataclass(frozen=True)
     class Result(SkillResult):
         start_distance: float | None = None

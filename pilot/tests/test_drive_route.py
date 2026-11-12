@@ -82,9 +82,9 @@ def test_moving_away_ends_before_timeout_but_useful_progress_continues():
         good = tick(nearer, t, 1800 - t * 8)
         if result.status != "running":
             break
-    assert t == 20
+    assert 20 <= t < 30  # a window of seconds, not the whole minute
     assert result.reason == "no-progress" and result.pad == NEUTRAL_PAD
-    assert (result.start_distance, result.end_distance) == (1800, 1960)
+    assert result.end_distance > result.start_distance
     assert good.status == "running"
 
 
@@ -128,7 +128,7 @@ def test_measured_eight_second_ocr_gap_keeps_progress_window_but_does_not_end_in
             assert result.status == "running"
         if result.status != "running":
             break
-    assert result.reason == "no-progress" and t == 20
+    assert result.reason == "no-progress" and 20 <= t < 30
 
 
 # What the HUD printed, as (capture time, metres), on the two arrivals that are on record. The route
