@@ -1,96 +1,82 @@
 # Capability bench
 
-43 tries; 24 counted failures; unclear 0/24 (0.0%).
+57 tries, 24 counted, 33 not counted; 8 counted failures, of which 0 unclear (0.0%).
 
-Historical code versions are unknown unless recorded at execution. Missing evidence is excluded, never converted into a pass.
+A try is not counted where the start state did not hold or where the proof cannot say. Code versions of tries judged from old logs are unknown. `unverified` counts tries whose skill said done and whose proof could not be measured; `failed, proof silent` counts tries whose skill said failed and whose proof could not say (a waypoint that stands where it stood before, for one), which are not counted but are not successes either.
 
-| Capability | State | Last ten | All | Median s | Excluded | Causes | Top reasons |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| foot.view | not measurable | 0/0 | 0/0 | None | 0 | {} | [] |
-| foot.walk | not measurable | 0/0 | 0/0 | None | 6 | {} | [] |
-| foot.walk_to | not measurable | 0/0 | 0/0 | None | 0 | {} | [] |
-| foot.roadside | not built | 0/0 | 0/0 | None | 0 | {} | [] |
-| foot.enter | not measurable | 0/3 | 0/3 | 32.992 | 2 | {'act': 2, 'see': 1} | [('could not reach it', 2), ('nothing found', 1)] |
-| car.leave | too few tries | 3/3 | 3/3 | 7.987 | 4 | {} | [] |
-| car.follow | not measurable | 0/1 | 0/1 | 66.0 | 3 | {'decide': 1} | [('replaced', 1)] |
-| car.arrive | too few tries | 0/0 | 0/0 | None | 0 | {} | [] |
-| car.free | not measurable | 0/0 | 0/0 | None | 0 | {} | [] |
-| car.turn | not built | 0/0 | 0/0 | None | 0 | {} | [] |
-| map.open_close | too few tries | 0/0 | 0/0 | None | 0 | {} | [] |
-| map.place | not measurable | 0/10 | 0/20 | 31.991 | 1 | {'decide': 2, 'see': 4, 'proof': 14} | [('waypoint set: Ammu-Nation (294m); gameplay observed; places: Ammu-Nation, Ammu-Nation mit Schießstand, Beekers Garage, Los Santos Customs', 4), ('existing-waypoint-at-target; avoid toggling it off; gameplay observed', 2), ('waypoint set: Ammu-Nation mit Schießstand (6078m); gameplay observed; places: Ammu-Nation, Ammu-Nation mit Schießstand, Beekers Garage, Los Santos Customs', 2)] |
-| map.mission | not measurable | 0/0 | 0/0 | None | 0 | {} | [] |
-| goal.keep | not measurable | 0/0 | 0/0 | None | 0 | {} | [] |
-| incident.menu | not measurable | 0/0 | 0/0 | None | 0 | {} | [] |
-| incident.down | not measurable | 0/0 | 0/0 | None | 0 | {} | [] |
-| incident.wanted | not measurable | 0/0 | 0/0 | None | 0 | {} | [] |
-| chain.basic | not measurable | 0/0 | 0/0 | None | 0 | {} | [] |
+| Capability | State | Last ten | All | Median s | Not counted | Unverified | Failed, proof silent | Causes | Reasons |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| foot.view (Sicht einstellen) | too few tries | 3/5 | 3/5 | 33.987 | 0 | 0 | 0 | see 2 | view-unknown (2) |
+| foot.walk (Laufen) | not measurable | 0/0 | 0/0 | None | 9 | 0 | 0 | - | - |
+| foot.walk_to (Zu einem Punkt laufen) | too few tries | 0/0 | 0/0 | None | 0 | 0 | 0 | - | - |
+| foot.roadside (Am Straßenrand bleiben) | not built | 0/0 | 0/0 | None | 0 | 0 | 0 | - | - |
+| foot.enter (Einsteigen) | not measurable | 0/4 | 0/4 | 32.996 | 4 | 1 | 0 | act 3, see 1 | could not reach it (2); nothing found (1); vehicle drove away or was lost (1) |
+| car.leave (Aussteigen) | too few tries | 2/2 | 2/2 | 7.989 | 8 | 0 | 0 | - | - |
+| car.follow (Der Route folgen) | too few tries | 0/1 | 0/1 | 66.0 | 3 | 0 | 0 | decide 1 | replaced (1) |
+| car.arrive (Ankommen) | too few tries | 0/0 | 0/0 | None | 0 | 0 | 0 | - | - |
+| car.free (Sich befreien) | not measurable | 0/0 | 0/0 | None | 0 | 0 | 0 | - | - |
+| car.turn (Wenden) | not built | 0/0 | 0/0 | None | 0 | 0 | 0 | - | - |
+| map.open_close (Karte auf und zu) | too few tries | 0/0 | 0/0 | None | 0 | 0 | 0 | - | - |
+| map.place (Ort aus der Liste wählen) | green | 9/10 | 11/12 | 31.988 | 9 | 3 | 6 | proof 1 | waypoint set: Los Santos Customs (6598m) (1) |
+| map.mission (Missionsziel wählen) | too few tries | 0/0 | 0/0 | None | 0 | 0 | 0 | - | - |
+| goal.keep (Ein Ziel halten) | not measurable | 0/0 | 0/0 | None | 0 | 0 | 0 | - | - |
+| incident.menu (Fremdes Menü schließen) | not measurable | 0/0 | 0/0 | None | 0 | 0 | 0 | - | - |
+| incident.down (Nach Tod oder Verhaftung weiter) | not measurable | 0/0 | 0/0 | None | 0 | 0 | 0 | - | - |
+| incident.wanted (Sterne loswerden) | not measurable | 0/0 | 0/0 | None | 0 | 0 | 0 | - | - |
+| chain.basic (Grundkette) | too few tries | 0/0 | 0/0 | None | 0 | 0 | 0 | - | - |
 
-## Evidence and newest failures
+## Why a capability is not measurable, and what its rate leaves out
 
-foot.view: Camera pose/distance missing: perception reader and cli play logger. Marked: 0. Newest failures: none.
+- foot.walk: no independent movement field in play.jsonl: a bool `moving` per tick from the flow reader, written by cli play, at less than 3 s apart for the stretch
+- foot.roadside: no roadside skill and no road position in any log: the road reader would have to write where the figure stands relative to the carriageway per tick
+- foot.enter: speed and occupancy of the vehicle that was entered are in no log: the vehicle reader or cli play would have to write the chosen vehicle's box per tick
+- car.free: no independent movement field and no record of when a recovery began: the driver would have to log its recoveries with a start time
+- car.turn: no turn skill and no route-relative heading in the play log
+- map.place: the proof could not confirm 3 tries the skill called done and 6 it called failed; they are in no rate
+- goal.keep: no goal id, end condition or replaced-plan marker in the play log, and no fixed plan that holds a goal: the conductor would have to log goals with their end
+- incident.menu: the reflex's result and attempt are not logged: the conductor would have to
+- incident.down: no respawn timestamp or resumed-control marker in the logs
+- incident.wanted: the escape's result and attempt are not logged: the conductor would have to
 
-foot.walk: Independent moving field at <3s intervals for 20s: flow reader and cli play logger. Marked: 0. Newest failures: none.
+## Newest failures
 
-foot.walk_to: Blip distance in metres missing: minimap reader and cli play logger. Marked: 0. Newest failures: none.
+- foot.view: /Users/kerim/recordings/pilot/20261112-141430, /Users/kerim/recordings/pilot/20261112-141353
+- foot.enter: /Users/kerim/recordings/pilot/20261112-143436, /Users/kerim/recordings/pilot/20261112-111123, /Users/kerim/recordings/pilot/20261112-110806
+- car.follow: /Users/kerim/recordings/pilot/20261112-122756
+- map.place: /Users/kerim/recordings/pilot/20261112-121713
 
-foot.roadside: Roadside position missing: road reader and cli play logger; no roadside skill. Marked: 0. Newest failures: none.
-
-foot.enter: Target speed and driver occupancy missing: vehicle detector and cli/head logger. Marked: 0. Newest failures: /Users/kerim/recordings/pilot/20261112-111123, /Users/kerim/recordings/pilot/20261112-110806, /Users/kerim/recordings/pilot/20261112-110449.
-
-car.leave: Final stable flat minimap, initially tilted; independent of press result. Marked: 0. Newest failures: none.
-
-car.follow: GPS distance/speed in metres at sufficient cadence: minimap/OCR reader and cli play logger. Marked: 0. Newest failures: /Users/kerim/recordings/pilot/20261112-122756.
-
-car.arrive: Final GPS <=30m, speed stopped, arrival sentence in head response. Marked: 0. Newest failures: none.
-
-car.free: Recovery attempt identity/start missing: driver and cli play logger. Marked: 0. Newest failures: none.
-
-car.turn: No standalone turn skill; route-relative heading missing from play logger. Marked: 0. Newest failures: none.
-
-map.open_close: Independent HUD screen visits map and returns to game. Marked: 0. Newest failures: none.
-
-map.place: Selected legend entry identity/type missing: legend reader and conductor head/play logger. Marked: 0. Newest failures: /Users/kerim/recordings/pilot/20261112-122406, /Users/kerim/recordings/pilot/20261112-122003, /Users/kerim/recordings/pilot/20261112-121929.
-
-map.mission: Independent selected legend identity/type missing: legend reader and conductor head/play logger. Marked: 0. Newest failures: none.
-
-goal.keep: Goal lifecycle/id/end condition missing from head/play logger; no fixed goal plan. Marked: 0. Newest failures: none.
-
-incident.menu: Recovery handler result/attempt id missing: conductor play/head logger. Marked: 0. Newest failures: none.
-
-incident.down: Explicit respawn timestamp and resumed control missing: HUD reader and cli logger. Marked: 0. Newest failures: none.
-
-incident.wanted: Recovery handler result/attempt id missing: conductor play/head logger. Marked: 0. Newest failures: none.
-
-chain.basic: Real legend selection and arrival declaration missing; depends on map.place proof. Marked: 0. Newest failures: none.
-
-## Repair ranking
+## What to repair next
 
 | Capability | Cause | Reason | Count |
 | --- | --- | --- | --- |
-| map.place | proof | waypoint set: Ammu-Nation (294m); gameplay observed; places: Ammu-Nation, Ammu-Nation mit Schießstand, Beekers Garage, Los Santos Customs | 4 |
 | foot.enter | act | could not reach it | 2 |
-| map.place | decide | existing-waypoint-at-target; avoid toggling it off; gameplay observed | 2 |
-| map.place | proof | waypoint set: Ammu-Nation mit Schießstand (6078m); gameplay observed; places: Ammu-Nation, Ammu-Nation mit Schießstand, Beekers Garage, Los Santos Customs | 2 |
-| map.place | proof | waypoint set: Beekers Garage (3377m); gameplay observed; places: Ammu-Nation, Ammu-Nation mit Schießstand, Beekers Garage, Los Santos Customs | 2 |
-| map.place | proof | waypoint set: Los Santos Customs (6598m); gameplay observed; places: Ammu-Nation, Ammu-Nation mit Schießstand, Beekers Garage, Los Santos Customs | 2 |
+| foot.view | see | view-unknown | 2 |
 | car.follow | decide | replaced | 1 |
+| foot.enter | act | vehicle drove away or was lost | 1 |
 | foot.enter | see | nothing found | 1 |
-| map.place | proof | waypoint set: Ammu-Nation mit Schießstand (6078m); gameplay observed; places: Ammu-Nation, Ammu-Nation mit Schießstand, Beekers Garage, SAN, Los Santos Customs | 1 |
-| map.place | proof | waypoint set: Ammu-Nation mit Schießstand (6079m); gameplay observed; places: Ammu-Nation, Ammu-Nation mit Schießstand, Beekers Garage, Los Santos Customs | 1 |
-| map.place | proof | waypoint set: Beekers Garage (3377m); gameplay observed; places: Ammu-Nation, Ammu-Nation mit Schießstand, Beekers Garage, ANDY, Los Santos Customs | 1 |
-| map.place | proof | waypoint set: Los Santos Customs (6598m); gameplay observed; places: Ammu-Nation, Ammu-Nation mit Schießstand, Beekers Garage, Los Santos Customs, Los Santos Customs < 114> i | 1 |
-| map.place | see | map-shift-unverified; damaged or ambiguous map pair; gameplay observed | 1 |
-| map.place | see | place-not-in-legend: ANDY; gameplay observed; places: Ammu-Nation, Ammu-Nation mit Schießstand, Beekers Garage, Los Santos Customs | 1 |
-| map.place | see | place-not-in-legend: Los Santos Customs < 114> i; gameplay observed; places: Ammu-Nation, Ammu-Nation mit Schießstand, Beekers Garage, Los Santos Customs | 1 |
-| map.place | see | place-not-in-legend: SAN; gameplay observed; places: Ammu-Nation, Ammu-Nation mit Schießstand, Beekers Garage, Los Santos Customs | 1 |
+| map.place | proof | waypoint set: Los Santos Customs (6598m) | 1 |
+
+## Why tries were not counted
+
+| Capability | Why | Tries |
+| --- | --- | --- |
+| car.leave | start state not established: vehicle no | 7 |
+| foot.walk | no independent movement field in play.jsonl: a bool `moving` per tick from the flow reader, written by cli play, at less than 3 s apart for the stretch | 7 |
+| map.place | the waypoint blip stands where it stood before the try: a waypoint set again on the same place looks like a try that changed nothing; name another place each try | 7 |
+| car.follow | start state not established: vehicle no, route no, route_far unclear | 2 |
+| foot.enter | start state not established: foot no | 2 |
+| foot.walk | start state not established: foot unclear (the class of the minimap and the judge do not agree, or the stretch is thin) | 2 |
+| car.follow | start state not established: vehicle unclear, route no, route_far unclear | 1 |
+| car.leave | the figure's mode at the end is not clear over the stretch (mixed) | 1 |
+| foot.enter | speed and occupancy of the vehicle that was entered are in no log: the vehicle reader or cli play would have to write the chosen vehicle's box per tick | 1 |
+| foot.enter | terminal skill result missing: cli/head logger | 1 |
+| map.place | a route stood before and at the end at the same distance: a changed waypoint cannot be told from none | 1 |
+| map.place | the minimap class and the judge name different modes at the end; the stretch is not clear enough to say on foot or seated | 1 |
 
 ## Rates by commit
 
-foot.enter: unknown (dirty=None), 0/3.
-
-car.leave: unknown (dirty=None), 3/3.
-
-car.follow: unknown (dirty=None), 0/1.
-
-map.place: unknown (dirty=None), 0/20.
-
+- foot.view: unknown (dirty None): 3/5
+- foot.enter: unknown (dirty None): 0/4
+- car.leave: unknown (dirty None): 2/2
+- car.follow: unknown (dirty None): 0/1
+- map.place: unknown (dirty None): 11/12
