@@ -77,3 +77,38 @@ def test_no_way_from_the_point_itself_or_to_nowhere():
     assert way_by_road(drawn(), 0, 0) is None
     assert way_by_road(drawn(), float("nan"), 3) is None
     assert ARROW_XY == (123, 117)
+
+
+def test_over_bright_ground_only_what_is_clearly_brighter_is_a_road():
+    # Sand at noon behind the translucent map: the ground itself is nearly white.
+    picture = np.full((170, 260, 3), (222, 220, 214), np.uint8)
+    picture[40:117, 118:129] = 252
+    picture[40:51, 118:200] = 252
+    bearing, on_road = way_by_road(picture, 70, 70)
+    assert abs(bearing) < 30 and on_road
+
+
+def test_a_map_that_is_white_all_over_is_not_read_as_roads():
+    # Nothing in it is brighter than the rest: open ground, crossed straight.
+    bearing, on_road = way_by_road(np.full((170, 260, 3), 255, np.uint8), 60, 60)
+    assert bearing == pytest.approx(45, abs=8) and not on_road
+    # And where most of a map's cells count as road all the same, it is not planned on.
+    striped = drawn(*((x, 28, x + 1, 142) for x in range(35, 215, 3)))
+    assert way_by_road(striped, 60, 60) is None
+
+
+@pytest.mark.parametrize(
+    ("x", "y", "bearing"), [(-88, -26, -106.5), (60, 20, 71.6), (0, 80, 0.0), (-70, 70, -45.0)]
+)
+def test_over_open_ground_the_way_is_the_straight_line(x, y, bearing):
+    found, on_road = way_by_road(drawn(), x, y)
+    assert found == pytest.approx(bearing, abs=8) and not on_road
+
+
+def test_the_side_of_a_road_is_taken_when_it_is_asked_for():
+    # A road 21 pixels wide straight up from the arrow: down its middle, or along its edge.
+    picture = drawn((113, 30, 134, 142))
+    middle, _ = way_by_road(picture, 0, 80)
+    edge, on_road = way_by_road(picture, 0, 80, side=True)
+    assert abs(middle) < 6 and on_road
+    assert 10 < abs(edge) < 50

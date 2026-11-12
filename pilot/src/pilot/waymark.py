@@ -95,8 +95,11 @@ def find_waypoint(crop) -> Blip | None:
 _CELL = 3
 _GX0, _GY0, _COLS, _ROWS = 35, 28, 60, 38
 _OFF_ROAD = 4.0  # what a step over open ground costs when a step along a road costs one
-_LOOK = 5  # cells along the way that the walker aims at
+_MIDDLE = 1.5  # what a step down the middle of a road costs when its side is asked for
+_LOOK = 5  # cells along the way that the walker aims at, at the least
+_FAR = 12  # cells along the way within which every cell is tried as the end of a straight line
 _ARROW_R = 9  # the white arrow hides what it stands on
+_TRUST = 0.5  # a map of which more than this share counts as road is not read as a map of roads
 _NEIGHBOURS = tuple((dy, dx, math.hypot(dy, dx)) for dy in (-1, 0, 1) for dx in (-1, 0, 1) if dy or dx)
 
 
@@ -104,7 +107,13 @@ def _roads(crop) -> np.ndarray:
     """The cells of the grid a road runs through: the map's white bands without icons and letters."""
     y1, x1 = _GY0 + _ROWS * _CELL, _GX0 + _COLS * _CELL
     hsv = cv2.cvtColor(np.ascontiguousarray(crop[_GY0:y1, _GX0:x1]), cv2.COLOR_RGB2HSV)
-    white = ((hsv[:, :, 1] < 45) & (hsv[:, :, 2] > 195)).astype(np.uint8)
+    value = hsv[:, :, 2]
+    # The map is translucent. Over sand at noon its ground is nearly white itself (value 210 to 226
+    # on the second run of 12 November, where 13 of 56 samples counted over six cells in ten as
+    # road) and the roads are 247 and more: a road has to be clearly brighter than the map's middle.
+    middle, bright = np.percentile(value, (50, 95))
+    floor = max(195.0, middle + 0.4 * (bright - middle))
+    white = ((hsv[:, :, 1] < 45) & (value > floor)).astype(np.uint8)
     count, labels, stats, _ = cv2.connectedComponentsWithStats(white, 8)
     long = np.zeros(count, bool)
     for index in range(1, count):
@@ -115,14 +124,32 @@ def _roads(crop) -> np.ndarray:
     return road.reshape(_ROWS, _CELL, _COLS, _CELL).sum(axis=(1, 3)) >= 3
 
 
-def way_by_road(crop, x: float, y: float) -> tuple[float, bool] | None:
+def _centre(cell) -> tuple[float, float]:
+    """A cell's centre in pixels right of and below the arrow."""
+    return _GX0 + (cell[1] + 0.5) * _CELL - ARROW_XY[0], _GY0 + (cell[0] + 0.5) * _CELL - ARROW_XY[1]
+
+
+def _straight(start, end):
+    """The cells a straight line from one cell to another passes, one for each step, the first left out."""
+    steps = max(abs(end[0] - start[0]), abs(end[1] - start[1]))
+    return [
+        (
+            round(start[0] + (end[0] - start[0]) * index / steps),
+            round(start[1] + (end[1] - start[1]) * index / steps),
+        )
+        for index in range(1, steps + 1)
+    ]
+
+
+def way_by_road(crop, x: float, y: float, *, side: bool = False) -> tuple[float, bool] | None:
     """Where to walk now to reach the point at (x, y) from the arrow, keeping to the map's roads.
 
     The point is given as a blip is, in pixels right of and above the arrow, and may lie on the rim.
     Returns the map bearing (0 = up = where the camera looks, clockwise) of the first stretch of the
-    cheapest way and whether that stretch runs along a road, or None when the map cannot be read.
-    Open ground can be crossed, at four times the cost of a road, so a road is taken while it does
-    not lead far round. The map does not tell a building from open ground, so neither does this.
+    cheapest way and whether that stretch runs along a road, or None when the map cannot be read as
+    a map of roads. Open ground can be crossed, at four times the cost of a road, so a road is taken
+    while it does not lead far round. With `side` the middle of a road costs more than its side.
+    The map does not tell a building from open ground, so neither does this.
     """
     try:
         if not isinstance(crop, np.ndarray) or crop.shape != (170, 260, 3) or crop.dtype != np.uint8:
@@ -130,7 +157,12 @@ def way_by_road(crop, x: float, y: float) -> tuple[float, bool] | None:
         if not (math.isfinite(x) and math.isfinite(y)):
             return None
         road = _roads(crop)
-        cost = np.where(road, 1.0, _OFF_ROAD).tolist()
+        if road.mean() > _TRUST:
+            return None
+        price = np.where(road, 1.0, _OFF_ROAD)
+        if side:
+            price[cv2.erode(road.astype(np.uint8), np.ones((3, 3), np.uint8)).astype(bool)] = _MIDDLE
+        cost = price.tolist()
 
         def cell(px, py):
             return (
@@ -163,17 +195,31 @@ def way_by_road(crop, x: float, y: float) -> tuple[float, bool] | None:
                         best[ny][nx] = total
                         toward[(ny, nx)] = here
                         heapq.heappush(heap, (total, (ny, nx)))
-        here, on_road = start, 0
-        for step in range(_LOOK):
-            here = toward.get(here)
-            if here is None:
+        way = [start]
+        while way[-1] != goal:
+            following = toward.get(way[-1])
+            if following is None:
                 return None
-            # The first cells lie under the arrow, which hides whether a road is there.
-            on_road += step >= _LOOK - 2 and bool(road[here])
-            if here == goal:
+            way.append(following)
+        # A way over cells bends in steps of 45 degrees. The walker aims at the furthest cell of it
+        # that a straight line reaches at no more cost than the way itself: over open ground that
+        # is the point, on a road the next bend.
+        aim = way[min(_LOOK, len(way) - 1)]
+        whole = best[start[0]][start[1]]
+        last = len(way) - 1
+        for index in [*range(last, _FAR + 3, -4), *range(min(last, _FAR + 3), _LOOK, -1)]:
+            line, before, spent = _straight(start, way[index]), start, 0.0
+            length = math.hypot(way[index][0] - start[0], way[index][1] - start[1]) / len(line)
+            for here in line:
+                spent += length * (cost[before[0]][before[1]] + cost[here[0]][here[1]]) / 2
+                before = here
+            if spent <= 1.02 * (whole - best[way[index][0]][way[index][1]]) + 0.5:
+                aim = way[index]
                 break
-        dx = _GX0 + (here[1] + 0.5) * _CELL - ARROW_XY[0]
-        dy = _GY0 + (here[0] + 0.5) * _CELL - ARROW_XY[1]
-        return math.degrees(math.atan2(dx, -dy)), on_road == 2
+        dx, dy = _centre(aim)
+        # Under the arrow nothing is seen of the ground: what lies beyond it says whether it is a road.
+        beyond = [here for here in _straight(start, aim) if math.hypot(*_centre(here)) > _ARROW_R]
+        on_road = bool(beyond) and sum(bool(road[here]) for here in beyond) >= 0.6 * len(beyond)
+        return math.degrees(math.atan2(dx, -dy)), on_road
     except Exception:
         return None

@@ -13,40 +13,54 @@ from .profile import active
 from .waymark import find_waypoint, way_by_road
 
 
+def _turn(degrees: float) -> float:
+    """An angle as the shorter turn, from -180 to 180."""
+    return (degrees + 180.0) % 360.0 - 180.0
+
+
 class WalkTo:
     name = "walk_to_point"
+    # Kerim, 12 November: he sprints most of the way (four parts in five by his own word) and walks
+    # only when he has time, and on foot the game draws no line, so the walker finds the road on
+    # the map itself. Both are what the skill does unless it is told otherwise.
     parameters: ClassVar = {
         "color": ("purple", "yellow", "blue", "red"),
         "duration": (1.0, 180.0, 180.0),
         "radius": (1.0, 12.0, 4.0),
-        "sprint": (False, True),
-        "roads": (False, True),
+        "sprint": (True, False),
+        "roads": (True, False),
+        "side": (False, True),
     }
     prompt = (
-        "Walk on foot to the purple waypoint, or the nearest blip of color, for up to 180 s. "
-        "roads=true keeps to the minimap's roads while one leads towards the point. "
-        "Done when the blip stays within radius map pixels, or the game removes a near waypoint. "
-        "A rim blip gives direction only. Reports start/end map pixels, not metres."
+        "Go on foot to the purple waypoint, or the nearest blip of color, for up to 180 s, sprinting "
+        "unless sprint=false. roads=true keeps to the minimap's roads while one leads there, "
+        "side=true to a road's side. Done when the blip stays within radius map pixels, or the "
+        "game removes a near waypoint. A rim blip gives direction only. Reports map pixels, not metres."
     )
     SETTLE = 0.6
     LOST_AFTER = 3.0
     ROAD_FALLBACK = True
-    # Kerim, 12 November: on foot the game draws no line, the walker finds the road on the map itself.
     PLAN_EVERY = 0.15  # seconds between two looks for the way on the map; the map turns with the camera
     DIRECT_WITHIN = 15.0  # map pixels: this near, the last steps go straight at the point
     OTHER_WAY = 60.0  # degrees between two looks that mean another way, not a bend in the same one
     OTHER_WAY_PLANS = 5
-    # The game takes a waypoint off the map when the figure reaches it: on the console on 12 November
-    # it went at 33 map pixels, the figure sprinting. A marker last seen inside the map this close
-    # and then gone counts as reached.
+    # The game takes a waypoint off the map before the figure reaches it: on the console on
+    # 12 November at 33 and at 31 map pixels, the figure sprinting. A marker last seen inside the
+    # map this close and then gone counts as reached.
     GONE_WITHIN = 40.0
     HOLD = 2.0  # seconds the walk keeps its direction while an icon lies over the marker
-    COAST = 0.5  # seconds the last pad is kept over ticks that say nothing: a damaged or repeated frame
-    # The marker goes before the point is reached, so the walk goes on to where it was: for as long
-    # as the last distance takes at the rate the marker came nearer that evening (64 map pixels in
-    # 15 s of sprinting; 7.4 in 8.4 s of walking, not straight at it), and never longer than CARRY_MAX.
+    COAST = 0.5  # seconds the stick is kept over ticks that say nothing: a damaged or repeated frame
+    BLIND = 5.0  # seconds of such ticks in a row after which the walk gives up
+    # After the marker has gone the walk goes on to where it was: for as long as the last distance
+    # takes at the rate the marker came nearer that evening (64 map pixels in 15 s of sprinting;
+    # 7.4 in 8.4 s of walking, not straight at it), and never longer than CARRY_MAX.
     SPRINT_PACE, WALK_PACE = 4.3, 0.9
     CARRY_MAX = 6.0
+    # After half a minute without an input the game shows the scene from changing cameras, and the
+    # map turns with each of them. The third run of 12 November began under that view and the stick
+    # swung three times in five seconds. Where the detector does not see the figure in its place
+    # on the first tick, the camera is touched first and the walk waits for the game's own view.
+    WAKE_PUSH, WAKE = 0.2, 0.45
 
     def __init__(self, args: dict):
         if not isinstance(args, dict) or set(args) - self.parameters.keys():
@@ -62,20 +76,26 @@ class WalkTo:
         self.color = args.get("color", "purple")
         if self.color not in self.parameters["color"]:
             raise ValueError("unknown blip color")
-        self.sprint = args.get("sprint", False)
-        if not isinstance(self.sprint, bool):
-            raise ValueError("sprint must be boolean")
-        self.roads = args.get("roads", False)
-        if not isinstance(self.roads, bool):
-            raise ValueError("roads must be boolean")
+        for key in ("sprint", "roads", "side"):
+            value = args.get(key, self.parameters[key][0])
+            if not isinstance(value, bool):
+                raise ValueError(f"{key} must be boolean")
+            setattr(self, key, value)
+        self.limit = float(self.duration)
         self.profile = active()
         self.guard = FootGuard()
         self.started = None
         self.last_tick = None
         self.last_frame = None
-        self.last_seen = None
+        self.seen = False  # the target has been seen at all
+        self.fresh = False  # and since the last gap in the ticks
+        self.absent = 0.0  # seconds of readable ticks on foot without the target
+        self.carried = 0.0  # of them, seconds the walk went on
+        self.blind_since = None
         self.close_since = None
         self.bad_since = None
+        self.wake_until = None
+        self.wake_push = None
         self.start_distance = None
         self.end_distance = None
         self.start_border = False
@@ -87,12 +107,13 @@ class WalkTo:
         self.road_until = 0.0
         self.road_retry = 0.0
         self.on_road = False
-        self.way = None
+        self.way = None  # (degrees from the line to the target, on a road)
+        self.other = None
+        self.other_looks = 0
         self.way_time = 0.0
         self.last_direction = None
-        self.last_pad = None
-        self.last_pad_time = 0.0
-        self.other_ways = 0
+        self.last_left = None
+        self.last_left_time = 0.0
         self.road_seconds = 0.0
         self.walk_seconds = 0.0
 
@@ -119,28 +140,36 @@ class WalkTo:
     def _by_road(self, observation, target):
         """The stick for the first stretch of the way along the map's roads, or None to walk straight."""
         now = observation.time
+        toward = math.degrees(math.atan2(target.x, target.y))
+        if now - self.way_time > 3 * self.PLAN_EVERY:
+            # A way kept over a stretch without looks is no measure for the next look.
+            self.way, self.other, self.other_looks = None, None, 0
         if self.way is None or now - self.way_time >= self.PLAN_EVERY:
-            way = way_by_road(hud_crop(observation.frame), target.x, target.y)
+            found = way_by_road(hud_crop(observation.frame), target.x, target.y, side=self.side)
             self.way_time = now
-            turn = None if way is None or self.way is None else abs((way[0] - self.way[0] + 180) % 360 - 180)
-            if turn is not None and turn > self.OTHER_WAY and self.other_ways < self.OTHER_WAY_PLANS:
+            # The map turns with the camera and the target with it: a way is kept as its angle to
+            # the line to the target, which a turn of the camera leaves as it is.
+            look = None if found is None else (_turn(found[0] - toward), found[1])
+            if look is None or self.way is None or abs(_turn(look[0] - self.way[0])) <= self.OTHER_WAY:
+                self.way, self.other, self.other_looks = look, None, 0
+            else:
                 # Two ways that cost about the same swap places from one look to the next: the one
                 # being walked is kept until the other has been found several times running.
-                self.other_ways += 1
-            else:
-                self.way = way
-                self.other_ways = 0
+                agrees = self.other is not None and abs(_turn(look[0] - self.other[0])) <= self.OTHER_WAY
+                self.other, self.other_looks = look, self.other_looks + 1 if agrees else 1
+                if self.other_looks >= self.OTHER_WAY_PLANS:
+                    self.way, self.other, self.other_looks = look, None, 0
         if self.way is None:
             return None
-        bearing, self.on_road = self.way
-        return stick_for(bearing, 1.0)
+        self.on_road = self.way[1]
+        return stick_for(toward + self.way[0], 1.0)
 
     def _direction(self, observation, target, distance):
         want = (target.x / distance, -target.y / distance)
         self.on_road = False
         if self.roads and (target.border or distance > self.DIRECT_WITHIN):
             return self._by_road(observation, target) or want
-        if not self.ROAD_FALLBACK:
+        if self.roads or not self.ROAD_FALLBACK:
             return want
         now = observation.time
         if not self.road_mode and self.guard.failures >= 2 and now >= self.road_retry:
@@ -181,20 +210,25 @@ class WalkTo:
         if self.finished is not None:
             return self.finished
         now = observation.time
-        if not isinstance(now, (float, int)) or not math.isfinite(now):
+        if isinstance(now, bool) or not isinstance(now, (float, int)) or not math.isfinite(now):
             self.close_since = None
-            return SkillResult()
+            return self._stand()
         if self.started is None:
             self.started = now
         if now - self.started >= self.duration:
             return self._finish("failed", "time limit")
         if self.last_tick is not None and now <= self.last_tick:
+            # A tick out of its order: nothing is decided on it and nothing is kept going by it.
             self.close_since = None
-            self.bad_since = None
-            return self._coast(now)
+            return self._blind(now, coast=False)
         gap = self.last_tick is not None and now - self.last_tick > 1.0
         step = 0.0 if self.last_tick is None or gap else now - self.last_tick
         self.last_tick = now
+        if gap:
+            # What was seen before a gap in the ticks says nothing about now.
+            self.close_since = self.bad_since = self.blind_since = None
+            self.fresh, self.absent, self.last_direction, self.way = False, 0.0, None, None
+            return self._stand()
         frame = observation.frame
         if frame is not None:
             valid_frame = (
@@ -202,64 +236,88 @@ class WalkTo:
             )
             repeated = self.last_frame is not None and np.array_equal(frame, self.last_frame)
             if not valid_frame or repeated:
-                self.close_since = self.bad_since = None
-                return self._coast(now)
+                self.close_since = None
+                return self._blind(now)
             self.last_frame = frame.copy()
         reading = observation.reading
-        mode = player_mode(observation) if reading is not None else None
-        if reading is None or reading.corrupt or reading.confidence < 0.6:
+        if reading is None:
             self.close_since = None
-            self.bad_since = None
-            return self._coast(now)
-        if gap:
+            return self._blind(now, coast=False)
+        if reading.corrupt:
+            # A damaged picture says neither where the target is nor whether the figure is on foot.
             self.close_since = None
-            self.bad_since = None
-            return SkillResult()
-        if mode != "foot":
-            self.close_since = None
+            return self._blind(now)
+        if player_mode(observation) != "foot":
+            self.close_since = self.blind_since = None
             if self.bad_since is None:
                 self.bad_since = now
             if now - self.bad_since >= 0.6:
                 return self._finish("failed", "no longer on foot")
-            return SkillResult()
-        self.bad_since = None
+            return self._stand()
+        if reading.confidence < 0.6:
+            self.close_since = None
+            # With no map on the screen something else is being shown, and nothing is pushed into it.
+            return self._blind(now, coast=reading.minimap != "none")
+        self.bad_since = self.blind_since = None
+        if self.wake_until is None:
+            unseen = observation.objects_time is not None and observation.figure is None
+            self.wake_push = now + self.WAKE_PUSH if unseen else now
+            self.wake_until = now + self.WAKE if unseen else now
+        if now < self.wake_until:
+            self.last_left = None
+            return SkillResult(
+                pad=Pad(right=(0.4, 0.0)) if now < self.wake_push else NEUTRAL_PAD,
+                reason="touching the camera for the game's own view",
+            )
         targets = [
             blip
             for blip in reading.blips
             if blip.color == self.color and math.isfinite(blip.x) and math.isfinite(blip.y)
         ]
-        if not targets and self.color == "purple":
+        if not targets and self.color == "purple" and reading.route != "purple":
             # The minimap reader knows no purple disc: the waypoint's marker is read from the frame.
+            # Not beside a purple route, which is a vehicle's and whose end the bars cut to a disc.
             marker = find_waypoint(hud_crop(frame))
             targets = [] if marker is None else [marker]
         if not targets:
             self.close_since = None
-            if self.last_seen is None:
-                if now - self.started >= self.LOST_AFTER:
+            # Only a readable tick on foot counts as one without the target.
+            self.absent += step
+            if not self.seen:
+                if self.absent >= self.LOST_AFTER:
                     return self._finish("failed", "no matching blip")
-                return SkillResult()
-            gone = now - self.last_seen
+                return self._stand()
             reached = (
                 self.color == "purple"
+                and self.fresh
                 and not self.end_border
                 and self.end_distance is not None
                 and self.end_distance <= self.GONE_WITHIN
             )
             pace = self.SPRINT_PACE if self.sprint else self.WALK_PACE
             keep = min(self.CARRY_MAX, self.end_distance / pace) if reached else self.HOLD
-            if gone < keep and self.last_direction is not None:
+            # The direction is the camera's: it holds only while the guard leaves the camera alone.
+            if (
+                self.fresh
+                and self.absent < keep
+                and self.last_direction is not None
+                and self.guard.state == "go"
+            ):
+                self.carried += step
                 return self._push(observation, self.last_direction, step)
-            if gone >= self.LOST_AFTER:
+            if self.absent >= self.LOST_AFTER:
                 if reached:
                     return self._finish(
                         "done",
-                        f"arrived; the game took the near waypoint off the map, walked on {keep:.1f} s",
+                        "arrived; the game took the near waypoint off the map, "
+                        f"walked on {self.carried:.1f} s",
                     )
                 return self._finish("failed", "blip lost; end is last observed distance")
-            return SkillResult()
+            return self._stand()
         target = min(targets, key=lambda blip: math.hypot(blip.x, blip.y))
         distance = math.hypot(target.x, target.y)
-        self.last_seen = now
+        self.seen = self.fresh = True
+        self.absent = self.carried = 0.0
         if self.start_distance is None:
             self.start_distance, self.start_border = distance, target.border
         self.end_distance, self.end_border = distance, target.border
@@ -268,18 +326,28 @@ class WalkTo:
                 self.close_since = now
             if now - self.close_since >= self.SETTLE:
                 return self._finish("done", "arrived; stable interior blip")
-            return SkillResult()
+            return self._stand()
         self.close_since = None
         if distance == 0:
-            return SkillResult()
+            return self._stand()
         self.last_direction = self._direction(observation, target, distance)
         return self._push(observation, self.last_direction, step)
 
-    def _coast(self, now):
-        """A tick that says nothing decides nothing, and does not stop a figure that is running."""
-        if self.last_pad is not None and abs(now - self.last_pad_time) <= self.COAST:
-            return SkillResult(pad=self.last_pad)
+    def _stand(self) -> SkillResult:
+        """Nothing on the pad, and nothing left over for a later tick to send again."""
+        self.last_left = None
         return SkillResult()
+
+    def _blind(self, now, *, coast: bool = True) -> SkillResult:
+        """A tick that says nothing decides nothing, and does not stop a figure that is running."""
+        if self.blind_since is None:
+            self.blind_since = now
+        if now - self.blind_since >= self.BLIND:
+            return self._finish("failed", f"nothing readable for {self.BLIND:.0f} s")
+        if coast and self.last_left is not None and 0 <= now - self.last_left_time <= self.COAST:
+            buttons = self.profile.sprint_buttons(now - self.started) if self.sprint else ()
+            return SkillResult(pad=Pad(left=self.last_left, buttons=buttons))
+        return self._stand()
 
     def _push(self, observation, direction, step):
         steer = self.guard.step(observation, direction)
@@ -292,11 +360,15 @@ class WalkTo:
         )
         self.walk_seconds += step
         self.road_seconds += step if self.on_road else 0.0
-        pad = (
-            Pad(left=steer.left, right=steer.right, buttons=buttons) if steer.state != "odd" else NEUTRAL_PAD
-        )
-        self.last_pad, self.last_pad_time = pad, observation.time
+        if steer.state == "odd":
+            self.last_left = None
+            return SkillResult(
+                pad=NEUTRAL_PAD, reason=self._reason("following road" if self.on_road else "walking")
+            )
+        # Only a plain push forward is kept for a tick that says nothing, never the guard's own moves.
+        self.last_left = steer.left if steer.state == "go" else None
+        self.last_left_time = observation.time
         return SkillResult(
-            pad=pad,
+            pad=Pad(left=steer.left, right=steer.right, buttons=buttons),
             reason=self._reason("following road" if self.road_mode or self.on_road else "walking"),
         )

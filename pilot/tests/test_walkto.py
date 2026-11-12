@@ -114,7 +114,7 @@ def test_hard_limit_stop_and_replacement_are_neutral():
 def test_road_fallback_requires_two_blocks_and_leaves_road_away(monkeypatch):
     road = SimpleNamespace(along=45, bearing=45, distance=2)
     monkeypatch.setattr("pilot.walkto.road_position", lambda _: road)
-    skill = WalkTo({})
+    skill = WalkTo({"roads": False})
     skill.guard.failures = 1
     skill.step(observation(0, 20, 30))
     assert not skill.road_mode
@@ -219,7 +219,7 @@ def test_the_waypoint_marker_is_read_from_the_frame_when_the_reading_has_no_purp
     )
     frame = np.zeros((720, 1280, 3), np.uint8)
     frame[530:700, 30:290] = hud
-    skill = WalkTo({})
+    skill = WalkTo({"roads": False})
     result = skill.step(replace(observation(0, blips=()), frame=frame))
     assert result.status == "running" and "rim" in result.reason
     assert result.pad.left == pytest.approx((0.71, -0.70), abs=0.03)
@@ -258,7 +258,7 @@ def test_roads_first_follows_the_way_on_the_map_and_goes_straight_for_the_last_s
     import pilot.walkto as walkto
 
     asked = []
-    monkeypatch.setattr(walkto, "way_by_road", lambda crop, x, y: asked.append((x, y)) or (90.0, True))
+    monkeypatch.setattr(walkto, "way_by_road", lambda crop, x, y, **kw: asked.append((x, y)) or (90.0, True))
     skill = WalkTo({"roads": True})
     result = skill.step(observation(0, 0, 60))
     assert asked == [(0, 60)]
@@ -267,8 +267,8 @@ def test_roads_first_follows_the_way_on_the_map_and_goes_straight_for_the_last_s
     # Within the last pixels the map is not asked any more.
     result = skill.step(observation(0.2, 0, 10))
     assert len(asked) == 1 and result.pad.left == pytest.approx((0, -1), abs=1e-6)
-    # Without the switch the map is never asked.
-    plain = WalkTo({})
+    # With the switch off the map is never asked.
+    plain = WalkTo({"roads": False})
     assert plain.step(observation(0, 0, 60)).pad.left == pytest.approx((0, -1), abs=1e-6)
     assert len(asked) == 1 and "on a road" not in plain.step(observation(0.1, 0, 60)).reason
 
@@ -276,7 +276,7 @@ def test_roads_first_follows_the_way_on_the_map_and_goes_straight_for_the_last_s
 def test_roads_first_walks_straight_where_the_map_gives_no_way(monkeypatch):
     import pilot.walkto as walkto
 
-    monkeypatch.setattr(walkto, "way_by_road", lambda crop, x, y: None)
+    monkeypatch.setattr(walkto, "way_by_road", lambda crop, x, y, **kw: None)
     result = WalkTo({"roads": True}).step(observation(0, 30, 40))
     assert result.pad.left == pytest.approx((0.6, -0.8))
     assert result.reason.startswith("walking")
@@ -286,12 +286,12 @@ def test_another_way_is_taken_only_after_it_was_found_several_times_running(monk
     import pilot.walkto as walkto
 
     ways = iter([0.0, 180.0, 0.0, 180.0, 180.0, 180.0, 180.0, 180.0, 180.0, 180.0])
-    monkeypatch.setattr(walkto, "way_by_road", lambda crop, x, y: (next(ways), True))
+    monkeypatch.setattr(walkto, "way_by_road", lambda crop, x, y, **kw: (next(ways), True))
     skill = WalkTo({"roads": True})
     sticks = [skill.step(observation(tick * 0.2, 60, 60)).pad.left[1] for tick in range(10)]
-    # Up for as long as the other way only flickers, and through its first five looks in a row.
-    assert sticks[:8] == pytest.approx([-1.0] * 8)
-    assert sticks[8:] == pytest.approx([1.0, 1.0])
+    # Up for as long as the other way only flickers, and until it was found five times running.
+    assert sticks[:7] == pytest.approx([-1.0] * 7)
+    assert sticks[7:] == pytest.approx([1.0, 1.0, 1.0])
 
 
 def test_roads_must_be_a_boolean():
@@ -316,8 +316,128 @@ def test_a_tick_that_says_nothing_does_not_stop_a_running_figure():
     pushed = skill.step(observation(0, 60, 0)).pad
     assert pushed.left == pytest.approx((1, 0))
     damaged = observation(0.1, 60, 0, corrupt=True)
-    assert skill.step(damaged).pad == pushed
-    assert skill.step(replace(observation(0.2, 60, 0), reading=None)).pad == pushed
+    assert skill.step(damaged).pad.left == pushed.left
+    assert skill.step(observation(0.2, 60, 0, confidence=0.3)).pad.left == pushed.left
     # Not for longer than half a second, and never before anything was pushed.
     assert skill.step(observation(0.8, 60, 0, corrupt=True)).pad == NEUTRAL_PAD
     assert WalkTo({}).step(observation(0, 60, 0, corrupt=True)).pad == NEUTRAL_PAD
+    # Not into a screen without a map, not without a reading, and not on a tick out of its order.
+    for bad in (
+        observation(0.2, 60, 0, minimap="none", confidence=0.0),
+        replace(observation(0.2, 60, 0), reading=None),
+        observation(0.05, 60, 0, corrupt=True),
+    ):
+        skill = WalkTo({})
+        skill.step(observation(0, 60, 0))
+        skill.step(observation(0.1, 60, 0))
+        assert skill.step(bad).pad == NEUTRAL_PAD
+
+
+def test_a_tick_that_says_nothing_never_sends_again_what_the_walk_has_let_go_of():
+    # The figure is taken into a car: the walk stands, and a damaged tick after it stays neutral.
+    skill = WalkTo({})
+    skill.step(observation(0, 60, 0))
+    skill.step(observation(0.03, 60, 0))
+    assert skill.step(observation(0.07, blips=(), minimap="tilted")).pad == NEUTRAL_PAD
+    assert skill.step(observation(0.10, blips=(), minimap="tilted", corrupt=True)).pad == NEUTRAL_PAD
+    # Inside the radius the walk stands, and stays standing over a damaged tick.
+    skill = WalkTo({})
+    assert skill.step(observation(0, 6, 0)).pad != NEUTRAL_PAD
+    assert skill.step(observation(0.03, 3, 0)).pad == NEUTRAL_PAD
+    assert skill.step(observation(0.07, 3, 0, corrupt=True)).pad == NEUTRAL_PAD
+
+
+def test_damaged_ticks_between_do_not_put_off_no_longer_on_foot():
+    skill = WalkTo({})
+    skill.step(observation(0, 30, 0))
+    for tick in range(1, 60):
+        result = skill.step(observation(tick / 30, blips=(), minimap="tilted", corrupt=tick % 2 == 0))
+        if result.status != "running":
+            break
+    assert result.status == "failed" and "no longer on foot" in result.reason and tick / 30 < 0.8
+
+
+def test_time_without_a_readable_picture_is_no_proof_that_the_waypoint_was_reached():
+    # Eight seconds with no map on the screen after a near marker, then one tick on foot without it.
+    skill = WalkTo({})
+    skill.step(observation(0, 35, 0))
+    for tick in range(1, 240):
+        result = skill.step(observation(tick / 30, blips=(), minimap="none", confidence=0.0))
+        assert result.pad == NEUTRAL_PAD
+    assert result.status == "failed" and "no longer on foot" in result.reason
+    # The same with damaged pictures only: the walk gives up, it does not arrive.
+    skill = WalkTo({})
+    skill.step(observation(0, 35, 0))
+    for tick in range(1, 240):
+        result = skill.step(observation(tick / 30, 35, 0, corrupt=True))
+        if result.status != "running":
+            break
+    assert result.status == "failed" and "nothing readable" in result.reason
+
+
+def test_after_a_gap_in_the_ticks_nothing_old_is_pushed_and_nothing_old_counts_as_reached():
+    skill = WalkTo({})
+    assert skill.step(observation(0, 30, 0)).pad != NEUTRAL_PAD
+    assert skill.step(observation(4.0, blips=())).pad == NEUTRAL_PAD
+    for tick in range(1, 100):
+        result = skill.step(observation(4.0 + tick / 30, blips=()))
+        assert result.pad == NEUTRAL_PAD
+        if result.status != "running":
+            break
+    assert result.status == "failed" and "blip lost" in result.reason
+
+
+def test_the_camera_is_touched_first_where_the_figure_is_not_seen_in_its_place():
+    from pilot.contract import Detection
+
+    hidden = replace(observation(0, 60, 0), objects_time=0.0)
+    skill = WalkTo({})
+    first = skill.step(hidden)
+    assert first.pad.left == (0.0, 0.0) and first.pad.right[0] > 0 and first.pad.buttons == ()
+    assert skill.step(replace(observation(0.3, 60, 0), objects_time=0.3)).pad == NEUTRAL_PAD
+    assert skill.step(replace(observation(0.5, 60, 0), objects_time=0.5)).pad.left == pytest.approx((1, 0))
+    # With the figure in its place, and where no detector runs, the walk sets off on its first tick.
+    figure = Detection("person", (600.0, 300.0, 680.0, 520.0), 0.9)
+    seen = replace(observation(0, 60, 0), objects_time=0.0, figure=figure)
+    assert WalkTo({}).step(seen).pad.left == pytest.approx((1, 0))
+    assert WalkTo({}).step(observation(0, 60, 0)).pad.left == pytest.approx((1, 0))
+
+
+def test_a_way_is_kept_as_its_angle_to_the_target_so_a_turning_camera_does_not_make_it_another(monkeypatch):
+    import pilot.walkto as walkto
+
+    # The camera turns by 80 degrees between two looks: the target and the way turn with it.
+    looks = iter([(20.0, True), (100.0, True)])
+    monkeypatch.setattr(walkto, "way_by_road", lambda crop, x, y, **kw: next(looks))
+    skill = WalkTo({})
+    first = skill.step(observation(0, 0, 60)).pad.left
+    second = skill.step(observation(0.2, 59.09, 10.42)).pad.left
+    assert first == pytest.approx((math.sin(math.radians(20)), -math.cos(math.radians(20))))
+    assert second == pytest.approx((math.sin(math.radians(100)), -math.cos(math.radians(100))), abs=1e-3)
+
+
+def test_what_the_skill_does_unless_told_otherwise_and_what_the_runner_is_told():
+    skill = WalkTo({})
+    assert (skill.sprint, skill.roads, skill.side) == (True, True, False)
+    assert WalkTo({"duration": 10}).limit == 10
+    pressed = {skill.step(observation(tick / 30, 60, 0)).pad.buttons for tick in range(30)}
+    assert pressed == {(), ("cross",)}
+    assert WalkTo({"sprint": False}).step(observation(0, 60, 0)).pad.buttons == ()
+    with pytest.raises(ValueError):
+        WalkTo({"side": 1})
+
+
+def test_beside_a_purple_route_the_frame_is_not_searched_for_a_marker():
+    from pathlib import Path
+
+    import cv2
+    import numpy as np
+
+    hud = cv2.cvtColor(
+        cv2.imread(str(Path(__file__).parents[2] / "lab/walkto/hud-waypoint-corner-day.png")),
+        cv2.COLOR_BGR2RGB,
+    )
+    frame = np.zeros((720, 1280, 3), np.uint8)
+    frame[530:700, 30:290] = hud
+    skill = WalkTo({})
+    assert skill.step(replace(observation(0, blips=(), route="purple"), frame=frame)).pad == NEUTRAL_PAD

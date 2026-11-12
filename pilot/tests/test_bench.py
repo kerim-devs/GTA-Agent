@@ -501,6 +501,7 @@ NOT_TERMINAL = {
     "flow",  # conductor: the flow reader's pad, no end
     "carry-on",  # conductor: the carry-on touch, no end
     "vehicle found",  # vehicle_entry: stops its walk along the road, not itself
+    "touching the camera for the game's own view",  # walk_to_point: its first half second, no end
 }
 # camera.read_view's reasons name one look at one detection; a skill ends on the view it last had
 READINGS = {

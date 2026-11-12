@@ -52,7 +52,8 @@ CASES = {
 
 
 def run_case(case, fallback):
-    skill = WalkTo({"duration": 90})
+    # The model compares the straight walk with the road taken after two blocks, and has no map to plan on.
+    skill = WalkTo({"duration": 90, "roads": False, "sprint": False})
     skill.ROAD_FALLBACK = fallback
     skill.guard = ModelGuard()
     position = [0.0, 0.0]

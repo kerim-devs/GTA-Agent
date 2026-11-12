@@ -541,6 +541,8 @@ CAUSE_RULES: dict[str, str | None] = {
     "target person lost": "see",
     "no person found": "see",
     "blip-gone": "see",
+    "blip lost": "see",  # walk_to_point: the target went from the map far from the figure
+    "no matching blip": "see",
     "blip-bearing-undefined": "see",
     "waypoint-unproven-on-a-later-page": "see",
     "return-unverified": "see",
@@ -601,6 +603,7 @@ CAUSE_RULES: dict[str, str | None] = {
     "low_health": "world",
     "stars": "world",
     "gameplay interrupted": "world",
+    "no longer on foot": "world",  # walk_to_point: taken into a vehicle, or a screen without a map
     "health-depleted": "world",
     "health-still-low": "world",
     "health below 30%": "world",
@@ -612,6 +615,7 @@ CAUSE_RULES: dict[str, str | None] = {
     "invalid observation": "tech",
     "invalid-observation-time": "tech",
     "no-frame": "tech",
+    "nothing readable for": "tech",  # walk_to_point: damaged or repeated pictures for seconds on end
     "no detections delivered at all": "tech",
     "no-detections": "tech",
     "picture-unchanged-after-input": "tech",
@@ -619,6 +623,7 @@ CAUSE_RULES: dict[str, str | None] = {
     "skill-error:": "tech",
     # what the reason alone does not say; the log decides (see `cause`)
     "time-limit": None,
+    "time limit": None,
     "route-gone": None,
     "arrived": None,
     "entered vehicle": None,
