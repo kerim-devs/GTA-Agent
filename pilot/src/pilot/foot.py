@@ -674,6 +674,11 @@ class WalkRoad:
         return SkillResult(Pad(buttons=buttons, left=steer.left, right=steer.right))
 
     def _bearing(self, road: Road, arrow: float | None, now: float) -> float:
+        # The runner reads this for road_reached, whether or not the edges could be told.
+        if road.distance > _ON_ROAD_R:
+            self.on_road_since = None
+        elif self.on_road_since is None:
+            self.on_road_since = now
         if road.clearance is not None:
             if road.clearance < 4:
                 return road.outward
@@ -682,10 +687,7 @@ class WalkRoad:
             self.sense = forward
             return forward
         if road.distance > _ON_ROAD_R:
-            self.on_road_since = None
             return road.bearing
-        if self.on_road_since is None:
-            self.on_road_since = now
         if road.along is None or now - self.on_road_since < self.ON_ROAD_SECONDS:
             return road.bearing if self.sense is None else self.sense
         # Along the road, the way nearer to where the figure faces, and that way kept: the map turns

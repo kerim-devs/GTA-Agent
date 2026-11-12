@@ -481,3 +481,14 @@ def test_crossing_under_arrow_is_not_certified_as_a_kerb():
 
     road = find_road(hud_crop(road_frame(12, crossing=True)))
     assert road is None or road.position == "unknown"
+
+
+@pytest.mark.parametrize("offset,reached", [(-12, True), (12, True), (0, True), (-20, False)])
+def test_the_runner_sees_the_road_reached_when_the_edges_are_readable(offset, reached):
+    # The goals read road_reached from the walk; the readable case must count as well as the unreadable.
+    runner = SkillRunner()
+    runner.replace((SkillCall("walk_road", {"duration": 4}),))
+    frame = road_frame(offset)
+    for i in range(12):
+        runner.tick(obs(i * 0.1, frame=frame, moving=True))
+    assert runner.describe()["road_reached"] is reached
