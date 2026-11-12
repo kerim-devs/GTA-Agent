@@ -148,6 +148,10 @@ class Observation:
     hud: Hud | None = None
     judgment: Judgment | None = None
     mode: str | None = None
+    # The person and the vehicle cut out of `objects` as the player's own, with the same capture
+    # time. None means the detector saw none in the figure's place, such as in first person.
+    figure: Detection | None = None
+    figure_vehicle: Detection | None = None
 
 
 def player_mode(observation: Observation) -> str | None:

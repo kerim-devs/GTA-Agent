@@ -1,10 +1,11 @@
 """Local, bounded skills. Every result describes the entire controller state."""
 
 from collections import deque
+from dataclasses import dataclass
 from math import atan2, degrees, hypot
 from typing import TYPE_CHECKING, ClassVar
 
-from .avoid import Avoider
+from .avoid import Avoider, waits_behind
 from .contract import NEUTRAL_PAD, Observation, Pad, SkillResult, player_mode
 from .drive import Driver
 from .foot import FootGuard, WalkRoad
@@ -218,9 +219,146 @@ class RegisteredSkill(Skill):
 
 
 class DriveRoute(RegisteredSkill):
+    @dataclass(frozen=True)
+    class Result(SkillResult):
+        start_distance: float | None = None
+        end_distance: float | None = None
+        distance_age: float | None = None
+        # Seconds driven on a map the reader flagged as damaged, that stood for longer than damage does.
+        flagged_seconds: float = 0.0
+
     name = "drive_route"
     parameters: ClassVar[dict] = {"duration": (0.1, 120, 60)}
-    prompt = "Follow a visible GPS route in a vehicle, for at most duration seconds."
+    prompt = (
+        "Follow a visible GPS route in a vehicle. Done with arrived after small, falling distances and "
+        "route loss, or with time-limit. Fails on lost route, no progress, dead-or-held car, "
+        "exhausted recovery or a picture it cannot read (map-unreadable)."
+    )
+    # The failed town drives made 0-10 m in 25-37 s; useful drives made 350-480 m/min.
+    progress_window = 20.0
+    progress_gap = 10.0  # The growing-distance town drive has a 7.6 s OCR gap.
+    progress_metres = 20.0  # Two kilometre HUD increments, above quantisation noise.
+    # The route vanished with 27 m and 23 m still printed on the two recorded arrivals.
+    arrival_metres = 50.0
+    arrival_age = 5.0  # Includes the driver's two seconds of confirmed route absence.
+
+    def __init__(self, args: dict, *, driver=None):
+        super().__init__(args, driver=driver)
+        self.start_distance = self.end_distance = self.distance_time = None
+        self._distances = deque()
+        self._now = self._previous_time = None
+        self._moving_time = 0.0
+        self._was_moving = False
+
+    def _result(self, *, pad=NEUTRAL_PAD, status="running", reason=None):
+        return self.Result(
+            pad,
+            status,
+            reason,
+            self.start_distance,
+            self.end_distance,
+            None if self.distance_time is None else self._now - self.distance_time,
+            self.driver.flagged_time,
+        )
+
+    def stop(self, reason="interrupted") -> SkillResult:
+        self.finished = self._result(status="failed", reason=reason)
+        return self.finished
+
+    def _distance(self, observation):
+        from .drive import _number
+
+        reading, now = observation.reading, observation.time
+        distance, at = _number(reading.gps_distance), _number(reading.gps_time)
+        if (
+            reading.corrupt
+            or reading.minimap != "tilted"
+            or distance is None
+            or at is None
+            or not 0 <= distance < 100000
+            or not 0 <= now - at <= self.driver.config.gps_stale
+            or (self.distance_time is not None and at <= self.distance_time)
+        ):
+            return
+        if self.distance_time is not None and (
+            at - self.distance_time > self.progress_gap
+            or abs(distance - self.end_distance)
+            > self.driver.config.gps_max_speed * (at - self.distance_time) + 20
+        ):
+            # A reroute or OCR gap starts a new progress window, never an arrival trend.
+            self._distances.clear()
+        if self.start_distance is None:
+            self.start_distance = distance
+        self.end_distance, self.distance_time = distance, at
+        self._distances.append((at, distance, self._moving_time))
+        while len(self._distances) > 1 and at - self._distances[1][0] >= self.progress_window:
+            self._distances.popleft()
+
+    def _route_end(self):
+        from itertools import pairwise
+
+        if self.distance_time is None or self._now - self.distance_time > self.arrival_age:
+            return self.stop("route-lost-unknown")
+        if self.end_distance > self.arrival_metres:
+            return self.stop("route-lost-far")
+        close = [(t, d) for t, d, _ in self._distances if self.distance_time - t <= 5]
+        if (
+            len(close) >= 3
+            and close[-1][0] - close[0][0] >= 0.5
+            and all(d <= 2 * self.arrival_metres for _, d in close)
+            and close[0][1] - close[-1][1] >= 3
+            and all(b[1] <= a[1] + 1 for a, b in pairwise(close))
+        ):
+            self.finished = self._result(status="done", reason="arrived")
+            return self.finished
+        return self.stop("route-lost-unknown")
+
+    def step(self, observation: Observation) -> SkillResult:
+        from .drive import _number
+
+        if self.finished is not None:
+            return self.finished
+        now = _number(observation.time)
+        if now is None:
+            return self.stop("invalid-clock")
+        if self._previous_time is not None and now < self._previous_time:
+            return self.stop("clock-reversed")
+        self._now = now
+        if self.started is None:
+            self.started = now
+        moving = observation.moving is True and not observation.reading.corrupt
+        if moving and self._was_moving and self._previous_time is not None:
+            self._moving_time += min(now - self._previous_time, self.driver.config.max_step_time)
+        self._was_moving, self._previous_time = moving, now
+        try:
+            self._distance(observation)
+            if now - self.started >= self.limit:
+                # Every skill ends done at its limit; only the reason "arrived" says the place was reached.
+                self.finished = self._result(status="done", reason="time-limit")
+                return self.finished
+            command = self.driver.step(
+                observation.reading,
+                now,
+                observation.moving,
+                speed=observation.reading.gps_speed,
+                ahead=waits_behind(observation.objects, observation.objects_time, now),
+            )
+            if command.state == "route-gone":
+                return self._route_end()
+            if command.state in ("dead-or-held", "failed-recovery", "map-unreadable"):
+                return self.stop(command.state)
+            if len(self._distances) >= 3 and self.distance_time is not None:
+                first, last = self._distances[0], self._distances[-1]
+                if (
+                    now - self.distance_time <= self.driver.config.gps_stale
+                    and last[0] - first[0] >= self.progress_window
+                    and last[2] - first[2] >= self.progress_window / 2
+                    and first[1] - last[1] < self.progress_metres
+                ):
+                    return self.stop("no-progress")
+            return self._result(pad=self._around(command, observation))
+        except Exception as exc:
+            return self.stop(f"skill-error: {type(exc).__name__}")
 
 
 class Wait(RegisteredSkill):
@@ -274,6 +412,7 @@ class Face(RegisteredSkill):
 
 
 # New modules plug in with an import and one entry here.
+from .camera import SetFarView  # noqa: E402
 from .combat import Fight, Melee  # noqa: E402
 from .level import LevelCamera  # noqa: E402
 from .punch import Punch  # noqa: E402
@@ -297,6 +436,7 @@ REGISTRY = {
         Melee,
         Punch,
         LevelCamera,
+        SetFarView,
         WalkRoad,
     )
 }
@@ -317,8 +457,14 @@ class SkillRunner:
         self.last = None
         self.release_pending = False
         self.completed = False
+        self.road_reached = False
+        self.route_seen = False
+        # The skills a session begins with. One that fails leaves the queue alone: whatever
+        # follows it, the next opening skill and then the head's first plan, still runs.
+        self.opening: tuple = ()
+        self.opening_failures: list[dict] = []
 
-    def replace(self, calls: tuple["SkillCall", ...]) -> Pad:
+    def replace(self, calls: tuple["SkillCall", ...], *, opening: bool = False) -> Pad:
         # Construct all skills before touching the existing plan.
         replacements = [
             make_skill(call, driver=self.driver_factory() if call.name == "drive_route" else None)
@@ -326,6 +472,7 @@ class SkillRunner:
         ]
         self.stop("replaced")
         self.queue.extend(replacements)
+        self.opening = tuple(replacements) if opening else ()
         self.release_pending = True
         return NEUTRAL_PAD
 
@@ -334,6 +481,8 @@ class SkillRunner:
             result = self.active.stop(reason)
             self.last = {
                 "name": self.active.name,
+                **({"road_reached": self.road_reached} if self.active.name == "walk_road" else {}),
+                **({"route_seen": self.route_seen} if self.active.name == "drive_route" else {}),
                 "status": result.status,
                 "reason": result.reason,
                 "queue": [],
@@ -342,6 +491,7 @@ class SkillRunner:
             }
         self.active = None
         self.queue.clear()
+        self.opening = ()
         self.completed = False
         self.release_pending = True
         return NEUTRAL_PAD
@@ -356,12 +506,34 @@ class SkillRunner:
                 return SkillResult(status="done")
             self.active = self.queue.popleft()
             self.active_started = observation.time
+            self.route_seen = False
+            self.road_reached = False
         result = self.active.step(observation)
+        self.route_seen |= self.active.name == "drive_route" and observation.reading.route in {
+            "yellow",
+            "purple",
+        }
+        road_since = getattr(self.active, "on_road_since", None)
+        self.road_reached = (
+            self.active.name == "walk_road"
+            and road_since is not None
+            and observation.time - road_since >= self.active.ON_ROAD_SECONDS
+        )
         if result.status != "running":
+            if result.status == "failed" and any(self.active is skill for skill in self.opening):
+                # Not the plan's failure: it is logged, and neither the head nor the queue hears of it.
+                self.opening_failures.append(
+                    {"name": self.active.name, "reason": result.reason, "queue": [s.name for s in self.queue]}
+                )
+                self.active = None
+                self.completed = False
+                return result
             queued = [skill.name for skill in self.queue]
             failed = result.status == "failed"
             self.last = {
                 "name": self.active.name,
+                **({"road_reached": self.road_reached} if self.active.name == "walk_road" else {}),
+                **({"route_seen": self.route_seen} if self.active.name == "drive_route" else {}),
                 "status": result.status,
                 "reason": result.reason,
                 "queue": [] if failed else queued,
@@ -375,10 +547,17 @@ class SkillRunner:
         return result
 
     def describe(self):
+        if self.active is None and self.queue:
+            return {
+                **(self.last or {"name": self.queue[0].name, "status": "queued", "reason": None}),
+                "pending": [skill.name for skill in self.queue],
+            }
         if self.active is not None:
             guard = getattr(self.active, "guard", None)
             return {
                 "name": self.active.name,
+                **({"road_reached": self.road_reached} if self.active.name == "walk_road" else {}),
+                **({"route_seen": self.route_seen} if self.active.name == "drive_route" else {}),
                 "status": "running",
                 "reason": guard.diagnostic() if guard is not None else None,
                 "queue": [skill.name for skill in self.queue],

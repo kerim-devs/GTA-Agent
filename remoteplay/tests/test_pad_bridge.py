@@ -22,6 +22,18 @@ def test_dualsense_mapping_and_axis_limits():
     assert state_from_sdl(set(), {"LEFTX": 100, "TRIGGERRIGHT": -32768}).idle
 
 
+def test_a_stick_at_rest_is_not_a_person():
+    def raw(value):
+        return round(value * 32767)
+
+    # 0.11 on an axis is where this DualSense comes to rest, on both axes at once at the worst
+    assert state_from_sdl(set(), {"LEFTX": raw(0.11), "LEFTY": raw(-0.11), "RIGHTY": raw(0.13)}).idle
+    # a stick that a hand moves is passed on axis by axis as it was, small components included
+    held = state_from_sdl(set(), {"LEFTX": raw(0.3), "LEFTY": raw(0.12), "RIGHTX": raw(-0.2)})
+    assert held.sticks == {Side.LEFT: (0.3, 0.12), Side.RIGHT: (-0.2, 0.0)}
+    assert state_from_sdl(set(), {"TRIGGERLEFT": raw(0.1)}).triggers[Side.LEFT] == 0.1
+
+
 async def test_human_takes_over_agent_and_mcp_refuses_input(cfg, daemon, fake):
     client = DaemonClient(cfg, autostart=False)
     try:

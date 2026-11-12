@@ -176,6 +176,7 @@ _ROAD_OPEN = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (19, 19))
 _ARROW_R = 8  # the white arrow itself
 _ON_ROAD_R = 11  # a road pixel this close to the arrow puts the figure on the road
 _ROAD_MIN_PIXELS = 80  # a piece of band smaller than this is an icon or a letter, not a road
+_SHEET_R = 12  # a white sheet this close to the arrow leaves the side unknown
 
 
 @dataclass(frozen=True)
@@ -183,6 +184,64 @@ class Road:
     bearing: float  # map degrees from the arrow to the nearest road pixel, 0 = up = camera forward
     distance: float  # crop pixels to it
     along: float | None  # one direction of the road at that point, map degrees; None if not readable
+    clearance: float | None = None  # outside the white band; negative inside it, in crop pixels
+    outward: float | None = None  # toward the nearer edge, never toward the road centre
+    width: float | None = None
+
+    @property
+    def position(self) -> str:
+        if self.clearance is None:
+            return "unknown"
+        return "side" if self.clearance >= 2.0 else "lane"
+
+
+def _road_edges(band, along):
+    """Fit both edges outside the arrow's occlusion. Junctions/curves/wide sheets abstain.
+
+    This measures a map band, not a pavement detector. Four cross sections must
+    agree on a 4..18px strip. A transparent radar can still fool it; no confidence
+    in real-world kerbs is inferred from the colour alone.
+    """
+    if along is None:
+        return None, None, None
+    angle = math.radians(along)
+    tx, ty = math.sin(angle), -math.cos(angle)
+    nx, ny = -ty, tx
+    dx, dy = _X - ACX, _Y - ACY
+    longitudinal, lateral = dx * tx + dy * ty, dx * nx + dy * ny
+    edges = []
+    for distance in (-18, -12, 12, 18):
+        values = np.unique(np.rint(lateral[band.astype(bool) & (abs(longitudinal - distance) < 2)]))
+        values = values[abs(values) <= 35]
+        groups = np.split(values, np.where(np.diff(values) > 1)[0] + 1)
+        groups = [g for g in groups if len(g) >= 4]
+        if not groups:
+            return None, None, None
+        group = min(groups, key=lambda g: min(abs(g)))
+        low, high = float(group[0]) - 0.5, float(group[-1]) + 0.5
+        if not 4 <= high - low <= 18:
+            return None, None, None
+        edges.append((low, high))
+    edges = np.array(edges)
+    if np.ptp(edges, axis=0).max() > 3:
+        return None, None, None
+    low, high = np.mean(edges, axis=0)
+    centre = band.astype(bool) & (abs(longitudinal) < 12) & (abs(lateral) < 25)
+    if np.count_nonzero(centre & ((lateral < low - 2) | (lateral > high + 2))) > 12:
+        # A crossing under the arrow cannot inherit the side of just one arm.
+        return None, None, None
+    # The arrow is the origin. Choose the closest exit, retaining clearance
+    # to the actual band rather than the edge of the arrow's masking circle.
+    sign = -1 if abs(low) < abs(high) else 1
+    clearance = low if sign < 0 else -high
+    outward = math.degrees(math.atan2(sign * nx, -sign * ny))
+    return float(clearance), outward, float(high - low)
+
+
+def road_position(observation) -> Road | None:
+    if observation.reading.corrupt or player_mode(observation) != "foot":
+        return None
+    return find_road(hud_crop(observation.frame))
 
 
 def find_road(crop) -> Road | None:
@@ -221,7 +280,21 @@ def find_road(crop) -> Road | None:
             if values[1] > 2.0 * max(values[0], 1e-6):
                 vx, vy = vectors[:, 1]
                 along = math.degrees(math.atan2(vx, -vy))
-        return Road(bearing, float(distance[nearest]), along)
+        # At the arrow the occlusion cuts the band into two short stubs. Fit both together for the
+        # edges; the walk itself keeps the direction it always took from the nearest stub.
+        edge_along = along
+        local = distance < 30
+        if float(distance[nearest]) < 25 and local.sum() >= 80:
+            values, vectors = np.linalg.eigh(np.cov(np.vstack([dx[local], dy[local]])))
+            if values[1] > 3 * max(values[0], 1e-6):
+                vx, vy = vectors[:, 1]
+                edge_along = math.degrees(math.atan2(vx, -vy))
+        clearance = outward = width = None
+        # A white sheet around the arrow (car park, plaza, wide junction) is no band to stand beside:
+        # the map does not say where its edge is, so it does not say a side either.
+        if not sheet[(_X - ACX) ** 2 + (_Y - ACY) ** 2 < _SHEET_R**2].any():
+            clearance, outward, width = _road_edges(band, edge_along)
+        return Road(bearing, float(distance[nearest]), along, clearance, outward, width)
     except Exception:
         return None
 
@@ -481,14 +554,17 @@ class WalkRoad:
     parameters: ClassVar = {"duration": (2.0, 30.0, 15.0), "sprint": (False, True)}
     prompt = (
         "On foot: walk to the nearest road the minimap shows, then along it the way the figure faces; "
-        "holds a compass heading off-road and turns away from walls. Fails stuck when "
-        "four ways round have failed. Cars pass on roads. duration is the time limit."
+        "leaves the carriageway where the map shows the figure in it; holds a compass heading off-road "
+        "and turns away from walls. Ends done at its time limit, saying road-side or side unknown. "
+        "Fails stuck when four ways round have failed."
     )
 
     ROAD_WAIT = 1.0  # seconds of readable map without a road before it says so
-    UNREADABLE_WAIT = 2.0  # the reader calls a few frames in a hundred damaged, sixteen ticks at most
+    UNREADABLE_WAIT = 1.5  # the reader calls a few frames in a hundred damaged, sixteen ticks at most
     STICK = 0.85
     ON_ROAD_SECONDS = 0.3  # the arrow has to be on the road this long before the skill follows it
+    # A lane reading is acted on this long, so that one tick the map cannot read does not turn it back.
+    LEAVE_SECONDS = 1.5
 
     def __init__(self, args: dict):
         if not isinstance(args, dict) or set(args) - self.parameters.keys():
@@ -515,6 +591,9 @@ class WalkRoad:
         self.heading = None  # picture bearing, transported by the north disc
         self.compass_heading = None
         self.north = None
+        self.position = "unknown"  # lane | side | unknown, from the last map reading
+        self.side_since = None  # since when the edge of the band has been near and the figure outside it
+        self.leave_until = None  # a lane was read: keep going outward until then, or until a side is read
 
     def stop(self, reason: str = "interrupted") -> SkillResult:
         self.finished = SkillResult(status="failed", reason=reason)
@@ -531,21 +610,25 @@ class WalkRoad:
         gap = 0.0 if self.last_time is None else min(now - self.last_time, 0.1)
         self.last_time = now
         elapsed = now - self.started
-        if elapsed >= self.limit:
-            self.finished = SkillResult(status="done", reason="time-limit")
-            return self.finished
-        if player_mode(observation) != "foot" or observation.reading.corrupt:
-            # Nothing is read from this tick and nothing is pushed on it.
-            self.guard.step(observation, (0.0, 0.0))
-            return SkillResult()
-        crop = hud_crop(observation.frame)
+        foot = player_mode(observation) == "foot" and not observation.reading.corrupt
+        crop = hud_crop(observation.frame) if foot else None
         if crop is None:
+            self.position, self.side_since = "unknown", None
+            if elapsed >= self.limit:
+                return self._end(None)
+            if not foot:
+                # Nothing is read from this tick and nothing is pushed on it.
+                self.guard.step(observation, (0.0, 0.0))
+                return SkillResult()
             # The road is only in the picture; without one there is nothing to walk by.
             return self.stop("no-frame")
         north = north_bearing(crop)
         if north is not None:
             self.north = north
         road = find_road(crop)
+        self._locate(road, now)
+        if elapsed >= self.limit:
+            return self._end(road)
         if road is not None:
             self.road_seen = True
             self.readable = 0.0
@@ -563,23 +646,83 @@ class WalkRoad:
         else:
             self.unreadable += gap
         if self.heading is None:
+            # The only stand-still the map causes, and it ends: UNREADABLE_WAIT, then map-unreadable.
             self.guard.step(observation, (0.0, 0.0))
             if self.unreadable >= self.UNREADABLE_WAIT:
                 return self.stop("map-unreadable")
-            return SkillResult()
+            return SkillResult(reason="map unreadable")
         steer = self.guard.step(observation, stick_for(self.heading, self.STICK))
         if steer.failed:
             self.finished = SkillResult(status="failed", reason=steer.failed)
             return self.finished
+        if (
+            road is not None
+            and road.outward is not None
+            and road.distance <= _ON_ROAD_R
+            and steer.state == "escape"
+            and sum(a * b for a, b in zip(steer.left, stick_for(road.outward, 1.0), strict=True)) < -0.05
+        ):
+            # Where the edge is known and near, a way round that turns toward the carriageway is not taken.
+            return SkillResult(Pad(left=stick_for(road.outward, self.STICK)), reason="leaving lane")
         buttons = self.profile.sprint_buttons(elapsed) if self.sprint and steer.state == "go" else ()
-        return SkillResult(Pad(buttons=buttons, left=steer.left, right=steer.right))
+        pad = Pad(buttons=buttons, left=steer.left, right=steer.right)
+        return SkillResult(pad, reason=self._reason(road))
+
+    def _locate(self, road: Road | None, now: float) -> None:
+        self.position = road.position if road is not None else "unknown"
+        near = road is not None and road.position == "side" and road.distance <= _ON_ROAD_R
+        if not near:
+            self.side_since = None
+        elif self.side_since is None:
+            self.side_since = now
+
+    def _reason(self, road: Road | None) -> str | None:
+        if road is None:
+            return None  # no road on the map: the compass walk, as it always was
+        if self.position == "lane":
+            return "leaving lane"
+        if self.position == "unknown":
+            return "side unknown"
+        return "at roadside" if road.distance <= _ON_ROAD_R else "walking to the road; side known"
+
+    def _end(self, road: Road | None) -> SkillResult:
+        """The time limit. Done at the roadside only on a positive reading with the band's edge near; in a
+        lane it says so; with the side unknown it ends as the walk always ended and says that."""
+        if self.side_since is not None and self.last_time - self.side_since >= self.ON_ROAD_SECONDS:
+            self.finished = SkillResult(status="done", reason="road-side (map band; kerb unverified)")
+        elif self.position == "lane":
+            self.finished = SkillResult(status="failed", reason="still-in-lane")
+        elif road is None and not self.road_seen:
+            self.finished = SkillResult(status="done", reason="time-limit")
+        elif self.position == "unknown":
+            self.finished = SkillResult(status="done", reason="time-limit; side unknown")
+        else:
+            self.finished = SkillResult(status="done", reason="time-limit; roadside not reached")
+        return self.finished
 
     def _bearing(self, road: Road, arrow: float | None, now: float) -> float:
+        # The runner reads this for road_reached, whether or not the edges could be told.
         if road.distance > _ON_ROAD_R:
             self.on_road_since = None
-            return road.bearing
-        if self.on_road_since is None:
+        elif self.on_road_since is None:
             self.on_road_since = now
+        # Only a positive lane reading leaves the carriageway. Where the side is unknown the walk goes as
+        # it always did, to the road and along it; where it is known and far it still goes to the road.
+        if road.position == "lane" or (
+            road.position == "side"
+            and road.clearance < 4
+            and self.leave_until is not None
+            and now < self.leave_until
+        ):
+            self.leave_until = now + self.LEAVE_SECONDS
+            return road.outward
+        if road.position == "unknown" and self.leave_until is not None and now < self.leave_until:
+            if self.compass_heading is not None and self.north is not None:
+                return _wrap(self.compass_heading + self.north)
+        else:
+            self.leave_until = None
+        if road.distance > _ON_ROAD_R:
+            return road.bearing
         if road.along is None or now - self.on_road_since < self.ON_ROAD_SECONDS:
             return road.bearing if self.sense is None else self.sense
         # Along the road, the way nearer to where the figure faces, and that way kept: the map turns

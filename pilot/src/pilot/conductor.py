@@ -15,7 +15,8 @@ import cv2
 
 from .contract import FRAME_SIZE, HUD_RECT, NEUTRAL_PAD, Pad, player_mode
 from .flow import MENUS
-from .head import HeadRequest, ScriptedHead, build_prompt, parse_response, response_data
+from .goals import interruption
+from .head import HeadRequest, ScriptedHead, SkillCall, build_prompt, parse_response, response_data
 from .judge import ModeFilter
 from .loop import ControllerRuntime, Pipeline, RuntimeInterruptedError, cleanup_runtime, interrupt_handlers
 from .profile import active
@@ -50,6 +51,8 @@ def minimap_crop(rgb):
 
 
 class Conductor:
+    OCR_SLOW_SECONDS = 3.0
+
     def __init__(
         self,
         directory: Path,
@@ -63,7 +66,7 @@ class Conductor:
         text_reader=None,
         quiet_seconds=60.0,
         ocr_interval=0.5,
-        ocr_timeout=3.0,
+        ocr_timeout=20.0,
         submit=background,
         clock=time.monotonic,
         opening=(),
@@ -79,9 +82,10 @@ class Conductor:
         self.head = ScriptedHead() if head is None else head
         self.notebook = PLAY_RECORDINGS / "notebook.txt" if notebook is None else Path(notebook)
         self.runner = SkillRunner() if runner is None else runner
-        # What the session does before the head has said anything, such as levelling the camera.
+        # What the session does before the head has said anything, such as setting the view and
+        # levelling the camera. An opening skill that fails costs the head's first plan nothing.
         if opening:
-            self.runner.replace(tuple(opening))
+            self.runner.replace(tuple(opening), opening=True)
         self.detector = EventDetector() if detector is None else detector
         self.ocr, self.reader = ocr, text_reader
         self.quiet_seconds, self.ocr_interval, self.ocr_timeout = quiet_seconds, ocr_interval, ocr_timeout
@@ -89,11 +93,13 @@ class Conductor:
         self.text = SceneText()
         self.ocr_future = None
         self.ocr_started = None
+        self.ocr_slow = False
         self.next_ocr = float("-inf")
         self.pending = [{"kind": "startup"}]
         self.epoch = 0
         self.future = None
         self.inflight = None
+        self.goal = None
         self.request_count = 0
         self.last_request_time = None
         self.request_times = []
@@ -158,7 +164,15 @@ class Conductor:
             elif self.clock() - self.ocr_started >= self.ocr_timeout:
                 self.write({"type": "ocr_error", "t": t, "error": "timeout"})
                 raise TimeoutError("scene OCR exceeded its time limit")
+            elif not self.ocr_slow and self.clock() - self.ocr_started >= self.OCR_SLOW_SECONDS:
+                # On 12 November a reading took over three seconds while the Mac classified
+                # recordings beside the pilot, and that ended the session. A late reading only
+                # leaves the pilot without fresh text, which it treats as no text; a reader that
+                # stays away for ocr_timeout still ends it.
+                self.ocr_slow = True
+                self.write({"type": "ocr_slow", "t": t, "seconds": self.clock() - self.ocr_started})
         if self.ocr_future is None and t >= self.next_ocr:
+            self.ocr_slow = False
             self.ocr_started = self.clock()
             self.ocr_capture_time = captured
             self.ocr_future = self.submit(self._read_text, rgb.copy())
@@ -178,17 +192,40 @@ class Conductor:
             "overtaken": discard or request["epoch"] != self.epoch,
             "disposition": "discarded",
         }
+        discarded = getattr(self.head, "discard", None)
         try:
             decision = parse_response(response_data(self.future.result()))
+            # A goal is the rules' own; whatever else answers brings a plan and no goal.
+            if not getattr(self.head, "owns_goals", False) and decision.goal is not None:
+                decision = replace(decision, goal=None)
             row.update(response_data(decision))
-            if not row["overtaken"]:
-                if request["append"] or getattr(self.runner, "uninterruptible", False):
+            if row["overtaken"]:
+                if discarded is not None:
+                    discarded()
+            else:
+                if decision.action == "go_on":
+                    if self.runner.has_plan:
+                        row["disposition"] = "kept"
+                    elif decision.goal is not None:
+                        # The skill ended while the answer was on its way: ask for the next step now.
+                        row["disposition"] = "kept"
+                        self.pending.append({"kind": "plan_finished"})
+                    else:
+                        # Nothing runs for it to go on with, and asking again at once would only
+                        # bring the same answer: a short wait, and the end of it asks.
+                        row["disposition"] = "refused"
+                        row["error"] = "go_on without a running plan"
+                        self.runner.append((SkillCall("wait", {"duration": 3}),))
+                elif getattr(self.runner, "uninterruptible", False) or (
+                    decision.goal is None and request["append"]
+                ):
                     self.runner.append(decision.plan)
                     row["disposition"] = "appended"
                 else:
                     self.runner.replace(decision.plan)
                     row["disposition"] = "replaced"
-                if self.carry_allowed and self.carry_started is not None:
+                self.goal = decision.goal
+                if decision.action != "go_on" and self.carry_allowed and self.carry_started is not None:
                     self.runner.release_pending = True
                 row["applied"] = True
                 self.carry_started = None
@@ -200,6 +237,8 @@ class Conductor:
         except Exception as exc:
             row["error"] = f"{type(exc).__name__}: {exc}"
             self.pending.append({"kind": "head_failed", "error": row["error"]})
+            if discarded is not None:
+                discarded()
         finally:
             self.write(row)
             self.future = self.inflight = None
@@ -221,6 +260,7 @@ class Conductor:
             self.runner.describe(),
             notebook,
             str(jpeg),
+            time=observation.time,
             hud=self._hud_for_head(observation),
             objects=[asdict(item) for item in observation.objects[:12]],
             judgment=(
@@ -324,6 +364,33 @@ class Conductor:
             detected = [event for event in detected if event.kind not in self.OWN_SCREEN_NEWS]
         new_events = [asdict(event) for event in detected] + list(events)
         new_events.extend(self._hud_events(observation))
+        if self.goal is not None:
+            reason = interruption(
+                HeadRequest(
+                    new_events,
+                    self.text.help,
+                    self.text.objective,
+                    self.text.subtitle,
+                    self.text.banner,
+                    asdict(observation.reading),
+                    self.runner.describe(),
+                    "",
+                    "",
+                    hud=asdict(observation.hud) if observation.hud is not None else None,
+                    time=t,
+                ),
+                self.goal,
+            )
+            if reason:
+                self.runner.stop("goal_" + reason)
+                self.write({"type": "goal_end", "t": t, "goal": self.goal, "reason": reason})
+                self.goal = None
+                # Flow can return early. Invalidate the pending answer before it gets that chance.
+                # The event goes to pending here and nowhere else: new_events reaches it below.
+                self.epoch += 1
+                self.pending.append({"kind": "goal_interrupted", "reason": reason})
+                self.carry_allowed = False
+                self.carry_started = None
         recovered = self.flow_started is not None
         flow_result = self._flow_tick(observation, rgb)
         # A stuck screen is where the reflex has done what it knows. From there the head's
@@ -346,6 +413,9 @@ class Conductor:
             self.carry_started = None
         self._finish_head(t)
         result = self.runner.tick(observation)
+        failures = getattr(self.runner, "opening_failures", None)
+        while failures:
+            self.write({"type": "opening_failed", "t": t, **failures.pop(0)})
         self._expect_skill()
         if self.runner.completed:
             last = self.runner.describe()
@@ -622,6 +692,7 @@ def run_play(
     started = clock()
     ticks = 0
     detections, capture_time = (), None
+    figure = figure_vehicle = None
     with interrupt_handlers():
         try:
             if record:
@@ -660,6 +731,9 @@ def run_play(
                         if newest is not None:
                             capture_time, detections = newest
                             detections = tuple(detections)
+                            # The person and the vehicle the reader cut out belong to these detections.
+                            figure = getattr(objects, "figure", None)
+                            figure_vehicle = getattr(objects, "figure_vehicle", None)
                     result = conductor.tick(
                         Observation(
                             reading,
@@ -668,6 +742,8 @@ def run_play(
                             frame=frame.rgb,
                             objects=detections,
                             objects_time=capture_time,
+                            figure=figure,
+                            figure_vehicle=figure_vehicle,
                             hud=None
                             if hud is None
                             else hud.read(frame.rgb, text=getattr(conductor, "text", None)),

@@ -1,0 +1,44 @@
+[
+  {
+    "session": "20261112-102851",
+    "sampled_ticks": 200,
+    "ocr_pairs": 28,
+    "before": 0,
+    "after": 0
+  },
+  {
+    "session": "20261112-103305",
+    "sampled_ticks": 2242,
+    "ocr_pairs": 318,
+    "before": 1572,
+    "after": 1730
+  },
+  {
+    "session": "20261112-104424",
+    "sampled_ticks": 2850,
+    "ocr_pairs": 428,
+    "before": 1662,
+    "after": 1849
+  },
+  {
+    "session": "20261112-104827",
+    "sampled_ticks": 4881,
+    "ocr_pairs": 758,
+    "before": 2206,
+    "after": 2541
+  },
+  {
+    "session": "20261112-105230",
+    "sampled_ticks": 1406,
+    "ocr_pairs": 205,
+    "before": 1217,
+    "after": 1257
+  },
+  {
+    "session": "20261112-105332",
+    "sampled_ticks": 451,
+    "ocr_pairs": 68,
+    "before": 424,
+    "after": 437
+  }
+]

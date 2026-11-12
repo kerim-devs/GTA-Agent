@@ -8,7 +8,7 @@ import cv2
 import pytest
 
 from pilot.contract import Observation, Reading
-from pilot.foot import FootGuard, Road, Steer, WalkRoad, north_bearing, world_shift, world_view
+from pilot.foot import FootGuard, Road, Steer, WalkRoad, north_bearing, stick_for, world_shift, world_view
 from pilot.minimap import read
 
 EVIDENCE = Path(__file__).resolve().parents[2] / "lab/foot/p50"
@@ -83,7 +83,8 @@ def test_no_road_keeps_compass_heading_across_camera_turns(monkeypatch):
         assert skill.compass_heading == -30
         bearing = math.degrees(math.atan2(result.pad.left[0], -result.pad.left[1]))
         assert (bearing - north + 180) % 360 - 180 == pytest.approx(-30)
-    assert skill.step(Observation(FLAT, None, 30, frame=crop)).reason == "time-limit"
+    final = skill.step(Observation(FLAT, None, 30, frame=crop))
+    assert final.status == "done" and final.reason == "time-limit"
 
 
 def test_road_direction_survives_road_loss_and_missing_compass(monkeypatch):
@@ -98,6 +99,9 @@ def test_road_direction_survives_road_loss_and_missing_compass(monkeypatch):
     road[0] = None
     for t, value, expected in [(1, 60, 110), (6, None, 110), (18, -90, -40)]:
         north[0] = value
-        assert skill.step(Observation(FLAT, None, t, frame=crop)).status == "running"
+        result = skill.step(Observation(FLAT, None, t, frame=crop))
+        assert result.status == "running"
         assert skill.compass_heading == 50
         assert skill.heading == expected
+        # a road that was seen and is gone is no reason to stand: the pad keeps the heading
+        assert result.pad.left == pytest.approx(stick_for(expected, WalkRoad.STICK))

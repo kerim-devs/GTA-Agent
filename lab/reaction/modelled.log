@@ -1,0 +1,25 @@
+2026-11-12 17:56:39.324 Python[68446:18527745] 2026-11-12 17:56:39.324481 [W:onnxruntime:Default, telemetry_1ds.cc:600 operator()] Failed to persist telemetry device ID; using an in-memory identifier
+reflex enemy-01 modelled: None s; false=0
+reflex enemy-02 modelled: None s; false=0
+reflex enemy-03 modelled: None s; false=0
+reflex hit-01 modelled: None s; false=0
+reflex hit-02 modelled: None s; false=2
+reflex hit-03 modelled: 0.06976813516939728 s; false=0
+reflex wanted-01 modelled: 0.036434801841238595 s; false=0
+reflex wanted-02 modelled: 0.0031014685130230646 s; false=0
+reflex wanted-03 modelled: 0.8364348018411931 s; false=0
+reflex calm-walk-01 modelled: None s; false=0
+reflex calm-walk-02 modelled: None s; false=0
+reflex calm-walk-03 modelled: None s; false=0
+pilot enemy-01 modelled: None s; false=0
+pilot enemy-02 modelled: None s; false=0
+pilot enemy-03 modelled: None s; false=0
+pilot hit-01 modelled: None s; false=0
+pilot hit-02 modelled: None s; false=0
+pilot hit-03 modelled: None s; false=0
+pilot wanted-01 modelled: 3.9706578226676754 s; false=0
+pilot wanted-02 modelled: 0.07065782267306986 s; false=0
+pilot wanted-03 modelled: None s; false=0
+pilot calm-walk-01 modelled: None s; false=0
+pilot calm-walk-02 modelled: None s; false=0
+pilot calm-walk-03 modelled: None s; false=0

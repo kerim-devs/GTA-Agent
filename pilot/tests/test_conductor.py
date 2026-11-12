@@ -417,6 +417,28 @@ def test_ocr_timeout_releases_live_pad_and_stops_recorder(tmp_path):
     assert any(row["type"] == "ocr_error" for row in rows(tmp_path))
 
 
+def test_a_late_text_reading_is_noted_once_and_does_not_end_the_session(tmp_path):
+    clock = Clock()
+    bridge = FakeBridge(tmp_path, clock)
+    pending = Pending()
+
+    def factory(*args, **kwargs):
+        kwargs["ocr"] = True
+        return Conductor(*args, **kwargs, submit=pending, detector=NoEvents())
+
+    run_play(
+        bridge,
+        seconds=6,
+        pipeline=FakePipeline(),
+        clock=clock,
+        sleep=clock.sleep,
+        conductor_factory=factory,
+    )
+    kinds = [row["type"] for row in rows(tmp_path)]
+    assert kinds.count("ocr_slow") == 1
+    assert "ocr_error" not in kinds
+
+
 def test_offline_video_writes_decisions_and_frame_log_without_bridge(tmp_path, monkeypatch):
     import runpy
     from pathlib import Path
@@ -635,6 +657,55 @@ def test_a_replaced_press_is_let_go_before_the_same_button_is_pressed_again():
     # without this gap the game sees one long press instead of two
     assert runner.tick(observation(0.06)).pad == NEUTRAL_PAD
     assert runner.tick(observation(0.09)).pad.buttons == ("cross",)
+
+
+def test_the_figure_the_object_reader_cut_out_reaches_the_observation_with_its_detections(tmp_path):
+    from pilot.contract import Detection
+
+    clock = Clock()
+    figure = Detection("person", (540, 330, 640, 600), 0.9)
+    bike = Detection("motorcycle", (560, 450, 700, 640), 0.8)
+    captured = []
+
+    class Objects:
+        figure = None
+        figure_vehicle = None
+
+        def __init__(self):
+            self.calls = 0
+
+        def poll(self, frame, t):
+            self.calls += 1
+            if self.calls == 3:  # the third look finds it, with the person and vehicle cut out
+                self.figure, self.figure_vehicle = figure, bike
+                return t, ()
+            return None
+
+        def close(self):
+            pass
+
+    class ObservingRunner(SkillRunner):
+        def tick(self, observation):
+            captured.append(observation)
+            return super().tick(observation)
+
+    def factory(*args, **kwargs):
+        kwargs["runner"] = ObservingRunner()
+        return Conductor(*args, **kwargs, submit=instant, detector=NoEvents())
+
+    run_play(
+        FakeBridge(tmp_path, clock),
+        seconds=0.3,
+        pipeline=FakePipeline(),
+        ocr=False,
+        clock=clock,
+        sleep=clock.sleep,
+        conductor_factory=factory,
+        objects=Objects(),
+    )
+    assert captured[0].figure is None and captured[0].objects_time is None
+    arrived = [o for o in captured if o.objects_time is not None]
+    assert arrived and all(o.figure is figure and o.figure_vehicle is bike for o in arrived)
 
 
 @pytest.mark.parametrize("fail", [False, True])

@@ -22,7 +22,8 @@ from .minimap import read
 from .motion import map_motion, motion_state
 
 RECORDINGS = Path(__file__).resolve().parents[3] / "recordings"
-END_STATES = ("route-gone", "failed-recovery")  # states in which drive.Driver has given the car up
+# States in which drive.Driver has given the car up.
+END_STATES = ("route-gone", "failed-recovery", "dead-or-held", "map-unreadable")
 
 
 class Pipeline:

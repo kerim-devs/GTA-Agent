@@ -6,11 +6,17 @@ covers USB and Bluetooth (graph `ps5-agent-bridge`, node #20).
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass, field
 
 from .backend import Button, Side
 
 STICK_DEADZONE = 0.08
+# A stick at rest is not a person. Kerim's DualSense rests at up to 0.11 on an axis (his recordings
+# of 12 November): lying connected it held the bridge for itself, kept a recording running and passed
+# its drift on to the console. So a stick whose whole deflection stays under this is at rest; one
+# that is moved further is passed on axis by axis as before.
+STICK_REST = 0.18
 AXIS_MAX = 32767.0
 
 
@@ -49,6 +55,12 @@ def _axis(raw: int) -> float:
     return 0.0 if abs(value) < STICK_DEADZONE else round(value, 2)
 
 
+def _stick(raw_x: int, raw_y: int) -> tuple[float, float]:
+    if math.hypot(raw_x, raw_y) / AXIS_MAX < STICK_REST:
+        return (0.0, 0.0)
+    return (_axis(raw_x), _axis(raw_y))
+
+
 def _trigger(raw: int) -> float:
     value = max(0.0, min(1.0, raw / AXIS_MAX))
     return 0.0 if value < STICK_DEADZONE else round(value, 2)
@@ -60,8 +72,8 @@ def state_from_sdl(pressed: set[str], axes: dict[str, int]) -> PadState:
     return PadState(
         buttons,
         {
-            Side.LEFT: (_axis(axes.get("LEFTX", 0)), _axis(axes.get("LEFTY", 0))),
-            Side.RIGHT: (_axis(axes.get("RIGHTX", 0)), _axis(axes.get("RIGHTY", 0))),
+            Side.LEFT: _stick(axes.get("LEFTX", 0), axes.get("LEFTY", 0)),
+            Side.RIGHT: _stick(axes.get("RIGHTX", 0), axes.get("RIGHTY", 0)),
         },
         {Side.LEFT: _trigger(axes.get("TRIGGERLEFT", 0)), Side.RIGHT: _trigger(axes.get("TRIGGERRIGHT", 0))},
     )
