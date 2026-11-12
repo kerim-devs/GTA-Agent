@@ -180,7 +180,10 @@ class EnterVehicle:
     def stop(self, reason="interrupted") -> SkillResult:
         if self.road is not None:
             self.road.stop(reason)
-        self.finished = SkillResult(status="failed", reason=reason)
+        position = self.location.position if self.location else "unknown"
+        self.finished = SkillResult(
+            status="failed", reason=f"{reason}; road={position}; roadside eye unavailable"
+        )
         return self.finished
 
     def _timeout_reason(self):
@@ -388,11 +391,26 @@ class EnterVehicle:
         if elapsed >= self.limit:
             reason = self._timeout_reason()
             location = road_position(obs)
+            self.location = location
             if location is not None and location.position == "lane":
                 reason += "; still-in-lane"
             return self.stop(reason)
-        if not obs.reading.corrupt and player_mode(obs) == "none":
-            return SkillResult()
+        if not obs.reading.corrupt and (player_mode(obs) == "none" or obs.reading.minimap == "none"):
+            self.confirmed_since = None
+            return SkillResult(reason="seat unconfirmed; no gameplay minimap")
+        judgment = obs.judgment
+        if judgment is not None and 0 <= now - judgment.capture <= 1.5:
+            mode = judgment.answers.get("mode")
+            banner = judgment.answers.get("banner")
+            if (mode is not None and mode.value == "none") or (banner is not None and banner.value is True):
+                self.confirmed_since = None
+                return SkillResult(reason="seat unconfirmed; death or non-play image")
+            if player_mode(obs) == "vehicle" and mode is not None and mode.value != "vehicle":
+                self.confirmed_since = None
+                return SkillResult(reason="seat unconfirmed; judge disagrees with vehicle mode")
+        if obs.hud is not None and obs.hud.screen in {"wasted", "busted"}:
+            self.confirmed_since = None
+            return SkillResult(reason="seat unconfirmed; death or arrest")
         if self.phase == "wait" and now - self.phase_since < PRESS_SECONDS:
             return SkillResult(Pad(buttons=(self.profile.enter_vehicle,)))
         if not obs.reading.corrupt and player_mode(obs) == "vehicle":
@@ -408,6 +426,10 @@ class EnterVehicle:
                     )
                     if self.attempts
                     else "already in a vehicle",
+                )
+                self.finished = replace(
+                    self.finished,
+                    reason=self.finished.reason + "; position=seated; roadside eye unavailable",
                 )
                 return self.finished
             return SkillResult()

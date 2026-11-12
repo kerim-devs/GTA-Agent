@@ -236,7 +236,7 @@ def test_a_plan_from_the_head_starts_and_stops_every_new_skill(name):
     assert runner.last == {
         "name": name,
         "status": "failed",
-        "reason": "flow",
+        "reason": ("flow; road=unknown; roadside eye unavailable" if name == "enter_vehicle" else "flow"),
         "queue": [],
         "queue_disposition": "empty",
         "dropped": [],

@@ -1,0 +1,1015 @@
+{
+  "answers-foot-4b": {
+    "whole-plain-single": {
+      "where": {
+        "n": 251,
+        "errors": 22,
+        "confusion": {
+          "carriageway": {
+            "carriageway": 81,
+            "roadside": 17,
+            "unknown": 3
+          },
+          "open": {
+            "open": 47,
+            "unknown": 27,
+            "error": 3
+          },
+          "inside": {
+            "error": 19,
+            "inside": 3,
+            "unknown": 8
+          },
+          "roadside": {
+            "roadside": 35,
+            "unknown": 8
+          }
+        },
+        "accuracy": 0.6613545816733067,
+        "seconds": {
+          "mean": 0.2427358060935605,
+          "p50": 0.21232608403079212,
+          "p95": 0.3569205414969474,
+          "max": 4.424612792034168
+        },
+        "calibration": {
+          "0.8-0.95": {
+            "n": 27,
+            "mean_probability": 0.887037037037037,
+            "accuracy": 0.5925925925925926
+          },
+          ">=0.95": {
+            "n": 175,
+            "mean_probability": 0.9953599999999999,
+            "accuracy": 0.7714285714285715
+          },
+          "0.5-0.8": {
+            "n": 26,
+            "mean_probability": 0.6682307692307692,
+            "accuracy": 0.5769230769230769
+          },
+          "<0.5": {
+            "n": 1,
+            "mean_probability": 0.443,
+            "accuracy": 0.0
+          }
+        },
+        "binary_accuracy": 0.6613545816733067,
+        "carriageway_n": 101,
+        "false_safe": 17,
+        "false_safe_rate": 0.16831683168316833,
+        "gate_pass": false
+      }
+    },
+    "crop-plain-single": {
+      "where": {
+        "n": 251,
+        "errors": 21,
+        "confusion": {
+          "carriageway": {
+            "carriageway": 79,
+            "unknown": 1,
+            "roadside": 20,
+            "open": 1
+          },
+          "open": {
+            "open": 42,
+            "unknown": 33,
+            "error": 2
+          },
+          "inside": {
+            "error": 19,
+            "inside": 3,
+            "unknown": 7,
+            "open": 1
+          },
+          "roadside": {
+            "roadside": 33,
+            "unknown": 9,
+            "carriageway": 1
+          }
+        },
+        "accuracy": 0.6254980079681275,
+        "seconds": {
+          "mean": 0.2294670757197541,
+          "p50": 0.2139127500122413,
+          "p95": 0.3717361459857784,
+          "max": 0.5101240830263123
+        },
+        "calibration": {
+          "0.8-0.95": {
+            "n": 32,
+            "mean_probability": 0.89796875,
+            "accuracy": 0.625
+          },
+          ">=0.95": {
+            "n": 180,
+            "mean_probability": 0.9962666666666665,
+            "accuracy": 0.7166666666666667
+          },
+          "0.5-0.8": {
+            "n": 17,
+            "mean_probability": 0.6368823529411765,
+            "accuracy": 0.47058823529411764
+          },
+          "<0.5": {
+            "n": 1,
+            "mean_probability": 0.484,
+            "accuracy": 0.0
+          }
+        },
+        "binary_accuracy": 0.6294820717131474,
+        "carriageway_n": 101,
+        "false_safe": 21,
+        "false_safe_rate": 0.2079207920792079,
+        "gate_pass": false
+      }
+    },
+    "whole-pair": {
+      "where": {
+        "n": 251,
+        "errors": 29,
+        "confusion": {
+          "carriageway": {
+            "error": 27,
+            "roadside": 74
+          },
+          "open": {
+            "roadside": 6,
+            "open": 71
+          },
+          "inside": {
+            "inside": 28,
+            "roadside": 2
+          },
+          "roadside": {
+            "roadside": 41,
+            "error": 2
+          }
+        },
+        "accuracy": 0.5577689243027888,
+        "seconds": {
+          "mean": 0.18885962867138137,
+          "p50": 0.17132262501399964,
+          "p95": 0.32138743752148,
+          "max": 0.41961887502111495
+        },
+        "calibration": {
+          ">=0.95": {
+            "n": 198,
+            "mean_probability": 0.9977373737373737,
+            "accuracy": 0.6060606060606061
+          },
+          "0.5-0.8": {
+            "n": 9,
+            "mean_probability": 0.647,
+            "accuracy": 0.6666666666666666
+          },
+          "0.8-0.95": {
+            "n": 15,
+            "mean_probability": 0.8981999999999999,
+            "accuracy": 0.9333333333333333
+          }
+        },
+        "binary_accuracy": 0.5896414342629482,
+        "carriageway_n": 101,
+        "false_safe": 74,
+        "false_safe_rate": 0.7326732673267327,
+        "gate_pass": false
+      },
+      "edge": {
+        "n": 251,
+        "errors": 29,
+        "confusion": {
+          "left": {
+            "error": 9,
+            "unknown": 3,
+            "left": 10
+          },
+          "right": {
+            "error": 7,
+            "right": 4,
+            "left": 1,
+            "unknown": 6
+          },
+          "unknown": {
+            "left": 11,
+            "unknown": 172,
+            "right": 15,
+            "error": 13
+          }
+        },
+        "accuracy": 0.7410358565737052,
+        "seconds": {
+          "mean": 0.18885962867138137,
+          "p50": 0.17132262501399964,
+          "p95": 0.32138743752148,
+          "max": 0.41961887502111495
+        },
+        "calibration": {
+          "0.5-0.8": {
+            "n": 56,
+            "mean_probability": 0.6593928571428572,
+            "accuracy": 0.6785714285714286
+          },
+          "0.8-0.95": {
+            "n": 50,
+            "mean_probability": 0.88444,
+            "accuracy": 0.76
+          },
+          ">=0.95": {
+            "n": 113,
+            "mean_probability": 0.9906371681415929,
+            "accuracy": 0.9557522123893806
+          },
+          "<0.5": {
+            "n": 3,
+            "mean_probability": 0.47333333333333333,
+            "accuracy": 0.6666666666666666
+          }
+        },
+        "directional_n": 40,
+        "directional_correct": 14
+      }
+    }
+  },
+  "answers-foot-8b": {
+    "whole-single": {
+      "where": {
+        "n": 251,
+        "errors": 0,
+        "confusion": {
+          "carriageway": {
+            "roadside": 101
+          },
+          "open": {
+            "roadside": 5,
+            "open": 72
+          },
+          "inside": {
+            "inside": 30
+          },
+          "roadside": {
+            "roadside": 43
+          }
+        },
+        "accuracy": 0.5776892430278885,
+        "seconds": {
+          "mean": 0.231254103060847,
+          "p50": 0.22619891702197492,
+          "p95": 0.3430993334914092,
+          "max": 0.6161415409878828
+        },
+        "calibration": {
+          ">=0.95": {
+            "n": 223,
+            "mean_probability": 0.9955784753363228,
+            "accuracy": 0.5515695067264574
+          },
+          "0.5-0.8": {
+            "n": 7,
+            "mean_probability": 0.6985714285714285,
+            "accuracy": 0.5714285714285714
+          },
+          "0.8-0.95": {
+            "n": 21,
+            "mean_probability": 0.894142857142857,
+            "accuracy": 0.8571428571428571
+          }
+        },
+        "binary_accuracy": 0.5976095617529881,
+        "carriageway_n": 101,
+        "false_safe": 101,
+        "false_safe_rate": 1.0,
+        "gate_pass": false
+      }
+    },
+    "whole-pair": {
+      "where": {
+        "n": 251,
+        "errors": 0,
+        "confusion": {
+          "carriageway": {
+            "roadside": 101
+          },
+          "open": {
+            "roadside": 5,
+            "open": 72
+          },
+          "inside": {
+            "inside": 30
+          },
+          "roadside": {
+            "roadside": 43
+          }
+        },
+        "accuracy": 0.5776892430278885,
+        "seconds": {
+          "mean": 0.16695952373793335,
+          "p50": 0.1481214590021409,
+          "p95": 0.2935334994981531,
+          "max": 0.43577416602056473
+        },
+        "calibration": {
+          ">=0.95": {
+            "n": 240,
+            "mean_probability": 0.9991625,
+            "accuracy": 0.5666666666666667
+          },
+          "0.5-0.8": {
+            "n": 1,
+            "mean_probability": 0.691,
+            "accuracy": 0.0
+          },
+          "0.8-0.95": {
+            "n": 10,
+            "mean_probability": 0.8953,
+            "accuracy": 0.9
+          }
+        },
+        "binary_accuracy": 0.5976095617529881,
+        "carriageway_n": 101,
+        "false_safe": 101,
+        "false_safe_rate": 1.0,
+        "gate_pass": false
+      },
+      "edge": {
+        "n": 251,
+        "errors": 0,
+        "confusion": {
+          "left": {
+            "left": 9,
+            "right": 13
+          },
+          "right": {
+            "right": 16,
+            "left": 2
+          },
+          "unknown": {
+            "right": 147,
+            "left": 34,
+            "unknown": 30
+          }
+        },
+        "accuracy": 0.21912350597609562,
+        "seconds": {
+          "mean": 0.16695952373793335,
+          "p50": 0.1481214590021409,
+          "p95": 0.2935334994981531,
+          "max": 0.43577416602056473
+        },
+        "calibration": {
+          "0.5-0.8": {
+            "n": 143,
+            "mean_probability": 0.6504755244755245,
+            "accuracy": 0.1958041958041958
+          },
+          "0.8-0.95": {
+            "n": 83,
+            "mean_probability": 0.8741325301204819,
+            "accuracy": 0.2289156626506024
+          },
+          "<0.5": {
+            "n": 14,
+            "mean_probability": 0.43414285714285716,
+            "accuracy": 0.5714285714285714
+          },
+          ">=0.95": {
+            "n": 11,
+            "mean_probability": 0.9640909090909091,
+            "accuracy": 0.0
+          }
+        },
+        "directional_n": 40,
+        "directional_correct": 25
+      }
+    },
+    "crop-single": {
+      "where": {
+        "n": 251,
+        "errors": 0,
+        "confusion": {
+          "carriageway": {
+            "roadside": 98,
+            "carriageway": 3
+          },
+          "open": {
+            "roadside": 5,
+            "open": 72
+          },
+          "inside": {
+            "inside": 26,
+            "roadside": 4
+          },
+          "roadside": {
+            "roadside": 42,
+            "open": 1
+          }
+        },
+        "accuracy": 0.5697211155378487,
+        "seconds": {
+          "mean": 0.237018177466211,
+          "p50": 0.22596062498632818,
+          "p95": 0.34217008351697586,
+          "max": 0.40968504099873826
+        },
+        "calibration": {
+          ">=0.95": {
+            "n": 211,
+            "mean_probability": 0.9948436018957346,
+            "accuracy": 0.5687203791469194
+          },
+          "0.5-0.8": {
+            "n": 14,
+            "mean_probability": 0.673,
+            "accuracy": 0.5714285714285714
+          },
+          "0.8-0.95": {
+            "n": 26,
+            "mean_probability": 0.9060384615384615,
+            "accuracy": 0.5769230769230769
+          }
+        },
+        "binary_accuracy": 0.6095617529880478,
+        "carriageway_n": 101,
+        "false_safe": 98,
+        "false_safe_rate": 0.9702970297029703,
+        "gate_pass": false
+      }
+    },
+    "crop-pair": {
+      "where": {
+        "n": 251,
+        "errors": 0,
+        "confusion": {
+          "carriageway": {
+            "roadside": 99,
+            "carriageway": 2
+          },
+          "open": {
+            "roadside": 5,
+            "open": 72
+          },
+          "inside": {
+            "inside": 29,
+            "roadside": 1
+          },
+          "roadside": {
+            "roadside": 42,
+            "open": 1
+          }
+        },
+        "accuracy": 0.5776892430278885,
+        "seconds": {
+          "mean": 0.1734951417948828,
+          "p50": 0.16575783403823152,
+          "p95": 0.3039962704642676,
+          "max": 0.39401804096996784
+        },
+        "calibration": {
+          ">=0.95": {
+            "n": 238,
+            "mean_probability": 0.9988781512605042,
+            "accuracy": 0.5714285714285714
+          },
+          "0.8-0.95": {
+            "n": 5,
+            "mean_probability": 0.9040000000000001,
+            "accuracy": 0.4
+          },
+          "0.5-0.8": {
+            "n": 8,
+            "mean_probability": 0.6695,
+            "accuracy": 0.875
+          }
+        },
+        "binary_accuracy": 0.6055776892430279,
+        "carriageway_n": 101,
+        "false_safe": 99,
+        "false_safe_rate": 0.9801980198019802,
+        "gate_pass": false
+      },
+      "edge": {
+        "n": 251,
+        "errors": 0,
+        "confusion": {
+          "left": {
+            "left": 13,
+            "right": 9
+          },
+          "right": {
+            "left": 3,
+            "right": 15
+          },
+          "unknown": {
+            "left": 55,
+            "right": 103,
+            "unknown": 53
+          }
+        },
+        "accuracy": 0.32270916334661354,
+        "seconds": {
+          "mean": 0.1734951417948828,
+          "p50": 0.16575783403823152,
+          "p95": 0.3039962704642676,
+          "max": 0.39401804096996784
+        },
+        "calibration": {
+          "0.8-0.95": {
+            "n": 70,
+            "mean_probability": 0.8736285714285714,
+            "accuracy": 0.45714285714285713
+          },
+          "0.5-0.8": {
+            "n": 151,
+            "mean_probability": 0.6425894039735099,
+            "accuracy": 0.2185430463576159
+          },
+          ">=0.95": {
+            "n": 16,
+            "mean_probability": 0.9761875,
+            "accuracy": 0.6875
+          },
+          "<0.5": {
+            "n": 14,
+            "mean_probability": 0.43535714285714283,
+            "accuracy": 0.35714285714285715
+          }
+        },
+        "directional_n": 40,
+        "directional_correct": 28
+      }
+    },
+    "whole-plain-single": {
+      "where": {
+        "n": 251,
+        "errors": 0,
+        "confusion": {
+          "carriageway": {
+            "carriageway": 81,
+            "roadside": 20
+          },
+          "open": {
+            "open": 64,
+            "roadside": 9,
+            "carriageway": 3,
+            "unknown": 1
+          },
+          "inside": {
+            "inside": 30
+          },
+          "roadside": {
+            "open": 1,
+            "roadside": 42
+          }
+        },
+        "accuracy": 0.8645418326693227,
+        "seconds": {
+          "mean": 0.2561743645469632,
+          "p50": 0.25162079196888953,
+          "p95": 0.37475945852929726,
+          "max": 0.45533541595796123
+        },
+        "calibration": {
+          ">=0.95": {
+            "n": 178,
+            "mean_probability": 0.9934101123595506,
+            "accuracy": 0.9438202247191011
+          },
+          "0.8-0.95": {
+            "n": 34,
+            "mean_probability": 0.8898529411764705,
+            "accuracy": 0.7941176470588235
+          },
+          "0.5-0.8": {
+            "n": 37,
+            "mean_probability": 0.6929189189189189,
+            "accuracy": 0.5405405405405406
+          },
+          "<0.5": {
+            "n": 2,
+            "mean_probability": 0.465,
+            "accuracy": 1.0
+          }
+        },
+        "binary_accuracy": 0.9043824701195219,
+        "carriageway_n": 101,
+        "false_safe": 20,
+        "false_safe_rate": 0.19801980198019803,
+        "gate_pass": false
+      }
+    },
+    "crop-plain-single": {
+      "where": {
+        "n": 251,
+        "errors": 0,
+        "confusion": {
+          "carriageway": {
+            "carriageway": 82,
+            "unknown": 1,
+            "roadside": 18
+          },
+          "open": {
+            "open": 66,
+            "roadside": 6,
+            "carriageway": 1,
+            "unknown": 4
+          },
+          "inside": {
+            "inside": 28,
+            "unknown": 1,
+            "roadside": 1
+          },
+          "roadside": {
+            "roadside": 41,
+            "open": 2
+          }
+        },
+        "accuracy": 0.8645418326693227,
+        "seconds": {
+          "mean": 0.2656321348237482,
+          "p50": 0.25312745897099376,
+          "p95": 0.3821343749877997,
+          "max": 0.4971682500327006
+        },
+        "calibration": {
+          ">=0.95": {
+            "n": 195,
+            "mean_probability": 0.9947076923076924,
+            "accuracy": 0.9025641025641026
+          },
+          "0.5-0.8": {
+            "n": 31,
+            "mean_probability": 0.6489354838709678,
+            "accuracy": 0.6774193548387096
+          },
+          "0.8-0.95": {
+            "n": 25,
+            "mean_probability": 0.8847599999999999,
+            "accuracy": 0.8
+          }
+        },
+        "binary_accuracy": 0.900398406374502,
+        "carriageway_n": 101,
+        "false_safe": 18,
+        "false_safe_rate": 0.1782178217821782,
+        "gate_pass": false
+      }
+    }
+  },
+  "answers-vehicle-4b": {
+    "crop-single": {
+      "vehicle": {
+        "n": 171,
+        "errors": 0,
+        "confusion": {
+          "driving": {
+            "traffic": 78,
+            "parked": 10,
+            "driving": 1
+          },
+          "parked": {
+            "parked": 30,
+            "traffic": 3
+          },
+          "traffic": {
+            "parked": 12,
+            "traffic": 37
+          }
+        },
+        "accuracy": 0.39766081871345027,
+        "seconds": {
+          "mean": 0.25074102169471896,
+          "p50": 0.22284595802193508,
+          "p95": 0.3705849584657699,
+          "max": 3.1526327920146286
+        },
+        "calibration": {
+          ">=0.95": {
+            "n": 133,
+            "mean_probability": 0.995624060150376,
+            "accuracy": 0.45112781954887216
+          },
+          "0.8-0.95": {
+            "n": 19,
+            "mean_probability": 0.8817368421052632,
+            "accuracy": 0.2631578947368421
+          },
+          "0.5-0.8": {
+            "n": 19,
+            "mean_probability": 0.6628947368421053,
+            "accuracy": 0.15789473684210525
+          }
+        },
+        "traffic_driving_n": 138,
+        "false_parked": 22,
+        "false_parked_rate": 0.15942028985507245,
+        "negative_gate_pass": false
+      }
+    }
+  },
+  "answers-vehicle-8b": {
+    "whole-single": {
+      "vehicle": {
+        "n": 171,
+        "errors": 0,
+        "confusion": {
+          "driving": {
+            "traffic": 85,
+            "parked": 4
+          },
+          "parked": {
+            "parked": 28,
+            "traffic": 5
+          },
+          "traffic": {
+            "parked": 5,
+            "traffic": 44
+          }
+        },
+        "accuracy": 0.42105263157894735,
+        "seconds": {
+          "mean": 0.23367479872550784,
+          "p50": 0.22859033301938325,
+          "p95": 0.3454075205081608,
+          "max": 0.39461504196515307
+        },
+        "calibration": {
+          "0.8-0.95": {
+            "n": 10,
+            "mean_probability": 0.8795,
+            "accuracy": 0.3
+          },
+          ">=0.95": {
+            "n": 154,
+            "mean_probability": 0.9968701298701297,
+            "accuracy": 0.43506493506493504
+          },
+          "0.5-0.8": {
+            "n": 7,
+            "mean_probability": 0.6705714285714285,
+            "accuracy": 0.2857142857142857
+          }
+        },
+        "traffic_driving_n": 138,
+        "false_parked": 9,
+        "false_parked_rate": 0.06521739130434782,
+        "negative_gate_pass": true
+      }
+    },
+    "whole-pair": {
+      "vehicle": {
+        "n": 171,
+        "errors": 0,
+        "confusion": {
+          "driving": {
+            "parked": 7,
+            "traffic": 82
+          },
+          "parked": {
+            "parked": 30,
+            "traffic": 3
+          },
+          "traffic": {
+            "parked": 5,
+            "traffic": 44
+          }
+        },
+        "accuracy": 0.4327485380116959,
+        "seconds": {
+          "mean": 0.1839692624723566,
+          "p50": 0.18449879199033603,
+          "p95": 0.29618041700450704,
+          "max": 0.3841722080251202
+        },
+        "calibration": {
+          "0.5-0.8": {
+            "n": 8,
+            "mean_probability": 0.621,
+            "accuracy": 0.375
+          },
+          ">=0.95": {
+            "n": 155,
+            "mean_probability": 0.9980516129032256,
+            "accuracy": 0.43870967741935485
+          },
+          "0.8-0.95": {
+            "n": 8,
+            "mean_probability": 0.899875,
+            "accuracy": 0.375
+          }
+        },
+        "traffic_driving_n": 138,
+        "false_parked": 12,
+        "false_parked_rate": 0.08695652173913043,
+        "negative_gate_pass": true
+      }
+    },
+    "crop-single": {
+      "vehicle": {
+        "n": 171,
+        "errors": 0,
+        "confusion": {
+          "driving": {
+            "traffic": 81,
+            "parked": 2,
+            "driving": 6
+          },
+          "parked": {
+            "parked": 28,
+            "traffic": 5
+          },
+          "traffic": {
+            "parked": 3,
+            "traffic": 46
+          }
+        },
+        "accuracy": 0.4678362573099415,
+        "seconds": {
+          "mean": 0.24238533183744407,
+          "p50": 0.23499116604216397,
+          "p95": 0.36486716649960726,
+          "max": 0.4241044159862213
+        },
+        "calibration": {
+          ">=0.95": {
+            "n": 144,
+            "mean_probability": 0.9956805555555555,
+            "accuracy": 0.4375
+          },
+          "0.5-0.8": {
+            "n": 9,
+            "mean_probability": 0.6341111111111112,
+            "accuracy": 0.6666666666666666
+          },
+          "0.8-0.95": {
+            "n": 18,
+            "mean_probability": 0.8746111111111111,
+            "accuracy": 0.6111111111111112
+          }
+        },
+        "traffic_driving_n": 138,
+        "false_parked": 5,
+        "false_parked_rate": 0.036231884057971016,
+        "negative_gate_pass": true
+      }
+    },
+    "crop-pair": {
+      "vehicle": {
+        "n": 171,
+        "errors": 0,
+        "confusion": {
+          "driving": {
+            "traffic": 85,
+            "parked": 4
+          },
+          "parked": {
+            "parked": 29,
+            "traffic": 4
+          },
+          "traffic": {
+            "parked": 4,
+            "traffic": 45
+          }
+        },
+        "accuracy": 0.4327485380116959,
+        "seconds": {
+          "mean": 0.18233739818195807,
+          "p50": 0.16759641701355577,
+          "p95": 0.30606718751369044,
+          "max": 0.34895079099806026
+        },
+        "calibration": {
+          ">=0.95": {
+            "n": 156,
+            "mean_probability": 0.9986089743589744,
+            "accuracy": 0.4166666666666667
+          },
+          "0.5-0.8": {
+            "n": 8,
+            "mean_probability": 0.64725,
+            "accuracy": 0.625
+          },
+          "0.8-0.95": {
+            "n": 7,
+            "mean_probability": 0.8962857142857142,
+            "accuracy": 0.5714285714285714
+          }
+        },
+        "traffic_driving_n": 138,
+        "false_parked": 8,
+        "false_parked_rate": 0.057971014492753624,
+        "negative_gate_pass": true
+      }
+    },
+    "whole-plain-single": {
+      "vehicle": {
+        "n": 171,
+        "errors": 0,
+        "confusion": {
+          "driving": {
+            "parked": 15,
+            "traffic": 74
+          },
+          "parked": {
+            "parked": 29,
+            "traffic": 4
+          },
+          "traffic": {
+            "parked": 4,
+            "traffic": 45
+          }
+        },
+        "accuracy": 0.4327485380116959,
+        "seconds": {
+          "mean": 0.24717477120885256,
+          "p50": 0.23052679101238027,
+          "p95": 0.37373514601495117,
+          "max": 0.502509584010113
+        },
+        "calibration": {
+          "0.8-0.95": {
+            "n": 38,
+            "mean_probability": 0.8871052631578947,
+            "accuracy": 0.2894736842105263
+          },
+          ">=0.95": {
+            "n": 97,
+            "mean_probability": 0.9887422680412371,
+            "accuracy": 0.5360824742268041
+          },
+          "0.5-0.8": {
+            "n": 34,
+            "mean_probability": 0.673029411764706,
+            "accuracy": 0.3235294117647059
+          },
+          "<0.5": {
+            "n": 2,
+            "mean_probability": 0.486,
+            "accuracy": 0.0
+          }
+        },
+        "traffic_driving_n": 138,
+        "false_parked": 19,
+        "false_parked_rate": 0.13768115942028986,
+        "negative_gate_pass": false
+      }
+    },
+    "crop-plain-single": {
+      "vehicle": {
+        "n": 171,
+        "errors": 0,
+        "confusion": {
+          "driving": {
+            "parked": 8,
+            "traffic": 65,
+            "driving": 16
+          },
+          "parked": {
+            "traffic": 9,
+            "parked": 23,
+            "driving": 1
+          },
+          "traffic": {
+            "parked": 5,
+            "traffic": 43,
+            "driving": 1
+          }
+        },
+        "accuracy": 0.47953216374269003,
+        "seconds": {
+          "mean": 0.2406970075394942,
+          "p50": 0.22871491697151214,
+          "p95": 0.35773216650704853,
+          "max": 0.6071288749808446
+        },
+        "calibration": {
+          "0.5-0.8": {
+            "n": 28,
+            "mean_probability": 0.6358571428571429,
+            "accuracy": 0.42857142857142855
+          },
+          ">=0.95": {
+            "n": 110,
+            "mean_probability": 0.9899181818181817,
+            "accuracy": 0.5272727272727272
+          },
+          "0.8-0.95": {
+            "n": 31,
+            "mean_probability": 0.8898064516129033,
+            "accuracy": 0.3548387096774194
+          },
+          "<0.5": {
+            "n": 2,
+            "mean_probability": 0.489,
+            "accuracy": 0.5
+          }
+        },
+        "traffic_driving_n": 138,
+        "false_parked": 13,
+        "false_parked_rate": 0.09420289855072464,
+        "negative_gate_pass": true
+      }
+    }
+  }
+}

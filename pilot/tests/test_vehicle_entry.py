@@ -69,7 +69,9 @@ def test_metadata_clamping_and_hard_limit():
     assert skill.limit == 0.1
     skill.step(obs(8, ()))
     result = skill.step(obs(8.11, ()))
-    assert result.status == "failed" and result.reason == "nothing found"
+    assert (
+        result.status == "failed" and result.reason == "nothing found; road=unknown; roadside eye unavailable"
+    )
     assert result.pad == NEUTRAL_PAD
 
 
@@ -114,7 +116,10 @@ def test_already_seated_needs_two_seconds_and_uses_accepted_mode():
     for time in (1.0, 2.0, 2.99):
         assert skill.step(replace(obs(time), mode="vehicle")).status == "running"
     result = skill.step(replace(obs(3), mode="vehicle"))
-    assert result.reason == "already in a vehicle" and result.pad == NEUTRAL_PAD
+    assert (
+        result.reason == "already in a vehicle; position=seated; roadside eye unavailable"
+        and result.pad == NEUTRAL_PAD
+    )
     assert EnterVehicle({}).step(replace(obs(0, minimap="tilted"), mode="foot")).pad.left[1] < 0
 
 
@@ -228,7 +233,9 @@ def test_no_vehicle_looks_once_then_calls_existing_road_skill_until_limit(monkey
         result = skill.step(obs(time, ()))
         assert result.pad.left[1] < 0 and result.status == "running"
     result = skill.step(obs(12, ()))
-    assert result.reason == "nothing found" and result.pad == NEUTRAL_PAD
+    assert (
+        result.reason == "nothing found; road=unknown; roadside eye unavailable" and result.pad == NEUTRAL_PAD
+    )
     assert calls[1:4] == [1.5, 5, 11.9]
 
 
@@ -236,7 +243,10 @@ def test_missing_road_frame_is_reported_at_deadline_not_as_success():
     skill = EnterVehicle({"duration": 6})
     for t in (0, 2, 5):
         assert skill.step(obs(t, ())).status == "running"
-    assert skill.step(obs(6, ())).reason == "nothing found; road search unavailable: no-frame"
+    assert (
+        skill.step(obs(6, ())).reason
+        == "nothing found; road search unavailable: no-frame; road=unknown; roadside eye unavailable"
+    )
 
 
 def test_lost_detections_after_press_end_neutrally_without_waiting_full_limit():
@@ -244,7 +254,10 @@ def test_lost_detections_after_press_end_neutrally_without_waiting_full_limit():
     skill.step(obs(0, (NEAR,)))
     skill.step(obs(0.04, (NEAR,)))
     result = skill.step(obs(12.1, delivered=False))
-    assert result.status == "failed" and result.reason == "detections lost after entry press"
+    assert (
+        result.status == "failed"
+        and result.reason == "detections lost after entry press; road=unknown; roadside eye unavailable"
+    )
     assert result.pad == NEUTRAL_PAD
 
 
@@ -289,19 +302,22 @@ def test_stop_releases_every_phase_and_skill_protects_head_replacement(phase):
     skill.phase = phase
     assert skill.uninterruptible
     result = skill.stop("replaced")
-    assert result.status == "failed" and result.reason == "replaced"
+    assert result.status == "failed" and result.reason == "replaced; road=unknown; roadside eye unavailable"
     assert result.pad == NEUTRAL_PAD and skill.step(obs(0.1)) == result
 
 
 def test_missing_delivery_and_invalid_clock_fail_neutrally():
     skill = EnterVehicle({})
     skill.step(obs(0, delivered=False))
-    assert skill.step(obs(5, delivered=False)).reason == "no detections delivered at all"
+    assert (
+        skill.step(obs(5, delivered=False)).reason
+        == "no detections delivered at all; road=unknown; roadside eye unavailable"
+    )
     skill = EnterVehicle({})
     skill.step(obs(1))
-    assert skill.step(obs(0)).reason == "invalid observation time"
+    assert skill.step(obs(0)).reason == "invalid observation time; road=unknown; roadside eye unavailable"
     assert EnterVehicle({}).step(obs(math.nan)).pad == NEUTRAL_PAD
-    assert EnterVehicle({}).step(None).reason == "invalid observation"
+    assert EnterVehicle({}).step(None).reason == "invalid observation; road=unknown; roadside eye unavailable"
 
 
 class EntryGame:

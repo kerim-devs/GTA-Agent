@@ -62,6 +62,79 @@ JOINT = (
     "separated by single spaces, and nothing else."
 )
 
+# Measured separately: adding questions to JOINT changes its established answers.
+# These are not enabled in Reader until their recorded-image gates pass.
+WHERE_QUESTIONS = {
+    "where_plain": (
+        "Where are the player character's feet?\n"
+        "A: in a traffic lane on the asphalt road\n"
+        "B: on the sidewalk or verge outside the road\n"
+        "C: on other open ground or in a yard\nD: indoors\nE: cannot see the feet",
+        {"A": "carriageway", "B": "roadside", "C": "open", "D": "inside", "E": "unknown"},
+    ),
+    "where": (
+        "Look at where the player character's FEET touch the ground, not the road ahead. "
+        "Which surface is the character standing on? A road shoulder, pavement or verge "
+        "is not a traffic lane. A private dirt yard is not a carriageway.\n"
+        "A: carriageway, a lane used by road traffic\n"
+        "B: pavement, verge or roadside outside the traffic lanes\n"
+        "C: open ground or a yard\nD: inside a building\nE: cannot tell",
+        {"A": "carriageway", "B": "roadside", "C": "open", "D": "inside", "E": "unknown"},
+    ),
+    "vehicle": (
+        "Consider ONLY the vehicle outlined in red. Is it a parked empty vehicle that "
+        "the player could take, or part of road traffic? A stopped vehicle in a traffic "
+        "lane or at a junction is traffic, not parked. Do not infer empty merely because "
+        "you cannot see a driver.\nA: parked and empty\n"
+        "B: stopped in traffic or occupied\nC: driving\nD: cannot tell",
+        {"A": "parked", "B": "traffic", "C": "driving", "D": "unknown"},
+    ),
+    "vehicle_plain": (
+        "What is the state of the vehicle in the red rectangle?\n"
+        "A: parked outside traffic, with an empty driver's seat\n"
+        "B: stopped in traffic or with someone inside\n"
+        "C: moving along the road\nD: cannot determine its state",
+        {"A": "parked", "B": "traffic", "C": "driving", "D": "unknown"},
+    ),
+    "edge": (
+        "If the player character is on the carriageway, on which side of the SCREEN "
+        "is the nearer safe road edge, pavement or verge? Compare the feet to the "
+        "edges, not the vehicle's direction. If the character is off the carriageway "
+        "or the nearer edge cannot be determined, answer C.\n"
+        "A: left\nB: right\nC: cannot tell",
+        {"A": "left", "B": "right", "C": "unknown"},
+    ),
+}
+
+
+def ask_where(url, model, image, names=("where", "edge"), *, timeout=1.0):
+    """Ask the exact laboratory questions without changing the live six-question prompt."""
+    text = "\n\n".join(WHERE_QUESTIONS[name][0] for name in names)
+    text += "\nReply with one answer letter per question, separated by single spaces, and nothing else."
+    return post(url, model, image, text, 2 * len(names) + 2, timeout=timeout)
+
+
+def parse_where(choice, capture, duration, server, names=("where", "edge")):
+    """Preserve capture age and uncertainty; reject prose or incomplete replies."""
+    content = choice.get("message", {}).get("content", "")
+    tokens = content.upper().split() if isinstance(content, str) else []
+    if len(tokens) != len(names):
+        raise ValueError("wrong number of roadside answer letters")
+    annotated = letters(choice)
+    answers, probabilities = {}, {}
+    for index, name in enumerate(names):
+        meaning = WHERE_QUESTIONS[name][1]
+        letter = tokens[index]
+        if letter not in meaning:
+            raise ValueError(f"invalid answer for {name}")
+        top = annotated[index][1] if len(annotated) == len(tokens) and annotated[index][0] == letter else {}
+        valid = {key: value for key, value in top.items() if key in meaning and math.isfinite(value)}
+        weights = {key: math.exp(value - max(valid.values())) for key, value in valid.items()}
+        total = sum(weights.values())
+        probabilities[name] = {key: weights.get(key, 0.0) / total for key in meaning} if total else {}
+        answers[name] = Answer(meaning[letter], round(probabilities[name][letter], 3) if total else None)
+    return Judgment(capture, answers, probabilities, duration, server)
+
 
 def encode(bgr, width: int) -> str:
     """The frame as the model gets it: scaled to `width`, JPEG, base64."""

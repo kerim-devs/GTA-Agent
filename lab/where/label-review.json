@@ -1,0 +1,341 @@
+{
+  "method": "Visual review of original-frame contact sheets and original f194 after the first exploratory run. Asphalt gutters roadward of a raised kerb count as carriageway; raised kerbs and sidewalks count as roadside. Cutscenes and obscured supporting surfaces are excluded. This is an exploratory set, not a blinded held-out validation set. Scores use the current labels, including corrections that increase carriageway errors.",
+  "changes": [
+    {
+      "id": "f150",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "The feet and their supporting surface are occluded by the foreground car."
+    },
+    {
+      "id": "f151",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "The feet and their supporting surface are occluded by the foreground car."
+    },
+    {
+      "id": "f152",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "The feet and their supporting surface are occluded by the foreground car."
+    },
+    {
+      "id": "f153",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "The feet and their supporting surface are occluded by the foreground car."
+    },
+    {
+      "id": "f182",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "Ragdoll pose is not a standing on-foot position."
+    },
+    {
+      "id": "f194",
+      "previous": "CU",
+      "reviewed": "CL",
+      "reason": "Feet are on the asphalt gutter roadward of the raised left kerb; the gutter is counted as carriageway."
+    },
+    {
+      "id": "f195",
+      "previous": "CU",
+      "reviewed": "CL",
+      "reason": "Feet are on the asphalt gutter roadward of the raised left kerb; the gutter is counted as carriageway."
+    },
+    {
+      "id": "f199",
+      "previous": "CU",
+      "reviewed": "CL",
+      "reason": "Feet are on the asphalt gutter roadward of the raised left kerb; the gutter is counted as carriageway."
+    },
+    {
+      "id": "f201",
+      "previous": "CU",
+      "reviewed": "CL",
+      "reason": "Feet are on the asphalt gutter roadward of the raised left kerb; the gutter is counted as carriageway."
+    },
+    {
+      "id": "f204",
+      "previous": "CU",
+      "reviewed": "CL",
+      "reason": "Feet are on the asphalt gutter roadward of the raised left kerb; the gutter is counted as carriageway."
+    },
+    {
+      "id": "f206",
+      "previous": "S",
+      "reviewed": "CL",
+      "reason": "Feet are on the asphalt gutter roadward of the raised left kerb; the gutter is counted as carriageway."
+    },
+    {
+      "id": "f209",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "Vehicle entry transition; no unambiguous standing player."
+    },
+    {
+      "id": "f212",
+      "previous": "S",
+      "reviewed": "CR",
+      "reason": "Player stands or crosses on carriageway asphalt, beside the sidewalk."
+    },
+    {
+      "id": "f214",
+      "previous": "S",
+      "reviewed": "CR",
+      "reason": "Player stands or crosses on carriageway asphalt, beside the sidewalk."
+    },
+    {
+      "id": "f215",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "Ragdoll pose is not a standing on-foot position."
+    },
+    {
+      "id": "f218",
+      "previous": "O",
+      "reviewed": "S",
+      "reason": "Player stands on the raised kerb beside the grass verge."
+    },
+    {
+      "id": "f221",
+      "previous": "O",
+      "reviewed": "X",
+      "reason": "Climbing the highway barrier is not a standing surface label."
+    },
+    {
+      "id": "f222",
+      "previous": "S",
+      "reviewed": "CU",
+      "reason": "Player stands in a highway traffic lane."
+    },
+    {
+      "id": "f223",
+      "previous": "S",
+      "reviewed": "CL",
+      "reason": "Player stands on asphalt next to the left kerb under the overpass."
+    },
+    {
+      "id": "f224",
+      "previous": "S",
+      "reviewed": "CR",
+      "reason": "Player stands on carriageway asphalt; the raised sidewalk is to the right."
+    },
+    {
+      "id": "f225",
+      "previous": "S",
+      "reviewed": "CR",
+      "reason": "Player stands on carriageway asphalt; the raised sidewalk is to the right."
+    },
+    {
+      "id": "f226",
+      "previous": "S",
+      "reviewed": "CR",
+      "reason": "Player stands on carriageway asphalt; the raised sidewalk is to the right."
+    },
+    {
+      "id": "f227",
+      "previous": "S",
+      "reviewed": "CR",
+      "reason": "Player stands on carriageway asphalt; the raised sidewalk is to the right."
+    },
+    {
+      "id": "f228",
+      "previous": "S",
+      "reviewed": "CR",
+      "reason": "Player stands on carriageway asphalt; the raised sidewalk is to the right."
+    },
+    {
+      "id": "f229",
+      "previous": "S",
+      "reviewed": "CR",
+      "reason": "Player stands on carriageway asphalt; the raised sidewalk is to the right."
+    },
+    {
+      "id": "f230",
+      "previous": "S",
+      "reviewed": "CR",
+      "reason": "Player stands on carriageway asphalt; the raised sidewalk is to the right."
+    },
+    {
+      "id": "f231",
+      "previous": "S",
+      "reviewed": "CR",
+      "reason": "Player stands on carriageway asphalt; the raised sidewalk is to the right."
+    },
+    {
+      "id": "f232",
+      "previous": "S",
+      "reviewed": "CR",
+      "reason": "Player stands on carriageway asphalt; the raised sidewalk is to the right."
+    },
+    {
+      "id": "f233",
+      "previous": "S",
+      "reviewed": "CR",
+      "reason": "Player stands on carriageway asphalt; the raised sidewalk is to the right."
+    },
+    {
+      "id": "f244",
+      "previous": "S",
+      "reviewed": "O",
+      "reason": "Player stands inside the trailer yard, behind its fence."
+    },
+    {
+      "id": "f246",
+      "previous": "I",
+      "reviewed": "X",
+      "reason": "Cinematic dialogue shot rather than controllable on-foot gameplay."
+    },
+    {
+      "id": "f247",
+      "previous": "I",
+      "reviewed": "X",
+      "reason": "Cinematic dialogue shot rather than controllable on-foot gameplay."
+    },
+    {
+      "id": "f248",
+      "previous": "O",
+      "reviewed": "X",
+      "reason": "Cinematic dialogue shot rather than controllable on-foot gameplay."
+    },
+    {
+      "id": "f249",
+      "previous": "O",
+      "reviewed": "X",
+      "reason": "Cinematic dialogue shot rather than controllable on-foot gameplay."
+    },
+    {
+      "id": "f250",
+      "previous": "O",
+      "reviewed": "X",
+      "reason": "Cinematic dialogue shot rather than controllable on-foot gameplay."
+    },
+    {
+      "id": "f251",
+      "previous": "O",
+      "reviewed": "X",
+      "reason": "Cinematic dialogue shot rather than controllable on-foot gameplay."
+    },
+    {
+      "id": "f254",
+      "previous": "S",
+      "reviewed": "O",
+      "reason": "Player stands inside the trailer yard, behind its fence."
+    },
+    {
+      "id": "f260",
+      "previous": "S",
+      "reviewed": "O",
+      "reason": "Player stands inside the trailer yard, behind its fence."
+    },
+    {
+      "id": "f261",
+      "previous": "S",
+      "reviewed": "O",
+      "reason": "Player stands inside the trailer yard, behind its fence."
+    },
+    {
+      "id": "f262",
+      "previous": "S",
+      "reviewed": "O",
+      "reason": "Player stands inside the trailer yard, behind its fence."
+    },
+    {
+      "id": "f281",
+      "previous": "O",
+      "reviewed": "X",
+      "reason": "Close dialogue view obscures the supporting surface at the trailer doorway."
+    },
+    {
+      "id": "f282",
+      "previous": "O",
+      "reviewed": "X",
+      "reason": "Close dialogue view obscures the supporting surface at the trailer doorway."
+    },
+    {
+      "id": "f298",
+      "previous": "O",
+      "reviewed": "X",
+      "reason": "First-person hangar threshold does not establish an unambiguous supporting surface."
+    },
+    {
+      "id": "f326",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "First-person or close facial view does not establish the player supporting surface."
+    },
+    {
+      "id": "f327",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "First-person or close facial view does not establish the player supporting surface."
+    },
+    {
+      "id": "f328",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "First-person or close facial view does not establish the player supporting surface."
+    },
+    {
+      "id": "f329",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "First-person or close facial view does not establish the player supporting surface."
+    },
+    {
+      "id": "f330",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "First-person or close facial view does not establish the player supporting surface."
+    },
+    {
+      "id": "f332",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "First-person or close facial view does not establish the player supporting surface."
+    },
+    {
+      "id": "f333",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "First-person or close facial view does not establish the player supporting surface."
+    },
+    {
+      "id": "f334",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "First-person or close facial view does not establish the player supporting surface."
+    },
+    {
+      "id": "f336",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "First-person traffic or death transition without unambiguous on-foot standing position."
+    },
+    {
+      "id": "f337",
+      "previous": "CU",
+      "reviewed": "X",
+      "reason": "First-person traffic or death transition without unambiguous on-foot standing position."
+    },
+    {
+      "id": "f343",
+      "previous": "X",
+      "reviewed": "CU",
+      "reason": "Player visibly stands outside the vehicle on the highway asphalt."
+    },
+    {
+      "id": "f344",
+      "previous": "X",
+      "reviewed": "CU",
+      "reason": "Player visibly stands outside the vehicle on the highway asphalt."
+    },
+    {
+      "id": "f352",
+      "previous": "X",
+      "reviewed": "CU",
+      "reason": "Player visibly stands outside the vehicle on the highway asphalt."
+    }
+  ]
+}

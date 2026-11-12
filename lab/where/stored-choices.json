@@ -1,0 +1,249 @@
+[
+  {
+    "id": "f312",
+    "prompt": "Where are the player character's feet? A: in a traffic lane on the asphalt road. B: on the sidewalk outside the road. C: on other open ground. D: indoors. E: cannot see the feet. Answer one letter.",
+    "choice": {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "A",
+        "reasoning_content": "",
+        "tool_calls": []
+      },
+      "logprobs": {
+        "content": [
+          {
+            "token": "A",
+            "logprob": -0.0008944099536165595,
+            "bytes": [
+              65
+            ],
+            "top_logprobs": [
+              {
+                "token": "A",
+                "logprob": -0.0008944099536165595,
+                "bytes": [
+                  65
+                ]
+              },
+              {
+                "token": "B",
+                "logprob": -7.524023056030273,
+                "bytes": [
+                  66
+                ]
+              },
+              {
+                "token": "C",
+                "logprob": -8.39724349975586,
+                "bytes": [
+                  67
+                ]
+              },
+              {
+                "token": "E",
+                "logprob": -9.08582878112793,
+                "bytes": [
+                  69
+                ]
+              },
+              {
+                "token": "D",
+                "logprob": -11.110883712768555,
+                "bytes": [
+                  68
+                ]
+              }
+            ]
+          }
+        ],
+        "refusal": null
+      },
+      "finish_reason": "stop"
+    },
+    "duration": 0.15983433299697936
+  },
+  {
+    "id": "f312",
+    "prompt": "Describe what surface the player character is standing on, and whether cars would drive on that exact spot.",
+    "choice": {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "B",
+        "reasoning_content": "",
+        "tool_calls": []
+      },
+      "logprobs": {
+        "content": [
+          {
+            "token": "B",
+            "logprob": -0.36148494482040405,
+            "bytes": [
+              66
+            ],
+            "top_logprobs": [
+              {
+                "token": "B",
+                "logprob": -0.36148494482040405,
+                "bytes": [
+                  66
+                ]
+              },
+              {
+                "token": "C",
+                "logprob": -1.5915759801864624,
+                "bytes": [
+                  67
+                ]
+              },
+              {
+                "token": "A",
+                "logprob": -2.9130749702453613,
+                "bytes": [
+                  65
+                ]
+              },
+              {
+                "token": "c",
+                "logprob": -3.841198444366455,
+                "bytes": [
+                  99
+                ]
+              },
+              {
+                "token": "b",
+                "logprob": -4.064999103546143,
+                "bytes": [
+                  98
+                ]
+              }
+            ]
+          }
+        ],
+        "refusal": null
+      },
+      "finish_reason": "stop"
+    },
+    "duration": 0.09066745801828802
+  },
+  {
+    "id": "f312",
+    "names": [
+      "where",
+      "edge"
+    ],
+    "choice": {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "B B",
+        "reasoning_content": "",
+        "tool_calls": []
+      },
+      "logprobs": {
+        "content": [
+          {
+            "token": "B",
+            "logprob": -3.576279254957626e-07,
+            "bytes": [
+              66
+            ],
+            "top_logprobs": [
+              {
+                "token": "B",
+                "logprob": -3.576279254957626e-07,
+                "bytes": [
+                  66
+                ]
+              },
+              {
+                "token": "C",
+                "logprob": -15.654735565185547,
+                "bytes": [
+                  67
+                ]
+              },
+              {
+                "token": " B",
+                "logprob": -15.903514862060547,
+                "bytes": [
+                  32,
+                  66
+                ]
+              },
+              {
+                "token": "A",
+                "logprob": -16.2353515625,
+                "bytes": [
+                  65
+                ]
+              },
+              {
+                "token": "BB",
+                "logprob": -19.890796661376953,
+                "bytes": [
+                  66,
+                  66
+                ]
+              }
+            ]
+          },
+          {
+            "token": " B",
+            "logprob": -0.6509741544723511,
+            "bytes": [
+              32,
+              66
+            ],
+            "top_logprobs": [
+              {
+                "token": " B",
+                "logprob": -0.6509741544723511,
+                "bytes": [
+                  32,
+                  66
+                ]
+              },
+              {
+                "token": " A",
+                "logprob": -0.7371940016746521,
+                "bytes": [
+                  32,
+                  65
+                ]
+              },
+              {
+                "token": " C",
+                "logprob": -11.741764068603516,
+                "bytes": [
+                  32,
+                  67
+                ]
+              },
+              {
+                "token": " R",
+                "logprob": -24.02114486694336,
+                "bytes": [
+                  32,
+                  82
+                ]
+              },
+              {
+                "token": " D",
+                "logprob": -25.299835205078125,
+                "bytes": [
+                  32,
+                  68
+                ]
+              }
+            ]
+          }
+        ],
+        "refusal": null
+      },
+      "finish_reason": "stop"
+    },
+    "duration": 0.17564874998060986
+  }
+]

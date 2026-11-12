@@ -1,0 +1,32 @@
+{
+  "method": "Foot: visual inspection of source frames, followed by the corrections in label-review.json after exploratory measurements; excluded means not visibly on foot or ambiguous supporting surface. Edge is screen-relative, unknown unless visible. Vehicle: source-frame and before/after temporal context review; P is only a parked candidate, T/D are traffic/driving negatives, X is ambiguous. Section classifiers and model answers are not ground truth. This development corpus is not a blinded held-out validation set.",
+  "foot_pages": {
+    "0": "CL CL CR CR CR CL CL CR CU CR X X X X X X X X X X X O O O",
+    "1": "X I I I X O I I I I I I I I I I I I I I X X X X",
+    "2": "X X X X I I I I I I S X O X X X X I X X X X X X",
+    "3": "X X X X O O O O O X O O O O O O O O O O O O O O",
+    "4": "X X O O O I X I O X O O O O O O O O O O O O O O",
+    "5": "O O O O O S S S S S S S S S S S S S S S S S S S",
+    "6": "S S S S S S X X X X CU CU CU CU CU CU CU CU CU CU CU CU CU CU",
+    "7": "CU CU CU CU CU CU CU X X X X X CU CU X CU CU CU CU CU CU S S S",
+    "8": "CU CU CL CL X X X CL X CL X X CL X CL CU CU X S S CR CU CR X",
+    "9": "CU CU S O O X CU CL CR CR CR CR CR CR CR CR CR CR X X X X X X",
+    "10": "S CL CR CU O I X X X X X X O O O X X X X X O O O X",
+    "11": "O O O O O O S I I I O O O O O O O X X X X X X X",
+    "12": "O X X X O O O O O O X O S X X S S S S S S S S CL",
+    "13": "CL CL CL CL CL CL CL CL CL CU CU CU CU CU X X X X X X X X X X",
+    "14": "X X X X X X X CU CU CU CU CU CU CU CU CU CU CU CU CU CU CU CU CU"
+  },
+  "vehicle_pages": {
+    "0": "D D D D X D P P X D P P D T T P P P P D T T T P",
+    "1": "P P P P D D D D P D D D D T D D D P D D D D T D",
+    "2": "D D T D T D T D T T D P P D D D T T D D T T T X",
+    "3": "T D D D D T T X T X X X X X T X X X X X T D D X",
+    "4": "T T X D D X X X X X X T X D D X X X D D X X D D",
+    "5": "D D D D D D D D T T X X X X X D D D D D D D X T",
+    "6": "P P D D D D D D D T D T D D D P P P D X X X X X",
+    "7": "D T T P P T T T T T T T T T T T P D D D D D X X",
+    "8": "P P D X D D D X D D T T D X T X T T P P P P P P"
+  },
+  "vehicle_label_limit": "P denotes a visually stationary parked candidate based on position and before/after context. It is a provisional parked label, never a verified empty-seat label. No visible occupant is not evidence of an empty seat. Hidden occupants cannot be excluded, so positive parked-empty accuracy is not established; the three-class table scores this weaker proxy explicitly. T/D are stronger negative evidence. X is excluded, never treated as parked."
+}

@@ -1,0 +1,3674 @@
+[
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-065022",
+    "seconds": 28.6993,
+    "frame_index": 1720,
+    "action_line": 14,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.29722299575805666,
+      0.3690042707655165,
+      0.39897332191467283,
+      0.4821658240424262
+    ],
+    "id": "v000",
+    "label": "D",
+    "frame_time": 28.6993
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-065022",
+    "seconds": 29.7002,
+    "frame_index": 1780,
+    "action_line": 14,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.2538609504699707,
+      0.4665195888943142,
+      0.4457564353942871,
+      0.7411087883843316
+    ],
+    "id": "v001",
+    "label": "D",
+    "frame_time": 29.7002
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-164039",
+    "seconds": 322.7799,
+    "frame_index": 18239,
+    "action_line": 24,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.4852018356323242,
+      0.48287955390082465,
+      0.5534547805786133,
+      0.5688246832953558
+    ],
+    "id": "v002",
+    "label": "D",
+    "frame_time": 322.7799
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-164039",
+    "seconds": 323.78,
+    "frame_index": 18299,
+    "action_line": 24,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.5238056182861328,
+      0.44770223829481337,
+      0.56851167678833,
+      0.5086056603325738
+    ],
+    "id": "v003",
+    "label": "D",
+    "frame_time": 323.78
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-164039",
+    "seconds": 323.78,
+    "frame_index": 18299,
+    "action_line": 24,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      7.500946521759033e-05,
+      0.4167266845703125,
+      0.053842341899871825,
+      0.4716154310438368
+    ],
+    "id": "v004",
+    "label": "X",
+    "frame_time": 323.78
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-164039",
+    "seconds": 324.8189,
+    "frame_index": 18340,
+    "action_line": 24,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.2317955493927002,
+      0.5385889689127604,
+      0.42221760749816895,
+      0.8277398003472223
+    ],
+    "id": "v005",
+    "label": "D",
+    "frame_time": 324.8189
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-164039",
+    "seconds": 434.9722,
+    "frame_index": 24949,
+    "action_line": 65,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.416825008392334,
+      0.38170606825086806,
+      0.5861667633056641,
+      0.5018586900499132
+    ],
+    "id": "v006",
+    "label": "P",
+    "frame_time": 434.9722
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-164039",
+    "seconds": 436.9784,
+    "frame_index": 25065,
+    "action_line": 65,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.40223116874694825,
+      0.3874963972303602,
+      0.891765022277832,
+      0.8001697116427952
+    ],
+    "id": "v007",
+    "label": "P",
+    "frame_time": 436.9784
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-164039",
+    "seconds": 436.9784,
+    "frame_index": 25065,
+    "action_line": 65,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.8330435752868652,
+      0.26652598910861547,
+      0.998743724822998,
+      0.39432563781738283
+    ],
+    "id": "v008",
+    "label": "X",
+    "frame_time": 436.9784
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-164039",
+    "seconds": 779.5798,
+    "frame_index": 45527,
+    "action_line": 337,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.5007616996765136,
+      0.5401045481363932,
+      0.6041790962219238,
+      0.6704434288872613
+    ],
+    "id": "v009",
+    "label": "D",
+    "frame_time": 779.5798
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-165543",
+    "seconds": 151.6912,
+    "frame_index": 9052,
+    "action_line": 34,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.4512354373931885,
+      0.40883009168836804,
+      0.6081935405731201,
+      0.6629471672905816
+    ],
+    "id": "v010",
+    "label": "P",
+    "frame_time": 151.6912
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-165543",
+    "seconds": 152.7116,
+    "frame_index": 9113,
+    "action_line": 34,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.5228200912475586,
+      0.44275966220431856,
+      0.7916940689086914,
+      0.8392593383789062
+    ],
+    "id": "v011",
+    "label": "P",
+    "frame_time": 152.7116
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-165543",
+    "seconds": 215.808,
+    "frame_index": 12881,
+    "action_line": 45,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.18479278087615966,
+      0.42510672675238714,
+      0.4294947624206543,
+      0.6223516676161024
+    ],
+    "id": "v012",
+    "label": "D",
+    "frame_time": 215.808
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-165543",
+    "seconds": 216.8017,
+    "frame_index": 12935,
+    "action_line": 45,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.2882678985595703,
+      0.4462677001953125,
+      0.5691055297851563,
+      0.6665479024251302
+    ],
+    "id": "v013",
+    "label": "T",
+    "frame_time": 216.8017
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-165543",
+    "seconds": 217.8501,
+    "frame_index": 12998,
+    "action_line": 45,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.469770622253418,
+      0.4829901801215278,
+      0.7377400398254395,
+      0.7586413913302952
+    ],
+    "id": "v014",
+    "label": "T",
+    "frame_time": 217.8501
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-165543",
+    "seconds": 311.002,
+    "frame_index": 18577,
+    "action_line": 124,
+    "object_index": 0,
+    "kind": "truck",
+    "box": [
+      0.17102479934692383,
+      0.3244014739990234,
+      0.40452141761779786,
+      0.6290020836724175
+    ],
+    "id": "v015",
+    "label": "P",
+    "frame_time": 311.002
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-165543",
+    "seconds": 312.0036,
+    "frame_index": 18637,
+    "action_line": 124,
+    "object_index": 0,
+    "kind": "truck",
+    "box": [
+      0.0912055492401123,
+      0.27459918128119576,
+      0.5008293628692627,
+      0.7486073811848958
+    ],
+    "id": "v016",
+    "label": "P",
+    "frame_time": 312.0036
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-165543",
+    "seconds": 511.8514,
+    "frame_index": 30603,
+    "action_line": 196,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.5317936897277832,
+      0.4881772783067491,
+      0.8101340293884277,
+      0.6891100141737196
+    ],
+    "id": "v017",
+    "label": "P",
+    "frame_time": 511.8514
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-165543",
+    "seconds": 512.904,
+    "frame_index": 30666,
+    "action_line": 196,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.5346968173980713,
+      0.500140126546224,
+      0.899909782409668,
+      0.7743576897515191
+    ],
+    "id": "v018",
+    "label": "P",
+    "frame_time": 512.904
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-165543",
+    "seconds": 817.9079,
+    "frame_index": 48884,
+    "action_line": 320,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.6011874198913574,
+      0.4348663330078125,
+      0.704588794708252,
+      0.5775135464138454
+    ],
+    "id": "v019",
+    "label": "D",
+    "frame_time": 817.9079
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-165543",
+    "seconds": 817.9079,
+    "frame_index": 48884,
+    "action_line": 320,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      0.4285405158996582,
+      0.5904522789849176,
+      0.999339485168457,
+      0.9881941053602431
+    ],
+    "id": "v020",
+    "label": "T",
+    "frame_time": 817.9079
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-165543",
+    "seconds": 818.905,
+    "frame_index": 48944,
+    "action_line": 320,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      0.864351463317871,
+      0.8193912929958768,
+      0.9993911743164062,
+      0.9938297695583768
+    ],
+    "id": "v021",
+    "label": "T",
+    "frame_time": 818.905
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-165543",
+    "seconds": 819.9063,
+    "frame_index": 49004,
+    "action_line": 320,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.059157299995422366,
+      0.5422072516547309,
+      0.4398390769958496,
+      0.9761246575249566
+    ],
+    "id": "v022",
+    "label": "T",
+    "frame_time": 819.9063
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-171046",
+    "seconds": 148.3558,
+    "frame_index": 8841,
+    "action_line": 36,
+    "object_index": 1,
+    "kind": "truck",
+    "box": [
+      0.3451396942138672,
+      0.38646774291992186,
+      0.5321859359741211,
+      0.6097963121202257
+    ],
+    "id": "v023",
+    "label": "P",
+    "frame_time": 148.3558
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-171046",
+    "seconds": 150.4029,
+    "frame_index": 8959,
+    "action_line": 36,
+    "object_index": 0,
+    "kind": "truck",
+    "box": [
+      0.14963736534118652,
+      0.3998104519314236,
+      0.4611051082611084,
+      0.781561279296875
+    ],
+    "id": "v024",
+    "label": "P",
+    "frame_time": 150.4029
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-171046",
+    "seconds": 328.4944,
+    "frame_index": 19598,
+    "action_line": 59,
+    "object_index": 1,
+    "kind": "truck",
+    "box": [
+      0.5260653018951416,
+      0.43654085795084635,
+      0.6039547443389892,
+      0.5551041073269314
+    ],
+    "id": "v025",
+    "label": "P",
+    "frame_time": 328.4944
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-171046",
+    "seconds": 330.4961,
+    "frame_index": 19716,
+    "action_line": 59,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.16545491218566893,
+      0.3168704350789388,
+      0.6779237270355225,
+      0.9918294270833333
+    ],
+    "id": "v026",
+    "label": "P",
+    "frame_time": 330.4961
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-172549",
+    "seconds": 22.7714,
+    "frame_index": 1358,
+    "action_line": 9,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.05136408805847168,
+      0.5004176669650607,
+      0.7181404590606689,
+      0.8823392232259114
+    ],
+    "id": "v027",
+    "label": "P",
+    "frame_time": 22.7714
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-172549",
+    "seconds": 23.7647,
+    "frame_index": 1417,
+    "action_line": 9,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.617393684387207,
+      0.38522084554036456,
+      0.7180907249450683,
+      0.4544950697157118
+    ],
+    "id": "v028",
+    "label": "D",
+    "frame_time": 23.7647
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-172549",
+    "seconds": 23.7647,
+    "frame_index": 1417,
+    "action_line": 9,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      0.2561306953430176,
+      0.37406327989366317,
+      0.32602200508117674,
+      0.4240015665690104
+    ],
+    "id": "v029",
+    "label": "D",
+    "frame_time": 23.7647
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-172549",
+    "seconds": 23.7647,
+    "frame_index": 1417,
+    "action_line": 9,
+    "object_index": 4,
+    "kind": "car",
+    "box": [
+      0.7960634231567383,
+      0.35236468844943575,
+      0.8954391479492188,
+      0.4067944844563802
+    ],
+    "id": "v030",
+    "label": "D",
+    "frame_time": 23.7647
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-172549",
+    "seconds": 23.7647,
+    "frame_index": 1417,
+    "action_line": 9,
+    "object_index": 6,
+    "kind": "car",
+    "box": [
+      0.3399338722229004,
+      0.37992265489366317,
+      0.4207979679107666,
+      0.41778861151801217
+    ],
+    "id": "v031",
+    "label": "D",
+    "frame_time": 23.7647
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-172549",
+    "seconds": 24.7655,
+    "frame_index": 1475,
+    "action_line": 9,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.0,
+      0.5090226067437066,
+      0.583390474319458,
+      0.9583229064941406
+    ],
+    "id": "v032",
+    "label": "P",
+    "frame_time": 24.7655
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-172549",
+    "seconds": 24.7655,
+    "frame_index": 1475,
+    "action_line": 9,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      0.593561315536499,
+      0.3576493157280816,
+      0.6738551616668701,
+      0.40818761189778646
+    ],
+    "id": "v033",
+    "label": "D",
+    "frame_time": 24.7655
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-172549",
+    "seconds": 24.7655,
+    "frame_index": 1475,
+    "action_line": 9,
+    "object_index": 3,
+    "kind": "car",
+    "box": [
+      0.42894744873046875,
+      0.3807439168294271,
+      0.5016353607177735,
+      0.4180180867513021
+    ],
+    "id": "v034",
+    "label": "D",
+    "frame_time": 24.7655
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-172549",
+    "seconds": 24.7655,
+    "frame_index": 1475,
+    "action_line": 9,
+    "object_index": 7,
+    "kind": "car",
+    "box": [
+      0.0008269220590591431,
+      0.38820838928222656,
+      0.05618100166320801,
+      0.4411076439751519
+    ],
+    "id": "v035",
+    "label": "D",
+    "frame_time": 24.7655
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-172549",
+    "seconds": 24.7655,
+    "frame_index": 1475,
+    "action_line": 9,
+    "object_index": 8,
+    "kind": "car",
+    "box": [
+      0.15909109115600586,
+      0.3900549570719401,
+      0.24995799064636232,
+      0.4359948476155599
+    ],
+    "id": "v036",
+    "label": "D",
+    "frame_time": 24.7655
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 242.8894,
+    "frame_index": 3750,
+    "action_line": 54,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.0029015302658081054,
+      0.5014350043402778,
+      0.4472254753112793,
+      0.9908993191189236
+    ],
+    "id": "v037",
+    "label": "T",
+    "frame_time": 242.8894
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 242.8894,
+    "frame_index": 3750,
+    "action_line": 54,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.00015313476324081422,
+      0.09132729636298285,
+      0.04824386835098267,
+      0.15083835389879013
+    ],
+    "id": "v038",
+    "label": "D",
+    "frame_time": 242.8894
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 242.8894,
+    "frame_index": 3750,
+    "action_line": 54,
+    "object_index": 3,
+    "kind": "truck",
+    "box": [
+      0.19067784547805786,
+      0.062315877278645834,
+      0.2625934362411499,
+      0.20603692796495227
+    ],
+    "id": "v039",
+    "label": "D",
+    "frame_time": 242.8894
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 243.9322,
+    "frame_index": 3813,
+    "action_line": 54,
+    "object_index": 2,
+    "kind": "truck",
+    "box": [
+      0.09300816059112549,
+      0.15203749338785807,
+      0.1520033597946167,
+      0.25594217512342665
+    ],
+    "id": "v040",
+    "label": "D",
+    "frame_time": 243.9322
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 464.8055,
+    "frame_index": 17036,
+    "action_line": 166,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.3234859943389893,
+      0.39388402303059894,
+      0.4521505832672119,
+      0.49739574856228297
+    ],
+    "id": "v041",
+    "label": "P",
+    "frame_time": 464.8055
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 538.1947,
+    "frame_index": 21432,
+    "action_line": 197,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.4950883865356445,
+      0.45217340257432725,
+      0.7966067314147949,
+      0.6414679209391276
+    ],
+    "id": "v042",
+    "label": "D",
+    "frame_time": 538.1947
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 538.1947,
+    "frame_index": 21432,
+    "action_line": 197,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.16139007806777955,
+      0.46740392049153645,
+      0.3821095943450928,
+      0.5910653856065539
+    ],
+    "id": "v043",
+    "label": "D",
+    "frame_time": 538.1947
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 538.1947,
+    "frame_index": 21432,
+    "action_line": 197,
+    "object_index": 3,
+    "kind": "bus",
+    "box": [
+      0.5702828407287598,
+      0.2405425813462999,
+      1.0,
+      0.49162055121527776
+    ],
+    "id": "v044",
+    "label": "D",
+    "frame_time": 538.1947
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 539.1972,
+    "frame_index": 21492,
+    "action_line": 197,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.03095747232437134,
+      0.5021616617838541,
+      0.3070683479309082,
+      0.653678470187717
+    ],
+    "id": "v045",
+    "label": "D",
+    "frame_time": 539.1972
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 539.1972,
+    "frame_index": 21492,
+    "action_line": 197,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.4752391815185547,
+      0.4791236877441406,
+      0.7682743072509766,
+      0.7080934312608507
+    ],
+    "id": "v046",
+    "label": "T",
+    "frame_time": 539.1972
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 540.1989,
+    "frame_index": 21552,
+    "action_line": 197,
+    "object_index": 0,
+    "kind": "bus",
+    "box": [
+      0.4248950958251953,
+      0.30276014539930557,
+      0.8721609115600586,
+      0.5433996412489149
+    ],
+    "id": "v047",
+    "label": "D",
+    "frame_time": 540.1989
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 540.1989,
+    "frame_index": 21552,
+    "action_line": 197,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.0005264401435852051,
+      0.5684393988715277,
+      0.1361590027809143,
+      0.7073273552788628
+    ],
+    "id": "v048",
+    "label": "D",
+    "frame_time": 540.1989
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 622.1974,
+    "frame_index": 26459,
+    "action_line": 228,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.4714573860168457,
+      0.4223640865749783,
+      0.6140365600585938,
+      0.5289506276448568
+    ],
+    "id": "v049",
+    "label": "D",
+    "frame_time": 622.1974
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 622.1974,
+    "frame_index": 26459,
+    "action_line": 228,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      0.001090693473815918,
+      0.5298283047146267,
+      0.4902655601501465,
+      0.9843772888183594
+    ],
+    "id": "v050",
+    "label": "T",
+    "frame_time": 622.1974
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 623.1971,
+    "frame_index": 26519,
+    "action_line": 228,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.3349414110183716,
+      0.4735751681857639,
+      0.5222479820251464,
+      0.6243593851725261
+    ],
+    "id": "v051",
+    "label": "D",
+    "frame_time": 623.1971
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 624.1969,
+    "frame_index": 26579,
+    "action_line": 228,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.043210530281066896,
+      0.5614451514350043,
+      0.5339407920837402,
+      0.9589245266384548
+    ],
+    "id": "v052",
+    "label": "T",
+    "frame_time": 624.1969
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 624.1969,
+    "frame_index": 26579,
+    "action_line": 228,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.8572680473327636,
+      0.7079845428466797,
+      0.9994652748107911,
+      0.9966356913248698
+    ],
+    "id": "v053",
+    "label": "D",
+    "frame_time": 624.1969
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 876.0103,
+    "frame_index": 41639,
+    "action_line": 303,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.6714439392089844,
+      0.4646142747667101,
+      0.7740041732788085,
+      0.529349602593316
+    ],
+    "id": "v054",
+    "label": "T",
+    "frame_time": 876.0103
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 876.0103,
+    "frame_index": 41639,
+    "action_line": 303,
+    "object_index": 2,
+    "kind": "truck",
+    "box": [
+      0.798708724975586,
+      0.4056445651584201,
+      0.8716766357421875,
+      0.5278075324164496
+    ],
+    "id": "v055",
+    "label": "D",
+    "frame_time": 876.0103
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 877.0036,
+    "frame_index": 41699,
+    "action_line": 303,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.6629487991333007,
+      0.4667263878716363,
+      0.7680530548095703,
+      0.529694324069553
+    ],
+    "id": "v056",
+    "label": "T",
+    "frame_time": 877.0036
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 877.9961,
+    "frame_index": 41758,
+    "action_line": 303,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.632173490524292,
+      0.4816491444905599,
+      0.7329633235931396,
+      0.5472393883599176
+    ],
+    "id": "v057",
+    "label": "T",
+    "frame_time": 877.9961
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-175312",
+    "seconds": 877.9961,
+    "frame_index": 41758,
+    "action_line": 303,
+    "object_index": 2,
+    "kind": "truck",
+    "box": [
+      0.749470567703247,
+      0.3627256605360243,
+      0.9598243713378907,
+      0.5427330864800347
+    ],
+    "id": "v058",
+    "label": "D",
+    "frame_time": 877.9961
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-180814",
+    "seconds": 205.2994,
+    "frame_index": 12251,
+    "action_line": 160,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.5642115116119385,
+      0.4620157877604167,
+      0.9598789215087891,
+      0.7102141486273872
+    ],
+    "id": "v059",
+    "label": "P",
+    "frame_time": 205.2994
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-180814",
+    "seconds": 206.2977,
+    "frame_index": 12311,
+    "action_line": 160,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.48572750091552735,
+      0.4792485555013021,
+      0.8571694374084473,
+      0.7398966471354167
+    ],
+    "id": "v060",
+    "label": "P",
+    "frame_time": 206.2977
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-182316",
+    "seconds": 277.4231,
+    "frame_index": 16545,
+    "action_line": 157,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.08820163011550904,
+      0.4657112121582031,
+      0.1786535620689392,
+      0.5162937588161892
+    ],
+    "id": "v061",
+    "label": "D",
+    "frame_time": 277.4231
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-182316",
+    "seconds": 528.317,
+    "frame_index": 31549,
+    "action_line": 509,
+    "object_index": 4,
+    "kind": "car",
+    "box": [
+      0.29112968444824217,
+      0.5040714687771267,
+      0.34313187599182127,
+      0.5580313788519965
+    ],
+    "id": "v062",
+    "label": "D",
+    "frame_time": 528.317
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-182316",
+    "seconds": 530.3173,
+    "frame_index": 31669,
+    "action_line": 509,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.22269115447998047,
+      0.566145748562283,
+      0.4105203151702881,
+      0.78013670179579
+    ],
+    "id": "v063",
+    "label": "D",
+    "frame_time": 530.3173
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-183820",
+    "seconds": 675.2977,
+    "frame_index": 20706,
+    "action_line": 187,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.5376665592193604,
+      0.488902833726671,
+      0.692093801498413,
+      0.627505111694336
+    ],
+    "id": "v064",
+    "label": "T",
+    "frame_time": 675.2977
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-183820",
+    "seconds": 675.2977,
+    "frame_index": 20706,
+    "action_line": 187,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      0.48613681793212893,
+      0.44754761589898,
+      0.5974771499633789,
+      0.5345438215467665
+    ],
+    "id": "v065",
+    "label": "T",
+    "frame_time": 675.2977
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-183820",
+    "seconds": 675.2977,
+    "frame_index": 20706,
+    "action_line": 187,
+    "object_index": 3,
+    "kind": "car",
+    "box": [
+      0.35535235404968263,
+      0.43303532070583767,
+      0.4205596446990967,
+      0.5096704694959853
+    ],
+    "id": "v066",
+    "label": "D",
+    "frame_time": 675.2977
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-183820",
+    "seconds": 676.2971,
+    "frame_index": 20766,
+    "action_line": 187,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.14023934602737426,
+      0.4798044840494792,
+      0.3010851860046387,
+      0.6322658114963108
+    ],
+    "id": "v067",
+    "label": "D",
+    "frame_time": 676.2971
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-183820",
+    "seconds": 676.2971,
+    "frame_index": 20766,
+    "action_line": 187,
+    "object_index": 4,
+    "kind": "car",
+    "box": [
+      0.4999692916870117,
+      0.4684973822699653,
+      0.5900562286376954,
+      0.5840150621202257
+    ],
+    "id": "v068",
+    "label": "T",
+    "frame_time": 676.2971
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-183820",
+    "seconds": 677.2975,
+    "frame_index": 20826,
+    "action_line": 187,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.4839467525482178,
+      0.5185772789849176,
+      0.942180061340332,
+      0.9892603556315104
+    ],
+    "id": "v069",
+    "label": "T",
+    "frame_time": 677.2975
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-183820",
+    "seconds": 677.2975,
+    "frame_index": 20826,
+    "action_line": 187,
+    "object_index": 5,
+    "kind": "car",
+    "box": [
+      0.3697498321533203,
+      0.3300579494900174,
+      0.4824827194213867,
+      0.5310523139105903
+    ],
+    "id": "v070",
+    "label": "T",
+    "frame_time": 677.2975
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-183820",
+    "seconds": 677.2975,
+    "frame_index": 20826,
+    "action_line": 187,
+    "object_index": 7,
+    "kind": "truck",
+    "box": [
+      0.03575166463851929,
+      0.7437978108723958,
+      0.20061030387878417,
+      0.9507347954644098
+    ],
+    "id": "v071",
+    "label": "X",
+    "frame_time": 677.2975
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-183820",
+    "seconds": 880.0128,
+    "frame_index": 32947,
+    "action_line": 218,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.3483529567718506,
+      0.5024851481119792,
+      0.8324565887451172,
+      0.7870442708333333
+    ],
+    "id": "v072",
+    "label": "T",
+    "frame_time": 880.0128
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-185323",
+    "seconds": 179.2972,
+    "frame_index": 10715,
+    "action_line": 190,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.6173448085784912,
+      0.3515342288547092,
+      0.719305944442749,
+      0.41685913933648006
+    ],
+    "id": "v073",
+    "label": "D",
+    "frame_time": 179.2972
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-185323",
+    "seconds": 180.299,
+    "frame_index": 10775,
+    "action_line": 190,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.3677697658538818,
+      0.3548131942749023,
+      0.48369927406311036,
+      0.4270704905192057
+    ],
+    "id": "v074",
+    "label": "D",
+    "frame_time": 180.299
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-185323",
+    "seconds": 180.299,
+    "frame_index": 10775,
+    "action_line": 190,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.00040516853332519533,
+      0.3561769273546007,
+      0.3014699935913086,
+      0.6126537746853299
+    ],
+    "id": "v075",
+    "label": "D",
+    "frame_time": 180.299
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-185323",
+    "seconds": 181.3012,
+    "frame_index": 10835,
+    "action_line": 190,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.20061368942260743,
+      0.3614550272623698,
+      0.3257930278778076,
+      0.43942252265082465
+    ],
+    "id": "v076",
+    "label": "D",
+    "frame_time": 181.3012
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-185323",
+    "seconds": 803.3977,
+    "frame_index": 48033,
+    "action_line": 687,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.481093168258667,
+      0.4745272318522135,
+      0.7633253574371338,
+      0.6986228942871093
+    ],
+    "id": "v077",
+    "label": "T",
+    "frame_time": 803.3977
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-185323",
+    "seconds": 804.3984,
+    "frame_index": 48092,
+    "action_line": 687,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.014680743217468262,
+      0.47069736056857636,
+      0.6432952880859375,
+      0.9671929253472222
+    ],
+    "id": "v078",
+    "label": "T",
+    "frame_time": 804.3984
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-190825",
+    "seconds": 94.9968,
+    "frame_index": 5661,
+    "action_line": 24,
+    "object_index": 3,
+    "kind": "car",
+    "box": [
+      0.033133548498153684,
+      0.7439617580837674,
+      0.20549519062042237,
+      0.9693249172634548
+    ],
+    "id": "v079",
+    "label": "X",
+    "frame_time": 94.9968
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-190825",
+    "seconds": 96.0001,
+    "frame_index": 5721,
+    "action_line": 24,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.3599693298339844,
+      0.5347967359754774,
+      0.9965990066528321,
+      0.9864022996690538
+    ],
+    "id": "v080",
+    "label": "T",
+    "frame_time": 96.0001
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-190825",
+    "seconds": 518.399,
+    "frame_index": 29731,
+    "action_line": 94,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      0.2632601737976074,
+      0.5757127549913195,
+      0.36316351890563964,
+      0.6420818752712674
+    ],
+    "id": "v081",
+    "label": "X",
+    "frame_time": 518.399
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-190825",
+    "seconds": 519.3966,
+    "frame_index": 29791,
+    "action_line": 94,
+    "object_index": 0,
+    "kind": "truck",
+    "box": [
+      0.47683324813842776,
+      0.4022126939561632,
+      0.9989521980285645,
+      0.9872156778971354
+    ],
+    "id": "v082",
+    "label": "X",
+    "frame_time": 519.3966
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-190825",
+    "seconds": 520.4043,
+    "frame_index": 29851,
+    "action_line": 94,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.4334566116333008,
+      0.47722816467285156,
+      0.7947376251220704,
+      0.9199339124891494
+    ],
+    "id": "v083",
+    "label": "X",
+    "frame_time": 520.4043
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-190825",
+    "seconds": 685.5096,
+    "frame_index": 39720,
+    "action_line": 124,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.538712453842163,
+      0.44076033698187933,
+      0.9990446090698242,
+      0.9923504299587673
+    ],
+    "id": "v084",
+    "label": "X",
+    "frame_time": 685.5096
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-190825",
+    "seconds": 686.5228,
+    "frame_index": 39776,
+    "action_line": 124,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.479203987121582,
+      0.4325824737548828,
+      0.9986203193664551,
+      0.9869179619683159
+    ],
+    "id": "v085",
+    "label": "X",
+    "frame_time": 686.5228
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-192328",
+    "seconds": 31.6003,
+    "frame_index": 1891,
+    "action_line": 21,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.5345868110656739,
+      0.49361551072862414,
+      1.0,
+      0.9870695326063368
+    ],
+    "id": "v086",
+    "label": "T",
+    "frame_time": 31.6003
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-192328",
+    "seconds": 32.6027,
+    "frame_index": 1951,
+    "action_line": 21,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.6879698276519776,
+      0.392755381266276,
+      0.9917959213256836,
+      0.6690878974066841
+    ],
+    "id": "v087",
+    "label": "X",
+    "frame_time": 32.6027
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-192328",
+    "seconds": 33.6024,
+    "frame_index": 2011,
+    "action_line": 21,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.49916505813598633,
+      0.7473931206597222,
+      0.9977046012878418,
+      0.9913336859809028
+    ],
+    "id": "v088",
+    "label": "X",
+    "frame_time": 33.6024
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-192328",
+    "seconds": 33.6024,
+    "frame_index": 2011,
+    "action_line": 21,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.5996684074401856,
+      0.4159407721625434,
+      0.9839630126953125,
+      0.7961813184950087
+    ],
+    "id": "v089",
+    "label": "X",
+    "frame_time": 33.6024
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 41.0073,
+    "frame_index": 2446,
+    "action_line": 24,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.3667804002761841,
+      0.5289783901638455,
+      0.9284523963928223,
+      0.9918579949273003
+    ],
+    "id": "v090",
+    "label": "X",
+    "frame_time": 41.0073
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 41.0073,
+    "frame_index": 2446,
+    "action_line": 24,
+    "object_index": 5,
+    "kind": "motorcycle",
+    "box": [
+      0.7967621803283691,
+      0.4180810292561849,
+      0.9987668037414551,
+      0.6881785498725044
+    ],
+    "id": "v091",
+    "label": "X",
+    "frame_time": 41.0073
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 42.0089,
+    "frame_index": 2506,
+    "action_line": 24,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.36862456798553467,
+      0.5371023390028212,
+      0.9986415863037109,
+      0.9899750603569879
+    ],
+    "id": "v092",
+    "label": "T",
+    "frame_time": 42.0089
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 42.0089,
+    "frame_index": 2506,
+    "action_line": 24,
+    "object_index": 3,
+    "kind": "motorcycle",
+    "box": [
+      0.16561009883880615,
+      0.5178697374131944,
+      0.2165531873703003,
+      0.6293989393446181
+    ],
+    "id": "v093",
+    "label": "D",
+    "frame_time": 42.0089
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 43.009,
+    "frame_index": 2566,
+    "action_line": 24,
+    "object_index": 0,
+    "kind": "bus",
+    "box": [
+      0.6321062088012696,
+      0.36638098822699655,
+      1.0,
+      0.6411510043674045
+    ],
+    "id": "v094",
+    "label": "D",
+    "frame_time": 43.009
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 43.009,
+    "frame_index": 2566,
+    "action_line": 24,
+    "object_index": 3,
+    "kind": "motorcycle",
+    "box": [
+      0.1712031602859497,
+      0.523399904039171,
+      0.2492133855819702,
+      0.6423285166422527
+    ],
+    "id": "v095",
+    "label": "X",
+    "frame_time": 43.009
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 46.1123,
+    "frame_index": 2752,
+    "action_line": 31,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.9403458595275879,
+      0.38598336113823783,
+      0.9970492362976074,
+      0.4360847473144531
+    ],
+    "id": "v096",
+    "label": "T",
+    "frame_time": 46.1123
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 46.1123,
+    "frame_index": 2752,
+    "action_line": 31,
+    "object_index": 7,
+    "kind": "car",
+    "box": [
+      0.0012725591659545898,
+      0.5507301330566406,
+      0.5418532371520997,
+      0.9889718797471788
+    ],
+    "id": "v097",
+    "label": "T",
+    "frame_time": 46.1123
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 47.113,
+    "frame_index": 2812,
+    "action_line": 31,
+    "object_index": 3,
+    "kind": "bus",
+    "box": [
+      0.9532759666442872,
+      0.34792650010850695,
+      0.9991974830627441,
+      0.5380374484592014
+    ],
+    "id": "v098",
+    "label": "X",
+    "frame_time": 47.113
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 48.1158,
+    "frame_index": 2872,
+    "action_line": 31,
+    "object_index": 0,
+    "kind": "motorcycle",
+    "box": [
+      0.29980180263519285,
+      0.5855658637152777,
+      0.4205312728881836,
+      0.8504916720920139
+    ],
+    "id": "v099",
+    "label": "D",
+    "frame_time": 48.1158
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 156.6406,
+    "frame_index": 9322,
+    "action_line": 77,
+    "object_index": 0,
+    "kind": "truck",
+    "box": [
+      0.41179714202880857,
+      0.48145124647352433,
+      0.8133982658386231,
+      0.9511327107747396
+    ],
+    "id": "v100",
+    "label": "D",
+    "frame_time": 156.6406
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 158.689,
+    "frame_index": 9440,
+    "action_line": 77,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.11549794673919678,
+      0.7777187771267361,
+      0.22553937435150145,
+      0.9688044230143229
+    ],
+    "id": "v101",
+    "label": "X",
+    "frame_time": 158.689
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 166.8011,
+    "frame_index": 9929,
+    "action_line": 89,
+    "object_index": 0,
+    "kind": "truck",
+    "box": [
+      0.767809247970581,
+      0.33216851552327475,
+      0.9995340347290039,
+      0.9900505065917968
+    ],
+    "id": "v102",
+    "label": "X",
+    "frame_time": 166.8011
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 167.8079,
+    "frame_index": 9986,
+    "action_line": 89,
+    "object_index": 0,
+    "kind": "motorcycle",
+    "box": [
+      0.49327473640441893,
+      0.7422303941514757,
+      0.8560060501098633,
+      0.9948257446289063
+    ],
+    "id": "v103",
+    "label": "X",
+    "frame_time": 167.8079
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 401.1161,
+    "frame_index": 23896,
+    "action_line": 151,
+    "object_index": 0,
+    "kind": "motorcycle",
+    "box": [
+      0.46728906631469724,
+      0.537715572781033,
+      0.5717576026916504,
+      0.6925376892089844
+    ],
+    "id": "v104",
+    "label": "X",
+    "frame_time": 401.1161
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 630.9076,
+    "frame_index": 37506,
+    "action_line": 217,
+    "object_index": 0,
+    "kind": "truck",
+    "box": [
+      0.3064910411834717,
+      0.2958106994628906,
+      0.4110968589782715,
+      0.390485594007704
+    ],
+    "id": "v105",
+    "label": "X",
+    "frame_time": 630.9076
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 631.9089,
+    "frame_index": 37564,
+    "action_line": 217,
+    "object_index": 1,
+    "kind": "truck",
+    "box": [
+      0.5925239086151123,
+      0.28673725128173827,
+      0.6944914340972901,
+      0.3892234378390842
+    ],
+    "id": "v106",
+    "label": "X",
+    "frame_time": 631.9089
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 669.0084,
+    "frame_index": 39783,
+    "action_line": 223,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.029978680610656738,
+      0.40508685641818576,
+      0.6037834167480469,
+      0.8998193528917101
+    ],
+    "id": "v107",
+    "label": "T",
+    "frame_time": 669.0084
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-193105",
+    "seconds": 669.0084,
+    "frame_index": 39783,
+    "action_line": 223,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.7582952976226807,
+      0.4711614820692274,
+      0.8286581039428711,
+      0.5259900410970052
+    ],
+    "id": "v108",
+    "label": "X",
+    "frame_time": 669.0084
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-194609",
+    "seconds": 98.0954,
+    "frame_index": 5840,
+    "action_line": 16,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.4788544178009033,
+      0.4718906826443142,
+      0.6594105243682862,
+      0.5785225762261285
+    ],
+    "id": "v109",
+    "label": "D",
+    "frame_time": 98.0954
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-194609",
+    "seconds": 98.0954,
+    "frame_index": 5840,
+    "action_line": 16,
+    "object_index": 2,
+    "kind": "truck",
+    "box": [
+      0.3836834192276001,
+      0.3976317935519748,
+      0.42641782760620117,
+      0.4979389190673828
+    ],
+    "id": "v110",
+    "label": "D",
+    "frame_time": 98.0954
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-194609",
+    "seconds": 673.9451,
+    "frame_index": 40318,
+    "action_line": 75,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.0031539201736450195,
+      0.3994852701822917,
+      0.2437814235687256,
+      0.5686013963487413
+    ],
+    "id": "v111",
+    "label": "X",
+    "frame_time": 673.9451
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-194609",
+    "seconds": 674.9023,
+    "frame_index": 40380,
+    "action_line": 75,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.253983736038208,
+      0.4163622538248698,
+      0.43842167854309083,
+      0.6017576429578994
+    ],
+    "id": "v112",
+    "label": "X",
+    "frame_time": 674.9023
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-194609",
+    "seconds": 675.8965,
+    "frame_index": 40440,
+    "action_line": 75,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.48022069931030276,
+      0.4721150716145833,
+      0.7209527969360352,
+      0.7590208265516493
+    ],
+    "id": "v113",
+    "label": "X",
+    "frame_time": 675.8965
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-194609",
+    "seconds": 722.595,
+    "frame_index": 43229,
+    "action_line": 98,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.38633999824523924,
+      0.3344939337836372,
+      0.4853962421417236,
+      0.41105753580729165
+    ],
+    "id": "v114",
+    "label": "D",
+    "frame_time": 722.595
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-194609",
+    "seconds": 723.5953,
+    "frame_index": 43289,
+    "action_line": 98,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.31989810466766355,
+      0.3910995059543186,
+      0.4718015670776367,
+      0.5147880130343967
+    ],
+    "id": "v115",
+    "label": "D",
+    "frame_time": 723.5953
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-194609",
+    "seconds": 818.3872,
+    "frame_index": 48959,
+    "action_line": 173,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.660111951828003,
+      0.7028192308213975,
+      0.988260555267334,
+      0.9909660339355468
+    ],
+    "id": "v116",
+    "label": "X",
+    "frame_time": 818.3872
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-194609",
+    "seconds": 819.3906,
+    "frame_index": 49018,
+    "action_line": 173,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.549671745300293,
+      0.628947024875217,
+      0.9985939025878906,
+      0.9898996141221789
+    ],
+    "id": "v117",
+    "label": "X",
+    "frame_time": 819.3906
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 171.4848,
+    "frame_index": 10253,
+    "action_line": 65,
+    "object_index": 0,
+    "kind": "truck",
+    "box": [
+      0.13286097049713136,
+      0.14657001495361327,
+      0.30425074100494387,
+      0.5027756585015191
+    ],
+    "id": "v118",
+    "label": "D",
+    "frame_time": 171.4848
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 171.4848,
+    "frame_index": 10253,
+    "action_line": 65,
+    "object_index": 1,
+    "kind": "truck",
+    "box": [
+      0.0,
+      0.43752797444661456,
+      0.2084736108779907,
+      0.7327457004123263
+    ],
+    "id": "v119",
+    "label": "D",
+    "frame_time": 171.4848
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 171.4848,
+    "frame_index": 10253,
+    "action_line": 65,
+    "object_index": 3,
+    "kind": "car",
+    "box": [
+      0.047961640357971194,
+      0.7620170593261719,
+      0.19994525909423827,
+      0.9501465691460503
+    ],
+    "id": "v120",
+    "label": "D",
+    "frame_time": 171.4848
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 172.4861,
+    "frame_index": 10313,
+    "action_line": 65,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.0004692673683166504,
+      0.5846047295464409,
+      0.12688997983932496,
+      0.822764163547092
+    ],
+    "id": "v121",
+    "label": "D",
+    "frame_time": 172.4861
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 172.4861,
+    "frame_index": 10313,
+    "action_line": 65,
+    "object_index": 5,
+    "kind": "car",
+    "box": [
+      0.4202221393585205,
+      0.2640599144829644,
+      0.46813111305236815,
+      0.3302307552761502
+    ],
+    "id": "v122",
+    "label": "D",
+    "frame_time": 172.4861
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 173.4913,
+    "frame_index": 10373,
+    "action_line": 65,
+    "object_index": 3,
+    "kind": "car",
+    "box": [
+      0.5415193557739257,
+      0.29293416341145834,
+      0.5885137557983399,
+      0.3650484720865885
+    ],
+    "id": "v123",
+    "label": "D",
+    "frame_time": 173.4913
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 192.1894,
+    "frame_index": 11494,
+    "action_line": 86,
+    "object_index": 0,
+    "kind": "truck",
+    "box": [
+      0.16069095134735106,
+      0.02110396491156684,
+      0.8379984855651855,
+      0.5276974572075738
+    ],
+    "id": "v124",
+    "label": "D",
+    "frame_time": 192.1894
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 193.1907,
+    "frame_index": 11554,
+    "action_line": 86,
+    "object_index": 0,
+    "kind": "truck",
+    "box": [
+      0.25734562873840333,
+      0.028703053792317707,
+      0.9979719161987305,
+      0.5509495629204644
+    ],
+    "id": "v125",
+    "label": "D",
+    "frame_time": 193.1907
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 194.1953,
+    "frame_index": 11614,
+    "action_line": 86,
+    "object_index": 0,
+    "kind": "truck",
+    "box": [
+      0.2264653444290161,
+      0.03169341617160373,
+      0.9975818634033203,
+      0.67341554429796
+    ],
+    "id": "v126",
+    "label": "D",
+    "frame_time": 194.1953
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 326.0563,
+    "frame_index": 19502,
+    "action_line": 113,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.04076583385467529,
+      0.46650763617621527,
+      0.4496759414672852,
+      0.9540635002983942
+    ],
+    "id": "v127",
+    "label": "D",
+    "frame_time": 326.0563
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 327.0624,
+    "frame_index": 19558,
+    "action_line": 113,
+    "object_index": 1,
+    "kind": "truck",
+    "box": [
+      0.1416623115539551,
+      0.43712878757052953,
+      0.45470752716064455,
+      0.827832285563151
+    ],
+    "id": "v128",
+    "label": "T",
+    "frame_time": 327.0624
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 328.1126,
+    "frame_index": 19620,
+    "action_line": 113,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.03689368963241577,
+      0.3253586663140191,
+      0.2177302360534668,
+      0.44271409776475695
+    ],
+    "id": "v129",
+    "label": "T",
+    "frame_time": 328.1126
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 446.7914,
+    "frame_index": 26715,
+    "action_line": 146,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.41411919593811036,
+      0.39631038241916233,
+      0.4682013988494873,
+      0.4790623558892144
+    ],
+    "id": "v130",
+    "label": "X",
+    "frame_time": 446.7914
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 447.791,
+    "frame_index": 26775,
+    "action_line": 146,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.43697290420532225,
+      0.39451722039116754,
+      0.5195439338684082,
+      0.5265004052056207
+    ],
+    "id": "v131",
+    "label": "X",
+    "frame_time": 447.791
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 592.0049,
+    "frame_index": 35405,
+    "action_line": 185,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.5076814651489258,
+      0.1893472883436415,
+      0.7583060264587402,
+      0.4068952348497179
+    ],
+    "id": "v132",
+    "label": "X",
+    "frame_time": 592.0049
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 593.0028,
+    "frame_index": 35465,
+    "action_line": 185,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.4410863876342773,
+      0.2616294860839844,
+      0.7369558334350585,
+      0.5804349263509114
+    ],
+    "id": "v133",
+    "label": "X",
+    "frame_time": 593.0028
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 594.0034,
+    "frame_index": 35524,
+    "action_line": 185,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.23398399353027344,
+      0.4241452111138238,
+      0.5782045364379883,
+      0.758089362250434
+    ],
+    "id": "v134",
+    "label": "X",
+    "frame_time": 594.0034
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 656.1966,
+    "frame_index": 39195,
+    "action_line": 223,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.8129405975341797,
+      0.33860162099202473,
+      0.9298542022705079,
+      0.4406282212999132
+    ],
+    "id": "v135",
+    "label": "D",
+    "frame_time": 656.1966
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 656.1966,
+    "frame_index": 39195,
+    "action_line": 223,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.4470376014709473,
+      0.3430848439534505,
+      0.5821184158325196,
+      0.440784666273329
+    ],
+    "id": "v136",
+    "label": "D",
+    "frame_time": 656.1966
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 656.1966,
+    "frame_index": 39195,
+    "action_line": 223,
+    "object_index": 3,
+    "kind": "car",
+    "box": [
+      0.44311299324035647,
+      0.25377373165554473,
+      0.5292829990386962,
+      0.29054101308186847
+    ],
+    "id": "v137",
+    "label": "D",
+    "frame_time": 656.1966
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 656.1966,
+    "frame_index": 39195,
+    "action_line": 223,
+    "object_index": 4,
+    "kind": "truck",
+    "box": [
+      0.8393481254577637,
+      0.23222537570529514,
+      0.9403817176818847,
+      0.34073393079969616
+    ],
+    "id": "v138",
+    "label": "D",
+    "frame_time": 656.1966
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 657.1981,
+    "frame_index": 39255,
+    "action_line": 223,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.7380060672760009,
+      0.2991383870442708,
+      0.8294060707092286,
+      0.37345932854546443
+    ],
+    "id": "v139",
+    "label": "D",
+    "frame_time": 657.1981
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 657.1981,
+    "frame_index": 39255,
+    "action_line": 223,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      0.24023988246917724,
+      0.26223708258734807,
+      0.34120323657989504,
+      0.30895517137315537
+    ],
+    "id": "v140",
+    "label": "D",
+    "frame_time": 657.1981
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 657.1981,
+    "frame_index": 39255,
+    "action_line": 223,
+    "object_index": 3,
+    "kind": "truck",
+    "box": [
+      0.623587703704834,
+      0.229897944132487,
+      0.6956809043884278,
+      0.3183290693495009
+    ],
+    "id": "v141",
+    "label": "D",
+    "frame_time": 657.1981
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 658.1995,
+    "frame_index": 39315,
+    "action_line": 223,
+    "object_index": 1,
+    "kind": "truck",
+    "box": [
+      0.0018849730491638183,
+      0.7578319973415799,
+      0.2166965961456299,
+      0.992690192328559
+    ],
+    "id": "v142",
+    "label": "X",
+    "frame_time": 658.1995
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-200111",
+    "seconds": 658.1995,
+    "frame_index": 39315,
+    "action_line": 223,
+    "object_index": 2,
+    "kind": "truck",
+    "box": [
+      0.8800130844116211,
+      0.25495713551839194,
+      0.9660778045654297,
+      0.34134146372477214
+    ],
+    "id": "v143",
+    "label": "T",
+    "frame_time": 658.1995
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-201615",
+    "seconds": 37.8691,
+    "frame_index": 2262,
+    "action_line": 9,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.8348487854003906,
+      0.4794882032606337,
+      0.9994915008544922,
+      0.6912740919325087
+    ],
+    "id": "v144",
+    "label": "P",
+    "frame_time": 37.8691
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-201615",
+    "seconds": 38.9044,
+    "frame_index": 2324,
+    "action_line": 9,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.6428974151611329,
+      0.3858923594156901,
+      0.9803050994873047,
+      0.652950668334961
+    ],
+    "id": "v145",
+    "label": "P",
+    "frame_time": 38.9044
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 318.8434,
+    "frame_index": 19102,
+    "action_line": 91,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.31222398281097413,
+      0.3275217480129666,
+      0.4425779342651367,
+      0.4889754401312934
+    ],
+    "id": "v146",
+    "label": "D",
+    "frame_time": 318.8434
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 318.8434,
+    "frame_index": 19102,
+    "action_line": 91,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.7272961139678955,
+      0.4312249077690972,
+      0.9985026359558106,
+      0.6675689697265625
+    ],
+    "id": "v147",
+    "label": "D",
+    "frame_time": 318.8434
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 318.8434,
+    "frame_index": 19102,
+    "action_line": 91,
+    "object_index": 3,
+    "kind": "car",
+    "box": [
+      0.174297297000885,
+      0.31014794243706595,
+      0.25647668838500975,
+      0.38808195326063366
+    ],
+    "id": "v148",
+    "label": "D",
+    "frame_time": 318.8434
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 318.8434,
+    "frame_index": 19102,
+    "action_line": 91,
+    "object_index": 5,
+    "kind": "car",
+    "box": [
+      0.13190741539001466,
+      0.2800205866495768,
+      0.2117391586303711,
+      0.34953352610270183
+    ],
+    "id": "v149",
+    "label": "D",
+    "frame_time": 318.8434
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 319.8495,
+    "frame_index": 19157,
+    "action_line": 91,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.6725111961364746,
+      0.41146392822265626,
+      0.7981230735778808,
+      0.5783839755588107
+    ],
+    "id": "v150",
+    "label": "D",
+    "frame_time": 319.8495
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 319.8495,
+    "frame_index": 19157,
+    "action_line": 91,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      0.7941634654998779,
+      0.34164178636338977,
+      0.9078158378601074,
+      0.4310339609781901
+    ],
+    "id": "v151",
+    "label": "D",
+    "frame_time": 319.8495
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 319.8495,
+    "frame_index": 19157,
+    "action_line": 91,
+    "object_index": 3,
+    "kind": "car",
+    "box": [
+      0.14813849925994874,
+      0.32993443806966144,
+      0.2386176347732544,
+      0.44762886895073783
+    ],
+    "id": "v152",
+    "label": "D",
+    "frame_time": 319.8495
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 320.8964,
+    "frame_index": 19220,
+    "action_line": 91,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.14349968433380128,
+      0.41845855712890623,
+      0.4173542022705078,
+      0.9058625115288629
+    ],
+    "id": "v153",
+    "label": "T",
+    "frame_time": 320.8964
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 320.8964,
+    "frame_index": 19220,
+    "action_line": 91,
+    "object_index": 3,
+    "kind": "car",
+    "box": [
+      0.2986640691757202,
+      0.30809572007921004,
+      0.35186917781829835,
+      0.37930005391438804
+    ],
+    "id": "v154",
+    "label": "D",
+    "frame_time": 320.8964
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 337.8445,
+    "frame_index": 20240,
+    "action_line": 112,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      0.6076799392700195,
+      0.3526600307888455,
+      0.6935856819152832,
+      0.430987548828125
+    ],
+    "id": "v155",
+    "label": "T",
+    "frame_time": 337.8445
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 338.8456,
+    "frame_index": 20300,
+    "action_line": 112,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.7814735412597656,
+      0.32945033179389105,
+      0.8288398742675781,
+      0.39305407206217446
+    ],
+    "id": "v156",
+    "label": "D",
+    "frame_time": 338.8456
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 338.8456,
+    "frame_index": 20300,
+    "action_line": 112,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      0.5820706367492676,
+      0.3129508124457465,
+      0.6649082183837891,
+      0.3950396219889323
+    ],
+    "id": "v157",
+    "label": "D",
+    "frame_time": 338.8456
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 339.8497,
+    "frame_index": 20360,
+    "action_line": 112,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.00017164647579193115,
+      0.26231354607476126,
+      0.08735181093215942,
+      0.3898769802517361
+    ],
+    "id": "v158",
+    "label": "D",
+    "frame_time": 339.8497
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 563.2495,
+    "frame_index": 33746,
+    "action_line": 141,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.621028995513916,
+      0.3529005898369683,
+      0.8958210945129395,
+      0.5662921481662326
+    ],
+    "id": "v159",
+    "label": "P",
+    "frame_time": 563.2495
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 564.2519,
+    "frame_index": 33806,
+    "action_line": 141,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.5563202857971191,
+      0.3744134267171224,
+      0.855592918395996,
+      0.6097261640760634
+    ],
+    "id": "v160",
+    "label": "P",
+    "frame_time": 564.2519
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 564.2519,
+    "frame_index": 33806,
+    "action_line": 141,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.44997849464416506,
+      0.7813899570041233,
+      0.9976001739501953,
+      0.9938094245062934
+    ],
+    "id": "v161",
+    "label": "P",
+    "frame_time": 564.2519
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 591.6435,
+    "frame_index": 35448,
+    "action_line": 171,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.5759752273559571,
+      0.24757525126139324,
+      0.7375898361206055,
+      0.39429533216688367
+    ],
+    "id": "v162",
+    "label": "D",
+    "frame_time": 591.6435
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 591.6435,
+    "frame_index": 35448,
+    "action_line": 171,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.0002834796905517578,
+      0.37111422220865886,
+      0.12333104610443116,
+      0.5926208072238498
+    ],
+    "id": "v163",
+    "label": "X",
+    "frame_time": 591.6435
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 591.6435,
+    "frame_index": 35448,
+    "action_line": 171,
+    "object_index": 3,
+    "kind": "bus",
+    "box": [
+      0.03500294089317322,
+      0.7526809692382812,
+      0.20191614627838134,
+      0.9464160495334202
+    ],
+    "id": "v164",
+    "label": "X",
+    "frame_time": 591.6435
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 592.6454,
+    "frame_index": 35508,
+    "action_line": 171,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.875731372833252,
+      0.2944001939561632,
+      0.9993979454040527,
+      0.48944023980034723
+    ],
+    "id": "v165",
+    "label": "X",
+    "frame_time": 592.6454
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 593.6447,
+    "frame_index": 35568,
+    "action_line": 171,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.40236601829528806,
+      0.41907357109917537,
+      0.6672521114349366,
+      0.6850602891710069
+    ],
+    "id": "v166",
+    "label": "X",
+    "frame_time": 593.6447
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 830.4053,
+    "frame_index": 49737,
+    "action_line": 233,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.8112140655517578,
+      0.38680174085828994,
+      0.8949214935302734,
+      0.44967770046657984
+    ],
+    "id": "v167",
+    "label": "X",
+    "frame_time": 830.4053
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 830.4053,
+    "frame_index": 49737,
+    "action_line": 233,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      0.48004512786865233,
+      0.38401497734917533,
+      0.5555081367492676,
+      0.44663043551974824
+    ],
+    "id": "v168",
+    "label": "D",
+    "frame_time": 830.4053
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 831.4503,
+    "frame_index": 49799,
+    "action_line": 233,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.8187030792236328,
+      0.38658053080240884,
+      0.8998428344726562,
+      0.44965926276312934
+    ],
+    "id": "v169",
+    "label": "T",
+    "frame_time": 831.4503
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-205309",
+    "seconds": 832.4502,
+    "frame_index": 49859,
+    "action_line": 233,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.1582963228225708,
+      0.4774172041151259,
+      0.5669487953186035,
+      0.7747895134819879
+    ],
+    "id": "v170",
+    "label": "T",
+    "frame_time": 832.4502
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-210812",
+    "seconds": 454.2152,
+    "frame_index": 27201,
+    "action_line": 110,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.2158355236053467,
+      0.3816335890028212,
+      0.45360755920410156,
+      0.5153121100531683
+    ],
+    "id": "v171",
+    "label": "P",
+    "frame_time": 454.2152
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-210812",
+    "seconds": 456.2137,
+    "frame_index": 27321,
+    "action_line": 110,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.3194745063781738,
+      0.40328682793511283,
+      0.5808402061462402,
+      0.6011600918240018
+    ],
+    "id": "v172",
+    "label": "P",
+    "frame_time": 456.2137
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-210812",
+    "seconds": 697.9024,
+    "frame_index": 41770,
+    "action_line": 153,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.6041211605072021,
+      0.408723873562283,
+      0.902592945098877,
+      0.6200325859917535
+    ],
+    "id": "v173",
+    "label": "T",
+    "frame_time": 697.9024
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-210812",
+    "seconds": 697.9024,
+    "frame_index": 41770,
+    "action_line": 153,
+    "object_index": 2,
+    "kind": "truck",
+    "box": [
+      0.0001036524772644043,
+      0.333895640903049,
+      0.23208227157592773,
+      0.586767578125
+    ],
+    "id": "v174",
+    "label": "T",
+    "frame_time": 697.9024
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-210812",
+    "seconds": 697.9024,
+    "frame_index": 41770,
+    "action_line": 153,
+    "object_index": 3,
+    "kind": "car",
+    "box": [
+      0.8455156326293946,
+      0.35512676239013674,
+      0.9991386413574219,
+      0.45566635131835936
+    ],
+    "id": "v175",
+    "label": "T",
+    "frame_time": 697.9024
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-210812",
+    "seconds": 698.9023,
+    "frame_index": 41830,
+    "action_line": 153,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.6446288585662842,
+      0.4228557586669922,
+      0.9999744415283203,
+      0.6965156979031033
+    ],
+    "id": "v176",
+    "label": "T",
+    "frame_time": 698.9023
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-210812",
+    "seconds": 698.9023,
+    "frame_index": 41830,
+    "action_line": 153,
+    "object_index": 1,
+    "kind": "truck",
+    "box": [
+      0.0002379775047302246,
+      0.32520645989312064,
+      0.24308114051818847,
+      0.5884398990207248
+    ],
+    "id": "v177",
+    "label": "T",
+    "frame_time": 698.9023
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-210812",
+    "seconds": 698.9023,
+    "frame_index": 41830,
+    "action_line": 153,
+    "object_index": 2,
+    "kind": "truck",
+    "box": [
+      0.22183420658111572,
+      0.28794176313612196,
+      0.6435154914855957,
+      0.626786380343967
+    ],
+    "id": "v178",
+    "label": "T",
+    "frame_time": 698.9023
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-210812",
+    "seconds": 699.9055,
+    "frame_index": 41885,
+    "action_line": 153,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.762243127822876,
+      0.439288075764974,
+      0.9990541458129882,
+      0.7689277648925781
+    ],
+    "id": "v179",
+    "label": "T",
+    "frame_time": 699.9055
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-210812",
+    "seconds": 699.9055,
+    "frame_index": 41885,
+    "action_line": 153,
+    "object_index": 2,
+    "kind": "truck",
+    "box": [
+      0.017370378971099852,
+      0.3140953911675347,
+      0.2717450141906738,
+      0.5931393941243489
+    ],
+    "id": "v180",
+    "label": "T",
+    "frame_time": 699.9055
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-210812",
+    "seconds": 704.8108,
+    "frame_index": 42184,
+    "action_line": 158,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.3672333240509033,
+      0.38489197625054256,
+      0.5253812313079834,
+      0.5657051510281033
+    ],
+    "id": "v181",
+    "label": "T",
+    "frame_time": 704.8108
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-210812",
+    "seconds": 705.8103,
+    "frame_index": 42244,
+    "action_line": 158,
+    "object_index": 1,
+    "kind": "truck",
+    "box": [
+      0.0,
+      0.4428538852267795,
+      0.36081316471099856,
+      0.8477068583170573
+    ],
+    "id": "v182",
+    "label": "T",
+    "frame_time": 705.8103
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-210812",
+    "seconds": 706.8122,
+    "frame_index": 42304,
+    "action_line": 158,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.13992944955825806,
+      0.4798636966281467,
+      0.5248761653900147,
+      0.8191178215874566
+    ],
+    "id": "v183",
+    "label": "T",
+    "frame_time": 706.8122
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-210812",
+    "seconds": 790.8982,
+    "frame_index": 47331,
+    "action_line": 186,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.2712831974029541,
+      0.3985550350613064,
+      0.7134851932525634,
+      0.6678109486897786
+    ],
+    "id": "v184",
+    "label": "P",
+    "frame_time": 790.8982
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-212314",
+    "seconds": 73.3105,
+    "frame_index": 4369,
+    "action_line": 68,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.03640832304954529,
+      0.49518135918511286,
+      0.21170170307159425,
+      0.5961027357313368
+    ],
+    "id": "v185",
+    "label": "D",
+    "frame_time": 73.3105
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-212314",
+    "seconds": 74.3031,
+    "frame_index": 4429,
+    "action_line": 68,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.2724449634552002,
+      0.4828568352593316,
+      0.3387493133544922,
+      0.5338402642144098
+    ],
+    "id": "v186",
+    "label": "D",
+    "frame_time": 74.3031
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-212314",
+    "seconds": 195.1971,
+    "frame_index": 11586,
+    "action_line": 120,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.3222834348678589,
+      0.36769625345865886,
+      0.4196125030517578,
+      0.48865699768066406
+    ],
+    "id": "v187",
+    "label": "D",
+    "frame_time": 195.1971
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-212314",
+    "seconds": 196.2,
+    "frame_index": 11646,
+    "action_line": 120,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.2717238187789917,
+      0.38991885715060765,
+      0.39300382137298584,
+      0.5540132310655382
+    ],
+    "id": "v188",
+    "label": "D",
+    "frame_time": 196.2
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-212314",
+    "seconds": 197.1994,
+    "frame_index": 11706,
+    "action_line": 120,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.26096081733703613,
+      0.43848648071289065,
+      0.43437967300415037,
+      0.7213284810384114
+    ],
+    "id": "v189",
+    "label": "D",
+    "frame_time": 197.1994
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-213150",
+    "seconds": 181.2078,
+    "frame_index": 10840,
+    "action_line": 27,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.3608422756195068,
+      0.3756718953450521,
+      0.5297787189483643,
+      0.577821773952908
+    ],
+    "id": "v190",
+    "label": "X",
+    "frame_time": 181.2078
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-213150",
+    "seconds": 182.207,
+    "frame_index": 10900,
+    "action_line": 27,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.28928308486938475,
+      0.4318646325005425,
+      0.44969544410705564,
+      0.6786632537841797
+    ],
+    "id": "v191",
+    "label": "X",
+    "frame_time": 182.207
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-213150",
+    "seconds": 560.1991,
+    "frame_index": 33474,
+    "action_line": 191,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.19864046573638916,
+      0.22650434705946182,
+      0.653984260559082,
+      0.5979656643337674
+    ],
+    "id": "v192",
+    "label": "P",
+    "frame_time": 560.1991
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-213150",
+    "seconds": 561.2006,
+    "frame_index": 33534,
+    "action_line": 191,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.3129962205886841,
+      0.33578177558051214,
+      0.7651939392089844,
+      0.7786630418565538
+    ],
+    "id": "v193",
+    "label": "P",
+    "frame_time": 561.2006
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-214652",
+    "seconds": 113.8309,
+    "frame_index": 6811,
+    "action_line": 35,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.40259404182434083,
+      0.3601439158121745,
+      0.6573812007904053,
+      0.5357622358534071
+    ],
+    "id": "v194",
+    "label": "D",
+    "frame_time": 113.8309
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-214652",
+    "seconds": 113.8309,
+    "frame_index": 6811,
+    "action_line": 35,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      0.0,
+      0.5160451253255208,
+      0.4404598236083984,
+      0.8243444654676649
+    ],
+    "id": "v195",
+    "label": "X",
+    "frame_time": 113.8309
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-214652",
+    "seconds": 113.8309,
+    "frame_index": 6811,
+    "action_line": 35,
+    "object_index": 3,
+    "kind": "car",
+    "box": [
+      0.5802395343780518,
+      0.3125777986314562,
+      0.7376635074615479,
+      0.39048326280381945
+    ],
+    "id": "v196",
+    "label": "D",
+    "frame_time": 113.8309
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-214652",
+    "seconds": 113.8309,
+    "frame_index": 6811,
+    "action_line": 35,
+    "object_index": 5,
+    "kind": "car",
+    "box": [
+      0.7035363674163818,
+      0.29328698052300345,
+      0.8212366104125977,
+      0.3584056430392795
+    ],
+    "id": "v197",
+    "label": "D",
+    "frame_time": 113.8309
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-214652",
+    "seconds": 113.8309,
+    "frame_index": 6811,
+    "action_line": 35,
+    "object_index": 6,
+    "kind": "car",
+    "box": [
+      0.5472342014312744,
+      0.27648046281602645,
+      0.6664585590362548,
+      0.35254137251112194
+    ],
+    "id": "v198",
+    "label": "D",
+    "frame_time": 113.8309
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-214652",
+    "seconds": 114.8276,
+    "frame_index": 6866,
+    "action_line": 35,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.36987733840942383,
+      0.3069179958767361,
+      0.4224720478057861,
+      0.39724773830837673
+    ],
+    "id": "v199",
+    "label": "X",
+    "frame_time": 114.8276
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-214652",
+    "seconds": 114.8276,
+    "frame_index": 6866,
+    "action_line": 35,
+    "object_index": 3,
+    "kind": "car",
+    "box": [
+      0.9620676040649414,
+      0.2657451629638672,
+      0.9994186401367188,
+      0.3379781511094835
+    ],
+    "id": "v200",
+    "label": "D",
+    "frame_time": 114.8276
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-214652",
+    "seconds": 114.8276,
+    "frame_index": 6866,
+    "action_line": 35,
+    "object_index": 6,
+    "kind": "car",
+    "box": [
+      0.5851262092590332,
+      0.2815434349907769,
+      0.6450501441955566,
+      0.33179910447862415
+    ],
+    "id": "v201",
+    "label": "D",
+    "frame_time": 114.8276
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-214652",
+    "seconds": 115.8752,
+    "frame_index": 6928,
+    "action_line": 35,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.4583922863006592,
+      0.33550438351101347,
+      0.5301936626434326,
+      0.44477852715386285
+    ],
+    "id": "v202",
+    "label": "T",
+    "frame_time": 115.8752
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261111-214652",
+    "seconds": 115.8752,
+    "frame_index": 6928,
+    "action_line": 35,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      0.5511787891387939,
+      0.3003111097547743,
+      0.6166179180145264,
+      0.36829749213324653
+    ],
+    "id": "v203",
+    "label": "T",
+    "frame_time": 115.8752
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261112-085011",
+    "seconds": 200.9507,
+    "frame_index": 12035,
+    "action_line": 84,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.657053279876709,
+      0.23904474046495225,
+      0.7406315803527832,
+      0.30150621202256944
+    ],
+    "id": "v204",
+    "label": "D",
+    "frame_time": 200.9507
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261112-085011",
+    "seconds": 200.9507,
+    "frame_index": 12035,
+    "action_line": 84,
+    "object_index": 1,
+    "kind": "truck",
+    "box": [
+      0.29131312370300294,
+      0.3704254150390625,
+      0.4106469631195068,
+      0.5580702887641059
+    ],
+    "id": "v205",
+    "label": "X",
+    "frame_time": 200.9507
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261112-085011",
+    "seconds": 201.9543,
+    "frame_index": 12095,
+    "action_line": 84,
+    "object_index": 0,
+    "kind": "truck",
+    "box": [
+      0.6192477703094482,
+      0.4169092814127604,
+      0.9989786148071289,
+      0.9864896986219618
+    ],
+    "id": "v206",
+    "label": "T",
+    "frame_time": 201.9543
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261112-085011",
+    "seconds": 201.9543,
+    "frame_index": 12095,
+    "action_line": 84,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.5336513996124268,
+      0.3409091525607639,
+      0.5914658069610595,
+      0.4300726996527778
+    ],
+    "id": "v207",
+    "label": "X",
+    "frame_time": 201.9543
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261112-085011",
+    "seconds": 201.9543,
+    "frame_index": 12095,
+    "action_line": 84,
+    "object_index": 2,
+    "kind": "truck",
+    "box": [
+      0.24653477668762208,
+      0.3785997602674696,
+      0.46027531623840334,
+      0.6978030310736762
+    ],
+    "id": "v208",
+    "label": "T",
+    "frame_time": 201.9543
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261112-085011",
+    "seconds": 202.9538,
+    "frame_index": 12150,
+    "action_line": 84,
+    "object_index": 2,
+    "kind": "car",
+    "box": [
+      0.13135095834732055,
+      0.38353631761338974,
+      0.4422748565673828,
+      0.8356213039822049
+    ],
+    "id": "v209",
+    "label": "T",
+    "frame_time": 202.9538
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261112-085011",
+    "seconds": 883.3567,
+    "frame_index": 52806,
+    "action_line": 304,
+    "object_index": 1,
+    "kind": "car",
+    "box": [
+      0.4052742958068848,
+      0.2000173780653212,
+      0.7305088996887207,
+      0.4447609371609158
+    ],
+    "id": "v210",
+    "label": "P",
+    "frame_time": 883.3567
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261112-085011",
+    "seconds": 885.3807,
+    "frame_index": 52922,
+    "action_line": 304,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.27829723358154296,
+      0.33194944593641496,
+      0.6629325866699218,
+      0.6659238179524739
+    ],
+    "id": "v211",
+    "label": "P",
+    "frame_time": 885.3807
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261112-090514",
+    "seconds": 852.3753,
+    "frame_index": 50850,
+    "action_line": 559,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.40242881774902345,
+      0.16189770168728299,
+      0.696251392364502,
+      0.4656592051188151
+    ],
+    "id": "v212",
+    "label": "P",
+    "frame_time": 852.3753
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261112-090514",
+    "seconds": 854.4276,
+    "frame_index": 50968,
+    "action_line": 559,
+    "object_index": 0,
+    "kind": "car",
+    "box": [
+      0.3524670362472534,
+      0.36628846062554254,
+      0.7573210716247558,
+      0.7778705173068576
+    ],
+    "id": "v213",
+    "label": "P",
+    "frame_time": 854.4276
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261112-092019",
+    "seconds": 240.0967,
+    "frame_index": 14150,
+    "action_line": 56,
+    "object_index": 0,
+    "kind": "truck",
+    "box": [
+      0.2845316410064697,
+      0.35051951938205295,
+      0.469563627243042,
+      0.5888789282904731
+    ],
+    "id": "v214",
+    "label": "P",
+    "frame_time": 240.0967
+  },
+  {
+    "source": "/Users/kerim/recordings/kerim/20261112-092019",
+    "seconds": 242.1004,
+    "frame_index": 14270,
+    "action_line": 56,
+    "object_index": 0,
+    "kind": "truck",
+    "box": [
+      0.2474161148071289,
+      0.3854481167263455,
+      0.44199385643005373,
+      0.6765324062771267
+    ],
+    "id": "v215",
+    "label": "P",
+    "frame_time": 242.1004
+  }
+]

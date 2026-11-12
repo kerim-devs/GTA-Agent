@@ -1,0 +1,135 @@
+$ ruff check src tests tools
+All checks passed!
+$ ruff format --check src tests tools
+130 files already formatted
+$ pytest -q --full
+........................................................................ [  2%]
+........................................................................ [  4%]
+........................................................................ [  6%]
+........................................................................ [  8%]
+........................................................................ [ 10%]
+........................................................................ [ 12%]
+........................................................................ [ 14%]
+........................................................................ [ 16%]
+........................................................................ [ 18%]
+........................................................................ [ 20%]
+........................................................................ [ 22%]
+........................................................................ [ 24%]
+........................................................................ [ 26%]
+........................................................................ [ 28%]
+........................................................................ [ 30%]
+........................................................................ [ 32%]
+........................................................................ [ 34%]
+........................................................................ [ 36%]
+........................................................................ [ 38%]
+........................................................................ [ 40%]
+........................................................................ [ 42%]
+........................................................................ [ 44%]
+.........................................................s.............. [ 46%]
+........................................................................ [ 48%]
+........................................................................ [ 50%]
+........................................................................ [ 52%]
+.............x..............x...................................x....... [ 54%]
+..x.................x.................x.................x............... [ 56%]
+....................x.............x....x.....xx..x.x.....x.....xx..x.x.. [ 58%]
+...x.....xx...xxx....xx..x.xx....xx....xxxx..xx....xx....xx....xxxxxxxxx [ 60%]
+x...xxx....xxxxxxxx...xxx...xxxxxxxxxxx.xxxxx........................... [ 62%]
+........................................................................ [ 64%]
+........................................................................ [ 66%]
+........................................................................ [ 68%]
+.....................................................x.................. [ 70%]
+........................................................................ [ 72%]
+.......................x..x..x.......................................... [ 74%]
+........................................................................ [ 76%]
+.........................................x..x...x....................... [ 78%]
+...................................x................x...x..x.........x.. [ 80%]
+.....................................x..x...x........................... [ 82%]
+...x..x..x...x..x..x...x..x..xx..x.....x.......................x..x..x.. [ 84%]
+.x..x..x...xx.x..xx...x.x..x.......................x..x..x...x..x..x.... [ 86%]
+..x...x..x..x..x...xx.xx.xx..xx.xx.xx..xx.xx.xx..xx.xx.xx...xx.xx.xxx.x. [ 88%]
+.x..x..xx.xx.xx..xx.xx.xx..xx.xx.xx..xx.xx.xx...xx.xx.xxx.xx.xx.xxxxx.xx [ 90%]
+.xx..xx.xx.xx..xx.xx.xx..xx.xx.xx...x..x..x...x..x..x................F.F [ 92%]
+........................................................................ [ 94%]
+........................................................................ [ 96%]
+........................................................................ [ 98%]
+..................................................F...................   [100%]
+=================================== FAILURES ===================================
+_________________ test_packet_copy_b_frames_and_failure_checks _________________
+
+tmp_path = PosixPath('/private/var/folders/n1/_jxqq5494mg9m33y1c3xvkx00000gn/T/pytest-of-kerim/pytest-883/test_packet_copy_b_frames_and_0')
+
+    def test_packet_copy_b_frames_and_failure_checks(tmp_path):
+>       rec, specification = synthetic(tmp_path)
+                             ^^^^^^^^^^^^^^^^^^^
+
+tests/test_trimming.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/n1/_jxqq5494mg9m33y1c3xvkx00000gn/T/pytest-of-kerim/pytest-883/test_packet_copy_b_frames_and_0')
+
+    def synthetic(tmp_path):
+>       import av
+E       ModuleNotFoundError: No module named 'av'
+
+tests/test_trimming.py:95: ModuleNotFoundError
+________ test_action_video_reader_uses_original_clock_and_resets_motion ________
+
+tmp_path = PosixPath('/private/var/folders/n1/_jxqq5494mg9m33y1c3xvkx00000gn/T/pytest-of-kerim/pytest-883/test_action_video_reader_uses_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x11d312f60>
+
+    def test_action_video_reader_uses_original_clock_and_resets_motion(tmp_path, monkeypatch):
+        from types import SimpleNamespace
+    
+        from pilot import hud, minimap, motion
+        from pilot.actions import read_recording
+    
+>       rec, _ = synthetic(tmp_path)
+                 ^^^^^^^^^^^^^^^^^^^
+
+tests/test_trimming.py:190: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/private/var/folders/n1/_jxqq5494mg9m33y1c3xvkx00000gn/T/pytest-of-kerim/pytest-883/test_action_video_reader_uses_0')
+
+    def synthetic(tmp_path):
+>       import av
+E       ModuleNotFoundError: No module named 'av'
+
+tests/test_trimming.py:95: ModuleNotFoundError
+__ test_a_plan_from_the_head_starts_and_stops_every_new_skill[enter_vehicle] ___
+
+name = 'enter_vehicle'
+
+    @pytest.mark.parametrize("name", NEW_SKILLS)
+    def test_a_plan_from_the_head_starts_and_stops_every_new_skill(name):
+        args = NEW_SKILLS[name]
+        plan = parse_response({"plan": [{"name": name, "args": args}], "sentence": "Los."}).plan
+        runner = SkillRunner()
+        runner.replace(plan)
+        assert runner.tick(Observation(FLAT, True, 0)).pad == NEUTRAL_PAD
+        assert runner.tick(Observation(FLAT, True, 0.1)).status == "running"
+        assert runner.active.name == name
+        assert runner.remaining(0.1) == args["duration"]
+        runner.stop("flow")
+>       assert runner.last == {
+            "name": name,
+            "status": "failed",
+            "reason": "flow",
+            "queue": [],
+            "queue_disposition": "empty",
+            "dropped": [],
+        }
+E       AssertionError: assert {'name': 'ent...eue': [], ...} == {'name': 'ent...eue': [], ...}
+E         
+E         Omitting 5 identical items, use -vv to show
+E         Differing items:
+E         {'reason': 'flow; road=unknown; roadside eye unavailable'} != {'reason': 'flow'}
+E         Use -v to get more diff
+
+tests/test_wiring.py:236: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_trimming.py::test_packet_copy_b_frames_and_failure_checks
+FAILED tests/test_trimming.py::test_action_video_reader_uses_original_clock_and_resets_motion
+FAILED tests/test_wiring.py::test_a_plan_from_the_head_starts_and_stops_every_new_skill[enter_vehicle]
+3 failed, 3358 passed, 1 skipped, 236 xfailed in 956.54s (0:15:56)
+gate failed at: pytest -q --full
