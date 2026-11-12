@@ -347,6 +347,7 @@ class Conductor:
             self.carry_allowed = (
                 not failed
                 and last.get("name") in ("walk", "walk_to")
+                and (last.get("name") != "walk_to" or last.get("reason") == "arrived")
                 and player_mode(observation) == "foot"
                 and not observation.reading.corrupt
                 and not new_events
@@ -547,9 +548,15 @@ class Conductor:
                 "action": self.flow_result.action,
                 "status": "running",
                 "screen": self.flow_screen,
+                "ended": self.runner.last,
             }
         if result is not None and result.reason == "carry-on":
-            return {"name": "carry_on", "status": "running", "reason": "head-pending"}
+            return {
+                "name": "carry_on",
+                "status": "running",
+                "reason": "head-pending",
+                "ended": self.runner.describe(),
+            }
         return self.runner.describe()
 
     def close(self):
