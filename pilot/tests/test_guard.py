@@ -150,7 +150,9 @@ def test_nothing_on_the_pad_in_a_vehicle():
     guard = Guard()
     t = calm(guard)
     t, verdicts = run(guard, t, 0.5, minimap="tilted", wanted=1)
-    assert verdicts[-1].rule == "stars" and "cross" in verdicts[-1].pad.buttons + verdicts[-2].pad.buttons
+    # The sprint is tapped (0.11 s down in every 0.21 s), so one of the last ticks holds the press.
+    taps = [button for verdict in verdicts[-7:] if verdict.pad is not None for button in verdict.pad.buttons]
+    assert verdicts[-1].rule == "stars" and "cross" in taps
 
 
 def test_neutral_pad_on_the_tick_it_lets_go():

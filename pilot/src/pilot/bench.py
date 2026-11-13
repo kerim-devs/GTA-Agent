@@ -553,6 +553,7 @@ CAUSE_RULES: dict[str, str | None] = {
     "view-unknown": "see",
     "no-figure": "see",
     "hud-unread": "see",
+    "no-hud": "see",  # get_away: the stars cannot be read
     "menu-not-map; inspect the screen": "see",
     # the wrong target or skill, a plan replaced, a start nobody checked
     "interrupted": "decide",
@@ -598,6 +599,7 @@ CAUSE_RULES: dict[str, str | None] = {
     "leaving lane": "act",
     "no-progress": "act",  # the car moved and the destination came no nearer
     "dead-or-held": "act",
+    "vehicle-held": "act",  # get_away: the driver's recoveries are spent
     # the game came between
     "death_or_arrest": "world",
     "objective": "world",
@@ -609,6 +611,9 @@ CAUSE_RULES: dict[str, str | None] = {
     "health-still-low": "world",
     "health below 30%": "world",
     "screen-": "world",
+    "on-foot": "world",  # get_away: no longer seated
+    "water": "world",  # get_away: the arrow stands on water
+    "guard-let-go": "world",  # the guard ended the skill it had started for a threat
     # the bridge, the stream, gaps in the frames
     "clock-reversed": "tech",
     "clock-invalid": "tech",
