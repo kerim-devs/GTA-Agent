@@ -112,6 +112,7 @@ class Conductor:
         self.carry_logged = None
         self.carry_allowed = False
         self.last_hud = None
+        self.answering = False
         self.wanted_candidate = None
         self.wanted_since = None
         self.wanted_seen = None
@@ -470,6 +471,16 @@ class Conductor:
             if rows:
                 self.judge_log.flush()
         self._text(rgb, t, text, text_time if text is not None else frame_time)
+        # The reflex is shown the screen as the reader named it. For the skills, the guard and the
+        # head a phone with a call on it is the game: the figure walks and drives on while it talks.
+        seen = observation
+        if (
+            observation.hud is not None
+            and observation.hud.screen == "phone"
+            and getattr(self.flow, "calls", False)
+            and self.flow.on_call(observation, self._fresh_text(t))
+        ):
+            observation = replace(observation, hud=replace(observation.hud, screen="game"))
         detected = self.detector.update(observation.reading, t, text=self.text, mode=observation.mode)
         # A skill that opens the map hides the minimap, and that is its own doing and no news. Told
         # of it live on 11 November, the head planned a wait for the screen, the wait replaced the
@@ -508,11 +519,11 @@ class Conductor:
                 self.carry_allowed = False
                 self.carry_started = None
         recovered = self.flow_started is not None
-        flow_result = self._flow_tick(observation, rgb)
+        flow_result = self._flow_tick(seen, rgb)
         # A stuck screen is where the reflex has done what it knows. From there the head's
         # answer is run like any plan, and the reflex takes over again when the screen changes.
         if flow_result is not None and flow_result.action != "stuck":
-            if self.guard is not None:
+            if self.guard is not None and flow_result.action != "answer":
                 # The screen is the reflex's: whatever the guard held it lets go of.
                 self._guard_tick(observation, [], flow=True)
             return SkillResult(flow_result.pad, reason="flow")
@@ -729,13 +740,24 @@ class Conductor:
         )
         self.future = self.inflight = None
 
+    def _fresh_text(self, t):
+        return self.text if self.text_time is not None and 0 <= t - self.text_time <= 1.5 else None
+
     def _flow_tick(self, observation, rgb):
         if self.flow is None:
             return None
         self._expect_skill()
         t = observation.time
-        fresh_text = self.text if self.text_time is not None and 0 <= t - self.text_time <= 1.5 else None
-        result = self.flow.tick(observation, fresh_text)
+        result = self.flow.tick(observation, self._fresh_text(t))
+        if result is not None and result.action == "answer":
+            # One press into a ringing phone. It is no screen of the reflex's: the plan is kept and
+            # has the pad back on the next tick.
+            if not self.answering:
+                self.write({"type": "flow_answer", "t": t, "buttons": list(result.pad.buttons)})
+            self.answering = True
+            self.flow_result = None
+            return result
+        self.answering = False
         self.flow_result = result
         if result is not None:
             if self.flow_started is None and result.action in ("confirm", "await_hud", "await_fresh_read"):

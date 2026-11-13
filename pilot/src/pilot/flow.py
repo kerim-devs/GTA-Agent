@@ -120,6 +120,39 @@ MENU_HEAD_SECONDS = 20.0
 MENU_TOLD_EVERY = 120.0
 
 
+# A call on the phone as the reader gives it on Kerim's recordings. One that comes in: "EINGEHENDER
+# ANRUF", "EINGEHENDE ANRUF", "ANBUF", "It¥1 ANRUF" (20261111-183820 at 214.5 s, 20261111-172549 at
+# 70.0 s); he takes it with the cross (215.61 s, 70.48 s). One that runs: "VERBUNDEN" read as
+# "VER8UNDEN", and "WIRD GEWÄHLT" read as "WIRD QEWAHLT" for one he makes. In the second recording
+# nothing on the phone could be read for the thirty seconds the call then ran.
+RINGING = re.compile(r"\ban[rb]uf\b|\bein\w{2,5}hende[rn]?\b")
+TALKING = re.compile(r"\bve[rb]\wunden\b|ewahlt")
+# A phone that has just come up may be a call, and is left alone this long for its text to be read.
+PHONE_SECONDS = 2.5
+# A call is taken after it has been read to ring this long, so that one misread line takes nothing.
+RING_SECONDS = 0.5
+# After the last thing read of a call the phone on screen is held to be that call for this long.
+CALL_SECONDS = 60.0
+# The phone has to be gone this long for a call to be over; the reader loses it for a moment in between.
+CALL_GONE_SECONDS = 2.0
+
+
+def _call(text) -> str | None:
+    """`ringing`, `talking` or None, from what stands on the phone."""
+    if text is None or isinstance(text, str):
+        return None
+    words = _fold(
+        " ".join(
+            line.text
+            for line in getattr(text, "lines", ())
+            if line.confidence >= 0.5 and (line.region == "phone" or line.box[0] >= 900)
+        )
+    )
+    if TALKING.search(words):
+        return "talking"
+    return "ringing" if RINGING.search(words) else None
+
+
 def _menu_left_open(observation, text) -> bool:
     """The game's screen without a minimap, with a footer at the bottom right that offers the way back.
 
@@ -178,8 +211,28 @@ class Flow:
     Events are emitted once; the caller queues them for the head after recovery.
     """
 
-    def __init__(self, *, response_timeout: float = 2.0, wait_timeout: float = 30.0, skip: bool = True):
+    def __init__(
+        self,
+        *,
+        response_timeout: float = 2.0,
+        wait_timeout: float = 30.0,
+        skip: bool = True,
+        calls: bool = False,
+    ):
         self.profile = active()
+        if not isinstance(calls, bool):
+            raise ValueError("calls must be a boolean")
+        # With `calls` a phone is not put away the moment it shows: a call that rings is taken, and
+        # one that runs is left to run (see `on_call`). Without, every phone is left by the way back.
+        self.calls = calls
+        self._phone_time: float | None = None
+        self._phone_since: float | None = None
+        self._phone_gone: float | None = None
+        self._phone_masked = False
+        self._call_until: float | None = None
+        self._ring_since: float | None = None
+        self._answer_at: float | None = None
+        self._answers = 0
         if response_timeout < 0.14 or wait_timeout < response_timeout:
             raise ValueError("timeouts must allow the 0.14s picture delay")
         self.response_timeout = response_timeout
@@ -218,6 +271,63 @@ class Flow:
     def screen(self) -> str | None:
         """The screen as the reflex names it: the HUD's class, or what it tells apart on the game's."""
         return self._screen or self._candidate
+
+    def on_call(self, observation: Observation, text: object = None) -> bool:
+        """Whether the phone on screen is, for everything behind the reflex, the game.
+
+        It is while a call rings or runs, and for the first seconds of any phone, which may be one:
+        the figure walks and drives on through a call as a player does, and the plan is kept. A phone
+        that shows no call in those seconds is a menu like any other and is left by the way back.
+        The conductor asks this before the skills and the head see the tick; `tick` asks it as well.
+        """
+        now = observation.time
+        if not self.calls:
+            return False
+        if self._phone_time is not None and now <= self._phone_time:
+            return self._phone_masked
+        self._phone_time = now
+        hud = observation.hud
+        if hud is None or observation.reading.corrupt:
+            return self._phone_masked  # nothing read: as it was
+        if hud.screen != "phone":
+            if self._phone_since is not None:
+                if self._phone_gone is None:
+                    self._phone_gone = now
+                if now - self._phone_gone >= CALL_GONE_SECONDS:
+                    self._phone_since = self._phone_gone = self._call_until = None
+                    self._ring_since = self._answer_at = None
+                    self._answers = 0
+            self._phone_masked = False
+            return False
+        self._phone_gone = None
+        if self._phone_since is None:
+            self._phone_since = now
+        call = _call(text)
+        if call is not None:
+            self._call_until = now + CALL_SECONDS
+        if call == "ringing":
+            if self._ring_since is None:
+                self._ring_since = now
+        elif call == "talking" or text is not None:
+            self._ring_since = None  # read, and not ringing; an unread tick keeps what was read last
+        calling = self._call_until is not None and now < self._call_until
+        self._phone_masked = calling or now - self._phone_since < PHONE_SECONDS
+        return self._phone_masked
+
+    def _answer(self, now: float) -> FlowResult | None:
+        """The one press that takes a ringing call, once more if it still rings after its time."""
+        confirm = self.profile.confirm
+        if self._answer_at is not None and now - self._answer_at < PRESS_SECONDS:
+            return FlowResult(Pad(buttons=(confirm,)), "answer")
+        if (
+            self._ring_since is not None
+            and now - self._ring_since >= RING_SECONDS
+            and self._answers < MAX_PRESSES
+            and (self._answer_at is None or now - self._answer_at >= self.response_timeout)
+        ):
+            self._answer_at, self._answers = now, self._answers + 1
+            return FlowResult(Pad(buttons=(confirm,)), "answer")
+        return None
 
     def expect(self, *screens: str, until: float) -> None:
         if not screens or any(screen not in MENUS for screen in screens):
@@ -267,6 +377,11 @@ class Flow:
             pending = self._engaged
             return FlowResult(action="await_hud") if pending else None
         screen = observation.hud.screen
+        if self.on_call(observation, text) and screen == "phone":
+            answer = self._answer(now)
+            if answer is not None:
+                return answer
+            screen = "game"  # a call, or a phone that may be one: not a screen to leave
         if screen == "game" and _alert(text):
             screen = "alert"
         elif screen == "game" and _menu_left_open(observation, text):

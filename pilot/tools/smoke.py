@@ -81,7 +81,7 @@ def run(recording: Path, derived: Path | None, out: Path, *, seconds=None, guard
         head=brain,
         notebook=out / "notebook.txt",
         ocr=False,
-        flow=Flow(),
+        flow=Flow(calls=True),
         guard=Guard() if guard else None,
         standing=Conductor.STANDING_SECONDS,
         submit=immediate,

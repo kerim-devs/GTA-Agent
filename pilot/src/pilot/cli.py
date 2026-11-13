@@ -291,7 +291,7 @@ def main(argv: list[str] | None = None) -> None:
                     judge=judge,
                     awake=Conductor.AWAKE_SECONDS,
                     hud=None if args.no_hud_flow else hud,
-                    flow=None if args.no_hud_flow else Flow(),
+                    flow=None if args.no_hud_flow else Flow(calls=True),
                     opening=opening(args),
                     guard=Guard() if args.guard else None,
                     standing=None
