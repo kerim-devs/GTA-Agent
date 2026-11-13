@@ -615,6 +615,21 @@ class MissionHead:
                 self.goals.active is not None or not colors & {"red", "yellow", "blue"}
             ):
                 recovery = self._rule(request) if self._failed(request) else None
+                story_recovery = self.goals.active is not None and self.goals.active.name == "story"
+                if story_recovery:
+                    # A failed map does not change the destination. Only a stable
+                    # mission blip can replace the map route during story recovery.
+                    recovery = None
+                    if self.stable_blips:
+                        color = self.stable_blips[0]["color"]
+                        recovery = (
+                            "story_radar",
+                            [
+                                _call("drive_to_blip", color=color, mode="reach", duration=60)
+                                if mode == "vehicle"
+                                else _call("walk_to", color=color, duration=10)
+                            ],
+                        )
                 response = self.goals.decide(
                     request,
                     mode,

@@ -311,14 +311,15 @@ def main(argv: list[str] | None = None) -> None:
 
 
 def opening(args) -> tuple[SkillCall, ...]:
-    """What a session does before the head's first plan: the far view, then the camera levelled.
-
-    The view is read from the detector and the HUD, so without either there is nothing to set it by.
-    """
-    if args.no_level:
+    """Read the opening picture before scheduling any camera movement."""
+    if args.no_level or args.no_objects or args.no_hud_flow:
         return ()
-    view = not (args.no_view or args.no_objects or args.no_hud_flow)
-    return ((SkillCall("set_far_view", {}),) if view else ()) + (SkillCall("level_camera", {}),)
+    from .camera import StartupCamera
+    from .skills import REGISTRY
+
+    # Register the opening probe here alongside the startup plan.
+    REGISTRY[StartupCamera.name] = StartupCamera
+    return (SkillCall(StartupCamera.name, {"view": "off" if args.no_view else "on"}),)
 
 
 if __name__ == "__main__":

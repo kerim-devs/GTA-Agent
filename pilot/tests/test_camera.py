@@ -12,7 +12,17 @@ import numpy as np
 import pytest
 
 from pilot import cli
-from pilot.camera import SetFarView, ViewBand, ViewReading, Watch, read_observation, read_view
+from pilot.camera import (
+    SetFarView,
+    StartupCamera,
+    ViewBand,
+    ViewReading,
+    Watch,
+    read_observation,
+    read_tilt,
+    read_view,
+    startup_plan,
+)
 from pilot.conductor import Conductor
 from pilot.contract import Detection, Hud, Observation, Pad, Reading, SkillResult
 from pilot.head import SkillCall, parse_response
@@ -638,13 +648,104 @@ def test_the_runner_lets_only_a_failed_opening_skill_go_and_keeps_what_follows(m
 @pytest.mark.parametrize(
     "flags,names",
     [
-        ({}, ["set_far_view", "level_camera"]),
-        ({"no_view": True}, ["level_camera"]),
-        ({"no_objects": True}, ["level_camera"]),  # no detections, no view to read
-        ({"no_hud_flow": True}, ["level_camera"]),  # no screen to know that it is the game's
+        ({}, ["start_camera"]),
+        ({"no_view": True}, ["start_camera"]),
+        ({"no_objects": True}, []),  # no detections, no correction to verify
+        ({"no_hud_flow": True}, []),  # no verified game screen
         ({"no_level": True}, []),
     ],
 )
-def test_the_cli_opening_sets_the_view_and_then_levels_the_camera(flags, names):
+def test_the_cli_opening_reads_before_it_corrects_the_camera(flags, names):
     given = {"no_level": False, "no_view": False, "no_objects": False, "no_hud_flow": False, **flags}
     assert [call.name for call in cli.opening(argparse.Namespace(**given))] == names
+
+
+@pytest.mark.parametrize(
+    "height,feet,tilt,names",
+    [
+        (0.28, 0.72, "level", []),
+        (0.44, 0.90, "level", ["set_far_view"]),
+        (0.40, 0.99, "sky", ["level_camera"]),
+        (0.30, 0.60, "ground", ["level_camera"]),
+    ],
+)
+def test_startup_plans_only_the_correction_the_frame_calls_for(height, feet, tilt, names):
+    frame = FRAME.copy()
+    if tilt == "level":
+        frame[::5] = 255
+    obs = Observation(FLAT, False, 0, frame=frame, figure=figure(height, feet), mode="foot")
+    assert read_tilt(obs) == tilt
+    assert [call.name for call in startup_plan(obs)] == names
+
+
+def test_a_level_far_start_finishes_without_a_camera_skill_or_pad_input():
+    skill = StartupCamera({})
+    for t in (0.0, 0.25, 0.5):
+        result = skill.step(
+            Observation(
+                FLAT,
+                False,
+                t,
+                frame=FRAME,
+                figure=look("far"),
+                objects_time=t,
+                mode="foot",
+                hud=Hud(),
+            )
+        )
+        assert result.pad == Pad()
+    assert result.status == "done"
+    assert skill.planned == []
+
+
+def test_sky_start_selects_level_camera_after_stable_fresh_frames():
+    skill = StartupCamera({})
+    for t in (0.0, 0.25, 0.5):
+        result = skill.step(
+            Observation(
+                FLAT,
+                False,
+                t,
+                frame=FRAME,
+                figure=figure(0.40, 0.99),
+                objects_time=t,
+                mode="foot",
+                hud=Hud(),
+            )
+        )
+        assert result.pad == Pad()
+    assert skill.planned == ["level_camera"]
+    result = skill.step(
+        Observation(
+            FLAT,
+            False,
+            0.55,
+            frame=FRAME,
+            figure=figure(0.40, 0.99),
+            objects_time=0.55,
+            mode="foot",
+            hud=Hud(),
+        )
+    )
+    assert result.pad.right == (0.0, -1.0)
+
+
+def test_missing_or_stale_startup_detections_never_move_the_camera():
+    for missing in (False, True):
+        skill = StartupCamera({})
+        for t in (0.0, 0.5, 1.0, 2.0):
+            result = skill.step(
+                Observation(
+                    FLAT,
+                    False,
+                    t,
+                    frame=FRAME,
+                    figure=None if missing else figure(0.40, 0.99),
+                    objects_time=0.0,
+                    mode="foot",
+                    hud=Hud(),
+                )
+            )
+            assert result.pad == Pad()
+        assert result.status == "done"
+        assert skill.planned == []

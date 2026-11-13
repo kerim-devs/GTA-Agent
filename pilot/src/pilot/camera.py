@@ -13,6 +13,8 @@ from collections import Counter
 from dataclasses import dataclass
 from typing import ClassVar
 
+import cv2
+
 from .contract import FRAME_SIZE, Detection, Observation, Pad, SkillResult, player_mode
 from .objects import is_player
 
@@ -189,6 +191,133 @@ class Watch:
 
 TOUCHPAD = Pad(buttons=("touchpad",))
 FORWARD = Pad(left=(0.0, -1.0))
+
+
+def read_tilt(observation: Observation) -> str:
+    """Read tilt from a confident, unobstructed figure, without moving the camera.
+
+    A low figure with a smooth upper picture indicates a view into the sky. Size
+    alone cannot distinguish that from a normal close view. A figure high in the
+    frame is seen from above. Missing and riding figures remain unknown.
+    """
+    reading = read_observation(observation)
+    if reading.view not in NAMED and reading.reason != "between-bands":
+        return "unknown"
+    frame = observation.frame
+    if hasattr(frame, "shape") and len(frame.shape) == 3 and frame.shape[2] == 3:
+        h = frame.shape[0]
+        if reading.feet >= 0.85 and 0.23 <= reading.height <= 0.56:
+            gray = cv2.cvtColor(frame[: int(h * 0.65)], cv2.COLOR_RGB2GRAY)
+            edges = cv2.Canny(gray, 30, 80) > 0
+            if edges[: int(h * 0.50)].mean() < 0.008 and edges.mean() < 0.018:
+                return "sky"
+    if reading.view in NAMED:
+        return "level"
+    if 0.23 <= reading.height <= 0.65 and reading.feet < 0.66:
+        return "ground"
+    return "unknown"
+
+
+def startup_plan(observation: Observation, *, view: bool = True):
+    """Only schedule corrections supported by the current picture."""
+    from .head import SkillCall
+
+    tilt = read_tilt(observation)
+    # Level first: view bands are calibrated on a level picture, not on the sky.
+    if tilt in {"sky", "ground"}:
+        return (SkillCall("level_camera", {}),)
+    reading = read_observation(observation)
+    if view and reading.view in {"near", "middle"}:
+        return (SkillCall("set_far_view", {}),)
+    return ()
+
+
+class StartupCamera:
+    """Observe the opening, then run only the camera corrections it needs."""
+
+    name = "start_camera"
+    parameters: ClassVar = {"view": ("on", "off")}
+    prompt = "Read the opening camera before choosing a correction. Used at session startup."
+    uninterruptible: ClassVar = True
+    LIMIT = 42.0
+    READ_LIMIT = 2.0
+
+    def __init__(self, args: dict):
+        if not isinstance(args, dict) or set(args) - self.parameters.keys():
+            raise ValueError("start_camera accepts only view")
+        if args.get("view", "on") not in self.parameters["view"]:
+            raise ValueError("view must be on or off")
+        self.view = args.get("view", "on") == "on"
+        self.started = self.previous = self.read_started = self.last_stamp = None
+        self.samples = []
+        self.child = None
+        self.planned = []
+        self.finished = None
+
+    def stop(self, reason="interrupted") -> SkillResult:
+        if self.child is not None:
+            self.child.stop(reason)
+        self.finished = SkillResult(status="failed", reason=reason)
+        return self.finished
+
+    def step(self, observation: Observation) -> SkillResult:
+        if self.finished is not None:
+            return self.finished
+        now = observation.time
+        if not math.isfinite(now) or (self.previous is not None and now < self.previous):
+            return self.stop("invalid-clock")
+        self.previous = now
+        if self.started is None:
+            self.started = self.read_started = now
+        if now - self.started >= self.LIMIT:
+            return self.stop("time-limit")
+        if self.child is not None:
+            if observation.hud is None or observation.hud.screen != "game":
+                return self.stop(
+                    "hud-unread" if observation.hud is None else f"screen-{observation.hud.screen}"
+                )
+            if player_mode(observation) != "foot" and not observation.reading.corrupt:
+                return self.stop("not-on-foot")
+            result = self.child.step(observation)
+            if result.status == "failed":
+                return self.stop(f"{self.child.name}: {result.reason}")
+            if result.status == "running":
+                return result
+            self.child = None
+            self.samples.clear()
+            self.read_started = now
+            self.last_stamp = observation.objects_time
+            return SkillResult()
+        safe = (
+            observation.hud is not None
+            and observation.hud.screen == "game"
+            and not observation.reading.corrupt
+            and player_mode(observation) == "foot"
+        )
+        stamp = observation.objects_time
+        fresh = stamp is not None and math.isfinite(stamp) and 0 <= now - stamp <= 0.6
+        if safe and fresh and stamp != self.last_stamp:
+            self.last_stamp = stamp
+            plan = startup_plan(observation, view=self.view)
+            signal = (read_tilt(observation), read_observation(observation).view, plan)
+            self.samples.append((stamp, signal))
+            self.samples = [sample for sample in self.samples if sample[0] >= stamp - 1.0]
+            if len(self.samples) >= 3 and stamp - self.samples[0][0] >= 0.5:
+                agreed = all(sample[1] == signal for sample in self.samples)
+                if agreed and signal[0] != "unknown":
+                    if not plan or plan[0].name in self.planned:
+                        self.finished = SkillResult(status="done")
+                        return self.finished
+                    call = plan[0]
+                    from .level import LevelCamera
+
+                    self.child = LevelCamera({}) if call.name == "level_camera" else SetFarView({})
+                    self.planned.append(call.name)
+                    return SkillResult()
+        if now - self.read_started >= self.READ_LIMIT:
+            self.finished = SkillResult(status="done", reason="view-unknown")
+            return self.finished
+        return SkillResult()
 
 
 class SetFarView:

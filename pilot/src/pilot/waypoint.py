@@ -353,7 +353,10 @@ class SetWaypoint:
 
     def step(self, observation: Observation) -> SkillResult:
         if self.legend is not None:
-            return self.legend.step(observation)
+            result = self.legend.step(observation)
+            if result.status == "failed" and self.failure == "player-marker-unreadable":
+                return SkillResult(status="failed", reason=f"{self.failure}; legend: {result.reason}")
+            return result
         if self.finished is not None:
             return self.finished
         now = observation.time
@@ -451,7 +454,20 @@ class SetWaypoint:
             return self._away(observation, picture)
         if self.phase == "acquire":
             if picture.player is None:
-                return self._fail("player-marker-unreadable; centre the map manually")
+                # The selected player icon rotates under the stationary crosshair.
+                # The verified map's legend can select a mission without matching it.
+                # Continue this map transaction; never open another pause map here.
+                if self.reader is None:
+                    return self._fail("player-marker-unreadable; legend-unverified")
+                from .legend import LegendWaypoint
+
+                self.failure = "player-marker-unreadable"
+                self.legend = LegendWaypoint({"kind": "mission", "duration": self.limit})
+                self.legend.phase = "browse"
+                self.legend.started = self.started
+                self.legend.last_time = self.last_time
+                self.legend.reader = self.reader
+                return SkillResult()
             points = picture.missions
             if not points:
                 return self._fail(f"no-visible-{self.target}-target; inspect the map manually")

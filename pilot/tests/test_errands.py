@@ -134,7 +134,7 @@ def test_scripted_world_completes_each_errand_only_after_its_observed_end(name, 
         assert calls.index("punch") < calls.index("get_away")
 
 
-@pytest.mark.parametrize("name", ERRANDS)
+@pytest.mark.parametrize("name", [name for name in ERRANDS if name != "story"])
 def test_each_errand_failure_and_deadline_selects_a_following_errand(name):
     head = head_for(name)
     first = head.decide(request())
