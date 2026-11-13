@@ -11,34 +11,75 @@ cd /Users/kerim/Documents/ChatGPT/gta
 out=/Users/kerim/recordings/kerim
 note="Kerim plays on $(LC_ALL=C date '+%-d %B'), started by the watcher"
 quiet_limit=${1:-600}; cut_after=1200; min_free_gb=4
-mine=0; quiet=0; began=0
-start() { remoteplay/.venv/bin/ps5rp record start -o $out --note "$note" >/dev/null 2>&1; }
-stop() { remoteplay/.venv/bin/ps5rp record stop >/dev/null 2>&1; }
-last() { ls -d $out/2026* | tail -n 1; }
-if [[ $(curl -s -m 2 http://127.0.0.1:9395/record) == *'"recording": true'*"\"dir\": \"$out/"* ]]; then
-  mine=1; began=$SECONDS; echo "$(date +%H:%M:%S) taking over the running recording"
-fi
+owned=; quiet=0; began=0
+# A successful read prints only an active recording's exact directory; an empty line means stopped.
+active_dir() {
+  python3 -c 'import json, sys
+try:
+    row = json.load(sys.stdin)
+    assert type(row["recording"]) is bool
+    directory = row.get("dir")
+    assert not row["recording"] or (isinstance(directory, str) and directory)
+    print(directory if row["recording"] else "")
+except (ValueError, KeyError, TypeError, AssertionError):
+    sys.exit(1)'
+}
+read_record() {
+  local reply
+  reply=$(curl -fsS -m 2 http://127.0.0.1:9395/record 2>/dev/null) || return 1
+  print -r -- "$reply" | active_dir
+}
+start() {
+  local reply
+  reply=$(remoteplay/.venv/bin/ps5rp record start -o $out --note "$note" 2>/dev/null) || return 1
+  owned=$(print -r -- "$reply" | active_dir) || return 1
+  [[ "$owned" == "$out/"* ]] || { owned=; return 1; }
+  quiet=0; began=$SECONDS
+}
+stop() {
+  local current
+  current=$(read_record) || return 1
+  [[ -n "$owned" && "$current" == "$owned" ]] || return 1
+  remoteplay/.venv/bin/ps5rp record stop >/dev/null 2>&1
+}
+record_dir=$(read_record) && [[ "$record_dir" == "$out/"* ]] && {
+  owned=$record_dir; began=$SECONDS; echo "$(date +%H:%M:%S) taking over the running recording"
+}
 while true; do
-  state=$(curl -s -m 2 http://127.0.0.1:9395/status)
-  human=$(print -r -- "$state" | grep -c '"human_input": true')
-  recording=$(print -r -- "$state" | grep -c '"recording": true')
+  state=$(curl -fsS -m 2 http://127.0.0.1:9395/status 2>/dev/null) || { sleep 1; continue; }
+  human=$(print -r -- "$state" | python3 -c 'import json, sys
+try:
+    value = json.load(sys.stdin)["human_input"]
+    assert type(value) is bool
+    print(int(value))
+except (ValueError, KeyError, TypeError, AssertionError):
+    sys.exit(1)') || { sleep 1; continue; }
+  record_dir=$(read_record) || { sleep 1; continue; }
   free=$(df -g $out | awk 'NR == 2 { print $4 }')
-  if (( mine == 0 )); then
-    if (( human == 1 && recording == 0 )); then
+  if [[ -n "$owned" && "$record_dir" != "$owned" ]]; then
+    echo "$(date +%H:%M:%S) recording no longer owned: $owned"
+    owned=; quiet=0
+  fi
+  if [[ -z "$owned" ]]; then
+    if [[ "$human" == 1 && -z "$record_dir" ]]; then
       if (( free < min_free_gb )); then
         echo "$(date +%H:%M:%S) only $free GB left on the disk, not recording"; exit 1
       fi
-      start && { mine=1; quiet=0; began=$SECONDS; echo "$(date +%H:%M:%S) recording started"; }
+      start && echo "$(date +%H:%M:%S) recording started"
     fi
   else
     if (( human == 1 )); then quiet=0; else quiet=$((quiet + 1)); fi
-    if (( quiet >= quiet_limit || recording == 0 || free < min_free_gb )); then
-      stop; mine=0
-      echo "$(date +%H:%M:%S) recording stopped: $(last)"
+    if (( quiet >= quiet_limit || free < min_free_gb )); then
+      if stop; then
+        echo "$(date +%H:%M:%S) recording stopped: $owned"
+        owned=
+      fi
     elif (( SECONDS - began >= cut_after )); then
-      stop
-      echo "$(date +%H:%M:%S) recording cut: $(last)"
-      if start; then began=$SECONDS; else mine=0; fi
+      if stop; then
+        echo "$(date +%H:%M:%S) recording cut: $owned"
+        owned=
+        start || owned=
+      fi
     fi
   fi
   sleep 1
