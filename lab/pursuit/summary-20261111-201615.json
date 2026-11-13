@@ -1,0 +1,80 @@
+[
+  {
+    "rec": "20261111-201615",
+    "start": 448.0034,
+    "end": 508.0034,
+    "objective": "Mach dlch auf zur K8nBlmündung.",
+    "driving_s": 42.034,
+    "markers": [
+      {
+        "color": "red",
+        "x": -0.72,
+        "y": -22.81,
+        "border": true
+      }
+    ],
+    "ending": "unknown",
+    "incidents": [
+      {
+        "t": 526.801,
+        "class": "death",
+        "cause": "fight"
+      },
+      {
+        "t": 530.103,
+        "class": "mission_failed",
+        "cause": "player_died"
+      },
+      {
+        "t": 560.791,
+        "class": "mission_failed",
+        "cause": "other"
+      },
+      {
+        "t": 607.871,
+        "class": "death",
+        "cause": "fight"
+      },
+      {
+        "t": 611.299,
+        "class": "mission_failed",
+        "cause": "player_died"
+      },
+      {
+        "t": 682.105,
+        "class": "death",
+        "cause": "fight"
+      },
+      {
+        "t": 687.207,
+        "class": "mission_failed",
+        "cause": "player_died"
+      }
+    ],
+    "color": "red",
+    "mode": "reach",
+    "source": "/Users/kerim/recordings/derived/kerim/20261111-201615/missions.json",
+    "mode_source": "causal-judge",
+    "frames": 3587,
+    "eligible": 8,
+    "human_clear": 8,
+    "compared": 0,
+    "same": 0,
+    "all_clear_same": 0,
+    "distance_percentiles": [
+      9.256543631399357,
+      14.594417280068807,
+      23.75122102124436,
+      35.01396864110094,
+      93.9482437302582
+    ],
+    "rim_share": 0.323053199691596,
+    "r2_mean": 0.9163954000000002,
+    "l2_mean": 0.0160985333333329,
+    "terminal": {
+      "t": 452.2263,
+      "status": "failed",
+      "reason": "water"
+    }
+  }
+]

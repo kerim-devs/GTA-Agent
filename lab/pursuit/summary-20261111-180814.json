@@ -1,0 +1,86 @@
+[
+  {
+    "rec": "20261111-180814",
+    "start": 311.0047,
+    "end": 376.0339,
+    "objective": "Bring Franklin nahe an die Yacht.",
+    "driving_s": 53.769,
+    "markers": [
+      {
+        "color": "blue",
+        "x": -0.16,
+        "y": 39.78,
+        "border": false
+      }
+    ],
+    "ending": "unknown",
+    "incidents": [],
+    "color": "blue",
+    "mode": "reach",
+    "source": "/Users/kerim/recordings/derived/kerim/20261111-180814/missions.json",
+    "mode_source": "causal-judge",
+    "frames": 3889,
+    "eligible": 407,
+    "human_clear": 39,
+    "compared": 0,
+    "same": 0,
+    "all_clear_same": 11,
+    "distance_percentiles": [
+      8.86526367346172,
+      14.651487979041583,
+      21.73949861427351,
+      37.81060829978804,
+      126.4202072455191
+    ],
+    "rim_share": 0.005625270445694505,
+    "r2_mean": 0.7915371094831246,
+    "l2_mean": 0.0,
+    "terminal": {
+      "t": 327.9888,
+      "status": "failed",
+      "reason": "blip-gone"
+    }
+  },
+  {
+    "rec": "20261111-180814",
+    "start": 394.0018,
+    "end": 456.0048,
+    "objective": "Verfolge die Yacht.",
+    "driving_s": 48.995,
+    "markers": [
+      {
+        "color": "blue",
+        "x": 1.0,
+        "y": 27.5,
+        "border": false
+      }
+    ],
+    "ending": "unknown",
+    "incidents": [],
+    "color": "blue",
+    "mode": "follow",
+    "source": "/Users/kerim/recordings/derived/kerim/20261111-180814/missions.json",
+    "mode_source": "causal-judge",
+    "frames": 3708,
+    "eligible": 1060,
+    "human_clear": 347,
+    "compared": 1,
+    "same": 1,
+    "all_clear_same": 331,
+    "distance_percentiles": [
+      6.041522986797286,
+      12.99353063732462,
+      20.1568970826365,
+      27.502625329229936,
+      93.12648441769936
+    ],
+    "rim_share": 0.0011632415664986429,
+    "r2_mean": 0.7827409157621408,
+    "l2_mean": 0.008052949050852536,
+    "terminal": {
+      "t": 422.5812,
+      "status": "failed",
+      "reason": "blip-gone"
+    }
+  }
+]

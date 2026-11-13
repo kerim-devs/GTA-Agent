@@ -1,0 +1,62 @@
+[
+  {
+    "rec": "20261111-165543",
+    "start": 222.5695,
+    "end": 284.50210000000004,
+    "objective": "Warte auf Tonya.",
+    "driving_s": 23.605,
+    "markers": [
+      {
+        "color": "blue",
+        "x": 88.43,
+        "y": 85.34,
+        "border": true
+      },
+      {
+        "color": "blue",
+        "x": 74.0,
+        "y": 86.5,
+        "border": true
+      }
+    ],
+    "ending": "unknown",
+    "incidents": [
+      {
+        "t": 235.149,
+        "class": "standstill",
+        "cause": "waiting"
+      },
+      {
+        "t": 274.996,
+        "class": "standstill",
+        "cause": "waiting"
+      },
+      {
+        "t": 279.383,
+        "class": "collision",
+        "cause": "carried_on"
+      }
+    ],
+    "color": "blue",
+    "mode": "reach",
+    "source": "/Users/kerim/recordings/derived/kerim/20261111-165543/missions.json",
+    "mode_source": "minimap-fallback",
+    "frames": 3717,
+    "eligible": 1671,
+    "human_clear": 614,
+    "compared": 475,
+    "same": 265,
+    "all_clear_same": 317,
+    "distance_percentiles": [
+      3.5355339059327378,
+      18.9010581714358,
+      79.47146217353749,
+      86.95395103156612,
+      125.74657052977628
+    ],
+    "rim_share": 0.06283662477558348,
+    "r2_mean": 0.2678961483935759,
+    "l2_mean": 0.028692352654337006,
+    "terminal": null
+  }
+]

@@ -1,0 +1,218 @@
+[
+  {
+    "rec": "20261112-130333",
+    "start": 691.5087,
+    "end": 758.0157,
+    "objective": "Schalte den Biker aus.",
+    "driving_s": 66.507,
+    "markers": [
+      {
+        "color": "red",
+        "x": 1.07,
+        "y": 56.37,
+        "border": false
+      }
+    ],
+    "ending": "unknown",
+    "incidents": [
+      {
+        "t": 894.304,
+        "class": "mission_failed",
+        "cause": "other"
+      }
+    ],
+    "color": "red",
+    "mode": "catch",
+    "source": "/Users/kerim/recordings/derived/kerim/20261112-130333/missions.json",
+    "mode_source": "causal-judge",
+    "frames": 3987,
+    "eligible": 396,
+    "human_clear": 0,
+    "compared": 0,
+    "same": 0,
+    "all_clear_same": 0,
+    "distance_percentiles": [
+      52.05249081456141,
+      52.76480834798891,
+      73.72939847849024,
+      88.60902042117382,
+      91.5752220854528
+    ],
+    "rim_share": 0.39535542339280655,
+    "r2_mean": 0.023266242651148954,
+    "l2_mean": 1.0,
+    "terminal": {
+      "t": 703.2125,
+      "status": "failed",
+      "reason": "blip-gone"
+    }
+  },
+  {
+    "rec": "20261112-130333",
+    "start": 962.5098,
+    "end": 1029.0009,
+    "objective": "Schalte den Biker aus.",
+    "driving_s": 62.187,
+    "markers": [
+      {
+        "color": "red",
+        "x": 1.68,
+        "y": 56.92,
+        "border": false
+      }
+    ],
+    "ending": "unknown",
+    "incidents": [
+      {
+        "t": 1092.997,
+        "class": "mission_failed",
+        "cause": "other"
+      }
+    ],
+    "color": "red",
+    "mode": "catch",
+    "source": "/Users/kerim/recordings/derived/kerim/20261112-130333/missions.json",
+    "mode_source": "causal-judge",
+    "frames": 3979,
+    "eligible": 417,
+    "human_clear": 0,
+    "compared": 0,
+    "same": 0,
+    "all_clear_same": 0,
+    "distance_percentiles": [
+      52.106131117172765,
+      53.16714210863698,
+      63.631128388548944,
+      87.75710683471739,
+      88.58650010018457
+    ],
+    "rim_share": 0.3643089671500444,
+    "r2_mean": 0.011569352890839065,
+    "l2_mean": 0.9352565832118889,
+    "terminal": {
+      "t": 974.4944,
+      "status": "failed",
+      "reason": "blip-gone"
+    }
+  },
+  {
+    "rec": "20261112-130333",
+    "start": 1637.0141,
+    "end": 1668.0141,
+    "objective": "Bring mlch zu melnem Flugzeug, Ronl",
+    "driving_s": 3.45,
+    "markers": [
+      {
+        "color": "red",
+        "x": 40.03,
+        "y": 12.73,
+        "border": false
+      },
+      {
+        "color": "red",
+        "x": 5.84,
+        "y": 7.46,
+        "border": false
+      }
+    ],
+    "ending": "failed",
+    "incidents": [
+      {
+        "t": 1667.894,
+        "class": "mission_failed",
+        "cause": "ally_died"
+      }
+    ],
+    "color": "red",
+    "mode": "reach",
+    "source": "/Users/kerim/recordings/derived/kerim/20261112-130333/missions.json",
+    "mode_source": "causal-judge",
+    "frames": 1853,
+    "eligible": 0,
+    "human_clear": 0,
+    "compared": 0,
+    "same": 0,
+    "all_clear_same": 0,
+    "distance_percentiles": [
+      6.576473218982953,
+      23.98105293768395,
+      37.97612012831221,
+      89.8695304316207,
+      123.29134600611674
+    ],
+    "rim_share": 0.12515802781289506,
+    "r2_mean": 0.46338996774193275,
+    "l2_mean": 0.4766090645161277,
+    "terminal": {
+      "t": 1638.0143,
+      "status": "failed",
+      "reason": "on-foot"
+    }
+  },
+  {
+    "rec": "20261112-130333",
+    "start": 1690.5024,
+    "end": 1751.0167,
+    "objective": "Brlng mlch zu diesem Flugzeug.",
+    "driving_s": 3.005,
+    "markers": [
+      {
+        "color": "blue",
+        "x": 13.25,
+        "y": -21.25,
+        "border": false
+      },
+      {
+        "color": "red",
+        "x": 5.19,
+        "y": 9.14,
+        "border": false
+      },
+      {
+        "color": "red",
+        "x": 40.59,
+        "y": 10.89,
+        "border": false
+      },
+      {
+        "color": "red",
+        "x": 31.94,
+        "y": 3.78,
+        "border": false
+      },
+      {
+        "color": "red",
+        "x": -14.85,
+        "y": -8.44,
+        "border": false
+      }
+    ],
+    "ending": "unknown",
+    "incidents": [],
+    "color": "blue",
+    "mode": "reach",
+    "source": "/Users/kerim/recordings/derived/kerim/20261112-130333/missions.json",
+    "mode_source": "causal-judge",
+    "frames": 3599,
+    "eligible": 0,
+    "human_clear": 0,
+    "compared": 0,
+    "same": 0,
+    "all_clear_same": 0,
+    "distance_percentiles": [
+      3.0032648900821255,
+      3.8642981251451083,
+      4.594366115145809,
+      5.291898627956241,
+      126.24478009010907
+    ],
+    "rim_share": 0.03077783995523223,
+    "r2_mean": 0.5763830863118289,
+    "l2_mean": 0.0,
+    "terminal": {
+      "t": 1691.5145,
+      "status": "failed",
+      "reason": "on-foot"
+    }
+  }
+]

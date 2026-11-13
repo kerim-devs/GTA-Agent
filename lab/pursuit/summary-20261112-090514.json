@@ -1,0 +1,104 @@
+[
+  {
+    "rec": "20261112-090514",
+    "start": 207.0062,
+    "end": 265.0134,
+    "objective": "Halte die V\"vtJi5 Iv auf.",
+    "driving_s": 2.556,
+    "markers": [
+      {
+        "color": "blue",
+        "x": -4.5,
+        "y": 11.5,
+        "border": false
+      }
+    ],
+    "ending": "next objective",
+    "incidents": [
+      {
+        "t": 261.261,
+        "class": "wanted",
+        "cause": "mission_end"
+      }
+    ],
+    "color": "blue",
+    "mode": "reach",
+    "source": "/Users/kerim/recordings/derived/kerim/20261112-090514/missions.json",
+    "mode_source": "minimap-fallback",
+    "frames": 3440,
+    "eligible": 12,
+    "human_clear": 12,
+    "compared": 8,
+    "same": 6,
+    "all_clear_same": 8,
+    "distance_percentiles": [
+      3.7827238863020387,
+      5.135209220809003,
+      19.50640920313116,
+      53.20590950010482,
+      111.04334739190817
+    ],
+    "rim_share": 0.043478260869565216,
+    "r2_mean": 0.05138724158380231,
+    "l2_mean": 0.032606504020190594,
+    "terminal": {
+      "t": 210.931,
+      "status": "failed",
+      "reason": "on-foot"
+    }
+  },
+  {
+    "rec": "20261112-090514",
+    "start": 524.0018,
+    "end": 591.0392,
+    "objective": "Schalte dle Cops aus, bevor du den Treffpunkt erreichst.",
+    "driving_s": 15.722,
+    "markers": [
+      {
+        "color": "yellow",
+        "x": -86.74,
+        "y": 16.87,
+        "border": true
+      },
+      {
+        "color": "blue",
+        "x": -2.45,
+        "y": 13.16,
+        "border": false
+      },
+      {
+        "color": "red",
+        "x": 4.61,
+        "y": 6.83,
+        "border": false
+      }
+    ],
+    "ending": "next objective",
+    "incidents": [],
+    "color": "yellow",
+    "mode": "reach",
+    "source": "/Users/kerim/recordings/derived/kerim/20261112-090514/missions.json",
+    "mode_source": "minimap-fallback",
+    "frames": 4001,
+    "eligible": 2949,
+    "human_clear": 1707,
+    "compared": 946,
+    "same": 773,
+    "all_clear_same": 1260,
+    "distance_percentiles": [
+      5.372867018640979,
+      38.52513584128333,
+      86.58070743531725,
+      110.80058796749945,
+      123.74370691069505
+    ],
+    "rim_share": 0.513657561625583,
+    "r2_mean": 0.7326685253306368,
+    "l2_mean": 0.004455259303015584,
+    "terminal": {
+      "t": 581.9015,
+      "status": "failed",
+      "reason": "blip-gone"
+    }
+  }
+]

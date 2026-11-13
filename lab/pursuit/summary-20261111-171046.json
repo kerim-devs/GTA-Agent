@@ -1,0 +1,44 @@
+[
+  {
+    "rec": "20261111-171046",
+    "start": 329.0122,
+    "end": 391.0006,
+    "objective": "Steig wieder in den Lieferwagen.",
+    "driving_s": 53.254,
+    "markers": [
+      {
+        "color": "blue",
+        "x": 2.64,
+        "y": 4.09,
+        "border": false
+      }
+    ],
+    "ending": "unknown",
+    "incidents": [],
+    "color": "blue",
+    "mode": "reach",
+    "source": "/Users/kerim/recordings/derived/kerim/20261111-171046/missions.json",
+    "mode_source": "minimap-fallback",
+    "frames": 3704,
+    "eligible": 0,
+    "human_clear": 0,
+    "compared": 0,
+    "same": 0,
+    "all_clear_same": 0,
+    "distance_percentiles": [
+      4.256395188419421,
+      4.452998989445203,
+      5.408326913195984,
+      11.172832321754699,
+      106.72045586484346
+    ],
+    "rim_share": 0.027906976744186046,
+    "r2_mean": 0.7877946519026141,
+    "l2_mean": 0.01401484793929167,
+    "terminal": {
+      "t": 331.0954,
+      "status": "failed",
+      "reason": "on-foot"
+    }
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "rec": "20261110-093238",
+    "start": 150.0,
+    "end": 210.0,
+    "objective": "Unlabelled motorbike chase (task reference)",
+    "driving_s": null,
+    "markers": [],
+    "ending": "unlabelled",
+    "incidents": [],
+    "color": "blue",
+    "mode": "catch",
+    "source": "lab/notes/out/20261110-093238/missions.json",
+    "mode_source": "minimap-fallback",
+    "frames": 1299,
+    "eligible": 82,
+    "human_clear": 23,
+    "compared": 23,
+    "same": 23,
+    "all_clear_same": 23,
+    "distance_percentiles": [
+      3.293888279829782,
+      22.371019220111542,
+      69.65886809016325,
+      104.2763770554668,
+      110.33811671403495
+    ],
+    "rim_share": 0.26345609065155806,
+    "r2_mean": 0.6482934333333338,
+    "l2_mean": 0.05069098333333343,
+    "terminal": {
+      "t": 154.8385,
+      "status": "failed",
+      "reason": "screen-phone"
+    }
+  }
+]
