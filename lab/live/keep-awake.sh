@@ -16,7 +16,7 @@ rp=remoteplay/.venv/bin/ps5rp
 api=http://127.0.0.1:9395
 now() { date +%H:%M:%S }
 post() { curl -s -m 2 -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: application/json' -d "$1" $api/pad }
-side=1; last=-$every; down=0; nudges=0; held=0
+side=1; last=-$every; down=0; nudges=0; held=0; played=-$((3 * every))
 
 while (( SECONDS < limit )); do
   state=$(curl -s -m 2 $api/status)
@@ -39,13 +39,16 @@ while (( SECONDS < limit )); do
     continue
   fi
   (( down )) && { echo "$(now) the picture is back"; down=0; }
+  [[ $state == *'"agent_pad": false'* && $state == *'"human_input": false'* ]] || played=$SECONDS
   if (( SECONDS - last >= every )); then
     busy=0
     [[ $state == *'"agent_pad": false'* && $state == *'"human_input": false'* ]] || busy=1
     # A recording is a session of the pilot or a person's play, also in the moments between two
     # presses: on 13 November, 01:28, a nudge went into the pause menu the pilot had just opened.
-    # A recording nobody plays into does not put the nudge off for more than three rounds.
-    [[ $state == *'"recording": true'* ]] && (( SECONDS - last < 3 * every )) && busy=1
+    # A recording nobody has played into for three rounds does not put the nudge off any longer.
+    # (Counted from the last nudge, as it was, a nudge went into Kerim's play at 03:36, a minute
+    # after his last press.)
+    [[ $state == *'"recording": true'* ]] && (( SECONDS - played < 3 * every )) && busy=1
     if (( ! busy )); then
       for i in {1..8}; do code=$(post "{\"right\": [$((0.5 * side)), 0], \"ttl_ms\": 300}"); sleep 0.05; done
       post '{}' >/dev/null

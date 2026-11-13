@@ -8,6 +8,7 @@ from types import SimpleNamespace
 import pytest
 
 from pilot.contract import NEUTRAL_PAD, Blip, Observation, Reading
+from pilot.foot import Steer
 from pilot.walkto import WalkTo
 from pilot.waymark import find_waypoint
 
@@ -960,9 +961,10 @@ class Place:
         return None if share is None else SimpleNamespace(indoors=share, error=None)
 
 
-def walking(monkeypatch, said, until, *, scene=None, start=0.0, skill=None):
+def walking(monkeypatch, said, until, *, scene=None, start=0.0, skill=None, marker=60, held=None):
     """A walk at thirty ticks a second toward a marker ahead, the model saying where the figure is;
-    what the guard was asked to do, by the time, and the walk's results."""
+    what the guard was asked to do, by the time, and the walk's results. Between the times in
+    `held` the guard is at an obstacle."""
     place = Place(said)
     monkeypatch.setattr("pilot.walkto.ahead.place", lambda: place)
     if skill is None:
@@ -981,7 +983,10 @@ def walking(monkeypatch, said, until, *, scene=None, start=0.0, skill=None):
         if scene is not None and scene[0] <= time < scene[1]:
             tick = observation(time, blips=(), minimap="none", confidence=0.0)
         else:
-            tick = observation(time, 0, 60)
+            tick = observation(time, 0, marker)
+        if held is not None:
+            guard.state = "round" if held[0] <= time < held[1] else "go"
+            guard.step = lambda observation, want, guard=guard, **how: Steer(want, state=guard.state)
         results[time] = skill.step(tick)
         if results[time].status != "running":
             break
@@ -1007,8 +1012,8 @@ def test_a_walk_that_runs_into_a_building_has_the_guard_take_it_back_out(monkeyp
 
 
 def test_a_walk_that_begins_in_a_room_has_the_way_out_looked_for(monkeypatch):
-    skill, _, calls, _ = walking(monkeypatch, lambda time: 0.99, 3.0)
-    assert [call[0] for call in calls] == ["leave"] and calls[0][1] < 0.5
+    skill, _, calls, _ = walking(monkeypatch, lambda time: 0.99, 1.0)
+    assert calls == [("leave", pytest.approx(0.37, abs=0.02))]
     assert skill.guard.place is True and skill.stepped
 
 
@@ -1016,25 +1021,141 @@ def test_a_scene_at_a_shops_door_is_waited_out_and_the_place_is_asked_for_before
     # The barber's welcome on 13 November: no map for more than seven seconds, and the walk had
     # ended after five.
     said = lambda time: 0.02 if time < 2.0 else 0.99  # noqa: E731
-    _, place, calls, results = walking(monkeypatch, said, 12.0, scene=(2.0, 10.0))
+    _, place, calls, results = walking(monkeypatch, said, 10.5, scene=(2.0, 10.0))
     assert all(result.status == "running" for result in results.values())
     assert all(results[index / 30].pad == NEUTRAL_PAD for index in range(61, 300))
     # The scene is over: nothing is pushed before the model has said where the figure is, and
     # after a scene its one word is enough.
     assert results[10.0].pad == NEUTRAL_PAD
-    assert [call[0] for call in calls] == ["back"] and calls[0][1] == pytest.approx(10.03, abs=0.04)
-    assert sum(1 for time in place.asked if time >= 10.0) <= 3
+    assert calls == [("back", pytest.approx(10.03, abs=0.04), 1)]
+    assert sum(1 for time in place.asked if time >= 10.0) == 1
 
 
-def test_a_walk_taken_out_of_buildings_three_times_gives_up_at_the_fourth(monkeypatch):
+def test_a_scene_is_waited_out_whatever_else_its_pictures_are_called(monkeypatch):
+    # The second review: a scene whose pictures the reader called damaged, or that stood still,
+    # ended the walk after five seconds as before.
+    import numpy as np
+
+    monkeypatch.setattr("pilot.walkto.ahead.place", lambda: None)
+    black = np.zeros((720, 1280, 3), np.uint8)
+    for kind in ("damaged", "standing"):
+        skill = WalkTo({"roads": False})
+        skill.guard._evidence = lambda observation: "going"
+        ended = None
+        for index in range(30 * 20):
+            time = index / 30
+            tick = replace(observation(time, 0, 60), mode="foot")
+            if time >= 1.0:
+                scene = {"blips": (), "minimap": "none", "confidence": 0.0, "corrupt": kind == "damaged"}
+                tick = replace(observation(time, **scene), mode="foot")
+                tick = replace(tick, frame=black) if kind == "standing" else tick
+            result = skill.step(tick)
+            # Nothing goes out into it either, though the judge still calls the figure on foot.
+            assert time < 1.0 or result.pad == NEUTRAL_PAD
+            if result.status != "running":
+                ended = time
+                break
+        assert ended == pytest.approx(1.0 + WalkTo.SCENE, abs=0.1) and "nothing readable" in result.reason
+
+
+def test_after_a_scene_or_seconds_of_pictures_that_say_nothing_the_figure_is_not_called_held_up(monkeypatch):
+    # The second review: a guard that had been pushing before them pressed Square a tenth of a
+    # second after them, on what it had seen before.
+    monkeypatch.setattr("pilot.walkto.ahead.place", lambda: None)
+    for quiet in ({"blips": (), "minimap": "none", "confidence": 0.0}, {"corrupt": True}):
+        skill = WalkTo({"roads": False})
+        first = skill.guard
+        first._evidence = lambda observation: "still"
+        pressed = []
+        for index in range(30 * 6):
+            time = index / 30
+            tick = observation(time, 0, 60, **(quiet if 1.2 <= time < 4.2 else {}))
+            if skill.guard is not first:
+                skill.guard._evidence = lambda observation: "still"
+            result = skill.step(tick)
+            if "square" in result.pad.buttons:
+                pressed.append(time)
+        # Held up again it is: a second and a half after the quiet, not at once.
+        assert pressed and pressed[0] == pytest.approx(4.2 + skill.guard.HELD_AFTER, abs=0.15)
+
+
+def test_a_tick_that_says_nothing_in_the_middle_of_a_press_does_not_make_it_two(monkeypatch):
+    monkeypatch.setattr("pilot.walkto.ahead.place", lambda: None)
+    for cut in (None, 1, 2, 3):
+        skill = WalkTo({"roads": False, "sprint": False})
+        skill.guard._evidence = lambda observation: "still"
+        squares, first = [], None
+        for index in range(30 * 3):
+            tick = observation(index / 30, 0, 60)
+            if first is not None and cut is not None and index == first + cut:
+                tick = observation(index / 30, 0, 60, corrupt=True)
+            squares.append("square" in skill.step(tick).pad.buttons)
+            if squares[-1] and first is None:
+                first = index
+        presses = sum(
+            1 for before, now in zip([False, *squares], squares, strict=False) if now and not before
+        )
+        assert presses == 1, cut
+
+
+def test_a_marker_hidden_by_the_guards_turn_of_the_camera_is_no_arrival(monkeypatch):
+    # The second review: thirty pixels from the marker the guard turned the camera half round,
+    # the marker went under the map's bars, and the walk called itself arrived.
+    from pilot.wayround import WayRound
+
+    class Turning(WayRound):
+        def step(self, observation, want, *, sprint=False, fresh=True):
+            self.state = "round"
+            return Steer((0.0, -1.0), (1.0, 0.0), state="round")
+
+    monkeypatch.setattr("pilot.walkto.ahead.place", lambda: None)
+    skill = WalkTo({"roads": False})
+    skill.step(observation(0, 0, 30))
+    skill.guard = Turning()
+    for index in range(1, 30 * 12):
+        time = index / 30
+        result = skill.step(observation(time, 0, 30) if time < 0.5 else observation(time, blips=()))
+        assert result.status == "running", (time, result.reason)
+
+
+def test_a_room_counts_only_when_it_is_said_twice_with_nothing_between(monkeypatch):
+    # The second review: one false word before a hold-up and one after it, eight seconds apart.
+    said = lambda time: 0.99 if 1.0 < time < 1.2 or 9.0 < time < 9.2 else 0.02  # noqa: E731
+    _, _, calls, _ = walking(monkeypatch, said, 12.0, held=(1.2, 9.0))
+    assert calls == []
+
+
+def test_near_its_place_a_walk_is_not_taken_out_of_the_room_it_is_going_to(monkeypatch):
+    # A waypoint set on a shop lies in the shop.
+    said = lambda time: 0.02 if time < 2.0 else 0.99  # noqa: E731
+    skill, _, calls, _ = walking(monkeypatch, said, 4.0, marker=30)
+    assert calls == [] and skill.entries == 0 and skill.guard.place is True
+    _, _, calls, _ = walking(monkeypatch, lambda time: 0.99, 3.0, marker=30)
+    assert calls == []
+
+
+def test_a_walk_in_a_building_again_and_again_gives_up(monkeypatch):
     # In for the last third of every three seconds, out again for the rest.
     said = lambda time: 0.99 if time % 3.0 >= 2.0 else 0.02  # noqa: E731
-    _, _, calls, results = walking(monkeypatch, said, 30.0)
+    skill, _, calls, results = walking(monkeypatch, said, 30.0)
     assert [call[0] for call in calls] == ["back"] * 3
-    # Round the other side of the building from the second time on.
-    assert [call[2] for call in calls] == [1, -1, 1]
+    # Along the other side of the building each time, also by a guard that is a new one.
+    assert [call[2] for call in calls] == [1, -1, 1] and skill.backs == 3
     last = list(results.values())[-1]
-    assert last.status == "failed" and "walked into a building" in last.reason
+    assert last.status == "failed" and "in a building again and again" in last.reason
     from pilot.bench import CAUSE_RULES
 
     assert any(key in last.reason for key in CAUSE_RULES)
+    # A way back out that did not lead out is followed by a look for the way out, not by another.
+    _, _, calls, _ = walking(monkeypatch, lambda time: 0.02 if time < 2.0 else 0.99, 4.5)
+    assert [call[0] for call in calls] == ["back", "leave"]
+
+
+def test_square_is_not_pressed_on_a_picture_the_reader_calls_damaged():
+    hud = corner_hud()
+    skill = WalkTo({"roads": False, "sprint": False})
+    skill.guard._evidence = lambda observation: "still"
+    skill.step(damaged(0, hud, corrupt=False))
+    for index in range(1, 30 * 8):
+        result = skill.step(damaged(index / 30, hud))
+        assert result.status == "running" and not result.pad.buttons

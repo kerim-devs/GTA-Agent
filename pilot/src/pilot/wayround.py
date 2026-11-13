@@ -106,6 +106,7 @@ class WayRound(FootGuard):
     TURN_LAG = 18.0  # degrees the arrow goes on after the stick is let go
     TURN_SEEN = 10.0  # degrees within LOOK_TURN that say the arrow follows the camera
     TURN_RATE = 80.0  # degrees a second at the least, for the longest a measured turn may take
+    TURN_FASTEST = 200.0  # and at the most: an arrow that says round sooner than that is misread
     AIM_TURN = 0.19  # the camera's turn to a door in the left or the right part of the picture, 28 degrees
     # Running at a way out of a room. On 13 November four seconds ended a step short of the
     # barber's door, and chairs stood in the straight line to it: the run goes on until the model
@@ -127,14 +128,15 @@ class WayRound(FootGuard):
     # Out of a building the target lies behind: along the front, a quarter turn to the side.
     ASIDE = 90.0
     BEHIND = 0.3  # the stick's share toward the camera above which the target lies behind
-    # The wall round, the worst case in a room: an eighth turn of the camera and straight on until
-    # the figure stands, again and again. Pushed at an angle into a wall the figure slides along
-    # it and through any door in it; in a corner it stands, and the next turn takes it along the
-    # next wall. Three times round and still inside, the guard gives up; running free for
-    # WALL_FREE seconds it is out, whatever the model says or does not say.
-    WALL_TURN = 0.5
+    # The wall round, the worst case in a room: an eighth turn of the camera, measured like a
+    # look's, and straight on until the figure stands, again and again. Pushed at an angle into a
+    # wall the figure slides along it and through any door in it; in a corner it stands, and the
+    # next turn takes it along the next wall. Three times round and still inside, the guard gives
+    # up; running free for WALL_FREE seconds it is out, whatever the model says or does not say.
+    WALL_STEP = 45.0
     WALL_TURNS = 24
     WALL_FREE = 6.0
+    GAP = 1.0  # seconds without a step of the guard after which what it saw before says nothing
 
     def __init__(
         self,
@@ -372,6 +374,28 @@ class WayRound(FootGuard):
             self.push_since = now
         return Steer(want, state="go")
 
+    def resume(self, now: float) -> None:
+        """The walk kept the pad to itself since the guard's last step, over ticks that said nothing.
+
+        The pad was let go on them: a press of Square is over and is not taken up again, which the
+        game would count as a second one; the phase under way did not go on, a camera not turned
+        and a leg not run, so its clock is put forward; and after a second what was seen before
+        says nothing about now.
+        """
+        if self.stepped_at is None or now <= self.stepped_at:
+            return
+        away = now - self.stepped_at
+        self.pressing = False
+        if self.state not in ("go", "failed") and self.state_since is not None:
+            self.state_since += away
+            self.outside = None if self.outside is None else self.outside + away
+            self.leg_jump = None if self.leg_jump is None else self.leg_jump + away
+        if away > self.GAP:
+            self.crops.clear()
+            self.worlds.clear()
+            self.evidence.clear()
+            self.push_since = None
+
     def _leg(self, toward) -> tuple[float, float]:
         """The stick of the leg under way: out at right angles, back in at 45 degrees, or straight back."""
         if self.phase == "back":
@@ -471,8 +495,10 @@ class WayRound(FootGuard):
         self.watch_at, self.watched = None, now
         self.views.append("back")
         arrow = observation.reading.arrow
-        # The shorter way round, by the side the figure is turned to already.
-        self._turn(observation, -1 if arrow is not None and arrow >= 0 else 1, self.ABOUT, "about")
+        # As far as is left to the arrow pointing at the camera, and round by the side the figure
+        # is turned to already; with no arrow read the camera is taken to be behind the figure.
+        left = self.ABOUT - abs(arrow) if arrow is not None else self.ABOUT
+        self._turn(observation, -1 if arrow is not None and arrow >= 0 else 1, max(0.0, left), "about")
 
     def leave(self, observation: Observation) -> None:
         """The walk begins in a room: the way out is looked for before the figure runs at a wall."""
@@ -500,7 +526,8 @@ class WayRound(FootGuard):
             return since >= by_clock
         gone = abs((arrow - self.turn_from + 180.0) % 360.0 - 180.0)
         if gone >= self.turn_by - self.TURN_LAG:
-            return True
+            # Not sooner than the camera can turn: one misread arrow does not end a half turn.
+            return since >= (self.turn_by - self.TURN_LAG) / self.TURN_FASTEST
         if gone < self.TURN_SEEN:
             return since >= by_clock
         return since >= self.turn_by / self.TURN_RATE
@@ -528,9 +555,7 @@ class WayRound(FootGuard):
                 self.way_out, self.outside = True, None
                 self.watch_at, self.watched = None, now
                 self.views.append("wall")
-                self.turn_side = self.side
-                self.phase = "wall"
-                self._enter("round", now)
+                self._turn(observation, self.side, self.WALL_STEP, "wall")
                 return Steer((0.0, 0.0), (float(self.side), 0.0), state="look")
             self._take_hint(now, toward)
             if self.side in self.closed and -self.side not in self.closed:
@@ -547,10 +572,12 @@ class WayRound(FootGuard):
         """Round the room along its walls: a turn of the camera, and straight on until the figure stands."""
         now = observation.time
         since = now - self.state_since
-        if since < self.WALL_TURN:
-            return Steer((0.0, 0.0), (float(self.turn_side), 0.0), state="look")
+        if self.turn_by:
+            if not self._turned(observation):
+                return Steer((0.0, 0.0), (float(self.turn_side), 0.0), state="look")
+            self.turn_by, self.turn_took = 0.0, since
         self._watch(observation)
-        started = self.state_since + self.WALL_TURN + self.LEG_START
+        started = self.state_since + self.turn_took + self.LEG_START
         if self.outside is not None or now - started >= self.WALL_FREE:
             # Out: the model says so, or nothing has held the figure up for longer than a room is wide.
             if self.outside is None:
@@ -563,7 +590,7 @@ class WayRound(FootGuard):
             self.wall_turns += 1
             if self.wall_turns > self.WALL_TURNS:
                 return self._fail(now)
-            self._enter("round", now)
+            self._turn(observation, self.turn_side, self.WALL_STEP, "wall")
             return Steer((0.0, 0.0), (float(self.turn_side), 0.0), state="look")
         right = (self.nudge, 0.0) if now < self.nudge_until else (0.0, 0.0)
         return Steer(self.AHEAD, right, state="round")
@@ -627,7 +654,7 @@ class WayRound(FootGuard):
     def _watch(self, observation: Observation) -> None:
         """Running at a way out: where it is in the picture now, and whether the figure is outside."""
         now = observation.time
-        if self.outside is not None:
+        if self.ahead is None or self.outside is not None:
             return
         if self.watch_at is None:
             due = now - self.watched >= self.WATCH_EVERY

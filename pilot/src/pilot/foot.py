@@ -380,6 +380,10 @@ class FootGuard:
         self.events: list[tuple[float, str]] = []  # what the guard decided, for logs and replays
 
     # -- evidence
+    def resume(self, now: float) -> None:
+        """Told by a walk before the first step after ticks on which it kept the pad to itself.
+        This guard presses nothing and times nothing that such ticks could cut; see `wayround`."""
+
     def diagnostic(self) -> str:
         motion = self.evidence[-1][1] if self.evidence else None
         attempts = min(self.failures, len(self.ESCAPES))
