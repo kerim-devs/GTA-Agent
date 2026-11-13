@@ -1,0 +1,3 @@
+# What the local model sees ahead, measured
+
+The scripts behind the numbers at the top of `pilot/src/pilot/ahead.py` and in the log of 13 November ("The barber's door"), kept from the session that measured them. They ask the model at `http://192.168.0.248:1234` and read recordings under `/Users/kerim/recordings/pilot/`; paths inside them point at that session's scratch folder and have to be set again before a run. `frames.json` lists the 183 frames of the night's walks with the guard's verdict for each, `answers.json` and `indoors.json` hold what the model said. `place_replay.py` asks for the place frame by frame along a recording, `compass.py` prints the arrow against the north disc, `trail_proto.py` carries a point along by the map's own motion.
