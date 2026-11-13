@@ -210,9 +210,27 @@ class ModeFilter:
         self.exit_confirmed = False
 
     def update(
-        self, judgment: Judgment | None, t: float, *, flat: bool = False, vehicle: bool = False
+        self,
+        judgment: Judgment | None,
+        t: float,
+        *,
+        flat: bool = False,
+        vehicle: bool = False,
+        routed: bool = False,
+        game: bool = True,
     ) -> str | None:
-        """`flat`: the minimap of this tick lies flat and is sound, which it only does on foot."""
+        """`flat`: the minimap of this tick lies flat and is sound, which it only does on foot.
+
+        `routed`: the tilted map is sound and shows a route. No length of the judge's foot stands
+        against that: on 13 November, 17:25, it said foot for 3.4 s on end at 1.0 in a car on its
+        route, and of 44,000 ticks on foot that day none read a sound tilted map with a route.
+
+        `game`: the judgment is of a picture of the game. Of the pause map it says vehicle with
+        certainty, whoever opened it and wherever the figure stands (13 November, 17:20: 22 s of
+        the pilot's own map with the figure on foot beside a car, vehicle at 1.0 throughout), so
+        such an answer is no word on the figure, and the mode lapses over a long map like over a
+        silent server.
+        """
         if self.capture is not None and t - self.capture > self.LAPSE:
             self.mode = self.candidate = None
             self.capture = None
@@ -221,6 +239,7 @@ class ModeFilter:
             self.exit_confirmed = False
         if (
             judgment is not None
+            and game
             and 0 <= t - judgment.capture <= 1.0
             and (self.capture is None or judgment.capture > self.capture)
         ):
@@ -244,7 +263,7 @@ class ModeFilter:
                 self.candidate, self.capture = mode, judgment.capture
                 if self.run >= (self.FIRST if self.mode is None else self.CHANGE):
                     self.mode = mode
-        if vehicle and "foot" in {self.candidate, self.mode} and not self.exit_confirmed:
+        if vehicle and "foot" in {self.candidate, self.mode} and (routed or not self.exit_confirmed):
             return "unknown"
         return self.mode
 

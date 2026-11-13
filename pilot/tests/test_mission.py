@@ -172,6 +172,12 @@ def test_corrupt_or_unreadable_map_cannot_authorize_vehicle():
     assert movement(replace(value, minimap={"minimap": "flat", "corrupt": True})) == "unknown"
 
 
+def test_a_mode_the_filter_withholds_leaves_the_word_to_the_map():
+    value = replace(request("pilot-20261110-231512-01"), judgment={"mode": "unknown"}, hud={"wanted": 0})
+    assert movement(replace(value, minimap={"minimap": "tilted", "route": "purple"})) == "vehicle"
+    assert movement(replace(value, minimap={"minimap": "flat"})) == "on_foot"
+
+
 def test_rule_path_is_within_a_few_milliseconds():
     value = request("pilot-20261110-231512-01")
     head = MissionHead(goal_seed=1)

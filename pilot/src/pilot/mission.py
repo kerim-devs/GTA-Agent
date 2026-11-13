@@ -35,6 +35,8 @@ def movement(request: HeadRequest) -> str:
     with stars the map is tilted on foot as well, so a tilted map with stars says nothing.
     """
     judged = (request.judgment or {}).get("mode")
+    if judged == "unknown":
+        judged = None  # foot said against a tilted map for less than three seconds: the map speaks
     if judged is not None:
         return {"foot": "on_foot", "vehicle": "vehicle"}.get(judged, "none")
     if request.minimap.get("corrupt"):
