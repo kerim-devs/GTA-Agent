@@ -38,9 +38,12 @@ KNOWN_FAILURES[("block", 0.3, 2.0, 0, 0.0, "range-10")] = ["progress gap 27.800s
 # P87's stick from the measured dead zone and the far aim on a straight way: the block at 2 m to the
 # pixel 13.300 s (15.033 before both), the wall at 0.5 m 11.100 s (11.067), and the wall at 1 m, at
 # 10.100 s before, now within the ten seconds.
-KNOWN_FAILURES[("block", 0.21, 2.0, 0, 0.25, "nominal")] = ["progress gap 13.300s > 10s"]
-KNOWN_FAILURES[("wall", 0.21, 0.5, 0, 0.25, "nominal")] = ["progress gap 11.100s > 10s"]
+# With the turn still to show taken off the error (13 November, evening): the block 16.300 s, the wall
+# at 0.5 m 11.067 s again, and the wall at 2 m, at 10.400 s before, now within the ten seconds too.
+KNOWN_FAILURES[("block", 0.21, 2.0, 0, 0.25, "nominal")] = ["progress gap 16.300s > 10s"]
+KNOWN_FAILURES[("wall", 0.21, 0.5, 0, 0.25, "nominal")] = ["progress gap 11.067s > 10s"]
 del KNOWN_FAILURES[("wall", 0.21, 1.0, 0, 0.25, "nominal")]
+del KNOWN_FAILURES[("wall", 0.21, 2.0, 0, 0.25, "nominal")]
 
 
 def run_case(name: str, delay: float, scale: float, seed: int, dead_zone: float, profile="nominal"):

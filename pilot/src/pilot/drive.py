@@ -3,7 +3,7 @@
 import os
 from collections import deque
 from dataclasses import dataclass
-from math import atan2, degrees, hypot, isfinite, sqrt
+from math import atan2, copysign, degrees, hypot, isfinite, sqrt
 
 from pilot.contract import NEUTRAL, Command, Reading
 
@@ -28,6 +28,19 @@ class DriveConfig:
     # left alone up to 11 degrees of error and swung by 20 degrees around the route; Kerim's swings by 3.
     steer_rest: float = 3.0  # Filtered heading error that is not steered against.
     steering_bias: float = 0.29  # The stick's dead zone in a car: the first degree of error starts here.
+    # What the car does with the stick, from Kerim's drives of 12 and 13 November (16 minutes of
+    # straights with a route) and three of the pilot's: its yaw regressed on the stick of the last
+    # 1.2 s gives 78 degrees a second per unit past the dead zone for his hand and 72 to 79 for the
+    # pilot's, and the turn shows on the map between 0.2 and 0.7 s after the stick, a fifth of it
+    # after 0.3 s and two thirds after 0.5. A stick held in proportion to an error that cannot have
+    # changed yet is held for all of that time: the pilot's pulses lasted a second at the median and
+    # Kerim's 0.17 s, with the stick at rest for 71 percent of his time on a straight. So the turn
+    # that the stick of the last moments has still to bring is taken off the error before the stick
+    # is set, and the stick is let go when enough has been given, not when it has shown.
+    yaw_gain: float = 77.0  # Degrees a second the car turns per unit of the stick past its dead zone.
+    yaw_first: float = 0.2  # Seconds after the stick at which its turn begins to show on the map,
+    yaw_last: float = 0.7  # and at which all of it has.
+    yaw_memory: float = 1.0  # Part of the turn still to show that is taken off the error; 0: none.
     command_delay: float = 0.21  # Capture-to-control latency used for prediction.
     prediction_limit: float = 8.0  # Maximum angle extrapolation across the delay.
     cruise_throttle: float = 0.58  # Pedal on a straight, legible route.
@@ -177,6 +190,7 @@ class Driver:
         self._filtered_far: float | None = None
         self._moving_since: float | None = None
         self._steer = 0.0
+        self._sticks: deque[tuple[float, float]] = deque()  # when each stick of the last moments began
         self._last = NEUTRAL
         self._stuck_since: float | None = None
         self._phase: str | None = None
@@ -219,7 +233,28 @@ class Driver:
         if state in {"follow", "coast"} and (self._measured_speed is None or self._stationary):
             brake = 0
         self._last = Command(_clip(steer), _clip(throttle, 0), _clip(brake, 0), state)
+        if state in {"follow", "coast"} and self._time is not None:
+            self._sticks.append((self._time, self._last.steer))
+            while self._sticks[0][0] < self._time - self.config.yaw_last - self.config.max_step_time:
+                self._sticks.popleft()
+        else:
+            self._sticks.clear()  # a stop, a recovery or a lost map: what was steered before is over
         return self._last
+
+    def _pending(self, now: float) -> float:
+        """Degrees the car has still to turn, to the right positive, for the stick of the last moments."""
+        cfg = self.config
+        spread = max(cfg.yaw_last - cfg.yaw_first, 1e-9)
+        ends = [*(start for start, _ in self._sticks), now][1:]
+        total = 0.0
+        for (start, steer), end in zip(self._sticks, ends, strict=True):
+            past = abs(steer) - cfg.steering_bias
+            if past <= 0:
+                continue
+            end = min(end, start + cfg.hold_time)  # a stick that nothing renews is let go
+            shown = _clip((now - (start + end) / 2 - cfg.yaw_first) / spread, 0, 1)
+            total += copysign(past, steer) * (end - start) * cfg.yaw_gain * (1 - shown)
+        return total
 
     def _idle(self) -> Command:
         self._trusted_route = self._trusted_error = None
@@ -506,6 +541,8 @@ class Driver:
         if abs(self._filtered_error) <= self.config.steer_deadband:
             correction = 0.0
         adjusted = self._filtered_error + correction
+        if self.config.yaw_memory:
+            adjusted = _angle(adjusted - self.config.yaw_memory * self._pending(now))
         bend_delta = _angle(self._filtered_far - self._filtered_near)
         adjusted = (1 if adjusted >= 0 else -1) * max(0.0, abs(adjusted) - self.config.steer_rest)
         target = _clip(self.config.steer_gain * adjusted)
