@@ -1,0 +1,220 @@
+{
+  "definition": "Pad-time measurements for the visually marked final approaches in P100.\n\nStarts are the first directed movement of the final attempt (or its door press\nwhen already beside the car). Seat endpoints are the first inspected frame\nwith the player in the seat, sustained in subsequent frames. Contact sheets\nbound the endpoints to approximately 0.25 s. These are not thoughts or metres.\n",
+  "scope": "Five visually verified human successes, chosen from the five P53 audited examples before measuring; two pilot successes conditional on eventual seating. Seven original skill failures include the delayed hospital success. Failed/censored attempts are not assigned fictitious seat times. Starts identify final approaches rather than all search or earlier failed attempts. Distances in metres cannot be recovered from pad logs.",
+  "summaries": {
+    "kerim": {
+      "count": 5,
+      "decision_to_seat": 6.596000000000004,
+      "press_to_seat": 5.463799999999992,
+      "approach_seconds": 2.4288999999999987,
+      "commanded_movement_seconds": 2.4288999999999987,
+      "cross_down_seconds": 0.458999999999989
+    },
+    "pilot": {
+      "count": 2,
+      "decision_to_seat": 14.002345999999989,
+      "press_to_seat": 4.081436499999995,
+      "approach_seconds": 9.920909499999993,
+      "commanded_movement_seconds": 9.886599999999987,
+      "cross_down_seconds": 0.0
+    }
+  },
+  "records": [
+    {
+      "who": "kerim",
+      "session": "20261111-190825",
+      "start": 93.9477,
+      "press": 94.9464,
+      "seat": 100.506,
+      "description": "stopped black sedan",
+      "decision_to_seat": 6.558300000000003,
+      "press_to_seat": 5.559600000000003,
+      "approach_seconds": 0.9986999999999995,
+      "commanded_movement_seconds": 0.9986999999999995,
+      "cross_down_seconds": 0.458999999999989,
+      "stick_seconds": 0.9985889577931399,
+      "frames": {
+        "start": {
+          "video_frame": 5599,
+          "video_time": 93.9544
+        },
+        "press": {
+          "video_frame": 5658,
+          "video_time": 94.9462
+        },
+        "seat": {
+          "video_frame": 5991,
+          "video_time": 100.506
+        }
+      }
+    },
+    {
+      "who": "kerim",
+      "session": "20261111-165543",
+      "start": 214.2378,
+      "press": 216.6667,
+      "seat": 222.57,
+      "description": "parked white coupe",
+      "decision_to_seat": 8.3322,
+      "press_to_seat": 5.9033000000000015,
+      "approach_seconds": 2.4288999999999987,
+      "commanded_movement_seconds": 2.4288999999999987,
+      "cross_down_seconds": 0.0,
+      "stick_seconds": 2.4153416467819993,
+      "frames": {
+        "start": {
+          "video_frame": 12788,
+          "video_time": 214.2401
+        },
+        "press": {
+          "video_frame": 12932,
+          "video_time": 216.6615
+        },
+        "seat": {
+          "video_frame": 13281,
+          "video_time": 222.5695
+        }
+      }
+    },
+    {
+      "who": "kerim",
+      "session": "20261111-171046",
+      "start": 148.001,
+      "press": 149.2357,
+      "seat": 154.597,
+      "description": "parked white van; turn from following Lamar",
+      "decision_to_seat": 6.596000000000004,
+      "press_to_seat": 5.3613,
+      "approach_seconds": 1.2347000000000037,
+      "commanded_movement_seconds": 1.2347000000000037,
+      "cross_down_seconds": 0.0,
+      "stick_seconds": 1.2347000000000037,
+      "frames": {
+        "start": {
+          "video_frame": 8820,
+          "video_time": 148.0007
+        },
+        "press": {
+          "video_frame": 8894,
+          "video_time": 149.2354
+        },
+        "seat": {
+          "video_frame": 9210,
+          "video_time": 154.5966
+        }
+      }
+    },
+    {
+      "who": "kerim",
+      "session": "20261112-085011",
+      "start": 881.233,
+      "press": 884.2341,
+      "seat": 886.26,
+      "description": "parked black van after the doorway",
+      "decision_to_seat": 5.027000000000044,
+      "press_to_seat": 2.0258999999999787,
+      "approach_seconds": 3.001100000000065,
+      "commanded_movement_seconds": 2.9347000000000207,
+      "cross_down_seconds": 1.5486000000000786,
+      "stick_seconds": 2.8702415921770155,
+      "frames": {
+        "start": {
+          "video_frame": 52682,
+          "video_time": 881.24
+        },
+        "press": {
+          "video_frame": 52859,
+          "video_time": 884.2397
+        },
+        "seat": {
+          "video_frame": 52980,
+          "video_time": 886.2597
+        }
+      }
+    },
+    {
+      "who": "kerim",
+      "session": "20261111-185323",
+      "start": 799.2858,
+      "press": 803.3072,
+      "seat": 808.771,
+      "description": "stopped police car after firing",
+      "decision_to_seat": 9.485199999999963,
+      "press_to_seat": 5.463799999999992,
+      "approach_seconds": 4.021399999999971,
+      "commanded_movement_seconds": 4.021399999999971,
+      "cross_down_seconds": 1.4655999999998812,
+      "stick_seconds": 3.9974174708329837,
+      "frames": {
+        "start": {
+          "video_frame": 47786,
+          "video_time": 799.2777
+        },
+        "press": {
+          "video_frame": 48023,
+          "video_time": 803.322
+        },
+        "seat": {
+          "video_frame": 48354,
+          "video_time": 808.7714
+        }
+      }
+    },
+    {
+      "who": "pilot",
+      "session": "20261113-230030",
+      "start": 528.989,
+      "press": 548.830819,
+      "seat": 554.519,
+      "description": "stopped black SUV; final attempt only",
+      "decision_to_seat": 25.529999999999973,
+      "press_to_seat": 5.688180999999986,
+      "approach_seconds": 19.841818999999987,
+      "commanded_movement_seconds": 19.773199999999974,
+      "cross_down_seconds": 0.0,
+      "stick_seconds": 16.986037097425665,
+      "frames": {
+        "start": {
+          "video_frame": 31617,
+          "video_time": 528.991
+        },
+        "press": {
+          "video_frame": 32806,
+          "video_time": 548.8276
+        },
+        "seat": {
+          "video_frame": 33147,
+          "video_time": 554.5185
+        }
+      }
+    },
+    {
+      "who": "pilot",
+      "session": "20261113-234407",
+      "start": 623.277308,
+      "press": 623.277308,
+      "seat": 625.752,
+      "description": "white coupe already beside the figure",
+      "decision_to_seat": 2.4746920000000046,
+      "press_to_seat": 2.4746920000000046,
+      "approach_seconds": 0.0,
+      "commanded_movement_seconds": 0.0,
+      "cross_down_seconds": 0.0,
+      "stick_seconds": 0.0,
+      "frames": {
+        "start": {
+          "video_frame": 37295,
+          "video_time": 623.2834
+        },
+        "press": {
+          "video_frame": 37295,
+          "video_time": 623.2834
+        },
+        "seat": {
+          "video_frame": 37443,
+          "video_time": 625.7524
+        }
+      }
+    }
+  ]
+}

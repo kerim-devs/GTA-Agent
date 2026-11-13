@@ -1,0 +1,123 @@
+FFFFFF.F...                                                              [100%]
+=================================== FAILURES ===================================
+_ test_recorded_hospital_approaches_run_instead_of_walking_the_whole_budget[3] _
+
+attempt = 3
+
+    @pytest.mark.parametrize("attempt", [3, 7, 9])
+    def test_recorded_hospital_approaches_run_instead_of_walking_the_whole_budget(attempt):
+        run = hospital(attempt)
+        assert not run["sprint_ticks"]
+        skill = EnterVehicle({"duration": 25, "kind": "car", "occupied": "allow"})
+        results = [skill.step(REPLAY.observation(s)) for s in run["samples"]]
+>       assert any("cross" in r.pad.buttons and r.pad.left[1] < -0.5 for r in results)
+E       assert False
+E        +  where False = any(<generator object test_recorded_hospital_approaches_run_instead_of_walking_the_whole_budget.<locals>.<genexpr> at 0x11587cfb0>)
+
+tests/test_vehicle_entry_p100.py:31: AssertionError
+_ test_recorded_hospital_approaches_run_instead_of_walking_the_whole_budget[7] _
+
+attempt = 7
+
+    @pytest.mark.parametrize("attempt", [3, 7, 9])
+    def test_recorded_hospital_approaches_run_instead_of_walking_the_whole_budget(attempt):
+        run = hospital(attempt)
+        assert not run["sprint_ticks"]
+        skill = EnterVehicle({"duration": 25, "kind": "car", "occupied": "allow"})
+        results = [skill.step(REPLAY.observation(s)) for s in run["samples"]]
+>       assert any("cross" in r.pad.buttons and r.pad.left[1] < -0.5 for r in results)
+E       assert False
+E        +  where False = any(<generator object test_recorded_hospital_approaches_run_instead_of_walking_the_whole_budget.<locals>.<genexpr> at 0x11587d8a0>)
+
+tests/test_vehicle_entry_p100.py:31: AssertionError
+_ test_recorded_hospital_approaches_run_instead_of_walking_the_whole_budget[9] _
+
+attempt = 9
+
+    @pytest.mark.parametrize("attempt", [3, 7, 9])
+    def test_recorded_hospital_approaches_run_instead_of_walking_the_whole_budget(attempt):
+        run = hospital(attempt)
+        assert not run["sprint_ticks"]
+        skill = EnterVehicle({"duration": 25, "kind": "car", "occupied": "allow"})
+        results = [skill.step(REPLAY.observation(s)) for s in run["samples"]]
+>       assert any("cross" in r.pad.buttons and r.pad.left[1] < -0.5 for r in results)
+E       assert False
+E        +  where False = any(<generator object test_recorded_hospital_approaches_run_instead_of_walking_the_whole_budget.<locals>.<genexpr> at 0x1157ec930>)
+
+tests/test_vehicle_entry_p100.py:31: AssertionError
+_ test_recorded_hospital_late_door_press_keeps_the_animation_until_seat_proof __
+
+    def test_recorded_hospital_late_door_press_keeps_the_animation_until_seat_proof():
+        run = hospital(9)
+        skill = EnterVehicle({"duration": 25, "kind": "car", "occupied": "allow"})
+        results = [(s["play"]["t"], skill.step(REPLAY.observation(s))) for s in run["samples"]]
+        presses = [t for t, r in results if "triangle" in r.pad.buttons]
+        assert presses and presses[0] < 550
+>       assert all(r.status != "failed" for _, r in results)
+E       assert False
+E        +  where False = all(<generator object test_recorded_hospital_late_door_press_keeps_the_animation_until_seat_proof.<locals>.<genexpr> at 0x11587e5a0>)
+
+tests/test_vehicle_entry_p100.py:41: AssertionError
+______ test_small_nearness_changes_do_not_change_the_car_being_approached ______
+
+    def test_small_nearness_changes_do_not_change_the_car_being_approached():
+        left = Detection("car", px(0.30, 0.4, 0.42, 0.54), 0.9)
+        right = Detection("car", px(0.58, 0.4, 0.70, 0.535), 0.9)
+        skill = EnterVehicle({})
+        skill.step(obs(0, (left, right)))
+        chosen = skill.target
+        for tick in range(1, 20):
+            other = replace(right, box=px(0.58, 0.4, 0.70, 0.56))
+            skill.step(obs(tick * 0.05, (other, left)))
+>           assert skill.target is chosen
+E           AssertionError: assert Vehicle(obj=Detection(kind='car', box=(0.58, 0.4, 0.7, 0.56), confidence=0.9), seen=0.05, anchor=Detection(kind='car',...es=0, rejected=False, occupancy='unknown', driver_since=None, last_hint=None, stood_clear=False, moved=False, held=0.0) is Vehicle(obj=Detection(kind='car', box=(0.3, 0.4, 0.42000000000000004, 0.54), confidence=0.9), seen=0.05, anchor=Detect...es=0, rejected=False, occupancy='unknown', driver_since=None, last_hint=None, stood_clear=False, moved=False, held=0.0)
+E            +  where Vehicle(obj=Detection(kind='car', box=(0.58, 0.4, 0.7, 0.56), confidence=0.9), seen=0.05, anchor=Detection(kind='car',...es=0, rejected=False, occupancy='unknown', driver_since=None, last_hint=None, stood_clear=False, moved=False, held=0.0) = <pilot.vehicle_entry.EnterVehicle object at 0x1158e3ad0>.target
+
+tests/test_vehicle_entry_p100.py:55: AssertionError
+________ test_an_unreachable_target_is_replaced_by_the_next_visible_car ________
+
+    def test_an_unreachable_target_is_replaced_by_the_next_visible_car():
+        alternate = Detection("car", px(0.70, 0.42, 0.80, 0.50), 0.9)
+        skill = EnterVehicle({})
+        skill.step(obs(0, (FAR, alternate)))
+        first = skill.target
+        escaped = False
+        for tick in range(1, 81):
+            result = skill.step(replace(obs(tick / 10, (FAR, alternate)), moving=False))
+            escaped |= abs(result.pad.left[0]) > 0.7
+            if skill.target is not None and skill.target is not first:
+                break
+>       assert escaped, "try a way around the obstacle before abandoning the car"
+E       AssertionError: try a way around the obstacle before abandoning the car
+E       assert False
+
+tests/test_vehicle_entry_p100.py:69: AssertionError
+______ test_a_way_around_a_pole_reaches_the_door_without_cancelling_entry ______
+
+    def test_a_way_around_a_pole_reaches_the_door_without_cancelling_entry():
+        game = EntryGame(distance=6, blocked=True)
+        skill = EnterVehicle({})
+        around = False
+        for tick in range(300):
+            t = tick / 10
+            reading = replace(game.observation(t), moving=not game.blocked)
+            result = skill.step(reading)
+            if abs(result.pad.left[0]) > 0.7:
+                game.blocked = False
+                around = True
+            game.apply(t, result.pad)
+            if result.status != "running":
+                break
+>       assert around and game.seated and result.status == "done"
+E       assert (False)
+
+tests/test_vehicle_entry_p100.py:101: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_vehicle_entry_p100.py::test_recorded_hospital_approaches_run_instead_of_walking_the_whole_budget[3]
+FAILED tests/test_vehicle_entry_p100.py::test_recorded_hospital_approaches_run_instead_of_walking_the_whole_budget[7]
+FAILED tests/test_vehicle_entry_p100.py::test_recorded_hospital_approaches_run_instead_of_walking_the_whole_budget[9]
+FAILED tests/test_vehicle_entry_p100.py::test_recorded_hospital_late_door_press_keeps_the_animation_until_seat_proof
+FAILED tests/test_vehicle_entry_p100.py::test_small_nearness_changes_do_not_change_the_car_being_approached
+FAILED tests/test_vehicle_entry_p100.py::test_an_unreachable_target_is_replaced_by_the_next_visible_car
+FAILED tests/test_vehicle_entry_p100.py::test_a_way_around_a_pole_reaches_the_door_without_cancelling_entry
+7 failed, 4 passed in 0.14s

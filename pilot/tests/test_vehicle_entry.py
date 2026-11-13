@@ -128,9 +128,9 @@ def test_unusable_detection_or_non_game_releases_motion(kwargs):
     assert skill.step(obs(0.51, **kwargs)).pad == NEUTRAL_PAD
 
 
-def test_corrupt_map_allows_approach_but_blocks_a_new_entry_press():
+def test_corrupt_map_releases_approach_and_blocks_a_new_entry_press():
     skill = EnterVehicle({})
-    assert skill.step(obs(0, corrupt=True)).pad.left[1] < 0
+    assert skill.step(obs(0, corrupt=True)).pad == NEUTRAL_PAD
     assert skill.step(obs(1.1, (NEAR,), corrupt=True)).pad == NEUTRAL_PAD
     assert skill.step(obs(1.14, (NEAR,), corrupt=True)).pad == NEUTRAL_PAD
     assert skill.step(obs(1.18, (NEAR,))).pad.buttons == ("triangle",)
@@ -154,7 +154,7 @@ def test_target_leaving_range_between_release_and_press_is_approached_again():
     skill = EnterVehicle({})
     assert skill.step(obs(0, (near,))).pad == NEUTRAL_PAD
     result = skill.step(obs(0.04, (receding,)))
-    assert not result.pad.buttons and result.pad.left[1] < 0
+    assert "triangle" not in result.pad.buttons and result.pad.left[1] < 0
 
 
 def test_figure_steers_while_camera_follows_and_bumper_is_in_reach():
@@ -162,7 +162,8 @@ def test_figure_steers_while_camera_follows_and_bumper_is_in_reach():
     pad = EnterVehicle({}).step(obs(0, (side,))).pad
     assert pad.left[0] > 0 and pad.left[1] <= -0.8 and pad.right[0] > 0
     normalized = replace(side, box=(0.72, 0.4, 0.92, 0.55))
-    assert approach(normalized) == pad
+    assert approach(normalized) == replace(pad, buttons=())
+    assert pad.buttons == ("cross",)
     skill = EnterVehicle({})
     assert skill.step(obs(0, (BUMPER,))).pad == NEUTRAL_PAD
     assert skill.step(obs(0.04, (BUMPER,))).pad.buttons == ("triangle",)
@@ -182,15 +183,15 @@ def test_choice_prefers_standing_then_near_then_car():
     assert choose_vehicle([far, car]) is car
 
 
-def test_temporal_detections_drop_passing_target_for_standing_car():
+def test_uncertain_motion_during_approach_keeps_the_chosen_car():
     skill = EnterVehicle({})
     parked = Detection("car", px(0.36, 0.36, 0.46, 0.49), 0.9)
     for tick in range(6):
         time = tick / 10
         passing = Detection("car", px(0.44 + time * 0.20, 0.37, 0.56 + time * 0.20, 0.54), 0.9)
         skill.step(obs(time, (passing, parked)))
-    assert skill.target.obj.box == pytest.approx((0.36, 0.36, 0.46, 0.49))
-    assert skill.target.motion == "standing"
+    assert skill.target.obj.box == pytest.approx((0.54, 0.37, 0.66, 0.54))
+    assert skill.target.motion == "unknown"
 
 
 def test_kind_filter_bad_boxes_and_confidence():
@@ -405,11 +406,12 @@ def play(game, duration=MAX_SECONDS):
     for tick in range(int(duration * 10) + 2):
         time = tick / 10
         result = skill.step(game.observation(time))
-        assert set(result.pad.buttons) <= {"triangle"}
+        assert set(result.pad.buttons) <= {"triangle", "cross"}
+        assert not {"triangle", "cross"} <= set(result.pad.buttons)
         assert result.pad.l2 == result.pad.r2 == 0
-        if result.pad.buttons and not previous:
+        if "triangle" in result.pad.buttons and not previous:
             press_times.append(time)
-        previous = bool(result.pad.buttons)
+        previous = "triangle" in result.pad.buttons
         game.apply(time, result.pad)
         if result.status != "running":
             assert result.pad == NEUTRAL_PAD
@@ -476,30 +478,30 @@ def recorded_observation(sample):
 def test_recorded_vehicle_boxes_without_player_evidence_never_press(index):
     skill = EnterVehicle({})
     for sample in RUNS[index]["samples"]:
-        assert not skill.step(recorded_observation(sample)).pad.buttons
+        assert "triangle" not in skill.step(recorded_observation(sample)).pad.buttons
 
 
-def test_recorded_clean_picture_corrupt_map_still_drives_approach():
+def test_recorded_corrupt_map_releases_the_approach():
     skill = EnterVehicle({})
     acted = []
     for sample in RUNS[6]["samples"]:
         result = skill.step(recorded_observation(sample))
         if sample["corrupt"] and sample["objects"] and (result.pad.left != (0, 0) or result.pad.buttons):
             acted.append(sample["t"])
-    assert acted
+    assert not acted
 
 
 def test_recorded_stopped_sedan_still_needs_player_evidence():
     skill = EnterVehicle({})
     for sample in RUNS[1]["samples"]:
-        assert not skill.step(recorded_observation(sample)).pad.buttons
+        assert "triangle" not in skill.step(recorded_observation(sample)).pad.buttons
 
 
 def test_recorded_far_vehicle_stretch_walks_without_claiming_an_entry():
     skill = EnterVehicle({})
     pads = [skill.step(recorded_observation(s)).pad for s in RUNS[0]["samples"]]
     assert any(p.left[1] < 0 for p in pads)
-    assert not any(p.buttons for p in pads)
+    assert not any("triangle" in p.buttons for p in pads)
     assert skill.finished is None
 
 
@@ -569,9 +571,10 @@ def test_ranking_puts_a_moving_vehicle_last_then_reach_then_evidence():
     assert choose_vehicle([hinted], "avoid") is None  # and passed over under avoid
 
 
-def test_a_far_standing_car_does_not_draw_the_figure_past_a_vehicle_beside_it():
+def test_a_new_nearer_vehicle_does_not_steal_an_approach_already_in_progress():
     """A world seen in perspective: the figure stands, then walks to the far car seen standing. A quad
-    (a motorcycle here, to tell them apart) comes into view beside the path. It is taken, not passed."""
+    (a motorcycle here, to tell them apart) comes into view beside the path. Only the initial choice
+    ranks both: a target already being approached is kept until lost or unreachable."""
 
     def box(z, x, kind, width, height):
         h, w = height * 0.9 / z, width * 0.9 / z
@@ -590,13 +593,13 @@ def test_a_far_standing_car_does_not_draw_the_figure_past_a_vehicle_beside_it():
             if t >= appears:
                 seen.append(box(quad_z, quad_x, "motorcycle", 1.2, 1.0))
             result = skill.step(obs(t, tuple(d for d in seen if d is not None)))
-            if result.pad.buttons:
+            if "triangle" in result.pad.buttons:
                 taken = skill.entry_target.obj.kind
                 break
             step = max(0.0, -result.pad.left[1]) * 1.6 * 0.05
             far_z, quad_z = far_z - step, quad_z - step
             far_x, quad_x = far_x - result.pad.left[0] * 1.6 * 0.05, quad_x - result.pad.left[0] * 1.6 * 0.05
-        assert taken == "motorcycle", appears
+        assert taken == ("motorcycle" if appears == 0 else "car"), appears
 
 
 def test_occupant_confirmation_survives_one_pixel_box_jitter_but_not_a_pedestrian():
@@ -609,7 +612,7 @@ def test_occupant_confirmation_survives_one_pixel_box_jitter_but_not_a_pedestria
     samples = [s for s in run["samples"] if s["skill"][0] == "enter_vehicle"]
     skill = EnterVehicle({})
     for sample in samples[:8]:
-        assert not skill.step(recorded_observation(sample)).pad.buttons
+        assert "triangle" not in skill.step(recorded_observation(sample)).pad.buttons
     assert any(v.occupancy == "occupied" for v in skill.vehicles)
     from pilot.vehicle_entry import occupant_visible
 
@@ -627,7 +630,7 @@ def test_recorded_quad_and_pickup_wait_for_player_evidence():
         samples = [sample for sample in run["samples"] if sample["skill"][0] == "enter_vehicle"]
         assert samples
         for sample in samples:
-            assert not skill.step(recorded_observation(sample)).pad.buttons
+            assert "triangle" not in skill.step(recorded_observation(sample)).pad.buttons
 
 
 def test_model_leaves_lane_before_waiting_for_an_occupied_vehicle():
@@ -674,7 +677,7 @@ def test_traffic_alone_neither_draws_a_press_nor_holds_the_search(speed, longest
         x = 0.02 + t * speed
         objects = (Detection("car", px(x, 0.35, x + 0.1, 0.45), 0.9),) if x + 0.1 <= 1 else ()
         result = skill.step(replace(obs(t, objects), frame=road_frame(-12)))
-        assert not result.pad.buttons
+        assert "triangle" not in result.pad.buttons
         still = still + 0.1 if result.pad == NEUTRAL_PAD else 0.0
         assert still <= longest
     assert any(v.moved for v in skill.ever) is moving
@@ -712,9 +715,9 @@ def run_game(game, duration=MAX_SECONDS, **args):
         time = tick / 10
         result = skill.step(game.observation(time))
         ticks.append((time, result))
-        if result.pad.buttons and not held:
+        if "triangle" in result.pad.buttons and not held:
             presses.append(time)
-        held = bool(result.pad.buttons)
+        held = "triangle" in result.pad.buttons
         game.apply(time, result.pad)
         if result.status != "running":
             break
