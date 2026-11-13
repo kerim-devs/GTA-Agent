@@ -1,0 +1,265 @@
+F.............FF..F...FFFFFFFFFFFFFFF...F                                [100%]
+=================================== FAILURES ===================================
+_ test_recorded_trip_moves_on_instead_of_counting_motionless_turns_as_success __
+
+    def test_recorded_trip_moves_on_instead_of_counting_motionless_turns_as_success():
+        car = driver()
+        rows = json.loads((LAB / "p99-readings.json").read_text())
+        commands = []
+        for row in rows:
+            reading = Reading(**{**row["reading"], "blips": ()})
+            command = car.step(reading, row["t"], row["moving"], speed=reading.gps_speed)
+            commands.append(command)
+>           assert command.state not in {"failed-recovery", "dead-or-held", "turn-reverse", "turn-forward"}
+E           AssertionError: assert 'turn-forward' not in {'dead-or-held', 'failed-recovery', 'turn-forward', 'turn-reverse'}
+E            +  where 'turn-forward' = Command(steer=1.0, throttle=1.0, brake=0, state='turn-forward').state
+
+tests/test_turn_round.py:38: AssertionError
+_ test_every_car_joins_the_parallel_road_over_free_ground_without_reversing[range-01] _
+
+profile = 'range-01'
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    def test_every_car_joins_the_parallel_road_over_free_ground_without_reversing(profile):
+        row = BENCH.trial(Driver, profile, "join")
+>       assert row["joined_at"] is not None and row["joined_at"] < 20
+E       assert (None is not None)
+
+tests/test_turn_round.py:54: AssertionError
+_ test_every_car_joins_the_parallel_road_over_free_ground_without_reversing[range-02] _
+
+profile = 'range-02'
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    def test_every_car_joins_the_parallel_road_over_free_ground_without_reversing(profile):
+        row = BENCH.trial(Driver, profile, "join")
+        assert row["joined_at"] is not None and row["joined_at"] < 20
+>       assert row["reverse_seconds"] == row["collisions"] == 0
+E       assert 2.500000000000001 == 0
+
+tests/test_turn_round.py:55: AssertionError
+_ test_every_car_joins_the_parallel_road_over_free_ground_without_reversing[range-12] _
+
+profile = 'range-12'
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    def test_every_car_joins_the_parallel_road_over_free_ground_without_reversing(profile):
+        row = BENCH.trial(Driver, profile, "join")
+>       assert row["joined_at"] is not None and row["joined_at"] < 20
+E       assert (22.500000000000277 is not None and 22.500000000000277 < 20)
+
+tests/test_turn_round.py:54: AssertionError
+_ test_every_car_joins_the_parallel_road_over_free_ground_without_reversing[fast-low-grip] _
+
+profile = 'fast-low-grip'
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    def test_every_car_joins_the_parallel_road_over_free_ground_without_reversing(profile):
+        row = BENCH.trial(Driver, profile, "join")
+>       assert row["joined_at"] is not None and row["joined_at"] < 20
+E       assert (20.433333333333508 is not None and 20.433333333333508 < 20)
+
+tests/test_turn_round.py:54: AssertionError
+________ test_every_car_continues_on_its_own_side_of_the_rail[nominal] _________
+
+profile = 'nominal'
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    def test_every_car_continues_on_its_own_side_of_the_rail(profile):
+        row = BENCH.trial(Driver, profile, "rail")
+        assert row["joined_at"] is None and row["x"] > -12
+>       assert row["speed"] > 1 and row["y"] > 40
+E       assert (0.0 > 1)
+
+tests/test_turn_round.py:62: AssertionError
+________ test_every_car_continues_on_its_own_side_of_the_rail[range-00] ________
+
+profile = 'range-00'
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    def test_every_car_continues_on_its_own_side_of_the_rail(profile):
+        row = BENCH.trial(Driver, profile, "rail")
+        assert row["joined_at"] is None and row["x"] > -12
+>       assert row["speed"] > 1 and row["y"] > 40
+E       assert (1.971947351164599 > 1 and 19.783852086557214 > 40)
+
+tests/test_turn_round.py:62: AssertionError
+________ test_every_car_continues_on_its_own_side_of_the_rail[range-01] ________
+
+profile = 'range-01'
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    def test_every_car_continues_on_its_own_side_of_the_rail(profile):
+        row = BENCH.trial(Driver, profile, "rail")
+        assert row["joined_at"] is None and row["x"] > -12
+>       assert row["speed"] > 1 and row["y"] > 40
+E       assert (3.469309933394228 > 1 and 33.653926414186934 > 40)
+
+tests/test_turn_round.py:62: AssertionError
+________ test_every_car_continues_on_its_own_side_of_the_rail[range-02] ________
+
+profile = 'range-02'
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    def test_every_car_continues_on_its_own_side_of_the_rail(profile):
+        row = BENCH.trial(Driver, profile, "rail")
+        assert row["joined_at"] is None and row["x"] > -12
+>       assert row["speed"] > 1 and row["y"] > 40
+E       assert (0.0 > 1)
+
+tests/test_turn_round.py:62: AssertionError
+________ test_every_car_continues_on_its_own_side_of_the_rail[range-10] ________
+
+profile = 'range-10'
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    def test_every_car_continues_on_its_own_side_of_the_rail(profile):
+        row = BENCH.trial(Driver, profile, "rail")
+        assert row["joined_at"] is None and row["x"] > -12
+>       assert row["speed"] > 1 and row["y"] > 40
+E       assert (3.1611909993820864 > 1 and 16.14238235400804 > 40)
+
+tests/test_turn_round.py:62: AssertionError
+________ test_every_car_continues_on_its_own_side_of_the_rail[range-11] ________
+
+profile = 'range-11'
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    def test_every_car_continues_on_its_own_side_of_the_rail(profile):
+        row = BENCH.trial(Driver, profile, "rail")
+        assert row["joined_at"] is None and row["x"] > -12
+>       assert row["speed"] > 1 and row["y"] > 40
+E       assert (0.0 > 1)
+
+tests/test_turn_round.py:62: AssertionError
+________ test_every_car_continues_on_its_own_side_of_the_rail[range-12] ________
+
+profile = 'range-12'
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    def test_every_car_continues_on_its_own_side_of_the_rail(profile):
+        row = BENCH.trial(Driver, profile, "rail")
+        assert row["joined_at"] is None and row["x"] > -12
+>       assert row["speed"] > 1 and row["y"] > 40
+E       assert (0.0 > 1)
+
+tests/test_turn_round.py:62: AssertionError
+________ test_every_car_continues_on_its_own_side_of_the_rail[range-20] ________
+
+profile = 'range-20'
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    def test_every_car_continues_on_its_own_side_of_the_rail(profile):
+        row = BENCH.trial(Driver, profile, "rail")
+        assert row["joined_at"] is None and row["x"] > -12
+>       assert row["speed"] > 1 and row["y"] > 40
+E       assert (2.6915640965383 > 1 and 15.157463882673516 > 40)
+
+tests/test_turn_round.py:62: AssertionError
+________ test_every_car_continues_on_its_own_side_of_the_rail[range-21] ________
+
+profile = 'range-21'
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    def test_every_car_continues_on_its_own_side_of_the_rail(profile):
+        row = BENCH.trial(Driver, profile, "rail")
+        assert row["joined_at"] is None and row["x"] > -12
+>       assert row["speed"] > 1 and row["y"] > 40
+E       assert (0.0 > 1)
+
+tests/test_turn_round.py:62: AssertionError
+________ test_every_car_continues_on_its_own_side_of_the_rail[range-22] ________
+
+profile = 'range-22'
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    def test_every_car_continues_on_its_own_side_of_the_rail(profile):
+        row = BENCH.trial(Driver, profile, "rail")
+        assert row["joined_at"] is None and row["x"] > -12
+>       assert row["speed"] > 1 and row["y"] > 40
+E       assert (0.0 > 1)
+
+tests/test_turn_round.py:62: AssertionError
+_____ test_every_car_continues_on_its_own_side_of_the_rail[fast-low-grip] ______
+
+profile = 'fast-low-grip'
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    def test_every_car_continues_on_its_own_side_of_the_rail(profile):
+        row = BENCH.trial(Driver, profile, "rail")
+        assert row["joined_at"] is None and row["x"] > -12
+>       assert row["speed"] > 1 and row["y"] > 40
+E       assert (0.0 > 1)
+
+tests/test_turn_round.py:62: AssertionError
+_______ test_a_changed_far_bearing_cannot_finish_a_turn_without_movement _______
+
+    def test_a_changed_far_bearing_cannot_finish_a_turn_without_movement():
+        car = driver()
+        car.step(picture(), 0, False, speed=0)
+        states = []
+        for tick in range(1, 500):
+            command = car.step(picture(170, 20), tick / 10, False, speed=0)
+            states.append(command.state)
+>       assert "follow" not in states
+E       AssertionError: assert 'follow' not in ['turn-forward', 'turn-forward', 'turn-forward', 'turn-forward', 'turn-forward', 'turn-forward', ...]
+
+tests/test_turn_round.py:73: AssertionError
+__________ test_no_path_and_disagreeing_bearings_do_not_start_a_turn ___________
+
+    def test_no_path_and_disagreeing_bearings_do_not_start_a_turn():
+>       assert driver().step(picture(170, 20), 0, False, speed=0).state == "follow"
+E       AssertionError: assert 'turn-forward' == 'follow'
+E         
+E         - follow
+E         + turn-forward
+
+tests/test_turn_round.py:79: AssertionError
+_____________ test_one_spurious_motion_tick_cannot_finish_the_turn _____________
+
+    def test_one_spurious_motion_tick_cannot_finish_the_turn():
+        car = driver()
+        car.step(picture(), 0, False, speed=0)
+        for tick in range(1, 31):
+            command = car.step(picture(170, 20), tick / 10, tick == 28, speed=0)
+>           assert command.state != "follow"
+E           AssertionError: assert 'follow' != 'follow'
+E            +  where 'follow' = Command(steer=1.0, throttle=0.65, brake=0, state='follow').state
+
+tests/test_turn_round.py:88: AssertionError
+___________ test_a_held_car_cannot_cycle_the_join_clearance_forever ____________
+
+    def test_a_held_car_cannot_cycle_the_join_clearance_forever():
+        car = driver()
+        reading, _ = BENCH.world("nominal", "join").observe()
+        for tick in range(700):
+            command = car.step(reading, tick / 10, False, speed=0)
+>       assert command.state == "dead-or-held"
+E       AssertionError: assert 'failed-recovery' == 'dead-or-held'
+E         
+E         - dead-or-held
+E         + failed-recovery
+
+tests/test_turn_round.py:111: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_turn_round.py::test_recorded_trip_moves_on_instead_of_counting_motionless_turns_as_success
+FAILED tests/test_turn_round.py::test_every_car_joins_the_parallel_road_over_free_ground_without_reversing[range-01]
+FAILED tests/test_turn_round.py::test_every_car_joins_the_parallel_road_over_free_ground_without_reversing[range-02]
+FAILED tests/test_turn_round.py::test_every_car_joins_the_parallel_road_over_free_ground_without_reversing[range-12]
+FAILED tests/test_turn_round.py::test_every_car_joins_the_parallel_road_over_free_ground_without_reversing[fast-low-grip]
+FAILED tests/test_turn_round.py::test_every_car_continues_on_its_own_side_of_the_rail[nominal]
+FAILED tests/test_turn_round.py::test_every_car_continues_on_its_own_side_of_the_rail[range-00]
+FAILED tests/test_turn_round.py::test_every_car_continues_on_its_own_side_of_the_rail[range-01]
+FAILED tests/test_turn_round.py::test_every_car_continues_on_its_own_side_of_the_rail[range-02]
+FAILED tests/test_turn_round.py::test_every_car_continues_on_its_own_side_of_the_rail[range-10]
+FAILED tests/test_turn_round.py::test_every_car_continues_on_its_own_side_of_the_rail[range-11]
+FAILED tests/test_turn_round.py::test_every_car_continues_on_its_own_side_of_the_rail[range-12]
+FAILED tests/test_turn_round.py::test_every_car_continues_on_its_own_side_of_the_rail[range-20]
+FAILED tests/test_turn_round.py::test_every_car_continues_on_its_own_side_of_the_rail[range-21]
+FAILED tests/test_turn_round.py::test_every_car_continues_on_its_own_side_of_the_rail[range-22]
+FAILED tests/test_turn_round.py::test_every_car_continues_on_its_own_side_of_the_rail[fast-low-grip]
+FAILED tests/test_turn_round.py::test_a_changed_far_bearing_cannot_finish_a_turn_without_movement
+FAILED tests/test_turn_round.py::test_no_path_and_disagreeing_bearings_do_not_start_a_turn
+FAILED tests/test_turn_round.py::test_one_spurious_motion_tick_cannot_finish_the_turn
+FAILED tests/test_turn_round.py::test_a_held_car_cannot_cycle_the_join_clearance_forever
+20 failed, 21 passed in 2.24s

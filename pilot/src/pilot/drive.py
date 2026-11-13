@@ -438,6 +438,8 @@ class Driver:
                 ahead,
                 bypass_side,
                 reading.corrupt is False and boxes_fresh,
+                path,
+                arrow,
             )
             if manoeuvre is not None:
                 self._error = error
@@ -730,12 +732,78 @@ class Driver:
             return self._emit(0, 0, 0, self._phase)
         return self._coast(now)
 
-    def _manoeuvre(self, now, near_error, error, moving, speed, ahead, side, clean):
+    def _manoeuvre(self, now, near_error, error, moving, speed, ahead, side, clean, path=(), arrow=0):
         active = self._phase is not None and self._phase.startswith(("bypass-", "turn-"))
         if not clean:
             if active:
                 return self._emit(0, 0, 0, "coast")
             return None
+        # A detached start behind the arrow can lead onto a road running ahead.
+        # Use points in the car's frame, not the short aim extrapolated behind it.
+        angle = radians(arrow)
+        points = tuple((x * cos(angle) - y * sin(angle), x * sin(angle) + y * cos(angle)) for x, y in path)
+        joining = len(points) >= 3 and points[0][1] < 0 and points[-1][1] > 20 and abs(error) < 75
+        if self._phase in {"turn-join", "turn-clear", "turn-along"}:
+            if len(points) < 3:
+                return self._emit(0, 0, 0, "coast")
+        elif joining and not active and self._phase is None and not ahead:
+            self._phase, self._phase_since = "turn-join", now
+            self._manoeuvre_moved = self._recovery_moved = False
+            self._manoeuvre_still_since = None
+            self._moving_since = None
+            self._turns = 0
+        if self._phase in {"turn-join", "turn-clear", "turn-along"}:
+            elapsed = now - self._phase_since
+            start, end = points[len(points) // 2], points[-1]
+            course = _angle(degrees(atan2(end[0] - start[0], end[1] - start[1])))
+            if moving is True and self._moving_since is None:
+                self._moving_since = now
+            moved = moving is True and now - self._moving_since >= 0.1
+            if elapsed > 0.6 and moved:
+                self._manoeuvre_moved = self._recovery_moved = True
+            if self._phase == "turn-clear":
+                if elapsed < self.config.bypass_reverse_time:
+                    return self._emit(-_clip(course * 0.04), 0, 1, self._phase)
+                self._phase, self._phase_since = "turn-along", now
+                self._manoeuvre_moved = False
+                self._manoeuvre_still_since = None
+                self._moving_since = None
+                elapsed = 0.0
+            if elapsed > 1.5 and moving is False:
+                if self._manoeuvre_still_since is None:
+                    self._manoeuvre_still_since = now
+            else:
+                self._manoeuvre_still_since = None
+            if self._manoeuvre_still_since is not None and now - self._manoeuvre_still_since >= 0.3:
+                if self._turns >= self.config.max_recoveries:
+                    self._phase = "failed-recovery" if self._recovery_moved else "dead-or-held"
+                    return self._emit(0, 0, 0, self._phase)
+                self._turns += 1
+                lateral = start[0] * cos(radians(course)) - start[1] * sin(radians(course))
+                self._manoeuvre_side = -1 if lateral > 0 else 1
+                self._phase, self._phase_since = "turn-clear", now
+                self._manoeuvre_still_since = None
+                return self._emit(-_clip(course * 0.04), 0, 1, self._phase)
+            if self._manoeuvre_moved and points[0][1] >= 0 and abs(points[0][0]) < 6:
+                self._end_manoeuvre()
+                return None
+            if self._phase == "turn-join":
+                target = min(
+                    (p for p in points if p[1] > 0), key=lambda p: abs(p[1] - 35), default=points[-1]
+                )
+                course = degrees(atan2(target[0], target[1]))
+            else:
+                # Leave some room beside the obstruction before holding its course.
+                course += self._manoeuvre_side * 8 if elapsed < 3 else 0
+                steer = _clip(course * 0.04)
+                return self._emit(
+                    -steer if elapsed < 0.55 else steer,
+                    1 if elapsed < 1.5 else self.config.recovery_throttle,
+                    0,
+                    self._phase,
+                )
+            steer = _clip(course * 0.04) if abs(course) > 3 else 0
+            return self._emit(steer, self.config.recovery_throttle, 0, self._phase)
         if not active:
             if self._phase is not None:
                 return None
@@ -753,7 +821,7 @@ class Driver:
                 self._manoeuvre_side = chosen if self._bypass_attempts % 2 == 0 else -self._manoeuvre_side
                 self._bypass_attempts += 1
                 self._phase = "bypass-reverse"
-            elif abs(near_error) > 120 and slow and not ahead:
+            elif abs(near_error) > 120 and abs(error) > 120 and slow and not ahead:
                 if self._attempts >= self.config.max_recoveries or self._turns >= 3:
                     self._phase = "failed-recovery"
                     return self._emit(0, 0, 0, self._phase)
@@ -765,11 +833,18 @@ class Driver:
                 return None
             self._phase_since = now
             self._manoeuvre_moved = False
+            self._recovery_moved = False
+            self._moving_since = None
             self._recovery_distance = 0.0
         elapsed = now - self._phase_since
+        if moving is True and self._moving_since is None:
+            self._moving_since = now
+        moved = moving is True and now - self._moving_since >= 0.1
         settling = 1.5 if self._phase.endswith("forward") else 0.6
         if elapsed > settling:
             self._manoeuvre_moved |= moving is True
+        if elapsed > 0.6 and moved:
+            self._recovery_moved = True
         no_motion_limit = 2.5 if self._phase.endswith("forward") else 1.5
         stopped = (
             elapsed > settling and moving is False and (self._manoeuvre_moved or elapsed >= no_motion_limit)
@@ -801,6 +876,7 @@ class Driver:
             self._phase, self._phase_since = "turn-forward", now
             self._manoeuvre_moved = False
             self._manoeuvre_still_since = None
+            self._moving_since = None
             elapsed, blocked = 0.0, False
         if self._phase == "bypass-forward":
             if (not ahead and elapsed > 0.5) or elapsed >= 4.5 or blocked:
@@ -808,16 +884,18 @@ class Driver:
                 return self._emit(0, 0.8, 0, "follow")
             return self._emit(self._manoeuvre_side, 1, 0, self._phase)
         if self._phase == "turn-forward":
-            # Use the far route heading while turning; the nearest path point can
-            # be beside the reversing car well before its nose faces the road.
+            # The same far heading starts, steers and finishes the turn. A changed
+            # route or an unmoving car cannot turn the gear-change pause into success.
             elapsed = now - self._phase_since
-            if abs(error) < 25 and elapsed >= 1.0:
+            if elapsed > 0.6 and moved:
+                self._manoeuvre_moved = True
+            if abs(error) < 25 and elapsed >= 1.0 and self._manoeuvre_moved and moved:
                 self._turns = 0
                 self._end_manoeuvre()
                 return None
             if elapsed >= 4.0 or blocked:
                 if self._turns >= 3 or self._attempts >= self.config.max_recoveries:
-                    self._phase = "failed-recovery"
+                    self._phase = "failed-recovery" if self._recovery_moved else "dead-or-held"
                     return self._emit(0, 0, 0, self._phase)
                 self._turns += 1
                 self._attempts += 1
@@ -832,6 +910,9 @@ class Driver:
 
     def _end_manoeuvre(self):
         self._phase = None
+        self._turns = 0
+        self._manoeuvre_moved = False
+        self._manoeuvre_still_since = None
         self._stuck_since = self._moving_since = None
         self._error = self._filtered_error = self._filtered_near = self._filtered_far = None
         self._steer = 0.0

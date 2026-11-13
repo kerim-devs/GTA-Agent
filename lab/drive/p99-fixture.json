@@ -1,0 +1,11 @@
+{
+  "recording": "/Users/kerim/recordings/pilot/20261113-224327",
+  "source_sha256": {
+    "play.jsonl": "da17b47a6dce7e990a1410a59bc3be084bf695d78dac366e2af2525516ef6152",
+    "frames.jsonl": "a7f527c8d8e9c27f9c106bec2ba505e4e9cc82d1ea5483ae0c1bbe370e898ab2"
+  },
+  "ticks": 586,
+  "start": 9.711560417003057,
+  "end": 31.665435084003548,
+  "motion": "cv2 decoded frames; replay.motion_for_rows at matched frame_id; no detections replayed"
+}

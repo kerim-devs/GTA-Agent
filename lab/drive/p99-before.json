@@ -1,0 +1,741 @@
+{
+  "simulator": [
+    {
+      "profile": "nominal",
+      "scenario": "behind",
+      "aligned_at": 5.333333333333324,
+      "joined_at": null,
+      "x": 0.17610248119086402,
+      "y": 42.88404566794184,
+      "speed": 7.654836985070373,
+      "heading": 0.1485433431658257,
+      "travel": 52.09959462703262,
+      "reverse_seconds": 3.1999999999999984,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 186,
+        "coast": 36,
+        "turn-reverse": 96,
+        "turn-forward": 42
+      }
+    },
+    {
+      "profile": "nominal",
+      "scenario": "join",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": 12.999999999999964,
+      "x": -23.883533758003896,
+      "y": 185.81667317982948,
+      "speed": 7.999199965246957,
+      "heading": 6.259107290951288,
+      "travel": 207.87291474081013,
+      "reverse_seconds": 0.0,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 797,
+        "turn-forward": 101,
+        "coast": 2
+      }
+    },
+    {
+      "profile": "nominal",
+      "scenario": "rail",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": null,
+      "x": -11.999678884395843,
+      "y": 28.25953819416285,
+      "speed": 0.0,
+      "heading": -93.74145978691581,
+      "travel": 69.2060074846828,
+      "reverse_seconds": 5.033333333333325,
+      "collisions": 460,
+      "state": "follow",
+      "states": {
+        "follow": 406,
+        "turn-forward": 101,
+        "coast": 2,
+        "recovery-reverse": 151,
+        "recovery-forward": 240
+      }
+    },
+    {
+      "profile": "range-00",
+      "scenario": "behind",
+      "aligned_at": 6.4666666666666535,
+      "joined_at": null,
+      "x": 0.5132035743059553,
+      "y": 27.283780314869396,
+      "speed": 5.033480529628134,
+      "heading": -4.320799279191904,
+      "travel": 34.21423847986458,
+      "reverse_seconds": 3.2333333333333316,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 151,
+        "coast": 35,
+        "turn-reverse": 97,
+        "turn-forward": 77
+      }
+    },
+    {
+      "profile": "range-00",
+      "scenario": "join",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": 15.699999999999955,
+      "x": -24.471229254359073,
+      "y": 120.68443018506561,
+      "speed": 5.332742040396561,
+      "heading": 0.5061351025673198,
+      "travel": 139.61658918429677,
+      "reverse_seconds": 0.0,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 781,
+        "turn-forward": 114,
+        "coast": 5
+      }
+    },
+    {
+      "profile": "range-00",
+      "scenario": "rail",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": null,
+      "x": -6.765542189827039,
+      "y": 19.783852086557214,
+      "speed": 1.971947351164599,
+      "heading": -88.73048255389976,
+      "travel": 52.90948036126526,
+      "reverse_seconds": 5.033333333333325,
+      "collisions": 432,
+      "state": "follow",
+      "states": {
+        "follow": 390,
+        "turn-forward": 114,
+        "coast": 5,
+        "recovery-reverse": 151,
+        "recovery-forward": 240
+      }
+    },
+    {
+      "profile": "range-01",
+      "scenario": "behind",
+      "aligned_at": 5.766666666666656,
+      "joined_at": null,
+      "x": 0.6322624183995226,
+      "y": 43.880624301054425,
+      "speed": 7.678316651021026,
+      "heading": -1.2956510749144288,
+      "travel": 51.193349041987915,
+      "reverse_seconds": 3.2333333333333316,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 171,
+        "coast": 37,
+        "turn-reverse": 97,
+        "turn-forward": 55
+      }
+    },
+    {
+      "profile": "range-01",
+      "scenario": "join",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": null,
+      "x": -4.238938595143975,
+      "y": 107.58043020088408,
+      "speed": 3.3560776596656705,
+      "heading": -68.36461023563896,
+      "travel": 168.4299980545592,
+      "reverse_seconds": 0.0,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 587,
+        "turn-forward": 309,
+        "coast": 4
+      }
+    },
+    {
+      "profile": "range-01",
+      "scenario": "rail",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": null,
+      "x": -9.58752412536618,
+      "y": 33.653926414186934,
+      "speed": 3.469309933394228,
+      "heading": -91.22414474056019,
+      "travel": 70.34873712904307,
+      "reverse_seconds": 5.033333333333325,
+      "collisions": 436,
+      "state": "follow",
+      "states": {
+        "follow": 406,
+        "turn-forward": 99,
+        "coast": 4,
+        "recovery-reverse": 151,
+        "recovery-forward": 240
+      }
+    },
+    {
+      "profile": "range-02",
+      "scenario": "behind",
+      "aligned_at": 5.466666666666657,
+      "joined_at": null,
+      "x": 0.2034629517599715,
+      "y": 70.36851270767045,
+      "speed": 12.0,
+      "heading": 0.23537186744349414,
+      "travel": 78.92467260144961,
+      "reverse_seconds": 3.3666666666666645,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 179,
+        "coast": 33,
+        "turn-reverse": 101,
+        "turn-forward": 47
+      }
+    },
+    {
+      "profile": "range-02",
+      "scenario": "join",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": 18.566666666666748,
+      "x": -24.777399695555022,
+      "y": 193.7707311735868,
+      "speed": 11.046458349941474,
+      "heading": -0.9407159342076302,
+      "travel": 233.40865272389098,
+      "reverse_seconds": 2.500000000000001,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 712,
+        "turn-forward": 119,
+        "coast": 10,
+        "turn-reverse": 59
+      }
+    },
+    {
+      "profile": "range-02",
+      "scenario": "rail",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": null,
+      "x": -11.99879392476237,
+      "y": 42.79446885175707,
+      "speed": 0.0,
+      "heading": -93.7818222926867,
+      "travel": 83.9477900847454,
+      "reverse_seconds": 5.633333333333323,
+      "collisions": 506,
+      "state": "follow",
+      "states": {
+        "follow": 422,
+        "turn-forward": 77,
+        "coast": 10,
+        "recovery-reverse": 151,
+        "recovery-forward": 240
+      }
+    },
+    {
+      "profile": "range-10",
+      "scenario": "behind",
+      "aligned_at": 6.033333333333322,
+      "joined_at": null,
+      "x": 0.7906770896161568,
+      "y": 27.142630861167603,
+      "speed": 5.0569228332768805,
+      "heading": -3.136626026611778,
+      "travel": 34.80166994118782,
+      "reverse_seconds": 3.2333333333333316,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 166,
+        "coast": 36,
+        "turn-reverse": 97,
+        "turn-forward": 61
+      }
+    },
+    {
+      "profile": "range-10",
+      "scenario": "join",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": 8.966666666666645,
+      "x": -23.97814174443643,
+      "y": 129.90089879745054,
+      "speed": 5.33329280554214,
+      "heading": -2.811524572557702,
+      "travel": 146.31835129060553,
+      "reverse_seconds": 0.0,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 779,
+        "turn-forward": 111,
+        "coast": 10
+      }
+    },
+    {
+      "profile": "range-10",
+      "scenario": "rail",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": null,
+      "x": -9.300054823690548,
+      "y": 16.14238235400804,
+      "speed": 3.1611909993820864,
+      "heading": -87.14661192488532,
+      "travel": 51.975793589966045,
+      "reverse_seconds": 5.033333333333325,
+      "collisions": 429,
+      "state": "follow",
+      "states": {
+        "follow": 388,
+        "turn-forward": 111,
+        "coast": 10,
+        "recovery-reverse": 151,
+        "recovery-forward": 240
+      }
+    },
+    {
+      "profile": "range-11",
+      "scenario": "behind",
+      "aligned_at": 5.266666666666658,
+      "joined_at": null,
+      "x": 0.20686507681994384,
+      "y": 43.838504265394405,
+      "speed": 7.701342276160559,
+      "heading": -0.14950773250021637,
+      "travel": 52.745823859051306,
+      "reverse_seconds": 3.133333333333332,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 186,
+        "coast": 35,
+        "turn-reverse": 94,
+        "turn-forward": 45
+      }
+    },
+    {
+      "profile": "range-11",
+      "scenario": "join",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": 12.999999999999964,
+      "x": -23.883533758003896,
+      "y": 185.81667317982948,
+      "speed": 7.999199965246957,
+      "heading": 6.259107290951288,
+      "travel": 207.87291474081013,
+      "reverse_seconds": 0.0,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 797,
+        "turn-forward": 101,
+        "coast": 2
+      }
+    },
+    {
+      "profile": "range-11",
+      "scenario": "rail",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": null,
+      "x": -11.999678884395843,
+      "y": 28.25953819416285,
+      "speed": 0.0,
+      "heading": -93.74145978691581,
+      "travel": 69.2060074846828,
+      "reverse_seconds": 5.033333333333325,
+      "collisions": 460,
+      "state": "follow",
+      "states": {
+        "follow": 406,
+        "turn-forward": 101,
+        "coast": 2,
+        "recovery-reverse": 151,
+        "recovery-forward": 240
+      }
+    },
+    {
+      "profile": "range-12",
+      "scenario": "behind",
+      "aligned_at": 4.999999999999992,
+      "joined_at": null,
+      "x": 0.1196923964740833,
+      "y": 72.06687716431891,
+      "speed": 11.486736072285224,
+      "heading": 5.344481211756198,
+      "travel": 79.62526991977727,
+      "reverse_seconds": 3.0333333333333323,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 194,
+        "coast": 35,
+        "turn-reverse": 91,
+        "turn-forward": 40
+      }
+    },
+    {
+      "profile": "range-12",
+      "scenario": "join",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": 22.500000000000277,
+      "x": -23.92205183853846,
+      "y": 204.16072532126526,
+      "speed": 11.729561247869885,
+      "heading": -5.263789086518846,
+      "travel": 247.3962645673357,
+      "reverse_seconds": 1.1,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 740,
+        "turn-forward": 150,
+        "coast": 10
+      }
+    },
+    {
+      "profile": "range-12",
+      "scenario": "rail",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": null,
+      "x": -11.998510915965943,
+      "y": 39.97039859350883,
+      "speed": 0.0,
+      "heading": -88.15992702854379,
+      "travel": 78.72987213032422,
+      "reverse_seconds": 5.399999999999991,
+      "collisions": 613,
+      "state": "follow",
+      "states": {
+        "follow": 406,
+        "turn-forward": 93,
+        "coast": 10,
+        "recovery-reverse": 151,
+        "recovery-forward": 240
+      }
+    },
+    {
+      "profile": "range-20",
+      "scenario": "behind",
+      "aligned_at": 6.133333333333321,
+      "joined_at": null,
+      "x": 0.188123924143967,
+      "y": 25.683020328809555,
+      "speed": 5.0454507780791165,
+      "heading": 2.0059945134769297,
+      "travel": 34.369477520888246,
+      "reverse_seconds": 3.2333333333333316,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 165,
+        "coast": 37,
+        "turn-reverse": 97,
+        "turn-forward": 61
+      }
+    },
+    {
+      "profile": "range-20",
+      "scenario": "join",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": 8.79999999999998,
+      "x": -24.10637698443544,
+      "y": 129.93106205090697,
+      "speed": 5.33329162439693,
+      "heading": 0.025038581392084362,
+      "travel": 146.18738420085796,
+      "reverse_seconds": 0.0,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 777,
+        "turn-forward": 113,
+        "coast": 10
+      }
+    },
+    {
+      "profile": "range-20",
+      "scenario": "rail",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": null,
+      "x": -8.021242383793501,
+      "y": 15.157463882673516,
+      "speed": 2.6915640965383,
+      "heading": -89.6079456505771,
+      "travel": 50.45381963197376,
+      "reverse_seconds": 5.033333333333325,
+      "collisions": 456,
+      "state": "follow",
+      "states": {
+        "follow": 386,
+        "turn-forward": 113,
+        "coast": 10,
+        "recovery-reverse": 151,
+        "recovery-forward": 240
+      }
+    },
+    {
+      "profile": "range-21",
+      "scenario": "behind",
+      "aligned_at": 5.399999999999991,
+      "joined_at": null,
+      "x": 0.32075458347412844,
+      "y": 42.05582509739249,
+      "speed": 7.672117191647084,
+      "heading": 1.1815641555055154,
+      "travel": 51.1243224756288,
+      "reverse_seconds": 3.1999999999999984,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 182,
+        "coast": 38,
+        "turn-reverse": 96,
+        "turn-forward": 44
+      }
+    },
+    {
+      "profile": "range-21",
+      "scenario": "join",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": 7.733333333333316,
+      "x": -24.151555330939715,
+      "y": 198.62212171181412,
+      "speed": 7.999840302243853,
+      "heading": 7.41115665214265,
+      "travel": 219.11108284278785,
+      "reverse_seconds": 0.0,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 797,
+        "turn-forward": 103
+      }
+    },
+    {
+      "profile": "range-21",
+      "scenario": "rail",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": null,
+      "x": -11.999874367931163,
+      "y": 22.49925180276385,
+      "speed": 0.0,
+      "heading": -92.88427456343571,
+      "travel": 63.89512426667244,
+      "reverse_seconds": 5.033333333333325,
+      "collisions": 538,
+      "state": "follow",
+      "states": {
+        "follow": 406,
+        "turn-forward": 103,
+        "recovery-reverse": 151,
+        "recovery-forward": 240
+      }
+    },
+    {
+      "profile": "range-22",
+      "scenario": "behind",
+      "aligned_at": 4.7666666666666595,
+      "joined_at": null,
+      "x": 0.003520294555692232,
+      "y": 58.499454172605326,
+      "speed": 8.0,
+      "heading": -11.02491931817311,
+      "travel": 66.08156485778836,
+      "reverse_seconds": 2.999999999999999,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 202,
+        "coast": 30,
+        "turn-reverse": 90,
+        "turn-forward": 38
+      }
+    },
+    {
+      "profile": "range-22",
+      "scenario": "join",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": 10.46666666666664,
+      "x": -23.965848153485624,
+      "y": 206.70725508178143,
+      "speed": 8.0,
+      "heading": -9.374485791160561,
+      "travel": 230.41430962642318,
+      "reverse_seconds": 0.0,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 802,
+        "turn-forward": 96,
+        "coast": 2
+      }
+    },
+    {
+      "profile": "range-22",
+      "scenario": "rail",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": null,
+      "x": -11.998646985882035,
+      "y": 27.998706962143462,
+      "speed": 0.0,
+      "heading": -93.55590011644357,
+      "travel": 70.3168675298747,
+      "reverse_seconds": 5.033333333333325,
+      "collisions": 629,
+      "state": "failed-recovery",
+      "states": {
+        "follow": 394,
+        "turn-forward": 96,
+        "coast": 2,
+        "recovery-reverse": 151,
+        "recovery-forward": 240,
+        "failed-recovery": 17
+      }
+    },
+    {
+      "profile": "fast-low-grip",
+      "scenario": "behind",
+      "aligned_at": 5.666666666666656,
+      "joined_at": null,
+      "x": -0.14625313962654715,
+      "y": 71.34562724317642,
+      "speed": 12.04563455253981,
+      "heading": -1.5418320792568507,
+      "travel": 79.01196121396866,
+      "reverse_seconds": 3.266666666666665,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 171,
+        "coast": 34,
+        "turn-reverse": 98,
+        "turn-forward": 57
+      }
+    },
+    {
+      "profile": "fast-low-grip",
+      "scenario": "join",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": 20.433333333333508,
+      "x": -23.535795231027812,
+      "y": 169.41112266101985,
+      "speed": 12.116013265942591,
+      "heading": 1.4161620636023946,
+      "travel": 214.9068282932766,
+      "reverse_seconds": 3.9999999999999956,
+      "collisions": 0,
+      "state": "follow",
+      "states": {
+        "follow": 668,
+        "turn-forward": 119,
+        "coast": 10,
+        "turn-reverse": 103
+      }
+    },
+    {
+      "profile": "fast-low-grip",
+      "scenario": "rail",
+      "aligned_at": 0.03333333333333333,
+      "joined_at": null,
+      "x": -11.999586966242463,
+      "y": 43.21565526485318,
+      "speed": 0.0,
+      "heading": -94.009327784856,
+      "travel": 84.3964221836171,
+      "reverse_seconds": 5.666666666666656,
+      "collisions": 502,
+      "state": "follow",
+      "states": {
+        "follow": 422,
+        "turn-forward": 77,
+        "coast": 10,
+        "recovery-reverse": 151,
+        "recovery-forward": 240
+      }
+    }
+  ],
+  "replay": {
+    "ticks": 586,
+    "states": {
+      "follow": 103,
+      "turn-forward": 146,
+      "coast": 8,
+      "failed-recovery": 329
+    },
+    "transitions": [
+      [
+        9.712,
+        "follow"
+      ],
+      [
+        10.553,
+        "turn-forward"
+      ],
+      [
+        11.077,
+        "coast"
+      ],
+      [
+        11.184,
+        "turn-forward"
+      ],
+      [
+        11.221,
+        "coast"
+      ],
+      [
+        11.423,
+        "turn-forward"
+      ],
+      [
+        12.264,
+        "follow"
+      ],
+      [
+        15.164,
+        "turn-forward"
+      ],
+      [
+        16.175,
+        "follow"
+      ],
+      [
+        16.209,
+        "turn-forward"
+      ],
+      [
+        17.226,
+        "follow"
+      ],
+      [
+        17.259,
+        "turn-forward"
+      ],
+      [
+        18.275,
+        "follow"
+      ],
+      [
+        18.311,
+        "turn-forward"
+      ],
+      [
+        19.324,
+        "follow"
+      ],
+      [
+        19.359,
+        "failed-recovery"
+      ]
+    ],
+    "first_failure": 19.35859045899997
+  }
+}
