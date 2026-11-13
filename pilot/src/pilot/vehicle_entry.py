@@ -126,18 +126,24 @@ class EnterVehicle:
         "duration": (0.1, MAX_SECONDS, MAX_SECONDS),
         "kind": ("any", "car", "motorcycle"),
         "occupied": ("avoid", "allow"),
+        "traffic": (False, True),
     }
     prompt = (
-        "Enter a reachable vehicle, one within reach first. occupied=avoid (default) passes over one with "
-        "a driver seen, allow takes it. A moving, locked or avoided vehicle does not hold the search: it "
-        "stands at most 3 s per vehicle to see one clearly, then looks on. Only sustained seated proof "
-        "succeeds; a timeout says what was seen."
+        "Enter a reachable vehicle, parked candidates first. occupied=avoid skips seen drivers; "
+        "allow permits them. traffic=true waits at the road for a stopped reachable car or "
+        "motorcycle and allows drivers by default, excluding buses/trucks. After a traffic "
+        "timeout walk along the road before waiting again. Only sustained seated proof succeeds."
     )
 
     def __init__(self, args: dict):
         self.profile = active()
         if not isinstance(args, dict) or set(args) - self.parameters.keys():
             raise ValueError("unknown enter_vehicle arguments")
+        self.traffic = args.get("traffic", False)
+        if not isinstance(self.traffic, bool):
+            raise ValueError("traffic must be true or false")
+        self.door_target = None
+        self.door_since = None
         duration = args.get("duration", MAX_SECONDS)
         if (
             isinstance(duration, bool)
@@ -149,7 +155,7 @@ class EnterVehicle:
         self.kind = args.get("kind", "any")
         if self.kind not in self.parameters["kind"]:
             raise ValueError("kind must be any, car, or motorcycle")
-        self.occupied = args.get("occupied", "avoid")
+        self.occupied = args.get("occupied", "allow" if self.traffic else "avoid")
         if self.occupied not in self.parameters["occupied"]:
             raise ValueError("occupied must be avoid or allow")
         self.started = self.last_time = self.capture = None
@@ -184,6 +190,9 @@ class EnterVehicle:
         return self.finished
 
     def _timeout_reason(self):
+        if self.traffic:
+            detail = self.last_problem or "nothing found; no stopped reachable car or motorcycle"
+            return detail + "; traffic wait ended" + self._saw()
         if not self.saw_delivery:
             return "no detections delivered at all"
         if self.last_problem:
@@ -229,6 +238,7 @@ class EnterVehicle:
     def _observe(self, obs):
         if obs.objects_time == self.capture:
             return
+        previous_capture = self.capture
         self.capture = obs.objects_time
         unmatched = list(self.vehicles)
         visible = []
@@ -261,6 +271,18 @@ class EnterVehicle:
                 unmatched.remove(vehicle)
                 if hint:
                     vehicle.last_hint = self.capture
+                # A stopped target can pull away between the slower motion windows.
+                # Any new displacement cancels the traffic approach immediately; movement
+                # caused by our own approach is ambiguous and must settle again as well.
+                if self.traffic and previous_capture is not None:
+                    sample_span = self.capture - previous_capture
+                    if sample_span > 0:
+                        drift = math.dist(center(obj), center(vehicle.obj)) / sample_span
+                        scale = (obj.box[3] - obj.box[1]) / (vehicle.obj.box[3] - vehicle.obj.box[1])
+                        if drift > 0.16 or not 0.85 <= scale <= 1.20:
+                            vehicle.motion = "moving" if self.previous_pad.left == (0, 0) else "unknown"
+                            vehicle.moved |= vehicle.motion == "moving"
+                            vehicle.anchor, vehicle.anchor_time = obj, self.capture
                 span = self.capture - vehicle.anchor_time
                 if span >= 0.4:
                     # Large camera turns make box displacement ambiguous; do not call it traffic.
@@ -312,6 +334,9 @@ class EnterVehicle:
             self.road_problem = None
 
     def _search(self, obs, elapsed):
+        if self.traffic:
+            self.door_target = None
+            return SkillResult()
         if self._in_lane():
             return self._retreat()
         # Stand still only for a vehicle that may still be taken and is not yet seen clearly, and for
@@ -347,10 +372,19 @@ class EnterVehicle:
         )
 
     def _eligible(self, vehicle):
+        if self.traffic and vehicle is not None and vehicle.obj.kind not in {"car", "motorcycle"}:
+            return False
         if vehicle is None or not self._may_take(vehicle):
             return False
         if vehicle.driver_since is not None and vehicle.occupancy != "occupied":
             return False  # a person box was just seen inside: the next detection says if it stays
+        if self.traffic:
+            return (
+                vehicle.obj.kind in {"car", "motorcycle"}
+                and vehicle.motion == "standing"
+                and within_reach(vehicle.obj)
+                and (self._at_side() or self._in_lane())
+            )
         if self._in_lane():
             return vehicle.motion == "standing" and vehicle.occupancy != "occupied"
         if self._at_side() and not within_reach(vehicle.obj) and vehicle.motion != "standing":
@@ -368,6 +402,9 @@ class EnterVehicle:
             return self.finished
         try:
             result = self._step(observation)
+            if self.traffic and result.status == "failed" and "; traffic wait ended" not in result.reason:
+                result = replace(result, reason=result.reason + "; traffic wait ended")
+                self.finished = result
             self.previous_pad = result.pad
             return result
         except Exception:
@@ -391,6 +428,9 @@ class EnterVehicle:
             if location is not None and location.position == "lane":
                 reason += "; still-in-lane"
             return self.stop(reason)
+        if self.traffic and obs.reading.corrupt:
+            self.confirmed_since = None
+            return SkillResult()
         fresh = (
             obs.objects_time is not None
             and math.isfinite(obs.objects_time)
@@ -424,6 +464,8 @@ class EnterVehicle:
                 )
                 return self.finished
             return SkillResult()
+        if self.traffic and not fresh:
+            return SkillResult()
         if self.phase == "wait" and now - self.phase_since < PRESS_SECONDS:
             return SkillResult(Pad(buttons=(self.profile.enter_vehicle,)))
         if obs.reading.corrupt and self.confirmed_since is not None:
@@ -450,7 +492,7 @@ class EnterVehicle:
             # At the side, or the map says nothing: a retreat needs a lane reading, without one it is over.
             self.retreating = False
             self.phase = "approach"
-        if self.phase == "wait" and in_lane and self.lane_since is not None:
+        if self.phase == "wait" and in_lane and self.lane_since is not None and not self.traffic:
             if now - max(self.phase_since, self.lane_since) >= LANE_WAIT:
                 self.last_problem = "entry unconfirmed in lane; retreated"
                 self.entry_target.rejected = True
@@ -502,6 +544,15 @@ class EnterVehicle:
             return SkillResult()
         self.saw_target = True
         self.walk_pad = None
+        if self.traffic and self.door_target is not self.target:
+            self.phase = "approach"
+        if self.traffic and self.phase != "tap":
+            if self.door_target is not self.target:
+                self.door_target, self.door_since = self.target, now
+            if now - self.door_since < 0.3:
+                # The detector has no door keypoint. A short side approach uses the
+                # same bounded correction as an entry retry, only beside stopped traffic.
+                return SkillResult(approach(self.target.obj, retry=True))
         if self.phase == "tap":
             # A vehicle box also surrounds the player's own car. A press needs the figure on foot:
             # the judge's word, which no longer says so against a tilted map before three seconds

@@ -114,6 +114,7 @@ class Errand:
     arrived: bool = False
     seen_wanted: bool = False
     seen_route: bool = False
+    roadside: bool = False
 
     def data(self):
         return {
@@ -636,6 +637,21 @@ class Errands:
         if self.active is None:
             goal = self._start(request, seat, cars, wanted)
             plan = None
+        if goal.step in {"travel", "replace_car"} and seat != "vehicle":
+            if done and skill == "walk_road":
+                goal.roadside = reason.startswith("road-side")
+            if failed and skill == "enter_vehicle":
+                if "; traffic wait ended" in reason:
+                    goal.roadside = False
+                    if plan is None:
+                        plan = [call("walk_road", duration=8, toward_waypoint=True)]
+                        note = "traffic wait ended; continue along the road before waiting again"
+                elif goal.roadside and plan is None:
+                    plan = [call("enter_vehicle", duration=25, kind="any", traffic=True)]
+                    note = "parked entry failed; wait for stopped reachable traffic"
+        if seat == "vehicle":
+            goal.roadside = False
+
         if plan is None:
             if goal.step == "replace_car":
                 if seat == "vehicle":
@@ -653,11 +669,12 @@ class Errands:
                     goal.exits = 0
                     free_step = True
                     goal.step = goal.resume
-                    plan = (
-                        [call("enter_vehicle", duration=25, kind="any")]
-                        if cars
-                        else [call("walk_road", duration=15)]
-                    )
+                    if cars:
+                        plan = [call("enter_vehicle", duration=25, kind="any")]
+                    elif goal.roadside:
+                        plan = [call("enter_vehicle", duration=25, kind="any", traffic=True)]
+                    else:
+                        plan = [call("walk_road", duration=15)]
             elif goal.name == "escape" or (goal.name == "mayhem" and goal.step == "escape"):
                 if done and wanted == 0 and skill in {"walk", "get_away"}:
                     self.end(request, "escape movement completed without stars", reached=True)
@@ -725,11 +742,12 @@ class Errands:
                 elif goal.distance is not None and goal.distance <= 250:
                     plan = [call("walk_to_point", duration=60, sprint=True)]
                 else:
-                    plan = (
-                        [call("enter_vehicle", duration=25, kind="any")]
-                        if cars
-                        else [call("walk_road", duration=15)]
-                    )
+                    if cars:
+                        plan = [call("enter_vehicle", duration=25, kind="any")]
+                    elif goal.roadside:
+                        plan = [call("enter_vehicle", duration=25, kind="any", traffic=True)]
+                    else:
+                        plan = [call("walk_road", duration=15)]
             elif goal.step == "approach":
                 if seat == "vehicle":
                     goal.step = "exit"

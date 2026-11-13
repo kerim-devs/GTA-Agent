@@ -566,9 +566,13 @@ class WalkRoad:
     """Walk to the nearest road the minimap shows and then along it, getting free on the way."""
 
     name = "walk_road"
-    parameters: ClassVar = {"duration": (2.0, 30.0, 15.0), "sprint": (False, True)}
+    parameters: ClassVar = {
+        "duration": (2.0, 30.0, 15.0),
+        "sprint": (False, True),
+        "toward_waypoint": (False, True),
+    }
     prompt = (
-        "On foot: walk to the nearest road the minimap shows, then along it the way the figure faces; "
+        "Walk to the nearest road, then along it. toward_waypoint=true follows a readable route direction; "
         "leaves the carriageway where the map shows the figure in it; holds a compass heading off-road "
         "and turns away from walls. Ends done at its time limit, saying road-side or side unknown. "
         "Fails stuck when four ways round have failed."
@@ -583,7 +587,7 @@ class WalkRoad:
 
     def __init__(self, args: dict):
         if not isinstance(args, dict) or set(args) - self.parameters.keys():
-            raise ValueError("walk_road accepts only duration and sprint")
+            raise ValueError("walk_road accepts only duration, sprint and toward_waypoint")
         low, high, default = self.parameters["duration"]
         value = args.get("duration", default)
         if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
@@ -593,6 +597,9 @@ class WalkRoad:
             raise ValueError("sprint must be true or false")
         self.limit = float(max(low, min(high, value)))
         self.sprint = sprint
+        self.toward_waypoint = args.get("toward_waypoint", False)
+        if not isinstance(self.toward_waypoint, bool):
+            raise ValueError("toward_waypoint must be true or false")
         self.profile = active()
         self.guard = FootGuard()
         self.started = None
@@ -647,7 +654,19 @@ class WalkRoad:
         if road is not None:
             self.road_seen = True
             self.readable = 0.0
-            self.heading = self._bearing(road, observation.reading.arrow, now)
+            reading = observation.reading
+            waypoint = reading.bearing
+            if not (
+                self.toward_waypoint
+                and not reading.corrupt
+                and reading.confidence >= 0.45
+                and reading.route in {"yellow", "purple"}
+                and isinstance(waypoint, (int, float))
+                and not isinstance(waypoint, bool)
+                and math.isfinite(waypoint)
+            ):
+                waypoint = None
+            self.heading = self._bearing(road, reading.arrow, now, waypoint)
             if self.north is not None:
                 self.compass_heading = _wrap(self.heading - self.north)
         elif crop_ok(crop):
@@ -715,7 +734,7 @@ class WalkRoad:
             self.finished = SkillResult(status="done", reason="time-limit; roadside not reached")
         return self.finished
 
-    def _bearing(self, road: Road, arrow: float | None, now: float) -> float:
+    def _bearing(self, road: Road, arrow: float | None, now: float, waypoint: float | None = None) -> float:
         # The runner reads this for road_reached, whether or not the edges could be told.
         if road.distance > _ON_ROAD_R:
             self.on_road_since = None
@@ -743,6 +762,8 @@ class WalkRoad:
         # Along the road, the way nearer to where the figure faces, and that way kept: the map turns
         # under the camera, so the choice is renewed against the last one, not against the arrow.
         reference = self.sense if self.sense is not None else (arrow if arrow is not None else 0.0)
+        if waypoint is not None:
+            reference = waypoint
         forward = road.along if abs(_wrap(road.along - reference)) <= 90 else _wrap(road.along + 180)
         self.sense = forward
         return forward

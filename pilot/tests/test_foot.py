@@ -676,3 +676,49 @@ def test_a_way_round_that_turns_toward_the_carriageway_is_not_taken_at_a_known_e
     assert result.pad.left == pytest.approx(
         (math.sin(math.radians(road.outward)) * 0.85, -math.cos(math.radians(road.outward)) * 0.85)
     )
+
+
+@pytest.mark.parametrize("toward_waypoint", [False, True])
+def test_post_traffic_walk_follows_road_toward_readable_waypoint(toward_waypoint):
+    from dataclasses import replace
+
+    skill = WalkRoad({"duration": 4, "toward_waypoint": toward_waypoint})
+    for time in (0, 0.4, 0.8, 1.2):
+        observation = obs(time, frame=road_frame(-12), moving=True)
+        observation = replace(observation, reading=replace(observation.reading, route="purple", bearing=180))
+        result = skill.step(observation)
+    assert result.status == "running"
+    assert abs(result.pad.left[0]) < 0.1
+    assert result.pad.left[1] > 0.8 if toward_waypoint else result.pad.left[1] < -0.8
+
+
+@pytest.mark.parametrize(
+    "bearing,route",
+    [(None, "purple"), (float("nan"), "purple"), (float("inf"), "purple"), (True, "purple"), (180, "none")],
+)
+def test_post_traffic_walk_ignores_unreadable_waypoint(bearing, route):
+    from dataclasses import replace
+
+    skill = WalkRoad({"duration": 4, "toward_waypoint": True})
+    for time in (0, 0.4, 0.8, 1.2):
+        observation = obs(time, frame=road_frame(-12), moving=True)
+        observation = replace(observation, reading=replace(observation.reading, route=route, bearing=bearing))
+        result = skill.step(observation)
+    assert result.status == "running"
+    assert result.pad.left[1] < -0.8
+
+
+def test_post_traffic_walk_leaves_lane_before_following_waypoint():
+    from dataclasses import replace
+
+    skill = WalkRoad({"toward_waypoint": True})
+    observation = obs(0, frame=road_frame(), moving=True)
+    observation = replace(observation, reading=replace(observation.reading, route="purple", bearing=180))
+    result = skill.step(observation)
+    assert abs(result.pad.left[0]) > 0.8
+    assert abs(result.pad.left[1]) < 0.05
+
+
+def test_post_traffic_walk_validates_direction_flag():
+    with pytest.raises(ValueError, match="toward_waypoint must be true or false"):
+        WalkRoad({"toward_waypoint": "yes"})

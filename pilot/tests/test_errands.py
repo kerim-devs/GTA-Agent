@@ -492,3 +492,82 @@ def test_story_twenty_second_timeout_can_interrupt_a_running_wait():
     assert names(answer) == ["set_waypoint"]
     assert answer.plan[0].args["instance"] == 1
     assert head.goals.history[-2]["reason"] == "letter did not start a mission"
+
+
+def at_road_without_car():
+    world = World(head_for("story"), 1000)
+    world.tick()
+    answer = world.head.decide(replace(request(3, last=world.last, route="purple"), objects=[]))
+    assert names(answer) == ["walk_road"]
+    return world.head
+
+
+def test_roadside_no_car_waits_then_walks_before_waiting_again():
+    head = at_road_without_car()
+    side = result("walk_road", "road-side (map band; kerb unverified)")
+    answer = head.decide(replace(request(20, last=side, route="purple"), objects=[]))
+    assert names(answer) == ["enter_vehicle"]
+    assert answer.plan[0].args["traffic"] is True
+    assert parse_response(response_data(answer)) == answer
+    timeout = result(
+        "enter_vehicle", "nothing found; no stopped reachable car or motorcycle; traffic wait ended", "failed"
+    )
+    answer = head.decide(replace(request(46, last=timeout, route="purple"), objects=[]))
+    assert names(answer) == ["walk_road"]
+    assert answer.plan[0].args["duration"] == 8
+    assert answer.plan[0].args["toward_waypoint"] is True
+    answer = head.decide(replace(request(55, last=side, route="purple"), objects=[]))
+    assert names(answer) == ["enter_vehicle"]
+    assert answer.plan[0].args["traffic"] is True
+
+
+def test_visible_parked_choice_precedes_traffic_wait_at_roadside():
+    head = at_road_without_car()
+    side = result("walk_road", "road-side (map band; kerb unverified)")
+    answer = head.decide(request(20, last=side, route="purple"))
+    assert names(answer) == ["enter_vehicle"]
+    assert not answer.plan[0].args.get("traffic", False)
+    failed = result(
+        "enter_vehicle", "nothing found; saw 1 vehicle (rejected 0, avoided 0, moving 1)", "failed"
+    )
+    answer = head.decide(request(46, last=failed, route="purple"))
+    assert answer.plan[0].args["traffic"] is True
+
+
+def test_unknown_roadside_is_not_a_traffic_wait_location():
+    head = at_road_without_car()
+    unknown = result("walk_road", "side unknown")
+    answer = head.decide(replace(request(20, last=unknown), objects=[]))
+    assert names(answer) == ["walk_road"]
+
+
+def test_replacement_car_uses_the_roadside_wait():
+    head = at_road_without_car()
+    head.goals.active.step = "replace_car"
+    side = result("walk_road", "road-side (map band; kerb unverified)")
+    answer = head.decide(replace(request(20, last=side), objects=[]))
+    assert names(answer) == ["enter_vehicle"]
+    assert answer.plan[0].args["traffic"] is True
+
+
+def test_wanted_after_traffic_attempt_still_plans_escape():
+    head = at_road_without_car()
+    side = result("walk_road", "road-side (map band; kerb unverified)")
+    head.decide(replace(request(20, last=side), objects=[]))
+    entered = result("enter_vehicle", "entered vehicle; occupancy=occupied")
+    answer = head.decide(request(28, mode="vehicle", wanted=1, last=entered))
+    assert "get_away" in names(answer)
+    assert "enter_vehicle" not in names(answer)
+    assert "walk_road" not in names(answer)
+
+
+def test_wanted_during_traffic_wait_still_plans_escape():
+    head = at_road_without_car()
+    side = result("walk_road", "road-side (map band; kerb unverified)")
+    head.decide(replace(request(20, last=side), objects=[]))
+    running = result("enter_vehicle", "waiting for stopped reachable traffic", "running")
+    answer = head.decide(replace(request(22, wanted=1, last=running), objects=[]))
+    assert answer.step == "escape"
+    assert names(answer) == ["walk"]
+    assert answer.plan[0].args["sprint"] is True
+    assert "stars" in answer.reason

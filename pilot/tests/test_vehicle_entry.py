@@ -797,3 +797,143 @@ def test_parked_is_claimed_only_for_a_vehicle_seen_standing_with_no_person_box()
     hinted = run(hint_at=(0.2,))
     assert hinted[0.45] == "unknown" and hinted[0.75] == "unknown"
     assert hinted[0.85] == "parked-candidate"  # a clear span of 0.4 s after the hint, and only then
+
+
+@pytest.fixture
+def traffic_side(monkeypatch):
+    from types import SimpleNamespace
+
+    monkeypatch.setattr(
+        "pilot.vehicle_entry.road_position",
+        lambda observation: SimpleNamespace(position="side", outward=0),
+    )
+
+
+def test_traffic_wait_stays_neutral_without_a_car_and_times_out(traffic_side):
+    skill = EnterVehicle({"traffic": True, "duration": 3})
+    for time in (0, 0.5, 1, 2):
+        result = skill.step(obs(time, objects=()))
+        assert result.status == "running"
+        assert result.pad == NEUTRAL_PAD
+    result = skill.step(obs(3, objects=()))
+    assert result.status == "failed"
+    assert result.reason.startswith("nothing found; no stopped reachable")
+    assert "; traffic wait ended" in result.reason
+    from pilot.bench import reason_rule
+
+    assert reason_rule(result.reason)[0]
+    assert result.pad == NEUTRAL_PAD
+    assert skill.road is None
+
+
+@pytest.mark.parametrize("kind", ["bus", "truck", "police", "ambulance"])
+def test_traffic_wait_rejects_identifiable_large_and_emergency_vehicles(traffic_side, kind):
+    skill = EnterVehicle({"traffic": True, "duration": 3})
+    for time in (0, 0.5, 1, 1.5, 2, 2.5):
+        result = skill.step(obs(time, objects=(replace(NEAR, kind=kind),)))
+        assert result.pad == NEUTRAL_PAD
+        assert skill.attempts == 0
+
+
+def test_traffic_passes_then_stops_before_door_approach_and_press(traffic_side):
+    skill = EnterVehicle({"traffic": True, "duration": 12})
+
+    def car(offset):
+        return replace(NEAR, box=px(0.30 + offset, 0.45, 0.70 + offset, 0.90))
+
+    for time, offset in ((0, 0), (0.4, 0.09), (0.8, 0.18)):
+        result = skill.step(obs(time, objects=(car(offset),)))
+        assert result.pad == NEUTRAL_PAD
+    assert skill.vehicles[0].moved
+    stopped = car(0.18)
+    approach_result = skill.step(obs(1.3, objects=(stopped,)))
+    assert approach_result.pad.left != (0, 0)
+    assert not approach_result.pad.buttons
+    skill.step(obs(1.7, objects=(stopped,)))
+    press = skill.step(obs(1.8, objects=(stopped,)))
+    assert press.pad.buttons == (skill.profile.enter_vehicle,)
+    assert skill.step(obs(1.9, objects=(stopped,))).pad.buttons == press.pad.buttons
+    assert not skill.step(obs(2.0, objects=(stopped,))).pad.buttons
+    result = skill.step(obs(12, objects=(stopped,)))
+    assert result.status == "failed"
+    assert "; traffic wait ended" in result.reason
+    assert result.pad == NEUTRAL_PAD
+
+
+def test_traffic_wait_prefers_parked_empty_candidate(traffic_side):
+    skill = EnterVehicle({"traffic": True})
+    parked = replace(NEAR, box=px(0.10, 0.45, 0.40, 0.90))
+    occupied = replace(NEAR, box=px(0.55, 0.45, 0.85, 0.90))
+    driver = Detection("person", px(0.61, 0.47, 0.67, 0.64), 0.9)
+    for time in (0, 0.2, 0.5):
+        skill.step(obs(time, objects=(occupied, driver, parked)))
+    assert skill.target.obj.box[0] == pytest.approx(0.10)
+    assert skill.target.occupancy == "parked-candidate"
+
+
+def test_traffic_wait_does_not_approach_stale_corrupt_or_distant_target(traffic_side):
+    skill = EnterVehicle({"traffic": True})
+    for time in (0, 0.5, 1):
+        assert skill.step(obs(time, objects=(FAR,))).pad == NEUTRAL_PAD
+    assert skill.step(obs(1.5, objects=(NEAR,), corrupt=True)).pad == NEUTRAL_PAD
+    assert skill.step(obs(2, objects=(NEAR,), age=1)).pad == NEUTRAL_PAD
+    assert skill.attempts == 0
+
+
+def test_traffic_argument_is_boolean():
+    with pytest.raises(ValueError, match="traffic must be true or false"):
+        EnterVehicle({"traffic": "yes"})
+
+
+def test_traffic_target_pulling_away_cancels_door_approach_immediately(traffic_side):
+    skill = EnterVehicle({"traffic": True})
+    skill.step(obs(0, objects=(NEAR,)))
+    assert skill.step(obs(0.5, objects=(NEAR,))).pad.left != (0, 0)
+    pulling_away = replace(NEAR, box=px(0.33, 0.45, 0.73, 0.90))
+    result = skill.step(obs(0.6, objects=(pulling_away,)))
+    assert result.pad == NEUTRAL_PAD
+    assert skill.attempts == 0
+
+
+def test_traffic_press_requires_fresh_data_and_sustained_seat_proof(traffic_side):
+    skill = EnterVehicle({"traffic": True})
+    for time in (0, 0.5, 0.9):
+        skill.step(obs(time, objects=(NEAR,)))
+    assert skill.step(obs(1, objects=(NEAR,))).pad.buttons
+    assert skill.step(obs(1.05, objects=(NEAR,), age=1)).pad == NEUTRAL_PAD
+    assert skill.step(obs(1.1, objects=(NEAR,), corrupt=True)).pad == NEUTRAL_PAD
+    tilted = obs(2, objects=(), minimap="tilted")
+    tilted = replace(tilted, reading=replace(tilted.reading, route="purple"))
+    assert skill.step(tilted).status == "running"
+    assert skill.step(replace(tilted, time=2.8, objects_time=2.8)).status == "running"
+    result = skill.step(replace(tilted, time=3.1, objects_time=3.1))
+    assert result.status == "done"
+    assert result.pad == NEUTRAL_PAD
+    assert "entered vehicle" in result.reason
+
+
+def test_traffic_external_stop_preserves_the_interruption_reason():
+    skill = EnterVehicle({"traffic": True})
+    result = skill.stop("interrupted")
+    assert result.reason == "interrupted"
+    assert result.pad == NEUTRAL_PAD
+
+
+def test_stopped_traffic_entry_in_lane_can_finish_the_recorded_seat_delay(monkeypatch):
+    from types import SimpleNamespace
+
+    monkeypatch.setattr(
+        "pilot.vehicle_entry.road_position", lambda observation: SimpleNamespace(position="lane", outward=-90)
+    )
+    skill = EnterVehicle({"traffic": True})
+    for time in (0, 0.5, 0.9):
+        skill.step(obs(time, objects=(NEAR,)))
+    assert skill.step(obs(1, objects=(NEAR,))).pad.buttons
+    for time in (1.5, 2.5, 4, 5):
+        result = skill.step(obs(time, objects=(NEAR,)))
+        assert result.pad == NEUTRAL_PAD
+        assert result.status == "running"
+    tilted = obs(5.5, objects=(), minimap="tilted")
+    tilted = replace(tilted, reading=replace(tilted.reading, route="purple"))
+    assert skill.step(tilted).status == "running"
+    assert skill.step(replace(tilted, time=6.6, objects_time=6.6)).status == "done"
