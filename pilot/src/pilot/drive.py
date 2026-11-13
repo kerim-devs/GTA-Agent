@@ -61,6 +61,9 @@ class DriveConfig:
     recovery_steer: float = 0.8  # Stick magnitude used to reverse away from the route.
     recovery_throttle: float = 0.45  # Forward pedal during escape.
     max_recoveries: int = 3  # Consecutive failed escapes before a latched stop.
+    manoeuvres: float = 0.0
+    bypass_reverse_time: float = 0.9
+    turn_reverse_time: float = 3.6
     queue_wait: float = 30.0  # Longest a stop close behind a vehicle is waited out before it counts as stuck.
     damage_lasting: float = 1.0  # A damage flag that stays this long is no stream damage, which lasts frames.
     damage_steady: float = 20.0  # Widest spread of the route bearing, in degrees, of a flag driven on.
@@ -159,6 +162,11 @@ class Driver:
         self._recovery_moved = False
         self._recovery_still = 0.0
         self._reverse_duration = self.config.reverse_time
+        self._bypass_attempts = 0
+        self._manoeuvre_side = 0
+        self._manoeuvre_moved = False
+        self._manoeuvre_still_since = None
+        self._turns = 0
         self._queue_spent = 0.0
         self._queue_free: float | None = None
         self._flag_since: float | None = None
@@ -205,6 +213,8 @@ class Driver:
         return self._emit(0, 0, 0, "idle")
 
     def _coast(self, now: float) -> Command:
+        if self._phase is not None and self._phase.startswith(("bypass-", "turn-")):
+            return self._emit(0, 0, 0, "coast")
         if self._last_good is not None and now - self._last_good <= self.config.hold_time:
             if self._last.state in {"follow", "coast", "recovery-reverse", "recovery-forward"}:
                 return self._emit(self._last.steer, self._last.throttle, self._last.brake, "coast")
@@ -221,6 +231,8 @@ class Driver:
         moving: bool | None = None,
         speed: float | None = None,
         ahead: bool = False,
+        bypass_side=None,
+        boxes_fresh=True,
     ) -> Command:
         """Return bounded controls; invalid/backwards clocks release and reset timers.
 
@@ -330,6 +342,21 @@ class Driver:
             self._trusted_error = _angle(_angle(_number(reading.bearing)) - _angle(arrow))
 
         queued = self._queue(ahead is True, moving, now, dt)
+        if self.config.manoeuvres:
+            manoeuvre = self._manoeuvre(
+                now,
+                error,
+                far_error,
+                map_moving,
+                speed,
+                ahead,
+                bypass_side,
+                reading.corrupt is False and boxes_fresh,
+            )
+            if manoeuvre is not None:
+                self._error = error
+                return manoeuvre
+
         if self._phase in {"recovery-reverse", "recovery-forward"} and (not reading.corrupt or flagged):
             # GPS slope lags a collision; only the map can prove a completely held car.
             self._recovery_moved |= map_moving is True
@@ -609,6 +636,112 @@ class Driver:
             self._phase = "map-unreadable"
             return self._emit(0, 0, 0, self._phase)
         return self._coast(now)
+
+    def _manoeuvre(self, now, near_error, error, moving, speed, ahead, side, clean):
+        active = self._phase is not None and self._phase.startswith(("bypass-", "turn-"))
+        if not clean:
+            if active:
+                return self._emit(0, 0, 0, "coast")
+            return None
+        if not active:
+            if self._phase is not None:
+                return None
+            slow = moving is False if speed is None else speed < 1.5
+            if ahead and side is not None and moving is False and slow:
+                if not self.bypassing:
+                    return self._emit(0, 0, 0, "bypass-wait")
+                if self._attempts >= self.config.max_recoveries:
+                    self._phase = "failed-recovery"
+                    return self._emit(0, 0, 0, self._phase)
+                if self._attempts == 0:
+                    self._bypass_attempts = 0
+                self._attempts += 1
+                chosen = side or (1 if error >= 0 else -1)
+                self._manoeuvre_side = chosen if self._bypass_attempts % 2 == 0 else -self._manoeuvre_side
+                self._bypass_attempts += 1
+                self._phase = "bypass-reverse"
+            elif abs(near_error) > 120 and slow and not ahead:
+                if self._attempts >= self.config.max_recoveries or self._turns >= 3:
+                    self._phase = "failed-recovery"
+                    return self._emit(0, 0, 0, self._phase)
+                self._attempts += 1
+                self._turns += 1
+                self._manoeuvre_side = 1 if error >= 0 else -1
+                self._phase = "turn-reverse"
+            else:
+                return None
+            self._phase_since = now
+            self._manoeuvre_moved = False
+            self._recovery_distance = 0.0
+        elapsed = now - self._phase_since
+        settling = 1.5 if self._phase.endswith("forward") else 0.6
+        if elapsed > settling:
+            self._manoeuvre_moved |= moving is True
+        no_motion_limit = 2.5 if self._phase.endswith("forward") else 1.5
+        stopped = (
+            elapsed > settling and moving is False and (self._manoeuvre_moved or elapsed >= no_motion_limit)
+        )
+        if stopped:
+            if self._manoeuvre_still_since is None:
+                self._manoeuvre_still_since = now
+        else:
+            self._manoeuvre_still_since = None
+        blocked = stopped and now - self._manoeuvre_still_since >= 0.1
+        if stopped and not blocked:
+            bound = (
+                self.config.bypass_reverse_time
+                if self._phase == "bypass-reverse"
+                else self.config.turn_reverse_time
+            )
+            if not self._phase.endswith("reverse") or elapsed < bound:
+                return self._emit(0, 0, 0, self._phase)
+        if self._phase == "bypass-reverse":
+            if elapsed < self.config.bypass_reverse_time and not blocked:
+                return self._emit(0, 0, 1, self._phase)
+            self._phase, self._phase_since = "bypass-forward", now
+            self._manoeuvre_moved = False
+            self._manoeuvre_still_since = None
+            elapsed, blocked = 0.0, False
+        elif self._phase == "turn-reverse":
+            if abs(error) > 60 and elapsed < self.config.turn_reverse_time and not blocked:
+                return self._emit(-self._manoeuvre_side, 0, 1, self._phase)
+            self._phase, self._phase_since = "turn-forward", now
+            self._manoeuvre_moved = False
+            self._manoeuvre_still_since = None
+            elapsed, blocked = 0.0, False
+        if self._phase == "bypass-forward":
+            if (not ahead and elapsed > 0.5) or elapsed >= 4.5 or blocked:
+                self._end_manoeuvre()
+                return self._emit(0, 0.8, 0, "follow")
+            return self._emit(self._manoeuvre_side, 1, 0, self._phase)
+        if self._phase == "turn-forward":
+            # Use the far route heading while turning; the nearest path point can
+            # be beside the reversing car well before its nose faces the road.
+            elapsed = now - self._phase_since
+            if abs(error) < 25 and elapsed >= 1.0:
+                self._turns = 0
+                self._end_manoeuvre()
+                return None
+            if elapsed >= 4.0 or blocked:
+                if self._turns >= 3 or self._attempts >= self.config.max_recoveries:
+                    self._phase = "failed-recovery"
+                    return self._emit(0, 0, 0, self._phase)
+                self._turns += 1
+                self._attempts += 1
+                self._phase, self._phase_since = "turn-reverse", now
+                self._manoeuvre_moved = False
+                return self._emit(-self._manoeuvre_side, 0, 1, self._phase)
+            # Keep the reverse lock during the short R2 gear change, then use
+            # the opposite lock once forward motion can take over.
+            steer = -self._manoeuvre_side if elapsed < 0.55 else self._manoeuvre_side
+            return self._emit(steer, 1 if elapsed < 1.5 else 0.55, 0, self._phase)
+        return None
+
+    def _end_manoeuvre(self):
+        self._phase = None
+        self._stuck_since = self._moving_since = None
+        self._error = self._filtered_error = self._filtered_far = None
+        self._steer = 0.0
 
     def _queue(self, ahead: bool, moving: bool | None, now: float, dt: float) -> bool:
         """Whether this stop is being waited out behind a vehicle, and for how long it has been."""

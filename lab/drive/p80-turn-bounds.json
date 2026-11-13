@@ -1,0 +1,57 @@
+[
+  {
+    "profile": "nominal",
+    "longest_reverse_phase": 3.299999999999997,
+    "furthest_reverse_phase": 8.36339266219769
+  },
+  {
+    "profile": "range-00",
+    "longest_reverse_phase": 3.6333333333333293,
+    "furthest_reverse_phase": 8.612580532581354
+  },
+  {
+    "profile": "range-01",
+    "longest_reverse_phase": 3.6333333333333293,
+    "furthest_reverse_phase": 9.361175245790786
+  },
+  {
+    "profile": "range-02",
+    "longest_reverse_phase": 3.4999999999999964,
+    "furthest_reverse_phase": 9.390771210629259
+  },
+  {
+    "profile": "range-10",
+    "longest_reverse_phase": 3.4666666666666632,
+    "furthest_reverse_phase": 8.183789895132861
+  },
+  {
+    "profile": "range-11",
+    "longest_reverse_phase": 3.4999999999999964,
+    "furthest_reverse_phase": 8.982914702715373
+  },
+  {
+    "profile": "range-12",
+    "longest_reverse_phase": 3.099999999999998,
+    "furthest_reverse_phase": 8.1158111207913
+  },
+  {
+    "profile": "range-20",
+    "longest_reverse_phase": 3.43333333333333,
+    "furthest_reverse_phase": 8.153063090902794
+  },
+  {
+    "profile": "range-21",
+    "longest_reverse_phase": 3.299999999999997,
+    "furthest_reverse_phase": 8.320076534273346
+  },
+  {
+    "profile": "range-22",
+    "longest_reverse_phase": 3.099999999999998,
+    "furthest_reverse_phase": 8.163856583876553
+  },
+  {
+    "profile": "fast-low-grip",
+    "longest_reverse_phase": 3.5333333333333297,
+    "furthest_reverse_phase": 9.41545620288611
+  }
+]

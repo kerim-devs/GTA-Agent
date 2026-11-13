@@ -110,3 +110,15 @@ class Avoider:
             if near > 0.3 and TRACK * wide <= abs(offset) < BESIDE * wide
         }
         return side if side not in taken else -side if -side not in taken else 0
+
+
+def passing_side(objects, objects_time, now):
+    """A fresh close vehicle and the currently free side, including neither (0)."""
+    if not waits_behind(objects, objects_time, now):
+        return None
+    things = [_seen(item) for item in objects if not _minimap(item.box)]
+    ahead = [(near, offset) for offset, wide, near in things if near >= QUEUE and abs(offset) < TRACK * wide]
+    if not ahead:
+        return None
+    _, offset = max(ahead)
+    return Avoider._free(1 if offset < 0 else -1, things)

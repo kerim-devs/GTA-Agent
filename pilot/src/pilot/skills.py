@@ -372,12 +372,17 @@ class DriveRoute(RegisteredSkill):
                 return self.finished
             if self._sunk(observation, now):
                 return self.stop("dead-or-held")
+            from .avoid import STALE, passing_side
+
             command = self.driver.step(
                 observation.reading,
                 now,
                 observation.moving,
                 speed=observation.reading.gps_speed,
                 ahead=waits_behind(observation.objects, observation.objects_time, now),
+                bypass_side=passing_side(observation.objects, observation.objects_time, now),
+                boxes_fresh=(observation.objects_time is None and not observation.objects)
+                or (observation.objects_time is not None and 0 <= now - observation.objects_time <= STALE),
             )
             if command.state == "route-gone":
                 if command.brake:
