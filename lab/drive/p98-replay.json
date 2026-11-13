@@ -1,0 +1,154 @@
+{
+  "day": {
+    "recording": "20261113-225006",
+    "start": 13,
+    "end": 105,
+    "before": {
+      "ticks": 2433,
+      "seconds": 91.205,
+      "brake_pulses": 20,
+      "no_pedal_ticks": 456,
+      "no_pedal_share": 0.1874,
+      "no_pedal_seconds": 17.039,
+      "mean_pedal": 0.3886,
+      "median_limit": 11.356,
+      "median_speed": 10.28,
+      "max_abs_steer": 1.0,
+      "lift_causes": {
+        "heading": 403,
+        "coast": 53
+      },
+      "brake_causes": {
+        "heading": 164,
+        "coast": 11
+      }
+    },
+    "recorded": {
+      "brake_pulses": 23,
+      "no_pedal_share": 0.22564734895191121,
+      "mean_pedal": 0.36877391868516635,
+      "mean_sent_pedal": 0.5033903107681008
+    },
+    "after": {
+      "ticks": 2433,
+      "seconds": 91.205,
+      "brake_pulses": 0,
+      "no_pedal_ticks": 1,
+      "no_pedal_share": 0.0004,
+      "no_pedal_seconds": 0.034,
+      "mean_pedal": 0.9305,
+      "median_limit": 27.131,
+      "median_speed": 10.28,
+      "max_abs_steer": 1.0,
+      "lift_causes": {
+        "coast": 1
+      },
+      "brake_causes": {}
+    }
+  },
+  "night": {
+    "recording": "20261113-230030",
+    "start": 565,
+    "end": 779,
+    "before": {
+      "ticks": 5706,
+      "seconds": 214.012,
+      "brake_pulses": 35,
+      "no_pedal_ticks": 667,
+      "no_pedal_share": 0.1169,
+      "no_pedal_seconds": 24.794,
+      "mean_pedal": 0.375,
+      "median_limit": 15.023,
+      "median_speed": 11.966,
+      "max_abs_steer": 1.0,
+      "lift_causes": {
+        "coast": 30,
+        "heading": 625,
+        "curvature": 11,
+        "route-gone": 1
+      },
+      "brake_causes": {
+        "heading": 251,
+        "coast": 1,
+        "curvature": 2,
+        "route-gone": 1
+      }
+    },
+    "recorded": {
+      "brake_pulses": 38,
+      "no_pedal_share": 0.12478093235191028,
+      "mean_pedal": 0.354813278778402,
+      "mean_sent_pedal": 0.5335819179492716
+    },
+    "after": {
+      "ticks": 5706,
+      "seconds": 214.012,
+      "brake_pulses": 3,
+      "no_pedal_ticks": 66,
+      "no_pedal_share": 0.0116,
+      "no_pedal_seconds": 2.501,
+      "mean_pedal": 0.7607,
+      "median_limit": 25.1,
+      "median_speed": 11.966,
+      "max_abs_steer": 1.0,
+      "lift_causes": {
+        "coast": 16,
+        "hidden-turn": 17,
+        "curve-exit": 32,
+        "route-gone": 1
+      },
+      "brake_causes": {
+        "hidden-turn": 4,
+        "route-gone": 1
+      }
+    }
+  },
+  "exit": {
+    "recording": "20261113-225006",
+    "start": 205,
+    "end": 236,
+    "before": {
+      "ticks": 820,
+      "seconds": 30.831,
+      "brake_pulses": 2,
+      "no_pedal_ticks": 59,
+      "no_pedal_share": 0.072,
+      "no_pedal_seconds": 2.258,
+      "mean_pedal": 0.222,
+      "median_limit": 6.779,
+      "median_speed": 2.485,
+      "max_abs_steer": 0.949,
+      "lift_causes": {
+        "heading": 59
+      },
+      "brake_causes": {
+        "heading": 19
+      }
+    },
+    "recorded": {
+      "brake_pulses": 5,
+      "no_pedal_share": 0.21951219512195122,
+      "mean_pedal": 0.28076499751607764,
+      "mean_sent_pedal": 0.44056003549268286
+    },
+    "after": {
+      "ticks": 820,
+      "seconds": 30.831,
+      "brake_pulses": 2,
+      "no_pedal_ticks": 56,
+      "no_pedal_share": 0.0683,
+      "no_pedal_seconds": 2.12,
+      "mean_pedal": 0.3328,
+      "median_limit": 8.676,
+      "median_speed": 2.485,
+      "max_abs_steer": 0.977,
+      "lift_causes": {
+        "curve": 53,
+        "curve-exit": 3
+      },
+      "brake_causes": {
+        "curve": 19
+      }
+    }
+  }
+}

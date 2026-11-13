@@ -483,3 +483,44 @@ for _i in range(3):
 
 # The joint fast-car/weak-brake/low-grip corner is not covered by pairwise rows alone.
 CAR_PROFILES["fast-low-grip"] = dict(grip=2.0, acceleration=7.0, brake_acceleration=4.0, top_speed=18.0)
+
+
+def drive_through_roads():
+    """P98's kilometre, human-scale arcs and the recorded highway exit.
+
+    Arc radii bracket the 59/118 m medians of the day drive's bend/straight
+    curvature proxies. The exit is the path at 205.01 s of 20261113-225006,
+    at an estimated 2.1 m/px, with a 300 m approach and an extended outgoing road.
+    This is the route centreline, not the barrier that the recorded car hit.
+    """
+    roads = {"kilometre": ((0.0, 0.0), (0.0, 1000.0))}
+    for radius in (60, 120):
+        arc = [(radius * (1 - cos(radians(a))), 200 + radius * sin(radians(a))) for a in range(0, 91, 5)]
+        roads[f"bend-{radius}"] = ((0.0, 0.0), *arc, (radius + 200.0, 200.0 + radius))
+    pixels = (
+        (0, 13),
+        (0, 19),
+        (2, 25),
+        (3, 31),
+        (5, 37),
+        (7, 43),
+        (9, 48),
+        (7, 54),
+        (-1, 56),
+        (-7, 57),
+        (-13, 57),
+        (-19, 57),
+        (-25, 57),
+        (-31, 57),
+        (-37, 57),
+        (-43, 57),
+        (-49, 57),
+        (-55, 57),
+    )
+    roads["exit"] = (
+        (0.0, 0.0),
+        (0.0, 300.0),
+        *((x * 2.1, 300 + y * 2.1) for x, y in pixels),
+        (-350.0, 419.7),
+    )
+    return roads

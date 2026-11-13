@@ -65,6 +65,7 @@ class DriveConfig:
     # lies from the car, nothing is hidden, and the aim is taken on the path itself, this far out.
     bend_lookahead_px: float = 14.0
     onward_bend: float = 25.0  # Degrees between the line to the path's first point and its beginning.
+    drive_through: float = 0.0  # Plan bold speed from road shape, independently of heading correction.
     speed_limit: float = 7.0  # Straight-line limit in metres per second.
     slow_speed: float = 2.0  # Lowest planned corner speed, in metres per second.
     lateral_acceleration: float = 1.2  # Conservative m/s^2 cornering budget.
@@ -227,6 +228,10 @@ class Driver:
         self._trusted_route: str | None = None
         self._trusted_error: float | None = None
         self._brake_since: float | None = None
+        self.speed_reason = "unknown-speed"
+        self._turn_limit: float | None = None
+        self._road_heading = 0.0
+        self._turn_remaining = 0.0
 
     @property
     def bypassing(self) -> bool:
@@ -276,6 +281,7 @@ class Driver:
         self._stuck_since = None
         self._steer = 0.0
         self._speed = None
+        self._turn_limit = None
         self._unusable_since = self._unusable_still = self._flag_since = None
         self._flag_bearings.clear()
         if self._phase not in LATCHED:
@@ -324,6 +330,9 @@ class Driver:
             return self._idle()
         dt = 0.0 if self._time is None else min(now - self._time, self.config.max_step_time)
         self._time = now
+        self._turn_remaining -= (speed if speed is not None else ASSUMED_SPEED) * dt
+        if self._turn_remaining <= 0:
+            self._turn_limit = None
         if speed is not None:
             fresh = self._speed_at is None or now - self._speed_at > self.config.max_step_time
             alpha_speed = (
@@ -395,6 +404,7 @@ class Driver:
             return self._unusable(now, dt, moving, speed)
         error = _angle(_angle(near) - _angle(arrow))
         far_error = error if far is None else _angle(_angle(far) - _angle(arrow))
+        self._road_heading = arrow
         path = _path(reading.path)
         # The pedal goes by the short aim as it always has: a bend shows there first, and with the far
         # aim alone the car came into a hidden bend 0.4 m/s too fast on a zoomed map.
@@ -559,7 +569,12 @@ class Driver:
             correction = 0.0
         adjusted = self._filtered_error + correction
         if self.config.yaw_memory:
-            adjusted = _angle(adjusted - self.config.yaw_memory * self._pending(now))
+            rolling = (
+                (0.0 if map_moving is False else min(1.0, (4.0 if speed is None else speed) / 12.0))
+                if self.config.drive_through
+                else 1.0
+            )
+            adjusted = _angle(adjusted - rolling * self.config.yaw_memory * self._pending(now))
         bend_delta = _angle(self._filtered_far - self._filtered_near)
         adjusted = (1 if adjusted >= 0 else -1) * max(0.0, abs(adjusted) - self.config.steer_rest)
         target = _clip(self.config.steer_gain * adjusted)
@@ -593,7 +608,9 @@ class Driver:
         if distance is not None and 0 <= distance <= self.config.arrival_distance:
             limit = min(limit, self.config.arrival_speed)
         brake = 0.0
-        if speed is None:
+        if self.config.drive_through:
+            throttle, brake = self._pedal(limit, speed, now, flagged, distance)
+        elif speed is None:
             throttle *= self.config.unknown_throttle / max(self.config.cruise_throttle, 1e-9)
         else:
             hold = self.config.hold_throttle
@@ -612,6 +629,8 @@ class Driver:
 
     def _speed_limit(self, path, bend: float, speed: float | None) -> float:
         cfg = self.config
+        if cfg.drive_through:
+            return self._road_limit(path, speed)
         limit = max(min(cfg.slow_speed, cfg.speed_limit), cfg.speed_limit / (1 + bend / 15))
         step = cfg.curve_step
         path = path[: len(path) - cfg.curve_trim]
@@ -638,6 +657,103 @@ class Driver:
             limit = min(limit, sqrt(corner * corner + 2 * cfg.planned_deceleration * remaining))
             travel += hypot(path[index + 1][0] - a[0], path[index + 1][1] - a[1])
         return limit
+
+    def _road_limit(self, path, speed):
+        cfg = self.config
+        limit = cfg.speed_limit
+        self.speed_reason = "straight"
+        if len(path) < 2 * cfg.curve_step + 1:
+            self.speed_reason = "unknown-path"
+            return cfg.slow_speed
+        # P9 measured the map zoom at these speeds; pixel motion alone cannot give m/s.
+        scale = self._map_scale(speed)
+        path = path[: max(0, len(path) - cfg.curve_trim)]
+        travel = hypot(*path[0]) if path else 0.0
+        near_corner = None
+        step = cfg.curve_step
+        for index in range(len(path) - 2 * step):
+            a, b, c = path[index], path[index + step], path[index + 2 * step]
+            ab, bc = hypot(b[0] - a[0], b[1] - a[1]), hypot(c[0] - b[0], c[1] - b[1])
+            cross = abs((b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0]))
+            curvature = 2 * cross / max(ab * bc * hypot(c[0] - a[0], c[1] - a[1]), 1e-6)
+            if min(ab, bc) >= 1 and curvature > 1e-6:
+                corner = max(cfg.slow_speed, sqrt(cfg.lateral_acceleration * scale / curvature))
+                if travel * scale < max(40.0, (speed or 0) * 2):
+                    near_corner = corner if near_corner is None else min(near_corner, corner)
+                remaining = max(
+                    0.0,
+                    (travel - cfg.lookahead_px) * scale
+                    - (speed or 0) * (cfg.command_delay + cfg.gps_window / 2),
+                )
+                planned = sqrt(corner * corner + 2 * cfg.planned_deceleration * remaining)
+                if planned < limit:
+                    limit, self.speed_reason = planned, "curve"
+            travel += hypot(path[index + 1][0] - a[0], path[index + 1][1] - a[1])
+        # Once a corner is hidden by the arrow, its outgoing road is straight again.
+        # A road running across the car's way still needs a turn at the short target.
+        if path and len(path) > step:
+            a, b = path[0], path[step]
+            course = degrees(atan2(b[0] - a[0], b[1] - a[1]))
+            heading_error = abs(_angle(course - self._road_heading))
+            if heading_error < 10:
+                self._turn_limit = None
+            if near_corner is not None and (
+                self._turn_limit is None or near_corner <= self._turn_limit * 1.1
+            ):
+                self._turn_limit = (
+                    near_corner if self._turn_limit is None else min(self._turn_limit, near_corner)
+                )
+                self._turn_remaining = max(2 * cfg.lookahead_px * scale, (speed or 0) * cfg.gps_window / 2)
+            if self._turn_limit is not None and heading_error >= 10:
+                if self._turn_limit < limit:
+                    limit, self.speed_reason = self._turn_limit, "curve-exit"
+            if heading_error > 60:
+                target = _target(path, cfg.lookahead_px)
+                radius = hypot(*target) * scale
+                error = radians(_angle(degrees(atan2(*target)) - self._road_heading))
+                turn = sqrt(cfg.lateral_acceleration * radius / max(2 * abs(sin(error)), 1e-6))
+                if turn < limit:
+                    limit, self.speed_reason = max(cfg.slow_speed, turn), "hidden-turn"
+        return limit
+
+    def _map_scale(self, speed):
+        speed = speed or 0.0
+        return max(
+            self.config.map_scale_min,
+            0.7 if speed < 6 else 1.0 if speed < 12 else 2.1 if speed < 18 else 3.6 if speed < 24 else 3.7,
+        )
+
+    def _pedal(self, limit, speed, now, flagged, distance):
+        cfg = self.config
+        if flagged:
+            self.speed_reason = "flagged-map"
+        if distance is not None and 0 <= distance <= cfg.arrival_distance:
+            self.speed_reason = "arrival"
+        if self.speed_reason == "unknown-path":
+            return cfg.unknown_throttle, 0.0
+        if speed is None:
+            self.speed_reason = "unknown-speed"
+            return cfg.unknown_throttle, 0.0
+        if self.speed_reason == "straight":
+            # A noisy GPS slope may ease the pedal, but cannot brake an empty straight.
+            return _clip(
+                cfg.hold_throttle + cfg.speed_gain * (cfg.speed_limit - speed),
+                cfg.hold_throttle,
+                cfg.cruise_throttle,
+            ), 0.0
+        error = limit - speed
+        # A small nonzero command is lifted above the trigger dead zone by the profile.
+        # Lift completely before the bend instead of continuing to accelerate into it.
+        hold = min(cfg.hold_throttle, limit * 0.05)
+        throttle = _clip(hold + cfg.speed_gain * (error - 2), 0, cfg.cruise_throttle) if error > 0 else 0.0
+        if self.speed_reason in {"arrival", "flagged-map"}:
+            throttle = _clip(0.25 + cfg.speed_gain * error, 0, cfg.cruise_throttle)
+        brake = 0.0
+        if speed > limit + cfg.brake_margin:
+            brake = self._pulsed(
+                _clip(cfg.brake_gain * (speed - limit - cfg.brake_margin), 0, 0.7), speed, now
+            )
+        return throttle, brake
 
     def _pulsed(self, brake: float, speed: float, now: float) -> float:
         """L2 for speed in bounded pulses: the reading lags, and a brake held too long ends in reverse."""
@@ -670,6 +786,11 @@ class Driver:
             abs(error) > 5
             and error * self._trusted_error > 0
             and abs(_angle(error - self._trusted_error)) <= self.config.damage_angle
+        ) or (
+            self.config.drive_through
+            and abs(error) <= 5
+            and abs(self._trusted_error) <= 5
+            and _straight(_path(reading.path), self.config, False)
         )
 
     def _flag_lasts(self, reading: Reading, now: float, confidence: float | None) -> bool:

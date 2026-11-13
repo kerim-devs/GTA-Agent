@@ -57,6 +57,16 @@ LIVE = CAREFUL
 BOLD = {
     "manoeuvres": 1.0,
     **CAREFUL,
+    # P98: human straight speeds centre on 18-22 m/s, with p90 near 28-31. The
+    # 1.4 m/px floor is a nominal estimate (low-speed GPS/flow median 1.34), not a zoom reading.
+    "drive_through": 1.0,
+    "speed_limit": 28.0,
+    "cruise_throttle": 1.0,
+    "slow_speed": 3.0,
+    "hold_throttle": 0.6,
+    "lateral_acceleration": 3.0,
+    "map_scale_min": 1.4,
+    "brake_margin": 1.0,
     "queue_wait": 2.0,  # P73's bound before committing to an observed free side.
     "route_gone_time": 0.5,  # Leaves 0.7 s braking plus tick rounding within the 1.5 s arrival budget.
     "stop_brake_time": 0.35,  # Reuse the live pulse bound: a 0.7 s arrival hold reversed in P73 simulation.
