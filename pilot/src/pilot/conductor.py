@@ -818,7 +818,7 @@ class Conductor:
             and trip.suspended is None
             and t - trip.car_started >= trip.CAR_SECONDS
         ):
-            self.end_trip("car acquisition exceeded ninety seconds", t)
+            self.end_trip("no car within five minutes", t)
         if trip.verdict is not None:
             self.runner.stop("goal_trip_verdict")
             self._trip_log(t)

@@ -836,7 +836,11 @@ class Trip:
     PROGRESS_SECONDS = 25.0
     PROGRESS_METRES = 20.0
     READ_SECONDS = 2.0  # a distance read this short a time ago is one the drive can be judged on
-    CAR_SECONDS = 90.0  # Three 25 s entries, a look and a 10 s walk fit inside this.
+    # Where no car stands and none comes past for a while (20261113-225835, a side street in Sandy
+    # Shores), three tries in ninety seconds gave the trip up beside a road with traffic on it. The
+    # tries are not counted to an end: a look after the first, then along the road and again, for
+    # five minutes, a third of the trip's own budget.
+    CAR_SECONDS = 300.0
     SCREEN_SECONDS = 15.0
     ROUTE_GONE = 2.0  # as drive_route: a route that stays away this long has gone
     ROUTE_RECENT = 3.0  # a route read this short a time ago is one reading missed, not a route lost
@@ -1085,8 +1089,6 @@ class Trip:
                 if self.step == "car":
                     self.change("waypoint" if self.waypoint_id is None else "drive", now)
                 self.method = "route"
-            elif self.car_attempts >= 3:
-                self.finish("failed", "car acquisition failed after three attempts: " + why, now)
             else:
                 self.retry = "look" if self.car_attempts == 1 else "road"
         elif name == "set_waypoint":
@@ -1127,20 +1129,24 @@ class Trip:
                 self.finish("reached", "arrival observed for the fixed waypoint", now)
             elif done and why == "time-limit":
                 before = last.get("start_distance")
-                nearer = (
+                read = (
                     isinstance(before, (int, float))
                     and isinstance(distance, (int, float))
-                    and distance < before
                     and isinstance(age, (int, float))
                     and 0 <= age <= 5
                 )
-                self.stretches_without_progress = 0 if nearer else self.stretches_without_progress + 1
+                # A stretch whose distance was not read at its end says nothing either way.
+                if read:
+                    nearer = distance < before
+                    self.stretches_without_progress = 0 if nearer else self.stretches_without_progress + 1
                 if self.stretches_without_progress >= 2:
                     self.recover(now, "two stretches without closer destination")
             else:
                 self.recover(now, why or "arrival not proven")
         elif name in {"drive_on", "get_away"}:
-            if done:
+            # With stars lit `get_away` runs to its limit and calls that failed (20261113-230030):
+            # for the trip it drove on from where the car stood, which is all that was asked of it.
+            if done or (name == "get_away" and why.startswith("time-limit")):
                 self.method = "route"
                 self.progress_at = now
             else:
@@ -1207,7 +1213,7 @@ class Trip:
             return reply("trip: failed")
         if self.step == "car" or self.seat_check:
             if now - self.car_started >= self.CAR_SECONDS:
-                self.finish("failed", "car acquisition exceeded ninety seconds", now)
+                self.finish("failed", "no car within five minutes", now)
                 return reply("trip: failed")
             if self.retry in {"look", "road"}:
                 if self.car_seen is not None and now - self.car_seen[1] <= 2:
@@ -1261,6 +1267,13 @@ class Trip:
                 self.exit_waits += 1
                 self.method = "exit_wait"
                 return issue("wait", duration=1)
+            if not seated:
+                # Neither seated nor seen standing for sure: no second press into the unknown.
+                # The way into a car finds out, it ends at once for a figure that still sits.
+                self.car_started, self.car_attempts = now, 0
+                self.change("car", now)
+                self.method = "route"
+                return self.decide(request)
             if self.exit_presses >= 2:
                 self.method = "route"
                 self.recover(now, "vehicle exit not observed")

@@ -315,6 +315,17 @@ def test_a_drive_that_gives_up_beside_its_route_keeps_the_car(session):
     assert session.trip.verdict is None and len(session.waypoints) == 1
 
 
+def test_driving_off_under_stars_to_its_limit_costs_no_second_recovery(session):
+    session.drive()
+    session.conductor.runner.stop("failed-recovery")
+    session.until(lambda: session.active("get_away"), seconds=5)
+    session.hud = replace(session.hud, wanted=2)
+    session.until(lambda: session.active("drive_route"), seconds=15)
+    ended = [row for row in session.rows("trip_attempt") if row["name"] == "get_away"]
+    assert ended[0]["status"] == "failed" and ended[0]["reason"].startswith("time-limit")
+    assert [row["stage"] for row in session.rows("trip_recovery")] == [1]
+
+
 def test_a_car_that_is_held_is_left_at_once(session):
     session.drive()
     session.conductor.runner.stop("dead-or-held")
@@ -339,6 +350,31 @@ def test_an_exit_seen_late_is_not_pressed_a_second_time(session):
     session.until(lambda: session.active("walk_road"), seconds=10)
     presses = [row for row in session.rows("trip_attempt") if row["name"] == "press"]
     assert len(presses) == 1
+
+
+def test_an_exit_that_stays_unclear_is_not_pressed_a_second_time(session):
+    session.drive()
+    session.conductor.runner.stop("dead-or-held")
+    session.until(lambda: session.active("press"), seconds=5)
+    session.until(lambda: session.active("wait"), seconds=5)
+    # The map shows no seat and the eye never says foot: the way into a car decides, not a press.
+    session.reading = replace(session.reading, minimap="flat", route="none")
+    session.until(lambda: session.active("enter_vehicle"), seconds=15)
+    presses = [row for row in session.rows("trip_attempt") if row["name"] == "press"]
+    assert len(presses) == 1 and session.trip.step == "car" and session.trip.verdict is None
+
+
+def test_stretches_that_end_unread_are_not_stretches_without_progress(session):
+    session.drive()
+    for _ in range(100):
+        session.distance -= 2
+        session.tick()
+    session.distance = None
+    for _ in range(2600):
+        session.tick()
+    ended = [row for row in session.rows("trip_attempt") if row["name"] == "drive_route"]
+    assert len(ended) >= 2 and all(row["reason"] == "time-limit" for row in ended)
+    assert session.active("drive_route") and not session.rows("trip_recovery")
 
 
 def test_a_distance_that_cannot_be_read_is_no_standstill(session):
@@ -631,9 +667,15 @@ def test_failed_car_tries_change_method_and_keep_a_recently_seen_car(session):
     session.until(lambda: session.active("walk_road"))
     session.until(lambda: session.active("enter_vehicle"))
     session.conductor.runner.stop("no entry observed")
-    session.until(lambda: session.trip.verdict is not None)
+    # 20261113-225835: a third try without a car is not the end, the search goes on along the road
+    # until its five minutes are spent.
+    session.until(lambda: session.active("walk_road"))
+    session.until(lambda: session.active("enter_vehicle"))
+    assert session.trip.verdict is None
+    session.until(lambda: session.trip.verdict is not None, seconds=400)
     assert session.trip.verdict["status"] == "failed"
-    assert "three attempts" in session.trip.verdict["reason"]
+    assert "no car within five minutes" in session.trip.verdict["reason"]
+    assert session.now >= 300
 
 
 def test_car_retry_without_recent_detection_looks_before_trying_again(session):
