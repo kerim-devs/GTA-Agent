@@ -57,6 +57,9 @@ STARS_HOLD = 3.0
 # sat when that was last known holds until something says otherwise, and a seat in a car for this
 # long at most.
 SEAT_HOLD = 120.0
+# Seconds for which a marker that a walk arrived at is not a place to walk to again without an order.
+REACHED_SECONDS = 60.0
+REACHED_PX = 12.0  # A marker this near the arrow on the minimap is one the figure stands at.
 # The same answer to the same failure this often in a row, and the next one is a different answer.
 SAME_FAILED = 3
 # A red marker this close to the arrow, in map pixels, is beside the car: about two car lengths.
@@ -128,6 +131,7 @@ class MissionHead:
         self.pending_reads = 0
         self.blip_candidates: list[dict] = []
         self.stable_blips: list[dict] = []
+        self.reached: dict[str, float] = {}  # the colour of a marker a walk arrived at, and when
         self.stars: tuple[int, float] | None = None  # the last count read, and when
         self.seat: tuple[str, float] | None = None  # where the figure last sat for sure, and when
         self.failed_key: str | None = None
@@ -148,6 +152,7 @@ class MissionHead:
         "pending_reads",
         "blip_candidates",
         "stable_blips",
+        "reached",
         "last_rule",
         "stars",
         "seat",
@@ -488,6 +493,20 @@ class MissionHead:
         self.goals.mark()
         self._update_intent(request)
         self.goals.learn(request.last_skill)
+        arrived = request.last_skill or {}
+        if (
+            arrived.get("name") == "walk_to"
+            and arrived.get("status") == "done"
+            and str(arrived.get("reason") or "").startswith("arrived")
+        ):
+            # The report names no colour: the markers at the figure's feet are the ones it arrived at.
+            at_hand = {
+                blip.get("color")
+                for blip in request.minimap.get("blips", [])
+                if blip.get("color") in {"yellow", "blue"}
+                and math.hypot(blip.get("x", math.inf), blip.get("y", math.inf)) <= REACHED_PX
+            }
+            self.reached = {**self.reached, **dict.fromkeys(at_hand, self.goals.now(request))}
         candidates = [
             blip
             for blip in request.minimap.get("blips", [])
@@ -1041,6 +1060,15 @@ class MissionHead:
             targets = (
                 colors if request.objective.strip() else {blip.get("color") for blip in self.stable_blips}
             )
+            if not request.objective.strip():
+                # Without an order of the game a marker that a walk has just arrived at is not walked
+                # to again: the figure stands at it. On 13 November, 19:57, Michael stood before his
+                # own car, whose marker is blue, with the car in the middle of the picture, and
+                # walked to that marker 167 times in 55 seconds, each walk done at once as arrived,
+                # and then went off along the road without the car. What stands at a marker reached
+                # is for the rules below: a car in the picture is taken.
+                now = self.goals.now(request)
+                targets = {c for c in targets if now - self.reached.get(c, -math.inf) > REACHED_SECONDS}
             for color in ("yellow", "blue"):
                 if color in targets:
                     return (
