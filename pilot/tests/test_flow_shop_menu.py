@@ -44,10 +44,12 @@ def run(flow, start, end, text, reading=NO_MAP, step=1 / 30):
 
 def test_a_menu_left_open_is_backed_out_of_after_its_seconds():
     flow = Flow()
-    results, presses = run(flow, 0.0, 3.9, AMMU)
+    results, presses = run(flow, 0.0, 4.1, AMMU)
     assert presses == []
-    assert {result.action for result in results} <= {"confirm", "observe"}
-    results, presses = run(flow, 3.9, 4.5, AMMU)
+    # For its first second and more the footer is not a menu yet, and no skill is disturbed by it.
+    assert all(result is None for result in results[:30])
+    assert {result.action for result in results if result is not None} <= {"confirm", "observe"}
+    results, presses = run(flow, 4.1, 4.8, AMMU)
     assert [buttons for _, buttons in presses] == [("circle",)]
     held = [result for result in results if result.pad.buttons]
     assert 2 <= len(held) <= 4  # a press the console can see, and no longer
@@ -55,10 +57,11 @@ def test_a_menu_left_open_is_backed_out_of_after_its_seconds():
 
 def test_each_level_gets_one_press_and_then_the_head_is_told():
     flow = Flow()
-    results, presses = run(flow, 0.0, 14.0, AMMU)
+    results, presses = run(flow, 0.0, 16.0, AMMU)
     assert [buttons for _, buttons in presses] == [("circle",)] * MENU_LEVELS
     times = [t for t, _ in presses]
     assert all(later - earlier >= 0.99 for earlier, later in pairwise(times))
+    results = [result for result in results if result is not None]
     stuck = [event for result in results for event in result.events if event["kind"] == "stuck"]
     assert stuck == [{"kind": "stuck", "screen": "shop_menu"}]
     assert results[-1].action == "stuck" and results[-1].pad == NEUTRAL_PAD
@@ -123,15 +126,21 @@ def test_in_a_mission_the_head_is_told_first_and_nothing_is_pressed_in_its_secon
     flow = Flow()
     objective = SceneText(objective="Kauf dir einen Anzug")
     run(flow, 0.0, 1.0, objective, MAP)
-    results, presses = run(flow, 1.0, 20.0, AMMU)
+    results, presses = run(flow, 1.0, 21.0, AMMU)
     assert presses == []
-    stuck = [event for result in results for event in result.events if event["kind"] == "stuck"]
+    stuck = [
+        event
+        for result in results
+        if result is not None
+        for event in result.events
+        if event["kind"] == "stuck"
+    ]
     assert stuck == [{"kind": "stuck", "screen": "shop_menu"}]
-    first = next(index for index, result in enumerate(results) if result.action == "stuck")
+    first = next(i for i, result in enumerate(results) if result is not None and result.action == "stuck")
     assert 1.2 <= first / 30 <= 1.5
     assert all(result.action == "stuck" for result in results[first:])
     # The head did nothing with it: after its seconds the menu is left after all.
-    results, presses = run(flow, 20.0, 23.0, AMMU)
+    results, presses = run(flow, 21.0, 25.0, AMMU)
     assert presses and presses[0][1] == ("circle",)
 
 
@@ -144,8 +153,8 @@ def test_in_a_mission_a_menu_the_head_was_told_of_is_left_the_second_time():
     run(flow, 3.0, 10.0, AMMU)
     flow.end_expectation()
     results, presses = run(flow, 10.0, 15.0, AMMU)
-    assert [event for result in results for event in result.events] == []
-    assert presses and presses[0][1] == ("circle",) and presses[0][0] >= 13.9
+    assert [event for result in results if result is not None for event in result.events] == []
+    assert presses and presses[0][1] == ("circle",) and presses[0][0] >= 13.0
 
 
 def test_only_the_way_back_is_ever_pressed():
@@ -155,5 +164,60 @@ def test_only_the_way_back_is_ever_pressed():
             if prepare:
                 run(flow, 0.0, 1.0, SceneText(objective="Geh zu Ammu-Nation"), MAP)
             results, _ = run(flow, 1.0, 60.0, text)
+            results = [result for result in results if result is not None]
             assert {button for result in results for button in result.pad.buttons} <= {"circle"}
             assert all(result.pad in (NEUTRAL_PAD, Pad(buttons=("circle",))) for result in results)
+
+
+def test_the_footer_of_a_map_just_closed_is_not_a_menu():
+    # The text is read half a second behind the picture: a skill has closed the map, the screen is
+    # the game's, the minimap is not back yet and the map's footer still stands in the text.
+    footer = SceneText(lines=(TextLine("Wegpunkt X Zurück O", 0.5, (1010, 663, 190, 18), "phone"),))
+    flow = Flow()
+    results, presses = run(flow, 0.0, 1.0, footer)
+    assert presses == [] and all(result is None for result in results)
+    results, presses = run(flow, 1.0, 3.0, PLAIN, MAP)
+    assert presses == [] and all(result is None for result in results)
+
+
+def test_while_a_skill_has_its_own_screen_open_nothing_is_a_menu_left_open():
+    flow = Flow()
+    flow.expect("pause", "map", until=30.0)
+    results, presses = run(flow, 0.0, 8.0, AMMU)
+    assert presses == [] and all(result is None for result in results)
+
+
+def test_a_footer_read_before_the_last_press_proves_nothing():
+    """The first press closed the menu; the reader is slow and the old text is all there is."""
+    flow = Flow()
+    t, first = 0.0, None
+    while first is None and t < 6.0:  # the footer, read from pictures as they come
+        result = flow.tick(obs(t), AMMU, text_time=t - 0.1)
+        if result is not None and result.pad.buttons:
+            first = t
+        t += 1 / 30
+    assert first is not None
+    presses = []
+    while t < first + 1.45:  # no map yet, and no text newer than the one from before the press
+        result = flow.tick(obs(t), AMMU, text_time=first - 0.1)
+        if result is not None and result.pad.buttons and t - first > 0.2:
+            presses.append(round(t, 2))
+        t += 1 / 30
+    assert presses == []
+    # A reading taken after the press still shows the footer: the menu has another level.
+    again = None
+    while again is None and t < first + 4.0:
+        result = flow.tick(obs(t), AMMU, text_time=t - 0.1)
+        if result is not None and result.pad.buttons:
+            again = t
+        t += 1 / 30
+    assert again is not None
+
+
+def test_a_reset_forgets_what_was_pressed_into_a_pad_that_was_not_the_pilots():
+    flow = Flow()
+    _, presses = run(flow, 0.0, 16.0, AMMU)
+    assert len(presses) == MENU_LEVELS  # and stuck from here
+    flow.reset()
+    _, presses = run(flow, 16.0, 22.0, AMMU)
+    assert presses and presses[0][1] == ("circle",)

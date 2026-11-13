@@ -113,6 +113,9 @@ class Conductor:
         self.carry_allowed = False
         self.last_hud = None
         self.answering = False
+        self.buttons_down: frozenset[str] = frozenset()
+        self.last_pad = NEUTRAL_PAD
+        self.ocr_failures = 0
         self.wanted_candidate = None
         self.wanted_since = None
         self.wanted_seen = None
@@ -175,9 +178,14 @@ class Conductor:
                     result = self.ocr_future.result()
                     if self.text_time is None or self.ocr_capture_time >= self.text_time:
                         self.text, self.text_time = result, self.ocr_capture_time
+                    self.ocr_failures = 0
                 except Exception as exc:
-                    self.write({"type": "ocr_error", "t": t, "error": str(exc)})
-                    raise RuntimeError("scene OCR failed") from exc
+                    # One reading that failed is one picture unread; the reader failing time after
+                    # time is a pilot that cannot read, and that ends the session.
+                    self.ocr_failures += 1
+                    self.write({"type": "ocr_error", "t": t, "error": str(exc), "row": self.ocr_failures})
+                    if self.ocr_failures >= self.OCR_FAILURES:
+                        raise RuntimeError("scene OCR failed") from exc
                 self.ocr_future = None
             elif self.clock() - self.ocr_started >= self.ocr_timeout:
                 self.write({"type": "ocr_error", "t": t, "error": "timeout"})
@@ -330,6 +338,7 @@ class Conductor:
 
     # Skills during which a standing figure is what was asked for: a fight from one spot, a menu the
     # skill itself opened, a move of the camera that has the figure stand. Their seconds do not count.
+    OCR_FAILURES = 5  # readings of the text that fail in a row before the session ends
     STILL_SKILLS = frozenset(
         {
             "fight",
@@ -410,6 +419,7 @@ class Conductor:
             self.refused_since = t
             self.runner.stop("pad_refused")
             self._expect_skill()
+            self._flow_put_down(t)
             self.epoch += 1
             self._abandon_head(t)
             self.pending.clear()
@@ -421,11 +431,41 @@ class Conductor:
             self.refused_since = None
             self.epoch += 1
             self.pending.append({"kind": "pad_returned", "seconds": seconds})
+            self._flow_put_down(t)
             self.still = self.moved = 0.0
             self.write({"type": "pad_returned", "t": t, "seconds": seconds})
 
+    def _flow_put_down(self, t):
+        """The reflex forgets the screen in hand: nothing it pressed into a refused pad arrived."""
+        if self.flow is None:
+            return
+        if self.flow_started is not None:
+            self.write(
+                {
+                    "type": "flow_exit",
+                    "t": t,
+                    "screen": self.flow_screen,
+                    "action": "pad_refused",
+                    "seconds": t - self.flow_started,
+                    "actions": self.flow_actions,
+                }
+            )
+            self.flow_started = None
+        self.flow_result = None
+        if hasattr(self.flow, "reset"):
+            self.flow.reset()
+
     def tick(self, observation: Observation, rgb, **reads):
         result = self._tick(observation, rgb, **reads)
+        # Nothing new is pressed on a damaged picture: a button that was down stays down, so that a
+        # press is not cut in two, and one that would go down on this tick waits for a picture.
+        buttons = result.pad.buttons
+        if observation.reading.corrupt and buttons:
+            kept = tuple(button for button in buttons if button in self.buttons_down)
+            if kept != buttons:
+                result = replace(result, pad=replace(result.pad, buttons=kept))
+        self.buttons_down = frozenset(result.pad.buttons)
+        self.last_pad = result.pad
         if self.awake is None:
             return result
         t = observation.time
@@ -518,8 +558,18 @@ class Conductor:
                 self.pending.append({"kind": "goal_interrupted", "reason": reason})
                 self.carry_allowed = False
                 self.carry_started = None
+        if self.refused_since is not None:
+            # The readers have read; neither the reflex nor a skill is run against a pad that goes
+            # nowhere, and what happened meanwhile is not news once the pad is back: the head then
+            # plans from the picture as it is.
+            return SkillResult(reason="pad-refused")
         recovered = self.flow_started is not None
+        episode = self.flow_started is not None
         flow_result = self._flow_tick(seen, rgb)
+        if flow_result is not None and flow_result.action == "confirm" and not episode:
+            # One odd reading is not a screen yet. Sticks and triggers rest for this tick; a button
+            # that is down stays down, since letting go of it for one tick would make two presses of one.
+            return SkillResult(Pad(buttons=self.last_pad.buttons), reason="flow")
         # A stuck screen is where the reflex has done what it knows. From there the head's
         # answer is run like any plan, and the reflex takes over again when the screen changes.
         if flow_result is not None and flow_result.action != "stuck":
@@ -538,10 +588,6 @@ class Conductor:
         self.judge_events.clear()
         # The guard answers before the head's answer is taken and the plan is run, so that its pad is on
         # this tick whatever the head is doing.
-        if self.refused_since is not None:
-            # The readers have read; nothing is run, and what happened meanwhile is not news once the
-            # pad is back: the head then plans from the picture as it is.
-            return SkillResult(reason="pad-refused")
         guarded = self.guard is not None and self._guard_tick(observation, new_events).pad is not None
         stands = self._standing(observation, busy=guarded)
         if stands is not None:
@@ -748,7 +794,8 @@ class Conductor:
             return None
         self._expect_skill()
         t = observation.time
-        result = self.flow.tick(observation, self._fresh_text(t))
+        fresh_text = self._fresh_text(t)
+        result = self.flow.tick(observation, fresh_text, None if fresh_text is None else self.text_time)
         if result is not None and result.action == "answer":
             # One press into a ringing phone. It is no screen of the reflex's: the plan is kept and
             # has the pad back on the next tick.
@@ -760,7 +807,12 @@ class Conductor:
         self.answering = False
         self.flow_result = result
         if result is not None:
-            if self.flow_started is None and result.action in ("confirm", "await_hud", "await_fresh_read"):
+            if self.flow_started is None and result.action in (
+                "confirm",
+                "await_hud",
+                "await_fresh_read",
+                "await_frame",
+            ):
                 # One odd reading is not a screen yet: this tick is neutral and the plan is kept.
                 return result
             screen = observation.hud.screen if observation.hud is not None else self.flow_screen

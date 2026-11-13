@@ -104,7 +104,7 @@ def _alert(text):
 BACK = re.compile(r"\bzur\w{1,3}k\b")
 # A menu nobody asked for is left after this long: a skill that opened one has said so (`expect`),
 # and one that was stopped in the middle of it has had its time.
-MENU_OPEN_SECONDS = 4.0
+MENU_OPEN_SECONDS = 3.0
 # Between two presses of the way back; the text is read twice a second.
 MENU_PRESS_EVERY = 1.0
 # Levels of a shop's menu that are backed out of, one press each, before the head is told.
@@ -115,7 +115,12 @@ MENU_HELD_SECONDS = 1.5
 # (the suit for the jeweller, the gun before the long stretch): the head is told first and has this
 # long to use it, once in two minutes, before the reflex leaves the menu after all.
 MISSION_SECONDS = 90.0
+# A footer has to stand this long before it is a menu at all. The text is read half a second behind
+# the picture: the map a skill has just closed still stands in it while the screen is the game's again
+# and the minimap has not come back, and a reflex that took that for a menu ended the skill.
 MENU_SURE_SECONDS = 1.2
+# From a press to the picture that shows it; a footer read from an older picture proves nothing.
+PICTURE_SECONDS = 0.15
 MENU_HEAD_SECONDS = 20.0
 MENU_TOLD_EVERY = 120.0
 
@@ -264,6 +269,8 @@ class Flow:
         self._button_reads = 0
         self._objective_at: float | None = None
         self._menu_seen = 0.0
+        self._menu_first: float | None = None
+        self._menu_text: float | None = None
         self._menu_told: float | None = None
         self._menu_head = False
 
@@ -360,7 +367,27 @@ class Flow:
             self.failures_in_row = 0
             self._failed_mission = None
 
-    def tick(self, observation: Observation, text: object = None) -> FlowResult | None:
+    def reset(self) -> None:
+        """Forget the screen in hand, after time in which the pad was not the pilot's.
+
+        What was pressed into a refused pad never reached the console: the counts and the times of it
+        would leave the reflex stuck on a screen it has not yet pressed anything into."""
+        self._candidate = self._screen = None
+        self._reads = 0
+        self._engaged = False
+        self._pressed_at = self._pressed = None
+        self._presses = 0
+        self._stuck = False
+        self._button, self._button_reads = None, 0
+        self._menu_first = None
+        self._menu_head = False
+        self._ring_since = self._answer_at = None
+        self._answers = 0
+
+    def tick(
+        self, observation: Observation, text: object = None, text_time: float | None = None
+    ) -> FlowResult | None:
+        """`text_time`: when the picture was taken that `text` was read from, where the caller knows."""
         now = observation.time
         if self._last_time is not None and now <= self._last_time:
             return FlowResult(action="await_fresh_read") if self._engaged else None
@@ -385,14 +412,22 @@ class Flow:
         if screen == "game" and _alert(text):
             screen = "alert"
         elif screen == "game" and _menu_left_open(observation, text):
-            screen, self._menu_seen = "shop_menu", now
+            screen, self._menu_seen, self._menu_text = "shop_menu", now, text_time
         elif (
             screen == "game"
-            and self._candidate == "shop_menu"
+            and self._menu_first is not None
             and observation.reading.minimap == "none"
             and now - self._menu_seen < MENU_HELD_SECONDS
         ):
             screen = "shop_menu"
+        if screen != "shop_menu":
+            self._menu_first = None
+        else:
+            if self._menu_first is None:
+                self._menu_first = now
+            if now - self._menu_first < MENU_SURE_SECONDS or (self._expected and now < self._expected[1]):
+                # Not a menu yet, or a skill has a screen of its own open and this is its doing.
+                screen = "game"
         self._track_mission(screen, text, now)
         if self._expected and now >= self._expected[1]:
             self._expected = None
@@ -524,8 +559,6 @@ class Flow:
         if self._pressed_at is not None and now - self._pressed_at < PRESS_SECONDS:
             return FlowResult(Pad(buttons=(back,)), "back", events)
         if self._menu_head:
-            if held < MENU_SURE_SECONDS:
-                return FlowResult(action="observe", events=events)
             if held < MENU_HEAD_SECONDS:
                 if self._stuck:
                     return FlowResult(action="stuck", events=events)
@@ -542,9 +575,15 @@ class Flow:
             if self._presses >= MENU_LEVELS:
                 self._stuck = True
                 return FlowResult(action="stuck", events=(*events, stuck))
-        if self._menu_seen != now:
-            # The footer is only held to be there: a press needs it read, so that the last press of
-            # the way out is not followed by one more into the game.
+        stale = (
+            self._pressed_at is not None
+            and self._menu_text is not None
+            and self._menu_text <= self._pressed_at + PICTURE_SECONDS
+        )
+        if self._menu_seen != now or stale:
+            # The footer is only held to be there, or was read from a picture older than the last
+            # press: a press needs it read since, so that the last press of the way out is not followed
+            # by one more into the game, where on foot the circle is a punch.
             return FlowResult(action="observe", events=events)
         self._pressed_at, self._pressed = now, (back, "back")
         self._presses += 1

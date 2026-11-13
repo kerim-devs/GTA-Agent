@@ -43,6 +43,8 @@ FLEE_SECONDS = 4.0
 # A hit counts as the signal of the rule `hit` for this long after the frame that confirmed it, and as
 # one without a marker when no red was on the map in the seconds before it (the marker of a mission's
 # enemy is there before his shot; RE_ARM is how long a marker's own rule looks back).
+# An objective read this short a time ago still stands: a mission is on.
+MISSION_SECONDS = 90.0
 HIT_SECONDS = 1.0
 
 
@@ -171,6 +173,7 @@ class Guard:
         self.observation = None
         self.flow = False
         self.hits = Hits()
+        self.mission_text, self.mission_at = "", None
         self.hit = self.hit_at = None
         # One entry per episode for the bench and the logs: the rule, when it took the pad or told the
         # head, when and why it let go, and on how many ticks it aimed, fired, turned and sprinted.
@@ -238,6 +241,14 @@ class Guard:
         the runner. `flow`: the flow reflex holds this tick."""
         t = observation.time
         self.observation, self.flow = observation, flow
+        # The game shows an objective for some seconds and the reader misses a line now and then: the
+        # last one read holds for a while, so that one tick without it is not the end of the mission.
+        if objective.strip():
+            self.mission_text, self.mission_at = objective, t
+        elif self.mission_at is not None and not 0 <= t - self.mission_at < MISSION_SECONDS:
+            self.mission_text, self.mission_at = "", None
+        if not objective.strip():
+            objective = self.mission_text
         where = self._read(observation)
         hit = self.hits.update(t, observation.hud)
         if hit is not None:

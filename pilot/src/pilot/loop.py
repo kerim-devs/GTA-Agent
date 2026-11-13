@@ -229,6 +229,9 @@ class ControllerRuntime:
             elif received - self.last_fresh >= 0.3 and not self.frozen:
                 status = self.send()
                 self.frozen = True
+                # Let go of in the middle of its press, as after a lapse: not pressed again until the
+                # skill has let go of it once.
+                self.withheld = self.withheld | self.down
                 self.down = frozenset()
             elif fresh:
                 self.sent_pad = self.requested_pad
