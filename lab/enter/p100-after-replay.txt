@@ -1,0 +1,8 @@
+20261113-225835 1 presses [] run ticks 25 last running side unknown
+20261113-225835 3 presses [] run ticks 22 last failed nothing found; saw 1 vehicle (rejected 0, avoided 0, moving 0)
+20261113-225835 5 presses [] run ticks 28 last running at roadside
+20261113-230030 3 presses [] run ticks 20 last running side unknown
+20261113-230030 5 presses [] run ticks 26 last running side unknown
+20261113-230030 7 presses [] run ticks 22 last running vehicle out of reach; target=9; approach=go; walked=4.4s; detours=0; switches=7
+20261113-230030 9 presses [549.4964658339959] run ticks 21 last done entered vehicle; vehicle=car; occupancy=parked-candidate; road=unknown
+20261113-234407 15 presses [623.8349571250001] run ticks 0 last done entered vehicle; vehicle=car; occupancy=parked-candidate; road=lane

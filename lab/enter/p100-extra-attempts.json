@@ -1,0 +1,219 @@
+[
+  {
+    "attempt": 12,
+    "start": 122.07470158299839,
+    "end": 147.13721049999003,
+    "last": {
+      "name": "enter_vehicle",
+      "attempt_id": 12,
+      "args": {
+        "kind": "car",
+        "occupied": "allow",
+        "duration": 25
+      },
+      "status": "failed",
+      "reason": "nothing found",
+      "queue": [],
+      "queue_disposition": "empty",
+      "dropped": [],
+      "pending": [
+        "look"
+      ]
+    }
+  },
+  {
+    "attempt": 14,
+    "start": 149.3190190000023,
+    "end": 174.38238383299904,
+    "last": {
+      "name": "enter_vehicle",
+      "attempt_id": 14,
+      "args": {
+        "kind": "car",
+        "occupied": "allow",
+        "duration": 25
+      },
+      "status": "failed",
+      "reason": "nothing found; saw 5 vehicles (rejected 0, avoided 0, moving 1)",
+      "queue": [],
+      "queue_disposition": "empty",
+      "dropped": [],
+      "pending": [
+        "walk_road"
+      ]
+    }
+  },
+  {
+    "attempt": 16,
+    "start": 184.5053578329971,
+    "end": 209.55870249999862,
+    "last": {
+      "name": "enter_vehicle",
+      "attempt_id": 16,
+      "args": {
+        "kind": "car",
+        "occupied": "allow",
+        "duration": 25
+      },
+      "status": "failed",
+      "reason": "nothing found; saw 1 vehicle (rejected 0, avoided 0, moving 0)",
+      "queue": [],
+      "queue_disposition": "empty",
+      "dropped": [],
+      "pending": [
+        "walk_road"
+      ]
+    }
+  },
+  {
+    "attempt": 18,
+    "start": 219.69752633299504,
+    "end": 244.7610429579945,
+    "last": {
+      "name": "enter_vehicle",
+      "attempt_id": 18,
+      "args": {
+        "kind": "car",
+        "occupied": "allow",
+        "duration": 25
+      },
+      "status": "failed",
+      "reason": "vehicle drove away or was lost; saw 4 vehicles (rejected 0, avoided 0, moving 2)",
+      "queue": [],
+      "queue_disposition": "empty",
+      "dropped": [],
+      "pending": [
+        "walk_road"
+      ]
+    }
+  },
+  {
+    "attempt": 20,
+    "start": 254.88897745800205,
+    "end": 279.942553624991,
+    "last": {
+      "name": "enter_vehicle",
+      "attempt_id": 20,
+      "args": {
+        "kind": "car",
+        "occupied": "allow",
+        "duration": 25
+      },
+      "status": "failed",
+      "reason": "vehicle out of reach; saw 3 vehicles (rejected 0, avoided 0, moving 0)",
+      "queue": [],
+      "queue_disposition": "empty",
+      "dropped": [],
+      "pending": [
+        "walk"
+      ]
+    }
+  },
+  {
+    "attempt": 22,
+    "start": 281.57369774999097,
+    "end": 306.6416288749897,
+    "last": {
+      "name": "enter_vehicle",
+      "attempt_id": 22,
+      "args": {
+        "kind": "car",
+        "occupied": "allow",
+        "duration": 25
+      },
+      "status": "failed",
+      "reason": "vehicle out of reach; saw 5 vehicles (rejected 0, avoided 0, moving 1)",
+      "queue": [],
+      "queue_disposition": "empty",
+      "dropped": [],
+      "pending": [
+        "walk"
+      ]
+    }
+  },
+  {
+    "attempt": 24,
+    "start": 308.28095583299,
+    "end": 333.33129208299215,
+    "last": {
+      "name": "enter_vehicle",
+      "attempt_id": 24,
+      "args": {
+        "kind": "car",
+        "occupied": "allow",
+        "duration": 25
+      },
+      "status": "failed",
+      "reason": "nothing found; saw 6 vehicles (rejected 0, avoided 0, moving 0)",
+      "queue": [],
+      "queue_disposition": "empty",
+      "dropped": [],
+      "pending": [
+        "walk_road"
+      ]
+    }
+  },
+  {
+    "attempt": 26,
+    "start": 343.47567374999926,
+    "end": 368.52564016699034,
+    "last": {
+      "name": "enter_vehicle",
+      "attempt_id": 26,
+      "args": {
+        "kind": "car",
+        "occupied": "allow",
+        "duration": 25
+      },
+      "status": "failed",
+      "reason": "nothing found; saw 1 vehicle (rejected 0, avoided 0, moving 1)",
+      "queue": [],
+      "queue_disposition": "empty",
+      "dropped": [],
+      "pending": [
+        "walk_road"
+      ]
+    }
+  },
+  {
+    "attempt": 28,
+    "start": 378.67044033299317,
+    "end": 403.7141381669935,
+    "last": {
+      "name": "enter_vehicle",
+      "attempt_id": 28,
+      "args": {
+        "kind": "car",
+        "occupied": "allow",
+        "duration": 25
+      },
+      "status": "failed",
+      "reason": "vehicle drove away or was lost; saw 1 vehicle (rejected 0, avoided 0, moving 1)",
+      "queue": [],
+      "queue_disposition": "empty",
+      "dropped": [],
+      "pending": [
+        "walk"
+      ]
+    }
+  },
+  {
+    "attempt": 30,
+    "start": 405.36643883299257,
+    "end": 422.02170704198943,
+    "last": {
+      "name": "enter_vehicle",
+      "attempt_id": 30,
+      "args": {
+        "kind": "car",
+        "occupied": "allow",
+        "duration": 25
+      },
+      "status": "failed",
+      "reason": "goal_trip_verdict",
+      "queue": [],
+      "queue_disposition": "empty",
+      "dropped": []
+    }
+  }
+]
