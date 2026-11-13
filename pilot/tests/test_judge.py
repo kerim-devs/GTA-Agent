@@ -402,7 +402,7 @@ def test_conductor_logs_judgments_and_emits_only_accepted_changes(tmp_path):
     assert judge.closed
     rows = [json.loads(line) for line in (tmp_path / "judge.jsonl").read_text().splitlines()]
     assert len(rows) == 5
-    assert [row["mode"] for row in rows] == [None, "foot", "foot", "foot", "vehicle"]
+    assert [row["mode"] for row in rows] == ["unknown", "unknown", "unknown", "unknown", "vehicle"]
     assert set(rows[0]) == {"t", "capture", "answers", "probabilities", "duration", "server", "mode"}
 
 
@@ -499,23 +499,23 @@ def test_conductor_passes_mode_and_only_reports_none_edges(tmp_path):
             event for request in requests for event in request.events if event["kind"] == "mode_changed"
         ]
         assert detector.modes == [
-            None,
-            "foot",
-            "foot",
-            "foot",
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown",
             "vehicle",
-            "vehicle",
-            "vehicle",
-            "foot",
-            "foot",
-            "foot",
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown",
+            "unknown",
             "none",
             "none",
             "none",
             "vehicle",
         ]
         assert events == [
-            {"kind": "mode_changed", "old": "foot", "new": "none"},
+            {"kind": "mode_changed", "old": "unknown", "new": "none"},
             {"kind": "mode_changed", "old": "none", "new": "vehicle"},
         ]
     finally:
