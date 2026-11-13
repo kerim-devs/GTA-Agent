@@ -1,0 +1,1193 @@
+{
+  "source": "20261113-181047",
+  "video_color": "RGB at runtime; PNG crops stored in display colors",
+  "tunnel": [
+    {
+      "t": 186.2719966250006,
+      "frame_id": 226321,
+      "reading": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.137466007941782,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.2,
+            "y": 50.1,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 86.42,
+            "y": 34.62,
+            "border": false
+          }
+        ]
+      },
+      "crop": "tunnel-226321.png"
+    },
+    {
+      "t": 186.3788275830011,
+      "frame_id": 226327,
+      "reading": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 3.9872727804266503,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.25,
+            "y": 50.03,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 86.71,
+            "y": 34.62,
+            "border": false
+          }
+        ]
+      },
+      "crop": "tunnel-226327.png"
+    },
+    {
+      "t": 186.5174568329967,
+      "frame_id": 226331,
+      "reading": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.033614943773216,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.25,
+            "y": 50.03,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 86.71,
+            "y": 34.62,
+            "border": false
+          }
+        ]
+      },
+      "crop": "tunnel-226331.png"
+    },
+    {
+      "t": 186.6326193749992,
+      "frame_id": 226341,
+      "reading": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.100921231827499,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.25,
+            "y": 50.02,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 86.71,
+            "y": 34.62,
+            "border": false
+          }
+        ]
+      },
+      "crop": "tunnel-226341.png"
+    },
+    {
+      "t": 186.75482662500144,
+      "frame_id": 226350,
+      "reading": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.130036710258764,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.3,
+            "y": 50.02,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 86.71,
+            "y": 34.62,
+            "border": false
+          }
+        ]
+      },
+      "crop": "tunnel-226350.png"
+    },
+    {
+      "t": 186.86141924999538,
+      "frame_id": 226356,
+      "reading": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.130657159887136,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.32,
+            "y": 50.17,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 86.71,
+            "y": 34.62,
+            "border": false
+          }
+        ]
+      },
+      "crop": "tunnel-226356.png"
+    },
+    {
+      "t": 186.96847924999747,
+      "frame_id": 226361,
+      "reading": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.132576083737291,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.32,
+            "y": 50.17,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 86.71,
+            "y": 34.62,
+            "border": false
+          }
+        ]
+      },
+      "crop": "tunnel-226361.png"
+    },
+    {
+      "t": 187.0858066669971,
+      "frame_id": 226370,
+      "reading": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.087267195424857,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.32,
+            "y": 50.17,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 86.71,
+            "y": 34.62,
+            "border": false
+          }
+        ]
+      },
+      "crop": "tunnel-226370.png"
+    },
+    {
+      "t": 187.23774574999698,
+      "frame_id": 226376,
+      "reading": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.087267195424857,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.32,
+            "y": 50.17,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 86.71,
+            "y": 34.62,
+            "border": false
+          }
+        ]
+      },
+      "crop": "tunnel-226376.png"
+    },
+    {
+      "t": 187.3495745830005,
+      "frame_id": 226385,
+      "reading": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.144596644459739,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.32,
+            "y": 50.17,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 86.71,
+            "y": 34.62,
+            "border": false
+          }
+        ]
+      },
+      "crop": "tunnel-226385.png"
+    },
+    {
+      "t": 187.4547019169986,
+      "frame_id": 226392,
+      "reading": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.0927138004291805,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.38,
+            "y": 49.86,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 86.71,
+            "y": 34.62,
+            "border": false
+          }
+        ]
+      },
+      "crop": "tunnel-226392.png"
+    },
+    {
+      "t": 187.56307558299886,
+      "frame_id": 226394,
+      "reading": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.1138655678243765,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.38,
+            "y": 49.86,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 86.71,
+            "y": 34.62,
+            "border": false
+          }
+        ]
+      },
+      "crop": "tunnel-226394.png"
+    },
+    {
+      "t": 187.6708721670002,
+      "frame_id": 226404,
+      "reading": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.101977740220548,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.31,
+            "y": 49.85,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 86.71,
+            "y": 34.62,
+            "border": false
+          }
+        ]
+      },
+      "crop": "tunnel-226404.png"
+    },
+    {
+      "t": 187.80510129199683,
+      "frame_id": 226413,
+      "reading": {
+        "minimap": "tilted",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": 4.114681286133418,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.3,
+            "y": 50.02,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 86.71,
+            "y": 34.62,
+            "border": false
+          }
+        ]
+      },
+      "crop": "tunnel-226413.png"
+    }
+  ],
+  "route": [
+    {
+      "t": 21.03734212499694,
+      "frame_id": 216429,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -144.84582267218138,
+        "far_bearing": -150.94539590092285,
+        "arrow": -2.327990375658885,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -14.0,
+            -15.0
+          ],
+          [
+            -13.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -87.55,
+            "y": 15.47,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": -85.19,
+            "y": -0.16,
+            "border": true
+          }
+        ]
+      }
+    },
+    {
+      "t": 21.15547858300124,
+      "frame_id": 216440,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -144.84582267218138,
+        "far_bearing": -150.94539590092285,
+        "arrow": -2.327990375658885,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -14.0,
+            -15.0
+          ],
+          [
+            -13.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -87.55,
+            "y": 15.47,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": -85.19,
+            "y": -0.16,
+            "border": true
+          }
+        ]
+      }
+    },
+    {
+      "t": 21.261044874998333,
+      "frame_id": 216446,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -144.84582267218138,
+        "far_bearing": -150.94539590092285,
+        "arrow": -2.3266788137682965,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -14.0,
+            -15.0
+          ],
+          [
+            -13.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -87.55,
+            "y": 15.47,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": -85.19,
+            "y": -0.16,
+            "border": true
+          }
+        ]
+      }
+    },
+    {
+      "t": 21.365079457995307,
+      "frame_id": 216448,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -144.84582267218138,
+        "far_bearing": -150.94539590092285,
+        "arrow": -2.392650789829446,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -14.0,
+            -15.0
+          ],
+          [
+            -13.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -87.93,
+            "y": 15.19,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": -84.93,
+            "y": -0.07,
+            "border": false
+          }
+        ]
+      }
+    },
+    {
+      "t": 21.478671124998073,
+      "frame_id": 216458,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -144.84582267218138,
+        "far_bearing": -150.94539590092285,
+        "arrow": -2.3492254180253838,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -14.0,
+            -15.0
+          ],
+          [
+            -13.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": 5530,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": 46110.051496,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -87.77,
+            "y": 15.32,
+            "border": true
+          }
+        ]
+      }
+    },
+    {
+      "t": 21.606888957998308,
+      "frame_id": 216466,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -144.84582267218138,
+        "far_bearing": -150.94539590092285,
+        "arrow": -2.3492254180253838,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -14.0,
+            -15.0
+          ],
+          [
+            -13.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": 5530,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": 46110.051496,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -87.77,
+            "y": 15.32,
+            "border": true
+          }
+        ]
+      }
+    },
+    {
+      "t": 21.71188683299988,
+      "frame_id": 216472,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -144.84582267218138,
+        "far_bearing": -150.94539590092285,
+        "arrow": -2.3492254180253838,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -14.0,
+            -15.0
+          ],
+          [
+            -13.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": 5530,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": 46110.317684041,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -87.77,
+            "y": 15.32,
+            "border": true
+          }
+        ]
+      }
+    },
+    {
+      "t": 21.822546041999885,
+      "frame_id": 216478,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -144.84582267218138,
+        "far_bearing": -150.94539590092285,
+        "arrow": -2.3623299821291823,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -14.0,
+            -15.0
+          ],
+          [
+            -13.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": 5530,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": 46110.317684041,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -87.77,
+            "y": 15.32,
+            "border": true
+          }
+        ]
+      }
+    },
+    {
+      "t": 21.93693829199765,
+      "frame_id": 216486,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -144.84582267218138,
+        "far_bearing": -150.94539590092285,
+        "arrow": -2.3550752575599176,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -14.0,
+            -15.0
+          ],
+          [
+            -13.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": 5530,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": 46110.317684041,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -87.77,
+            "y": 15.32,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": -84.89,
+            "y": -0.04,
+            "border": false
+          }
+        ]
+      }
+    },
+    {
+      "t": 22.081619124997815,
+      "frame_id": 216491,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -144.84582267218138,
+        "far_bearing": -150.94539590092285,
+        "arrow": -2.573973435061788,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -14.0,
+            -15.0
+          ],
+          [
+            -13.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": 5530,
+        "gps_arrow": null,
+        "gps_speed": 2.540578569778516e-12,
+        "gps_time": 46110.572426916,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -87.77,
+            "y": 15.32,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": -84.89,
+            "y": -0.04,
+            "border": false
+          }
+        ]
+      }
+    },
+    {
+      "t": 22.193674916998134,
+      "frame_id": 216501,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -144.84582267218138,
+        "far_bearing": -150.94539590092285,
+        "arrow": -2.5708984629001748,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -14.0,
+            -15.0
+          ],
+          [
+            -13.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": 5530,
+        "gps_arrow": null,
+        "gps_speed": 4.740352010233482e-13,
+        "gps_time": 46110.824383,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -87.77,
+            "y": 15.32,
+            "border": true
+          }
+        ]
+      }
+    },
+    {
+      "t": 22.296965541994723,
+      "frame_id": 216507,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -144.84582267218138,
+        "far_bearing": -150.94539590092285,
+        "arrow": -2.906755956678893,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -14.0,
+            -15.0
+          ],
+          [
+            -13.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": 5530,
+        "gps_arrow": null,
+        "gps_speed": 4.740352010233482e-13,
+        "gps_time": 46110.824383,
+        "blips": []
+      }
+    },
+    {
+      "t": 22.415476624999428,
+      "frame_id": 216510,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -144.84582267218138,
+        "far_bearing": -150.94539590092285,
+        "arrow": -3.601893977295333,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -14.0,
+            -15.0
+          ],
+          [
+            -13.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": 5530,
+        "gps_arrow": null,
+        "gps_speed": 4.740352010233482e-13,
+        "gps_time": 46110.824383,
+        "blips": []
+      }
+    },
+    {
+      "t": 22.535923041999922,
+      "frame_id": 216521,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -144.84582267218138,
+        "far_bearing": -149.03624346792648,
+        "arrow": -4.749820187137857,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -15.0,
+            -15.0
+          ],
+          [
+            -14.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": 5530,
+        "gps_arrow": null,
+        "gps_speed": 4.385692940746877e-12,
+        "gps_time": 46111.093172083005,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -83.0,
+            "y": 13.5,
+            "border": false
+          },
+          {
+            "color": "blue",
+            "x": -87.98,
+            "y": 3.24,
+            "border": true
+          }
+        ]
+      }
+    },
+    {
+      "t": 22.65394716699666,
+      "frame_id": 216529,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -144.84582267218138,
+        "far_bearing": -149.03624346792648,
+        "arrow": -6.519858238162897,
+        "corrupt": false,
+        "confidence": 0.68,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -15.0,
+            -15.0
+          ],
+          [
+            -14.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": 5530,
+        "gps_arrow": null,
+        "gps_speed": 4.385692940746877e-12,
+        "gps_time": 46111.093172083005,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -87.86,
+            "y": 2.93,
+            "border": true
+          }
+        ]
+      }
+    },
+    {
+      "t": 22.754104916995857,
+      "frame_id": 216535,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -142.59464336859145,
+        "far_bearing": -147.20046872738078,
+        "arrow": -7.307146862328409,
+        "corrupt": false,
+        "confidence": 0.85,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -15.0,
+            -15.0
+          ],
+          [
+            -15.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": 5530,
+        "gps_arrow": null,
+        "gps_speed": 4.385692940746877e-12,
+        "gps_time": 46111.093172083005,
+        "blips": []
+      }
+    },
+    {
+      "t": 22.85703370799456,
+      "frame_id": 216540,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -142.59464336859145,
+        "far_bearing": -147.20046872738078,
+        "arrow": -8.208255671553616,
+        "corrupt": false,
+        "confidence": 0.85,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -15.0,
+            -15.0
+          ],
+          [
+            -15.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": 5530,
+        "gps_arrow": null,
+        "gps_speed": 4.385692940746877e-12,
+        "gps_time": 46111.093172083005,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -83.0,
+            "y": 16.5,
+            "border": false
+          }
+        ]
+      }
+    },
+    {
+      "t": 22.987769416999072,
+      "frame_id": 216549,
+      "reading": {
+        "minimap": "tilted",
+        "route": "purple",
+        "bearing": -142.59464336859145,
+        "far_bearing": -147.20046872738078,
+        "arrow": -10.884667423847759,
+        "corrupt": false,
+        "confidence": 0.85,
+        "path": [
+          [
+            -12.0,
+            -8.0
+          ],
+          [
+            -15.0,
+            -15.0
+          ],
+          [
+            -15.0,
+            -21.0
+          ]
+        ],
+        "gps_distance": 5530,
+        "gps_arrow": null,
+        "gps_speed": 1.7101755113298877e-12,
+        "gps_time": 46111.617286458,
+        "blips": [
+          {
+            "color": "blue",
+            "x": -86.97,
+            "y": 7.8,
+            "border": true
+          }
+        ]
+      }
+    }
+  ]
+}

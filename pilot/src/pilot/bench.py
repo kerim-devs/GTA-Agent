@@ -645,6 +645,8 @@ CAUSE_RULES: dict[str, str | None] = {
     "skill-error:": "tech",
     # what the reason alone does not say; the log decides (see `cause`)
     "time-limit": None,
+    "route-back": None,
+    "stars-lit": "world",
     "time limit": None,
     "route-gone": None,
     "arrived": None,
