@@ -173,6 +173,7 @@ class Driver:
             self._aim_ab = 0.0
         self._outlier_since: float | None = None
         self._filtered_error: float | None = None
+        self._filtered_near: float | None = None  # the short aim's error, for the pedal
         self._filtered_far: float | None = None
         self._moving_since: float | None = None
         self._steer = 0.0
@@ -226,7 +227,7 @@ class Driver:
         self._missing_duration = 0.0
         self._route_stopped = False
         self._error = self._outlier_since = None
-        self._filtered_error = self._filtered_far = self._moving_since = None
+        self._filtered_error = self._filtered_near = self._filtered_far = self._moving_since = None
         self._stuck_since = None
         self._steer = 0.0
         self._speed = None
@@ -350,6 +351,9 @@ class Driver:
         error = _angle(_angle(near) - _angle(arrow))
         far_error = error if far is None else _angle(_angle(far) - _angle(arrow))
         path = _path(reading.path)
+        # The pedal goes by the short aim as it always has: a bend shows there first, and with the far
+        # aim alone the car came into a hidden bend 0.4 m/s too fast on a zoomed map.
+        near_error = error
         if path:
             allowed = self._aim_ab <= 0 or int(now // self._aim_ab) % 2 == 0
             self._far = allowed and _straight(path, self.config, self._far)
@@ -357,7 +361,10 @@ class Driver:
             target = _target(
                 path, self.config.straight_lookahead_px if self._far else self.config.lookahead_px
             )
-            error = _angle(degrees(atan2(target[0], target[1])) - arrow)
+            error = near_error = _angle(degrees(atan2(target[0], target[1])) - arrow)
+            if self._far:
+                short = _target(path, self.config.lookahead_px)
+                near_error = _angle(degrees(atan2(short[0], short[1])) - arrow)
             far_error = _angle(degrees(atan2(path[-1][0], path[-1][1])) - arrow)
         if self._error is not None and abs(_angle(error - self._error)) > self.config.outlier_angle:
             if self._outlier_since is None:
@@ -485,6 +492,11 @@ class Driver:
             if self._filtered_far is None
             else _angle(self._filtered_far + alpha * _angle(far_error - self._filtered_far))
         )
+        self._filtered_near = (
+            near_error
+            if self._filtered_near is None or previous is None
+            else _angle(self._filtered_near + alpha * _angle(near_error - self._filtered_near))
+        )
         rate = 0.0 if previous is None or dt <= 0 else _angle(self._filtered_error - previous) / dt
         correction = _clip(
             rate * self.config.command_delay, -self.config.prediction_limit, self.config.prediction_limit
@@ -494,7 +506,7 @@ class Driver:
         if abs(self._filtered_error) <= self.config.steer_deadband:
             correction = 0.0
         adjusted = self._filtered_error + correction
-        bend_delta = _angle(self._filtered_far - self._filtered_error)
+        bend_delta = _angle(self._filtered_far - self._filtered_near)
         adjusted = (1 if adjusted >= 0 else -1) * max(0.0, abs(adjusted) - self.config.steer_rest)
         target = _clip(self.config.steer_gain * adjusted)
         if target:
@@ -514,7 +526,7 @@ class Driver:
         if abs(self._steer) < self.config.steer_zero and target == 0:
             self._steer = 0.0
         bend = max(
-            abs(self._filtered_error),
+            abs(self._filtered_near),
             self.config.far_bend * abs(self._filtered_far),
             self.config.far_bend * abs(bend_delta),
         )
@@ -769,7 +781,7 @@ class Driver:
     def _end_manoeuvre(self):
         self._phase = None
         self._stuck_since = self._moving_since = None
-        self._error = self._filtered_error = self._filtered_far = None
+        self._error = self._filtered_error = self._filtered_near = self._filtered_far = None
         self._steer = 0.0
 
     def _queue(self, ahead: bool, moving: bool | None, now: float, dt: float) -> bool:
