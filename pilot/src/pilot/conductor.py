@@ -159,6 +159,7 @@ class Conductor:
         # nothing is planned until the pad is taken again.
         self.refused_since = None
         self.where = Sense(ahead.where())
+        self.known_place: str | None = None
 
     def write(self, row):
         self.log.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -515,7 +516,17 @@ class Conductor:
             if rows:
                 self.judge_log.flush()
         self._text(rgb, t, text, text_time if text is not None else frame_time)
-        self.where.step(observation)
+        self.where.step(observation, walked=any(self.last_pad.left))
+        place = self.where.place
+        observation = replace(observation, place=place)
+        if place in ahead.PLACES and place != self.known_place:
+            # A room or a landing the figure has come into is news for the head: the skill that
+            # runs was planned for another place. On 13 November leave_building came out on the
+            # landing, was not told, and went round along the wall back into the apartment. The
+            # street is where the skills end by themselves, and a verdict forgotten is no place.
+            if place != "street":
+                self.judge_events.append({"kind": "place_changed", "old": self.known_place, "new": place})
+            self.known_place = place
         # The reflex is shown the screen as the reader named it. For the skills, the guard and the
         # head a phone with a call on it is the game: the figure walks and drives on while it talks.
         seen = observation

@@ -671,9 +671,10 @@ def test_the_wall_round_ends_when_nothing_holds_the_figure_up_and_gives_up_after
 
     guard = Told(seen, ahead=model)
     guard.place = guard.indoors = True
-    steers = filmed(guard, 14.0)
-    assert went(steers, ("go", 0.0), ("climb", 1.5), ("look", 3.1), ("round", 4.7), ("go", 13.3))
-    assert guard.views == ["none", "wall", "free"]
+    steers = filmed(guard, 16.0)
+    # The view without an answer is looked at a second time before the walls are felt for.
+    assert went(steers, ("go", 0.0), ("climb", 1.5), ("look", 3.1), ("round", 6.2), ("go", 14.8))
+    assert guard.views == ["miss", "none", "wall", "free"]
     # Held up at every face, twenty-four turns and still in the room: stuck.
     rooms = [View(exit=0.0)] * 4 + [View(indoors=1.0, exit=0.0)] * 200
     guard = Told(lambda time, guard: "still", ahead=Looks(*rooms, room=True))
@@ -681,3 +682,95 @@ def test_the_wall_round_ends_when_nothing_holds_the_figure_up_and_gives_up_after
     failed = [time for time, steer in steers.items() if steer.failed]
     assert failed[0] == pytest.approx(64.9) and steers[failed[0]].failed == "stuck"
     assert guard.wall_turns == WayRound.WALL_TURNS + 1
+
+
+class Scripted:
+    """A model that says of each view looked at, standing, what the script gives, and of the room
+    while running that it is a room; asked what holds the figure up, it says `low`."""
+
+    def __init__(self, *looks, low=0.0):
+        self.looks, self.low, self.guard, self.kind, self.said = list(looks), low, None, None, None
+
+    def ask(self, frame, capture, **kwargs):
+        if kwargs.get("low"):
+            self.said = View(low=self.low)
+        elif self.guard.phase == "look":
+            self.said = self.looks.pop(0) if self.looks else View(exit=0.0)
+        else:
+            self.said = View(indoors=1.0, exit=0.0)
+        return True
+
+    def answer(self, since):
+        return self.said
+
+
+def leaving(seen, *looks, jumpable=0.0, **kwargs):
+    model = Scripted(*looks, low=jumpable)
+    guard = Told(seen, climb=False, ahead=model, **kwargs)
+    model.guard = guard
+    guard.leave(tick(0.0))
+    return guard
+
+
+def door(part):
+    return View(exit=1.0, parts=tuple(float(index == part) for index in range(3)))
+
+
+def test_a_way_out_the_feet_found_closed_is_not_run_at_again_from_the_next_view():
+    # 13 November, 15:48: a minute at the glass door of a bedroom, the camera a step further round
+    # each time and the door still in the picture's left edge.
+    guard = leaving(lambda time, guard: "still", door(1), door(0), door(1))
+    steers = filmed(guard, 9.0, start=0.1)
+    assert guard.views[:3] == ["exitM", "shutL", "exitM"]
+    # The second run is at another way: the camera has turned two looks from the first.
+    assert abs(wayround.WAYS.yaw) > 90
+    assert not any(steer.buttons for steer in steers.values())
+
+
+def test_a_room_with_no_way_but_the_one_the_figure_came_by_is_left_by_it():
+    # Kerim, 13 November: it walks the same ways again and again. Through a doorway the way back
+    # is passed over while the room shows another, and taken when it shows none: a dead end.
+    def seen(time, guard):
+        return "going" if guard.state == "round" and guard.phase == "run" else "still"
+
+    guard = leaving(seen, door(1))
+    filmed(guard, 10.5, start=0.1)
+    assert guard.views[0] == "exitM" and guard.state == "go"
+    assert wayround.WAYS.back == pytest.approx(180.0, abs=1.0) and wayround.WAYS.closed == []
+    # The next room: nothing in three views, in the fourth the doorway it came through, and
+    # nothing in the last.
+    guard.ahead.looks = [View(exit=0.0), View(exit=0.0), View(exit=0.0), door(1)]
+    guard.leave(tick(10.6))
+    steers = filmed(guard, 21.0, start=10.7)
+    assert guard.views[:6] == ["room0.00", "room0.00", "room0.00", "backM", "room0.00", "goback"]
+    assert "wall" not in guard.views
+    assert steers[21.0].left == guard.AHEAD
+
+
+@pytest.mark.parametrize(("low", "word"), [(0.9, "low"), (0.1, "high")])
+def test_in_a_room_the_figure_jumps_at_what_the_model_calls_low_and_not_at_a_wall(low, word):
+    # Kerim, 13 November: at the table in front of the couch it has to go round or jump, and try
+    # it where it does not know; at a wall a jump makes no sense.
+    guard = leaving(lambda time, guard: "still", door(1), jumpable=low, low=True)
+    steers = filmed(guard, 6.0, start=0.1)
+    assert word in guard.views
+    assert any("square" in steer.buttons for steer in steers.values()) is (word == "low")
+
+
+def test_a_landings_round_leaves_out_the_door_behind_the_figure():
+    # 13 November, 16:19: no stairs in view from the doorstep, and the first leg of the round along
+    # the landing's edges took the figure back into the apartment.
+    guard = Told(lambda time, guard: "still", climb=False)
+    guard.descend(tick(0.0))
+    arrow, pushed = 0.0, None
+    for index in range(1, 40):
+        steer = guard.step(tick(index / 10, arrow=arrow), FORWARD)
+        if index == 1:
+            # The door lies where the first eighth turn of the round would take the figure.
+            wayround.WAYS.back = wayround.WAYS.yaw + WayRound.WALL_STEP
+        if steer.left == guard.AHEAD:
+            pushed = wayround.WAYS.yaw
+            break
+        arrow = (arrow - steer.right[0] * 100.0 * 0.1 + 180.0) % 360.0 - 180.0
+    assert pushed is not None
+    assert wayround._apart(pushed, wayround.WAYS.back) >= WayRound.DOOR

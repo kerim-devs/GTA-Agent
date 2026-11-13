@@ -46,11 +46,18 @@ INDOORS = (
     "A: yes, indoors, in a room\n"
     "B: no, outdoors"
 )
+# Asked first for "a door or doorway through which a person could walk out of the room to the
+# outside", yes or no. In an apartment on 13 November that drew the figure to the balcony again and
+# again: of 25 frames of its living room the model said yes with 1.00 to the six that show the glass
+# door to the balcony, which does lead outside, and 0.00 to 0.47 to the eight that show the corridor
+# to the front door. Asked as below, it gave the corridor 1.00 in 8 of 8, the balcony 0.00 in 7 of
+# 7, and on Kerim's own walk out of that apartment 0.00 to the bedroom's glass door and 1.00 to the
+# bedroom door, the hall and the front door in 9 of 10 frames. The share of A is what counts.
 EXIT = (
-    "This is {what} of a game, taken inside a room. Does it show a door or doorway through "
-    "which a person could walk out of the room to the outside?\n"
-    "A: yes, an exit to the outside is in this picture\n"
-    "B: no, only walls, windows, furniture or people"
+    "This is {what} of a game, taken inside a room. Which way out of this room does it show?\n"
+    "A: a door, a doorway or a corridor that leads on into the building or out to the street\n"
+    "B: a window, or a glass door to a balcony or terrace with a railing\n"
+    "C: none, only walls, furniture or people"
 )
 ENTRANCE = (
     "This is {what} of a game, taken outside a building. Does it show a door or doorway "
@@ -75,6 +82,30 @@ STAIRS = (
     "A: yes, stairs going down are in this picture\n"
     "B: no, only walls, railings, fences, doors or windows"
 )
+# Stairs are stairs to that question, whichever way they lead. On 13 November the figure stood on the
+# half landing of an outside staircase, the model said yes to the flight that led back up to the
+# door, and the figure ran up it and into the apartment it had just left. Asked which way a
+# staircase leads, of each part of the picture that showed one, it said up with 0.95 to 1.00 for
+# the 14 parts of that flight seen from below and with 0.00 to 0.27 for the middle part of 12 of 13
+# frames that look down a flight (0.71 for the other), and up again for the second flight that
+# rises beside the way down in Kerim's walk. A part it calls up is not a way down.
+WAY = (
+    "This is {what} of a game, seen from behind the player's character. A staircase is in the "
+    "picture. Seen from where the character stands, where does the staircase lead?\n"
+    "A: up, to a level higher than the character\n"
+    "B: down, to a level lower than the character"
+)
+UP = 0.9  # what the model has to give "up" for a staircase to be left out
+# Kerim, 13 November, of a figure held up in a room: at a table or a couch it should go round or
+# jump, as a player would try; at a wall a jump makes no sense. The feet say that something holds
+# the figure up, the model what it is.
+LOW = (
+    "This is a screenshot of a game. The player's character is seen from behind in the middle of the "
+    "picture and cannot walk on: something stands right in front of it. What is it?\n"
+    "A: something low that a person could climb or jump over: a table, a couch, a bed, a chair, a "
+    "box, a fence or a low wall\n"
+    "B: a wall, a door, a window, a cupboard or something else too high to climb over"
+)
 WIDTH = 640
 # The picture's left, middle and right part, overlapping, without the bars at its upper and lower edge.
 PARTS = (slice(0, 520), slice(380, 900), slice(760, 1280))
@@ -92,6 +123,7 @@ class View:
     exit: float | None = None  # a way out of the room, in, or down the stairs, somewhere in the picture
     parts: tuple[float, float, float] | None = None  # in its left, middle and right part
     where: tuple[float, float, float] | None = None  # the shares of a room, a landing and the street
+    low: float | None = None  # what holds the figure up is low enough to jump
     error: str | None = None
 
 
@@ -123,6 +155,7 @@ class Ahead:
         entrance: bool = False,
         stairs: bool = False,
         where: bool = False,
+        low: bool = False,
     ) -> bool:
         """Begin asking about this frame; False when a frame is still out or this is none.
 
@@ -130,7 +163,8 @@ class Ahead:
         leaves out the way straight ahead, of a view the feet have judged, and `exit` false the
         way out of a room, where only the place is asked for. `stairs` asks for stairs down, of a
         figure known to stand on a landing, and answers in `exit` and `parts` as a door does.
-        `where` asks nothing but which of the three places the figure stands in.
+        `where` asks nothing but which of the three places the figure stands in, and `low`
+        nothing but whether what stands in front of the figure can be jumped.
         """
         if not isinstance(frame, np.ndarray) or frame.shape != (720, 1280, 3) or not self.servers:
             return False
@@ -140,13 +174,15 @@ class Ahead:
             self.busy = True
         work = threading.Thread(
             target=self._work,
-            args=(frame.copy(), capture, indoors, ahead, exit, entrance, stairs, where),
+            args=(frame.copy(), capture, indoors, ahead, exit, entrance, stairs, where, low),
             daemon=True,
         )
         work.start()
         return True
 
-    def _work(self, frame, capture, indoors, ahead, exit, entrance=False, stairs=False, where=False):
+    def _work(
+        self, frame, capture, indoors, ahead, exit, entrance=False, stairs=False, where=False, low=False
+    ):
         started = self.clock()
         said = {}
         try:
@@ -157,22 +193,41 @@ class Ahead:
             def share(image, question):
                 return open_share(self.transport(url, model, image, question))
 
-            if where:
+            def first(image, question):
+                shares = places(self.transport(url, model, image, question))
+                return None if shares is None else shares[0]
+
+            if low:
+                said["low"] = share(whole, LOW)
+            elif where:
                 said["where"] = places(self.transport(url, model, whole, WHERE))
             elif indoors is None and not stairs:
                 said["indoors"] = share(whole, INDOORS)
                 indoors = said["indoors"] is not None and said["indoors"] >= SEEN
-            if where:
+            if where or low:
                 pass
             elif (indoors and exit) or entrance or stairs:
                 door = STAIRS if stairs else ENTRANCE if entrance else EXIT
-                said["exit"] = share(whole, door.format(what="a screenshot"))
+                seen = first if door is EXIT else share
+                said["exit"] = seen(whole, door.format(what="a screenshot"))
                 if said["exit"] is not None and said["exit"] >= SEEN:
                     question = door.format(what="part of a screenshot")
-                    said["parts"] = tuple(
-                        share(judge.encode(bgr[PART_ROWS, part], PART_WIDTH), question) or 0.0
-                        for part in PARTS
-                    )
+                    images = [judge.encode(bgr[PART_ROWS, part], PART_WIDTH) for part in PARTS]
+                    parts = [seen(image, question) or 0.0 for image in images]
+                    if stairs:
+                        # Only stairs that lead down count: see WAY.
+                        if max(parts) < SEEN:
+                            if (share(whole, WAY.format(what="a screenshot")) or 0.0) >= UP:
+                                said["exit"] = 0.0
+                        else:
+                            way = WAY.format(what="part of a screenshot")
+                            parts = [
+                                0.0 if seen >= SEEN and (share(image, way) or 0.0) >= UP else seen
+                                for image, seen in zip(images, parts, strict=True)
+                            ]
+                            if max(parts) < SEEN:
+                                said["exit"] = 0.0
+                    said["parts"] = tuple(parts)
             elif ahead and not indoors:
                 said["open"] = share(whole, QUESTION)
         except Exception as exc:

@@ -8,6 +8,13 @@ def optional_ocr(monkeypatch):
     monkeypatch.setattr("pilot.gps.recognize", lambda crop: None)
 
 
+@pytest.fixture(autouse=True)
+def no_ways_remembered():
+    from pilot import wayround
+
+    wayround.WAYS.reset()
+
+
 def pytest_addoption(parser):
     parser.addoption("--full", action="store_true", help="Include the full delay/scale/car matrix")
 

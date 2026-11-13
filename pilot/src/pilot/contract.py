@@ -152,6 +152,9 @@ class Observation:
     # time. None means the detector saw none in the figure's place, such as in first person.
     figure: Detection | None = None
     figure_vehicle: Detection | None = None
+    # Where the figure stands, as the standing sense has it (where.Sense): "room", "landing",
+    # "street", "unknown" with no verdict, None with no model for it.
+    place: str | None = None
 
 
 def player_mode(observation: Observation) -> str | None:

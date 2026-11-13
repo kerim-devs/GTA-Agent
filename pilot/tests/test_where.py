@@ -10,9 +10,9 @@ FRAME = np.zeros((720, 1280, 3), dtype=np.uint8)
 READING = Reading("flat", "none", None, None, 0.0, False, 1.0)
 
 
-def observation(t, *, mode="foot", screen="game", frame=FRAME, corrupt=False):
+def observation(t, *, mode="foot", screen="game", frame=FRAME, corrupt=False, minimap="flat"):
     return Observation(
-        replace(READING, corrupt=corrupt),
+        replace(READING, corrupt=corrupt, minimap=minimap),
         True,
         t,
         frame=frame,
@@ -118,8 +118,10 @@ def test_asks_only_for_valid_foot_game_frames():
         {"screen": "pause"},
         {"frame": None},
         {"frame": np.zeros((2, 2, 3))},
-        {"corrupt": True},
+        {"corrupt": True, "mode": None},
         {"frame": np.zeros((720, 1280, 3), dtype=np.float32)},
+        # No radar is no game screen: the pause map of an apartment was called the street.
+        {"minimap": "none"},
     ):
         asker = Asked()
         Sense(asker).step(observation(0, **kwargs))
@@ -127,6 +129,11 @@ def test_asks_only_for_valid_foot_game_frames():
     asker = Asked()
     Sense(asker).step(replace(observation(0), hud=None))
     assert asker.calls == [0]
+    # A map misread as damaged or tilted says nothing once the judge has seen the figure on foot.
+    for kwargs in ({"corrupt": True}, {"minimap": "tilted"}):
+        asker = Asked()
+        Sense(asker).step(observation(0, **kwargs))
+        assert asker.calls == [0]
 
 
 def test_configured_state_and_label_change_need_two_answers():
@@ -216,3 +223,19 @@ def test_tick_log_contains_place_with_and_without_model(tmp_path, monkeypatch):
         ticks = [row for row in rows if "fresh" in row]
         assert ticks
         assert all(row["place"] == (None if configured is None else "unknown") for row in ticks)
+
+
+def test_a_figure_that_stands_has_not_changed_its_place():
+    # 13 November, 16:08: on the landing the camera turned, looked back through the open door, and
+    # the picture of the room was taken for the figure's place.
+    sense, asker = confirmed()
+    for capture in (2, 3):
+        sense.step(observation(capture), walked=False)
+        asker.say(capture, (0.02, 0.96, 0.02))
+        sense.step(observation(capture + 0.1), walked=False)
+    assert sense.verdict == "room"
+    for capture in (4, 5):
+        sense.step(observation(capture), walked=True)
+        asker.say(capture, (0.02, 0.96, 0.02))
+        sense.step(observation(capture + 0.1), walked=True)
+    assert sense.verdict == "landing"

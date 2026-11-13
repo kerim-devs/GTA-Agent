@@ -36,7 +36,7 @@ def names(answer):
 
 def test_place_precedes_roam_and_standing_without_an_errand():
     for place, skill, duration, rule in (
-        ("room", "leave_building", 60, "room_leave"),
+        ("room", "leave_building", 120, "room_leave"),
         ("landing", "descend", 40, "landing_descend"),
     ):
         head = MissionHead()
@@ -74,7 +74,7 @@ def test_place_leaves_missions_and_urgent_rules_unchanged():
 
 
 def test_place_failure_retries_rest_and_return_for_both_rules():
-    for place, skill, angle in (("room", "leave_building", 180), ("landing", "descend", 120)):
+    for place, skill in (("room", "leave_building"), ("landing", "descend")):
         head = MissionHead(goal_seed=1)
         assert names(head.decide(request(place=place))) == [skill]
         result = failed(skill, "timeout")
@@ -82,8 +82,9 @@ def test_place_failure_retries_rest_and_return_for_both_rules():
             answer = head.decide(
                 request(time, place=place, last=result, events=[{"kind": "skill_failed", "skill": result}])
             )
-            assert names(answer) == ["look", skill]
-            assert answer.plan[0].args["angle"] == angle
+            # The same skill and no turn of the view before it: on 13 November the half turn after
+            # a time limit took the figure away from the front door it was pushing open.
+            assert names(answer) == [skill]
         answer = head.decide(
             request(3, place=place, last=result, events=[{"kind": "skill_failed", "skill": result}])
         )
@@ -482,3 +483,36 @@ def test_a_skill_of_the_place_that_is_running_is_left_to_run():
         # Ended by the guard, it is planned again.
         ended = {"name": skill, "status": "failed", "reason": "guard_red", "queue": []}
         assert names(head.decide(request(9.0, place=place, last=ended))) == [skill]
+
+
+def test_the_first_decision_waits_for_the_place_while_the_judge_has_not_spoken():
+    # 13 November, 15:44: the camera stood in the first person in a room, the map was read as
+    # tilted, the head took the figure to sit in a car and opened the pause map.
+    head = MissionHead()
+    answer = head.decide(request(shape="tilted", place="unknown", events=[{"kind": "startup"}]))
+    assert names(answer) == ["wait"] and head.last_rule == "place_wait"
+    # Once the judge says it sits in a vehicle, the head decides as it always did.
+    head = MissionHead()
+    head.decide(request(shape="tilted", place="unknown", judged="vehicle", events=[{"kind": "startup"}]))
+    assert head.last_rule != "place_wait"
+
+
+def test_out_of_the_door_the_leaving_skill_is_left_to_walk_clear_of_it():
+    # The news that the figure stands on a landing does not cut leave_building off in the doorway:
+    # it walks straight on for a moment and ends by itself, and the stairs are looked for from there.
+    head = MissionHead()
+    running = {"name": "leave_building", "status": "running", "reason": None, "queue": []}
+    answer = head.decide(
+        request(
+            1,
+            place="landing",
+            last=running,
+            events=[{"kind": "place_changed", "old": "room", "new": "landing"}],
+        )
+    )
+    assert answer.action == "go_on" and head.last_rule == "landing_descend"
+    done = {"name": "leave_building", "status": "done", "reason": "outdoors", "queue": []}
+    answer = head.decide(
+        request(3, place="landing", last=done, events=[{"kind": "skill_ended", "skill": done}])
+    )
+    assert names(answer) == ["descend"]

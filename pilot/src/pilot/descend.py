@@ -38,6 +38,7 @@ class Descend:
         self.place_seconds = 0.0
         self.place_last = None
         self.place_confirmed = False
+        self.walked = False  # the stick has been pushed since the landing was last confirmed
 
     def stop(self, reason: str = "interrupted") -> SkillResult:
         if self.finished is None:
@@ -62,10 +63,16 @@ class Descend:
         if (
             gap
             or reading is None
-            or reading.corrupt
             or not math.isfinite(reading.confidence)
-            or reading.confidence < 0.6
-            or reading.minimap != "flat"
+            # The map alone has to be read whole and flat to say "on foot"; the judge's word stands
+            # without it. On 13 November the figure stood at the head of the stairs for a hundred
+            # seconds: the street grid on the radar lay square to the picture and was read as a
+            # tilted map and as codec damage in turn.
+            or (
+                observation.mode is None
+                and (reading.corrupt or reading.confidence < 0.6 or reading.minimap != "flat")
+            )
+            or reading.minimap == "none"
             or player_mode(observation) != "foot"
         ):
             return self._unknown()
@@ -87,6 +94,12 @@ class Descend:
             self.place_confirmed = True
         if not self.place_confirmed and self.place_seconds >= 8.0:
             return self.stop("place-unread")
+        if place == "landing":
+            self.walked = False
+        if place == "room" and self.descending and not self.walked:
+            # The camera has turned to the door the figure came out of and looks into the room; the
+            # figure has not taken a step. On 13 November that ended the search for the stairs.
+            place = None
         if place == "room":
             return self.stop("entered-room" if self.descending else "in-room")
         if place == "street":
@@ -112,8 +125,10 @@ class Descend:
             return self.stop("no-stairs")
         if steer.state in {"odd", "idle"}:
             return self._unknown()
+        self.walked = self.walked or any(steer.left)
         return SkillResult(
-            pad=Pad(left=steer.left, right=steer.right, buttons=steer.buttons), reason="descending stairs"
+            pad=Pad(left=steer.left, right=steer.right, buttons=steer.buttons),
+            reason=f"descending stairs; {self.guard.diagnostic()}",
         )
 
     def _place(self, observation: Observation):

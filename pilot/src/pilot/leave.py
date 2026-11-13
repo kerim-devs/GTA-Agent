@@ -5,7 +5,7 @@ from typing import ClassVar
 
 import numpy as np
 
-from . import ahead, indoors, sides
+from . import ahead, indoors, sides, wayround
 from .contract import Observation, Pad, SkillResult, player_mode
 from .foot import hud_crop, north_bearing
 from .wayround import WayRound
@@ -27,7 +27,9 @@ class LeaveBuilding:
         if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
             raise ValueError("duration must be a finite number")
         self.limit = float(max(5.0, min(120.0, value)))
-        self.guard = WayRound(climb=False, sides=sides.active(), ahead=ahead.active(), confirm_place=True)
+        self.guard = WayRound(
+            climb=False, low=True, sides=sides.active(), ahead=ahead.active(), confirm_place=True
+        )
         self.place = indoors.Place(ahead.place())
         self.started = self.last = self.clear = None
         self.frame = None
@@ -60,9 +62,14 @@ class LeaveBuilding:
         if (
             gap
             or reading is None
-            or reading.corrupt
-            or reading.confidence < 0.6
-            or reading.minimap != "flat"
+            # The map alone has to be read whole and flat to say "on foot"; the judge's word stands
+            # without it. In a room the floor plan on the radar was read as tilted for fourteen
+            # seconds on 13 November, and the figure stood for all of them.
+            or (
+                observation.mode is None
+                and (reading.corrupt or reading.confidence < 0.6 or reading.minimap != "flat")
+            )
+            or reading.minimap == "none"
             or player_mode(observation) != "foot"
         ):
             return self._unknown()
@@ -81,6 +88,11 @@ class LeaveBuilding:
             self.place_seconds += now - self.place_last
         self.place_last = now
         place = self.place.sample(observation)
+        if observation.place in {"landing", "street"}:
+            # The standing sense has two pictures that show the figure outside the door. On
+            # 13 November the skill's own question was slower, and the figure went on along the
+            # wall and back into the apartment.
+            place = False
         if place is not None:
             self.place_confirmed = True
         if not self.place_confirmed and self.place_seconds >= 8.0:
@@ -112,6 +124,8 @@ class LeaveBuilding:
             if now - self.clear >= self.guard.CLEAR:
                 self.finished = SkillResult(status="done", reason="outdoors")
                 indoors.forget()
+                # The door is behind the figure now: whoever looks for the way on does not take it.
+                wayround.WAYS.back, wayround.WAYS.closed = wayround.WAYS.yaw + 180.0, []
                 return self.finished
             return SkillResult(pad=Pad(left=self.guard.AHEAD), reason="clearing doorway")
         if not self.leaving:
@@ -124,7 +138,8 @@ class LeaveBuilding:
         if steer.state in {"odd", "idle"}:
             return self._unknown()
         return SkillResult(
-            pad=Pad(left=steer.left, right=steer.right, buttons=steer.buttons), reason="leaving building"
+            pad=Pad(left=steer.left, right=steer.right, buttons=steer.buttons),
+            reason=f"leaving building; {self.guard.diagnostic()}",
         )
 
     def _unknown(self):

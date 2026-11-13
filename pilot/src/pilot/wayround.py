@@ -58,6 +58,37 @@ from .indoors import Confirm, read, resolve
 from .sides import Sides, choose
 
 
+class Ways:
+    """What a search for the way out of a building remembers from one look to the next.
+
+    Kerim, 13 November, watching the figure in an apartment: it walks the same ways again and
+    again, it has to know where it has been and not go there a second time. In a room there is no
+    compass on the map and no position, so the search keeps the one thing it can reckon itself, how
+    far its camera has turned since it began. By that it knows a way out it has run at and found
+    closed, a glass door or a locked one, and the doorway it came through, and passes both over
+    while the room shows another. A room that shows none is a dead end: back through the doorway,
+    which is then the way not to take from the room behind it. The memory lasts while
+    leave_building runs, from one plan of it to the next, and ends with a second without it.
+    """
+
+    def __init__(self):
+        self.reset()
+
+    def reset(self) -> None:
+        self.yaw = 0.0
+        self.closed: list[float] = []
+        self.back: float | None = None
+        self.at: float | None = None
+
+
+WAYS = Ways()
+
+
+def _apart(a: float, b: float) -> float:
+    """Degrees between two directions."""
+    return abs((a - b + 180.0) % 360.0 - 180.0)
+
+
 class WayRound(FootGuard):
     # Under a sprint, in half a second, over seven stretches of 12 and 13 November. The world
     # (pixels of the small view): running free 2.3 to 3.1 at the tenth percentile and 4.2 to 7.6
@@ -120,6 +151,17 @@ class WayRound(FootGuard):
     CLEAR = 1.5
     LOOK_SETTLE = 0.3  # seconds for the turned camera's picture to arrive; the stream is 0.14 s behind
     LOOK_WAIT = 1.0  # seconds an answer is waited for
+    STAIRS_WAIT = 2.0  # and for one about stairs, standing
+    ASK_WAIT = 3.0  # seconds a look waits for the model to be done with another frame
+    MISSES = 1  # looks without an answer that are looked at again before the way is felt for
+    # What a search for the way out remembers, see Ways.
+    AIM_STEP = 28.0  # degrees between the middle of the picture and the middle of a side part
+    REFUSE = 50.0  # degrees round a way found closed, or round the way back, that are not run at
+    THROUGH = 2.5  # seconds of going that say a run has left the room it began in
+    YAW_RATE = 148.0  # degrees a second of the camera at full stick, where the arrow does not say
+    LOW = 0.5  # what the model has to give "low" for the figure to jump at what holds it up
+    DOOR = 65.0  # degrees round the door behind the figure that a landing's round leaves out
+    WAYS_GAP = 3.0  # seconds without a step of a search after which what it remembered is dropped
     LOOKS = 4
     OPEN = 0.9  # what the model has to give "open" for a view to be run into
     AHEAD: ClassVar = (0.0, -1.0)
@@ -144,12 +186,20 @@ class WayRound(FootGuard):
         *,
         first_side: int = 1,
         climb: bool = True,
+        low: bool = False,
         sides: Sides | None = None,
         ahead: Ahead | None = None,
         confirm_place: bool = False,
     ):
         super().__init__(first_side=first_side)
         self.climb = climb
+        # In a room Square is pressed only at what the model calls low: see ahead.LOW.
+        self.try_low = low
+        self.low_at = self.low_since = None
+        self.sent = None  # the time, the sticks and the arrow of the guard's last step
+        self.run_going, self.run_seen = 0.0, None  # seconds the run under way has been seen going
+        self.back_seen = False  # the way back was seen and passed over at this stand
+        self.misses = 0
         self.sides = sides
         self.ahead = ahead
         self.confirm_place = confirm_place
@@ -226,6 +276,81 @@ class WayRound(FootGuard):
         fresh: bool = True,
     ) -> Steer:
         """`fresh` false says the direction is an old one, kept while the target is not read."""
+        self._reckon(observation)
+        steer = self._step(observation, want, sprint=sprint, fresh=fresh)
+        self.sent = (observation.time, steer.left, steer.right, observation.reading.arrow)
+        return steer
+
+    def _ran(self, *, closed: bool) -> None:
+        """Book the run at a way out that has just ended: through a doorway, or held up before it."""
+        if not self._leaving():
+            return
+        if self.run_going >= self.THROUGH:
+            # Another room: what was closed in the last one is behind, and so is the way back.
+            WAYS.back, WAYS.closed = WAYS.yaw + 180.0, []
+        elif closed:
+            WAYS.closed.append(WAYS.yaw)
+
+    def _leaving(self) -> bool:
+        return bool(self.indoors) and not self.entering and not self.descending
+
+    def _reckon(self, observation: Observation) -> None:
+        """How far the camera has turned since the search for the way out began.
+
+        Standing, the arrow on the map turns against the camera and measures the turn; running, or
+        with no arrow read, the stick and the clock have to do.
+        """
+        now = observation.time
+        if not (self._leaving() or self.descending):
+            return
+        if WAYS.at is None or not 0 <= now - WAYS.at <= self.WAYS_GAP:
+            WAYS.reset()
+        WAYS.at = now
+        if self.sent is None:
+            return
+        then, left, right, arrow_then = self.sent
+        gap = now - then
+        if not 0 < gap <= self.GAP or not right[0]:
+            return
+        arrow = observation.reading.arrow
+        if left == (0.0, 0.0) and arrow is not None and arrow_then is not None:
+            gone = abs((arrow - arrow_then + 180.0) % 360.0 - 180.0)
+            if self.TURN_SEEN * gap <= gone <= self.TURN_FASTEST * gap * 1.5:
+                WAYS.yaw += math.copysign(gone, right[0])
+                return
+        WAYS.yaw += right[0] * self.YAW_RATE * min(gap, 0.2)
+
+    def _low(self, observation: Observation) -> bool | None:
+        """Whether what holds the figure up is low enough to jump; None while the model is asked."""
+        now = observation.time
+        if self.ahead is None:
+            return False
+        if self.low_at is None:
+            if self.ahead.ask(observation.frame, now, low=True):
+                self.low_at = now
+            elif self.low_since is None:
+                self.low_since = now
+            elif now - self.low_since > self.LOOK_WAIT:
+                self.low_since = None
+                return False
+            return None
+        view = self.ahead.answer(self.low_at)
+        if view is None:
+            if now - self.low_at <= self.LOOK_WAIT:
+                return None
+            self.low_at = self.low_since = None
+            return False
+        self.low_at = self.low_since = None
+        return view.error is None and view.low is not None and view.low >= self.LOW
+
+    def _step(
+        self,
+        observation: Observation,
+        want: tuple[float, float],
+        *,
+        sprint: bool = False,
+        fresh: bool = True,
+    ) -> Steer:
         now = observation.time
         self.sprinting = sprint
         self.fresh = fresh
@@ -241,7 +366,11 @@ class WayRound(FootGuard):
             self.evidence.clear()
             self.push_since = None
             return Steer(want, state="idle")
-        if observation.reading.corrupt:
+        if observation.reading.corrupt and not (
+            observation.mode == "foot" and (self.indoors or self.descending)
+        ):
+            # Looking for a door or for stairs the guard goes by the picture and not by the map:
+            # there a map called damaged does not stop it while the judge sees the figure on foot.
             self.crops.clear()
             self.worlds.clear()
             return Steer((0.0, 0.0), state="odd")
@@ -290,6 +419,10 @@ class WayRound(FootGuard):
         if self.state == "round":
             if not self.hinted and self.phase == "out" and now - self.state_since <= self.HINT_WITHIN:
                 self._take_hint(now, toward)
+            if self.phase == "run":
+                if self.run_seen is not None and self.evidence and self.evidence[-1][1] == "going":
+                    self.run_going += min(now - self.run_seen, 0.2)
+                self.run_seen = now
             jump = self.leg_jump if self.leg_jump is not None and self.leg_jump >= self.state_since else None
             if jump is not None:
                 if now - jump < self.CLIMB_SECONDS:
@@ -313,10 +446,22 @@ class WayRound(FootGuard):
                     self.jumped.add(key)
                     self.leg_jump, self.pressing = now, True
                     return Steer(self._leg(toward), state="climb", buttons=("square",))
+                if closed and self.try_low and self.phase == "run" and key not in self.jumped:
+                    # In a room: a table, a couch or a fence is jumped at once, a wall is not.
+                    low = self._low(observation)
+                    if low is None:
+                        return Steer(self._leg(toward), state="round")
+                    self.jumped.add(key)
+                    self.views.append("low" if low else "high")
+                    if low:
+                        self.leg_jump, self.pressing = now, True
+                        return Steer(self._leg(toward), state="climb", buttons=("square",))
             if self.phase == "run" and self.way_out and not closed:
                 self._watch(observation)
             if self.phase == "run" and closed:
                 # The model called this way open and the feet say otherwise.
+                if self.way_out:
+                    self._ran(closed=True)
                 return self._look_on(observation, toward)
             if self.phase == "run" and (
                 now - self.state_since >= (self.EXIT_RUN if self.way_out else self.LEGS[self.level])
@@ -324,6 +469,8 @@ class WayRound(FootGuard):
             ):
                 out = self.way_out and self.outside is not None
                 behind = toward[1] > self.BEHIND if fresh else self.entered
+                if self.way_out:
+                    self._ran(closed=False)
                 self.way_out = self.entered = False
                 if out and behind:
                     # The way to the target leads back through the building: along its front
@@ -486,6 +633,9 @@ class WayRound(FootGuard):
         self.closed.clear()
         self.jumped.clear()
         self.views = []
+        self.back_seen = False
+        self.misses = 0
+        self.low_at = self.low_since = None
         self.backed = False
         self.leg_jump, self.pressing = None, False
         self.way_out, self.outside = False, None
@@ -578,6 +728,16 @@ class WayRound(FootGuard):
         time; with no model, or nothing left to look at, the way by feel, and in a room the
         round along its walls."""
         now = observation.time
+        if self.looked > self.LOOKS and self.back_seen and WAYS.back is not None and self._leaving():
+            # Round once and no way on but the one the figure came by: a dead end, and back.
+            turn = (WAYS.back - WAYS.yaw + 180.0) % 360.0 - 180.0
+            self.back_seen, WAYS.back = False, None
+            self.views.append("goback")
+            self.way_out, self.outside = True, None
+            self.watch_at, self.watched = None, now
+            self.run_going, self.run_seen = 0.0, None
+            self._turn(observation, 1 if turn >= 0 else -1, abs(turn), "about")
+            return Steer((0.0, 0.0), (float(self.turn_side), 0.0), state="look")
         if self.ahead is None or self.looked > self.LOOKS:
             if self.indoors:
                 self.wall_turns = 0
@@ -604,6 +764,17 @@ class WayRound(FootGuard):
         if self.turn_by:
             if not self._turned(observation):
                 return Steer((0.0, 0.0), (float(self.turn_side), 0.0), state="look")
+            if (
+                self.descending
+                and WAYS.back is not None
+                and _apart(WAYS.yaw, WAYS.back) < self.DOOR
+                and self.wall_turns <= self.WALL_TURNS
+            ):
+                # Along a landing's edges, but not back through the door the figure came out of:
+                # on 13 November the first leg of the round took it into the apartment again.
+                self.wall_turns += 1
+                self._turn(observation, self.turn_side, self.WALL_STEP, "wall")
+                return Steer((0.0, 0.0), (float(self.turn_side), 0.0), state="look")
             self.turn_by, self.turn_took = 0.0, since
         self._watch(observation)
         started = self.state_since + self.turn_took + self.LEG_START
@@ -613,6 +784,7 @@ class WayRound(FootGuard):
                 if not self.confirm_place and not self.descending:
                     self.outside = now
                 self.views.append("free")
+            self.run_going, self.run_seen = self.WALL_FREE, None
             self.phase = "run"
             self._enter("round", now)
             return Steer(self.AHEAD, state="round")
@@ -647,13 +819,29 @@ class WayRound(FootGuard):
             if asked:
                 self.asked_at = now
         view = None if self.asked_at is None else self.ahead.answer(self.asked_at)
-        if self.descending and self.asked_at is not None and now - self.asked_at >= self.LOOK_WAIT:
+        # Stairs are asked about up to seven times a view, the whole, its parts and which way each leads.
+        wait = self.STAIRS_WAIT if self.descending else self.LOOK_WAIT
+        if self.descending and self.asked_at is not None and now - self.asked_at >= wait:
             # An answer about a view the figure has waited out is no answer: it must not start a run.
             view = None
         if view is None:
-            if since < turn + self.LOOK_SETTLE + self.LOOK_WAIT:
+            if self.asked_at is None:
+                # The model is still out with another frame, a look at the way out or at the stairs
+                # from the run before: its turn is waited for.
+                if since < turn + self.LOOK_SETTLE + self.ASK_WAIT:
+                    return Steer((0.0, 0.0), state="look")
+            elif now - self.asked_at < wait:
                 return Steer((0.0, 0.0), state="look")
             view = View(error="no answer")
+        if view.error is not None and self.indoors and self.misses < self.MISSES:
+            # One view without an answer is looked at again. On 13 November the first look of a
+            # search got none, and the figure went round along the walls for two minutes.
+            self.misses += 1
+            self.views.append("miss")
+            self.asked_at = None
+            self.turn_by = self.turn_took = 0.0
+            self._enter("round", now)
+            return Steer((0.0, 0.0), state="look")
         if self.indoors is None and view.indoors is not None:
             self.indoors = view.indoors >= SEEN
         if view.error is not None or self.indoors is None:
@@ -665,6 +853,18 @@ class WayRound(FootGuard):
                 # The way out of the room, and the part of the picture it is in.
                 parts = view.parts or (0.0, 1.0, 0.0)
                 self.aim = max(range(3), key=lambda part: parts[part]) - 1 if max(parts) >= SEEN else 0
+                if self._leaving():
+                    way = WAYS.yaw + self.aim * self.AIM_STEP
+                    if any(_apart(way, shut) < self.REFUSE for shut in WAYS.closed):
+                        # Run at already, and the feet found it closed.
+                        self.views.append("shut" + "LMR"[self.aim + 1])
+                        return self._look_on(observation, toward)
+                    if WAYS.back is not None and _apart(way, WAYS.back) < self.REFUSE:
+                        # The way the figure came by: taken only when the room has no other.
+                        self.back_seen = True
+                        self.views.append("back" + "LMR"[self.aim + 1])
+                        return self._look_on(observation, toward)
+                self.run_going, self.run_seen = 0.0, None
                 self.views.append("exit" + "LMR"[self.aim + 1])
                 self.way_out, self.outside = True, None
                 self.watch_at, self.watched = None, now

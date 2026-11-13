@@ -139,7 +139,8 @@ def test_stairs_left_then_run_and_watch_nudges_right():
 def test_no_stairs_answer_uses_edges(model):
     guard = WayRound(climb=False, ahead=model)
     guard.descend(tick(0))
-    pads = [guard.step(tick(index / 10), guard.AHEAD) for index in range(1, 40)]
+    # A view without an answer is looked at a second time before the edges are felt for.
+    pads = [guard.step(tick(index / 10), guard.AHEAD) for index in range(1, 80)]
     assert "wall" in guard.views
     assert any(pad.left == guard.AHEAD for pad in pads)
     assert all(not pad.buttons for pad in pads)
@@ -382,3 +383,13 @@ def test_unreadable_or_empty_stairs_do_not_nudge(view):
     guard.step(tick(0.3), guard.AHEAD)
     guard.step(tick(1.0), guard.AHEAD)
     assert guard.step(tick(1.1), guard.AHEAD).right == (0, 0)
+
+
+def test_a_look_back_through_the_door_is_not_a_step_into_the_room(monkeypatch):
+    # The search stands and turns; a picture of the room behind the open door is not the figure's
+    # place while the stick has not been pushed.
+    stairs = Asker(View(exit=0.0))
+    walk, _ = skill(monkeypatch, place("landing"), place("landing"), place("room"), stairs=stairs)
+    results = [step(walk, index / 10) for index in range(26)]
+    assert all(result.status == "running" for result in results)
+    assert all(result.pad.left == (0, 0) for result in results)

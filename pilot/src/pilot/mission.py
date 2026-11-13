@@ -397,9 +397,18 @@ class MissionHead:
         health = hud.get("health")
         low_health = health < 1 / 3 if health is not None else "low_health" in kinds
         free = not request.objective.strip() and self.objective_class in (None, "unknown")
+        # The first decision of a session comes before the judge has said how the figure moves, and
+        # the map alone can be wrong about it: on 13 November the camera stood in the first person
+        # in a room, the map was read as tilted, and the head took the figure to sit in a car and
+        # opened the pause map. Until the judge has spoken the head waits for the place as well.
+        unsure = (
+            request.place == "unknown"
+            and (request.judgment or {}).get("mode") is None
+            and now - self.place_started_at < 6
+        )
         if (
             not free
-            or mode != "on_foot"
+            or (mode != "on_foot" and not unsure)
             or hud.get("screen", "game") != "game"
             or _wanted(request)
             or low_health
@@ -429,14 +438,26 @@ class MissionHead:
                 if room
                 else "Ich stehe oben vor der Tür, ich gehe die Treppe runter."
             )
-            plan = [SkillCall(name, {"duration": 60 if room else 40})]
-            if retry:
-                plan.insert(0, SkillCall("look", {"duration": 1, "angle": 180 if room else 120}))
-            elif last.get("status") == "running" and (
-                # Already on its way out or down: an event that asks the head again, the guard's news
-                # of a marker or a changed help text, must not start the skill's search afresh. On
-                # 13 November that restarted leave_building every few seconds.
-                last.get("name") == name or (last.get("name") == "look" and name in last.get("queue", []))
+            plan = [SkillCall(name, {"duration": 120 if room else 40})]
+            # A failure is answered with the same skill and no turn of the view before it: the
+            # search looks all round by itself and remembers what it has tried, and a turn it has
+            # not made itself is one it cannot reckon with. On 13 November the limit came while the
+            # figure was pushing the apartment's front door open, and the half turn that followed
+            # took it back into the bedroom.
+            if not room and last.get("status") == "running" and last.get("name") == "leave_building":
+                # Out of the door: leave_building walks clear of it and ends by itself.
+                self.last_rule = rule
+                self.counts[rule] += 1
+                return HeadResponse((), sentence, action="go_on")
+            if (
+                not retry
+                and last.get("status") == "running"
+                and (
+                    # Already on its way out or down: an event that asks the head again, the guard's news
+                    # of a marker or a changed help text, must not start the skill's search afresh. On
+                    # 13 November that restarted leave_building every few seconds.
+                    last.get("name") == name or (last.get("name") == "look" and name in last.get("queue", []))
+                )
             ):
                 self.last_rule = rule
                 self.counts[rule] += 1

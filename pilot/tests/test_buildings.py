@@ -166,15 +166,53 @@ def test_missing_or_bad_tick_releases_all_controls_without_deciding(monkeypatch,
     if kind == "none":
         obs = replace(obs, reading=replace(obs.reading, minimap="none"))
     elif kind == "corrupt":
-        obs = replace(obs, reading=replace(obs.reading, corrupt=True))
+        obs = replace(obs, mode=None, reading=replace(obs.reading, corrupt=True))
     elif kind == "low":
-        obs = replace(obs, reading=replace(obs.reading, confidence=0.1))
+        obs = replace(obs, mode=None, reading=replace(obs.reading, confidence=0.1))
     elif kind == "duplicate":
         obs = replace(obs, time=0.8)
     else:
         obs = replace(obs, time=3)
     result = skill.step(obs)
     assert result.status == "running" and result.pad == NEUTRAL_PAD
+
+
+@pytest.mark.parametrize("kind", ["tilted", "corrupt", "low"])
+def test_a_misread_map_does_not_stop_the_way_out_while_the_judge_sees_the_figure_on_foot(monkeypatch, kind):
+    # 13 November, 15:49: the floor plan on the radar was read as tilted for fourteen seconds, and
+    # the figure stood in the bedroom for all of them.
+    room = Room(inside=True)
+    sensor(monkeypatch, room)
+    indoors.remember(0, (0, -3))
+    skill = LeaveBuilding({})
+    play(skill, room, 0.8)
+    pads = []
+    for tick in range(9, 40):
+        obs = room.observation(tick / 10)
+        change = {"tilted": {"minimap": "tilted"}, "corrupt": {"corrupt": True}, "low": {"confidence": 0.1}}
+        result = skill.step(replace(obs, reading=replace(obs.reading, **change[kind])))
+        pads.append(result.pad)
+        room.apply(result.pad)
+    assert any(pad != NEUTRAL_PAD for pad in pads)
+
+
+def test_the_standing_sense_ends_the_way_out(monkeypatch):
+    # 13 November, 16:02: out on the landing the skill's own question had not said so yet, and the
+    # figure went on along the wall and back into the apartment.
+    room = Room(inside=True)
+    sensor(monkeypatch, room)
+    indoors.remember(0, (0, -3))
+    skill = LeaveBuilding({})
+    play(skill, room, 0.8)
+    reasons = []
+    for tick in range(9, 40):
+        result = skill.step(replace(room.observation(tick / 10), place="landing"))
+        reasons.append(result.reason)
+        room.apply(result.pad)
+        if result.status != "running":
+            break
+    assert (result.status, result.reason) == ("done", "outdoors")
+    assert "clearing doorway" in reasons
 
 
 def test_enter_never_coasts_into_a_missing_map(monkeypatch):
