@@ -8,7 +8,10 @@ its box, which is the same from behind and from the side.
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
+
+from .contract import Detection
 
 WIDTH, HEIGHT = 1280, 720
 # The width of a thing in heights of its box: a car is about 1.8 m wide and 1.45 m tall, a lorry or a
@@ -23,6 +26,13 @@ LIFT = 0.7  # the share of the pedal taken away at the full push
 STALE = 0.6  # seconds after which boxes say nothing about the road
 HOLD = 1.0  # seconds a chosen side is kept after the last thing in the way
 VEHICLES = ("car", "truck", "bus", "motorcycle")
+FOLLOW_FROM = 0.35  # nearness from which the pedal is lifted behind a vehicle that is followed, about 15 m
+FOLLOW_LIFT = 0.9  # the share of the pedal taken away at full nearness, so that the car keeps its distance
+LANE = 0.7  # widths of the own car between the picture's middle and the centre of a thing that is in its lane
+SPAN = 1.0  # seconds of a thing's history that say how fast it comes closer
+SPAN_MIN = 0.5  # the shortest history that says it; before that nothing is pushed for, only the pedal lifted
+GROW = 0.2  # growth of a box's height per second from which the car closes on it: 10 percent in half a second
+LOST = 0.7  # seconds a thing is remembered without a box; the detector drops a thing for a few frames
 QUEUE = 0.5  # nearness from which a vehicle ahead is the one the car waits behind, about six metres
 
 
@@ -69,12 +79,88 @@ def waits_behind(objects, objects_time: float | None, now: float) -> bool:
     return False
 
 
+def _in_lane(item) -> bool:
+    """The thing's centre lies within LANE of the own car's width from the picture's middle.
+
+    The width is the car's width at the thing's depth, so a lorry that is close and beside has a box that
+    covers half the picture with its centre far off the middle, while one far ahead has a narrow box close
+    to it. The box's edge says nothing: the lorry next door overlaps the car's side in the picture."""
+    offset, wide, _ = _seen(item)
+    return abs(offset) < LANE * min(wide, OWN)
+
+
+class _Thing:
+    """One thing the detector keeps seeing: the heights of its box over the last second."""
+
+    def __init__(self, item, now: float) -> None:
+        self.kind, self.box, self.seen = item.kind, item.box, now
+        self.heights: list[tuple[float, float]] = []
+        self.kinds: list[str] = []
+        self.add(item, now)
+
+    def add(self, item, now: float) -> None:
+        self.box, self.seen = item.box, now
+        self.heights = [(t, h) for t, h in self.heights if now - t <= SPAN] + [
+            (now, item.box[3] - item.box[1])
+        ]
+        self.kinds = [*self.kinds, item.kind][-8:]
+        # The detector calls one lorry a truck in one frame and a bus in the next: the name most often given.
+        self.kind = max(set(self.kinds), key=self.kinds.count)
+
+    def same(self, item) -> bool:
+        """Whether a new box is this thing: the same sort, about the same place, about the same size."""
+        if (item.kind == "person") != (self.kind == "person"):
+            return False
+        x0, y0, x1, y1 = self.box
+        height, new = y1 - y0, item.box[3] - item.box[1]
+        if height <= 0 or new <= 0 or not 0.6 <= new / height <= 1.7:
+            return False
+        dx = (item.box[0] + item.box[2] - x0 - x1) / 2
+        dy = (item.box[1] + item.box[3] - y0 - y1) / 2
+        return math.hypot(dx, dy) <= 0.6 * max(height, x1 - x0, item.box[2] - item.box[0])
+
+    def closing(self) -> bool | None:
+        """Whether the box has grown by GROW a second or more; None while the history is too short to say."""
+        if len(self.heights) < 3 or self.heights[-1][0] - self.heights[0][0] < SPAN_MIN:
+            return None
+        # Two boxes at each end, so that one badly cut box does not decide.
+        old = sum(h for _, h in self.heights[:2]) / 2
+        new = sum(h for _, h in self.heights[-2:]) / 2
+        span = (self.heights[-1][0] + self.heights[-2][0] - self.heights[0][0] - self.heights[1][0]) / 2
+        return old > 0 and new > 0 and math.log(new / old) / span >= GROW
+
+
 class Avoider:
     """Keeps the side it chose while something is in the way, so that the push does not flip mid-swerve."""
 
     def __init__(self) -> None:
         self.side = 0
         self.seen: float | None = None
+        self.things: list[_Thing] = []
+        self.tracked: float | None = None
+        self.matched: dict[int, _Thing] = {}
+
+    def _track(self, objects, objects_time: float) -> dict[int, _Thing]:
+        """Match this detection's boxes to the things followed so far, once per detection."""
+        boxes = [item for item in objects if not _minimap(item.box)]
+        if objects_time == self.tracked:  # the same detection on the next tick
+            return self.matched
+        matched: dict[int, _Thing] = {}
+        self.tracked = objects_time
+        free = [t for t in self.things if 0 <= objects_time - t.seen <= LOST]
+        for index, item in enumerate(boxes):
+            options = [t for t in free if t.same(item)]
+            if options:
+                thing = min(options, key=lambda t: math.hypot(t.box[0] - item.box[0], t.box[1] - item.box[1]))
+                free.remove(thing)
+                thing.add(item, objects_time)
+            else:
+                thing = _Thing(item, objects_time)
+                self.things.append(thing)
+            matched[index] = thing
+        self.things = [t for t in self.things if 0 <= objects_time - t.seen <= LOST]
+        self.matched = matched
+        return matched
 
     def step(self, objects, objects_time: float | None, now: float, *, bypass: bool = False) -> Around:
         if self.seen is not None and not 0 <= now - self.seen <= HOLD:
@@ -82,12 +168,39 @@ class Avoider:
         if not objects or objects_time is None or not 0 <= now - objects_time <= STALE:
             return CLEAR
         # The detector takes the minimap for a car now and then.
-        things = [_seen(item) for item in objects if not _minimap(item.box)]
-        ahead = [
-            (near, offset, wide) for offset, wide, near in things if 0 < near and abs(offset) < TRACK * wide
-        ]
-        if not ahead:
+        boxes = [item for item in objects if not _minimap(item.box)]
+        things = [_seen(item) for item in boxes]
+        if bypass:
+            ahead = [
+                (near, offset, wide)
+                for offset, wide, near in things
+                if 0 < near and abs(offset) < TRACK * wide
+            ]
+            return self._around(ahead, things, now, bypass=True) if ahead else CLEAR
+        followed = self._track(objects, objects_time)
+        ahead, following = [], []
+        for index, (item, (offset, wide, near)) in enumerate(zip(boxes, things, strict=True)):
+            if not 0 < near or not _in_lane(item):
+                continue  # beside the car, or too far to matter
+            thing = followed[index]
+            closing = thing.closing()
+            # The name the detector gave the thing most often, not the one of this frame, sizes it.
+            offset, wide, near = _seen(Detection(thing.kind, item.box, item.confidence))
+            if closing:
+                ahead.append((near, offset, wide))
+            else:
+                following.append((near, offset, wide, closing is None))
+        if ahead:
+            return self._around(ahead, things, now, bypass=False)
+        if not following:
             return CLEAR
+        near, offset, wide, _ = max(following)
+        lift = FOLLOW_LIFT * min(1.0, max(0.0, (near - FOLLOW_FROM) / (1 - FOLLOW_FROM)))
+        # Close and straight ahead is braked for as before, whether the car closes on it or not: a
+        # vehicle that slows a little at a time never grows fast enough to be gone round.
+        return Around(0.0, 1 - lift, near >= 0.8 and abs(offset) < wide / 2)
+
+    def _around(self, ahead, things, now: float, *, bypass: bool) -> Around:
         near, offset, wide = max(ahead)
         if self.side == 0:
             self.side = self._free(1 if offset < 0 else -1, things)
