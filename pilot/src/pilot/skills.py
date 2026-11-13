@@ -234,6 +234,7 @@ class DriveRoute(RegisteredSkill):
         distance_age: float | None = None
         # Seconds driven on a map the reader flagged as damaged, that stood for longer than damage does.
         flagged_seconds: float = 0.0
+        aim_px: float | None = None  # how far out the driver aimed on this tick
 
     name = "drive_route"
     parameters: ClassVar[dict] = {"duration": (0.1, 120, 60), "style": ("bold", "careful")}
@@ -314,6 +315,7 @@ class DriveRoute(RegisteredSkill):
             self.end_distance,
             None if self.distance_time is None else self._now - self.distance_time,
             self.driver.flagged_time,
+            getattr(self.driver, "aim_px", None),
         )
 
     def stop(self, reason="interrupted") -> SkillResult:

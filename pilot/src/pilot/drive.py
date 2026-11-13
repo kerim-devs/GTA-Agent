@@ -1,5 +1,6 @@
 """Defensive path following with a noisy GPS distance speed sensor."""
 
+import os
 from collections import deque
 from dataclasses import dataclass
 from math import atan2, degrees, hypot, isfinite, sqrt
@@ -33,6 +34,15 @@ class DriveConfig:
     bend_throttle: float = 0.22  # Minimum pedal while following a bend.
     bend_gain: float = 0.013  # Pedal reduction per degree of upcoming bend.
     lookahead_px: float = 8.0  # First visible route target, in crop pixels.
+    # Where the way from the car keeps its direction over twice this length, the aim lies this far
+    # out. On the country road of 13 November, 18:10, at 30 to 50 km/h, the aim at 8 px stood 50 to 70
+    # degrees to the side while the car's heading was 30 off: three or four pixels beside the route
+    # are 25 degrees at 8 px and 10 at 20, and the car swung across the line every 2.7 s with the
+    # stick at its stop. The short aim stays wherever the way bends: it keeps the car out of the corner.
+    straight_lookahead_px: float = 20.0
+    straight_bend: float = (
+        15.0  # Degrees between two stretches of that length under which the way is straight.
+    )
     speed_limit: float = 7.0  # Straight-line limit in metres per second.
     slow_speed: float = 2.0  # Lowest planned corner speed, in metres per second.
     lateral_acceleration: float = 1.2  # Conservative m/s^2 cornering budget.
@@ -152,6 +162,15 @@ class Driver:
         self._route_stop_time: float | None = None
         self._route_stopped = False
         self._error: float | None = None
+        self._far = False  # whether the aim of the last tick was the far one
+        self.aim_px = self.config.lookahead_px  # the aim's distance of the last tick, for the log
+        # A comparison within one drive, for the console: with PILOT_AIM_AB set to a number of seconds
+        # the far aim is allowed in every other stretch of that length on the session's clock, the
+        # first one included, and the short aim alone steers in between. Unset, nothing alternates.
+        try:
+            self._aim_ab = max(0.0, float(os.environ.get("PILOT_AIM_AB", "") or 0.0))
+        except ValueError:
+            self._aim_ab = 0.0
         self._outlier_since: float | None = None
         self._filtered_error: float | None = None
         self._filtered_far: float | None = None
@@ -332,7 +351,12 @@ class Driver:
         far_error = error if far is None else _angle(_angle(far) - _angle(arrow))
         path = _path(reading.path)
         if path:
-            target = _target(path, self.config.lookahead_px)
+            allowed = self._aim_ab <= 0 or int(now // self._aim_ab) % 2 == 0
+            self._far = allowed and _straight(path, self.config, self._far)
+            self.aim_px = self.config.straight_lookahead_px if self._far else self.config.lookahead_px
+            target = _target(
+                path, self.config.straight_lookahead_px if self._far else self.config.lookahead_px
+            )
             error = _angle(degrees(atan2(target[0], target[1])) - arrow)
             far_error = _angle(degrees(atan2(path[-1][0], path[-1][1])) - arrow)
         if self._error is not None and abs(_angle(error - self._error)) > self.config.outlier_angle:
@@ -793,6 +817,33 @@ def _path(value: object) -> tuple[tuple[float, float], ...]:
             continue
         points.append((x, y))
     return tuple(points)
+
+
+def _straight(path, config, was: bool) -> bool:
+    """Whether the way from the car keeps its direction far enough for the far aim.
+
+    Measured from the car and not from the path's first point: that lies 11 px out and more, and a
+    corner between the car and it, or just behind it, would be aimed across. The way is the line to
+    that point and then the path, in two stretches of the far aim's length. A car that stands well
+    beside the route bends that way too and gets the short aim, which pulls harder: far off the line
+    that is what it should do. Once far, the aim stays far until the way bends by half as much again,
+    so that a reading that wavers round the limit does not swap the aims from frame to frame.
+    """
+    span = config.straight_lookahead_px
+    if span <= config.lookahead_px or not path:
+        return False
+    marks, travelled, previous = [(0.0, 0.0)], 0.0, (0.0, 0.0)
+    for point in path:
+        step = hypot(point[0] - previous[0], point[1] - previous[1])
+        while len(marks) < 3 and step > 0 and travelled + step >= span * len(marks):
+            fraction = (span * len(marks) - travelled) / step
+            marks.append(tuple(a + fraction * (b - a) for a, b in zip(previous, point, strict=True)))
+        travelled, previous = travelled + step, point
+    if len(marks) < 3:
+        return False
+    first = degrees(atan2(marks[1][0], marks[1][1]))
+    second = degrees(atan2(marks[2][0] - marks[1][0], marks[2][1] - marks[1][1]))
+    return abs(_angle(second - first)) < config.straight_bend * (1.5 if was else 1.0)
 
 
 def _target(path, radius: float):
