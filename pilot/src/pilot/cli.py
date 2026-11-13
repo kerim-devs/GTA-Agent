@@ -14,6 +14,7 @@ from .calibrate import run_calibrate, selection
 from .conductor import PLAY_RECORDINGS, Conductor, run_play
 from .drive import DriveConfig, Driver
 from .flow import Flow
+from .guard import Guard
 from .head import CodexHead, CodexServerHead, ScriptedHead, SkillCall
 from .judge import Reader as JudgeReader
 from .loop import RECORDINGS, Pipeline, run_drive
@@ -119,6 +120,12 @@ def main(argv: list[str] | None = None) -> None:
     )
     play.add_argument(
         "--no-view", action="store_true", help="do not set the far view before levelling the camera"
+    )
+    play.add_argument(
+        "--guard",
+        action="store_true",
+        help="answer red markers, stars and low health in the tick with the guard's rules; off by default "
+        "until a live run has measured it",
     )
     play.add_argument("--record-dir", type=absolute_path, default=PLAY_RECORDINGS)
     play.add_argument("--notebook", type=Path)
@@ -249,6 +256,7 @@ def main(argv: list[str] | None = None) -> None:
                     hud=None if args.no_hud_flow else hud,
                     flow=None if args.no_hud_flow else Flow(),
                     opening=opening(args),
+                    guard=Guard() if args.guard else None,
                 )
             )
     else:

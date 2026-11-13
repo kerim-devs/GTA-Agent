@@ -1,0 +1,223 @@
+{
+ "scenes": [
+  {
+   "id": "hard-01",
+   "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+   "onset": 185.67,
+   "kind": "calm",
+   "onset_method": "P64's rejected onset proposal (the reader took red behind the transparent map for a marker), refined with the readers on every native frame from six seconds before to four after, and the magnified minimap of six frames with red and the scene at five times looked at. Control centre; no physical onset.",
+   "confidence": "visually-confirmed-control",
+   "uncertainty_frames": 0,
+   "human": {
+    "lead_s": 0.18,
+    "lead_source": "estimated",
+    "lead_correlation": 0.4,
+    "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty."
+   },
+   "notes": "Red bird-of-paradise flowers behind the translucent map at Michael's house; the reader reads red inside and on the edge for about four seconds. Figure walking in view. Two frames read health under a third (a glare on the bar).",
+   "calm_before_s": null
+  },
+  {
+   "id": "hard-02",
+   "recording": "/Users/kerim/recordings/kerim/20261111-172549",
+   "onset": 195.72,
+   "kind": "calm",
+   "onset_method": "P64's rejected onset proposal (the reader took red behind the transparent map for a marker), refined with the readers on every native frame from six seconds before to four after, and the magnified minimap of six frames with red and the scene at five times looked at. Control centre; no physical onset.",
+   "confidence": "visually-confirmed-control",
+   "uncertainty_frames": 0,
+   "human": {
+    "lead_s": 0.18,
+    "lead_source": "estimated",
+    "lead_correlation": 0.4,
+    "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty."
+   },
+   "notes": "Red roof tiles behind the map while the figure climbs over a roof; red inside and on the edge. Figure in view, a subtitle on screen.",
+   "calm_before_s": null
+  },
+  {
+   "id": "hard-03",
+   "recording": "/Users/kerim/recordings/kerim/20261111-194609",
+   "onset": 603.22,
+   "kind": "calm",
+   "onset_method": "P64's rejected onset proposal (the reader took red behind the transparent map for a marker), refined with the readers on every native frame from six seconds before to four after, and the magnified minimap of six frames with red and the scene at five times looked at. Control centre; no physical onset.",
+   "confidence": "visually-confirmed-control",
+   "uncertainty_frames": 0,
+   "human": {
+    "lead_s": 0.18,
+    "lead_source": "estimated",
+    "lead_correlation": 0.43,
+    "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty."
+   },
+   "notes": "Indoors at Michael's house, a red piece of furniture behind the map's edge; red on the edge for six frames. The camera shows the room and not the figure.",
+   "calm_before_s": null
+  },
+  {
+   "id": "hard-04",
+   "recording": "/Users/kerim/recordings/kerim/20261111-205309",
+   "onset": 313.04,
+   "kind": "calm",
+   "onset_method": "P64's rejected onset proposal (the reader took red behind the transparent map for a marker), refined with the readers on every native frame from six seconds before to four after, and the magnified minimap of six frames with red and the scene at five times looked at. Control centre; no physical onset.",
+   "confidence": "visually-confirmed-control",
+   "uncertainty_frames": 0,
+   "human": {
+    "lead_s": 0.2,
+    "lead_source": "default",
+    "lead_correlation": 0.295,
+    "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty."
+   },
+   "notes": "A red-painted curb at night under the map, and the map's red district tint; red on the edge and, at +1.8 s, inside. Figure walking on the pavement in view.",
+   "calm_before_s": null
+  },
+  {
+   "id": "hard-05",
+   "recording": "/Users/kerim/recordings/kerim/20261111-210812",
+   "onset": 405.78,
+   "kind": "calm",
+   "onset_method": "P64's rejected onset proposal (the reader took red behind the transparent map for a marker), refined with the readers on every native frame from six seconds before to four after, and the magnified minimap of six frames with red and the scene at five times looked at. Control centre; no physical onset.",
+   "confidence": "visually-confirmed-control",
+   "uncertainty_frames": 0,
+   "human": {
+    "lead_s": 0.18,
+    "lead_source": "estimated",
+    "lead_correlation": 0.379,
+    "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty."
+   },
+   "notes": "Indoors in a bedroom, red objects on a dresser behind the map; red inside and on the edge. The camera shows the room and not the figure.",
+   "calm_before_s": null
+  },
+  {
+   "id": "hard-06",
+   "recording": "/Users/kerim/recordings/kerim/20261111-210812",
+   "onset": 328.4,
+   "kind": "calm",
+   "onset_method": "P64's rejected onset proposal (the reader took red behind the transparent map for a marker), refined with the readers on every native frame from six seconds before to four after, and the magnified minimap of six frames with red and the scene at five times looked at. Control centre; no physical onset.",
+   "confidence": "visually-confirmed-control",
+   "uncertainty_frames": 0,
+   "human": {
+    "lead_s": 0.18,
+    "lead_source": "estimated",
+    "lead_correlation": 0.379,
+    "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty."
+   },
+   "notes": "The same bedroom, a red tin behind the map; the longest false red of the set, 94 frames, 38 of them inside. The camera shows the room and not the figure.",
+   "calm_before_s": null
+  },
+  {
+   "id": "hard-07",
+   "recording": "/Users/kerim/recordings/kerim/20261112-114541",
+   "onset": 601.75,
+   "kind": "calm",
+   "onset_method": "P64's rejected onset proposal (the reader took red behind the transparent map for a marker), refined with the readers on every native frame from six seconds before to four after, and the magnified minimap of six frames with red and the scene at five times looked at. Control centre; no physical onset.",
+   "confidence": "visually-confirmed-control",
+   "uncertainty_frames": 0,
+   "human": {
+    "lead_s": 0.16,
+    "lead_source": "estimated",
+    "lead_correlation": 0.37,
+    "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty."
+   },
+   "notes": "In the desert, a red and white barrier behind the map's corner; red on the edge and inside for a few frames. The camera shows the yard and not the figure.",
+   "calm_before_s": null
+  },
+  {
+   "id": "hard-08",
+   "recording": "/Users/kerim/recordings/kerim/20261112-114541",
+   "onset": 615.63,
+   "kind": "calm",
+   "onset_method": "P64's rejected onset proposal (the reader took red behind the transparent map for a marker), refined with the readers on every native frame from six seconds before to four after, and the magnified minimap of six frames with red and the scene at five times looked at. Control centre; no physical onset.",
+   "confidence": "visually-confirmed-control",
+   "uncertainty_frames": 0,
+   "human": {
+    "lead_s": 0.16,
+    "lead_source": "estimated",
+    "lead_correlation": 0.37,
+    "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty."
+   },
+   "notes": "The same yard, reddish sand behind the map's upper left; red inside for 14 frames. The camera shows the yard and not the figure.",
+   "calm_before_s": null
+  },
+  {
+   "id": "hard-09",
+   "recording": "/Users/kerim/recordings/kerim/20261111-175312",
+   "onset": 216.6,
+   "kind": "calm",
+   "onset_method": "P64's rejected onset proposal (the reader took red behind the transparent map for a marker), refined with the readers on every native frame from six seconds before to four after, and the magnified minimap of six frames with red and the scene at five times looked at. Control centre; no physical onset.",
+   "confidence": "visually-confirmed-control",
+   "uncertainty_frames": 0,
+   "human": {
+    "lead_s": 0.2,
+    "lead_source": "default",
+    "lead_correlation": null,
+    "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty."
+   },
+   "notes": "A red-painted curb under the map at dusk while the figure runs along the road; red inside at -2.0 s and on the edge at +2.0 s. Moved 1.97 s earlier than the proposal (218.57): stars light up at 221.65 and a real marker shows at 222.1, both after this window.",
+   "calm_before_s": null
+  },
+  {
+   "id": "hard-10",
+   "recording": "/Users/kerim/recordings/kerim/20261111-175312",
+   "onset": 823.39,
+   "kind": "calm",
+   "onset_method": "P64's rejected onset proposal (the reader took red behind the transparent map for a marker), refined with the readers on every native frame from six seconds before to four after, and the magnified minimap of six frames with red and the scene at five times looked at. Control centre; no physical onset.",
+   "confidence": "visually-confirmed-control",
+   "uncertainty_frames": 0,
+   "human": {
+    "lead_s": 0.2,
+    "lead_source": "default",
+    "lead_correlation": null,
+    "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty."
+   },
+   "notes": "A beach race (checkered flag, lap timer): a jogger's pink and red clothes behind the map's edge for three frames. Figure running in view.",
+   "calm_before_s": null
+  },
+  {
+   "id": "hard-11",
+   "recording": "/Users/kerim/recordings/kerim/20261111-193105",
+   "onset": 790.99,
+   "kind": "calm",
+   "onset_method": "P64's rejected onset proposal (the reader took red behind the transparent map for a marker), refined with the readers on every native frame from six seconds before to four after, and the magnified minimap of six frames with red and the scene at five times looked at. Control centre; no physical onset.",
+   "confidence": "visually-confirmed-control",
+   "uncertainty_frames": 0,
+   "human": {
+    "lead_s": 0.18,
+    "lead_source": "estimated",
+    "lead_correlation": 0.46,
+    "residual_error": "Unknown systematic offset; 20 ms estimator grid plus capture and input timestamp uncertainty."
+   },
+   "notes": "Indoors at the Lifeinvader office, a red mural behind the map; red on the edge. The reader also takes the indoor map for tilted on 86 frames. Figure walking in view.",
+   "calm_before_s": null
+  }
+ ],
+ "answer_sets": {
+  "calm": [
+   {
+    "l2": 0.5,
+    "why": "aim at the new threat"
+   },
+   {
+    "r2": 0.5,
+    "why": "fire at the new threat"
+   },
+   {
+    "buttons": [
+     "r1"
+    ],
+    "why": "take cover from the threat"
+   },
+   {
+    "buttons": [
+     "cross"
+    ],
+    "left_y": -0.5,
+    "why": "sprint away from danger"
+   }
+  ]
+ },
+ "selection": {
+  "p65": "Hard calm scenes for the guard (card P65): stretches on foot in which the minimap reader takes red behind the translucent map for a marker and no marker is on the map, no stars are lit and the game screen shows. They are P64's twelve rejected enemy proposals of this kind (scenes.json, selection.rejected), each window the ten seconds around the proposal. Kept 11. They have a scene file and a ledger of their own (ledger-hard.jsonl) so that the rows of scenes.json are not orphaned; board-hard.md shows them.",
+  "rejected": [
+   "20261111-205309 336.30: not calm; the figure fights over a car and the health bar falls into red (70 frames under a third)."
+  ],
+  "camera": "Five of the eleven (hard-03, 05, 06, 07, 08) show a room or a yard and not the figure, an idle or first-person camera; P64 left such windows out of the calm set, here they are kept because the false red is what is measured."
+ }
+}

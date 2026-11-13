@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import bisect
+import gzip
 import hashlib
 import html
 import json
@@ -262,6 +263,11 @@ def replay(
         # A policy gives pads and nothing else; its "noticed" is unknown, not never.
         "reports_notice": getattr(approach, "reports_notice", True),
         "model_answers": list(getattr(approach, "answer_log", [])),
+        **(
+            {"guard": list(episodes)}
+            if (episodes := getattr(approach, "guard_log", None)) is not None
+            else {}
+        ),
     }
 
 
@@ -375,6 +381,8 @@ def compact(result: dict) -> dict:
     result["model_answers"] = [
         {k: _round(v) for k, v in row.items() if v is not None} for row in result.get("model_answers", [])
     ]
+    if "guard" in result:
+        result["guard"] = [_round(episode) for episode in result["guard"]]
     result["ages_median_s"] = {
         key: percentile([r[key] for r in samples if r.get(key) is not None], 50)
         for key in ("frame_age_s", "detection_age_s", "judgment_age_s", "compute_s")
@@ -436,6 +444,12 @@ def implementation_hash(root: Path) -> str:
     return digest.hexdigest()
 
 
+def read_rows(path: Path) -> list[dict]:
+    """A ledger's rows; an archived ledger (.jsonl.gz, such as P64's) is read as it is."""
+    text = gzip.decompress(path.read_bytes()).decode() if path.suffix == ".gz" else path.read_text()
+    return [json.loads(line) for line in text.splitlines() if line.strip()]
+
+
 def append_result(path: Path, result: dict):
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a") as stream:
@@ -487,7 +501,7 @@ def aggregate(rows: list[dict], key: str = "reaction_s") -> dict:
 
 def approach_label(row: dict) -> str:
     name = row["approach"]
-    if name in ("reflex", "pilot", "Kerim"):
+    if name in ("reflex", "pilot", "pilot+guard", "Kerim"):
         return name
     parts = [row["model"]] if row.get("model") else []
     if row.get("question"):
@@ -545,8 +559,9 @@ def answer_stats(rows: list[dict]) -> dict | None:
     }
 
 
-def board(rows: list[dict], destination: Path, provenance_line: str = "") -> str:
-    """Keep modes separate and keep every repetition visible in the timeline."""
+def board(rows: list[dict], destination: Path, provenance_line: str = "", stem: str = "board") -> str:
+    """Keep modes separate and keep every repetition visible in the timeline. `stem` names the files,
+    so that a scene file of its own has a board of its own."""
     groups = {}
     for row in rows:
         groups.setdefault((approach_label(row), row["mode"]), []).append(row)
@@ -629,7 +644,7 @@ def board(rows: list[dict], destination: Path, provenance_line: str = "") -> str
         )
     content = "\n".join(lines) + "\n"
     destination.mkdir(parents=True, exist_ok=True)
-    (destination / "board.md").write_text(content)
+    (destination / f"{stem}.md").write_text(content)
     # Standalone HTML with actual tables, no CDN or JS dependency.
     rendered = []
     in_table = False
@@ -688,7 +703,7 @@ def board(rows: list[dict], destination: Path, provenance_line: str = "") -> str
                     status = f"noticed {notice['t'] - scene['onset']:.3f} s; {status}"
                 rendered.append(f'<text x="870" y="{y}" font-size="12">{html.escape(status)}</text>')
         rendered.append("</svg>")
-    (destination / "board.html").write_text(
+    (destination / f"{stem}.html").write_text(
         '<!doctype html><html lang="en"><meta charset="utf-8"><title>Reaction bench</title><style>body{font:15px system-ui;margin:32px;color:#152536}table{border-collapse:collapse;margin:24px 0}td{border:1px solid #ccd5df;padding:8px}tr:first-child{font-weight:bold;background:#edf2f7}</style>'  # noqa: E501
         + "".join(rendered)
         + "</html>"

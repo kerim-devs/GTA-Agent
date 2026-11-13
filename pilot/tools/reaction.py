@@ -30,11 +30,14 @@ from pilot.reaction import (
     implementation_hash,
     load_scenes,
     provenance,
+    read_rows,
     replay,
 )
 
 ROOT = Path(__file__).resolve().parents[2]
 LAB = ROOT / "lab/reaction"
+# The ways of control that run the conductor with a modelled head, with and without the guard.
+HEADS = ("head", "head+guard")
 
 
 def frame_at(source, row):
@@ -269,7 +272,15 @@ def main():
     run.add_argument("--only", nargs="+", help="scene ids to run, default all")
     run.add_argument("--ledger", type=Path, default=LAB / "ledger.jsonl")
     board_parser = subs.add_parser("board")
-    board_parser.add_argument("--ledger", type=Path, default=LAB / "ledger.jsonl")
+    board_parser.add_argument(
+        "--ledger", type=Path, default=LAB / "ledger.jsonl", help="a ledger, or an archived one (.jsonl.gz)"
+    )
+    board_parser.add_argument(
+        "--scenes",
+        type=Path,
+        default=LAB / "scenes.json",
+        help="the scene file whose rows to show; another than scenes.json gets board-<name>.md beside it",
+    )
     board_parser.add_argument("--comparisons", action="store_true")
     board_parser.add_argument(
         "--implementation",
@@ -309,8 +320,9 @@ def main():
             )
         )
     elif args.command == "board":
-        rows = [json.loads(line) for line in args.ledger.read_text().splitlines() if line.strip()]
-        current = hashlib.sha256((LAB / "scenes.json").read_bytes()).hexdigest()
+        rows = read_rows(args.ledger)
+        current = hashlib.sha256(args.scenes.read_bytes()).hexdigest()
+        main_scenes = args.scenes.resolve() == (LAB / "scenes.json").resolve()
         measured = args.implementation or implementation_hash(ROOT)
         rows = [
             row
@@ -324,10 +336,11 @@ def main():
                 rows,
                 LAB,
                 provenance_line=f"Rows of implementation SHA-256 {measured}, scenes SHA-256 {current}.",
+                stem="board" if main_scenes else "board-" + args.scenes.stem.removeprefix("scenes-"),
             )
         )
         if args.comparisons:
-            comparisons(load_scenes(LAB / "scenes.json"), rows)
+            comparisons(load_scenes(args.scenes), rows)
     else:
         if args.repeat < 1:
             parser.error("--repeat must be positive")
@@ -340,7 +353,7 @@ def main():
         ):
             parser.error("--head-delay is a realtime run without Codex and needs --head-delay-source")
         if set(args.names) & {"judge", "judge-second", "reflex+judge", "policy"} or (
-            "head" in args.names and args.head_delay is None and not args.codex
+            set(args.names) & set(HEADS) and args.head_delay is None and not args.codex
         ):
             # Answers go to a model server on this machine or the local network, never further.
             private_endpoint(f"{args.endpoint}={args.model}")
@@ -379,12 +392,12 @@ def main():
                 codex=args.codex,
                 modelled_delay=args.stub_delay if args.mode == "modelled" else None,
                 question=args.question,
-                head_delay=args.head_delay if name == "head" else None,
+                head_delay=args.head_delay if name in HEADS else None,
             )
             asks_model = name in ("judge", "judge-second", "reflex+judge") or (
-                name == "head" and config.head_delay is None and not args.codex
+                name in HEADS and config.head_delay is None and not args.codex
             )
-            modelled_head = name == "head" and config.head_delay is not None
+            modelled_head = name in HEADS and config.head_delay is not None
             for repeat in range(args.repeat):
                 for scene in scenes:
                     config.recording = scene.recording
@@ -402,7 +415,7 @@ def main():
                             "approach": name,
                             "repeat": repeat,
                             "model": "codex"
-                            if args.codex and name == "head"
+                            if args.codex and name in HEADS
                             else "codex-delay-modelled"
                             if modelled_head
                             else args.model,
@@ -410,7 +423,7 @@ def main():
                             "head_delay_s": config.head_delay if modelled_head else None,
                             "head_delay_source": args.head_delay_source if modelled_head else None,
                             "endpoint": args.endpoint
-                            if name not in ("reflex", "pilot") and not modelled_head
+                            if name not in ("reflex", "pilot", "pilot+guard") and not modelled_head
                             else None,
                             "cost_provenance": costs.get(name),
                             **compact(result),

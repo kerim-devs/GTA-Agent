@@ -59,6 +59,8 @@ class Config:
     # A modelled head: the readers' answer, held back this long. Codex had no quota on 12 November,
     # so its delay is taken from what real sessions logged and the row says so.
     head_delay: float | None = None
+    # The conductor is given a guard (P65): rules that answer a threat on the same tick.
+    guard: bool = False
 
 
 def action_pad(action: str) -> Pad:
@@ -371,11 +373,17 @@ class Pilot(Reflex):
             return future
 
         kwargs = {"submit": immediate} if config.modelled_delay is not None else {}
+        self.guard = None
+        if config.guard:
+            from pilot.guard import Guard
+
+            self.guard = Guard()
         self.conductor = Conductor(
             self.directory,
             head=head or MissionHead(fallback=ScriptedHead()),
             ocr=False,
             clock=lambda: self.now,
+            guard=self.guard,
             **kwargs,
         )
         self._timed(self.conductor.detector, "update", "events", trace_if=lambda result: bool(result))
@@ -482,12 +490,23 @@ class Pilot(Reflex):
         result = self.conductor.tick(observation, frame, frame_time=capture, **kwargs)
         stages["events_head_plan_skill"] = (time.perf_counter() - start) * 1000
         stages.update(self.stage_costs)
+        noticed = self.take_notice()
+        if self.guard is not None:
+            # With a guard the row's notice is the guard's rule, on every tick on which one holds the
+            # pad or counts while the guard only tells the head.
+            verdict = self.conductor.guard_verdict
+            noticed = f"guard {verdict.rule}" if verdict is not None and verdict.rule else None
         return Decision(
             result.pad,
             str(getattr(result, "reason", "current pilot skill")),
             stages_ms=stages,
-            noticed=self.take_notice(),
+            noticed=noticed,
         )
+
+    @property
+    def guard_log(self):
+        """The guard's episodes, for the bench's row; None without a guard."""
+        return None if self.guard is None else self.guard.episodes
 
     def close(self):
         self.conductor.close()
@@ -596,6 +615,8 @@ REGISTRY = {
     "judge": Judge,
     "judge-second": lambda config: Judge(Config(**{**vars(config), "second": True})),
     "head": Head,
+    "pilot+guard": lambda config: Pilot(replace(config, guard=True)),
+    "head+guard": lambda config: Head(replace(config, guard=True)),
     "reflex+judge": ReflexJudge,
     "policy": lambda config: Judge(config, policy=True),
 }

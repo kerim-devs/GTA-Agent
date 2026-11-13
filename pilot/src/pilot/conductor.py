@@ -72,6 +72,7 @@ class Conductor:
         opening=(),
         judge=None,
         awake=None,
+        guard=None,
     ):
         for value in (quiet_seconds, ocr_interval, ocr_timeout):
             if not math.isfinite(value) or value <= 0:
@@ -135,6 +136,11 @@ class Conductor:
         self.last_input = None
         self.nudge_until = None
         self.own_screen_until = -math.inf
+        # Off unless given one: `pilot play --guard`. Without it the conductor is what it was.
+        self.guard = guard
+        self.guard_verdict = None
+        self.guard_events = []
+        self.applied_at = None
 
     def write(self, row):
         self.log.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -224,6 +230,8 @@ class Conductor:
                 else:
                     self.runner.replace(decision.plan)
                     row["disposition"] = "replaced"
+                if row["disposition"] in ("appended", "replaced"):
+                    self.applied_at = t
                 self.goal = decision.goal
                 if decision.action != "go_on" and self.carry_allowed and self.carry_started is not None:
                     self.runner.release_pending = True
@@ -332,6 +340,7 @@ class Conductor:
     def _tick(self, observation: Observation, rgb, *, text=None, text_time=None, frame_time=None, events=()):
         observation = replace(observation, frame=rgb)
         t = observation.time
+        self.guard_events = []
         if self.judge is not None:
             judgment = self.judge.poll(rgb, t if frame_time is None else frame_time)
             flat = observation.reading.minimap == "flat" and not observation.reading.corrupt
@@ -396,6 +405,9 @@ class Conductor:
         # A stuck screen is where the reflex has done what it knows. From there the head's
         # answer is run like any plan, and the reflex takes over again when the screen changes.
         if flow_result is not None and flow_result.action != "stuck":
+            if self.guard is not None:
+                # The screen is the reflex's: whatever the guard held it lets go of.
+                self._guard_tick(observation, [], flow=True)
             return SkillResult(flow_result.pad, reason="flow")
         if recovered:
             new_events = []
@@ -406,12 +418,58 @@ class Conductor:
             self.judge_events.clear()
         new_events.extend(self.judge_events)
         self.judge_events.clear()
+        # The guard answers before the head's answer is taken and the plan is run, so that its pad is on
+        # this tick whatever the head is doing.
+        guarded = self.guard is not None and self._guard_tick(observation, new_events).pad is not None
         if new_events:
             self.epoch += 1
             self.pending.extend(new_events)
             self.carry_allowed = False
             self.carry_started = None
         self._finish_head(t)
+        if guarded:
+            # The plan waits while the guard holds the pad; what the head answers meanwhile is queued.
+            result = SkillResult(self.guard_verdict.pad, reason="guard")
+        else:
+            result = self._plan_tick(observation, new_events, t)
+        quiet = self.last_request_time is None or t - self.last_request_time >= self.quiet_seconds
+        remaining = self.runner.remaining(t)
+        if self.future is None:
+            if self.pending or quiet:
+                self._request(observation, rgb)
+            elif not guarded and self.runner.has_plan and remaining < self.head_latency:
+                self.pending.append(
+                    {
+                        "kind": "plan_ending",
+                        "remaining_seconds": remaining,
+                        "steps": self.runner.remaining_steps(t),
+                    }
+                )
+                self._request(observation, rgb, append=True)
+        if guarded:
+            return result
+        if (
+            not self.runner.has_plan
+            and self.future is not None
+            and self.carry_allowed
+            and self.carry_started is not None
+            and 0 <= t - self.carry_started < 4
+            and player_mode(observation) == "foot"
+            and not observation.reading.corrupt
+            and (observation.hud is None or observation.hud.screen == "game")
+        ):
+            result = SkillResult(Pad(left=(0.0, -0.45)), reason="carry-on")
+            if self.carry_logged != self.carry_started:
+                # One row per carry, not one per tick: the play log has the ticks.
+                self.write({"type": "carry_on", "t": t, "name": "carry_on"})
+                self.carry_logged = self.carry_started
+        elif not self.runner.has_plan and not observation.reading.corrupt:
+            # A damaged tick is stood out and decides nothing: the minimap reader calls a clean
+            # cable picture damaged about once a second, and the carry would never last.
+            self.carry_allowed = False
+        return result
+
+    def _plan_tick(self, observation, new_events, t):
         result = self.runner.tick(observation)
         failures = getattr(self.runner, "opening_failures", None)
         while failures:
@@ -435,45 +493,57 @@ class Conductor:
                 self.pending.append({"kind": "skill_failed", "skill": last})
             elif self.future is None:
                 self.pending.append({"kind": "skill_ended", "skill": last})
-        quiet = self.last_request_time is None or t - self.last_request_time >= self.quiet_seconds
-        remaining = self.runner.remaining(t)
-        if self.future is None:
-            if self.pending or quiet:
-                self._request(observation, rgb)
-            elif self.runner.has_plan and remaining < self.head_latency:
-                self.pending.append(
-                    {
-                        "kind": "plan_ending",
-                        "remaining_seconds": remaining,
-                        "steps": self.runner.remaining_steps(t),
-                    }
-                )
-                self._request(observation, rgb, append=True)
-        if (
-            not self.runner.has_plan
-            and self.future is not None
-            and self.carry_allowed
-            and self.carry_started is not None
-            and 0 <= t - self.carry_started < 4
-            and player_mode(observation) == "foot"
-            and not observation.reading.corrupt
-            and (observation.hud is None or observation.hud.screen == "game")
-        ):
-            result = SkillResult(Pad(left=(0.0, -0.45)), reason="carry-on")
-            if self.carry_logged != self.carry_started:
-                # One row per carry, not one per tick: the play log has the ticks.
-                self.write({"type": "carry_on", "t": t, "name": "carry_on"})
-                self.carry_logged = self.carry_started
-        elif not self.runner.has_plan and not observation.reading.corrupt:
-            # A damaged tick is stood out and decides nothing: the minimap reader calls a clean
-            # cable picture damaged about once a second, and the carry would never last.
-            self.carry_allowed = False
         return result
+
+    def _guard_tick(self, observation, new_events, *, flow=False):
+        """Ask the guard, and carry out what it starts and ends (docs/tasks/P65-the-guard.md)."""
+        t = observation.time
+        verdict = self.guard.tick(
+            observation,
+            objective=self.text.objective,
+            moving=self._moving(),
+            plan_since=self.applied_at,
+            flow=flow,
+        )
+        self.guard_verdict = verdict
+        self.guard_events = list(verdict.events)
+        for event in verdict.events:
+            if event["kind"] == "guard_start":
+                # As the flow reflex does with a screen: the plan stops, the answer on its way is void,
+                # and the head is asked afresh with the guard's event.
+                self.runner.stop("guard_" + event["rule"])
+                self._expect_skill()
+                self.epoch += 1
+                self._abandon_head(t)
+                self.pending.append(event)
+                self.carry_allowed, self.carry_started = False, None
+            elif event["kind"] == "guard_end":
+                # Heard with the next request. An answer on its way was asked while the guard held the
+                # pad, with its start in view, and stands: a model head needs eight seconds for another.
+                (self.flow_events if self.flow_started is not None else self.pending).append(event)
+            else:
+                if verdict.abandon:
+                    # In a vehicle the head's rules answer a threat; a model's answer is not waited for.
+                    self._abandon_head(t)
+                new_events.append(event)
+        return verdict
+
+    def _moving(self):
+        """A skill of the plan has the figure, or is next to: anything but a wait."""
+        skill = self.runner.active
+        if skill is None:
+            queue = getattr(self.runner, "queue", ())
+            skill = queue[0] if queue else None
+        return skill is not None and skill.name != "wait"
 
     def _hud_for_head(self, observation):
         if observation.hud is None:
             return None
         hud = asdict(observation.hud)
+        if self.guard is not None and not self.guard.settled(observation.time):
+            # A health bar the guard does not trust yet is not the head's either: fading in after a
+            # black screen it reads empty, and the head fled from a full bar (P64, enemy-13).
+            hud["health"] = None
         # The one tick the head is asked on may be one the reader stood out; the level the stars
         # held a moment ago says more than nothing.
         fresh = self.wanted_seen is not None and observation.time - self.wanted_seen <= 5.0
@@ -501,7 +571,8 @@ class Conductor:
                 if self.wanted_level is not None or hud.wanted:
                     events.append({"kind": "wanted_changed", "wanted": hud.wanted})
                 self.wanted_level = hud.wanted
-        if hud.health is not None and hud.health < 0.3:
+        settled = self.guard is None or self.guard.settled(t)
+        if hud.health is not None and hud.health < 0.3 and settled:
             if self.low_health_since is None:
                 self.low_health_since = t
             if not self.low_health_reported and t - self.low_health_since >= 0.5:
@@ -633,6 +704,14 @@ class Conductor:
                 "reason": "head-pending",
                 "ended": self.runner.describe(),
             }
+        if result is not None and result.reason == "guard" and self.guard_verdict is not None:
+            return {
+                "name": "guard",
+                "rule": self.guard_verdict.rule,
+                "status": "running",
+                "reason": self.guard_verdict.why,
+                "ended": self.runner.describe(),
+            }
         return self.runner.describe()
 
     def close(self):
@@ -662,6 +741,25 @@ class Conductor:
         self.log.close()
 
 
+def guard_row(event, t, origin):
+    """The play log's row for one of the guard's events, with times on the play log's clock."""
+    kind = event["kind"]
+    row = {"type": kind, "t": t, "rule": event["rule"]}
+    if kind == "guard_end":
+        row["reason"] = event["reason"]
+    else:
+        seen = event.get("seen")
+        row["seen"] = None if seen is None else seen - origin
+        row["bearing"] = event.get("bearing")
+        if kind == "guard_news":
+            row["where"] = event.get("where")
+        else:
+            row["answer"] = event.get("answer")
+            if event.get("after"):
+                row["after"] = event["after"]  # the rule it took over from, which writes no end row
+    return row
+
+
 def run_play(
     bridge,
     *,
@@ -684,6 +782,7 @@ def run_play(
     opening=(),
     judge=None,
     awake=None,
+    guard=None,
 ):
     pipeline = Pipeline() if pipeline is None else pipeline
     runtime = ControllerRuntime(bridge, shadow=shadow, clock=clock)
@@ -712,6 +811,7 @@ def run_play(
                 **({"opening": opening} if opening else {}),
                 **({"judge": judge} if judge is not None else {}),
                 **({"awake": awake} if awake is not None else {}),
+                **({"guard": guard} if guard is not None else {}),
                 runner=None if driver_factory is None else SkillRunner(driver_factory=driver_factory),
             )
             log = (destination / "play.jsonl").open("x")
@@ -754,6 +854,11 @@ def run_play(
                 sent, status = runtime.tick(
                     None if result is None else result.pad, fresh=fresh, received=received
                 )
+                if result is not None:
+                    # Rows of their own, written before the tick's row and on its clock, so that a live
+                    # run is timed from play.jsonl alone: from the first reading to the pad and back.
+                    for event in getattr(conductor, "guard_events", None) or ():
+                        log.write(json.dumps(guard_row(event, received - started, started)) + "\n")
                 log.write(
                     json.dumps(
                         {
