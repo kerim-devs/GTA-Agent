@@ -377,6 +377,27 @@ def test_stretches_that_end_unread_are_not_stretches_without_progress(session):
     assert session.active("drive_route") and not session.rows("trip_recovery")
 
 
+def test_a_car_held_at_the_door_with_the_route_still_drawn_has_arrived(session):
+    # 20261114-000623: 5.7 km driven, a van parked 52 m before the shop, the route still on the map.
+    session.drive()
+    session.distance = 52
+    session.until(lambda: session.trip.verdict is not None, seconds=10)
+    assert session.trip.verdict["status"] == "reached"
+    assert session.now >= 6 and not session.rows("trip_recovery")
+    assert session.tick().pad == NEUTRAL_PAD
+
+
+def test_a_car_that_only_passes_near_the_place_has_not_arrived(session):
+    session.drive()
+    session.distance = 55
+    for _ in range(30):
+        session.tick()
+    session.distance = 400
+    for _ in range(100):
+        session.tick()
+    assert session.trip.verdict is None
+
+
 def test_a_distance_that_cannot_be_read_is_no_standstill(session):
     # 20261113-225006: on a bright road the printed distance was not read for 39 s while the car
     # drove, and the trip took that for a drive that came no nearer.

@@ -836,6 +836,10 @@ class Trip:
     PROGRESS_SECONDS = 25.0
     PROGRESS_METRES = 20.0
     READ_SECONDS = 2.0  # a distance read this short a time ago is one the drive can be judged on
+    NEAR_METRES = 60.0  # of printed way to the waypoint, within sight of the door
+    NEAR_SECONDS = (
+        6.0  # this long there and no nearer; a car still closing in ends by the drive's own arrival
+    )
     # Where no car stands and none comes past for a while (20261113-225835, a side street in Sandy
     # Shores), three tries in ninety seconds gave the trip up beside a road with traffic on it. The
     # tries are not counted to an end: a look after the first, then along the road and again, for
@@ -885,7 +889,7 @@ class Trip:
         self.failure = None
         self.failure_at = None
         self.exit_presses = self.exit_waits = 0
-        self.read_at = None
+        self.read_at = self.near_since = self.near_distance = None
         self.last_distance = None
         self.route_at = self.purple_at = None
         self.route_waited = False
@@ -1028,6 +1032,18 @@ class Trip:
             self.progress_at = min(now, self.progress_at + now - self.read_at)
         self.read_at = now
         self.distance_time, self.last_distance = at, distance
+        if distance <= self.NEAR_METRES:
+            # At the door with the route still on the map: the game takes a waypoint off only when
+            # the car is on it, and a van parked before the shop kept the car 52 m away until the
+            # trip gave up (20261114-000623). The printed distance, read for this long, is the proof.
+            # While it still comes nearer the drive is left to end by itself, with its brake.
+            if self.near_since is None or distance < self.near_distance - 2:
+                self.near_since, self.near_distance = now, distance
+            if now - self.near_since >= self.NEAR_SECONDS:
+                self.finish("reached", "printed distance within sixty metres of the fixed waypoint", now)
+                return
+        else:
+            self.near_since = None
         if self.best_distance is None or distance < self.best_distance:
             self.best_distance = distance
         if self.progress_distance is None or self.progress_distance - distance >= self.PROGRESS_METRES:
@@ -1101,7 +1117,7 @@ class Trip:
             ):
                 self.waypoint_id = ident
                 self.best_distance = self.progress_distance = self.distance_time = None
-                self.last_distance = self.route_at = self.purple_at = None
+                self.last_distance = self.route_at = self.purple_at = self.near_since = None
                 self.route_waited = self.waypoint_check = False
                 self.change("drive", now)
                 self.retry = None
