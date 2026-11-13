@@ -1,12 +1,14 @@
 """Public controller behavior, including hostile scalar inputs and timed recovery."""
 
-from dataclasses import replace
-from math import isfinite
+import json
+from dataclasses import fields, replace
+from math import atan2, degrees, isfinite, sqrt
+from pathlib import Path
 
 import pytest
 
 from pilot.contract import Reading
-from pilot.drive import DriveConfig, Driver, _straight
+from pilot.drive import DriveConfig, Driver, _onward, _straight, _target
 
 GOOD = Reading("tilted", "yellow", 0.0, 0.0, 0.0, False, 0.95)
 
@@ -358,3 +360,70 @@ def test_a_wider_curvature_baseline_and_a_trimmed_tail_lift_the_limit_on_a_strai
     plain = Driver(DriveConfig(**live))._speed_limit(path, 0.0, 10.0)
     wide = Driver(DriveConfig(**live, curve_step=3, curve_trim=3))._speed_limit(path, 0.0, 10.0)
     assert plain < 13 and wide == 22.0
+
+
+def test_a_bend_ahead_is_not_steered_away_from() -> None:
+    """Console drive of 13 November, 18:32, 206 to 216 s: a right turn ahead, 22 px out at 210.6 s.
+    The path's first segment, 13 px ahead of the car, began to lean into the turn; continued back
+    under the arrow it passed the car on its left, the aim at 8 px lay 6 to 28 degrees to the left
+    and the stick went to 0.65 to the left, into a right turn."""
+    rows = json.loads((Path(__file__).parent / "fixtures" / "p95-corner.json").read_text())
+    names = {field.name for field in fields(Reading)}
+    driver, sticks = Driver(), {}
+    for row in rows:
+        reading = {k: v for k, v in row["reading"].items() if k in names}
+        reading["path"], reading["blips"] = tuple(tuple(p) for p in reading["path"]), ()
+        command = driver.step(Reading(**reading), row["t"], True, speed=reading["gps_speed"])
+        sticks[row["t"]] = command.steer
+        if 210.3 < row["t"] < 210.9:
+            # The line alone, as before, lies to the left there; by way of the car's direction it does not.
+            path, arrow = reading["path"], reading["arrow"]
+            alone, minded = _target(path, 8.0), _target(path, 8.0, arrow)
+            assert degrees(atan2(alone[0], alone[1])) - arrow < -4
+            assert degrees(atan2(minded[0], minded[1])) - arrow > -1
+    before = [stick for t, stick in sticks.items() if 209.5 <= t < 211.0]
+    assert len(before) > 30 and min(before) > -0.05
+    assert max(stick for t, stick in sticks.items() if 211.0 <= t < 212.5) > 0.3  # and then to the right
+
+
+def test_the_aim_under_the_arrow_goes_by_the_cars_own_way_to_the_line() -> None:
+    def corner(ahead: float):
+        return ((sqrt(121 - ahead * ahead), ahead), (17.0, ahead), (23.0, ahead))
+
+    # A right angle under the arrow, 9 px ahead: straight on until the line comes within the aim's reach.
+    assert _target(corner(9), 8.0, 0.0) == pytest.approx((0.0, 8.0))
+    # 6 px ahead: on the line, as before.
+    assert _target(corner(6), 8.0, 0.0) == pytest.approx(_target(corner(6), 8.0))
+    assert _target(corner(6), 8.0, 0.0)[0] > 5
+    # A car beside a straight route does not meet it ahead: the line's nearest stretch, as before.
+    beside = tuple((7.0, float(y)) for y in (8.5, 14.5, 20.5))
+    assert _target(beside, 8.0, 0.0) == pytest.approx(_target(beside, 8.0))
+    # A car that heads away from the line, or whose way meets the path beyond its first point: as before.
+    assert _target(corner(9), 8.0, 180.0) == pytest.approx(_target(corner(9), 8.0))
+    crossing = ((-6.0, 10.0), (-2.0, 14.0), (2.0, 18.0))
+    assert _target(crossing, 8.0, 0.0) == pytest.approx(_target(crossing, 8.0))
+
+
+def test_the_middle_aim_steers_where_the_paths_beginning_goes_on_from_the_car(monkeypatch) -> None:
+    monkeypatch.delenv("PILOT_AIM_AB", raising=False)
+    config = DriveConfig()
+    # A bend 30 px ahead: not straight over 40 px, but the beginning goes on from the car.
+    bend = [(0.0, 12.0), (0.0, 18.0), (0.0, 24.0), (2.0, 30.0), (7.0, 34.0), (13.0, 35.0), (19.0, 35.0)]
+    assert not _straight(bend, config, False) and _onward(bend, config, False, 0.0)
+    driver = Driver()
+    driver.step(replace(GOOD, path=tuple(bend)), 0)
+    assert driver.aim_px == config.bend_lookahead_px
+    # A right angle 6 or 9 px ahead under the arrow: the path begins round it, and the short aim stays.
+    for ahead in (6.0, 9.0):
+        hidden = [(sqrt(121 - ahead * ahead), ahead), (17.0, ahead), (23.0, ahead), (29.0, ahead)]
+        assert not _onward(hidden, config, False, 0.0)
+        driver = Driver()
+        driver.step(replace(GOOD, path=tuple(hidden)), 0)
+        assert driver.aim_px == config.lookahead_px
+    # A car 7 px beside a straight route that runs its way: brought back by the middle aim.
+    beside = [(7.0, float(y)) for y in (8.5, 14.5, 20.5, 26.5, 32.5, 38.5, 44.5, 50.5)]
+    assert not _straight(beside, config, False) and _onward(beside, config, False, 0.0)
+    # A waver round the limit keeps what it was.
+    # The beginning 29 degrees off the line to its first point, and far off the car's heading.
+    leaning = [(0.0, 12.0), (2.9, 17.2), (5.8, 22.4), (8.7, 27.6)]
+    assert not _onward(leaning, config, False, -30.0) and _onward(leaning, config, True, -30.0)

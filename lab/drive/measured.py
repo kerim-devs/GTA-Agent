@@ -101,14 +101,80 @@ def straight(config, seed, speed, *, scale=1.5, seconds=70, gain=77.0, first=0.2
     return float(track[:, 1].std()), float(np.abs(track[:, 0]).max()), float(np.sqrt(np.mean(track[:, 2] ** 2)))
 
 
+def winding(config, seed, speed, *, scale=1.5, seconds=70, gain=77.0, first=0.2, last=0.7):
+    """A road of arcs of 80 m, 60 degrees to the left and to the right in turn.
+
+    A car that follows it turns all the time, so the swing is what the heading does beside its own
+    mean of the last two seconds, in degrees; with it the furthest metres from the road, the stick
+    by root mean square, the changes of the stick's side a second and the share of ticks by aim.
+    """
+    from math import atan2, degrees
+
+    points, x, y, course = [(0.0, 0.0)], 0.0, 0.0, 0.0
+    for arc in range(40):
+        for _ in range(17):
+            course += (1 if arc % 2 else -1) * radians(60 / 17)
+            x, y = x + 5 * sin(course), y + 5 * cos(course)
+            points.append((x, y))
+    world = configuration(
+        delay=0.06,
+        sensor_delay=0.06,
+        map_scale=scale,
+        top_speed=speed,
+        max_time=seconds,
+        grip=50.0,
+        drag=0.05,
+        acceleration=6.0,
+    )
+    sim = MeasuredCar(tuple(points), config=world, seed=seed)
+    sim.gain, sim.first, sim.last, sim.unknown_speed = gain, first, last, True
+    inner = Driver(config)
+    driver, track = Uneven(inner, seed), []
+    while sim.time < seconds:
+        reading, moving = sim.observe()
+        command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+        sim.advance(command)
+        if sim.time > 10:
+            track.append((sim._route_position()[0], degrees(sim.heading), command.steer, inner.aim_px))
+    track = np.array(track)
+    heading = np.degrees(np.unwrap(np.radians(track[:, 1])))
+    window = int(2 / world.dt)
+    mean = np.convolve(heading, np.ones(window) / window, mode="valid")
+    swing = heading[window // 2 : window // 2 + len(mean)] - mean
+    sides = np.sign(track[:, 2][np.abs(track[:, 2]) >= 0.3])
+    return (
+        float(swing.std()),
+        float(track[:, 0].max()),
+        float(np.sqrt(np.mean(track[:, 2] ** 2))),
+        float(np.sum(sides[1:] != sides[:-1]) / (seconds - 10)),
+        float(np.mean(track[:, 3] < 10)),
+        float(np.mean((track[:, 3] >= 10) & (track[:, 3] < 18))),
+    )
+
+
 def main():
     base = drive_config(["style=bold"])
+    short = replace(base, straight_lookahead_px=base.lookahead_px, bend_lookahead_px=base.lookahead_px)
     laws = {
-        "short aim": replace(base, straight_lookahead_px=base.lookahead_px, yaw_memory=0.0),
-        "short aim, turn minded": replace(base, straight_lookahead_px=base.lookahead_px),
+        "short aim": replace(short, yaw_memory=0.0),
+        "short aim, turn minded": short,
+        "middle aim, turn minded": replace(base, straight_lookahead_px=base.lookahead_px),
         "far aim": replace(base, yaw_memory=0.0),
         "far aim, turn minded": base,
     }
+    print(
+        "a winding road, four seeds: swing of the heading in degrees (worst) | furthest from the road in metres |"
+        " stick rms | changes of side a second | ticks at 8 px | at the middle aim"
+    )
+    before = replace(base, bend_lookahead_px=base.lookahead_px)
+    for speed in (8.0, 12.0, 16.0):
+        for name, config in (("the aims of before", before), ("the aims as they are", base)):
+            runs = [winding(config, seed, speed) for seed in range(4)]
+            sd, off, rms, flips, short_share, middle = (np.array(c) for c in zip(*runs, strict=True))
+            print(
+                f"  {speed:4.0f} m/s  {name:22s} {sd.mean():5.1f} ({sd.max():5.1f}) | {off.mean():4.1f} ({off.max():4.1f}) |"
+                f" {rms.mean():.2f} | {flips.mean():.2f} | {100 * short_share.mean():3.0f}% | {100 * middle.mean():3.0f}%"
+            )
     cars = {
         "as measured": {},
         "turns half as much again": {"gain": 115.0},
