@@ -53,6 +53,7 @@ class DriveConfig:
     reverse_time: float = 1.25  # Duration of the reverse pedal phase.
     forward_time: float = 4.0  # Forward escape observation window.
     recovery_clear_time: float = 2.0  # Sustained forward motion clears failed-attempt count.
+    recovery_clear_distance: float = 0.0  # Optional measured forward metres before forgetting failures.
     recovery_steer: float = 0.8  # Stick magnitude used to reverse away from the route.
     recovery_throttle: float = 0.45  # Forward pedal during escape.
     max_recoveries: int = 3  # Consecutive failed escapes before a latched stop.
@@ -71,6 +72,7 @@ class DriveConfig:
     curve_step: int = 1  # Path points between the three of a curvature estimate; neighbours are pixel noise.
     curve_trim: int = 0  # Far path points left out of the curvature; the trace bends along the rim.
     hold_throttle: float = 0.0  # Pedal that about keeps the speed at the limit; the feedback works around it.
+    straight_hold_throttle: float = 0.0  # Extra pedal only where the path permits the straight limit.
     brake_floor: float = 0.0  # No L2 for speed below this measured m/s.
     brake_pulse: float = 0.0  # Longest unbroken L2 for speed in seconds; zero does not bound it.
     brake_rest: float = 1.0  # Seconds without L2 after a pulse, for the speed reading to catch up.
@@ -148,6 +150,7 @@ class Driver:
         self._phase: str | None = None
         self._phase_since = 0.0
         self._attempts = 0
+        self._recovery_distance = 0.0
         self._escape = 0.0
         self._recovery_moved = False
         self._recovery_still = 0.0
@@ -163,6 +166,11 @@ class Driver:
         self._trusted_route: str | None = None
         self._trusted_error: float | None = None
         self._brake_since: float | None = None
+
+    @property
+    def bypassing(self) -> bool:
+        """The close vehicle has used up this style's stationary queue allowance."""
+        return self._queue_spent >= self.config.queue_wait
 
     def _emit(self, steer: float, throttle: float, brake: float, state: str) -> Command:
         if (
@@ -252,6 +260,8 @@ class Driver:
             return self._idle()
         if self._phase in LATCHED:
             return self._emit(0, 0, 0, self._phase)
+        if moving is True and speed is not None and self._last.throttle > 0:
+            self._recovery_distance += speed * dt
         confidence = _number(reading.confidence)
         damaged = self._damage_agrees(reading, now, confidence)
         flagged = self._flag_lasts(reading, now, confidence)
@@ -328,7 +338,8 @@ class Driver:
                 if self._moving_since is None:
                     self._moving_since = now
                 if now - self._moving_since >= self.config.recovery_clear_time:
-                    self._attempts = 0
+                    if self._recovery_distance >= self.config.recovery_clear_distance:
+                        self._attempts = 0
                     self._phase = None
                     self._stuck_since = None
             if self._phase is not None:
@@ -339,7 +350,7 @@ class Driver:
                             -self.config.recovery_steer,
                             self.config.recovery_steer,
                         )
-                        if self._attempts == 1
+                        if self._attempts == 1 and not (self.config.queue_wait <= 2.0 and self.bypassing)
                         else -self._escape,
                         min(self.config.recovery_throttle, self.config.unknown_throttle)
                         if speed is None
@@ -370,6 +381,10 @@ class Driver:
         if queued:
             self._stuck_since = None  # Waiting behind a vehicle is not being stuck.
         elif moving is False and self._last.throttle > 0:
+            if ahead is True and self.config.queue_wait <= 2.0 and self.bypassing:
+                # The queue allowance already proved this standstill. Spending
+                # another stuck interval against the same bumper cannot free it.
+                self._stuck_since = now - self.config.stuck_time
             if self._stuck_since is None:
                 self._stuck_since = now
             if now - self._stuck_since >= self.config.stuck_time:
@@ -386,7 +401,8 @@ class Driver:
             if self._moving_since is None:
                 self._moving_since = now
             if now - self._moving_since >= self.config.recovery_clear_time:
-                self._attempts = 0
+                if self._recovery_distance >= self.config.recovery_clear_distance:
+                    self._attempts = 0
         elif moving is False or self._last.throttle <= 0:
             self._moving_since = None
         previous = self._filtered_error
@@ -452,8 +468,11 @@ class Driver:
         if speed is None:
             throttle *= self.config.unknown_throttle / max(self.config.cruise_throttle, 1e-9)
         else:
+            hold = self.config.hold_throttle
+            if bend <= self.config.steer_deadband and abs(bend_delta) <= self.config.steer_deadband:
+                hold = max(hold, self.config.straight_hold_throttle)
             throttle = _clip(
-                self.config.hold_throttle + self.config.speed_gain * (limit - speed),
+                hold + self.config.speed_gain * (limit - speed),
                 0,
                 self.config.cruise_throttle,
             )
@@ -603,6 +622,7 @@ class Driver:
 
     def _recover(self, now: float, error: float) -> Command:
         self._attempts += 1
+        self._recovery_distance = 0.0
         self._phase, self._phase_since = "recovery-reverse", now
         # Extend the retreat and change the turning side after a failed exit.
         side = -1 if error >= 0 else 1

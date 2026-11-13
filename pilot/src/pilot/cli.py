@@ -32,7 +32,7 @@ MEASURED_DELAY_S = 0.14  # input to picture over the wired link with the game in
 # reading called damaged is ridden out for two seconds: in the town's grid of blocks the minimap
 # reader calls nine clean frames in ten damaged, and the driver stood still on them (session
 # 20261111-130955). With these the pilot drove 2.5 km through town to its waypoint.
-LIVE = {
+CAREFUL = {
     "brake_gain": 0.15,
     "brake_margin": 3.0,
     "brake_floor": 7.0,
@@ -48,6 +48,17 @@ LIVE = {
     "hold_throttle": 0.25,
     "speed_gain": 0.08,
     "damage_hold": 2.0,
+}
+
+# Keep the console baseline available while simulator comparisons qualify bold.
+LIVE = CAREFUL
+BOLD = {
+    **CAREFUL,
+    "queue_wait": 2.0,  # P73's bound before committing to an observed free side.
+    "route_gone_time": 0.5,  # Leaves 0.7 s braking plus tick rounding within the 1.5 s arrival budget.
+    "stop_brake_time": 0.35,  # Reuse the live pulse bound: a 0.7 s arrival hold reversed in P73 simulation.
+    "straight_hold_throttle": 0.3,  # P73's first matrix rejected 0.4 in bends and reverse headings.
+    "recovery_clear_distance": 100.0,  # P73: brief motion must not erase failed escape history.
 }
 
 
@@ -66,11 +77,22 @@ def absolute_path(value: str) -> Path:
 
 
 def drive_config(settings: list[str]) -> DriveConfig:
-    """The driver's defaults with the measured delay, then every `name=value` from the command line."""
+    """Select a driving style, then apply numeric overrides with the measured delay."""
     kinds = {field.name: field.type for field in fields(DriveConfig)}
-    values: dict[str, float | int] = {"command_delay": MEASURED_DELAY_S, **LIVE}
+    style = "bold"
+    for setting in settings:
+        if setting.startswith("style="):
+            style = setting.partition("=")[2]
+    if style not in ("bold", "careful"):
+        raise SystemExit(f"unknown driving style {style!r}; choose bold or careful")
+    values: dict[str, float | int] = {
+        "command_delay": MEASURED_DELAY_S,
+        **(BOLD if style == "bold" else CAREFUL),
+    }
     for setting in settings:
         name, _, value = setting.partition("=")
+        if name == "style":
+            continue
         if name not in kinds:
             raise SystemExit(f"unknown setting {name!r}; known: {', '.join(sorted(kinds))}")
         try:

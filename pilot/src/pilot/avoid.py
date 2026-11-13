@@ -76,7 +76,7 @@ class Avoider:
         self.side = 0
         self.seen: float | None = None
 
-    def step(self, objects, objects_time: float | None, now: float) -> Around:
+    def step(self, objects, objects_time: float | None, now: float, *, bypass: bool = False) -> Around:
         if self.seen is not None and not 0 <= now - self.seen <= HOLD:
             self.side, self.seen = 0, None
         if not objects or objects_time is None or not 0 <= now - objects_time <= STALE:
@@ -95,6 +95,10 @@ class Avoider:
         urgent = near >= 0.8 and abs(offset) < wide / 2
         if self.side == 0:  # both sides taken: stay behind
             return Around(0.0, 1 - min(1.0, 1.3 * LIFT * near), urgent)
+        if bypass:
+            # A stopped queue has exhausted its wait. Commit to the observed
+            # free side instead of balancing a small nudge against route steering.
+            return Around(float(self.side), 1.0, urgent)
         return Around(self.side * PUSH * near, 1 - LIFT * near, urgent)
 
     @staticmethod

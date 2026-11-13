@@ -54,7 +54,7 @@ def drive(sim, seconds, *, boxes=None, until=None):
     """DriveRoute in the simulator; `boxes(sim)` is what the detector says, None for no detector.
 
     Returns the skill's last result, the time the car first stood at the wall and the driver's states."""
-    skill = DriveRoute({"duration": 120})
+    skill = DriveRoute({"duration": 120, "style": "careful"})
     states = []
     step = skill.driver.step
 

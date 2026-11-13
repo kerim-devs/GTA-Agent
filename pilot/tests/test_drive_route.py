@@ -35,7 +35,7 @@ def test_arrival_needs_a_recent_small_falling_trend_and_serializes_distances():
     result = lose_route(skill, 1.6)
     assert (result.status, result.reason, result.pad) == ("done", "arrived", NEUTRAL_PAD)
     assert asdict(result)["start_distance"] == 30
-    assert result.end_distance == 5 and result.distance_age >= 2
+    assert result.end_distance == 5 and 0.75 <= result.distance_age <= 1.5
     assert tick(skill, 10, 100) is result
 
 
@@ -63,7 +63,7 @@ def test_old_distance_is_kept_with_age_but_cannot_prove_arrival():
         tick(skill, i / 2)
     result = lose_route(skill, 10)
     assert result.reason == "route-lost-unknown"
-    assert result.end_distance == 5 and result.distance_age >= 11
+    assert result.end_distance == 5 and result.distance_age >= 9.75
 
 
 @pytest.mark.parametrize("at,distance", [(100, 5), (-10, 5), (0, float("nan")), (0, -1)])
