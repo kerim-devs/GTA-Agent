@@ -65,6 +65,8 @@ WAYPOINT = re.compile(r"^Wegpunkt\s*\(\s*(\d+(?:[.,]\d+)?)\s*(km|m)\s*\)", re.I)
 
 
 def kind_of(name):
+    if re.search(r"[$€£]|\b(immobilie|property|kaufen|purchase|for sale|zum verkauf)\b", name, re.I):
+        return "property"
     return next(
         (kind for kind, names in KINDS.items() if name.casefold() in {n.casefold() for n in names}), "other"
     )
@@ -482,6 +484,6 @@ class LegendWaypoint:
         return self._press(button, observation, ("move", identity, button))
 
     def _wanted(self, entry):
-        if entry.kind == "none":
+        if entry.kind in {"none", "property"} or kind_of(entry.name) == "property":
             return False
         return entry.name.casefold() == self.place.casefold() if self.place else entry.kind == self.kind

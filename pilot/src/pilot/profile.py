@@ -19,6 +19,7 @@ class Profile:
     confirm: str = "cross"
     back: str = "circle"
     retry: str = "cross"
+    skip: str = "square"  # Failure footer, 20261112-130333 frame 102382.
     left_dead_zone: float = 0.0
     right_dead_zone: float = 0.3
     # Measured in a car on 11 November (lab/pedal): held for three seconds the accelerator moves
