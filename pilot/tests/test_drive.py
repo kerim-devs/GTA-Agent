@@ -25,7 +25,7 @@ def test_a_small_error_is_steered_against_from_the_sticks_dead_zone_on() -> None
     to 11 degrees of error and swung by 20 around the route."""
 
     def settled(error: float) -> float:
-        driver = Driver()
+        driver = Driver(DriveConfig(yaw_memory=0.0))  # the law alone, without what the car has still to turn
         for i in range(30):
             command = driver.step(replace(GOOD, bearing=error, far_bearing=error), i / 30)
         return command.steer
@@ -35,6 +35,34 @@ def test_a_small_error_is_steered_against_from_the_sticks_dead_zone_on() -> None
     assert 0.36 < settled(10) < 0.47
     assert settled(-10) == -settled(10)
     assert settled(60) > 0.8
+
+
+def test_the_turn_that_has_still_to_show_is_taken_off_the_error() -> None:
+    """Kerim's drives of 12 and 13 November and three of the pilot's: the car turns by 77 degrees a
+    second per unit of the stick past its dead zone, and the turn shows on the map 0.2 to 0.7 s after
+    the stick. An error that cannot have changed yet was steered against for all of that time."""
+
+    def drive(memory: float, errors) -> Driver:
+        driver = Driver(DriveConfig(yaw_memory=memory))
+        for i, error in enumerate(errors):
+            driver.step(replace(GOOD, bearing=error, far_bearing=error), i / 30)
+        return driver
+
+    # Half a second of 20 degrees that do not move: the stick lies lower than the error alone asks.
+    plain, minded = drive(0.0, [20.0] * 15), drive(1.0, [20.0] * 15)
+    assert plain._pending(0.5) > 5 and 0.36 < minded._last.steer < plain._last.steer - 0.05
+    # A hard turn of a third of a second, then the map shows 6 degrees left: the car has 10 more
+    # still to come, and the stick does not go on turning it into what the map shows.
+    after = [60.0] * 10 + [6.0] * 10
+    assert drive(0.0, after)._last.steer > 0.1
+    assert drive(1.0, after)._last.steer <= 0
+    # What was steered more than the answer's time ago has shown, and counts no more.
+    rested = drive(1.0, [60.0] * 10 + [0.0] * 60)
+    assert abs(rested._pending(70 / 30)) < 0.5
+    # A stop ends the account: nothing is carried over a picture that is not the map.
+    stopped = drive(1.0, [60.0] * 10)
+    stopped.step(replace(GOOD, minimap="flat"), 11 / 30)
+    assert stopped._pending(11 / 30) == 0
 
 
 def ahead(*points):
