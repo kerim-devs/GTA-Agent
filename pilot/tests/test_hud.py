@@ -1,5 +1,6 @@
 """Real capture regressions plus failures that must not stop the conductor."""
 
+import json
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -174,10 +175,16 @@ def test_damaged_red_bar_does_not_invent_zero_health():
     assert read(frame("wifi-00679")).health is None
 
 
-def test_real_marker_occlusion_and_wifi_damage_abstain():
+def test_real_marker_occlusion_abstains():
     assert read(frame("clean2-07360")).health is None
+
+
+def test_wifi_damage_beyond_a_sharp_end_does_not_hide_it():
+    # P15 left this frame unlabelled: a cyan streak of codec damage crosses the empty track. The
+    # fill ends sharply at 0.40 left of it, and the 41 frames 2850 to 2890 of the recording read
+    # 0.40 or nothing with this reader, 0.38 to 0.42 with the one before it.
     result = read(frame("wifi-02869"))
-    assert result.health is None
+    assert result.health == pytest.approx(0.4, abs=0.02)
     assert result.screen == "game"
 
 
@@ -299,3 +306,78 @@ def test_interaction_menu_does_not_emit_gameplay_hud():
     result = read(cable_frame("tour-01380"))
     assert result.screen == "interaction_menu"
     assert result.health is result.armour is result.special is result.wanted is None
+
+
+# The HUD strips of lab/health/: real hits and the false falls the reaction bench found, each a
+# stack of 13 by 180 pixel strips (all the bars reader looks at) of the frames a 30 Hz loop reads.
+HEALTH = Path(__file__).resolve().parents[2] / "lab/health"
+HEALTH_DATA = json.loads((HEALTH / "cases.json").read_text())
+CASES = {case["name"]: case for case in HEALTH_DATA["cases"]}
+HITS = [name for name, case in CASES.items() if case["kind"] == "hit"]
+
+
+def case_readings(name):
+    """The reader's Hud for every frame of a lab/health case, its strip set into a game frame."""
+    (top, bottom), (left, right) = HEALTH_DATA["strip"]["rows"], HEALTH_DATA["strip"]["columns"]
+    stack = cv2.cvtColor(cv2.imread(str(HEALTH / f"{name}.png")), cv2.COLOR_BGR2RGB)
+    base = frame("clean2-07360")
+    out = []
+    for k, (index, _) in enumerate(CASES[name]["frames"]):
+        pixels = base.copy()
+        pixels[top:bottom, left:right] = stack[k * (bottom - top) : (k + 1) * (bottom - top)]
+        out.append((index, read(pixels)))
+    return out
+
+
+@pytest.mark.parametrize("name", ["fade-enemy-13", "fade-enemy-15", "fade-enemy-16"])
+def test_a_fading_hud_reads_no_health_not_zero(name):
+    health = [hud.health for _, hud in case_readings(name)]
+    # The bar is full behind the fade; the old reader read 0.0 on it for a third of a second.
+    assert all(value is None or value == pytest.approx(0.99, abs=0.01) for value in health)
+    assert health[0] is None
+    assert health[-1] == pytest.approx(0.99, abs=0.01)
+
+
+def test_a_dim_band_reads_nothing():
+    # The HUD at 45 per cent of its brightness, as on the fades of lab/health/: the armour and
+    # special tracks would read empty, and the health fill is too dim to be the fill.
+    dim = frame("wifi-01013")
+    dim[664:690, 60:250] = (dim[664:690, 60:250] * 0.45).astype(np.uint8)
+    result = read(dim)
+    assert (result.health, result.armour, result.special) == (None, None, None)
+    assert result.screen == "game"
+
+
+@pytest.mark.parametrize(
+    "name",
+    ["icon-wanted-07", "icon-calm-walk-20", "icon-calm-walk-26", "p62-hit-01", "p62-hit-02", "p62-hit-03"],
+)
+def test_an_icon_on_the_bar_does_not_end_it(name):
+    level = CASES[name]["level"]
+    health = [hud.health for _, hud in case_readings(name)]
+    # Where the bar's end is hidden the reader says nothing; it never guesses a shorter bar.
+    assert all(value is None or value == pytest.approx(level, abs=0.03) for value in health)
+    assert sum(value is not None for value in health) >= len(health) // 3
+
+
+@pytest.mark.parametrize("name", ["sand-calm-walk-13", "undone-enemy-17"])
+def test_a_bright_background_behind_the_track_does_not_shorten_the_bar(name):
+    level = CASES[name]["level"]
+    health = [hud.health for _, hud in case_readings(name)]
+    assert all(value is None or value >= level - 0.03 for value in health)
+    assert any(value == pytest.approx(level, abs=0.03) for value in health if value is not None)
+
+
+@pytest.mark.parametrize("name", HITS)
+def test_a_real_hit_is_read_on_its_first_frames(name):
+    case = CASES[name]
+    first = case["first"][0]
+    readings = case_readings(name)
+    before = [hud.health for index, hud in readings if index < first]
+    after = [hud.health for index, hud in readings if index >= first]
+    assert all(value is None or value == pytest.approx(case["before"], abs=0.03) for value in before)
+    # The new length is read at once, also under the pale yellow and orange the game paints for a
+    # third of a second, and the old one never again; a second hit may follow in the window.
+    assert any(value == pytest.approx(case["after"], abs=0.03) for value in after[:3] if value is not None)
+    shorter = min([value for value in before if value is not None] or [case["before"]])
+    assert all(value is None or value < shorter for value in after)
