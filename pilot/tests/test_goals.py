@@ -460,7 +460,7 @@ def test_a_stop_made_for_the_goal_is_not_met_as_a_failure(reason):
     own = {**stopped, "reason": "stuck"}
     head = MissionHead(goal_seed=5)
     head.decide(request())
-    assert head.decide(request(5, last_skill=own)).reason == "retry: observed skill failure"
+    assert head.decide(request(5, last_skill=own)).reason == "stuck on foot: another way, turned by 120"
 
 
 def test_the_stop_at_the_deadline_leads_to_the_next_goal_and_not_to_a_failure_step(tmp_path, monkeypatch):
