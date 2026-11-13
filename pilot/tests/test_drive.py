@@ -6,7 +6,7 @@ from math import isfinite
 import pytest
 
 from pilot.contract import Reading
-from pilot.drive import DriveConfig, Driver
+from pilot.drive import DriveConfig, Driver, _straight
 
 GOOD = Reading("tilted", "yellow", 0.0, 0.0, 0.0, False, 0.95)
 
@@ -35,6 +35,50 @@ def test_a_small_error_is_steered_against_from_the_sticks_dead_zone_on() -> None
     assert 0.36 < settled(10) < 0.47
     assert settled(-10) == -settled(10)
     assert settled(60) > 0.8
+
+
+def ahead(*points):
+    return replace(GOOD, path=tuple(points))
+
+
+def test_the_aim_lies_far_out_on_a_straight_way_and_short_where_it_bends(monkeypatch) -> None:
+    """Country road of 13 November, 18:10: three or four pixels beside the route are 25 degrees at
+    8 px, the car swung across the line every 2.7 s with the stick at its stop."""
+    monkeypatch.delenv("PILOT_AIM_AB", raising=False)
+    config = DriveConfig()
+    straight = [(0.0, float(y)) for y in range(12, 80, 6)]
+    assert _straight(straight, config, False)
+    # A corner behind the path's first point, and one between the car and it: the short aim.
+    assert not _straight([(0.0, 12.0), (0.0, 18.0), (6.0, 18.0), (12.0, 18.0), (40.0, 18.0)], config, False)
+    assert not _straight([(3.0, 14.0), (9.0, 14.0), (15.0, 14.0), (40.0, 14.0)], config, False)
+    # A car a few pixels beside a straight route keeps the far aim, one far off it gets the short one.
+    assert _straight([(3.0, float(y)) for y in range(12, 80, 6)], config, False)
+    assert not _straight([(9.0, float(y)) for y in range(12, 80, 6)], config, False)
+    # Too little of the way in the picture, or a waver round the limit once far.
+    assert not _straight([(0.0, 12.0), (0.0, 30.0)], config, False)
+    wavering = [(5.5, float(y)) for y in range(12, 80, 6)]
+    assert not _straight(wavering, config, False) and _straight(wavering, config, True)
+    driver = Driver()
+    driver.step(ahead(*straight), 0)
+    assert driver.aim_px == config.straight_lookahead_px
+    driver.step(ahead((0.0, 12.0), (0.0, 18.0), (6.0, 18.0), (12.0, 18.0), (40.0, 18.0)), 0.03)
+    assert driver.aim_px == config.lookahead_px
+    # Beside the route the far aim asks for less of the stick than the short one did.
+    beside = [(4.0, float(y)) for y in range(12, 80, 6)]
+    far = Driver().step(ahead(*beside), 0).steer
+    near = Driver(DriveConfig(straight_lookahead_px=8.0)).step(ahead(*beside), 0).steer
+    assert 0 < far < near
+
+
+def test_the_comparison_switch_alternates_the_aims_by_the_clock(monkeypatch) -> None:
+    straight = [(0.0, float(y)) for y in range(12, 80, 6)]
+    monkeypatch.setenv("PILOT_AIM_AB", "30")
+    driver = Driver()
+    seen = {}
+    for t in (0.0, 29.9, 30.0, 59.9, 60.0):
+        driver.step(ahead(*straight), t)
+        seen[t] = driver.aim_px
+    assert seen == {0.0: 20.0, 29.9: 20.0, 30.0: 8.0, 59.9: 8.0, 60.0: 20.0}
 
 
 @pytest.mark.parametrize("minimap", ["none", "flat", "unknown", None, [], {}])

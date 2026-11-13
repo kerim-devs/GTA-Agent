@@ -33,9 +33,13 @@ KNOWN_FAILURES = {
 # P55's varied retries finish this existing miss 8.6 s sooner, but its longest
 # progress gap rises from 23.667 to 27.800 s. It still fails the ten-second target.
 KNOWN_FAILURES[("block", 0.3, 2.0, 0, 0.0, "range-10")] = ["progress gap 27.800s > 10s"]
-# P87's stick that starts at the measured dead zone shortens this existing miss's longest progress
-# gap from 15.033 to 10.167 s. It still fails the ten-second target.
-KNOWN_FAILURES[("block", 0.21, 2.0, 0, 0.25, "nominal")] = ["progress gap 10.167s > 10s"]
+# P87's stick that starts at the measured dead zone shortened one existing miss, the block at 2 m to the
+# pixel, from 15.033 to 10.167 s without progress. With the far aim on a straight way that case and
+# the wall at 1 m to the pixel (10.100 s before) keep within the ten seconds, and the wall at 0.5 m
+# shortens its gap from 11.067 to 10.100 s and still misses.
+del KNOWN_FAILURES[("block", 0.21, 2.0, 0, 0.25, "nominal")]
+del KNOWN_FAILURES[("wall", 0.21, 1.0, 0, 0.25, "nominal")]
+KNOWN_FAILURES[("wall", 0.21, 0.5, 0, 0.25, "nominal")] = ["progress gap 10.100s > 10s"]
 
 
 def run_case(name: str, delay: float, scale: float, seed: int, dead_zone: float, profile="nominal"):
