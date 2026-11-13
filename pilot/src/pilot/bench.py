@@ -640,6 +640,13 @@ CAUSE_RULES: dict[str, str | None] = {
     "time limit": None,
     "route-gone": None,
     "arrived": None,
+    "entered": None,  # walk_to with enter: the figure is inside
+    "outdoors": None,  # leave_building: the figure is outside and clear of the door
+    "leaving building": None,
+    "clearing doorway": None,
+    "looking for entrance": None,
+    "standing off the wall": None,
+    "no-way-out": "act",  # leave_building: the remembered way, the model's door and the walls are spent
     "entered vehicle": None,
     "vehicle drove away or was lost": None,
     "levelled": None,
