@@ -1,0 +1,207 @@
+{
+  "profiles": [
+    {
+      "profile": "nominal",
+      "p80_worst_after_wait": 4.366666666666651,
+      "unseen_after_contact_by_wall_0_left_right": [
+        9.8333333333333,
+        13.999999999999957,
+        9.8333333333333
+      ],
+      "latest_rejoin": 21.666666666666902
+    },
+    {
+      "profile": "range-00",
+      "p80_worst_after_wait": 5.066666666666649,
+      "unseen_after_contact_by_wall_0_left_right": [
+        9.933333333333298,
+        15.233333333333366,
+        9.933333333333298
+      ],
+      "latest_rejoin": 21.466666666666892
+    },
+    {
+      "profile": "range-01",
+      "p80_worst_after_wait": 4.366666666666651,
+      "unseen_after_contact_by_wall_0_left_right": [
+        9.266666666666634,
+        13.899999999999952,
+        9.266666666666634
+      ],
+      "latest_rejoin": 22.733333333333622
+    },
+    {
+      "profile": "range-02",
+      "p80_worst_after_wait": 3.566666666666654,
+      "unseen_after_contact_by_wall_0_left_right": [
+        7.999999999999973,
+        13.033333333333289,
+        7.999999999999973
+      ],
+      "latest_rejoin": 22.800000000000292
+    },
+    {
+      "profile": "range-10",
+      "p80_worst_after_wait": 5.099999999999982,
+      "unseen_after_contact_by_wall_0_left_right": [
+        9.8333333333333,
+        15.233333333333366,
+        9.8333333333333
+      ],
+      "latest_rejoin": 21.300000000000217
+    },
+    {
+      "profile": "range-11",
+      "p80_worst_after_wait": 4.366666666666651,
+      "unseen_after_contact_by_wall_0_left_right": [
+        9.8333333333333,
+        13.999999999999957,
+        9.8333333333333
+      ],
+      "latest_rejoin": 21.733333333333572
+    },
+    {
+      "profile": "range-12",
+      "p80_worst_after_wait": 3.566666666666654,
+      "unseen_after_contact_by_wall_0_left_right": [
+        8.866666666666637,
+        13.133333333333288,
+        8.866666666666637
+      ],
+      "latest_rejoin": 23.233333333333647
+    },
+    {
+      "profile": "range-20",
+      "p80_worst_after_wait": 5.099999999999982,
+      "unseen_after_contact_by_wall_0_left_right": [
+        9.8333333333333,
+        15.233333333333366,
+        9.8333333333333
+      ],
+      "latest_rejoin": 21.300000000000217
+    },
+    {
+      "profile": "range-21",
+      "p80_worst_after_wait": 4.366666666666651,
+      "unseen_after_contact_by_wall_0_left_right": [
+        9.966666666666633,
+        14.133333333333297,
+        9.966666666666633
+      ],
+      "latest_rejoin": 20.666666666666853
+    },
+    {
+      "profile": "range-22",
+      "p80_worst_after_wait": 3.599999999999987,
+      "unseen_after_contact_by_wall_0_left_right": [
+        10.199999999999966,
+        13.633333333333287,
+        10.199999999999966
+      ],
+      "latest_rejoin": 19.400000000000123
+    },
+    {
+      "profile": "fast-low-grip",
+      "p80_worst_after_wait": 3.566666666666654,
+      "unseen_after_contact_by_wall_0_left_right": [
+        7.999999999999973,
+        13.033333333333289,
+        7.999999999999973
+      ],
+      "latest_rejoin": 23.433333333333657
+    }
+  ],
+  "recordings": {
+    "000623": {
+      "states": {
+        "get_away": 414,
+        "wait": 136,
+        "follow": 2367,
+        "drive_route": 120,
+        "map-unreadable": 1,
+        "press": 32,
+        "walk_road": 422,
+        "enter_vehicle": 79,
+        "bypass-wait": 579,
+        "bypass-reverse": 185,
+        "bypass-forward": 99,
+        "coast": 52,
+        "turn-reverse": 4,
+        "turn-forward": 180,
+        "failed-recovery": 1
+      },
+      "motion": {
+        "None": 2635,
+        "False": 1030,
+        "True": 1006
+      },
+      "stationary_window_motion": {
+        "None": 2053
+      },
+      "careful_compared": 3588,
+      "careful_differences": 0,
+      "fresh_sparse_box_ticks": 404
+    },
+    "002126": {
+      "states": {
+        "none": 6,
+        "enter_vehicle": 164,
+        "set_waypoint": 83,
+        "follow": 2064,
+        "recovery-reverse": 499,
+        "recovery-forward": 850,
+        "drive_route": 6,
+        "get_away": 326,
+        "coast": 6,
+        "press": 8,
+        "wait": 81,
+        "walk_road": 201
+      },
+      "motion": {
+        "None": 466,
+        "True": 2399,
+        "False": 1429
+      },
+      "stationary_window_motion": {},
+      "careful_compared": 3425,
+      "careful_differences": 0,
+      "fresh_sparse_box_ticks": 342
+    }
+  },
+  "p80": {
+    "passed": 110,
+    "contacts": 0,
+    "worst_reverse": 0.8999999999999968,
+    "worst_delta_historical": -0.033333333333333215
+  },
+  "unreported": {
+    "before_passed": 4,
+    "before_joined": 0,
+    "after_passed": 33,
+    "after_joined": 33,
+    "worst_reverse": 1.7999999999999938
+  },
+  "human": [
+    {
+      "session": "20261113-185312",
+      "start": 91.5,
+      "l2_samples": 4,
+      "valid_samples": 4,
+      "signed_reverse_map_pixels": 1.104840873152913
+    },
+    {
+      "session": "20261113-185312",
+      "start": 113.5,
+      "l2_samples": 7,
+      "valid_samples": 7,
+      "signed_reverse_map_pixels": 7.431900526405052
+    },
+    {
+      "session": "20261113-184225",
+      "start": 428,
+      "l2_samples": 29,
+      "valid_samples": 26,
+      "signed_reverse_map_pixels": 15.494370665984862
+    }
+  ]
+}

@@ -213,6 +213,8 @@ class Driver:
         self._recovery_still = 0.0
         self._reverse_duration = self.config.reverse_time
         self._bypass_attempts = 0
+        self._bypass_blind = False
+        self._bypass_distance = 0.0
         self._manoeuvre_side = 0
         self._manoeuvre_moved = False
         self._manoeuvre_still_since = None
@@ -312,11 +314,13 @@ class Driver:
     ) -> Command:
         """Return bounded controls; invalid/backwards clocks release and reset timers.
 
-        Unknown motion never means stuck. A failure latch survives clock changes.
+        Missing motion alone never means stuck. Bold can also use fresh stationary
+        GPS on a route ahead. A failure latch survives clock changes.
         Picture angles minus the arrow give camera-independent heading errors.
         `ahead` says that a vehicle stands close ahead in the car's own track (avoid.waits_behind): a
         stop behind it is waited out for `queue_wait` seconds and counts neither towards a recovery
-        nor towards a dead or held car. Without detections it stays False and nothing changes.
+        nor towards a dead or held car. Bold also clears an unreported obstruction
+        after sustained stillness with the pedal down on a route ahead.
         """
         speed = _number(speed)
         speed = speed if speed is not None and speed >= 0 else None
@@ -437,13 +441,33 @@ class Driver:
             self._trusted_route = reading.route
             self._trusted_error = _angle(_angle(_number(reading.bearing)) - _angle(arrow))
 
-        queued = self._queue(ahead is True, moving, now, dt)
+        manoeuvre_motion = map_moving
+        if self.config.manoeuvres:
+            # At the van on 14 November the flow reader abstained for 80 s,
+            # while fresh GPS fixes stayed at 52 m. Only an ahead route makes
+            # its zero slope evidence of standing, rather than driving across it.
+            gps_time = _number(reading.gps_time)
+            if (
+                map_moving is None
+                and self._measured_speed is not None
+                and self._measured_speed < 0.3
+                and gps_time is not None
+                and 0 <= now - gps_time <= self.config.gps_stale
+                and abs(error) < 25
+                and reading.corrupt is False
+            ):
+                manoeuvre_motion = False
+            # The queue's old width-scaled geometry also includes a lorry
+            # alongside. Only passing_side's lane-centre check permits a bypass.
+            if ahead and bypass_side is None and not (self._phase or "").startswith("bypass-"):
+                ahead = False
+        queued = self._queue(ahead is True, manoeuvre_motion if self.config.manoeuvres else moving, now, dt)
         if self.config.manoeuvres:
             manoeuvre = self._manoeuvre(
                 now,
                 error,
                 far_error,
-                map_moving,
+                manoeuvre_motion,
                 speed,
                 ahead,
                 bypass_side,
@@ -511,7 +535,9 @@ class Driver:
 
         if queued:
             self._stuck_since = None  # Waiting behind a vehicle is not being stuck.
-        elif moving is False and self._last.throttle > 0:
+        elif (
+            manoeuvre_motion is False if self.config.manoeuvres else moving is False
+        ) and self._last.throttle > 0:
             if ahead is True and self.config.queue_wait <= 2.0 and self.bypassing:
                 # The queue allowance already proved this standstill. Spending
                 # another stuck interval against the same bumper cannot free it.
@@ -522,6 +548,9 @@ class Driver:
                 if self._attempts >= self.config.max_recoveries:
                     self._phase = "failed-recovery"
                     return self._emit(0, 0, 0, "failed-recovery")
+                if self.config.manoeuvres and abs(error) < 35 and reading.corrupt is False and boxes_fresh:
+                    self._start_bypass(now, -1, blind=True)
+                    return self._emit(0, 0, 1, "bypass-reverse")
                 return self._recover(now, error)
         elif moving is None and self._stuck_since is not None:
             self._stuck_since += dt  # Missing evidence pauses, rather than proves, a standstill.
@@ -935,13 +964,8 @@ class Driver:
                 if self._attempts >= self.config.max_recoveries:
                     self._phase = "failed-recovery"
                     return self._emit(0, 0, 0, self._phase)
-                if self._attempts == 0:
-                    self._bypass_attempts = 0
-                self._attempts += 1
                 chosen = side or (1 if error >= 0 else -1)
-                self._manoeuvre_side = chosen if self._bypass_attempts % 2 == 0 else -self._manoeuvre_side
-                self._bypass_attempts += 1
-                self._phase = "bypass-reverse"
+                self._start_bypass(now, chosen, blind=False)
             elif abs(near_error) > 120 and abs(error) > 120 and slow and not ahead:
                 if self._attempts >= self.config.max_recoveries or self._turns >= 3:
                     self._phase = "failed-recovery"
@@ -978,14 +1002,12 @@ class Driver:
         blocked = stopped and now - self._manoeuvre_still_since >= 0.1
         if stopped and not blocked:
             bound = (
-                self.config.bypass_reverse_time
-                if self._phase == "bypass-reverse"
-                else self.config.turn_reverse_time
+                self._reverse_duration if self._phase == "bypass-reverse" else self.config.turn_reverse_time
             )
             if not self._phase.endswith("reverse") or elapsed < bound:
                 return self._emit(0, 0, 0, self._phase)
         if self._phase == "bypass-reverse":
-            if elapsed < self.config.bypass_reverse_time and not blocked:
+            if elapsed < self._reverse_duration - 1e-9 and not blocked:
                 return self._emit(0, 0, 1, self._phase)
             self._phase, self._phase_since = "bypass-forward", now
             self._manoeuvre_moved = False
@@ -1000,10 +1022,35 @@ class Driver:
             self._moving_since = None
             elapsed, blocked = 0.0, False
         if self._phase == "bypass-forward":
-            if (not ahead and elapsed > 0.5) or elapsed >= 4.5 or blocked:
+            if blocked:
+                return self._retry_bypass(now)
+            if not self._bypass_blind and ((not ahead and elapsed > 1.2 and moved) or elapsed >= 4.5):
                 self._end_manoeuvre()
                 return self._emit(0, 0.8, 0, "follow")
-            return self._emit(self._manoeuvre_side, 1, 0, self._phase)
+            # Losing the box during the gear change is not passing the car.
+            # Later attempts hold a different arc as well as changing sides.
+            lock_time = 2.6 + 0.3 * min(2, (self._bypass_attempts - 1) // 2)
+            if moved and elapsed >= lock_time and (not ahead or elapsed >= 4.5):
+                self._phase, self._phase_since = "bypass-pass", now
+                self._bypass_distance = self._recovery_distance
+                self._manoeuvre_still_since = None
+            else:
+                steer = (
+                    -self._manoeuvre_side if self._bypass_blind and elapsed < 0.55 else self._manoeuvre_side
+                )
+                return self._emit(steer, 1, 0, self._phase)
+        if self._phase == "bypass-pass":
+            if blocked:
+                return self._retry_bypass(now)
+            if elapsed >= 6:
+                self._end_manoeuvre()
+                return self._emit(0, 0.8, 0, "follow")
+            if moved and self._recovery_distance - self._bypass_distance >= 6:
+                self._end_manoeuvre()
+                return None
+            # Keep abreast of the obstruction before the near route pulls back
+            # into its flank. The far route supplies the road's onward heading.
+            return self._emit(_clip(error * 0.04), 1, 0, self._phase)
         if self._phase == "turn-forward":
             # The same far heading starts, steers and finishes the turn. A changed
             # route or an unmoving car cannot turn the gear-change pause into success.
@@ -1037,6 +1084,30 @@ class Driver:
         self._stuck_since = self._moving_since = None
         self._error = self._filtered_error = self._filtered_near = self._filtered_far = None
         self._steer = 0.0
+
+    def _start_bypass(self, now, side, *, blind):
+        if self._attempts == 0:
+            self._bypass_attempts = 0
+        self._attempts += 1
+        self._manoeuvre_side = side if self._bypass_attempts == 0 else -self._manoeuvre_side
+        self._bypass_attempts += 1
+        self._bypass_blind = blind
+        # A detected queue can leave room; an unseen obstruction was hit. Twice
+        # the 0.9 s clearance buys its width, still below generic recovery's
+        # previous 2.5 s ceiling. A confirmed rear stop cuts either bound short.
+        self._reverse_duration = self.config.bypass_reverse_time * (2 if blind else 1)
+        self._phase, self._phase_since = "bypass-reverse", now
+        self._manoeuvre_moved = self._recovery_moved = False
+        self._manoeuvre_still_since = None
+        self._stuck_since = self._moving_since = None
+        self._recovery_distance = 0.0
+
+    def _retry_bypass(self, now):
+        if self._attempts >= self.config.max_recoveries:
+            self._phase = "failed-recovery"
+            return self._emit(0, 0, 0, self._phase)
+        self._start_bypass(now, -self._manoeuvre_side, blind=True)
+        return self._emit(0, 0, 1, self._phase)
 
     def _queue(self, ahead: bool, moving: bool | None, now: float, dt: float) -> bool:
         """Whether this stop is being waited out behind a vehicle, and for how long it has been."""
