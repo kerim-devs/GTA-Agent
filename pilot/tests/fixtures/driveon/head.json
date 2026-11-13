@@ -1,0 +1,493 @@
+{
+  "source": "20261113-181047/head.jsonl",
+  "requests": [
+    {
+      "id": 15,
+      "request": {
+        "events": [
+          {
+            "kind": "skill_failed",
+            "skill": {
+              "name": "drive_route",
+              "route_seen": true,
+              "status": "failed",
+              "reason": "route-lost-far",
+              "queue": [],
+              "queue_disposition": "empty",
+              "dropped": []
+            }
+          }
+        ],
+        "help": "",
+        "objective": "",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "minimap": "tilted",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 4.672243568250394,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 88.35,
+              "y": 50.17,
+              "border": true
+            },
+            {
+              "color": "blue",
+              "x": 85.5,
+              "y": 37.0,
+              "border": false
+            }
+          ]
+        },
+        "last_skill": {
+          "name": "drive_route",
+          "route_seen": true,
+          "status": "failed",
+          "reason": "route-lost-far",
+          "queue": [],
+          "queue_disposition": "empty",
+          "dropped": []
+        },
+        "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n2026-11-10T22:16:36.837785+00:00 Direkt vor der Figur steht ein Stromkasten, der den geraden Weg versperrt.\n2026-11-11T01:43:20.243170+00:00 Must not be stored.\n",
+        "jpeg_path": "/Users/kerim/recordings/pilot/20261113-181047/head-0015.jpg",
+        "hud": {
+          "wanted": 0,
+          "wanted_flashing": false,
+          "health": 0.7222222222222222,
+          "armour": 0.0,
+          "special": 1.0,
+          "screen": "game"
+        },
+        "objects": [
+          {
+            "kind": "car",
+            "box": [
+              413.6899719238281,
+              348.4075927734375,
+              489.1531677246094,
+              402.33697509765625
+            ],
+            "confidence": 0.9139233231544495
+          },
+          {
+            "kind": "car",
+            "box": [
+              494.7997741699219,
+              347.7579040527344,
+              528.3024291992188,
+              374.7399597167969
+            ],
+            "confidence": 0.5778580904006958
+          }
+        ],
+        "judgment": {
+          "capture": 46261.041150583,
+          "answers": {
+            "mode": {
+              "value": "vehicle",
+              "probability": 1.0
+            },
+            "overlay": {
+              "value": false,
+              "probability": 1.0
+            },
+            "banner": {
+              "value": false,
+              "probability": 1.0
+            },
+            "wanted": {
+              "value": false,
+              "probability": 1.0
+            },
+            "path": {
+              "value": "free",
+              "probability": 0.999
+            },
+            "car": {
+              "value": true,
+              "probability": 0.979
+            }
+          },
+          "probabilities": {
+            "mode": {
+              "A": 0.0,
+              "B": 0.9999999997528437,
+              "C": 2.4715634588717815e-10
+            },
+            "overlay": {
+              "A": 4.992194246065888e-05,
+              "B": 0.9999500780575394
+            },
+            "banner": {
+              "A": 2.640835612267571e-07,
+              "B": 0.9999997359164388
+            },
+            "wanted": {
+              "A": 0.00042627479299500064,
+              "B": 0.9995737252070049
+            },
+            "path": {
+              "A": 0.9990713827790877,
+              "B": 0.0008460525802843853,
+              "C": 8.256464062805992e-05
+            },
+            "car": {
+              "A": 0.9794070791779718,
+              "B": 0.020592920822028245
+            }
+          },
+          "duration": 0.19524779199855402,
+          "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+          "age": 0.19937062499957392,
+          "mode": "vehicle"
+        },
+        "time": 46261.240521208,
+        "place": "unknown"
+      }
+    },
+    {
+      "id": 16,
+      "request": {
+        "events": [
+          {
+            "kind": "skill_ended",
+            "skill": {
+              "name": "set_waypoint",
+              "status": "done",
+              "reason": "waypoint set: Fremde und Freaks (2109m); gameplay observed; places: Immobilie: Hookies: 600.000 $, Ammu-Nation, Ammu-Nation mit Schie\u00dfstand, Autowaschanlage, Beekers Garage, Binco Bekleidung, Cargobob HS, Darts O, Discount Store, Fahrgesch\u00e4ft, Federal Investigation Bureau B, Flugschule, Fremde und Freaks, Friseursalon, Garage in Pillbox Hill, Gel\u00e4nderennen Motorrad/Quad, Golf, Darts o, Immobilie: Filmtheater \"Ten Cent\": 20.000.000 $, Immobilie: Filmtheater \"Ten Cent\": 20.000.000 $ s, Cargobob, Immobilie: Filmtheater \"Ten Cent\": 20.000.000 $., Federal Investigation Bureau l, Darts, Fahrgesch\u00e4fte, Federal Investigation Bureau",
+              "queue": [],
+              "queue_disposition": "empty",
+              "dropped": []
+            }
+          }
+        ],
+        "help": "",
+        "objective": "",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "minimap": "tilted",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 4.016032780783945,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 88.25,
+              "y": 50.03,
+              "border": true
+            },
+            {
+              "color": "blue",
+              "x": 86.71,
+              "y": 34.62,
+              "border": false
+            }
+          ]
+        },
+        "last_skill": {
+          "name": "set_waypoint",
+          "status": "done",
+          "reason": "waypoint set: Fremde und Freaks (2109m); gameplay observed; places: Immobilie: Hookies: 600.000 $, Ammu-Nation, Ammu-Nation mit Schie\u00dfstand, Autowaschanlage, Beekers Garage, Binco Bekleidung, Cargobob HS, Darts O, Discount Store, Fahrgesch\u00e4ft, Federal Investigation Bureau B, Flugschule, Fremde und Freaks, Friseursalon, Garage in Pillbox Hill, Gel\u00e4nderennen Motorrad/Quad, Golf, Darts o, Immobilie: Filmtheater \"Ten Cent\": 20.000.000 $, Immobilie: Filmtheater \"Ten Cent\": 20.000.000 $ s, Cargobob, Immobilie: Filmtheater \"Ten Cent\": 20.000.000 $., Federal Investigation Bureau l, Darts, Fahrgesch\u00e4fte, Federal Investigation Bureau",
+          "queue": [],
+          "queue_disposition": "empty",
+          "dropped": []
+        },
+        "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n2026-11-10T22:16:36.837785+00:00 Direkt vor der Figur steht ein Stromkasten, der den geraden Weg versperrt.\n2026-11-11T01:43:20.243170+00:00 Must not be stored.\n",
+        "jpeg_path": "/Users/kerim/recordings/pilot/20261113-181047/head-0016.jpg",
+        "hud": {
+          "wanted": 0,
+          "wanted_flashing": false,
+          "health": null,
+          "armour": 0.0,
+          "special": 1.0,
+          "screen": "game"
+        },
+        "objects": [
+          {
+            "kind": "car",
+            "box": [
+              290.7705383300781,
+              375.92547607421875,
+              406.8298034667969,
+              433.652099609375
+            ],
+            "confidence": 0.9032385349273682
+          },
+          {
+            "kind": "car",
+            "box": [
+              474.9684143066406,
+              344.18487548828125,
+              515.2554931640625,
+              374.84857177734375
+            ],
+            "confidence": 0.8413941264152527
+          }
+        ],
+        "judgment": {
+          "capture": 46274.673003040996,
+          "answers": {
+            "mode": {
+              "value": "vehicle",
+              "probability": 1.0
+            },
+            "overlay": {
+              "value": false,
+              "probability": 1.0
+            },
+            "banner": {
+              "value": false,
+              "probability": 1.0
+            },
+            "wanted": {
+              "value": false,
+              "probability": 0.999
+            },
+            "path": {
+              "value": "free",
+              "probability": 0.996
+            },
+            "car": {
+              "value": true,
+              "probability": 0.997
+            }
+          },
+          "probabilities": {
+            "mode": {
+              "A": 0.0,
+              "B": 0.999999999820707,
+              "C": 1.7929295994848773e-10
+            },
+            "overlay": {
+              "A": 3.543430396942847e-07,
+              "B": 0.9999996456569603
+            },
+            "banner": {
+              "A": 1.204537324939891e-07,
+              "B": 0.9999998795462676
+            },
+            "wanted": {
+              "A": 0.0008571843497474541,
+              "B": 0.9991428156502524
+            },
+            "path": {
+              "A": 0.9960346492195229,
+              "B": 0.0035494123172705844,
+              "C": 0.0004159384632063917
+            },
+            "car": {
+              "A": 0.9973827227217572,
+              "B": 0.002617277278242875
+            }
+          },
+          "duration": 0.22087824999471195,
+          "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+          "age": 0.41958245900605107,
+          "mode": "vehicle"
+        },
+        "time": 46275.0925855,
+        "place": "unknown"
+      }
+    },
+    {
+      "id": 18,
+      "request": {
+        "events": [
+          {
+            "kind": "skill_failed",
+            "skill": {
+              "name": "drive_route",
+              "route_seen": false,
+              "status": "failed",
+              "reason": "route-lost-unknown",
+              "queue": [],
+              "queue_disposition": "empty",
+              "dropped": []
+            }
+          }
+        ],
+        "help": "",
+        "objective": "",
+        "subtitle": "",
+        "banner": "",
+        "minimap": {
+          "minimap": "tilted",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 4.0927138004291805,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 88.32,
+              "y": 50.17,
+              "border": true
+            },
+            {
+              "color": "blue",
+              "x": 86.71,
+              "y": 34.62,
+              "border": false
+            }
+          ]
+        },
+        "last_skill": {
+          "name": "drive_route",
+          "route_seen": false,
+          "status": "failed",
+          "reason": "route-lost-unknown",
+          "queue": [],
+          "queue_disposition": "empty",
+          "dropped": []
+        },
+        "notebook": "2026-11-10T21:00:00.448680+00:00 Must not be stored.\n2026-11-10T22:16:36.837785+00:00 Direkt vor der Figur steht ein Stromkasten, der den geraden Weg versperrt.\n2026-11-11T01:43:20.243170+00:00 Must not be stored.\n",
+        "jpeg_path": "/Users/kerim/recordings/pilot/20261113-181047/head-0018.jpg",
+        "hud": {
+          "wanted": 0,
+          "wanted_flashing": false,
+          "health": 0.7222222222222222,
+          "armour": 0.0,
+          "special": 1.0,
+          "screen": "game"
+        },
+        "objects": [
+          {
+            "kind": "car",
+            "box": [
+              16.805816650390625,
+              355.30487060546875,
+              291.4000244140625,
+              491.283447265625
+            ],
+            "confidence": 0.9144327640533447
+          },
+          {
+            "kind": "car",
+            "box": [
+              450.4456787109375,
+              352.38275146484375,
+              495.58349609375,
+              383.20135498046875
+            ],
+            "confidence": 0.8417805433273315
+          },
+          {
+            "kind": "car",
+            "box": [
+              509.8923645019531,
+              343.8437194824219,
+              536.8680419921875,
+              367.1192932128906
+            ],
+            "confidence": 0.6624602675437927
+          }
+        ],
+        "judgment": {
+          "capture": 46275.720149500004,
+          "answers": {
+            "mode": {
+              "value": "vehicle",
+              "probability": 1.0
+            },
+            "overlay": {
+              "value": false,
+              "probability": 1.0
+            },
+            "banner": {
+              "value": false,
+              "probability": 1.0
+            },
+            "wanted": {
+              "value": false,
+              "probability": 1.0
+            },
+            "path": {
+              "value": "free",
+              "probability": 0.999
+            },
+            "car": {
+              "value": true,
+              "probability": 0.987
+            }
+          },
+          "probabilities": {
+            "mode": {
+              "A": 1.8961981908240034e-10,
+              "B": 0.9999999994547037,
+              "C": 3.5567632412572285e-10
+            },
+            "overlay": {
+              "A": 8.540675086110154e-05,
+              "B": 0.9999145932491388
+            },
+            "banner": {
+              "A": 2.1664620261683587e-07,
+              "B": 0.9999997833537974
+            },
+            "wanted": {
+              "A": 0.0004002583523481875,
+              "B": 0.999599741647652
+            },
+            "path": {
+              "A": 0.9988119286305237,
+              "B": 0.0011013828220939382,
+              "C": 8.66885473823403e-05
+            },
+            "car": {
+              "A": 0.9867967359317822,
+              "B": 0.013203264068217804
+            }
+          },
+          "duration": 0.1913256249972619,
+          "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+          "age": 0.3799570409973967,
+          "mode": "vehicle"
+        },
+        "time": 46276.100106541,
+        "place": "unknown"
+      }
+    }
+  ],
+  "initial_goal_source": "response 14; state immediately before request 15",
+  "initial_goal": {
+    "name": "story",
+    "started": 46090.840015791,
+    "seed": 2126580697,
+    "direction": "north",
+    "attempts": 2,
+    "step": "travel",
+    "place": "Fremde und Freaks",
+    "distance": 2871.0,
+    "target": {
+      "place": "Fremde und Freaks",
+      "instance": 0
+    }
+  }
+}

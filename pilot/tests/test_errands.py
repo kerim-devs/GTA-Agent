@@ -43,6 +43,101 @@ def head_for(name, seed=7):
     return head
 
 
+def test_recorded_tunnel_failure_keeps_map_closed():
+    import json
+    from pathlib import Path
+
+    from pilot.errands import Errand
+
+    fixture = json.loads((Path(__file__).parent / "fixtures/driveon/head.json").read_text())
+    head = head_for("story")
+    head.goals.active = Errand(**fixture["initial_goal"])
+    answers = [head.decide(HeadRequest(**row["request"])) for row in fixture["requests"]]
+    assert names(answers[0]) == ["set_waypoint"]
+    assert names(answers[1]) == ["drive_route"]
+    assert names(answers[2]) == ["drive_on", "drive_route"]
+    assert "set_waypoint" not in names(answers[2])
+
+
+def driveon_head():
+    head = head_for("cruise")
+    assert names(head.decide(request(mode="vehicle"))) == ["set_waypoint"]
+    answer = head.decide(
+        request(
+            1,
+            mode="vehicle",
+            last=result("set_waypoint", "waypoint set: Ammu-Nation (2109m); gameplay observed"),
+        )
+    )
+    assert names(answer) == ["drive_route"]
+    return head
+
+
+def route_missing(t):
+    return request(
+        t,
+        mode="vehicle",
+        last=result("drive_route", "route-lost-unknown", "failed", route_seen=False, ended_at=t),
+    )
+
+
+def test_driveon_pair_retries_once_then_reopens_map():
+    head = driveon_head()
+    assert names(head.decide(route_missing(2))) == ["drive_on", "drive_route"]
+    # A done skill keeps its queue. The next drive failure is the head's checkpoint.
+    queued = request(32, mode="vehicle", last=result("drive_on", "time-limit", queue=["drive_route"]))
+    assert names(head.decide(queued)) == []
+    assert names(head.decide(route_missing(34))) == ["drive_on", "drive_route"]
+    assert names(head.decide(route_missing(66))) == ["set_waypoint"]
+
+
+def test_driveon_timeout_without_queue_retries_once():
+    head = driveon_head()
+    head.decide(route_missing(2))
+    first = request(32, mode="vehicle", last=result("drive_on", "time-limit", ended_at=32))
+    second = request(62, mode="vehicle", last=result("drive_on", "time-limit", ended_at=62))
+    assert names(head.decide(first)) == ["drive_on", "drive_route"]
+    assert names(head.decide(second)) == ["set_waypoint"]
+
+
+def test_driven_route_resets_driveon_budget():
+    head = driveon_head()
+    head.decide(route_missing(2))
+    head.decide(route_missing(34))
+    reset = head.decide(
+        request(40, mode="vehicle", last=result("drive_route", "route-lost-far", "failed", route_seen=True))
+    )
+    assert names(reset) == ["set_waypoint"]
+    head.decide(
+        request(
+            41,
+            mode="vehicle",
+            last=result("set_waypoint", "waypoint set: Ammu-Nation (2109m); gameplay observed"),
+        )
+    )
+    assert names(head.decide(route_missing(42))) == ["drive_on", "drive_route"]
+
+
+def test_driveon_requires_vehicle_and_observed_waypoint():
+    head = head_for("cruise")
+    head.decide(request(mode="vehicle"))
+    assert "drive_on" not in names(head.decide(route_missing(1)))
+    head = driveon_head()
+    answer = head.decide(
+        request(2, mode="foot", last=result("drive_route", "route-lost-unknown", "failed", route_seen=False))
+    )
+    assert "drive_on" not in names(answer)
+
+
+def test_driveon_held_car_uses_existing_replacement_plan():
+    head = driveon_head()
+    head.decide(route_missing(2))
+    answer = head.decide(request(3, mode="vehicle", last=result("drive_on", "vehicle-held", "failed")))
+    assert "drive_on" not in names(answer)
+    assert "drive_route" not in names(answer)
+    assert head.goals.active.step == "replace_car"
+
+
 class World:
     """A skill-completion script, not a fake renderer or a live-console claim."""
 

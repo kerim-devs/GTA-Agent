@@ -114,6 +114,8 @@ class Errand:
     arrived: bool = False
     seen_wanted: bool = False
     seen_route: bool = False
+    drive_ons: int = 0
+    waypoint_set: bool = False
 
     def data(self):
         return {
@@ -450,6 +452,10 @@ class Errands:
         if fresh:
             goal.last_result = dict(last)
         skill, reason = last.get("name"), last.get("reason") or ""
+        if fresh and skill == "drive_route" and last.get("route_seen"):
+            goal.drive_ons = 0
+        if done and skill == "set_waypoint":
+            goal.waypoint_set = True
         goal.seen_route |= request.minimap.get("route") in {"yellow", "purple"}
         plan = None
         free_step = False
@@ -458,7 +464,7 @@ class Errands:
             note = f"step ended: {last.get('name')} does not fit {seat}"
         if (
             failed
-            and skill in {"drive_route", "get_away"}
+            and skill in {"drive_route", "drive_on", "get_away"}
             and reason in {HELD, "vehicle-held"}
             and seat == "vehicle"
         ):
@@ -482,6 +488,30 @@ class Errands:
                 call("walk_road", duration=15),
             ]
             note = f"stuck on foot: another way, turned by {turn}"
+        elif (
+            seat == "vehicle"
+            and goal.step == "travel"
+            and goal.waypoint_set
+            and (
+                (
+                    failed
+                    and skill == "drive_route"
+                    and reason.startswith("route-lost")
+                    and last.get("route_seen") is False
+                )
+                or (done and skill == "drive_on" and reason == "time-limit")
+            )
+        ):
+            # A queued drive_route runs after drive_on, so its no-route failure is also
+            # the checkpoint for a completed attempt. Bound the whole pair to two tries.
+            if goal.drive_ons < 2:
+                goal.drive_ons += 1
+                plan = [call("drive_on", duration=30), call("drive_route", duration=120)]
+                note = "waypoint stands: follow the road until the route returns"
+            else:
+                goal.step = "waypoint"
+                goal.drive_ons = 0
+                note = "route still absent after two road-following attempts"
         elif failed and skill == "drive_route" and reason in STALLED:
             goal.stalls += 1
             if goal.stalls >= 2:
@@ -508,7 +538,7 @@ class Errands:
             plan = [call("drive_route", duration=120)]
         elif failed and skill == "use_place":
             goal.step = "leave"
-        elif failed and skill == "get_away" and reason in {"water", "on-foot"}:
+        elif failed and skill in {"get_away", "drive_on"} and reason in {"water", "on-foot"}:
             seat = "on_foot"
         elif failed and skill == "set_waypoint" and goal.name == "story":
             goal.waypoint_failures += 1
