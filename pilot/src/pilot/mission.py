@@ -115,7 +115,21 @@ class MissionHead:
     # rules answers with the plan alone.
     owns_goals = True
 
-    def __init__(self, fallback: Head | None = None, *, goal_seed=None, chooser=None) -> None:
+    def __init__(
+        self,
+        fallback: Head | None = None,
+        *,
+        goal_seed=None,
+        chooser=None,
+        task=None,
+        place=None,
+        task_seconds=900,
+    ) -> None:
+        from .errands import Trip
+
+        if task not in {None, "trip"}:
+            raise ValueError("unknown task")
+        self.trip = Trip(place, task_seconds) if task == "trip" else None
         self.fallback = fallback
         # `chooser` picks the next errand among those the rules offer (localhead.ErrandChooser: the
         # local model looking at the picture). It may say nothing, and then the seeded draw decides.
@@ -175,6 +189,8 @@ class MissionHead:
         return self._chose
 
     def decide(self, request: HeadRequest) -> HeadResponse:
+        if self.trip is not None:
+            return self.trip.decide(request)
         self._undo_urgent = (set(getattr(self, "pressed_help", set())), getattr(self, "standing_count", 0))
         self._undo_rest = {name: getattr(self, name) for name in self.KEPT}
         self._undo_counts = self.counts.copy()

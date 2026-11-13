@@ -1,7 +1,7 @@
 """Local, bounded skills. Every result describes the entire controller state."""
 
 from collections import deque
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from math import atan2, degrees, hypot
 from typing import TYPE_CHECKING, ClassVar
 
@@ -549,6 +549,10 @@ class SkillRunner:
         self.completed = False
         self.road_reached = False
         self.route_seen = False
+        self.route_color = None
+        self.attempt_id = 0
+        self.ended = deque(maxlen=128)
+        self.result = None
         # The skills a session begins with. One that fails leaves the queue alone: whatever
         # follows it, the next opening skill and then the head's first plan, still runs.
         self.opening: tuple = ()
@@ -569,16 +573,7 @@ class SkillRunner:
     def stop(self, reason="interrupted") -> Pad:
         if self.active is not None:
             result = self.active.stop(reason)
-            self.last = {
-                "name": self.active.name,
-                **({"road_reached": self.road_reached} if self.active.name == "walk_road" else {}),
-                **({"route_seen": self.route_seen} if self.active.name == "drive_route" else {}),
-                "status": result.status,
-                "reason": result.reason,
-                "queue": [],
-                "queue_disposition": "cleared" if self.queue else "empty",
-                "dropped": [skill.name for skill in self.queue],
-            }
+            self.last = self._ended(result, failed=True)
         self.active = None
         self.queue.clear()
         self.opening = ()
@@ -596,13 +591,24 @@ class SkillRunner:
                 return SkillResult(status="done")
             self.active = self.queue.popleft()
             self.active_started = observation.time
+            self.attempt_id += 1
+            self.result = None
             self.route_seen = False
+            self.route_color = None
             self.road_reached = False
         result = self.active.step(observation)
+        self.result = result
         self.route_seen |= self.active.name == "drive_route" and observation.reading.route in {
             "yellow",
             "purple",
         }
+        if (
+            self.active.name == "drive_route"
+            and not observation.reading.corrupt
+            and observation.reading.confidence >= 0.45
+            and observation.reading.route in {"yellow", "purple"}
+        ):
+            self.route_color = observation.reading.route
         road_since = getattr(self.active, "on_road_since", None)
         self.road_reached = (
             self.active.name == "walk_road"
@@ -612,29 +618,42 @@ class SkillRunner:
         if result.status != "running":
             if result.status == "failed" and any(self.active is skill for skill in self.opening):
                 # Not the plan's failure: it is logged, and neither the head nor the queue hears of it.
+                self._ended(result, failed=False)
                 self.opening_failures.append(
                     {"name": self.active.name, "reason": result.reason, "queue": [s.name for s in self.queue]}
                 )
                 self.active = None
                 self.completed = False
                 return result
-            queued = [skill.name for skill in self.queue]
-            failed = result.status == "failed"
-            self.last = {
-                "name": self.active.name,
-                **({"road_reached": self.road_reached} if self.active.name == "walk_road" else {}),
-                **({"route_seen": self.route_seen} if self.active.name == "drive_route" else {}),
-                "status": result.status,
-                "reason": result.reason,
-                "queue": [] if failed else queued,
-                "queue_disposition": ("cleared" if failed else "kept") if queued else "empty",
-                "dropped": queued if failed else [],
-            }
+            self.last = self._ended(result, failed=result.status == "failed")
             self.active = None
             if result.status == "failed":
                 self.queue.clear()
             self.completed = not self.queue
         return result
+
+    def _evidence(self, result):
+        return {} if result is None else {key: value for key, value in asdict(result).items() if key != "pad"}
+
+    def _ended(self, result, *, failed):
+        queued = [skill.name for skill in self.queue]
+        ended = {
+            "name": self.active.name,
+            "attempt_id": self.attempt_id,
+            "args": dict(getattr(self.active, "call_args", {})),
+            **self._evidence(result),
+            **({"road_reached": self.road_reached} if self.active.name == "walk_road" else {}),
+            **(
+                {"route_seen": self.route_seen, "route_color": self.route_color}
+                if self.active.name == "drive_route"
+                else {}
+            ),
+            "queue": [] if failed else queued,
+            "queue_disposition": ("cleared" if failed else "kept") if queued else "empty",
+            "dropped": queued if failed else [],
+        }
+        self.ended.append(ended)
+        return ended
 
     def describe(self):
         if self.active is None and self.queue:
@@ -646,10 +665,16 @@ class SkillRunner:
             guard = getattr(self.active, "guard", None)
             return {
                 "name": self.active.name,
+                "attempt_id": self.attempt_id,
+                **self._evidence(self.result),
                 # What it was called with, so that a head can tell the same call from another one.
                 "args": dict(getattr(self.active, "call_args", None) or {}),
                 **({"road_reached": self.road_reached} if self.active.name == "walk_road" else {}),
-                **({"route_seen": self.route_seen} if self.active.name == "drive_route" else {}),
+                **(
+                    {"route_seen": self.route_seen, "route_color": self.route_color}
+                    if self.active.name == "drive_route"
+                    else {}
+                ),
                 "status": "running",
                 "reason": guard.diagnostic() if guard is not None else None,
                 "queue": [skill.name for skill in self.queue],

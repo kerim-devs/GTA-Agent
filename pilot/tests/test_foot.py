@@ -205,9 +205,11 @@ def test_walking_diagnostic_reaches_the_logged_skill_description():
 def test_standalone_vehicle_skill_description_does_not_require_a_foot_guard():
     runner = SkillRunner()
     runner.replace((SkillCall("enter_vehicle", {"duration": 25, "kind": "any"}),))
-    runner.active = runner.queue.popleft()
+    runner.tick(obs(0))
+    runner.tick(obs(DT))
     assert runner.describe() == {
         "name": "enter_vehicle",
+        "attempt_id": 1,
         "args": {"duration": 25, "kind": "any"},
         "status": "running",
         "reason": None,

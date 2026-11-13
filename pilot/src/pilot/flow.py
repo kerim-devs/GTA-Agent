@@ -392,7 +392,7 @@ class Flow:
         if self._last_time is not None and now <= self._last_time:
             return FlowResult(action="await_fresh_read") if self._engaged else None
         self._last_time = now
-        if observation.reading.corrupt:
+        if observation.reading.corrupt and (observation.hud is None or observation.hud.screen not in MENUS):
             self._reads = 0
             self._button, self._button_reads = None, 0
             if self._screen == "alert" and self._pressed_at is None:

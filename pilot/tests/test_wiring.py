@@ -235,6 +235,8 @@ def test_a_plan_from_the_head_starts_and_stops_every_new_skill(name):
     runner.stop("flow")
     assert runner.last == {
         "name": name,
+        "attempt_id": 1,
+        "args": args,
         "status": "failed",
         "reason": "flow",
         "queue": [],

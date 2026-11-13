@@ -827,3 +827,434 @@ class Errands:
         response = self._reply(goal, plan, reason=note)
         self.transition = ""
         return response
+
+
+class Trip:
+    """One fixed destination; only receipts from the runner advance its steps."""
+
+    # Above the drive's 20 s guard; 20 m also exceeds two kilometre HUD increments.
+    PROGRESS_SECONDS = 25.0
+    PROGRESS_METRES = 20.0
+    CAR_SECONDS = 90.0  # Three 25 s entries, a look and a 10 s walk fit inside this.
+    SCREEN_SECONDS = 15.0
+    ROUTE_GONE = 2.0  # as drive_route: a route that stays away this long has gone
+    ROUTE_RECENT = 3.0  # a route read this short a time ago is one reading missed, not a route lost
+
+    def __init__(self, place, seconds=900):
+        import math
+
+        if not isinstance(place, str) or not 1 <= len(place.strip()) <= 100:
+            raise ValueError("trip needs a printed place name of at most 100 characters")
+        if not math.isfinite(seconds) or seconds <= 0:
+            raise ValueError("trip seconds must be finite and positive")
+        self.place, self.seconds = place.strip(), seconds
+        self.started = None
+        self.step = "car"
+        self.verdict = None
+        self.events = []
+        self.issued = None
+        self.receipts = set()
+        self.attempts = 0
+        self.car_attempts = self.waypoint_attempts = self.deaths = 0
+        self.car_started = None
+        self.waypoint_id = None
+        self.seat_check = False
+        self.retry = None
+        self.recovery = 0
+        self.stretches_without_progress = 0
+        self.method = "route"
+        self.best_distance = self.progress_distance = self.progress_at = None
+        self.distance_time = None
+        self.game_since = None
+        self.foot_since = None
+        self.screen = None
+        self.screen_since = None
+        self.suspended = None
+        self.suspended_at = None
+        self.car_seen = None
+        self.failure = None
+        self.failure_at = None
+        self.exit_presses = 0
+        self.last_distance = None
+        self.route_at = self.purple_at = None
+        self.route_waited = False
+        self.waypoint_check = False
+
+    def emit(self, kind, now, **data):
+        self.events.append({"type": "trip_" + kind, "t": now, "trip_id": 1, "place": self.place, **data})
+
+    def start(self, now):
+        if self.started is None:
+            self.started = self.car_started = now
+            self.emit("started", now, deadline=now + self.seconds)
+            self.emit("step", now, step=self.step)
+
+    def change(self, step, now):
+        if self.step != step:
+            self.step = step
+            self.emit("step", now, step=step)
+        if step == "drive":
+            self.progress_at = now
+
+    def finish(self, status, reason, now):
+        if self.verdict is None:
+            self.verdict = {"status": status, "reason": reason, "place": self.place, "trip_id": 1}
+            if status == "reached":
+                self.change("arrived", now)
+            self.emit("end", now, **{k: v for k, v in self.verdict.items() if k not in {"place", "trip_id"}})
+
+    def suspend(self, reason, now):
+        if self.verdict is not None or self.suspended == reason:
+            return
+        self.start(now)
+        if reason == "death_or_arrest":
+            self.deaths += 1
+            if self.deaths > 2:
+                self.finish("failed", "death/arrest recovery exhausted", now)
+                return
+        self.suspended, self.suspended_at = reason, now
+        self.issued = None
+        self.emit("suspended", now, step=self.step, reason=reason)
+
+    def resume(self, now):
+        reason = self.suspended
+        if reason is None or self.verdict is not None:
+            return
+        self.suspended = None
+        self.issued = None
+        self.emit("resumed", now, step=self.step, reason=reason)
+        # Time with someone else's pad or a menu is not time spent approaching the destination.
+        if self.progress_at is not None:
+            self.progress_at += now - self.suspended_at
+        if self.car_started is not None:
+            self.car_started += now - self.suspended_at
+        if reason == "death_or_arrest":
+            self.car_attempts = self.waypoint_attempts = 0
+            self.failure = self.failure_at = None
+            self.seat_check = False
+            self.car_started = now
+            self.waypoint_id = None
+            self.retry = None
+            self.method = "route"
+            self.best_distance = self.progress_distance = self.distance_time = None
+            self.change("car", now)
+        elif reason in {"human", "picture"}:
+            self.seat_check = True
+            self.car_started, self.car_attempts = now, 0
+            # A person may have left the car or moved the waypoint: the seat is confirmed again, and
+            # after a hand the waypoint stands only if its route is still on the map. A picture that
+            # was away moved nothing. The interrupted step and the destination are kept.
+            self.waypoint_check = reason == "human" and self.waypoint_id is not None
+            self.route_at = self.purple_at = None
+            self.route_waited = False
+
+    def observe(self, observation):
+        from .contract import player_mode
+        from .drive import _number
+        from .skills import DriveRoute
+
+        now, reading = observation.time, observation.reading
+        self.start(now)
+        screen = observation.hud.screen if observation.hud is not None else None
+        if screen != self.screen:
+            self.screen, self.screen_since = screen, now
+            self.game_since = None
+        if screen == "game" and not reading.corrupt:
+            if self.game_since is None:
+                self.game_since = now
+        else:
+            self.game_since = None
+        if (
+            screen == "game"
+            and not reading.corrupt
+            and reading.minimap == "flat"
+            and reading.confidence >= 0.45
+            and player_mode(observation) == "foot"
+        ):
+            if self.foot_since is None:
+                self.foot_since = now
+        else:
+            self.foot_since = None
+        if observation.objects_time is not None and 0 <= now - observation.objects_time <= 1:
+            cars = [obj for obj in observation.objects if obj.kind == "car" and obj.confidence >= 0.5]
+            if cars:
+                self.car_seen = (max(cars, key=lambda obj: obj.box[3]), now)
+        if self.step != "drive" or self.suspended or self.waypoint_id is None:
+            return
+        if screen == "game" and not reading.corrupt and reading.confidence >= 0.45:
+            if reading.route in {"purple", "yellow"}:
+                self.route_at = now
+            if reading.route == "purple":
+                self.purple_at = now
+            elif (
+                # The route went while on along the road or between two stretches, with nobody to
+                # report it: the same proof drive_route asks of itself, the route seen, gone for
+                # good, and the printed distance fresh and near when it was last on the map.
+                self.purple_at is not None
+                and now - self.purple_at >= self.ROUTE_GONE
+                and self.last_distance is not None
+                and self.last_distance <= DriveRoute.arrival_metres
+                and self.distance_time is not None
+                and 0 <= self.purple_at - self.distance_time <= DriveRoute.arrival_age
+            ):
+                self.finish("reached", "route gone within arrival distance of the fixed waypoint", now)
+                return
+        distance, at = _number(reading.gps_distance), _number(reading.gps_time)
+        if (
+            screen != "game"
+            or reading.corrupt
+            or reading.route != "purple"
+            or distance is None
+            or not 0 <= distance < 100000
+            or at is None
+            or not 0 <= now - at <= 2
+            or (self.distance_time is not None and at <= self.distance_time)
+        ):
+            return
+        self.distance_time, self.last_distance = at, distance
+        if self.best_distance is None or distance < self.best_distance:
+            self.best_distance = distance
+        if self.progress_distance is None or self.progress_distance - distance >= self.PROGRESS_METRES:
+            if self.progress_distance is not None and self.method == "route":
+                # Under way again: a recovery that worked is not counted against the next snag,
+                # or three bumps on a long drive would end it. The budget of seconds still does.
+                self.recovery = self.stretches_without_progress = 0
+            self.progress_distance, self.progress_at = distance, now
+            self.emit("progress", now, step="drive", distance=distance, distance_time=at)
+
+    def recover(self, now, reason):
+        self.issued = None
+        self.recovery += 1
+        self.stretches_without_progress = 0
+        self.progress_at = now
+        if self.recovery == 1:
+            self.method = "road"
+        elif self.recovery == 2:
+            self.method = "exit"
+            self.exit_presses = 0
+        else:
+            self.finish("failed", "drive recovery exhausted: " + reason, now)
+        self.emit("recovery", now, step="drive", stage=self.recovery, reason=reason)
+
+    def accept(self, last, now):
+        from .skills import DriveRoute
+
+        if not last or last.get("status") not in {"done", "failed"}:
+            return
+        ident = last.get("attempt_id")
+        if not isinstance(ident, int) or ident in self.receipts:
+            return
+        self.receipts.add(ident)
+        self.emit("attempt", now, step=self.step, waypoint_attempt_id=self.waypoint_id, **last)
+        issued = self.issued
+        if (
+            self.verdict is not None
+            or self.suspended
+            or issued is None
+            or last["name"] != issued["name"]
+            or last.get("args") != issued["args"]
+        ):
+            return
+        self.issued = None
+        name, why, done = last["name"], str(last.get("reason") or ""), last["status"] == "done"
+        if why in {"flow", "pad_refused", "interrupted", "goal_trip_recovery", "replaced"}:
+            return
+        if name == "enter_vehicle":
+            self.car_attempts += 1
+            if done and why.startswith(("entered vehicle", "already in a vehicle")):
+                self.seat_check = False
+                self.retry = None
+                if self.step == "car":
+                    self.change("waypoint" if self.waypoint_id is None else "drive", now)
+                self.method = "route"
+            elif self.car_attempts >= 3:
+                self.finish("failed", "car acquisition failed after three attempts: " + why, now)
+            else:
+                self.retry = "look" if self.car_attempts == 1 else "road"
+        elif name == "set_waypoint":
+            match = WAYPOINT.match(why) if done else None
+            if (
+                match
+                and match[1].casefold() == self.place.casefold()
+                and "gameplay observed" in why
+                and self.game_since is not None
+            ):
+                self.waypoint_id = ident
+                self.best_distance = self.progress_distance = self.distance_time = None
+                self.last_distance = self.route_at = self.purple_at = None
+                self.route_waited = self.waypoint_check = False
+                self.change("drive", now)
+                self.retry = None
+            else:
+                self.waypoint_attempts += 1
+                if self.waypoint_attempts >= 3:
+                    self.failure = "waypoint failed after three attempts: " + why
+                    self.failure_at = now
+                else:
+                    self.retry = "waypoint"
+        elif name == "drive_route":
+            distance, age = last.get("end_distance"), last.get("distance_age")
+            if (
+                done
+                and why == "arrived"
+                and self.waypoint_id is not None
+                and ident > self.waypoint_id
+                and last.get("route_seen")
+                and last.get("route_color") == "purple"
+                and isinstance(distance, (int, float))
+                and 0 <= distance <= DriveRoute.arrival_metres
+                and isinstance(age, (int, float))
+                and 0 <= age <= DriveRoute.arrival_age
+            ):
+                self.finish("reached", "arrival observed for the fixed waypoint", now)
+            elif done and why == "time-limit":
+                before = last.get("start_distance")
+                nearer = (
+                    isinstance(before, (int, float))
+                    and isinstance(distance, (int, float))
+                    and distance < before
+                    and isinstance(age, (int, float))
+                    and 0 <= age <= 5
+                )
+                self.stretches_without_progress = 0 if nearer else self.stretches_without_progress + 1
+                if self.stretches_without_progress >= 2:
+                    self.recover(now, "two stretches without closer destination")
+            else:
+                self.recover(now, why or "arrival not proven")
+        elif name == "drive_on":
+            if done:
+                self.method = "route"
+                self.progress_at = now
+            else:
+                self.recover(now, why)
+        elif self.method == "exit" and name == "press":
+            self.method = "exit_wait"
+        elif self.method == "exit_wait" and name == "wait":
+            self.method = "exit_check"
+        elif self.method == "away" and name == "walk_road":
+            self.car_started, self.car_attempts = now, 0
+            self.change("car", now)
+            self.method = "route"
+        elif name in {"look", "walk", "walk_road", "wait"}:
+            self.retry = None
+
+    def data(self):
+        return {
+            "name": "trip",
+            "started": self.started,
+            "deadline": self.started + self.seconds,
+            "seed": 0,
+            "direction": "north",
+            "attempts": self.attempts,
+            "place": self.place,
+            "distance": self.best_distance,
+        }
+
+    def decide(self, request):
+        from .head import HeadResponse, SkillCall
+        from .vehicle_entry import approach
+
+        now = request.time
+        self.start(now)
+        self.accept(request.last_skill, now)
+
+        def reply(reason, plan=()):
+            return HeadResponse(
+                plan,
+                "Ich fahre nach " + self.place + ".",
+                action="replace" if plan else "go_on",
+                goal=self.data(),
+                step=self.step,
+                reason=reason,
+            )
+
+        def issue(name, **args):
+            self.issued = call(name, **args)
+            self.attempts += 1
+            return reply("trip: " + self.step, (SkillCall(name, args),))
+
+        if self.verdict is not None or self.suspended:
+            return reply("trip: " + (self.suspended or self.verdict["status"]))
+        if now - self.started >= self.seconds:
+            self.finish("failed", "trip time budget exhausted", now)
+            return reply("trip: failed")
+        if self.issued is not None:
+            return reply("trip: issued attempt still owns the plan")
+        if self.game_since is None or now - self.game_since < 0.3:
+            return reply("trip: awaiting confirmed gameplay")
+        if self.failure and now <= self.failure_at:
+            return reply("trip: awaiting a game picture after the failed attempt")
+        if self.failure:
+            self.finish("failed", self.failure, now)
+            return reply("trip: failed")
+        if self.step == "car" or self.seat_check:
+            if now - self.car_started >= self.CAR_SECONDS:
+                self.finish("failed", "car acquisition exceeded ninety seconds", now)
+                return reply("trip: failed")
+            if self.retry in {"look", "road"}:
+                if self.car_seen is not None and now - self.car_seen[1] <= 2:
+                    from .contract import FRAME_SIZE, Detection
+
+                    car = self.car_seen[0]
+                    x0, y0, x1, y1 = car.box
+                    width, height = FRAME_SIZE
+                    x, y = approach(
+                        Detection(
+                            car.kind,
+                            (x0 / width, y0 / height, x1 / width, y1 / height),
+                            car.confidence,
+                        )
+                    ).left
+                    return issue("walk", x=x, y=y, duration=1.5)
+                if self.retry == "look":
+                    return issue("look", angle=120, duration=1.5)
+                return issue("walk_road", duration=10)
+            return issue("enter_vehicle", kind="car", occupied="allow", duration=25)
+        if self.waypoint_check and self.waypoint_id is not None:
+            if self.purple_at is not None and now - self.purple_at <= self.ROUTE_RECENT:
+                self.waypoint_check = self.route_waited = False
+            elif not self.route_waited:
+                self.route_waited = True
+                return issue("wait", duration=self.ROUTE_GONE)
+            else:
+                # No route after the hand: the waypoint is gone and is set again.
+                self.waypoint_check = self.route_waited = False
+                self.waypoint_id = None
+        if self.step == "waypoint" or self.waypoint_id is None:
+            if self.retry == "waypoint":
+                return issue("wait", duration=1)
+            return issue("set_waypoint", place=self.place, instance=0, duration=45)
+        if self.method == "exit":
+            if self.foot_since is not None and now - self.foot_since >= 0.5:
+                self.method = "away"
+                return issue("walk_road", duration=10)
+            self.exit_presses += 1
+            return issue("press", button="triangle", duration=0.1)
+        if self.method == "exit_wait":
+            return issue("wait", duration=3)
+        if self.method == "exit_check":
+            # A press does not prove exit. A sustained flat game map is required before walking.
+            if self.foot_since is not None and now - self.foot_since >= 0.5:
+                self.method = "away"
+                return issue("walk_road", duration=10)
+            if self.exit_presses >= 2:
+                self.finish("failed", "vehicle exit not observed", now)
+                return reply("trip: failed")
+            self.method = "exit"
+            return self.decide(request)
+        if self.method == "road":
+            return issue("drive_on", duration=15)
+        route = request.minimap.get("route") in {"purple", "yellow"} or (
+            self.route_at is not None and now - self.route_at <= self.ROUTE_RECENT
+        )
+        if not route:
+            # One reading without the route decides nothing, and a waypoint just set is given a
+            # moment for its route to be drawn before the drive is taken to have lost it.
+            if not self.route_waited:
+                self.route_waited = True
+                return issue("wait", duration=self.ROUTE_GONE)
+            self.route_waited = False
+            self.recover(now, "route absent")
+            return self.decide(request)
+        self.route_waited = False
+        return issue("drive_route", duration=120)

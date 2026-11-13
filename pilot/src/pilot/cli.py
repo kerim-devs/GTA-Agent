@@ -130,6 +130,8 @@ def main(argv: list[str] | None = None) -> None:
     replay.add_argument("--out", type=Path)
     play = subcommands.add_parser("play", help="Run event-driven skills and an asynchronous head")
     play.add_argument("--seconds", type=duration)
+    play.add_argument("--task", choices=("trip",))
+    play.add_argument("--place", help="fixed destination as printed in the map legend")
     play.add_argument("--shadow", action="store_true")
     play.add_argument("--no-record", action="store_true")
     play.add_argument("--no-ocr", action="store_true")
@@ -235,6 +237,14 @@ def main(argv: list[str] | None = None) -> None:
                 config=asdict(config),
             )
     elif args.command == "play":
+        if args.task == "trip":
+            if not args.place or not 1 <= len(args.place.strip()) <= 100:
+                parser.error("--task trip needs --place with a printed name of at most 100 characters")
+            if args.plan or args.guard or args.no_hud_flow:
+                parser.error("--task trip needs the screen reflex and accepts neither --plan nor --guard")
+            args.seconds = args.seconds or 900
+        elif args.place is not None:
+            parser.error("--place needs --task trip")
         try:
             judge = JudgeReader(args.judge) if args.judge else None
             sides.use(args.judge)
@@ -255,7 +265,9 @@ def main(argv: list[str] | None = None) -> None:
             ]
         except json.JSONDecodeError as error:
             parser.error(f"--plan is not JSON: {error}")
-        if args.head == "scripted":
+        if args.task == "trip":
+            head = MissionHead(task="trip", place=args.place, task_seconds=args.seconds)
+        elif args.head == "scripted":
             head = ScriptedHead(plans or None)
         elif args.head == "rules-only":
             head = MissionHead()
@@ -268,7 +280,7 @@ def main(argv: list[str] | None = None) -> None:
             )
             if args.head == "rules":
                 head = MissionHead(head)
-        if args.head != "scripted" and not args.no_record:
+        if args.task is None and args.head != "scripted" and not args.no_record:
             # What earlier sessions learned of places and errands, kept beside their recordings.
             kept = memory.use(args.record_dir / "memory.json")
             if kept.error:
@@ -281,31 +293,33 @@ def main(argv: list[str] | None = None) -> None:
                 # Without the weights the pilot still plays; the skills that need them say so.
                 print(f"object detector off: {exc}", file=sys.stderr)
         with Bridge() as bridge, closing(memory.active()):
-            print(
-                run_play(
-                    bridge,
-                    seconds=args.seconds,
-                    shadow=args.shadow,
-                    record=not args.no_record,
-                    record_dir=args.record_dir,
-                    pipeline=pipeline,
-                    head=head,
-                    notebook=args.notebook or args.record_dir / "notebook.txt",
-                    ocr=not args.no_ocr,
-                    quiet_seconds=args.quiet_seconds,
-                    driver_factory=lambda: Driver(config),
-                    objects=objects,
-                    judge=judge,
-                    awake=Conductor.AWAKE_SECONDS,
-                    hud=None if args.no_hud_flow else hud,
-                    flow=None if args.no_hud_flow else Flow(calls=True),
-                    opening=opening(args),
-                    guard=Guard() if args.guard else None,
-                    standing=None
-                    if args.no_standing or args.head == "scripted"
-                    else Conductor.STANDING_SECONDS,
-                )
+            result = run_play(
+                bridge,
+                seconds=args.seconds,
+                shadow=args.shadow,
+                record=not args.no_record,
+                record_dir=args.record_dir,
+                pipeline=pipeline,
+                head=head,
+                notebook=args.notebook or args.record_dir / "notebook.txt",
+                ocr=not args.no_ocr,
+                quiet_seconds=args.quiet_seconds,
+                driver_factory=lambda: Driver(config),
+                objects=objects,
+                judge=judge,
+                awake=Conductor.AWAKE_SECONDS,
+                hud=None if args.no_hud_flow else hud,
+                flow=None if args.no_hud_flow else Flow(calls=True),
+                opening=() if args.task == "trip" else opening(args),
+                guard=Guard() if args.guard else None,
+                standing=None if args.no_standing or args.head == "scripted" else Conductor.STANDING_SECONDS,
             )
+            print(result)
+            if args.task == "trip":
+                verdict = result["trip"]
+                print(f"trip {verdict['status']}: {verdict['place']}; {verdict['reason']}")
+                if verdict["status"] != "reached":
+                    raise SystemExit(1)
     else:
         run_replay(args.recording, out=args.out, pipeline=pipeline)
 

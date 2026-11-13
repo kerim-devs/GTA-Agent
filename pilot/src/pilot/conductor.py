@@ -87,11 +87,12 @@ class Conductor:
         self.directory.mkdir(parents=True, exist_ok=True)
         self.log = (self.directory / "head.jsonl").open("x")
         self.head = ScriptedHead() if head is None else head
+        self.trip = getattr(self.head, "trip", None)
         self.notebook = PLAY_RECORDINGS / "notebook.txt" if notebook is None else Path(notebook)
         self.runner = SkillRunner() if runner is None else runner
         # What the session does before the head has said anything, such as setting the view and
         # levelling the camera. An opening skill that fails costs the head's first plan nothing.
-        if opening:
+        if opening and self.trip is None:
             self.runner.replace(tuple(opening), opening=True)
         self.detector = EventDetector() if detector is None else detector
         self.ocr, self.reader = ocr, text_reader
@@ -331,7 +332,13 @@ class Conductor:
         }
         self.write(row)
         self.inflight = {"row": row, "epoch": self.epoch, "started": self.clock(), "append": append}
-        self.future = self.submit(self.head.decide, request)
+        if self.trip is None:
+            self.future = self.submit(self.head.decide, request)
+        else:
+            # This fixed policy does no I/O or inference. Apply it on this tick, so a receipt
+            # cannot be consumed by an answer that another event then discards.
+            self.future = Future()
+            self.future.set_result(self.head.decide(request))
         self.pending.clear()
         self.last_request_time = observation.time
         self.request_times.append(observation.time)
@@ -430,6 +437,9 @@ class Conductor:
         if refused and self.refused_since is None:
             self.refused_since = t
             self.runner.stop("pad_refused")
+            if self.trip is not None:
+                self.trip.suspend("human", t)
+                self._trip_log(t)
             self._expect_skill()
             self._flow_put_down(t)
             self.epoch += 1
@@ -493,6 +503,9 @@ class Conductor:
             if self.picture_missing_since is None:
                 self.picture_missing_since = t
                 self.runner.stop("interrupted")
+                if self.trip is not None:
+                    self.trip.suspend("picture", t)
+                    self._trip_log(t)
                 self._expect_skill()
                 self._flow_put_down(t)
                 self.epoch += 1
@@ -534,12 +547,36 @@ class Conductor:
         # press is not cut in two, and one that would go down on this tick waits for a picture.
         buttons = result.pad.buttons
         if observation.reading.corrupt and buttons:
-            kept = tuple(button for button in buttons if button in self.buttons_down)
+            menu_back = (
+                observation.hud is not None
+                and observation.hud.screen in MENUS
+                and (reads.get("frame_time") is None or 0 <= t - reads["frame_time"] <= 0.3)
+            )
+            kept = tuple(
+                button
+                for button in buttons
+                if button in self.buttons_down
+                or (menu_back and button == active().back)
+                or (
+                    menu_back
+                    and self.trip is not None
+                    and self.runner.active is not None
+                    and self.runner.active.name == "set_waypoint"
+                    and observation.hud.screen in self.runner.active.opens
+                )
+            )
             if kept != buttons:
                 result = replace(result, pad=replace(result.pad, buttons=kept))
         self.buttons_down = frozenset(result.pad.buttons)
         self.last_pad = result.pad
-        if self.awake is None:
+        if self.awake is None or (
+            self.trip is not None
+            and (
+                self.trip.verdict is not None
+                or self.trip.suspended is not None
+                or self.refused_since is not None
+            )
+        ):
             return result
         t = observation.time
         if result.pad != NEUTRAL_PAD:
@@ -644,6 +681,8 @@ class Conductor:
             detected = [event for event in detected if event.kind not in self.OWN_SCREEN_NEWS]
         new_events = [asdict(event) for event in detected] + list(events)
         new_events.extend(self._hud_events(observation))
+        if self.trip is not None:
+            return self._trip_tick(observation, seen, rgb, new_events)
         if self.goal is not None:
             reason = interruption(
                 HeadRequest(
@@ -752,6 +791,121 @@ class Conductor:
             # A damaged tick is stood out and decides nothing: the minimap reader calls a clean
             # cable picture damaged about once a second, and the carry would never last.
             self.carry_allowed = False
+        return result
+
+    def _trip_log(self, t):
+        while self.runner.ended:
+            self.trip.accept(self.runner.ended.popleft(), t)
+        while self.trip.events:
+            self.write(self.trip.events.pop(0))
+
+    def end_trip(self, reason, t):
+        if self.trip is not None:
+            self.trip.start(t)
+            self.trip.finish("failed", reason, t)
+            self.runner.stop("goal_trip_verdict")
+            self._trip_log(t)
+
+    def _trip_tick(self, observation, seen, rgb, events):
+        t, trip = observation.time, self.trip
+        self.judge_events.clear()
+        trip.observe(observation)
+        self._trip_log(t)
+        if t - trip.started >= trip.seconds:
+            self.end_trip("trip time budget exhausted", t)
+        if (
+            (trip.step == "car" or trip.seat_check)
+            and trip.suspended is None
+            and t - trip.car_started >= trip.CAR_SECONDS
+        ):
+            self.end_trip("car acquisition exceeded ninety seconds", t)
+        if trip.verdict is not None:
+            self.runner.stop("goal_trip_verdict")
+            self._trip_log(t)
+            return SkillResult(reason="goal_trip_" + trip.verdict["status"])
+        if self.refused_since is not None:
+            return SkillResult(reason="pad-refused")
+        # Death is remembered before the reflex consumes its screen; it resets the car step only
+        # after gameplay returns. Neither an objective nor a threat gets another owner of the trip.
+        screen = observation.hud.screen if observation.hud is not None else None
+        if screen in {"wasted", "busted"} and t - trip.screen_since >= 0.1:
+            self.runner.stop("flow")
+            trip.suspend("death_or_arrest", t)
+        episode = self.flow_started is not None
+        flow_result = self._flow_tick(seen, rgb)
+        if flow_result is not None and flow_result.action == "confirm" and not episode:
+            # As without a trip: one odd reading is not a screen yet, and a button that is down
+            # stays down, or the one press into the car would become two and the figure get out.
+            return SkillResult(Pad(buttons=self.last_pad.buttons), reason="flow")
+        if flow_result is not None:
+            if flow_result.action not in {
+                "confirm",
+                "await_frame",
+                "await_hud",
+                "await_fresh_read",
+                "answer",
+            }:
+                if trip.suspended != "death_or_arrest":
+                    trip.suspend("screen", t)
+            self._trip_log(t)
+            # A screen the reflex cannot close is an explicit failed trip, never another map attempt.
+            if (
+                flow_result.action == "stuck"
+                and trip.suspended_at is not None
+                and t - trip.suspended_at >= trip.SCREEN_SECONDS
+            ):
+                self.end_trip("gameplay not restored after screen recovery", t)
+                return SkillResult(reason="goal_trip_failed")
+            return SkillResult(flow_result.pad, reason="flow")
+        owns_menu = self.runner.active is not None and screen in getattr(self.runner.active, "opens", ())
+        if screen != "game" and not owns_menu:
+            self._trip_log(t)
+            return SkillResult(reason="goal_trip_await_game")
+        if trip.suspended is not None:
+            if trip.game_since is None or t - trip.game_since < 0.3:
+                return SkillResult(reason="goal_trip_suspended")
+            trip.resume(t)
+            events = [*events, {"kind": "trip_resumed"}]
+        if (
+            trip.step == "drive"
+            and trip.method == "route"
+            and not trip.seat_check
+            and trip.waypoint_id is not None
+            and self.runner.active is not None
+            and self.runner.active.name == "drive_route"
+            and trip.progress_at is not None
+            and t - trip.progress_at >= trip.PROGRESS_SECONDS
+        ):
+            self.runner.stop("goal_trip_recovery")
+            self._trip_log(t)
+            trip.recover(t, "no closer destination within twenty-five seconds")
+        if trip.verdict is not None:
+            self._trip_log(t)
+            return SkillResult(reason="goal_trip_" + trip.verdict["status"])
+        result = self._plan_tick(observation, events, t)
+        self._trip_log(t)
+        if trip.verdict is not None:
+            self.runner.stop("goal_trip_verdict")
+            self._trip_log(t)
+            return SkillResult(reason="goal_trip_" + trip.verdict["status"])
+        quiet = self.last_request_time is None or t - self.last_request_time >= self.quiet_seconds
+        # While idle, a confirmed screen or receipt can enable the next step. No artificial wait
+        # is issued just to get another request; the same two wait receipts remain distinguishable.
+        # An idle trip is asked again at most twice a second: every request saves a frame.
+        ready = (
+            not self.runner.has_plan
+            and trip.game_since is not None
+            and t - trip.game_since >= 0.3
+            and (self.last_request_time is None or t - self.last_request_time >= 0.5)
+        )
+        if events or quiet or self.runner.completed or ready:
+            self.pending.extend(events)
+            self._request(observation, rgb)
+            self._finish_head(t)
+            self._trip_log(t)
+        if trip.verdict is not None:
+            self.runner.stop("goal_trip_verdict")
+            return SkillResult(reason="goal_trip_" + trip.verdict["status"])
         return result
 
     def _plan_tick(self, observation, new_events, t):
@@ -1023,6 +1177,8 @@ class Conductor:
         if self.closed:
             return
         self.closed = True
+        if self.trip is not None:
+            self.end_trip("runtime stopped before arrival", self.clock())
         if self.judge is not None:
             self.judge.close()
             self.judge_log.close()
@@ -1091,6 +1247,8 @@ def run_play(
     standing=None,
 ):
     pipeline = Pipeline() if pipeline is None else pipeline
+    if seconds is None and getattr(head, "trip", None) is not None:
+        seconds = head.trip.seconds
     runtime = ControllerRuntime(bridge, shadow=shadow, clock=clock)
     recording = False
     conductor = log = None
@@ -1123,6 +1281,9 @@ def run_play(
             )
             log = (destination / "play.jsonl").open("x")
             started = runtime.last_fresh = clock()
+            if getattr(conductor, "trip", None) is not None:
+                conductor.trip.start(started)
+                conductor._trip_log(started)
             while seconds is None or clock() - started < seconds:
                 tick = clock()
                 undecodable = False
@@ -1209,10 +1370,19 @@ def run_play(
                 )
                 log.flush()
                 ticks += 1
+                if getattr(conductor, "trip", None) is not None and conductor.trip.verdict is not None:
+                    break
                 sleep(max(0, tick + 1 / 30 - clock()))
         except RuntimeInterruptedError:
             pass
         finally:
+            if conductor is not None and getattr(conductor, "trip", None) is not None:
+                conductor.end_trip(
+                    "trip time budget exhausted"
+                    if seconds is not None and clock() - started >= seconds
+                    else "runtime stopped before arrival",
+                    clock(),
+                )
             try:
                 cleanup_runtime(runtime, recording=recording, pipeline=pipeline, logs=(log,))
             finally:
@@ -1229,4 +1399,9 @@ def run_play(
         "elapsed": clock() - started,
         "conflicts": runtime.conflicts,
         "requests": 0 if conductor is None else conductor.request_count,
+        **(
+            {"trip": conductor.trip.verdict}
+            if conductor is not None and getattr(conductor, "trip", None)
+            else {}
+        ),
     }

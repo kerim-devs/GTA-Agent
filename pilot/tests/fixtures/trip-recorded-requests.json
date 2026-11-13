@@ -1,0 +1,3139 @@
+{
+ "description": "Unmodified recorded HeadRequest fields for connected mission-trip acceptance. Notebook and image paths are omitted; no video or bridge is needed. Cross-recording tests state their clock rebasing explicitly.",
+ "omitted_fields": [
+  "notebook",
+  "jpeg_path"
+ ],
+ "sources": {
+  "20261113-202110": {
+   "path": "/Users/kerim/recordings/pilot/20261113-202110/head.jsonl",
+   "sha256": "e4d1bdcf8b1b31851daae27c3cef212e9a1289b4a3a30e03b920c0e1cee35708"
+  },
+  "20261113-195746": {
+   "path": "/Users/kerim/recordings/pilot/20261113-195746/head.jsonl",
+   "sha256": "7a2455c9ef44ff89b85fb2c0e52b2186dc3685665489c3b0bb64b10f274550bf"
+  },
+  "20261113-183223": {
+   "path": "/Users/kerim/recordings/pilot/20261113-183223/head.jsonl",
+   "sha256": "a641240ab82807fab9ef5b7aba24caa0a61539a424fc16d37b068394a220caec"
+  },
+  "20261113-202400": {
+   "path": "/Users/kerim/recordings/pilot/20261113-202400/head.jsonl",
+   "sha256_at_extraction": "1032aae01024883f97eca27cc7460a8c1d349eedc287fded2cd45f981149eb1d"
+  }
+ },
+ "sequences": {
+  "quiet_and_waypoint_failures": [
+   {
+    "source": "20261113-202110",
+    "line": 1,
+    "request_id": 1,
+    "request": {
+     "events": [
+      {
+       "kind": "startup"
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "",
+     "banner": "",
+     "minimap": {
+      "minimap": "tilted",
+      "route": "purple",
+      "bearing": 4.529816736951219,
+      "far_bearing": -47.13546300346887,
+      "arrow": 1.3231568859185927,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+       [
+        3.0,
+        13.0
+       ],
+       [
+        6.0,
+        18.0
+       ],
+       [
+        6.0,
+        25.0
+       ],
+       [
+        2.0,
+        30.0
+       ],
+       [
+        -5.0,
+        37.0
+       ],
+       [
+        -12.0,
+        40.0
+       ],
+       [
+        -19.0,
+        41.0
+       ],
+       [
+        -25.0,
+        42.0
+       ],
+       [
+        -31.0,
+        42.0
+       ],
+       [
+        -36.0,
+        41.0
+       ],
+       [
+        -43.0,
+        41.0
+       ],
+       [
+        -49.0,
+        41.0
+       ],
+       [
+        -55.0,
+        41.0
+       ],
+       [
+        -61.0,
+        41.0
+       ],
+       [
+        -67.0,
+        41.0
+       ],
+       [
+        -73.0,
+        42.0
+       ],
+       [
+        -77.0,
+        43.0
+       ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+       {
+        "color": "blue",
+        "x": -83.4,
+        "y": 51.4,
+        "border": false
+       },
+       {
+        "color": "blue",
+        "x": -82.5,
+        "y": 43.5,
+        "border": false
+       }
+      ]
+     },
+     "last_skill": {
+      "name": "start_camera",
+      "status": "queued",
+      "reason": null,
+      "pending": [
+       "start_camera"
+      ]
+     },
+     "hud": {
+      "wanted": 0,
+      "wanted_flashing": false,
+      "health": 0.9888888888888889,
+      "armour": 0.9047619047619048,
+      "special": 1.0,
+      "screen": "game"
+     },
+     "objects": [],
+     "judgment": null,
+     "time": 53911.42234975,
+     "place": "unknown"
+    },
+    "recorded_plan": [
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     }
+    ]
+   },
+   {
+    "source": "20261113-202110",
+    "line": 3,
+    "request_id": 2,
+    "request": {
+     "events": [],
+     "help": "",
+     "objective": "",
+     "subtitle": "",
+     "banner": "",
+     "minimap": {
+      "minimap": "tilted",
+      "route": "purple",
+      "bearing": 52.32974838803193,
+      "far_bearing": 66.29466069222133,
+      "arrow": 16.824277346052213,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+       [
+        10.0,
+        10.0
+       ],
+       [
+        16.0,
+        14.0
+       ],
+       [
+        22.0,
+        17.0
+       ],
+       [
+        29.0,
+        20.0
+       ],
+       [
+        34.0,
+        21.0
+       ],
+       [
+        41.0,
+        23.0
+       ],
+       [
+        46.0,
+        24.0
+       ],
+       [
+        52.0,
+        24.0
+       ],
+       [
+        58.0,
+        23.0
+       ],
+       [
+        65.0,
+        22.0
+       ],
+       [
+        70.0,
+        21.0
+       ],
+       [
+        77.0,
+        20.0
+       ],
+       [
+        82.0,
+        20.0
+       ],
+       [
+        88.0,
+        20.0
+       ]
+      ],
+      "gps_distance": 2080,
+      "gps_arrow": null,
+      "gps_speed": 8.80575234558464,
+      "gps_time": 53971.151739083005,
+      "blips": [
+       {
+        "color": "blue",
+        "x": 84.64,
+        "y": -8.71,
+        "border": false
+       }
+      ]
+     },
+     "last_skill": {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      },
+      "route_seen": true,
+      "status": "running",
+      "reason": null,
+      "queue": [
+       "drive_route",
+       "drive_route"
+      ]
+     },
+     "hud": {
+      "wanted": 0,
+      "wanted_flashing": false,
+      "health": 0.9888888888888889,
+      "armour": 0.9047619047619048,
+      "special": 1.0,
+      "screen": "game"
+     },
+     "objects": [],
+     "judgment": {
+      "capture": 53971.037619541,
+      "answers": {
+       "mode": {
+        "value": "vehicle",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": false,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 0.999
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.996
+       },
+       "car": {
+        "value": true,
+        "probability": 0.999
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 6.435637661881856e-10,
+        "B": 0.9999999989538051,
+        "C": 4.026312436472886e-10
+       },
+       "overlay": {
+        "A": 2.6130234084013746e-06,
+        "B": 0.9999973869765915
+       },
+       "banner": {
+        "A": 2.0139449284615793e-07,
+        "B": 0.999999798605507
+       },
+       "wanted": {
+        "A": 0.0008335358182408555,
+        "B": 0.9991664641817591
+       },
+       "path": {
+        "A": 0.9964321736447028,
+        "B": 0.0033776529430894634,
+        "C": 0.00019017341220774805
+       },
+       "car": {
+        "A": 0.999054640997829,
+        "B": 0.0009453590021708705
+       }
+      },
+      "duration": 0.2522895419970155,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.39527983400330413,
+      "mode": "vehicle"
+     },
+     "time": 53971.432899375,
+     "place": "unknown"
+    },
+    "recorded_plan": [
+     {
+      "name": "set_waypoint",
+      "args": {
+       "target": "away",
+       "direction": "any",
+       "distance": "far"
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     }
+    ]
+   },
+   {
+    "source": "20261113-202110",
+    "line": 5,
+    "request_id": 3,
+    "request": {
+     "events": [
+      {
+       "kind": "skill_failed",
+       "skill": {
+        "name": "set_waypoint",
+        "status": "failed",
+        "reason": "map-shift-unverified; damaged or ambiguous map pair; gameplay observed",
+        "queue": [],
+        "queue_disposition": "cleared",
+        "dropped": [
+         "drive_route",
+         "drive_route",
+         "drive_route"
+        ]
+       }
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "",
+     "banner": "",
+     "minimap": {
+      "minimap": "tilted",
+      "route": "purple",
+      "bearing": 40.13669743385902,
+      "far_bearing": 60.6319032328959,
+      "arrow": 3.8824956058469127,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+       [
+        8.0,
+        12.0
+       ],
+       [
+        12.0,
+        17.0
+       ],
+       [
+        18.0,
+        22.0
+       ],
+       [
+        26.0,
+        26.0
+       ],
+       [
+        31.0,
+        28.0
+       ],
+       [
+        37.0,
+        28.0
+       ],
+       [
+        43.0,
+        29.0
+       ],
+       [
+        50.0,
+        29.0
+       ],
+       [
+        56.0,
+        30.0
+       ],
+       [
+        61.0,
+        33.0
+       ],
+       [
+        67.0,
+        38.0
+       ],
+       [
+        73.0,
+        44.0
+       ],
+       [
+        79.0,
+        49.0
+       ],
+       [
+        85.0,
+        50.0
+       ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+       {
+        "color": "blue",
+        "x": 84.13,
+        "y": 28.27,
+        "border": false
+       }
+      ]
+     },
+     "last_skill": {
+      "name": "set_waypoint",
+      "status": "failed",
+      "reason": "map-shift-unverified; damaged or ambiguous map pair; gameplay observed",
+      "queue": [],
+      "queue_disposition": "cleared",
+      "dropped": [
+       "drive_route",
+       "drive_route",
+       "drive_route"
+      ]
+     },
+     "hud": {
+      "wanted": 0,
+      "wanted_flashing": false,
+      "health": 0.9888888888888889,
+      "armour": 0.9047619047619048,
+      "special": 1.0,
+      "screen": "game"
+     },
+     "objects": [
+      {
+       "kind": "car",
+       "box": [
+        938.493408203125,
+        368.41741943359375,
+        984.2269287109375,
+        390.1033935546875
+       ],
+       "confidence": 0.5364880561828613
+      }
+     ],
+     "judgment": {
+      "capture": 53980.750804125,
+      "answers": {
+       "mode": {
+        "value": "vehicle",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": false,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.996
+       },
+       "car": {
+        "value": true,
+        "probability": 0.996
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 4.0953448624271914e-10,
+        "B": 0.9999999993075859,
+        "C": 2.828795292277772e-10
+       },
+       "overlay": {
+        "A": 0.00017632594041115473,
+        "B": 0.9998236740595888
+       },
+       "banner": {
+        "A": 3.5116826138904046e-07,
+        "B": 0.9999996488317385
+       },
+       "wanted": {
+        "A": 0.0002751277106968269,
+        "B": 0.9997248722893031
+       },
+       "path": {
+        "A": 0.9961246444895107,
+        "B": 0.003410545996740628,
+        "C": 0.00046480951374871767
+       },
+       "car": {
+        "A": 0.9957390793381818,
+        "B": 0.004260920661818172
+       }
+      },
+      "duration": 0.23499504199571675,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.3828507910002372,
+      "mode": "vehicle"
+     },
+     "time": 53981.133654916,
+     "place": "unknown"
+    },
+    "recorded_plan": [
+     {
+      "name": "set_waypoint",
+      "args": {
+       "target": "away",
+       "direction": "any",
+       "distance": "far"
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     }
+    ]
+   },
+   {
+    "source": "20261113-202110",
+    "line": 7,
+    "request_id": 4,
+    "request": {
+     "events": [
+      {
+       "kind": "skill_failed",
+       "skill": {
+        "name": "set_waypoint",
+        "status": "failed",
+        "reason": "waypoint-not-visible-after-cross; gameplay observed",
+        "queue": [],
+        "queue_disposition": "cleared",
+        "dropped": [
+         "drive_route",
+         "drive_route",
+         "drive_route"
+        ]
+       }
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "",
+     "banner": "",
+     "minimap": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 1.000645893880602,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+     },
+     "last_skill": {
+      "name": "set_waypoint",
+      "status": "failed",
+      "reason": "waypoint-not-visible-after-cross; gameplay observed",
+      "queue": [],
+      "queue_disposition": "cleared",
+      "dropped": [
+       "drive_route",
+       "drive_route",
+       "drive_route"
+      ]
+     },
+     "hud": {
+      "wanted": 0,
+      "wanted_flashing": false,
+      "health": 0.9888888888888889,
+      "armour": 0.9285714285714286,
+      "special": 1.0,
+      "screen": "game"
+     },
+     "objects": [
+      {
+       "kind": "car",
+       "box": [
+        1039.6534423828125,
+        380.7268981933594,
+        1089.8404541015625,
+        403.9431457519531
+       ],
+       "confidence": 0.5984745621681213
+      }
+     ],
+     "judgment": {
+      "capture": 53999.315462916,
+      "answers": {
+       "mode": {
+        "value": "vehicle",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": false,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.999
+       },
+       "car": {
+        "value": true,
+        "probability": 0.998
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 0.0,
+        "B": 0.999999999868892,
+        "C": 1.311079612928653e-10
+       },
+       "overlay": {
+        "A": 1.1594130327138038e-05,
+        "B": 0.999988405869673
+       },
+       "banner": {
+        "A": 2.6119456144151995e-07,
+        "B": 0.9999997388054385
+       },
+       "wanted": {
+        "A": 4.09957974949003e-05,
+        "B": 0.9999590042025052
+       },
+       "path": {
+        "A": 0.9993545936436087,
+        "B": 0.0006078115864564794,
+        "C": 3.759476993485143e-05
+       },
+       "car": {
+        "A": 0.9975298421259056,
+        "B": 0.0024701578740944094
+       }
+      },
+      "duration": 0.29443049999827053,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.3231028750014957,
+      "mode": "vehicle"
+     },
+     "time": 53999.638565791,
+     "place": "unknown"
+    },
+    "recorded_plan": [
+     {
+      "name": "set_waypoint",
+      "args": {
+       "target": "away",
+       "direction": "any",
+       "distance": "far"
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     }
+    ]
+   },
+   {
+    "source": "20261113-202110",
+    "line": 9,
+    "request_id": 5,
+    "request": {
+     "events": [
+      {
+       "kind": "skill_failed",
+       "skill": {
+        "name": "set_waypoint",
+        "status": "failed",
+        "reason": "map-shift-unverified; damaged or ambiguous map pair; gameplay observed",
+        "queue": [],
+        "queue_disposition": "cleared",
+        "dropped": [
+         "drive_route",
+         "drive_route",
+         "drive_route"
+        ]
+       }
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "",
+     "banner": "",
+     "minimap": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 2.177937116756709,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+     },
+     "last_skill": {
+      "name": "set_waypoint",
+      "status": "failed",
+      "reason": "map-shift-unverified; damaged or ambiguous map pair; gameplay observed",
+      "queue": [],
+      "queue_disposition": "cleared",
+      "dropped": [
+       "drive_route",
+       "drive_route",
+       "drive_route"
+      ]
+     },
+     "hud": {
+      "wanted": 0,
+      "wanted_flashing": false,
+      "health": 0.9888888888888889,
+      "armour": 0.8571428571428571,
+      "special": 1.0,
+      "screen": "game"
+     },
+     "objects": [
+      {
+       "kind": "car",
+       "box": [
+        1176.8590087890625,
+        535.1868286132812,
+        1279.3887939453125,
+        716.3737182617188
+       ],
+       "confidence": 0.9016979932785034
+      }
+     ],
+     "judgment": {
+      "capture": 54012.576567041,
+      "answers": {
+       "mode": {
+        "value": "vehicle",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": false,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.996
+       },
+       "car": {
+        "value": true,
+        "probability": 0.995
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 0.0,
+        "B": 0.9999999998562579,
+        "C": 1.4374215665441465e-10
+       },
+       "overlay": {
+        "A": 4.07505691542499e-05,
+        "B": 0.9999592494308457
+       },
+       "banner": {
+        "A": 1.9879330928599732e-07,
+        "B": 0.9999998012066906
+       },
+       "wanted": {
+        "A": 6.888522200796488e-05,
+        "B": 0.9999311147779919
+       },
+       "path": {
+        "A": 0.9963677417361058,
+        "B": 0.003357230600427236,
+        "C": 0.0002750276634670327
+       },
+       "car": {
+        "A": 0.9947381664312952,
+        "B": 0.005261833568704829
+       }
+      },
+      "duration": 0.2041004589991644,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.38479075000213925,
+      "mode": "vehicle"
+     },
+     "time": 54012.961357791,
+     "place": "unknown"
+    },
+    "recorded_plan": [
+     {
+      "name": "set_waypoint",
+      "args": {
+       "target": "away",
+       "direction": "any",
+       "distance": "far"
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     }
+    ]
+   },
+   {
+    "source": "20261113-202110",
+    "line": 11,
+    "request_id": 6,
+    "request": {
+     "events": [
+      {
+       "kind": "skill_failed",
+       "skill": {
+        "name": "set_waypoint",
+        "status": "failed",
+        "reason": "map-shift-unverified; damaged or ambiguous map pair; gameplay observed",
+        "queue": [],
+        "queue_disposition": "cleared",
+        "dropped": [
+         "drive_route",
+         "drive_route",
+         "drive_route"
+        ]
+       }
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "",
+     "banner": "",
+     "minimap": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 2.6149935970312868,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+     },
+     "last_skill": {
+      "name": "set_waypoint",
+      "status": "failed",
+      "reason": "map-shift-unverified; damaged or ambiguous map pair; gameplay observed",
+      "queue": [],
+      "queue_disposition": "cleared",
+      "dropped": [
+       "drive_route",
+       "drive_route",
+       "drive_route"
+      ]
+     },
+     "hud": {
+      "wanted": 0,
+      "wanted_flashing": false,
+      "health": 0.9888888888888889,
+      "armour": 0.9047619047619048,
+      "special": 1.0,
+      "screen": "game"
+     },
+     "objects": [
+      {
+       "kind": "car",
+       "box": [
+        1139.4620361328125,
+        405.21484375,
+        1279.0426025390625,
+        528.2689819335938
+       ],
+       "confidence": 0.9251214861869812
+      }
+     ],
+     "judgment": {
+      "capture": 54024.002260208006,
+      "answers": {
+       "mode": {
+        "value": "vehicle",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": false,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.987
+       },
+       "car": {
+        "value": true,
+        "probability": 0.999
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 2.1070014721734927e-09,
+        "B": 0.9999999965813748,
+        "C": 1.3116236975987919e-09
+       },
+       "overlay": {
+        "A": 7.559838773631313e-05,
+        "B": 0.9999244016122638
+       },
+       "banner": {
+        "A": 5.568329474393959e-07,
+        "B": 0.9999994431670526
+       },
+       "wanted": {
+        "A": 7.3217710437699e-05,
+        "B": 0.9999267822895623
+       },
+       "path": {
+        "A": 0.9866953217018419,
+        "B": 0.01276058726159625,
+        "C": 0.0005440910365616806
+       },
+       "car": {
+        "A": 0.9986998829277048,
+        "B": 0.001300117072295168
+       }
+      },
+      "duration": 0.2542626670037862,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.45598595799674513,
+      "mode": "vehicle"
+     },
+     "time": 54024.458246166,
+     "place": "unknown"
+    },
+    "recorded_plan": [
+     {
+      "name": "set_waypoint",
+      "args": {
+       "target": "away",
+       "direction": "any",
+       "distance": "far"
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     }
+    ]
+   },
+   {
+    "source": "20261113-202110",
+    "line": 13,
+    "request_id": 7,
+    "request": {
+     "events": [
+      {
+       "kind": "skill_failed",
+       "skill": {
+        "name": "set_waypoint",
+        "status": "failed",
+        "reason": "map-shift-unverified; damaged or ambiguous map pair; gameplay observed",
+        "queue": [],
+        "queue_disposition": "cleared",
+        "dropped": [
+         "drive_route",
+         "drive_route",
+         "drive_route"
+        ]
+       }
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "",
+     "banner": "",
+     "minimap": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 2.7486435506528437,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+     },
+     "last_skill": {
+      "name": "set_waypoint",
+      "status": "failed",
+      "reason": "map-shift-unverified; damaged or ambiguous map pair; gameplay observed",
+      "queue": [],
+      "queue_disposition": "cleared",
+      "dropped": [
+       "drive_route",
+       "drive_route",
+       "drive_route"
+      ]
+     },
+     "hud": {
+      "wanted": 0,
+      "wanted_flashing": false,
+      "health": 0.9888888888888889,
+      "armour": 0.9047619047619048,
+      "special": 1.0,
+      "screen": "game"
+     },
+     "objects": [
+      {
+       "kind": "car",
+       "box": [
+        1178.213134765625,
+        398.9618225097656,
+        1272.41259765625,
+        465.2356872558594
+       ],
+       "confidence": 0.8670845627784729
+      }
+     ],
+     "judgment": {
+      "capture": 54037.375657125005,
+      "answers": {
+       "mode": {
+        "value": "vehicle",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": false,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.997
+       },
+       "car": {
+        "value": true,
+        "probability": 0.996
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 2.8629453266034987e-10,
+        "B": 0.9999999994523134,
+        "C": 2.6139197885252745e-10
+       },
+       "overlay": {
+        "A": 0.0001158614047158514,
+        "B": 0.9998841385952841
+       },
+       "banner": {
+        "A": 3.387510589346241e-07,
+        "B": 0.999999661248941
+       },
+       "wanted": {
+        "A": 0.0002983335571699486,
+        "B": 0.99970166644283
+       },
+       "path": {
+        "A": 0.9971903826905779,
+        "B": 0.0025496133170249476,
+        "C": 0.0002600039923972133
+       },
+       "car": {
+        "A": 0.9963956393397052,
+        "B": 0.003604360660294782
+       }
+      },
+      "duration": 0.188733000002685,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.43700154099497013,
+      "mode": "vehicle"
+     },
+     "time": 54037.812658666,
+     "place": "unknown"
+    },
+    "recorded_plan": [
+     {
+      "name": "set_waypoint",
+      "args": {
+       "target": "away",
+       "direction": "any",
+       "distance": "far"
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     }
+    ]
+   }
+  ],
+  "foot_after_map": [
+   {
+    "source": "20261113-195746",
+    "line": 512,
+    "request_id": 173,
+    "request": {
+     "events": [
+      {
+       "kind": "plan_ending",
+       "remaining_seconds": 0.02698854200571077,
+       "steps": [
+        {
+         "name": "walk",
+         "remaining_seconds": 0.02698854200571077
+        }
+       ]
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "",
+     "banner": "",
+     "minimap": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 0.7998095658584248,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+     },
+     "last_skill": {
+      "name": "walk",
+      "args": {
+       "duration": 3,
+       "x": 0,
+       "y": -1,
+       "sprint": true
+      },
+      "status": "running",
+      "reason": "foot:state=go;attempts=0;motion=going",
+      "queue": []
+     },
+     "hud": {
+      "wanted": 0,
+      "wanted_flashing": false,
+      "health": 0.9888888888888889,
+      "armour": 0.9523809523809523,
+      "special": 1.0,
+      "screen": "game"
+     },
+     "objects": [],
+     "judgment": {
+      "capture": 52569.169721791,
+      "answers": {
+       "mode": {
+        "value": "foot",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": false,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.998
+       },
+       "car": {
+        "value": true,
+        "probability": 0.999
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 0.9999999918368362,
+        "B": 5.281794084759509e-09,
+        "C": 2.881369865433349e-09
+       },
+       "overlay": {
+        "A": 6.276815054147876e-05,
+        "B": 0.9999372318494586
+       },
+       "banner": {
+        "A": 3.6128861666629453e-06,
+        "B": 0.9999963871138334
+       },
+       "wanted": {
+        "A": 0.0003155114575089125,
+        "B": 0.999684488542491
+       },
+       "path": {
+        "A": 0.9984397654072282,
+        "B": 0.001242584924008862,
+        "C": 0.0003176496687628345
+       },
+       "car": {
+        "A": 0.9993903404342273,
+        "B": 0.0006096595657726824
+       }
+      },
+      "duration": 0.18363879199750954,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.3542620000007446,
+      "mode": "foot"
+     },
+     "time": 52569.523983791,
+     "place": "street"
+    },
+    "recorded_plan": [
+     {
+      "name": "set_waypoint",
+      "args": {
+       "duration": 45,
+       "target": "mission",
+       "instance": 0
+      }
+     }
+    ]
+   },
+   {
+    "source": "20261113-195746",
+    "line": 515,
+    "request_id": 174,
+    "request": {
+     "events": [
+      {
+       "kind": "skill_ended",
+       "skill": {
+        "name": "set_waypoint",
+        "status": "done",
+        "reason": "waypoint set: Michael (distance not read); gameplay observed; places: Immobilie: The Hen House: 80.000 $, Ammu-Nation, Ammu-Nation mit Schießstand, Beekers Garage, Binco Bekleidung, Darts, Discount Store, Federal Investigation Bureau B, Garage in Vinewood B, Geländerennen Motorra/Quad |, Golf, Hangar am LS International (*, Kfz-Abschleppplatz, Kino, Immobilie: Hookies: 600.000 $, Autowaschanlage, Fahrgeschäft, Flugschule, Friseursalon, Garage in Vinewood, Geländerennen Motorrad/Quad, Federal Investigation Bureau, Hangar am LS International x, Kfz-Abschleppplatz F, Hangar am LS International *, Immobilie: Hookies: 600.000 $ s, kfz-Abschleppplaz A, Kfz-Abschleppplatz Fi, Garage in Vinewood *, Hangar am LS International, Immobilie: Hookies: 600.000 $ 8, Darts o, Landeplatz von Vespucci, Kfz-Abschleppplatz A, Los Santos Customs, Ammú-Nation mit Schießstand O, Kfz-Abschleppplatz Al, Landeplatz von Vespucci •, Michael, count Store T",
+        "queue": [],
+        "queue_disposition": "empty",
+        "dropped": []
+       }
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "",
+     "banner": "",
+     "minimap": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -0.19624732010160528,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+     },
+     "last_skill": {
+      "name": "set_waypoint",
+      "status": "done",
+      "reason": "waypoint set: Michael (distance not read); gameplay observed; places: Immobilie: The Hen House: 80.000 $, Ammu-Nation, Ammu-Nation mit Schießstand, Beekers Garage, Binco Bekleidung, Darts, Discount Store, Federal Investigation Bureau B, Garage in Vinewood B, Geländerennen Motorra/Quad |, Golf, Hangar am LS International (*, Kfz-Abschleppplatz, Kino, Immobilie: Hookies: 600.000 $, Autowaschanlage, Fahrgeschäft, Flugschule, Friseursalon, Garage in Vinewood, Geländerennen Motorrad/Quad, Federal Investigation Bureau, Hangar am LS International x, Kfz-Abschleppplatz F, Hangar am LS International *, Immobilie: Hookies: 600.000 $ s, kfz-Abschleppplaz A, Kfz-Abschleppplatz Fi, Garage in Vinewood *, Hangar am LS International, Immobilie: Hookies: 600.000 $ 8, Darts o, Landeplatz von Vespucci, Kfz-Abschleppplatz A, Los Santos Customs, Ammú-Nation mit Schießstand O, Kfz-Abschleppplatz Al, Landeplatz von Vespucci •, Michael, count Store T",
+      "queue": [],
+      "queue_disposition": "empty",
+      "dropped": []
+     },
+     "hud": {
+      "wanted": 0,
+      "wanted_flashing": false,
+      "health": null,
+      "armour": 0.9047619047619048,
+      "special": 1.0,
+      "screen": "game"
+     },
+     "objects": [],
+     "judgment": {
+      "capture": 52591.021119458004,
+      "answers": {
+       "mode": {
+        "value": "foot",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": false,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.999
+       },
+       "car": {
+        "value": false,
+        "probability": 1.0
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 0.9999999910323575,
+        "B": 6.634384036484568e-09,
+        "C": 2.333258592244057e-09
+       },
+       "overlay": {
+        "A": 8.755487585302252e-08,
+        "B": 0.9999999124451241
+       },
+       "banner": {
+        "A": 5.436280564860118e-07,
+        "B": 0.9999994563719434
+       },
+       "wanted": {
+        "A": 0.00015252949952229879,
+        "B": 0.9998474705004777
+       },
+       "path": {
+        "A": 0.9990555185267057,
+        "B": 0.00022353446996372354,
+        "C": 0.0007209470033304446
+       },
+       "car": {
+        "A": 0.00010032452970245799,
+        "B": 0.9998996754702976
+       }
+      },
+      "duration": 0.1816172920007375,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.6000104579943581,
+      "mode": "unknown"
+     },
+     "time": 52591.621129916,
+     "place": "unknown"
+    },
+    "recorded_plan": [
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     }
+    ]
+   },
+   {
+    "source": "20261113-195746",
+    "line": 517,
+    "request_id": 175,
+    "request": {
+     "events": [
+      {
+       "kind": "skill_failed",
+       "skill": {
+        "name": "drive_route",
+        "route_seen": false,
+        "status": "failed",
+        "reason": "route-lost-unknown",
+        "queue": [],
+        "queue_disposition": "empty",
+        "dropped": []
+       }
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "",
+     "banner": "",
+     "minimap": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -0.16892269818748673,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+     },
+     "last_skill": {
+      "name": "drive_route",
+      "route_seen": false,
+      "status": "failed",
+      "reason": "route-lost-unknown",
+      "queue": [],
+      "queue_disposition": "empty",
+      "dropped": []
+     },
+     "hud": {
+      "wanted": 0,
+      "wanted_flashing": false,
+      "health": 0.9888888888888889,
+      "armour": 0.9047619047619048,
+      "special": 1.0,
+      "screen": "game"
+     },
+     "objects": [],
+     "judgment": {
+      "capture": 52592.201505332996,
+      "answers": {
+       "mode": {
+        "value": "foot",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": false,
+        "probability": 0.999
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.997
+       },
+       "car": {
+        "value": false,
+        "probability": 1.0
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 0.9999999961148252,
+        "B": 1.3142495693779317e-09,
+        "C": 2.5709251972711176e-09
+       },
+       "overlay": {
+        "A": 0.0013639574861983412,
+        "B": 0.9986360425138016
+       },
+       "banner": {
+        "A": 4.867136083052225e-06,
+        "B": 0.9999951328639171
+       },
+       "wanted": {
+        "A": 7.507108645655496e-05,
+        "B": 0.9999249289135435
+       },
+       "path": {
+        "A": 0.9968874349001893,
+        "B": 0.0016696897985042907,
+        "C": 0.0014428753013062958
+       },
+       "car": {
+        "A": 4.116010232590397e-05,
+        "B": 0.9999588398976741
+       }
+      },
+      "duration": 0.22382975000073202,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.39454262500657933,
+      "mode": "unknown"
+     },
+     "time": 52592.596047958,
+     "place": "unknown"
+    },
+    "recorded_plan": [
+     {
+      "name": "drive_on",
+      "args": {
+       "duration": 30
+      }
+     },
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     }
+    ]
+   },
+   {
+    "source": "20261113-195746",
+    "line": 519,
+    "request_id": 176,
+    "request": {
+     "events": [
+      {
+       "kind": "skill_failed",
+       "skill": {
+        "name": "drive_on",
+        "status": "failed",
+        "reason": "on-foot",
+        "queue": [],
+        "queue_disposition": "cleared",
+        "dropped": [
+         "drive_route"
+        ]
+       }
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "",
+     "banner": "",
+     "minimap": {
+      "minimap": "tilted",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -0.16892269818748673,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+     },
+     "last_skill": {
+      "name": "drive_on",
+      "status": "failed",
+      "reason": "on-foot",
+      "queue": [],
+      "queue_disposition": "cleared",
+      "dropped": [
+       "drive_route"
+      ]
+     },
+     "hud": {
+      "wanted": 0,
+      "wanted_flashing": false,
+      "health": 0.9888888888888889,
+      "armour": 0.9047619047619048,
+      "special": 1.0,
+      "screen": "game"
+     },
+     "objects": [],
+     "judgment": {
+      "capture": 52595.355854083005,
+      "answers": {
+       "mode": {
+        "value": "foot",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": false,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.997
+       },
+       "car": {
+        "value": false,
+        "probability": 1.0
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 0.9999999946028901,
+        "B": 2.0022385538254976e-09,
+        "C": 3.394871231920752e-09
+       },
+       "overlay": {
+        "A": 0.00043141868530330156,
+        "B": 0.9995685813146968
+       },
+       "banner": {
+        "A": 2.6578244179082854e-06,
+        "B": 0.999997342175582
+       },
+       "wanted": {
+        "A": 8.313181018838096e-05,
+        "B": 0.9999168681898115
+       },
+       "path": {
+        "A": 0.996702763803425,
+        "B": 0.0013846571930007279,
+        "C": 0.0019125790035741542
+       },
+       "car": {
+        "A": 3.7580036950021685e-05,
+        "B": 0.9999624199630499
+       }
+      },
+      "duration": 0.21249116599938134,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.446417624996684,
+      "mode": "foot"
+     },
+     "time": 52595.802271708,
+     "place": "street"
+    },
+    "recorded_plan": [
+     {
+      "name": "walk_road",
+      "args": {
+       "duration": 15
+      }
+     }
+    ]
+   }
+  ],
+  "arrival_setup": [
+   {
+    "source": "20261113-183223",
+    "line": 3,
+    "request_id": 2,
+    "request": {
+     "events": [
+      {
+       "kind": "plan_ending",
+       "remaining_seconds": 1,
+       "steps": [
+        {
+         "name": "wait",
+         "remaining_seconds": 1
+        }
+       ]
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "",
+     "banner": "",
+     "minimap": {
+      "minimap": "tilted",
+      "route": "purple",
+      "bearing": -15.464481479311802,
+      "far_bearing": -8.418188731991044,
+      "arrow": -7.809998611174251,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+       [
+        -7.0,
+        12.0
+       ],
+       [
+        -7.0,
+        17.0
+       ],
+       [
+        -8.0,
+        24.0
+       ],
+       [
+        -8.0,
+        30.0
+       ],
+       [
+        -8.0,
+        35.0
+       ],
+       [
+        -9.0,
+        42.0
+       ],
+       [
+        -9.0,
+        48.0
+       ],
+       [
+        -9.0,
+        54.0
+       ],
+       [
+        -9.0,
+        60.0
+       ],
+       [
+        -7.0,
+        65.0
+       ],
+       [
+        -6.0,
+        71.0
+       ],
+       [
+        -5.0,
+        78.0
+       ],
+       [
+        -3.0,
+        84.0
+       ],
+       [
+        0.0,
+        89.0
+       ]
+      ],
+      "gps_distance": 2620,
+      "gps_arrow": null,
+      "gps_speed": 8.745220955921527e-13,
+      "gps_time": 47386.945212333,
+      "blips": []
+     },
+     "last_skill": {
+      "name": "start_camera",
+      "status": "done",
+      "reason": "view-unknown",
+      "queue": [
+       "wait"
+      ],
+      "queue_disposition": "kept",
+      "dropped": [],
+      "pending": [
+       "wait"
+      ]
+     },
+     "hud": {
+      "wanted": 0,
+      "wanted_flashing": false,
+      "health": null,
+      "armour": 0.0,
+      "special": 1.0,
+      "screen": "game"
+     },
+     "objects": [
+      {
+       "kind": "truck",
+       "box": [
+        172.51980590820312,
+        251.92242431640625,
+        394.4162292480469,
+        391.44500732421875
+       ],
+       "confidence": 0.9311861395835876
+      },
+      {
+       "kind": "truck",
+       "box": [
+        1.0496978759765625,
+        375.1550598144531,
+        422.5478515625,
+        705.6988525390625
+       ],
+       "confidence": 0.8909371495246887
+      },
+      {
+       "kind": "car",
+       "box": [
+        452.3711242675781,
+        350.7603454589844,
+        505.3875427246094,
+        385.9193420410156
+       ],
+       "confidence": 0.8326026797294617
+      },
+      {
+       "kind": "car",
+       "box": [
+        508.0174865722656,
+        332.21893310546875,
+        540.355224609375,
+        363.34356689453125
+       ],
+       "confidence": 0.5206547975540161
+      }
+     ],
+     "judgment": {
+      "capture": 47386.945212333,
+      "answers": {
+       "mode": {
+        "value": "vehicle",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": false,
+        "probability": 0.978
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.998
+       },
+       "car": {
+        "value": true,
+        "probability": 0.993
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 1.722627823997738e-10,
+        "B": 0.9999999996285946,
+        "C": 1.9914259293860817e-10
+       },
+       "overlay": {
+        "A": 0.022117940557784294,
+        "B": 0.9778820594422157
+       },
+       "banner": {
+        "A": 3.522233476402008e-07,
+        "B": 0.9999996477766523
+       },
+       "wanted": {
+        "A": 3.585470151860118e-05,
+        "B": 0.9999641452984814
+       },
+       "path": {
+        "A": 0.9982365392068541,
+        "B": 0.0015464937340874051,
+        "C": 0.00021696705905850468
+       },
+       "car": {
+        "A": 0.9932671424423608,
+        "B": 0.00673285755763923
+       }
+      },
+      "duration": 0.24258483299490763,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.2675362500012852,
+      "mode": "vehicle"
+     },
+     "time": 47387.212748583,
+     "place": "unknown"
+    },
+    "recorded_plan": [
+     {
+      "name": "set_waypoint",
+      "args": {
+       "duration": 45,
+       "target": "mission",
+       "instance": 0
+      }
+     }
+    ]
+   },
+   {
+    "source": "20261113-183223",
+    "line": 5,
+    "request_id": 3,
+    "request": {
+     "events": [
+      {
+       "kind": "skill_ended",
+       "skill": {
+        "name": "set_waypoint",
+        "status": "done",
+        "reason": "waypoint set: Fremde und Freaks (1856m); gameplay observed; places: Immobilie: Hookies: 600.000 $, Ammu-Nation, Ammu-Nation mit Schießstand, Autowaschanlage, Beekers Garage, Binco Bekleidung, Cargobob HS, Darts O, Discount Store, Fahrgeschäft, Federal Investigation Bureau B, Flugschule, Fremde und Freaks, Friseursalon, Garage in Pillbox Hill, Geländerennen Motorrad/Quad, Golf, Immobilie: Filmtheater \"Ten Cent\": 20.000.000 $, Immobilie: Filmtheater \"Ten Cent\": 20.000.000 $ (s), Darts o, Cargobob, Federal Investigation Bureau, Darts, Immobilie: Filmtheater \"Ten Cent\": 20.000.000 $ s, Hangar bei Sandy Shores, Immobilie: Hookies: 600.000 $ s",
+        "queue": [],
+        "queue_disposition": "empty",
+        "dropped": []
+       }
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "",
+     "banner": "",
+     "minimap": {
+      "minimap": "tilted",
+      "route": "purple",
+      "bearing": -16.159673285528623,
+      "far_bearing": -8.418188731991044,
+      "arrow": -8.429360044010764,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+       [
+        -6.0,
+        12.0
+       ],
+       [
+        -7.0,
+        17.0
+       ],
+       [
+        -7.0,
+        23.0
+       ],
+       [
+        -8.0,
+        30.0
+       ],
+       [
+        -8.0,
+        35.0
+       ],
+       [
+        -9.0,
+        42.0
+       ],
+       [
+        -9.0,
+        48.0
+       ],
+       [
+        -9.0,
+        54.0
+       ],
+       [
+        -9.0,
+        60.0
+       ],
+       [
+        -7.0,
+        66.0
+       ],
+       [
+        -7.0,
+        72.0
+       ],
+       [
+        -5.0,
+        77.0
+       ],
+       [
+        -3.0,
+        84.0
+       ],
+       [
+        0.0,
+        88.0
+       ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+       {
+        "color": "blue",
+        "x": 85.5,
+        "y": 83.0,
+        "border": false
+       },
+       {
+        "color": "blue",
+        "x": 85.5,
+        "y": 76.08,
+        "border": false
+       }
+      ]
+     },
+     "last_skill": {
+      "name": "set_waypoint",
+      "status": "done",
+      "reason": "waypoint set: Fremde und Freaks (1856m); gameplay observed; places: Immobilie: Hookies: 600.000 $, Ammu-Nation, Ammu-Nation mit Schießstand, Autowaschanlage, Beekers Garage, Binco Bekleidung, Cargobob HS, Darts O, Discount Store, Fahrgeschäft, Federal Investigation Bureau B, Flugschule, Fremde und Freaks, Friseursalon, Garage in Pillbox Hill, Geländerennen Motorrad/Quad, Golf, Immobilie: Filmtheater \"Ten Cent\": 20.000.000 $, Immobilie: Filmtheater \"Ten Cent\": 20.000.000 $ (s), Darts o, Cargobob, Federal Investigation Bureau, Darts, Immobilie: Filmtheater \"Ten Cent\": 20.000.000 $ s, Hangar bei Sandy Shores, Immobilie: Hookies: 600.000 $ s",
+      "queue": [],
+      "queue_disposition": "empty",
+      "dropped": []
+     },
+     "hud": {
+      "wanted": 0,
+      "wanted_flashing": false,
+      "health": null,
+      "armour": 0.0,
+      "special": 1.0,
+      "screen": "game"
+     },
+     "objects": [
+      {
+       "kind": "car",
+       "box": [
+        447.6548156738281,
+        342.6776428222656,
+        509.2123107910156,
+        389.3411560058594
+       ],
+       "confidence": 0.9131219387054443
+      },
+      {
+       "kind": "car",
+       "box": [
+        327.7875671386719,
+        356.30517578125,
+        397.1177673339844,
+        392.88519287109375
+       ],
+       "confidence": 0.87836754322052
+      },
+      {
+       "kind": "truck",
+       "box": [
+        401.3365783691406,
+        298.7787170410156,
+        467.4173278808594,
+        367.2681579589844
+       ],
+       "confidence": 0.8265770673751831
+      }
+     ],
+     "judgment": {
+      "capture": 47405.614301125,
+      "answers": {
+       "mode": {
+        "value": "vehicle",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": false,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 1.0
+       },
+       "car": {
+        "value": true,
+        "probability": 0.995
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 0.0,
+        "B": 0.9999999997543221,
+        "C": 2.456778477421462e-10
+       },
+       "overlay": {
+        "A": 6.398701064456203e-07,
+        "B": 0.9999993601298935
+       },
+       "banner": {
+        "A": 1.3621924737486193e-07,
+        "B": 0.9999998637807527
+       },
+       "wanted": {
+        "A": 0.00011221294252686744,
+        "B": 0.9998877870574732
+       },
+       "path": {
+        "A": 0.9995949928348754,
+        "B": 0.0003574893132790753,
+        "C": 4.7517851845521855e-05
+       },
+       "car": {
+        "A": 0.9950823758206397,
+        "B": 0.0049176241793603285
+       }
+      },
+      "duration": 0.33478795800328953,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.3547581659950083,
+      "mode": "vehicle"
+     },
+     "time": 47405.969059291,
+     "place": "unknown"
+    },
+    "recorded_plan": [
+     {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      }
+     }
+    ]
+   }
+  ],
+  "unclosed_map": [
+   {
+    "source": "20261113-202400",
+    "line": 3,
+    "request_id": 2,
+    "request": {
+     "events": [
+      {
+       "kind": "plan_ending",
+       "remaining_seconds": 4.618055375001859,
+       "steps": [
+        {
+         "name": "drive_route",
+         "remaining_seconds": 4.618055375001859
+        }
+       ]
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "",
+     "banner": "",
+     "minimap": {
+      "minimap": "tilted",
+      "route": "purple",
+      "bearing": 11.323636266948684,
+      "far_bearing": -0.3373608514808273,
+      "arrow": -0.20114733944211594,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+       [
+        -2.0,
+        13.0
+       ],
+       [
+        -3.0,
+        18.0
+       ],
+       [
+        0.0,
+        24.0
+       ],
+       [
+        5.0,
+        30.0
+       ],
+       [
+        5.0,
+        37.0
+       ],
+       [
+        2.0,
+        43.0
+       ],
+       [
+        -1.0,
+        49.0
+       ],
+       [
+        -1.0,
+        55.0
+       ],
+       [
+        0.0,
+        60.0
+       ],
+       [
+        5.0,
+        67.0
+       ],
+       [
+        5.0,
+        73.0
+       ],
+       [
+        0.0,
+        79.0
+       ],
+       [
+        -3.0,
+        84.0
+       ],
+       [
+        -5.0,
+        89.0
+       ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+     },
+     "last_skill": {
+      "name": "drive_route",
+      "args": {
+       "duration": 120
+      },
+      "route_seen": true,
+      "status": "running",
+      "reason": null,
+      "queue": []
+     },
+     "hud": {
+      "wanted": 0,
+      "wanted_flashing": false,
+      "health": 0.9888888888888889,
+      "armour": 0.7142857142857143,
+      "special": 1.0,
+      "screen": "game"
+     },
+     "objects": [],
+     "judgment": {
+      "capture": 54439.231891791,
+      "answers": {
+       "mode": {
+        "value": "vehicle",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": false,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 0.999
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.999
+       },
+       "car": {
+        "value": true,
+        "probability": 0.999
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 8.413612487256082e-10,
+        "B": 0.9999999984572789,
+        "C": 7.013598647115249e-10
+       },
+       "overlay": {
+        "A": 2.3106023482465874e-06,
+        "B": 0.9999976893976517
+       },
+       "banner": {
+        "A": 1.7178877420013843e-07,
+        "B": 0.9999998282112259
+       },
+       "wanted": {
+        "A": 0.0007378735084110766,
+        "B": 0.999262126491589
+       },
+       "path": {
+        "A": 0.9989984701101435,
+        "B": 0.0009481460259531097,
+        "C": 5.3383863903374104e-05
+       },
+       "car": {
+        "A": 0.9985903455125542,
+        "B": 0.001409654487445766
+       }
+      },
+      "duration": 0.25740195799880894,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.32146979199751513,
+      "mode": "vehicle"
+     },
+     "time": 54439.553361583,
+     "place": "unknown"
+    }
+   },
+   {
+    "source": "20261113-202400",
+    "line": 5,
+    "request_id": 3,
+    "request": {
+     "events": [
+      {
+       "kind": "skill_failed",
+       "skill": {
+        "name": "set_waypoint",
+        "status": "failed",
+        "reason": "map-shift-unverified; damaged or ambiguous map pair; gameplay observed",
+        "queue": [],
+        "queue_disposition": "cleared",
+        "dropped": [
+         "drive_route",
+         "drive_route",
+         "drive_route"
+        ]
+       }
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "",
+     "banner": "",
+     "minimap": {
+      "minimap": "tilted",
+      "route": "purple",
+      "bearing": -29.148071845713044,
+      "far_bearing": -22.28312885614237,
+      "arrow": 4.853505627663878,
+      "corrupt": false,
+      "confidence": 1.0,
+      "path": [
+       [
+        -3.0,
+        13.0
+       ],
+       [
+        -6.0,
+        18.0
+       ],
+       [
+        -13.0,
+        24.0
+       ],
+       [
+        -18.0,
+        30.0
+       ],
+       [
+        -19.0,
+        37.0
+       ],
+       [
+        -22.0,
+        43.0
+       ],
+       [
+        -23.0,
+        49.0
+       ],
+       [
+        -21.0,
+        54.0
+       ],
+       [
+        -21.0,
+        61.0
+       ],
+       [
+        -25.0,
+        67.0
+       ],
+       [
+        -32.0,
+        72.0
+       ],
+       [
+        -39.0,
+        76.0
+       ],
+       [
+        -42.0,
+        82.0
+       ],
+       [
+        -39.0,
+        87.0
+       ]
+      ],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+     },
+     "last_skill": {
+      "name": "set_waypoint",
+      "status": "failed",
+      "reason": "map-shift-unverified; damaged or ambiguous map pair; gameplay observed",
+      "queue": [],
+      "queue_disposition": "cleared",
+      "dropped": [
+       "drive_route",
+       "drive_route",
+       "drive_route"
+      ]
+     },
+     "hud": {
+      "wanted": 0,
+      "wanted_flashing": false,
+      "health": null,
+      "armour": 0.9047619047619048,
+      "special": 0.7142857142857143,
+      "screen": "game"
+     },
+     "objects": [],
+     "judgment": {
+      "capture": 54453.494935875,
+      "answers": {
+       "mode": {
+        "value": "vehicle",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": false,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.997
+       },
+       "car": {
+        "value": true,
+        "probability": 0.999
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 2.792258954478065e-10,
+        "B": 0.9999999993973316,
+        "C": 3.2344242257252617e-10
+       },
+       "overlay": {
+        "A": 1.596652896368719e-05,
+        "B": 0.9999840334710364
+       },
+       "banner": {
+        "A": 2.437798571300508e-07,
+        "B": 0.9999997562201429
+       },
+       "wanted": {
+        "A": 5.719424961232046e-05,
+        "B": 0.9999428057503877
+       },
+       "path": {
+        "A": 0.9972487442890681,
+        "B": 0.0025497625357812615,
+        "C": 0.00020149317515068458
+       },
+       "car": {
+        "A": 0.999163126157145,
+        "B": 0.0008368738428550552
+       }
+      },
+      "duration": 0.21628770900133532,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.24812712499988265,
+      "mode": "vehicle"
+     },
+     "time": 54453.743063,
+     "place": "unknown"
+    }
+   },
+   {
+    "source": "20261113-202400",
+    "line": 7,
+    "request_id": 4,
+    "request": {
+     "events": [
+      {
+       "kind": "skill_failed",
+       "skill": {
+        "name": "set_waypoint",
+        "status": "failed",
+        "reason": "map-picture-missing-or-damaged; gameplay not observed after 3 exits",
+        "queue": [],
+        "queue_disposition": "cleared",
+        "dropped": [
+         "drive_route",
+         "drive_route",
+         "drive_route"
+        ]
+       }
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "Markierung wählen oga Interessanter Ort Zoomen L2 R2",
+     "banner": "",
+     "minimap": {
+      "minimap": "none",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": null,
+      "corrupt": true,
+      "confidence": 0.0,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+     },
+     "last_skill": {
+      "name": "set_waypoint",
+      "status": "failed",
+      "reason": "map-picture-missing-or-damaged; gameplay not observed after 3 exits",
+      "queue": [],
+      "queue_disposition": "cleared",
+      "dropped": [
+       "drive_route",
+       "drive_route",
+       "drive_route"
+      ]
+     },
+     "hud": {
+      "wanted": null,
+      "wanted_flashing": false,
+      "health": null,
+      "armour": null,
+      "special": null,
+      "screen": "map"
+     },
+     "objects": [],
+     "judgment": {
+      "capture": 54473.299873332995,
+      "answers": {
+       "mode": {
+        "value": "vehicle",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": true,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.971
+       },
+       "car": {
+        "value": true,
+        "probability": 0.998
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 5.1256934853426745e-09,
+        "B": 0.9999999931371217,
+        "C": 1.7371847273083083e-09
+       },
+       "overlay": {
+        "A": 0.999999812221017,
+        "B": 1.8777898304955738e-07
+       },
+       "banner": {
+        "A": 4.001545669828066e-08,
+        "B": 0.9999999599845433
+       },
+       "wanted": {
+        "A": 0.0003884335252458909,
+        "B": 0.9996115664747541
+       },
+       "path": {
+        "A": 0.9708076743026316,
+        "B": 0.023905973834847407,
+        "C": 0.0052863518625210415
+       },
+       "car": {
+        "A": 0.9976264685101108,
+        "B": 0.002373531489889053
+       }
+      },
+      "duration": 0.26434229100414086,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.3568831670054351,
+      "mode": null
+     },
+     "time": 54473.6567565,
+     "place": "unknown"
+    }
+   },
+   {
+    "source": "20261113-202400",
+    "line": 9,
+    "request_id": 5,
+    "request": {
+     "events": [
+      {
+       "kind": "skill_failed",
+       "skill": {
+        "name": "set_waypoint",
+        "status": "failed",
+        "reason": "start-screen-unverified; start from visible gameplay",
+        "queue": [],
+        "queue_disposition": "cleared",
+        "dropped": [
+         "drive_route",
+         "drive_route",
+         "drive_route"
+        ]
+       }
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "Markierung wählen oga Interessanter Ort Zoomen L2 R2",
+     "banner": "",
+     "minimap": {
+      "minimap": "none",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": null,
+      "corrupt": true,
+      "confidence": 0.0,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+     },
+     "last_skill": {
+      "name": "set_waypoint",
+      "status": "failed",
+      "reason": "start-screen-unverified; start from visible gameplay",
+      "queue": [],
+      "queue_disposition": "cleared",
+      "dropped": [
+       "drive_route",
+       "drive_route",
+       "drive_route"
+      ]
+     },
+     "hud": {
+      "wanted": null,
+      "wanted_flashing": false,
+      "health": null,
+      "armour": null,
+      "special": null,
+      "screen": "map"
+     },
+     "objects": [],
+     "judgment": {
+      "capture": 54475.47090075,
+      "answers": {
+       "mode": {
+        "value": "vehicle",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": true,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.978
+       },
+       "car": {
+        "value": true,
+        "probability": 0.998
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 8.062839792609475e-09,
+        "B": 0.999999989107191,
+        "C": 2.8299691939153025e-09
+       },
+       "overlay": {
+        "A": 0.9999998494544515,
+        "B": 1.5054554852408867e-07
+       },
+       "banner": {
+        "A": 3.6717952347059617e-08,
+        "B": 0.9999999632820475
+       },
+       "wanted": {
+        "A": 0.0002243676868091849,
+        "B": 0.9997756323131909
+       },
+       "path": {
+        "A": 0.9783231096240301,
+        "B": 0.018556868562134912,
+        "C": 0.003120021813834979
+       },
+       "car": {
+        "A": 0.998450078700212,
+        "B": 0.0015499212997880177
+       }
+      },
+      "duration": 0.2640036250013509,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.2841116659983527,
+      "mode": null
+     },
+     "time": 54475.755012416,
+     "place": "unknown"
+    }
+   },
+   {
+    "source": "20261113-202400",
+    "line": 11,
+    "request_id": 6,
+    "request": {
+     "events": [
+      {
+       "kind": "skill_failed",
+       "skill": {
+        "name": "set_waypoint",
+        "status": "failed",
+        "reason": "start-screen-unverified; start from visible gameplay",
+        "queue": [],
+        "queue_disposition": "cleared",
+        "dropped": [
+         "drive_route",
+         "drive_route",
+         "drive_route"
+        ]
+       }
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "Markierung wählen oga Interessanter Ort Zoomen L2 R2",
+     "banner": "",
+     "minimap": {
+      "minimap": "none",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": null,
+      "corrupt": true,
+      "confidence": 0.0,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+     },
+     "last_skill": {
+      "name": "set_waypoint",
+      "status": "failed",
+      "reason": "start-screen-unverified; start from visible gameplay",
+      "queue": [],
+      "queue_disposition": "cleared",
+      "dropped": [
+       "drive_route",
+       "drive_route",
+       "drive_route"
+      ]
+     },
+     "hud": {
+      "wanted": null,
+      "wanted_flashing": false,
+      "health": null,
+      "armour": null,
+      "special": null,
+      "screen": "map"
+     },
+     "objects": [],
+     "judgment": {
+      "capture": 54477.603971125,
+      "answers": {
+       "mode": {
+        "value": "vehicle",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": true,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.975
+       },
+       "car": {
+        "value": true,
+        "probability": 0.999
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 6.516033477118917e-09,
+        "B": 0.9999999914595817,
+        "C": 2.0243847523742113e-09
+       },
+       "overlay": {
+        "A": 0.9999998300905468,
+        "B": 1.6990945322018234e-07
+       },
+       "banner": {
+        "A": 2.8567388596688503e-08,
+        "B": 0.9999999714326114
+       },
+       "wanted": {
+        "A": 0.00016705840563292163,
+        "B": 0.999832941594367
+       },
+       "path": {
+        "A": 0.9751149899631459,
+        "B": 0.020895950881363815,
+        "C": 0.003989059155490151
+       },
+       "car": {
+        "A": 0.9989902073869202,
+        "B": 0.0010097926130798302
+       }
+      },
+      "duration": 0.19962745800148696,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.2522333750021062,
+      "mode": null
+     },
+     "time": 54477.8562045,
+     "place": "unknown"
+    }
+   },
+   {
+    "source": "20261113-202400",
+    "line": 33,
+    "request_id": 17,
+    "request": {
+     "events": [
+      {
+       "kind": "skill_failed",
+       "skill": {
+        "name": "set_waypoint",
+        "status": "failed",
+        "reason": "start-screen-unverified; start from visible gameplay",
+        "queue": [],
+        "queue_disposition": "cleared",
+        "dropped": [
+         "drive_route",
+         "drive_route",
+         "drive_route"
+        ]
+       }
+      }
+     ],
+     "help": "",
+     "objective": "",
+     "subtitle": "Markierung wählen oga Interessanter Ort Zoomen L2 R2",
+     "banner": "",
+     "minimap": {
+      "minimap": "none",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": null,
+      "corrupt": true,
+      "confidence": 0.0,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+     },
+     "last_skill": {
+      "name": "set_waypoint",
+      "status": "failed",
+      "reason": "start-screen-unverified; start from visible gameplay",
+      "queue": [],
+      "queue_disposition": "cleared",
+      "dropped": [
+       "drive_route",
+       "drive_route",
+       "drive_route"
+      ]
+     },
+     "hud": {
+      "wanted": null,
+      "wanted_flashing": false,
+      "health": null,
+      "armour": null,
+      "special": null,
+      "screen": "map"
+     },
+     "objects": [],
+     "judgment": {
+      "capture": 54500.576719791,
+      "answers": {
+       "mode": {
+        "value": "vehicle",
+        "probability": 1.0
+       },
+       "overlay": {
+        "value": true,
+        "probability": 1.0
+       },
+       "banner": {
+        "value": false,
+        "probability": 1.0
+       },
+       "wanted": {
+        "value": false,
+        "probability": 1.0
+       },
+       "path": {
+        "value": "free",
+        "probability": 0.977
+       },
+       "car": {
+        "value": true,
+        "probability": 0.998
+       }
+      },
+      "probabilities": {
+       "mode": {
+        "A": 9.237449552604623e-09,
+        "B": 0.9999999881605882,
+        "C": 2.60196212820903e-09
+       },
+       "overlay": {
+        "A": 0.999999860192609,
+        "B": 1.3980739104940512e-07
+       },
+       "banner": {
+        "A": 1.9890969147740634e-08,
+        "B": 0.9999999801090309
+       },
+       "wanted": {
+        "A": 0.00022935732860324706,
+        "B": 0.9997706426713968
+       },
+       "path": {
+        "A": 0.9766389362324256,
+        "B": 0.01852492309958129,
+        "C": 0.004836140667993038
+       },
+       "car": {
+        "A": 0.9979827484018431,
+        "B": 0.0020172515981570186
+       }
+      },
+      "duration": 0.16423987499729265,
+      "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+      "age": 0.3117687499980093,
+      "mode": null
+     },
+     "time": 54500.888488541,
+     "place": "unknown"
+    }
+   }
+  ]
+ }
+}

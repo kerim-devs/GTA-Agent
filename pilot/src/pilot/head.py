@@ -92,6 +92,7 @@ def parse_response(value: str | dict) -> HeadResponse:
         }:
             raise ValueError("invalid goal fields")
         if goal["name"] not in {
+            "trip",
             "vehicle",
             "drive",
             "fight",
