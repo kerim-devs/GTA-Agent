@@ -509,7 +509,14 @@ def test_in_a_vehicle_the_order_leaves_the_route_rules_alone():
     head = MissionHead(Fallback(), goal_seed=1)
     head.decide(replace(base, minimap={**base.minimap, "minimap": "tilted", "route": "yellow"}))
     assert head.last_rule == "vehicle_route"
-    head.decide(replace(base, minimap={**base.minimap, "minimap": "tilted", "route": "none"}))
+    # With no route the order's own marker is what the car goes at: the red one, for a short stretch.
+    answer = head.decide(replace(base, minimap={**base.minimap, "minimap": "tilted", "route": "none"}))
+    assert head.last_rule in {"objective_blip_catch", "take_out_leave_vehicle"}
+    if head.last_rule == "objective_blip_catch":
+        assert answer.plan[0].name == "drive_to_blip"
+        assert answer.plan[0].args == {"color": "red", "mode": "catch", "duration": 20}
+    head = MissionHead(Fallback(), goal_seed=1)
+    head.decide(replace(base, minimap={**base.minimap, "minimap": "tilted", "route": "none", "blips": []}))
     assert head.last_rule == "vehicle_waypoint"
 
 

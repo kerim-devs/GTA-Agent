@@ -1,5 +1,6 @@
 """Closed goal round and real conductor/runner ownership with scripted skill mechanics."""
 
+import itertools
 import json
 from concurrent.futures import Future
 from dataclasses import replace
@@ -100,6 +101,78 @@ def test_head_ends_goal_for_priority_observation(change):
     assert answer.action == "replace"
     if "objective" in change:
         assert answer.goal is None
+
+
+def test_an_interruption_or_a_refusing_map_is_not_held_against_the_place():
+    """Review C, 3 and 4: stars on the way to a shop, an objective on the way to a letter and a map
+    that takes no waypoint say nothing about the place, which stays open to the session."""
+    head = MissionHead(goal_seed=1)
+    goals = head.goals
+    for round_ in range(3):
+        goals.active = None
+        goals.mapless_until = -float("inf")
+        goal = goals._start(request(10 * round_), None, False, 0)
+        goal.name, goal.place, goal.step = "shop", "Ponsonbys", "travel"
+        goals.guard(replace(request(10 * round_ + 1), hud={"screen": "game", "wanted": 2}))
+    assert goals.abandonments["Ponsonbys"] == 0
+    instance = goals.story_instance
+    for round_ in range(3):
+        goals.active = None
+        goal = goals._start(request(100 + 10 * round_), None, False, 0)
+        goal.name, goal.place, goal.step = "story", "Franklin", "travel"
+        goals.guard(replace(request(101 + 10 * round_), objective="Fahre zum Treffpunkt."))
+    # The letter is neither struck off nor passed over for the next one of its kind.
+    assert goals.abandonments["Franklin"] == 0 and goals.story_instance == instance
+
+
+def test_a_map_that_refuses_three_waypoints_is_left_alone_for_two_minutes():
+    """Review C, 3: with set_waypoint failing every time the map was opened every few seconds for the
+    whole session and every shop was struck off. Now the third refusal in a row sends the figure
+    along the road for two minutes, and no place is blamed for the map."""
+    head = MissionHead(goal_seed=4)
+    now, last, plans = 0.0, None, []
+    for _ in range(60):
+        answer = head.decide(replace(request(now), last_skill=last))
+        name = answer.plan[0].name if answer.plan else None
+        plans.append((now, name, (answer.goal or {}).get("name")))
+        if name == "set_waypoint":
+            last = {"name": "set_waypoint", "status": "failed", "reason": "menu-not-map", "t": now}
+            now += 4
+        elif name is None:
+            now += 5
+        else:
+            last = {"name": name, "status": "done", "reason": "time-limit", "t": now}
+            now += 30
+    tried = [t for t, name, _ in plans if name == "set_waypoint"]
+    roamed = [t for t, _, goal in plans if goal == "roam"]
+    assert roamed and not any(head.goals.abandonments.values())
+    assert len(tried) >= 4  # the map is asked again after the pause
+    # Between the third refusal and the next question two minutes pass on the road.
+    assert min(b - a for a, b in itertools.pairwise(tried[2:])) >= 100
+    assert max(len([t for t in tried if start <= t < start + 120]) for start in tried) <= 3
+
+
+def test_a_null_reason_on_a_finished_waypoint_is_read_as_no_place():
+    """Review C, 10: `reason: None` reached a regular expression and raised."""
+    head = MissionHead(goal_seed=5)
+    head.decide(request(0))
+    head.goals.active.step = "waypoint"
+    head.goals.active.attempts = 1
+    answer = head.decide(
+        replace(request(3), last_skill={"name": "set_waypoint", "status": "done", "reason": None})
+    )
+    assert answer.plan or answer.action == "go_on"
+
+
+def test_money_is_spent_in_a_shop_and_not_where_the_map_led_instead():
+    """Review C, 6b: a shop's errand whose waypoint was read as the safehouse spent there."""
+    for place, spend in (("Ponsonbys", "yes"), ("Unterschlupf", "no"), ("Franklin", "no")):
+        head = MissionHead(goal_seed=2)
+        goal = head.goals._start(request(0), None, False, 0)
+        goal.name, goal.place, goal.step, goal.attempts = "shop", place, "use", 1
+        answer = head.goals.decide(request(1), "on_foot")
+        assert answer.plan[0].name == "use_place"
+        assert answer.plan[0].args["spend"] == spend, place
 
 
 def test_go_on_contract_rejects_hidden_calls_and_empty_replacements():
@@ -810,6 +883,15 @@ def test_the_rules_outside_a_goal_take_a_place_too_when_nothing_is_asked_and_not
     assert [call.name for call in answer.plan] == ["set_waypoint"]
     assert answer.plan[0].args["target"] == "away"
     asked = replace(unasked, objective="Fahre zum Treffpunkt.")
+    head = MissionHead(goal_seed=51)
+    head.goals.chooser = lambda offers: "cruise"
+    answer = head.decide(asked)
+    # Asked to go somewhere, with no route and the game's marker on the map: the car goes at the marker.
+    assert head.last_rule == "objective_blip_reach"
+    assert [(call.name, call.args["color"], call.args["mode"]) for call in answer.plan] == [
+        ("drive_to_blip", "yellow", "reach")
+    ]
+    asked = replace(asked, minimap={**flicker, "blips": []})
     head = MissionHead(goal_seed=51)
     head.goals.chooser = lambda offers: "cruise"
     answer = head.decide(asked)

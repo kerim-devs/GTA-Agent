@@ -457,6 +457,7 @@ from .leave import LeaveBuilding  # noqa: E402
 from .level import LevelCamera  # noqa: E402
 from .place import DoPrompt, UsePlace  # noqa: E402
 from .punch import Punch  # noqa: E402
+from .pursuit import DriveToBlip  # noqa: E402
 from .switch import SwitchCharacter  # noqa: E402
 from .vehicle_entry import EnterVehicle  # noqa: E402
 from .walkto import WalkTo as WalkToPoint  # noqa: E402
@@ -487,6 +488,7 @@ REGISTRY = {
         DoPrompt,
         LeaveBuilding,
         SwitchCharacter,
+        DriveToBlip,
     )
 }
 

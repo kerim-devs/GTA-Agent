@@ -1,5 +1,6 @@
 """Observable mission rules, with an injectable head for ambiguous situations."""
 
+import math
 import re
 import unicodedata
 from collections import Counter
@@ -44,6 +45,21 @@ def movement(request: HeadRequest) -> str:
     if shape == "tilted" and _wanted(request) == 0:
         return "vehicle"
     return "unknown"
+
+
+# The star reader misses frames: on Kerim's recordings of 11 and 12 November the stars went unread on
+# 3 to 4 % of the frames with a tilted map, for 2.3 s at the longest. The last count read stands in
+# for that long, so that a car is not taken for "who knows" every few seconds.
+STARS_HOLD = 3.0
+# With stars the map is tilted on foot as well, and says nothing about the seat. Where the figure
+# sat when that was last known holds until something says otherwise, and a seat in a car for this
+# long at most.
+SEAT_HOLD = 120.0
+# The same answer to the same failure this often in a row, and the next one is a different answer.
+SAME_FAILED = 3
+# A red marker this close to the arrow, in map pixels, is beside the car: about two car lengths.
+NEAR_RED = 12.0
+DRIVES = {"drive_route", "get_away", "drive_to_blip"}
 
 
 # Seconds of one fight before the rules look again; the first attempt at the Vagos in
@@ -107,6 +123,26 @@ class MissionHead:
         self.pending_reads = 0
         self.blip_candidates: list[dict] = []
         self.stable_blips: list[dict] = []
+        self.stars: tuple[int, float] | None = None  # the last count read, and when
+        self.seat: tuple[str, float] | None = None  # where the figure last sat for sure, and when
+        self.failed_key: str | None = None
+        self.same_failed = 0
+
+    # What one decision changes besides the goals: given back when the conductor drops the answer.
+    KEPT = (
+        "sought_mission",
+        "letterless",
+        "objective_class",
+        "pending_class",
+        "pending_reads",
+        "blip_candidates",
+        "stable_blips",
+        "last_rule",
+        "stars",
+        "seat",
+        "failed_key",
+        "same_failed",
+    )
 
     def _errand(self, offers):
         chosen = self.chooser(offers)
@@ -118,6 +154,8 @@ class MissionHead:
 
     def decide(self, request: HeadRequest) -> HeadResponse:
         self._undo_urgent = (set(getattr(self, "pressed_help", set())), getattr(self, "standing_count", 0))
+        self._undo_rest = {name: getattr(self, name) for name in self.KEPT}
+        self._undo_counts = self.counts.copy()
         if self.chooser is not None:
             self._chose = None
             if hasattr(self.chooser, "observe"):
@@ -148,7 +186,69 @@ class MissionHead:
                 action="go_on",
                 reason="goal_running: identical skill and arguments",
             )
+            # Nothing was planned, so no route was used up: a waypoint that is being set is not
+            # counted down towards asking the map for a letter again.
+            self.letterless = self._undo_rest["letterless"]
+            self.sought_mission = self._undo_rest["sought_mission"]
+        first = response.plan[0] if response.plan else None
+        if (
+            first is not None
+            and first.name == "press"
+            and first.args.get("button") == "triangle"
+            and self.seat is not None
+            and self.seat[0] == "vehicle"
+        ):
+            # The plan gets out of the car: with stars the map will not say so afterwards.
+            self.seat = ("on_foot", self.goals.now(request))
         return response
+
+    def _held(self, request: HeadRequest) -> HeadRequest:
+        """Fill in what this one request could not read from what the last ones did: the stars the
+        reader missed for a moment, and the seat a tilted map under stars cannot show."""
+        now = self.goals.now(request)
+        hud = request.hud
+        if hud is not None:
+            changed = [e for e in request.events if e.get("kind") == "wanted_changed"]
+            if hud.get("wanted") is not None:
+                self.stars = (hud["wanted"], now)
+            elif changed:
+                self.stars = (changed[-1].get("wanted", 0) or 0, now)
+            elif (
+                self.stars is not None
+                and 0 <= now - self.stars[1] <= STARS_HOLD
+                and hud.get("screen", "game") == "game"
+            ):
+                request = replace(request, hud={**hud, "wanted": self.stars[0]})
+        last = request.last_skill or {}
+        for event in request.events:
+            if event.get("kind") == "vehicle_enter":
+                self.seat = ("vehicle", now)
+            elif event.get("kind") == "vehicle_exit":
+                self.seat = ("on_foot", now)
+        if last.get("name") == "enter_vehicle" and last.get("status") == "done":
+            self.seat = ("vehicle", now)
+        elif last.get("name") in DRIVES:
+            if last.get("status") == "failed" and last.get("reason") in {"on-foot", "water"}:
+                self.seat = ("on_foot", now)
+            elif last.get("status") in {"running", "done"} and self.seat and self.seat[0] == "vehicle":
+                # A drive that moves is a car: one that does not ends held within seconds.
+                self.seat = ("vehicle", now)
+        mode = movement(request)
+        if mode in {"vehicle", "on_foot"}:
+            self.seat = (mode, now)
+        elif (
+            mode == "unknown"
+            and self.seat is not None
+            # On foot is kept until a car is seen to be entered: taking a figure in a car for one on
+            # foot presses nothing that matters, the other way round the throttle is the trigger.
+            and (self.seat[0] == "on_foot" or 0 <= now - self.seat[1] <= SEAT_HOLD)
+            and request.minimap.get("minimap") == "tilted"
+            and not request.minimap.get("corrupt")
+            and (request.judgment or {}).get("mode") is None
+        ):
+            word = {"on_foot": "foot", "vehicle": "vehicle"}[self.seat[0]]
+            request = replace(request, judgment={**(request.judgment or {}), "mode": word})
+        return request
 
     def _standing_rule(self, request, mode):
         if not any(event.get("kind") == "standing" for event in request.events):
@@ -158,10 +258,19 @@ class MissionHead:
         count = event.get("count", getattr(self, "standing_count", 0) + 1)
         self.standing_count = count
         goal = self.goals.active
+        if goal is not None and goal.step == "await_story":
+            # Standing on the letter is what the errand is doing while the mission starts.
+            return None
         last = request.last_skill or {}
         indoors = (last.get("name") == "walk_to_point" and last.get("reason") == "entered") or bool(
             goal and goal.step in {"use", "leave"}
         )
+        # Every fourth time the errand is given up for another, where there is nothing the game
+        # asks for: in a mission no errand is started, and the figure keeps trying to get free.
+        # Between two such ends the three ways out are tried again, so that the errand just begun
+        # is not thrown out by the next report twelve seconds later.
+        free = not request.objective.strip() and self.objective_class in (None, "unknown")
+        count = count if count < 4 else (count % 4 or (4 if free else 3))
         if count >= 4:
             self.goals.end(request, "standing four times")
             response = self.goals.decide(request, mode)
@@ -223,6 +332,10 @@ class MissionHead:
         self.goals.undo()
         if hasattr(self, "_undo_urgent"):
             self.pressed_help, self.standing_count = self._undo_urgent
+        for name, value in getattr(self, "_undo_rest", {}).items():
+            setattr(self, name, value)
+        if hasattr(self, "_undo_counts"):
+            self.counts = self._undo_counts.copy()
 
     def _decide(self, request: HeadRequest) -> HeadResponse:
         last = request.last_skill or {}
@@ -232,6 +345,7 @@ class MissionHead:
             # instead of retrying it with a look, and the guard's own events, guard_start and guard_end,
             # are news like any other.
             request = replace(request, last_skill={**last, "status": "stopped"})
+        request = self._held(request)
         self.goals.mark()
         self._update_intent(request)
         self.goals.learn(request.last_skill)
@@ -270,9 +384,14 @@ class MissionHead:
             # A menu is open in a mission and no skill asked for it (flow.py tells the head once, and
             # leaves the menu itself when nothing comes of it): it may be what the mission wants used,
             # the suit for the jeweller or the gun before the long stretch.
+            # The reflex reports a menu only in a mission, and there money goes where the mission
+            # wants something bought. Should an errand hold the plan all the same, the errand says:
+            # a shop's spends, the one at home and every other do not.
+            active = self.goals.active
+            spend = "yes" if active is None or active.name == "shop" else "no"
             urgent = (
                 "mission_menu",
-                [_call("use_place", duration=40, spend="yes", choice="first")],
+                [_call("use_place", duration=40, spend=spend, choice="first")],
                 "Ein Menü ist offen, ich nehme, was die Mission will.",
             )
         elif hud.get("screen", "game") == "game":
@@ -386,7 +505,7 @@ class MissionHead:
             )
         rule, plan, sentence = selected
         # head_prompt.txt:58-60: never immediately repeat a failed skill call.
-        failed = self._failed(request)
+        failed = None if self._chase_over(request) else self._failed(request)
         if (
             failed
             and plan[0]["name"] == failed
@@ -395,6 +514,20 @@ class MissionHead:
             rule += "_after_failure"
             plan = [_call("look", duration=0.5, angle=45), *plan]
             sentence = "Der letzte Versuch ist gescheitert, ich orientiere mich zuerst neu."
+        # The same answer to a failure, failing again, was given for as long as the session lasted.
+        # From the third time on the answer changes: out of the car that gets nowhere, and on foot
+        # off in another direction each time.
+        key = repr((rule, plan))
+        self.same_failed = (self.same_failed + 1 if key == self.failed_key else 1) if failed else 0
+        self.failed_key = key if failed else None
+        if self.same_failed >= SAME_FAILED and not rule.startswith(("screen_", "judged_", "objective_wait")):
+            if mode == "vehicle":
+                rule, plan = "failed_again_leave_vehicle", leave_vehicle()
+                sentence = "So komme ich mit diesem Auto nicht weiter, ich steige aus."
+            else:
+                angle = (90, 180, -90)[(self.same_failed - SAME_FAILED) % 3]
+                rule, plan = "failed_again", [_call("look", duration=1, angle=angle), _walk()]
+                sentence = "Derselbe Versuch scheitert immer wieder, ich gehe woanders hin."
         response = parse_response({"plan": plan, "sentence": sentence})
         if self.goals.transition:
             response = replace(response, reason=self.goals.transition)
@@ -464,6 +597,51 @@ class MissionHead:
                 [_call("fight", duration=FIGHT_SECONDS, cover="no")],
                 "Der Auftrag lautet ausschalten, ich kämpfe gegen die roten Ziele.",
             )
+        if mode == "vehicle" and request.minimap.get("route") not in {"yellow", "purple"}:
+            # Seated, with an order and no route: what the order is about is a marker on the map, and
+            # the car goes at the marker (pursuit.py). With a route the rules below follow the route.
+            colors = {blip.get("color") for blip in request.minimap.get("blips", [])}
+            chase = None
+            if objective_class == "follow":
+                color = next((c for c in ("blue", "red", "yellow") if c in colors), None)
+                # "Verfolge" is a chase and closes in; "Folge" keeps the distance the game wants.
+                how = "catch" if _text(request.objective).lstrip().startswith("verfolg") else "follow"
+                chase = color and (color, how, "Ich bleibe an dem markierten Ziel dran.")
+            elif objective_class in {"take_out", "destroy"} and "red" in colors:
+                near = min(
+                    (
+                        math.hypot(blip.get("x", 0), blip.get("y", 0))
+                        for blip in request.minimap.get("blips", [])
+                        if blip.get("color") == "red" and not _rim_blip(blip)
+                    ),
+                    default=None,
+                )
+                if near is not None and near <= NEAR_RED:
+                    # Beside the target: out of the car, and the rule on foot fights it.
+                    return (
+                        "take_out_leave_vehicle",
+                        [_call("press", button="triangle", duration=0.1), _call("wait", duration=2)],
+                        "Das Ziel ist direkt neben mir, ich steige aus.",
+                    )
+                # A short stretch, so that the rules see whether the car is beside the target yet.
+                chase = ("red", "catch", "Das Ziel ist rot markiert, ich fahre hinterher.")
+            elif objective_class in {"go_to", "bring", "return_to"}:
+                color = next((c for c in ("yellow", "blue") if c in colors), None)
+                chase = color and (color, "reach", "Es gibt keine Route, ich fahre auf die Markierung zu.")
+            if chase:
+                color, how, sentence = chase
+                return (
+                    "objective_blip_" + how,
+                    [
+                        _call(
+                            "drive_to_blip",
+                            color=color,
+                            mode=how,
+                            duration=20 if objective_class in {"take_out", "destroy"} else 120,
+                        )
+                    ],
+                    sentence,
+                )
         # Going somewhere, bringing, following, picking up and using are answered by the route and
         # the marked target as the rules below do for any objective; protecting, destroying and
         # sneaking have no skill of their own yet and get the same.
@@ -494,6 +672,14 @@ class MissionHead:
             self.letterless -= 1
             return "away"
         return "mission"
+
+    def _chase_over(self, request: HeadRequest) -> bool:
+        """A drive at a marker ended on its time or lost the marker: following has no arrival, so that
+        is how it ends, and the rules look at the map again instead of treating it as a failure."""
+        return self._failed(request) == "drive_to_blip" and self._failure_reason(request) in {
+            "time-limit",
+            "blip-gone",
+        }
 
     @staticmethod
     def _failure_reason(request: HeadRequest) -> str | None:
@@ -548,7 +734,7 @@ class MissionHead:
         cars = any(obj.get("kind") in {"car", "truck", "motorcycle"} for obj in request.objects)
         # head_prompt.txt:43-47 and LOG.md:102-106: flee, never fight;
         # a tilted wanted minimap alone cannot authorize entering a vehicle.
-        if self._failed(request) == "get_away":
+        if self._failed(request) in {"get_away", "drive_to_blip"}:
             reason = self._failure_reason(request)
             if reason == "vehicle-held" and mode == "vehicle":
                 return "leave_held_vehicle", leave_vehicle(), "Ich steige aus und suche ein anderes Auto."
@@ -570,7 +756,9 @@ class MissionHead:
                     "Die Polizei sucht mich, ich fahre aus dem Suchgebiet.",
                 )
             if mode == "on_foot":
-                if cars:
+                # A car that could not be entered is not asked for again at once: the figure runs
+                # first, and the next car in view is another try.
+                if cars and self._failed(request) != "enter_vehicle":
                     return (
                         "wanted_on_foot_vehicle",
                         [_call("enter_vehicle", duration=25, kind="any"), _call("get_away", duration=60)],
@@ -600,7 +788,7 @@ class MissionHead:
         if self.objective_class == "wait":
             return self._intent_rule(request, mode, cars)
 
-        if self._failed(request):
+        if self._failed(request) and not self._chase_over(request):
             if mode == "unknown":
                 return None
             if mode == "vehicle":

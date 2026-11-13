@@ -101,6 +101,7 @@ def parse_response(value: str | dict) -> HeadResponse:
             "mayhem",
             "cruise",
             "home",
+            "roam",
         } or goal["direction"] not in {
             "north",
             "east",

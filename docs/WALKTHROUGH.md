@@ -60,7 +60,7 @@ Thought through on 13 November from what has gone wrong so far. "Open" means not
 | Two parts of it want the pad | one owner a tick, in this order: the screen reflex, the guard, the plan; the rules do not restart what already runs |
 | Somebody hits it and the map shows no red | the guard punches back in free roam; in a mission the head is told, for ninety seconds after the last objective was read |
 | Red markers | the guard starts the fight at once; with stars lit nothing is fired |
-| Stars | away along the road without opening the map, never into water (P68) |
+| Stars | away along the road without opening the map, never into water (P68); the map is tilted under stars on foot as in a car, so the seat is the one last known, for two minutes at most; a car that could not be entered is not tried again before the figure has run on |
 | Little health | it runs, and the fight ends |
 | It dies or is arrested | the reflex waits the screen out and the head plans afresh |
 | A car stands in front of it, or the light is red | two seconds, then round it (station 28) |
@@ -68,10 +68,13 @@ Thought through on 13 November from what has gone wrong so far. "Open" means not
 | The car is in water | two seconds standing in it end the drive and the figure gets out; what it does swimming: open |
 | The car is on its roof or burns | not read; a car that stands for twelve seconds is left the second time |
 | The map is called damaged for long | a look and one more try, then out of the car |
-| A mission says follow or catch and draws no route | `drive_to_blip` (P78) |
+| A mission says follow or catch and draws no route | `drive_to_blip` (P78): the car goes at the order's marker and keeps the distance or closes in; told to take somebody out it drives at the red marker for twenty seconds at a time and gets out when it is beside it |
+| The map takes no waypoint | the third refusal in a row leaves the map alone for two minutes, and the figure walks the road meanwhile; no place is blamed for it |
+| The same plan fails again and again | from the third time the answer changes: out of the car that gets nowhere, on foot off in another direction each time |
+| It stands and nothing helps | jump and run, look round and run, back and along the road; the fourth time the errand is given up for another, in a mission the three are tried again and no errand is begun; standing on a mission's letter while it starts is left alone |
 | Pause, map or phone come up unasked | the reflex backs out; a phone gets two and a half seconds first, in case it rings |
 | A question with a choice, a price, a save or Online in it | never answered by the reflex; the head is told and none of its skills confirms such a thing |
-| A purchase | only in a shop's menu, only up to 150 dollars, never from a help text, never a property |
+| A purchase | only in a shop's menu, only on a shop's errand or in a mission, only up to 150 dollars, never from a help text, never a property, never at home |
 | A bed, a save | never: the saved game is Kerim's |
 | The lower slot of the character wheel | cannot be highlighted: the stick never points down |
 | A hand on the controller | the plan is put down and nothing is pressed until it is let go of |

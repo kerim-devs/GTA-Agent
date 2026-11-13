@@ -26,6 +26,7 @@ TITLES = {
     "cruise": "eine Runde fahren",
     "home": "zu Hause die Kleidung wechseln",
     "escape": "der Polizei entkommen",
+    "roam": "ohne Karte die Straße entlang",
 }
 DESCRIPTIONS = {
     "story": "Reach a mission letter and wait for a mission to begin.",
@@ -51,12 +52,33 @@ LIMITS = {
     "mayhem": (120, 8),
     "cruise": (300, 18),
     "escape": (180, 12),
+    "roam": (120, 8),
 }
+# The map would not take a waypoint this often in a row: it is left alone for a while, and the figure
+# walks the road meanwhile instead of opening it every few seconds for the rest of the session.
+MAP_FAILURES = 3
+MAPLESS_SECONDS = 120.0
+# What a failed set_waypoint says when the map worked and the place was not on it: that counts
+# against the place. Anything else it fails on is the map's or the reader's, and no place's fault.
+NOT_ON_THE_MAP = ("place-not-in-legend", "legend-selection-skips-the-place", "place-instance-not-present")
 WAYPOINT = re.compile(r"^waypoint set: (.+?) \((?:(\d+(?:\.\d+)?)m|distance not read)\)")
 
 
 def call(name, **args):
     return {"name": name, "args": args}
+
+
+def _sells(place):
+    """Whether money may be spent where the waypoint led: not at the safehouse, a mission's letter or
+    anything the map's list offers for sale, whatever errand set out for it."""
+    from .legend import kind_of
+
+    name = place or ""
+    return not re.search(r"unterschlupf|safe ?house", name, re.I) and kind_of(name) not in {
+        "property",
+        "mission",
+        "none",
+    }
 
 
 def exit_car():
@@ -116,6 +138,8 @@ class Errands:
         "known",
         "learned",
         "next",
+        "map_failures",
+        "mapless_until",
     )
 
     def __init__(self, seed=None, clock=time.monotonic, chooser=None):
@@ -138,6 +162,8 @@ class Errands:
         self.known = {}
         self.learned = None
         self.next = None
+        self.map_failures = 0
+        self.mapless_until = -float("inf")
         self._undo = None
 
     def mark(self):
@@ -188,6 +214,8 @@ class Errands:
 
     def choose(self, request):
         now = self.now(request)
+        if now < self.mapless_until:
+            return "roam"
         candidates = [n for n in ERRANDS if n == "story" or n != self.last_name]
         if not self.shops(now):
             candidates.remove("shop") if "shop" in candidates else None
@@ -233,7 +261,7 @@ class Errands:
         elif name == "cruise":
             goal.target = {"target": "away", "direction": goal.direction, "distance": "far"}
         else:
-            goal.step = "punch" if name == "mayhem" else "escape"
+            goal.step = {"mayhem": "punch", "roam": "roam"}.get(name, "escape")
         goal.seen_wanted = bool(wanted)
         self.cooldowns[name] = goal.started
         self.active = goal
@@ -247,21 +275,23 @@ class Errands:
         )
         return goal
 
-    def _keep(self, goal, reached, reason):
+    def _keep(self, goal, reached, reason, blame=True):
         """Note the errand's end for later sessions, once: a decision the conductor drops is made again."""
         kept = self._kept()
         key = (goal.name, goal.started)
-        if kept is None or key == self._noted:
+        if kept is None or key == self._noted or goal.name == "roam":
             return
         self._noted = key
         memory.errand_done(kept, goal.name, reached=reached)
         if goal.place:
             if reached:
                 memory.place_reached(kept, goal.place, how=goal.name)
-            else:
+            elif blame:
                 memory.place_failed(kept, goal.place, why=str(reason)[:80])
 
-    def end(self, request, reason, *, reached=False):
+    def end(self, request, reason, *, reached=False, blame=True):
+        """`blame` is false where the errand ended for something that says nothing about its place:
+        stars, an objective, the map refusing a waypoint. Such an end is not counted against it."""
         goal = self.active
         if goal is None:
             return
@@ -274,16 +304,16 @@ class Errands:
                 "reason": reason,
             }
         )
-        self._keep(goal, reached, reason)
+        self._keep(goal, reached, reason, blame)
         self.last_name = "escape" if goal.name == "mayhem" and goal.step == "escape" else goal.name
         self.abandoned = None if reached else goal.name
-        if not reached and goal.place:
+        if not reached and goal.place and blame:
             self.abandonments[goal.place] += 1
         if goal.name == "story":
             if reached:
                 self.story_dampened = False
                 self.story_failures = 0
-            else:
+            elif blame:
                 self.story_instance = (self.story_instance + 1) % 101
             if not reached and reason == "letter did not start a mission":
                 self.story_failures += 1
@@ -322,7 +352,10 @@ class Errands:
             self.end(request, "mission observed after arrival", reached=True)
             return "objective"
         if reason and goal:
-            self.end(request, reason)
+            # Stars, an objective or little health on the way say nothing about the place the errand
+            # was going to. (An objective before the letter is not counted as the story reached
+            # either: what began may be anything.)
+            self.end(request, reason, blame=False)
         return reason
 
     def learn(self, last):
@@ -364,7 +397,7 @@ class Errands:
         seat = occupancy(mode, request.events)
         cars = any(o.get("kind") in {"car", "truck", "motorcycle"} for o in request.objects)
         if wanted and self.active and self.active.name not in {"escape", "mayhem"}:
-            self.end(request, "stars")
+            self.end(request, "stars", blame=False)
         goal = self.active or self._start(request, seat, cars, wanted)
         last = request.last_skill or {}
         fresh = goal.attempts > 0 and (
@@ -400,7 +433,7 @@ class Errands:
         done = fresh and last.get("status") == "done"
         if fresh:
             goal.last_result = dict(last)
-        skill, reason = last.get("name"), last.get("reason", "")
+        skill, reason = last.get("name"), last.get("reason") or ""
         goal.seen_route |= request.minimap.get("route") in {"yellow", "purple"}
         plan = None
         free_step = False
@@ -448,6 +481,13 @@ class Errands:
             goal.step = "leave"
         elif failed and skill == "get_away" and reason in {"water", "on-foot"}:
             seat = "on_foot"
+        elif failed and skill == "set_waypoint":
+            on_the_map = str(reason).startswith(NOT_ON_THE_MAP)
+            self.map_failures = 0 if on_the_map else self.map_failures + 1
+            if self.map_failures >= MAP_FAILURES:
+                self.mapless_until = now + MAPLESS_SECONDS
+                self.map_failures = MAP_FAILURES - 1  # one more refusal after the pause starts the next
+            self.end(request, f"{skill}: {reason}", blame=on_the_map)
         elif failed and skill not in {"enter_vehicle", "walk_road"}:
             self.end(request, f"{skill}: {reason}")
         if self.active is None:
@@ -456,6 +496,8 @@ class Errands:
             plan = None
         if done and skill == "switch_character" and goal.step == "switch":
             goal.step = "waypoint"
+        if done and skill == "set_waypoint":
+            self.map_failures = 0
         if done and skill == "set_waypoint" and goal.step in {"waypoint", "reset_waypoint"}:
             free_step = True
             match = WAYPOINT.match(reason)
@@ -559,6 +601,13 @@ class Errands:
                     plan = [call("punch", duration=20, hits=3)]
                 else:
                     plan = [call("look", duration=0.8, angle=55), call("walk_road", duration=15)]
+            elif goal.name == "roam":
+                if seat != "vehicle":
+                    plan = [call("walk_road", duration=30)]
+                elif request.minimap.get("route") in {"yellow", "purple"}:
+                    plan = [call("drive_route", duration=60)]
+                else:
+                    plan = exit_car()
             elif goal.step == "switch":
                 plan = [call("switch_character", duration=30, to="next")]
             elif goal.step in {"waypoint", "reset_waypoint"}:
@@ -602,7 +651,9 @@ class Errands:
                     call(
                         "use_place",
                         duration=30,
-                        spend="no" if goal.name == "home" else "yes",
+                        # Money is spent in a shop and nowhere else: not at home, and not where a
+                        # shop's errand was led to the safehouse by what the map's list read.
+                        spend="yes" if goal.name == "shop" and _sells(goal.place) else "no",
                         choice="random",
                     )
                 ]

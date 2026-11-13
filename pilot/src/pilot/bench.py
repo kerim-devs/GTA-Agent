@@ -632,6 +632,7 @@ CAUSE_RULES: dict[str, str | None] = {
     "invalid-clock": "tech",
     "invalid observation": "tech",
     "invalid-observation-time": "tech",
+    "invalid-time": "tech",  # drive_to_blip: the clock of an observation was not a time
     "no-frame": "tech",
     "nothing readable for": "tech",  # walk_to_point: damaged or repeated pictures for seconds on end
     "no detections delivered at all": "tech",
@@ -644,6 +645,7 @@ CAUSE_RULES: dict[str, str | None] = {
     "time limit": None,
     "route-gone": None,
     "arrived": None,
+    "reached": None,  # drive_to_blip: stopped on the marker
     "entered": None,  # walk_to with enter: the figure is inside
     "outdoors": None,  # leave_building: the figure is outside and clear of the door
     "leaving building": None,

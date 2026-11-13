@@ -186,7 +186,10 @@ class LocalHead:
         if scene:
             add("scene", "Wait for the scene for three seconds", _call("wait", duration=3))
         if not choices:
-            add("observe", "Wait briefly for a readable view", _call("wait", duration=0.1))
+            # A second, not a tenth: every wait that ends asks the head again, and a view that stays
+            # unreadable (a cutscene with no HUD) asked it and wrote a picture ten times a second.
+            # News of any kind interrupts the wait.
+            add("observe", "Wait briefly for a readable view", _call("wait", duration=1))
         return tuple(choices[:6])
 
     def decide(self, request: HeadRequest) -> HeadResponse:
@@ -203,7 +206,7 @@ class LocalHead:
             if not any(call.name in failed_skills for call in candidate.response.plan)
         ]
         if not options:
-            options = [_candidate("observe", "Wait briefly and reassess", _call("wait", duration=0.1))]
+            options = [_candidate("observe", "Wait briefly and reassess", _call("wait", duration=1))]
         selection = chooser.choose(
             "What should the player do next?",
             {candidate.name: candidate.description for candidate in options},
