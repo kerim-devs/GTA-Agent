@@ -28,7 +28,10 @@ With a model to ask (see `ahead`) the guard looks before it feels: after the pre
 freed nothing the figure stands, the camera goes a fifth of a circle round at a time, and of each
 view the model is asked whether the way straight ahead is open. Into the first view it calls open
 the figure runs, as far as a leg sideways would have gone, and the feet judge it as they judge a
-leg. With every view called blocked, or no answer, the sides are felt for as before.
+leg. With every view called blocked, or no answer, the sides are felt for as before. In a room
+every way is open for a few steps and none leads on: there the model is asked for the way out, the
+door to the outside, and in which part of the picture it is, the camera is turned to it and the
+figure runs through it. (On 13 November the walk had run into the barber's it stood in front of.)
 """
 
 from __future__ import annotations
@@ -36,7 +39,7 @@ from __future__ import annotations
 import math
 from typing import ClassVar
 
-from .ahead import Ahead
+from .ahead import SEEN, Ahead, View
 from .contract import Observation, player_mode
 from .foot import FootGuard, Steer, _rotate, hud_crop, map_shift, world_shift, world_view
 from .sides import Sides, choose
@@ -83,6 +86,14 @@ class WayRound(FootGuard):
     # them go once round and none ends with the target straight behind the camera, where its
     # marker lies under the bars of the map and is not read.
     LOOK_TURN = 0.49
+    AIM_TURN = 0.19  # the camera's turn to a door in the left or the right part of the picture, 28 degrees
+    # Running at a way out of a room. On 13 November four seconds ended a step short of the
+    # barber's door, and chairs stood in the straight line to it: the run goes on until the model
+    # calls the figure outdoors, and on the way the door is looked at again and the camera, which
+    # the stick goes by, is turned to the part of the picture it is in.
+    EXIT_RUN = 9.0  # seconds at the most
+    WATCH_EVERY = 0.6  # seconds between two looks at the way out while running at it
+    CLEAR = 2.5  # seconds straight on once outside: the way to the target may lead back in at the door
     LOOK_SETTLE = 0.3  # seconds for the turned camera's picture to arrive; the stream is 0.14 s behind
     LOOK_WAIT = 1.0  # seconds an answer is waited for
     LOOKS = 4
@@ -101,9 +112,16 @@ class WayRound(FootGuard):
         self.climb = climb
         self.sides = sides
         self.ahead = ahead
-        self.looked = 0  # views looked at, at this obstacle
+        self.looked = 0  # views looked at, at this obstacle; the first is the view as it stands
         self.asked_at = None
-        self.views: list = []  # what the model gave "open" in each
+        self.views: list[str] = []  # what the model said of each
+        self.indoors = None  # whether the model called this place a room
+        self.aim = 0  # the part of the picture a way out was seen in: -1 left, 1 right
+        self.way_out = False  # the run under way is at a way out of a room
+        self.watch_at = None  # when the model was last asked about the way out during such a run
+        self.watched = 0.0
+        self.nudge, self.nudge_until = 0.0, -math.inf  # the camera's turn to the way out
+        self.outside = None  # when the model called the figure outdoors
         self.side = self.first_side
         self.level = 0
         self.phase = None  # "out" | "in" | "back" while going round
@@ -197,6 +215,11 @@ class WayRound(FootGuard):
             self.push_since = None
         if self.state == "round" and self.phase == "look":
             return self._look(observation, toward)
+        if self.state == "round" and self.phase == "aim":
+            if now - self.state_since < self.AIM_TURN:
+                return Steer((0.0, 0.0), (float(self.aim), 0.0), state="look")
+            self.phase = "run"
+            self._enter("round", now)
         if self.state == "round":
             if not self.hinted and self.phase == "out" and now - self.state_since <= self.HINT_WITHIN:
                 self._take_hint(now, toward)
@@ -223,10 +246,15 @@ class WayRound(FootGuard):
                     self.jumped.add(key)
                     self.leg_jump, self.pressing = now, True
                     return Steer(self._leg(toward), state="climb", buttons=("square",))
+            if self.phase == "run" and self.way_out and not closed:
+                self._watch(observation)
             if self.phase == "run" and closed:
                 # The model called this way open and the feet say otherwise.
                 return self._look_on(observation, toward)
-            if self.phase == "run" and now - self.state_since >= self.LEGS[self.level]:
+            if self.phase == "run" and (
+                now - self.state_since >= (self.EXIT_RUN if self.way_out else self.LEGS[self.level])
+                or (self.way_out and self.outside is not None and now - self.outside >= self.CLEAR)
+            ):
                 self.round_ended = now
                 self._enter("go", now)
                 self.push_since = None
@@ -257,7 +285,8 @@ class WayRound(FootGuard):
                 self._enter("go", now)
                 self.push_since = None
             if self.state == "round":
-                return Steer(self._leg(toward), state="round")
+                right = (self.nudge, 0.0) if now < self.nudge_until else (0.0, 0.0)
+                return Steer(self._leg(toward), right, state="round")
 
         # state "go"
         if self.push_since is None:
@@ -296,7 +325,7 @@ class WayRound(FootGuard):
         if self.said is not None:
             text += f";open={self.said[0]:.2f}/{self.said[1]:.2f}"
         if self.views:
-            text += ";views=" + "/".join("none" if view is None else f"{view:.2f}" for view in self.views)
+            text += ";views=" + "/".join(self.views)
         return text
 
     def _free(self, now: float) -> None:
@@ -305,6 +334,7 @@ class WayRound(FootGuard):
             self._enter("go", now)
         self.push_since = None
         self.rounds = self.level = self.looked = 0
+        self.indoors = None
         self.closed.clear()
         self.jumped.clear()
         self.backed = False
@@ -328,6 +358,7 @@ class WayRound(FootGuard):
             self.level = min(self.level + 1, len(self.LEGS) - 1)
         else:
             self.level = self.looked = 0
+            self.indoors = None
             self.closed.clear()
             self.jumped.clear()
             self.views = []
@@ -351,9 +382,10 @@ class WayRound(FootGuard):
         return self._look_on(observation, toward)
 
     def _look_on(self, observation: Observation, toward) -> Steer:
-        """The camera a step further round; with no model, or nothing left to look at, the way by feel."""
+        """The next view: first the one as it stands, then the camera a step further round each
+        time; with no model, or nothing left to look at, the way by feel."""
         now = observation.time
-        if self.ahead is None or self.looked >= self.LOOKS:
+        if self.ahead is None or self.looked > self.LOOKS:
             self._take_hint(now, toward)
             self.phase = "out"
             self._enter("round", now)
@@ -361,33 +393,80 @@ class WayRound(FootGuard):
         self.looked += 1
         self.phase, self.asked_at = "look", None
         self._enter("round", now)
-        return Steer((0.0, 0.0), (float(self.side), 0.0), state="look")
+        return Steer((0.0, 0.0), (float(self.side) if self.looked > 1 else 0.0, 0.0), state="look")
 
     def _look(self, observation: Observation, toward) -> Steer:
         """Standing: the camera turns, its picture settles, and the model is asked about it."""
         now = observation.time
         since = now - self.state_since
-        if since < self.LOOK_TURN:
+        # The first view is the one the figure is held up in: no turn, and the feet have judged it.
+        turn = self.LOOK_TURN if self.looked > 1 else 0.0
+        if since < turn:
             return Steer((0.0, 0.0), (float(self.side), 0.0), state="look")
-        if since < self.LOOK_TURN + self.LOOK_SETTLE:
+        if since < turn + self.LOOK_SETTLE:
             return Steer((0.0, 0.0), state="look")
-        if self.asked_at is None and self.ahead.ask(observation.frame, now):
+        if self.asked_at is None and self.ahead.ask(
+            observation.frame, now, indoors=self.indoors, ahead=self.looked > 1
+        ):
             self.asked_at = now
-        found = None if self.asked_at is None else self.ahead.answer(self.asked_at)
-        if found is None:
-            if since < self.LOOK_TURN + self.LOOK_SETTLE + self.LOOK_WAIT:
+        view = None if self.asked_at is None else self.ahead.answer(self.asked_at)
+        if view is None:
+            if since < turn + self.LOOK_SETTLE + self.LOOK_WAIT:
                 return Steer((0.0, 0.0), state="look")
-            found = (None, "no answer")
-        share = found[0]
-        self.views.append(share)
-        if share is None:
+            view = View(error="no answer")
+        if self.indoors is None and view.indoors is not None:
+            self.indoors = view.indoors >= SEEN
+        if view.error is not None or self.indoors is None:
             # The model is not there: at this obstacle the way is felt for as before.
-            self.looked = self.LOOKS
-        elif share >= self.OPEN:
-            self.phase = "run"
-            self._enter("round", now)
-            return Steer(self.AHEAD, state="round")
+            self.views.append("none")
+            self.looked = self.LOOKS + 1
+        elif self.indoors:
+            if view.exit is not None and view.exit >= self.OPEN:
+                # The way out of the room, and the part of the picture it is in.
+                parts = view.parts or (0.0, 1.0, 0.0)
+                self.aim = max(range(3), key=lambda part: parts[part]) - 1 if max(parts) >= SEEN else 0
+                self.views.append("exit" + "LMR"[self.aim + 1])
+                self.way_out, self.outside = True, None
+                self.watch_at, self.watched = None, now
+                self.phase = "aim" if self.aim else "run"
+                self._enter("round", now)
+                stick = (0.0, 0.0) if self.aim else self.AHEAD
+                return Steer(stick, (float(self.aim), 0.0), state="look" if self.aim else "round")
+            self.views.append("room" if view.exit is None else f"room{view.exit:.2f}")
+        elif view.open is not None:
+            self.views.append(f"{view.open:.2f}")
+            if view.open >= self.OPEN:
+                self.way_out = False
+                self.phase = "run"
+                self._enter("round", now)
+                return Steer(self.AHEAD, state="round")
+        else:
+            self.views.append("out")
         return self._look_on(observation, toward)
+
+    def _watch(self, observation: Observation) -> None:
+        """Running at a way out: where it is in the picture now, and whether the figure is outside."""
+        now = observation.time
+        if self.outside is not None:
+            return
+        if self.watch_at is None:
+            due = now - self.watched >= self.WATCH_EVERY
+            if due and self.ahead.ask(observation.frame, now, ahead=False):
+                self.watch_at = now
+            return
+        view = self.ahead.answer(self.watch_at)
+        if view is None:
+            if now - self.watch_at >= self.LOOK_WAIT:
+                self.watch_at, self.watched = None, now
+            return
+        self.watch_at, self.watched = None, now
+        if view.indoors is not None and view.indoors < SEEN:
+            self.outside, self.indoors = now, None
+            self.views.append("outside")
+        elif view.parts is not None and max(view.parts) >= SEEN:
+            part = max(range(3), key=lambda index: view.parts[index]) - 1
+            if part:
+                self.nudge, self.nudge_until = float(part), now + self.AIM_TURN
 
     def _take_hint(self, now: float, toward) -> None:
         """The side the model called open, where it has answered about this obstacle."""

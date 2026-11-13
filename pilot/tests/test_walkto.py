@@ -904,3 +904,36 @@ def test_the_step_off_the_carriageway_keeps_its_side_and_an_arrival_stays_one_at
     assert len(lefts) > 5 and all(left == pytest.approx(lefts[0]) for left in lefts)
     # The walk's two seconds ran out while it stepped aside: it had arrived, and says so.
     assert result.status == "done" and result.reason.startswith("arrived; stable interior blip; still on")
+
+
+def test_while_the_guard_looks_round_a_hidden_marker_is_not_missed_and_after_it_is_looked_for():
+    from pilot.foot import Steer
+    from pilot.wayround import WayRound
+
+    # A guard that turns the camera for five seconds and is then done, as it is when it looks round.
+    class Looking(WayRound):
+        def step(self, observation, want, *, sprint=False):
+            self.state = "round" if observation.time < 6.0 else "go"
+            if self.state == "round":
+                return Steer((0.0, 0.0), (1.0, 0.0), state="look")
+            return Steer(want, state="go")
+
+    skill = WalkTo({"roads": False})
+    assert skill.step(observation(0, 0, 60)).pad.left == pytest.approx((0, -1), abs=0.05)
+    skill.guard = Looking()
+    results = {}
+    for tick in range(1, 100):
+        time = tick / 10
+        # The marker is under the bars from the first turn of the camera until it has come round.
+        hidden = 1.0 <= time < 7.5
+        blips = () if hidden else (Blip("purple", 40.0, 40.0),)
+        results[time] = skill.step(replace(observation(time, blips=blips), frame=None))
+        assert results[time].status == "running", results[time].reason
+    # Five seconds without the marker while the guard is at it: nothing is given up, the guard is stepped.
+    assert all(results[time / 10].pad.right == (1.0, 0.0) for time in range(10, 60))
+    # The guard is done and the marker still hidden: the old direction is not run in. The figure
+    # stands, and after half a second the camera is turned until the marker is read again.
+    assert all(results[time / 10].pad.left == (0.0, 0.0) for time in range(61, 75))
+    assert results[6.2].pad.right == (0.0, 0.0) and results[7.0].pad.right == (1.0, 0.0)
+    assert results[7.0].reason == "turning the camera to the target"
+    assert results[8.0].pad.left[0] > 0.5 and results[8.0].pad.right == (0.0, 0.0)

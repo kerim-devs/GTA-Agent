@@ -136,6 +136,7 @@ class WalkTo:
         self.followed = False  # the target of this tick is the place's symbol, not the marker
         self.aside = None  # (since, reason, outward): arrived, and stepping off the carriageway
         self.damaged_since = None
+        self.turned = False  # the guard has turned the camera since the target was last read
         self.spot_best = None  # the nearest the followed symbol has been, and when it last came nearer
         self.spot_gain = 0.0
         self.started = None
@@ -426,7 +427,18 @@ class WalkTo:
             )
             pace = self.SPRINT_PACE if self.sprint else self.WALK_PACE
             keep = min(self.CARRY_MAX, self.end_distance / pace) if reached else self.HOLD
-            # The direction is the camera's, which this guard leaves alone.
+            if not reached and self.stepped and self.guard.state in {"climb", "round"}:
+                # The guard is at an obstacle, and where it looks round it turns the camera: the
+                # marker passes the map's lower rim, where it is not read. What the guard has
+                # begun it finishes, and the marker is missed from when it has.
+                self.absent = 0.0
+                return self._push(observation, self.last_direction or self.guard.AHEAD, step)
+            if self.turned and not reached and self.color == "purple" and self.absent < self.LOST_AFTER:
+                # The camera is where the guard's look left it, and the old direction, which was
+                # the camera's, means nothing now: the marker is looked for as at a walk's start.
+                # (Inside the barber's on 13 November the walk ended here as "blip lost".)
+                return self._face(1.0, 1.0) if self.absent >= self.SEARCH_AFTER else self._stand()
+            # The direction is the camera's, which the guard leaves alone but for its looks.
             if self.fresh and self.absent < keep and self.last_direction is not None:
                 self.carried += step
                 return self._push(observation, self.last_direction, step)
@@ -442,6 +454,7 @@ class WalkTo:
         target = min(targets, key=lambda blip: math.hypot(blip.x, blip.y))
         distance = math.hypot(target.x, target.y)
         self.seen = self.fresh = True
+        self.turned = False
         self.absent = self.carried = 0.0
         if not self.followed:
             self.marker_at = None if target.border else (target.x, target.y)
@@ -579,6 +592,7 @@ class WalkTo:
     def _push(self, observation, direction, step):
         sprint = self.sprint and not self.winded
         steer = self.guard.step(observation, direction, sprint=sprint)
+        self.turned = self.turned or steer.right != (0.0, 0.0)
         if steer.failed:
             return self._finish("failed", "stuck; guard exhausted")
         # A way round is run like the way itself; a climb is the guard's own press and no sprint.
