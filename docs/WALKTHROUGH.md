@@ -27,3 +27,54 @@ Two things hold for every station. What the game does by itself (the lock of L2,
 | 17 | Losing the stars | sprinted on the first tick and sat in a vehicle after 8.4 s, then stalled on the map with two stars lit | see 7 | P68, then the head's rules for stars use it |
 | 18 | Going on after a death or an arrest, closing a menu nobody asked for | not measurable on the bench yet | open | |
 | 19 | The basic chain and a whole mission | never run in one piece | open | |
+
+## What was added on the morning of 13 November, none of it run at the console yet
+
+Kerim, that night: the pilot is to play the story by itself, decide quickly and well, not get in its own way, find its way, drive as one drives in this game, be allowed a shootout, and now and then go home, change clothes, get a haircut or walk into a shop, at random. The gaming PC was off and the console too, so everything below was built on his recordings, on the simulators and on replays, and each piece is a station of its own for the next session. The command for that session is `lab/live/story.sh`.
+
+| No. | Station | State on 13 November | Kerim's verdict | What follows |
+|---|---|---|---|---|
+| 20 | Errands chosen at random: story, a shop, home, mayhem, a cruise | built (P70): weights 5, 3, 2, 1, 1, no errand twice running except the story, a shop not again within half an hour, home not within the hour; a trip of up to 250 m is walked, a longer one driven; replayed over 1315 recorded requests without an error | open | |
+| 21 | Not getting in its own way | built: the rules leave a running skill running when they would ask for the same call again (89 such replacements in the old logs, 7 in the replay); a button the bridge let go of in mid-press is not pressed a second time; a hand on the controller puts the plan down and nothing is pressed until it is let go of | open | |
+| 22 | Noticing that the figure stands | built: twelve seconds without movement in the game, with a skill that should move it, are told to the head, which jumps and sprints, then turns and goes, then backs off to the road, and gives the errand up the fourth time | open | |
+| 23 | A help text's button | built (P71): seven kinds of offer from his recordings with the button he pressed; an offer not in the table is tried with the d-pad's right; never a bed, a save, a purchase, Online or the phone | open | the table rests on 40 of 469 recorded help texts |
+| 24 | A shop from the inside | built (P71): opens the offer, reads rows and prices, goes down a random number of rows, buys at most one thing for at most 150 dollars and only where every row on screen is priced within that, and backs out | open | which row is highlighted is not read |
+| 25 | In through a door and out again | built (P72): at the place's symbol the walk looks for the door for up to forty seconds; `leave_building` goes back the way it came, then by the model's door, then along the walls | open | needs the local model to know inside from outside; the picture alone was right on 84 % indoors and 25 % outdoors |
+| 26 | A menu left open | built: a shop's or wardrobe's menu nobody asked for is backed out of after about four seconds, one level a press; in a mission the head is told first and uses it | open | |
+| 27 | A call | built: one that rings is taken with the cross as he takes it, one that runs is left to run, and the figure walks and drives on meanwhile; until now the reflex hung up on every call | open | |
+| 28 | Driving like a player | partly built (P73): two seconds behind a stopped vehicle, then round it by backing up and the other lock; a recovery is forgotten after thirty metres; brakes into its arrival; ends when it stands in water. In the simulator not faster than before, and from close behind a parked car it did not get past in fifteen seconds | open | speed and the turn round are for the console, with him watching; `story.sh 1800 careful` drives as before |
+| 29 | A shootout | rebuilt (P77): L2 first, the trigger in his rhythm (0.22 s, one burst a lock), the lock let go and taken again, a step to the side when hit; on the bench it aims within a second in 15 of 20 enemy scenes where it was 3, and fires in 16 where it was 4 | 12 Nov: L2 first | nothing reads whether a weapon is in the hand |
+| 30 | A failed mission | built (P75): the retry as before; the third failure of the same mission in a row takes the skip where the game offers it (Square) | open | |
+| 31 | Switching the character | built (P79): the wheel with Down, the right stick only ever left, up or right, never down, so that the lower slot cannot be highlighted; reads which slot is highlighted (right on 126 of 127 recorded frames, no wheel seen on 200 others) | open | his hand next to the controller the first time |
+| 32 | The local model decides | built (P74): it picks the next errand, and the next step where the rules have none, among up to six things the rules offer, within a second and a half; silent twice, it is left alone for a minute and the rules play | open | never measured against the real model: it was off |
+
+## What can go wrong, and what answers it
+
+Thought through on 13 November from what has gone wrong so far. "Open" means nothing answers it yet.
+
+| What happens | What answers it |
+|---|---|
+| The figure walks into a wall, a fence or a kerb and stops | the walk climbs with Square or goes round; after twelve seconds the head is told that it stands (station 22) |
+| It walks into a yard or a dead end | the walk keeps to the roads of the minimap and steps off a shop's front before it starts; a place given up twice within the hour is not chosen again, in this session or the next |
+| It ends up inside a building it did not mean to enter | the walk asks the model whether this is a room and leaves; without the model: open |
+| Two parts of it want the pad | one owner a tick, in this order: the screen reflex, the guard, the plan; the rules do not restart what already runs |
+| Somebody hits it and the map shows no red | the guard punches back in free roam; in a mission the head is told, for ninety seconds after the last objective was read |
+| Red markers | the guard starts the fight at once; with stars lit nothing is fired |
+| Stars | away along the road without opening the map, never into water (P68) |
+| Little health | it runs, and the fight ends |
+| It dies or is arrested | the reflex waits the screen out and the head plans afresh |
+| A car stands in front of it, or the light is red | two seconds, then round it (station 28) |
+| The car is stuck | back and forward with the lock changed each time, five times; then out of the car and into another |
+| The car is in water | two seconds standing in it end the drive and the figure gets out; what it does swimming: open |
+| The car is on its roof or burns | not read; a car that stands for twelve seconds is left the second time |
+| The map is called damaged for long | a look and one more try, then out of the car |
+| A mission says follow or catch and draws no route | `drive_to_blip` (P78) |
+| Pause, map or phone come up unasked | the reflex backs out; a phone gets two and a half seconds first, in case it rings |
+| A question with a choice, a price, a save or Online in it | never answered by the reflex; the head is told and none of its skills confirms such a thing |
+| A purchase | only in a shop's menu, only up to 150 dollars, never from a help text, never a property |
+| A bed, a save | never: the saved game is Kerim's |
+| The lower slot of the character wheel | cannot be highlighted: the stick never points down |
+| A hand on the controller | the plan is put down and nothing is pressed until it is let go of |
+| A damaged or frozen picture | nothing new is pressed; when the pictures stop everything is let go of, and a press cut short is not made again |
+| The gaming PC is off | the rules play alone |
+| A mission wants something no skill does | its help text's button is pressed once; failed three times, the mission is skipped where the game offers it; otherwise: open, and learnt from watching him |

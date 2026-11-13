@@ -27,6 +27,7 @@ from pilot import hud
 from pilot.conductor import Conductor, minimap_crop
 from pilot.flow import Flow
 from pilot.guard import Guard
+from pilot.localhead import ErrandChooser, LocalHead
 from pilot.loop import Pipeline
 from pilot.mission import MissionHead
 from pilot.scene import SceneText
@@ -63,7 +64,8 @@ def texts(path: Path):
 
 
 def default_head():
-    return MissionHead(goal_seed=7)
+    """The head of `pilot play --head local`, with no server named: the model is silent and the rules play."""
+    return MissionHead(LocalHead(), goal_seed=7, chooser=ErrandChooser())
 
 
 def run(recording: Path, derived: Path | None, out: Path, *, seconds=None, guard=True, head=default_head):
