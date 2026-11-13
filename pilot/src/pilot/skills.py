@@ -457,6 +457,7 @@ class Face(RegisteredSkill):
 # New modules plug in with an import and one entry here.
 from .camera import SetFarView  # noqa: E402
 from .combat import Fight, Melee  # noqa: E402
+from .descend import Descend  # noqa: E402
 from .getaway import GetAway  # noqa: E402
 from .leave import LeaveBuilding  # noqa: E402
 from .level import LevelCamera  # noqa: E402
@@ -492,6 +493,7 @@ REGISTRY = {
         UsePlace,
         DoPrompt,
         LeaveBuilding,
+        Descend,
         SwitchCharacter,
         DriveToBlip,
     )

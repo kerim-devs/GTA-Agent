@@ -656,6 +656,12 @@ CAUSE_RULES: dict[str, str | None] = {
     "looking for entrance": None,
     "standing off the wall": None,
     "no-way-out": "act",  # leave_building: the remembered way, the model's door and the walls are spent
+    "street": None,  # descend: the figure is down and clear of the foot of the stairs
+    "descending stairs": None,
+    "clearing stairs": None,
+    "no-stairs": "act",  # descend: no view showed stairs and the landing's edges are spent
+    "in-room": "decide",  # descend: called in a room; the building is left first
+    "entered-room": "act",  # descend: the figure walked through a door instead of down
     "entered vehicle": None,
     "vehicle drove away or was lost": None,
     "levelled": None,

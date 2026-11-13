@@ -647,6 +647,9 @@ class WayRound(FootGuard):
             if asked:
                 self.asked_at = now
         view = None if self.asked_at is None else self.ahead.answer(self.asked_at)
+        if self.descending and self.asked_at is not None and now - self.asked_at >= self.LOOK_WAIT:
+            # An answer about a view the figure has waited out is no answer: it must not start a run.
+            view = None
         if view is None:
             if since < turn + self.LOOK_SETTLE + self.LOOK_WAIT:
                 return Steer((0.0, 0.0), state="look")
