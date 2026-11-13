@@ -125,3 +125,49 @@ def test_the_session_names_its_memory_once_and_everything_reads_the_same_one(tmp
     finally:
         memory.use(None)
     assert memory.active().get(memory.PLACES, "Kino") == {}
+
+
+def test_the_errands_of_a_session_keep_to_what_earlier_sessions_did(tmp_path):
+    from pilot import errands, memory
+    from pilot.head import HeadRequest
+
+    def request(t=0.0):
+        return HeadRequest(
+            events=[],
+            help="",
+            objective="",
+            subtitle="",
+            banner="",
+            minimap={"minimap": "flat", "route": "none", "blips": []},
+            last_skill=None,
+            notebook="",
+            jpeg_path="unused.jpg",
+            time=t,
+            hud={"screen": "game", "health": 1, "wanted": 0},
+            judgment={"mode": "foot"},
+            objects=[],
+        )
+
+    try:
+        kept = memory.use(tmp_path / "memory.json")
+        first = errands.Errands(seed=3, chooser=lambda offers: "home")
+        first._start(request())
+        assert first.active.name == "home"
+        first.end(request(60.0), "used the wardrobe", reached=True)
+        first.end(request(60.0), "used the wardrobe", reached=True)  # an answer dropped and made again
+        assert kept.count(memory.ERRANDS, "home", "done") == 1
+        memory.place_failed(kept, "Suburban", why="no way in")
+        memory.place_failed(kept, "Suburban", why="no way in")
+        kept.close()
+        # The next session: home was an hour ago at most, and Suburban was given up twice.
+        memory.use(tmp_path / "memory.json")
+        second = errands.Errands(seed=3, chooser=lambda offers: "home")
+        assert "Suburban" not in second.shops(0.0)
+        second._start(request())
+        assert second.active.name != "home"
+    finally:
+        memory.use(None)
+    # Without a file the sessions know nothing of each other, as in every test.
+    third = errands.Errands(seed=3, chooser=lambda offers: "home")
+    third._start(request())
+    assert third.active.name == "home" and "Suburban" in third.shops(0.0)

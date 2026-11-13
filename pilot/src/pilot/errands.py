@@ -8,6 +8,7 @@ import time
 from collections import Counter
 from dataclasses import dataclass, field
 
+from . import memory
 from .head import parse_response
 
 # Relative chances; cooldowns and exclusions are applied before the seeded draw.
@@ -121,6 +122,7 @@ class Errands:
         self.seed = secrets.randbits(32) if seed is None else seed
         self.random = random.Random(self.seed)
         self.clock, self.chooser = clock, chooser
+        self._noted = None  # the errand whose end the memory was last told of; not undone with the rest
         self.active = None
         self.abandoned = None
         self.history = []
@@ -159,11 +161,29 @@ class Errands:
     def now(self, request):
         return self.clock() if request.time is None else request.time
 
+    @staticmethod
+    def _kept():
+        """The memory of earlier sessions, where this one was given a file for it (memory.use)."""
+        kept = memory.active()
+        return kept if kept.path is not None else None
+
+    def _recent(self, section, name, seconds):
+        """Whether an earlier session, or this one, noted the entry less than `seconds` ago."""
+        kept = self._kept()
+        age = None if kept is None else kept.since(section, name)
+        return age is not None and age < seconds
+
     def shops(self, now):
+        kept = self._kept()
         return [
             p
             for p in SHOPS
-            if now - self.shop_times.get(p, -float("inf")) >= 1800 and self.abandonments[p] < 2
+            if now - self.shop_times.get(p, -float("inf")) >= 1800
+            and self.abandonments[p] < 2
+            # Across sessions as within one: not the shop the figure was in half an hour ago, and not
+            # one the way to which was given up twice running within the hour.
+            and not self._recent(memory.PLACES, p, 1800)
+            and not (kept is not None and memory.place_avoided(kept, p))
         ]
 
     def choose(self, request):
@@ -171,9 +191,17 @@ class Errands:
         candidates = [n for n in ERRANDS if n == "story" or n != self.last_name]
         if not self.shops(now):
             candidates.remove("shop") if "shop" in candidates else None
-        if now - self.cooldowns.get("home", -float("inf")) < 3600 or self.abandonments["Unterschlupf"] >= 2:
+        if (
+            now - self.cooldowns.get("home", -float("inf")) < 3600
+            or self.abandonments["Unterschlupf"] >= 2
+            or self._recent(memory.ERRANDS, "home", 3600)
+        ):
             candidates.remove("home") if "home" in candidates else None
-        if now - self.cooldowns.get("mayhem", -float("inf")) <= 600 or self.last_name == "escape":
+        if (
+            now - self.cooldowns.get("mayhem", -float("inf")) <= 600
+            or self.last_name == "escape"
+            or self._recent(memory.ERRANDS, "mayhem", 600)
+        ):
             candidates.remove("mayhem") if "mayhem" in candidates else None
         weights = [ERRANDS[n] * (0.5 if n == "story" and self.story_dampened else 1) for n in candidates]
         offers = [
@@ -219,6 +247,20 @@ class Errands:
         )
         return goal
 
+    def _keep(self, goal, reached, reason):
+        """Note the errand's end for later sessions, once: a decision the conductor drops is made again."""
+        kept = self._kept()
+        key = (goal.name, goal.started)
+        if kept is None or key == self._noted:
+            return
+        self._noted = key
+        memory.errand_done(kept, goal.name, reached=reached)
+        if goal.place:
+            if reached:
+                memory.place_reached(kept, goal.place, how=goal.name)
+            else:
+                memory.place_failed(kept, goal.place, why=str(reason)[:80])
+
     def end(self, request, reason, *, reached=False):
         goal = self.active
         if goal is None:
@@ -232,6 +274,7 @@ class Errands:
                 "reason": reason,
             }
         )
+        self._keep(goal, reached, reason)
         self.last_name = "escape" if goal.name == "mayhem" and goal.step == "escape" else goal.name
         self.abandoned = None if reached else goal.name
         if not reached and goal.place:

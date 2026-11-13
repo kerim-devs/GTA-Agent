@@ -4,10 +4,11 @@ import argparse
 import json
 import math
 import sys
+from contextlib import closing
 from dataclasses import asdict, fields
 from pathlib import Path
 
-from . import ahead, chooser, hud, profile, sides
+from . import ahead, chooser, hud, memory, profile, sides
 from .bridge import Bridge
 from .calibrate import RECORDINGS as CALIBRATIONS
 from .calibrate import run_calibrate, selection
@@ -266,6 +267,11 @@ def main(argv: list[str] | None = None) -> None:
             )
             if args.head == "rules":
                 head = MissionHead(head)
+        if args.head != "scripted" and not args.no_record:
+            # What earlier sessions learned of places and errands, kept beside their recordings.
+            kept = memory.use(args.record_dir / "memory.json")
+            if kept.error:
+                print(f"memory starts empty: {kept.error}", file=sys.stderr)
         objects = None
         if not args.no_objects:
             try:
@@ -273,7 +279,7 @@ def main(argv: list[str] | None = None) -> None:
             except RuntimeError as exc:
                 # Without the weights the pilot still plays; the skills that need them say so.
                 print(f"object detector off: {exc}", file=sys.stderr)
-        with Bridge() as bridge:
+        with Bridge() as bridge, closing(memory.active()):
             print(
                 run_play(
                     bridge,
