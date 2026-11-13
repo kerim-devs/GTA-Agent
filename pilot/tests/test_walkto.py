@@ -121,11 +121,12 @@ def test_a_figure_that_gets_nowhere_climbs_then_goes_round_and_gives_up_with_bot
         if result.status != "running":
             break
     assert states == ["go", "climb", "round", "failed"]
-    # The climb is one press of Square and no sprint; the way round is run like the way itself.
-    assert pressed["climb"] == {"square"} and pressed["round"] == {"cross"}
+    # The climb is one press of Square and no sprint; the way round is run like the way itself,
+    # with a jump in each of its directions before that one is given up.
+    assert pressed["climb"] == {"square"} and pressed["round"] == {"cross", "square"}
     assert result.status == "failed" and "guard exhausted" in result.reason
-    # Climb, both sides, back out: nothing moved, and after nine seconds the walk says so.
-    assert result.pad == NEUTRAL_PAD and tick / 10 < 10
+    # Climb, both sides, back out: nothing moved, and after fourteen seconds the walk says so.
+    assert result.pad == NEUTRAL_PAD and tick / 10 < 15
 
 
 def test_hard_limit_stop_and_replacement_are_neutral():

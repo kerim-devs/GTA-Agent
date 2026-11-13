@@ -1,5 +1,6 @@
 """A walk that is held up: Square first, then round on one side and further out, the other side only
-when the first is closed, and no leg judged by what was seen before it began."""
+when the first is closed, no leg judged by what was seen before it began, and no direction called
+closed before the figure has jumped in it."""
 
 import numpy as np
 import pytest
@@ -101,38 +102,70 @@ def test_held_up_again_right_after_a_way_round_it_tries_square_and_goes_further_
 
 def test_a_side_that_is_closed_itself_sends_it_round_the_other():
     guard = Told(lambda time, guard: "going" if guard.state == "round" and guard.side < 0 else "still")
-    steers = run(guard, 8.5)
-    assert went(steers, ("go", 0.0), ("climb", 1.5), ("round", 3.1), ("go", 8.1))
-    assert steers[4.0].left == pytest.approx(RIGHT) and steers[6.0].left == pytest.approx(LEFT)
-    assert guard.closed == {1}
+    steers = run(guard, 10.5)
+    # Two seconds of the right side, a jump at it, and only then the left.
+    assert went(
+        steers, ("go", 0.0), ("climb", 1.5), ("round", 3.1), ("climb", 5.1), ("round", 6.7), ("go", 9.7)
+    )
+    assert steers[4.0].left == pytest.approx(RIGHT) and steers[6.0].left == pytest.approx(RIGHT)
+    assert steers[8.0].left == pytest.approx(LEFT)
+    assert guard.closed == {1} and guard.jumped == {1}
+
+
+def test_no_direction_is_called_closed_before_the_figure_has_jumped_in_it():
+    # Kerim, 13 November: stuck, try Square as well, the jump, it helps. Here it does: eight tenths
+    # of a second after the press to the right the figure is going.
+    def seen(time, guard):
+        jumping = guard.state == "round" and guard.leg_jump is not None
+        return "going" if jumping and time - guard.leg_jump >= 0.8 else "still"
+
+    guard = Told(seen)
+    steers = run(guard, 10.5)
+    assert went(
+        steers, ("go", 0.0), ("climb", 1.5), ("round", 3.1), ("climb", 5.1), ("round", 6.7), ("go", 9.7)
+    )
+    pressed = [time for time, steer in steers.items() if steer.buttons]
+    assert pressed == pytest.approx([1.5, 1.6, 5.1, 5.2]) and steers[5.1].buttons == ("square",)
+    # The jump is in the leg's direction, and the leg goes on from where it landed.
+    assert all(steers[time / 10].left == pytest.approx(RIGHT) for time in range(32, 86))
+    assert steers[9.0].left == pytest.approx(BACK_IN_RIGHT, abs=1e-3) and not guard.closed
+    # Without Square the guard does not jump either.
+    guard = Told(lambda time, guard: "still", climb=False)
+    steers = run(guard, 9.0)
+    assert not any(steer.buttons for steer in steers.values()) and steers[9.0].failed == "stuck"
 
 
 def test_with_both_sides_closed_it_walks_back_out_of_the_pocket_and_tries_them_again_further_out():
     # The porch of 13 November: wall ahead, window to the right, posts to the left, open behind.
     guard = Told(lambda time, guard: "going" if guard.state == "round" and guard.backed else "still")
-    steers = run(guard, 15.0)
-    assert went(steers, ("go", 0.0), ("climb", 1.5), ("round", 3.1), ("go", 14.1))
-    assert steers[4.0].left == pytest.approx(RIGHT) and steers[6.0].left == pytest.approx(LEFT)
+    steers = run(guard, 18.0)
+    # Each side for two seconds and a jump at it.
+    states = ["go", "climb", "round", "climb", "round", "climb", "round", "go"]
+    assert [state for state, _ in stretches(steers)] == states
+    assert steers[4.0].left == pytest.approx(RIGHT) and steers[8.0].left == pytest.approx(LEFT)
     # Back for two and a half seconds, then out to the first side for three and a half, and in.
-    assert all(steers[time / 10].left == pytest.approx((0.0, 1.0)) for time in range(72, 96))
-    assert all(steers[time / 10].left == pytest.approx(RIGHT) for time in range(98, 130))
-    assert steers[13.5].left == pytest.approx(BACK_IN_RIGHT, abs=1e-3) and steers[14.5].left == FORWARD
+    assert all(steers[time / 10].left == pytest.approx((0.0, 1.0)) for time in range(106, 129))
+    assert all(steers[time / 10].left == pytest.approx(RIGHT) for time in range(131, 164))
+    assert steers[17.0].left == pytest.approx(BACK_IN_RIGHT, abs=1e-3) and steers[18.0].left == FORWARD
     assert guard.backed and not guard.closed
 
 
 def test_a_figure_that_cannot_get_back_out_either_or_finds_the_sides_closed_again_is_stuck():
     guard = Told(lambda time, guard: "still")
-    steers = run(guard, 10.5)
+    steers = run(guard, 15.5)
     failed = [time for time, steer in steers.items() if steer.failed]
     assert steers[failed[0]].failed == "stuck" and steers[failed[0]].left == (0.0, 0.0)
-    assert failed[0] == pytest.approx(9.1, abs=0.15) and guard.phase == "back"
+    # Forward, right, left and back, two seconds each and a jump of 1.6 s in each: fourteen seconds.
+    assert failed[0] == pytest.approx(14.1, abs=0.2) and guard.phase == "back"
+    assert sum(bool(steer.buttons) for steer in steers.values()) == 8 and guard.jumped == {1, -1, "back"}
     # And it stays stuck: a guard that has given up is not stepped back to life.
-    assert all(steers[time].failed == "stuck" for time in failed) and failed[-1] == 10.5
+    assert all(steers[time].failed == "stuck" for time in failed) and failed[-1] == 15.5
 
     guard = Told(lambda time, guard: "going" if guard.state == "round" and guard.phase == "back" else "still")
-    steers = run(guard, 16.0)
+    steers = run(guard, 18.0)
     failed = [time for time, steer in steers.items() if steer.failed]
-    assert failed and failed[0] == pytest.approx(7.1 + 2.5 + 2.0 + 2.0, abs=0.3) and guard.closed == {1, -1}
+    # From further back the sides are tried again, and not jumped at a second time.
+    assert failed and failed[0] == pytest.approx(10.5 + 2.5 + 2.0 + 2.0, abs=0.3) and guard.closed == {1, -1}
 
 
 def test_a_leg_is_not_judged_by_the_stand_it_began_from():

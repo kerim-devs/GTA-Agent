@@ -17,6 +17,11 @@ a side that is itself closed makes it try the other. With both sides closed it i
 walks back out the way it came before it tries the sides again, once. The direction is taken from
 where the walk wants to go on every tick, so a way round stays a way round while the camera swings
 behind the figure.
+
+Kerim, 13 November, of a figure wedged between a palm, a leaning sheet of iron and a wall, where the
+guard had pressed Square once, forward, and given up: stuck, always try Square as well, the jump, it
+helps. So no direction is called closed before the figure has jumped in it: a side, and the way
+back, each once at an obstacle.
 """
 
 from __future__ import annotations
@@ -85,6 +90,8 @@ class WayRound(FootGuard):
         self.sprinting = False
         self.pressing = False  # Square is down for this climb
         self.stepped_at = None
+        self.jumped: set = set()  # directions jumped in at this obstacle: a side, or "back"
+        self.leg_jump = None  # when Square was pressed in the leg under way
 
     def _evidence(self, observation: Observation) -> str | None:
         if not self.sprinting:
@@ -163,8 +170,27 @@ class WayRound(FootGuard):
         if self.state == "round":
             if not self.hinted and self.phase == "out" and now - self.state_since <= self.HINT_WITHIN:
                 self._take_hint(now, toward)
-            started = self.state_since + self.LEG_START
-            closed = now - started >= self.LEG_HELD_AFTER and self._stands(started, now)
+            jump = self.leg_jump if self.leg_jump is not None and self.leg_jump >= self.state_since else None
+            if jump is not None:
+                if now - jump < self.CLIMB_SECONDS:
+                    self.pressing = self.pressing and now - jump < self.CLIMB_PRESS
+                    return Steer(
+                        self._leg(toward), state="climb", buttons=("square",) if self.pressing else ()
+                    )
+                burst = sum(kind == "going" for t, kind in self.evidence if t >= jump)
+                closed = burst < self.CLIMB_BURST and self._stands(now - self.CLIMBED, now)
+                if not closed:
+                    # The jump took: the leg begins afresh from where the figure is now.
+                    self._enter("round", now)
+            else:
+                started = self.state_since + self.LEG_START
+                closed = now - started >= self.LEG_HELD_AFTER and self._stands(started, now)
+                key = "back" if self.phase == "back" else self.side
+                if closed and self.climb and self.phase != "in" and key not in self.jumped:
+                    # Not closed before the figure has jumped at it.
+                    self.jumped.add(key)
+                    self.leg_jump, self.pressing = now, True
+                    return Steer(self._leg(toward), state="climb", buttons=("square",))
             if self.phase == "out" and closed:
                 # This side is closed as well. (The way back in is too short to be judged: held up
                 # on it, the figure is held up again right after it, and goes further out.)
@@ -192,10 +218,7 @@ class WayRound(FootGuard):
                 self._enter("go", now)
                 self.push_since = None
             if self.state == "round":
-                if self.phase == "back":
-                    return Steer((-toward[0], -toward[1]), state="round")
-                angle = 90.0 if self.phase == "out" else 45.0
-                return Steer(_rotate(toward, self.side * angle), state="round")
+                return Steer(self._leg(toward), state="round")
 
         # state "go"
         if self.push_since is None:
@@ -206,6 +229,12 @@ class WayRound(FootGuard):
             self._free(now)
             self.push_since = now
         return Steer(want, state="go")
+
+    def _leg(self, toward) -> tuple[float, float]:
+        """The stick of the leg under way: out at right angles, back in at 45 degrees, or straight back."""
+        if self.phase == "back":
+            return (-toward[0], -toward[1])
+        return _rotate(toward, self.side * (90.0 if self.phase == "out" else 45.0))
 
     def _stands(self, since: float, now: float) -> bool:
         """Most of what was seen from `since` on says still."""
@@ -232,6 +261,7 @@ class WayRound(FootGuard):
         self.push_since = None
         self.rounds = self.level = 0
         self.closed.clear()
+        self.jumped.clear()
         self.backed = False
         self.round_ended = None
 
@@ -254,6 +284,7 @@ class WayRound(FootGuard):
         else:
             self.level = 0
             self.closed.clear()
+            self.jumped.clear()
             self.backed = False
             self.held_at, self.hinted, self.said = now, False, None
             if self.sides is not None:
