@@ -573,6 +573,10 @@ CAUSE_RULES: dict[str, str | None] = {
     "place-instance-not-present": "decide",
     "goal_": "decide",
     "not-built": "decide",  # a skill planned before its card was done
+    "switch-refused": "decide",  # switch_character: planned with stars, an objective, or no map
+    "switched:": None,  # switch_character's done: the game is back with another figure
+    "wheel-unread": "see",  # switch_character: the wanted slot's highlight was not read; nothing switched
+    "online-slot-seen": "see",  # switch_character: the lower slot read as highlighted; let go on a story slot
     "no-prompt": "decide",  # do_prompt, use_place: planned where the game offers nothing
     "refused:": "decide",  # do_prompt: the offer is one the pilot never takes (a bed, a purchase, Online)
     "no-effect": "act",  # do_prompt: the button went down and the help text stayed
