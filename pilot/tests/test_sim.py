@@ -40,10 +40,16 @@ KNOWN_FAILURES[("block", 0.3, 2.0, 0, 0.0, "range-10")] = ["progress gap 27.800s
 # 10.100 s before, now within the ten seconds.
 # With the turn still to show taken off the error (13 November, evening): the block 16.300 s, the wall
 # at 0.5 m 11.067 s again, and the wall at 2 m, at 10.400 s before, now within the ten seconds too.
-KNOWN_FAILURES[("block", 0.21, 2.0, 0, 0.25, "nominal")] = ["progress gap 16.300s > 10s"]
-KNOWN_FAILURES[("wall", 0.21, 0.5, 0, 0.25, "nominal")] = ["progress gap 11.067s > 10s"]
+# With the middle aim and the short aim by way of the car's own direction (P95): the block is passed
+# within the ten seconds (16.300 s before), the wall at 0.5 m stands at 10.767 s (11.067).
+del KNOWN_FAILURES[("block", 0.21, 2.0, 0, 0.25, "nominal")]
+KNOWN_FAILURES[("wall", 0.21, 0.5, 0, 0.25, "nominal")] = ["progress gap 10.767s > 10s"]
 del KNOWN_FAILURES[("wall", 0.21, 1.0, 0, 0.25, "nominal")]
 del KNOWN_FAILURES[("wall", 0.21, 2.0, 0, 0.25, "nominal")]
+
+
+# Furthest metres from the road in the three bends before P95, nominal car, at 0.5, 1 and 2 m to the pixel.
+BENDS_BEFORE = {"left": (2.97, 2.69, 3.52), "right": (2.96, 2.66, 3.48), "s_bend": (3.03, 2.60, 3.59)}
 
 
 def run_case(name: str, delay: float, scale: float, seed: int, dead_zone: float, profile="nominal"):
@@ -178,3 +184,11 @@ def test_unknown_car_ranges(profile, name, delay, scale, dead_zone):
         assert errors == KNOWN_FAILURES[key], "Measured edge failure changed; review the baseline"
         pytest.xfail("; ".join(errors))
     assert not errors, "; ".join(errors)
+
+
+@pytest.mark.parametrize("name", sorted(BENDS_BEFORE))
+def test_the_aims_keep_the_car_as_near_the_road_in_a_bend_as_before(name):
+    """P95 took most of the short aim's work to an aim 14 px out; a longer arm must not cut a corner."""
+    for scale, before in zip((0.5, 1.0, 2.0), BENDS_BEFORE[name], strict=True):
+        result = run_case(name, 0.21, scale, 0, 0.25)
+        assert result.reached and result.max_distance <= min(5.0, before + 0.5), (scale, result.max_distance)

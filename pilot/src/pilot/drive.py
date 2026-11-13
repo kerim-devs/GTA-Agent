@@ -3,7 +3,7 @@
 import os
 from collections import deque
 from dataclasses import dataclass
-from math import atan2, copysign, degrees, hypot, isfinite, sqrt
+from math import atan2, copysign, cos, degrees, hypot, isfinite, radians, sin, sqrt
 
 from pilot.contract import NEUTRAL, Command, Reading
 
@@ -56,6 +56,15 @@ class DriveConfig:
     straight_bend: float = (
         15.0  # Degrees between two stretches of that length under which the way is straight.
     )
+    # Where the way bends, the aim at 8 px is found by continuing the path's first segment, 5 to 6 px
+    # long and a pixel of wander at each end, back under the arrow: in the closed loop with the car
+    # as measured that alone swings the car by 8 degrees, and before the right turn of 13 November,
+    # 18:32, at 210 s, it lay 6 to 28 degrees to the left while the route's beginning leaned to the
+    # right. That continuation is there for a corner hidden under the arrow, where the path begins
+    # round the corner. Where the path's beginning goes on in the direction in which its first point
+    # lies from the car, nothing is hidden, and the aim is taken on the path itself, this far out.
+    bend_lookahead_px: float = 14.0
+    onward_bend: float = 25.0  # Degrees between the line to the path's first point and its beginning.
     speed_limit: float = 7.0  # Straight-line limit in metres per second.
     slow_speed: float = 2.0  # Lowest planned corner speed, in metres per second.
     lateral_acceleration: float = 1.2  # Conservative m/s^2 cornering budget.
@@ -176,6 +185,7 @@ class Driver:
         self._route_stopped = False
         self._error: float | None = None
         self._far = False  # whether the aim of the last tick was the far one
+        self._onward = False  # whether, where the way bends, the path's beginning went on from the car
         self.aim_px = self.config.lookahead_px  # the aim's distance of the last tick, for the log
         # A comparison within one drive, for the console: with PILOT_AIM_AB set to a number of seconds
         # the far aim is allowed in every other stretch of that length on the session's clock, the
@@ -392,14 +402,19 @@ class Driver:
         if path:
             allowed = self._aim_ab <= 0 or int(now // self._aim_ab) % 2 == 0
             self._far = allowed and _straight(path, self.config, self._far)
-            self.aim_px = self.config.straight_lookahead_px if self._far else self.config.lookahead_px
-            target = _target(
-                path, self.config.straight_lookahead_px if self._far else self.config.lookahead_px
+            # In a stretch of the comparison that is the short aim's, the middle one does not steer either.
+            self._onward = allowed and not self._far and _onward(path, self.config, self._onward, arrow)
+            self.aim_px = (
+                self.config.straight_lookahead_px
+                if self._far
+                else self.config.bend_lookahead_px
+                if self._onward
+                else self.config.lookahead_px
             )
-            error = near_error = _angle(degrees(atan2(target[0], target[1])) - arrow)
-            if self._far:
-                short = _target(path, self.config.lookahead_px)
-                near_error = _angle(degrees(atan2(short[0], short[1])) - arrow)
+            target = _target(path, self.aim_px, arrow)
+            error = _angle(degrees(atan2(target[0], target[1])) - arrow)
+            short = _target(path, self.config.lookahead_px)
+            near_error = _angle(degrees(atan2(short[0], short[1])) - arrow)
             far_error = _angle(degrees(atan2(path[-1][0], path[-1][1])) - arrow)
         if self._error is not None and abs(_angle(error - self._error)) > self.config.outlier_angle:
             if self._outlier_since is None:
@@ -895,7 +910,52 @@ def _straight(path, config, was: bool) -> bool:
     return abs(_angle(second - first)) < config.straight_bend * (1.5 if was else 1.0)
 
 
-def _target(path, radius: float):
+def _onward(path, config, was: bool, heading: float) -> bool:
+    """Whether the path's beginning goes on from the car: in the direction in which its first point
+    lies from it, or in the direction the car is heading.
+
+    The beginning is taken over one and a half times the short aim's length, so that a pixel of
+    wander in one point does not decide it, and once it holds it holds until the directions differ
+    by a third more. A corner under the arrow shows as a path that begins round it: its first point lies
+    to one side and its beginning runs across the car's way, by 33 degrees and more against the line
+    to that point for a right angle 6 px ahead or nearer, and by the corner's angle against the
+    heading. A car beside a straight route is heading its way, however far off it is, and is brought
+    back in a flatter curve than the short aim's.
+    """
+    span = 1.5 * config.lookahead_px
+    if config.bend_lookahead_px <= config.lookahead_px or len(path) < 2:
+        return False
+    start, travelled, previous, end = path[0], 0.0, path[0], None
+    for point in path[1:]:
+        step = hypot(point[0] - previous[0], point[1] - previous[1])
+        if step > 0 and travelled + step >= span:
+            fraction = (span - travelled) / step
+            end = tuple(a + fraction * (b - a) for a, b in zip(previous, point, strict=True))
+            break
+        travelled, previous = travelled + step, point
+    if end is None or hypot(*start) <= 0:
+        return False
+    leg = degrees(atan2(start[0], start[1]))
+    onward = degrees(atan2(end[0] - start[0], end[1] - start[1]))
+    limit = config.onward_bend * (4 / 3 if was else 1.0)
+    return abs(_angle(onward - leg)) < limit or abs(_angle(onward - heading)) < limit
+
+
+def _target(path, radius: float, heading: float | None = None):
+    """The point to steer at, `radius` from the car along the route.
+
+    The route's first `path_hidden` pixels lie under the arrow. Where the aim is nearer than the
+    path's first point, the path's first segment is continued back under the arrow as a line. With
+    `heading`, the car's own direction on the map, the hidden stretch is taken to run from the car
+    along that direction to where it meets that line, and along the line from there: while the
+    meeting point lies ahead, further off than the aim, the aim lies straight ahead. Without it,
+    and where the two do not meet ahead of the car and before the path's first point, the aim is
+    on the line, at its nearest point until the circle reaches it. The first reading is right for
+    a corner or a bend ahead, visible or under the arrow; the second for a car beside its route. By
+    the second alone, the right turn of 13 November, 18:32, whose beginning leaned to the right 13
+    px ahead of the car, was steered at 6 to 28 degrees to the left: the line that continued that
+    lean backwards passed the car on its left.
+    """
     previous = path[0]
     if len(path) >= 2 and hypot(*previous) > radius:
         # Continue only the first visible straight segment under the arrow.
@@ -905,6 +965,14 @@ def _target(path, radius: float):
         length = hypot(dx, dy)
         if length > 0:
             dx, dy = dx / length, dy / length
+            if heading is not None:
+                hx, hy = sin(radians(heading)), cos(radians(heading))
+                cross = dx * hy - dy * hx
+                if abs(cross) > 1e-6:
+                    ahead = (dx * y - dy * x) / cross  # along the heading to the line
+                    before = (hx * y - hy * x) / cross  # from the first point along the line, back negative
+                    if ahead >= radius and before <= 0:
+                        return radius * hx, radius * hy
             projection = x * dx + y * dy
             discriminant = projection * projection - x * x - y * y + radius * radius
             if discriminant < 0 and projection > 0:
