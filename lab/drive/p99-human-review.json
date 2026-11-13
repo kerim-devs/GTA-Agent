@@ -1,0 +1,41 @@
+{
+  "sample_scope": "Six named recordings, 6040 frames sampled at >=0.5 s; 24 automatic candidate windows; 11 reached the sampled far-heading criterion and were visually inspected.",
+  "reviewed_car_turns": [
+    {
+      "event": 16,
+      "session": "20261113-184225",
+      "start": 14.4895,
+      "end": 24.4507,
+      "mode": "Forward, reversing turn, forward; first short L2 pulse brakes, second changes the turning direction with opposite lock.",
+      "reverse_command": [
+        19.0656,
+        20.6714
+      ]
+    },
+    {
+      "event": 18,
+      "session": "20261113-184225",
+      "start": 339.0221,
+      "end": 350.5598,
+      "mode": "Forward arc across an open junction; no L2."
+    },
+    {
+      "event": 21,
+      "session": "20261113-185312",
+      "start": 257.4494,
+      "end": 266.3638,
+      "mode": "Forward arc over an open median; no L2."
+    }
+  ],
+  "excluded_completed": {
+    "0": "Drives forward beside a rail; route changes, no turn.",
+    "1": "Drives forward; route changes, no turn.",
+    "2": "Drives forward past an open merge; no turn.",
+    "3": "Motorbike, not a car; 0.246 s L2 does not prove reverse.",
+    "8": "Rollover against a cliff, not a controlled turn.",
+    "17": "Motorbike; not included in car-turn count.",
+    "19": "Collision recovery beside a lorry; 6.044 s L2, not a clean route turn.",
+    "20": "Ordinary junction turn with 1.006 s braking; no reversing turn proved."
+  },
+  "limitations": "Small selected sample, not a population rate. Sampled heading-window durations are not exact movement durations; camera changes and reroutes can satisfy the numerical criterion without a turn. L2 command duration includes braking and input-to-picture delay."
+}
