@@ -65,6 +65,9 @@ def test_bypass_wait_reverse_forward_and_return_to_route():
     assert command.state == "bypass-forward" and command.steer == -1
     assert command.throttle == 1 and command.brake == 0
     command = driver.step(picture(), 3.7, True, speed=2, ahead=False)
+    assert command.state == "bypass-forward" and command.steer == -1
+    for tick in range(38, 95):
+        command = driver.step(picture(), tick / 10, True, speed=2, ahead=False)
     assert command.state == "follow" and driver._phase is None
 
 

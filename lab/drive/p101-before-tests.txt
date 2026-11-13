@@ -1,0 +1,583 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF....FF                                 [100%]
+=================================== FAILURES ===================================
+__ test_recorded_van_starts_reverse_and_keeps_forward_lock_without_map_motion __
+
+    def test_recorded_van_starts_reverse_and_keeps_forward_lock_without_map_motion():
+        driver = Driver(drive_config(["style=bold"]))
+        commands = []
+        for row, reading, objects, at in replay.inputs("000623"):
+            if not 705 <= row["t"] <= 733:
+                continue
+            command = driver.step(
+                reading,
+                row["t"],
+                row["moving"],
+                speed=reading.gps_speed,
+                ahead=waits_behind(objects, at, row["t"]),
+                bypass_side=passing_side(objects, at, row["t"]),
+            )
+            commands.append((row["t"], command))
+        reverse = next((t for t, c in commands if c.state == "bypass-reverse"), None)
+>       assert reverse is not None and reverse < 721  # van reached at approximately 711 s
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:51: AssertionError
+____ test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-nominal] ____
+
+profile = 'nominal', blocked = 0
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'nominal', 'blocked': 0, 'detected': False, 'first_contact': 2.1000000000000023, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-00] ____
+
+profile = 'range-00', blocked = 0
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-00', 'blocked': 0, 'detected': False, 'first_contact': 2.366666666666668, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-01] ____
+
+profile = 'range-01', blocked = 0
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-01', 'blocked': 0, 'detected': False, 'first_contact': 2.1000000000000023, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-02] ____
+
+profile = 'range-02', blocked = 0
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-02', 'blocked': 0, 'detected': False, 'first_contact': 1.8666666666666691, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-10] ____
+
+profile = 'range-10', blocked = 0
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-10', 'blocked': 0, 'detected': False, 'first_contact': 2.366666666666668, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-11] ____
+
+profile = 'range-11', blocked = 0
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-11', 'blocked': 0, 'detected': False, 'first_contact': 2.1000000000000023, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-12] ____
+
+profile = 'range-12', blocked = 0
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-12', 'blocked': 0, 'detected': False, 'first_contact': 1.8666666666666691, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-20] ____
+
+profile = 'range-20', blocked = 0
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-20', 'blocked': 0, 'detected': False, 'first_contact': 2.366666666666668, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-21] ____
+
+profile = 'range-21', blocked = 0
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-21', 'blocked': 0, 'detected': False, 'first_contact': 2.1000000000000023, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-22] ____
+
+profile = 'range-22', blocked = 0
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-22', 'blocked': 0, 'detected': False, 'first_contact': 1.8666666666666691, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+_ test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-fast-low-grip] _
+
+profile = 'fast-low-grip', blocked = 0
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'fast-low-grip', 'blocked': 0, 'detected': False, 'first_contact': 1.8666666666666691, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-nominal] ____
+
+profile = 'nominal', blocked = -1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'nominal', 'blocked': -1, 'detected': False, 'first_contact': 2.1000000000000023, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-00] ___
+
+profile = 'range-00', blocked = -1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-00', 'blocked': -1, 'detected': False, 'first_contact': 2.366666666666668, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-01] ___
+
+profile = 'range-01', blocked = -1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-01', 'blocked': -1, 'detected': False, 'first_contact': 2.1000000000000023, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-02] ___
+
+profile = 'range-02', blocked = -1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-02', 'blocked': -1, 'detected': False, 'first_contact': 1.8666666666666691, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-10] ___
+
+profile = 'range-10', blocked = -1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-10', 'blocked': -1, 'detected': False, 'first_contact': 2.366666666666668, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-11] ___
+
+profile = 'range-11', blocked = -1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-11', 'blocked': -1, 'detected': False, 'first_contact': 2.1000000000000023, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-12] ___
+
+profile = 'range-12', blocked = -1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-12', 'blocked': -1, 'detected': False, 'first_contact': 1.8666666666666691, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-20] ___
+
+profile = 'range-20', blocked = -1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-20', 'blocked': -1, 'detected': False, 'first_contact': 2.366666666666668, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-21] ___
+
+profile = 'range-21', blocked = -1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-21', 'blocked': -1, 'detected': False, 'first_contact': 2.1000000000000023, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-22] ___
+
+profile = 'range-22', blocked = -1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-22', 'blocked': -1, 'detected': False, 'first_contact': 1.8666666666666691, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+_ test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-fast-low-grip] _
+
+profile = 'fast-low-grip', blocked = -1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'fast-low-grip', 'blocked': -1, 'detected': False, 'first_contact': 1.8666666666666691, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+____ test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-nominal] ____
+
+profile = 'nominal', blocked = 1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'nominal', 'blocked': 1, 'detected': False, 'first_contact': 2.1000000000000023, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-00] ____
+
+profile = 'range-00', blocked = 1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-00', 'blocked': 1, 'detected': False, 'first_contact': 2.366666666666668, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-01] ____
+
+profile = 'range-01', blocked = 1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-01', 'blocked': 1, 'detected': False, 'first_contact': 2.1000000000000023, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-02] ____
+
+profile = 'range-02', blocked = 1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+        assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+>       assert row["joined_at"] is not None, row
+E       AssertionError: {'profile': 'range-02', 'blocked': 1, 'detected': False, 'first_contact': 1.8666666666666691, ...}
+E       assert None is not None
+
+pilot/tests/test_round_what_stands.py:80: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-10] ____
+
+profile = 'range-10', blocked = 1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-10', 'blocked': 1, 'detected': False, 'first_contact': 2.366666666666668, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-11] ____
+
+profile = 'range-11', blocked = 1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-11', 'blocked': 1, 'detected': False, 'first_contact': 2.1000000000000023, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-12] ____
+
+profile = 'range-12', blocked = 1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+        assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+>       assert row["joined_at"] is not None, row
+E       AssertionError: {'profile': 'range-12', 'blocked': 1, 'detected': False, 'first_contact': 1.8666666666666691, ...}
+E       assert None is not None
+
+pilot/tests/test_round_what_stands.py:80: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-20] ____
+
+profile = 'range-20', blocked = 1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-20', 'blocked': 1, 'detected': False, 'first_contact': 2.366666666666668, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-21] ____
+
+profile = 'range-21', blocked = 1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+>       assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+E       AssertionError: {'profile': 'range-21', 'blocked': 1, 'detected': False, 'first_contact': 2.1000000000000023, ...}
+E       assert (None is not None)
+
+pilot/tests/test_round_what_stands.py:79: AssertionError
+___ test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-22] ____
+
+profile = 'range-22', blocked = 1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+        assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+>       assert row["joined_at"] is not None, row
+E       AssertionError: {'profile': 'range-22', 'blocked': 1, 'detected': False, 'first_contact': 1.8666666666666691, ...}
+E       assert None is not None
+
+pilot/tests/test_round_what_stands.py:80: AssertionError
+_ test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-fast-low-grip] _
+
+profile = 'fast-low-grip', blocked = 1
+
+    @pytest.mark.parametrize("profile", CAR_PROFILES)
+    @pytest.mark.parametrize("blocked", [0, -1, 1])
+    def test_unreported_parked_vehicle_is_passed_and_route_rejoined(profile, blocked):
+        row = simulations.trial(profile, blocked)
+        assert row["first_contact"] is not None
+        assert row["after_contact"] is not None and row["after_contact"] <= 20, row
+>       assert row["joined_at"] is not None, row
+E       AssertionError: {'profile': 'fast-low-grip', 'blocked': 1, 'detected': False, 'first_contact': 1.8666666666666691, ...}
+E       assert None is not None
+
+pilot/tests/test_round_what_stands.py:80: AssertionError
+___________ test_unseen_reverse_stops_early_when_the_rear_is_blocked ___________
+
+    def test_unseen_reverse_stops_early_when_the_rear_is_blocked():
+        driver = Driver(drive_config(["style=bold"]))
+        for tick in range(65):
+            command = driver.step(picture(), tick / 30, False, speed=0)
+>       assert command.state == "bypass-reverse"
+E       AssertionError: assert 'recovery-reverse' == 'bypass-reverse'
+E         
+E         - bypass-reverse
+E         + recovery-reverse
+
+pilot/tests/test_round_what_stands.py:138: AssertionError
+______ test_bypass_remembers_the_failed_side_until_real_forward_progress _______
+
+    def test_bypass_remembers_the_failed_side_until_real_forward_progress():
+        driver = Driver(drive_config(["style=bold"]))
+        now = 0.0
+    
+        def step(moving, speed):
+            nonlocal now
+            now += 0.1
+            return driver.step(picture(), now, moving, speed=speed)
+    
+        def main_lock():
+            forward_at = None
+            for _ in range(150):
+                command = step(False, 0)
+                if command.state == "bypass-forward":
+                    if forward_at is None:
+                        forward_at = now
+                    if now - forward_at > 0.6:
+                        return command.steer
+            pytest.fail("No forward escape lock within fifteen seconds")
+    
+>       first = main_lock()
+                ^^^^^^^^^^^
+
+pilot/tests/test_round_what_stands.py:167: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def main_lock():
+        forward_at = None
+        for _ in range(150):
+            command = step(False, 0)
+            if command.state == "bypass-forward":
+                if forward_at is None:
+                    forward_at = now
+                if now - forward_at > 0.6:
+                    return command.steer
+>       pytest.fail("No forward escape lock within fifteen seconds")
+E       Failed: No forward escape lock within fifteen seconds
+
+pilot/tests/test_round_what_stands.py:165: Failed
+=========================== short test summary info ============================
+FAILED pilot/tests/test_round_what_stands.py::test_recorded_van_starts_reverse_and_keeps_forward_lock_without_map_motion
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-nominal]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-00]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-01]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-02]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-10]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-11]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-12]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-20]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-21]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-range-22]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[0-fast-low-grip]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-nominal]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-00]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-01]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-02]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-10]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-11]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-12]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-20]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-21]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-range-22]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[-1-fast-low-grip]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-nominal]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-00]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-01]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-02]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-10]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-11]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-12]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-20]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-21]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-range-22]
+FAILED pilot/tests/test_round_what_stands.py::test_unreported_parked_vehicle_is_passed_and_route_rejoined[1-fast-low-grip]
+FAILED pilot/tests/test_round_what_stands.py::test_unseen_reverse_stops_early_when_the_rear_is_blocked
+FAILED pilot/tests/test_round_what_stands.py::test_bypass_remembers_the_failed_side_until_real_forward_progress
+36 failed, 4 passed in 2.73s

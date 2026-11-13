@@ -173,8 +173,8 @@ class Avoider:
         if bypass:
             ahead = [
                 (near, offset, wide)
-                for offset, wide, near in things
-                if 0 < near and abs(offset) < TRACK * wide
+                for item, (offset, wide, near) in zip(boxes, things, strict=True)
+                if 0 < near and _in_lane(item)
             ]
             return self._around(ahead, things, now, bypass=True) if ahead else CLEAR
         followed = self._track(objects, objects_time)
@@ -230,7 +230,11 @@ def passing_side(objects, objects_time, now):
     if not waits_behind(objects, objects_time, now):
         return None
     things = [_seen(item) for item in objects if not _minimap(item.box)]
-    ahead = [(near, offset) for offset, wide, near in things if near >= QUEUE and abs(offset) < TRACK * wide]
+    ahead = [
+        (_seen(item)[2], _seen(item)[0])
+        for item in objects
+        if item.kind in VEHICLES and not _minimap(item.box) and _seen(item)[2] >= QUEUE and _in_lane(item)
+    ]
     if not ahead:
         return None
     _, offset = max(ahead)

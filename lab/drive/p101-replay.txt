@@ -1,0 +1,4 @@
+before 000623 Counter({'follow': 2723, 'recovery-forward': 261, 'turn-forward': 180, 'map-unreadable': 162, 'recovery-reverse': 160, 'coast': 52, 'bypass-wait': 44, 'turn-reverse': 4, 'failed-recovery': 2})
+before 002126 Counter({'follow': 2087, 'recovery-forward': 833, 'recovery-reverse': 499, 'coast': 6})
+after 000623 Counter({'bypass-forward': 1297, 'bypass-reverse': 799, 'follow': 614, 'bypass-pass': 209, 'turn-forward': 180, 'coast': 171, 'map-unreadable': 162, 'bypass-wait': 84, 'failed-recovery': 42, 'recovery-reverse': 25, 'turn-reverse': 4, 'recovery-forward': 1})
+after 002126 Counter({'bypass-forward': 1183, 'follow': 844, 'bypass-reverse': 800, 'bypass-pass': 515, 'coast': 83})

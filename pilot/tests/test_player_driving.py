@@ -36,9 +36,9 @@ def test_styles_reach_the_skill_and_preserve_live_values():
 def test_stopped_queue_commits_after_two_seconds_only_with_evidence():
     driver = Driver(drive_config([]))
     for tick in range(20):
-        driver.step(route(), tick / 10, moving=False, speed=0, ahead=True)
+        driver.step(route(), tick / 10, moving=False, speed=0, ahead=True, bypass_side=-1)
         assert not driver.bypassing
-    driver.step(route(), 2.01, moving=False, speed=0, ahead=True)
+    driver.step(route(), 2.01, moving=False, speed=0, ahead=True, bypass_side=-1)
     assert driver.bypassing
 
 
@@ -58,7 +58,9 @@ def test_recovery_changes_lock_until_thirty_metres_have_been_driven():
     def tick(moving, speed):
         nonlocal now
         now += 0.1
-        return driver.step(route(), now, moving=moving, speed=speed)
+        # The generic recovery still handles an off-route stop; straight-road
+        # obstructions use the bypass covered in test_round_what_stands.
+        return driver.step(replace(route(), bearing=60, far_bearing=60), now, moving=moving, speed=speed)
 
     def stuck():
         for _ in range(20):

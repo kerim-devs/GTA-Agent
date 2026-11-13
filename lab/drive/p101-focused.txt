@@ -1,0 +1,103 @@
+F....................................................................... [ 34%]
+........................................................................ [ 68%]
+......................................FF.........................        [100%]
+=================================== FAILURES ===================================
+__ test_recorded_van_starts_reverse_and_keeps_forward_lock_without_map_motion __
+
+    def test_recorded_van_starts_reverse_and_keeps_forward_lock_without_map_motion():
+        driver = Driver(drive_config(["style=bold"]))
+        commands = []
+        for row, reading, objects, at in replay.inputs("000623"):
+            if not 705 <= row["t"] <= 733:
+                continue
+            command = driver.step(
+                reading,
+                row["t"],
+                row["moving"],
+                speed=reading.gps_speed,
+                ahead=waits_behind(objects, at, row["t"]),
+                bypass_side=passing_side(objects, at, row["t"]),
+            )
+            commands.append((row["t"], command))
+        reverse = next((t for t, c in commands if c.state == "bypass-reverse"), None)
+        assert reverse is not None and reverse < 721  # van reached at approximately 711 s
+        forward = [(t, c.steer) for t, c in commands if c.state == "bypass-forward" and c.throttle > 0]
+        assert forward and forward[0][0] - reverse < 2.1
+        # Ignore the short R2 gear change while reverse momentum still turns the
+        # wheels the other way. Each subsequent main lock must last, then alternate.
+        groups = []
+        for t, command in commands:
+            if command.state == "bypass-reverse" and (not groups or groups[-1]["forward"]):
+                groups.append({"reverse": t, "forward": []})
+            if groups and command.state == "bypass-forward" and command.throttle:
+                groups[-1]["forward"].append((t, command.steer))
+        locks = []
+        for group in groups:
+            rows = group["forward"]
+            if rows:
+                held = [(t, s) for t, s in rows if t >= rows[0][0] + 0.6]
+                if held:
+>                   assert held[-1][0] - held[0][0] >= 1.5
+E                   assert (732.987925458001 - 731.5991562920099) >= 1.5
+
+tests/test_round_what_stands.py:68: AssertionError
+_______ test_stopped_queue_commits_after_two_seconds_only_with_evidence ________
+
+    def test_stopped_queue_commits_after_two_seconds_only_with_evidence():
+        driver = Driver(drive_config([]))
+        for tick in range(20):
+            driver.step(route(), tick / 10, moving=False, speed=0, ahead=True)
+            assert not driver.bypassing
+        driver.step(route(), 2.01, moving=False, speed=0, ahead=True)
+>       assert driver.bypassing
+E       assert False
+E        +  where False = <pilot.drive.Driver object at 0x117998470>.bypassing
+
+tests/test_player_driving.py:42: AssertionError
+_______ test_recovery_changes_lock_until_thirty_metres_have_been_driven ________
+
+    def test_recovery_changes_lock_until_thirty_metres_have_been_driven():
+        driver = Driver(
+            replace(
+                drive_config([]),
+                stuck_time=0.1,
+                reverse_time=0.1,
+                forward_time=0.5,
+                recovery_clear_time=0.1,
+                speed_smoothing=0,
+            )
+        )
+        now = 0.0
+    
+        def tick(moving, speed):
+            nonlocal now
+            now += 0.1
+            return driver.step(route(), now, moving=moving, speed=speed)
+    
+        def stuck():
+            for _ in range(20):
+                command = tick(False, 0)
+                if command.state == "recovery-reverse":
+                    return command.steer
+            pytest.fail("standing car did not start a bounded recovery")
+    
+>       first = stuck()
+                ^^^^^^^
+
+tests/test_player_driving.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def stuck():
+        for _ in range(20):
+            command = tick(False, 0)
+            if command.state == "recovery-reverse":
+                return command.steer
+>       pytest.fail("standing car did not start a bounded recovery")
+E       Failed: standing car did not start a bounded recovery
+
+tests/test_player_driving.py:68: Failed
+=========================== short test summary info ============================
+FAILED tests/test_round_what_stands.py::test_recorded_van_starts_reverse_and_keeps_forward_lock_without_map_motion
+FAILED tests/test_player_driving.py::test_stopped_queue_commits_after_two_seconds_only_with_evidence
+FAILED tests/test_player_driving.py::test_recovery_changes_lock_until_thirty_metres_have_been_driven
+3 failed, 206 passed in 22.33s
