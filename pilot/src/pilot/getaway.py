@@ -248,16 +248,18 @@ class GetAway:
             return land.water_within(arrow + relative, self.WATER_SPREAD, self.WATER_NEAR)
 
         roads = [_angle(b - arrow) for b, width in land.roads if abs(_angle(b - arrow)) <= self.MAX_TURN]
-        if any(width >= terrain.PLAZA for _, width in land.roads):
-            roads.append(wanted)
-        road = None
-        if self.choice is not None:
-            kept = [r for r in roads if abs(_angle(r - self.choice)) <= self.STICKY]
-            if kept and abs(_angle(self.choice - wanted)) <= self.ROAD_WITHIN:
-                road = min(kept, key=lambda r: abs(_angle(r - self.choice)))
-        if road is None:
-            near = [r for r in roads if abs(_angle(r - wanted)) <= self.ROAD_WITHIN]
-            road = min(near, key=lambda r: abs(_angle(r - wanted)), default=None)
+        # A pursuer does not make the roadside a useful escape. Keep the forward
+        # road until there is a real choice of onward roads at a junction.
+        forward = [r for r in roads if abs(r) <= self.ROAD_WITHIN]
+        road = min(forward, key=abs, default=None)
+        if len(roads) >= 2:
+            road = min(roads, key=lambda r: abs(_angle(r - wanted)))
+            if self.choice is not None:
+                kept = [r for r in roads if abs(_angle(r - self.choice)) <= self.STICKY]
+                if kept and abs(_angle(self.choice - wanted)) <= self.ROAD_WITHIN:
+                    road = min(kept, key=lambda r: abs(_angle(r - self.choice)))
+        elif road is None and roads:
+            road = min(roads, key=abs)
         heading, why = (road, "road") if road is not None else (wanted, why if why == "away" else "country")
         if wet(heading) is not None:
             # Water ahead within reach: the nearest heading round it that is dry, along a dry road if one

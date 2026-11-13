@@ -1,0 +1,127 @@
+"""Player-style selection and bounded decisions using synthetic observations."""
+
+from dataclasses import replace
+
+import numpy as np
+import pytest
+
+from pilot import terrain
+from pilot.avoid import Avoider
+from pilot.cli import CAREFUL, LIVE, drive_config
+from pilot.contract import NEUTRAL_PAD, Detection, Observation, Reading
+from pilot.drive import Driver
+from pilot.getaway import GetAway
+from pilot.skills import DriveRoute
+
+
+def route():
+    return Reading("tilted", "yellow", 0.0, 0.0, 0.0, False, 1.0)
+
+
+def test_styles_reach_the_skill_and_preserve_live_values():
+    assert LIVE is CAREFUL
+    careful = DriveRoute({"style": "careful"}).driver.config
+    bold = DriveRoute({}).driver.config
+    assert careful == drive_config(["style=careful"])
+    assert bold == drive_config([])
+    assert bold.queue_wait == 2.0
+    assert careful.queue_wait == 30.0
+    assert drive_config(["speed_limit=12", "style=careful"]).speed_limit == 12
+    with pytest.raises(ValueError):
+        DriveRoute({"style": "reckless"})
+    with pytest.raises(SystemExit):
+        drive_config(["style=reckless"])
+
+
+def test_stopped_queue_commits_after_two_seconds_only_with_evidence():
+    driver = Driver(drive_config([]))
+    for tick in range(20):
+        driver.step(route(), tick / 10, moving=False, speed=0, ahead=True)
+        assert not driver.bypassing
+    driver.step(route(), 2.01, moving=False, speed=0, ahead=True)
+    assert driver.bypassing
+
+
+def test_recovery_changes_lock_until_a_hundred_metres_have_been_driven():
+    driver = Driver(
+        replace(
+            drive_config([]),
+            stuck_time=0.1,
+            reverse_time=0.1,
+            forward_time=0.5,
+            recovery_clear_time=0.1,
+            speed_smoothing=0,
+        )
+    )
+    now = 0.0
+
+    def tick(moving, speed):
+        nonlocal now
+        now += 0.1
+        return driver.step(route(), now, moving=moving, speed=speed)
+
+    def stuck():
+        for _ in range(20):
+            command = tick(False, 0)
+            if command.state == "recovery-reverse":
+                return command.steer
+        pytest.fail("standing car did not start a bounded recovery")
+
+    first = stuck()
+    for _ in range(40):
+        tick(True, 10)
+    second = stuck()
+    assert second == -first
+    for _ in range(110):
+        tick(True, 10)
+    assert stuck() == first
+
+
+@pytest.mark.parametrize("style", ["bold", "careful"])
+def test_explicit_stop_releases_both_styles(style):
+    result = DriveRoute({"style": style}).stop("interrupted")
+    assert result.pad.l2 == result.pad.r2 == 0
+    assert result.pad.left == (0.0, 0.0)
+    assert not result.pad.buttons
+
+
+def test_water_needs_confirmation_and_ends_with_a_neutral_pad(monkeypatch):
+    wet = terrain.Terrain((), False, (None,) * 36, True)
+    monkeypatch.setattr(terrain, "read", lambda crop: wet)
+    skill = DriveRoute({})
+    frame = np.zeros((720, 1280, 3), dtype=np.uint8)
+    first = skill.step(Observation(route(), True, 0, frame=frame))
+    assert first.status == "running" and first.pad == NEUTRAL_PAD
+    second = skill.step(Observation(route(), True, 0.1, frame=frame))
+    assert second.reason == "dead-or-held" and second.pad == NEUTRAL_PAD
+    assert skill.step(Observation(route(), True, 0.2)) == second
+
+
+def test_water_confirmation_cannot_extend_the_skill_time_limit(monkeypatch):
+    monkeypatch.setattr(terrain, "read", lambda crop: terrain.Terrain((), False, (None,) * 36, True))
+    skill = DriveRoute({"duration": 0.1})
+    frame = np.zeros((720, 1280, 3), dtype=np.uint8)
+    skill.step(Observation(route(), True, 0, frame=frame))
+    result = skill.step(Observation(route(), True, 0.2, frame=frame))
+    assert result.reason == "time-limit" and result.pad == NEUTRAL_PAD
+
+
+def test_bypass_uses_an_observed_free_side_but_never_stale_boxes():
+    car = Detection("car", (540, 300, 740, 460), 0.9)
+    avoider = Avoider()
+    normal = avoider.step((car,), 0, 0)
+    bypass = avoider.step((car,), 0.1, 0.1, bypass=True)
+    assert abs(bypass.steer) > abs(normal.steer)
+    assert bypass.steer * normal.steer > 0
+    stale = avoider.step((car,), 0.1, 2, bypass=True)
+    assert stale.steer == 0 and stale.pedal == 1
+
+
+def test_getaway_stays_on_a_single_forward_road_despite_police():
+    skill = GetAway({})
+    skill.terrain = terrain.Terrain(((0, 20), (180, 20)), True, (None,) * 36, False)
+    skill.police = (-30, 30)
+    assert skill.choose() == (0, "road")
+    skill.terrain = terrain.Terrain(((0, 20), (90, 20), (180, 20)), True, (None,) * 36, False)
+    skill.police = (-60,)
+    assert skill.choose() == (90, "road")

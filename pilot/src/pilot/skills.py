@@ -125,14 +125,22 @@ class Skill:
         """The driver's command, bent around what the detector sees in the way while the route is followed."""
         if command.state not in ("follow", "coast"):
             return Pad.from_command(command)
-        around = self.avoider.step(observation.objects, observation.objects_time, observation.time)
+        bypass = (
+            self.driver is not None
+            and self.driver.config.queue_wait <= 2.0
+            and self.driver.bypassing
+            and waits_behind(observation.objects, observation.objects_time, observation.time)
+        )
+        around = self.avoider.step(
+            observation.objects, observation.objects_time, observation.time, bypass=bypass
+        )
         speed = observation.reading.gps_speed
         brake = command.brake
         rolling = speed is not None and speed > self.AROUND_BRAKE_SPEED and observation.moving is not False
         if around.urgent and rolling:
             brake = max(brake, self.AROUND_BRAKE)
         return Pad(
-            left=(clamp(command.steer + around.steer, -1, 1), 0.0),
+            left=(around.steer if bypass else clamp(command.steer + around.steer, -1, 1), 0.0),
             l2=brake,
             r2=0.0 if brake > command.brake else command.throttle * around.pedal,
         )
@@ -228,7 +236,7 @@ class DriveRoute(RegisteredSkill):
         flagged_seconds: float = 0.0
 
     name = "drive_route"
-    parameters: ClassVar[dict] = {"duration": (0.1, 120, 60)}
+    parameters: ClassVar[dict] = {"duration": (0.1, 120, 60), "style": ("bold", "careful")}
     prompt = (
         "Follow a visible GPS route in a vehicle. Done with arrived after small, falling distances and "
         "route loss, or with time-limit. Fails on lost route, no progress, dead-or-held car, "
@@ -244,11 +252,16 @@ class DriveRoute(RegisteredSkill):
 
     def __init__(self, args: dict, *, driver=None):
         super().__init__(args, driver=driver)
+        if driver is None:
+            from .cli import drive_config
+
+            self.driver = Driver(drive_config([f"style={self.args.get('style', 'bold')}"]))
         self.start_distance = self.end_distance = self.distance_time = None
         self._distances = deque()
         self._now = self._previous_time = None
         self._moving_time = 0.0
         self._was_moving = False
+        self._water_at = None
 
     def _result(self, *, pad=NEUTRAL_PAD, status="running", reason=None):
         return self.Result(
@@ -333,9 +346,19 @@ class DriveRoute(RegisteredSkill):
         try:
             self._distance(observation)
             if now - self.started >= self.limit:
-                # Every skill ends done at its limit; only the reason "arrived" says the place was reached.
                 self.finished = self._result(status="done", reason="time-limit")
                 return self.finished
+            if observation.frame is not None and observation.reading.corrupt is False:
+                from . import terrain
+                from .foot import hud_crop
+
+                land = terrain.read(hud_crop(observation.frame))
+                if land is not None and land.under_water:
+                    previous, self._water_at = self._water_at, now
+                    if previous is not None and 0 < now - previous <= self.driver.config.max_step_time:
+                        return self.stop("dead-or-held")
+                    return self._result()
+            self._water_at = None
             command = self.driver.step(
                 observation.reading,
                 now,
@@ -344,6 +367,8 @@ class DriveRoute(RegisteredSkill):
                 ahead=waits_behind(observation.objects, observation.objects_time, now),
             )
             if command.state == "route-gone":
+                if command.brake:
+                    return self._result(pad=Pad.from_command(command))
                 return self._route_end()
             if command.state in ("dead-or-held", "failed-recovery", "map-unreadable"):
                 return self.stop(command.state)
