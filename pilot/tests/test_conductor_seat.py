@@ -7,7 +7,7 @@ import numpy as np
 import pytest
 
 from pilot.conductor import Conductor
-from pilot.contract import NEUTRAL_PAD, Answer, Detection, Judgment, Observation, Pad, Reading
+from pilot.contract import NEUTRAL_PAD, Answer, Detection, Hud, Judgment, Observation, Pad, Reading
 from pilot.judge import ModeFilter
 from pilot.scene import EventDetector
 from pilot.vehicle_entry import EnterVehicle
@@ -255,5 +255,103 @@ def test_picture_gap_and_settling_are_neutral_and_make_no_scene_events(tmp_path)
             conductor.tick(Observation(corrupt, None, 21.25 + i / 30), RGB)
         assert len(detector.calls) == before + 30
         assert conductor.picture_missing_since is None
+    finally:
+        conductor.close()
+
+
+def test_the_judges_word_about_the_pause_map_is_no_word_on_the_figure(tmp_path):
+    """13 November, 17:20: the pilot's own map stood for 22 s with the figure on foot beside a car and
+    the judge said vehicle at 1.0 throughout; the drive planned on that word stood for 30 s."""
+
+    class Judge:
+        # An answer is of the picture a third of a second back, and of a map it says vehicle.
+        def poll(self, rgb, capture):
+            pictured = capture - 0.3
+            return judgment(pictured, "vehicle" if 1.0 <= pictured < 4.0 else "foot")
+
+        def drain_failures(self):
+            return []
+
+        def close(self):
+            pass
+
+    conductor = Conductor(tmp_path, judge=Judge(), submit=lambda *args: Future(), awake=1)
+    try:
+        seen = {}
+        for i in range(64):
+            t = i / 8
+            menu = 1.0 <= t < 4.0
+            conductor.tick(
+                Observation(
+                    reading("none" if menu else "flat", "none"),
+                    None,
+                    t,
+                    hud=Hud(screen="map" if menu else "game"),
+                ),
+                RGB,
+            )
+            seen[t] = conductor.mode_filter.mode
+        assert seen[0.875] == "foot"
+        assert "vehicle" not in seen.values()
+        # Over a long map the mode lapses like over a silent server, and is back with the game.
+        assert seen[3.875] is None
+        assert seen[5.0] == "foot"
+    finally:
+        conductor.close()
+
+
+def test_mode_filter_takes_no_answer_that_is_not_of_the_game():
+    modes = ModeFilter()
+    assert modes.update(judgment(0.0, "foot"), 0.1) is None
+    assert modes.update(judgment(0.3, "foot"), 0.4) == "foot"
+    for i in range(3):
+        assert modes.update(judgment(0.6 + 0.3 * i, "vehicle"), 0.7 + 0.3 * i, game=False) == "foot"
+    assert modes.update(None, 2.0, game=False) is None
+
+
+# 20261113-172004/judge.jsonl on the play clock: a car on its purple route, the map tilted throughout.
+SEATED = (
+    "338.2 v 338.4 v 338.7 v 338.9 v 339.2 f 339.4 f 339.7 f 340.0 v 340.2 f 340.5 f 340.8 f 341.0 f "
+    "341.3 f 341.6 f 341.8 f 342.0 f 342.3 f 342.6 v 342.9 v 343.1 v 343.4 v 343.6 v 343.9 v 344.2 v "
+    "344.4 v 344.7 f 345.0 f 345.2 f 345.5 f 345.7 f 346.0 f 346.3 f 346.5 f 346.7 f 347.1 f 347.3 f "
+    "347.6 f 347.8 f 348.1 f 348.3 v 348.6 v 348.9 v 349.2 v 349.4 f 349.7 f 349.9 f"
+).split()
+
+
+def test_no_length_of_the_judges_foot_stands_against_a_sound_tilted_map_with_a_route(tmp_path):
+    """The head was told of an exit at 347.6 s, planned a walk, and of an entry a second later."""
+    rows = [
+        (float(t), {"v": "vehicle", "f": "foot"}[a]) for t, a in zip(SEATED[::2], SEATED[1::2], strict=True)
+    ]
+
+    class Judge:
+        def __init__(self):
+            self.rows = iter(rows)
+
+        def poll(self, rgb, capture):
+            return judgment(*next(self.rows))
+
+        def drain_failures(self):
+            return []
+
+        def close(self):
+            pass
+
+    conductor = Conductor(tmp_path, judge=Judge(), submit=lambda *args: Future())
+    events, modes = [], set()
+    update = conductor.detector.update
+
+    def capture(*args, **kwargs):
+        result = update(*args, **kwargs)
+        events.extend(e.kind for e in result)
+        modes.add(kwargs.get("mode"))
+        return result
+
+    conductor.detector.update = capture
+    try:
+        for t, _ in rows:
+            conductor.tick(Observation(reading(), None, t), RGB)
+        assert "vehicle_exit" not in events
+        assert "foot" not in modes
     finally:
         conductor.close()

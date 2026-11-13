@@ -263,6 +263,26 @@ class DriveRoute(RegisteredSkill):
         self._was_moving = False
         self._water_seen = None
         self._water_time = 0.0
+        self._foot_since = None
+
+    # A figure the judge sees on foot over a sound flat map, for this long: nobody drives. The map
+    # lies flat and sound in no car, and on 13 November, 17:20, a drive planned on the judge's word
+    # about the pause map stood for 30 s on foot beside a car, with a neutral pad and no end.
+    FOOT_SECONDS = 2.0
+
+    def _afoot(self, observation, now) -> bool:
+        reading = observation.reading
+        if (
+            player_mode(observation) == "foot"
+            and reading.minimap == "flat"
+            and not reading.corrupt
+            and reading.confidence >= 0.45
+        ):
+            if self._foot_since is None:
+                self._foot_since = now
+            return now - self._foot_since >= self.FOOT_SECONDS
+        self._foot_since = None
+        return False
 
     # Water under the arrow and a car known to stand, for this long in all: it has gone in. A car that
     # moves is on a bridge, in a ford or on the beach, where the map shows water round the arrow too.
@@ -372,6 +392,8 @@ class DriveRoute(RegisteredSkill):
                 return self.finished
             if self._sunk(observation, now):
                 return self.stop("dead-or-held")
+            if self._afoot(observation, now):
+                return self.stop("on-foot")
             from .avoid import STALE, passing_side
 
             command = self.driver.step(

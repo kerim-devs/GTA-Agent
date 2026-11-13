@@ -189,3 +189,32 @@ def test_a_route_that_goes_while_the_place_is_still_far_is_not_an_arrival():
         tick(skill, i / 2, distance)
     result = lose_route(skill, 3)
     assert (result.status, result.reason) == ("failed", "route-lost-far")
+
+
+def test_a_drive_on_foot_ends_and_a_drive_in_a_car_does_not():
+    """13 November, 17:20: planned on the judge's word about the pause map, the drive stood for 30 s
+    on foot beside a car with a neutral pad. A map lies flat and sound in no car."""
+    flat = Reading("flat", "none", None, None, 0, False, 0.9)
+    skill = DriveRoute({})
+    assert skill.step(Observation(flat, False, 0.0, mode="foot")).status == "running"
+    assert skill.step(Observation(flat, False, 1.9, mode="foot")).status == "running"
+    result = skill.step(Observation(flat, False, 2.0, mode="foot"))
+    assert (result.status, result.reason, result.pad) == ("failed", "on-foot", NEUTRAL_PAD)
+    # One flat reading in a car, a damaged one, or a judge that says vehicle, ends nothing.
+    skill = DriveRoute({})
+    for i in range(40):
+        t = i / 10
+        reading = flat if i % 10 == 0 else GOOD
+        assert (
+            skill.step(Observation(reading, True, t, mode="foot" if i % 10 == 0 else "vehicle")).status
+            == "running"
+        )
+    skill = DriveRoute({})
+    for i in range(40):
+        assert skill.step(Observation(flat, False, i / 10, mode="vehicle")).status == "running"
+    skill = DriveRoute({})
+    for i in range(40):
+        assert (
+            skill.step(Observation(replace(flat, corrupt=True), False, i / 10, mode="foot")).status
+            == "running"
+        )

@@ -163,6 +163,8 @@ class Conductor:
         self.picture_missing_since = None
         self.picture_back_since = None
         self.exit_pressed_until = -math.inf
+        self.menu_seen = -math.inf
+        self.routed = False
         self.where = Sense(ahead.where())
         self.known_place: str | None = None
 
@@ -561,11 +563,23 @@ class Conductor:
         if self.judge is not None:
             judgment = self.judge.poll(rgb, t if frame_time is None else frame_time)
             flat = observation.reading.minimap == "flat" and not observation.reading.corrupt
+            if observation.hud is not None and observation.hud.screen in {"map", "pause"}:
+                self.menu_seen = t
+            tilted = observation.reading.minimap == "tilted" and not observation.reading.corrupt
+            self.routed = (
+                tilted
+                and observation.reading.confidence >= 0.45
+                and observation.reading.route in {"yellow", "purple"}
+            )
             mode = self.mode_filter.update(
                 judgment,
                 t,
                 flat=flat,
-                vehicle=observation.reading.minimap == "tilted" and not observation.reading.corrupt,
+                vehicle=tilted,
+                routed=self.routed,
+                # An answer arrives a third of a second after its picture: one taken on the map can
+                # come in over the game.
+                game=judgment is None or judgment.capture > self.menu_seen,
             )
             if judgment is not None:
                 self.judgment = judgment
@@ -618,7 +632,7 @@ class Conductor:
             t,
             text=self.text,
             mode=observation.mode,
-            exit_confirmed=self.mode_filter.exit_confirmed,
+            exit_confirmed=self.mode_filter.exit_confirmed and not self.routed,
             exit_pressed=t <= self.exit_pressed_until,
         )
         # A skill that opens the map hides the minimap, and that is its own doing and no news. Told
