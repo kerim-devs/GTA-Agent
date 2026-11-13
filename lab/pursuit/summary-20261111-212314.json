@@ -1,0 +1,50 @@
+[
+  {
+    "rec": "20261111-212314",
+    "start": 73.5073,
+    "end": 116.0044,
+    "objective": "Begib dlch zum Juweller.",
+    "driving_s": 0.457,
+    "markers": [
+      {
+        "color": "yellow",
+        "x": 30.91,
+        "y": 22.47,
+        "border": false
+      }
+    ],
+    "ending": "next objective",
+    "incidents": [
+      {
+        "t": 73.095,
+        "class": "retry",
+        "cause": "unknown"
+      }
+    ],
+    "color": "yellow",
+    "mode": "reach",
+    "source": "/Users/kerim/recordings/derived/kerim/20261111-212314/missions.json",
+    "mode_source": "causal-judge",
+    "frames": 2487,
+    "eligible": 114,
+    "human_clear": 114,
+    "compared": 114,
+    "same": 0,
+    "all_clear_same": 0,
+    "distance_percentiles": [
+      5.148057886232438,
+      7.4725779475205405,
+      31.67208785736633,
+      38.15663093975083,
+      113.03003494646899
+    ],
+    "rim_share": 0.0007645259938837921,
+    "r2_mean": 0.0,
+    "l2_mean": 0.0,
+    "terminal": {
+      "t": 76.5122,
+      "status": "failed",
+      "reason": "on-foot"
+    }
+  }
+]

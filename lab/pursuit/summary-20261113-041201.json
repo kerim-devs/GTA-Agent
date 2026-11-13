@@ -1,0 +1,55 @@
+[
+  {
+    "rec": "20261113-041201",
+    "start": 1041.5125,
+    "end": 1083.5043,
+    "objective": "Stelg In den Frachtlader.",
+    "driving_s": 25.293,
+    "markers": [
+      {
+        "color": "blue",
+        "x": -0.36,
+        "y": 4.24,
+        "border": false
+      }
+    ],
+    "ending": "next objective",
+    "incidents": [
+      {
+        "t": 1075.297,
+        "class": "standstill",
+        "cause": "stuck_vehicle"
+      },
+      {
+        "t": 1078.441,
+        "class": "car_change",
+        "cause": "other"
+      }
+    ],
+    "color": "blue",
+    "mode": "reach",
+    "source": "/Users/kerim/recordings/derived/kerim/20261113-041201/missions.json",
+    "mode_source": "minimap-fallback",
+    "frames": 2518,
+    "eligible": 0,
+    "human_clear": 0,
+    "compared": 0,
+    "same": 0,
+    "all_clear_same": 0,
+    "distance_percentiles": [
+      3.228188346425902,
+      3.452448406565984,
+      4.570732982793897,
+      98.57672192702034,
+      127.64501557052668
+    ],
+    "rim_share": 0.11532846715328467,
+    "r2_mean": 0.5691525012026147,
+    "l2_mean": 0.05615655913773807,
+    "terminal": {
+      "t": 1042.5306,
+      "status": "failed",
+      "reason": "on-foot"
+    }
+  }
+]

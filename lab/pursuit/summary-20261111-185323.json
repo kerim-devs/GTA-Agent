@@ -1,0 +1,68 @@
+[
+  {
+    "rec": "20261111-185323",
+    "start": 774.5024,
+    "end": 841.0093,
+    "objective": "Kehr zurück zu Lamar und Stretch.",
+    "driving_s": 29.477,
+    "markers": [
+      {
+        "color": "blue",
+        "x": 39.17,
+        "y": 38.17,
+        "border": false
+      },
+      {
+        "color": "blue",
+        "x": 19.82,
+        "y": 29.18,
+        "border": false
+      },
+      {
+        "color": "red",
+        "x": 88.78,
+        "y": 68.56,
+        "border": true
+      },
+      {
+        "color": "red",
+        "x": 1.06,
+        "y": 14.34,
+        "border": false
+      },
+      {
+        "color": "red",
+        "x": -14.1,
+        "y": -26.7,
+        "border": true
+      }
+    ],
+    "ending": "unknown",
+    "incidents": [],
+    "color": "blue",
+    "mode": "reach",
+    "source": "/Users/kerim/recordings/derived/kerim/20261111-185323/missions.json",
+    "mode_source": "minimap-fallback",
+    "frames": 3945,
+    "eligible": 0,
+    "human_clear": 0,
+    "compared": 0,
+    "same": 0,
+    "all_clear_same": 0,
+    "distance_percentiles": [
+      3.0413812651491097,
+      12.621394534678013,
+      34.91486789320561,
+      92.20325554935937,
+      125.51195162214633
+    ],
+    "rim_share": 0.13804713804713806,
+    "r2_mean": 0.4835871616328532,
+    "l2_mean": 0.11088129201631594,
+    "terminal": {
+      "t": 775.535,
+      "status": "failed",
+      "reason": "on-foot"
+    }
+  }
+]

@@ -1,0 +1,100 @@
+[
+  {
+    "rec": "20261112-092019",
+    "start": 404.008,
+    "end": 408.0352,
+    "objective": "Folge dem Lleferwagen.",
+    "driving_s": 4.027,
+    "markers": [
+      {
+        "color": "red",
+        "x": -1.19,
+        "y": 32.7,
+        "border": false
+      },
+      {
+        "color": "red",
+        "x": -1.32,
+        "y": 21.21,
+        "border": false
+      }
+    ],
+    "ending": "next objective",
+    "incidents": [],
+    "color": "red",
+    "mode": "follow",
+    "source": "/Users/kerim/recordings/derived/kerim/20261112-092019/missions.json",
+    "mode_source": "causal-judge",
+    "frames": 237,
+    "eligible": 137,
+    "human_clear": 38,
+    "compared": 0,
+    "same": 0,
+    "all_clear_same": 13,
+    "distance_percentiles": [
+      14.249491218987435,
+      15.445952885880084,
+      23.07182264148197,
+      29.85751831616285,
+      35.80467148292245
+    ],
+    "rim_share": 0.0,
+    "r2_mean": 1.0,
+    "l2_mean": 0.0,
+    "terminal": null
+  },
+  {
+    "rec": "20261112-092019",
+    "start": 408.0352,
+    "end": 468.0352,
+    "objective": "Folge dem l_ieferwagen.",
+    "driving_s": 50.765,
+    "markers": [
+      {
+        "color": "red",
+        "x": -4.12,
+        "y": 28.04,
+        "border": false
+      },
+      {
+        "color": "red",
+        "x": -3.4,
+        "y": 16.15,
+        "border": false
+      }
+    ],
+    "ending": "unknown",
+    "incidents": [
+      {
+        "t": 619.865,
+        "class": "mission_failed",
+        "cause": "player_died"
+      }
+    ],
+    "color": "red",
+    "mode": "follow",
+    "source": "/Users/kerim/recordings/derived/kerim/20261112-092019/missions.json",
+    "mode_source": "causal-judge",
+    "frames": 3602,
+    "eligible": 692,
+    "human_clear": 414,
+    "compared": 32,
+    "same": 29,
+    "all_clear_same": 176,
+    "distance_percentiles": [
+      4.246033443108992,
+      11.423659658795863,
+      19.989882440874933,
+      31.213517904907803,
+      38.53975220470417
+    ],
+    "rim_share": 0.0,
+    "r2_mean": 0.7238754833333336,
+    "l2_mean": 0.011038149999999492,
+    "terminal": {
+      "t": 444.7335,
+      "status": "failed",
+      "reason": "blip-gone"
+    }
+  }
+]

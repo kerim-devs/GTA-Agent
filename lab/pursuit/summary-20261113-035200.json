@@ -1,0 +1,50 @@
+[
+  {
+    "rec": "20261113-035200",
+    "start": 1173.5053,
+    "end": 1200.2,
+    "objective": "Steig in den Laster.",
+    "driving_s": 15.341,
+    "markers": [
+      {
+        "color": "blue",
+        "x": 4.27,
+        "y": 2.86,
+        "border": false
+      },
+      {
+        "color": "red",
+        "x": -71.71,
+        "y": 50.95,
+        "border": false
+      }
+    ],
+    "ending": "unknown",
+    "incidents": [],
+    "color": "blue",
+    "mode": "reach",
+    "source": "/Users/kerim/recordings/derived/kerim/20261113-035200/missions.json",
+    "mode_source": "minimap-fallback",
+    "frames": 1598,
+    "eligible": 0,
+    "human_clear": 0,
+    "compared": 0,
+    "same": 0,
+    "all_clear_same": 0,
+    "distance_percentiles": [
+      4.1217472023402895,
+      4.527692569068709,
+      5.266080136116426,
+      6.047231151205907,
+      123.98439417926758
+    ],
+    "rim_share": 0.03549060542797495,
+    "r2_mean": 0.7035272544737307,
+    "l2_mean": 0.007093093385577043,
+    "terminal": {
+      "t": 1174.7218,
+      "status": "failed",
+      "reason": "on-foot"
+    }
+  }
+]

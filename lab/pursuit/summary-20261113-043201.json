@@ -1,0 +1,50 @@
+[
+  {
+    "rec": "20261113-043201",
+    "start": 30.0065,
+    "end": 95.5118,
+    "objective": "Beglb dich zum Kran.",
+    "driving_s": 27.454,
+    "markers": [
+      {
+        "color": "yellow",
+        "x": 29.98,
+        "y": 19.76,
+        "border": false
+      }
+    ],
+    "ending": "unknown",
+    "incidents": [
+      {
+        "t": 53.713,
+        "class": "collision",
+        "cause": "car_dead"
+      }
+    ],
+    "color": "yellow",
+    "mode": "reach",
+    "source": "/Users/kerim/recordings/derived/kerim/20261113-043201/missions.json",
+    "mode_source": "minimap-fallback",
+    "frames": 3925,
+    "eligible": 911,
+    "human_clear": 634,
+    "compared": 612,
+    "same": 120,
+    "all_clear_same": 121,
+    "distance_percentiles": [
+      6.823672031978091,
+      8.748293939155282,
+      13.355467045371345,
+      48.62082886994009,
+      76.67934532845204
+    ],
+    "rim_share": 0.0,
+    "r2_mean": 0.53327274281623,
+    "l2_mean": 0.057058054844417186,
+    "terminal": {
+      "t": 64.3548,
+      "status": "failed",
+      "reason": "on-foot"
+    }
+  }
+]

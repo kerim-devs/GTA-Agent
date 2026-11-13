@@ -1,0 +1,8 @@
+{
+  "command": ".venv/bin/python tools/gate.py",
+  "cwd": "pilot",
+  "exit_code": 1,
+  "elapsed_seconds": 176.7981818750004,
+  "thread_limit": 1,
+  "complete": true
+}
