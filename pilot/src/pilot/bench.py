@@ -575,6 +575,7 @@ CAUSE_RULES: dict[str, str | None] = {
     "failed-recovery": "act",
     "blocked": "act",
     "stuck": "act",
+    "walked into a building": "act",  # walk_to_point: three times, and back out each time
     "vehicle out of reach": "act",
     "door locked or blocked": "act",
     "entry press had no effect": "act",

@@ -87,11 +87,20 @@ class Ahead:
     def _request(self, url, model, image, question):
         return judge.post(url, model, image, question, 3, timeout=self.TIMEOUT)[0]
 
-    def ask(self, frame, capture: float, *, indoors: bool | None = None, ahead: bool = True) -> bool:
+    def ask(
+        self,
+        frame,
+        capture: float,
+        *,
+        indoors: bool | None = None,
+        ahead: bool = True,
+        exit: bool = True,
+    ) -> bool:
         """Begin asking about this frame; False when a frame is still out or this is none.
 
         `indoors` is what is known of the place already; None has the model asked. `ahead` false
-        leaves out the way straight ahead, of a view the feet have judged.
+        leaves out the way straight ahead, of a view the feet have judged, and `exit` false the
+        way out of a room, where only the place is asked for.
         """
         if not isinstance(frame, np.ndarray) or frame.shape != (720, 1280, 3) or not self.servers:
             return False
@@ -99,11 +108,13 @@ class Ahead:
             if self.busy:
                 return False
             self.busy = True
-        work = threading.Thread(target=self._work, args=(frame.copy(), capture, indoors, ahead), daemon=True)
+        work = threading.Thread(
+            target=self._work, args=(frame.copy(), capture, indoors, ahead, exit), daemon=True
+        )
         work.start()
         return True
 
-    def _work(self, frame, capture, indoors, ahead):
+    def _work(self, frame, capture, indoors, ahead, exit):
         started = self.clock()
         said = {}
         try:
@@ -117,7 +128,7 @@ class Ahead:
             if indoors is None:
                 said["indoors"] = share(whole, INDOORS)
                 indoors = said["indoors"] is not None and said["indoors"] >= SEEN
-            if indoors:
+            if indoors and exit:
                 said["exit"] = share(whole, EXIT.format(what="a screenshot"))
                 if said["exit"] is not None and said["exit"] >= SEEN:
                     question = EXIT.format(what="part of a screenshot")
@@ -125,7 +136,7 @@ class Ahead:
                         share(judge.encode(bgr[PART_ROWS, part], PART_WIDTH), question) or 0.0
                         for part in PARTS
                     )
-            elif ahead:
+            elif ahead and not indoors:
                 said["open"] = share(whole, QUESTION)
         except Exception as exc:
             said["error"] = f"{type(exc).__name__}: {exc}"
@@ -144,14 +155,22 @@ class Ahead:
 
 
 _active: Ahead | None = None
+_place: Ahead | None = None
 
 
 def active() -> Ahead | None:
     return _active
 
 
+def place() -> Ahead | None:
+    """The asker a walk keeps for the place it is in, beside the one its guard looks round with:
+    each takes one frame at a time, and neither reads the other's answer."""
+    return _place
+
+
 def use(servers) -> Ahead | None:
     """The servers a session asks; none switches the asking off."""
-    global _active
+    global _active, _place
     _active = Ahead(servers) if servers else None
+    _place = Ahead(servers) if servers else None
     return _active

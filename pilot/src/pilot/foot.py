@@ -462,8 +462,16 @@ class FootGuard:
         self.state, self.state_since = state, now
         self.events.append((now, state))
 
-    def step(self, observation: Observation, want: tuple[float, float], *, sprint: bool = False) -> Steer:
-        # `sprint` is for the guard in wayround, which measures a sprint by a sprint's pace.
+    def step(
+        self,
+        observation: Observation,
+        want: tuple[float, float],
+        *,
+        sprint: bool = False,
+        fresh: bool = True,
+    ) -> Steer:
+        # `sprint` and `fresh` are for the guard in wayround, which measures a sprint by a sprint's
+        # pace and has to know a direction that is read from one that is kept.
         now = observation.time
         self._note_judgment(observation)
         if player_mode(observation) != "foot":

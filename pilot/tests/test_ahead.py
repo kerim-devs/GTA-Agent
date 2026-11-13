@@ -104,7 +104,24 @@ def test_a_server_that_fails_answers_with_its_error_and_the_next_frame_can_be_as
     assert asked.ask(frame(), 2.0) and waited(asked)
 
 
+def test_a_walk_asks_for_the_place_alone_and_keeps_an_asker_of_its_own_for_it(monkeypatch):
+    # Once a second while the figure runs: one question, whatever the place is.
+    for share in (0.99, 0.02):
+        model = Model(share, exits=(1.0, 1.0, 1.0, 1.0))
+        asked = Ahead(SERVER, transport=model)
+        assert asked.ask(frame(), 4.0, ahead=False, exit=False) and waited(asked)
+        assert model.seen == [(ahead.INDOORS, ahead.WIDTH)]
+        view = asked.answer(4.0)
+        assert view.indoors == pytest.approx(share, abs=1e-3) and view.exit is None and view.open is None
+    # Its answers and the guard's are kept apart: each asker has its one frame.
+    monkeypatch.setattr(ahead, "_active", None)
+    monkeypatch.setattr(ahead, "_place", None)
+    ahead.use(SERVER)
+    assert isinstance(ahead.place(), Ahead) and ahead.place() is not ahead.active()
+
+
 def test_a_session_without_a_judge_asks_nobody(monkeypatch):
     monkeypatch.setattr(ahead, "_active", None)
-    assert ahead.use([]) is None and ahead.active() is None
+    monkeypatch.setattr(ahead, "_place", None)
+    assert ahead.use([]) is None and ahead.active() is None and ahead.place() is None
     assert ahead.use(SERVER) is ahead.active() and isinstance(ahead.active(), Ahead)

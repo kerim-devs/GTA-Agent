@@ -9,6 +9,7 @@ from typing import ClassVar
 import numpy as np
 
 from . import ahead, sides
+from .ahead import SEEN
 from .breath import Breath
 from .contract import NEUTRAL_PAD, Blip, Observation, Pad, SkillResult, player_mode
 from .foot import hud_crop, road_position, stick_for
@@ -103,6 +104,23 @@ class WalkTo:
     KNOCKED = 4.0
     DAMAGED_MAX = 15.0  # seconds in a row a walk goes on by its own marker through damaged pictures
     SPOT_STALL = 4.0  # seconds a followed symbol may fail to come nearer before it is let go
+    # A walk under way that loses the map is being shown a scene: on 13 November, 02:28, the walk
+    # ran in at the barber's door, the game showed the shop's welcome for more than seven seconds,
+    # and the walk ended after five as "nothing readable". A scene is waited out, with nothing on
+    # the pad, and after it the model is asked where the figure is before anything is pushed.
+    SCENE, SCENE_MIN = 15.0, 1.0
+    # The place the figure is in, asked of the local model once a second while the figure runs
+    # free (see `ahead`: outdoors on 61 of 61 frames of the night's walks, a room on 31 of 31 in
+    # the barber's, an answer in 0.15 s). Outdoors and then, twice running, in a room: the figure
+    # has run into a building, and the guard takes it back out the way it came (Kerim, 13
+    # November). A walk that begins in a room has the way out looked for before its first step.
+    PLACE_EVERY, PLACE_WAIT = 1.0, 2.0
+    INDOORS = 0.9  # what the model has to give "a room" for the walk to act on it
+    # A room is asked about once more before it counts, of a later picture: under the barber's
+    # porch, the figure against the shop's window, one frame in 35 was called a room (0.99) and
+    # the next, a second later, was not (0.06). On the 86 frames of two walks in the open, none.
+    PLACE_AGAIN = 0.3
+    ENTRIES = 3  # times a walk is taken back out of a building; at the next it gives up
 
     def __init__(self, args: dict):
         if not isinstance(args, dict) or set(args) - self.parameters.keys():
@@ -126,6 +144,14 @@ class WalkTo:
         self.limit = float(self.duration)
         self.profile = active()
         self.guard = WayRound(sides=sides.active(), ahead=ahead.active())
+        self.where = ahead.place()
+        self.where_asked = None  # when the model was asked for the place and has not answered
+        self.where_at = -math.inf  # when it last answered
+        self.outdoors = False  # the figure has been outdoors on this walk, as far as the model said
+        self.room_once = False  # the last answer called the place a room, and one more decides
+        self.entries = 0  # times the figure has run into a building
+        self.nomap_since = None
+        self.scene = None  # until when the walk stands after a scene, for the model's word on the place
         self.breath = Breath()
         self.winded = False  # the figure has run itself out and jogs until it has its breath back
         self.spot = Spot()
@@ -299,7 +325,7 @@ class WalkTo:
             self.fresh, self.absent, self.last_direction, self.way = False, 0.0, None, None
             # On 12 November the picture was gone for twenty seconds, and the guard, still holding
             # a push from before it, called the figure stuck three tenths of a second after it.
-            self.guard = WayRound(sides=sides.active(), ahead=ahead.active())
+            self._new_guard()
             self.breath.gap()
             return self._stand()
         frame = observation.frame
@@ -340,18 +366,31 @@ class WalkTo:
             observation = replace(observation, reading=reading)
         else:
             self.damaged_since = None
+        nomap = reading.minimap == "none" and self.stepped
+        if nomap and self.nomap_since is None:
+            self.nomap_since = now
         if player_mode(observation) != "foot":
             self.close_since = self.blind_since = None
             if self.bad_since is None:
                 self.bad_since = now
-            patience = self.NOT_FOOT if reading.minimap == "none" else self.KNOCKED
+            patience = self.SCENE if nomap else self.KNOCKED
             if now - self.bad_since >= (patience if self.stepped else self.FOOT_SETTLE):
                 return self._finish("failed", "no longer on foot")
             return self._stand()
         if reading.confidence < 0.6:
             self.close_since = None
             # With no map on the screen something else is being shown, and nothing is pushed into it.
-            return self._blind(now, coast=reading.minimap != "none")
+            return self._blind(
+                now, coast=reading.minimap != "none", patience=self.SCENE if nomap else self.BLIND
+            )
+        if self.nomap_since is not None:
+            if now - self.nomap_since >= self.SCENE_MIN and self.where is not None:
+                # What the guard saw before the scene says nothing about now, and where the figure
+                # stands after it is asked before it is pushed anywhere.
+                self.scene, self.room_once = now + self.PLACE_WAIT, False
+                self.where_asked, self.where_at = None, -math.inf
+                self._new_guard()
+            self.nomap_since = None
         self.bad_since = self.blind_since = None
         if self.wake_until is None:
             unseen = observation.objects_time is not None and observation.figure is None
@@ -370,6 +409,9 @@ class WalkTo:
         ]
         if self.aside is not None:
             return self._step_aside(observation)
+        waiting = self._where(observation)
+        if waiting is not None:
+            return waiting
         if not targets and self.color == "purple" and reading.route != "purple":
             # The minimap reader knows no purple disc: the waypoint's marker is read from the frame.
             # Not beside a purple route, which is a vehicle's and whose end the bars cut to a disc.
@@ -432,7 +474,7 @@ class WalkTo:
                 # marker passes the map's lower rim, where it is not read. What the guard has
                 # begun it finishes, and the marker is missed from when it has.
                 self.absent = 0.0
-                return self._push(observation, self.last_direction or self.guard.AHEAD, step)
+                return self._push(observation, self.last_direction or self.guard.AHEAD, step, fresh=False)
             if self.turned and not reached and self.color == "purple" and self.absent < self.LOST_AFTER:
                 # The camera is where the guard's look left it, and the old direction, which was
                 # the camera's, means nothing now: the marker is looked for as at a walk's start.
@@ -441,7 +483,7 @@ class WalkTo:
             # The direction is the camera's, which the guard leaves alone but for its looks.
             if self.fresh and self.absent < keep and self.last_direction is not None:
                 self.carried += step
-                return self._push(observation, self.last_direction, step)
+                return self._push(observation, self.last_direction, step, fresh=False)
             if self.absent >= self.LOST_AFTER:
                 if reached:
                     return self._arrive(
@@ -577,21 +619,76 @@ class WalkTo:
         self.last_left = None
         return SkillResult()
 
-    def _blind(self, now, *, coast: bool = True) -> SkillResult:
+    def _new_guard(self) -> None:
+        """A guard that has seen nothing yet, and knows of the place what the walk knows."""
+        place = self.guard.place
+        self.guard = WayRound(sides=sides.active(), ahead=ahead.active())
+        self.guard.place = self.guard.indoors = place
+
+    def _where(self, observation) -> SkillResult | None:
+        """Keeps asking the model for the place, and acts on a room: a result to stand by, or None."""
+        if self.where is None:
+            return None
+        now, guard = observation.time, self.guard
+        after_scene = self.scene is not None
+        if after_scene and now >= self.scene:
+            # No answer in time: the walk goes on without one.
+            self.scene, after_scene = None, False
+        if self.where_asked is not None:
+            view = self.where.answer(self.where_asked)
+            if view is None and now - self.where_asked < self.PLACE_WAIT:
+                return self._stand() if after_scene else None
+            self.where_asked, self.where_at, self.scene = None, now, None
+            share = None if view is None or view.error is not None else view.indoors
+            room = share is not None and share >= self.INDOORS
+            if share is not None and (room or share < SEEN):
+                guard.place = room
+                if guard.state == "go":
+                    guard.indoors = room
+            if not room:
+                self.outdoors = self.outdoors or (share is not None and share < SEEN)
+                self.room_once = False
+            elif guard.state == "go" and not (self.room_once or after_scene):
+                # One answer is not acted on: the next is asked for a moment later.
+                self.room_once, self.where_at = True, now - self.PLACE_EVERY + self.PLACE_AGAIN
+            elif guard.state == "go":
+                self.room_once = False
+                self.stepped, self.face_until = True, now
+                if self.outdoors or not self.entries:
+                    self.entries += 1
+                    if self.entries > self.ENTRIES:
+                        return self._finish("failed", "walked into a building again and again")
+                    if not self.outdoors:
+                        # The walk begins in a room.
+                        guard.leave(observation)
+                    else:
+                        self.outdoors = False
+                        if self.entries > 1:
+                            # Round the other side of it this time.
+                            guard.side = -guard.side
+                        guard.back_out(observation)
+            after_scene = False
+        if self.where_asked is None and guard.state == "go" and now - self.where_at >= self.PLACE_EVERY:
+            if self.where.ask(observation.frame, now, ahead=False, exit=False):
+                self.where_asked = now
+        return self._stand() if after_scene else None
+
+    def _blind(self, now, *, coast: bool = True, patience: float | None = None) -> SkillResult:
         """A tick that says nothing decides nothing, and does not stop a figure that is running."""
+        patience = self.BLIND if patience is None else patience
         if self.blind_since is None:
             self.blind_since = now
-        if now - self.blind_since >= self.BLIND:
-            return self._finish("failed", f"nothing readable for {self.BLIND:.0f} s")
+        if now - self.blind_since >= patience:
+            return self._finish("failed", f"nothing readable for {patience:.0f} s")
         if coast and self.last_left is not None and 0 <= now - self.last_left_time <= self.COAST:
             sprint = self.sprint and not self.winded
             buttons = self.profile.sprint_buttons(now - self.started) if sprint else ()
             return SkillResult(pad=Pad(left=self.last_left, buttons=buttons))
         return self._stand()
 
-    def _push(self, observation, direction, step):
+    def _push(self, observation, direction, step, *, fresh: bool = True):
         sprint = self.sprint and not self.winded
-        steer = self.guard.step(observation, direction, sprint=sprint)
+        steer = self.guard.step(observation, direction, sprint=sprint, fresh=fresh)
         self.turned = self.turned or steer.right != (0.0, 0.0)
         if steer.failed:
             return self._finish("failed", "stuck; guard exhausted")

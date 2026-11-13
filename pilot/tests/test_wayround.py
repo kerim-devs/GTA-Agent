@@ -25,8 +25,8 @@ class Told(WayRound):
         return self.seen(observation.time, self)
 
 
-def tick(time, *, moving=False, corrupt=False):
-    return Observation(Reading("flat", "none", None, None, 0.0, corrupt, 0.9), moving, time)
+def tick(time, *, moving=False, corrupt=False, arrow=0.0):
+    return Observation(Reading("flat", "none", None, None, arrow, corrupt, 0.9), moving, time)
 
 
 def run(guard, until, *, start=0.0, want=FORWARD):
@@ -332,10 +332,11 @@ class Looks:
     """A model that answers at once. The view the figure is held up in is called outdoors, or a room;
     of the views after it the model says what is given here, in the order they are asked about."""
 
-    def __init__(self, *views, room=False, silent=False):
+    def __init__(self, *views, room=False, silent=False, told=False):
         first = View(indoors=1.0, exit=0.01) if room else View(indoors=0.02)
         later = [view if isinstance(view, View) else View(open=view) for view in views]
-        self.views, self.silent, self.asked, self.how = [first, *later], silent, [], []
+        # A guard that has been told the place does not ask for it: the views given are all there is.
+        self.views, self.silent, self.asked, self.how = later if told else [first, *later], silent, [], []
 
     def ask(self, frame, capture, *, indoors=None, ahead=True):
         self.asked.append(capture)
@@ -352,26 +353,68 @@ def running_where_the_model_said(time, guard):
     return "going" if guard.state == "round" and guard.phase == "run" else "still"
 
 
-def test_with_a_model_to_ask_the_guard_looks_round_before_it_feels_for_a_way():
-    # Kerim, 13 November: stuck, the model is to look and say where the way goes on.
+def filmed(guard, until, *, start=0.0, want=FORWARD, arrow=0.0, rate=100.0, fresh=True):
+    """Steps with a camera that turns as the right stick says, `rate` degrees a second, and an arrow
+    that shows a standing figure's facing against it."""
+    steers = {}
+    for index in range(round(start * 10), round(until * 10) + 1):
+        steer = guard.step(tick(index / 10, arrow=arrow), want, sprint=True, fresh=fresh)
+        steers[index / 10] = steer
+        arrow = (arrow - steer.right[0] * rate * 0.1 + 180.0) % 360.0 - 180.0
+    return steers
+
+
+def test_outdoors_a_side_is_felt_for_first_and_the_look_comes_when_it_is_closed():
+    # Kerim, 13 November: stuck, the model is to look and say where the way goes on. And of the
+    # looks at every hold-up, the same night: it stands and turns in circles.
     model = Looks(0.05, 0.97)
     guard = Told(running_where_the_model_said, ahead=model)
-    steers = run(guard, 7.8)
-    assert went(steers, ("go", 0.0), ("climb", 1.5), ("look", 3.1), ("round", 5.1), ("go", 7.1))
+    steers = run(guard, 11.5)
+    assert went(
+        steers,
+        ("go", 0.0),
+        ("climb", 1.5),
+        ("look", 3.1),
+        ("round", 3.5),
+        ("climb", 5.5),
+        ("look", 7.2),
+        ("round", 8.9),
+        ("go", 10.9),
+    )
     looking = [steer for time, steer in steers.items() if steer.state == "look"]
     assert all(steer.left == (0.0, 0.0) and not steer.buttons for steer in looking)
     # First the view as it stands, of which only the place is asked: the feet have judged it.
     assert all(steers[time / 10].right == (0.0, 0.0) for time in range(31, 35))
-    assert guard.views[0] == "out"
-    assert model.how[0] == (None, False) and model.how[1:] == [(False, True)] * 2
-    # Then a look: the camera goes right for half a second, and the picture settles.
-    assert [steers[time / 10].right for time in range(35, 43)] == [(1.0, 0.0)] * 5 + [(0.0, 0.0)] * 3
-    assert model.asked == pytest.approx([3.5, 4.3, 5.1]) and guard.views == ["out", "0.05", "0.97"]
+    assert guard.views[0] == "out" and model.how[0] == (None, False)
+    # Outdoors: out to the right, running, and a jump at what closes that side.
+    assert steers[3.6].left == pytest.approx(RIGHT) and steers[5.5].buttons == ("square",)
+    # Closed: now a look. The camera goes right for half a second, and the picture settles.
+    assert [steers[time / 10].right for time in range(72, 80)] == [(1.0, 0.0)] * 5 + [(0.0, 0.0)] * 3
+    assert model.asked == pytest.approx([3.5, 8.1, 8.9]) and guard.views == ["out", "0.05", "0.97"]
+    assert model.how[1:] == [(False, True)] * 2
     # Into the view it called open the figure runs straight, for as long as a leg sideways.
-    assert all(steers[time / 10].left == (0.0, -1.0) for time in range(51, 71))
-    assert all(steers[time / 10].right == (0.0, 0.0) for time in range(51, 79))
-    assert steers[7.4].left == FORWARD and guard.round_ended == pytest.approx(7.1) and not guard.closed
+    assert all(steers[time / 10].left == (0.0, -1.0) for time in range(89, 109))
+    assert all(steers[time / 10].right == (0.0, 0.0) for time in range(89, 115))
+    assert steers[11.2].left == FORWARD and guard.round_ended == pytest.approx(10.9)
     assert ";views=out/0.05/0.97" in guard.diagnostic()
+
+
+def test_a_side_that_is_free_is_run_without_a_look_and_a_guard_told_the_place_does_not_ask_for_it():
+    def seen(time, guard):
+        return "going" if guard.state == "round" else "still"
+
+    model = Looks(0.05, 0.97)
+    guard = Told(seen, ahead=model)
+    steers = run(guard, 7.0)
+    assert went(steers, ("go", 0.0), ("climb", 1.5), ("look", 3.1), ("round", 3.5), ("go", 6.5))
+    assert model.asked == pytest.approx([3.5]) and all(steer.right == (0.0, 0.0) for steer in steers.values())
+    # The walk asks for the place once a second and tells the guard: then the figure never stands.
+    model = Looks(0.05, 0.97, told=True)
+    guard = Told(seen, ahead=model)
+    guard.place = guard.indoors = False
+    steers = run(guard, 7.0)
+    assert went(steers, ("go", 0.0), ("climb", 1.5), ("round", 3.1), ("go", 6.1))
+    assert model.asked == [] and all(steer.left != (0.0, 0.0) for steer in steers.values())
 
 
 def test_a_way_the_model_calls_open_is_judged_by_the_feet_like_any_other():
@@ -383,30 +426,76 @@ def test_a_way_the_model_calls_open_is_judged_by_the_feet_like_any_other():
         return "going" if guard.state == "round" and guard.phase == "run" and guard.looked == 3 else "still"
 
     guard = Told(seen, ahead=model)
-    steers = run(guard, 10.9)
+    steers = run(guard, 15.0)
     states = [state for state, _ in stretches(steers)]
-    assert states == ["go", "climb", "look", "round", "climb", "look", "round", "go"]
-    assert guard.looked == 3 and model.asked == pytest.approx([3.5, 4.3, 8.7])
+    assert states == [
+        "go",
+        "climb",
+        "look",
+        "round",
+        "climb",
+        "look",
+        "round",
+        "climb",
+        "look",
+        "round",
+        "go",
+    ]
+    assert guard.looked == 3 and model.asked == pytest.approx([3.5, 8.1, 12.7])
     pressed = [time for time, steer in steers.items() if steer.buttons]
-    assert len(pressed) == 4 and steers[pressed[2]].left == (0.0, -1.0)
+    assert len(pressed) == 6 and steers[pressed[4]].left == (0.0, -1.0)
 
 
-def test_with_every_view_called_blocked_or_no_answer_the_sides_are_felt_for_as_before():
-    def seen(time, guard):
+def test_with_every_view_called_blocked_or_no_answer_the_other_side_is_felt_for():
+    def left_is_free(time, guard):
+        return (
+            "going"
+            if guard.state == "round" and guard.phase in ("out", "in") and guard.side == -1
+            else "still"
+        )
+
+    guard = Told(left_is_free, ahead=Looks(0.1, 0.2, 0.0, 0.3))
+    steers = run(guard, 14.0)
+    # The right side felt for and closed, four looks of eight tenths of a second, and out to the left.
+    assert went(
+        steers,
+        ("go", 0.0),
+        ("climb", 1.5),
+        ("look", 3.1),
+        ("round", 3.5),
+        ("climb", 5.5),
+        ("look", 7.2),
+        ("round", 10.7),
+        ("go", 13.7),
+    )
+    assert len(guard.ahead.asked) == 5 and steers[11.0].left == pytest.approx(LEFT)
+
+    # A model that does not answer costs a second of waiting, at this obstacle.
+    def a_side_is_free(time, guard):
         return "going" if guard.state == "round" and guard.phase in ("out", "in") else "still"
 
-    guard = Told(seen, ahead=Looks(0.1, 0.2, 0.0, 0.3))
-    steers = run(guard, 10.0)
-    # The view as it stands and four looks of eight tenths of a second, once round; then out to the right.
-    assert went(steers, ("go", 0.0), ("climb", 1.5), ("look", 3.1), ("round", 6.7), ("go", 9.8))
-    assert len(guard.ahead.asked) == 5 and steers[7.0].left == pytest.approx(RIGHT)
-    # A model that does not answer costs a second of waiting, at this obstacle.
     silent = Looks(silent=True)
-    guard = Told(seen, ahead=silent)
+    guard = Told(a_side_is_free, ahead=silent)
     steers = run(guard, 8.0)
     assert went(steers, ("go", 0.0), ("climb", 1.5), ("look", 3.1), ("round", 4.4), ("go", 7.4))
     assert len(silent.asked) == 1 and guard.views == ["none"]
     assert all(steer.left == (0.0, 0.0) for steer in steers.values() if steer.state == "look")
+
+
+def test_a_look_goes_on_until_the_arrow_says_the_camera_is_round():
+    # In the barber's half a second of the stick took the camera 40 degrees round and not 72.
+    def turned(rate):
+        model = Looks(0.97, told=True)
+        guard = Told(lambda time, guard: "still", ahead=model)
+        guard.place = guard.indoors = False
+        steers = filmed(guard, 9.0, rate=rate)
+        return [time for time, steer in steers.items() if steer.right != (0.0, 0.0)]
+
+    # An arrow that stays where it is says nothing, and the turn is the clock's as before.
+    assert turned(0.0) == pytest.approx([6.7, 6.8, 6.9, 7.0, 7.1])
+    # A slow camera is turned for longer, a fast one let go sooner: what goes on after the stick
+    # is let go is left out.
+    assert len(turned(70.0)) == 8 and len(turned(148.0)) == 4
 
 
 def test_in_a_room_the_model_is_asked_for_the_way_out_and_the_figure_runs_through_it():
@@ -420,24 +509,120 @@ def test_in_a_room_the_model_is_asked_for_the_way_out_and_the_figure_runs_throug
         room=True,
     )
     guard = Told(running_where_the_model_said, ahead=model)
-    steers = run(guard, 10.0)
-    assert went(steers, ("go", 0.0), ("climb", 1.5), ("look", 3.1), ("round", 5.3), ("go", 9.0))
-    assert guard.views == ["room0.01", "room0.00", "exitL", "outside"] and guard.indoors is None
+    steers = run(guard, 9.0)
+    assert went(steers, ("go", 0.0), ("climb", 1.5), ("look", 3.1), ("round", 5.5), ("go", 8.3))
+    assert guard.views == ["room0.01", "room0.00", "exitL", "outside"] and guard.indoors is False
     assert model.how == [(None, False), (True, True), (True, True), (None, False), (None, False)]
     # The door is in the left part of the picture: the camera goes left a little, and then the
     # figure runs straight at it, for longer than round an obstacle.
-    assert steers[5.1].right == (-1.0, 0.0) and steers[5.2].right == (-1.0, 0.0)
-    assert steers[5.1].left == (0.0, 0.0) and steers[5.2].state == "look"
-    assert all(steers[time / 10].left == (0.0, -1.0) for time in range(53, 90))
+    assert steers[5.3].right == (-1.0, 0.0) and steers[5.4].right == (-1.0, 0.0)
+    assert steers[5.3].left == (0.0, 0.0) and steers[5.4].state == "look"
+    assert all(steers[time / 10].left == (0.0, -1.0) for time in range(55, 83))
     # On the way the door is looked at again: it has come to the right of the picture, and the
     # camera, which the stick goes by, is turned to it. Called outdoors, the figure runs straight
-    # on for two and a half seconds more and the guard is done.
-    turned = [time for time, steer in steers.items() if time > 5.25 and steer.right != (0.0, 0.0)]
-    assert turned == pytest.approx([5.8, 5.9]) and steers[5.8].right == (1.0, 0.0)
-    assert guard.outside == pytest.approx(6.5) and steers[9.2].left == FORWARD
+    # on for a second and a half more, a few steps before any turn, and the guard is done.
+    turned = [time for time, steer in steers.items() if time > 5.45 and steer.right != (0.0, 0.0)]
+    assert turned == pytest.approx([6.0, 6.1]) and steers[6.0].right == (1.0, 0.0)
+    assert guard.outside == pytest.approx(6.8) and steers[8.5].left == FORWARD
+    assert guard.outside + WayRound.CLEAR == pytest.approx(8.3)
     # A door in the middle of the picture is run at as it is.
     model = Looks(View(exit=0.95, parts=(0.1, 0.9, 0.3)), room=True)
     guard = Told(running_where_the_model_said, ahead=model)
     steers = run(guard, 5.0)
-    assert guard.views == ["room0.01", "exitM"] and steers[4.3].left == (0.0, -1.0)
-    assert steers[4.3].right == (0.0, 0.0) and steers[4.3].state == "round"
+    assert guard.views == ["room0.01", "exitM"] and steers[4.5].left == (0.0, -1.0)
+    assert steers[4.5].right == (0.0, 0.0) and steers[4.5].state == "round"
+
+
+def test_out_of_a_building_it_ran_into_the_figure_goes_back_the_way_it_came():
+    # Kerim, 13 November: use the way out you came in by; and once out, a few steps straight on
+    # before you turn left or right.
+    model = Looks(View(indoors=1.0, exit=0.2), View(indoors=0.02), told=True)
+    guard = Told(lambda time, guard: "going", ahead=model)
+    guard.step(tick(0.0, arrow=5.0), FORWARD, sprint=True)
+    guard.back_out(tick(0.1, arrow=5.0))
+    # The marker is behind the camera and not read: the direction the walk hands on is an old one.
+    steers = filmed(guard, 11.0, start=0.1, arrow=5.0, fresh=False)
+    assert went(steers, ("look", 0.1), ("round", 1.8), ("look", 4.2), ("round", 5.0), ("go", 10.0))
+    # Standing, the camera goes round until the figure faces it: by the arrow, half a circle less
+    # what it goes on by, and round the side the figure is turned to already.
+    about = [steers[time / 10] for time in range(1, 18)]
+    assert all(steer.left == (0.0, 0.0) and steer.right == (-1.0, 0.0) for steer in about)
+    # Then into the picture, where it came from, with the model asked on the way where it is.
+    assert all(steers[time / 10].left == (0.0, -1.0) for time in range(18, 42))
+    assert model.how == [(None, False)] * 2 and guard.views == ["back", "outside"]
+    # Outdoors: a second and a half straight on. The target lies behind, through the building:
+    # a quarter turn of the camera and along the front, as far as the longest leg sideways.
+    assert guard.outside == pytest.approx(2.6)
+    assert all(steers[time / 10].right == (1.0, 0.0) for time in range(42, 50))
+    assert all(steers[time / 10].left == (0.0, -1.0) for time in range(50, 100))
+    assert not any(steer.buttons for steer in steers.values())
+
+
+def test_behind_a_door_the_figure_turns_aside_only_where_the_target_lies_back_through_the_building():
+    def left(want):
+        model = Looks(View(indoors=0.02), told=True)
+        guard = Told(lambda time, guard: "going", ahead=model)
+        guard.step(tick(0.0, arrow=-5.0), FORWARD, sprint=True)
+        guard.back_out(tick(0.1, arrow=-5.0))
+        return guard, filmed(guard, 10.0, start=0.1, arrow=-5.0, want=want)
+
+    # The marker is read and lies ahead: straight on and on to it.
+    guard, steers = left(FORWARD)
+    assert went(steers, ("look", 0.1), ("round", 1.8), ("go", 3.4))
+    assert steers[0.5].right == (1.0, 0.0)  # the figure was turned a little to the left: round by the right
+    # The marker is read and lies behind, to the left: along the front to the left.
+    guard, steers = left((-0.8, 0.6))
+    assert went(steers, ("look", 0.1), ("round", 1.8), ("look", 3.4), ("round", 4.2), ("go", 9.3))
+    assert guard.side == -1 and steers[3.5].right == (-1.0, 0.0) and steers[5.0].left == (0.0, -1.0)
+
+
+def test_a_walk_that_begins_in_a_room_has_the_way_out_looked_for_before_the_first_step():
+    model = Looks(View(exit=0.0), told=True)
+    guard = Told(lambda time, guard: "going", ahead=model)
+    guard.step(tick(0.0), FORWARD, sprint=True)
+    guard.leave(tick(0.1))
+    steers = filmed(guard, 1.0, start=0.1)
+    assert all(steer.state == "look" and steer.left == (0.0, 0.0) for steer in steers.values())
+    assert model.how[0] == (True, False) and guard.views[0] == "room0.00"
+
+
+def test_in_a_room_with_no_way_out_in_sight_the_figure_goes_round_along_the_walls():
+    # Kerim, 13 November, of the worst case: run at every face once, all round the shop, until
+    # you are out.
+    rooms = [View(exit=0.0)] * 4 + [View(indoors=1.0, exit=0.0)] * 9 + [View(indoors=0.02)]
+    model = Looks(*rooms, room=True)
+    guard = Told(lambda time, guard: "going" if guard.outside is not None else "still", ahead=model)
+    steers = filmed(guard, 18.0)
+    found = stretches(steers)
+    assert found[:4] == [("go", 0.0), ("climb", 1.5), ("look", 3.1), ("round", 7.9)]
+    # Five views and no way out in any: an eighth turn of the camera, straight on until the
+    # figure stands, the next turn, and so on, the model asked all the while where the figure is.
+    assert guard.views[:6] == ["room0.01", "room0.00", "room0.00", "room0.00", "room0.00", "wall"]
+    assert [steers[time / 10].right for time in range(74, 79)] == [(1.0, 0.0)] * 5
+    assert all(steers[time / 10].left == (0.0, -1.0) for time in range(79, 99))
+    assert found[4:8] == [("look", 9.9), ("round", 10.4), ("look", 12.4), ("round", 12.9)]
+    assert not any(steer.buttons for time, steer in steers.items() if time > 2.0)
+    # Called outdoors, it runs straight on for a second and a half and the guard is done.
+    assert guard.views[-1] == "outside" and guard.outside == pytest.approx(15.5)
+    assert found[-1] == ("go", 17.0)
+
+
+def test_the_wall_round_ends_when_nothing_holds_the_figure_up_and_gives_up_after_three_times_round():
+    # A model that is gone, in what the walk had called a room: running free for six seconds is out.
+    model = Looks(silent=True)
+
+    def seen(time, guard):
+        return "going" if guard.state == "round" and guard.phase in ("wall", "run") else "still"
+
+    guard = Told(seen, ahead=model)
+    guard.place = guard.indoors = True
+    steers = filmed(guard, 14.0)
+    assert went(steers, ("go", 0.0), ("climb", 1.5), ("look", 3.1), ("round", 4.9), ("go", 13.4))
+    assert guard.views == ["none", "wall", "free"]
+    # Held up at every face, twenty-four turns and still in the room: stuck.
+    rooms = [View(exit=0.0)] * 4 + [View(indoors=1.0, exit=0.0)] * 200
+    guard = Told(lambda time, guard: "still", ahead=Looks(*rooms, room=True))
+    steers = filmed(guard, 72.0)
+    failed = [time for time, steer in steers.items() if steer.failed]
+    assert failed[0] == pytest.approx(69.9) and steers[failed[0]].failed == "stuck"
+    assert guard.wall_turns == WayRound.WALL_TURNS + 1
