@@ -1,0 +1,674 @@
+[
+  {
+    "case": "first-player-marker-failure",
+    "session": "20261113-163218",
+    "asked_t": 13.5,
+    "file": "20261113-163218-808.png",
+    "i": 808,
+    "frame_id": 346698,
+    "t": 13.4986,
+    "ocr": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          44,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Wegpunkt (1727m)",
+        "confidence": 1.0,
+        "box": [
+          1080,
+          70,
+          110,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Immobilie: Downtown Cab Co.: 200.000 $",
+        "confidence": 1.0,
+        "box": [
+          942,
+          96,
+          248,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Ammu-Nation",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          124,
+          86,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand \u00a9",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          150,
+          206,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Autowaschanlage lal",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          178,
+          132,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Beekers Garage f",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          202,
+          124,
+          20
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Binco Bekleidung Y",
+        "confidence": 1.0,
+        "box": [
+          1084,
+          230,
+          130,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Cargobob HS",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          258,
+          86,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Darts",
+        "confidence": 1.0,
+        "box": [
+          1158,
+          286,
+          34,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Discount Store T",
+        "confidence": 1.0,
+        "box": [
+          1100,
+          310,
+          114,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Fahrgesch\u00e4ft e",
+        "confidence": 1.0,
+        "box": [
+          1108,
+          340,
+          104,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "(Federal Investigation Bureau B",
+        "confidence": 1.0,
+        "box": [
+          1008,
+          366,
+          202,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Flugschule +",
+        "confidence": 1.0,
+        "box": [
+          1124,
+          392,
+          90,
+          17
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Fremde und Freaks?",
+        "confidence": 1.0,
+        "box": [
+          1070,
+          414,
+          141,
+          23
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Friseursalon e",
+        "confidence": 1.0,
+        "box": [
+          1114,
+          446,
+          100,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Garage in Pillbox Hill B",
+        "confidence": 1.0,
+        "box": [
+          1064,
+          472,
+          148,
+          18
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Gel\u00e4nderennen Motorrad/Quad F$",
+        "confidence": 1.0,
+        "box": [
+          1000,
+          500,
+          214,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "+",
+        "confidence": 1.0,
+        "box": [
+          630,
+          524,
+          20,
+          22
+        ],
+        "region": "menu"
+      },
+      {
+        "text": "Golf",
+        "confidence": 1.0,
+        "box": [
+          1164,
+          528,
+          34,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "1/38",
+        "confidence": 1.0,
+        "box": [
+          1162,
+          556,
+          32,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "HS",
+        "confidence": 1.0,
+        "box": [
+          972,
+          572,
+          30,
+          18
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          164,
+          610,
+          42,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "LA PUERTA / GOMA ST",
+        "confidence": 1.0,
+        "box": [
+          72,
+          638,
+          138,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Zoomen L2 R2 Markierung w\u00e4hlen o\u011fa Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          670,
+          659,
+          348,
+          24
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1052,
+          666,
+          42,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          60,
+          14
+        ],
+        "region": "phone"
+      }
+    ],
+    "map_screen": "map",
+    "picture": {
+      "screen": "map",
+      "cursor": [
+        640.0,
+        360.0
+      ],
+      "player": null,
+      "missions": [],
+      "waypoint": true
+    }
+  },
+  {
+    "case": "second-player-marker-failure",
+    "session": "20261113-163218",
+    "asked_t": 28,
+    "file": "20261113-163218-1673.png",
+    "i": 1673,
+    "frame_id": 347563,
+    "t": 27.9956,
+    "ocr": [
+      {
+        "text": "Spieler",
+        "confidence": 1.0,
+        "box": [
+          1146,
+          42,
+          44,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Wegpunkt (1727m)",
+        "confidence": 1.0,
+        "box": [
+          1080,
+          70,
+          110,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Immobilie: Downtown Cab Co.: 200.000 $",
+        "confidence": 1.0,
+        "box": [
+          942,
+          96,
+          248,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Ammu-Nation",
+        "confidence": 1.0,
+        "box": [
+          1106,
+          124,
+          86,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Ammu-Nation mit Schie\u00dfstand",
+        "confidence": 1.0,
+        "box": [
+          1006,
+          150,
+          184,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Autowaschanlage lai",
+        "confidence": 1.0,
+        "box": [
+          1082,
+          178,
+          132,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Beekers Garage f",
+        "confidence": 1.0,
+        "box": [
+          1090,
+          200,
+          124,
+          23
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Binco Bekleidung Y",
+        "confidence": 1.0,
+        "box": [
+          1084,
+          230,
+          130,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Cargobob HS",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          258,
+          86,
+          17
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Jel",
+        "confidence": 1.0,
+        "box": [
+          688,
+          266,
+          40,
+          22
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Darts",
+        "confidence": 1.0,
+        "box": [
+          1158,
+          286,
+          34,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Discount Store Y",
+        "confidence": 1.0,
+        "box": [
+          1100,
+          312,
+          114,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "LAT",
+        "confidence": 1.0,
+        "box": [
+          804,
+          336,
+          24,
+          18
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Fahrgesch\u00e4ft",
+        "confidence": 1.0,
+        "box": [
+          1108,
+          340,
+          104,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "R Federal Investigation Bureau B",
+        "confidence": 1.0,
+        "box": [
+          996,
+          366,
+          216,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Flugschule $",
+        "confidence": 1.0,
+        "box": [
+          1122,
+          391,
+          92,
+          21
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Fremde und Freaks ?",
+        "confidence": 1.0,
+        "box": [
+          1070,
+          414,
+          141,
+          23
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Friseursalon e",
+        "confidence": 1.0,
+        "box": [
+          1114,
+          446,
+          100,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Garage in Pillbox Hill 9",
+        "confidence": 1.0,
+        "box": [
+          1064,
+          472,
+          148,
+          18
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Gel\u00e4nderennen Motorrad/Quad Fs",
+        "confidence": 1.0,
+        "box": [
+          1000,
+          494,
+          215,
+          24
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "+",
+        "confidence": 1.0,
+        "box": [
+          630,
+          526,
+          18,
+          20
+        ],
+        "region": "menu"
+      },
+      {
+        "text": "C.",
+        "confidence": 1.0,
+        "box": [
+          1194,
+          526,
+          14,
+          18
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Golf",
+        "confidence": 1.0,
+        "box": [
+          1162,
+          528,
+          34,
+          16
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "1/38",
+        "confidence": 1.0,
+        "box": [
+          1162,
+          556,
+          32,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "JHS",
+        "confidence": 1.0,
+        "box": [
+          972,
+          574,
+          30,
+          14
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "1007m",
+        "confidence": 1.0,
+        "box": [
+          164,
+          610,
+          42,
+          14
+        ],
+        "region": "other"
+      },
+      {
+        "text": "LA PUERTA / GOMA ST",
+        "confidence": 1.0,
+        "box": [
+          70,
+          638,
+          140,
+          12
+        ],
+        "region": "other"
+      },
+      {
+        "text": "Markierung w\u00e4hlen oga Interessanter Ort",
+        "confidence": 1.0,
+        "box": [
+          778,
+          658,
+          241,
+          29
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Zoomen L2 R2",
+        "confidence": 1.0,
+        "box": [
+          670,
+          666,
+          106,
+          14
+        ],
+        "region": "subtitle"
+      },
+      {
+        "text": "Zur\u00fcck",
+        "confidence": 1.0,
+        "box": [
+          1054,
+          666,
+          40,
+          12
+        ],
+        "region": "phone"
+      },
+      {
+        "text": "Wegpunkt",
+        "confidence": 1.0,
+        "box": [
+          1128,
+          666,
+          62,
+          15
+        ],
+        "region": "phone"
+      }
+    ],
+    "map_screen": "map"
+  }
+]

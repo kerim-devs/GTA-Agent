@@ -1,0 +1,1247 @@
+[
+  {
+    "session": "20261113-163218",
+    "label": "level",
+    "asked_t": 0.1,
+    "file": "camera/20261113-163218-5.png",
+    "i": 5,
+    "frame_id": 345895,
+    "t": 0.0795,
+    "upper65_edge_fraction": 0.0492121,
+    "top65_mean_brightness": 40.12318,
+    "player": null,
+    "objects": [
+      {
+        "kind": "car",
+        "box": [
+          288.615,
+          368.464,
+          461.24,
+          423.938
+        ],
+        "confidence": 0.898257
+      }
+    ],
+    "edge_top35": 0.008989,
+    "mean_top35": 33.43493,
+    "edge_top50": 0.0350499,
+    "mean_top50": 39.42517,
+    "edge_top65": 0.0492121,
+    "mean_top65": 40.12318
+  },
+  {
+    "session": "20261113-163218",
+    "label": "level",
+    "asked_t": 1,
+    "file": "camera/20261113-163218-61.png",
+    "i": 61,
+    "frame_id": 345951,
+    "t": 1.0033,
+    "upper65_edge_fraction": 0.0452941,
+    "top65_mean_brightness": 36.71399,
+    "player": {
+      "box": [
+        507.722,
+        325.432,
+        628.112,
+        647.039
+      ],
+      "confidence": 0.929336
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          507.722,
+          325.432,
+          628.112,
+          647.039
+        ],
+        "confidence": 0.929336
+      },
+      {
+        "kind": "car",
+        "box": [
+          1154.226,
+          327.72,
+          1277.621,
+          397.922
+        ],
+        "confidence": 0.842891
+      },
+      {
+        "kind": "car",
+        "box": [
+          0.236,
+          333.503,
+          155.235,
+          386.437
+        ],
+        "confidence": 0.842844
+      },
+      {
+        "kind": "person",
+        "box": [
+          1031.371,
+          325.33,
+          1054.974,
+          371.772
+        ],
+        "confidence": 0.658893
+      }
+    ],
+    "edge_top35": 0.0170381,
+    "mean_top35": 31.1457,
+    "edge_top50": 0.0398242,
+    "mean_top50": 35.36183,
+    "edge_top65": 0.0452941,
+    "mean_top65": 36.71399
+  },
+  {
+    "session": "20261113-163218",
+    "label": "level",
+    "asked_t": 2,
+    "file": "camera/20261113-163218-120.png",
+    "i": 120,
+    "frame_id": 346010,
+    "t": 1.9983,
+    "upper65_edge_fraction": 0.0561515,
+    "top65_mean_brightness": 39.14357,
+    "player": {
+      "box": [
+        542.628,
+        311.776,
+        629.992,
+        551.759
+      ],
+      "confidence": 0.927161
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          542.628,
+          311.776,
+          629.992,
+          551.759
+        ],
+        "confidence": 0.927161
+      },
+      {
+        "kind": "car",
+        "box": [
+          17.067,
+          260.98,
+          175.289,
+          317.984
+        ],
+        "confidence": 0.914604
+      },
+      {
+        "kind": "person",
+        "box": [
+          1016.771,
+          250.88,
+          1039.131,
+          295.294
+        ],
+        "confidence": 0.54235
+      }
+    ],
+    "edge_top35": 0.0464237,
+    "mean_top35": 39.30948,
+    "edge_top50": 0.0589779,
+    "mean_top50": 39.84067,
+    "edge_top65": 0.0561515,
+    "mean_top65": 39.14357
+  },
+  {
+    "session": "20261113-163218",
+    "label": "level",
+    "asked_t": 3,
+    "file": "camera/20261113-163218-180.png",
+    "i": 180,
+    "frame_id": 346070,
+    "t": 2.9967,
+    "upper65_edge_fraction": 0.0681891,
+    "top65_mean_brightness": 39.65699,
+    "player": {
+      "box": [
+        555.242,
+        310.956,
+        629.993,
+        515.162
+      ],
+      "confidence": 0.921998
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          555.242,
+          310.956,
+          629.993,
+          515.162
+        ],
+        "confidence": 0.921998
+      },
+      {
+        "kind": "car",
+        "box": [
+          38.463,
+          235.878,
+          191.223,
+          290.915
+        ],
+        "confidence": 0.921846
+      },
+      {
+        "kind": "person",
+        "box": [
+          1005.946,
+          223.242,
+          1028.78,
+          269.07
+        ],
+        "confidence": 0.646717
+      }
+    ],
+    "edge_top35": 0.0634307,
+    "mean_top35": 41.22088,
+    "edge_top50": 0.06625,
+    "mean_top50": 40.86465,
+    "edge_top65": 0.0681891,
+    "mean_top65": 39.65699
+  },
+  {
+    "session": "20261113-163218",
+    "label": "level",
+    "asked_t": 3.4,
+    "file": "camera/20261113-163218-205.png",
+    "i": 205,
+    "frame_id": 346095,
+    "t": 3.4055,
+    "upper65_edge_fraction": 0.0685263,
+    "top65_mean_brightness": 39.5657,
+    "player": {
+      "box": [
+        555.194,
+        310.601,
+        630.897,
+        515.169
+      ],
+      "confidence": 0.922401
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          555.194,
+          310.601,
+          630.897,
+          515.169
+        ],
+        "confidence": 0.922401
+      },
+      {
+        "kind": "car",
+        "box": [
+          38.513,
+          235.832,
+          191.266,
+          290.877
+        ],
+        "confidence": 0.921154
+      },
+      {
+        "kind": "person",
+        "box": [
+          1005.978,
+          223.282,
+          1028.742,
+          269.128
+        ],
+        "confidence": 0.646784
+      }
+    ],
+    "edge_top35": 0.0637139,
+    "mean_top35": 41.15492,
+    "edge_top50": 0.0664648,
+    "mean_top50": 40.78203,
+    "edge_top65": 0.0685263,
+    "mean_top65": 39.5657
+  },
+  {
+    "session": "20261113-163218",
+    "label": "sky",
+    "asked_t": 4.5,
+    "file": "camera/20261113-163218-268.png",
+    "i": 268,
+    "frame_id": 346158,
+    "t": 4.459,
+    "upper65_edge_fraction": 0.0022469,
+    "top65_mean_brightness": 25.05456,
+    "player": {
+      "box": [
+        485.592,
+        335.221,
+        677.713,
+        716.528
+      ],
+      "confidence": 0.942807
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          485.592,
+          335.221,
+          677.713,
+          716.528
+        ],
+        "confidence": 0.942807
+      }
+    ],
+    "edge_top35": 0.0,
+    "mean_top35": 23.73015,
+    "edge_top50": 0.0010438,
+    "mean_top50": 24.46758,
+    "edge_top65": 0.0022469,
+    "mean_top65": 25.05456
+  },
+  {
+    "session": "20261113-163218",
+    "label": "sky",
+    "asked_t": 5.5,
+    "file": "camera/20261113-163218-331.png",
+    "i": 331,
+    "frame_id": 346221,
+    "t": 5.5074,
+    "upper65_edge_fraction": 0.0031233,
+    "top65_mean_brightness": 28.6601,
+    "player": {
+      "box": [
+        484.299,
+        332.347,
+        674.163,
+        716.475
+      ],
+      "confidence": 0.941853
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          484.299,
+          332.347,
+          674.163,
+          716.475
+        ],
+        "confidence": 0.941853
+      }
+    ],
+    "edge_top35": 0.0,
+    "mean_top35": 27.52408,
+    "edge_top50": 0.0018359,
+    "mean_top50": 28.01162,
+    "edge_top65": 0.0031233,
+    "mean_top65": 28.6601
+  },
+  {
+    "session": "20261113-163218",
+    "label": "sky",
+    "asked_t": 5.9,
+    "file": "camera/20261113-163218-352.png",
+    "i": 352,
+    "frame_id": 346242,
+    "t": 5.945,
+    "upper65_edge_fraction": 0.0030232,
+    "top65_mean_brightness": 29.14198,
+    "player": {
+      "box": [
+        483.662,
+        331.574,
+        672.451,
+        716.517
+      ],
+      "confidence": 0.940621
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          483.662,
+          331.574,
+          672.451,
+          716.517
+        ],
+        "confidence": 0.940621
+      }
+    ],
+    "edge_top35": 0.0,
+    "mean_top35": 28.25865,
+    "edge_top50": 0.0017578,
+    "mean_top50": 28.59125,
+    "edge_top65": 0.0030232,
+    "mean_top65": 29.14198
+  },
+  {
+    "session": "20261113-163218",
+    "label": "sky",
+    "asked_t": 6.5,
+    "file": "camera/20261113-163218-390.png",
+    "i": 390,
+    "frame_id": 346280,
+    "t": 6.4976,
+    "upper65_edge_fraction": 0.0030733,
+    "top65_mean_brightness": 28.79253,
+    "player": {
+      "box": [
+        499.811,
+        333.391,
+        668.197,
+        718.412
+      ],
+      "confidence": 0.932018
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          499.811,
+          333.391,
+          668.197,
+          718.412
+        ],
+        "confidence": 0.932018
+      }
+    ],
+    "edge_top35": 0.0020263,
+    "mean_top35": 26.8319,
+    "edge_top50": 0.0015278,
+    "mean_top50": 27.54865,
+    "edge_top65": 0.0030733,
+    "mean_top65": 28.79253
+  },
+  {
+    "session": "20261113-163218",
+    "label": "sky",
+    "asked_t": 7.5,
+    "file": "camera/20261113-163218-446.png",
+    "i": 446,
+    "frame_id": 346336,
+    "t": 7.5184,
+    "upper65_edge_fraction": 0.0115535,
+    "top65_mean_brightness": 29.91521,
+    "player": {
+      "box": [
+        523.991,
+        321.531,
+        648.072,
+        630.887
+      ],
+      "confidence": 0.933698
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          523.991,
+          321.531,
+          648.072,
+          630.887
+        ],
+        "confidence": 0.933698
+      }
+    ],
+    "edge_top35": 0.001631,
+    "mean_top35": 25.54248,
+    "edge_top50": 0.0015712,
+    "mean_top50": 26.91524,
+    "edge_top65": 0.0115535,
+    "mean_top65": 29.91521
+  },
+  {
+    "session": "20261113-163218",
+    "label": "level",
+    "asked_t": 8.5,
+    "file": "camera/20261113-163218-507.png",
+    "i": 507,
+    "frame_id": 346397,
+    "t": 8.4544,
+    "upper65_edge_fraction": 0.0266259,
+    "top65_mean_brightness": 34.2549,
+    "player": {
+      "box": [
+        547.905,
+        313.732,
+        633.06,
+        530.751
+      ],
+      "confidence": 0.916033
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          547.905,
+          313.732,
+          633.06,
+          530.751
+        ],
+        "confidence": 0.916033
+      },
+      {
+        "kind": "car",
+        "box": [
+          1184.407,
+          446.481,
+          1279.888,
+          495.947
+        ],
+        "confidence": 0.811951
+      },
+      {
+        "kind": "person",
+        "box": [
+          1010.177,
+          448.679,
+          1031.887,
+          495.946
+        ],
+        "confidence": 0.590062
+      }
+    ],
+    "edge_top35": 0.0006879,
+    "mean_top35": 26.39094,
+    "edge_top50": 0.0074327,
+    "mean_top50": 29.43188,
+    "edge_top65": 0.0266259,
+    "mean_top65": 34.2549
+  },
+  {
+    "session": "20261113-163218",
+    "label": "level",
+    "asked_t": 8.9,
+    "file": "camera/20261113-163218-534.png",
+    "i": 534,
+    "frame_id": 346424,
+    "t": 8.8961,
+    "upper65_edge_fraction": 0.0448384,
+    "top65_mean_brightness": 37.37462,
+    "player": {
+      "box": [
+        554.443,
+        312.602,
+        631.194,
+        521.823
+      ],
+      "confidence": 0.915243
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          554.443,
+          312.602,
+          631.194,
+          521.823
+        ],
+        "confidence": 0.915243
+      },
+      {
+        "kind": "car",
+        "box": [
+          1131.335,
+          372.943,
+          1251.741,
+          422.724
+        ],
+        "confidence": 0.899274
+      },
+      {
+        "kind": "car",
+        "box": [
+          56.935,
+          380.484,
+          201.106,
+          441.075
+        ],
+        "confidence": 0.541162
+      },
+      {
+        "kind": "person",
+        "box": [
+          1003.533,
+          372.202,
+          1024.424,
+          417.168
+        ],
+        "confidence": 0.490627
+      }
+    ],
+    "edge_top35": 0.0042953,
+    "mean_top35": 29.45406,
+    "edge_top50": 0.0259049,
+    "mean_top50": 35.11855,
+    "edge_top65": 0.0448384,
+    "mean_top65": 37.37462
+  },
+  {
+    "session": "20261113-163218",
+    "label": "level",
+    "asked_t": 9.2,
+    "file": "camera/20261113-163218-551.png",
+    "i": 551,
+    "frame_id": 346441,
+    "t": 9.1793,
+    "upper65_edge_fraction": 0.0440522,
+    "top65_mean_brightness": 36.88485,
+    "player": {
+      "box": [
+        554.732,
+        312.503,
+        631.676,
+        521.899
+      ],
+      "confidence": 0.915566
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          554.732,
+          312.503,
+          631.676,
+          521.899
+        ],
+        "confidence": 0.915566
+      },
+      {
+        "kind": "car",
+        "box": [
+          1095.629,
+          374.167,
+          1228.836,
+          423.104
+        ],
+        "confidence": 0.913527
+      },
+      {
+        "kind": "car",
+        "box": [
+          56.616,
+          380.442,
+          200.986,
+          441.542
+        ],
+        "confidence": 0.585338
+      },
+      {
+        "kind": "person",
+        "box": [
+          1003.289,
+          371.939,
+          1024.146,
+          417.069
+        ],
+        "confidence": 0.484801
+      }
+    ],
+    "edge_top35": 0.0042735,
+    "mean_top35": 29.09727,
+    "edge_top50": 0.0260352,
+    "mean_top50": 34.75844,
+    "edge_top65": 0.0440522,
+    "mean_top65": 36.88485
+  },
+  {
+    "session": "20261113-121513",
+    "label": "level",
+    "asked_t": 0.1,
+    "file": "camera/20261113-121513-6.png",
+    "i": 6,
+    "frame_id": 14372,
+    "t": 0.0868,
+    "upper65_edge_fraction": 0.0168553,
+    "top65_mean_brightness": 81.24715,
+    "player": null,
+    "objects": [],
+    "edge_top35": 0.0187033,
+    "mean_top35": 77.84303,
+    "edge_top50": 0.0157704,
+    "mean_top50": 81.05252,
+    "edge_top65": 0.0168553,
+    "mean_top65": 81.24715
+  },
+  {
+    "session": "20261113-121513",
+    "label": "level",
+    "asked_t": 1,
+    "file": "camera/20261113-121513-55.png",
+    "i": 55,
+    "frame_id": 14421,
+    "t": 1.0166,
+    "upper65_edge_fraction": 0.031654,
+    "top65_mean_brightness": 80.24707,
+    "player": {
+      "box": [
+        374.473,
+        264.138,
+        611.099,
+        716.622
+      ],
+      "confidence": 0.926145
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          374.473,
+          264.138,
+          611.099,
+          716.622
+        ],
+        "confidence": 0.926145
+      }
+    ],
+    "edge_top35": 0.0283616,
+    "mean_top35": 76.90341,
+    "edge_top50": 0.0296701,
+    "mean_top50": 79.8893,
+    "edge_top65": 0.031654,
+    "mean_top65": 80.24707
+  },
+  {
+    "session": "20261113-121513",
+    "label": "level",
+    "asked_t": 2,
+    "file": "camera/20261113-121513-116.png",
+    "i": 116,
+    "frame_id": 14482,
+    "t": 1.967,
+    "upper65_edge_fraction": 0.0331697,
+    "top65_mean_brightness": 76.69474,
+    "player": {
+      "box": [
+        425.309,
+        273.86,
+        616.85,
+        718.592
+      ],
+      "confidence": 0.934669
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          425.309,
+          273.86,
+          616.85,
+          718.592
+        ],
+        "confidence": 0.934669
+      }
+    ],
+    "edge_top35": 0.0250623,
+    "mean_top35": 68.24645,
+    "edge_top50": 0.0298416,
+    "mean_top50": 73.85724,
+    "edge_top65": 0.0331697,
+    "mean_top65": 76.69474
+  },
+  {
+    "session": "20261113-121513",
+    "label": "level",
+    "asked_t": 3,
+    "file": "camera/20261113-121513-179.png",
+    "i": 179,
+    "frame_id": 14545,
+    "t": 3.0085,
+    "upper65_edge_fraction": 0.0334635,
+    "top65_mean_brightness": 69.12971,
+    "player": {
+      "box": [
+        444.591,
+        282.666,
+        621.666,
+        716.726
+      ],
+      "confidence": 0.937827
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          444.591,
+          282.666,
+          621.666,
+          716.726
+        ],
+        "confidence": 0.937827
+      }
+    ],
+    "edge_top35": 0.0269142,
+    "mean_top35": 57.86142,
+    "edge_top50": 0.0319813,
+    "mean_top50": 64.73751,
+    "edge_top65": 0.0334635,
+    "mean_top65": 69.12971
+  },
+  {
+    "session": "20261113-121513",
+    "label": "level",
+    "asked_t": 4,
+    "file": "camera/20261113-121513-239.png",
+    "i": 239,
+    "frame_id": 14605,
+    "t": 4.0047,
+    "upper65_edge_fraction": 0.0330863,
+    "top65_mean_brightness": 67.36511,
+    "player": {
+      "box": [
+        448.909,
+        281.62,
+        622.953,
+        716.806
+      ],
+      "confidence": 0.933803
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          448.909,
+          281.62,
+          622.953,
+          716.806
+        ],
+        "confidence": 0.933803
+      }
+    ],
+    "edge_top35": 0.0264473,
+    "mean_top35": 56.33056,
+    "edge_top50": 0.0314757,
+    "mean_top50": 63.0346,
+    "edge_top65": 0.0330863,
+    "mean_top65": 67.36511
+  },
+  {
+    "session": "20261113-121513",
+    "label": "level",
+    "asked_t": 5,
+    "file": "camera/20261113-121513-296.png",
+    "i": 296,
+    "frame_id": 14662,
+    "t": 5.0034,
+    "upper65_edge_fraction": 0.0453693,
+    "top65_mean_brightness": 61.33087,
+    "player": {
+      "box": [
+        402.535,
+        345.928,
+        636.408,
+        715.191
+      ],
+      "confidence": 0.920365
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          402.535,
+          345.928,
+          636.408,
+          715.191
+        ],
+        "confidence": 0.920365
+      }
+    ],
+    "edge_top35": 0.0426917,
+    "mean_top35": 63.66717,
+    "edge_top50": 0.046033,
+    "mean_top50": 62.50032,
+    "edge_top65": 0.0453693,
+    "mean_top65": 61.33087
+  },
+  {
+    "session": "20261113-121513",
+    "label": "sky",
+    "asked_t": 6,
+    "file": "camera/20261113-121513-356.png",
+    "i": 356,
+    "frame_id": 14722,
+    "t": 5.9996,
+    "upper65_edge_fraction": 0.0650825,
+    "top65_mean_brightness": 74.08373,
+    "player": {
+      "box": [
+        356.451,
+        215.124,
+        653.308,
+        712.974
+      ],
+      "confidence": 0.935801
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          356.451,
+          215.124,
+          653.308,
+          712.974
+        ],
+        "confidence": 0.935801
+      }
+    ],
+    "edge_top35": 0.0790152,
+    "mean_top35": 73.03706,
+    "edge_top50": 0.0690191,
+    "mean_top50": 73.71289,
+    "edge_top65": 0.0650825,
+    "mean_top65": 74.08373
+  },
+  {
+    "session": "20261113-121513",
+    "label": "level",
+    "asked_t": 7,
+    "file": "camera/20261113-121513-416.png",
+    "i": 416,
+    "frame_id": 14782,
+    "t": 7.004,
+    "upper65_edge_fraction": 0.0647102,
+    "top65_mean_brightness": 75.73286,
+    "player": {
+      "box": [
+        381.64,
+        277.942,
+        677.006,
+        714.059
+      ],
+      "confidence": 0.940051
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          381.64,
+          277.942,
+          677.006,
+          714.059
+        ],
+        "confidence": 0.940051
+      }
+    ],
+    "edge_top35": 0.0792891,
+    "mean_top35": 74.49949,
+    "edge_top50": 0.0688108,
+    "mean_top50": 75.45742,
+    "edge_top65": 0.0647102,
+    "mean_top65": 75.73286
+  },
+  {
+    "session": "20261113-121513",
+    "label": "sky",
+    "asked_t": 8,
+    "file": "camera/20261113-121513-476.png",
+    "i": 476,
+    "frame_id": 14842,
+    "t": 8.0046,
+    "upper65_edge_fraction": 0.0701856,
+    "top65_mean_brightness": 76.30687,
+    "player": {
+      "box": [
+        374.139,
+        220.774,
+        676.983,
+        717.648
+      ],
+      "confidence": 0.936353
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          374.139,
+          220.774,
+          676.983,
+          717.648
+        ],
+        "confidence": 0.936353
+      }
+    ],
+    "edge_top35": 0.0800392,
+    "mean_top35": 75.10739,
+    "edge_top50": 0.073941,
+    "mean_top50": 76.73673,
+    "edge_top65": 0.0701856,
+    "mean_top65": 76.30687
+  },
+  {
+    "session": "20261113-121513",
+    "label": "level",
+    "asked_t": 9,
+    "file": "camera/20261113-121513-536.png",
+    "i": 536,
+    "frame_id": 14902,
+    "t": 9.0042,
+    "upper65_edge_fraction": 0.0390191,
+    "top65_mean_brightness": 75.51729,
+    "player": {
+      "box": [
+        474.554,
+        272.156,
+        690.182,
+        713.83
+      ],
+      "confidence": 0.947049
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          474.554,
+          272.156,
+          690.182,
+          713.83
+        ],
+        "confidence": 0.947049
+      }
+    ],
+    "edge_top35": 0.0280876,
+    "mean_top35": 72.83332,
+    "edge_top50": 0.0352257,
+    "mean_top50": 74.82323,
+    "edge_top65": 0.0390191,
+    "mean_top65": 75.51729
+  },
+  {
+    "session": "20261113-162450",
+    "label": "level",
+    "asked_t": 0.1,
+    "file": "camera/20261113-162450-11.png",
+    "i": 11,
+    "frame_id": 319074,
+    "t": 0.0961,
+    "upper65_edge_fraction": 0.0282118,
+    "top65_mean_brightness": 75.15019,
+    "player": {
+      "box": [
+        202.596,
+        248.502,
+        699.161,
+        711.486
+      ],
+      "confidence": 0.930921
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          202.596,
+          248.502,
+          699.161,
+          711.486
+        ],
+        "confidence": 0.930921
+      }
+    ],
+    "edge_top35": 0.0282713,
+    "mean_top35": 73.65898,
+    "edge_top50": 0.0284115,
+    "mean_top50": 75.80694,
+    "edge_top65": 0.0282118,
+    "mean_top65": 75.15019
+  },
+  {
+    "session": "20261113-162450",
+    "label": "level",
+    "asked_t": 1,
+    "file": "camera/20261113-162450-62.png",
+    "i": 62,
+    "frame_id": 319125,
+    "t": 0.9548,
+    "upper65_edge_fraction": 0.0236812,
+    "top65_mean_brightness": 64.94265,
+    "player": {
+      "box": [
+        213.891,
+        189.415,
+        614.201,
+        713.478
+      ],
+      "confidence": 0.952697
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          213.891,
+          189.415,
+          614.201,
+          713.478
+        ],
+        "confidence": 0.952697
+      }
+    ],
+    "edge_top35": 0.0230017,
+    "mean_top35": 64.85428,
+    "edge_top50": 0.022194,
+    "mean_top50": 67.24616,
+    "edge_top65": 0.0236812,
+    "mean_top65": 64.94265
+  },
+  {
+    "session": "20261113-162450",
+    "label": "level",
+    "asked_t": 2,
+    "file": "camera/20261113-162450-125.png",
+    "i": 125,
+    "frame_id": 319188,
+    "t": 2.0002,
+    "upper65_edge_fraction": 0.0208166,
+    "top65_mean_brightness": 62.06549,
+    "player": {
+      "box": [
+        231.763,
+        175.469,
+        575.697,
+        714.797
+      ],
+      "confidence": 0.947127
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          231.763,
+          175.469,
+          575.697,
+          714.797
+        ],
+        "confidence": 0.947127
+      }
+    ],
+    "edge_top35": 0.0214081,
+    "mean_top35": 63.97426,
+    "edge_top50": 0.0202344,
+    "mean_top50": 64.73914,
+    "edge_top65": 0.0208166,
+    "mean_top65": 62.06549
+  },
+  {
+    "session": "20261113-162450",
+    "label": "level",
+    "asked_t": 3,
+    "file": "camera/20261113-162450-185.png",
+    "i": 185,
+    "frame_id": 319248,
+    "t": 3.0016,
+    "upper65_edge_fraction": 0.0206414,
+    "top65_mean_brightness": 62.37954,
+    "player": {
+      "box": [
+        230.551,
+        175.597,
+        569.672,
+        715.557
+      ],
+      "confidence": 0.949011
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          230.551,
+          175.597,
+          569.672,
+          715.557
+        ],
+        "confidence": 0.949011
+      }
+    ],
+    "edge_top35": 0.021654,
+    "mean_top35": 64.39832,
+    "edge_top50": 0.0196853,
+    "mean_top50": 65.14118,
+    "edge_top65": 0.0206414,
+    "mean_top65": 62.37954
+  },
+  {
+    "session": "20261113-162450",
+    "label": "level",
+    "asked_t": 4,
+    "file": "camera/20261113-162450-240.png",
+    "i": 240,
+    "frame_id": 319303,
+    "t": 4.0042,
+    "upper65_edge_fraction": 0.0212423,
+    "top65_mean_brightness": 62.95056,
+    "player": {
+      "box": [
+        253.363,
+        175.634,
+        593.043,
+        715.898
+      ],
+      "confidence": 0.948725
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          253.363,
+          175.634,
+          593.043,
+          715.898
+        ],
+        "confidence": 0.948725
+      }
+    ],
+    "edge_top35": 0.0219715,
+    "mean_top35": 64.95092,
+    "edge_top50": 0.0201606,
+    "mean_top50": 65.76076,
+    "edge_top65": 0.0212423,
+    "mean_top65": 62.95056
+  },
+  {
+    "session": "20261113-162450",
+    "label": "level",
+    "asked_t": 5,
+    "file": "camera/20261113-162450-302.png",
+    "i": 302,
+    "frame_id": 319365,
+    "t": 4.9513,
+    "upper65_edge_fraction": 0.0197416,
+    "top65_mean_brightness": 62.83677,
+    "player": {
+      "box": [
+        217.43,
+        184.889,
+        569.187,
+        717.227
+      ],
+      "confidence": 0.948062
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          217.43,
+          184.889,
+          569.187,
+          717.227
+        ],
+        "confidence": 0.948062
+      }
+    ],
+    "edge_top35": 0.0202036,
+    "mean_top35": 64.90639,
+    "edge_top50": 0.0185525,
+    "mean_top50": 65.63927,
+    "edge_top65": 0.0197416,
+    "mean_top65": 62.83677
+  }
+]

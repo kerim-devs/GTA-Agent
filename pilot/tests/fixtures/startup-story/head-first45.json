@@ -1,0 +1,968 @@
+[
+  {
+    "id": 1,
+    "t": 0.0,
+    "request": {
+      "events": [
+        {
+          "kind": "startup"
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -24.947771090910692,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.4,
+            "y": 85.93,
+            "border": true
+          }
+        ]
+      },
+      "last_skill": {
+        "name": "set_far_view",
+        "status": "queued",
+        "reason": null,
+        "pending": [
+          "set_far_view",
+          "level_camera"
+        ]
+      },
+      "notebook": "",
+      "jpeg_path": "unused.jpg",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": 0.7619047619047619,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": null,
+      "time": 40180.169576,
+      "place": "unknown"
+    },
+    "frame_file": "head-0001.jpg",
+    "prompt_file": "head-0001.prompt.txt"
+  },
+  {
+    "id": 2,
+    "t": 7.830387,
+    "request": {
+      "events": [
+        {
+          "kind": "plan_ending",
+          "remaining_seconds": 4.501012750006339,
+          "steps": [
+            {
+              "name": "level_camera",
+              "remaining_seconds": 3.501012750006339
+            },
+            {
+              "name": "wait",
+              "remaining_seconds": 1
+            }
+          ]
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -20.735392285245098,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 39.28,
+            "y": 87.21,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 88.13,
+            "y": 72.43,
+            "border": true
+          }
+        ]
+      },
+      "last_skill": {
+        "name": "level_camera",
+        "args": {},
+        "status": "running",
+        "reason": null,
+        "queue": [
+          "wait"
+        ]
+      },
+      "notebook": "",
+      "jpeg_path": "unused.jpg",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": 0.9523809523809523,
+        "special": 0.7619047619047619,
+        "screen": "game"
+      },
+      "objects": [],
+      "judgment": {
+        "capture": 40187.688094458004,
+        "answers": {
+          "mode": {
+            "value": "foot",
+            "probability": 1.0
+          },
+          "overlay": {
+            "value": true,
+            "probability": 0.999
+          },
+          "banner": {
+            "value": false,
+            "probability": 1.0
+          },
+          "wanted": {
+            "value": false,
+            "probability": 1.0
+          },
+          "path": {
+            "value": "free",
+            "probability": 1.0
+          },
+          "car": {
+            "value": true,
+            "probability": 0.967
+          }
+        },
+        "probabilities": {
+          "mode": {
+            "A": 0.9999999217957106,
+            "B": 1.2295898589229821e-08,
+            "C": 6.590839073982955e-08
+          },
+          "overlay": {
+            "A": 0.9989982454402272,
+            "B": 0.001001754559772828
+          },
+          "banner": {
+            "A": 7.482021997025031e-06,
+            "B": 0.999992517978003
+          },
+          "wanted": {
+            "A": 1.161734152186404e-05,
+            "B": 0.999988382658478
+          },
+          "path": {
+            "A": 0.999687843070939,
+            "B": 0.00010171739719652894,
+            "C": 0.00021043953186442821
+          },
+          "car": {
+            "A": 0.9670098611821661,
+            "B": 0.032990138817833886
+          }
+        },
+        "duration": 0.20656204099941533,
+        "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+        "age": 0.31186837499262765,
+        "mode": "foot"
+      },
+      "time": 40187.999962833,
+      "place": "street"
+    },
+    "frame_file": "head-0002.jpg",
+    "prompt_file": "head-0002.prompt.txt"
+  },
+  {
+    "id": 3,
+    "t": 16.284578,
+    "request": {
+      "events": [
+        {
+          "kind": "skill_failed",
+          "skill": {
+            "name": "set_waypoint",
+            "status": "failed",
+            "reason": "player-marker-unreadable; centre the map manually; gameplay observed",
+            "queue": [],
+            "queue_disposition": "empty",
+            "dropped": []
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -20.908283367638887,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 39.28,
+            "y": 87.43,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 87.87,
+            "y": 72.21,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": {
+        "name": "set_waypoint",
+        "status": "failed",
+        "reason": "player-marker-unreadable; centre the map manually; gameplay observed",
+        "queue": [],
+        "queue_disposition": "empty",
+        "dropped": []
+      },
+      "notebook": "",
+      "jpeg_path": "unused.jpg",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.9047619047619048,
+        "special": 0.7619047619047619,
+        "screen": "game"
+      },
+      "objects": [
+        {
+          "kind": "car",
+          "box": [
+            708.107666015625,
+            373.487548828125,
+            794.9266357421875,
+            414.2313232421875
+          ],
+          "confidence": 0.7547400593757629
+        },
+        {
+          "kind": "person",
+          "box": [
+            1002.878662109375,
+            372.5638427734375,
+            1022.008544921875,
+            417.86328125
+          ],
+          "confidence": 0.6442860960960388
+        },
+        {
+          "kind": "car",
+          "box": [
+            50.274925231933594,
+            380.88934326171875,
+            192.93603515625,
+            416.948486328125
+          ],
+          "confidence": 0.5018513202667236
+        }
+      ],
+      "judgment": {
+        "capture": 40196.075657,
+        "answers": {
+          "mode": {
+            "value": "foot",
+            "probability": 1.0
+          },
+          "overlay": {
+            "value": false,
+            "probability": 1.0
+          },
+          "banner": {
+            "value": false,
+            "probability": 1.0
+          },
+          "wanted": {
+            "value": false,
+            "probability": 0.998
+          },
+          "path": {
+            "value": "free",
+            "probability": 0.998
+          },
+          "car": {
+            "value": true,
+            "probability": 0.996
+          }
+        },
+        "probabilities": {
+          "mode": {
+            "A": 0.9999999051025549,
+            "B": 3.496213931195939e-08,
+            "C": 5.993530569264819e-08
+          },
+          "overlay": {
+            "A": 0.00014757890297408625,
+            "B": 0.999852421097026
+          },
+          "banner": {
+            "A": 3.078700151767401e-06,
+            "B": 0.9999969212998483
+          },
+          "wanted": {
+            "A": 0.0017735446298527528,
+            "B": 0.9982264553701473
+          },
+          "path": {
+            "A": 0.99836581463932,
+            "B": 0.0008599506775064389,
+            "C": 0.0007742346831737207
+          },
+          "car": {
+            "A": 0.996431375342392,
+            "B": 0.0035686246576080672
+          }
+        },
+        "duration": 0.23774433299695374,
+        "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+        "age": 0.37849741600075504,
+        "mode": "foot"
+      },
+      "time": 40196.454154416,
+      "place": "unknown"
+    },
+    "frame_file": "head-0003.jpg",
+    "prompt_file": "head-0003.prompt.txt"
+  },
+  {
+    "id": 4,
+    "t": 22.239816,
+    "request": {
+      "events": [
+        {
+          "kind": "guard_start",
+          "rule": "red",
+          "rank": 4,
+          "answer": "fight",
+          "bearing": -155.1,
+          "seen": 40202.374144916
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -20.996649844361627,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 39.27,
+            "y": 87.46,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 87.87,
+            "y": 72.21,
+            "border": false
+          },
+          {
+            "color": "red",
+            "x": -6.5,
+            "y": -14.0,
+            "border": false
+          }
+        ]
+      },
+      "last_skill": {
+        "name": "set_waypoint",
+        "status": "failed",
+        "reason": "guard_red",
+        "queue": [],
+        "queue_disposition": "empty",
+        "dropped": []
+      },
+      "notebook": "",
+      "jpeg_path": "unused.jpg",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": null,
+        "special": 0.7619047619047619,
+        "screen": "game"
+      },
+      "objects": [
+        {
+          "kind": "person",
+          "box": [
+            1003.2647094726562,
+            372.9009704589844,
+            1021.9678344726562,
+            418.1227111816406
+          ],
+          "confidence": 0.6624297499656677
+        },
+        {
+          "kind": "car",
+          "box": [
+            51.303001403808594,
+            381.0063781738281,
+            193.30743408203125,
+            414.1752014160156
+          ],
+          "confidence": 0.44734930992126465
+        }
+      ],
+      "judgment": {
+        "capture": 40202.105067000004,
+        "answers": {
+          "mode": {
+            "value": "foot",
+            "probability": 1.0
+          },
+          "overlay": {
+            "value": false,
+            "probability": 1.0
+          },
+          "banner": {
+            "value": false,
+            "probability": 1.0
+          },
+          "wanted": {
+            "value": false,
+            "probability": 0.998
+          },
+          "path": {
+            "value": "free",
+            "probability": 1.0
+          },
+          "car": {
+            "value": true,
+            "probability": 0.961
+          }
+        },
+        "probabilities": {
+          "mode": {
+            "A": 0.9999998984619615,
+            "B": 2.5952442679376194e-08,
+            "C": 7.558559596042222e-08
+          },
+          "overlay": {
+            "A": 2.2981292471043198e-07,
+            "B": 0.9999997701870753
+          },
+          "banner": {
+            "A": 1.2872514298367752e-06,
+            "B": 0.9999987127485702
+          },
+          "wanted": {
+            "A": 0.0021502899077891313,
+            "B": 0.9978497100922109
+          },
+          "path": {
+            "A": 0.9997604675239127,
+            "B": 0.00013365622211510158,
+            "C": 0.0001058762539722371
+          },
+          "car": {
+            "A": 0.9606078612273,
+            "B": 0.039392138772699974
+          }
+        },
+        "duration": 0.2483102920014062,
+        "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+        "age": 0.30432483299955493,
+        "mode": "foot"
+      },
+      "time": 40202.409391833,
+      "place": "unknown"
+    },
+    "frame_file": "head-0004.jpg",
+    "prompt_file": "head-0004.prompt.txt"
+  },
+  {
+    "id": 5,
+    "t": 24.816937,
+    "request": {
+      "events": [
+        {
+          "kind": "guard_end",
+          "rule": "red",
+          "reason": "no-red-blips",
+          "seconds": 2.577
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -19.539287690715923,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 88.13,
+            "y": 70.39,
+            "border": true
+          }
+        ]
+      },
+      "last_skill": {
+        "name": "set_waypoint",
+        "status": "failed",
+        "reason": "guard_red",
+        "queue": [],
+        "queue_disposition": "empty",
+        "dropped": [],
+        "pending": [
+          "set_waypoint"
+        ]
+      },
+      "notebook": "",
+      "jpeg_path": "unused.jpg",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": 0.9888888888888889,
+        "armour": null,
+        "special": 0.7619047619047619,
+        "screen": "game"
+      },
+      "objects": [
+        {
+          "kind": "car",
+          "box": [
+            50.74921417236328,
+            380.58697509765625,
+            204.27569580078125,
+            425.65985107421875
+          ],
+          "confidence": 0.6290704011917114
+        }
+      ],
+      "judgment": {
+        "capture": 40204.531268875005,
+        "answers": {
+          "mode": {
+            "value": "foot",
+            "probability": 1.0
+          },
+          "overlay": {
+            "value": false,
+            "probability": 0.999
+          },
+          "banner": {
+            "value": false,
+            "probability": 1.0
+          },
+          "wanted": {
+            "value": false,
+            "probability": 0.999
+          },
+          "path": {
+            "value": "free",
+            "probability": 1.0
+          },
+          "car": {
+            "value": true,
+            "probability": 0.988
+          }
+        },
+        "probabilities": {
+          "mode": {
+            "A": 0.9999999875382298,
+            "B": 7.0516795640408405e-09,
+            "C": 5.410090518855278e-09
+          },
+          "overlay": {
+            "A": 0.0011555761313838545,
+            "B": 0.9988444238686162
+          },
+          "banner": {
+            "A": 3.566222783159871e-06,
+            "B": 0.9999964337772168
+          },
+          "wanted": {
+            "A": 0.0010240145543683602,
+            "B": 0.9989759854456317
+          },
+          "path": {
+            "A": 0.9995897135697235,
+            "B": 0.00022253851490962074,
+            "C": 0.0001877479153668568
+          },
+          "car": {
+            "A": 0.9882838300591954,
+            "B": 0.0117161699408047
+          }
+        },
+        "duration": 0.15331875000265427,
+        "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+        "age": 0.45524424999166513,
+        "mode": "foot"
+      },
+      "time": 40204.986513125,
+      "place": "street"
+    },
+    "frame_file": "head-0005.jpg",
+    "prompt_file": "head-0005.prompt.txt"
+  },
+  {
+    "id": 6,
+    "t": 30.966847,
+    "request": {
+      "events": [
+        {
+          "kind": "skill_failed",
+          "skill": {
+            "name": "set_waypoint",
+            "status": "failed",
+            "reason": "player-marker-unreadable; centre the map manually; gameplay observed",
+            "queue": [],
+            "queue_disposition": "empty",
+            "dropped": []
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -19.497599087446815,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 43.6,
+            "y": 87.08,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 88.17,
+            "y": 70.33,
+            "border": true
+          }
+        ]
+      },
+      "last_skill": {
+        "name": "set_waypoint",
+        "status": "failed",
+        "reason": "player-marker-unreadable; centre the map manually; gameplay observed",
+        "queue": [],
+        "queue_disposition": "empty",
+        "dropped": []
+      },
+      "notebook": "",
+      "jpeg_path": "unused.jpg",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.9047619047619048,
+        "special": 0.7619047619047619,
+        "screen": "game"
+      },
+      "objects": [
+        {
+          "kind": "car",
+          "box": [
+            51.31034851074219,
+            381.0234375,
+            205.95030212402344,
+            427.4010009765625
+          ],
+          "confidence": 0.6862043738365173
+        }
+      ],
+      "judgment": {
+        "capture": 40210.752263083,
+        "answers": {
+          "mode": {
+            "value": "foot",
+            "probability": 1.0
+          },
+          "overlay": {
+            "value": false,
+            "probability": 0.98
+          },
+          "banner": {
+            "value": false,
+            "probability": 1.0
+          },
+          "wanted": {
+            "value": false,
+            "probability": 1.0
+          },
+          "path": {
+            "value": "free",
+            "probability": 0.999
+          },
+          "car": {
+            "value": true,
+            "probability": 0.964
+          }
+        },
+        "probabilities": {
+          "mode": {
+            "A": 0.9999999321250802,
+            "B": 2.1569187013342396e-08,
+            "C": 4.630573266430902e-08
+          },
+          "overlay": {
+            "A": 0.02001608417509923,
+            "B": 0.9799839158249007
+          },
+          "banner": {
+            "A": 1.0777921972659505e-05,
+            "B": 0.9999892220780273
+          },
+          "wanted": {
+            "A": 0.00037507852688610207,
+            "B": 0.999624921473114
+          },
+          "path": {
+            "A": 0.9989179948808472,
+            "B": 0.0005239666132162585,
+            "C": 0.0005580385059364441
+          },
+          "car": {
+            "A": 0.9637013187545368,
+            "B": 0.036298681245463205
+          }
+        },
+        "duration": 0.2058677919994807,
+        "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+        "age": 0.3841595830017468,
+        "mode": "foot"
+      },
+      "time": 40211.136422666,
+      "place": "unknown"
+    },
+    "frame_file": "head-0006.jpg",
+    "prompt_file": "head-0006.prompt.txt"
+  },
+  {
+    "id": 7,
+    "t": 42.025694,
+    "request": {
+      "events": [
+        {
+          "kind": "skill_ended",
+          "skill": {
+            "name": "set_waypoint",
+            "status": "done",
+            "reason": "waypoint set: Discount Store (1245m); gameplay observed; places: Immobilie: Downtown Cab Co.: 200.000 $, Ammu-Nation, Ammu-Nation mit Schie\u00dfstand, Autowaschanlage, Beekers Garage, Binco Bekleidung, Cargobob HS, Darts, Discount Store, Fahrgesch\u00e4ft, Flugschule, Fremde und Freaks, Friseursalon, Garage in Pillbox Hill, Gel\u00e4nderennen Motorrad/Quad, Golf, Federal Investigation Bureau B, Cargobob Hs, Autowaschanlage lesl",
+            "queue": [],
+            "queue_disposition": "empty",
+            "dropped": []
+          }
+        }
+      ],
+      "help": "",
+      "objective": "",
+      "subtitle": "",
+      "banner": "",
+      "minimap": {
+        "minimap": "flat",
+        "route": "none",
+        "bearing": null,
+        "far_bearing": null,
+        "arrow": -19.50044199578224,
+        "corrupt": false,
+        "confidence": 0.9,
+        "path": [],
+        "gps_distance": null,
+        "gps_arrow": null,
+        "gps_speed": null,
+        "gps_time": null,
+        "blips": [
+          {
+            "color": "blue",
+            "x": 43.5,
+            "y": 87.34,
+            "border": true
+          },
+          {
+            "color": "blue",
+            "x": 88.17,
+            "y": 70.33,
+            "border": true
+          }
+        ]
+      },
+      "last_skill": {
+        "name": "set_waypoint",
+        "status": "done",
+        "reason": "waypoint set: Discount Store (1245m); gameplay observed; places: Immobilie: Downtown Cab Co.: 200.000 $, Ammu-Nation, Ammu-Nation mit Schie\u00dfstand, Autowaschanlage, Beekers Garage, Binco Bekleidung, Cargobob HS, Darts, Discount Store, Fahrgesch\u00e4ft, Flugschule, Fremde und Freaks, Friseursalon, Garage in Pillbox Hill, Gel\u00e4nderennen Motorrad/Quad, Golf, Federal Investigation Bureau B, Cargobob Hs, Autowaschanlage lesl",
+        "queue": [],
+        "queue_disposition": "empty",
+        "dropped": []
+      },
+      "notebook": "",
+      "jpeg_path": "unused.jpg",
+      "hud": {
+        "wanted": 0,
+        "wanted_flashing": false,
+        "health": null,
+        "armour": 0.7619047619047619,
+        "special": 0.7619047619047619,
+        "screen": "game"
+      },
+      "objects": [
+        {
+          "kind": "person",
+          "box": [
+            1059.696533203125,
+            370.8406066894531,
+            1079.776611328125,
+            421.1819763183594
+          ],
+          "confidence": 0.5880283713340759
+        },
+        {
+          "kind": "car",
+          "box": [
+            51.3282470703125,
+            381.2615966796875,
+            204.48699951171875,
+            418.58294677734375
+          ],
+          "confidence": 0.418193519115448
+        }
+      ],
+      "judgment": {
+        "capture": 40221.571739041,
+        "answers": {
+          "mode": {
+            "value": "foot",
+            "probability": 1.0
+          },
+          "overlay": {
+            "value": false,
+            "probability": 1.0
+          },
+          "banner": {
+            "value": false,
+            "probability": 1.0
+          },
+          "wanted": {
+            "value": false,
+            "probability": 1.0
+          },
+          "path": {
+            "value": "free",
+            "probability": 1.0
+          },
+          "car": {
+            "value": true,
+            "probability": 0.501
+          }
+        },
+        "probabilities": {
+          "mode": {
+            "A": 0.9999999267318387,
+            "B": 4.6817907268408154e-08,
+            "C": 2.6450254063360854e-08
+          },
+          "overlay": {
+            "A": 7.254925891039253e-08,
+            "B": 0.9999999274507411
+          },
+          "banner": {
+            "A": 7.345551679994559e-07,
+            "B": 0.999999265444832
+          },
+          "wanted": {
+            "A": 0.00046593424319256167,
+            "B": 0.9995340657568074
+          },
+          "path": {
+            "A": 0.9996305796941356,
+            "B": 0.00010324874423619968,
+            "C": 0.0002661715616281903
+          },
+          "car": {
+            "A": 0.5009999986666688,
+            "B": 0.4990000013333312
+          }
+        },
+        "duration": 0.17624808300024597,
+        "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+        "age": 0.6235311249984079,
+        "mode": "vehicle"
+      },
+      "time": 40222.195270166,
+      "place": "unknown"
+    },
+    "frame_file": "head-0007.jpg",
+    "prompt_file": "head-0007.prompt.txt"
+  }
+]

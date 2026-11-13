@@ -74,7 +74,8 @@ def test_failed_attempt_budget_and_seeded_choices_are_reproducible():
 
     assert run(3) == run(3)
     assert run(3)[0][0]["goal"]["direction"] != run(5)[0][0]["goal"]["direction"]
-    assert any(h["outcome"] == "gave_up" for h in run(3)[1])
+    assert all(h["outcome"] != "gave_up" for h in run(3)[1])
+    assert all(row["goal"]["name"] == "story" for row in run(3)[0])
 
 
 def test_fresh_head_does_not_claim_an_old_drive_result_as_its_arrival():
@@ -130,6 +131,7 @@ def test_a_map_that_refuses_three_waypoints_is_left_alone_for_two_minutes():
     whole session and every shop was struck off. Now the third refusal in a row sends the figure
     along the road for two minutes, and no place is blamed for the map."""
     head = MissionHead(goal_seed=4)
+    head.goals.chooser = lambda offers: next(o["name"] for o in offers if o["name"] != "story")
     now, last, plans = 0.0, None, []
     for _ in range(60):
         answer = head.decide(replace(request(now), last_skill=last))
@@ -948,7 +950,7 @@ def test_the_conductor_carries_where_the_waypoint_went_to_the_head_and_follows_i
         tmp_path / "session",
         notebook=tmp_path / "notes",
         runner=runner,
-        head=MissionHead(goal_seed=7),
+        head=MissionHead(goal_seed=7, chooser=lambda offers: "cruise"),
         detector=NoEvents(),
         submit=immediate,
     )

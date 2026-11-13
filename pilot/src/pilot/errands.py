@@ -58,6 +58,8 @@ LIMITS = {
 # walks the road meanwhile instead of opening it every few seconds for the rest of the session.
 MAP_FAILURES = 3
 MAPLESS_SECONDS = 120.0
+# The story's goal outlives a map that would not read, and between two tries lie this many seconds.
+MAP_RETRY_SECONDS = 45.0
 # What a failed set_waypoint says when the map worked and the place was not on it: that counts
 # against the place. Anything else it fails on is the map's or the reader's, and no place's fault.
 NOT_ON_THE_MAP = ("place-not-in-legend", "legend-selection-skips-the-place", "place-instance-not-present")
@@ -99,6 +101,8 @@ class Errand:
     target: dict = field(default_factory=dict)
     stalls: int = 0
     unreadable: int = 0
+    waypoint_failures: int = 0
+    waypoint_failed_at: float = 0.0
     exits: int = 0
     left_at: float | None = None
     resume: str = "travel"
@@ -490,6 +494,26 @@ class Errands:
             goal.step = "leave"
         elif failed and skill == "get_away" and reason in {"water", "on-foot"}:
             seat = "on_foot"
+        elif failed and skill == "set_waypoint" and goal.name == "story":
+            goal.waypoint_failures += 1
+            goal.waypoint_failed_at = now
+            goal.step = "story_relocate" if goal.waypoint_failures == 1 else "story_radar"
+            note = f"story retained after map failure: {reason}"
+            free_step = True
+            no_mission = (
+                goal.waypoint_failures >= 2
+                and goal.target.get("target") == "mission"
+                and str(reason).startswith(("place-not-in-legend", "no-visible-mission-target"))
+                and not request.objective.strip()
+                and not any(b.get("color") in {"yellow", "blue"} for b in request.minimap.get("blips", []))
+            )
+            if no_mission:
+                self.end(request, "no mission in the readable map or radar", blame=False)
+                free_step = False
+        elif failed and goal.name == "story" and goal.waypoint_failures:
+            goal.step = "story_radar"
+            note = f"story retained after recovery failure: {reason}"
+            free_step = True
         elif failed and skill == "set_waypoint":
             on_the_map = str(reason).startswith(NOT_ON_THE_MAP)
             self.map_failures = 0 if on_the_map else self.map_failures + 1
@@ -507,9 +531,25 @@ class Errands:
             goal.step = "waypoint"
         if done and skill == "set_waypoint":
             self.map_failures = 0
+            goal.waypoint_failures = 0
+        if done and skill in {"walk_road", "drive_route"} and goal.step == "story_relocate":
+            goal.step = "waypoint"
+            note = "retry the mission map after relocation"
         if done and skill == "set_waypoint" and goal.step in {"waypoint", "reset_waypoint"}:
             free_step = True
             match = WAYPOINT.match(reason)
+            if goal.name == "story":
+                from .legend import kind_of
+
+                if not match or kind_of(match[1]) != "mission":
+                    goal.step = "story_radar"
+                    goal.waypoint_failures = max(2, goal.waypoint_failures)
+                    note = "story retained: completed waypoint was not a mission"
+                    return self._reply(
+                        goal,
+                        recovery_plan or [call("wait", duration=1)],
+                        reason=note,
+                    )
             if match:
                 goal.place = match[1]
                 goal.distance = float(match[2]) if match[2] else None
@@ -625,6 +665,31 @@ class Errands:
                     plan = [call("drive_route", duration=60)]
                 else:
                     plan = exit_car()
+            elif goal.step == "story_relocate":
+                if seat != "vehicle":
+                    plan = [call("walk_road", duration=5)]
+                elif request.minimap.get("route") in {"yellow", "purple"}:
+                    plan = [call("drive_route", duration=5)]
+                else:
+                    plan = [*exit_car(), call("walk_road", duration=5)]
+            elif goal.step == "story_radar":
+                # The mission head supplies only stable mission markers here. With none on the radar
+                # the map is the only way to the mission, and from another spot it may read: it is
+                # opened again after a while of walking, not every few seconds, and the goal ends at
+                # its limit like any other, so that a figure never sits in a car and waits for good.
+                if recovery_plan:
+                    plan = recovery_plan
+                elif now - goal.waypoint_failed_at >= MAP_RETRY_SECONDS:
+                    goal.step = "waypoint"
+                    note = "retry the mission map from another spot"
+                    plan = self.trip(goal)
+                elif seat != "vehicle":
+                    plan = [call("walk_road", duration=10)]
+                elif request.minimap.get("route") in {"yellow", "purple"}:
+                    plan = [call("drive_route", duration=10)]
+                else:
+                    plan = [call("wait", duration=3)]
+                free_step = True
             elif goal.step == "switch":
                 plan = [call("switch_character", duration=30, to="next")]
             elif goal.step in {"waypoint", "reset_waypoint"}:
