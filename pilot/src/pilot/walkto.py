@@ -36,6 +36,8 @@ class WalkTo:
         "roads": (True, False),
         "side": (False, True),
         "exact": (True, False),
+        # Card P72: at the place, go in through its door. Until that card is done it changes nothing.
+        "enter": (False, True),
     }
     prompt = (
         "Go on foot to the purple waypoint, or the nearest blip of color, for up to 180 s, sprinting "

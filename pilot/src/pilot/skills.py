@@ -414,8 +414,12 @@ class Face(RegisteredSkill):
 # New modules plug in with an import and one entry here.
 from .camera import SetFarView  # noqa: E402
 from .combat import Fight, Melee  # noqa: E402
+from .getaway import GetAway  # noqa: E402
+from .leave import LeaveBuilding  # noqa: E402
 from .level import LevelCamera  # noqa: E402
+from .place import DoPrompt, UsePlace  # noqa: E402
 from .punch import Punch  # noqa: E402
+from .switch import SwitchCharacter  # noqa: E402
 from .vehicle_entry import EnterVehicle  # noqa: E402
 from .walkto import WalkTo as WalkToPoint  # noqa: E402
 from .waypoint import SetWaypoint  # noqa: E402
@@ -440,6 +444,11 @@ REGISTRY = {
         SetFarView,
         WalkRoad,
         WalkToPoint,
+        GetAway,
+        UsePlace,
+        DoPrompt,
+        LeaveBuilding,
+        SwitchCharacter,
     )
 }
 

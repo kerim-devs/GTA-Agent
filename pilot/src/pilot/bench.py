@@ -572,6 +572,7 @@ CAUSE_RULES: dict[str, str | None] = {
     "selection-changed-before-waypoint": "decide",
     "place-instance-not-present": "decide",
     "goal_": "decide",
+    "not-built": "decide",  # a skill planned before its card was done
     # seen and decided rightly and the movement did not do it
     "failed-recovery": "act",
     "blocked": "act",
