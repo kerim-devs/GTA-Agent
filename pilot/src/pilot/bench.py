@@ -579,7 +579,6 @@ CAUSE_RULES: dict[str, str | None] = {
     "pressed:": None,  # do_prompt's done: the offer was taken
     "used:": None,  # use_place's done: the place's menu was opened and left
     "menu-unread": "see",  # use_place: the rows or prices of the menu could not be read
-    "wrong-screen:": "world",  # use_place: another screen came up in the middle of it
     # seen and decided rightly and the movement did not do it
     "failed-recovery": "act",
     "blocked": "act",

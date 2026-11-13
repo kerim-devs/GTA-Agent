@@ -58,7 +58,11 @@ BOLD = {
     "route_gone_time": 0.5,  # Leaves 0.7 s braking plus tick rounding within the 1.5 s arrival budget.
     "stop_brake_time": 0.35,  # Reuse the live pulse bound: a 0.7 s arrival hold reversed in P73 simulation.
     "straight_hold_throttle": 0.3,  # P73's first matrix rejected 0.4 in bends and reverse headings.
-    "recovery_clear_distance": 100.0,  # P73: brief motion must not erase failed escape history.
+    # Brief motion must not erase what the last escapes tried (P73), and a queue passed is not a wall
+    # that held: thirty metres on, a new stop is a new one. In town three stops within a hundred
+    # metres are traffic, and the third must not end the drive, so the limit is higher as well.
+    "recovery_clear_distance": 30.0,
+    "max_recoveries": 5,
 }
 
 

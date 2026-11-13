@@ -263,6 +263,26 @@ class DriveRoute(RegisteredSkill):
         self._was_moving = False
         self._water_at = None
 
+    # Water under the arrow and a car that does not move, this long: it has gone in. A car that moves
+    # is on a bridge, in a ford or on the beach, where the map shows water round the arrow as well.
+    WATER_SECONDS = 2.0
+
+    def _sunk(self, observation, now) -> bool:
+        if observation.frame is None or observation.reading.corrupt is not False:
+            return False  # a damaged picture neither shows water nor clears it
+        from . import terrain
+        from .foot import hud_crop
+
+        land = terrain.read(hud_crop(observation.frame))
+        if land is None:
+            return False
+        if not land.under_water or observation.moving is True:
+            self._water_at = None
+            return False
+        if self._water_at is None:
+            self._water_at = now
+        return now - self._water_at >= self.WATER_SECONDS
+
     def _result(self, *, pad=NEUTRAL_PAD, status="running", reason=None):
         return self.Result(
             pad,
@@ -348,17 +368,8 @@ class DriveRoute(RegisteredSkill):
             if now - self.started >= self.limit:
                 self.finished = self._result(status="done", reason="time-limit")
                 return self.finished
-            if observation.frame is not None and observation.reading.corrupt is False:
-                from . import terrain
-                from .foot import hud_crop
-
-                land = terrain.read(hud_crop(observation.frame))
-                if land is not None and land.under_water:
-                    previous, self._water_at = self._water_at, now
-                    if previous is not None and 0 < now - previous <= self.driver.config.max_step_time:
-                        return self.stop("dead-or-held")
-                    return self._result()
-            self._water_at = None
+            if self._sunk(observation, now):
+                return self.stop("dead-or-held")
             command = self.driver.step(
                 observation.reading,
                 now,

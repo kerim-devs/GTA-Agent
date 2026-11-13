@@ -42,7 +42,7 @@ def test_stopped_queue_commits_after_two_seconds_only_with_evidence():
     assert driver.bypassing
 
 
-def test_recovery_changes_lock_until_a_hundred_metres_have_been_driven():
+def test_recovery_changes_lock_until_thirty_metres_have_been_driven():
     driver = Driver(
         replace(
             drive_config([]),
@@ -68,7 +68,7 @@ def test_recovery_changes_lock_until_a_hundred_metres_have_been_driven():
         pytest.fail("standing car did not start a bounded recovery")
 
     first = stuck()
-    for _ in range(40):
+    for _ in range(20):
         tick(True, 10)
     second = stuck()
     assert second == -first
@@ -85,24 +85,49 @@ def test_explicit_stop_releases_both_styles(style):
     assert not result.pad.buttons
 
 
-def test_water_needs_confirmation_and_ends_with_a_neutral_pad(monkeypatch):
+def test_a_car_standing_in_water_for_two_seconds_ends_the_drive_with_a_neutral_pad(monkeypatch):
     wet = terrain.Terrain((), False, (None,) * 36, True)
     monkeypatch.setattr(terrain, "read", lambda crop: wet)
     skill = DriveRoute({})
     frame = np.zeros((720, 1280, 3), dtype=np.uint8)
-    first = skill.step(Observation(route(), True, 0, frame=frame))
-    assert first.status == "running" and first.pad == NEUTRAL_PAD
-    second = skill.step(Observation(route(), True, 0.1, frame=frame))
-    assert second.reason == "dead-or-held" and second.pad == NEUTRAL_PAD
-    assert skill.step(Observation(route(), True, 0.2)) == second
+    t = 0.0
+    while t < 1.9:
+        result = skill.step(Observation(route(), False, t, frame=frame))
+        assert result.status == "running"
+        t += 0.1
+    last = skill.step(Observation(route(), False, 2.1, frame=frame))
+    assert last.reason == "dead-or-held" and last.pad == NEUTRAL_PAD
+    assert skill.step(Observation(route(), False, 2.2)) == last
 
 
-def test_water_confirmation_cannot_extend_the_skill_time_limit(monkeypatch):
+def test_a_car_that_moves_with_water_round_the_arrow_drives_on(monkeypatch):
+    # A bridge, a ford, the beach: the map shows water and the car is not in it.
+    monkeypatch.setattr(terrain, "read", lambda crop: terrain.Terrain((), False, (None,) * 36, True))
+    skill = DriveRoute({})
+    frame = np.zeros((720, 1280, 3), dtype=np.uint8)
+    t = 0.0
+    while t < 6.0:
+        result = skill.step(Observation(route(), True, t, frame=frame))
+        assert result.status == "running", (t, result.reason)
+        t += 0.1
+
+
+def test_water_seen_once_between_dry_frames_starts_over(monkeypatch):
+    seen = iter([True] * 15 + [False] + [True] * 15)
+    monkeypatch.setattr(terrain, "read", lambda crop: terrain.Terrain((), False, (None,) * 36, next(seen)))
+    skill = DriveRoute({})
+    frame = np.zeros((720, 1280, 3), dtype=np.uint8)
+    for index in range(31):
+        result = skill.step(Observation(route(), False, index * 0.1, frame=frame))
+        assert result.status == "running", index
+
+
+def test_water_cannot_extend_the_skill_time_limit(monkeypatch):
     monkeypatch.setattr(terrain, "read", lambda crop: terrain.Terrain((), False, (None,) * 36, True))
     skill = DriveRoute({"duration": 0.1})
     frame = np.zeros((720, 1280, 3), dtype=np.uint8)
-    skill.step(Observation(route(), True, 0, frame=frame))
-    result = skill.step(Observation(route(), True, 0.2, frame=frame))
+    skill.step(Observation(route(), False, 0, frame=frame))
+    result = skill.step(Observation(route(), False, 0.2, frame=frame))
     assert result.reason == "time-limit" and result.pad == NEUTRAL_PAD
 
 

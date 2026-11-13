@@ -627,7 +627,8 @@ class Driver:
         # Extend the retreat and change the turning side after a failed exit.
         side = -1 if error >= 0 else 1
         self._escape = side * self.config.recovery_steer if self._attempts == 1 else -self._escape
-        self._reverse_duration = self.config.reverse_time * (1 + 0.5 * (self._attempts - 1))
+        # Longer each time up to the third; further back than that is into what stands behind.
+        self._reverse_duration = self.config.reverse_time * (1 + 0.5 * (min(self._attempts, 3) - 1))
         self._recovery_moved, self._recovery_still = False, 0.0
         self._stuck_since = self._moving_since = None
         return self._emit(self._escape, 0, 1, "recovery-reverse")
