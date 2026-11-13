@@ -165,6 +165,12 @@ def main(argv: list[str] | None = None) -> None:
     play.add_argument("--record-dir", type=absolute_path, default=PLAY_RECORDINGS)
     play.add_argument("--notebook", type=Path)
     play.add_argument(
+        "--task",
+        choices=("autonomy", "mission-drive"),
+        default="autonomy",
+        help="mission-drive keeps one vehicle-to-mission order and stops on arrival or failure",
+    )
+    play.add_argument(
         "--head",
         choices=("scripted", "codex", "codex-server", "rules", "rules-only", "local"),
         default="scripted",
@@ -235,6 +241,8 @@ def main(argv: list[str] | None = None) -> None:
                 config=asdict(config),
             )
     elif args.command == "play":
+        if args.task != "autonomy" and args.head not in {"local", "rules-only"}:
+            parser.error("--task mission-drive needs --head local or rules-only")
         try:
             judge = JudgeReader(args.judge) if args.judge else None
             sides.use(args.judge)
@@ -258,10 +266,12 @@ def main(argv: list[str] | None = None) -> None:
         if args.head == "scripted":
             head = ScriptedHead(plans or None)
         elif args.head == "rules-only":
-            head = MissionHead()
+            head = MissionHead(task=args.task, task_seconds=args.seconds or 900)
         elif args.head == "local":
             chooser.use(args.judge)
-            head = MissionHead(LocalHead(), chooser=ErrandChooser())
+            head = MissionHead(
+                LocalHead(), chooser=ErrandChooser(), task=args.task, task_seconds=args.seconds or 900
+            )
         else:
             head = (CodexHead if args.head == "codex" else CodexServerHead)(
                 model=args.head_model, effort=args.head_effort, timeout=args.head_timeout

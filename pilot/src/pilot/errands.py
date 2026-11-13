@@ -1,6 +1,7 @@
 """Bounded, observation-driven errands and their session selection policy."""
 
 import copy
+import math
 import random
 import re
 import secrets
@@ -116,12 +117,19 @@ class Errand:
     seen_route: bool = False
     drive_ons: int = 0
     waypoint_set: bool = False
+    ends_at: float | None = None
+    car_started: float | None = None
+    car_attempts: int = 0
+    seat_confirmed: bool = False
+    issued: str | None = None
+    finish_reason: str = ""
+    own_looked: bool = False
 
     def data(self):
         return {
             "name": self.name,
             "started": self.started,
-            "deadline": self.started + LIMITS[self.name][0],
+            "deadline": self.started + LIMITS[self.name][0] if self.ends_at is None else self.ends_at,
             "seed": self.seed,
             "direction": self.direction,
             "attempts": self.attempts,
@@ -402,6 +410,192 @@ class Errands:
                 "reason": reason or self.transition or "observed errand step",
             }
         )
+
+    def mission_drive(self, request, *, seconds=900, own_vehicle=None):
+        """One order, advanced by completed skills, never by the number of head requests."""
+        from .goals import interruption
+        from .legend import kind_of
+
+        now = self.now(request)
+        if self.active is None:
+            self.active = Errand(
+                "story",
+                now,
+                self.seed,
+                "north",
+                step="vehicle_search",
+                target={"target": "mission", "instance": 0},
+                ends_at=now + seconds,
+                car_started=now,
+            )
+            self.history.append(
+                {**self.active.data(), "time": now, "outcome": "started", "reason": "fixed mission drive"}
+            )
+        goal = self.active
+        last = request.last_skill or {}
+        hud = request.hud or {}
+        kinds = {event.get("kind") for event in request.events}
+
+        def reply(plan, reason, *, action="replace"):
+            terminal = goal.step in {"arrived", "failed"}
+            return parse_response(
+                {
+                    "plan": plan,
+                    "action": action,
+                    "sentence": "Die Fahrt ist beendet." if terminal else "Ich fahre zur Mission.",
+                    # An expired goal must not trigger another interruption on every neutral tick.
+                    "goal": None if terminal else goal.data(),
+                    "step": goal.step,
+                    "reason": reason,
+                }
+            )
+
+        def finish(reason, *, arrived=False):
+            goal.step = "arrived" if arrived else "failed"
+            goal.finish_reason = reason
+            goal.issued = None
+            self.history.append({**goal.data(), "time": now, "outcome": goal.step, "reason": reason})
+            return reply([call("wait", duration=60)], reason)
+
+        def issue(name, reason, **args):
+            goal.issued = name
+            goal.last_result = dict(last)
+            return reply([call(name, **args)], reason)
+
+        if goal.step in {"arrived", "failed"}:
+            return reply([call("wait", duration=60)], goal.finish_reason)
+        if "pad_returned" in kinds:
+            goal.seat_confirmed = False
+            goal.issued = None
+            goal.step = "vehicle_search"
+            goal.car_started = now
+        if "vehicle_exit" in kinds or (
+            last.get("status") == "failed" and last.get("reason") in {"on-foot", "water"}
+        ):
+            goal.seat_confirmed = False
+            goal.issued = None
+            goal.step = "vehicle_search"
+
+        completed = (
+            goal.issued is not None
+            and last.get("name") == goal.issued
+            and last.get("status") in {"done", "failed"}
+            and last != goal.last_result
+        )
+        if completed:
+            skill, why = goal.issued, str(last.get("reason") or "")
+            goal.issued = None
+            goal.last_result = dict(last)
+            if skill != "wait":
+                goal.attempts += 1
+            done = last.get("status") == "done"
+            if skill == "enter_vehicle":
+                goal.car_attempts += 1
+                if done and why.startswith(("entered vehicle", "already in a vehicle")):
+                    goal.seat_confirmed = True
+                    goal.step = "travel" if goal.waypoint_set else "waypoint"
+                elif goal.car_attempts >= 3:
+                    return finish(f"vehicle acquisition failed after three attempts: {why}")
+                else:
+                    goal.step = "vehicle_search"
+                    return issue("wait", "vehicle retry after an observed entry failure", duration=1)
+            elif skill == "set_waypoint":
+                match = WAYPOINT.match(why) if done else None
+                if match and kind_of(match[1]) == "mission":
+                    if goal.place is not None and goal.place != match[1]:
+                        return finish("waypoint changed the fixed mission destination")
+                    goal.place = match[1]
+                    goal.distance = float(match[2]) if match[2] else None
+                    goal.target = {"place": goal.place, "instance": 0}
+                    goal.waypoint_set = True
+                    goal.step = "travel"
+                else:
+                    goal.waypoint_failures += 1
+                    if "gameplay not" in why or hud.get("screen") != "game":
+                        return finish(f"map exit unverified; restore gameplay before another run: {why}")
+                    if goal.waypoint_failures >= 2:
+                        return finish(f"mission waypoint failed twice: {why}")
+                    return issue("wait", "retry the same mission map after an observed failure", duration=3)
+            elif skill == "drive_route":
+                goal.seen_route |= bool(last.get("route_seen"))
+                # Arrival belongs to the drive issued for this confirmed waypoint. Old results and
+                # an arbitrary missing route cannot finish a new order.
+                if goal.waypoint_set and goal.seen_route and done and why == "arrived":
+                    return finish("arrival observed at the fixed mission waypoint", arrived=True)
+                if not done:
+                    goal.stalls += 1
+                    if goal.stalls >= 3 or why in {"dead-or-held", "failed-recovery", "water", "on-foot"}:
+                        return finish(f"drive could not reach the fixed mission: {why}")
+                # A separate neutral completion makes a second identical failure distinguishable
+                # from a repeated request containing the previous skill result.
+                return issue("wait", "continue the same mission drive", duration=0.1 if done else 1)
+            elif skill == "drive_on":
+                goal.drive_ons += 1
+                if not done:
+                    return finish(f"route recovery failed: {why}")
+                return issue("wait", "check the existing route after road following", duration=0.1)
+            elif skill == "look" and not done:
+                return finish(f"vehicle orientation failed: {why}")
+
+        interrupted = interruption(request, goal.data())
+        if interrupted:
+            return finish(f"mission drive interrupted: {interrupted}")
+        if goal.step in {"vehicle_search", "enter"} and now - goal.car_started >= 90:
+            return finish("vehicle acquisition exceeded ninety seconds")
+        if goal.issued is not None:
+            # A quiet or standing request is not the completion of this issued skill. In particular
+            # it must not consume another attempt or replace an entry while its door is opening.
+            if last.get("status") == "failed" and str(last.get("reason") or "").startswith(
+                ("pad_", "guard_", "goal_")
+            ):
+                goal.issued = None
+            else:
+                return reply([], "the issued mission step still owns the plan", action="go_on")
+        if hud.get("screen", "game") != "game":
+            return issue("wait", "gameplay not visible; mission sequence remains neutral", duration=3)
+
+        reading, judged = request.minimap, request.judgment or {}
+        age = judged.get("age")
+        seated_start = (
+            "pad_returned" not in kinds
+            and judged.get("mode") == "vehicle"
+            and isinstance(age, (int, float))
+            and math.isfinite(age)
+            and 0 <= age <= 1
+            and reading.get("minimap") == "tilted"
+            and not reading.get("corrupt", True)
+            and reading.get("confidence", 0) >= 0.45
+            and reading.get("route") in {"purple", "yellow"}
+        )
+        if not goal.seat_confirmed and seated_start:
+            goal.seat_confirmed = True
+            goal.step = "travel" if goal.waypoint_set else "waypoint"
+        if not goal.seat_confirmed:
+            if not goal.own_looked and own_vehicle is not None:
+                goal.own_looked = True
+                marker = own_vehicle(request)
+                if marker is not None and not marker.clipped and 15 < math.hypot(marker.x, marker.y) <= 45:
+                    angle = math.degrees(math.atan2(marker.x, marker.y))
+                    if abs(angle) >= 15:
+                        return issue(
+                            "look", "look toward the nearby personal-car symbol", angle=angle, duration=1.5
+                        )
+            goal.step = "enter"
+            return issue(
+                "enter_vehicle", "confirm entry before opening the mission map", duration=25, kind="car"
+            )
+        if goal.step == "waypoint":
+            return issue("set_waypoint", "set the fixed mission waypoint", duration=45, **goal.target)
+        if goal.step == "travel":
+            if not goal.waypoint_set:
+                return finish("driving requires a confirmed mission waypoint")
+            goal.seen_route |= reading.get("route") in {"yellow", "purple"}
+            if reading.get("route") not in {"yellow", "purple"}:
+                if goal.drive_ons >= 2:
+                    return finish("route absent after two recoveries; mission waypoint retained")
+                return issue("drive_on", "recover the existing route without reopening the map", duration=30)
+            return issue("drive_route", "follow the fixed mission waypoint", duration=120)
+        return finish("mission sequence has no verified next step")
 
     def decide(self, request, mode, *, escape_plan=None, recovery_plan=None, keep_heading=False):
         from .drive import _number

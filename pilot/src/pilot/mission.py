@@ -115,7 +115,14 @@ class MissionHead:
     # rules answers with the plan alone.
     owns_goals = True
 
-    def __init__(self, fallback: Head | None = None, *, goal_seed=None, chooser=None) -> None:
+    def __init__(
+        self, fallback: Head | None = None, *, goal_seed=None, chooser=None, task="autonomy", task_seconds=900
+    ) -> None:
+        if task not in {"autonomy", "mission-drive"}:
+            raise ValueError("unknown mission task")
+        if not math.isfinite(task_seconds) or task_seconds <= 0:
+            raise ValueError("task seconds must be finite and positive")
+        self.task, self.task_seconds = task, task_seconds
         self.fallback = fallback
         # `chooser` picks the next errand among those the rules offer (localhead.ErrandChooser: the
         # local model looking at the picture). It may say nothing, and then the seeded draw decides.
@@ -482,6 +489,13 @@ class MissionHead:
         )
 
     def _decide(self, request: HeadRequest) -> HeadResponse:
+        if self.task == "mission-drive":
+            self.goals.mark()
+            return self.goals.mission_drive(
+                request,
+                seconds=self.task_seconds,
+                own_vehicle=self._own_vehicle,
+            )
         last = request.last_skill or {}
         if last.get("status") == "failed" and str(last.get("reason") or "").startswith(("guard_", "pad_")):
             # The guard took the pad and stopped the skill (guard.py), or a hand on the controller did
@@ -712,6 +726,23 @@ class MissionHead:
         self.counts[rule] += 1
         self.sought_mission = any(call.args.get("target") == "mission" for call in response.plan)
         return response
+
+    @staticmethod
+    def _own_vehicle(request):
+        """A saved head frame is read off the control loop; absence remains unknown."""
+        from pathlib import Path
+
+        import cv2
+
+        from .foot import hud_crop
+        from .own_vehicle import find_own_vehicle
+
+        if not request.jpeg_path or not Path(request.jpeg_path).is_file():
+            return None
+        frame = cv2.imread(request.jpeg_path)
+        if frame is None:
+            return None
+        return find_own_vehicle(hud_crop(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)))
 
     def _update_intent(self, request: HeadRequest) -> None:
         """Require a second observation before replacing an established class."""

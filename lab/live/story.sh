@@ -1,8 +1,8 @@
 #!/bin/zsh
-# The pilot plays the story by itself: the rules with the local model behind them, the guard on, the
-# persistent memory beside the recordings. One command for a watched session at the console.
+# One fixed drive to a mission, with the guard on and the readings recorded. Pass autonomy as the
+# fourth argument for the wider errand policy instead.
 #
-#   lab/live/story.sh [seconds, default 1800] [bold|careful, default bold] [repo to run from]
+#   lab/live/story.sh [seconds, default 1800] [bold|careful, default bold] [repo] [mission-drive|autonomy]
 #
 # The bridge has to run already (remoteplay/.venv/bin/ps5rp --host <console> --fps 60 daemon) with
 # GTA V in the picture: this script starts no bridge and never looks at the console's own menus.
@@ -16,6 +16,7 @@
 limit=${1:-1800}
 style=${2:-bold}
 code=${3:-/Users/kerim/Documents/ChatGPT/gta}
+task=${4:-mission-drive}
 api=http://127.0.0.1:9395
 server=http://192.168.0.248:1234
 model=qwen/qwen3-vl-4b
@@ -24,6 +25,7 @@ now() { date +%H:%M:%S }
 is() { [[ $state == *"\"$1\": true"* ]] }
 
 [[ $style == bold || $style == careful ]] || { echo "the style is bold or careful, not $style"; exit 2 }
+[[ $task == mission-drive || $task == autonomy ]] || { echo "unknown task: $task"; exit 2 }
 cd $code/pilot || exit 1
 state=$(curl -s -m 2 $api/status)
 if [[ -z $state ]]; then echo "$(now) the bridge does not answer on $api: start it first"; exit 1; fi
@@ -40,9 +42,9 @@ if curl -s -m 3 $server/v1/models >/dev/null; then
 else
   echo "$(now) the local model does not answer: the rules play alone"
 fi
-echo "$(now) playing for $limit s, driving $style; Ctrl-C ends it"
+echo "$(now) $task for at most $limit s, driving $style; Ctrl-C ends it"
 env -u PS5_HOST .venv/bin/python -m pilot.cli play --head local --guard --seconds $limit \
-  --set style=$style $judge --record-dir $out
+  --task $task --set style=$style $judge --record-dir $out
 code=$?
 last=$(ls -d $out/2026* 2>/dev/null | tail -n 1)
 echo "$(now) ended with $code: $last"
