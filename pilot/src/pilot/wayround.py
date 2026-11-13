@@ -187,6 +187,7 @@ class WayRound(FootGuard):
         self.wall_turns = 0
         self.fresh = True  # the direction wanted was read on this tick
         self.entering = False
+        self.descending = False
 
     def _evidence(self, observation: Observation) -> str | None:
         if not self.sprinting:
@@ -479,6 +480,7 @@ class WayRound(FootGuard):
 
     def _begin(self, now: float) -> None:
         """Another obstacle, or another room: nothing learnt at the last one counts."""
+        self.descending = False
         self.level = self.looked = 0
         self.indoors = self.place
         self.closed.clear()
@@ -515,6 +517,13 @@ class WayRound(FootGuard):
         """Use the same doorway search and wall round for an intentional entrance."""
         self._begin(observation.time)
         self.entering, self.indoors = True, True
+        self._look_on(observation, self.AHEAD)
+
+    def descend(self, observation: Observation) -> None:
+        """Search a landing for stairs, falling back to its edges without climbing."""
+        self._begin(observation.time)
+        self.entering = False
+        self.descending, self.indoors = True, True
         self._look_on(observation, self.AHEAD)
 
     def leave_heading(self, observation: Observation, heading: float) -> None:
@@ -601,7 +610,7 @@ class WayRound(FootGuard):
         if self.outside is not None or now - started >= self.WALL_FREE:
             # Out: the model says so, or nothing has held the figure up for longer than a room is wide.
             if self.outside is None:
-                if not self.confirm_place:
+                if not self.confirm_place and not self.descending:
                     self.outside = now
                 self.views.append("free")
             self.phase = "run"
@@ -629,7 +638,9 @@ class WayRound(FootGuard):
         if since < turn + self.LOOK_SETTLE:
             return Steer((0.0, 0.0), state="look")
         if self.asked_at is None:
-            if self.entering:
+            if self.descending:
+                asked = self.ahead.ask(observation.frame, now, indoors=False, ahead=False, stairs=True)
+            elif self.entering:
                 asked = self.ahead.ask(observation.frame, now, indoors=False, ahead=False, entrance=True)
             else:
                 asked = self.ahead.ask(observation.frame, now, indoors=self.indoors, ahead=self.looked > 1)
@@ -675,9 +686,41 @@ class WayRound(FootGuard):
                 return Steer(self._leg(toward), state="round")
         return self._look_on(observation, toward)
 
+    def _watch_stairs(self, observation: Observation) -> None:
+        """Keep the stairs in view; only the skill decides whether the street was reached."""
+        now = observation.time
+        if self.ahead is None:
+            return
+        if self.watch_at is None:
+            if now - self.watched >= self.WATCH_EVERY and self.ahead.ask(
+                observation.frame, now, indoors=False, ahead=False, stairs=True
+            ):
+                self.watch_at = now
+            return
+        view = self.ahead.answer(self.watch_at)
+        age = now - self.watch_at
+        if view is None and age < self.LOOK_WAIT:
+            return
+        self.watch_at, self.watched = None, now
+        if (
+            view is not None
+            and age < self.LOOK_WAIT
+            and view.error is None
+            and view.exit is not None
+            and view.exit >= self.OPEN
+            and view.parts is not None
+            and max(view.parts) >= SEEN
+        ):
+            part = max(range(3), key=lambda index: view.parts[index]) - 1
+            if part:
+                self.nudge, self.nudge_until = float(part), now + self.AIM_TURN
+
     def _watch(self, observation: Observation) -> None:
         """Running at a way out: where it is in the picture now, and whether the figure is outside."""
         now = observation.time
+        if self.descending:
+            self._watch_stairs(observation)
+            return
         if self.entering:
             return
         if self.ahead is None and self.confirm_place and now - self.watched >= 1 / 3:
