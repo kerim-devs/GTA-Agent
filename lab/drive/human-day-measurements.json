@@ -1,0 +1,96 @@
+{
+  "recording": "/Users/kerim/recordings/kerim/20261113-141634",
+  "video_samples": [
+    {
+      "t": 119.9386,
+      "decoded": true,
+      "mean_luma": 179.33
+    },
+    {
+      "t": 127.4972,
+      "decoded": true,
+      "mean_luma": 164.33
+    },
+    {
+      "t": 133.9993,
+      "decoded": true,
+      "mean_luma": 181.79
+    }
+  ],
+  "frame_gap_seconds": 0.11189999999999145,
+  "windows": [
+    {
+      "start": 120.0,
+      "end": 135.0,
+      "samples": 433,
+      "unique_frames": 433,
+      "bearing_vs_path_course_degrees": {
+        "median": 12.1639,
+        "p90": 17.3904,
+        "p99": 20.0772
+      },
+      "bearing_jump_degrees": {
+        "median": 0.3878,
+        "p90": 1.6885,
+        "p99": 3.098
+      },
+      "old_aim_jump_degrees": {
+        "median": 0.3826,
+        "p90": 12.9864,
+        "p99": 21.6167
+      },
+      "new_aim_jump_degrees": {
+        "median": 1.4227,
+        "p90": 10.3095,
+        "p99": 32.0336
+      },
+      "actual_flips": 5,
+      "replay_before_flips": 3,
+      "replay_after_flips": 3,
+      "unsupported_by_local_tangent_flips": 1,
+      "aim_to_stick_seconds": {
+        "median": 0.1471,
+        "p90": 0.1471,
+        "p99": 0.1471
+      },
+      "aim_to_stick_matched": 1,
+      "steer_to_map_course_rate_proxy_lag_seconds": 0.65,
+      "steer_to_map_course_rate_proxy_correlation": 0.2112,
+      "gps_distance_age_seconds": null,
+      "gps_speed_missing": 433,
+      "path_perpendicular_residual_sd_px": 0.8069,
+      "path_perpendicular_abs_residual_px": {
+        "median": 0.5915,
+        "p90": 1.2411,
+        "p99": 2.0091
+      },
+      "path_sample_spacing_px": {
+        "median": 6.3246,
+        "p90": 7.6158,
+        "p99": 8.6023
+      },
+      "flips_by_threshold": {
+        "0.05": {
+          "actual": 5,
+          "before": 3,
+          "proposal": 3
+        },
+        "0.1": {
+          "actual": 5,
+          "before": 3,
+          "proposal": 3
+        },
+        "0.2": {
+          "actual": 5,
+          "before": 3,
+          "proposal": 3
+        },
+        "0.25": {
+          "actual": 5,
+          "before": 3,
+          "proposal": 3
+        }
+      }
+    }
+  ]
+}
