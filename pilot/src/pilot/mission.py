@@ -104,6 +104,78 @@ class MissionHead:
         self.blip_candidates: list[dict] = []
         self.stable_blips: list[dict] = []
 
+    def decide(self, request: HeadRequest) -> HeadResponse:
+        self._undo_urgent = (set(getattr(self, "pressed_help", set())), getattr(self, "standing_count", 0))
+        response = self._decide(request)
+        last = request.last_skill or {}
+        events = {event.get("kind") for event in request.events}
+        exceptions = {"failure", "skill_failed", "screen", "standing", "guard"}
+        exceptional = bool(events & exceptions) or any(str(kind).startswith("guard_") for kind in events)
+        if (
+            response.plan
+            and last.get("status") == "running"
+            and "args" in last
+            and response.plan[0].name == last.get("name")
+            and response.plan[0].args == last["args"]
+            and not exceptional
+        ):
+            response = replace(
+                response,
+                plan=(),
+                action="go_on",
+                reason="goal_running: identical skill and arguments",
+            )
+        return response
+
+    def _standing_rule(self, request, mode):
+        if not any(event.get("kind") == "standing" for event in request.events):
+            self.standing_count = 0
+            return None
+        event = next(e for e in reversed(request.events) if e.get("kind") == "standing")
+        count = event.get("count", getattr(self, "standing_count", 0) + 1)
+        self.standing_count = count
+        goal = self.goals.active
+        last = request.last_skill or {}
+        indoors = (last.get("name") == "walk_to_point" and last.get("reason") == "entered") or bool(
+            goal and goal.step in {"use", "leave"}
+        )
+        if count >= 4:
+            self.goals.end(request, "standing four times")
+            response = self.goals.decide(request, mode)
+            return (
+                "standing_abandon",
+                [{"name": item.name, "args": item.args} for item in response.plan],
+                "Hier geht es nicht weiter, ich nehme mir etwas anderes vor.",
+            )
+        if indoors and count >= 2:
+            if goal:
+                goal.step = "leave"
+            return "standing_leave", [_call("leave_building", duration=30)], "Ich gehe wieder nach draußen."
+        if mode == "vehicle" and count > 1:
+            plan = leave_vehicle()
+        elif mode == "vehicle":
+            plan = (
+                [_call("get_away", duration=60)]
+                if _wanted(request)
+                else [_call("drive_route", duration=120)]
+                if request.minimap.get("route") in {"purple", "yellow"}
+                else leave_vehicle()
+            )
+        elif count == 1:
+            plan = [
+                _call("press", button="square", duration=0.1),
+                _call("walk", duration=3, x=0, y=-1, sprint=True),
+            ]
+        elif count == 2:
+            plan = [_call("look", duration=1, angle=120), _call("walk", duration=4, x=0, y=-1, sprint=True)]
+        else:
+            plan = [
+                _call("walk", duration=3, x=0, y=1),
+                _call("look", duration=1, angle=180),
+                _call("walk_road", duration=15),
+            ]
+        return "standing_recovery", plan, "Ich stecke fest und versuche einen anderen Weg."
+
     def _route_going(self, request: HeadRequest, mode: str, interrupted: str | None) -> bool:
         """A drive follows a route that has just gone and no goal holds the plan: let the drive end.
 
@@ -126,8 +198,10 @@ class MissionHead:
     def discard(self) -> None:
         """The conductor has dropped the answer to the last request: give back what it consumed."""
         self.goals.undo()
+        if hasattr(self, "_undo_urgent"):
+            self.pressed_help, self.standing_count = self._undo_urgent
 
-    def decide(self, request: HeadRequest) -> HeadResponse:
+    def _decide(self, request: HeadRequest) -> HeadResponse:
         last = request.last_skill or {}
         if last.get("status") == "failed" and str(last.get("reason") or "").startswith("guard_"):
             # The guard took the pad and stopped the skill (guard.py). That is no failure of the skill: the
@@ -156,6 +230,45 @@ class MissionHead:
         interrupted = self.goals.guard(request)
         hud = request.hud or {}
         mode = movement(request)
+        if any(
+            event.get("kind") in {"cutscene", "loading", "black"}
+            or (event.get("kind") == "screen" and event.get("screen") in {"cutscene", "loading", "black"})
+            for event in request.events
+        ):
+            rule, plan, sentence = self._rule(request)
+            self.last_rule = rule
+            self.counts[rule] += 1
+            return parse_response({"plan": plan, "sentence": sentence})
+        urgent = None
+        if hud.get("screen", "game") == "game":
+            if (
+                request.objective.strip()
+                and intent(request.objective)["class"] in {"use", "pick_up", "unknown"}
+                and re.search(r"drücke|halte", request.help, re.IGNORECASE)
+                and request.help not in getattr(self, "pressed_help", set())
+            ):
+                if not hasattr(self, "pressed_help"):
+                    self.pressed_help = set()
+                self.pressed_help.add(request.help)
+                urgent = (
+                    "objective_prompt",
+                    [_call("do_prompt", duration=3)],
+                    "Ich benutze den angezeigten Knopf.",
+                )
+            if urgent is None:
+                urgent = self._standing_rule(request, mode)
+        if urgent is not None:
+            rule, plan, sentence = urgent
+            self.last_rule = rule
+            self.counts[rule] += 1
+            return parse_response(
+                {
+                    "plan": plan,
+                    "sentence": sentence,
+                    "goal": self.goals.active.data() if self.goals.active else None,
+                    "step": self.goals.active.step if self.goals.active else None,
+                }
+            )
         if self._route_going(request, mode, interrupted):
             self.last_rule = "drive_ends"
             self.counts[self.last_rule] += 1
@@ -289,8 +402,12 @@ class MissionHead:
         if objective_class == "escape":
             # A route or a marker the game gives is the way out and belongs to the rules below.
             marked = {blip.get("color") for blip in request.minimap.get("blips", [])} & {"yellow", "blue"}
-            if mode == "vehicle" and request.minimap.get("route") not in {"yellow", "purple"}:
-                return "objective_escape_vehicle", _route("away"), "Ich fahre aus dem Gebiet."
+            if mode == "vehicle":
+                return (
+                    "objective_escape_vehicle",
+                    [_call("get_away", duration=60)],
+                    "Ich fahre aus dem Gebiet.",
+                )
             if mode == "on_foot" and not marked:
                 return "objective_escape_foot", [_walk(sprint=True)], "Ich laufe aus dem Gebiet."
         if mode == "on_foot" and objective_class in {"enter_vehicle", "steal"} and cars:
@@ -396,6 +513,12 @@ class MissionHead:
         cars = any(obj.get("kind") in {"car", "truck", "motorcycle"} for obj in request.objects)
         # head_prompt.txt:43-47 and LOG.md:102-106: flee, never fight;
         # a tilted wanted minimap alone cannot authorize entering a vehicle.
+        if self._failed(request) == "get_away":
+            reason = self._failure_reason(request)
+            if reason == "vehicle-held" and mode == "vehicle":
+                return "leave_held_vehicle", leave_vehicle(), "Ich steige aus und suche ein anderes Auto."
+            if reason in {"water", "on-foot"}:
+                mode = "on_foot"
         if wanted:
             if mode == "vehicle":
                 # A waypoint set by the pilot is still up: keep driving instead of opening the map
@@ -403,19 +526,19 @@ class MissionHead:
                 if request.minimap.get("route") == "purple":
                     return (
                         "wanted_vehicle_route",
-                        [_call("drive_route", duration=60)],
+                        [_call("get_away", duration=60)],
                         "Die Polizei sucht mich, ich fahre weiter aus dem Suchgebiet.",
                     )
                 return (
                     "wanted_vehicle",
-                    _route("away"),
+                    [_call("get_away", duration=60)],
                     "Die Polizei sucht mich, ich fahre aus dem Suchgebiet.",
                 )
             if mode == "on_foot":
                 if cars:
                     return (
                         "wanted_on_foot_vehicle",
-                        [_call("enter_vehicle", duration=25, kind="any"), *_route("away")],
+                        [_call("enter_vehicle", duration=25, kind="any"), _call("get_away", duration=60)],
                         "Ein Fahrzeug ist zu sehen, ich steige zur Flucht ein.",
                     )
                 return "wanted_on_foot", [_walk(sprint=True)], "Die Polizei sucht mich, ich laufe weiter."
