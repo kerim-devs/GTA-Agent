@@ -438,3 +438,40 @@ def test_local_delayed_http_judge_policy_and_head(tmp_path):
         server.shutdown()
         server.server_close()
         thread.join()
+
+
+@pytest.mark.parametrize("name", ["pilot+guard", "head+guard"])
+def test_guard_rows_take_the_guards_rule_as_their_notice(tmp_path, name):
+    from pilot.guard import Verdict
+
+    approach = create(name, Config(output=tmp_path, modelled_delay=0.1))
+    try:
+        assert approach.conductor.guard is approach.guard is not None
+        pixels = np.zeros((720, 1280, 3), np.uint8)
+        assert approach.step(pixels, 1, 1).noticed is None
+        episode = {"rule": "red", "from": 1.04, "answer": "fight", "ticks": 1, "aim": 1}
+        approach.guard.tick = lambda observation, **kwargs: Verdict(Pad(l2=1), "red", "red: fight")
+        approach.guard.episodes.append(episode)
+        decision = approach.step(pixels, 1.04, 1.04)
+        assert (decision.noticed, decision.pad.l2) == ("guard red", 1)
+        assert approach.guard_log == [episode]
+    finally:
+        approach.close()
+    # Without the guard the pilot's notices are its own, and its row has no guard episodes.
+    plain = create("pilot", Config(output=tmp_path, modelled_delay=0.1))
+    try:
+        assert plain.conductor.guard is None and plain.guard_log is None
+    finally:
+        plain.close()
+
+
+def test_an_archived_ledger_is_read_as_it_is(tmp_path):
+    import gzip
+
+    from pilot.reaction import read_rows
+
+    rows = [{"approach": "reflex", "n": 1}, {"approach": "pilot", "n": 2}]
+    text = "".join(json.dumps(row) + "\n" for row in rows)
+    (tmp_path / "ledger.jsonl").write_text(text)
+    (tmp_path / "ledger-p64.jsonl.gz").write_bytes(gzip.compress(text.encode()))
+    assert read_rows(tmp_path / "ledger.jsonl") == read_rows(tmp_path / "ledger-p64.jsonl.gz") == rows

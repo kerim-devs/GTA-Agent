@@ -128,6 +128,12 @@ class MissionHead:
         self.goals.undo()
 
     def decide(self, request: HeadRequest) -> HeadResponse:
+        last = request.last_skill or {}
+        if last.get("status") == "failed" and str(last.get("reason") or "").startswith("guard_"):
+            # The guard took the pad and stopped the skill (guard.py). That is no failure of the skill: the
+            # rules and the goals plan afresh instead of retrying it, and the guard's own events,
+            # guard_start and guard_end, are news like any other.
+            request = replace(request, last_skill={**last, "status": "stopped"})
         self.goals.mark()
         self._update_intent(request)
         self.goals.learn(request.last_skill)
