@@ -871,6 +871,15 @@ class MissionHead:
             # instruction, nor proof of a gun in hand. Without an order to take
             # somebody out, leave combat selection to the fallback.
             if "red" in colors:
+                if self.objective_class == "take_out" and not colors & {"yellow", "blue"}:
+                    # Told to take somebody out, and every red is out of range (one in range was
+                    # answered with the fight above; fight itself ends on a red it cannot reach):
+                    # with nothing else marked the figure goes towards the red.
+                    return (
+                        "take_out_approach",
+                        [_call("walk_to", color="red", duration=10, sprint=True)],
+                        "Die Ziele sind noch zu weit weg, ich laufe hin.",
+                    )
                 return None
             targets = (
                 colors if request.objective.strip() else {blip.get("color") for blip in self.stable_blips}

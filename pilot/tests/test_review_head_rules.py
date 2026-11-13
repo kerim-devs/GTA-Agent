@@ -262,3 +262,21 @@ def test_a_chase_that_ran_out_its_time_goes_on_and_a_held_car_is_left():
     answer = head.decide(request(900, last=failed("drive_to_blip", "vehicle-held"), **asked))
     assert head.last_rule == "leave_held_vehicle"
     assert (answer.plan[0].name, answer.plan[0].args["button"]) == ("press", "triangle")
+
+
+def test_on_foot_with_the_targets_out_of_range_the_figure_goes_towards_them():
+    """fight ends `target-out-of-range` on a red pinned to the map's rim (review D): the rules walk
+    nearer instead of leaving it to chance."""
+    rim = [{"color": "red", "x": 0.0, "y": 60.0, "border": True}]
+    head = MissionHead(goal_seed=1)
+    asked = dict(objective="Schalte die Gangster aus.", blips=rim)
+    head.decide(request(0, **asked))
+    answer = head.decide(request(1, **asked))
+    assert head.last_rule == "take_out_approach"
+    assert [(call.name, call.args["color"]) for call in answer.plan] == [("walk_to", "red")]
+    # In range it is the fight, as before.
+    near = [{"color": "red", "x": 0.0, "y": 20.0, "border": False}]
+    head = MissionHead(goal_seed=1)
+    head.decide(request(0, objective="Schalte die Gangster aus.", blips=near))
+    answer = head.decide(request(1, objective="Schalte die Gangster aus.", blips=near))
+    assert names(answer) == ["fight"]

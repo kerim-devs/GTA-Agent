@@ -499,9 +499,14 @@ def test_without_a_red_in_range_the_order_walks_to_what_the_game_marks_or_asks_t
         base, minimap={**base.minimap, "blips": [{"color": "red", "x": 0.0, "y": 60.0, "border": True}]}
     )
     nothing = replace(base, minimap={**base.minimap, "blips": []})
-    for value in (border, nothing):
-        fallback = Fallback()
-        assert MissionHead(fallback, goal_seed=1).decide(value) is fallback.answer
+    fallback = Fallback()
+    assert MissionHead(fallback, goal_seed=1).decide(nothing) is fallback.answer
+    # A red on the rim and nothing else marked: the figure goes towards it (13 November; until then
+    # the picture decided here too, and the local head has nothing to offer for it).
+    head = MissionHead(Fallback(), goal_seed=1)
+    answer = head.decide(border)
+    assert head.last_rule == "take_out_approach"
+    assert [(call.name, call.args["color"]) for call in answer.plan] == [("walk_to", "red")]
 
 
 def test_in_a_vehicle_the_order_leaves_the_route_rules_alone():
