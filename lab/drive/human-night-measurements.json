@@ -1,0 +1,92 @@
+{
+  "recording": "/Users/kerim/recordings/kerim/20261113-031159",
+  "video_samples": [
+    {
+      "t": 14.9944,
+      "decoded": true,
+      "mean_luma": 42.35
+    },
+    {
+      "t": 22.4856,
+      "decoded": true,
+      "mean_luma": 35.65
+    },
+    {
+      "t": 28.9961,
+      "decoded": true,
+      "mean_luma": 37.72
+    }
+  ],
+  "frame_gap_seconds": 0.1308000000000007,
+  "windows": [
+    {
+      "start": 15.0,
+      "end": 30.0,
+      "samples": 278,
+      "unique_frames": 278,
+      "bearing_vs_path_course_degrees": {
+        "median": 3.5639,
+        "p90": 9.371,
+        "p99": 11.2344
+      },
+      "bearing_jump_degrees": {
+        "median": 0.1813,
+        "p90": 1.0488,
+        "p99": 3.0599
+      },
+      "old_aim_jump_degrees": {
+        "median": 0.1704,
+        "p90": 6.6499,
+        "p99": 16.539
+      },
+      "new_aim_jump_degrees": {
+        "median": 0.2045,
+        "p90": 3.5995,
+        "p99": 9.0377
+      },
+      "actual_flips": 7,
+      "replay_before_flips": 0,
+      "replay_after_flips": 0,
+      "unsupported_by_local_tangent_flips": 5,
+      "aim_to_stick_seconds": null,
+      "aim_to_stick_matched": 0,
+      "steer_to_map_course_rate_proxy_lag_seconds": 0.5,
+      "steer_to_map_course_rate_proxy_correlation": 0.1738,
+      "gps_distance_age_seconds": null,
+      "gps_speed_missing": 278,
+      "path_perpendicular_residual_sd_px": 0.3258,
+      "path_perpendicular_abs_residual_px": {
+        "median": 0.2135,
+        "p90": 0.4447,
+        "p99": 0.9054
+      },
+      "path_sample_spacing_px": {
+        "median": 6.0,
+        "p90": 7.0711,
+        "p99": 7.0711
+      },
+      "flips_by_threshold": {
+        "0.05": {
+          "actual": 7,
+          "before": 0,
+          "proposal": 0
+        },
+        "0.1": {
+          "actual": 7,
+          "before": 0,
+          "proposal": 0
+        },
+        "0.2": {
+          "actual": 7,
+          "before": 0,
+          "proposal": 0
+        },
+        "0.25": {
+          "actual": 7,
+          "before": 0,
+          "proposal": 0
+        }
+      }
+    }
+  ]
+}

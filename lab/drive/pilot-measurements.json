@@ -1,0 +1,860 @@
+{
+  "recording": "/Users/kerim/recordings/pilot/20261113-163218",
+  "video_samples": [
+    {
+      "t": 119.9989,
+      "decoded": true,
+      "mean_luma": 63.71
+    },
+    {
+      "t": 199.4463,
+      "decoded": true,
+      "mean_luma": 28.04
+    },
+    {
+      "t": 313.9833,
+      "decoded": true,
+      "mean_luma": 36.83
+    }
+  ],
+  "frame_gap_seconds": 20.244699999999995,
+  "windows": [
+    {
+      "start": 120.0,
+      "end": 135.0,
+      "samples": 177,
+      "unique_frames": 177,
+      "bearing_vs_path_course_degrees": {
+        "median": 8.5234,
+        "p90": 17.1845,
+        "p99": 19.6138
+      },
+      "bearing_jump_degrees": {
+        "median": 1.8933,
+        "p90": 6.7343,
+        "p99": 11.2767
+      },
+      "old_aim_jump_degrees": {
+        "median": 6.8322,
+        "p90": 18.9565,
+        "p99": 39.7866
+      },
+      "new_aim_jump_degrees": {
+        "median": 4.981,
+        "p90": 16.4248,
+        "p99": 39.5995
+      },
+      "actual_flips": 4,
+      "replay_before_flips": 3,
+      "replay_after_flips": 3,
+      "unsupported_by_local_tangent_flips": 0,
+      "aim_to_stick_seconds": {
+        "median": 0.1043,
+        "p90": 0.1318,
+        "p99": 0.138
+      },
+      "aim_to_stick_matched": 2,
+      "steer_to_map_course_rate_proxy_lag_seconds": 0.8500000000000001,
+      "steer_to_map_course_rate_proxy_correlation": 0.6253,
+      "gps_distance_age_seconds": {
+        "median": 0.6359,
+        "p90": 2.0583,
+        "p99": 2.6259
+      },
+      "gps_speed_missing": 58,
+      "path_perpendicular_residual_sd_px": 0.6914,
+      "path_perpendicular_abs_residual_px": {
+        "median": 0.3463,
+        "p90": 1.083,
+        "p99": 2.4639
+      },
+      "path_sample_spacing_px": {
+        "median": 6.7082,
+        "p90": 8.4853,
+        "p99": 9.2195
+      },
+      "flips_by_threshold": {
+        "0.05": {
+          "actual": 4,
+          "before": 3,
+          "proposal": 3
+        },
+        "0.1": {
+          "actual": 4,
+          "before": 3,
+          "proposal": 3
+        },
+        "0.2": {
+          "actual": 3,
+          "before": 3,
+          "proposal": 3
+        },
+        "0.25": {
+          "actual": 3,
+          "before": 3,
+          "proposal": 3
+        }
+      }
+    },
+    {
+      "start": 135.0,
+      "end": 150.0,
+      "samples": 385,
+      "unique_frames": 385,
+      "bearing_vs_path_course_degrees": {
+        "median": 9.1296,
+        "p90": 21.3153,
+        "p99": 33.757
+      },
+      "bearing_jump_degrees": {
+        "median": 2.2435,
+        "p90": 7.9283,
+        "p99": 123.4765
+      },
+      "old_aim_jump_degrees": {
+        "median": 5.761,
+        "p90": 21.4818,
+        "p99": 117.7996
+      },
+      "new_aim_jump_degrees": {
+        "median": 5.1291,
+        "p90": 20.7013,
+        "p99": 124.126
+      },
+      "actual_flips": 6,
+      "replay_before_flips": 6,
+      "replay_after_flips": 6,
+      "unsupported_by_local_tangent_flips": 0,
+      "aim_to_stick_seconds": {
+        "median": 0.1075,
+        "p90": 0.1809,
+        "p99": 0.2275
+      },
+      "aim_to_stick_matched": 6,
+      "steer_to_map_course_rate_proxy_lag_seconds": 0.8500000000000001,
+      "steer_to_map_course_rate_proxy_correlation": 0.6756,
+      "gps_distance_age_seconds": {
+        "median": 0.5799,
+        "p90": 5.0149,
+        "p99": 6.4266
+      },
+      "gps_speed_missing": 198,
+      "path_perpendicular_residual_sd_px": 1.1047,
+      "path_perpendicular_abs_residual_px": {
+        "median": 0.5012,
+        "p90": 1.8632,
+        "p99": 3.5331
+      },
+      "path_sample_spacing_px": {
+        "median": 6.7082,
+        "p90": 8.4853,
+        "p99": 9.2195
+      },
+      "flips_by_threshold": {
+        "0.05": {
+          "actual": 6,
+          "before": 6,
+          "proposal": 6
+        },
+        "0.1": {
+          "actual": 6,
+          "before": 6,
+          "proposal": 6
+        },
+        "0.2": {
+          "actual": 6,
+          "before": 6,
+          "proposal": 6
+        },
+        "0.25": {
+          "actual": 6,
+          "before": 6,
+          "proposal": 6
+        }
+      }
+    },
+    {
+      "start": 150.0,
+      "end": 165.0,
+      "samples": 387,
+      "unique_frames": 387,
+      "bearing_vs_path_course_degrees": {
+        "median": 3.1978,
+        "p90": 10.225,
+        "p99": 22.5347
+      },
+      "bearing_jump_degrees": {
+        "median": 0.6968,
+        "p90": 3.3664,
+        "p99": 7.7379
+      },
+      "old_aim_jump_degrees": {
+        "median": 1.7751,
+        "p90": 13.9607,
+        "p99": 28.7514
+      },
+      "new_aim_jump_degrees": {
+        "median": 1.6034,
+        "p90": 9.8346,
+        "p99": 51.5217
+      },
+      "actual_flips": 7,
+      "replay_before_flips": 8,
+      "replay_after_flips": 8,
+      "unsupported_by_local_tangent_flips": 1,
+      "aim_to_stick_seconds": {
+        "median": 0.2012,
+        "p90": 0.4507,
+        "p99": 0.4576
+      },
+      "aim_to_stick_matched": 6,
+      "steer_to_map_course_rate_proxy_lag_seconds": 0.6000000000000001,
+      "steer_to_map_course_rate_proxy_correlation": 0.59,
+      "gps_distance_age_seconds": {
+        "median": 2.4611,
+        "p90": 8.3703,
+        "p99": 9.705
+      },
+      "gps_speed_missing": 340,
+      "path_perpendicular_residual_sd_px": 0.5617,
+      "path_perpendicular_abs_residual_px": {
+        "median": 0.2574,
+        "p90": 0.7922,
+        "p99": 2.1217
+      },
+      "path_sample_spacing_px": {
+        "median": 6.3246,
+        "p90": 7.8102,
+        "p99": 8.6023
+      },
+      "flips_by_threshold": {
+        "0.05": {
+          "actual": 8,
+          "before": 8,
+          "proposal": 8
+        },
+        "0.1": {
+          "actual": 7,
+          "before": 8,
+          "proposal": 8
+        },
+        "0.2": {
+          "actual": 7,
+          "before": 8,
+          "proposal": 8
+        },
+        "0.25": {
+          "actual": 7,
+          "before": 8,
+          "proposal": 8
+        }
+      }
+    },
+    {
+      "start": 165.0,
+      "end": 180.0,
+      "samples": 389,
+      "unique_frames": 389,
+      "bearing_vs_path_course_degrees": {
+        "median": 1.0322,
+        "p90": 3.2323,
+        "p99": 5.7335
+      },
+      "bearing_jump_degrees": {
+        "median": 0.0201,
+        "p90": 1.3515,
+        "p99": 3.9622
+      },
+      "old_aim_jump_degrees": {
+        "median": 0.0228,
+        "p90": 5.6718,
+        "p99": 13.4195
+      },
+      "new_aim_jump_degrees": {
+        "median": 0.0339,
+        "p90": 3.7013,
+        "p99": 8.1578
+      },
+      "actual_flips": 5,
+      "replay_before_flips": 1,
+      "replay_after_flips": 1,
+      "unsupported_by_local_tangent_flips": 2,
+      "aim_to_stick_seconds": null,
+      "aim_to_stick_matched": 0,
+      "steer_to_map_course_rate_proxy_lag_seconds": 0.8500000000000001,
+      "steer_to_map_course_rate_proxy_correlation": 0.1999,
+      "gps_distance_age_seconds": {
+        "median": 17.3063,
+        "p90": 23.3358,
+        "p99": 24.6836
+      },
+      "gps_speed_missing": 389,
+      "path_perpendicular_residual_sd_px": 0.3525,
+      "path_perpendicular_abs_residual_px": {
+        "median": 0.3039,
+        "p90": 0.6228,
+        "p99": 0.7067
+      },
+      "path_sample_spacing_px": {
+        "median": 6.3246,
+        "p90": 7.6158,
+        "p99": 8.0623
+      },
+      "flips_by_threshold": {
+        "0.05": {
+          "actual": 5,
+          "before": 1,
+          "proposal": 1
+        },
+        "0.1": {
+          "actual": 5,
+          "before": 1,
+          "proposal": 1
+        },
+        "0.2": {
+          "actual": 3,
+          "before": 1,
+          "proposal": 1
+        },
+        "0.25": {
+          "actual": 3,
+          "before": 1,
+          "proposal": 1
+        }
+      }
+    },
+    {
+      "start": 180.0,
+      "end": 195.0,
+      "samples": 362,
+      "unique_frames": 362,
+      "bearing_vs_path_course_degrees": {
+        "median": 5.5423,
+        "p90": 20.2173,
+        "p99": 24.0927
+      },
+      "bearing_jump_degrees": {
+        "median": 0.7537,
+        "p90": 3.2552,
+        "p99": 7.1645
+      },
+      "old_aim_jump_degrees": {
+        "median": 1.3688,
+        "p90": 13.9394,
+        "p99": 24.4186
+      },
+      "new_aim_jump_degrees": {
+        "median": 1.7008,
+        "p90": 10.3656,
+        "p99": 28.8966
+      },
+      "actual_flips": 7,
+      "replay_before_flips": 7,
+      "replay_after_flips": 6,
+      "unsupported_by_local_tangent_flips": 2,
+      "aim_to_stick_seconds": {
+        "median": 0.1833,
+        "p90": 0.2459,
+        "p99": 0.2886
+      },
+      "aim_to_stick_matched": 7,
+      "steer_to_map_course_rate_proxy_lag_seconds": 0.65,
+      "steer_to_map_course_rate_proxy_correlation": 0.6319,
+      "gps_distance_age_seconds": {
+        "median": 0.3855,
+        "p90": 28.4156,
+        "p99": 29.7609
+      },
+      "gps_speed_missing": 168,
+      "path_perpendicular_residual_sd_px": 0.8412,
+      "path_perpendicular_abs_residual_px": {
+        "median": 0.3869,
+        "p90": 1.6282,
+        "p99": 2.5097
+      },
+      "path_sample_spacing_px": {
+        "median": 6.0828,
+        "p90": 7.8102,
+        "p99": 9.2195
+      },
+      "flips_by_threshold": {
+        "0.05": {
+          "actual": 7,
+          "before": 7,
+          "proposal": 6
+        },
+        "0.1": {
+          "actual": 7,
+          "before": 7,
+          "proposal": 6
+        },
+        "0.2": {
+          "actual": 7,
+          "before": 7,
+          "proposal": 6
+        },
+        "0.25": {
+          "actual": 7,
+          "before": 7,
+          "proposal": 6
+        }
+      }
+    },
+    {
+      "start": 195.0,
+      "end": 210.0,
+      "samples": 115,
+      "unique_frames": 115,
+      "bearing_vs_path_course_degrees": {
+        "median": 11.8075,
+        "p90": 14.317,
+        "p99": 20.6988
+      },
+      "bearing_jump_degrees": {
+        "median": 0.2451,
+        "p90": 1.6238,
+        "p99": 3.6342
+      },
+      "old_aim_jump_degrees": {
+        "median": 0.2829,
+        "p90": 8.2225,
+        "p99": 19.3397
+      },
+      "new_aim_jump_degrees": {
+        "median": 1.634,
+        "p90": 12.3917,
+        "p99": 54.0187
+      },
+      "actual_flips": 0,
+      "replay_before_flips": 0,
+      "replay_after_flips": 2,
+      "unsupported_by_local_tangent_flips": 0,
+      "aim_to_stick_seconds": null,
+      "aim_to_stick_matched": 0,
+      "steer_to_map_course_rate_proxy_lag_seconds": 1.1,
+      "steer_to_map_course_rate_proxy_correlation": 0.3989,
+      "gps_distance_age_seconds": {
+        "median": 0.2067,
+        "p90": 0.5111,
+        "p99": 0.7666
+      },
+      "gps_speed_missing": 0,
+      "path_perpendicular_residual_sd_px": 0.932,
+      "path_perpendicular_abs_residual_px": {
+        "median": 0.7423,
+        "p90": 1.3898,
+        "p99": 2.1467
+      },
+      "path_sample_spacing_px": {
+        "median": 7.8102,
+        "p90": 9.2195,
+        "p99": 9.5731
+      },
+      "flips_by_threshold": {
+        "0.05": {
+          "actual": 0,
+          "before": 0,
+          "proposal": 2
+        },
+        "0.1": {
+          "actual": 0,
+          "before": 0,
+          "proposal": 2
+        },
+        "0.2": {
+          "actual": 0,
+          "before": 0,
+          "proposal": 2
+        },
+        "0.25": {
+          "actual": 0,
+          "before": 0,
+          "proposal": 2
+        }
+      }
+    },
+    {
+      "start": 210.0,
+      "end": 225.0,
+      "samples": 100,
+      "unique_frames": 100,
+      "bearing_vs_path_course_degrees": {
+        "median": 40.4497,
+        "p90": 42.9132,
+        "p99": 42.9132
+      },
+      "bearing_jump_degrees": {
+        "median": 0.0793,
+        "p90": 2.2438,
+        "p99": 9.9831
+      },
+      "old_aim_jump_degrees": {
+        "median": 0.0793,
+        "p90": 4.6257,
+        "p99": 14.667
+      },
+      "new_aim_jump_degrees": {
+        "median": 0.0793,
+        "p90": 4.5091,
+        "p99": 31.9785
+      },
+      "actual_flips": 0,
+      "replay_before_flips": 0,
+      "replay_after_flips": 0,
+      "unsupported_by_local_tangent_flips": 0,
+      "aim_to_stick_seconds": null,
+      "aim_to_stick_matched": 0,
+      "steer_to_map_course_rate_proxy_lag_seconds": 0.1,
+      "steer_to_map_course_rate_proxy_correlation": 0.3032,
+      "gps_distance_age_seconds": {
+        "median": 20.8091,
+        "p90": 20.8091,
+        "p99": 20.8091
+      },
+      "gps_speed_missing": 100,
+      "path_perpendicular_residual_sd_px": 2.8615,
+      "path_perpendicular_abs_residual_px": {
+        "median": 2.8363,
+        "p90": 3.5347,
+        "p99": 3.735
+      },
+      "path_sample_spacing_px": {
+        "median": 7.6158,
+        "p90": 8.6023,
+        "p99": 9.2217
+      },
+      "flips_by_threshold": {
+        "0.05": {
+          "actual": 0,
+          "before": 0,
+          "proposal": 0
+        },
+        "0.1": {
+          "actual": 0,
+          "before": 0,
+          "proposal": 0
+        },
+        "0.2": {
+          "actual": 0,
+          "before": 0,
+          "proposal": 0
+        },
+        "0.25": {
+          "actual": 0,
+          "before": 0,
+          "proposal": 0
+        }
+      }
+    },
+    {
+      "start": 225.0,
+      "end": 240.0,
+      "samples": 263,
+      "unique_frames": 263,
+      "bearing_vs_path_course_degrees": {
+        "median": 25.1902,
+        "p90": 31.4842,
+        "p99": 47.5425
+      },
+      "bearing_jump_degrees": {
+        "median": 0.1471,
+        "p90": 3.719,
+        "p99": 12.1515
+      },
+      "old_aim_jump_degrees": {
+        "median": 0.1969,
+        "p90": 11.6975,
+        "p99": 34.0732
+      },
+      "new_aim_jump_degrees": {
+        "median": 0.2563,
+        "p90": 15.0511,
+        "p99": 41.9319
+      },
+      "actual_flips": 2,
+      "replay_before_flips": 2,
+      "replay_after_flips": 2,
+      "unsupported_by_local_tangent_flips": 1,
+      "aim_to_stick_seconds": {
+        "median": 0.2331,
+        "p90": 0.3293,
+        "p99": 0.351
+      },
+      "aim_to_stick_matched": 2,
+      "steer_to_map_course_rate_proxy_lag_seconds": 1.5,
+      "steer_to_map_course_rate_proxy_correlation": 0.0798,
+      "gps_distance_age_seconds": {
+        "median": 0.5242,
+        "p90": 1.9285,
+        "p99": 2.4954
+      },
+      "gps_speed_missing": 151,
+      "path_perpendicular_residual_sd_px": 1.7322,
+      "path_perpendicular_abs_residual_px": {
+        "median": 1.6725,
+        "p90": 2.4091,
+        "p99": 3.8086
+      },
+      "path_sample_spacing_px": {
+        "median": 7.0711,
+        "p90": 8.6023,
+        "p99": 9.2195
+      },
+      "flips_by_threshold": {
+        "0.05": {
+          "actual": 2,
+          "before": 2,
+          "proposal": 2
+        },
+        "0.1": {
+          "actual": 2,
+          "before": 2,
+          "proposal": 2
+        },
+        "0.2": {
+          "actual": 2,
+          "before": 2,
+          "proposal": 2
+        },
+        "0.25": {
+          "actual": 2,
+          "before": 2,
+          "proposal": 2
+        }
+      }
+    },
+    {
+      "start": 240.0,
+      "end": 255.0,
+      "samples": 388,
+      "unique_frames": 388,
+      "bearing_vs_path_course_degrees": {
+        "median": 17.9022,
+        "p90": 25.441,
+        "p99": 30.4764
+      },
+      "bearing_jump_degrees": {
+        "median": 0.1226,
+        "p90": 2.0993,
+        "p99": 9.1272
+      },
+      "old_aim_jump_degrees": {
+        "median": 0.1562,
+        "p90": 8.454,
+        "p99": 23.8896
+      },
+      "new_aim_jump_degrees": {
+        "median": 0.2663,
+        "p90": 9.1168,
+        "p99": 21.306
+      },
+      "actual_flips": 6,
+      "replay_before_flips": 2,
+      "replay_after_flips": 2,
+      "unsupported_by_local_tangent_flips": 2,
+      "aim_to_stick_seconds": {
+        "median": 0.1942,
+        "p90": 0.1942,
+        "p99": 0.1942
+      },
+      "aim_to_stick_matched": 1,
+      "steer_to_map_course_rate_proxy_lag_seconds": 0.9,
+      "steer_to_map_course_rate_proxy_correlation": 0.413,
+      "gps_distance_age_seconds": {
+        "median": 0.3674,
+        "p90": 2.6184,
+        "p99": 3.5399
+      },
+      "gps_speed_missing": 91,
+      "path_perpendicular_residual_sd_px": 1.0232,
+      "path_perpendicular_abs_residual_px": {
+        "median": 0.8598,
+        "p90": 1.4931,
+        "p99": 2.9769
+      },
+      "path_sample_spacing_px": {
+        "median": 7.0711,
+        "p90": 8.4853,
+        "p99": 9.2195
+      },
+      "flips_by_threshold": {
+        "0.05": {
+          "actual": 6,
+          "before": 2,
+          "proposal": 2
+        },
+        "0.1": {
+          "actual": 6,
+          "before": 2,
+          "proposal": 2
+        },
+        "0.2": {
+          "actual": 6,
+          "before": 2,
+          "proposal": 2
+        },
+        "0.25": {
+          "actual": 6,
+          "before": 2,
+          "proposal": 2
+        }
+      }
+    },
+    {
+      "start": 255.0,
+      "end": 270.0,
+      "samples": 383,
+      "unique_frames": 383,
+      "bearing_vs_path_course_degrees": {
+        "median": 19.9852,
+        "p90": 19.9852,
+        "p99": 22.2953
+      },
+      "bearing_jump_degrees": {
+        "median": 0.0277,
+        "p90": 0.6378,
+        "p99": 2.5877
+      },
+      "old_aim_jump_degrees": {
+        "median": 0.0272,
+        "p90": 2.5464,
+        "p99": 12.9865
+      },
+      "new_aim_jump_degrees": {
+        "median": 0.029,
+        "p90": 2.7645,
+        "p99": 13.9367
+      },
+      "actual_flips": 4,
+      "replay_before_flips": 0,
+      "replay_after_flips": 0,
+      "unsupported_by_local_tangent_flips": 2,
+      "aim_to_stick_seconds": null,
+      "aim_to_stick_matched": 0,
+      "steer_to_map_course_rate_proxy_lag_seconds": 1.0,
+      "steer_to_map_course_rate_proxy_correlation": 0.3055,
+      "gps_distance_age_seconds": {
+        "median": 0.2172,
+        "p90": 5.6208,
+        "p99": 7.0152
+      },
+      "gps_speed_missing": 107,
+      "path_perpendicular_residual_sd_px": 1.8149,
+      "path_perpendicular_abs_residual_px": {
+        "median": 0.9987,
+        "p90": 3.359,
+        "p99": 3.8289
+      },
+      "path_sample_spacing_px": {
+        "median": 7.8102,
+        "p90": 9.2195,
+        "p99": 9.2195
+      },
+      "flips_by_threshold": {
+        "0.05": {
+          "actual": 4,
+          "before": 0,
+          "proposal": 0
+        },
+        "0.1": {
+          "actual": 4,
+          "before": 0,
+          "proposal": 0
+        },
+        "0.2": {
+          "actual": 4,
+          "before": 0,
+          "proposal": 0
+        },
+        "0.25": {
+          "actual": 4,
+          "before": 0,
+          "proposal": 0
+        }
+      }
+    },
+    {
+      "start": 270.0,
+      "end": 285.0,
+      "samples": 249,
+      "unique_frames": 249,
+      "bearing_vs_path_course_degrees": {
+        "median": 6.9662,
+        "p90": 10.3381,
+        "p99": 10.3381
+      },
+      "bearing_jump_degrees": {
+        "median": 0.0131,
+        "p90": 0.6004,
+        "p99": 3.0198
+      },
+      "old_aim_jump_degrees": {
+        "median": 0.0131,
+        "p90": 5.7546,
+        "p99": 16.214
+      },
+      "new_aim_jump_degrees": {
+        "median": 0.0141,
+        "p90": 3.2207,
+        "p99": 11.6821
+      },
+      "actual_flips": 5,
+      "replay_before_flips": 0,
+      "replay_after_flips": 0,
+      "unsupported_by_local_tangent_flips": 2,
+      "aim_to_stick_seconds": null,
+      "aim_to_stick_matched": 0,
+      "steer_to_map_course_rate_proxy_lag_seconds": 0.8500000000000001,
+      "steer_to_map_course_rate_proxy_correlation": 0.2146,
+      "gps_distance_age_seconds": {
+        "median": 0.1867,
+        "p90": 0.2878,
+        "p99": 0.4409
+      },
+      "gps_speed_missing": 0,
+      "path_perpendicular_residual_sd_px": 0.9275,
+      "path_perpendicular_abs_residual_px": {
+        "median": 1.0038,
+        "p90": 1.2376,
+        "p99": 1.5911
+      },
+      "path_sample_spacing_px": {
+        "median": 6.7082,
+        "p90": 8.4853,
+        "p99": 8.9443
+      },
+      "flips_by_threshold": {
+        "0.05": {
+          "actual": 5,
+          "before": 0,
+          "proposal": 0
+        },
+        "0.1": {
+          "actual": 5,
+          "before": 0,
+          "proposal": 0
+        },
+        "0.2": {
+          "actual": 5,
+          "before": 0,
+          "proposal": 0
+        },
+        "0.25": {
+          "actual": 5,
+          "before": 0,
+          "proposal": 0
+        }
+      }
+    },
+    {
+      "start": 285.0,
+      "end": 300.0,
+      "samples": 0
+    },
+    {
+      "start": 300.0,
+      "end": 315.0,
+      "samples": 0
+    }
+  ]
+}
