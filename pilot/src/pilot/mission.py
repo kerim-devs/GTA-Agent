@@ -432,10 +432,11 @@ class MissionHead:
             plan = [SkillCall(name, {"duration": 60 if room else 40})]
             if retry:
                 plan.insert(0, SkillCall("look", {"duration": 1, "angle": 180 if room else 120}))
-            elif (
-                last.get("status") == "running"
-                and last.get("name") == "look"
-                and name in last.get("queue", [])
+            elif last.get("status") == "running" and (
+                # Already on its way out or down: an event that asks the head again, the guard's news
+                # of a marker or a changed help text, must not start the skill's search afresh. On
+                # 13 November that restarted leave_building every few seconds.
+                last.get("name") == name or (last.get("name") == "look" and name in last.get("queue", []))
             ):
                 self.last_rule = rule
                 self.counts[rule] += 1

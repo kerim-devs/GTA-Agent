@@ -35,6 +35,11 @@ cv2.setNumThreads(1)
 H, W = 170, 260
 # --- measured geometry (crop pixels)
 MX0, MX1, MY0, MY1 = 34, 215, 28, 142  # map rectangle, half-open
+# Orange pixels within nine pixels of a red that make it an icon's rim and no target. On 13 November
+# the guard fought the icon of the figure's own car in an apartment. None of the 21 labelled reds of
+# lab/blips has one such pixel; of 193 reds read in three recordings of that apartment, where there
+# was nobody to fight, 170 have two or more, and the 23 that remain are pinned to the map's edge.
+ORANGE_BESIDE = 2
 ACX, ACY = 123.3, 116.8  # rotation centre of the player arrow
 BAR_Y0, BAR_Y1 = 146, 150  # solid rows of the three bars
 
@@ -656,6 +661,18 @@ def _blips(hsv: np.ndarray, yellow_path=()) -> tuple[Blip, ...]:
                 continue
             if (color == "yellow" and cy >= 135) or (color == "blue" and cy >= 139):
                 continue
+            if color == "red":
+                # The dark rim of an orange map icon, the figure's own car, a heist's letter or a
+                # stranger's question mark, has red's hue. Orange beside a red is such an icon.
+                near = hsv[max(0, round(cy) - 9) : round(cy) + 10, max(0, round(cx) - 9) : round(cx) + 10]
+                orange = (
+                    (near[..., 0] >= 10)
+                    & (near[..., 0] <= 21)
+                    & (near[..., 1] >= 120)
+                    & (near[..., 2] >= 160)
+                )
+                if int(orange.sum()) >= ORANGE_BESIDE:
+                    continue
             # A ring darker than the colored core distinguishes icons from the
             # translucent world and separates destination discs from route ends.
             radius = (width + height) / 4

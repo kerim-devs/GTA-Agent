@@ -60,3 +60,20 @@ def test_a_damaged_frame_reports_no_blips():
     fixture = Path(__file__).parent / "fixtures/crop_2099.png"
     result = read(cv2.cvtColor(cv2.imread(str(fixture)), cv2.COLOR_BGR2RGB))
     assert result.corrupt and result.blips == ()
+
+
+def test_the_rim_of_an_orange_icon_is_no_red_marker(monkeypatch):
+    """Seven crops of 13 November from an apartment with nobody in it to fight: the icon of the
+    figure's own car, a heist's letter and a stranger's question mark, inside the map and pinned to
+    its edge. The guard fought the car's icon."""
+    from pilot import minimap
+
+    root = Path(__file__).resolve().parents[2]
+    with np.load(root / "lab/blips/orange-icons.npz") as data:
+        crops = list(data["crops"])
+    assert len(crops) == 7
+    for crop in crops:
+        assert not [blip for blip in read(crop).blips if blip.color == "red"]
+    # Without the rule every one of them shows a red, so the crops do exercise it.
+    monkeypatch.setattr(minimap, "ORANGE_BESIDE", 10**9)
+    assert all(any(blip.color == "red" for blip in read(crop).blips) for crop in crops)

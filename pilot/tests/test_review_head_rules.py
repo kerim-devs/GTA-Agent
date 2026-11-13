@@ -467,3 +467,18 @@ def test_on_foot_with_the_targets_out_of_range_the_figure_goes_towards_them():
     head.decide(request(0, objective="Schalte die Gangster aus.", blips=near))
     answer = head.decide(request(1, objective="Schalte die Gangster aus.", blips=near))
     assert names(answer) == ["fight"]
+
+
+def test_a_skill_of_the_place_that_is_running_is_left_to_run():
+    # The guard's news and a changed help text ask the head again while the figure is on its way
+    # out: answering with the same skill would begin its search for the door from the start.
+    for place, skill in (("room", "leave_building"), ("landing", "descend")):
+        head = MissionHead()
+        assert names(head.decide(request(place=place))) == [skill]
+        running = {"name": skill, "status": "running", "reason": "foot:state=round", "queue": []}
+        for time, kind in ((2.0, "guard_news"), (4.5, "help_changed"), (7.0, "guard_end")):
+            answer = head.decide(request(time, place=place, last=running, events=[{"kind": kind}]))
+            assert answer.action == "go_on" and names(answer) == [], (place, kind)
+        # Ended by the guard, it is planned again.
+        ended = {"name": skill, "status": "failed", "reason": "guard_red", "queue": []}
+        assert names(head.decide(request(9.0, place=place, last=ended))) == [skill]
