@@ -22,6 +22,11 @@ QUESTIONS = {
 }
 
 
+# Calls in a row without an answer from the server before it is left alone, and for how long.
+SILENT_CALLS = 2
+SKIP_SECONDS = 60.0
+
+
 @dataclass(frozen=True)
 class Selection:
     name: str
@@ -59,6 +64,8 @@ class Chooser:
         self.threshold = threshold
         self._busy = threading.Lock()
         self.probabilities: dict[str, float | None] = {}
+        self._silent = 0
+        self._skip_until = 0.0
 
     def choose(self, question, options, image, *, timeout, prior=None):
         started = time.monotonic()
@@ -67,11 +74,16 @@ class Chooser:
         timeout = max(0, timeout - min(0.05, timeout / 5))
         if not self.servers or timeout <= 0 or not 1 <= len(options) <= 6:
             return None
+        if started < self._skip_until:
+            # The server did not answer twice running: for a minute every decision is the rules' own
+            # at once, instead of each waiting out its timeout on a machine that is off.
+            return None
         text = _prompt(question, options, prior)
         names = tuple(options)
         if not self._busy.acquire(blocking=False):
             return None
         result = queue.Queue(maxsize=1)
+        answered = threading.Event()
 
         def run():
             try:
@@ -87,6 +99,7 @@ class Chooser:
                     return
                 url, model = self.servers[0]
                 choice, _ = judge.post(url, model, encoded, text, 2, timeout=remaining)
+                answered.set()
                 # Do not let letters() turn prose such as "Because..." into B.
                 content = choice.get("message", {}).get("content")
                 if not isinstance(content, str) or content.strip() not in "ABCDEF":
@@ -119,6 +132,7 @@ class Chooser:
         threading.Thread(target=run, name="pilot-chooser", daemon=True).start()
         try:
             selection = result.get(timeout=max(0, timeout - (time.monotonic() - started)))
+            self._heard(answered.is_set())
             if selection is None:
                 return None
             self.probabilities = selection.probabilities
@@ -126,7 +140,14 @@ class Chooser:
                 return None
             return selection
         except queue.Empty:
+            self._heard(False)
             return None
+
+    def _heard(self, answered: bool) -> None:
+        self._silent = 0 if answered else self._silent + 1
+        if self._silent >= SILENT_CALLS:
+            self._silent = 0
+            self._skip_until = time.monotonic() + SKIP_SECONDS
 
 
 _active: Chooser | None = None

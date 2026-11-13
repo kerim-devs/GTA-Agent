@@ -91,9 +91,13 @@ class MissionHead:
     # rules answers with the plan alone.
     owns_goals = True
 
-    def __init__(self, fallback: Head | None = None, *, goal_seed=None) -> None:
+    def __init__(self, fallback: Head | None = None, *, goal_seed=None, chooser=None) -> None:
         self.fallback = fallback
-        self.goals = Goals(seed=goal_seed)
+        # `chooser` picks the next errand among those the rules offer (localhead.ErrandChooser: the
+        # local model looking at the picture). It may say nothing, and then the seeded draw decides.
+        self.chooser = chooser
+        self._chose: str | None = None
+        self.goals = Goals(seed=goal_seed, chooser=self._errand if chooser is not None else None)
         self.counts: Counter[str] = Counter()
         self.last_rule: str | None = None
         self.sought_mission = False
@@ -104,9 +108,28 @@ class MissionHead:
         self.blip_candidates: list[dict] = []
         self.stable_blips: list[dict] = []
 
+    def _errand(self, offers):
+        chosen = self.chooser(offers)
+        if chosen is None:
+            return None
+        name = chosen.get("name") if isinstance(chosen, dict) else getattr(chosen, "name", chosen)
+        self._chose = name if isinstance(name, str) else None
+        return self._chose
+
     def decide(self, request: HeadRequest) -> HeadResponse:
         self._undo_urgent = (set(getattr(self, "pressed_help", set())), getattr(self, "standing_count", 0))
+        if self.chooser is not None:
+            self._chose = None
+            if hasattr(self.chooser, "observe"):
+                self.chooser.observe(request)
+            before = self.goals.active
         response = self._decide(request)
+        if self.chooser is not None and hasattr(self.chooser, "record"):
+            # What the seeded draw chose is told to the chooser, which keeps its own choices itself:
+            # it offers the model nothing that has just been done twice.
+            started = self.goals.active
+            if started is not None and started is not before and started.name != self._chose:
+                self.chooser.record({"name": started.name})
         last = request.last_skill or {}
         events = {event.get("kind") for event in request.events}
         exceptions = {"failure", "skill_failed", "screen", "standing", "guard"}

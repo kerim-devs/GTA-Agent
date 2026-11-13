@@ -7,7 +7,7 @@ import sys
 from dataclasses import asdict, fields
 from pathlib import Path
 
-from . import ahead, hud, profile, sides
+from . import ahead, chooser, hud, profile, sides
 from .bridge import Bridge
 from .calibrate import RECORDINGS as CALIBRATIONS
 from .calibrate import run_calibrate, selection
@@ -17,6 +17,7 @@ from .flow import Flow
 from .guard import Guard
 from .head import CodexHead, CodexServerHead, ScriptedHead, SkillCall
 from .judge import Reader as JudgeReader
+from .localhead import ErrandChooser, LocalHead
 from .loop import RECORDINGS, Pipeline, run_drive
 from .mission import MissionHead
 from .objects import Reader as ObjectReader
@@ -163,10 +164,11 @@ def main(argv: list[str] | None = None) -> None:
     play.add_argument("--notebook", type=Path)
     play.add_argument(
         "--head",
-        choices=("scripted", "codex", "codex-server", "rules", "rules-only"),
+        choices=("scripted", "codex", "codex-server", "rules", "rules-only", "local"),
         default="scripted",
         help="rules decides the plain cases at once and asks the codex server for the rest; "
-        "rules-only never asks a model",
+        "rules-only never asks a model; local asks the first --judge server, which picks among what "
+        "the rules offer within a second and a half, and plays by the rules alone when it is silent",
     )
     play.add_argument(
         "--plan",
@@ -255,6 +257,9 @@ def main(argv: list[str] | None = None) -> None:
             head = ScriptedHead(plans or None)
         elif args.head == "rules-only":
             head = MissionHead()
+        elif args.head == "local":
+            chooser.use(args.judge)
+            head = MissionHead(LocalHead(), chooser=ErrandChooser())
         else:
             head = (CodexHead if args.head == "codex" else CodexServerHead)(
                 model=args.head_model, effort=args.head_effort, timeout=args.head_timeout
