@@ -88,3 +88,6 @@ lab/models/cache/
 
 # frames a judge run answered wrong, written beside its results
 lab/models/results/wrong-frames/
+
+# worktrees of other agents inside this checkout: never part of the repository
+.worktrees/
