@@ -185,7 +185,10 @@ def trial(driver_type, profile, scenario, writer=None):
                 ]
             )
         states[command.state] += 1
-        reverse += sim.config.dt if command.brake else 0
+        # The brake of a manoeuvre is a reverse; the brake of the ordinary drive, into a bend or the
+        # arrival at the route's end, is not (with P98's faster driver the two fast cars brake there).
+        manoeuvre = command.state.startswith(("turn-", "bypass-", "recovery-"))
+        reverse += sim.config.dt if command.brake and manoeuvre else 0
         before = sim.x, sim.y
         sim.advance(command)
         travel += hypot(sim.x - before[0], sim.y - before[1])
