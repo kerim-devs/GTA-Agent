@@ -358,6 +358,36 @@ def test_a_direction_is_let_go_on_the_tick_after_its_press():
     assert not any(a and b for a, b in pairwise(held))
 
 
+def test_a_button_is_one_press_where_the_tick_after_it_is_slower_than_the_bridge_holds_a_pad():
+    # 13 November, 01:12 and 01:28: the tick after the cross took 0.37 s, the bridge let go of a pad
+    # it had not been sent again within its 250 ms, and the cross, sent a second time, was a second
+    # press: it took away the waypoint the first had set, after the skill had read its distance.
+    model = Model(["Spieler", "Ammu-Nation", "Golf", "Kino"])
+    observe, apply = model.observation, model.apply
+    times = [0.0]
+    for tick in range(1000):
+        times.append(times[-1] + (0.2 if tick % 2 else 0.37))
+    model.observation = lambda tick, corrupt=False: replace(observe(tick, corrupt=corrupt), time=times[tick])
+    sent = []
+
+    def bridge(result):
+        # The pad of a tick goes out as the next tick begins.
+        tick = len(sent)
+        sent.append(result.pad.buttons)
+        if result.pad.buttons and times[tick + 1] - times[tick] > 0.25:
+            model.previous = ()
+        apply(result)
+
+    model.apply = bridge
+    _, result, outputs = run({"place": "Kino"}, model)
+    assert result.status == "done" and "Kino (532m)" in result.reason
+    assert model.distance == 532 and model.screen == "game"
+    assert model.presses.count("cross") == 2  # one opens the map
+    for button in ("options", "cross", "circle", "down"):
+        held = [button in output.pad.buttons for output in outputs]
+        assert any(held) and not any(a and b for a, b in pairwise(held))
+
+
 def test_writing_behind_the_map_and_misread_arrows_make_no_place():
     rows = lines(["Spieler", "Golf", "Los Santos Customs"], selected=0)
     rows[2]["text"] = "Los Santos Customs < 114> i"
@@ -520,3 +550,18 @@ def test_head_accepts_printed_names_and_exposes_string_schema():
             for v in variants
         )
     assert len(SetWaypoint.prompt) <= 400
+
+
+def test_a_long_row_that_begins_far_to_the_left_is_still_the_selection():
+    rows = lines(["Spieler", "Ammu-Nation", "Autowaschanlage"], selected=5, total=31)
+    rows.insert(
+        1,
+        {
+            "text": "Immobilie: McKenzie-Feldhangar: 150.000 $ < 1/4 >",
+            "box": [877, 96, 338, 14],
+            "confidence": 1.0,
+        },
+    )
+    legend = read_legend(rows)
+    assert legend.selected is not None and legend.selected.name.startswith("Immobilie")
+    assert legend.selected.instance == 1 and legend.selected.count == 4
