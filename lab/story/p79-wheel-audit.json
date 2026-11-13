@@ -1,0 +1,2681 @@
+{
+  "scope": "127 wheel frames and the existing 200 hash-verified HUD negatives. Adjacent frames are correlated; calibration references come from the same recordings. No bottom-positive example is available.",
+  "negative_screens": {
+    "game": 110,
+    "weapon_wheel": 19,
+    "failed": 15,
+    "loading": 8,
+    "phone": 13,
+    "passed": 10,
+    "pause": 11,
+    "map": 14
+  },
+  "confusion": [
+    {
+      "expected": "left",
+      "actual": "left",
+      "count": 60
+    },
+    {
+      "expected": "none",
+      "actual": "none",
+      "count": 200
+    },
+    {
+      "expected": "right",
+      "actual": "right",
+      "count": 6
+    },
+    {
+      "expected": "right",
+      "actual": null,
+      "count": 1
+    },
+    {
+      "expected": "top",
+      "actual": "top",
+      "count": 60
+    }
+  ],
+  "wheel_false_positives": 0,
+  "wheel_false_negatives": 0,
+  "results": [
+    {
+      "id": "wifi-00259",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "3a25b6f182e510f747a85a9990c787b83aad3edd9e4f09ed1d4cba089432a022"
+    },
+    {
+      "id": "wifi-00332",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "aab8631c839f4d59587036bd22af94a53ed0d9337bd4ab14a490340cf657b4f0"
+    },
+    {
+      "id": "wifi-00333",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "05edfc5221211ddc8f86d9b9cf4a3980ad102c54f84fd0be0e6d4e44e81dbb2d"
+    },
+    {
+      "id": "wifi-00334",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "b0c939f5b879c39abfa4381c25fd30385ce04bbfd950aa7ff9ccad3722b5af6f"
+    },
+    {
+      "id": "wifi-00335",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "218c347a783af3cc0de0584d3a3db520da7136cafea5577fb4ddf065bab6758c"
+    },
+    {
+      "id": "wifi-00336",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "06135637c8a73abb32f4d78fb2d1ac2a790504585c28064fc69cf93000c06b0c"
+    },
+    {
+      "id": "wifi-00337",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "4fb35fd872469d8fcdf0484a73a18fc8be85f660cc9b8bb8745396a5f39e0213"
+    },
+    {
+      "id": "wifi-00338",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "634aae896cab5f92901af2d6fc74b3b840209e6cb0e2b4af3514c5b63e901824"
+    },
+    {
+      "id": "wifi-00339",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "4372f344f8a6a539daf4464d0bb17e2cbf9acce81e67b40cf1d6dcaab0ff8891"
+    },
+    {
+      "id": "wifi-00340",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "6e38cac925d3d8d1313a4d51585aa5c7ae8db8e65ebd518befbd1b8d0f662b9b"
+    },
+    {
+      "id": "wifi-00342",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "697ba41e17ada8c212c1158afa1bf4c485b6998a7a85a1bb3710aa0a6ff6c879"
+    },
+    {
+      "id": "wifi-00343",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "3fdfac48db1048da6e3adeabc030b3cc61183f3bf7e8d2fb8213e2701f5a1ff8"
+    },
+    {
+      "id": "wifi-00344",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "8073fb2bb1f0635da3aa51ed26f5e9b8edd0f00ec93f7bf61f3fd75ff28a7262"
+    },
+    {
+      "id": "wifi-00345",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "3bb0d65d9c30881d60ce1b5a4d8d0fab9c355c00428ce0ed6746c8d8265d4889"
+    },
+    {
+      "id": "wifi-00634",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "dd71d49c7d232161caadc7e05116b746522fbea5e21f771e39c4c3d05e46f62a"
+    },
+    {
+      "id": "wifi-00781",
+      "screen": "failed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "f9660e882dc5b41b74076a9808421b7654249a930676e93458e9b4918d8d066a"
+    },
+    {
+      "id": "wifi-00793",
+      "screen": "failed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "6ffbfbcfebe0a9a679ed0c73d9d690f4f04fcfd9399c8f1f0465961c49a8e70f"
+    },
+    {
+      "id": "wifi-00813",
+      "screen": "failed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "8eb025ac5ac0f1b06edf018c28206baf11d3d065a94f3bfbf8e14ea16de4574a"
+    },
+    {
+      "id": "wifi-00814",
+      "screen": "failed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "cead822252a40a37510f3e8110df4f53277654c600f2d202d5ee367fcf4c1266"
+    },
+    {
+      "id": "wifi-00823",
+      "screen": "failed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "1ea09d0560d63f7c5bc314c983c47121be3c7d82859a6af43679150fbab1a750"
+    },
+    {
+      "id": "wifi-00824",
+      "screen": "failed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "5d9c4b7d5e694260dec1e10b83a82fdf2272942de9eaa1e052afb5403c5bcec0"
+    },
+    {
+      "id": "wifi-00834",
+      "screen": "failed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "edc286bf86ee259122a846bd26f7e09ede7f52186723742e695f9cfe45481683"
+    },
+    {
+      "id": "wifi-00835",
+      "screen": "failed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "21645b33d8769e05389d370fc05a82e7dd94b831362538c0e75cab5722091bb8"
+    },
+    {
+      "id": "wifi-00839",
+      "screen": "failed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "6ec6ce2ff553f63d6d20871e9a0a7451a8de5e006179d2aebdb08d601570ef4a"
+    },
+    {
+      "id": "wifi-00847",
+      "screen": "failed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "f6ab8090ec85f36eb3e8fab13e16b9850589811e3b29439101cfbc9c03315bb4"
+    },
+    {
+      "id": "wifi-00849",
+      "screen": "failed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "0e45595d14770548d133f4c30f54d81c28a2eb6716a7c1c440f05b9ab2b0ba98"
+    },
+    {
+      "id": "wifi-00859",
+      "screen": "failed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "23fd2f06ab75b4d1c8426331691b3b4207a46a54a1661663cec99fde541149c6"
+    },
+    {
+      "id": "wifi-00860",
+      "screen": "failed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "49855887afb99e1100f5f4bb4aadf8c6b77fa3fe089a6934d04230a7a5514528"
+    },
+    {
+      "id": "wifi-00869",
+      "screen": "failed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "4ac1dda7af34c583d3ed754f739d35eae9938d183db9400e26e95a9e35c90476"
+    },
+    {
+      "id": "wifi-00877",
+      "screen": "failed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "249a29338713937274f8b1f0e551084c65574cf1abc1bb0534e2f7ad3401f222"
+    },
+    {
+      "id": "wifi-00888",
+      "screen": "loading",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "7b2a224d9b472b101042350aafcb47f77823e930e074124e09eedecd7a17db23"
+    },
+    {
+      "id": "wifi-00898",
+      "screen": "loading",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "822e3a311bc34185394aeb709bb83310f1243089b95cdadc218eee179b1d6f78"
+    },
+    {
+      "id": "wifi-00913",
+      "screen": "loading",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "822e3a311bc34185394aeb709bb83310f1243089b95cdadc218eee179b1d6f78"
+    },
+    {
+      "id": "wifi-00916",
+      "screen": "loading",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "822e3a311bc34185394aeb709bb83310f1243089b95cdadc218eee179b1d6f78"
+    },
+    {
+      "id": "wifi-00922",
+      "screen": "loading",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "822e3a311bc34185394aeb709bb83310f1243089b95cdadc218eee179b1d6f78"
+    },
+    {
+      "id": "wifi-00926",
+      "screen": "loading",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "822e3a311bc34185394aeb709bb83310f1243089b95cdadc218eee179b1d6f78"
+    },
+    {
+      "id": "wifi-00932",
+      "screen": "loading",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "822e3a311bc34185394aeb709bb83310f1243089b95cdadc218eee179b1d6f78"
+    },
+    {
+      "id": "wifi-00935",
+      "screen": "loading",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "822e3a311bc34185394aeb709bb83310f1243089b95cdadc218eee179b1d6f78"
+    },
+    {
+      "id": "wifi-01013",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "3c63adccb95bfad5c12921557a142404af22941da8bff322f91a71ac9a9bf0b3"
+    },
+    {
+      "id": "wifi-01367",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "b73731d382a54600cd8c517c732e7869d2caba8aebfd87237ecfef49037089cd"
+    },
+    {
+      "id": "wifi-01405",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "73a0ceaafe0c0ffc67ba7931660a01a970ef04da5bbc9c476508a37c0a8f8d91"
+    },
+    {
+      "id": "wifi-01995",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "5205ed93e608d61c6c6ab2435997772fff2a66dd392be12f84f3be602fce5bf5"
+    },
+    {
+      "id": "wifi-02071",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "6113aa30495f08fa65c25b6dfaf58d614d82a85642be4ac531846f9e75ecac1b"
+    },
+    {
+      "id": "wifi-02869",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "2a8530c12bdd7e121c143880bc45cf47028a7a08bcafe55fc8262584fd1ace97"
+    },
+    {
+      "id": "wifi-03060",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "6e6c8d06c97061130eb114aca778d99f018305d26e59bdb36c65d0340afde417"
+    },
+    {
+      "id": "wifi-03184",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "69f50e267de4755a2dc9acf010396bad48093bcc96d463b227078627d568aba1"
+    },
+    {
+      "id": "wifi-03248",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "5e4efb0a19fd3fc51ad8ca4aaa0573b127f8130caea7a17f10327e9860c1e73a"
+    },
+    {
+      "id": "wifi-03288",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "3b49ffe871df0a9a26412aad8e2fd98a4847837a7275ce736a017fadef92dac9"
+    },
+    {
+      "id": "wifi-03422",
+      "screen": "phone",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "15d789f7a1a759ec6b641e2e01271c0b52102297cb381d323faf7c32c79951ad"
+    },
+    {
+      "id": "wifi-03424",
+      "screen": "phone",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "92e4e9e7e205d85950662ef27e1284dd55b64c1b738eacec3d155255d668ab7c"
+    },
+    {
+      "id": "wifi-03425",
+      "screen": "phone",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "76ed8d0d32138717a3ed51eaae94459c26bdfaf944a48e49b447b5d93914396f"
+    },
+    {
+      "id": "wifi-03434",
+      "screen": "phone",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "8afcee4858d4de274775a3afd2d77ac0e35ad6dfba0da09f0465330d541a7d69"
+    },
+    {
+      "id": "wifi-03436",
+      "screen": "phone",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "05d0c6cd20bdc8f8a0a00a3621dd09f6faed19228364bf4bfd4aa2164ae43576"
+    },
+    {
+      "id": "wifi-03443",
+      "screen": "phone",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "2a3fdde06177b47286c997c264dd9d6b420d3abbdfbf1c43f0dd04a920d17d77"
+    },
+    {
+      "id": "wifi-03450",
+      "screen": "phone",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "54c1ef3492a37e9ea9e8a12aa5128928cd1692e8e4528eb665a5fadd2eb347a0"
+    },
+    {
+      "id": "wifi-03455",
+      "screen": "phone",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "ea092f316170f81c135c0c25192539b5c27e04d1fc4885a5aadd9027907e7a94"
+    },
+    {
+      "id": "wifi-03461",
+      "screen": "phone",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "5705db45cbbf66eb076a802862c5866bac0b7b6f18aaf8163d9677df1be19466"
+    },
+    {
+      "id": "wifi-03466",
+      "screen": "phone",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "9ee75cd713285878ae1e2c10a575df8cf3fc8480bd2e7355ac03abb356ed5673"
+    },
+    {
+      "id": "wifi-03476",
+      "screen": "phone",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "1455201d9e0c7c980b9be94bd935088dcac483df5961ddd0ad3eb78aaf72663f"
+    },
+    {
+      "id": "wifi-03482",
+      "screen": "phone",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "e0792125cea59da5638c6b496dbae24b246bcf7498bedfe15b68008474cbe8cb"
+    },
+    {
+      "id": "wifi-03493",
+      "screen": "phone",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "e8630fb502dd9661fc0715fc586f5566eba58907664207349b885cf42fb69fee"
+    },
+    {
+      "id": "wifi-03497",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "5170f913f83cadfd4b38178392ca27f593339eebde682d86e90796d8be4152c1"
+    },
+    {
+      "id": "wifi-03511",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "e093a1a41ef48afe31fa8f9feac94a74a377ed30a0f5c29325dd46d018bccc41"
+    },
+    {
+      "id": "wifi-03517",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "5cc75c7f421b69d870cad352d90fe706883407b7418dcdc71b0134792d510e0b"
+    },
+    {
+      "id": "wifi-03526",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "410f7b5e811a66785960adf6803125fd961051aeed825a3a13b7ea32bd1d257c"
+    },
+    {
+      "id": "wifi-03532",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "46b7f232cf25ba9d979f7b38f3db7880b69ba8306fc37e2b8a5adc510500468e"
+    },
+    {
+      "id": "wifi-03535",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "71fdabcda36c0610c5b81dc6898a8f5f959a1d9603d0679f314978d9f419ecbf"
+    },
+    {
+      "id": "wifi-03800",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "3f27f753e0da0dec7d0e04c1f5733f144221c359dbd84d0a292d8931744dd2b0"
+    },
+    {
+      "id": "wifi-04631",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "66c1d2f2af9859a461810de9ed2e400fd58368a9b1de573540f2e92462ff28c6"
+    },
+    {
+      "id": "wifi-04698",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "d070e0a49b2a17b7c6c569b400a781c78d0efdeda6d7518b1b689af945faf266"
+    },
+    {
+      "id": "wifi-04876",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "6c76c24f0ea2b9445e71b8f6dc4157d414bc2a3885eb17a17f42629d5e85d1cd"
+    },
+    {
+      "id": "wifi-04893",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "6686e911c26d87bb93f56b59b43cfd69344acebe9681cf546da95ab101a68b18"
+    },
+    {
+      "id": "wifi-05136",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "3906cfd69d68a1acdf0bddacc391a969f03f21939d93071493e23a73892783dd"
+    },
+    {
+      "id": "wifi-05529",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "ea9b45fa2176248bab0218a02ef264bd181e4a3b71193f44c6d83b9dd8614fc6"
+    },
+    {
+      "id": "wifi-05968",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "5a6c389f656ea1cc931682a3a7530972d2be546697164f031fe1cc62b2b9aca6"
+    },
+    {
+      "id": "wifi-06127",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "56d160a5f47383fe3361432252a973e2dbe0b4e322a604c5b9e836088928c88c"
+    },
+    {
+      "id": "wifi-06276",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "e8772b5b06c5d33dc28c2d277561f388fce81d1df8977fd12de7de55574b1cdf"
+    },
+    {
+      "id": "wifi-06476",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "d493fa3865116f5ca78661c4f172410fd410134ba1f00e6f0f1e8a3315fd76de"
+    },
+    {
+      "id": "wifi-06611",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "adee9febbc4655e7f3bfa4591f294f89a871128c8bd307c4a98fdf43d9f20611"
+    },
+    {
+      "id": "wifi-06636",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "db9c09a1d97fb5ff34b967f7855908acb0dc0659590f73c3ec46a745e1c73c3b"
+    },
+    {
+      "id": "wifi-06660",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "19dd91069d0d68f28df7bcff90c395a9dbf228ce0f6bdbe0e42c0400398b430f"
+    },
+    {
+      "id": "wifi-07268",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "ce0fa31dcbeab69ffb3b519244981898e8485467ecbb937e8e18691e26d2f952"
+    },
+    {
+      "id": "wifi-07277",
+      "screen": "passed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "3639b357808ed5cd5785a6c3bdcba0a5021fa4406d0dab862dcefee637e7bf5f"
+    },
+    {
+      "id": "wifi-07279",
+      "screen": "passed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "b6b256ea8bb366ccc81b12cc03aa8122af013fe977240551ecf046511abc8054"
+    },
+    {
+      "id": "wifi-07291",
+      "screen": "passed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "e93d2246d14a6c46491025ee08f7da937d5cde34dcee41c9b1629bb844cc8cd1"
+    },
+    {
+      "id": "wifi-07302",
+      "screen": "passed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "1b7d2a8e12190be2594103443c409b780fae07feed5e154213878fc52da31965"
+    },
+    {
+      "id": "wifi-07305",
+      "screen": "passed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "2c993714dc272f34ce8bf18240ce0977039bc5aaaefc25ff8299dcb3bf879f5c"
+    },
+    {
+      "id": "wifi-07310",
+      "screen": "passed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "84661f04e98f90f22c984993d6bedb3d15404dbc88bd1d111084133cede9687b"
+    },
+    {
+      "id": "wifi-07316",
+      "screen": "passed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "316569170d4ec43f52764499d33739f8b7b128989d8eb1ca1caee8041765cd5a"
+    },
+    {
+      "id": "wifi-07317",
+      "screen": "passed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "114b43ca336c4198c6078b387a8442d0205a4fbb58d32907fd4255cbf4cc50a5"
+    },
+    {
+      "id": "wifi-07328",
+      "screen": "passed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "7a0a97b737a8103c5ac568801160546a0f6949befe47d0ee5a674642d5459f98"
+    },
+    {
+      "id": "wifi-07335",
+      "screen": "passed",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "ac98c8d54807416a5923b2cc28b84017f628df65b7dc15cf9055a37459f0e56f"
+    },
+    {
+      "id": "wifi-07344",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "9a3a217d1bdc5de7fe271caf7f6f1648b46e471153431a04a0e582287f3711b7"
+    },
+    {
+      "id": "wifi-07393",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "7a6b7d3ce696e079505a41faa8cbba0b8f176412b2152180417a9a5c5e7ed5ad"
+    },
+    {
+      "id": "wifi-07584",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "51172ea6aa9e37957aaaa3a0ce2302a3833b96a34b3504e0ab51ad504bb781b2"
+    },
+    {
+      "id": "wifi-07871",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "0a41c0ca87756661ca41cf99ed6a85bc42a44eb396cd9985f00c21f20327ba82"
+    },
+    {
+      "id": "wifi-08096",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "c52884f4af7db76a5e31981a362619331f89ab94fbffaa25ad7605f59e8424bd"
+    },
+    {
+      "id": "wifi-08196",
+      "screen": "pause",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "229ea9e993bdd48166473ec9825c9ec0b5e89b81fe4a6a085d88c5f3dcd55d62"
+    },
+    {
+      "id": "wifi-08202",
+      "screen": "pause",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "8178df89e014274937cecf8ed3d06027458ea5752052091005d915bd37fabb19"
+    },
+    {
+      "id": "wifi-08207",
+      "screen": "pause",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "db9eb2dfe86d08f446f662287f53dfefd8db6e60a756ba16a04530e0eb0cb47f"
+    },
+    {
+      "id": "wifi-08208",
+      "screen": "pause",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "c369634b8fe159c7e1aa5edd26a871a99c5363abf93bab9ab674945b52bef8c1"
+    },
+    {
+      "id": "wifi-08213",
+      "screen": "pause",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "7e26c1f4f044fdd953c879c1f1ea1e26462eb36b011bc9cc8735913a61ca680c"
+    },
+    {
+      "id": "wifi-08215",
+      "screen": "pause",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "b8d511785b65a18227137972888560bf1bba8dee28ff1fdb9e139580c3a10864"
+    },
+    {
+      "id": "wifi-08216",
+      "screen": "pause",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "93cf100b2f98294f5b768e678d5f671db324bf2eaf6b20d9fbec5b7f4397e1ac"
+    },
+    {
+      "id": "wifi-08221",
+      "screen": "pause",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "91ad47a055762ca9bfa4e087abfecf1bd744e45034f3cb45077f17a99db6e2a9"
+    },
+    {
+      "id": "wifi-08224",
+      "screen": "pause",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "f607197751c3ffe8cad47a2b1a5277b9e3b6045b1e25d9d7010b12afe9438e92"
+    },
+    {
+      "id": "wifi-08230",
+      "screen": "pause",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "49e0b4a2a71d3c30a897d102c739c7ee7da189d46a977a34388cd40f6eeffa8e"
+    },
+    {
+      "id": "wifi-08237",
+      "screen": "pause",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "25e0e54271ebae6c5c0745d63537729534a0c05d3101d3e2423bfcc77a10b7b9"
+    },
+    {
+      "id": "wifi-08243",
+      "screen": "map",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "99ca76c6dd9e94b99995b89a45e1ebb193fbac00ea9d0ed01585771cc5cf5b84"
+    },
+    {
+      "id": "wifi-08252",
+      "screen": "map",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "b5d71f87d463463075e21ea076e8aa420b5b018d8c8805017888d778949c5191"
+    },
+    {
+      "id": "wifi-08253",
+      "screen": "map",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "e3cdfa229f0fa484b6dbad361f220c80908db282a6dd749aad7ff2f1e434a420"
+    },
+    {
+      "id": "wifi-08261",
+      "screen": "map",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "41b8cc5ed1271e69a1816c911690be35c43f4cfc66c4f28c629ee0a8db7bc98a"
+    },
+    {
+      "id": "wifi-08262",
+      "screen": "map",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "ca2c2485282f03918893a8ec4738b4611ae8700d4e0f537b20ff2e3dc572290f"
+    },
+    {
+      "id": "wifi-08266",
+      "screen": "map",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "1a13be86daa2f4284575f684e0e6a00eaf5a0dbb1443bea7416db4bdf9ea9c1e"
+    },
+    {
+      "id": "wifi-08267",
+      "screen": "map",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "2bba92ae8ec761afcae5ad56929025575dc052f3b1e5151fbee61d564e81bce6"
+    },
+    {
+      "id": "wifi-08278",
+      "screen": "map",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "bc49a92eb8066664eb85a72305bc0ed513bf51974eb703cfaa11744d47163bdc"
+    },
+    {
+      "id": "wifi-08280",
+      "screen": "map",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "9aa464122432d765796d524f92c5f09660658642c758ec4559e3b63fa4778efe"
+    },
+    {
+      "id": "wifi-08284",
+      "screen": "map",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "dfc6d2f47e7ab9f21c4cf5c31e46571e6df8c3d9ab4dbe3b0338e86b15b86635"
+    },
+    {
+      "id": "wifi-08285",
+      "screen": "map",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "2d8ef6075568c97695eaab46c25c16e120cf989fd9ce8637bf105d0e3e7e70c3"
+    },
+    {
+      "id": "wifi-08295",
+      "screen": "map",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "22e5c89cfff849ca5e55c3203d2b0a726420c8d21d47f1f1a91ca3a1e6e0b61c"
+    },
+    {
+      "id": "wifi-08299",
+      "screen": "map",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "d2ae9041f1cda175e43d7208ddcba553b9c6702a852e9a63623655cf7c07687e"
+    },
+    {
+      "id": "wifi-08306",
+      "screen": "map",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "a4958d9b7d6097df1dc07d5458da88da597a7e7c40204c8a0d7150539af26439"
+    },
+    {
+      "id": "wifi-08316",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "291f8421e5d7a9af0bcca8c3e22873a2745714b4169e4963609232589f650b5a"
+    },
+    {
+      "id": "wifi-08326",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "0dcd4beca3692134dfa854e839df259d5355d6fc8e8686bd33a30708dd9b9715"
+    },
+    {
+      "id": "wifi-08352",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "9ba09dd05a94b52556de2f5b86e580ea20a4ce4a5fad5382e9e0e6496ae4df7c"
+    },
+    {
+      "id": "wifi-08357",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "ff29cc0b31e97cec6050e56822107cf12bb23beb62e1f608ffcb63017222ce2d"
+    },
+    {
+      "id": "wifi-09405",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "f47515f0fbfbe6fb267a4a368863894ba3b4dcb641b2ab683af7ce76a3569834"
+    },
+    {
+      "id": "wifi-09806",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "36ad4d13f88be4119a312caa3a691ba5aa715c73f9caa5ca4a79c992e0dee84a"
+    },
+    {
+      "id": "wifi-09858",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "bd4376769df106a7dcce1648e6a419a9df6ff1d8daed348f3f969173c3bafe61"
+    },
+    {
+      "id": "wifi-09988",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "63da4ba3ef4fabe0649ccc5796e40d5df8465d677c6b8f5ff95f4f2205c6b85b"
+    },
+    {
+      "id": "wifi-10183",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "e1979ffef328f6ca392a8428e8c9da08817ac625c1bc3e4782c514bd93aea0db"
+    },
+    {
+      "id": "wifi-10855",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "80827e10c49461914af167171dac1f2b5625098ff088246dc5eba4c6fd2ac621"
+    },
+    {
+      "id": "wifi-10932",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "439d07c118c2bb6136d4a328c545f445cbc5eeb5e459398d885a6104347e3e63"
+    },
+    {
+      "id": "wifi-10939",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "5cda82cf7b7245f192f46f47e9154a99523a3b0477f2ac7af0af084597f93283"
+    },
+    {
+      "id": "wifi-10944",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "5627f1645b04cf9880e75180e9c1491fda0bf9e6e5e8e518f97db11593f99a75"
+    },
+    {
+      "id": "wifi-10946",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "2fbe2c115e360ce510c7d6cc16525c19e1266006c6f0c437d5bb8dc9cd0c43cd"
+    },
+    {
+      "id": "wifi-10950",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "ffd8160c38ae2af600c352d1f7275907c044934cbc9f791252de41d4bc3aae4b"
+    },
+    {
+      "id": "wifi-10952",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "55e0405b82ad5f7e9b642085d996b64493bdfba70b1f7b3eecad7c758e30e52a"
+    },
+    {
+      "id": "wifi-10956",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "91e2287b5c3da1373c3ccc6a58235421c844865b66418d796786bd9e244f2810"
+    },
+    {
+      "id": "wifi-10961",
+      "screen": "weapon_wheel",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "7bd5124c849112f89a718e26493b36e94bd0be9b0ce8736a098a07c2730f5003"
+    },
+    {
+      "id": "wifi-11078",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "9349fa1b9a22f41d02c304b7659dcf1ecea66086914c0fb5cd26245cbb7915dc"
+    },
+    {
+      "id": "wifi-11128",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "073972b44a60b5da8e7cbd573f1bd33cd43434a9175d1ac787261a44dae6c91a"
+    },
+    {
+      "id": "wifi-11262",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "4b191568f57b357b6b77fbac624f2a8640a08baf67703ba38ba580359a348cad"
+    },
+    {
+      "id": "wifi-11373",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "cb8666ffff5c2427da78e88c9bf4acec192013899d53407b5cca5650d440f4c3"
+    },
+    {
+      "id": "wifi-11550",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "57e2b87fb5e2ec15078883405663465a0d53582d2808e6f57bf79215784d8493"
+    },
+    {
+      "id": "wifi-11963",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "2482fb86562b5ad7896cc718da7cb55eace2e44a16b77b09433cbb2943924ce1"
+    },
+    {
+      "id": "wifi-12601",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "84b1997a5815ba7d09c03a13735556b6520116e6522efbd8f8f82711fc4e719c"
+    },
+    {
+      "id": "wifi-12613",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "5a86b10b8333bb041b3eabb0b1481ccc25ffd555d3fce2dd3e258d8a707baafb"
+    },
+    {
+      "id": "wifi-12900",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "c99dd2b4a84f489cde0faf9154bc51a00f6ca0d880cd68c401ec218011f4b14c"
+    },
+    {
+      "id": "wifi-12956",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "01812b11807725f7799bb176d144fdb60e3eb9691ab04c53f57dc5a4890f4bfe"
+    },
+    {
+      "id": "wifi-13181",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "14dd30a528fe6f652962308af18fb830a4dc350d0b4809ac012323384f02f93c"
+    },
+    {
+      "id": "wifi-13264",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "8871f4e4d6953c48dee0d85a8d32b6980394005d3d183cb6d117dd0823c6fd75"
+    },
+    {
+      "id": "wifi-13268",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "ddebaf7582206cd5c1c92fd6d4fc379942bf1580ba85a490814ec8c8b8b169e8"
+    },
+    {
+      "id": "wifi-13354",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "24246a3cd01960e7ff1aca4a9070fddeed189a19b0963475013dbb97c820f0b9"
+    },
+    {
+      "id": "wifi-13408",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "8a51bab368d9667427eb2e73502ebb2bf9109277fafc7f19c16f334df4d89fd5"
+    },
+    {
+      "id": "wifi-13477",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "57455ac0fa4d285c351249a85c84e756fee2cc141ceaf8880c41f656fea5ff40"
+    },
+    {
+      "id": "wifi-13703",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "7b2333735ec9f7258de8b6697121e373d5c09abf5d145065b8ae535a8956dfe7"
+    },
+    {
+      "id": "wifi-13737",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "0e0960d15a1d2f01095910521ff2a05aa940c3faf567965ee3d245d21df686f4"
+    },
+    {
+      "id": "wifi-13832",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "7cfb96c58e692783e8ef27ae6ce570773c31fc8a2ff978c2b8a1dd5d402f12dd"
+    },
+    {
+      "id": "wifi-13898",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "7757a696b5c7802daf6f391d281e8881581aa26926d2d72206f89bcddfdb0f00"
+    },
+    {
+      "id": "clean1-00818",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "b1dd540289a78d2b186440c6f6cab7d0bd8aacabae389dd96403c59f988edda9"
+    },
+    {
+      "id": "clean1-00989",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "c1cf989658bbb020dedfeb315e21d794b5a3910833def31b7e21c1f4bc6d13bf"
+    },
+    {
+      "id": "clean1-01027",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "26dcb688153a34dcaa9a327d70b43721ab039d17453773068241c608709fed55"
+    },
+    {
+      "id": "clean1-01987",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "b9637c6bbe19e0fa89d8bcc88d2ed02c52f0095185fa2c33cd01173aa0088d02"
+    },
+    {
+      "id": "clean1-02885",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "9ed5a9d6ebd2ef681e3fa068a4f278117a9a8caf6c9cf317f3c6cff69be40f69"
+    },
+    {
+      "id": "clean1-03346",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "6ffc5ad822b9b446d426b62e8b12ed552f0bd8dd9b03dfda872f8cab7888c538"
+    },
+    {
+      "id": "clean1-03713",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "0b0c76e6e171b778dd6d8039887fc8ed42cdd0c30c80b12846138423927b534d"
+    },
+    {
+      "id": "clean1-04740",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "f4eed3f6e6576176bcbc41f4c4a16f23d8a3fe465a62fc375ae0d82b77de9181"
+    },
+    {
+      "id": "clean1-05489",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "d95440c965e446f16db7982d2bc066c216f17729474ef453f263fd48dafab424"
+    },
+    {
+      "id": "clean1-06558",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "ec861fb6f068fc2e21f3113019de434399f71e04b1858be81cb93babd8ea23a4"
+    },
+    {
+      "id": "clean1-06576",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "a65d30e2dab057bbef59f2c0ec9bf330819a83dc8a8d98c72290607a28851b99"
+    },
+    {
+      "id": "clean1-07402",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "b899802a8bc17c93dbffb003dd35c55aadb7acf3d343012ced990fc346f6e7f1"
+    },
+    {
+      "id": "clean1-07920",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "a645ea590b2f99541f773561596906a330bd30c40650af53f5c69a9ec483b1ae"
+    },
+    {
+      "id": "clean1-09918",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "464e6e5dc499ce1b4afa0a1d6778ed86228ca4ff4c1e3cd845b6de86715494c8"
+    },
+    {
+      "id": "clean1-09970",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "5a28acf8022dbc8b109dd737c3c09e5fffce95dcdcf5ca6cd973b1823d7e2dec"
+    },
+    {
+      "id": "clean1-10417",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "182d87cdf5f018c834a3571d2b8c19c552155cc45aa7e3e3882fc1088b25196d"
+    },
+    {
+      "id": "clean1-10421",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "198cf610f5a69bcbdf6b70bf8f32debb26edc56f9a1e0787431c465bef407f56"
+    },
+    {
+      "id": "clean1-11694",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "d33ba890153eccbe67cc909aec9bef9ac603db6a7d8c0cfda1c57984cd60f80b"
+    },
+    {
+      "id": "clean1-13082",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "478ed4ed0fb1e66280972bc4fff1c331ab813491b7fbb8dce476bde6aea10651"
+    },
+    {
+      "id": "clean1-14343",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "860451b798b95273cf37e01163c4acfc52b8a9df04b0ae61c6585baa79c340ac"
+    },
+    {
+      "id": "clean2-00345",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "d7fe87c4007889a2b6475f56baf20d845ae7bc75ff232823ed5648e35b94e64b"
+    },
+    {
+      "id": "clean2-01544",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "8170b9dc0bbe0670d16a8cf0d73b1e383bf9e1de36308fa5a0429a782d99b594"
+    },
+    {
+      "id": "clean2-01932",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "e15a09db077b88f1b01cf3d117c7991286d8b4af15772fa1aba3d316be14edda"
+    },
+    {
+      "id": "clean2-02936",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "80ae21da30e4398aaa5ec698a25d7d87253c739c22da17fce44759a64c7409f5"
+    },
+    {
+      "id": "clean2-04045",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "c374078beb585198ff97f3cd1ee2198ff874e5704b270d1b8163fc93831b99c5"
+    },
+    {
+      "id": "clean2-04741",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "1202deb4442bf243a42632d6a3f815c21a0a2a549dd83c455dd60436dc4c6965"
+    },
+    {
+      "id": "clean2-05491",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "3fd4a10278554fbce0d577413d5f177210097b582a48ccc914db5c6d5a78b7af"
+    },
+    {
+      "id": "clean2-06144",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "c2364be087eb3d3a14373ccbfe2f099b0a0c3309b01ff93bf08ac4206e0e28c8"
+    },
+    {
+      "id": "clean2-06321",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "f11f7a5abfb44d95c391cab2d4f18b634a7d04fd7ea61e2c861ee341c4321b37"
+    },
+    {
+      "id": "clean2-06654",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "f6eb4213f0f147fb6669f6d8489bb5d3938bd524aa0c2f7f8af59b37b6dc611a"
+    },
+    {
+      "id": "clean2-06795",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "d7b7fe4eb1e0c4d7b74b74d982208bc8a776b8bae5064040795fdcaa3765b13a"
+    },
+    {
+      "id": "clean2-07360",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "e6b10c0d26f44d1e52931e5dfaee720187f88fb5daa7518574c54e797d94b3f3"
+    },
+    {
+      "id": "clean2-08819",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "055b34c2390c4c89bef1f5d9456836ad01144c4194bda66587d0740572d614b3"
+    },
+    {
+      "id": "clean2-09133",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "dbeae2a0819eeed996e587e6f56ea8e35cb1070bf5df4ba4844abdc82fb76584"
+    },
+    {
+      "id": "clean2-09456",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "b0fc86fdbdd21a08fbb659e63930730e12d49974eb854dfd4a7d5f3724810bcb"
+    },
+    {
+      "id": "clean2-10791",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "785d84e7b035c1aec1b61db1a38551c51977dd37eee2731421e891a7c7a99d82"
+    },
+    {
+      "id": "clean2-11752",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "6443161569070ab4283ccb5a93d54f21239fa7a7745d306943161f39cbdc88a6"
+    },
+    {
+      "id": "clean2-12258",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "ed4d190b839817a126fb6529f446dc5b5ac7bd6a6acdc8d42e775c9657601c16"
+    },
+    {
+      "id": "clean2-12646",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "85042853deb687d0b7494ba5385300076ff5f244c56d56ace5ffc089254e1be9"
+    },
+    {
+      "id": "clean2-13382",
+      "screen": "game",
+      "expected": "none",
+      "actual": "none",
+      "visible": false,
+      "rgb_sha256": "011aaaa9e0e0ba63e2fcc948346a24ff52a5ea2ea30540b81bce2b116100c37c"
+    },
+    {
+      "id": "20261111-190825:24290",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "031ab32c26c5a1fca654f5a5328655fcb66c8630639f6eff34a1e137b63b1324"
+    },
+    {
+      "id": "20261111-190825:24291",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "e785276a443d0637fc285ea176164b5f30dc348f2d6f9d999a69b3b0241abf85"
+    },
+    {
+      "id": "20261111-190825:24292",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "14867a2fabbae073bc8e682e954a7429200e5a926e244b5f55e7e38df14b4024"
+    },
+    {
+      "id": "20261111-190825:24293",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "9946a8a971d575e8579cae21c03f86ff4e9cb6021eab9ee9f7707caa4f8cbf42"
+    },
+    {
+      "id": "20261111-190825:24294",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "91a351e8bd3a8c7607044b853f2b7beebc6a88e1bec82e9e003ca27afae9f098"
+    },
+    {
+      "id": "20261111-190825:24295",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "bfb02c84a67dfa8afa54ad13b68ac8a25c8741490827bcc7bb549a4c9d55fc4a"
+    },
+    {
+      "id": "20261111-190825:24296",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "a9f8910bdef41fc6bb5936c0b04392f1c9c10d2ced6490e85e203c4036636cce"
+    },
+    {
+      "id": "20261111-190825:24297",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "3b0a08d04bababffd407cb27e643ab2e17247b4160335db41340ef9eacac2d8d"
+    },
+    {
+      "id": "20261111-190825:24298",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "a77d715eb0befbada43ab5f1d86ec7b986ffe24dcd00c3e278a593beff589dbd"
+    },
+    {
+      "id": "20261111-190825:24299",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "689c32e1b6b1066295dec4837a87b5f0c991b140d8e6df30ded75da8ef8388b1"
+    },
+    {
+      "id": "20261111-190825:24300",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "6de7d3eb5498fe9c7d87e9700bf339a40ec56ab39f033aaa3cfdb719ba13804d"
+    },
+    {
+      "id": "20261111-190825:24301",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "5938dd22ecef3253b2801019631b3083b4edcdaba4d87d805f89443eb672022d"
+    },
+    {
+      "id": "20261111-190825:24302",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "a31d6c38ebaef58cd6c5cf51499cd849f102dd7dc346afa16d2f896ca35d8248"
+    },
+    {
+      "id": "20261111-190825:24303",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "6cd155120319a21edd83552cedbf36ade3a7837f34dec7ef5238362c9604462c"
+    },
+    {
+      "id": "20261111-190825:24304",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "94fbdfc749742cea01eb5941a508731d91b0ed2b29f37ad65c1385f52c60d988"
+    },
+    {
+      "id": "20261111-190825:24305",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "4fc918bb1f7c481a300debd465003e22c40dccdebe6311fcda01dd97a135d1f9"
+    },
+    {
+      "id": "20261111-190825:24306",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "1a9e7ce864c88b6823a21c0ff3c441287cff4afa77f50a6e8559f7bedc1eddf1"
+    },
+    {
+      "id": "20261111-190825:24307",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "629348c92383357e98f2d9299935a87950cd8589039a497123687fadbcbeb52e"
+    },
+    {
+      "id": "20261111-190825:24308",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "75dd62a3180783c724ce91aeea996bc0c62051395f697bc2fe6b48310bbcaf45"
+    },
+    {
+      "id": "20261111-190825:24309",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "0ce0e79c21f198e4181ec1bcbd1af9f9e760bb23845c076ece424fd94eef797c"
+    },
+    {
+      "id": "20261111-190825:24310",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "17bb1a63724c9d15a35584c7741c551a715d7ca73bed55bb239af284019b642c"
+    },
+    {
+      "id": "20261111-190825:24311",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "f8e59945cc050371def2bdbc2e52c55a05fb79fe48689e3ece459d709b580135"
+    },
+    {
+      "id": "20261111-190825:24312",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "d0679a5461a3b5af6a913638f0a633b90ca5820b5e3feb89c157d0fcea9d7a39"
+    },
+    {
+      "id": "20261111-190825:24313",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "a8ce64c752551fe0471664e305ca2950a13ff329e4a762f181cc431537c0740d"
+    },
+    {
+      "id": "20261111-190825:24314",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "eae4d727ecf70c702069e29d30ed4e322d0d909d5d630c32dea9e78e3037a64c"
+    },
+    {
+      "id": "20261111-190825:24315",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "399607add1b2c5efa9a7040e247eaec8b1322b6e94bbb060ed366d01d11e0e9f"
+    },
+    {
+      "id": "20261111-190825:24316",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "680f21477ad9e738d0174e2ae96eb531a214d0dfa6c660948bceafc082877911"
+    },
+    {
+      "id": "20261111-190825:24317",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "19683bc30dbd6f3725bbcc12238c3caffa23450413eb02f1013d71e79af84604"
+    },
+    {
+      "id": "20261111-190825:24318",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "c0f51d8f6f71ce8f82a8b665a607514d2343bba87b0575ef0eed604de99c2639"
+    },
+    {
+      "id": "20261111-190825:24319",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "3ce4f4cfdeb165bea7cc2d7a9d1e7178b69925c99fc1de4d5e4a57344809873f"
+    },
+    {
+      "id": "20261111-190825:24320",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "91e3198543ee74f340216dca3a1929f78ab22a6ccb9e493dca06da1cbf8d0577"
+    },
+    {
+      "id": "20261111-190825:24321",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "389cb0de8fac4140f23b54c41d407d1380497f30d606042e67c4f63145651f47"
+    },
+    {
+      "id": "20261111-190825:24322",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "a9a0e8d25585b1d0604e5f4434a6e5c1fee9a4ea354f531f9195064dd8267708"
+    },
+    {
+      "id": "20261111-190825:24323",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "6243a743ac6dfc5f54decbe4b32471c72119dc20505147a2359a5551eb2c0fe4"
+    },
+    {
+      "id": "20261111-190825:24324",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "5b19186b907b0a1218885af0256e525eb959afb95c52470b0b13792e823b2c3e"
+    },
+    {
+      "id": "20261111-190825:24325",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "a825822283af3771d3d08bcb37461413e67067b2520c725bc4682208268672f5"
+    },
+    {
+      "id": "20261111-190825:24326",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "141fa7a69c3d59470c0acbe7c7d4ef1c210c0026d93780c7e4a82249e782426d"
+    },
+    {
+      "id": "20261111-190825:24327",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "22a1edb7391b28bd745d1a2da77507e638e0e5eba77f5d27d12cc6b05c5db9cf"
+    },
+    {
+      "id": "20261111-190825:24328",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "a4020e6e44fae9a5cf4a8cb1aa0b586c6c38b93f55df31282ffcbc3f9de91f2b"
+    },
+    {
+      "id": "20261111-190825:24329",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "a5775c40f1e4bb2cd6878663f8ea143dcca210909d34867da3ff7d8e294bccc3"
+    },
+    {
+      "id": "20261111-190825:24330",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "18d388dad6cc93cd394130d5b02b292c7ced18c87e9d1f4bc557dc4623183b9f"
+    },
+    {
+      "id": "20261111-190825:24331",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "c259c6701cd62271849392299371f6a234b92684355f6149ef8cd1ccc4bb424d"
+    },
+    {
+      "id": "20261111-190825:24332",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "f75994fe22cf95f4b8c6e8fe84254edd851a2790127c3d9404f19af3b26fbe5b"
+    },
+    {
+      "id": "20261111-190825:24333",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "42965aa2120c5c88ab9c5a53c5cea8bf18effcbe3b9853fcba15d80c022cdb88"
+    },
+    {
+      "id": "20261111-190825:24334",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "808682d3fc41b9b316122bdebce3aa6962845f593263e45e147de13b975439af"
+    },
+    {
+      "id": "20261111-190825:24335",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "7edf2539569782df30b18f176184a92e753f64b4ae8a000be76801eb9195db8c"
+    },
+    {
+      "id": "20261111-190825:24336",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "b2d317fd86112eaf6ecff898c31791d76902c6f6a501620920850b29614023b9"
+    },
+    {
+      "id": "20261111-190825:24337",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "d4dea1baf0905e6e5c26d35acec4a21fe44b8140fae890a90aa0dc6ee849fb0a"
+    },
+    {
+      "id": "20261111-190825:24338",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "487c0d23beee8806019c7399b2c7c3a6c3f854f99e750769853272c3275c376a"
+    },
+    {
+      "id": "20261111-190825:24339",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "8e33159b2fcbaf0a20c3e55bc904a37b7749741eeb39afd67c756b4d2bc6af97"
+    },
+    {
+      "id": "20261111-190825:24340",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "05efa928fde873c7a6c5d05536ab27597017e045d078f6b24992cd35c7000452"
+    },
+    {
+      "id": "20261111-190825:24341",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "0bed8b01381f965481f485bb135a398469f810671ebe3b5083ff0ab2595234ec"
+    },
+    {
+      "id": "20261111-190825:24342",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "7be6b27f00f0096d2420ffe0eb7ef114db77e335c96b75a95eece8f3787f7aeb"
+    },
+    {
+      "id": "20261111-190825:24343",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "58a47836aa4c4184feb1c6296bdad22fb85be11b22213a818e182a7918ac48c3"
+    },
+    {
+      "id": "20261111-190825:24344",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "95cb30ccac77d9a5788fd3715904c34185897901f9f92d5b27342d4a13edbd80"
+    },
+    {
+      "id": "20261111-190825:24345",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "8824a9404ad2a24a9c5dbf868bd061cd4382a23a16267048eb5e1cca0e701d33"
+    },
+    {
+      "id": "20261111-190825:24346",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "81fa2b819a9684e9880b489141c3a57464a3d9187c9f4213c4fcccdb1f9c03a1"
+    },
+    {
+      "id": "20261111-190825:24347",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "eece95483ba921812e047155f6ff6c5c92473c7107991c123f6d79b6b86c3034"
+    },
+    {
+      "id": "20261111-190825:24348",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "39847e6a26028d16586c4e1ae38f5c95d6e76f3b5d7a78daba480d7bc8ab3c87"
+    },
+    {
+      "id": "20261111-190825:24349",
+      "expected": "top",
+      "actual": "top",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "5bd836f4855153c32531d2542e6ade1d46e0b9aa8682b09dff96d8ddad97a22e"
+    },
+    {
+      "id": "20261111-190825:24360",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "c024752d2d81b6eb085b7b79edecf30417ced6cfd6312e7aa465a124068d058d"
+    },
+    {
+      "id": "20261111-190825:24361",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "d209fbde1530f51b35f808f53ecf6b103bc5145bc17e1cbfb04a1a37a5f77cd7"
+    },
+    {
+      "id": "20261111-190825:24362",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "e406f5fc9c0c33a31c0bf7cd3b1b03ac7eb6ac0ade90d3cbdc68e07a3b06ce7a"
+    },
+    {
+      "id": "20261111-190825:24363",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "bfbdeae3004c4b19d770ed064cb387b72193000bf9a224dd02a1cc371229ab72"
+    },
+    {
+      "id": "20261111-190825:24364",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "70fc5026b4f08188f7830bd8f181bb1dcf9c626b11ba235afae9278fa3b5d29b"
+    },
+    {
+      "id": "20261111-190825:24365",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "2ff8e221496621fa8e84826609205b9665302a6cf702925a9d9f8b8012d385d3"
+    },
+    {
+      "id": "20261111-190825:24366",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "2b27f7582a8ed3fe2f71e5ecd170227b7134095eaa9d5ea4d992138564f1c664"
+    },
+    {
+      "id": "20261111-190825:24367",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "06a0d3b7dd3c7c496effeec398fd489b0818b5aa93ead1b23b852dfdc26aa0e4"
+    },
+    {
+      "id": "20261111-190825:24368",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "cdc7d1ec5cc6cc2350d07362c532c2ea8afbbb7dbcc76db80ef2ab9e9251aad5"
+    },
+    {
+      "id": "20261111-190825:24369",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "474a23b03869b8975d62dc29a2fc9ff4a66abdba99652289cf48d2c5cfab8326"
+    },
+    {
+      "id": "20261111-190825:24370",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "fee1295a97b2c11a25a8dba40c2bed9484748cc1251dcc7f91cf7ca42e15091c"
+    },
+    {
+      "id": "20261111-190825:24371",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "906182b0efa47cc1387752db97c4155f0b565923d75625ff26aec001c62b1171"
+    },
+    {
+      "id": "20261111-190825:24372",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "75014d102273edd249624800087905d41c3beb8f20c79f81473ecceea37160d3"
+    },
+    {
+      "id": "20261111-190825:24373",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "cb75ba780215b373fd0b866b4365fac3070836dcec4e3b30624900fbcc202730"
+    },
+    {
+      "id": "20261111-190825:24374",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "fb332e1226b19ff140043e8a17401a121d24d9739445bac2c2dac8231f8df805"
+    },
+    {
+      "id": "20261111-190825:24375",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "acaf1a6d044a434db232ef03ce78e7364b3f33d88a45d044000b7150adaf2062"
+    },
+    {
+      "id": "20261111-190825:24376",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "489020bb05441eb493fe17fca8555dff6b9ee0673655b685a83fb54ac7979144"
+    },
+    {
+      "id": "20261111-190825:24377",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "25add00df2e67472ea5358cbfe70a225ec5c6114ff9ba4f913531dddf6b2159c"
+    },
+    {
+      "id": "20261111-190825:24378",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "ef3d60b868d1bca0c6e63408c03716d121cd884d3f7bb9a8a7f4a4de1af92490"
+    },
+    {
+      "id": "20261111-190825:24379",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "6d1baf3573f06cf43f756c1b6b3b9515a3190c632e4477d3477734ab8539fad1"
+    },
+    {
+      "id": "20261111-190825:24380",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "72df121de8b061580300e4d2f2426768d1eaa09469decc1d5c2407143a48421b"
+    },
+    {
+      "id": "20261111-190825:24381",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "b4740af7381a9fccc23ef4aed9f82267f71d71f38c286893cad3e443552cbac2"
+    },
+    {
+      "id": "20261111-190825:24382",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "b0a8a88b7e008f0a41913ffe132a87b1d435db42979bce1abe5c7e06d0b60175"
+    },
+    {
+      "id": "20261111-190825:24383",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "00417bea7c00723c7f994c7a739312d7f1128f373284e348639df8ac71924a81"
+    },
+    {
+      "id": "20261111-190825:24384",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "b99eeb56779cb0c90524e11f5a068ca3fb1689c4b237b776c38638a7764ac094"
+    },
+    {
+      "id": "20261111-190825:24385",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "be7d2b52d4eb5759d5944908aecc02403747f16a00900e43197822905934a909"
+    },
+    {
+      "id": "20261111-190825:24386",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "c56d10960b8378754773bc0fe9b032d77e470c52fa09b30b0bad1d62eb748257"
+    },
+    {
+      "id": "20261111-190825:24387",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "459d04cd2d2485d31b29724d5a5341fe2320efed039bc979d3c530d32c14531e"
+    },
+    {
+      "id": "20261111-190825:24388",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "77fcae1e6a614a9c4900198f063c7750dcb4851cb68f42d07cb8248018280225"
+    },
+    {
+      "id": "20261111-190825:24389",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "ee1682f2579225cc00dfbc065f2c7e2d093f2468a8c5274a5b0f21dfd14dfb96"
+    },
+    {
+      "id": "20261111-190825:24390",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "cf29952a40db2899430c938ad29b6f76277971c226a57c1e7ea23c490bf9ed64"
+    },
+    {
+      "id": "20261111-190825:24391",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "28dc14c048b438ee76e1c305284e36f4120dd83c2a845535083505f36d4cc38f"
+    },
+    {
+      "id": "20261111-190825:24392",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "c8b8533b905a35dd207cb1cf1c14ebfe33ce68992410b9701a9671777b418d03"
+    },
+    {
+      "id": "20261111-190825:24393",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "40e36bd766bf128faff965661d617d2a9e9af7cfcea7b355e9b04754bf423a7d"
+    },
+    {
+      "id": "20261111-190825:24394",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "66ed6f4c061b6b2088d51c86be36295a657b7d3c1eadfe55e42151d92209e6c1"
+    },
+    {
+      "id": "20261111-190825:24395",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "7e2c7032cd85db2bf368a71cc61e95fb8a25994b19753f28d9bf4f7376ce2d84"
+    },
+    {
+      "id": "20261111-190825:24396",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "d1360ab3d81fed07c4c9c6db868388de48b1bb3b5ba68efeff6568d56d332143"
+    },
+    {
+      "id": "20261111-190825:24397",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "6a338bf3c85da181d06686a1985f9f0828ef94953c4685ec522c6bbe1130ba2d"
+    },
+    {
+      "id": "20261111-190825:24398",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "49024b5d06d35f5fc7c9b5e11360fcf54241a00966b918af54abd211046b6319"
+    },
+    {
+      "id": "20261111-190825:24399",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "f6cbc5f175cb53f381533399855919ab777968b154012503f5210d63528e064e"
+    },
+    {
+      "id": "20261111-190825:24400",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "ef6d39dfc4e174ff8ac02eb6a2eff7f19467a8993296f4100efafd9b38e3f7b3"
+    },
+    {
+      "id": "20261111-190825:24401",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "cd6db3c508f9221148fac3daccfaaaa9ac078ffed1df8686550cd036a7626dd8"
+    },
+    {
+      "id": "20261111-190825:24402",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "cc496685c379a7d764a199e385aacfb5ab9ad6c0625a0439cdcfb6fcfe227cfd"
+    },
+    {
+      "id": "20261111-190825:24403",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "33104fcf7b177efa33f40952ea9a795de353dba2782681b285177626ca24259e"
+    },
+    {
+      "id": "20261111-190825:24404",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "b3b843482323e418010b74719efc46e733a98aeebafa2a24028f2219918baee2"
+    },
+    {
+      "id": "20261111-190825:24405",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "7d5bc6afdd2e3279df39cbdf8613d66df1a4bf68fd404bd49a16060c7747131d"
+    },
+    {
+      "id": "20261111-190825:24406",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "9df40ca4ef9f3f0f3584763f86c9cdcfd27cbc134aa0ea8abd4d25b9c5b1c20f"
+    },
+    {
+      "id": "20261111-190825:24407",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "c911346d09298751bb7adbfa05300147f7cab44fb21c1f61bd43f98713d15d98"
+    },
+    {
+      "id": "20261111-190825:24408",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "c147f8e911d4acf00224cfe96ad467c049e96fe68c73338683b4c608b5b7fb09"
+    },
+    {
+      "id": "20261111-190825:24409",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "1504215bcb0ded65f9c9109171cfe17e6e2ed8f3c233279d9b6eefd60faecf45"
+    },
+    {
+      "id": "20261111-190825:24410",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "73e652d51fa1432030022adad293495e2cba3d276886449d126bdcc3bacb12af"
+    },
+    {
+      "id": "20261111-190825:24411",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "417c012d057e6a4cb156d24dc2585da5e913e8e71f28251bc9522a1f497698d8"
+    },
+    {
+      "id": "20261111-190825:24412",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "b58771bbbcba02465a359a523e049ee2eac82fa493a22d6dce61b03fcd63a7be"
+    },
+    {
+      "id": "20261111-190825:24413",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "786adc0d5556935a7d62470b282994c4bb90d40e53a0edec1be5c349859127c2"
+    },
+    {
+      "id": "20261111-190825:24414",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "56669a0d5e32fe318165ffd11d56ebc7b76c682fee50cb67ed7261a0fcc8e99f"
+    },
+    {
+      "id": "20261111-190825:24415",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "7f81ceaeecd223457d5bb3f4d067e576ae831b38b814e15d69c292d2d7fc998d"
+    },
+    {
+      "id": "20261111-190825:24416",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "9cca89c79c1b8d0ebd6c85841da86a9b33f8f0392fe98eaf15d90a516431c108"
+    },
+    {
+      "id": "20261111-190825:24417",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "aa41ec40f521b089d1c63fc9006869e6e9ddd39033935e8eb6f449f9e2c25e21"
+    },
+    {
+      "id": "20261111-190825:24418",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "c2b54c4e702976b47c0738e450f77ac9eeecb870721db7e8aba51cd8fa8dfe95"
+    },
+    {
+      "id": "20261111-190825:24419",
+      "expected": "left",
+      "actual": "left",
+      "visible": true,
+      "disabled": [],
+      "rgb_sha256": "41d0b39e638fe233a5dcb637a204248e19b77198bf87574bf3479fb61d874483"
+    },
+    {
+      "id": "20261112-105402:9698",
+      "expected": "right",
+      "actual": "right",
+      "visible": true,
+      "disabled": [
+        "left",
+        "top"
+      ],
+      "rgb_sha256": "e3a9d3b6354649ae8db0f8eac2a21e99ddf53ba3718a3f574bd36ca454b619ea"
+    },
+    {
+      "id": "20261112-105402:9699",
+      "expected": "right",
+      "actual": "right",
+      "visible": true,
+      "disabled": [
+        "left",
+        "top"
+      ],
+      "rgb_sha256": "4c5f71808a5c20276d769526fd869d2bc5f788e99e241e05fb1173deb6d708dd"
+    },
+    {
+      "id": "20261112-105402:9700",
+      "expected": "right",
+      "actual": "right",
+      "visible": true,
+      "disabled": [
+        "left",
+        "top"
+      ],
+      "rgb_sha256": "02a7ea408cadd98950e8809f0b23bcb6ec650f2c95cedefe1380197686709e61"
+    },
+    {
+      "id": "20261112-105402:9701",
+      "expected": "right",
+      "actual": "right",
+      "visible": true,
+      "disabled": [
+        "left",
+        "top"
+      ],
+      "rgb_sha256": "d4ab3183fd3e95e539dfd59d0a436733f0b9ea7e67d98bbe8f9d94c3fd47ff8e"
+    },
+    {
+      "id": "20261112-105402:9702",
+      "expected": "right",
+      "actual": "right",
+      "visible": true,
+      "disabled": [
+        "left",
+        "top"
+      ],
+      "rgb_sha256": "ee4405e7bc4f757a4df15a8dff5b7faf5857ebb5ab087c41e3b35f7725533f35"
+    },
+    {
+      "id": "20261112-105402:9703",
+      "expected": "right",
+      "actual": "right",
+      "visible": true,
+      "disabled": [
+        "left",
+        "top"
+      ],
+      "rgb_sha256": "3e2e3d9fdf555555ab524d8e12ad01184f96c0eacab736ba101f1f1dc4c1f78c"
+    },
+    {
+      "id": "20261112-105402:9704",
+      "expected": "right",
+      "actual": null,
+      "visible": true,
+      "disabled": [
+        "left",
+        "top"
+      ],
+      "rgb_sha256": "e950943cd3fc85f2b9f08aaef5279b47c610ea73f699fe47301cf733c8e5ca41"
+    }
+  ]
+}

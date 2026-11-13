@@ -1,0 +1,108 @@
+{
+  "recording": "20261111-190825",
+  "objective": "absent, visual annotation",
+  "transitions": [
+    {
+      "i": 24284,
+      "frame_id": 2497,
+      "t": 427.0075,
+      "phase": "opening",
+      "status": "running",
+      "reason": null,
+      "minimap": "flat",
+      "screen": "game",
+      "rgb_sha256": "fefe54bcef1a07b61a2eba0773dd2baf967c8474f267a8915d9d0de59ebba8df"
+    },
+    {
+      "i": 24290,
+      "frame_id": 2503,
+      "t": 427.0256,
+      "phase": "selecting",
+      "status": "running",
+      "reason": null,
+      "minimap": "flat",
+      "screen": "game",
+      "rgb_sha256": "031ab32c26c5a1fca654f5a5328655fcb66c8630639f6eff34a1e137b63b1324"
+    },
+    {
+      "i": 24361,
+      "frame_id": 2574,
+      "t": 428.1987,
+      "phase": "releasing",
+      "status": "running",
+      "reason": null,
+      "minimap": "flat",
+      "screen": "game",
+      "rgb_sha256": "d209fbde1530f51b35f808f53ecf6b103bc5145bc17e1cbfb04a1a37a5f77cd7"
+    },
+    {
+      "i": 24377,
+      "frame_id": 2590,
+      "t": 428.4659,
+      "phase": "returning",
+      "status": "running",
+      "reason": null,
+      "minimap": "flat",
+      "screen": "game",
+      "rgb_sha256": "25add00df2e67472ea5358cbfe70a225ec5c6114ff9ba4f913531dddf6b2159c"
+    },
+    {
+      "i": 25052,
+      "frame_id": 3265,
+      "t": 439.8396,
+      "phase": "finished",
+      "status": "done",
+      "reason": "switched: michael; was: franklin",
+      "minimap": "tilted",
+      "screen": "game",
+      "rgb_sha256": "f99597517f9cfb1933ab23369540815405afbc2e3602af1062aebfce04fac8cd"
+    }
+  ],
+  "pad_changes": [
+    {
+      "i": 24284,
+      "t": 427.0075,
+      "buttons": [
+        "down"
+      ],
+      "right": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "i": 24290,
+      "t": 427.0256,
+      "buttons": [
+        "down"
+      ],
+      "right": [
+        -1.0,
+        0.0
+      ]
+    },
+    {
+      "i": 24361,
+      "t": 428.1987,
+      "buttons": [],
+      "right": [
+        -1.0,
+        0.0
+      ]
+    },
+    {
+      "i": 24377,
+      "t": 428.4659,
+      "buttons": [],
+      "right": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "returning_observations": {
+    "readable-game": 169,
+    "minimap-unread": 487,
+    "picture-unread": 19
+  }
+}
