@@ -1,0 +1,391 @@
+[
+  {
+    "group": "weapons",
+    "recording": "20261111-185323",
+    "requested_t": 51.506,
+    "reading_t": 51.5062,
+    "reading_i": 3072,
+    "raw_help": "DrQck8 • o urn dir Waffen 8n2U88hen.",
+    "raw_help_lines": [
+      {
+        "text": "DrQck8 • o urn dir Waffen 8n2U88hen.",
+        "confidence": 0.5,
+        "box": [
+          74,
+          45,
+          246,
+          11
+        ],
+        "region": "help"
+      }
+    ],
+    "consolidated_interval": {
+      "first": 51.5062,
+      "last": 52.03,
+      "text": "DrQck8 • o urn dir Waffen 8n2U88hen.",
+      "variants": {
+        "DrQck8 • o urn dir Waffen 8n2U88hen.": 1,
+        "DrQck8 •\"0 urn dir Waffen 8n2U88h8n.": 1
+      }
+    }
+  },
+  {
+    "group": "armor",
+    "recording": "20261111-185323",
+    "requested_t": 109.012,
+    "reading_t": 109.0122,
+    "reading_i": 6518,
+    "raw_help": "Druck8 t*a um dir Panz8rungen 8nzu5èhen.",
+    "raw_help_lines": [
+      {
+        "text": "Druck8 t*a um dir Panz8rungen",
+        "confidence": 0.5,
+        "box": [
+          74,
+          45,
+          208,
+          14
+        ],
+        "region": "help"
+      },
+      {
+        "text": "8nzu5èhen.",
+        "confidence": 0.30000001192092896,
+        "box": [
+          73,
+          64,
+          74,
+          11
+        ],
+        "region": "help"
+      }
+    ],
+    "consolidated_interval": {
+      "first": 109.0122,
+      "last": 110.0133,
+      "text": "Druck8 t*a um dir Panz8rungen 8nzu5èhen.",
+      "variants": {
+        "Druck8 t*a um dir Panz8rungen 8nzu5èhen.": 1,
+        "Druck8 •a um dir Panz8rungen 8nzusèhen.": 1,
+        "Druck8 • 0 um dir Panz8rungen 8nzusèhen.": 1
+      }
+    }
+  },
+  {
+    "group": "weapons",
+    "recording": "20261111-185323",
+    "requested_t": 136.005,
+    "reading_t": 136.0048,
+    "reading_i": 8131,
+    "raw_help": "Drucke • ö urn dir Waffan anzu88hen.",
+    "raw_help_lines": [
+      {
+        "text": "Drucke • ö urn dir Waffan anzu88hen.",
+        "confidence": 0.5,
+        "box": [
+          74,
+          45,
+          246,
+          11
+        ],
+        "region": "help"
+      }
+    ],
+    "consolidated_interval": {
+      "first": 136.0048,
+      "last": 136.0048,
+      "text": "Drucke • ö urn dir Waffan anzu88hen.",
+      "variants": {
+        "Drucke • ö urn dir Waffan anzu88hen.": 1
+      }
+    }
+  },
+  {
+    "group": "clothes",
+    "recording": "20261111-193105",
+    "requested_t": 592.502,
+    "reading_t": 592.5017,
+    "reading_i": 35221,
+    "raw_help": "Druck8 •% urn dir Hemd8n anzus8h8n.",
+    "raw_help_lines": [
+      {
+        "text": "Druck8 •% urn dir Hemd8n anzus8h8n.",
+        "confidence": 0.5,
+        "box": [
+          74,
+          44,
+          256,
+          12
+        ],
+        "region": "help"
+      }
+    ],
+    "consolidated_interval": {
+      "first": 592.5017,
+      "last": 593.5164,
+      "text": "Druck8 •% urn dir Hemd8n anzus8h8n.",
+      "variants": {
+        "Druck8 •% urn dir Hemd8n anzus8h8n.": 1,
+        "Druck8 •4 urn dir H8md8n aThzus8h8n.": 1,
+        "Druck8 • ö urn dir H8md8n anzus8h8n.": 1
+      }
+    }
+  },
+  {
+    "group": "clothes",
+    "recording": "20261111-193105",
+    "requested_t": 603.014,
+    "reading_t": 603.0135,
+    "reading_i": 35845,
+    "raw_help": "DrQcke t*Ö urn dir Shorts 8nzuseh8n.",
+    "raw_help_lines": [
+      {
+        "text": "DrQcke t*Ö urn dir Shorts 8nzuseh8n.",
+        "confidence": 0.5,
+        "box": [
+          74,
+          45,
+          241,
+          11
+        ],
+        "region": "help"
+      }
+    ],
+    "consolidated_interval": {
+      "first": 603.0135,
+      "last": 603.5127,
+      "text": "DrQcke t*Ö urn dir Shorts 8nzuseh8n.",
+      "variants": {
+        "DrQcke t*Ö urn dir Shorts 8nzuseh8n.": 1,
+        "Drucke •ö urn dir Shorts 8nzus8h8n.": 1
+      }
+    }
+  },
+  {
+    "group": "clothes",
+    "recording": "20261111-193105",
+    "requested_t": 618.012,
+    "reading_t": 618.0119,
+    "reading_i": 36739,
+    "raw_help": "Drucke • a um dir Gilets 8nzuseh8n.",
+    "raw_help_lines": [
+      {
+        "text": "Drucke • a um dir Gilets 8nzuseh8n.",
+        "confidence": 0.5,
+        "box": [
+          74,
+          44,
+          237,
+          12
+        ],
+        "region": "help"
+      }
+    ],
+    "consolidated_interval": {
+      "first": 618.0119,
+      "last": 618.0119,
+      "text": "Drucke • a um dir Gilets 8nzuseh8n.",
+      "variants": {
+        "Drucke • a um dir Gilets 8nzuseh8n.": 1
+      }
+    }
+  },
+  {
+    "group": "wardrobe",
+    "recording": "20261111-210812",
+    "requested_t": 155.501,
+    "reading_t": 155.5008,
+    "reading_i": 9315,
+    "raw_help": "Drucke •6, um dich umzuzi8h8n.",
+    "raw_help_lines": [
+      {
+        "text": "Drucke •6, um dich umzuzi8h8n.",
+        "confidence": 0.5,
+        "box": [
+          74,
+          45,
+          214,
+          13
+        ],
+        "region": "help"
+      }
+    ],
+    "consolidated_interval": {
+      "first": 155.5008,
+      "last": 155.5008,
+      "text": "Drucke •6, um dich umzuzi8h8n.",
+      "variants": {
+        "Drucke •6, um dich umzuzi8h8n.": 1
+      }
+    }
+  },
+  {
+    "group": "cover",
+    "recording": "20261111-164039",
+    "requested_t": 657.5,
+    "reading_t": 657.5202,
+    "reading_i": 38223,
+    "raw_help": "Druck8 n8b8n 8in8m Fahrzeug, um es als Dèck",
+    "raw_help_lines": [
+      {
+        "text": "Druck8 n8b8n 8in8m Fahrzeug, um",
+        "confidence": 0.5,
+        "box": [
+          74,
+          45,
+          252,
+          14
+        ],
+        "region": "help"
+      },
+      {
+        "text": "es als Dèck",
+        "confidence": 0.5,
+        "box": [
+          73,
+          64,
+          77,
+          11
+        ],
+        "region": "help"
+      }
+    ],
+    "consolidated_interval": {
+      "first": 657.5202,
+      "last": 657.5202,
+      "text": "Druck8 n8b8n 8in8m Fahrzeug, um es als Dèck",
+      "variants": {
+        "Druck8 n8b8n 8in8m Fahrzeug, um es als Dèck": 1
+      }
+    }
+  },
+  {
+    "group": "cover",
+    "recording": "20261111-164039",
+    "requested_t": 690.5,
+    "reading_t": 690.5481,
+    "reading_i": 40191,
+    "raw_help": "Drucka EQ. um in D8ckung zu g8hen.",
+    "raw_help_lines": [
+      {
+        "text": "Drucka EQ. um in D8ckung zu g8hen.",
+        "confidence": 0.5,
+        "box": [
+          74,
+          45,
+          243,
+          14
+        ],
+        "region": "help"
+      }
+    ],
+    "consolidated_interval": {
+      "first": 690.5481,
+      "last": 692.3224,
+      "text": "Drucka EQ. um in D8ckung zu g8hen.",
+      "variants": {
+        "Drucka EQ. um in D8ckung zu g8hen.": 1,
+        "Druck8 EQ. um in D8ckung zu g8hen.": 1,
+        "Druck8 EQ. urn in Deckung zu g8hen.": 1,
+        "Druck8 um in D8ckung zu g8hen.": 1
+      }
+    }
+  },
+  {
+    "group": "climb",
+    "recording": "20261111-172549",
+    "requested_t": 183.2,
+    "reading_t": 183.2498,
+    "reading_i": 10906,
+    "raw_help": "Drucke O, um ilber dss Auto 8uf d8s Daeh zu klomem, und d88 Fenster zu errdch8n.",
+    "raw_help_lines": [
+      {
+        "text": "Drucke O, um ilber dss Auto 8uf d8s",
+        "confidence": 0.5,
+        "box": [
+          74,
+          44,
+          246,
+          15
+        ],
+        "region": "help"
+      },
+      {
+        "text": "Daeh zu klomem, und d88 Fenster zu",
+        "confidence": 0.5,
+        "box": [
+          74,
+          64,
+          241,
+          13
+        ],
+        "region": "help"
+      },
+      {
+        "text": "errdch8n.",
+        "confidence": 0.30000001192092896,
+        "box": [
+          73,
+          84,
+          65,
+          11
+        ],
+        "region": "help"
+      }
+    ],
+    "consolidated_interval": {
+      "first": 183.2498,
+      "last": 185.6608,
+      "text": "Drucke O, um ilber dss Auto 8uf d8s Daeh zu klomem, und d88 Fenster zu errdch8n.",
+      "variants": {
+        "Drucke O, um ilber dss Auto 8uf d8s Daeh zu klomem, und d88 Fenster zu errdch8n.": 1,
+        "Drucke O, um ilber dss Auto 8uf d8s Daeh zu kloll•nL und das Fenster zu errdch8n.": 1,
+        "Drucke O, um ilber dss Auto 8uf d8s Daeh zu klomem. und das Fenster zu errdch8n.": 1,
+        "Drucke O, um ilber dss Auto 8uf d8s Dath zu klomem, und das Fenster zu errdch8n.": 1,
+        "Drucke O, um ilber das Auto 8uf das Dath zu klomem, und d88 Fenster zu errdch8n.": 1,
+        "Drucke O, um über das Auto 8uf d8s D8th iu klellwn, und d88 Fenster zu err￿Ch8n.": 1
+      }
+    }
+  },
+  {
+    "group": "talk",
+    "recording": "20261111-175312",
+    "requested_t": 499.5,
+    "reading_t": 499.5087,
+    "reading_i": 19116,
+    "raw_help": "Drucke t*4 um mir Ohnrn8chtig8r Zorn zu redÈn",
+    "raw_help_lines": [
+      {
+        "text": "Drucke t*4 um mir Ohnrn8chtig8r Zorn zu",
+        "confidence": 0.5,
+        "box": [
+          74,
+          45,
+          271,
+          14
+        ],
+        "region": "help"
+      },
+      {
+        "text": "redÈn",
+        "confidence": 0.5,
+        "box": [
+          74,
+          64,
+          37,
+          11
+        ],
+        "region": "help"
+      }
+    ],
+    "consolidated_interval": {
+      "first": 499.5087,
+      "last": 500.0072,
+      "text": "Drucke t*4 um mir Ohnrn8chtig8r Zorn zu redÈn",
+      "variants": {
+        "Drucke t*4 um mir Ohnrn8chtig8r Zorn zu redÈn": 1,
+        "Druck8 t*Ö um m5t Ohnrnachtig8r Zorn zu redÈn": 1
+      }
+    }
+  }
+]

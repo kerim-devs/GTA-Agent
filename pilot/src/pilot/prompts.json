@@ -1,0 +1,118 @@
+{
+  "prompts": [
+    {
+      "wording": "Drücke [glyph], um dir Waffen anzusehen",
+      "patterns": [
+        "dir waffen",
+        "dir waffan"
+      ],
+      "button": "right",
+      "kind": "press",
+      "seconds": 0.2,
+      "count": 5,
+      "confidence": "observed",
+      "examples": [
+        "20261111-185323@51.996",
+        "20261111-185323@136.166",
+        "20261112-130333@264.010"
+      ]
+    },
+    {
+      "wording": "Drücke [glyph], um dir Panzerungen anzusehen",
+      "patterns": [
+        "dir panzerungen"
+      ],
+      "button": "right",
+      "kind": "press",
+      "seconds": 0.2,
+      "count": 4,
+      "confidence": "observed",
+      "examples": [
+        "20261111-185323@110.978",
+        "20261111-185323@112.852",
+        "20261112-130333@274.053"
+      ]
+    },
+    {
+      "wording": "Drücke [glyph], um dir <Kleidung> anzusehen",
+      "patterns": [
+        "dir hemden",
+        "dir shorts",
+        "dir gilets"
+      ],
+      "button": "right",
+      "kind": "press",
+      "seconds": 0.2,
+      "count": 3,
+      "confidence": "observed",
+      "examples": [
+        "20261111-193105@593.536",
+        "20261111-193105@603.528",
+        "20261111-193105@619.010"
+      ]
+    },
+    {
+      "wording": "Drücke [glyph], um dich umzuziehen",
+      "patterns": [
+        "umzuziehen"
+      ],
+      "button": "right",
+      "kind": "press",
+      "seconds": 0.2,
+      "count": 2,
+      "confidence": "observed",
+      "examples": [
+        "20261111-210812@156.280",
+        "20261111-210812@178.958"
+      ]
+    },
+    {
+      "wording": "Drücke [glyph], um in Deckung zu gehen",
+      "patterns": [
+        "in deckung zu",
+        "fahrzeug um es als deck"
+      ],
+      "button": "r1",
+      "kind": "press",
+      "seconds": 0.2,
+      "count": 2,
+      "confidence": "observed",
+      "examples": [
+        "20261111-164039@658.044",
+        "20261111-164039@691.184"
+      ]
+    },
+    {
+      "wording": "Drücke [glyph], um über das Auto zu klettern",
+      "patterns": [
+        "um uber das auto",
+        "um ueber das auto",
+        "um ilber dss auto"
+      ],
+      "button": "square",
+      "kind": "press",
+      "seconds": 0.2,
+      "count": 3,
+      "confidence": "observed",
+      "examples": [
+        "20261111-172549@184.944",
+        "20261111-172549@190.400",
+        "20261111-172549@192.953"
+      ]
+    },
+    {
+      "wording": "Drücke [glyph], um mit <person> zu reden",
+      "patterns": [
+        "zu reden"
+      ],
+      "button": "right",
+      "kind": "press",
+      "seconds": 0.2,
+      "count": 1,
+      "confidence": "observed",
+      "examples": [
+        "20261111-175312@500.840"
+      ]
+    }
+  ]
+}
