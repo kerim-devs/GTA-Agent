@@ -875,6 +875,10 @@ class Conductor:
             and self.runner.active.name == "drive_route"
             and trip.progress_at is not None
             and t - trip.progress_at >= trip.PROGRESS_SECONDS
+            # Judged on what is read: with the printed distance unreadable the drive's own guards
+            # and the trip's budget rule, and a car that drives is not taken for one that stands.
+            and trip.read_at is not None
+            and t - trip.read_at <= trip.READ_SECONDS
         ):
             self.runner.stop("goal_trip_recovery")
             self._trip_log(t)

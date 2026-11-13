@@ -272,9 +272,12 @@ def test_time_limit_with_progress_continues_same_step_without_recovery(session):
 
 
 def test_no_progress_recovery_order_then_failure(session):
+    # A car that drives is driven off twice before it is left, the next car gets the same two tries,
+    # and only then is the trip given up. The destination is set once.
     session.drive()
-    session.until(lambda: session.active("drive_on"), seconds=30)
-    session.until(lambda: session.active("drive_route"))
+    for _ in range(2):
+        session.until(lambda: session.active("get_away"), seconds=30)
+        session.until(lambda: session.active("drive_route"))
     session.until(lambda: session.active("press"), seconds=30)
     # The new press really ran. The following changed observation is an explicit exit simulation.
     session.tick()
@@ -285,11 +288,77 @@ def test_no_progress_recovery_order_then_failure(session):
     session.reading = replace(session.reading, minimap="tilted")
     session.mode = "vehicle"
     session.until(lambda: session.active("drive_route"))
+    for _ in range(2):
+        session.until(lambda: session.active("get_away"), seconds=30)
+        session.until(lambda: session.active("drive_route"))
     session.until(lambda: session.trip.verdict is not None, seconds=30)
     assert session.trip.verdict["status"] == "failed"
-    assert [row["stage"] for row in session.rows("trip_recovery")] == [1, 2, 3]
+    rows = session.rows("trip_recovery")
+    assert [row["stage"] for row in rows] == [1, 2, 3, 4, 5, 6]
+    assert [row["method"] for row in rows] == ["loose", "loose", "exit", "loose", "loose", None]
     assert len(session.waypoints) == 1
     assert session.trip.place == PLACE
+
+
+def test_a_drive_that_gives_up_beside_its_route_keeps_the_car(session):
+    # 20261113-224327: the route began behind the car, the driver gave up twice within ten seconds,
+    # driving on ended at once because a route was on the map, and the pilot left a car that drove.
+    session.drive()
+    session.conductor.runner.stop("failed-recovery")
+    session.until(lambda: session.active("get_away"), seconds=5)
+    session.until(lambda: session.active("drive_route"), seconds=15)
+    ended = [row for row in session.rows("trip_attempt") if row["name"] == "get_away"]
+    assert len(ended) == 1 and ended[0]["status"] == "done"
+    session.conductor.runner.stop("failed-recovery")
+    session.until(lambda: session.active("get_away"), seconds=5)
+    assert not [row for row in session.rows("trip_attempt") if row["name"] == "press"]
+    assert session.trip.verdict is None and len(session.waypoints) == 1
+
+
+def test_a_car_that_is_held_is_left_at_once(session):
+    session.drive()
+    session.conductor.runner.stop("dead-or-held")
+    session.until(lambda: session.active("press"), seconds=5)
+    assert [row["method"] for row in session.rows("trip_recovery")] == ["exit"]
+
+
+def test_an_exit_seen_late_is_not_pressed_a_second_time(session):
+    # 20261113-224327: the door took 2.3 s and the eye another moment, the check came 0.8 s after
+    # the figure stood outside, and a second triangle put it back into the car.
+    session.drive()
+    session.conductor.runner.stop("dead-or-held")
+    session.until(lambda: session.active("press"), seconds=5)
+    session.until(lambda: session.active("wait"), seconds=5)
+    for _ in range(24):
+        session.tick()
+    # Out of the car, as the map shows it, while the eye still says seated.
+    session.reading = replace(session.reading, minimap="flat", route="none")
+    for _ in range(8):
+        session.tick()
+    session.mode = "foot"
+    session.until(lambda: session.active("walk_road"), seconds=10)
+    presses = [row for row in session.rows("trip_attempt") if row["name"] == "press"]
+    assert len(presses) == 1
+
+
+def test_a_distance_that_cannot_be_read_is_no_standstill(session):
+    # 20261113-225006: on a bright road the printed distance was not read for 39 s while the car
+    # drove, and the trip took that for a drive that came no nearer.
+    session.drive()
+    for _ in range(100):
+        session.distance -= 2
+        session.tick()
+    left, session.distance = session.distance, None
+    for _ in range(400):
+        session.tick()
+    assert session.active("drive_route") and not session.rows("trip_recovery")
+    session.distance = left - 10
+    for _ in range(100):
+        session.tick()
+    assert session.active("drive_route") and not session.rows("trip_recovery")
+    # Read again and no nearer: now it counts.
+    session.until(lambda: session.active("get_away"), seconds=30)
+    assert [row["stage"] for row in session.rows("trip_recovery")] == [1]
 
 
 @pytest.mark.parametrize("news", ["stars", "objective", "health", "standing", "ending"])
@@ -378,7 +447,7 @@ def test_a_picture_that_was_away_does_not_open_the_map_again(session):
 
 def test_progress_after_a_recovery_pays_it_back(session):
     session.drive()
-    session.until(lambda: session.active("drive_on"), seconds=30)
+    session.until(lambda: session.active("get_away"), seconds=30)
     assert session.trip.recovery == 1
     session.until(lambda: session.active("drive_route"))
     for _ in range(60):
@@ -386,14 +455,14 @@ def test_progress_after_a_recovery_pays_it_back(session):
         session.tick()
     assert session.trip.recovery == 0
     # The next snag begins at the first stage again instead of leaving the car.
-    session.until(lambda: session.active("drive_on"), seconds=40)
+    session.until(lambda: session.active("get_away"), seconds=40)
     assert [row["stage"] for row in session.rows("trip_recovery")] == [1, 1]
     assert session.trip.verdict is None
 
 
 def test_route_gone_near_the_place_while_on_along_the_road_is_an_arrival(session):
     session.drive()
-    session.until(lambda: session.active("drive_on"), seconds=30)
+    session.until(lambda: session.active("get_away"), seconds=30)
     session.distance = 30
     for _ in range(5):
         session.tick()
@@ -406,7 +475,7 @@ def test_route_gone_near_the_place_while_on_along_the_road_is_an_arrival(session
 
 def test_route_gone_far_from_the_place_is_no_arrival(session):
     session.drive()
-    session.until(lambda: session.active("drive_on"), seconds=30)
+    session.until(lambda: session.active("get_away"), seconds=30)
     session.distance = 400
     for _ in range(5):
         session.tick()
@@ -584,9 +653,9 @@ def test_progress_window_outlasts_short_drive_stretches(session):
             # Fault injection: end stretches early, without restarting the trip's progress clock.
             session.conductor.runner.active.limit = 2
         session.tick()
-        if session.active("drive_on"):
+        if session.active("get_away"):
             break
-    assert session.active("drive_on")
+    assert session.active("get_away")
     assert session.trip.recovery == 1
     ended = [row for row in session.rows("trip_attempt") if row["name"] == "drive_route"]
     assert len(ended) == 2

@@ -835,10 +835,16 @@ class Trip:
     # Above the drive's 20 s guard; 20 m also exceeds two kilometre HUD increments.
     PROGRESS_SECONDS = 25.0
     PROGRESS_METRES = 20.0
+    READ_SECONDS = 2.0  # a distance read this short a time ago is one the drive can be judged on
     CAR_SECONDS = 90.0  # Three 25 s entries, a look and a 10 s walk fit inside this.
     SCREEN_SECONDS = 15.0
     ROUTE_GONE = 2.0  # as drive_route: a route that stays away this long has gone
     ROUTE_RECENT = 3.0  # a route read this short a time ago is one reading missed, not a route lost
+    # What a drive that comes no nearer tries, in order, before the trip is given up. A car that drives
+    # is kept: it is driven on from where it stands, twice, before it is left for another, and the other
+    # car gets the same two tries. Progress on the route begins the order again.
+    RECOVERY = ("loose", "loose", "exit", "loose", "loose")
+    EXIT_WAITS = 3  # further seconds a figure that is no longer seen seated is given to stand outside
 
     def __init__(self, place, seconds=900):
         import math
@@ -874,7 +880,8 @@ class Trip:
         self.car_seen = None
         self.failure = None
         self.failure_at = None
-        self.exit_presses = 0
+        self.exit_presses = self.exit_waits = 0
+        self.read_at = None
         self.last_distance = None
         self.route_at = self.purple_at = None
         self.route_waited = False
@@ -1011,6 +1018,11 @@ class Trip:
             or (self.distance_time is not None and at <= self.distance_time)
         ):
             return
+        if self.read_at is not None and now - self.read_at > 1 and self.progress_at is not None:
+            # The printed distance was not to be read for a while, on a bright road for one: that
+            # time says nothing about the drive and is not counted against it.
+            self.progress_at = min(now, self.progress_at + now - self.read_at)
+        self.read_at = now
         self.distance_time, self.last_distance = at, distance
         if self.best_distance is None or distance < self.best_distance:
             self.best_distance = distance
@@ -1027,14 +1039,20 @@ class Trip:
         self.recovery += 1
         self.stretches_without_progress = 0
         self.progress_at = now
-        if self.recovery == 1:
-            self.method = "road"
-        elif self.recovery == 2:
-            self.method = "exit"
-            self.exit_presses = 0
-        else:
+        stage = self.RECOVERY[self.recovery - 1] if self.recovery <= len(self.RECOVERY) else None
+        if stage is not None and reason.startswith(("dead-or-held", "vehicle-held")):
+            stage = "exit"  # a car that cannot move is not driven on
+        self.emit("recovery", now, step="drive", stage=self.recovery, reason=reason, method=stage)
+        if stage is None:
             self.finish("failed", "drive recovery exhausted: " + reason, now)
-        self.emit("recovery", now, step="drive", stage=self.recovery, reason=reason)
+        elif reason.startswith("on-foot"):
+            # Out of the car already: the next thing is a car, with the destination kept.
+            self.car_started, self.car_attempts = now, 0
+            self.change("car", now)
+            self.method = "route"
+        else:
+            self.method = stage
+            self.exit_presses = self.exit_waits = 0
 
     def accept(self, last, now):
         from .skills import DriveRoute
@@ -1121,7 +1139,7 @@ class Trip:
                     self.recover(now, "two stretches without closer destination")
             else:
                 self.recover(now, why or "arrival not proven")
-        elif name == "drive_on":
+        elif name in {"drive_on", "get_away"}:
             if done:
                 self.method = "route"
                 self.progress_at = now
@@ -1237,16 +1255,26 @@ class Trip:
             if self.foot_since is not None and now - self.foot_since >= 0.5:
                 self.method = "away"
                 return issue("walk_road", duration=10)
+            seated = request.minimap.get("minimap") == "tilted" and not request.minimap.get("corrupt")
+            if not seated and self.exit_waits < self.EXIT_WAITS:
+                # The door takes two seconds and the eye another: a second press now would get back in.
+                self.exit_waits += 1
+                self.method = "exit_wait"
+                return issue("wait", duration=1)
             if self.exit_presses >= 2:
-                self.finish("failed", "vehicle exit not observed", now)
-                return reply("trip: failed")
+                self.method = "route"
+                self.recover(now, "vehicle exit not observed")
+                return self.decide(request)
             self.method = "exit"
             return self.decide(request)
-        if self.method == "road":
-            return issue("drive_on", duration=15)
         route = request.minimap.get("route") in {"purple", "yellow"} or (
             self.route_at is not None and now - self.route_at <= self.ROUTE_RECENT
         )
+        if self.method == "loose":
+            # With a route on the map the car is driven off as it stands, with no eye on the route:
+            # the route begins behind it or beside it, and from another spot the game draws another.
+            # Without a route it is driven on along the road until one is back.
+            return issue("get_away", duration=10) if route else issue("drive_on", duration=15)
         if not route:
             # One reading without the route decides nothing, and a waypoint just set is given a
             # moment for its route to be drawn before the drive is taken to have lost it.
