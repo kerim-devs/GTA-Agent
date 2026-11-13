@@ -629,3 +629,18 @@ def test_an_errand_seeking_a_vehicle_keeps_heading_when_there_are_no_roads():
     assert answer.goal["name"] == "story"
     assert [call.name for call in answer.plan] == ["walk_road"]
     assert answer.plan[0].args["duration"] >= 15
+
+
+def test_a_marker_reached_is_not_walked_to_again_and_the_car_at_it_is_taken():
+    """Console run of 13 November, 19:57: Michael before his own car, its blue marker 7 px from the
+    arrow and the car in the middle of the picture. The head walked to the marker 167 times in 55
+    seconds, every walk done at once as arrived, and never took the car."""
+    rows = json.loads((Path(__file__).parent / "fixtures" / "own-car-1957.json").read_text())
+    head, plans = MissionHead(), []
+    for row in rows:
+        request = HeadRequest(**row["request"], notebook="", jpeg_path="unused.jpg")
+        plans.append([call.name for call in head.decide(request).plan])
+    # As recorded up to the first walk and its arrival; then the car, and no walk to the marker again.
+    assert plans[1] == ["walk_to"] and row["plan"][0]["name"] == "walk_to"
+    assert plans[2][0] == "enter_vehicle"
+    assert all("walk_to" not in plan for plan in plans[2:])
