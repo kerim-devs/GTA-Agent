@@ -1,0 +1,41 @@
+{
+  "loopback_only": true,
+  "cases": [
+    {
+      "case": "nonsense",
+      "timeout": 1.5,
+      "seconds": 0.007755292000183545,
+      "returned_none": true
+    },
+    {
+      "case": "missing_probability",
+      "timeout": 1.5,
+      "seconds": 0.006238875000235566,
+      "returned_none": true
+    },
+    {
+      "case": "hung",
+      "timeout": 1.5,
+      "seconds": 1.4522873330001858,
+      "returned_none": true
+    },
+    {
+      "case": "refused",
+      "timeout": 1.5,
+      "seconds": 1.4524051670000517,
+      "returned_none": true
+    },
+    {
+      "case": "dead",
+      "timeout": 1.5,
+      "seconds": 0.007875875000081578,
+      "returned_none": true
+    },
+    {
+      "case": "unconfigured",
+      "timeout": 1.5,
+      "seconds": 8.083000011538388e-06,
+      "returned_none": true
+    }
+  ]
+}

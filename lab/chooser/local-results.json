@@ -1,0 +1,12 @@
+{
+  "situations": 150,
+  "valid_candidates": 333,
+  "all_candidate_plans_valid": true,
+  "first_reasonable": 141,
+  "first_reasonable_share": 0.94,
+  "frame_bytes": 2319284,
+  "empty_right_labels": 8,
+  "threshold": 0.5,
+  "threshold_measured_on_real_model": false,
+  "model_called": false
+}
