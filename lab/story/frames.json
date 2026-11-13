@@ -1,0 +1,69 @@
+{
+  "root": "/Users/kerim/recordings",
+  "format": "RGB evidence saved as JPEG; raw replay uses sequential video decode joined through frames.jsonl.i, never MP4 time",
+  "frames": [
+    {
+      "file": "wheel-franklin.jpg",
+      "recording": "kerim/20261111-190825",
+      "i": 24358,
+      "t": 428.1483,
+      "observation": "Wheel with the top story slot highlighted; no directional input is inferred from the contemporaneous pad because the frame is delayed."
+    },
+    {
+      "file": "wheel-michael.jpg",
+      "recording": "kerim/20261111-190825",
+      "i": 24388,
+      "t": 428.6504,
+      "observation": "Wheel with the left story slot highlighted."
+    },
+    {
+      "file": "wheel-refused.jpg",
+      "recording": "kerim/20261112-105402",
+      "i": 9701,
+      "t": 162.1513,
+      "observation": "Wheel and the German explanation that Michael and Franklin cannot be switched to."
+    },
+    {
+      "file": "before-wheel.jpg",
+      "recording": "kerim/20261111-190825",
+      "i": 24284,
+      "t": 427.0075,
+      "observation": "Gameplay before the wheel."
+    },
+    {
+      "file": "after-switch.jpg",
+      "recording": "kerim/20261111-190825",
+      "i": 24938,
+      "t": 438.0206,
+      "observation": "Gameplay after the aerial transition."
+    },
+    {
+      "file": "bright-673.jpg",
+      "recording": "pilot/20261112-221857",
+      "i": 673,
+      "t": 11.3023,
+      "observation": "First pan command frame 244443."
+    },
+    {
+      "file": "bright-769.jpg",
+      "recording": "pilot/20261112-221857",
+      "i": 769,
+      "t": 12.9031,
+      "observation": "First pan result, also the next command frame 244539."
+    },
+    {
+      "file": "bright-780.jpg",
+      "recording": "pilot/20261112-221857",
+      "i": 780,
+      "t": 13.1006,
+      "observation": "Later view of the first pan result, frame 244550."
+    },
+    {
+      "file": "bright-881.jpg",
+      "recording": "pilot/20261112-221857",
+      "i": 881,
+      "t": null,
+      "observation": "Second pan result, frame 244651; replay observation time 14.7900. Source timestamp not transcribed."
+    }
+  ]
+}

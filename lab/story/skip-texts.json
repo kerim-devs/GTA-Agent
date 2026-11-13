@@ -1,0 +1,24 @@
+{
+  "recording": "kerim/20261112-130333",
+  "source": "derived/kerim/20261112-130333/texts.jsonl",
+  "readings": [
+    {
+      "kind": "subtitle",
+      "text": "Uberspringèn",
+      "first": 1764.5934,
+      "last": 1767.516,
+      "variants": {
+        "Uberspringèn": 7
+      }
+    },
+    {
+      "kind": "subtitle",
+      "text": "Ubergprlngèn",
+      "first": 1768.0149,
+      "last": 1768.5164,
+      "variants": {
+        "Ubergprlngèn": 2
+      }
+    }
+  ]
+}
