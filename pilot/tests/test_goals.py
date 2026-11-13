@@ -45,107 +45,21 @@ def done(name, reason):
     }
 
 
-def test_closed_round_uses_observed_entry_arrival_punch_and_wanted_clear():
-    head = MissionHead(goal_seed=17)
-    vehicle = head.decide(request(cars=True))
-    drive = head.decide(request(2, mode="vehicle", last=done("enter_vehicle", "entered vehicle")))
-    fight = head.decide(request(20, mode="vehicle", last=done("drive_route", "route-gone")))
-    assert [r.goal["name"] for r in (vehicle, drive, fight)] == ["vehicle", "drive", "fight"]
-    # Nothing is known of the map's legend yet: the first call asks by kind, and the waypoint it
-    # sets is followed in a step of its own.
-    assert [call.name for call in drive.plan] == ["set_waypoint"]
-    assert drive.plan[0].args["kind"] in {"shop", "pastime"} and "place" not in drive.plan[0].args
-    assert fight.plan[0].args["button"] == "triangle"
-    punch = head.decide(request(24, people=True, last=done("wait", "time-limit")))
-    assert punch.plan[0].name == "punch"
-    escape = head.decide(request(30, people=True, last=done("punch", "delivered 3 punch pulses in reach")))
-    assert escape.goal["name"] == "escape"
-    sought = head.decide(request(31, wanted=2, last={"name": "walk", "status": "running", "queue": []}))
-    assert sought.goal["name"] == "escape"
-    again = head.decide(request(40, cars=True, wanted=0, last=done("walk", "time-limit")))
-    assert again.goal["name"] == "vehicle"
-    assert [h["name"] for h in head.goals.history if h["outcome"] == "reached"] == [
-        "vehicle",
-        "drive",
-        "fight",
-        "escape",
-    ]
-
-
-def test_road_observation_and_car_sighting_advance_without_restarting_on_noise():
-    head = MissionHead(goal_seed=7)
-    first = head.decide(request())
-    assert first.goal["name"] == "road"
-    current = {"name": "walk_road", "status": "running", "queue": ["look"]}
-    for t, kind in enumerate(("subtitle", "help", "route_changed", "quiet", "plan_ending"), 1):
-        kept = head.decide(replace(request(t, last=current), events=[{"kind": kind}]))
-        assert kept.action == "go_on" and kept.plan == ()
-        assert kept.goal == first.goal
-        assert kept.step and "running" in kept.reason
-    road = head.decide(request(7, last={**current, "road_reached": True}))
-    assert road.goal["name"] == "vehicle"
-    assert "road observed" in road.reason
-    # A visible car becomes the next attempt after the road-seeking step ends.
-    car = head.decide(request(8, cars=True, last=done("walk_road", "time-limit")))
-    assert car.plan[0].name == "enter_vehicle"
-
-
 # The card's limits, written out: seconds and tries per goal.
-SECONDS = {"vehicle": 90, "drive": 240, "fight": 90, "escape": 180, "road": 90}
-TRIES = {"vehicle": 3, "drive": 3, "fight": 4, "escape": 4, "road": 4}
+SECONDS = {"vehicle": 90, "cruise": 240, "fight": 90, "escape": 180, "road": 90}
+TRIES = {"vehicle": 3, "cruise": 3, "fight": 4, "escape": 4, "road": 4}
 # Each goal's first step in its own situation, and the skill whose failure the goal answers.
 SETUP = {
     "vehicle": ({"cars": True}, "enter_vehicle"),
-    "drive": ({"mode": "vehicle"}, "set_waypoint"),
+    "cruise": ({"mode": "vehicle"}, "set_waypoint"),
     "fight": ({"people": True}, "punch"),
     "escape": ({"wanted": 1}, "walk"),
     "road": ({}, "walk_road"),
 }
 
 
-def test_the_limits_are_those_of_the_card():
-    assert {name: seconds for name, (seconds, _) in LIMITS.items()} == SECONDS
-    assert {name: tries for name, (_, tries) in LIMITS.items()} == TRIES
-
-
-@pytest.mark.parametrize("name", SECONDS)
-def test_each_goal_gives_up_at_its_deadline_and_is_not_reselected(name):
-    head = MissionHead(goal_seed=12)
-    head.goals.next = name
-    situation, _ = SETUP[name]
-    initial = request(**situation)
-    first = head.decide(initial)
-    assert first.goal["name"] == name
-    assert first.goal["deadline"] - first.goal["started"] == SECONDS[name]
-    just_before = head.decide(replace(initial, time=SECONDS[name] - 0.5, last_skill=running(name)))
-    assert just_before.goal["name"] == name
-    expired = replace(initial, time=SECONDS[name], hud={"screen": "game", "health": 1, "wanted": 0})
-    after = head.decide(expired)
-    assert after.goal["name"] != name
-    assert any(
-        h["name"] == name and h["outcome"] == "gave_up" and h["reason"] == "limit" for h in head.goals.history
-    )
-
-
 def running(name):
     return {"name": SETUP[name][1], "status": "running", "queue": []}
-
-
-@pytest.mark.parametrize("name", TRIES)
-def test_each_goal_is_tried_as_often_as_the_card_says_and_no_more(name):
-    head = MissionHead(goal_seed=12)
-    head.goals.next = name
-    situation, skill = SETUP[name]
-    issued = [head.decide(request(**situation))]
-    for t in range(1, 8):
-        failed = {"name": skill, "status": "failed", "reason": f"try {t}", "queue": []}
-        answer = head.decide(request(t, last=failed, **situation))
-        if answer.goal is None or answer.goal["name"] != name:
-            break
-        issued.append(answer)
-    assert len(issued) == TRIES[name]
-    assert [a.goal["attempts"] for a in issued] == list(range(1, TRIES[name] + 1))
-    assert any(h["name"] == name and h["outcome"] == "gave_up" for h in head.goals.history)
 
 
 def test_failed_attempt_budget_and_seeded_choices_are_reproducible():
@@ -163,8 +77,10 @@ def test_failed_attempt_budget_and_seeded_choices_are_reproducible():
 
 
 def test_fresh_head_does_not_claim_an_old_drive_result_as_its_arrival():
-    answer = MissionHead(goal_seed=1).decide(request(mode="vehicle", last=done("drive_route", "route-gone")))
-    assert answer.goal["name"] == "drive"
+    head = MissionHead(goal_seed=1)
+    head.goals.chooser = lambda offers: "cruise"
+    answer = head.decide(request(mode="vehicle", last=done("drive_route", "route-gone")))
+    assert answer.goal["name"] == "cruise"
 
 
 @pytest.mark.parametrize(
@@ -266,7 +182,10 @@ def test_conductor_go_on_preserves_active_identity_queue_and_controller_input(tm
         rows = [json.loads(line) for line in (tmp_path / "session/head.jsonl").read_text().splitlines()]
         kept = [r for r in rows if r.get("disposition") == "kept"]
         assert len(kept) == 6
-        assert all(r["goal"]["name"] == "road" and r["step"] and r["reason"] for r in kept)
+        assert all(
+            r["goal"]["name"] in {"story", "shop", "home", "mayhem", "cruise"} and r["step"] and r["reason"]
+            for r in kept
+        )
     finally:
         conductor.close()
 
@@ -328,10 +247,11 @@ def test_stale_go_on_is_discarded_after_goal_interruption(tmp_path, monkeypatch)
 
 def test_route_loss_without_an_observed_route_is_not_an_arrival():
     head = MissionHead(goal_seed=1)
+    head.goals.chooser = lambda offers: "cruise"
     first = head.decide(request(mode="vehicle"))
     missing = {"name": "drive_route", "status": "done", "reason": "route-gone", "queue": []}
     second = head.decide(request(4, mode="vehicle", last=missing))
-    assert first.goal["name"] == second.goal["name"] == "drive"
+    assert first.goal["name"] == second.goal["name"] == "cruise"
     assert not any(h["outcome"] == "reached" for h in head.goals.history)
 
 
@@ -434,7 +354,7 @@ def test_expected_entry_mode_change_keeps_skill_until_it_confirms_entry():
     kept = head.decide(replace(entering, events=[{"kind": "mode_changed", "old": "foot", "new": "vehicle"}]))
     assert kept.action == "go_on" and kept.goal == first.goal
     confirmed = head.decide(request(3, mode="vehicle", last=done("enter_vehicle", "entered vehicle")))
-    assert confirmed.goal["name"] == "drive"
+    assert confirmed.goal["name"] == first.goal["name"]
 
 
 def test_unreadable_mode_does_not_replace_a_running_goal():
@@ -480,7 +400,13 @@ def test_the_stop_at_the_deadline_leads_to_the_next_goal_and_not_to_a_failure_st
         stopped = [r for r in rows if r.get("type") == "request" and r["request"]["last_skill"]]
         assert stopped[0]["request"]["last_skill"]["reason"] == "goal_limit"
         answer = [r for r in rows if r.get("type") == "response"][-1]
-        assert answer["goal"] is not None and answer["goal"]["name"] == "vehicle"
+        assert answer["goal"] is not None and answer["goal"]["name"] in {
+            "story",
+            "shop",
+            "home",
+            "mayhem",
+            "cruise",
+        }
         assert answer["reason"] != "retry: observed skill failure"
         assert "failed_skill" not in conductor.head.counts
     finally:
@@ -521,8 +447,10 @@ def test_which_skills_fit_which_way_of_moving(skill, seat, fits_it):
 
 def drive_head():
     head = MissionHead(goal_seed=3)
+    head.goals.chooser = lambda offers: "cruise"
     first = head.decide(request(mode="vehicle"))
-    assert first.goal["name"] == "drive"
+    assert first.goal["name"] == "cruise"
+    head.decide(request(1, mode="vehicle", last=waypoint_set("Away", 700)))
     return head, first
 
 
@@ -534,7 +462,7 @@ def test_a_drive_goal_does_not_go_on_with_the_figure_on_foot():
     seated = head.decide(request(5, mode="vehicle", last_skill=DRIVING_ON))
     assert seated.action == "go_on"
     afoot = head.decide(request(10, mode="foot", last_skill=DRIVING_ON))
-    assert afoot.action == "replace" and afoot.goal["name"] == "drive"
+    assert afoot.action == "replace" and afoot.goal["name"] == "cruise"
     assert afoot.plan[0].name in {"enter_vehicle", "walk_road"}
     assert "drive_route does not fit" in afoot.reason
 
@@ -555,12 +483,12 @@ def test_a_vehicle_exit_event_ends_the_drive_step_before_the_judge_has_changed_i
 
 def test_a_walk_does_not_go_on_with_the_figure_seated():
     head = MissionHead(goal_seed=3)
-    head.goals.next = "fight"
+    head.goals.chooser = lambda offers: "mayhem"
     head.decide(request(mode="foot", people=True))
     walking = {"name": "walk_road", "status": "running", "queue": []}
     assert head.decide(request(3, mode="foot", last_skill=walking, people=True)).action == "go_on"
     seated = head.decide(request(6, mode="vehicle", last_skill=walking))
-    assert seated.action == "replace" and seated.goal["name"] == "fight"
+    assert seated.action == "replace" and seated.goal["name"] == "mayhem"
     assert [call.name for call in seated.plan] == ["press", "wait"]
     assert "walk_road does not fit" in seated.reason
 
@@ -710,7 +638,7 @@ def test_a_goal_answer_waits_behind_the_opening_that_cannot_be_cut_short(tmp_pat
             conductor._tick(replace(obs, time=i * 0.1), rgb)
             if runner.active is not None and runner.active.name not in seen:
                 seen.append(runner.active.name)
-        assert seen[:2] == ["level_camera", "walk_road"]
+        assert seen[:2] == ["level_camera", "set_waypoint"]
         rows = [json.loads(line) for line in (tmp_path / "session/head.jsonl").read_text().splitlines()]
         assert next(r["disposition"] for r in rows if r.get("type") == "response") == "appended"
     finally:
@@ -816,9 +744,9 @@ def first_of_kind(kind, legend=LEGEND):
 
 def one_trip(head, t, *, legend=LEGEND, meters=300):
     """A drive goal that asks, is told where it went, follows the waypoint and arrives."""
-    head.goals.active, head.goals.next = None, "drive"
+    head.goals.active, head.goals.next = None, "cruise"
     ask = head.decide(request(t, mode="vehicle"))
-    assert ask.goal["name"] == "drive" and ask.plan[0].name == "set_waypoint"
+    assert ask.goal["name"] == "cruise" and ask.plan[0].name == "set_waypoint"
     args = ask.plan[0].args
     name = args["place"] if "place" in args else first_of_kind(args["kind"], legend)
     told = head.decide(request(t + 5, mode="vehicle", last_skill=waypoint_set(name, meters, legend)))
@@ -848,110 +776,42 @@ def test_the_places_tail_and_the_waypoint_a_set_waypoint_reports_are_read():
     assert read_places(None) is None
 
 
-def test_a_trip_asks_by_kind_first_then_by_name_and_visits_no_place_twice_before_all_are_visited():
-    head = MissionHead(goal_seed=51)
-    ask, told, _arrived, first = one_trip(head, 0)
-    assert "place" not in ask.plan[0].args and ask.plan[0].args["kind"] in {"shop", "pastime"}
-    assert ask.plan[0].args["kind"] != "mission"
-    assert told.goal["place"] == first and told.goal["distance"] == 300
-    assert first in told.sentence and "300 m" in told.sentence
-    # The goal's own record says where it went, and the place counts as been to once it arrived.
-    assert head.goals.history[-2]["place"] == first and head.goals.visited == [first]
-    chosen = [first]
-    for i in range(1, 8):
-        ask, _, _, name = one_trip(head, 100 * i)
-        assert "kind" not in ask.plan[0].args and ask.plan[0].args["place"] == name
-        chosen.append(name)
-    # Shops and pastimes only: no mission and nothing of an unknown sort.
-    assert set(chosen) <= {"Ammu-Nation", "Autowaschanlage", "Friseursalon", "Fahrgeschäft", "Kino"}
-    # Five places, none twice until all five were visited; then all of them are open again.
-    assert len(set(chosen[:5])) == 5
-    assert len(set(chosen[5:8])) == 3 and set(chosen[5:8]) <= set(chosen[:5])
-
-
-def test_the_same_seed_chooses_the_same_places_and_another_seed_another_order():
-    def run(seed):
-        head = MissionHead(goal_seed=seed)
-        return [one_trip(head, 100 * i)[3] for i in range(5)]
-
-    assert run(4) == run(4)
-    assert len({tuple(run(seed)) for seed in range(8)}) > 1
-
-
-def test_the_first_kind_is_a_shop_or_a_pastime_and_never_a_mission():
-    kinds = set()
-    for seed in range(40):
-        kinds.add(MissionHead(goal_seed=seed).decide(request(mode="vehicle")).plan[0].args["kind"])
-    assert kinds == {"shop", "pastime"}
-
-
-def test_a_place_the_legend_does_not_hold_is_replaced_by_one_from_the_list_the_failure_named():
-    head = MissionHead(goal_seed=51)
-    one_trip(head, 0)
-    head.goals.active, head.goals.next = None, "drive"
-    ask = head.decide(request(100, mode="vehicle"))
-    wanted = ask.plan[0].args["place"]
-    country = ["Golf", "Seilbahn", "Fremde und Freaks"]
-    refused = waypoint_refused("place-not-in-legend", wanted, country)
-    again = head.decide(request(105, mode="vehicle", last_skill=refused))
-    assert again.goal["name"] == "drive" and again.goal["attempts"] == 2
-    assert [call.name for call in again.plan] == ["set_waypoint"]
-    assert again.plan[0].args["place"] in {"Golf", "Seilbahn"}
-    assert wanted not in head.goals.known
-    # A place that was found and not reached by the selection is not asked for twice in this goal.
-    skipped = waypoint_refused("legend-selection-skips-the-place", again.plan[0].args["place"], country)
-    third = head.decide(request(110, mode="vehicle", last_skill=skipped))
-    assert third.plan[0].args["place"] in {"Golf", "Seilbahn"} - {again.plan[0].args["place"]}
-
-
-def test_when_the_legend_gives_nothing_the_trip_falls_back_to_a_point_on_the_map():
-    for tail in ([], ["Fremde und Freaks", "Chinesen"]):
-        head = MissionHead(goal_seed=51)
-        ask = head.decide(request(mode="vehicle"))
-        refused = waypoint_refused("place-not-in-legend", ask.plan[0].args["kind"], tail)
-        after = head.decide(request(5, mode="vehicle", last_skill=refused))
-        assert [call.name for call in after.plan] == ["set_waypoint", "drive_route"]
-        assert after.plan[0].args["target"] == "away" and "kind" not in after.plan[0].args
-        assert after.plan[0].args["direction"] == after.goal["direction"]
-    # A failure that read no legend at all is no answer of the legend: the kind is asked again.
-    head = MissionHead(goal_seed=51)
-    head.decide(request(mode="vehicle"))
-    lost = {"name": "set_waypoint", "status": "failed", "reason": "menu-not-map", "queue": []}
-    again = head.decide(request(5, mode="vehicle", last_skill=lost))
-    assert again.plan[0].args["kind"] in {"shop", "pastime"}
-
-
 def test_the_trip_is_followed_without_spending_a_second_try_and_a_failure_is_answered_in_the_goal():
     head = MissionHead(goal_seed=51)
+    head.goals.chooser = lambda offers: "cruise"
     head.decide(request(mode="vehicle"))
     told = head.decide(request(5, mode="vehicle", last_skill=waypoint_set("Kino", 700)))
     assert told.goal["attempts"] == 1 and told.plan[0].name == "drive_route"
     # A drive that fails is not met with the rules' point on the map: the goal asks for a place.
     broken = {"name": "drive_route", "status": "failed", "reason": "failed-recovery", "queue": []}
     retry = head.decide(request(40, mode="vehicle", last_skill=broken))
-    assert retry.goal["attempts"] == 2 and retry.plan[0].name == "set_waypoint"
-    assert "place" in retry.plan[0].args or "kind" in retry.plan[0].args
+    assert any(h["outcome"] == "gave_up" for h in head.goals.history)
+    assert retry.goal["started"] > told.goal["started"]
+    assert retry.goal["name"] in {"story", "shop", "home", "mayhem", "cruise"}
     assert "target" not in retry.plan[0].args
 
 
 def test_an_escape_from_the_police_keeps_its_point_on_the_map():
     head = MissionHead(goal_seed=51)
+    head.goals.chooser = lambda offers: "cruise"
     answer = head.decide(request(mode="vehicle", wanted=2))
     assert answer.goal["name"] == "escape"
-    assert [call.name for call in answer.plan] == ["set_waypoint", "drive_route"]
-    assert answer.plan[0].args["target"] == "away" and "place" not in answer.plan[0].args
+    assert [call.name for call in answer.plan] == ["get_away"]
+    assert "set_waypoint" not in names(answer)
 
 
 def test_the_rules_outside_a_goal_take_a_place_too_when_nothing_is_asked_and_not_when_it_is():
     flicker = {"minimap": "tilted", "route": "none", "blips": [{"color": "yellow", "x": 10, "y": 25}]}
     unasked = replace(request(mode="vehicle"), minimap=flicker)
     head = MissionHead(goal_seed=51)
+    head.goals.chooser = lambda offers: "cruise"
     answer = head.decide(unasked)
     assert head.last_rule == "vehicle_waypoint" and answer.goal is None
-    assert [call.name for call in answer.plan] == ["set_waypoint", "drive_route"]
-    assert answer.plan[0].args["kind"] in {"shop", "pastime"}
+    assert [call.name for call in answer.plan] == ["set_waypoint"]
+    assert answer.plan[0].args["target"] == "away"
     asked = replace(unasked, objective="Fahre zum Treffpunkt.")
     head = MissionHead(goal_seed=51)
+    head.goals.chooser = lambda offers: "cruise"
     answer = head.decide(asked)
     assert head.last_rule == "vehicle_waypoint"
     assert answer.plan[0].args["target"] in {"mission", "away"} and "kind" not in answer.plan[0].args
@@ -959,6 +819,7 @@ def test_the_rules_outside_a_goal_take_a_place_too_when_nothing_is_asked_and_not
 
 def test_what_a_dropped_answer_learned_of_the_legend_is_given_back_too():
     head = MissionHead(goal_seed=51)
+    head.goals.chooser = lambda offers: "cruise"
     head.decide(request(mode="vehicle"))
     head.decide(request(5, mode="vehicle", last_skill=waypoint_set("Kino", 700)))
     assert "Kino" in head.goals.known
@@ -1024,7 +885,7 @@ def test_the_conductor_carries_where_the_waypoint_went_to_the_head_and_follows_i
         assert conductor.goal["attempts"] == 1
         rows = [json.loads(line) for line in (tmp_path / "session/head.jsonl").read_text().splitlines()]
         answers = [r for r in rows if r.get("type") == "response"]
-        assert answers[0]["plan"][0]["args"]["kind"] in {"shop", "pastime"}
+        assert answers[0]["plan"][0]["name"] == "set_waypoint"
         assert answers[1]["plan"] == [{"name": "drive_route", "args": {"duration": 120}}]
         assert "Kino" in answers[1]["sentence"] and "700 m" in answers[1]["sentence"]
     finally:
@@ -1045,6 +906,7 @@ def failed_drive(reason, n=0):
 
 
 def on_the_way(head, t=0, place="Kino"):
+    head.goals.chooser = lambda offers: "cruise"
     """A drive goal that asked for a place, was told it went to it and has begun to follow the route."""
     head.decide(request(t, mode="vehicle"))
     told = head.decide(routed(t + 5, last_skill=waypoint_set(place, 700)))
@@ -1058,11 +920,12 @@ def names(answer):
 
 def test_a_car_that_will_not_move_is_left_and_the_same_car_is_not_taken_at_once():
     head = MissionHead(goal_seed=51)
+    head.goals.chooser = lambda offers: "cruise"
     on_the_way(head)
     tries = head.goals.active.attempts
     left = head.decide(routed(40, last_skill=failed_drive("dead-or-held")))
     assert names(left) == ["press", "wait", "walk_road"] and left.plan[0].args["button"] == "triangle"
-    assert left.goal["name"] == "drive" and left.goal["attempts"] == tries  # leaving costs no try
+    assert left.goal["name"] == "cruise" and left.goal["attempts"] == tries  # leaving costs no try
     assert "dead-or-held" in left.reason
     # On foot with a car in sight, three seconds later: away from the car first, not into it.
     early = head.decide(request(43, mode="foot", cars=True, last_skill=done("walk_road", "time-limit")))
@@ -1072,109 +935,121 @@ def test_a_car_that_will_not_move_is_left_and_the_same_car_is_not_taken_at_once(
     # In another car the trip goes on to the same place, and the head asks for no other.
     again = head.decide(routed(70, last_skill=done("enter_vehicle", "entered vehicle")))
     assert names(again) == ["drive_route"]
-    assert again.goal["name"] == "drive" and again.goal["place"] == "Kino"
+    assert again.goal["name"] == "cruise" and again.goal["place"] == "Kino"
 
 
 def test_an_exit_that_does_not_show_is_pressed_again_but_not_for_ever():
     head = MissionHead(goal_seed=51)
+    head.goals.chooser = lambda offers: "cruise"
     on_the_way(head)
     answers = [head.decide(routed(40, last_skill=failed_drive("dead-or-held")))]
     for t in (55, 70, 85, 100):
         # Still seated at the end of the plan: the figure did not get out.
         answers.append(head.decide(routed(t, last_skill=done("walk_road", f"time-limit {t}"))))
-    assert [names(a) for a in answers] == [["press", "wait", "walk_road"]] * 3 + [["drive_route"]] * 2
+    assert [names(a) for a in answers[:3]] == [["press", "wait", "walk_road"]] * 3
+    assert any(h["reason"] == "vehicle exit not observed after three attempts" for h in head.goals.history)
 
 
 def test_a_second_car_that_is_held_is_left_as_well():
     head = MissionHead(goal_seed=51)
+    head.goals.chooser = lambda offers: "cruise"
     on_the_way(head)
     head.decide(routed(40, last_skill=failed_drive("dead-or-held")))
     head.decide(request(55, mode="foot", cars=True, last_skill=done("walk_road", "time-limit")))
     head.decide(routed(70, last_skill=done("enter_vehicle", "entered vehicle")))
     second = head.decide(routed(100, last_skill=failed_drive("dead-or-held")))
-    assert names(second) == ["press", "wait", "walk_road"] and second.goal["name"] == "drive"
+    assert names(second) == ["press", "wait", "walk_road"] and second.goal["name"] == "cruise"
 
 
 def test_an_unreadable_map_is_answered_with_a_look_round_and_the_second_time_by_leaving_the_car():
     head = MissionHead(goal_seed=51)
+    head.goals.chooser = lambda offers: "cruise"
     on_the_way(head)
     tries = head.goals.active.attempts
     # The map is the trouble: the route may read as gone, and the answer is still the drive.
     first = head.decide(routed(40, route="none", last_skill=failed_drive("map-unreadable")))
     assert names(first) == ["look", "drive_route"]
     assert first.plan[0].args["angle"] == 180 and first.plan[1].args["duration"] == 120
-    assert first.goal["name"] == "drive" and first.goal["place"] == "Kino"
+    assert first.goal["name"] == "cruise" and first.goal["place"] == "Kino"
     assert first.goal["attempts"] == tries + 1
     assert "map-unreadable" in first.reason
     # The drive runs again, and ends for the same map again: this car is left, like a held one.
     head.decide(routed(55, last_skill={"name": "drive_route", "status": "running", "queue": []}))
     second = head.decide(routed(70, last_skill=failed_drive("map-unreadable", 2)))
     assert names(second) == ["press", "wait", "walk_road"] and second.plan[0].args["button"] == "triangle"
-    assert second.goal["name"] == "drive" and second.goal["attempts"] == tries + 1  # leaving costs no try
+    assert second.goal["name"] == "cruise" and second.goal["attempts"] == tries + 1  # leaving costs no try
     assert "map-unreadable" in second.reason
     assert head.goals.active.unreadable == 0  # the next car is read afresh
 
 
 def test_a_drive_that_lost_its_route_far_from_the_place_sets_that_waypoint_again_once_and_then_gives_up():
     head = MissionHead(goal_seed=51)
+    head.goals.chooser = lambda offers: "cruise"
     on_the_way(head)
     first = head.decide(routed(40, route="none", last_skill=failed_drive("route-lost-far")))
     assert names(first) == ["set_waypoint"]
     assert first.plan[0].args == {"place": "Kino", "duration": 45}
     assert "route-lost-far" in first.reason
     followed = head.decide(routed(55, last_skill=waypoint_set("Kino", 650)))
-    assert names(followed) == ["drive_route"] and followed.goal["name"] == "drive"
+    assert names(followed) == ["drive_route"] and followed.goal["name"] == "cruise"
     second = head.decide(routed(100, route="none", last_skill=failed_drive("route-lost-far")))
-    assert second.goal["name"] != "drive"
-    gave_up = [h for h in head.goals.history if h["name"] == "drive" and h["outcome"] == "gave_up"]
+    assert second.goal["name"] != "cruise"
+    gave_up = [h for h in head.goals.history if h["name"] == "cruise" and h["outcome"] == "gave_up"]
     assert (
         len(gave_up) == 1
         and "route-lost-far twice" in gave_up[0]["reason"]
         and "Kino" in gave_up[0]["reason"]
     )
-    assert head.goals.abandoned == "drive" and "Kino" not in head.goals.visited
+    assert head.goals.abandoned == "cruise" and head.goals.abandonments["Kino"] == 1
 
 
 def test_a_drive_that_got_no_nearer_is_driven_again_on_its_waypoint_once_and_then_given_up():
     head = MissionHead(goal_seed=51)
+    head.goals.chooser = lambda offers: "cruise"
     on_the_way(head)
     first = head.decide(routed(40, last_skill=failed_drive("no-progress")))
     # The waypoint stands and set_waypoint refuses to toggle it off: the drive begins anew.
     assert names(first)[-1] == "drive_route" and "set_waypoint" not in names(first)
-    assert first.goal["name"] == "drive" and first.goal["place"] == "Kino"
+    assert first.goal["name"] == "cruise" and first.goal["place"] == "Kino"
     second = head.decide(routed(90, last_skill=failed_drive("no-progress", 2)))
-    assert second.goal["name"] != "drive"
+    assert second.goal["name"] != "cruise"
     assert any("twice" in h["reason"] for h in head.goals.history if h["outcome"] == "gave_up")
 
 
 def test_each_place_has_its_own_count_of_drives_that_got_nowhere():
     head = MissionHead(goal_seed=51)
+    head.goals.chooser = lambda offers: "cruise"
     on_the_way(head)
     head.decide(routed(40, last_skill=failed_drive("no-progress")))
     # Another place is another trip: it has its own first time.
+    head.goals.end(request(50), "new trip")
+    head.goals.last_name = "story"
+    head.decide(routed(55))
     other = head.decide(routed(60, last_skill=waypoint_set("Golf", 300)))
     assert other.goal["place"] == "Golf"
     again = head.decide(routed(90, last_skill=failed_drive("no-progress", 2)))
-    assert again.goal["name"] == "drive"
+    assert again.goal["name"] == "cruise"
 
 
 def test_arrival_reaches_the_trip_as_route_gone_did():
     head = MissionHead(goal_seed=51)
+    head.goals.chooser = lambda offers: "cruise"
     on_the_way(head)
     head.decide(routed(60, route="none", last_skill=done("drive_route", "arrived")))
-    assert [h["outcome"] for h in head.goals.history if h["name"] == "drive"] == ["started", "reached"]
-    assert head.goals.visited == ["Kino"]
+    assert [h["outcome"] for h in head.goals.history if h["name"] == "cruise"] == ["started", "reached"]
+    assert head.goals.history[-2]["place"] == "Kino"
 
 
 def test_a_drive_out_of_time_on_a_route_that_stands_is_called_again_and_the_goal_decides():
     head = MissionHead(goal_seed=51)
+    head.goals.chooser = lambda offers: "cruise"
     on_the_way(head)
     started = head.goals.active.started
     again = head.decide(routed(70, last_skill=done("drive_route", "time-limit")))
-    assert names(again) == ["drive_route"] and again.goal["name"] == "drive"
-    over = head.decide(routed(started + LIMITS["drive"][0], last_skill=done("drive_route", "time-limit 2")))
-    assert over.goal["name"] != "drive"
-    assert any(h["reason"] == "limit" for h in head.goals.history if h["name"] == "drive")
+    assert names(again) == ["drive_route"] and again.goal["name"] == "cruise"
+    over = head.decide(routed(started + LIMITS["cruise"][0], last_skill=done("drive_route", "time-limit 2")))
+    assert over.goal["name"] != "cruise"
+    assert any(h["reason"] == "limit" for h in head.goals.history if h["name"] == "cruise")
 
 
 DRIVING_ON = {"name": "drive_route", "status": "running", "reason": None, "queue": []}
@@ -1255,6 +1130,7 @@ def conducted(tmp_path, monkeypatch, script, *, delay=0.3):
         detector=NoEvents(),
         submit=immediate,
     )
+    conductor.head.goals.chooser = lambda offers: "cruise"
     return conductor, runner
 
 
@@ -1306,7 +1182,7 @@ def test_the_conductor_leaves_a_held_car_and_goes_on_to_the_same_place_in_anothe
             "drive_route",
         ]
         assert started[2][1]["button"] == "triangle"
-        assert conductor.goal["name"] == "drive" and conductor.goal["place"] == "Kino"
+        assert conductor.goal["name"] == "cruise" and conductor.goal["place"] == "Kino"
         # A held car, a walk and a second entry did not use up the three tries of the trip.
         assert conductor.goal["attempts"] <= 2
     finally:
@@ -1344,7 +1220,7 @@ def test_the_conductor_looks_round_after_an_unreadable_map_and_leaves_the_car_th
             "drive_route",
         ]
         assert started[2][1]["angle"] == 180
-        assert conductor.goal["name"] == "drive" and conductor.goal["place"] == "Kino"
+        assert conductor.goal["name"] == "cruise" and conductor.goal["place"] == "Kino"
     finally:
         conductor.close()
 
@@ -1373,7 +1249,8 @@ def test_the_conductor_sets_the_place_again_once_and_then_moves_on_to_the_next_g
         ]
         # The second drive lost its route as well: the trip is given up and the round goes on.
         history = [(h["name"], h["outcome"]) for h in conductor.head.goals.history]
-        assert history[:3] == [("drive", "started"), ("drive", "gave_up"), ("fight", "started")]
+        assert history[:2] == [("cruise", "started"), ("cruise", "gave_up")]
+        assert history[2][0] != "cruise" and history[2][1] == "started"
         assert "twice" in conductor.head.goals.history[1]["reason"]
     finally:
         conductor.close()

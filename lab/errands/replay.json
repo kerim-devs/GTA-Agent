@@ -1,0 +1,993 @@
+{
+  "seed": 70,
+  "files": 238,
+  "sessions_replayed": 238,
+  "before": {
+    "responses": 1315,
+    "same_name": 89,
+    "same_name_missing_args": 89
+  },
+  "after": {
+    "requests": 1315,
+    "same_name": 7,
+    "same_name_missing_args": 7
+  },
+  "rules": {
+    "drive_ends": 1,
+    "failed_skill": 2,
+    "failed_vehicle_skill": 2,
+    "failed_vehicle_skill_after_failure": 11,
+    "foot_explore": 23,
+    "foot_target": 15,
+    "goal_cruise": 763,
+    "goal_home": 2,
+    "goal_mayhem": 20,
+    "goal_shop": 303,
+    "goal_story": 94,
+    "judged_wait": 19,
+    "judged_wait_after_failure": 2,
+    "low_health_on_foot": 6,
+    "moving_default": 22,
+    "screen_reflex": 4,
+    "vehicle_route": 9,
+    "vehicle_waypoint": 7,
+    "wanted_on_foot_vehicle": 1,
+    "wanted_vehicle": 5,
+    "wanted_vehicle_route": 4
+  },
+  "sessions": [
+    {
+      "session": "20261110-223934",
+      "requests": 1
+    },
+    {
+      "session": "20261110-230229",
+      "requests": 8
+    },
+    {
+      "session": "20261110-231512",
+      "requests": 10
+    },
+    {
+      "session": "20261111-072057",
+      "requests": 2
+    },
+    {
+      "session": "20261111-110048-829479",
+      "requests": 2
+    },
+    {
+      "session": "20261111-114909",
+      "requests": 2
+    },
+    {
+      "session": "20261111-115010",
+      "requests": 2
+    },
+    {
+      "session": "20261111-115234",
+      "requests": 2
+    },
+    {
+      "session": "20261111-115418",
+      "requests": 2
+    },
+    {
+      "session": "20261111-115438",
+      "requests": 2
+    },
+    {
+      "session": "20261111-115541",
+      "requests": 3
+    },
+    {
+      "session": "20261111-115719",
+      "requests": 2
+    },
+    {
+      "session": "20261111-115803",
+      "requests": 2
+    },
+    {
+      "session": "20261111-120043",
+      "requests": 1
+    },
+    {
+      "session": "20261111-120100",
+      "requests": 1
+    },
+    {
+      "session": "20261111-120253",
+      "requests": 7
+    },
+    {
+      "session": "20261111-121401",
+      "requests": 7
+    },
+    {
+      "session": "20261111-121517",
+      "requests": 3
+    },
+    {
+      "session": "20261111-122034",
+      "requests": 4
+    },
+    {
+      "session": "20261111-122141",
+      "requests": 4
+    },
+    {
+      "session": "20261111-122636",
+      "requests": 4
+    },
+    {
+      "session": "20261111-123334",
+      "requests": 6
+    },
+    {
+      "session": "20261111-123938",
+      "requests": 31
+    },
+    {
+      "session": "20261111-124637",
+      "requests": 2
+    },
+    {
+      "session": "20261111-124851",
+      "requests": 3
+    },
+    {
+      "session": "20261111-124934",
+      "requests": 3
+    },
+    {
+      "session": "20261111-125537",
+      "requests": 2
+    },
+    {
+      "session": "20261111-130010",
+      "requests": 3
+    },
+    {
+      "session": "20261111-130247",
+      "requests": 5
+    },
+    {
+      "session": "20261111-130447",
+      "requests": 3
+    },
+    {
+      "session": "20261111-130738",
+      "requests": 3
+    },
+    {
+      "session": "20261111-130955",
+      "requests": 4
+    },
+    {
+      "session": "20261111-131346",
+      "requests": 3
+    },
+    {
+      "session": "20261111-131628",
+      "requests": 12
+    },
+    {
+      "session": "20261111-131926",
+      "requests": 4
+    },
+    {
+      "session": "20261111-132729",
+      "requests": 12
+    },
+    {
+      "session": "20261111-133251",
+      "requests": 2
+    },
+    {
+      "session": "20261111-133351",
+      "requests": 4
+    },
+    {
+      "session": "20261111-133505",
+      "requests": 3
+    },
+    {
+      "session": "20261111-133846",
+      "requests": 4
+    },
+    {
+      "session": "20261111-134217",
+      "requests": 3
+    },
+    {
+      "session": "20261111-134519",
+      "requests": 11
+    },
+    {
+      "session": "20261111-135242",
+      "requests": 3
+    },
+    {
+      "session": "20261111-135306",
+      "requests": 2
+    },
+    {
+      "session": "20261111-135330",
+      "requests": 2
+    },
+    {
+      "session": "20261111-135411",
+      "requests": 3
+    },
+    {
+      "session": "20261111-204712",
+      "requests": 23
+    },
+    {
+      "session": "20261112-082524",
+      "requests": 28
+    },
+    {
+      "session": "20261112-100318",
+      "requests": 26
+    },
+    {
+      "session": "20261112-100713",
+      "requests": 38
+    },
+    {
+      "session": "20261112-102851",
+      "requests": 25
+    },
+    {
+      "session": "20261112-103305",
+      "requests": 27
+    },
+    {
+      "session": "20261112-104424",
+      "requests": 31
+    },
+    {
+      "session": "20261112-104827",
+      "requests": 11
+    },
+    {
+      "session": "20261112-105230",
+      "requests": 4
+    },
+    {
+      "session": "20261112-105332",
+      "requests": 2
+    },
+    {
+      "session": "20261112-110407",
+      "requests": 4
+    },
+    {
+      "session": "20261112-110418",
+      "requests": 2
+    },
+    {
+      "session": "20261112-110449",
+      "requests": 3
+    },
+    {
+      "session": "20261112-110524",
+      "requests": 3
+    },
+    {
+      "session": "20261112-110618",
+      "requests": 2
+    },
+    {
+      "session": "20261112-110726",
+      "requests": 2
+    },
+    {
+      "session": "20261112-110736",
+      "requests": 2
+    },
+    {
+      "session": "20261112-110806",
+      "requests": 2
+    },
+    {
+      "session": "20261112-110841",
+      "requests": 3
+    },
+    {
+      "session": "20261112-110935",
+      "requests": 2
+    },
+    {
+      "session": "20261112-111043",
+      "requests": 2
+    },
+    {
+      "session": "20261112-111053",
+      "requests": 2
+    },
+    {
+      "session": "20261112-111123",
+      "requests": 3
+    },
+    {
+      "session": "20261112-111158",
+      "requests": 3
+    },
+    {
+      "session": "20261112-111253",
+      "requests": 2
+    },
+    {
+      "session": "20261112-112155",
+      "requests": 2
+    },
+    {
+      "session": "20261112-112205",
+      "requests": 2
+    },
+    {
+      "session": "20261112-112235",
+      "requests": 2
+    },
+    {
+      "session": "20261112-114441",
+      "requests": 7
+    },
+    {
+      "session": "20261112-115658",
+      "requests": 3
+    },
+    {
+      "session": "20261112-115941",
+      "requests": 3
+    },
+    {
+      "session": "20261112-120355",
+      "requests": 2
+    },
+    {
+      "session": "20261112-120419",
+      "requests": 2
+    },
+    {
+      "session": "20261112-120925",
+      "requests": 2
+    },
+    {
+      "session": "20261112-120959",
+      "requests": 2
+    },
+    {
+      "session": "20261112-121033",
+      "requests": 2
+    },
+    {
+      "session": "20261112-121107",
+      "requests": 2
+    },
+    {
+      "session": "20261112-121141",
+      "requests": 2
+    },
+    {
+      "session": "20261112-121215",
+      "requests": 2
+    },
+    {
+      "session": "20261112-121249",
+      "requests": 2
+    },
+    {
+      "session": "20261112-121323",
+      "requests": 2
+    },
+    {
+      "session": "20261112-121605",
+      "requests": 2
+    },
+    {
+      "session": "20261112-121639",
+      "requests": 2
+    },
+    {
+      "session": "20261112-121713",
+      "requests": 2
+    },
+    {
+      "session": "20261112-121746",
+      "requests": 2
+    },
+    {
+      "session": "20261112-121821",
+      "requests": 2
+    },
+    {
+      "session": "20261112-121855",
+      "requests": 2
+    },
+    {
+      "session": "20261112-121929",
+      "requests": 2
+    },
+    {
+      "session": "20261112-122003",
+      "requests": 2
+    },
+    {
+      "session": "20261112-122056",
+      "requests": 6
+    },
+    {
+      "session": "20261112-122231",
+      "requests": 4
+    },
+    {
+      "session": "20261112-122242",
+      "requests": 3
+    },
+    {
+      "session": "20261112-122312",
+      "requests": 13
+    },
+    {
+      "session": "20261112-122406",
+      "requests": 2
+    },
+    {
+      "session": "20261112-122440",
+      "requests": 2
+    },
+    {
+      "session": "20261112-122547",
+      "requests": 2
+    },
+    {
+      "session": "20261112-122558",
+      "requests": 4
+    },
+    {
+      "session": "20261112-122628",
+      "requests": 3
+    },
+    {
+      "session": "20261112-122722",
+      "requests": 2
+    },
+    {
+      "session": "20261112-122756",
+      "requests": 3
+    },
+    {
+      "session": "20261112-122904",
+      "requests": 5
+    },
+    {
+      "session": "20261112-122915",
+      "requests": 1
+    },
+    {
+      "session": "20261112-141056",
+      "requests": 2
+    },
+    {
+      "session": "20261112-141353",
+      "requests": 2
+    },
+    {
+      "session": "20261112-141430",
+      "requests": 2
+    },
+    {
+      "session": "20261112-141510",
+      "requests": 3
+    },
+    {
+      "session": "20261112-141554",
+      "requests": 2
+    },
+    {
+      "session": "20261112-141836",
+      "requests": 23
+    },
+    {
+      "session": "20261112-142428",
+      "requests": 30
+    },
+    {
+      "session": "20261112-143047",
+      "requests": 2
+    },
+    {
+      "session": "20261112-143057",
+      "requests": 7
+    },
+    {
+      "session": "20261112-143128",
+      "requests": 8
+    },
+    {
+      "session": "20261112-143222",
+      "requests": 1
+    },
+    {
+      "session": "20261112-143232",
+      "requests": 1
+    },
+    {
+      "session": "20261112-143302",
+      "requests": 2
+    },
+    {
+      "session": "20261112-143356",
+      "requests": 1
+    },
+    {
+      "session": "20261112-143406",
+      "requests": 2
+    },
+    {
+      "session": "20261112-143436",
+      "requests": 6
+    },
+    {
+      "session": "20261112-143714",
+      "requests": 3
+    },
+    {
+      "session": "20261112-143810",
+      "requests": 5
+    },
+    {
+      "session": "20261112-143823",
+      "requests": 3
+    },
+    {
+      "session": "20261112-143917",
+      "requests": 4
+    },
+    {
+      "session": "20261112-143929",
+      "requests": 3
+    },
+    {
+      "session": "20261112-144023",
+      "requests": 4
+    },
+    {
+      "session": "20261112-144219",
+      "requests": 1
+    },
+    {
+      "session": "20261112-144404",
+      "requests": 46
+    },
+    {
+      "session": "20261112-145138",
+      "requests": 1
+    },
+    {
+      "session": "20261112-145213",
+      "requests": 2
+    },
+    {
+      "session": "20261112-145322",
+      "requests": 4
+    },
+    {
+      "session": "20261112-145502",
+      "requests": 69
+    },
+    {
+      "session": "20261112-151425",
+      "requests": 52
+    },
+    {
+      "session": "20261112-152418",
+      "requests": 2
+    },
+    {
+      "session": "20261112-152452",
+      "requests": 53
+    },
+    {
+      "session": "20261112-153222",
+      "requests": 2
+    },
+    {
+      "session": "20261112-153234",
+      "requests": 2
+    },
+    {
+      "session": "20261112-153326",
+      "requests": 2
+    },
+    {
+      "session": "20261112-153423",
+      "requests": 3
+    },
+    {
+      "session": "20261112-153523",
+      "requests": 3
+    },
+    {
+      "session": "20261112-153625",
+      "requests": 3
+    },
+    {
+      "session": "20261112-153726",
+      "requests": 3
+    },
+    {
+      "session": "20261112-153824",
+      "requests": 2
+    },
+    {
+      "session": "20261112-153831",
+      "requests": 3
+    },
+    {
+      "session": "20261112-153928",
+      "requests": 2
+    },
+    {
+      "session": "20261112-153935",
+      "requests": 3
+    },
+    {
+      "session": "20261112-154032",
+      "requests": 3
+    },
+    {
+      "session": "20261112-154046",
+      "requests": 3
+    },
+    {
+      "session": "20261112-215851",
+      "requests": 3
+    },
+    {
+      "session": "20261112-220332",
+      "requests": 2
+    },
+    {
+      "session": "20261112-220803",
+      "requests": 2
+    },
+    {
+      "session": "20261112-221857",
+      "requests": 12
+    },
+    {
+      "session": "20261112-225538",
+      "requests": 4
+    },
+    {
+      "session": "20261112-225857",
+      "requests": 8
+    },
+    {
+      "session": "20261112-230838",
+      "requests": 3
+    },
+    {
+      "session": "20261112-234455",
+      "requests": 2
+    },
+    {
+      "session": "20261112-234755",
+      "requests": 2
+    },
+    {
+      "session": "20261112-234911",
+      "requests": 2
+    },
+    {
+      "session": "20261112-235324",
+      "requests": 2
+    },
+    {
+      "session": "20261113-000319",
+      "requests": 2
+    },
+    {
+      "session": "20261113-000511",
+      "requests": 2
+    },
+    {
+      "session": "20261113-001124",
+      "requests": 2
+    },
+    {
+      "session": "20261113-002130",
+      "requests": 2
+    },
+    {
+      "session": "20261113-002235",
+      "requests": 2
+    },
+    {
+      "session": "20261113-002439",
+      "requests": 2
+    },
+    {
+      "session": "20261113-002739",
+      "requests": 2
+    },
+    {
+      "session": "20261113-002903",
+      "requests": 2
+    },
+    {
+      "session": "20261113-002915",
+      "requests": 3
+    },
+    {
+      "session": "20261113-002957",
+      "requests": 3
+    },
+    {
+      "session": "20261113-003346",
+      "requests": 2
+    },
+    {
+      "session": "20261113-003405",
+      "requests": 2
+    },
+    {
+      "session": "20261113-003452",
+      "requests": 2
+    },
+    {
+      "session": "20261113-003502",
+      "requests": 4
+    },
+    {
+      "session": "20261113-003832",
+      "requests": 2
+    },
+    {
+      "session": "20261113-003852",
+      "requests": 2
+    },
+    {
+      "session": "20261113-004029",
+      "requests": 3
+    },
+    {
+      "session": "20261113-004056",
+      "requests": 2
+    },
+    {
+      "session": "20261113-004111",
+      "requests": 2
+    },
+    {
+      "session": "20261113-004125",
+      "requests": 2
+    },
+    {
+      "session": "20261113-004314",
+      "requests": 2
+    },
+    {
+      "session": "20261113-004331",
+      "requests": 2
+    },
+    {
+      "session": "20261113-004444",
+      "requests": 2
+    },
+    {
+      "session": "20261113-004456",
+      "requests": 2
+    },
+    {
+      "session": "20261113-005344",
+      "requests": 4
+    },
+    {
+      "session": "20261113-005402",
+      "requests": 6
+    },
+    {
+      "session": "20261113-005500",
+      "requests": 5
+    },
+    {
+      "session": "20261113-005506",
+      "requests": 4
+    },
+    {
+      "session": "20261113-005521",
+      "requests": 8
+    },
+    {
+      "session": "20261113-005529",
+      "requests": 6
+    },
+    {
+      "session": "20261113-005541",
+      "requests": 4
+    },
+    {
+      "session": "20261113-005605",
+      "requests": 5
+    },
+    {
+      "session": "20261113-005625",
+      "requests": 7
+    },
+    {
+      "session": "20261113-005856",
+      "requests": 4
+    },
+    {
+      "session": "20261113-005917",
+      "requests": 5
+    },
+    {
+      "session": "20261113-005928",
+      "requests": 6
+    },
+    {
+      "session": "20261113-010006",
+      "requests": 5
+    },
+    {
+      "session": "20261113-010026",
+      "requests": 5
+    },
+    {
+      "session": "20261113-010215",
+      "requests": 4
+    },
+    {
+      "session": "20261113-010226",
+      "requests": 4
+    },
+    {
+      "session": "20261113-010306",
+      "requests": 6
+    },
+    {
+      "session": "20261113-010324",
+      "requests": 4
+    },
+    {
+      "session": "20261113-010425",
+      "requests": 4
+    },
+    {
+      "session": "20261113-010434",
+      "requests": 5
+    },
+    {
+      "session": "20261113-010641",
+      "requests": 6
+    },
+    {
+      "session": "20261113-010655",
+      "requests": 6
+    },
+    {
+      "session": "20261113-010756",
+      "requests": 6
+    },
+    {
+      "session": "20261113-010813",
+      "requests": 7
+    },
+    {
+      "session": "20261113-010910",
+      "requests": 5
+    },
+    {
+      "session": "20261113-010920",
+      "requests": 6
+    },
+    {
+      "session": "20261113-011020",
+      "requests": 4
+    },
+    {
+      "session": "20261113-011036",
+      "requests": 7
+    },
+    {
+      "session": "20261113-011134",
+      "requests": 5
+    },
+    {
+      "session": "20261113-011145",
+      "requests": 5
+    },
+    {
+      "session": "20261113-011242",
+      "requests": 4
+    },
+    {
+      "session": "20261113-011304",
+      "requests": 5
+    },
+    {
+      "session": "20261113-011413",
+      "requests": 5
+    },
+    {
+      "session": "20261113-011421",
+      "requests": 4
+    },
+    {
+      "session": "20261113-011432",
+      "requests": 10
+    },
+    {
+      "session": "20261113-011452",
+      "requests": 4
+    },
+    {
+      "session": "20261113-011542",
+      "requests": 6
+    },
+    {
+      "session": "20261113-011555",
+      "requests": 5
+    },
+    {
+      "session": "20261113-012803",
+      "requests": 4
+    },
+    {
+      "session": "20261113-012824",
+      "requests": 4
+    },
+    {
+      "session": "20261113-015328",
+      "requests": 7
+    },
+    {
+      "session": "20261113-022635",
+      "requests": 4
+    },
+    {
+      "session": "20261113-022645",
+      "requests": 4
+    },
+    {
+      "session": "20261113-022724",
+      "requests": 6
+    },
+    {
+      "session": "20261113-022742",
+      "requests": 5
+    },
+    {
+      "session": "20261113-022838",
+      "requests": 10
+    },
+    {
+      "session": "20261113-022849",
+      "requests": 5
+    },
+    {
+      "session": "20261113-022859",
+      "requests": 4
+    },
+    {
+      "session": "20261113-024118",
+      "requests": 8
+    },
+    {
+      "session": "20261113-025032",
+      "requests": 9
+    },
+    {
+      "session": "20261113-025632",
+      "requests": 8
+    }
+  ],
+  "limitation": "Historical running skills often omit args; same-name counts are proxies, not proven identical calls. Replay has no live dispositions or console effects."
+}

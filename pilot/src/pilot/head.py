@@ -90,7 +90,18 @@ def parse_response(value: str | dict) -> HeadResponse:
             "distance",
         }:
             raise ValueError("invalid goal fields")
-        if goal["name"] not in {"vehicle", "drive", "fight", "escape", "road"} or goal["direction"] not in {
+        if goal["name"] not in {
+            "vehicle",
+            "drive",
+            "fight",
+            "escape",
+            "road",
+            "story",
+            "shop",
+            "mayhem",
+            "cruise",
+            "home",
+        } or goal["direction"] not in {
             "north",
             "east",
             "south",

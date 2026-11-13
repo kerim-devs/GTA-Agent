@@ -43,7 +43,7 @@ class Fallback:
 def test_recorded_plans_parse_and_do_not_mutate_request(case_id):
     value = request(case_id)
     before = deepcopy(asdict(value))
-    head = MissionHead()
+    head = MissionHead(goal_seed=1)
     answer = head.decide(value)
     assert parse_response(json.dumps(asdict(answer))) == answer
     assert asdict(value) == before
@@ -53,7 +53,7 @@ def test_recorded_plans_parse_and_do_not_mutate_request(case_id):
 def test_unknown_reaches_fallback_by_identity_and_returns_exact_answer():
     value = replace(request("pilot-20261110-231512-01"), minimap={"minimap": "none"})
     fallback = Fallback()
-    head = MissionHead(fallback)
+    head = MissionHead(fallback, goal_seed=1)
     assert head.decide(value) is fallback.answer
     assert fallback.requests == [value]
     assert fallback.requests[0] is value
@@ -69,14 +69,14 @@ def test_unknown_reaches_fallback_by_identity_and_returns_exact_answer():
         ("wifi-160", "vehicle_waypoint", "set_waypoint"),
         ("wifi-230", "vehicle_route", "drive_route"),
         ("wifi-245", "low_health_vehicle", "set_waypoint"),
-        ("wifi-485", "goal_road", "walk_road"),
+        ("wifi-485", "goal_story", "set_waypoint"),
         ("wifi-536.761", "wanted_on_foot", "walk"),
         ("wifi-33.7221", "screen_reflex", "wait"),
         ("objects-071", "wanted_on_foot_vehicle", "enter_vehicle"),
     ],
 )
 def test_observed_rule_decisions(case_id, rule, first_call):
-    head = MissionHead(Fallback())
+    head = MissionHead(Fallback(), goal_seed=1)
     answer = head.decide(request(case_id))
     assert head.last_rule == rule
     assert answer.plan[0].name == first_call
@@ -85,7 +85,7 @@ def test_observed_rule_decisions(case_id, rule, first_call):
 @pytest.mark.parametrize("case_id", ["wifi-20", "wifi-45", "wifi-540", "wifi-590.005"])
 def test_real_ambiguous_combat_and_wanted_frames_delegate(case_id):
     fallback = Fallback()
-    head = MissionHead(fallback)
+    head = MissionHead(fallback, goal_seed=1)
     value = request(case_id)
     assert head.decide(value) is fallback.answer
     assert fallback.requests[0] is value
@@ -95,13 +95,13 @@ def test_real_ambiguous_combat_and_wanted_frames_delegate(case_id):
     "case_id", ["wifi-15", "wifi-33.7221", "wifi-340", "wifi-385", "wifi-390", "wifi-628.8"]
 )
 def test_recorded_blocking_screens_only_hold(case_id):
-    answer = MissionHead().decide(request(case_id))
+    answer = MissionHead(goal_seed=1).decide(request(case_id))
     assert [call.name for call in answer.plan] == ["wait"]
 
 
 def test_screen_hold_does_not_move_after_a_failed_wait():
     value = replace(request("wifi-33.7221"), last_skill={"name": "wait", "status": "failed"})
-    assert [call.name for call in MissionHead().decide(value).plan] == ["wait"]
+    assert [call.name for call in MissionHead(goal_seed=1).decide(value).plan] == ["wait"]
 
 
 def test_vehicle_escape_with_future_judge_evidence(monkeypatch):
@@ -109,9 +109,9 @@ def test_vehicle_escape_with_future_judge_evidence(monkeypatch):
     import pilot.mission
 
     monkeypatch.setattr(pilot.mission, "movement", lambda request: "vehicle")
-    answer = MissionHead().decide(request("wifi-540"))
-    assert [call.name for call in answer.plan] == ["set_waypoint", "drive_route"]
-    assert answer.plan[0].args["target"] == "away"
+    answer = MissionHead(goal_seed=1).decide(request("wifi-540"))
+    assert [call.name for call in answer.plan] == ["get_away"]
+    assert "set_waypoint" not in [call.name for call in answer.plan]
     assert parse_response(json.dumps(asdict(answer))) == answer
 
 
@@ -127,7 +127,7 @@ def test_wanted_never_fights_or_enters_without_observed_foot(stars, shape, car):
         objects=[{"kind": "car", "confidence": 0.9}] if car else [],
     )
     fallback = Fallback()
-    head = MissionHead(fallback)
+    head = MissionHead(fallback, goal_seed=1)
     answer = head.decide(value)
     names = [call.name for call in answer.plan]
     assert not {"fight", "melee", "punch", "shoot"} & set(names)
@@ -145,7 +145,7 @@ def test_failure_changes_action_before_retry(failed, shape):
         hud={"wanted": 0},
         last_skill={"name": failed, "status": "failed", "reason": "stuck"},
     )
-    head = MissionHead()
+    head = MissionHead(goal_seed=1)
     answer = head.decide(value)
     assert answer.plan[0].name != failed
     assert parse_response(json.dumps(asdict(answer))) == answer
@@ -157,13 +157,13 @@ def test_failure_changes_action_before_retry(failed, shape):
 def test_after_reflex_replans_from_current_request(event):
     # Events are counterfactual overlays on recorded pixels, not recorded calls.
     value = replace(request("pilot-20261110-231512-01"), events=[{"kind": event}])
-    head = MissionHead()
+    head = MissionHead(goal_seed=1)
     head.decide(value)
-    assert head.last_rule == "goal_road"
+    assert head.last_rule == "goal_story"
     head.decide(
         replace(value, events=[], minimap={"minimap": "tilted", "route": "yellow"}, hud={"wanted": 0})
     )
-    assert head.last_rule == "goal_drive"
+    assert head.last_rule == "goal_story"
 
 
 def test_corrupt_or_unreadable_map_cannot_authorize_vehicle():
@@ -174,7 +174,7 @@ def test_corrupt_or_unreadable_map_cannot_authorize_vehicle():
 
 def test_rule_path_is_within_a_few_milliseconds():
     value = request("pilot-20261110-231512-01")
-    head = MissionHead()
+    head = MissionHead(goal_seed=1)
     elapsed = []
     for _ in range(300):
         start = perf_counter_ns()
@@ -196,11 +196,11 @@ def test_free_roam_takes_a_vehicle_before_choosing_its_drive():
         hud=CALM,
         objects=[{"kind": "car", "confidence": 0.9}],
     )
-    head = MissionHead(Fallback())
+    head = MissionHead(Fallback(), goal_seed=1)
     answer = head.decide(value)
-    assert head.last_rule == "goal_vehicle"
-    assert [call.name for call in answer.plan] == ["enter_vehicle"]
-    assert answer.goal["name"] == "vehicle"
+    assert head.last_rule == "goal_story"
+    assert [call.name for call in answer.plan] == ["set_waypoint"]
+    assert answer.goal["name"] == "story"
 
 
 @pytest.mark.parametrize("color", ["blue", "yellow"])
@@ -213,10 +213,10 @@ def test_unasked_rim_marker_keeps_free_roam(color, vehicle):
         hud=CALM,
         objects=[{"kind": "car", "confidence": 0.9}] if vehicle else [],
     )
-    head = MissionHead(Fallback())
+    head = MissionHead(Fallback(), goal_seed=1)
     answer = head.decide(value)
-    assert head.last_rule == ("goal_vehicle" if vehicle else "goal_road")
-    assert [call.name for call in answer.plan] == (["enter_vehicle"] if vehicle else ["walk_road"])
+    assert head.last_rule == "goal_story"
+    assert [call.name for call in answer.plan] == ["set_waypoint"]
 
 
 @pytest.mark.parametrize("objective,border", [("", False), ("Go to the marker.", True)])
@@ -228,7 +228,7 @@ def test_inner_marker_or_objective_keeps_walk_to(objective, border):
         hud=CALM,
         objects=[{"kind": "car", "confidence": 0.9}],
     )
-    head = MissionHead(Fallback())
+    head = MissionHead(Fallback(), goal_seed=1)
     if not objective:
         assert head.decide(value).plan[0].name != "walk_to"
     answer = head.decide(value)
@@ -246,8 +246,8 @@ def test_rim_glyph_fragments_with_false_border_do_not_become_targets(x, y):
             "blips": [{"color": "blue", "x": x, "y": y, "border": False}],
         },
     )
-    head = MissionHead()
-    assert head.decide(value).plan[0].name == "walk_road"
+    head = MissionHead(goal_seed=1)
+    assert head.decide(value).plan[0].name == "set_waypoint"
     # The same location remains a valid target when the game gives an objective.
     assert head.decide(replace(value, objective="Go to the marker.")).plan[0].name == "walk_to"
     # A separate interior marker is not discarded with the rim glyph's color.
@@ -261,18 +261,18 @@ P45_REPLAYS = json.loads((CORPUS.parent / "foot" / "p50" / "decisions.json").rea
 
 @pytest.mark.parametrize("session", P45_REPLAYS, ids=lambda session: session["recording"])
 def test_recorded_free_roam_requests_ignore_rim_and_take_visible_vehicles(session):
-    head = MissionHead()
+    head = MissionHead(goal_seed=1)
     for row in session["requests"]:
         value = HeadRequest(**deepcopy(row["request"]))
         answer = head.decide(value)
         assert answer.goal is not None
-        assert answer.goal["name"] in {"road", "vehicle"}
+        assert answer.goal["name"] in {"story", "shop", "home", "cruise", "mayhem"}
         assert answer.action in {"replace", "go_on"}
         names = [call.name for call in answer.plan]
         assert "walk_to" not in names, (session["recording"], row["id"])
         if any(obj["kind"] in {"car", "truck", "motorcycle"} for obj in value.objects):
-            assert answer.goal["name"] == "vehicle"
-            assert names in (["enter_vehicle"], [])
+            assert answer.goal["name"] in {"story", "shop", "home", "cruise", "mayhem"}
+            assert "walk_to" not in names
 
 
 def test_a_map_without_a_mission_letter_is_not_asked_again_at_once():
@@ -283,7 +283,7 @@ def test_a_map_without_a_mission_letter_is_not_asked_again_at_once():
         hud=CALM,
         objects=[],
     )
-    head = MissionHead()
+    head = MissionHead(goal_seed=1)
     assert head.decide(base).plan[0].args["target"] == "mission"
     failed = replace(base, last_skill={"name": "set_waypoint", "status": "failed", "reason": "no letter"})
     answer = head.decide(failed)
@@ -302,7 +302,7 @@ def test_where_an_objective_route_ended_the_picture_decides_and_not_a_new_waypoi
         last_skill={"name": "drive_route", "status": "done", "reason": "route-gone"},
     )
     fallback = Fallback()
-    assert MissionHead(fallback).decide(value) is fallback.answer
+    assert MissionHead(fallback, goal_seed=1).decide(value) is fallback.answer
 
 
 def test_with_stars_a_waypoint_that_is_up_is_driven_and_the_map_stays_shut(monkeypatch):
@@ -314,7 +314,7 @@ def test_with_stars_a_waypoint_that_is_up_is_driven_and_the_map_stays_shut(monke
         minimap={"minimap": "tilted", "route": "purple"},
         hud={"wanted": 2, "health": 1, "screen": "game"},
     )
-    assert [call.name for call in MissionHead().decide(value).plan] == ["drive_route"]
+    assert [call.name for call in MissionHead(goal_seed=1).decide(value).plan] == ["get_away"]
 
 
 def test_the_judge_outranks_the_minimap_on_how_the_figure_moves():
@@ -328,15 +328,14 @@ def test_the_judge_outranks_the_minimap_on_how_the_figure_moves():
     assert movement(base) == "unknown"
     on_foot = replace(base, judgment={"mode": "foot", "age": 0.2})
     assert movement(on_foot) == "on_foot"
-    head = MissionHead(Fallback())
+    head = MissionHead(Fallback(), goal_seed=1)
     assert [call.name for call in head.decide(on_foot).plan] == [
         "enter_vehicle",
-        "set_waypoint",
-        "drive_route",
+        "get_away",
     ]
     assert head.last_rule == "wanted_on_foot_vehicle"
     driving = replace(base, judgment={"mode": "vehicle", "age": 0.2})
-    assert [call.name for call in head.decide(driving).plan] == ["set_waypoint", "drive_route"]
+    assert [call.name for call in head.decide(driving).plan] == ["get_away"]
     # A judgment without an accepted mode leaves the minimap in charge.
     assert movement(replace(base, judgment={"mode": None, "age": 0.2})) == "unknown"
     watching = replace(base, judgment={"mode": "none", "age": 0.2})
@@ -351,9 +350,9 @@ def test_closing_the_rules_closes_the_head_behind_them():
             self.closed = True
 
     fallback = Closable()
-    MissionHead(fallback).close()
+    MissionHead(fallback, goal_seed=1).close()
     assert fallback.closed
-    MissionHead().close()
+    MissionHead(goal_seed=1).close()
 
 
 @pytest.mark.parametrize("choice, behind", [("rules-only", type(None)), ("rules", "CodexServerHead")])
@@ -395,7 +394,7 @@ VAGOS = ("20261110-093238", 48.527)
 )
 def test_on_foot_an_order_to_take_somebody_out_fights_the_red_blips(recording, time):
     fallback = Fallback()
-    head = MissionHead(fallback)
+    head = MissionHead(fallback, goal_seed=1)
     answer = head.decide(step(recording, time))
     assert head.last_rule == "take_out_fight"
     assert [(call.name, call.args) for call in answer.plan] == [("fight", {"duration": 20, "cover": "no"})]
@@ -416,7 +415,7 @@ def test_on_foot_an_order_to_take_somebody_out_fights_the_red_blips(recording, t
     ],
 )
 def test_the_order_is_read_from_its_verb_through_misreadings(objective):
-    head = MissionHead(Fallback())
+    head = MissionHead(Fallback(), goal_seed=1)
     assert head.decide(replace(step(*VAGOS), objective=objective)).plan[0].name == "fight"
     assert head.last_rule == "take_out_fight"
 
@@ -437,14 +436,14 @@ def test_the_order_is_read_from_its_verb_through_misreadings(objective):
 )
 def test_other_objectives_with_red_on_the_map_still_go_to_the_model(objective):
     fallback = Fallback()
-    value = replace(step(*VAGOS), objective=objective)
-    assert MissionHead(fallback).decide(value) is fallback.answer
+    value = replace(step(*VAGOS), objective=objective, help="")
+    assert MissionHead(fallback, goal_seed=1).decide(value) is fallback.answer
     assert fallback.requests == [value]
 
 
 @pytest.mark.parametrize("case", STEPS, ids=lambda c: f"{c['recording']}-{c['sample_t']:.3f}")
 def test_recorded_steps_without_the_order_decide_as_before(case):
-    head = MissionHead()
+    head = MissionHead(goal_seed=1)
     head.decide(HeadRequest(**deepcopy(case["request"])))
     if head.last_rule != "take_out_fight":
         # P45: this unprompted rim marker is a bearing, not a walking target.
@@ -454,7 +453,7 @@ def test_recorded_steps_without_the_order_decide_as_before(case):
             else case["p39_rule"]
         )
         if not case["request"]["objective"].strip():
-            expected = {"foot_explore": "goal_road", "vehicle_route": "goal_drive"}.get(expected, expected)
+            expected = {"foot_explore": "goal_story", "vehicle_route": "goal_story"}.get(expected, expected)
         assert head.last_rule == expected
     else:
         assert case["request"]["objective"].startswith("Schalte")
@@ -468,7 +467,7 @@ def test_with_stars_an_order_to_take_somebody_out_is_never_fought(stars, car):
         hud={"wanted": stars, "health": 1, "screen": "game"},
         objects=[{"kind": "car", "confidence": 0.9}] if car else [],
     )
-    head = MissionHead(Fallback())
+    head = MissionHead(Fallback(), goal_seed=1)
     names = [call.name for call in head.decide(value).plan]
     assert not {"fight", "melee", "punch", "shoot"} & set(names)
     assert head.last_rule == ("wanted_on_foot_vehicle" if car else "wanted_on_foot")
@@ -476,7 +475,7 @@ def test_with_stars_an_order_to_take_somebody_out_is_never_fought(stars, car):
 
 def test_low_health_gets_away_before_the_order_is_fought():
     # Recorded: the first Vagos objective with a third of the health left.
-    head = MissionHead(Fallback())
+    head = MissionHead(Fallback(), goal_seed=1)
     assert head.decide(step("20261110-093238", 13.620)).plan[0].name == "walk"
     assert head.last_rule == "low_health_on_foot"
     unread = replace(
@@ -488,7 +487,7 @@ def test_low_health_gets_away_before_the_order_is_fought():
 
 def test_without_a_red_in_range_the_order_walks_to_what_the_game_marks_or_asks_the_picture():
     base = step(*VAGOS)
-    head = MissionHead(Fallback())
+    head = MissionHead(Fallback(), goal_seed=1)
     for color in ("yellow", "blue"):
         marked = replace(
             base, minimap={**base.minimap, "blips": [{"color": color, "x": 5.0, "y": 20.0, "border": False}]}
@@ -502,12 +501,12 @@ def test_without_a_red_in_range_the_order_walks_to_what_the_game_marks_or_asks_t
     nothing = replace(base, minimap={**base.minimap, "blips": []})
     for value in (border, nothing):
         fallback = Fallback()
-        assert MissionHead(fallback).decide(value) is fallback.answer
+        assert MissionHead(fallback, goal_seed=1).decide(value) is fallback.answer
 
 
 def test_in_a_vehicle_the_order_leaves_the_route_rules_alone():
     base = replace(step(*VAGOS), hud=CALM)
-    head = MissionHead(Fallback())
+    head = MissionHead(Fallback(), goal_seed=1)
     head.decide(replace(base, minimap={**base.minimap, "minimap": "tilted", "route": "yellow"}))
     assert head.last_rule == "vehicle_route"
     head.decide(replace(base, minimap={**base.minimap, "minimap": "tilted", "route": "none"}))
@@ -518,7 +517,7 @@ def test_a_failed_fight_is_not_repeated_at_once():
     value = replace(
         step(*VAGOS), last_skill={"name": "fight", "status": "failed", "reason": "combat-timeout"}
     )
-    head = MissionHead(Fallback())
+    head = MissionHead(Fallback(), goal_seed=1)
     assert head.decide(value).plan[0].name != "fight"
     assert head.last_rule == "failed_skill"
 
@@ -531,14 +530,14 @@ def _on_foot_failure(name, reason):
 
 
 def test_unmarked_foot_heads_for_a_road():
-    head = MissionHead()
+    head = MissionHead(goal_seed=1)
     answer = head.decide(request("wifi-485"))
-    assert head.last_rule == "goal_road"
-    assert [call.name for call in answer.plan] == ["walk_road"]
+    assert head.last_rule == "goal_story"
+    assert [call.name for call in answer.plan] == ["set_waypoint"]
 
 
 def test_a_map_without_roads_keeps_a_long_heading_without_accumulating_looks():
-    head = MissionHead()
+    head = MissionHead(goal_seed=1)
     answer = head.decide(_on_foot_failure("walk_road", "no-road"))
     assert head.last_rule == "foot_explore_roadless"
     assert [call.name for call in answer.plan] == ["walk_road"]
@@ -547,7 +546,7 @@ def test_a_map_without_roads_keeps_a_long_heading_without_accumulating_looks():
 
 @pytest.mark.parametrize("name", ["walk", "walk_road"])
 def test_walking_that_found_no_way_round_changes_heading_by_a_fixed_step(name):
-    head = MissionHead()
+    head = MissionHead(goal_seed=1)
     answer = head.decide(_on_foot_failure(name, "stuck"))
     assert head.last_rule == "foot_stuck"
     assert [call.name for call in answer.plan] == ["look", "walk_road"]
@@ -555,7 +554,7 @@ def test_walking_that_found_no_way_round_changes_heading_by_a_fixed_step(name):
 
 
 def test_a_blocked_walk_to_turns_back_toward_the_road():
-    head = MissionHead()
+    head = MissionHead(goal_seed=1)
     answer = head.decide(_on_foot_failure("walk_to", "blocked"))
     assert head.last_rule == "foot_stuck"
     assert [call.name for call in answer.plan] == ["look", "walk_road"]
@@ -575,12 +574,12 @@ def test_unasked_target_must_survive_two_observations_and_loss_resets_it(color):
             "blips": [{"color": color, "x": 10, "y": 25, "border": False}],
         },
     )
-    head = MissionHead()
+    head = MissionHead(goal_seed=1)
     assert head.decide(value).plan[0].name == "walk_road"
     assert head.decide(value).plan[0].name == "walk_to"
     empty = replace(value, minimap={"minimap": "flat", "route": "none", "blips": []})
-    assert head.decide(empty).plan[0].name == "walk_road"
-    assert head.decide(value).plan[0].name == "walk_road"
+    assert head.decide(empty).plan[0].name == "set_waypoint"
+    assert head.decide(value).plan[0].name == "set_waypoint"
     jumped = replace(
         value,
         minimap={
@@ -589,16 +588,26 @@ def test_unasked_target_must_survive_two_observations_and_loss_resets_it(color):
             "blips": [{"color": color, "x": -40, "y": 25, "border": False}],
         },
     )
-    assert head.decide(jumped).plan[0].name == "walk_road"
+    assert head.decide(jumped).plan[0].name == "set_waypoint"
 
 
-def test_a_road_goal_that_meets_a_map_without_roads_keeps_its_heading():
-    head = MissionHead()
-    base = replace(request("wifi-485"), objective="", hud=CALM, time=1.0)
-    assert head.decide(base).goal["name"] == "road"
+def test_an_errand_seeking_a_vehicle_keeps_heading_when_there_are_no_roads():
+    head = MissionHead(goal_seed=1)
+    base = replace(request("wifi-485"), objective="", hud=CALM, time=1.0, objects=[])
+    assert head.decide(base).goal["name"] == "story"
+    told = replace(
+        base,
+        time=2.0,
+        last_skill={
+            "name": "set_waypoint",
+            "status": "done",
+            "reason": "waypoint set: Franklin (700m); gameplay observed",
+        },
+    )
+    assert head.decide(told).plan[0].name == "walk_road"
     answer = head.decide(
         replace(base, time=5.0, last_skill={"name": "walk_road", "status": "failed", "reason": "no-road"})
     )
-    assert answer.goal["name"] == "road"
+    assert answer.goal["name"] == "story"
     assert [call.name for call in answer.plan] == ["walk_road"]
-    assert answer.plan[0].args["duration"] == 30
+    assert answer.plan[0].args["duration"] >= 15

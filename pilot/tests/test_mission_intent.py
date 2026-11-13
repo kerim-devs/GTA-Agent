@@ -155,7 +155,11 @@ def test_safety_precedes_intent(objective, hud, expected):
         ),
         ("Zerstöre den Transporter.", {"minimap": "tilted", "route": "yellow", "blips": []}, "vehicle_route"),
         # The way out the game marks is taken before the pilot picks one of its own.
-        ("Entkomme der Polizei.", {"minimap": "tilted", "route": "yellow", "blips": []}, "vehicle_route"),
+        (
+            "Entkomme der Polizei.",
+            {"minimap": "tilted", "route": "yellow", "blips": []},
+            "objective_escape_vehicle",
+        ),
         (
             "Entkomme der Polizei.",
             {"minimap": "tilted", "route": "none", "blips": []},
