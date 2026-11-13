@@ -573,6 +573,13 @@ CAUSE_RULES: dict[str, str | None] = {
     "place-instance-not-present": "decide",
     "goal_": "decide",
     "not-built": "decide",  # a skill planned before its card was done
+    "no-prompt": "decide",  # do_prompt, use_place: planned where the game offers nothing
+    "refused:": "decide",  # do_prompt: the offer is one the pilot never takes (a bed, a purchase, Online)
+    "no-effect": "act",  # do_prompt: the button went down and the help text stayed
+    "pressed:": None,  # do_prompt's done: the offer was taken
+    "used:": None,  # use_place's done: the place's menu was opened and left
+    "menu-unread": "see",  # use_place: the rows or prices of the menu could not be read
+    "wrong-screen:": "world",  # use_place: another screen came up in the middle of it
     # seen and decided rightly and the movement did not do it
     "failed-recovery": "act",
     "blocked": "act",

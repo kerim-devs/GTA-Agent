@@ -742,6 +742,9 @@ class Conductor:
                 # One odd reading is not a screen yet: this tick is neutral and the plan is kept.
                 return result
             screen = observation.hud.screen if observation.hud is not None else self.flow_screen
+            if screen == "game":
+                # What the reflex tells apart on the game's own screen: an alert, a shop's menu.
+                screen = getattr(self.flow, "screen", None) or screen
             if result.action != "stuck" and self.runner.has_plan:
                 # Also what the head planned for a stuck screen, once that screen has changed.
                 self.runner.stop("flow")

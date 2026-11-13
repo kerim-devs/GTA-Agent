@@ -247,7 +247,7 @@ class UsePlace(_PlaceSkill):
         "spend=no never confirms; spend=yes buys at most one readable item costing at most $150. "
         "Done 'used: <prompt>; bought ...'. Fails no-prompt, menu-unread, wrong-screen or time-limit."
     )
-    opens: ClassVar = ("interaction_menu",)
+    opens: ClassVar = ("interaction_menu", "shop_menu")
     SPEND_LIMIT = 150  # Kerim sets the maximum price for a single visit.
 
     def __init__(self, args):

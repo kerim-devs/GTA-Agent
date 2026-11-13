@@ -7,7 +7,9 @@ from dataclasses import dataclass
 from pilot.contract import NEUTRAL_PAD, Observation, Pad
 from pilot.profile import active
 
-MENUS = frozenset({"pause", "map", "phone", "weapon_wheel", "interaction_menu"})
+# "shop_menu" is no class of the HUD reader, which calls a shop's menu the game (docs/reports/P71): it
+# is told here, from a screen without a minimap whose footer offers the way back.
+MENUS = frozenset({"pause", "map", "phone", "weapon_wheel", "interaction_menu", "shop_menu"})
 FAILURES = frozenset({"failed", "wasted", "busted"})
 # One tick is 33 ms, shorter than Kerim's presses (about 0.14 s) and easy for the console to miss.
 PRESS_SECONDS = 0.09
@@ -95,6 +97,55 @@ def _alert(text):
     )
 
 
+# The footer of a shop's menu as the reader gives it: "ZurÖck O Kaufen", "ZurÖek O Auswahlen" on the
+# three recorded menus (Ammu-Nation 20261111-185323 at 60 s, Suburban 20261111-193105 at 594 s, the
+# wardrobe 20261111-210812 at 157 s), each at x 1051 to 1071 and y 663. "Verlassen" is not taken: it
+# stands in the footer of a failed mission, where the circle gives the mission up.
+BACK = re.compile(r"\bzur\w{1,3}k\b")
+# A menu nobody asked for is left after this long: a skill that opened one has said so (`expect`),
+# and one that was stopped in the middle of it has had its time.
+MENU_OPEN_SECONDS = 4.0
+# Between two presses of the way back; the text is read twice a second.
+MENU_PRESS_EVERY = 1.0
+# Levels of a shop's menu that are backed out of, one press each, before the head is told.
+MENU_LEVELS = 6
+# The footer is held to be there this long after its last reading: one reading in six misses a line.
+MENU_HELD_SECONDS = 1.5
+# With an objective read this short a time ago a mission is on, and the menu may be the mission's own
+# (the suit for the jeweller, the gun before the long stretch): the head is told first and has this
+# long to use it, once in two minutes, before the reflex leaves the menu after all.
+MISSION_SECONDS = 90.0
+MENU_SURE_SECONDS = 1.2
+MENU_HEAD_SECONDS = 20.0
+MENU_TOLD_EVERY = 120.0
+
+
+def _menu_left_open(observation, text) -> bool:
+    """The game's screen without a minimap, with a footer at the bottom right that offers the way back.
+
+    That is a menu of the game the HUD reader has no name for: a shop's, a wardrobe's. A scene has no
+    footer, and what is spoken in one is centred and so begins in the left half of the picture.
+    """
+    if observation.reading.minimap != "none" or text is None or isinstance(text, str):
+        return False
+    words = _fold(_words(text))
+    if RETRY.search(words) or SKIP.search(words):
+        return False
+    for line in getattr(text, "lines", ()):
+        x, y = line.box[0], line.box[1]
+        if line.confidence < 0.5 or y < 640 or x < 640 or len(line.text) > 60:
+            continue
+        if BACK.search(_fold(line.text)):
+            return True
+    return False
+
+
+def _fold(words: str) -> str:
+    return "".join(
+        char for char in unicodedata.normalize("NFKD", words.casefold()) if not unicodedata.combining(char)
+    )
+
+
 def _button(text: object, screen: str, profile) -> str | None:
     """The one button a screen is left with, as Kerim pressed it in recording 093238.
 
@@ -116,7 +167,7 @@ def _button(text: object, screen: str, profile) -> str | None:
         return profile.retry if RETRY.search(words.lower()) else None
     # Circle: phone t=156.294, map levels t=391.932/392.133. The interaction menu names circle
     # for "Zurück" in its footer, frames 1300 to 1513 of the screen tour of 11 November.
-    return profile.back if screen in {"pause", "map", "phone", "interaction_menu"} else None
+    return profile.back if screen in {"pause", "map", "phone", "interaction_menu", "shop_menu"} else None
 
 
 class Flow:
@@ -158,6 +209,15 @@ class Flow:
         self._last_time: float | None = None
         self._button: str | None = None
         self._button_reads = 0
+        self._objective_at: float | None = None
+        self._menu_seen = 0.0
+        self._menu_told: float | None = None
+        self._menu_head = False
+
+    @property
+    def screen(self) -> str | None:
+        """The screen as the reflex names it: the HUD's class, or what it tells apart on the game's."""
+        return self._screen or self._candidate
 
     def expect(self, *screens: str, until: float) -> None:
         if not screens or any(screen not in MENUS for screen in screens):
@@ -180,6 +240,7 @@ class Flow:
         objective = getattr(text, "objective", None)
         if objective:
             self._objective = objective.casefold().strip()
+            self._objective_at = now
         banner = getattr(text, "banner", None)
         candidate = banner.casefold().strip() if banner else None
         self._mission_reads = self._mission_reads + 1 if candidate == self._mission_candidate else 1
@@ -208,6 +269,15 @@ class Flow:
         screen = observation.hud.screen
         if screen == "game" and _alert(text):
             screen = "alert"
+        elif screen == "game" and _menu_left_open(observation, text):
+            screen, self._menu_seen = "shop_menu", now
+        elif (
+            screen == "game"
+            and self._candidate == "shop_menu"
+            and observation.reading.minimap == "none"
+            and now - self._menu_seen < MENU_HELD_SECONDS
+        ):
+            screen = "shop_menu"
         self._track_mission(screen, text, now)
         if self._expected and now >= self._expected[1]:
             self._expected = None
@@ -261,7 +331,14 @@ class Flow:
             elif screen == "passed":
                 self.last_pass, self.failures_in_row = now, 0
                 self.mission = self._objective = self._failed_mission = None
+                self._objective_at = None
                 events = ({"kind": "pass", "time": now},)
+            elif screen == "shop_menu":
+                mission = self._objective_at is not None and now - self._objective_at < MISSION_SECONDS
+                told = self._menu_told is not None and now - self._menu_told < MENU_TOLD_EVERY
+                self._menu_head = mission and not told
+        if screen == "shop_menu":
+            return self._shop_menu(now, events)
         if self._stuck:
             return FlowResult(action="stuck")
 
@@ -318,3 +395,42 @@ class Flow:
                 )
             return FlowResult(Pad(buttons=(button,)), self._pressed[1], events)
         return FlowResult(action="observe", events=events)
+
+    def _shop_menu(self, now, events):
+        """A shop's menu that no skill has asked for: left by the way back, level by level.
+
+        In a mission the head is told first, since the menu may be what the mission wants used; it has
+        its seconds, and after them, or when it has been told within the last two minutes, the menu is
+        left as in free roam. Nothing but the way back is ever pressed here.
+        """
+        stuck = {"kind": "stuck", "screen": "shop_menu"}
+        held = now - self._since
+        back = self.profile.back
+        if self._pressed_at is not None and now - self._pressed_at < PRESS_SECONDS:
+            return FlowResult(Pad(buttons=(back,)), "back", events)
+        if self._menu_head:
+            if held < MENU_SURE_SECONDS:
+                return FlowResult(action="observe", events=events)
+            if held < MENU_HEAD_SECONDS:
+                if self._stuck:
+                    return FlowResult(action="stuck", events=events)
+                self._stuck, self._menu_told = True, now
+                return FlowResult(action="stuck", events=(*events, stuck))
+            self._menu_head = self._stuck = False
+        elif self._stuck:
+            return FlowResult(action="stuck", events=events)
+        elif self._pressed_at is None and held < MENU_OPEN_SECONDS:
+            return FlowResult(action="observe", events=events)
+        if self._pressed_at is not None:
+            if now - self._pressed_at < MENU_PRESS_EVERY:
+                return FlowResult(action="observe", events=events)
+            if self._presses >= MENU_LEVELS:
+                self._stuck = True
+                return FlowResult(action="stuck", events=(*events, stuck))
+        if self._menu_seen != now:
+            # The footer is only held to be there: a press needs it read, so that the last press of
+            # the way out is not followed by one more into the game.
+            return FlowResult(action="observe", events=events)
+        self._pressed_at, self._pressed = now, (back, "back")
+        self._presses += 1
+        return FlowResult(Pad(buttons=(back,)), "back", events)
