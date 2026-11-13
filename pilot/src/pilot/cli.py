@@ -127,6 +127,12 @@ def main(argv: list[str] | None = None) -> None:
         help="answer red markers, stars and low health in the tick with the guard's rules; off by default "
         "until a live run has measured it",
     )
+    play.add_argument(
+        "--no-standing",
+        action="store_true",
+        help="do not tell the head when the figure has stood for twelve seconds (it is never told "
+        "with the scripted head, whose plans are the test's)",
+    )
     play.add_argument("--record-dir", type=absolute_path, default=PLAY_RECORDINGS)
     play.add_argument("--notebook", type=Path)
     play.add_argument(
@@ -257,6 +263,9 @@ def main(argv: list[str] | None = None) -> None:
                     flow=None if args.no_hud_flow else Flow(),
                     opening=opening(args),
                     guard=Guard() if args.guard else None,
+                    standing=None
+                    if args.no_standing or args.head == "scripted"
+                    else Conductor.STANDING_SECONDS,
                 )
             )
     else:

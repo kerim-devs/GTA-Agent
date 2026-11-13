@@ -2,12 +2,13 @@
 
 import json
 from concurrent.futures import Future
+from dataclasses import replace
 
 import numpy as np
 import pytest
 
 from pilot.conductor import Conductor, guard_row
-from pilot.contract import NEUTRAL_PAD, Blip, Hud, Observation, Reading
+from pilot.contract import NEUTRAL_PAD, Blip, Detection, Hud, Observation, Reading
 from pilot.guard import Guard
 from pilot.head import HeadRequest, parse_response
 from pilot.mission import MissionHead
@@ -408,7 +409,7 @@ def test_the_play_log_rows_time_a_live_run_without_the_bench():
 def test_a_rule_is_one_entry_in_the_table():
     from pilot.guard import RULES, Rule
 
-    assert [rule.rank for rule in RULES] == [1, 2, 3, 4, 5]
+    assert [rule.rank for rule in RULES] == [1, 2, 3, 4, 5, 6]
     quick = tuple(
         Rule(rule.rank, rule.name, rule.signal, ("ticks", 1, 1), rule.answer, rule.lets_go)
         if rule.name == "red"
@@ -418,3 +419,78 @@ def test_a_rule_is_one_entry_in_the_table():
     guard = Guard(quick)
     t = calm(guard)
     assert guard.tick(see(t, blips=(AHEAD,))).rule == "red"
+
+
+# ---------------------------------------------------------------- a hit without a marker
+
+
+def person(t, health, *, objective_people=True, **picture):
+    """The picture with a man standing before the figure, as the detector reports him."""
+    seen = see(t, health=health, **picture)
+    man = Detection("person", (560.0, 250.0, 700.0, 620.0), 0.9)
+    own = Detection("person", (590.0, 330.0, 690.0, 640.0), 0.9)
+    return replace(seen, objects=(man,) if objective_people else (), objects_time=t, figure=own)
+
+
+def hit(guard, t, *, before=0.9, after=0.7, seconds=2.0, objective="", people=True, **picture):
+    """A level held, then a step down that stays: what hits.py confirms on its third frame."""
+    verdicts = []
+    for _ in range(round(seconds / TICK)):
+        guard.tick(person(t, before, objective_people=people, **picture), objective=objective)
+        t += TICK
+    for _ in range(round(1.0 / TICK)):
+        verdicts.append(guard.tick(person(t, after, objective_people=people, **picture), objective=objective))
+        t += TICK
+    return t, verdicts
+
+
+def test_a_hit_without_a_marker_is_answered_with_the_fists_in_free_roam():
+    guard = Guard()
+    _, verdicts = hit(guard, 0.0)
+    starts = [event for verdict in verdicts for event in verdict.events if event["kind"] == "guard_start"]
+    assert [event["rule"] for event in starts] == ["hit"]
+    assert starts[0]["answer"] == "strike" and starts[0]["drop"] == pytest.approx(0.2, abs=0.01)
+    held = [verdict for verdict in verdicts if verdict.rule == "hit" and verdict.pad is not None]
+    assert held and not any(verdict.pad.r2 for verdict in held)  # the fists, never the trigger
+
+
+def test_a_hit_is_no_signal_with_a_marker_on_the_map_or_stars_lit():
+    guard = Guard()
+    _, verdicts = hit(guard, 0.0, blips=(AHEAD,))
+    assert "hit" not in {verdict.rule for verdict in verdicts}
+    guard = Guard()
+    _, verdicts = hit(guard, 0.0, wanted=1)
+    assert "hit" not in {verdict.rule for verdict in verdicts}
+
+
+def test_a_hit_in_a_mission_is_told_to_the_head_and_nothing_is_struck():
+    guard = Guard()
+    _, verdicts = hit(guard, 0.0, objective="Folge Lamar.")
+    assert all(verdict.pad is None for verdict in verdicts)
+    news = [event for verdict in verdicts for event in verdict.events]
+    assert [(event["kind"], event["rule"], event["where"]) for event in news] == [
+        ("guard_news", "hit", "mission")
+    ]
+
+
+def test_a_hit_with_nobody_in_view_lets_go_by_itself():
+    guard = Guard()
+    t, verdicts = hit(guard, 0.0, people=False)
+    _, more = run(guard, t, 6.0, health=0.7)
+    ends = [event for verdict in verdicts + more for event in verdict.events if event["kind"] == "guard_end"]
+    assert [event["rule"] for event in ends] == ["hit"]
+    assert more[-1].pad is None
+
+
+def test_a_lower_bar_after_a_screen_without_the_hud_is_no_hit():
+    guard = Guard()
+    t = calm(guard)
+    t, _ = run(guard, t, 2.0, health=0.9)
+    for _ in range(45):  # a scene: no bars at all, and no map
+        guard.tick(replace(see(t, minimap="none"), hud=Hud(wanted=None, health=None, screen="game")))
+        t += TICK
+    verdicts = []
+    for _ in range(90):  # the game is back with less health than before the scene
+        verdicts.append(guard.tick(person(t, 0.5)))
+        t += TICK
+    assert "hit" not in {verdict.rule for verdict in verdicts}

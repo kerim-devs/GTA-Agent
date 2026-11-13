@@ -22,8 +22,10 @@ from dataclasses import dataclass, field, replace
 
 from .combat import Fight, nearest_red
 from .contract import NEUTRAL_PAD, Observation, Pad
+from .hits import Hits
 from .mission import FIGHT_SECONDS
 from .notes import intent
+from .punch import Punch
 from .skills import Face, Walk
 
 # A bar fading in after a black screen reads 0.0 for about 0.35 s although it is full (P64: enemy-13,
@@ -38,6 +40,10 @@ STAND_OUT = 1.0
 RE_ARM = 2.0
 # How long a flight lasts when its rule names no time of its own.
 FLEE_SECONDS = 4.0
+# A hit counts as the signal of the rule `hit` for this long after the frame that confirmed it, and as
+# one without a marker when no red was on the map in the seconds before it (the marker of a mission's
+# enemy is there before his shot; RE_ARM is how long a marker's own rule looks back).
+HIT_SECONDS = 1.0
 
 
 @dataclass(frozen=True)
@@ -70,6 +76,12 @@ RULES = (
     # Red pinned to the map's edge and none inside: out of range at an unknown distance, so the camera
     # turns to its bearing and nothing is fired along it.
     Rule(5, "red_edge", "red_edge", ("ticks", 2, 3), "turn", {"clear": 2.0}),
+    # Kerim, 12 November: a brawl with a passer-by or an attacker in the street shows no red marker, and
+    # that must be noticed as well. The falling health bar is the one thing the game draws then
+    # (hits.py, which confirms a fall on three frames before it says so). In free roam the answer is the
+    # fists: `Punch` goes for the nearest person in view and ends by itself where there is none. With an
+    # objective on the screen the people around may be the figure's own, so the head is only told.
+    Rule(6, "hit", "hit_unmarked", ("ticks", 1, 1), "strike", {"skill": True, "seconds": 12.0}),
 )
 
 
@@ -158,6 +170,8 @@ class Guard:
         self.last_red = None
         self.observation = None
         self.flow = False
+        self.hits = Hits()
+        self.hit = self.hit_at = None
         # One entry per episode for the bench and the logs: the rule, when it took the pad or told the
         # head, when and why it let go, and on how many ticks it aimed, fired, turned and sprinted.
         self.episodes = []
@@ -203,6 +217,12 @@ class Guard:
         reds = self._reds(observation)
         return None if reds is None else bool(reds) and all(blip.border for blip in reds)
 
+    def hit_unmarked(self, observation):
+        t = observation.time
+        if self.hit_at is None or t - self.hit_at > HIT_SECONDS or self.stars_lit:
+            return False
+        return self.last_red is None or self.hit_at - self.last_red > RE_ARM
+
     # ------------------------------------------------------------------ the tick
 
     def tick(
@@ -219,6 +239,9 @@ class Guard:
         t = observation.time
         self.observation, self.flow = observation, flow
         where = self._read(observation)
+        hit = self.hits.update(t, observation.hud)
+        if hit is not None:
+            self.hit, self.hit_at = hit, t
         counting = []
         for rule in self.rules:
             value = getattr(self, rule.signal)(observation)
@@ -262,6 +285,11 @@ class Guard:
             news = () if top.name in self.told else (self._news(top, t, "moving"),)
             self.told.add(top.name)
             return Verdict(None, top.name, f"{top.name}: a skill moves the figure", news)
+        if top.answer == "strike" and objective.strip():
+            # In a mission the nearest person may be on the figure's side: the head's rules decide.
+            news = () if top.name in self.told else (self._news(top, t, "mission"),)
+            self.told.add(top.name)
+            return Verdict(None, top.name, f"{top.name}: an objective is on the screen", news)
         return self._take(top, t, objective)
 
     def _read(self, observation):
@@ -343,6 +371,7 @@ class Guard:
             # The first tick on which the signal was read, before it counted: a live run is timed from it.
             "seen": self.counters[rule.name].first,
             **({"after": after} if after else {}),
+            **({"drop": round(self.hit.drop, 3)} if rule.name == "hit" and self.hit is not None else {}),
         }
         pad, _ = self._step(t, None)
         self._count(pad)
@@ -354,6 +383,8 @@ class Guard:
             return Fight({"duration": float(FIGHT_SECONDS), "cover": "no"})
         if answer == "turn":
             return Face({"color": "red", "duration": 5.0})
+        if answer == "strike":
+            return Punch({"duration": rule.lets_go.get("seconds", 12.0), "hits": 3})
         if nearest is None or math.hypot(nearest.x, nearest.y) < 1:
             x, y = 0.0, -1.0  # straight ahead
         else:

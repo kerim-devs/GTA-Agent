@@ -501,6 +501,7 @@ NOT_TERMINAL = {
     "flow",  # conductor: the flow reader's pad, no end
     "carry-on",  # conductor: the carry-on touch, no end
     "guard",  # conductor: the guard's pad, no end
+    "pad-refused",  # conductor: the neutral pad while a hand is on the controller, no end
     "vehicle found",  # vehicle_entry: stops its walk along the road, not itself
     "touching the camera for the game's own view",  # walk_to_point: its first half second, no end
     "stepping off the carriageway",  # walk_to_point: its last steps, no end

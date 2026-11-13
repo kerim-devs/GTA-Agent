@@ -19,6 +19,7 @@ from .goals import interruption
 from .head import HeadRequest, ScriptedHead, SkillCall, build_prompt, parse_response, response_data
 from .judge import ModeFilter
 from .loop import ControllerRuntime, Pipeline, RuntimeInterruptedError, cleanup_runtime, interrupt_handlers
+from .notes import intent
 from .profile import active
 from .scene import EventDetector, SceneText, TextReader
 from .skills import Observation, SkillResult, SkillRunner
@@ -73,6 +74,7 @@ class Conductor:
         judge=None,
         awake=None,
         guard=None,
+        standing=None,
     ):
         for value in (quiet_seconds, ocr_interval, ocr_timeout):
             if not math.isfinite(value) or value <= 0:
@@ -141,6 +143,15 @@ class Conductor:
         self.guard_verdict = None
         self.guard_events = []
         self.applied_at = None
+        # Seconds without movement on the game's own screen after which the head is told the figure
+        # stands; None leaves it out (`pilot play --no-standing`, and every test run of one skill).
+        self.standing = standing
+        self.still = self.moved = self.moved_since = 0.0
+        self.standing_count = 0
+        self.still_time = None
+        # The bridge refuses the pad while a hand is on the controller: the plan is put down and
+        # nothing is planned until the pad is taken again.
+        self.refused_since = None
 
     def write(self, row):
         self.log.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -316,6 +327,102 @@ class Conductor:
     NUDGE_SECONDS = 0.1  # one tick is easy for the console to miss
     NUDGE_STICK = 0.5  # as it reaches the console
 
+    # Skills during which a standing figure is what was asked for: a fight from one spot, a menu the
+    # skill itself opened, a move of the camera that has the figure stand. Their seconds do not count.
+    STILL_SKILLS = frozenset(
+        {
+            "fight",
+            "melee",
+            "shoot",
+            "punch",
+            "press",
+            "set_waypoint",
+            "level_camera",
+            "set_far_view",
+            "use_place",
+            "do_prompt",
+            "switch_character",
+        }
+    )
+    # PLAN.md: the pilot frees itself within about ten seconds and never stands. Every skill's own
+    # guard acts within two to five; this is the bound behind them.
+    STANDING_SECONDS = 12.0
+    STILL_TICK = 0.2  # a tick that comes late has not shown the figure standing for all that time
+    # A touch of the camera (the nudge that keeps the game's own view, a look) moves the map for a
+    # moment: only this much movement in a row says the figure is under way again.
+    MOVED_SECONDS = 1.5
+    STANDING_RESET = 3.0  # movement after which the next standing is counted as the first again
+
+    def _standing(self, observation, *, busy):
+        """The event for a figure that has not moved for `standing` seconds, or None.
+
+        The plan's own rule is that the pilot never stands (PLAN.md): each skill has its guard, and this
+        is the one behind them all, for what no skill notices: a plan of waits, a head that keeps
+        answering with what does nothing, a screen no reader has a name for.
+        """
+        t = observation.time
+        previous, self.still_time = self.still_time, t
+        if self.standing is None or previous is None or not 0 < t - previous:
+            return None
+        step = min(t - previous, self.STILL_TICK)
+        reading, hud = observation.reading, observation.hud
+        active = self.runner.active
+        waiting = self.text.objective.strip() and intent(self.text.objective)["class"] == "wait"
+        if (
+            busy
+            or reading.corrupt
+            or reading.minimap == "none"
+            or observation.moving is None
+            or observation.mode == "none"
+            or (hud is not None and hud.screen != "game")
+            or t < self.own_screen_until
+            or waiting
+            or (active is not None and (active.name in self.STILL_SKILLS or getattr(active, "opens", ())))
+        ):
+            return None
+        if observation.moving:
+            self.moved += step
+            self.moved_since += step
+            if self.moved >= self.MOVED_SECONDS:
+                self.still = 0.0
+            if self.moved_since >= self.STANDING_RESET:
+                self.standing_count = 0
+            return None
+        self.moved = 0.0
+        self.still += step
+        if self.still < self.standing:
+            return None
+        self.standing_count += 1
+        event = {"kind": "standing", "seconds": round(self.still, 1), "count": self.standing_count}
+        self.still = self.moved_since = 0.0
+        return event
+
+    def refuse(self, t, refused):
+        """The bridge refuses the pad, or takes it again (`run_play` says which on every tick).
+
+        A hand on the controller is Kerim taking over. Until 13 November the skills ran on against a
+        pad that went nowhere and ended on what they had not done. Now the plan is put down once, no
+        skill is stepped and the head is not asked while the pad is refused, and when it is taken again
+        the head hears of it and plans afresh from the picture as it then is.
+        """
+        if refused and self.refused_since is None:
+            self.refused_since = t
+            self.runner.stop("pad_refused")
+            self._expect_skill()
+            self.epoch += 1
+            self._abandon_head(t)
+            self.pending.clear()
+            self.carry_allowed, self.carry_started = False, None
+            self.goal = None
+            self.write({"type": "pad_refused", "t": t})
+        elif not refused and self.refused_since is not None:
+            seconds = t - self.refused_since
+            self.refused_since = None
+            self.epoch += 1
+            self.pending.append({"kind": "pad_returned", "seconds": seconds})
+            self.still = self.moved = 0.0
+            self.write({"type": "pad_returned", "t": t, "seconds": seconds})
+
     def tick(self, observation: Observation, rgb, **reads):
         result = self._tick(observation, rgb, **reads)
         if self.awake is None:
@@ -420,7 +527,14 @@ class Conductor:
         self.judge_events.clear()
         # The guard answers before the head's answer is taken and the plan is run, so that its pad is on
         # this tick whatever the head is doing.
+        if self.refused_since is not None:
+            # The readers have read; nothing is run, and what happened meanwhile is not news once the
+            # pad is back: the head then plans from the picture as it is.
+            return SkillResult(reason="pad-refused")
         guarded = self.guard is not None and self._guard_tick(observation, new_events).pad is not None
+        stands = self._standing(observation, busy=guarded)
+        if stands is not None:
+            new_events.append(stands)
         if new_events:
             self.epoch += 1
             self.pending.extend(new_events)
@@ -783,6 +897,7 @@ def run_play(
     judge=None,
     awake=None,
     guard=None,
+    standing=None,
 ):
     pipeline = Pipeline() if pipeline is None else pipeline
     runtime = ControllerRuntime(bridge, shadow=shadow, clock=clock)
@@ -812,6 +927,7 @@ def run_play(
                 **({"judge": judge} if judge is not None else {}),
                 **({"awake": awake} if awake is not None else {}),
                 **({"guard": guard} if guard is not None else {}),
+                **({"standing": standing} if standing is not None else {}),
                 runner=None if driver_factory is None else SkillRunner(driver_factory=driver_factory),
             )
             log = (destination / "play.jsonl").open("x")
@@ -834,6 +950,9 @@ def run_play(
                             # The person and the vehicle the reader cut out belong to these detections.
                             figure = getattr(objects, "figure", None)
                             figure_vehicle = getattr(objects, "figure_vehicle", None)
+                    refuse = getattr(conductor, "refuse", None)
+                    if refuse is not None and not shadow:
+                        refuse(received, runtime.blocked_until is not None)
                     result = conductor.tick(
                         Observation(
                             reading,

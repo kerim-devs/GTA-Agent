@@ -154,6 +154,18 @@ class RuntimeInterruptedError(BaseException):
 class ControllerRuntime:
     """The same freshness, lease, conflict and release rules for every local skill."""
 
+    # The bridge lets a pad go 250 ms after it was sent (contract.Pad.payload). A tick that takes
+    # longer than that, with a text reading in it or a late frame before it, used to turn one press
+    # into two at the console: the button came up by itself and went down again with the next pad.
+    # On 13 November that took a waypoint away that had just been set (the cross in the legend) and
+    # made two jumps of one (Square in the walk's guard). So a button that was down in the last pad
+    # and has been let go by the bridge since is not pressed again until the skill itself has let
+    # go of it once: a press that was asked for once reaches the console once, cut short at worst.
+    # Sticks and triggers are states and not presses, and are sent as asked. The gap that counts as
+    # a lapse is under the bridge's own 250 ms, since a press cut short costs nothing and a second
+    # press does.
+    LAPSE = 0.2
+
     def __init__(self, bridge, *, shadow=False, clock=time.monotonic, raw=False):
         from .profile import active
 
@@ -168,6 +180,27 @@ class ControllerRuntime:
         self.frozen = False
         self.blocked_until = None
         self.conflicts = 0
+        self.sent_at = None
+        self.down = frozenset()
+        self.withheld = frozenset()
+        self.cut = 0  # presses that were cut short instead of being pressed twice
+
+    def _once(self, pad):
+        """The pad with every button taken out that the bridge has let go of in the middle of its press."""
+        now = self.clock()
+        asked = frozenset(pad.buttons)
+        if self.profile.sprint_held:
+            asked -= {self.profile.sprint}  # held for as long as the figure runs: a state, not a press
+        withheld = self.withheld & asked  # let go of by the skill: free again
+        if self.sent_at is not None and now - self.sent_at > self.LAPSE:
+            lapsed = self.down & asked
+            self.cut += len(lapsed - withheld)
+            withheld |= lapsed
+        self.withheld = withheld
+        if withheld:
+            pad = replace(pad, buttons=tuple(button for button in pad.buttons if button not in withheld))
+        self.sent_at, self.down = now, asked - withheld
+        return pad
 
     def observe(self, frame, received):
         fresh = frame is not None and frame.id != self.last_id and 0 <= frame.age < 0.3
@@ -196,12 +229,18 @@ class ControllerRuntime:
             elif received - self.last_fresh >= 0.3 and not self.frozen:
                 status = self.send()
                 self.frozen = True
+                self.down = frozenset()
             elif fresh:
                 self.sent_pad = self.requested_pad
                 if self.sent_pad is not None and not self.raw:
-                    self.sent_pad = self.profile.shape(self.sent_pad)
+                    self.sent_pad = self._once(self.profile.shape(self.sent_pad))
+                elif self.sent_pad is None:
+                    self.down = self.withheld = frozenset()
                 status = self.send(self.sent_pad)
                 sent = status != 409
+                if not sent:
+                    # The bridge refused the pad: nothing of it is down.
+                    self.down = frozenset()
             if status == 409:
                 self.blocked_until = self.clock() + 1
         return sent, status

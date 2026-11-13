@@ -553,9 +553,8 @@ def instant(function, *args):
 
 
 def configured_conductor(*args, **kwargs):
-    kwargs["head"] = ScriptedHead(
-        [{"plan": [{"name": "walk", "args": {"x": 1, "duration": 10}}], "sentence": "Ich gehe weiter."}]
-    )
+    walk = {"plan": [{"name": "walk", "args": {"x": 1, "duration": 10}}], "sentence": "Ich gehe weiter."}
+    kwargs["head"] = ScriptedHead([walk, walk])
     return Conductor(*args, **kwargs, submit=instant, detector=NoEvents())
 
 
@@ -603,7 +602,10 @@ def test_live_safety_also_applies_to_walking(tmp_path, mode):
         index = next(i for i, (_, data) in enumerate(pads) if data.get("left") == [1, 0])
         assert pads[index + 1][1] == {}
         assert pads[index + 1][0] - pads[index][0] >= 1
-        assert pads[index + 2][1]["left"] == [1, 0]
+        # The refused pad put the plan down; with the pad back the head is asked afresh and its plan runs.
+        asked = [row for row in rows(tmp_path) if row["type"] == "request"]
+        assert [event["kind"] for event in asked[-1]["request"]["events"]] == ["pad_returned"]
+        assert any(data.get("left") == [1, 0] for _, data in pads[index + 2 :])
 
 
 def test_codex_adapter_fake_executable(tmp_path):

@@ -615,6 +615,7 @@ CAUSE_RULES: dict[str, str | None] = {
     "on-foot": "world",  # get_away: no longer seated
     "water": "world",  # get_away: the arrow stands on water
     "guard-let-go": "world",  # the guard ended the skill it had started for a threat
+    "pad_refused": "world",  # a hand on the controller: the bridge refused the pilot's pad
     # the bridge, the stream, gaps in the frames
     "clock-reversed": "tech",
     "clock-invalid": "tech",
