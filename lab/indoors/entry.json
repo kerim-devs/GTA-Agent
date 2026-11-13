@@ -1,0 +1,58 @@
+[
+  {
+    "session": "20261113-022849",
+    "seconds": 0.15,
+    "raw_prediction": true,
+    "minimap": "flat",
+    "corrupt": false,
+    "confidence": 0.9
+  },
+  {
+    "session": "20261113-022849",
+    "seconds": 0.5,
+    "raw_prediction": true,
+    "minimap": "flat",
+    "corrupt": false,
+    "confidence": 0.9
+  },
+  {
+    "session": "20261113-022849",
+    "seconds": 1.0,
+    "raw_prediction": true,
+    "minimap": "flat",
+    "corrupt": false,
+    "confidence": 0.9
+  },
+  {
+    "session": "20261113-022849",
+    "seconds": 1.5,
+    "raw_prediction": true,
+    "minimap": "flat",
+    "corrupt": false,
+    "confidence": 0.9
+  },
+  {
+    "session": "20261113-022849",
+    "seconds": 2.0,
+    "raw_prediction": false,
+    "minimap": "none",
+    "corrupt": false,
+    "confidence": 0.0
+  },
+  {
+    "session": "20261113-022849",
+    "seconds": 2.5,
+    "raw_prediction": false,
+    "minimap": "none",
+    "corrupt": false,
+    "confidence": 0.0
+  },
+  {
+    "session": "20261113-022849",
+    "seconds": 3.0,
+    "raw_prediction": false,
+    "minimap": "none",
+    "corrupt": false,
+    "confidence": 0.0
+  }
+]

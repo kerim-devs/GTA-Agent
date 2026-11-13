@@ -175,6 +175,43 @@ def _buildings(crop) -> np.ndarray:
     return built.reshape(_ROWS, _CELL, _COLS, _CELL).sum(axis=(1, 3)) >= 5
 
 
+def near_place(crop):
+    """A small outlined symbol beside the arrow, before a walk has taken its first step.
+
+    The three barber starts show 19..37 dark and 23..28 white pixels in a small icon
+    just above the arrow. Roads are large components; the arrow alone is too narrow.
+    This is a proximity hint, not a claim about which business the symbol names.
+    """
+    if not isinstance(crop, np.ndarray) or crop.shape != (170, 260, 3):
+        return None
+    gray = cv2.cvtColor(crop, cv2.COLOR_RGB2GRAY)
+    count, _, stats, centres = cv2.connectedComponentsWithStats((gray < 65).astype(np.uint8), 8)
+    for index in range(1, count):
+        x, y, width, height, area = stats[index]
+        dx, dy = centres[index] - np.array(ARROW_XY)
+        if not (8 <= width <= 18 and 8 <= height <= 18 and 16 <= area <= 100):
+            continue
+        if not (3 <= math.hypot(dx, dy) <= 14 and y < ARROW_XY[1] - 6):
+            continue
+        if np.count_nonzero(gray[y : y + height, x : x + width] > 175) >= 18:
+            return float(dx), float(-dy)
+    return None
+
+
+def blocked_start(crop, toward):
+    """Whether the first few map pixels of a planned step cut a visible building."""
+    if not isinstance(crop, np.ndarray) or crop.shape != (170, 260, 3):
+        return False
+    buildings = _buildings(crop)
+    hits = 0
+    for distance in (7, 10, 13, 16, 19):
+        x = int((ARROW_XY[0] + toward[0] * distance - _GX0) // _CELL)
+        y = int((ARROW_XY[1] + toward[1] * distance - _GY0) // _CELL)
+        if 0 <= x < _COLS and 0 <= y < _ROWS:
+            hits += bool(buildings[y, x])
+    return hits >= 2
+
+
 def _centre(cell) -> tuple[float, float]:
     """A cell's centre in pixels right of and below the arrow."""
     return _GX0 + (cell[1] + 0.5) * _CELL - ARROW_XY[0], _GY0 + (cell[0] + 0.5) * _CELL - ARROW_XY[1]

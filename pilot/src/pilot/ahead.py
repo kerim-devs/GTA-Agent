@@ -51,6 +51,12 @@ EXIT = (
     "A: yes, an exit to the outside is in this picture\n"
     "B: no, only walls, windows, furniture or people"
 )
+ENTRANCE = (
+    "This is {what} of a game, taken outside a building. Does it show a door or doorway "
+    "through which a person could walk into the building?\n"
+    "A: yes, an entrance is in this picture\n"
+    "B: no, only walls, windows, furniture or people"
+)
 WIDTH = 640
 # The picture's left, middle and right part, overlapping, without the bars at its upper and lower edge.
 PARTS = (slice(0, 520), slice(380, 900), slice(760, 1280))
@@ -95,6 +101,7 @@ class Ahead:
         indoors: bool | None = None,
         ahead: bool = True,
         exit: bool = True,
+        entrance: bool = False,
     ) -> bool:
         """Begin asking about this frame; False when a frame is still out or this is none.
 
@@ -109,12 +116,12 @@ class Ahead:
                 return False
             self.busy = True
         work = threading.Thread(
-            target=self._work, args=(frame.copy(), capture, indoors, ahead, exit), daemon=True
+            target=self._work, args=(frame.copy(), capture, indoors, ahead, exit, entrance), daemon=True
         )
         work.start()
         return True
 
-    def _work(self, frame, capture, indoors, ahead, exit):
+    def _work(self, frame, capture, indoors, ahead, exit, entrance=False):
         started = self.clock()
         said = {}
         try:
@@ -128,10 +135,11 @@ class Ahead:
             if indoors is None:
                 said["indoors"] = share(whole, INDOORS)
                 indoors = said["indoors"] is not None and said["indoors"] >= SEEN
-            if indoors and exit:
-                said["exit"] = share(whole, EXIT.format(what="a screenshot"))
+            if (indoors and exit) or entrance:
+                door = ENTRANCE if entrance else EXIT
+                said["exit"] = share(whole, door.format(what="a screenshot"))
                 if said["exit"] is not None and said["exit"] >= SEEN:
-                    question = EXIT.format(what="part of a screenshot")
+                    question = door.format(what="part of a screenshot")
                     said["parts"] = tuple(
                         share(judge.encode(bgr[PART_ROWS, part], PART_WIDTH), question) or 0.0
                         for part in PARTS
@@ -171,6 +179,9 @@ def place() -> Ahead | None:
 def use(servers) -> Ahead | None:
     """The servers a session asks; none switches the asking off."""
     global _active, _place
+    from .indoors import forget
+
+    forget()
     _active = Ahead(servers) if servers else None
     _place = Ahead(servers) if servers else None
     return _active

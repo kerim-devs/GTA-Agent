@@ -76,6 +76,16 @@ def test_in_a_room_the_way_out_is_asked_for_and_then_which_part_of_the_picture_i
     assert len(model.seen) == 1 and asked.answer(2.0).parts is None
 
 
+def test_entrance_asks_for_an_outside_door_and_its_picture_part():
+    model = Model(0.01, exits=[0.97, 0.1, 0.2, 0.98])
+    asked = Ahead(SERVER, transport=model)
+    assert asked.ask(frame(), 1.0, indoors=False, ahead=False, entrance=True) and waited(asked)
+    whole = ahead.ENTRANCE.format(what="a screenshot")
+    part = ahead.ENTRANCE.format(what="part of a screenshot")
+    assert [question for question, _ in model.seen] == [whole, part, part, part]
+    assert asked.answer(1.0).parts == pytest.approx((0.1, 0.2, 0.98), abs=1e-3)
+
+
 def test_one_frame_at_a_time_and_none_that_is_no_frame():
     go, calls = threading.Event(), []
 
