@@ -103,7 +103,8 @@ def test_a_car_that_keeps_its_size_ahead_is_followed_not_gone_round():
     assert close[-1].pedal < 0.5  # the pedal is lifted so that the distance is kept
     assert close[-1].urgent  # and this close, straight ahead, it is braked for as before
     behind = keeping(centre=0.52, bottom=0.55, height=0.08)
-    assert all(a.steer == 0 and not a.urgent for a in behind) and behind[-1].pedal < 1  # at a distance: lifted only
+    # At a distance the pedal is lifted and nothing else.
+    assert all(a.steer == 0 and not a.urgent for a in behind) and behind[-1].pedal < 1
     # The same car straight away is not worth a push either: the first look says nothing of its speed.
     assert close[0].steer == 0
 
