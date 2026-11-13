@@ -206,7 +206,13 @@ def test_standalone_vehicle_skill_description_does_not_require_a_foot_guard():
     runner = SkillRunner()
     runner.replace((SkillCall("enter_vehicle", {"duration": 25, "kind": "any"}),))
     runner.active = runner.queue.popleft()
-    assert runner.describe() == {"name": "enter_vehicle", "status": "running", "reason": None, "queue": []}
+    assert runner.describe() == {
+        "name": "enter_vehicle",
+        "args": {"duration": 25, "kind": "any"},
+        "status": "running",
+        "reason": None,
+        "queue": [],
+    }
 
 
 def test_progress_clears_the_count_of_failures():

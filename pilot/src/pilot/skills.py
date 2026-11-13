@@ -455,9 +455,9 @@ REGISTRY = {
 
 def make_skill(call, *, driver=None):
     cls = REGISTRY[call.name]
-    if call.name == "drive_route":
-        return cls(call.args, driver=driver)
-    return cls(call.args)
+    skill = cls(call.args, driver=driver) if call.name == "drive_route" else cls(call.args)
+    skill.call_args = dict(call.args)
+    return skill
 
 
 class SkillRunner:
@@ -567,6 +567,8 @@ class SkillRunner:
             guard = getattr(self.active, "guard", None)
             return {
                 "name": self.active.name,
+                # What it was called with, so that a head can tell the same call from another one.
+                "args": dict(getattr(self.active, "call_args", None) or {}),
                 **({"road_reached": self.road_reached} if self.active.name == "walk_road" else {}),
                 **({"route_seen": self.route_seen} if self.active.name == "drive_route" else {}),
                 "status": "running",
