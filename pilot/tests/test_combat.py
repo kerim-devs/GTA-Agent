@@ -1,5 +1,6 @@
 import importlib.util
 import math
+from dataclasses import replace
 from pathlib import Path
 
 import pytest
@@ -18,9 +19,99 @@ from pilot.skills import Observation
 FRONT_RED = (Blip("red", 0, 8),)
 
 
+@pytest.mark.parametrize("kind", [Fight, Melee])
+def test_p81_stalled_clock_neutralizes_and_ends_without_advancing_combat(kind):
+    skill = kind({})
+    skill.step(observation(0))
+    skill.step(observation(0.1))
+    skill.step(observation(0.2))
+    attacking = skill.step(observation(0.31))
+    assert attacking.pad.r2 or attacking.pad.buttons
+    before = (skill.last_time, skill.lock_since, skill.release_since, skill.clear_seconds)
+    for _ in range(29):
+        result = skill.step(observation(0.31))
+        assert result.pad == NEUTRAL_PAD and result.status == "running"
+        assert (skill.last_time, skill.lock_since, skill.release_since, skill.clear_seconds) == before
+    result = skill.step(observation(0.31))
+    assert result.pad == NEUTRAL_PAD and result.reason == "invalid-observation-time"
+
+
+@pytest.mark.parametrize("kind", [Fight, Melee])
+def test_p81_clock_progress_resets_duplicate_count(kind):
+    skill = kind({})
+    skill.step(observation(0))
+    for now in (0, 0.1):
+        for _ in range(29):
+            assert skill.step(observation(now)).status == "running"
+        assert skill.step(observation(now + 0.1)).status == "running"
+
+
+@pytest.mark.parametrize("hud", [None, Hud(wanted=None, screen="game")])
+def test_p81_unread_stars_never_allow_a_trigger(hud):
+    skill = Fight({})
+    results = [skill.step(replace(observation(i / 10), hud=hud)) for i in range(22)]
+    assert all(result.pad == NEUTRAL_PAD for result in results)
+    assert results[-1].reason == "hud-unread"
+
+
+def test_p81_zero_stars_expire_after_one_second_and_recovery_relocks():
+    skill = Fight({})
+    skill.step(observation(0))
+    for i in range(1, 11):
+        result = skill.step(replace(observation(i / 10), hud=None))
+        assert result.status == "running"
+    assert result.pad.l2 == 1
+    assert skill.step(replace(observation(1.01), hud=None)).pad == NEUTRAL_PAD
+    assert skill.lock_since is None
+    resumed = skill.step(observation(1.1))
+    assert resumed.pad.l2 == 1 and resumed.pad.r2 == 0
+    assert skill.step(replace(observation(2.11), hud=None)).pad == NEUTRAL_PAD
+    assert skill.step(replace(observation(4.11), hud=None)).reason == "hud-unread"
+
+
+@pytest.mark.parametrize("kind", [Fight, Melee])
+@pytest.mark.parametrize("screen", ["pause", "phone", "weapon_wheel", "loading", "wasted", "busted"])
+def test_p81_other_screen_drops_lock_and_fails_neutral(kind, screen):
+    skill = kind({})
+    skill.step(observation(0))
+    results = [
+        skill.step(replace(observation(i / 10), hud=Hud(wanted=0, screen=screen))) for i in range(1, 23)
+    ]
+    assert all(result.pad == NEUTRAL_PAD for result in results)
+    assert results[-1].reason == "hud-unread"
+
+
+def test_p81_melee_without_hud_still_attacks():
+    skill = Melee({})
+    results = [skill.step(replace(observation(i / 30), hud=None)) for i in range(30)]
+    assert any(result.pad.buttons for result in results)
+
+
+def test_p81_border_red_never_aims_or_finishes_as_clear():
+    skill = Fight({})
+    advance(skill, 0, 1.8, blips=())
+    border = (Blip("red", 0, 8, border=True),)
+    results = [skill.step(observation(2 + i / 10, border)) for i in range(31)]
+    assert all(result.pad == NEUTRAL_PAD for result in results)
+    assert all(result.status == "running" for result in results[:-1])
+    assert results[-1].reason == "target-out-of-range"
+
+
+def test_p81_inside_red_wins_over_nearer_border_and_resets_range_wait():
+    skill = Fight({})
+    border = (Blip("red", 1, 0, border=True),)
+    skill.step(observation(0, border))
+    skill.step(observation(2.9, border))
+    assert skill.step(observation(3, border + FRONT_RED)).pad.l2 == 1
+    skill.step(observation(3.1, border + FRONT_RED))
+    assert skill.step(observation(3.21, border + FRONT_RED)).pad.r2 == 1
+    assert skill.step(observation(3.3, border)).status == "running"
+    assert skill.step(observation(5, border)).status == "running"
+
+
 def observation(time, blips=FRONT_RED, *, mode="flat", corrupt=False, health=None, missing=False):
     reading = None if missing else Reading(mode, "none", None, None, None, corrupt, 0.9, blips=blips)
-    return Observation(reading, False, time, hud=Hud(health=health) if health is not None else None)
+    return Observation(reading, False, time, hud=Hud(health=health, wanted=0, screen="game"))
 
 
 def advance(skill, begin, end, **kwargs):
@@ -224,7 +315,14 @@ def load_tool(name):
 
 
 def test_seeded_delayed_combat_clears_majority_and_fails_safely():
-    simulate = load_tool("sim_combat").simulate
+    module = load_tool("sim_combat")
+    base_hud = module.Hud
+
+    def game_hud(**kwargs):
+        return base_hud(wanted=kwargs.pop("wanted", 0), screen=kwargs.pop("screen", "game"), **kwargs)
+
+    module.Hud = game_hud
+    simulate = module.simulate
     runs = [simulate(seed) for seed in range(20)]
     assert sum(run["cleared"] for run in runs) > len(runs) / 2
     assert all(run["seconds"] <= 30 and run["neutral_end"] and not run["invalid_attacks"] for run in runs)
@@ -365,3 +463,10 @@ def test_accepted_foot_mode_cannot_override_an_absent_map_on_a_shot_tick():
     advance(skill, 0, 0.2)
     result = skill.step(replace(observation(0.23, mode="none"), mode="foot"))
     assert result.pad == NEUTRAL_PAD
+
+
+def test_p81_flickering_red_keeps_fight_running_until_its_limit():
+    skill = Fight({"duration": 4})
+    results = [skill.step(observation(i / 10, FRONT_RED if i % 10 == 0 else ())) for i in range(41)]
+    assert all(result.status == "running" for result in results[:-1])
+    assert results[-1].reason == "combat-timeout"

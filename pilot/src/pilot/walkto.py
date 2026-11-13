@@ -629,7 +629,7 @@ class WalkTo:
         now = observation.time
         place = self.enter_place.sample(observation)
         if place is True:
-            indoors.remember(self.entry_heading, self.entry_side, absolute=self.entry_absolute)
+            indoors.remember(self.entry_heading, self.entry_side, at=now, absolute=self.entry_absolute)
             return self._finish("done", "entered")
         if place is False:
             self.entry_heading = observation.reading.arrow

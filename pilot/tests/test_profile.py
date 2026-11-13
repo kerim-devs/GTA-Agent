@@ -93,12 +93,12 @@ def test_raw_press_and_plan_stop_remain_neutral():
 def test_actions_emit_profile_buttons(name):
     game = profile.use(name)
     reading = Reading("flat", "none", None, None, None, False, 1, blips=(Blip("red", 0, 8),))
-    obs = Observation(reading, False, 0, hud=Hud(health=0.2))
+    obs = Observation(reading, False, 0, hud=Hud(health=0.2, wanted=0, screen="game"))
     low_health = Fight({"cover": "yes"}).step(obs)
     assert low_health.reason == "health-still-low" and low_health.pad == NEUTRAL_PAD
     fight = Fight({"cover": "yes"})
     for tick in range(63):
-        hud = Hud(health=0.9 if tick < 60 else 0.7, armour=0.0, special=1.0)
+        hud = Hud(health=0.9 if tick < 60 else 0.7, armour=0.0, special=1.0, wanted=0, screen="game")
         covered = fight.step(replace(obs, time=tick / 30, hud=hud))
     assert covered.pad.buttons == (game.cover,)
     assert covered.pad.l2 == covered.pad.r2 == 0
