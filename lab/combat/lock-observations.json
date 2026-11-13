@@ -1,0 +1,954 @@
+{
+  "method": "Only low left-stick fire stretches and low right-stick locks; native minimap 100ms before and 500ms after L2 plus recorded lead. Exactly one red at both samples. Candidate snaps cannot identify the same enemy or isolate aim assist from automatic camera behavior.",
+  "locks": 43,
+  "candidates": 0,
+  "max_candidate_bearing": null,
+  "rows": [
+    {
+      "recording": "20261111-065022",
+      "lock": [
+        187.3754,
+        209.6359
+      ],
+      "samples": [
+        {
+          "frame": 11229,
+          "t": 187.4385,
+          "red": 0,
+          "angle": null
+        },
+        {
+          "frame": 11265,
+          "t": 188.0378,
+          "red": 0,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-065022",
+      "lock": [
+        251.8189,
+        259.4138
+      ],
+      "samples": [
+        {
+          "frame": 15081,
+          "t": 251.8873,
+          "red": 2,
+          "angle": null
+        },
+        {
+          "frame": 15117,
+          "t": 252.4879,
+          "red": 0,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-164039",
+      "lock": [
+        660.1327,
+        662.6258
+      ],
+      "samples": [
+        {
+          "frame": 38391,
+          "t": 660.2183,
+          "red": 1,
+          "angle": -2.2369790634377016
+        },
+        {
+          "frame": 38427,
+          "t": 660.8271,
+          "red": 0,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-164039",
+      "lock": [
+        712.4481,
+        714.5368
+      ],
+      "samples": [
+        {
+          "frame": 41511,
+          "t": 712.5682,
+          "red": 1,
+          "angle": -6.494643922851651
+        },
+        {
+          "frame": 41550,
+          "t": 713.1281,
+          "red": 1,
+          "angle": 0.5411819222284265
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-164039",
+      "lock": [
+        738.497,
+        741.7676
+      ],
+      "samples": [
+        {
+          "frame": 43076,
+          "t": 738.59,
+          "red": 1,
+          "angle": 2.7119834674449446
+        },
+        {
+          "frame": 43112,
+          "t": 739.1899,
+          "red": 1,
+          "angle": 3.0319009626691775
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-172549",
+      "lock": [
+        412.2827,
+        430.4671
+      ],
+      "samples": [
+        {
+          "frame": 24603,
+          "t": 412.3735,
+          "red": 0,
+          "angle": null
+        },
+        {
+          "frame": 24638,
+          "t": 412.9633,
+          "red": 1,
+          "angle": 21.974507991471963
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-175312",
+      "lock": [
+        230.877,
+        231.571
+      ],
+      "samples": [
+        {
+          "frame": 3047,
+          "t": 230.9929,
+          "red": 1,
+          "angle": 129.0938588862295
+        },
+        {
+          "frame": 3083,
+          "t": 231.5943,
+          "red": 2,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-175312",
+      "lock": [
+        232.7668,
+        233.8976
+      ],
+      "samples": [
+        {
+          "frame": 3158,
+          "t": 232.9206,
+          "red": 1,
+          "angle": -123.82321007373015
+        },
+        {
+          "frame": 3193,
+          "t": 233.4982,
+          "red": 0,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-175312",
+      "lock": [
+        240.289,
+        241.2056
+      ],
+      "samples": [
+        {
+          "frame": 3606,
+          "t": 240.4015,
+          "red": 1,
+          "angle": 69.33447479646658
+        },
+        {
+          "frame": 3642,
+          "t": 241.0018,
+          "red": 0,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-175312",
+      "lock": [
+        321.7581,
+        322.8222
+      ],
+      "samples": [
+        {
+          "frame": 8482,
+          "t": 321.8939,
+          "red": 2,
+          "angle": null
+        },
+        {
+          "frame": 8518,
+          "t": 322.4669,
+          "red": 1,
+          "angle": 128.64474627244098
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-182316",
+      "lock": [
+        344.4333,
+        345.2475
+      ],
+      "samples": [
+        {
+          "frame": 20553,
+          "t": 344.5053,
+          "red": 2,
+          "angle": null
+        },
+        {
+          "frame": 20589,
+          "t": 345.1041,
+          "red": 2,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-182316",
+      "lock": [
+        438.5513,
+        440.8035
+      ],
+      "samples": [
+        {
+          "frame": 26177,
+          "t": 438.612,
+          "red": 1,
+          "angle": -0.9060424171526265
+        },
+        {
+          "frame": 26213,
+          "t": 439.212,
+          "red": 1,
+          "angle": 0.795723552739274
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-182316",
+      "lock": [
+        442.9459,
+        444.5036
+      ],
+      "samples": [
+        {
+          "frame": 26438,
+          "t": 443.0393,
+          "red": 0,
+          "angle": null
+        },
+        {
+          "frame": 26477,
+          "t": 443.6189,
+          "red": 1,
+          "angle": 6.2307158369885265
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-182316",
+      "lock": [
+        450.3906,
+        451.6652
+      ],
+      "samples": [
+        {
+          "frame": 26887,
+          "t": 450.4605,
+          "red": 4,
+          "angle": null
+        },
+        {
+          "frame": 26923,
+          "t": 451.0524,
+          "red": 0,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        327.0331,
+        328.344
+      ],
+      "samples": [
+        {
+          "frame": 19556,
+          "t": 327.1011,
+          "red": 3,
+          "angle": null
+        },
+        {
+          "frame": 19592,
+          "t": 327.7104,
+          "red": 3,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        328.5696,
+        329.7394
+      ],
+      "samples": [
+        {
+          "frame": 19648,
+          "t": 328.6437,
+          "red": 2,
+          "angle": null
+        },
+        {
+          "frame": 19684,
+          "t": 329.2405,
+          "red": 2,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        332.1763,
+        332.9579
+      ],
+      "samples": [
+        {
+          "frame": 19864,
+          "t": 332.2453,
+          "red": 2,
+          "angle": null
+        },
+        {
+          "frame": 19900,
+          "t": 332.8461,
+          "red": 1,
+          "angle": -13.774140524523386
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        357.79,
+        358.6175
+      ],
+      "samples": [
+        {
+          "frame": 21399,
+          "t": 357.8536,
+          "red": 2,
+          "angle": null
+        },
+        {
+          "frame": 21435,
+          "t": 358.46,
+          "red": 0,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        367.7062,
+        368.8011
+      ],
+      "samples": [
+        {
+          "frame": 21994,
+          "t": 367.775,
+          "red": 2,
+          "angle": null
+        },
+        {
+          "frame": 22029,
+          "t": 368.3679,
+          "red": 2,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        369.6982,
+        370.48
+      ],
+      "samples": [
+        {
+          "frame": 22113,
+          "t": 369.7654,
+          "red": 0,
+          "angle": null
+        },
+        {
+          "frame": 22149,
+          "t": 370.3662,
+          "red": 2,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        381.6066,
+        382.7539
+      ],
+      "samples": [
+        {
+          "frame": 22818,
+          "t": 381.8094,
+          "red": 1,
+          "angle": 14.567154414687169
+        },
+        {
+          "frame": 22854,
+          "t": 382.3347,
+          "red": 3,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        393.1264,
+        396.0827
+      ],
+      "samples": [
+        {
+          "frame": 23512,
+          "t": 393.1879,
+          "red": 2,
+          "angle": null
+        },
+        {
+          "frame": 23547,
+          "t": 393.8647,
+          "red": 1,
+          "angle": 23.86628525990516
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        467.1149,
+        467.921
+      ],
+      "samples": [
+        {
+          "frame": 27945,
+          "t": 467.2659,
+          "red": 3,
+          "angle": null
+        },
+        {
+          "frame": 27976,
+          "t": 467.7894,
+          "red": 4,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        471.7287,
+        476.0857
+      ],
+      "samples": [
+        {
+          "frame": 28222,
+          "t": 471.7997,
+          "red": 5,
+          "angle": null
+        },
+        {
+          "frame": 28258,
+          "t": 472.3975,
+          "red": 6,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        476.2487,
+        477.2845
+      ],
+      "samples": [
+        {
+          "frame": 28492,
+          "t": 476.31,
+          "red": 6,
+          "angle": null
+        },
+        {
+          "frame": 28528,
+          "t": 476.9088,
+          "red": 5,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        487.0448,
+        488.4594
+      ],
+      "samples": [
+        {
+          "frame": 29139,
+          "t": 487.1825,
+          "red": 2,
+          "angle": null
+        },
+        {
+          "frame": 29170,
+          "t": 487.7073,
+          "red": 2,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        488.6577,
+        490.2035
+      ],
+      "samples": [
+        {
+          "frame": 29233,
+          "t": 488.7602,
+          "red": 0,
+          "angle": null
+        },
+        {
+          "frame": 29272,
+          "t": 489.3204,
+          "red": 2,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        528.4927,
+        529.2568
+      ],
+      "samples": [
+        {
+          "frame": 31619,
+          "t": 528.6046,
+          "red": 0,
+          "angle": null
+        },
+        {
+          "frame": 31658,
+          "t": 529.1617,
+          "red": 0,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        550.5509,
+        551.8044
+      ],
+      "samples": [
+        {
+          "frame": 32939,
+          "t": 550.6198,
+          "red": 1,
+          "angle": 10.231850049181567
+        },
+        {
+          "frame": 32981,
+          "t": 551.2282,
+          "red": 1,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        552.0282,
+        553.2035
+      ],
+      "samples": [
+        {
+          "frame": 33033,
+          "t": 552.0921,
+          "red": 0,
+          "angle": null
+        },
+        {
+          "frame": 33065,
+          "t": 552.7195,
+          "red": 0,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        553.5175,
+        555.0948
+      ],
+      "samples": [
+        {
+          "frame": 33122,
+          "t": 553.5787,
+          "red": 1,
+          "angle": 4.11755841278185
+        },
+        {
+          "frame": 33158,
+          "t": 554.1784,
+          "red": 1,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        555.2695,
+        557.9284
+      ],
+      "samples": [
+        {
+          "frame": 33222,
+          "t": 555.3368,
+          "red": 1,
+          "angle": null
+        },
+        {
+          "frame": 33263,
+          "t": 555.9315,
+          "red": 1,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        559.3677,
+        560.4904
+      ],
+      "samples": [
+        {
+          "frame": 33473,
+          "t": 559.4329,
+          "red": 1,
+          "angle": 0.8693259260040667
+        },
+        {
+          "frame": 33505,
+          "t": 560.057,
+          "red": 1,
+          "angle": 2.4552828379874407
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        753.5053,
+        754.9023
+      ],
+      "samples": [
+        {
+          "frame": 45057,
+          "t": 753.5799,
+          "red": 2,
+          "angle": null
+        },
+        {
+          "frame": 45073,
+          "t": 754.235,
+          "red": 3,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        763.8919,
+        765.1076
+      ],
+      "samples": [
+        {
+          "frame": 45676,
+          "t": 763.9997,
+          "red": 3,
+          "angle": null
+        },
+        {
+          "frame": 45716,
+          "t": 764.5678,
+          "red": 1,
+          "angle": 125.63564080747956
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-185323",
+      "lock": [
+        765.4472,
+        767.5319
+      ],
+      "samples": [
+        {
+          "frame": 45771,
+          "t": 765.5707,
+          "red": 2,
+          "angle": null
+        },
+        {
+          "frame": 45808,
+          "t": 766.1076,
+          "red": 1,
+          "angle": -37.39509076086635
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261111-190825",
+      "lock": [
+        896.4586,
+        898.4219
+      ],
+      "samples": [
+        {
+          "frame": 52355,
+          "t": 896.5544,
+          "red": 1,
+          "angle": 4.413407889831428
+        },
+        {
+          "frame": 52391,
+          "t": 897.1523,
+          "red": 1,
+          "angle": 6.9292379655906915
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261112-092019",
+      "lock": [
+        860.2777,
+        861.1723
+      ],
+      "samples": [
+        {
+          "frame": 49893,
+          "t": 860.5547,
+          "red": 4,
+          "angle": null
+        },
+        {
+          "frame": 49928,
+          "t": 861.0113,
+          "red": 6,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261112-092019",
+      "lock": [
+        861.2823,
+        862.1832
+      ],
+      "samples": [
+        {
+          "frame": 49955,
+          "t": 861.5359,
+          "red": 5,
+          "angle": null
+        },
+        {
+          "frame": 49991,
+          "t": 862.0593,
+          "red": 2,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261112-092019",
+      "lock": [
+        890.9212,
+        891.7649
+      ],
+      "samples": [
+        {
+          "frame": 51730,
+          "t": 891.0148,
+          "red": 2,
+          "angle": null
+        },
+        {
+          "frame": 51765,
+          "t": 891.6049,
+          "red": 1,
+          "angle": -5.063517225002965
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261112-093524",
+      "lock": [
+        0.2831,
+        1.191
+      ],
+      "samples": [
+        {
+          "frame": 22,
+          "t": 0.3563,
+          "red": 2,
+          "angle": null
+        },
+        {
+          "frame": 58,
+          "t": 0.9583,
+          "red": 0,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261112-093524",
+      "lock": [
+        5.3668,
+        8.94
+      ],
+      "samples": [
+        {
+          "frame": 325,
+          "t": 5.436,
+          "red": 2,
+          "angle": null
+        },
+        {
+          "frame": 357,
+          "t": 6.0672,
+          "red": 3,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    },
+    {
+      "recording": "20261112-093524",
+      "lock": [
+        118.3986,
+        119.3822
+      ],
+      "samples": [
+        {
+          "frame": 7022,
+          "t": 118.4595,
+          "red": 0,
+          "angle": null
+        },
+        {
+          "frame": 7059,
+          "t": 119.073,
+          "red": 0,
+          "angle": null
+        }
+      ],
+      "possible_snap": false
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 """Offline combat model. Its physics are assumptions, not a GTA benchmark."""
 
 import argparse
+import importlib.util
 import json
 import math
 import random
@@ -61,7 +62,9 @@ def simulate(seed, *, pressure=1.0, melee=False, map_lost=False):
             assert pad == NEUTRAL_PAD
             break
         front_red = any(abs(math.degrees(math.atan2(b.x, b.y))) <= 12 for b in blips)
-        if (corrupt and pad.l2) or ((pad.r2 or "circle" in pad.buttons) and (corrupt or not front_red)):
+        if (corrupt and pad.l2) or (
+            (pad.r2 or "circle" in pad.buttons) and (corrupt or (melee and not front_red))
+        ):
             invalid_attacks += 1
         if seen_health < 0.3 and not pad.l2 and not pad.r2:
             recovery_ticks += 1
@@ -79,6 +82,8 @@ def simulate(seed, *, pressure=1.0, melee=False, map_lost=False):
                 if enemy["hp"] > 0 and abs(angle) < math.radians(25):
                     candidates.append((math.hypot(enemy["x"], enemy["y"]), index))
             lock = min(candidates)[1] if candidates else None
+            if lock is not None:
+                camera = math.atan2(enemies[lock]["x"], enemies[lock]["y"])
         if lock is not None and enemies[lock]["hp"] > 0:
             if pad.r2:
                 enemies[lock]["hp"] -= 34 * dt
@@ -123,6 +128,74 @@ def summarize(runs):
     }
 
 
+def first_shot(kind, bearing, cone=25.0):
+    """One static enemy, no damage or delays: isolate aiming policy from survival."""
+    skill = kind({})
+    camera = 0.0
+    previous = NEUTRAL_PAD
+    locked = False
+    first_aim = first_trigger = None
+    for tick in range(3601):
+        now = tick / 120
+        angle = math.radians(bearing) - camera
+        blip = Blip("red", math.sin(angle) * 8, math.cos(angle) * 8)
+        reading = Reading("flat", "none", None, None, None, False, 0.9, blips=(blip,))
+        result = skill.step(Observation(reading, False, now, hud=Hud(wanted=0, health=1.0)))
+        pad = result.pad
+        if pad.l2 and first_aim is None:
+            first_aim = now
+        if pad.r2 and first_trigger is None:
+            first_trigger = now
+        camera += pad.right[0] * math.radians(180) / 120
+        angle = math.atan2(math.sin(math.radians(bearing) - camera), math.cos(math.radians(bearing) - camera))
+        if not pad.l2:
+            locked = False
+        elif not previous.l2:
+            locked = abs(math.degrees(angle)) <= cone
+            if locked:
+                camera = math.radians(bearing)
+        if locked and pad.r2:
+            return {"aim_s": first_aim, "trigger_s": first_trigger, "target_shot_s": now}
+        if result.status != "running":
+            break
+        previous = pad
+    return {"aim_s": first_aim, "trigger_s": first_trigger, "target_shot_s": None}
+
+
+def compare_first_shot():
+    path = Path(__file__).resolve().parents[2] / "lab/combat/baseline_combat.py"
+    spec = importlib.util.spec_from_file_location("p77_old_combat", path)
+    old = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(old)
+    rows = []
+    for cone in (15, 25, 45):
+        for name, bearing in (("ahead", 0), ("side", 90), ("behind", 175)):
+            before, after = first_shot(old.Fight, bearing, cone), first_shot(Fight, bearing, cone)
+            rows.append(
+                {
+                    "scene": name,
+                    "bearing": bearing,
+                    "cone": cone,
+                    "old": before,
+                    "new": after,
+                    "target_met": after["target_shot_s"] is not None
+                    and (
+                        after["target_shot_s"] <= before["target_shot_s"]
+                        if name == "ahead"
+                        else after["target_shot_s"] < before["target_shot_s"]
+                    ),
+                }
+            )
+    return {
+        "assumption": (
+            "Lock snaps on L2 rising edge inside cone; camera 180 deg/s at full stick. "
+            "Cone and camera speed are inherited assumptions, not measured GTA physics. "
+            "Cone sensitivity shown instead of fitting success."
+        ),
+        "rows": rows,
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--seeds", type=int, default=100)
@@ -131,6 +204,7 @@ def main():
     if args.seeds < 1:
         parser.error("--seeds must be positive")
     report = {
+        "first_shot": compare_first_shot(),
         "assumptions": {
             "hz": 30,
             "delay_seconds": 0.14,
@@ -164,7 +238,7 @@ def main():
             {
                 key: {k: v for k, v in value.items() if k != "runs"}
                 for key, value in report.items()
-                if key != "assumptions"
+                if key not in ("assumptions", "first_shot")
             },
             indent=2,
         )
