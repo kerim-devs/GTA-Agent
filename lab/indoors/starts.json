@@ -1,0 +1,941 @@
+[
+  {
+    "session": "20261113-022849",
+    "first": 0.055079,
+    "symbol": [
+      -3.2592592592592524,
+      4.481481481481481
+    ],
+    "original_plan": [
+      1.8476102659945959,
+      false
+    ],
+    "first_movement": {
+      "t": 0.15507900000000002,
+      "left": [
+        0.5881716976750454,
+        0.8087360843031891
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "status": "running",
+      "reason": "away from the building"
+    },
+    "commands": [
+      {
+        "t": 0.055079,
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": null
+      },
+      {
+        "t": 0.15507900000000002,
+        "left": [
+          0.5881716976750454,
+          0.8087360843031891
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.255079,
+        "left": [
+          0.5881716976750454,
+          0.8087360843031891
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.35507900000000003,
+        "left": [
+          0.5881716976750454,
+          0.8087360843031891
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.455079,
+        "left": [
+          0.5881716976750454,
+          0.8087360843031891
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.555079,
+        "left": [
+          0.5881716976750454,
+          0.8087360843031891
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.6550790000000001,
+        "left": [
+          0.5881716976750454,
+          0.8087360843031891
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.7550790000000001,
+        "left": [
+          0.5881716976750454,
+          0.8087360843031891
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.855079,
+        "left": [
+          0.8087360843031891,
+          -0.5881716976750454
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 0.955079,
+        "left": [
+          0.8087360843031891,
+          -0.5881716976750454
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.055079,
+        "left": [
+          0.8087360843031891,
+          -0.5881716976750454
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.1550790000000002,
+        "left": [
+          0.8087360843031891,
+          -0.5881716976750454
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.2550790000000003,
+        "left": [
+          0.8087360843031891,
+          -0.5881716976750454
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.3550790000000001,
+        "left": [
+          0.8087360843031891,
+          -0.5881716976750454
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.4550790000000002,
+        "left": [
+          0.8087360843031891,
+          -0.5881716976750454
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.555079,
+        "left": [
+          0.8087360843031891,
+          -0.5881716976750454
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.6550790000000002,
+        "left": [
+          0.8087360843031891,
+          -0.5881716976750454
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.7550790000000003,
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": null
+      },
+      {
+        "t": 1.8550790000000001,
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": null
+      },
+      {
+        "t": 1.9550790000000002,
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": null
+      },
+      {
+        "t": 2.055079,
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": null
+      },
+      {
+        "t": 2.155079,
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": null
+      }
+    ]
+  },
+  {
+    "session": "20261113-005541",
+    "first": 0.105382,
+    "symbol": [
+      1.0,
+      3.2105263157894797
+    ],
+    "original_plan": [
+      -9.16234704572171,
+      false
+    ],
+    "first_movement": {
+      "t": 0.205382,
+      "left": [
+        -0.29738365904390196,
+        0.9547580632462134
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "status": "running",
+      "reason": "away from the building"
+    },
+    "commands": [
+      {
+        "t": 0.105382,
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": null
+      },
+      {
+        "t": 0.205382,
+        "left": [
+          -0.29738365904390196,
+          0.9547580632462134
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.30538200000000004,
+        "left": [
+          -0.29738365904390196,
+          0.9547580632462134
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.405382,
+        "left": [
+          -0.29738365904390196,
+          0.9547580632462134
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.505382,
+        "left": [
+          -0.29738365904390196,
+          0.9547580632462134
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.605382,
+        "left": [
+          -0.29738365904390196,
+          0.9547580632462134
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.7053820000000001,
+        "left": [
+          -0.29738365904390196,
+          0.9547580632462134
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.805382,
+        "left": [
+          -0.29738365904390196,
+          0.9547580632462134
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.905382,
+        "left": [
+          0.9547580632462134,
+          0.29738365904390196
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.005382,
+        "left": [
+          0.9547580632462134,
+          0.29738365904390196
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.105382,
+        "left": [
+          0.9547580632462134,
+          0.29738365904390196
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.2053820000000002,
+        "left": [
+          0.9547580632462134,
+          0.29738365904390196
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.3053820000000003,
+        "left": [
+          0.9547580632462134,
+          0.29738365904390196
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.4053820000000001,
+        "left": [
+          0.9547580632462134,
+          0.29738365904390196
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.5053820000000002,
+        "left": [
+          0.9547580632462134,
+          0.29738365904390196
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.605382,
+        "left": [
+          0.9547580632462134,
+          0.29738365904390196
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.7053820000000002,
+        "left": [
+          0.9547580632462134,
+          0.29738365904390196
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.8053820000000003,
+        "left": [
+          0.9547580632462134,
+          0.29738365904390196
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.9053820000000001,
+        "left": [
+          0.9547580632462134,
+          0.29738365904390196
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 2.005382,
+        "left": [
+          0.9547580632462134,
+          0.29738365904390196
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 2.105382,
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": null
+      },
+      {
+        "t": 2.205382,
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": null
+      }
+    ]
+  },
+  {
+    "session": "20261113-010434",
+    "first": 0.051006,
+    "symbol": [
+      -3.0270270270270316,
+      3.486486486486484
+    ],
+    "original_plan": [
+      12.724355685422369,
+      false
+    ],
+    "first_movement": {
+      "t": 0.151006,
+      "left": [
+        0.6555988360413276,
+        0.7551093736547417
+      ],
+      "right": [
+        0.0,
+        0.0
+      ],
+      "status": "running",
+      "reason": "away from the building"
+    },
+    "commands": [
+      {
+        "t": 0.051006,
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": null
+      },
+      {
+        "t": 0.151006,
+        "left": [
+          0.6555988360413276,
+          0.7551093736547417
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.251006,
+        "left": [
+          0.6555988360413276,
+          0.7551093736547417
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.35100600000000004,
+        "left": [
+          0.6555988360413276,
+          0.7551093736547417
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.451006,
+        "left": [
+          0.6555988360413276,
+          0.7551093736547417
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.551006,
+        "left": [
+          0.6555988360413276,
+          0.7551093736547417
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.6510060000000001,
+        "left": [
+          0.6555988360413276,
+          0.7551093736547417
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.7510060000000001,
+        "left": [
+          0.6555988360413276,
+          0.7551093736547417
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "away from the building"
+      },
+      {
+        "t": 0.851006,
+        "left": [
+          0.7551093736547417,
+          -0.6555988360413276
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 0.951006,
+        "left": [
+          0.7551093736547417,
+          -0.6555988360413276
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.051006,
+        "left": [
+          0.7551093736547417,
+          -0.6555988360413276
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.1510060000000002,
+        "left": [
+          0.7551093736547417,
+          -0.6555988360413276
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.2510060000000003,
+        "left": [
+          0.7551093736547417,
+          -0.6555988360413276
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.3510060000000002,
+        "left": [
+          0.7551093736547417,
+          -0.6555988360413276
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.4510060000000002,
+        "left": [
+          0.7551093736547417,
+          -0.6555988360413276
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.551006,
+        "left": [
+          0.7551093736547417,
+          -0.6555988360413276
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.6510060000000002,
+        "left": [
+          0.7551093736547417,
+          -0.6555988360413276
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.7510060000000003,
+        "left": [
+          0.7551093736547417,
+          -0.6555988360413276
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.8510060000000002,
+        "left": [
+          0.7551093736547417,
+          -0.6555988360413276
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 1.9510060000000002,
+        "left": [
+          0.7551093736547417,
+          -0.6555988360413276
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": "along the front"
+      },
+      {
+        "t": 2.051006,
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": null
+      },
+      {
+        "t": 2.151006,
+        "left": [
+          0.0,
+          0.0
+        ],
+        "right": [
+          0.0,
+          0.0
+        ],
+        "status": "running",
+        "reason": null
+      }
+    ]
+  }
+]

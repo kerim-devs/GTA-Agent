@@ -1,0 +1,140 @@
+{
+  "evidence": "Synthetic room seeded only with recorded initial arrow; no live replay outcome.",
+  "constants": {
+    "ABOUT": 180.0,
+    "TURN_RATE": 80.0,
+    "LOOK_TURN": 0.49,
+    "LOOK_STEP": 72.0,
+    "LOOK_SETTLE": 0.3,
+    "LOOK_WAIT": 1.0,
+    "LOOKS": 4,
+    "EXIT_RUN": 9.0,
+    "CLEAR": 1.5,
+    "WALL_STEP": 45.0,
+    "WALL_TURNS": 24,
+    "LEG_START": 1.0,
+    "LEG_HELD_AFTER": 1.0
+  },
+  "runs": [
+    {
+      "session": "20261113-024118",
+      "initial_arrow": -7.461534346338112,
+      "method": "remembered",
+      "seconds": 4.3,
+      "status": "done",
+      "reason": "outdoors",
+      "trace": [
+        "remembered"
+      ],
+      "neutral_end": true
+    },
+    {
+      "session": "20261113-024118",
+      "initial_arrow": -7.461534346338112,
+      "method": "model",
+      "seconds": 5.5,
+      "status": "done",
+      "reason": "outdoors",
+      "trace": [
+        "room0.00",
+        "room0.00",
+        "exitR"
+      ],
+      "neutral_end": true
+    },
+    {
+      "session": "20261113-024118",
+      "initial_arrow": -7.461534346338112,
+      "method": "wall",
+      "seconds": 18.3,
+      "status": "done",
+      "reason": "outdoors",
+      "trace": [
+        "wall",
+        "free"
+      ],
+      "neutral_end": true
+    },
+    {
+      "session": "20261113-025032",
+      "initial_arrow": -1.495863329740672,
+      "method": "remembered",
+      "seconds": 4.3,
+      "status": "done",
+      "reason": "outdoors",
+      "trace": [
+        "remembered"
+      ],
+      "neutral_end": true
+    },
+    {
+      "session": "20261113-025032",
+      "initial_arrow": -1.495863329740672,
+      "method": "model",
+      "seconds": 5.5,
+      "status": "done",
+      "reason": "outdoors",
+      "trace": [
+        "room0.00",
+        "room0.00",
+        "exitR"
+      ],
+      "neutral_end": true
+    },
+    {
+      "session": "20261113-025032",
+      "initial_arrow": -1.495863329740672,
+      "method": "wall",
+      "seconds": 19.9,
+      "status": "done",
+      "reason": "outdoors",
+      "trace": [
+        "wall",
+        "free"
+      ],
+      "neutral_end": true
+    },
+    {
+      "session": "20261113-025632",
+      "initial_arrow": -32.404326332145445,
+      "method": "remembered",
+      "seconds": 4.3,
+      "status": "done",
+      "reason": "outdoors",
+      "trace": [
+        "remembered",
+        "outside"
+      ],
+      "neutral_end": true
+    },
+    {
+      "session": "20261113-025632",
+      "initial_arrow": -32.404326332145445,
+      "method": "model",
+      "seconds": 5.5,
+      "status": "done",
+      "reason": "outdoors",
+      "trace": [
+        "room0.00",
+        "room0.00",
+        "exitR"
+      ],
+      "neutral_end": true
+    },
+    {
+      "session": "20261113-025632",
+      "initial_arrow": -32.404326332145445,
+      "method": "wall",
+      "seconds": 23.9,
+      "status": "done",
+      "reason": "outdoors",
+      "trace": [
+        "wall",
+        "free",
+        "wall",
+        "free"
+      ],
+      "neutral_end": true
+    }
+  ]
+}

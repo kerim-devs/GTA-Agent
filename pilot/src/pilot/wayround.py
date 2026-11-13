@@ -54,6 +54,7 @@ from typing import ClassVar
 from .ahead import SEEN, Ahead, View
 from .contract import Observation, player_mode
 from .foot import FootGuard, Steer, _rotate, hud_crop, map_shift, world_shift, world_view
+from .indoors import Confirm, read, resolve
 from .sides import Sides, choose
 
 
@@ -145,11 +146,14 @@ class WayRound(FootGuard):
         climb: bool = True,
         sides: Sides | None = None,
         ahead: Ahead | None = None,
+        confirm_place: bool = False,
     ):
         super().__init__(first_side=first_side)
         self.climb = climb
         self.sides = sides
         self.ahead = ahead
+        self.confirm_place = confirm_place
+        self.outside_confirm = Confirm()
         self.looked = 0  # views looked at, at this obstacle; the first is the view as it stands
         self.asked_at = None
         self.views: list[str] = []  # what the model said of each
@@ -182,6 +186,7 @@ class WayRound(FootGuard):
         self.turn_took = 0.0  # seconds the turn before the view under way took
         self.wall_turns = 0
         self.fresh = True  # the direction wanted was read on this tick
+        self.entering = False
 
     def _evidence(self, observation: Observation) -> str | None:
         if not self.sprinting:
@@ -506,6 +511,21 @@ class WayRound(FootGuard):
         self.indoors = True
         self._look_on(observation, self.AHEAD)
 
+    def enter(self, observation: Observation) -> None:
+        """Use the same doorway search and wall round for an intentional entrance."""
+        self._begin(observation.time)
+        self.entering, self.indoors = True, True
+        self._look_on(observation, self.AHEAD)
+
+    def leave_heading(self, observation: Observation, heading: float) -> None:
+        """Face the remembered outward bearing in the current camera's map."""
+        self._begin(observation.time)
+        self.indoors = self.entered = self.way_out = True
+        self.watch_at, self.watched = None, observation.time
+        self.views.append("remembered")
+        turn = (heading + 180.0) % 360.0 - 180.0
+        self._turn(observation, 1 if turn >= 0 else -1, abs(turn), "about")
+
     def _turn(self, observation: Observation, side: int, by: float, phase: str) -> None:
         """Begin a turn of the camera that is measured by the arrow, standing."""
         self.turn_side, self.turn_by, self.turn_from = side, by, observation.reading.arrow
@@ -550,7 +570,7 @@ class WayRound(FootGuard):
         round along its walls."""
         now = observation.time
         if self.ahead is None or self.looked > self.LOOKS:
-            if self.ahead is not None and self.indoors:
+            if self.indoors:
                 self.wall_turns = 0
                 self.way_out, self.outside = True, None
                 self.watch_at, self.watched = None, now
@@ -581,7 +601,8 @@ class WayRound(FootGuard):
         if self.outside is not None or now - started >= self.WALL_FREE:
             # Out: the model says so, or nothing has held the figure up for longer than a room is wide.
             if self.outside is None:
-                self.outside = now
+                if not self.confirm_place:
+                    self.outside = now
                 self.views.append("free")
             self.phase = "run"
             self._enter("round", now)
@@ -607,10 +628,13 @@ class WayRound(FootGuard):
         turn = self.turn_took
         if since < turn + self.LOOK_SETTLE:
             return Steer((0.0, 0.0), state="look")
-        if self.asked_at is None and self.ahead.ask(
-            observation.frame, now, indoors=self.indoors, ahead=self.looked > 1
-        ):
-            self.asked_at = now
+        if self.asked_at is None:
+            if self.entering:
+                asked = self.ahead.ask(observation.frame, now, indoors=False, ahead=False, entrance=True)
+            else:
+                asked = self.ahead.ask(observation.frame, now, indoors=self.indoors, ahead=self.looked > 1)
+            if asked:
+                self.asked_at = now
         view = None if self.asked_at is None else self.ahead.answer(self.asked_at)
         if view is None:
             if since < turn + self.LOOK_SETTLE + self.LOOK_WAIT:
@@ -654,6 +678,13 @@ class WayRound(FootGuard):
     def _watch(self, observation: Observation) -> None:
         """Running at a way out: where it is in the picture now, and whether the figure is outside."""
         now = observation.time
+        if self.entering:
+            return
+        if self.ahead is None and self.confirm_place and now - self.watched >= 1 / 3:
+            self.watched = now
+            if self.outside_confirm.see(resolve(read(observation.frame), None), now) is False:
+                self.outside, self.indoors = now, False
+                self.views.append("outside")
         if self.ahead is None or self.outside is not None:
             return
         if self.watch_at is None:
@@ -666,8 +697,19 @@ class WayRound(FootGuard):
             if now - self.watch_at >= self.LOOK_WAIT:
                 self.watch_at, self.watched = None, now
             return
+        if self.confirm_place and now - self.watch_at >= self.LOOK_WAIT:
+            view = View(error="stale answer")
         self.watch_at, self.watched = None, now
-        if view.indoors is not None and view.indoors < SEEN:
+        share = view.indoors
+        room = (
+            None
+            if view.error is not None or share is None or SEEN <= share < self.OPEN
+            else share >= self.OPEN
+        )
+        if self.confirm_place:
+            room = resolve(read(observation.frame), room)
+            room = self.outside_confirm.see(room, now)
+        if room is False:
             self.outside, self.indoors = now, False
             self.views.append("outside")
         elif view.parts is not None and max(view.parts) >= SEEN:

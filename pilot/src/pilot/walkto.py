@@ -8,13 +8,13 @@ from typing import ClassVar
 
 import numpy as np
 
-from . import ahead, sides
+from . import ahead, indoors, sides
 from .ahead import SEEN
 from .breath import Breath
 from .contract import NEUTRAL_PAD, Blip, Observation, Pad, SkillResult, player_mode
-from .foot import hud_crop, road_position, stick_for
+from .foot import hud_crop, north_bearing, road_position, stick_for
 from .profile import active
-from .waymark import Spot, find_waypoint, way_by_road
+from .waymark import Spot, blocked_start, find_waypoint, near_place, way_by_road
 from .wayround import WayRound
 
 
@@ -36,14 +36,14 @@ class WalkTo:
         "roads": (True, False),
         "side": (False, True),
         "exact": (True, False),
-        # Card P72: at the place, go in through its door. Until that card is done it changes nothing.
         "enter": (False, True),
     }
     prompt = (
-        "Go on foot to the purple waypoint, or the nearest blip of color, for up to 180 s, sprinting "
-        "unless sprint=false. roads=true keeps to the map's roads, side=true to their side and off "
-        "the carriageway at the end. Done within radius map pixels or when the game removes a near "
-        "waypoint; exact=true goes on to the place's symbol. Climbs or walks round obstacles."
+        "Walk to the waypoint or nearest blip of color for up to 180 s; sprint=false walks. "
+        "roads=true follows roads; side=true ends off the carriageway. Done within radius map pixels "
+        "or at the removed waypoint; exact=true follows its place symbol. With exact=true, enter=true "
+        "seeks a door for up to 40 s: entered, or arrived; no door found. "
+        "Fails if stuck, lost or out of time."
     )
     SETTLE = 0.6
     LOST_AFTER = 3.0
@@ -138,17 +138,28 @@ class WalkTo:
         self.color = args.get("color", "purple")
         if self.color not in self.parameters["color"]:
             raise ValueError("unknown blip color")
-        for key in ("sprint", "roads", "side", "exact"):
+        for key in ("sprint", "roads", "side", "exact", "enter"):
             value = args.get(key, self.parameters[key][0])
             if not isinstance(value, bool):
                 raise ValueError(f"{key} must be boolean")
             setattr(self, key, value)
         self.limit = float(self.duration)
         self.profile = active()
-        self.guard = WayRound(sides=sides.active(), ahead=ahead.active())
+        self.guard = WayRound(sides=sides.active(), ahead=ahead.active(), confirm_place=True)
         self.where = ahead.place()
         self.where_asked = None  # when the model was asked for the place and has not answered
         self.where_at = -math.inf  # when it last answered
+        self.enter_since = None
+        self.enter_place = indoors.Place(self.where)
+        self.entry_heading = None
+        self.entry_absolute = False
+        self.entry_side = None
+        self.departure = None
+        self.departure_seen = None
+        self.start_asked = None
+        self.start_checked = False
+        self.start_confirm = indoors.Confirm()
+        self.start_at = None
         self.outdoors = False  # the figure has been outdoors on this walk, as far as the model said
         self.room_at = None  # when an answer called the place a room, and one more decides
         self.entries = 0  # times the guard has been sent to take the figure out of a building
@@ -313,6 +324,8 @@ class WalkTo:
         if self.started is None:
             self.started = now
         if now - self.started >= self.duration:
+            if self.enter_since is not None:
+                return self._finish("done", "arrived; no door found")
             if self.aside is not None:
                 return self._finish("done", self.aside[1] + "; still on the carriageway")
             return self._finish("failed", "time limit")
@@ -358,8 +371,12 @@ class WalkTo:
         if reading is None:
             self.close_since = None
             return self._blind(now, coast=False)
+        if dark and (self.enter_since is not None or player_mode(observation) == "foot"):
+            return self._blind(now, coast=False, patience=patience)
         marker = None
         if reading.corrupt:
+            if self.enter_since is not None:
+                return self._blind(now, coast=False, patience=patience)
             # A damaged picture says neither where the target is nor whether the figure is on foot.
             # But the reader also takes roads that run along the codec's block borders for damage:
             # on 13 November, 01:02, the camera looking north in Sandy Shores, it called a clean
@@ -419,9 +436,14 @@ class WalkTo:
         ]
         if self.aside is not None:
             return self._step_aside(observation)
+        if self.enter_since is not None:
+            return self._entering(observation)
         waiting = self._where(observation)
         if waiting is not None:
             return waiting
+        departure = self._depart(observation)
+        if departure is not None:
+            return departure
         if not targets and self.color == "purple" and reading.route != "purple":
             # The minimap reader knows no purple disc: the waypoint's marker is read from the frame.
             # Not beside a purple route, which is a vehicle's and whose end the bars cut to a disc.
@@ -541,6 +563,9 @@ class WalkTo:
                     return self._face(self.face_side, min(1.0, max(0.4, abs(bearing) / 90.0)))
                 self.face_until = now
         self.last_direction = self._eased(self._direction(observation, target, distance), step)
+        if not self.stepped and blocked_start(hud_crop(frame), self.last_direction):
+            return self._depart(observation, blocked=self.last_direction)
+        self.departure_seen = None
         pushed = self._push(observation, self.last_direction, step)
         if (
             self.finished is None
@@ -582,12 +607,115 @@ class WalkTo:
 
     def _arrive(self, observation, reason: str) -> SkillResult:
         """Done; where the walk keeps to the side of roads, after a step off the carriageway."""
+        if self.enter and self.exact:
+            self.enter_since = observation.time
+            self.entry_side = None if self.marker_at is None else tuple(-value for value in self.marker_at)
+            self.entry_heading = observation.reading.arrow
+            north = north_bearing(hud_crop(observation.frame)) if observation.frame is not None else None
+            if north is not None and self.entry_heading is not None:
+                self.entry_heading = _turn(self.entry_heading - north)
+                self.entry_absolute = True
+            self.guard = WayRound(climb=False, ahead=ahead.active(), confirm_place=True)
+            self.guard.enter(observation)
+            return self._entering(observation)
         if self.side:
             road = road_position(observation)
             if road is not None and road.position == "lane" and road.outward is not None:
                 self.aside = (observation.time, reason, road.outward)
                 return self._step_aside(observation)
         return self._finish("done", reason)
+
+    def _entering(self, observation) -> SkillResult:
+        now = observation.time
+        place = self.enter_place.sample(observation)
+        if place is True:
+            indoors.remember(self.entry_heading, self.entry_side, absolute=self.entry_absolute)
+            return self._finish("done", "entered")
+        if place is False:
+            self.entry_heading = observation.reading.arrow
+            north = north_bearing(hud_crop(observation.frame)) if observation.frame is not None else None
+            self.entry_absolute = north is not None and self.entry_heading is not None
+            if self.entry_absolute:
+                self.entry_heading = _turn(self.entry_heading - north)
+            symbol = near_place(hud_crop(observation.frame))
+            if symbol is not None:
+                self.entry_side = tuple(-value for value in symbol)
+        elapsed = now - self.enter_since
+        budget = min(40.0, self.started + self.duration - self.enter_since)
+        if elapsed >= budget:
+            return self._finish("done", "arrived; no door found")
+        if elapsed >= max(0.0, budget - 0.7):
+            return SkillResult(pad=Pad(left=(0.0, 1.0)), reason="standing off the wall")
+        if self.guard.state in {"go", "failed"}:
+            self.guard.enter(observation)
+        steer = self.guard.step(observation, self.guard.AHEAD)
+        if steer.failed:
+            self.guard.enter(observation)
+            return self._stand()
+        if steer.state in {"odd", "idle"}:
+            return self._stand()
+        self.stepped = True
+        return SkillResult(pad=Pad(left=steer.left, right=steer.right), reason="looking for entrance")
+
+    def _depart(self, observation, blocked=None):
+        now = observation.time
+        if self.departure is not None:
+            since, away = self.departure
+            elapsed = now - since
+            if elapsed >= 1.9:
+                self.departure = None
+                self.start_checked = True
+                return None
+            self.stepped = True
+            left = away if elapsed < 0.7 else (away[1], -away[0])
+            return SkillResult(
+                pad=Pad(left=left), reason="away from the building" if elapsed < 0.7 else "along the front"
+            )
+        if (
+            self.stepped
+            or (self.start_checked and blocked is None)
+            or getattr(self.guard, "indoors", None) is True
+        ):
+            return None
+        symbol = near_place(hud_crop(observation.frame))
+        model = getattr(self.guard, "ahead", None)
+        if symbol is None and blocked is None and model is not None and observation.frame is not None:
+            if self.start_at is None:
+                self.start_at = now
+            if self.start_asked is not None:
+                view = model.answer(self.start_asked)
+                if view is not None:
+                    share = None if view.error is not None else view.open
+                    result = self.start_confirm.see(None if share is None else share >= 0.9, now)
+                    self.start_asked = None
+                    if result is True:
+                        self.start_checked = True
+                        return None
+                    if result is False:
+                        blocked = (0.0, -1.0)
+                        self.departure_seen = self.start_at
+            if blocked is None:
+                if now - self.start_at >= self.PLACE_WAIT:
+                    self.start_checked = True
+                    return None
+                if self.start_asked is None and model.ask(observation.frame, now, indoors=False, exit=False):
+                    self.start_asked = now
+                return self._stand()
+        if symbol is not None:
+            dx, dy = symbol
+            length = math.hypot(dx, dy)
+            away = (-dx / length, dy / length)
+        elif blocked is not None:
+            away = (-blocked[0], -blocked[1])
+        else:
+            return None
+        if self.departure_seen is None or now - self.departure_seen > 0.8:
+            self.departure_seen = now
+            return self._stand()
+        if now - self.departure_seen < 0.1:
+            return self._stand()
+        self.departure = (now, away)
+        return self._depart(observation)
 
     def _step_aside(self, observation) -> SkillResult:
         since, reason, outward = self.aside
@@ -629,18 +757,21 @@ class WalkTo:
 
     def _stand(self) -> SkillResult:
         """Nothing on the pad, and nothing left over for a later tick to send again."""
+        if self.enter_since is not None:
+            self.enter_place.reset()
         self.last_left = None
         return SkillResult()
 
     def _new_guard(self) -> None:
         """A guard that has seen nothing yet, and knows of the place what the walk knows."""
         place = self.guard.place
-        self.guard = WayRound(sides=sides.active(), ahead=ahead.active())
+        self.guard = WayRound(sides=sides.active(), ahead=ahead.active(), confirm_place=True)
         self.guard.place = self.guard.indoors = place
 
     def _where(self, observation) -> SkillResult | None:
         """Keeps asking the model for the place, and acts on a room: a result to stand by, or None."""
-        if self.where is None:
+        if self.where is None and not indoors.INDEPENDENT:
+            indoors.read(observation.frame)
             return None
         now, guard = observation.time, self.guard
         after_scene = self.scene is not None
@@ -650,12 +781,17 @@ class WalkTo:
         if guard.state != "go" or (self.room_at is not None and now - self.room_at > 2 * self.PLACE_EVERY):
             # Twice running means of two pictures a moment apart, with nothing between them.
             self.room_at = None
-        if self.where_asked is not None:
-            view = self.where.answer(self.where_asked)
-            if view is None and now - self.where_asked < self.PLACE_WAIT:
+        local_due = self.where is None and now - self.where_at >= self.PLACE_EVERY
+        if self.where_asked is not None or local_due:
+            view = None if self.where is None else self.where.answer(self.where_asked)
+            if view is None and self.where_asked is not None and now - self.where_asked < self.PLACE_WAIT:
                 return self._stand() if after_scene else None
+            age = 0 if self.where_asked is None else now - self.where_asked
             self.where_asked, self.where_at, self.scene = None, now, None
-            share = None if view is None or view.error is not None else view.indoors
+            share = None if view is None or view.error is not None or age >= self.PLACE_WAIT else view.indoors
+            model = None if share is None or SEEN <= share < self.INDOORS else share >= self.INDOORS
+            resolved = indoors.resolve(indoors.read(observation.frame), model)
+            share = None if resolved is None else float(resolved)
             room = share is not None and share >= self.INDOORS
             if share is not None and (room or share < SEEN):
                 guard.place = room
@@ -688,12 +824,24 @@ class WalkTo:
                         # The walk begins in a room, or a way back out did not lead out.
                         guard.leave(observation)
             after_scene = False
-        if self.where_asked is None and guard.state == "go" and now - self.where_at >= self.PLACE_EVERY:
+        if (
+            self.where is not None
+            and self.where_asked is None
+            and guard.state == "go"
+            and now - self.where_at >= self.PLACE_EVERY
+        ):
             if self.where.ask(observation.frame, now, ahead=False, exit=False):
                 self.where_asked = now
         return self._stand() if after_scene else None
 
     def _blind(self, now, *, coast: bool = True, patience: float | None = None) -> SkillResult:
+        self.departure_seen = None
+        self.start_confirm.reset()
+        if self.enter_since is not None:
+            self.enter_place.reset()
+            self.last_left = None
+            self.guard.resume(now)
+            coast = False
         """A tick that says nothing decides nothing, and does not stop a figure that is running."""
         patience = self.BLIND if patience is None else patience
         if self.blind_since is None:
