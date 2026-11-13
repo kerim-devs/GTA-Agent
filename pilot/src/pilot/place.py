@@ -5,6 +5,7 @@ import random
 import re
 import threading
 from dataclasses import dataclass
+from difflib import SequenceMatcher
 from typing import ClassVar
 
 from pilot.contract import Observation, Pad, SkillResult
@@ -194,17 +195,47 @@ class DoPrompt(_PlaceSkill):
             self.original = normalize(text)
             return self._press(self.selected.button, now, self.selected.kind, self.selected.seconds)
         end = self.release_at if self.selected.kind == "hold" else self.press_time
-        if picture.time > end and now - end <= 2.0 and normalize(text) != self.original:
+        if picture.time > end and now - end <= 2.0 and _changed(self.original, normalize(text)):
             return self._finish("done", f"pressed: {self.selected.button}")
         if now - end >= 2.0:
             return self.stop("no-effect")
         return self.stop("time-limit") if self._expired(now) else SkillResult()
 
 
+def _changed(before: str, after: str) -> bool:
+    """Another help text or none, and not the same one read with a letter wrong."""
+    return SequenceMatcher(None, before, after).ratio() < 0.8
+
+
 @dataclass(frozen=True)
 class Entry:
     name: str
     price: int | None
+
+
+AMOUNT = r"\d[\d.,]*"
+
+
+def _price(label: str) -> tuple[int | None, str]:
+    """The price a row shows and the row without it.
+
+    The game writes the sign first: "$115". A number that stands before the sign is the row's own
+    ("Jacke 2 $500" costs 500, not 2), so the sign-first reading is tried alone, and a number before
+    the sign counts only where no sign-first price is there at all. Of several the highest is taken:
+    it is held against a limit, and the mistake to make is not to buy.
+    """
+    pattern = rf"\$\s*({AMOUNT})"
+    found = re.findall(pattern, label)
+    if not found:
+        pattern = rf"({AMOUNT})\s*\$"
+        found = re.findall(pattern, label)
+    values = [int(digits) for digits in (re.sub(r"[.,]", "", item) for item in found) if digits]
+    if not values:
+        return None, label
+    return max(values), " ".join(re.sub(pattern, " ", label).split())
+
+
+RECEIPT = r"gekauft|erworben|purchased|ausgerustet|angelegt"
 
 
 def menu_entries(text: SceneText) -> list[Entry]:
@@ -225,9 +256,7 @@ def menu_entries(text: SceneText) -> list[Entry]:
             rows.append([y, label])
     result = []
     for _, label in rows:
-        price = re.search(r"(?:\$\s*([\d.,]+)|([\d.,]+)\s*\$)", label)
-        amount = int(re.sub(r"[.,]", "", price.group(1) or price.group(2))) if price else None
-        name = (label[: price.start()] + label[price.end() :]).strip() if price else label
+        amount, name = _price(label)
         if name and not re.fullmatch(
             r"frisuren|bekleidung|ammu nation|tattoos|garderobe|barber|haarschnitt", normalize(name)
         ):
@@ -261,6 +290,7 @@ class UsePlace(_PlaceSkill):
         self.selected_index = None
         self.depth = 0
         self.bought = None
+        self.receipts = 0
         self.failure = None
         self.last_action = -math.inf
         self.search_time = 0.0
@@ -322,7 +352,17 @@ class UsePlace(_PlaceSkill):
                 result = f"used: {self.selected.wording}; bought "
                 result += f"{self.bought.name} for {self.bought.price}" if self.bought else "nothing"
                 return self._finish("done", result)
-            if picture.time > self.last_action + 0.4 and screen != "loading":
+            if screen not in ("game", "interaction_menu", "loading"):
+                # Another screen has come up, and its buttons are not this skill's: on a failed
+                # mission the circle gives the mission up. The reflex has it from here.
+                return self.stop(self.failure or f"wrong-screen: {screen}")
+            if (
+                picture.time > self.last_action + 0.4
+                and screen != "loading"
+                and self._menu(observation, text)
+            ):
+                # Only into a menu that is seen: with no map and no menu the picture is a scene, and
+                # on foot the circle is a punch.
                 return self._action(self.profile.back, now)
             return SkillResult()
         if self.phase == "search":
@@ -399,9 +439,15 @@ class UsePlace(_PlaceSkill):
                     return self._action(self.profile.confirm, now)
                 self._closing(now, "menu-unread")
                 return SkillResult()
-            if self.entry.price <= self.SPEND_LIMIT:
+            # Which row the game has highlighted is not read, and a press of the d-pad can be lost on
+            # its way: the cross may confirm any row on screen. So it is pressed only where every row
+            # that is shown has its price read and none is above the limit.
+            within = all(item.price is not None and item.price <= self.SPEND_LIMIT for item in entries)
+            if self.entry.price <= self.SPEND_LIMIT and within:
                 self.phase = "purchase"
                 self.phase_time = now
+                words = normalize(" ".join(line.text for line in text.lines))
+                self.receipts = len(re.findall(RECEIPT, words))
                 return self._action(self.profile.confirm, now)
             self._closing(now)
             return SkillResult()
@@ -413,8 +459,10 @@ class UsePlace(_PlaceSkill):
         if self.phase == "purchase":
             if picture.time > self.last_action + 0.4:
                 # A confirmation is not evidence of a purchase. Require the game's receipt.
+                # One more than stood there before the cross: a row that says so of something owned
+                # already is no receipt for this one.
                 words = normalize(" ".join(line.text for line in text.lines))
-                if re.search(r"gekauft|erworben|purchased|ausgerustet|angelegt", words):
+                if len(re.findall(RECEIPT, words)) > self.receipts:
                     self.bought = self.entry
                     self._closing(now)
                 elif now - self.phase_time >= 2.0:

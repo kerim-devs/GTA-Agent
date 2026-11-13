@@ -261,27 +261,29 @@ class DriveRoute(RegisteredSkill):
         self._now = self._previous_time = None
         self._moving_time = 0.0
         self._was_moving = False
-        self._water_at = None
+        self._water_seen = None
+        self._water_time = 0.0
 
-    # Water under the arrow and a car that does not move, this long: it has gone in. A car that moves
-    # is on a bridge, in a ford or on the beach, where the map shows water round the arrow as well.
+    # Water under the arrow and a car known to stand, for this long in all: it has gone in. A car that
+    # moves is on a bridge, in a ford or on the beach, where the map shows water round the arrow too.
     WATER_SECONDS = 2.0
 
     def _sunk(self, observation, now) -> bool:
+        previous, self._water_seen = self._water_seen, now
         if observation.frame is None or observation.reading.corrupt is not False:
             return False  # a damaged picture neither shows water nor clears it
         from . import terrain
         from .foot import hud_crop
 
         land = terrain.read(hud_crop(observation.frame))
-        if land is None:
-            return False
+        if land is None or observation.moving is None:
+            return False  # not known: neither counted nor cleared
         if not land.under_water or observation.moving is True:
-            self._water_at = None
+            self._water_time = 0.0
             return False
-        if self._water_at is None:
-            self._water_at = now
-        return now - self._water_at >= self.WATER_SECONDS
+        if previous is not None:
+            self._water_time += min(max(0.0, now - previous), self.driver.config.max_step_time)
+        return self._water_time >= self.WATER_SECONDS
 
     def _result(self, *, pad=NEUTRAL_PAD, status="running", reason=None):
         return self.Result(

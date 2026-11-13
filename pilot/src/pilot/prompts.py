@@ -15,7 +15,12 @@ FORBIDDEN = (
     ("save", r"speicher|schnellspeicher|save|spielstand"),
     ("stock market", r"aktie|borse|bawsaq|lcn|stock market"),
     ("property purchase", r"immobil|grundstuck|property|gebaude kaufen|garage kaufen"),
-    ("GTA Online", r"gta\s*online|gta\s*\+|gta\+"),
+    # A help text is never the way to buy: what costs money is bought in a shop's menu, where the
+    # price is read and held against the limit (place.UsePlace), and nowhere else.
+    ("purchase", r"kauf|erwerb|bezahl|\bbuy\b|purchase|dollar"),
+    ("bed", r"\bbett|schlaf|\bbed\b|sleep"),
+    ("GTA Online", r"gta\s*online|gta\s*\+|gta\+|\bonline\b"),
+    ("leaving the game or the mission", r"spiel\w* (?:zu )?beenden|abzubrechen|mission abbrechen|\bquit\b"),
     (
         "PlayStation menus",
         r"playstation|ps\s*(?:taste|button|menu)|ps5|kontrollzentrum|control center|share|create",
@@ -31,6 +36,8 @@ def normalize(text: str) -> str:
 
 
 def refusal(text: str) -> str | None:
+    if re.search(r"[$€]", text):
+        return "purchase"  # a price in a help text: normalize() drops the sign, so it is looked for here
     wording = normalize(text)
     return next((reason for reason, pattern in FORBIDDEN if re.search(pattern, wording)), None)
 

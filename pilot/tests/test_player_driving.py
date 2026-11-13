@@ -122,6 +122,47 @@ def test_water_seen_once_between_dry_frames_starts_over(monkeypatch):
         assert result.status == "running", index
 
 
+def test_water_with_the_motion_unknown_or_the_picture_damaged_is_not_standing_in_it(monkeypatch):
+    monkeypatch.setattr(terrain, "read", lambda crop: terrain.Terrain((), False, (None,) * 36, True))
+    frame = np.zeros((720, 1280, 3), dtype=np.uint8)
+    # On a bridge with the motion unread: never the end of the drive.
+    skill = DriveRoute({})
+    for index in range(60):
+        assert skill.step(Observation(route(), None, index * 0.1, frame=frame)).status == "running"
+    # Still and wet for a moment, then thirty seconds of damaged pictures while the car drives, then
+    # one more still, wet picture: two ticks of standing, not thirty seconds of it.
+    skill = DriveRoute({"duration": 120})
+    damaged = replace(route(), corrupt=True)
+    assert skill.step(Observation(route(), False, 0.0, frame=frame)).status == "running"
+    for index in range(1, 300):
+        assert skill.step(Observation(damaged, True, index * 0.1, frame=frame)).status == "running"
+    assert skill.step(Observation(route(), False, 30.0, frame=frame)).status == "running"
+
+
+def test_recoveries_far_apart_are_forgotten_with_the_speed_unread():
+    driver = Driver(
+        replace(
+            drive_config([]),
+            stuck_time=0.1,
+            reverse_time=0.1,
+            forward_time=0.5,
+            recovery_clear_time=0.1,
+            speed_smoothing=0,
+        )
+    )
+    now = 0.0
+    for _ in range(12):  # twelve stops, each freed, each fifteen seconds of driving after the last
+        for _ in range(40):
+            now += 0.1
+            command = driver.step(route(), now, moving=False, speed=None)
+            assert command.state != "failed-recovery"
+            if command.state == "recovery-reverse":
+                break
+        for _ in range(150):
+            now += 0.1
+            assert driver.step(route(), now, moving=True, speed=None).state != "failed-recovery"
+
+
 def test_water_cannot_extend_the_skill_time_limit(monkeypatch):
     monkeypatch.setattr(terrain, "read", lambda crop: terrain.Terrain((), False, (None,) * 36, True))
     skill = DriveRoute({"duration": 0.1})

@@ -135,7 +135,7 @@ class Shop:
             else:
                 self.purchased = True
 
-    def run(self, skill):
+    def run(self, skill, closed=True):
         text = attach(skill, self.scene())
         for i in range(400):
             text.scene = self.scene()
@@ -147,7 +147,7 @@ class Shop:
             self.apply(result.pad)
             if result.status != "running":
                 assert result.pad == NEUTRAL_PAD
-                assert self.level == 0
+                assert not closed or self.level == 0
                 return result
         pytest.fail("skill did not terminate")
 
@@ -206,9 +206,110 @@ def test_welcome_waits_search_bounded():
     assert result.reason == "no-prompt" and result.pad == NEUTRAL_PAD
 
 
-def test_wrong_screen_and_deadline_back_out():
-    assert Shop(menu_screen="pause").run(UsePlace({})).reason == "wrong-screen: pause"
+def test_an_unread_menu_is_backed_out_of():
     assert Shop(unread=True).run(UsePlace({"duration": 5})).reason in ("menu-unread", "time-limit")
+
+
+@pytest.mark.parametrize("screen", ["pause", "failed", "map", "alert"])
+def test_another_screen_is_left_to_the_reflex_with_nothing_pressed_into_it(screen):
+    # On a failed mission the circle gives the mission up: the skill ends, and the reflex has the screen.
+    shop = Shop(menu_screen=screen)
+    result = shop.run(UsePlace({}), closed=False)
+    assert result.status == "failed" and result.reason == f"wrong-screen: {screen}"
+    assert shop.buttons == ["right"]
+
+
+def test_the_way_out_presses_nothing_into_a_scene_without_a_menu():
+    # The game's screen, no map and no menu: a scene. On foot the circle is a punch.
+    skill = UsePlace({"duration": 12})
+    text = attach(skill, SceneText(help=PROMPT))
+    pressed = []
+    for index in range(200):
+        text.scene = SceneText(help=PROMPT) if index < 2 else SceneText()
+        result = skill.step(observation(index * 0.1, "game", "flat" if index < 2 else "none"))
+        pressed.extend(result.pad.buttons)
+        if result.status != "running":
+            break
+    assert result.status == "failed" and result.pad == NEUTRAL_PAD
+    assert "circle" not in pressed and "cross" not in pressed
+
+
+@pytest.mark.parametrize(
+    "row,price,name",
+    [
+        ("Jacke 2 $500", 500, "Jacke 2"),
+        ("Hose 1 $450", 450, "Hose 1"),
+        ("Weißes Hemd $115", 115, "Weißes Hemd"),
+        ("Schalldämpfer $1,823", 1823, "Schalldämpfer"),
+        ("Schalldämpfer $1.823", 1823, "Schalldämpfer"),
+        ("T-Shirt 39 $", 39, "T-Shirt"),
+        ("Angebot $20 statt $400", 400, "Angebot statt"),
+        ("Buzz cut", None, "Buzz cut"),
+    ],
+)
+def test_the_price_of_a_row_is_the_one_behind_the_sign_and_the_highest_of_several(row, price, name):
+    from pilot.place import menu_entries
+
+    entries = menu_entries(lines(row))
+    assert [(entry.price, entry.name) for entry in entries] == [(price, name)]
+
+
+def test_a_number_before_the_price_never_makes_a_dear_row_cheap():
+    for rows in (("Jacke 2 $500",), ("Hose 1 $450",)):
+        shop = Shop(rows=rows)
+        result = shop.run(UsePlace({"spend": "yes", "choice": "first"}))
+        assert "cross" not in shop.buttons and result.reason.endswith("bought nothing")
+
+
+def test_nothing_is_bought_where_any_row_on_screen_is_dear_or_unread():
+    for rows in (("Cap $75", "Anzug $900"), ("Cap $75", "Hut")):
+        shop = Shop(rows=rows)
+        result = shop.run(UsePlace({"spend": "yes", "choice": "first"}))
+        assert "cross" not in shop.buttons and result.status == "done"
+        assert result.reason.endswith("bought nothing")
+
+
+def test_a_row_that_says_bought_of_something_else_is_no_receipt():
+    shop = Shop(rows=("Cap $75", "Alter Hut $20 Gekauft"), receipt=False)
+    result = shop.run(UsePlace({"spend": "yes", "choice": "first"}))
+    assert "bought Cap" not in result.reason
+
+
+@pytest.mark.parametrize(
+    "help_text,why",
+    [
+        ("Drücke [X], um im Bett zu schlafen.", "bed"),
+        ("Drücke [X], um zu schlafen.", "bed"),
+        ("Drücke [X], um Online beizutreten.", "GTA Online"),
+        ("Drücke [X], um das Haus zu kaufen.", "purchase"),
+        ("Drücke [X], um die Wohnung zu kaufen", "purchase"),
+        ("Drücke [X], um das Fahrzeug für $500000 zu erwerben.", "purchase"),
+        ("Drücke [X], um das Angebot für $90 anzunehmen.", "purchase"),
+        ("Drücke [X], um die Mission abzubrechen.", "leaving the game or the mission"),
+    ],
+)
+def test_a_help_text_is_never_the_way_to_a_bed_a_purchase_or_online(help_text, why):
+    from pilot.prompts import offer, refusal
+
+    assert refusal(help_text) == why and offer(help_text) is None
+    skill = DoPrompt({})
+    attach(skill, SceneText(help=help_text))
+    result = skill.step(observation(0.0))
+    for index in range(1, 6):
+        if result.status != "running":
+            break
+        result = skill.step(observation(index * 0.1))
+    assert result.status == "failed" and result.reason == f"refused: {why}" and result.pad == NEUTRAL_PAD
+
+
+def test_the_same_help_text_read_with_a_letter_wrong_is_not_a_press_that_worked():
+    from pilot.place import _changed
+    from pilot.prompts import normalize
+
+    before = normalize("Drücke [glyph], um dir Kleidung anzusehen")
+    assert not _changed(before, normalize("Drücke [glyph], um dir Kleidurg anzusehen"))
+    assert _changed(before, normalize(""))
+    assert _changed(before, normalize("Drücke [glyph], um in Deckung zu gehen"))
 
 
 def test_async_reader_does_not_block_tick(monkeypatch):

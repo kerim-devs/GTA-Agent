@@ -6,6 +6,10 @@ from math import atan2, degrees, hypot, isfinite, sqrt
 
 from pilot.contract import NEUTRAL, Command, Reading
 
+# Metres a second taken for a car that moves with its speed unread: the mean of the first town drives
+# (docs/LOG.md, 11 November).
+ASSUMED_SPEED = 4.0
+
 
 @dataclass(frozen=True)
 class DriveConfig:
@@ -260,8 +264,10 @@ class Driver:
             return self._idle()
         if self._phase in LATCHED:
             return self._emit(0, 0, 0, self._phase)
-        if moving is True and speed is not None and self._last.throttle > 0:
-            self._recovery_distance += speed * dt
+        if moving is True and self._last.throttle > 0:
+            # With the speed unread the car still moves: counted at the town's walking pace of a
+            # drive, so that a stop passed long ago is not held against the next one for ever.
+            self._recovery_distance += (ASSUMED_SPEED if speed is None else speed) * dt
         confidence = _number(reading.confidence)
         damaged = self._damage_agrees(reading, now, confidence)
         flagged = self._flag_lasts(reading, now, confidence)
