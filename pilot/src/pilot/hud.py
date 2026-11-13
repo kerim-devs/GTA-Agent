@@ -298,6 +298,154 @@ def _fraction(values: np.ndarray) -> float | None:
     return end / n
 
 
+def _health(track: np.ndarray) -> tuple[bool, float | None, bool]:
+    """Whether the health track is there, its filled fraction as drawn or None, and whether the
+    track is green but dim as a whole, as the HUD is while the picture fades in.
+
+    The fill is nearly opaque and the empty part translucent, so neither has a brightness of its
+    own: the bar ends where the track steps sharply from the fill's level down to a clearly darker
+    one, wherever that is. Map icons that slide over the bar are white, black, grey or cyan: their
+    columns are left out, and the bar goes on where its colour does beyond them. When a hit lands
+    the game draws the fill pale yellow and the lost part orange for a third of a second; both
+    still step down in green at the new end, so the first frame of a hit is read.
+
+    `track` is rows 670 to 679 of the health track: four above it, two of its rim, its four rows.
+    """
+    pixels = track[6:]
+    r, g, b = pixels.transpose(2, 0, 1)
+    high = np.maximum(np.maximum(r, g), b)
+    reddish = r - np.maximum(g, b) > 30
+    bar = (high - np.minimum(np.minimum(r, g), b) >= 24) & (high <= 235)
+    # Cyan and blue icons are no bar colour.
+    bar &= ~((b > r + 15) & (b > g - 20))
+    # Green, red, and the pale yellow fill and orange lost part of a hit.
+    bar &= (g - np.maximum(r, b) > 12) | reddish | (np.minimum(r, g) - b > 25)
+    # A red or yellow blip at the map's lower edge sits on the bar and reaches above it; the
+    # orange and pale yellow a hit paints stay inside the bar.
+    ar, ag, ab = track[:4].transpose(2, 0, 1)
+    blip = ((ar - np.maximum(ag, ab) > 100) | ((np.minimum(ar, ag) - ab > 100) & (ag > 150))).any(axis=0)
+    # A red bar is red wherever it is bar coloured. On a green one, red is the bright orange of a
+    # hit's lost part (red 125 and up) or an icon: a small dark red cross or star over the bar is
+    # no bar colour.
+    candidates = (bar.sum(axis=0) >= 3) & ~blip
+    if candidates.sum() < HEALTH_COLUMNS // 2:
+        return False, None, False
+    channel = 0 if (reddish.sum(axis=0)[candidates] >= 3).mean() >= 0.85 else 1
+    if channel == 1:
+        bar &= ~reddish | (r >= HEALTH_ORANGE)
+    # An icon's anti-aliased rim is a blend of its colour and the bar's that can pass for either:
+    # leave two columns more out on each side.
+    invalid = np.pad((bar.sum(axis=0) < 3) | blip, 2)
+    valid = ~(invalid[:-4] | invalid[1:-3] | invalid[2:-2] | invalid[3:-1] | invalid[4:])
+    columns = np.flatnonzero(valid)
+    if len(columns) < HEALTH_COLUMNS // 2:
+        return False, None, False
+    red = reddish.sum(axis=0)[columns] >= 3
+    if channel == 1 and red[0]:
+        # A green bar starts with its fill: red before it is an enemy's blip at the map's corner.
+        columns = columns[np.argmin(red) :]
+        if len(columns) < HEALTH_COLUMNS // 2:
+            return True, None, False
+    # The second brightest of the four rows: an icon's dark rim across one or two rows of the fill
+    # does not make it look empty, and one bright row of a damaged frame does not make it fill.
+    values = np.sort(pixels[:, columns, channel], axis=0)[2].astype(np.float64)
+    n = len(values)
+    total, squares = np.cumsum(values), np.cumsum(values * values)
+    # Every split into a brighter fill on the left and a darker rest on the right, at least three
+    # columns of each; the best one by squared error.
+    split = np.arange(3, n - 2)
+    fill = total[split - 1] / split
+    rest = total[-1] - total[split - 1]
+    empty = rest / (n - split)
+    best = int((squares[-1] - total[split - 1] * fill - rest * empty).argmin())
+    split, fill, empty = int(split[best]), float(fill[best]), float(empty[best])
+    step = fill - empty
+    if step >= HEALTH_STEP and empty <= fill * HEALTH_EMPTY:
+        if fill < HEALTH_FILL[channel]:
+            # The fill itself is dim: a green one while the picture fades in, a red one as it
+            # pulses at low health.
+            return True, None, channel == 1
+        threshold = (fill + empty) / 2
+        # Fill columns darker than halfway are wrong, and so are columns beyond the end almost as
+        # bright as the fill; a background that lightens towards the far right of the empty track
+        # is not.
+        wrong = (values[:split] < threshold).sum() + (values[split:] >= fill - step / 4).sum()
+        # Beyond the one column on either side of the end that may be a blend of both, two columns
+        # are clearly fill and two clearly not, and the end is sharp: a lighter background behind
+        # the translucent track fades, the bar stops. A Wi-Fi frame blurs an end over four columns.
+        fill_side = values[split - 3 : split - 1] >= threshold
+        empty_side = values[split + 1 : split + 3] < threshold
+        clean = fill_side.all() and empty_side.all()
+        drop = values[max(split - HEALTH_SHARP[0], 0)] - values[min(split + HEALTH_SHARP[1], n - 1)]
+        sharp = drop >= step * 0.6
+        # The end lies between the last fill column and the first darker one that could be read.
+        before, after = int(columns[split - 1]) + 1, int(columns[split])
+        if wrong > max(2, n * 0.12) or not clean or not sharp or after - before > HEALTH_HIDDEN:
+            return True, None, False
+        # The bar is drawn alike in its four rows, and so is the track behind it; around an end
+        # that is an icon's dark rim on a light face they differ.
+        near = high[:, columns[max(split - 3, 0) : split + 3]]
+        if (near.max(axis=0) - near.min(axis=0) > HEALTH_UNEVEN).any():
+            return True, None, False
+        # A few fill-like columns just beyond an icon are its glow as often as the bar: the fill
+        # that ends here has to run for a while unbroken, or start at the track's start.
+        start = split - 1
+        while start > 0 and columns[start] - columns[start - 1] == 1:
+            start -= 1
+        if columns[start] > 0 and split - start < HEALTH_RUN:
+            return True, None, False
+        return True, (before + after) / 2 / HEALTH_TRACK, False
+    # No step: the whole track is one level. Full when that level is a bright green fill that
+    # reaches the track's end; a red track is never full, and a dim one says nothing. The first
+    # four columns are left out: the track's first column is a little darker, and a blip's rim at
+    # its start is olive.
+    level = np.sort(values[4:])
+    if channel == 0 or float(level[0]) < HEALTH_FILL[1] or float(level[-1] - level[0]) > HEALTH_FLAT:
+        return True, None, channel == 1 and float(level[-1]) < HEALTH_FILL[1]
+    # The last few columns can be the empty part of a bar at 0.95 lit by sand behind it, or the
+    # lost part of a small hit fading from orange: as bright as the fill, but darker or less green
+    # than the rest of the track.
+    tint = np.sort(g - r, axis=0)[2]
+    if (
+        values[-4:].mean() < np.median(values) - HEALTH_FLAT / 3
+        or tint[-4:].mean() < np.median(tint[columns]) - HEALTH_TINT
+    ):
+        return True, None, False
+    if HEALTH_COLUMNS - 1 - int(columns[-1]) > HEALTH_HIDDEN:
+        return True, None, False
+    return True, HEALTH_COLUMNS / HEALTH_TRACK, False
+
+
+# The health track is x 64 to 152; x 153 is its dark border, which the old reader counted in, so a
+# full bar reads 89 / 90 as it always has.
+HEALTH_COLUMNS = 89
+HEALTH_TRACK = 90
+# Fill and empty differ by at least this much in their own channel. Measured on the cable
+# recordings: a green fill at 164 to 216 against an empty track at 45 to 132, also in front of
+# bright sand.
+HEALTH_STEP = 30
+# A fill dimmer than this is a picture fading in from black (green 87 to 193 over 0.4 s in enemy-13)
+# or a red bar pulsing at low health.
+HEALTH_FILL = (150, 140)
+# The empty part is at most this share of the fill: a darker background behind part of the fill
+# makes a step of a tenth or so, not more.
+HEALTH_EMPTY = 0.85
+HEALTH_FLAT = 30
+HEALTH_RUN = 6
+HEALTH_SHARP = (3, 2)
+# Red on a green bar below this is an icon's: the orange lost part of the 47 hits in lab/health/
+# has red 125 or more in 99 of 100 pixels, a dark red cross on the bar about 90.
+HEALTH_ORANGE = 120
+# Across its four rows a column of the bar or the track varies by 3 to 11 in nine of ten frames;
+# under an icon's rim by a hundred and more.
+HEALTH_UNEVEN = 60
+# Green minus red of the last four columns of a full bar is 11 to 15 below the track's median where
+# the blue of the armour track bleeds into them; under the fading lost part of a small hit 30 below.
+HEALTH_TINT = 20
+# Up to four columns of an end hidden under an icon's rim are read as their middle (0.02 either way).
+HEALTH_HIDDEN = 4
+
+
 def _bars(frame: np.ndarray) -> tuple[float | None, float | None, float | None]:
     # The track remains coloured even when empty. Chroma locates the HUD;
     # brightness relative to its translucent surround measures the filled part.
@@ -305,32 +453,17 @@ def _bars(frame: np.ndarray) -> tuple[float | None, float | None, float | None]:
     surround = frame[[672, 682], 64:244].astype(np.float32).mean(axis=0)
     r, g, b = band.T
     sr, sg, sb = surround.T
-    green = (g - np.maximum(r, b) > 16) & (g - np.maximum(r, b) - (sg - np.maximum(sr, sb)) > 10)
-    red = (r - np.maximum(g, b) > 35) & (r - np.maximum(g, b) - (sr - np.maximum(sg, sb)) > 20)
     blue = (b - r > 8) & (b - r - (sb - sr) > 8)
     yellow = (np.minimum(r, g) - b > 35) & (np.minimum(r, g) - b - (np.minimum(sr, sg) - sb) > 20)
+    health_visible, health, dim = _health(frame[670:680, 64 : 64 + HEALTH_COLUMNS].astype(np.int16))
     # All three differently coloured tracks establish the fixed geometry. This
     # prevents scene foliage or a billboard from being read as a health bar.
-    health_visible = (green[:90] | red[:90]).mean() > 0.8
     armour_visible = blue[94:136].mean() > 0.7
     special_visible = yellow[138:180].mean() > 0.7
-    if sum((health_visible, armour_visible, special_visible)) < 2:
+    # While the HUD fades in, the armour and special tracks read empty too: nothing is read.
+    if dim or sum((health_visible, armour_visible, special_visible)) < 2:
         return None, None, None
     corrected = band - 0.25 * surround
-    health = None
-    if health_visible:
-        channel = 0 if red[:90].mean() > green[:90].mean() else 1
-        threshold = 165 if channel == 0 else 150
-        profile = corrected[:90, channel]
-        readable = True
-        if channel == 0:
-            # Red damage flashes can colour the entire translucent track. The
-            # available red frames have no stable fill edge: never call that 0.
-            low, high = np.percentile(profile, (20, 80))
-            readable = high - low >= 25 and profile[:12].mean() >= profile[-12:].mean() + 25
-            threshold = (low + high) / 2
-        if readable:
-            health = _fraction(profile - threshold)
     armour = _fraction(corrected[94:136, 2] - 155) if armour_visible else None
     special = _fraction(corrected[138:180, :2].min(axis=1) - 155) if special_visible else None
     return health, armour, special
