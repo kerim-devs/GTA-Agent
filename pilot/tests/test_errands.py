@@ -218,6 +218,79 @@ def test_failed_use_always_leaves_and_does_not_claim_success(failure):
     assert any(h["name"] == "shop" and h["outcome"] == "gave_up" for h in head.goals.history)
 
 
+@pytest.mark.parametrize("name", ["shop", "home"])
+@pytest.mark.parametrize("reason", ["arrived; no door found", "arrived; on the symbol under the waypoint"])
+def test_a_visit_without_an_observed_entrance_never_uses_the_place(name, reason):
+    head = head_for(name)
+    world = World(head)
+    for _ in range(10):
+        world.tick()
+        if world.last["name"] == "walk_to_point" and world.last["args"].get("enter"):
+            break
+    else:
+        pytest.fail("visit never approached its entrance")
+    world.last = result("walk_to_point", reason)
+    answer = world.tick()
+    assert "use_place" not in names(answer)
+    assert any(
+        row["name"] == name and row["outcome"] == "gave_up" and row["reason"] == "entrance not observed"
+        for row in head.goals.history
+    )
+
+
+@pytest.mark.parametrize("name", ["shop", "home"])
+def test_confirmed_visit_stages_are_available_in_the_next_session(tmp_path, monkeypatch, name):
+    from pilot import memory
+
+    path = tmp_path / "memory.json"
+    first = memory.Memory(path, clock=lambda: 1000.0)
+    monkeypatch.setattr(memory, "_active", first)
+    head = head_for(name)
+    world = World(head)
+    ended, _ = world.finish(name)
+    first.close()
+    second = memory.Memory(path, clock=lambda: 1060.0)
+    entry = second.get(memory.PLACES, ended["place"])
+    assert {key: entry[key] for key in ("entered", "used", "left", "reached")} == {
+        "entered": 1,
+        "used": 1,
+        "left": 1,
+        "reached": 1,
+    }
+
+
+def test_no_entrance_is_learnt_once_and_the_next_session_chooses_another_shop(tmp_path, monkeypatch):
+    from pilot import memory
+
+    path = tmp_path / "memory.json"
+    first = memory.Memory(path, clock=lambda: 1000.0)
+    monkeypatch.setattr(memory, "_active", first)
+    head = head_for("shop")
+    world = World(head)
+    for _ in range(10):
+        world.tick()
+        if world.last["name"] == "walk_to_point" and world.last["args"].get("enter"):
+            break
+    else:
+        pytest.fail("shop never approached its entrance")
+    place = head.goals.active.place
+    observed = request(world.t, last=result("walk_to_point", "arrived; no door found"), route="purple")
+    head.decide(observed)
+    head.discard()
+    head.decide(observed)
+    first.close()
+
+    second = memory.Memory(path, clock=lambda: 1060.0)
+    monkeypatch.setattr(memory, "_active", second)
+    entry = second.get(memory.PLACES, place)
+    assert entry["entry_failed"] == entry["failed"] == 1
+    assert not any(entry.get(key) for key in ("entered", "used", "left", "reached"))
+    next_head = head_for("shop")
+    next_head.decide(request())
+    assert next_head.goals.active.name == "shop"
+    assert next_head.goals.active.place != place
+
+
 @pytest.mark.parametrize(
     "count,expected", [(1, ["press", "walk"]), (2, ["look", "walk"]), (3, ["walk", "look", "walk_road"])]
 )

@@ -5,7 +5,7 @@ import random
 import re
 import secrets
 import time
-from collections import Counter
+from collections import Counter, deque
 from dataclasses import dataclass, field
 
 from . import memory
@@ -147,6 +147,7 @@ class Errands:
         self.random = random.Random(self.seed)
         self.clock, self.chooser = clock, chooser
         self._noted = None  # the errand whose end the memory was last told of; not undone with the rest
+        self._observed = deque(maxlen=64)  # confirmed facts survive a discarded head decision
         self.active = None
         self.abandoned = None
         self.history = []
@@ -288,6 +289,14 @@ class Errands:
                 memory.place_reached(kept, goal.place, how=goal.name)
             elif blame:
                 memory.place_failed(kept, goal.place, why=str(reason)[:80])
+
+    def _observe(self, goal, event):
+        kept = self._kept()
+        key = (goal.name, goal.started, event)
+        if kept is None or not goal.place or key in self._observed:
+            return
+        self._observed.append(key)
+        memory.place_observed(kept, goal.place, event)
 
     def end(self, request, reason, *, reached=False, blame=True):
         """`blame` is false where the errand ended for something that says nothing about its place:
@@ -542,13 +551,21 @@ class Errands:
                 goal.arrived = True
                 goal.step = "await_story"
                 goal.wait_since = now
-            else:
+            elif reason == "entered":
+                self._observe(goal, "entered")
                 goal.step = "use"
+            else:
+                # Reaching the map symbol does not prove the door was found. The walk reports
+                # this as done, but a visit cannot use a shop or a wardrobe from the street.
+                self._observe(goal, "entry_failed")
+                self.end(request, "entrance not observed")
         if done and skill == "use_place" and goal.step == "use":
+            self._observe(goal, "used")
             goal.used = True
             goal.step = "leave"
         if done and skill == "leave_building" and goal.step == "leave":
             if reason == "outdoors":
+                self._observe(goal, "left")
                 self.end(
                     request,
                     "used place and observed outdoors" if goal.used else "use failed; returned outdoors",
