@@ -188,6 +188,13 @@ def place_reached(memory: Memory, place: str, *, how: str):
     return memory.bump(PLACES, place, "reached", how=how, failed_in_a_row=0)
 
 
+def place_observed(memory: Memory, place: str, event: str):
+    """A confirmed visit stage at a named destination, not a position or a remembered route."""
+    if event not in {"entered", "used", "left", "entry_failed"}:
+        raise ValueError(f"unknown place observation {event!r}")
+    return memory.bump(PLACES, place, event)
+
+
 def place_failed(memory: Memory, place: str, *, why: str):
     """A trip to the place was given up."""
     entry = memory.get(PLACES, place)
