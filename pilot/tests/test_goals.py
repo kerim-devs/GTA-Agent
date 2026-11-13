@@ -1360,3 +1360,9 @@ def test_the_conductor_lets_a_drive_end_by_itself_when_a_mission_route_goes(tmp_
         assert any(r.get("action") == "go_on" and r.get("disposition") == "kept" for r in replies)
     finally:
         conductor.close()
+
+
+@pytest.fixture(autouse=True)
+def no_place_model(monkeypatch):
+    # These goal tests exercise sessions without the optional place model.
+    monkeypatch.setattr("pilot.conductor.ahead.where", lambda: None)

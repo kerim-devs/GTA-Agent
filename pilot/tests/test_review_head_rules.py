@@ -34,6 +34,193 @@ def names(answer):
     return [call.name for call in answer.plan]
 
 
+def test_place_precedes_roam_and_standing_without_an_errand():
+    for place, skill, duration, rule in (
+        ("room", "leave_building", 60, "room_leave"),
+        ("landing", "descend", 40, "landing_descend"),
+    ):
+        head = MissionHead()
+        answer = head.decide(request(place=place, events=[{"kind": "standing", "count": 3}]))
+        assert names(answer) == [skill]
+        assert answer.plan[0].args == {"duration": duration}
+        assert head.last_rule == rule
+        assert head.goals.active is None
+
+        head = MissionHead()
+        head.goals.mapless_until = float("inf")
+        assert "walk_road" in names(head.decide(request()))
+        assert head.goals.active.name == "roam"
+        assert names(head.decide(request(1, place=place))) == [skill]
+
+
+def test_place_leaves_missions_and_urgent_rules_unchanged():
+    from dataclasses import replace
+
+    situations = [
+        request(objective="Gehe zum gelben Punkt."),
+        request(wanted=2, cars=True),
+        request(judged="none"),
+        replace(request(), hud={"screen": "game", "health": 0.2, "wanted": 0}),
+        *[
+            replace(request(), hud={"screen": screen, "health": 1, "wanted": 0})
+            for screen in ("phone", "pause", "dead", "cutscene")
+        ],
+    ]
+    for situation in situations:
+        expected = MissionHead(goal_seed=1).decide(situation)
+        for place in ("room", "landing", "unknown"):
+            actual = MissionHead(goal_seed=1).decide(replace(situation, place=place))
+            assert actual.plan == expected.plan
+
+
+def test_place_failure_retries_rest_and_return_for_both_rules():
+    for place, skill, angle in (("room", "leave_building", 180), ("landing", "descend", 120)):
+        head = MissionHead(goal_seed=1)
+        assert names(head.decide(request(place=place))) == [skill]
+        result = failed(skill, "timeout")
+        for time in (1, 2):
+            answer = head.decide(
+                request(time, place=place, last=result, events=[{"kind": "skill_failed", "skill": result}])
+            )
+            assert names(answer) == ["look", skill]
+            assert answer.plan[0].args["angle"] == angle
+        answer = head.decide(
+            request(3, place=place, last=result, events=[{"kind": "skill_failed", "skill": result}])
+        )
+        baseline = MissionHead(goal_seed=1).decide(request(3, last=result))
+        assert answer.plan == baseline.plan
+        assert head.place_failures == 3
+        assert head.place_rest_until == 123
+        head.decide(request(122, place=place, last=result))
+        assert head.last_rule not in {"room_leave", "landing_descend"}
+        assert head.place_failures == 3
+        assert names(head.decide(request(123, place=place, last=result))) == [skill]
+        assert head.place_failures == 0
+
+
+def test_repeated_failure_snapshot_is_not_another_failed_call():
+    head = MissionHead()
+    result = failed("leave_building", "timeout")
+    head.decide(request(place="room"))
+    head.decide(request(1, place="room", last=result, events=[{"kind": "skill_failed", "skill": result}]))
+    head.decide(request(2, place="room", last=result))
+    assert head.place_failures == 1
+    running = {
+        "name": "look",
+        "status": "running",
+        "args": {"duration": 1, "angle": 180},
+        "queue": ["leave_building"],
+    }
+    answer = head.decide(request(3, place="room", last=running))
+    assert answer.action == "go_on"
+    assert not answer.plan
+
+
+def test_place_change_and_done_reset_failures_and_discard_restores_state():
+    head = MissionHead()
+    result = failed("leave_building", "timeout")
+    head.decide(request(place="room"))
+    head.decide(request(1, place="room", last=result))
+    assert head.place_failures == 1
+    head.discard()
+    assert head.place_failures == 0
+    head.decide(request(2, place="room", last=result))
+    head.decide(
+        request(3, place="room", last={"name": "leave_building", "status": "done", "reason": "outdoors"})
+    )
+    assert head.place_failures == 0
+    head.decide(request(4, place="room", last=result))
+    assert head.place_failures == 1
+    assert names(head.decide(request(5, place="landing", last=result))) == ["descend"]
+    assert head.place_failures == 0
+
+
+def test_unknown_place_waits_only_at_session_start():
+    head = MissionHead(goal_seed=1)
+    for time in (1000, 1005.99):
+        answer = head.decide(request(time, place="unknown"))
+        assert names(answer) == ["wait"]
+        assert answer.plan[0].args == {"duration": 1}
+        assert head.last_rule == "place_wait"
+    baseline = MissionHead(goal_seed=1).decide(request(1006))
+    assert head.decide(request(1006, place="unknown")).plan == baseline.plan
+
+
+def test_last_place_is_held_for_ten_seconds_without_refreshing_unknown():
+    head = MissionHead()
+    head.decide(request(0, place="room"))
+    for time in (5, 10):
+        assert names(head.decide(request(time, place="unknown"))) == ["leave_building"]
+    head.decide(request(10.01, place="unknown"))
+    assert head.last_rule != "room_leave"
+    head.decide(request(11, place="street"))
+    assert head._held(request(12, place="unknown")).place == "street"
+    assert head._held(request(12, place=None)).place is None
+
+
+def test_scripted_place_replays_first_forty_seconds():
+    from dataclasses import replace
+
+    from pilot.where import Sense
+
+    class ScriptedSense(Sense):
+        def step(self, observation):
+            self.verdict = "room" if observation.time < 22 or observation.time > 30 else "landing"
+            self.confirmed_at = observation.time
+
+    sense = ScriptedSense(object())
+    head = MissionHead()
+    head.goals.mapless_until = float("inf")
+    planned = []
+    for time in range(40):
+        current = request(time)
+        sense.step(current)
+        answer = head.decide(replace(current, place=sense.place))
+        planned.append(names(answer))
+        assert "walk_road" not in names(answer)
+        if 22 <= time <= 30:
+            assert names(answer) == ["descend"]
+    assert planned[0] == ["leave_building"]
+    assert planned[31] == ["leave_building"]
+
+
+def test_an_errand_at_its_place_is_not_pulled_out_of_a_room_or_off_a_landing():
+    from pilot.errands import Errand
+
+    # A story marker can lie in a house and a shop's counter is in a room: an errand that has
+    # arrived keeps its own plan there, and only one still on its way out leaves the room first.
+    for step in ("approach", "await_story", "use", "leave", "switch"):
+        for place in ("room", "landing"):
+            head = MissionHead()
+            head.goals.active = Errand("shop", started=0, seed=1, direction="north", step=step, wait_since=0)
+            answer = head.decide(request(place=place))
+            assert head.last_rule not in ("room_leave", "landing_descend"), (step, place)
+            assert "descend" not in names(answer), (step, place)
+    for step, place, plan in (("travel", "room", "leave_building"), ("waypoint", "landing", "descend")):
+        head = MissionHead()
+        head.goals.active = Errand("shop", started=0, seed=1, direction="north", step=step)
+        assert names(head.decide(request(place=place))) == [plan]
+
+
+def test_place_change_and_success_cancel_cooldown():
+    for reset in ("done", "landing"):
+        head = MissionHead()
+        result = failed("leave_building", "timeout")
+        head.decide(request(place="room"))
+        for time in (1, 2, 3):
+            head.decide(
+                request(time, place="room", last=result, events=[{"kind": "skill_failed", "skill": result}])
+            )
+        assert head.place_rest_until == 123
+        if reset == "done":
+            head.decide(request(4, place="room", last={"name": "leave_building", "status": "done"}))
+        else:
+            head.decide(request(4, place="landing", last=result))
+            head.decide(request(5, place="room", last=result))
+        assert head.place_failures == 0
+        assert head.place_rest_until == 0
+
+
 def test_under_stars_a_car_that_could_not_be_entered_is_not_asked_for_again_at_once():
     """Review C, 1: enter_vehicle failing under stars was answered with enter_vehicle for ever."""
     head = MissionHead(goal_seed=0)
