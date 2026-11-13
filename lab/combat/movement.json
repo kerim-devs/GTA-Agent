@@ -1,0 +1,91 @@
+{
+  "red": {
+    "hits": 43,
+    "active_seconds": 21.062600000000003,
+    "axes": {
+      "x_negative": {
+        "seconds": 5.347899999999868,
+        "median_active_axis": 1.0
+      },
+      "x_positive": {
+        "seconds": 2.2980000000000302,
+        "median_active_axis": 0.88
+      },
+      "y_negative": {
+        "seconds": 12.609800000000064,
+        "median_active_axis": 1.0
+      },
+      "y_positive": {
+        "seconds": 0.8069000000000415,
+        "median_active_axis": 0.99
+      }
+    },
+    "near_fire_edges": {
+      "r1": {
+        "count": 40,
+        "min": -22.437900000000013,
+        "median": -1.3172999999999888,
+        "p10": -5.324399999999969,
+        "p25": -3.760400000000004,
+        "p90": 1.5451000000000477,
+        "max": 1.9506999999999834
+      },
+      "square": {
+        "count": 5,
+        "min": 0.15840000000000032,
+        "median": 0.7636999999999716,
+        "p10": 0.15840000000000032,
+        "p25": 0.3883999999999901,
+        "p90": 0.8678999999999917,
+        "max": 1.1074000000000126
+      }
+    }
+  },
+  "no-red": {
+    "hits": 4,
+    "active_seconds": 0.4260999999999058,
+    "axes": {
+      "x_negative": {
+        "seconds": 0.4260999999999058,
+        "median_active_axis": 1.0
+      },
+      "x_positive": {
+        "seconds": 0,
+        "median_active_axis": null
+      },
+      "y_negative": {
+        "seconds": 0,
+        "median_active_axis": null
+      },
+      "y_positive": {
+        "seconds": 0,
+        "median_active_axis": null
+      }
+    },
+    "near_fire_edges": {
+      "r1": {
+        "count": 6,
+        "min": -0.5465,
+        "median": 1.477550000000008,
+        "p10": -0.5465,
+        "p25": 0.7713999999999714,
+        "p90": 1.5716999999999928,
+        "max": 1.763900000000035
+      },
+      "square": {
+        "count": 0,
+        "min": null,
+        "median": null,
+        "p10": null,
+        "p25": null,
+        "p90": null,
+        "max": null
+      }
+    }
+  },
+  "turn_before_lock": {
+    "seconds": 31.910800000000094,
+    "median_active_x": 0.99,
+    "locks": 210
+  }
+}

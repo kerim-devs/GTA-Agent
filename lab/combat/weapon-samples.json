@@ -1,0 +1,965 @@
+{
+  "selection": "midpoint native frame of derived action span; fire proves armed; melee is a candidate unarmed label requiring visual top-right absence confirmation",
+  "samples": [
+    {
+      "label": "armed",
+      "recording": "20261111-190825",
+      "frame": 4869,
+      "t": 81.734,
+      "action_span": {
+        "start": 81.2046,
+        "end": 82.3063,
+        "first_frame": 4837,
+        "last_frame": 4902
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-190825",
+      "frame": 51910,
+      "t": 889.133,
+      "action_span": {
+        "start": 888.998,
+        "end": 889.3014,
+        "first_frame": 51902,
+        "last_frame": 51919
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-190825",
+      "frame": 51955,
+      "t": 889.9409,
+      "action_span": {
+        "start": 889.7998,
+        "end": 890.0004,
+        "first_frame": 51950,
+        "last_frame": 51961
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-190825",
+      "frame": 52021,
+      "t": 890.996,
+      "action_span": {
+        "start": 890.7976,
+        "end": 891.2003,
+        "first_frame": 52010,
+        "last_frame": 52033
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-190825",
+      "frame": 52147,
+      "t": 893.0913,
+      "action_span": {
+        "start": 892.9042,
+        "end": 893.3008,
+        "first_frame": 52136,
+        "last_frame": 52159
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-190825",
+      "frame": 52429,
+      "t": 897.8083,
+      "action_span": {
+        "start": 897.5999,
+        "end": 898.0059,
+        "first_frame": 52418,
+        "last_frame": 52441
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 8143,
+      "t": 136.2819,
+      "action_span": {
+        "start": 136.1989,
+        "end": 136.4012,
+        "first_frame": 8138,
+        "last_frame": 8149
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 25735,
+      "t": 431.3509,
+      "action_span": {
+        "start": 431.3285,
+        "end": 431.3933,
+        "first_frame": 25734,
+        "last_frame": 25736
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 27468,
+      "t": 460.3525,
+      "action_span": {
+        "start": 441.7997,
+        "end": 479.0041,
+        "first_frame": 26359,
+        "last_frame": 28578
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 28680,
+      "t": 480.689,
+      "action_span": {
+        "start": 479.8045,
+        "end": 481.6059,
+        "first_frame": 28627,
+        "last_frame": 28734
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 28838,
+      "t": 483.3235,
+      "action_span": {
+        "start": 482.6913,
+        "end": 483.9907,
+        "first_frame": 28800,
+        "last_frame": 28877
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 29223,
+      "t": 489.7473,
+      "action_span": {
+        "start": 484.4935,
+        "end": 495.1555,
+        "first_frame": 28908,
+        "last_frame": 29539
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 29835,
+      "t": 499.9902,
+      "action_span": {
+        "start": 497.404,
+        "end": 502.5952,
+        "first_frame": 29680,
+        "last_frame": 29990
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 30747,
+      "t": 515.2261,
+      "action_span": {
+        "start": 513.4017,
+        "end": 517.1741,
+        "first_frame": 30638,
+        "last_frame": 30857
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 31333,
+      "t": 525.0447,
+      "action_span": {
+        "start": 521.9947,
+        "end": 528.1818,
+        "first_frame": 31152,
+        "last_frame": 31514
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 32305,
+      "t": 541.3137,
+      "action_span": {
+        "start": 539.9306,
+        "end": 542.8667,
+        "first_frame": 32222,
+        "last_frame": 32389
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 32701,
+      "t": 547.9714,
+      "action_span": {
+        "start": 545.4917,
+        "end": 550.4904,
+        "first_frame": 32551,
+        "last_frame": 32851
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 32974,
+      "t": 552.542,
+      "action_span": {
+        "start": 551.6063,
+        "end": 553.492,
+        "first_frame": 32918,
+        "last_frame": 33030
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 33210,
+      "t": 556.4976,
+      "action_span": {
+        "start": 554.2951,
+        "end": 558.6935,
+        "first_frame": 33079,
+        "last_frame": 33341
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 34882,
+      "t": 584.5061,
+      "action_span": {
+        "start": 576.0959,
+        "end": 592.9976,
+        "first_frame": 34379,
+        "last_frame": 35386
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 36145,
+      "t": 605.6769,
+      "action_span": {
+        "start": 605.5923,
+        "end": 605.7949,
+        "first_frame": 36140,
+        "last_frame": 36151
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 36274,
+      "t": 607.8783,
+      "action_span": {
+        "start": 606.4955,
+        "end": 609.1983,
+        "first_frame": 36194,
+        "last_frame": 36355
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 37139,
+      "t": 622.3116,
+      "action_span": {
+        "start": 622.1936,
+        "end": 622.5544,
+        "first_frame": 37132,
+        "last_frame": 37147
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 38562,
+      "t": 646.156,
+      "action_span": {
+        "start": 635.0066,
+        "end": 657.2952,
+        "first_frame": 37899,
+        "last_frame": 39226
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 42830,
+      "t": 717.7371,
+      "action_span": {
+        "start": 705.608,
+        "end": 729.9031,
+        "first_frame": 42109,
+        "last_frame": 43552
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-201615",
+      "frame": 50616,
+      "t": 848.0151,
+      "action_span": {
+        "start": 836.9874,
+        "end": 859.094,
+        "first_frame": 49952,
+        "last_frame": 51280
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-165543",
+      "frame": 7460,
+      "t": 125.1203,
+      "action_span": {
+        "start": 125.0563,
+        "end": 125.3043,
+        "first_frame": 7451,
+        "last_frame": 7470
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-164039",
+      "frame": 16577,
+      "t": 295.0178,
+      "action_span": {
+        "start": 294.8853,
+        "end": 295.2549,
+        "first_frame": 16569,
+        "last_frame": 16585
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-164039",
+      "frame": 16815,
+      "t": 298.9881,
+      "action_span": {
+        "start": 298.9253,
+        "end": 299.172,
+        "first_frame": 16806,
+        "last_frame": 16825
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-164039",
+      "frame": 32729,
+      "t": 565.7743,
+      "action_span": {
+        "start": 565.5809,
+        "end": 565.8836,
+        "first_frame": 32721,
+        "last_frame": 32738
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-164039",
+      "frame": 33121,
+      "t": 572.2555,
+      "action_span": {
+        "start": 572.1736,
+        "end": 572.5936,
+        "first_frame": 33116,
+        "last_frame": 33127
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-164039",
+      "frame": 36937,
+      "t": 636.0239,
+      "action_span": {
+        "start": 635.8728,
+        "end": 636.0844,
+        "first_frame": 36931,
+        "last_frame": 36943
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-164039",
+      "frame": 37071,
+      "t": 638.2026,
+      "action_span": {
+        "start": 638.1229,
+        "end": 638.3852,
+        "first_frame": 37061,
+        "last_frame": 37081
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-164039",
+      "frame": 37147,
+      "t": 639.4737,
+      "action_span": {
+        "start": 639.3744,
+        "end": 639.5893,
+        "first_frame": 37141,
+        "last_frame": 37153
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-164039",
+      "frame": 37254,
+      "t": 641.2738,
+      "action_span": {
+        "start": 641.0755,
+        "end": 641.4749,
+        "first_frame": 37243,
+        "last_frame": 37266
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-164039",
+      "frame": 37291,
+      "t": 641.8771,
+      "action_span": {
+        "start": 641.791,
+        "end": 642.0751,
+        "first_frame": 37281,
+        "last_frame": 37302
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-164039",
+      "frame": 37521,
+      "t": 645.7147,
+      "action_span": {
+        "start": 645.5817,
+        "end": 645.8778,
+        "first_frame": 37513,
+        "last_frame": 37530
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-164039",
+      "frame": 37543,
+      "t": 646.0852,
+      "action_span": {
+        "start": 645.9843,
+        "end": 646.2738,
+        "first_frame": 37532,
+        "last_frame": 37554
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-164039",
+      "frame": 37933,
+      "t": 652.5869,
+      "action_span": {
+        "start": 652.4879,
+        "end": 652.8027,
+        "first_frame": 37927,
+        "last_frame": 37940
+      }
+    },
+    {
+      "label": "armed",
+      "recording": "20261111-164039",
+      "frame": 37995,
+      "t": 653.6225,
+      "action_span": {
+        "start": 653.4895,
+        "end": 653.8488,
+        "first_frame": 37987,
+        "last_frame": 38003
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-190825",
+      "frame": 21817,
+      "t": 385.728,
+      "action_span": {
+        "start": 385.6934,
+        "end": 385.7952,
+        "first_frame": 21815,
+        "last_frame": 21820
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-201615",
+      "frame": 8325,
+      "t": 139.3365,
+      "action_span": {
+        "start": 139.302,
+        "end": 139.4035,
+        "first_frame": 8323,
+        "last_frame": 8328
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-175312",
+      "frame": 2476,
+      "t": 221.4343,
+      "action_span": {
+        "start": 221.3957,
+        "end": 221.5004,
+        "first_frame": 2473,
+        "last_frame": 2479
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-175312",
+      "frame": 39037,
+      "t": 832.6015,
+      "action_span": {
+        "start": 832.6015,
+        "end": 832.7037,
+        "first_frame": 39037,
+        "last_frame": 39037
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-212314",
+      "frame": 1087,
+      "t": 18.2239,
+      "action_span": {
+        "start": 18.1896,
+        "end": 18.3212,
+        "first_frame": 1085,
+        "last_frame": 1090
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-212314",
+      "frame": 2195,
+      "t": 36.8241,
+      "action_span": {
+        "start": 36.7921,
+        "end": 36.9097,
+        "first_frame": 2193,
+        "last_frame": 2197
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-212314",
+      "frame": 3507,
+      "t": 58.8482,
+      "action_span": {
+        "start": 58.8108,
+        "end": 58.8913,
+        "first_frame": 3505,
+        "last_frame": 3509
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-212314",
+      "frame": 6320,
+      "t": 106.7737,
+      "action_span": {
+        "start": 106.7694,
+        "end": 106.8014,
+        "first_frame": 6318,
+        "last_frame": 6322
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261112-093524",
+      "frame": 25667,
+      "t": 431.0317,
+      "action_span": {
+        "start": 430.9963,
+        "end": 431.0983,
+        "first_frame": 25665,
+        "last_frame": 25670
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261112-114541",
+      "frame": 8030,
+      "t": 134.2196,
+      "action_span": {
+        "start": 134.2031,
+        "end": 134.3287,
+        "first_frame": 8029,
+        "last_frame": 8031
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-193105",
+      "frame": 36164,
+      "t": 608.4058,
+      "action_span": {
+        "start": 608.4058,
+        "end": 608.5284,
+        "first_frame": 36164,
+        "last_frame": 36165
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-193105",
+      "frame": 37065,
+      "t": 623.5439,
+      "action_span": {
+        "start": 623.5133,
+        "end": 623.6078,
+        "first_frame": 37063,
+        "last_frame": 37068
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-172549",
+      "frame": 8539,
+      "t": 143.401,
+      "action_span": {
+        "start": 143.3651,
+        "end": 143.4659,
+        "first_frame": 8537,
+        "last_frame": 8542
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-172549",
+      "frame": 8645,
+      "t": 145.168,
+      "action_span": {
+        "start": 145.168,
+        "end": 145.2954,
+        "first_frame": 8645,
+        "last_frame": 8646
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-172549",
+      "frame": 24645,
+      "t": 413.0813,
+      "action_span": {
+        "start": 413.0642,
+        "end": 413.2062,
+        "first_frame": 24644,
+        "last_frame": 24646
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-172549",
+      "frame": 24724,
+      "t": 414.3981,
+      "action_span": {
+        "start": 414.3691,
+        "end": 414.4645,
+        "first_frame": 24722,
+        "last_frame": 24727
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-172549",
+      "frame": 24988,
+      "t": 418.801,
+      "action_span": {
+        "start": 418.7671,
+        "end": 418.868,
+        "first_frame": 24986,
+        "last_frame": 24991
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-172549",
+      "frame": 25143,
+      "t": 421.3893,
+      "action_span": {
+        "start": 421.3574,
+        "end": 421.458,
+        "first_frame": 25141,
+        "last_frame": 25146
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-172549",
+      "frame": 25154,
+      "t": 421.6003,
+      "action_span": {
+        "start": 421.5952,
+        "end": 421.6581,
+        "first_frame": 25150,
+        "last_frame": 25158
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-172549",
+      "frame": 25167,
+      "t": 421.79,
+      "action_span": {
+        "start": 421.7598,
+        "end": 421.858,
+        "first_frame": 25165,
+        "last_frame": 25170
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-172549",
+      "frame": 25178,
+      "t": 421.9753,
+      "action_span": {
+        "start": 421.9587,
+        "end": 422.1196,
+        "first_frame": 25177,
+        "last_frame": 25179
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-172549",
+      "frame": 25191,
+      "t": 422.2057,
+      "action_span": {
+        "start": 422.1727,
+        "end": 422.2726,
+        "first_frame": 25189,
+        "last_frame": 25194
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-172549",
+      "frame": 25248,
+      "t": 423.1713,
+      "action_span": {
+        "start": 423.1673,
+        "end": 423.2598,
+        "first_frame": 25244,
+        "last_frame": 25253
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-172549",
+      "frame": 25268,
+      "t": 423.4918,
+      "action_span": {
+        "start": 423.4584,
+        "end": 423.5589,
+        "first_frame": 25266,
+        "last_frame": 25271
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-172549",
+      "frame": 25413,
+      "t": 425.9073,
+      "action_span": {
+        "start": 425.8572,
+        "end": 425.9727,
+        "first_frame": 25410,
+        "last_frame": 25416
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-172549",
+      "frame": 25579,
+      "t": 428.6766,
+      "action_span": {
+        "start": 428.6616,
+        "end": 429.0078,
+        "first_frame": 25578,
+        "last_frame": 25580
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-194609",
+      "frame": 45472,
+      "t": 760.0308,
+      "action_span": {
+        "start": 759.998,
+        "end": 760.0988,
+        "first_frame": 45470,
+        "last_frame": 45475
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-194609",
+      "frame": 45615,
+      "t": 762.4158,
+      "action_span": {
+        "start": 762.3998,
+        "end": 762.5542,
+        "first_frame": 45614,
+        "last_frame": 45617
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-194609",
+      "frame": 45710,
+      "t": 764.0047,
+      "action_span": {
+        "start": 764.0047,
+        "end": 764.1242,
+        "first_frame": 45710,
+        "last_frame": 45711
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-065022",
+      "frame": 11541,
+      "t": 192.6391,
+      "action_span": {
+        "start": 192.6052,
+        "end": 192.6905,
+        "first_frame": 11539,
+        "last_frame": 11543
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-065022",
+      "frame": 11936,
+      "t": 199.23,
+      "action_span": {
+        "start": 199.1966,
+        "end": 199.297,
+        "first_frame": 11934,
+        "last_frame": 11939
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-065022",
+      "frame": 11996,
+      "t": 200.2309,
+      "action_span": {
+        "start": 200.1983,
+        "end": 200.299,
+        "first_frame": 11994,
+        "last_frame": 11999
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-065022",
+      "frame": 12008,
+      "t": 200.4335,
+      "action_span": {
+        "start": 200.4004,
+        "end": 200.5008,
+        "first_frame": 12006,
+        "last_frame": 12011
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-065022",
+      "frame": 12020,
+      "t": 200.6353,
+      "action_span": {
+        "start": 200.6024,
+        "end": 200.7009,
+        "first_frame": 12018,
+        "last_frame": 12023
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-065022",
+      "frame": 12038,
+      "t": 200.9322,
+      "action_span": {
+        "start": 200.8984,
+        "end": 200.9992,
+        "first_frame": 12036,
+        "last_frame": 12041
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-065022",
+      "frame": 12062,
+      "t": 201.3332,
+      "action_span": {
+        "start": 201.3002,
+        "end": 201.3996,
+        "first_frame": 12060,
+        "last_frame": 12065
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-065022",
+      "frame": 12074,
+      "t": 201.534,
+      "action_span": {
+        "start": 201.5013,
+        "end": 201.6003,
+        "first_frame": 12072,
+        "last_frame": 12077
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-065022",
+      "frame": 12086,
+      "t": 201.7376,
+      "action_span": {
+        "start": 201.7027,
+        "end": 201.8032,
+        "first_frame": 12084,
+        "last_frame": 12089
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-065022",
+      "frame": 12104,
+      "t": 202.0365,
+      "action_span": {
+        "start": 202.0033,
+        "end": 202.1029,
+        "first_frame": 12102,
+        "last_frame": 12107
+      }
+    },
+    {
+      "label": "unarmed",
+      "recording": "20261111-065022",
+      "frame": 12122,
+      "t": 202.3361,
+      "action_span": {
+        "start": 202.3009,
+        "end": 202.4019,
+        "first_frame": 12120,
+        "last_frame": 12125
+      }
+    }
+  ]
+}

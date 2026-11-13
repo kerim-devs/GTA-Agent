@@ -1,0 +1,233 @@
+{
+  "method": "P65 and old fixed replay aim uses the stored first enemy-answer transition (L2), firing uses guard fire tick counts. Final P77 uses all raw samples after onset before compaction. Fixed replay is 30Hz with modelled 100ms head delay; not measured decision latency.",
+  "summary": {
+    "p65_aim_1s": 3,
+    "p65_fired": 4,
+    "old_aim_1s": 3,
+    "old_fired": 3,
+    "aim_within_1s": 15,
+    "fired": 16
+  },
+  "rows": [
+    {
+      "scene": "enemy-01",
+      "p65_aim_1s": false,
+      "p65_fired": false,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": 0.1333333333382143,
+      "r2_s": 0.3666666666717333,
+      "aim_within_1s": true,
+      "fired": true
+    },
+    {
+      "scene": "enemy-02",
+      "p65_aim_1s": false,
+      "p65_fired": false,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": null,
+      "r2_s": null,
+      "aim_within_1s": false,
+      "fired": false
+    },
+    {
+      "scene": "enemy-03",
+      "p65_aim_1s": false,
+      "p65_fired": false,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": 0.06666666667149457,
+      "r2_s": 0.3000000000050136,
+      "aim_within_1s": true,
+      "fired": true
+    },
+    {
+      "scene": "enemy-04",
+      "p65_aim_1s": false,
+      "p65_fired": false,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": null,
+      "r2_s": null,
+      "aim_within_1s": false,
+      "fired": false
+    },
+    {
+      "scene": "enemy-05",
+      "p65_aim_1s": false,
+      "p65_fired": false,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": 2.866666666673723,
+      "r2_s": 3.100000000007242,
+      "aim_within_1s": false,
+      "fired": true
+    },
+    {
+      "scene": "enemy-06",
+      "p65_aim_1s": false,
+      "p65_fired": false,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": 2.566666666673484,
+      "r2_s": 3.066666666673882,
+      "aim_within_1s": false,
+      "fired": true
+    },
+    {
+      "scene": "enemy-07",
+      "p65_aim_1s": false,
+      "p65_fired": true,
+      "old_aim_1s": false,
+      "old_fired": true,
+      "l2_s": 0.06666666667149457,
+      "r2_s": 0.3000000000050136,
+      "aim_within_1s": true,
+      "fired": true
+    },
+    {
+      "scene": "enemy-08",
+      "p65_aim_1s": false,
+      "p65_fired": false,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": 0.10000000000485443,
+      "r2_s": 0.7666666666720516,
+      "aim_within_1s": true,
+      "fired": true
+    },
+    {
+      "scene": "enemy-09",
+      "p65_aim_1s": false,
+      "p65_fired": true,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": 1.4999999999931788,
+      "r2_s": 1.7333333333263,
+      "aim_within_1s": false,
+      "fired": true
+    },
+    {
+      "scene": "enemy-10",
+      "p65_aim_1s": false,
+      "p65_fired": false,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": 0.09999999999445208,
+      "r2_s": 0.3333333333275732,
+      "aim_within_1s": true,
+      "fired": true
+    },
+    {
+      "scene": "enemy-11",
+      "p65_aim_1s": false,
+      "p65_fired": false,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": 0.09999999999445208,
+      "r2_s": 0.3333333333275732,
+      "aim_within_1s": true,
+      "fired": true
+    },
+    {
+      "scene": "enemy-12",
+      "p65_aim_1s": true,
+      "p65_fired": true,
+      "old_aim_1s": true,
+      "old_fired": true,
+      "l2_s": 0.09999999999445208,
+      "r2_s": 0.3333333333275732,
+      "aim_within_1s": true,
+      "fired": true
+    },
+    {
+      "scene": "enemy-13",
+      "p65_aim_1s": false,
+      "p65_fired": false,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": 0.09999999999445208,
+      "r2_s": 0.3333333333275732,
+      "aim_within_1s": true,
+      "fired": true
+    },
+    {
+      "scene": "enemy-14",
+      "p65_aim_1s": false,
+      "p65_fired": false,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": 0.06666666667149457,
+      "r2_s": 0.3000000000050136,
+      "aim_within_1s": true,
+      "fired": true
+    },
+    {
+      "scene": "enemy-15",
+      "p65_aim_1s": false,
+      "p65_fired": false,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": 0.7999999999938154,
+      "r2_s": null,
+      "aim_within_1s": true,
+      "fired": false
+    },
+    {
+      "scene": "enemy-16",
+      "p65_aim_1s": false,
+      "p65_fired": false,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": 0.7666666666605124,
+      "r2_s": null,
+      "aim_within_1s": true,
+      "fired": false
+    },
+    {
+      "scene": "enemy-17",
+      "p65_aim_1s": true,
+      "p65_fired": true,
+      "old_aim_1s": true,
+      "old_fired": true,
+      "l2_s": 0.09999999999965326,
+      "r2_s": 0.3333333333329733,
+      "aim_within_1s": true,
+      "fired": true
+    },
+    {
+      "scene": "enemy-18",
+      "p65_aim_1s": true,
+      "p65_fired": false,
+      "old_aim_1s": true,
+      "old_fired": false,
+      "l2_s": 0.09999999999965326,
+      "r2_s": 0.3333333333329733,
+      "aim_within_1s": true,
+      "fired": true
+    },
+    {
+      "scene": "enemy-19",
+      "p65_aim_1s": false,
+      "p65_fired": false,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": 0.09999999999445208,
+      "r2_s": 0.3333333333275732,
+      "aim_within_1s": true,
+      "fired": true
+    },
+    {
+      "scene": "enemy-20",
+      "p65_aim_1s": false,
+      "p65_fired": false,
+      "old_aim_1s": false,
+      "old_fired": false,
+      "l2_s": 0.09999999999445208,
+      "r2_s": 0.3333333333275732,
+      "aim_within_1s": true,
+      "fired": true
+    }
+  ]
+}
