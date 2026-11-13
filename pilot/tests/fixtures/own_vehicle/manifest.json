@@ -1,0 +1,146 @@
+{
+  "annotation": "Visual inspection of original HUD crops; not confirmed by the user. The head-0001 frames were excluded from template and threshold selection. They share the same recovery trip as development frames and are not independent sessions. One visible but rejected glyph is retained as a known miss. Overlap rows require abstention, not absence.",
+  "samples": [
+    {
+      "file": "201617-0002.png",
+      "source": "/Users/kerim/recordings/pilot/20261113-201617/head-0002.jpg",
+      "source_sha256": "ed654b8027aed6d498be2cdde491a38402d8d8111a43924368fefe93f8001001",
+      "split": "calibration",
+      "visible_center": [
+        211,
+        58
+      ],
+      "expected_detection": true
+    },
+    {
+      "file": "201348-0001.png",
+      "source": "/Users/kerim/recordings/pilot/20261113-201348/head-0001.jpg",
+      "source_sha256": "c61c6761a0a3dc32b3742231570ed0d5aa8a66c16b3a1bb92aaf97fc46eeb857",
+      "split": "heldout",
+      "visible_center": [
+        206,
+        144
+      ],
+      "expected_detection": true
+    },
+    {
+      "file": "201455-0001.png",
+      "source": "/Users/kerim/recordings/pilot/20261113-201455/head-0001.jpg",
+      "source_sha256": "97f3d5d2e80f8bcf2213dd66b93634c85bcb0b95dcde241f3d44ed0b4a528083",
+      "split": "heldout",
+      "visible_center": [
+        37,
+        32
+      ],
+      "expected_detection": true
+    },
+    {
+      "file": "201617-0001.png",
+      "source": "/Users/kerim/recordings/pilot/20261113-201617/head-0001.jpg",
+      "source_sha256": "bcfbcf31388123a9a765e686e56304262a12fc1b10c17a6b9929117984fa9c52",
+      "split": "heldout",
+      "visible_center": [
+        39,
+        42
+      ],
+      "expected_detection": false
+    },
+    {
+      "file": "201720-0001.png",
+      "source": "/Users/kerim/recordings/pilot/20261113-201720/head-0001.jpg",
+      "source_sha256": "7ccd8a9a48b8f3d9ea82b57434312fa3f0eef311bf03b4b056ccfa1444b919f4",
+      "split": "heldout",
+      "visible_center": [
+        179,
+        69
+      ],
+      "expected_detection": true
+    },
+    {
+      "file": "201836-0001.png",
+      "source": "/Users/kerim/recordings/pilot/20261113-201836/head-0001.jpg",
+      "source_sha256": "1a6658301ce061f61d9a7c0b952507a7eee0bef6e88dde6457897eb6d611dbdf",
+      "split": "heldout",
+      "visible_center": [
+        131,
+        69
+      ],
+      "expected_detection": true
+    },
+    {
+      "file": "201921-0001.png",
+      "source": "/Users/kerim/recordings/pilot/20261113-201921/head-0001.jpg",
+      "source_sha256": "83bb99c493bc8adadad84dd74518ef3786b2e032bb9e4605772e3a47d5bc62a3",
+      "split": "heldout",
+      "visible_center": [
+        151,
+        119
+      ],
+      "expected_detection": true
+    },
+    {
+      "file": "201943-0001.png",
+      "source": "/Users/kerim/recordings/pilot/20261113-201943/head-0001.jpg",
+      "source_sha256": "fa84986ede702eecd1b03351054bca14828465f91bd316a939fc6f37d9da198e",
+      "split": "heldout",
+      "visible_center": [
+        117,
+        91
+      ],
+      "expected_detection": true
+    },
+    {
+      "file": "202110-0001.png",
+      "source": "/Users/kerim/recordings/pilot/20261113-202110/head-0001.jpg",
+      "source_sha256": "23bb56478a71ce4f88fe4a3e6ff253420537c242a3b5f97bbee086c2f289556a",
+      "split": "heldout",
+      "visible_center": null,
+      "expected_detection": false
+    },
+    {
+      "file": "202400-0001.png",
+      "source": "/Users/kerim/recordings/pilot/20261113-202400/head-0001.jpg",
+      "source_sha256": "598f6faeb921d3d1e66202a2466f9e950adc21b79cb8503a64262e56cfaf59c1",
+      "split": "heldout",
+      "visible_center": null,
+      "expected_detection": false
+    },
+    {
+      "file": "195746-0002.png",
+      "source": "/Users/kerim/recordings/pilot/20261113-195746/head-0002.jpg",
+      "source_sha256": "293674d50a415ea044d3529f22d6b5f62da2cb2440d4919ade7a19e15a57f8d3",
+      "split": "overlap",
+      "visible_center": null,
+      "expected_detection": false
+    },
+    {
+      "file": "195746-0020.png",
+      "source": "/Users/kerim/recordings/pilot/20261113-195746/head-0020.jpg",
+      "source_sha256": "3d1e4a3350dac14a5bc810e4de24f40b6a6162cd93f210e346333a121859632d",
+      "split": "overlap",
+      "visible_center": null,
+      "expected_detection": false
+    },
+    {
+      "file": "blip-72.png",
+      "source": "lab/blips/crops.npz id=72",
+      "split": "blue_marker_negative",
+      "visible_center": null,
+      "expected_detection": false
+    },
+    {
+      "file": "blip-518.png",
+      "source": "lab/blips/crops.npz id=518",
+      "split": "blue_marker_negative",
+      "visible_center": null,
+      "expected_detection": false
+    },
+    {
+      "file": "blip-2092.png",
+      "source": "lab/blips/crops.npz id=2092",
+      "split": "blue_marker_negative",
+      "visible_center": null,
+      "expected_detection": false
+    }
+  ]
+}
