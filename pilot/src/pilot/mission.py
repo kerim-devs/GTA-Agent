@@ -8,7 +8,7 @@ from dataclasses import replace
 
 from .contract import ARROW_XY
 from .goals import HELD, Goals, leave_vehicle, own_stop
-from .head import Head, HeadRequest, HeadResponse, parse_response
+from .head import Head, HeadRequest, HeadResponse, SkillCall, parse_response
 from .notes import intent
 
 
@@ -60,6 +60,9 @@ SAME_FAILED = 3
 # A red marker this close to the arrow, in map pixels, is beside the car: about two car lengths.
 NEAR_RED = 12.0
 DRIVES = {"drive_route", "get_away", "drive_to_blip"}
+# The steps of an errand that has arrived: its marker may lie in a room or up a staircase (a story
+# marker in a house, a shop's counter), and the rules of the place do not pull the figure out of it.
+AT_ITS_PLACE = {"approach", "await_story", "use", "leave", "switch"}
 
 
 # Seconds of one fight before the rules look again; the first attempt at the Vagos in
@@ -127,6 +130,12 @@ class MissionHead:
         self.seat: tuple[str, float] | None = None  # where the figure last sat for sure, and when
         self.failed_key: str | None = None
         self.same_failed = 0
+        self.place: tuple[str, float] | None = None
+        self.place_label: str | None = None
+        self.place_failures = 0
+        self.place_result: tuple[str, float] | None = None
+        self.place_rest_until = 0.0
+        self.place_started_at: float | None = None
 
     # What one decision changes besides the goals: given back when the conductor drops the answer.
     KEPT = (
@@ -142,6 +151,12 @@ class MissionHead:
         "seat",
         "failed_key",
         "same_failed",
+        "place",
+        "place_label",
+        "place_failures",
+        "place_result",
+        "place_rest_until",
+        "place_started_at",
     )
 
     def _errand(self, offers):
@@ -207,6 +222,12 @@ class MissionHead:
         reader missed for a moment, and the seat a tilted map under stars cannot show."""
         now = self.goals.now(request)
         hud = request.hud
+        if self.place_started_at is None:
+            self.place_started_at = now
+        if request.place in {"room", "landing", "street"}:
+            self.place = (request.place, now)
+        elif request.place == "unknown" and self.place is not None and 0 <= now - self.place[1] <= 10:
+            request = replace(request, place=self.place[0])
         if hud is not None:
             changed = [e for e in request.events if e.get("kind") == "wanted_changed"]
             if hud.get("wanted") is not None:
@@ -337,6 +358,100 @@ class MissionHead:
         if hasattr(self, "_undo_counts"):
             self.counts = self._undo_counts.copy()
 
+    def _place_rule(self, request, mode, interrupted):
+        now = self.goals.now(request)
+        if request.place != self.place_label:
+            self.place_label = request.place
+            self.place_failures = 0
+            self.place_rest_until = 0.0
+
+        name = {"room": "leave_building", "landing": "descend"}.get(request.place)
+        last = request.last_skill or {}
+        events = [
+            event.get("skill") or {}
+            for event in request.events
+            if event.get("kind") in {"skill_failed", "skill_ended"}
+            and (event.get("skill") or {}).get("name") == name
+        ]
+        result = events[-1] if events else last
+        retry = False
+        if name and result.get("name") == name:
+            signature = repr(result)
+            fresh = (
+                self.place_result is None
+                or self.place_result[0] != signature
+                or (bool(events) and self.place_result[1] != now)
+            )
+            if result.get("status") == "done":
+                self.place_failures = 0
+                self.place_rest_until = 0.0
+            elif result.get("status") == "failed" and fresh and not own_stop(result):
+                self.place_failures += 1
+                retry = True
+                if self.place_failures >= 3:
+                    self.place_rest_until = now + 120
+            self.place_result = (signature, now if fresh else self.place_result[1])
+
+        hud = request.hud or {}
+        kinds = {event.get("kind") for event in request.events}
+        health = hud.get("health")
+        low_health = health < 1 / 3 if health is not None else "low_health" in kinds
+        free = not request.objective.strip() and self.objective_class in (None, "unknown")
+        if (
+            not free
+            or mode != "on_foot"
+            or hud.get("screen", "game") != "game"
+            or _wanted(request)
+            or low_health
+            or interrupted in {"low_health", "death_or_arrest"}
+            or any(e.get("kind") == "stuck" and e.get("screen") == "shop_menu" for e in request.events)
+        ):
+            return None
+
+        if request.place == "unknown" and now - self.place_started_at < 6:
+            rule, plan, sentence = (
+                "place_wait",
+                [SkillCall("wait", {"duration": 1})],
+                "Ich schaue erst, wo ich bin.",
+            )
+        elif name:
+            if now < self.place_rest_until:
+                return None
+            if self.place_rest_until:
+                self.place_rest_until = 0.0
+                self.place_failures = 0
+            if self.goals.active is not None and self.goals.active.step in AT_ITS_PLACE:
+                return None
+            room = request.place == "room"
+            rule = "room_leave" if room else "landing_descend"
+            sentence = (
+                "Ich bin in einem Raum, ich gehe zuerst raus."
+                if room
+                else "Ich stehe oben vor der Tür, ich gehe die Treppe runter."
+            )
+            plan = [SkillCall(name, {"duration": 60 if room else 40})]
+            if retry:
+                plan.insert(0, SkillCall("look", {"duration": 1, "angle": 180 if room else 120}))
+            elif (
+                last.get("status") == "running"
+                and last.get("name") == "look"
+                and name in last.get("queue", [])
+            ):
+                self.last_rule = rule
+                self.counts[rule] += 1
+                return HeadResponse((), sentence, action="go_on")
+        else:
+            return None
+        self.last_rule = rule
+        self.counts[rule] += 1
+        # P83 registers descend; this card deliberately plans that call by name only.
+        return HeadResponse(
+            tuple(plan),
+            sentence,
+            goal=self.goals.active.data() if self.goals.active else None,
+            step=self.goals.active.step if self.goals.active else None,
+        )
+
     def _decide(self, request: HeadRequest) -> HeadResponse:
         last = request.last_skill or {}
         if last.get("status") == "failed" and str(last.get("reason") or "").startswith(("guard_", "pad_")):
@@ -377,6 +492,9 @@ class MissionHead:
             self.last_rule = rule
             self.counts[rule] += 1
             return parse_response({"plan": plan, "sentence": sentence})
+        placed = self._place_rule(request, mode, interrupted)
+        if placed is not None:
+            return placed
         urgent = None
         if any(
             event.get("kind") == "stuck" and event.get("screen") == "shop_menu" for event in request.events

@@ -13,6 +13,7 @@ from pathlib import Path
 
 import cv2
 
+from . import ahead
 from .contract import FRAME_SIZE, HUD_RECT, NEUTRAL_PAD, Pad, player_mode
 from .flow import MENUS
 from .goals import interruption
@@ -23,6 +24,7 @@ from .notes import intent
 from .profile import active
 from .scene import EventDetector, SceneText, TextReader
 from .skills import Observation, SkillResult, SkillRunner
+from .where import Sense
 
 PLAY_RECORDINGS = Path.home() / "recordings" / "pilot"
 
@@ -156,6 +158,7 @@ class Conductor:
         # The bridge refuses the pad while a hand is on the controller: the plan is put down and
         # nothing is planned until the pad is taken again.
         self.refused_since = None
+        self.where = Sense(ahead.where())
 
     def write(self, row):
         self.log.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -289,6 +292,7 @@ class Conductor:
             notebook,
             str(jpeg),
             time=observation.time,
+            place=self.where.place,
             hud=self._hud_for_head(observation),
             objects=[asdict(item) for item in observation.objects[:12]],
             judgment=(
@@ -511,6 +515,7 @@ class Conductor:
             if rows:
                 self.judge_log.flush()
         self._text(rgb, t, text, text_time if text is not None else frame_time)
+        self.where.step(observation)
         # The reflex is shown the screen as the reader named it. For the skills, the guard and the
         # head a phone with a call on it is the game: the figure walks and drives on while it talks.
         seen = observation
@@ -545,6 +550,7 @@ class Conductor:
                     "",
                     hud=asdict(observation.hud) if observation.hud is not None else None,
                     time=t,
+                    place=self.where.place,
                 ),
                 self.goal,
             )
@@ -1061,6 +1067,7 @@ def run_play(
                             "t": received - started,
                             "frame_id": None if frame is None else frame.id,
                             "fresh": fresh,
+                            "place": conductor.where.place,
                             "reading": None if reading is None else asdict(reading),
                             "skill": conductor.describe(result)
                             if hasattr(conductor, "describe")

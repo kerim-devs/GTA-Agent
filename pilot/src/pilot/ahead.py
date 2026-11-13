@@ -23,6 +23,7 @@ An answer took 0.14 to 0.17 s. Its yes is a direction worth trying, which the fe
 
 from __future__ import annotations
 
+import math
 import threading
 import time
 from dataclasses import dataclass
@@ -57,6 +58,23 @@ ENTRANCE = (
     "A: yes, an entrance is in this picture\n"
     "B: no, only walls, windows, furniture or people"
 )
+# Where the figure stands, asked of 333 frames on 13 November (lab/models, `bench.py scene`): the 4B
+# model named the room in 133 of 133, the landing outside an apartment's door in 31 of 31 and the
+# street in 162 of 169, in 0.11 to 0.19 s. A shop's porch, one step above the ground, it calls a
+# landing more often than the street.
+WHERE = (
+    "This is a screenshot of a game. Where is the player's character?\n"
+    "A: inside a building, in a room\n"
+    "B: outside a building's door on a raised landing, balcony or outside staircase, above the street\n"
+    "C: outside at street level, on a road, a pavement, a yard or open ground"
+)
+PLACES = ("room", "landing", "street")
+STAIRS = (
+    "This is {what} of a game, taken outside a building on a landing or balcony above the street. "
+    "Does it show stairs or steps that lead down from there?\n"
+    "A: yes, stairs going down are in this picture\n"
+    "B: no, only walls, railings, fences, doors or windows"
+)
 WIDTH = 640
 # The picture's left, middle and right part, overlapping, without the bars at its upper and lower edge.
 PARTS = (slice(0, 520), slice(380, 900), slice(760, 1280))
@@ -71,8 +89,9 @@ class View:
 
     open: float | None = None  # the way straight ahead
     indoors: float | None = None
-    exit: float | None = None  # a way out of the room, somewhere in the picture
+    exit: float | None = None  # a way out of the room, in, or down the stairs, somewhere in the picture
     parts: tuple[float, float, float] | None = None  # in its left, middle and right part
+    where: tuple[float, float, float] | None = None  # the shares of a room, a landing and the street
     error: str | None = None
 
 
@@ -102,12 +121,16 @@ class Ahead:
         ahead: bool = True,
         exit: bool = True,
         entrance: bool = False,
+        stairs: bool = False,
+        where: bool = False,
     ) -> bool:
         """Begin asking about this frame; False when a frame is still out or this is none.
 
         `indoors` is what is known of the place already; None has the model asked. `ahead` false
         leaves out the way straight ahead, of a view the feet have judged, and `exit` false the
-        way out of a room, where only the place is asked for.
+        way out of a room, where only the place is asked for. `stairs` asks for stairs down, of a
+        figure known to stand on a landing, and answers in `exit` and `parts` as a door does.
+        `where` asks nothing but which of the three places the figure stands in.
         """
         if not isinstance(frame, np.ndarray) or frame.shape != (720, 1280, 3) or not self.servers:
             return False
@@ -116,12 +139,14 @@ class Ahead:
                 return False
             self.busy = True
         work = threading.Thread(
-            target=self._work, args=(frame.copy(), capture, indoors, ahead, exit, entrance), daemon=True
+            target=self._work,
+            args=(frame.copy(), capture, indoors, ahead, exit, entrance, stairs, where),
+            daemon=True,
         )
         work.start()
         return True
 
-    def _work(self, frame, capture, indoors, ahead, exit, entrance=False):
+    def _work(self, frame, capture, indoors, ahead, exit, entrance=False, stairs=False, where=False):
         started = self.clock()
         said = {}
         try:
@@ -132,11 +157,15 @@ class Ahead:
             def share(image, question):
                 return open_share(self.transport(url, model, image, question))
 
-            if indoors is None:
+            if where:
+                said["where"] = places(self.transport(url, model, whole, WHERE))
+            elif indoors is None and not stairs:
                 said["indoors"] = share(whole, INDOORS)
                 indoors = said["indoors"] is not None and said["indoors"] >= SEEN
-            if (indoors and exit) or entrance:
-                door = ENTRANCE if entrance else EXIT
+            if where:
+                pass
+            elif (indoors and exit) or entrance or stairs:
+                door = STAIRS if stairs else ENTRANCE if entrance else EXIT
                 said["exit"] = share(whole, door.format(what="a screenshot"))
                 if said["exit"] is not None and said["exit"] >= SEEN:
                     question = door.format(what="part of a screenshot")
@@ -162,8 +191,21 @@ class Ahead:
             return self.result[1]
 
 
+def places(choice: dict) -> tuple[float, float, float] | None:
+    """The shares the model gave a room, a landing and the street; None for a reply without them."""
+    found = judge.letters(choice)
+    if not found:
+        return None
+    letter, top = found[0]
+    weights = [math.exp(top[key]) if math.isfinite(top.get(key, -math.inf)) else 0.0 for key in "ABC"]
+    if sum(weights) > 0:
+        return tuple(weight / sum(weights) for weight in weights)
+    return tuple(float(letter == key) for key in "ABC") if letter in "ABC" else None
+
+
 _active: Ahead | None = None
 _place: Ahead | None = None
+_where: Ahead | None = None
 
 
 def active() -> Ahead | None:
@@ -176,12 +218,18 @@ def place() -> Ahead | None:
     return _place
 
 
+def where() -> Ahead | None:
+    """The asker of the standing question where the figure is, which waits for neither of the others."""
+    return _where
+
+
 def use(servers) -> Ahead | None:
     """The servers a session asks; none switches the asking off."""
-    global _active, _place
+    global _active, _place, _where
     from .indoors import forget
 
     forget()
     _active = Ahead(servers) if servers else None
     _place = Ahead(servers) if servers else None
+    _where = Ahead(servers) if servers else None
     return _active
