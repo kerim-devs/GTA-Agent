@@ -111,7 +111,7 @@ def test_actions_emit_profile_buttons(name):
     assert Punch({}).step(replace(healthy, objects=(person,), objects_time=0)).pad.buttons == (game.melee,)
     car = Detection("car", (384, 324, 896, 648), 0.9)
     vehicle = EnterVehicle({})
-    nearby = replace(healthy, objects=(car,), objects_time=0)
+    nearby = replace(healthy, objects=(car,), objects_time=0, figure=person)
     vehicle.step(nearby)
     assert vehicle.step(replace(nearby, time=0.04, objects_time=0.04)).pad.buttons == (game.enter_vehicle,)
     frame = np.full((720, 1280, 3), 20, np.uint8)

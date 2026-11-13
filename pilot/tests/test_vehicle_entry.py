@@ -37,6 +37,7 @@ def obs(time, objects=(FAR,), *, age=0.0, minimap="flat", corrupt=False, deliver
         time,
         objects=objects,
         objects_time=time - age if delivered else None,
+        figure=Detection("person", px(0.42, 0.43, 0.52, 0.96), 0.9) if minimap == "flat" else None,
     )
 
 
@@ -127,11 +128,12 @@ def test_unusable_detection_or_non_game_releases_motion(kwargs):
     assert skill.step(obs(0.51, **kwargs)).pad == NEUTRAL_PAD
 
 
-def test_corrupt_map_does_not_block_visible_approach_or_entry_press():
+def test_corrupt_map_allows_approach_but_blocks_a_new_entry_press():
     skill = EnterVehicle({})
     assert skill.step(obs(0, corrupt=True)).pad.left[1] < 0
     assert skill.step(obs(1.1, (NEAR,), corrupt=True)).pad == NEUTRAL_PAD
-    assert skill.step(obs(1.14, (NEAR,), corrupt=True)).pad.buttons == ("triangle",)
+    assert skill.step(obs(1.14, (NEAR,), corrupt=True)).pad == NEUTRAL_PAD
+    assert skill.step(obs(1.18, (NEAR,))).pad.buttons == ("triangle",)
     for time in (2, 3, 4):
         assert skill.step(obs(time, minimap="tilted", corrupt=True)).status == "running"
 
@@ -459,28 +461,22 @@ for run in RUNS:
 
 
 def recorded_observation(sample):
-    return obs(
-        sample["t"],
-        tuple(Detection(kind, tuple(box), confidence) for kind, box, confidence in sample["objects"]),
-        minimap=sample["map"],
-        corrupt=sample["corrupt"],
+    return replace(
+        obs(
+            sample["t"],
+            tuple(Detection(kind, tuple(box), confidence) for kind, box, confidence in sample["objects"]),
+            minimap=sample["map"],
+            corrupt=sample["corrupt"],
+        ),
+        figure=None,
     )
 
 
 @pytest.mark.parametrize("index", [1, 2, 3, 4, 5, 6, 8])
-def test_recorded_detections_produce_first_press_in_each_nearby_stretch(index):
-    # The recorded figure does not respond to our commands: this proves timing, not entry.
-    run = RUNS[index]
+def test_recorded_vehicle_boxes_without_player_evidence_never_press(index):
     skill = EnterVehicle({})
-    presses = []
-    for sample in run["samples"]:
-        result = skill.step(recorded_observation(sample))
-        if result.pad.buttons:
-            presses.append(sample["t"])
-    assert presses, (index, skill.finished)
-    old = [s["t"] for s in run["samples"] if "triangle" in s["buttons"]]
-    if old and index != 8:  # The failed passing-car press is not a desirable timing target.
-        assert presses[0] <= old[0]
+    for sample in RUNS[index]["samples"]:
+        assert not skill.step(recorded_observation(sample)).pad.buttons
 
 
 def test_recorded_clean_picture_corrupt_map_still_drives_approach():
@@ -493,14 +489,10 @@ def test_recorded_clean_picture_corrupt_map_still_drives_approach():
     assert acted
 
 
-def test_recorded_stopped_sedan_is_pressed_before_its_observed_departure():
-    # Frames at 83--88 s show it stopped beside the figure; it departs at 88.76 s.
+def test_recorded_stopped_sedan_still_needs_player_evidence():
     skill = EnterVehicle({})
-    presses = []
     for sample in RUNS[1]["samples"]:
-        if skill.step(recorded_observation(sample)).pad.buttons:
-            presses.append(sample["t"])
-    assert presses and presses[0] < 88.76
+        assert not skill.step(recorded_observation(sample)).pad.buttons
 
 
 def test_recorded_far_vehicle_stretch_walks_without_claiming_an_entry():
@@ -626,18 +618,16 @@ def test_occupant_confirmation_survives_one_pixel_box_jitter_but_not_a_pedestria
     assert not occupant_visible(car, (pedestrian,))
 
 
-def test_quad_still_gets_first_press_immediately_and_pickup_has_none():
+def test_recorded_quad_and_pickup_wait_for_player_evidence():
     runs = json.loads((Path(__file__).resolve().parents[2] / "lab/enter/runs-console.json").read_text())[
         "runs"
     ]
     for run in runs[:2]:
         skill = EnterVehicle({})
-        samples = [s for s in run["samples"] if s["skill"][0] == "enter_vehicle"]
-        presses = [s["t"] for s in samples if skill.step(recorded_observation(s)).pad.buttons]
-        if run["session"].endswith("122056"):
-            assert presses and presses[0] <= 6.81
-        else:
-            assert presses == []
+        samples = [sample for sample in run["samples"] if sample["skill"][0] == "enter_vehicle"]
+        assert samples
+        for sample in samples:
+            assert not skill.step(recorded_observation(sample)).pad.buttons
 
 
 def test_model_leaves_lane_before_waiting_for_an_occupied_vehicle():

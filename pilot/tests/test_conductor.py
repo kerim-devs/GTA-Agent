@@ -562,7 +562,7 @@ def configured_conductor(*args, **kwargs):
 def test_live_safety_also_applies_to_walking(tmp_path, mode):
     clock = Clock()
     error = (
-        ValueError("frame failure")
+        RuntimeError("frame failure")
         if mode == "error"
         else KeyboardInterrupt()
         if mode == "interrupt"
@@ -597,7 +597,7 @@ def test_live_safety_also_applies_to_walking(tmp_path, mode):
     else:
         assert pads[-1][1] == {}
     if mode == "frozen":
-        assert len([data for _, data in pads if data == {}]) == 2
+        assert all(data in ({}, NEUTRAL_PAD.payload()) for t, data in pads if t >= 5 / 30)
     if mode == "conflict":
         index = next(i for i, (_, data) in enumerate(pads) if data.get("left") == [1, 0])
         assert pads[index + 1][1] == {}
@@ -863,3 +863,39 @@ def test_the_judge_losing_the_mode_over_a_skills_own_map_is_no_news(tmp_path):
         assert len(pending.jobs) == 1 and conductor.runner.active.name == "set_waypoint"
     finally:
         conductor.close()
+
+
+@pytest.mark.parametrize("undecodable", [False, True])
+def test_run_waits_neutrally_through_missing_or_undecodable_video(tmp_path, undecodable):
+    clock = Clock()
+
+    class GapBridge(FakeBridge):
+        def frame(self, rect, after=None):
+            if 0.2 <= clock() < 0.8:
+                if undecodable:
+                    raise ValueError("cannot reshape frame body")
+                return None
+            return super().frame(rect, after)
+
+    bridge = GapBridge(tmp_path, clock)
+    pipeline = FakePipeline()
+    run_play(
+        bridge,
+        seconds=2.4,
+        pipeline=pipeline,
+        ocr=False,
+        clock=clock,
+        sleep=clock.sleep,
+        conductor_factory=configured_conductor,
+    )
+    pads = [(t, data) for t, kind, data in bridge.calls if kind == "pad"]
+    assert any(data.get("left") == [1, 0] for t, data in pads if t < 0.2)
+    assert all(data in ({}, NEUTRAL_PAD.payload()) for t, data in pads if 0.2 <= t < 1.8)
+    assert any(data.get("left") == [1, 0] for t, data in pads if t > 1.8)
+    log = rows(tmp_path)
+    assert sum(row["type"] == "picture_lost" for row in log) == 1
+    assert sum(row["type"] == "picture_returned" for row in log) == 1
+    returned = [row for row in log if row["type"] == "request"][-1]
+    assert [event["kind"] for event in returned["request"]["events"]] == ["picture_returned"]
+    assert pipeline.closed
+    assert pads[-1][1] == {}

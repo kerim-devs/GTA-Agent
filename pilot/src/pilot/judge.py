@@ -197,19 +197,28 @@ class ModeFilter:
     # one comes 0.3 s later; with one request lost to a server that is down the gap reached a
     # second, and a mode that lapsed at one second flickered to nothing.
     LAPSE = 1.5
+    # 12/13 November: routed-map/foot disagreement lasted up to 1.820 s;
+    # at a real exit the map lagged the first foot answer by up to 2.725 s.
+    EXIT_SECONDS = 3.0
 
     def __init__(self):
         self.mode = None
         self.capture = None
         self.candidate = None
         self.run = 0
+        self.foot_since = None
+        self.exit_confirmed = False
 
-    def update(self, judgment: Judgment | None, t: float, *, flat: bool = False) -> str | None:
+    def update(
+        self, judgment: Judgment | None, t: float, *, flat: bool = False, vehicle: bool = False
+    ) -> str | None:
         """`flat`: the minimap of this tick lies flat and is sound, which it only does on foot."""
         if self.capture is not None and t - self.capture > self.LAPSE:
             self.mode = self.candidate = None
             self.capture = None
             self.run = 0
+            self.foot_since = None
+            self.exit_confirmed = False
         if (
             judgment is not None
             and 0 <= t - judgment.capture <= 1.0
@@ -217,6 +226,14 @@ class ModeFilter:
         ):
             answer = judgment.answers.get("mode")
             mode = None if answer is None else answer.value
+            if mode == "foot":
+                if self.foot_since is None:
+                    self.foot_since = judgment.capture
+            else:
+                self.foot_since = None
+            self.exit_confirmed = (
+                self.foot_since is not None and judgment.capture - self.foot_since >= self.EXIT_SECONDS
+            )
             if mode == "vehicle" and flat:
                 # Standing next to a car the judge says vehicle, three times in a row and more
                 # (session 20261112-103305: the head opened the map on foot four times). The map
@@ -227,6 +244,8 @@ class ModeFilter:
                 self.candidate, self.capture = mode, judgment.capture
                 if self.run >= (self.FIRST if self.mode is None else self.CHANGE):
                     self.mode = mode
+        if vehicle and "foot" in {self.candidate, self.mode} and not self.exit_confirmed:
+            return "unknown"
         return self.mode
 
 

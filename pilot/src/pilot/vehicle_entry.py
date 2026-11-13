@@ -391,11 +391,24 @@ class EnterVehicle:
             if location is not None and location.position == "lane":
                 reason += "; still-in-lane"
             return self.stop(reason)
-        if not obs.reading.corrupt and player_mode(obs) == "none":
+        fresh = (
+            obs.objects_time is not None
+            and math.isfinite(obs.objects_time)
+            and 0 <= now - obs.objects_time <= DETECTION_MAX_AGE
+        )
+        standing = fresh and obs.figure is not None and obs.figure.kind == "person"
+        # A sound tilted map with a route says seated, whatever the judge says: in the eight sessions of
+        # 13 November that were on foot throughout, 44,000 ticks, the map was read so not once.
+        seated = (
+            not obs.reading.corrupt
+            and obs.reading.confidence >= 0.45
+            and obs.reading.minimap == "tilted"
+            and obs.reading.route in {"yellow", "purple"}
+            and not standing
+        )
+        if not obs.reading.corrupt and player_mode(obs) in {"none", "unknown"} and not seated:
             return SkillResult()
-        if self.phase == "wait" and now - self.phase_since < PRESS_SECONDS:
-            return SkillResult(Pad(buttons=(self.profile.enter_vehicle,)))
-        if not obs.reading.corrupt and player_mode(obs) == "vehicle":
+        if seated or (not obs.reading.corrupt and player_mode(obs) == "vehicle"):
             if self.confirmed_since is None:
                 self.confirmed_since = now
             needed = CONFIRM_SECONDS if self.attempts else ALREADY_SECONDS
@@ -411,6 +424,8 @@ class EnterVehicle:
                 )
                 return self.finished
             return SkillResult()
+        if self.phase == "wait" and now - self.phase_since < PRESS_SECONDS:
+            return SkillResult(Pad(buttons=(self.profile.enter_vehicle,)))
         if obs.reading.corrupt and self.confirmed_since is not None:
             return SkillResult()
         self.confirmed_since = None
@@ -488,6 +503,21 @@ class EnterVehicle:
         self.saw_target = True
         self.walk_pad = None
         if self.phase == "tap":
+            # A vehicle box also surrounds the player's own car. A press needs the figure on foot:
+            # the judge's word, which no longer says so against a tilted map before three seconds
+            # of it, or with no judge the player's person detection and a sound flat map. The
+            # detector does not see the figure in every picture by night, and a flat map over a
+            # street grid was read as tilted on 13 November; neither stops a figure the judge sees
+            # standing beside a car.
+            if player_mode(obs) != "foot":
+                return SkillResult()
+            if obs.mode is None and (
+                not standing
+                or obs.reading.corrupt
+                or obs.reading.confidence < 0.45
+                or obs.reading.minimap != "flat"
+            ):
+                return SkillResult()
             if not within_reach(self.target.obj):
                 self.phase = "approach"
                 self.was_walking = True

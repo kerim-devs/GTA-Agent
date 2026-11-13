@@ -55,6 +55,8 @@ def minimap_crop(rgb):
 
 class Conductor:
     OCR_SLOW_SECONDS = 3.0
+    # After the 13 November dropout, the second vehicle answer arrived at +0.934 s.
+    PICTURE_SETTLE_SECONDS = 1.0
 
     def __init__(
         self,
@@ -158,6 +160,9 @@ class Conductor:
         # The bridge refuses the pad while a hand is on the controller: the plan is put down and
         # nothing is planned until the pad is taken again.
         self.refused_since = None
+        self.picture_missing_since = None
+        self.picture_back_since = None
+        self.exit_pressed_until = -math.inf
         self.where = Sense(ahead.where())
         self.known_place: str | None = None
 
@@ -460,7 +465,68 @@ class Conductor:
         if hasattr(self.flow, "reset"):
             self.flow.reset()
 
+    def sent(self, pad, t):
+        pressed = active().enter_vehicle in pad.buttons
+        if pressed and not getattr(self, "exit_button_down", False):
+            if (
+                self.judged_mode == "vehicle"
+                or self.mode_filter.mode == "vehicle"
+                or getattr(self, "vehicle_map", False)
+            ):
+                # The longest Triangle-to-flat interval in the 12/13 November logs is 2.937 s.
+                self.exit_pressed_until = t + 3.0
+        self.exit_button_down = pressed
+
+    def missing(self, t, *, lost=True):
+        """No picture is evidence for no change, and never justifies holding an input."""
+        self.guard_events = []
+        self.judge_events.clear()
+        self.buttons_down = frozenset()
+        self.last_pad = NEUTRAL_PAD
+        self.nudge_until = None
+        if hasattr(self.detector, "pause"):
+            self.detector.pause()
+        if lost:
+            self.picture_back_since = None
+            if self.picture_missing_since is None:
+                self.picture_missing_since = t
+                self.runner.stop("interrupted")
+                self._expect_skill()
+                self._flow_put_down(t)
+                self.epoch += 1
+                self._abandon_head(t)
+                self.pending.clear()
+                self.judge_events.clear()
+                self.carry_allowed, self.carry_started = False, None
+                self.goal = None
+                self.mode_filter = ModeFilter()
+                self.judgment = self.judged_mode = None
+                self.exit_pressed_until = -math.inf
+                self.still = self.moved = 0.0
+                self.wanted_candidate = self.wanted_since = self.wanted_seen = None
+                self.low_health_since = None
+                self.write({"type": "picture_lost", "t": t})
+        return SkillResult()
+
     def tick(self, observation: Observation, rgb, **reads):
+        t = observation.time
+        # Only a picture that is not there is missing. A map read as damaged is no sign of it: on
+        # 13 November the reader called the map damaged for 15 and for 45 s on end with a fresh picture
+        # in every tick, on the landing and on the street, and through the 20 s without a picture it
+        # had said so not once.
+        if rgb is None:
+            return self.missing(t)
+        self.vehicle_map = observation.reading.minimap == "tilted" and not observation.reading.corrupt
+        if self.picture_missing_since is not None:
+            if self.picture_back_since is None:
+                self.picture_back_since = t
+            if t - self.picture_back_since < self.PICTURE_SETTLE_SECONDS:
+                self._judge_observation(observation, rgb, reads.get("frame_time"))
+                return self.missing(t, lost=False)
+            seconds = self.picture_back_since - self.picture_missing_since
+            self.pending.append({"kind": "picture_returned", "seconds": seconds})
+            self.write({"type": "picture_returned", "t": t, "seconds": seconds})
+            self.picture_missing_since = self.picture_back_since = None
         result = self._tick(observation, rgb, **reads)
         # Nothing new is pressed on a damaged picture: a button that was down stays down, so that a
         # press is not cut in two, and one that would go down on this tick waits for a picture.
@@ -490,14 +556,17 @@ class Conductor:
             self.nudge = -self.nudge  # the next one turns back
         return result
 
-    def _tick(self, observation: Observation, rgb, *, text=None, text_time=None, frame_time=None, events=()):
-        observation = replace(observation, frame=rgb)
+    def _judge_observation(self, observation, rgb, frame_time):
         t = observation.time
-        self.guard_events = []
         if self.judge is not None:
             judgment = self.judge.poll(rgb, t if frame_time is None else frame_time)
             flat = observation.reading.minimap == "flat" and not observation.reading.corrupt
-            mode = self.mode_filter.update(judgment, t, flat=flat)
+            mode = self.mode_filter.update(
+                judgment,
+                t,
+                flat=flat,
+                vehicle=observation.reading.minimap == "tilted" and not observation.reading.corrupt,
+            )
             if judgment is not None:
                 self.judgment = judgment
             observation = replace(observation, judgment=self.judgment, mode=mode)
@@ -515,6 +584,13 @@ class Conductor:
                 self.judge_log.write(json.dumps({"t": t, **row, "mode": mode}) + "\n")
             if rows:
                 self.judge_log.flush()
+        return observation
+
+    def _tick(self, observation: Observation, rgb, *, text=None, text_time=None, frame_time=None, events=()):
+        observation = replace(observation, frame=rgb)
+        t = observation.time
+        self.guard_events = []
+        observation = self._judge_observation(observation, rgb, frame_time)
         self._text(rgb, t, text, text_time if text is not None else frame_time)
         self.where.step(observation, walked=any(self.last_pad.left))
         place = self.where.place
@@ -537,7 +613,14 @@ class Conductor:
             and self.flow.on_call(observation, self._fresh_text(t))
         ):
             observation = replace(observation, hud=replace(observation.hud, screen="game"))
-        detected = self.detector.update(observation.reading, t, text=self.text, mode=observation.mode)
+        detected = self.detector.update(
+            observation.reading,
+            t,
+            text=self.text,
+            mode=observation.mode,
+            exit_confirmed=self.mode_filter.exit_confirmed,
+            exit_pressed=t <= self.exit_pressed_until,
+        )
         # A skill that opens the map hides the minimap, and that is its own doing and no news. Told
         # of it live on 11 November, the head planned a wait for the screen, the wait replaced the
         # skill, and the reflex closed the map the skill had just opened.
@@ -1028,7 +1111,13 @@ def run_play(
             started = runtime.last_fresh = clock()
             while seconds is None or clock() - started < seconds:
                 tick = clock()
-                frame = bridge.frame(None, after=runtime.last_id)
+                undecodable = False
+                try:
+                    frame = bridge.frame(None, after=runtime.last_id)
+                except ValueError:
+                    # A malformed frame body cannot be reshaped into an RGB picture.
+                    frame = None
+                    undecodable = True
                 received = clock()
                 fresh = runtime.observe(frame, received)
                 result = reading = None
@@ -1064,9 +1153,17 @@ def run_play(
                         frame.rgb,
                         frame_time=received - frame.age,
                     )
+                if not fresh:
+                    missing = getattr(conductor, "missing", None)
+                    if missing is not None:
+                        result = missing(received, lost=undecodable or received - runtime.last_fresh >= 0.3)
                 sent, status = runtime.tick(
-                    None if result is None else result.pad, fresh=fresh, received=received
+                    None if result is None else result.pad,
+                    fresh=fresh or result is not None,
+                    received=received,
                 )
+                if sent and runtime.sent_pad is not None and hasattr(conductor, "sent"):
+                    conductor.sent(runtime.sent_pad, received)
                 if result is not None:
                     # Rows of their own, written before the tick's row and on its clock, so that a live
                     # run is timed from play.jsonl alone: from the first reading to the pad and back.

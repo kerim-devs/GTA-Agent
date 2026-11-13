@@ -288,12 +288,18 @@ class EventDetector:
             return None
         return previous, value
 
+    def pause(self):
+        for state in self._states.values():
+            state.candidate, state.count = None, 0
+
     def update(
         self,
         reading: Reading,
         timestamp: float,
         *,
         mode: str | None = None,
+        exit_confirmed: bool = False,
+        exit_pressed: bool = False,
         text: SceneText | None = None,
         frame: np.ndarray | None = None,
         reader: TextReader | None = None,
@@ -309,6 +315,14 @@ class EventDetector:
                 state.candidate, state.count = None, 0
         self._last_time = timestamp
         events = []
+        if exit_pressed and not reading.corrupt and reading.minimap == "flat":
+            mode = "foot"
+        if (
+            mode == "foot"
+            and not exit_confirmed
+            and (reading.corrupt or reading.minimap != "flat" or reading.confidence < 0.45)
+        ):
+            mode = "unknown"
         if mode is not None:
             vehicle = self._states.setdefault("vehicle", _Stable())
             vehicle.candidate, vehicle.count = None, 0
@@ -319,9 +333,15 @@ class EventDetector:
                 previous, vehicle.value = vehicle.value, value
                 if previous is not None and previous != value:
                     kind = "vehicle_enter" if mode == "vehicle" else "vehicle_exit"
-                    events.append(
-                        SceneEvent(kind, timestamp, previous, value, "judge mode; occupancy hypothesis")
-                    )
+                    evidence = "judge mode; occupancy hypothesis"
+                    if mode == "foot":
+                        if exit_pressed and reading.minimap == "flat":
+                            evidence = "pilot Triangle and flat minimap; occupancy hypothesis"
+                        elif reading.minimap == "flat":
+                            evidence = "judge foot and flat minimap; occupancy hypothesis"
+                        else:
+                            evidence = "sustained judge foot; occupancy hypothesis"
+                    events.append(SceneEvent(kind, timestamp, previous, value, evidence))
         valid = (
             not reading.corrupt
             and (reading.minimap == "none" or reading.confidence >= 0.45)
@@ -345,6 +365,10 @@ class EventDetector:
                     if mode is None
                     else None
                 )
+                if change and reading.minimap == "flat":
+                    # A flat projection alone does not establish that the seat was left.
+                    self._states["vehicle"].value = change[0]
+                    change = None
                 if change:
                     kind = "vehicle_enter" if reading.minimap == "tilted" else "vehicle_exit"
                     events.append(

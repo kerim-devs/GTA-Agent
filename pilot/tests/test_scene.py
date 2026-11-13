@@ -50,7 +50,9 @@ def test_vehicle_route_colour_and_exit_are_separate():
     events = feed(detector, 12, 18, reading("tilted", "purple"))
     assert [event.kind for event in events] == ["route_colour_changed"]
     events = feed(detector, 18, 24, reading("flat"))
-    assert [event.kind for event in events] == ["vehicle_exit", "route_vanished"]
+    assert [event.kind for event in events] == ["route_vanished"]
+    events = detector.update(reading("flat"), 100, mode="foot")
+    assert [event.kind for event in events] == ["vehicle_exit"]
 
 
 def test_cutscene_does_not_invent_route_loss_or_vehicle_exit():
@@ -145,20 +147,15 @@ def test_vision_recognizes_generated_help_without_recordings():
     assert resource.getrusage(resource.RUSAGE_SELF).ru_maxrss - before < 30e6
 
 
-def test_judge_vehicle_state_overrules_map_without_another_debounce():
+def test_judge_foot_cannot_overrule_a_vehicle_map():
     detector = EventDetector()
-    for t in (0, 0.5, 1, 1.5):
+    detector.update(reading("tilted"), 0, mode="vehicle")
+    for t in (0.5, 1, 1.5):
         assert not [
             e for e in detector.update(reading("tilted"), t, mode="foot") if e.kind.startswith("vehicle_")
         ]
-    events = detector.update(reading("flat"), 1.6, mode="vehicle")
-    assert [e.kind for e in events] == ["vehicle_enter"]
-    assert "judge" in events[0].evidence
-    for t, minimap in ((1.7, "flat"), (2.0, "tilted"), (3.0, "flat")):
-        assert not [
-            e for e in detector.update(reading(minimap), t, mode="vehicle") if e.kind.startswith("vehicle_")
-        ]
-    assert [e.kind for e in detector.update(reading("tilted"), 3.1, mode="foot")] == ["vehicle_exit"]
+    events = detector.update(reading("flat"), 1.6, mode="foot")
+    assert [e.kind for e in events] == ["vehicle_exit"]
 
 
 def test_judge_silence_seeds_map_state_and_debounces_disagreement():
@@ -173,7 +170,10 @@ def test_judge_silence_seeds_map_state_and_debounces_disagreement():
         for t in (1.2, 1.7, 2.1):
             assert not detector.update(reading(opposite), t)
         events = detector.update(reading(opposite), 2.21)
-        assert [e.kind for e in events] == [kind]
+        assert [e.kind for e in events] == ([kind] if kind == "vehicle_enter" else [])
+        if kind == "vehicle_exit":
+            events = detector.update(reading("flat"), 2.3, mode="foot")
+            assert [e.kind for e in events] == [kind]
         assert "minimap" in events[0].evidence
 
 
@@ -192,7 +192,7 @@ def test_none_keeps_vehicle_state_and_discards_pending_map_change():
 
 def test_judge_vehicle_mode_does_not_depend_on_map_integrity():
     detector = EventDetector()
-    detector.update(reading("none", corrupt=True), 0, mode="foot")
+    detector.update(reading("flat"), 0, mode="foot")
     events = detector.update(reading("none", corrupt=True), 0.1, mode="vehicle")
     assert [e.kind for e in events] == ["vehicle_enter"]
 
