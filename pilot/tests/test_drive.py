@@ -19,6 +19,24 @@ def test_picture_angles_are_relative_to_arrow_and_far_bend_slows() -> None:
     assert Driver().step(replace(GOOD, bearing=-179, far_bearing=-179, arrow=179), 0).steer >= 0
 
 
+def test_a_small_error_is_steered_against_from_the_sticks_dead_zone_on() -> None:
+    """Console drive of 13 November, 17:20: under 0.3 of the stick the car turned by 0 to 1 degree a
+    second and at 0.36 by 6. With 0.25 for the first degree past a band of 8 the car was left alone up
+    to 11 degrees of error and swung by 20 around the route."""
+
+    def settled(error: float) -> float:
+        driver = Driver()
+        for i in range(30):
+            command = driver.step(replace(GOOD, bearing=error, far_bearing=error), i / 30)
+        return command.steer
+
+    assert settled(2) == 0  # not every pixel of the map's wander is steered against
+    assert 0.29 < settled(5) < 0.36  # the first of the turn, not a jerk
+    assert 0.36 < settled(10) < 0.47
+    assert settled(-10) == -settled(10)
+    assert settled(60) > 0.8
+
+
 @pytest.mark.parametrize("minimap", ["none", "flat", "unknown", None, [], {}])
 def test_idle_is_neutral(minimap: object) -> None:
     driver = Driver()

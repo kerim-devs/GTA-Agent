@@ -20,8 +20,13 @@ class DriveConfig:
     max_step_time: float = 0.5  # Bound feedback integration after a scheduling pause.
     steer_smoothing: float = 0.05  # Low-pass time constant for stick output.
     bearing_smoothing: float = 0.1  # Reject rapid angle noise before feedback.
-    steer_deadband: float = 8.0  # Ignore small filtered heading errors.
-    steering_bias: float = 0.25  # Minimum active stick to tolerate a physical dead zone.
+    steer_deadband: float = 8.0  # Band of a straight for the pedal, and no prediction inside it.
+    # Measured on the console drive of 13 November, 17:20 (197 s of straights, the heading against
+    # the route 0.35 s after the stick): under 0.3 of the stick the car turns by 0 to 1 degree a
+    # second, at 0.36 by 6, at 0.47 by 15, at 0.67 by 29. With 0.25 and a band of 8 degrees the car was
+    # left alone up to 11 degrees of error and swung by 20 degrees around the route; Kerim's swings by 3.
+    steer_rest: float = 3.0  # Filtered heading error that is not steered against.
+    steering_bias: float = 0.29  # The stick's dead zone in a car: the first degree of error starts here.
     command_delay: float = 0.21  # Capture-to-control latency used for prediction.
     prediction_limit: float = 8.0  # Maximum angle extrapolation across the delay.
     cruise_throttle: float = 0.58  # Pedal on a straight, legible route.
@@ -466,7 +471,7 @@ class Driver:
             correction = 0.0
         adjusted = self._filtered_error + correction
         bend_delta = _angle(self._filtered_far - self._filtered_error)
-        adjusted = (1 if adjusted >= 0 else -1) * max(0.0, abs(adjusted) - self.config.steer_deadband)
+        adjusted = (1 if adjusted >= 0 else -1) * max(0.0, abs(adjusted) - self.config.steer_rest)
         target = _clip(self.config.steer_gain * adjusted)
         if target:
             target = (1 if target > 0 else -1) * (
