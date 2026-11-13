@@ -435,3 +435,20 @@ def test_price_change_after_navigation_never_confirms():
     shop = ChangedPrice(rows=("One $10", "Two $20"))
     assert shop.run(UsePlace({})).reason == "menu-unread"
     assert "cross" not in shop.buttons
+
+
+def test_a_menu_that_is_open_already_is_used_and_left():
+    # The rules plan use_place for a menu a mission opened: there is no help text to take first.
+    shop = Shop(rows=("Anzug $120",))
+    shop.level = 1
+    result = shop.run(UsePlace({"spend": "yes", "choice": "first"}))
+    assert result.status == "done" and "bought Anzug for 120" in result.reason
+    assert shop.buttons.count("right") == 0 and shop.buttons.count("cross") == 1
+
+
+def test_a_menu_that_is_open_already_and_too_dear_is_left_with_nothing_bought():
+    shop = Shop(rows=("Anzug $900",))
+    shop.level = 1
+    result = shop.run(UsePlace({"spend": "yes", "choice": "first"}))
+    assert result.status == "done" and result.reason.endswith("bought nothing")
+    assert "cross" not in shop.buttons

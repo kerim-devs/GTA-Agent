@@ -1,6 +1,7 @@
 """The local model behind the rules: it picks an errand among those offered, and may say nothing."""
 
 import time
+from dataclasses import replace
 
 from pilot import chooser
 from pilot.head import HeadRequest
@@ -133,3 +134,18 @@ def test_the_command_line_builds_the_local_head_on_the_rules(monkeypatch):
     assert isinstance(head, MissionHead) and isinstance(head.fallback, LocalHead)
     assert isinstance(head.chooser, ErrandChooser)
     assert servers == [[]]  # no --judge given: the rules play alone
+
+
+def test_a_menu_open_in_a_mission_is_used_and_a_hand_on_the_pad_is_no_failure():
+    head = MissionHead(goal_seed=1)
+    answer = head.decide(
+        replace(request(), events=[{"kind": "stuck", "screen": "shop_menu", "seconds": 1.3}])
+    )
+    assert [(call.name, call.args.get("spend")) for call in answer.plan] == [("use_place", "yes")]
+    # A skill the hand on the controller stopped is not retried "with a look" as a failed one is.
+    stopped = {"name": "walk_road", "status": "failed", "reason": "pad_refused", "queue": []}
+    head = MissionHead(goal_seed=1)
+    answer = head.decide(
+        replace(request(), last_skill=stopped, events=[{"kind": "pad_returned", "seconds": 9}])
+    )
+    assert head.last_rule is None or not head.last_rule.startswith("failed_")

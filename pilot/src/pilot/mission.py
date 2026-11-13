@@ -226,10 +226,11 @@ class MissionHead:
 
     def _decide(self, request: HeadRequest) -> HeadResponse:
         last = request.last_skill or {}
-        if last.get("status") == "failed" and str(last.get("reason") or "").startswith("guard_"):
-            # The guard took the pad and stopped the skill (guard.py). That is no failure of the skill: the
-            # rules and the goals plan afresh instead of retrying it, and the guard's own events,
-            # guard_start and guard_end, are news like any other.
+        if last.get("status") == "failed" and str(last.get("reason") or "").startswith(("guard_", "pad_")):
+            # The guard took the pad and stopped the skill (guard.py), or a hand on the controller did
+            # (conductor.refuse). Neither is a failure of the skill: the rules and the goals plan afresh
+            # instead of retrying it with a look, and the guard's own events, guard_start and guard_end,
+            # are news like any other.
             request = replace(request, last_skill={**last, "status": "stopped"})
         self.goals.mark()
         self._update_intent(request)
@@ -263,7 +264,18 @@ class MissionHead:
             self.counts[rule] += 1
             return parse_response({"plan": plan, "sentence": sentence})
         urgent = None
-        if hud.get("screen", "game") == "game":
+        if any(
+            event.get("kind") == "stuck" and event.get("screen") == "shop_menu" for event in request.events
+        ):
+            # A menu is open in a mission and no skill asked for it (flow.py tells the head once, and
+            # leaves the menu itself when nothing comes of it): it may be what the mission wants used,
+            # the suit for the jeweller or the gun before the long stretch.
+            urgent = (
+                "mission_menu",
+                [_call("use_place", duration=40, spend="yes", choice="first")],
+                "Ein Menü ist offen, ich nehme, was die Mission will.",
+            )
+        elif hud.get("screen", "game") == "game":
             if (
                 request.objective.strip()
                 and intent(request.objective)["class"] in {"use", "pick_up", "unknown"}

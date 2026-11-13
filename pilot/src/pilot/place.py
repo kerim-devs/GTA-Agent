@@ -10,7 +10,7 @@ from typing import ClassVar
 
 from pilot.contract import Observation, Pad, SkillResult
 from pilot.profile import active
-from pilot.prompts import normalize, offer, refusal
+from pilot.prompts import Offer, normalize, offer, refusal
 from pilot.scene import SceneText, TextReader
 
 
@@ -291,6 +291,7 @@ class UsePlace(_PlaceSkill):
         self.depth = 0
         self.bought = None
         self.receipts = 0
+        self.menu_since = None
         self.failure = None
         self.last_action = -math.inf
         self.search_time = 0.0
@@ -375,6 +376,16 @@ class UsePlace(_PlaceSkill):
                 self.phase = "opening"
                 self.phase_time = now
                 return self._action(self.selected.button, now, self.selected.kind, self.selected.seconds)
+            if observation.reading.minimap == "none" and self._menu(observation, text):
+                # Begun with the menu open already (the rules plan this for a menu a mission opened):
+                # after a second of it, it is used as one this skill had opened.
+                if self.menu_since is None:
+                    self.menu_since = now
+                elif now - self.menu_since >= 1.0:
+                    self.selected = Offer("", "press", 0.0, "a menu that was open", True)
+                    self.phase, self.phase_time = "menu", now
+                return SkillResult()
+            self.menu_since = None
             if not self._game(observation, text):
                 self.previous_search_tick = None
                 return SkillResult()
