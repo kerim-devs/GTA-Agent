@@ -189,3 +189,21 @@ def test_failed_map_frames_use_the_open_legend_or_fail_once_without_reopening(ro
     # terminate neutrally, rather than blindly confirming a place or reopening.
     assert all("cross" not in pad.buttons for pad in pads)
     assert skill.step(observation).status == "failed"
+
+
+def test_a_walk_that_ended_stuck_is_not_planned_again_from_the_same_spot():
+    """13 November, 17:49: a garden wall between the figure and the road, and the same walk planned
+    eight times in a row, each ending stuck after eleven seconds."""
+    head = MissionHead(goal_seed=3)
+    assert head.decide(request()).goal["name"] == "story"
+    placed = result("set_waypoint", "done", "waypoint set: Fremde und Freaks (2911m); gameplay observed")
+    walk = head.decide(request(29, last=placed))
+    assert [c.name for c in walk.plan] == ["walk_road"]
+    turns = []
+    for i in range(4):
+        stuck = result("walk_road", "failed", "stuck")
+        again = head.decide(request(40 + 11 * i, last={**stuck, "at": i}))
+        assert again.goal["name"] == "story"
+        assert [c.name for c in again.plan] == ["look", "walk", "walk_road"]
+        turns.append(again.plan[0].args["angle"])
+    assert turns == [120, -120, 180, 120]

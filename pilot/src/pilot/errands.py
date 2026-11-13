@@ -60,6 +60,8 @@ MAP_FAILURES = 3
 MAPLESS_SECONDS = 120.0
 # The story's goal outlives a map that would not read, and between two tries lie this many seconds.
 MAP_RETRY_SECONDS = 45.0
+# The turns of the camera before a walk that ended stuck is tried again, in degrees, in this order.
+UNSTICK_TURNS = (120, -120, 180)
 # What a failed set_waypoint says when the map worked and the place was not on it: that counts
 # against the place. Anything else it fails on is the map's or the reader's, and no place's fault.
 NOT_ON_THE_MAP = ("place-not-in-legend", "legend-selection-skips-the-place", "place-instance-not-present")
@@ -100,6 +102,7 @@ class Errand:
     last_result: dict | None = None
     target: dict = field(default_factory=dict)
     stalls: int = 0
+    walk_stuck: int = 0
     unreadable: int = 0
     waypoint_failures: int = 0
     waypoint_failed_at: float = 0.0
@@ -466,6 +469,19 @@ class Errands:
             goal.left_at = now
             free_step = True
             note = reason
+        elif failed and skill == "walk_road" and reason == "stuck" and seat != "vehicle":
+            # The same walk from the same spot ends at the same wall: on 13 November, 17:49, the figure
+            # stood before a garden wall between it and the road and the walk was planned eight times
+            # in a row, each ending stuck after eleven seconds. It turns away first, another way each
+            # time, walks a few seconds, and looks for the road from there.
+            goal.walk_stuck += 1
+            turn = UNSTICK_TURNS[(goal.walk_stuck - 1) % len(UNSTICK_TURNS)]
+            plan = [
+                call("look", duration=1.2, angle=turn),
+                call("walk", duration=4, x=0, y=-1),
+                call("walk_road", duration=15),
+            ]
+            note = f"stuck on foot: another way, turned by {turn}"
         elif failed and skill == "drive_route" and reason in STALLED:
             goal.stalls += 1
             if goal.stalls >= 2:
