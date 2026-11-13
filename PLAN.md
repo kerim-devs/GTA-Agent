@@ -56,4 +56,4 @@ The gaming PC belongs to a colleague. The agent works there only in Kerim's own 
 
 ## Open decisions
 
-The platform and the commentator's voice and role. Whether the Codex quota carries a two hour stream next to the build work, with an API key or a local head on the RTX 4090 as the fallback. Whether the capture card replaces Remote Play as the agent's eyes. Whether NitroGen may be used in public. Preloading GTA VI, and the risk from the rules of PSN and Rockstar.
+The platform. (The commentator is no longer open here: since 13 November it is a separate agent on a cloud model that Kerim builds himself, and this repository only has to make the pilot play.) Whether the Codex quota carries a two hour stream next to the build work, with an API key or a local head on the RTX 4090 as the fallback. Whether the capture card replaces Remote Play as the agent's eyes. Whether NitroGen may be used in public. Preloading GTA VI, and the risk from the rules of PSN and Rockstar.
