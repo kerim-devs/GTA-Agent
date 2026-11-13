@@ -1,0 +1,564 @@
+[
+ {
+  "recording": "20261111-065022",
+  "start": 39.7,
+  "end": 178.6,
+  "seconds": 138.9,
+  "ends": "gone",
+  "peak": 2,
+  "vehicle": 0.89,
+  "foot": 0.11,
+  "driven": 124.1,
+  "steer_mean": 0.28,
+  "steer_hard": 0.26,
+  "steer_changes_per_min": 26.1,
+  "r2_mean": 0.71,
+  "r2_down": 0.69,
+  "l2_share": 0.04,
+  "opened": [],
+  "presses": {
+   "options": 0,
+   "touchpad": 0,
+   "r1": 0
+  },
+  "road": 28,
+  "country": 1,
+  "unread": 5
+ },
+ {
+  "recording": "20261111-164039",
+  "start": 300.3,
+  "end": 388.1,
+  "seconds": 87.8,
+  "ends": "gone",
+  "peak": 1,
+  "vehicle": 0.64,
+  "foot": 0.35,
+  "driven": 51.3,
+  "steer_mean": 0.35,
+  "steer_hard": 0.35,
+  "steer_changes_per_min": 33.9,
+  "r2_mean": 0.59,
+  "r2_down": 0.58,
+  "l2_share": 0.06,
+  "opened": [
+   [
+    336.8,
+    "pause"
+   ]
+  ],
+  "presses": {
+   "options": 1,
+   "touchpad": 0,
+   "r1": 2
+  },
+  "road": 13,
+  "country": 0,
+  "unread": 0
+ },
+ {
+  "recording": "20261111-165543",
+  "start": 579.1,
+  "end": 889.0,
+  "seconds": 309.9,
+  "ends": "gone",
+  "peak": 2,
+  "vehicle": 0.99,
+  "foot": 0.01,
+  "driven": 301.2,
+  "steer_mean": 0.33,
+  "steer_hard": 0.32,
+  "steer_changes_per_min": 32.1,
+  "r2_mean": 0.72,
+  "r2_down": 0.71,
+  "l2_share": 0.09,
+  "opened": [
+   [
+    858.6,
+    "pause"
+   ]
+  ],
+  "presses": {
+   "options": 1,
+   "touchpad": 0,
+   "r1": 9
+  },
+  "road": 58,
+  "country": 7,
+  "unread": 23
+ },
+ {
+  "recording": "20261111-175312",
+  "start": 221.7,
+  "end": 471.0,
+  "seconds": 249.3,
+  "ends": "gone",
+  "peak": 3,
+  "vehicle": 0.86,
+  "foot": 0.14,
+  "driven": 213.2,
+  "steer_mean": 0.31,
+  "steer_hard": 0.3,
+  "steer_changes_per_min": 27.3,
+  "r2_mean": 0.73,
+  "r2_down": 0.71,
+  "l2_share": 0.05,
+  "opened": [],
+  "presses": {
+   "options": 0,
+   "touchpad": 0,
+   "r1": 0
+  },
+  "road": 44,
+  "country": 9,
+  "unread": 10
+ },
+ {
+  "recording": "20261111-182316",
+  "start": 504.2,
+  "end": 881.6,
+  "seconds": 377.4,
+  "ends": "wasted",
+  "peak": 3,
+  "vehicle": 0.56,
+  "foot": 0.43,
+  "driven": 210.1,
+  "steer_mean": 0.24,
+  "steer_hard": 0.24,
+  "steer_changes_per_min": 22.9,
+  "r2_mean": 0.58,
+  "r2_down": 0.57,
+  "l2_share": 0.11,
+  "opened": [],
+  "presses": {
+   "options": 0,
+   "touchpad": 0,
+   "r1": 14
+  },
+  "road": 48,
+  "country": 6,
+  "unread": 7
+ },
+ {
+  "recording": "20261111-185323",
+  "start": 502.1,
+  "end": 899.6,
+  "seconds": 397.5,
+  "ends": "recording ends",
+  "peak": 3,
+  "vehicle": 0.33,
+  "foot": 0.66,
+  "driven": 132.7,
+  "steer_mean": 0.27,
+  "steer_hard": 0.25,
+  "steer_changes_per_min": 23.1,
+  "r2_mean": 0.54,
+  "r2_down": 0.54,
+  "l2_share": 0.1,
+  "opened": [
+   [
+    841.7,
+    "pause"
+   ]
+  ],
+  "presses": {
+   "options": 1,
+   "touchpad": 0,
+   "r1": 2
+  },
+  "road": 23,
+  "country": 9,
+  "unread": 1
+ },
+ {
+  "recording": "20261111-190825",
+  "start": -0.0,
+  "end": 86.1,
+  "seconds": 86.1,
+  "ends": "failed",
+  "peak": 3,
+  "vehicle": 0.91,
+  "foot": 0.06,
+  "driven": 77.2,
+  "steer_mean": 0.34,
+  "steer_hard": 0.33,
+  "steer_changes_per_min": 30.3,
+  "r2_mean": 0.69,
+  "r2_down": 0.67,
+  "l2_share": 0.1,
+  "opened": [],
+  "presses": {
+   "options": 0,
+   "touchpad": 0,
+   "r1": 0
+  },
+  "road": 19,
+  "country": 0,
+  "unread": 1
+ },
+ {
+  "recording": "20261111-190825",
+  "start": 93.3,
+  "end": 258.7,
+  "seconds": 165.4,
+  "ends": "gone",
+  "peak": 3,
+  "vehicle": 0.98,
+  "foot": 0.02,
+  "driven": 159.4,
+  "steer_mean": 0.31,
+  "steer_hard": 0.3,
+  "steer_changes_per_min": 27.1,
+  "r2_mean": 0.9,
+  "r2_down": 0.89,
+  "l2_share": 0.01,
+  "opened": [],
+  "presses": {
+   "options": 0,
+   "touchpad": 0,
+   "r1": 0
+  },
+  "road": 33,
+  "country": 3,
+  "unread": 4
+ },
+ {
+  "recording": "20261111-193105",
+  "start": 164.0,
+  "end": 245.0,
+  "seconds": 81.0,
+  "ends": "gone",
+  "peak": 2,
+  "vehicle": 0.63,
+  "foot": 0.26,
+  "driven": 51.3,
+  "steer_mean": 0.31,
+  "steer_hard": 0.31,
+  "steer_changes_per_min": 31.6,
+  "r2_mean": 0.63,
+  "r2_down": 0.62,
+  "l2_share": 0.03,
+  "opened": [],
+  "presses": {
+   "options": 0,
+   "touchpad": 0,
+   "r1": 0
+  },
+  "road": 11,
+  "country": 1,
+  "unread": 2
+ },
+ {
+  "recording": "20261111-194609",
+  "start": 816.6,
+  "end": 899.8,
+  "seconds": 83.2,
+  "ends": "recording ends",
+  "peak": 2,
+  "vehicle": 0.6,
+  "foot": 0.06,
+  "driven": 45.6,
+  "steer_mean": 0.14,
+  "steer_hard": 0.14,
+  "steer_changes_per_min": 17.1,
+  "r2_mean": 0.39,
+  "r2_down": 0.38,
+  "l2_share": 0.05,
+  "opened": [
+   [
+    843.0,
+    "pause"
+   ]
+  ],
+  "presses": {
+   "options": 1,
+   "touchpad": 0,
+   "r1": 1
+  },
+  "road": 10,
+  "country": 0,
+  "unread": 3
+ },
+ {
+  "recording": "20261111-200111",
+  "start": 0.2,
+  "end": 106.2,
+  "seconds": 106.0,
+  "ends": "wasted",
+  "peak": 2,
+  "vehicle": 0.62,
+  "foot": 0.36,
+  "driven": 66.6,
+  "steer_mean": 0.3,
+  "steer_hard": 0.29,
+  "steer_changes_per_min": 31.5,
+  "r2_mean": 0.62,
+  "r2_down": 0.61,
+  "l2_share": 0.04,
+  "opened": [],
+  "presses": {
+   "options": 0,
+   "touchpad": 0,
+   "r1": 1
+  },
+  "road": 16,
+  "country": 0,
+  "unread": 4
+ },
+ {
+  "recording": "20261111-200111",
+  "start": 197.8,
+  "end": 295.7,
+  "seconds": 97.9,
+  "ends": "failed",
+  "peak": 3,
+  "vehicle": 0.98,
+  "foot": 0.0,
+  "driven": 96.3,
+  "steer_mean": 0.27,
+  "steer_hard": 0.25,
+  "steer_changes_per_min": 13.7,
+  "r2_mean": 0.87,
+  "r2_down": 0.86,
+  "l2_share": 0.01,
+  "opened": [],
+  "presses": {
+   "options": 0,
+   "touchpad": 0,
+   "r1": 0
+  },
+  "road": 19,
+  "country": 0,
+  "unread": 10
+ },
+ {
+  "recording": "20261111-200111",
+  "start": 655.4,
+  "end": 788.4,
+  "seconds": 133.0,
+  "ends": "gone",
+  "peak": 2,
+  "vehicle": 0.95,
+  "foot": 0.03,
+  "driven": 109.9,
+  "steer_mean": 0.32,
+  "steer_hard": 0.31,
+  "steer_changes_per_min": 30.0,
+  "r2_mean": 0.73,
+  "r2_down": 0.72,
+  "l2_share": 0.03,
+  "opened": [
+   [
+    670.5,
+    "pause"
+   ],
+   [
+    736.6,
+    "pause"
+   ],
+   [
+    737.3,
+    "map"
+   ],
+   [
+    740.3,
+    "map"
+   ]
+  ],
+  "presses": {
+   "options": 2,
+   "touchpad": 0,
+   "r1": 0
+  },
+  "road": 20,
+  "country": 2,
+  "unread": 5
+ },
+ {
+  "recording": "20261111-205309",
+  "start": 583.5,
+  "end": 885.5,
+  "seconds": 302.0,
+  "ends": "gone",
+  "peak": 2,
+  "vehicle": 0.87,
+  "foot": 0.13,
+  "driven": 251.4,
+  "steer_mean": 0.21,
+  "steer_hard": 0.2,
+  "steer_changes_per_min": 26.0,
+  "r2_mean": 0.64,
+  "r2_down": 0.49,
+  "l2_share": 0.02,
+  "opened": [
+   [
+    737.7,
+    "pause"
+   ]
+  ],
+  "presses": {
+   "options": 1,
+   "touchpad": 0,
+   "r1": 1
+  },
+  "road": 55,
+  "country": 2,
+  "unread": 6
+ },
+ {
+  "recording": "20261111-214652",
+  "start": 165.4,
+  "end": 284.9,
+  "seconds": 119.5,
+  "ends": "wasted",
+  "peak": 3,
+  "vehicle": 0.45,
+  "foot": 0.53,
+  "driven": 52.9,
+  "steer_mean": 0.38,
+  "steer_hard": 0.37,
+  "steer_changes_per_min": 26.1,
+  "r2_mean": 0.79,
+  "r2_down": 0.78,
+  "l2_share": 0.05,
+  "opened": [],
+  "presses": {
+   "options": 0,
+   "touchpad": 0,
+   "r1": 1
+  },
+  "road": 12,
+  "country": 1,
+  "unread": 1
+ },
+ {
+  "recording": "20261112-085011",
+  "start": 161.8,
+  "end": 677.5,
+  "seconds": 515.7,
+  "ends": "gone",
+  "peak": 3,
+  "vehicle": 0.88,
+  "foot": 0.12,
+  "driven": 452.4,
+  "steer_mean": 0.32,
+  "steer_hard": 0.32,
+  "steer_changes_per_min": 26.9,
+  "r2_mean": 0.65,
+  "r2_down": 0.64,
+  "l2_share": 0.06,
+  "opened": [],
+  "presses": {
+   "options": 0,
+   "touchpad": 0,
+   "r1": 4
+  },
+  "road": 80,
+  "country": 17,
+  "unread": 24
+ },
+ {
+  "recording": "20261112-090514",
+  "start": 261.3,
+  "end": 311.4,
+  "seconds": 50.1,
+  "ends": "failed",
+  "peak": 4,
+  "vehicle": 0.96,
+  "foot": 0.0,
+  "driven": 48.2,
+  "steer_mean": 0.32,
+  "steer_hard": 0.33,
+  "steer_changes_per_min": 28.6,
+  "r2_mean": 0.94,
+  "r2_down": 0.93,
+  "l2_share": 0.0,
+  "opened": [],
+  "presses": {
+   "options": 0,
+   "touchpad": 0,
+   "r1": 0
+  },
+  "road": 11,
+  "country": 0,
+  "unread": 1
+ },
+ {
+  "recording": "20261112-090514",
+  "start": 320.6,
+  "end": 387.0,
+  "seconds": 66.4,
+  "ends": "failed",
+  "peak": 4,
+  "vehicle": 0.95,
+  "foot": 0.02,
+  "driven": 64.0,
+  "steer_mean": 0.21,
+  "steer_hard": 0.21,
+  "steer_changes_per_min": 25.3,
+  "r2_mean": 0.84,
+  "r2_down": 0.83,
+  "l2_share": 0.0,
+  "opened": [],
+  "presses": {
+   "options": 0,
+   "touchpad": 0,
+   "r1": 0
+  },
+  "road": 15,
+  "country": 1,
+  "unread": 0
+ },
+ {
+  "recording": "20261112-090514",
+  "start": 395.5,
+  "end": 561.5,
+  "seconds": 166.0,
+  "ends": "gone",
+  "peak": 4,
+  "vehicle": 0.61,
+  "foot": 0.35,
+  "driven": 108.5,
+  "steer_mean": 0.31,
+  "steer_hard": 0.3,
+  "steer_changes_per_min": 27.7,
+  "r2_mean": 0.86,
+  "r2_down": 0.85,
+  "l2_share": 0.01,
+  "opened": [],
+  "presses": {
+   "options": 0,
+   "touchpad": 0,
+   "r1": 0
+  },
+  "road": 18,
+  "country": 6,
+  "unread": 2
+ },
+ {
+  "recording": "20261112-111357",
+  "start": 65.8,
+  "end": 155.1,
+  "seconds": 89.3,
+  "ends": "gone",
+  "peak": 2,
+  "vehicle": 0.65,
+  "foot": 0.33,
+  "driven": 47.2,
+  "steer_mean": 0.33,
+  "steer_hard": 0.31,
+  "steer_changes_per_min": 26.7,
+  "r2_mean": 0.68,
+  "r2_down": 0.68,
+  "l2_share": 0.08,
+  "opened": [],
+  "presses": {
+   "options": 0,
+   "touchpad": 0,
+   "r1": 0
+  },
+  "road": 7,
+  "country": 1,
+  "unread": 3
+ }
+]
