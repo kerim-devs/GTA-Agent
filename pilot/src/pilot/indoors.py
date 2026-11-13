@@ -38,6 +38,7 @@ def resolve(local, model):
 class Entrance:
     heading: float | None
     side: tuple[float, float] | None
+    at: float | None = None
     name: str | None = None
     absolute: bool = False
 
@@ -46,9 +47,9 @@ _entrances: dict[str | None, Entrance] = {}
 _latest: Entrance | None = None
 
 
-def remember(heading, side, name=None, *, absolute=False):
+def remember(heading, side, name=None, *, at=None, absolute=False):
     global _latest
-    _latest = Entrance(heading, side, name, absolute)
+    _latest = Entrance(heading, side, at, name, absolute)
     _entrances[name] = _latest
 
 

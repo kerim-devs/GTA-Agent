@@ -13,6 +13,15 @@ from pilot.switch import DIRECTIONS, SLOTS, STORY, SwitchCharacter
 
 @pytest.fixture
 def rig(monkeypatch):
+    for name in ("step", "stop"):
+        method = getattr(SwitchCharacter, name)
+
+        def checked(self, *args, _method=method, **kwargs):
+            result = _method(self, *args, **kwargs)
+            assert result.pad.right[1] <= 0
+            return result
+
+        monkeypatch.setattr(SwitchCharacter, name, checked)
     state = SimpleNamespace(visible=False, highlight=None, disabled=frozenset())
 
     class Text:
@@ -51,18 +60,20 @@ def obs(time, **kwargs):
 
 
 def assert_safe(trace):
+    stick_moved = False
     previous = Pad()
     released = None
     for time, result in trace:
         pad = result.pad
+        stick_moved = stick_moved or pad.right != (0.0, 0.0)
         assert pad.right[1] <= 0
         assert pad.left == (0.0, 0.0) and pad.l2 == 0 and pad.r2 == 0
         assert set(pad.buttons) <= {"down"}
         if "down" in previous.buttons and "down" not in pad.buttons:
-            assert pad.right in DIRECTIONS.values()
+            assert pad.right in DIRECTIONS.values() or (not stick_moved and pad == Pad())
             released = time
         if released is not None and time - released < 0.25:
-            assert pad.right in DIRECTIONS.values()
+            assert pad.right in DIRECTIONS.values() or (not stick_moved and pad == Pad())
         previous = pad
 
 
@@ -114,7 +125,7 @@ def test_external_stop_returns_story_fallback_at_every_phase(rig, phase):
     result = skill.stop()
     trace.append((trace[-1][0] + 0.01, result))
     assert result.status == "failed" and result.reason.startswith("interrupted")
-    assert result.pad.right in DIRECTIONS.values() and "down" not in result.pad.buttons
+    assert result.pad == (Pad() if phase == "opening" else Pad(right=DIRECTIONS["left"]))
     assert_safe(trace)
     # There is no drain protocol in the runner; this is only its one-pad fallback.
     assert skill.step(obs(5)).pad == Pad()
@@ -170,10 +181,10 @@ def test_stop_before_opening_has_no_input(rig):
     assert result.pad == Pad() and result.reason == "interrupted"
 
 
-def test_opening_timeout_uses_top_when_previous_figure_is_unknown(rig):
+def test_opening_timeout_is_neutral_when_previous_figure_is_unknown(rig):
     skill = SwitchCharacter({})
     trace = [(t, skill.step(obs(t))) for t in (0, 1, 3, 3.1, 3.3)]
-    assert trace[2][1].pad == Pad(right=(0, -1))
+    assert trace[2][1].pad == Pad()
     assert trace[-1][1].reason == "wheel-unread"
     assert_safe(trace)
 
@@ -205,7 +216,7 @@ def test_next_skips_disabled_and_explicit_disabled_refuses(rig):
 def test_bottom_keeps_down_until_story_or_two_seconds(rig, story_returns):
     skill = SwitchCharacter({})
     trace = enter(skill, rig, "rescuing")
-    assert trace[-1][1].pad == Pad(buttons=("down",), right=(0.0, -1.0))
+    assert trace[-1][1].pad == Pad(buttons=("down",), right=(-1.0, 0.0))
     trace.append((0.3, skill.step(obs(0.3))))
     assert "down" in trace[-1][1].pad.buttons
     if story_returns:
@@ -249,7 +260,7 @@ def test_unknown_selection_gets_safe_top_rescue(rig):
     trace = enter(skill, rig, "selecting")
     rig.highlight = None
     trace.extend((t, skill.step(obs(t))) for t in (0.2, 1, 2.2, 2.5))
-    assert trace[2][1].pad == Pad(buttons=("down",), right=(0, -1))
+    assert trace[2][1].pad == Pad(buttons=("down",), right=(-1, 0))
     assert trace[-1][1].reason == "wheel-unread; was: michael"
     assert_safe(trace)
 
@@ -295,3 +306,117 @@ def test_bad_clock_cannot_skip_release_hold(rig, bad_time):
     assert trace[-1][1].status == "failed"
     assert "clock-" in trace[-1][1].reason
     assert_safe(trace)
+
+
+def p81_safe_pads(trace):
+    for _, result in trace:
+        assert result.pad.right[1] <= 0
+        assert result.pad.left == (0, 0) and result.pad.l2 == result.pad.r2 == 0
+        assert set(result.pad.buttons) <= {"down"}
+
+
+@pytest.mark.parametrize("phase", ["preflight", "opening", "selecting", "rescuing", "releasing", "returning"])
+def test_p81_stalled_clock_is_bounded_in_every_phase(rig, phase):
+    skill = SwitchCharacter({})
+    if phase == "preflight":
+        skill.text.fresh = False
+        trace = [(0, skill.step(obs(0)))]
+    else:
+        trace = enter(skill, rig, phase)
+    now, first = trace[-1]
+    for _ in range(14):
+        trace.append((now, skill.step(obs(now))))
+        assert trace[-1][1].status == "running"
+        if phase != "releasing":
+            assert trace[-1][1].pad == first.pad
+    trace.append((now, skill.step(obs(now))))
+    assert "down" not in trace[-1][1].pad.buttons
+    if skill.finished is None:
+        assert skill.phase == "releasing"
+        expected = Pad(right=DIRECTIONS[SLOTS[skill.was]]) if skill.was else Pad()
+        assert trace[-1][1].pad == expected
+        for _ in range(15):
+            trace.append((now, skill.step(obs(now))))
+    p81_safe_pads(trace)
+    assert trace[-1][1].status == "failed"
+    assert "clock-stalled" in trace[-1][1].reason
+    assert trace[-1][1].pad == Pad()
+
+
+@pytest.mark.parametrize(
+    "bad,reason",
+    [
+        (float("nan"), "clock-unread"),
+        (float("inf"), "clock-unread"),
+        (None, "clock-unread"),
+        ("bad", "clock-unread"),
+        (True, "clock-unread"),
+        (-1.0, "clock-reversed"),
+        (0.3, "clock-stalled"),
+    ],
+)
+def test_p81_bad_release_clock_is_bounded_and_returns_previous_character(rig, bad, reason):
+    skill = SwitchCharacter({})
+    trace = enter(skill, rig, "releasing")
+    for _ in range(14):
+        trace.append((0.3, skill.step(obs(bad))))
+        assert trace[-1][1].status == "running"
+        assert trace[-1][1].pad == Pad(right=DIRECTIONS["left"])
+    trace.append((0.3, skill.step(obs(bad))))
+    p81_safe_pads(trace)
+    assert trace[-1][1].status == "failed"
+    assert trace[-1][1].reason == reason + "; was: michael"
+    assert trace[-1][1].pad == Pad()
+
+
+@pytest.mark.parametrize("phase", ["opening", "selecting"])
+@pytest.mark.parametrize("failure", ["picture", "screen", "timeout", "stop", "clock"])
+def test_p81_every_failure_releases_previous_character_or_untouched_stick(rig, phase, failure):
+    skill = SwitchCharacter({"to": "trevor", "duration": 4})
+    trace = enter(skill, rig, phase)
+    if failure == "stop":
+        result = skill.stop()
+    else:
+        moment = {"picture": 0.2, "screen": 0.2, "timeout": 4.0, "clock": float("nan")}[failure]
+        kwargs = {"picture": {"frame": None}, "screen": {"hud": Hud(screen="pause")}}.get(failure, {})
+        result = skill.step(obs(moment, **kwargs))
+    trace.append((0.2, result))
+    assert result.pad == (Pad() if phase == "opening" else Pad(right=DIRECTIONS["left"]))
+    if failure != "stop":
+        trace.extend((t, skill.step(obs(t))) for t in (4.1, 4.4))
+    p81_safe_pads(trace)
+    assert trace[-1][1].status == "failed"
+
+
+@pytest.mark.parametrize("known", [False, True])
+@pytest.mark.parametrize("highlight", [None, "bottom"])
+def test_p81_rescue_returns_to_known_character_or_safe_top(rig, known, highlight):
+    skill = SwitchCharacter({"to": "trevor"})
+    trace = enter(skill, rig, "selecting" if known else "opening")
+    rig.visible, rig.highlight = True, highlight
+    trace.append((0.2, skill.step(obs(0.2))))
+    expected = DIRECTIONS["left" if known else "top"]
+    assert trace[-1][1].pad == Pad(buttons=("down",), right=expected)
+    trace.extend((t, skill.step(obs(t))) for t in (2.3, 2.4, 2.6))
+    p81_safe_pads(trace)
+    assert trace[-3][1].pad == Pad(right=expected)
+    assert trace[-1][1].status == "failed"
+
+
+def test_p81_progress_resets_both_clock_counters(rig):
+    skill = SwitchCharacter({})
+    trace = enter(skill, rig, "selecting")
+    for now in (0.1, 0.2):
+        trace.extend((now, skill.step(obs(now))) for _ in range(14))
+        trace.append((now + 0.1, skill.step(obs(now + 0.1))))
+    assert skill.phase == "selecting"
+    rig.highlight = "top"
+    trace.extend((t, skill.step(obs(t))) for t in (0.4, 0.5))
+    for now in (0.5, 0.6):
+        trace.extend((now, skill.step(obs(float("nan")))) for _ in range(14))
+        trace.append((now + 0.1, skill.step(obs(now + 0.1))))
+        assert trace[-1][1].status == "running"
+    trace.append((0.8, skill.step(obs(0.8))))
+    p81_safe_pads(trace)
+    assert trace[-1][1].status == "failed"
+    assert "clock-unread" in trace[-1][1].reason

@@ -42,13 +42,16 @@ MELEE_GAP = Punch.PULSE_PERIOD - Punch.PULSE_DURATION
 MELEE_PULSES_PER_LOCK = 2
 
 
-def nearest_red(reading):
+def nearest_red(reading, *, include_border=True):
     """Return a finite red blip, with distance measured in minimap pixels."""
     return min(
         (
             blip
             for blip in reading.blips
-            if blip.color == "red" and math.isfinite(blip.x) and math.isfinite(blip.y)
+            if blip.color == "red"
+            and math.isfinite(blip.x)
+            and math.isfinite(blip.y)
+            and (include_border or not blip.border)
         ),
         key=lambda blip: math.hypot(blip.x, blip.y),
         default=None,
@@ -97,6 +100,9 @@ class Fight:
         self.limit = self.args["duration"]
         self.started = None
         self.last_time = None
+        self.repeated_times = 0
+        self.last_zero_wanted = None
+        self.out_of_range_since = None
         self.last_readable = None
         self.missing_since = None
         self.clear_since = None
@@ -118,16 +124,36 @@ class Fight:
         if self.finished is not None:
             return self.finished
         now = observation.time
-        if not math.isfinite(now) or (self.last_time is not None and now < self.last_time):
+        if (
+            isinstance(now, bool)
+            or not isinstance(now, (int, float))
+            or not math.isfinite(now)
+            or (self.last_time is not None and now < self.last_time)
+        ):
             return self.stop("invalid-observation-time")
+        if now == self.last_time:
+            self.repeated_times += 1
+            if self.repeated_times >= 30:
+                return self.stop("invalid-observation-time")
+            return SkillResult()
+        self.repeated_times = 0
         if self.started is None:
             self.started = now
         self.last_time = now
         if now - self.started >= self.limit:
             return self.stop("combat-timeout")
 
-        if self.name == "fight" and observation.hud is not None and observation.hud.wanted not in (None, 0):
-            return self.stop("stars")
+        hud = observation.hud
+        if hud is not None and hud.screen != "game":
+            self.last_zero_wanted = None
+            return self._unread(now, "hud-unread")
+        if self.name == "fight":
+            if hud is not None and hud.wanted not in (None, 0):
+                return self.stop("stars")
+            if hud is not None and hud.wanted == 0:
+                self.last_zero_wanted = now
+            if self.last_zero_wanted is None or now - self.last_zero_wanted > 1.0:
+                return self._unread(now, "hud-unread")
 
         hit = self.hits.update(now, observation.hud) if self.name == "fight" else None
         if hit is not None:
@@ -145,18 +171,7 @@ class Fight:
 
         reading = observation.reading
         if not readable(observation):
-            self.clear_since = None
-            self.lock_since = None
-            self.release_since = None
-            self.cover_until = None
-            if self.missing_since is None:
-                self.missing_since = now
-            if now - self.missing_since > READING_GRACE:
-                self.clear_seconds = 0.0
-            if now - self.missing_since >= MAP_WAIT:
-                return self.stop("minimap-unreadable")
-            # There is no trustworthy front target, even within the grace period.
-            return SkillResult()
+            return self._unread(now, "minimap-unreadable")
         if self.last_readable is not None and now - self.last_readable > READING_GRACE:
             self.clear_since = None
             self.clear_seconds = 0.0
@@ -165,7 +180,16 @@ class Fight:
         self.last_readable = now
         self.missing_since = None
 
-        target = nearest_red(reading)
+        target = nearest_red(reading, include_border=self.name != "fight")
+        if self.name == "fight" and target is None and nearest_red(reading) is not None:
+            self.lock_since = self.release_since = self.clear_since = None
+            self.clear_seconds = 0.0
+            if self.out_of_range_since is None:
+                self.out_of_range_since = now
+            if now - self.out_of_range_since >= 3.0:
+                return self.stop("target-out-of-range")
+            return SkillResult()
+        self.out_of_range_since = None
         if target is None:
             self.lock_since = None
             self.release_since = None
@@ -227,6 +251,17 @@ class Fight:
         if self.name == "melee":
             return SkillResult(pad=Pad(l2=1.0, buttons=(self.profile.melee,) if attacking else ()))
         return SkillResult(pad=Pad(l2=1.0, r2=1.0 if attacking else 0.0))
+
+    def _unread(self, now, reason):
+        self.clear_since = self.lock_since = self.release_since = self.cover_until = None
+        self.out_of_range_since = None
+        if self.missing_since is None:
+            self.missing_since = now
+        if now - self.missing_since > READING_GRACE:
+            self.clear_seconds = 0.0
+        if now - self.missing_since >= MAP_WAIT:
+            return self.stop(reason)
+        return SkillResult()
 
     def _shoot(self, now, angle):
         """Let the game turn first; camera correction is strictly L2-up."""

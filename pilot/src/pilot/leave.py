@@ -33,9 +33,13 @@ class LeaveBuilding:
         self.frame = None
         self.leaving = False
         self.finished = None
+        self.place_seconds = 0.0
+        self.place_last = None
+        self.place_confirmed = False
 
     def stop(self, reason: str = "interrupted") -> SkillResult:
-        self.finished = SkillResult(status="failed", reason=reason)
+        if self.finished is None:
+            self.finished = SkillResult(status="failed", reason=reason)
         return self.finished
 
     def step(self, observation: Observation) -> SkillResult:
@@ -71,7 +75,16 @@ class LeaveBuilding:
             ):
                 return self._unknown()
             self.frame = frame.copy()
+        if self.place.model is None and not indoors.INDEPENDENT:
+            return self.stop("place-unread")
+        if self.place_last is not None:
+            self.place_seconds += now - self.place_last
+        self.place_last = now
         place = self.place.sample(observation)
+        if place is not None:
+            self.place_confirmed = True
+        if not self.place_confirmed and self.place_seconds >= 8.0:
+            return self.stop("place-unread")
         if place is False:
             if not self.leaving:
                 self.finished = SkillResult(status="done", reason="outdoors")
@@ -87,6 +100,8 @@ class LeaveBuilding:
                 if (
                     entry is not None
                     and entry.heading is not None
+                    and entry.at is not None
+                    and 0 <= now - entry.at <= (180 if entry.absolute else 30)
                     and (not entry.absolute or north is not None)
                 ):
                     heading = entry.heading + (north if entry.absolute else 0) + 180
@@ -113,6 +128,7 @@ class LeaveBuilding:
         )
 
     def _unknown(self):
+        self.place_last = None
         self.place.reset()
         self.guard.outside_confirm.reset()
         self.clear = None

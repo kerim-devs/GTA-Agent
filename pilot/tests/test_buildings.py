@@ -193,7 +193,7 @@ def test_time_limit_interruption_and_arguments_are_safe(monkeypatch):
     monkeypatch.setattr(indoors, "read", lambda frame: None)
     skill = LeaveBuilding({"duration": 5})
     results = play(skill, room, 6)
-    assert results[-1][1].reason == "time-limit" and results[-1][1].pad == NEUTRAL_PAD
+    assert results[-1][1].reason == "place-unread" and results[-1][1].pad == NEUTRAL_PAD
     assert LeaveBuilding({}).stop("replaced").pad == NEUTRAL_PAD
     for args in ({"duration": float("nan")}, {"duration": float("inf")}, {"duration": True}, {"x": 1}):
         with pytest.raises(ValueError):
@@ -217,7 +217,7 @@ def test_remembered_world_heading_is_relative_to_current_camera_not_current_faci
     room.camera, room.facing = 110, 70
     sensor(monkeypatch, room)
     monkeypatch.setattr("pilot.leave.north_bearing", lambda crop: -room.camera)
-    indoors.remember(30, (2, -4), "shop", absolute=True)
+    indoors.remember(30, (2, -4), "shop", at=0, absolute=True)
     skill = LeaveBuilding({})
     for i in range(5):
         frame = np.full((720, 1280, 3), 100 + i, dtype=np.uint8)
@@ -325,3 +325,145 @@ def test_a_missing_map_releases_departure_even_when_mode_still_says_foot(monkeyp
     obs = room.observation(0.3)
     obs = replace(obs, reading=replace(obs.reading, minimap="none"))
     assert skill.step(obs).pad == NEUTRAL_PAD
+
+
+@pytest.mark.parametrize("status,reason", [("done", "outdoors"), ("failed", "place-unread")])
+def test_p81_stop_preserves_the_final_verdict(status, reason):
+    from pilot.contract import SkillResult
+
+    skill = LeaveBuilding({})
+    skill.finished = SkillResult(status=status, reason=reason)
+    original = skill.finished
+    assert skill.stop("replaced") is original
+    assert skill.step(Room().observation(2)) is original
+
+
+def test_p81_no_place_model_fails_on_first_valid_step(monkeypatch):
+    monkeypatch.setattr(indoors, "INDEPENDENT", False)
+    skill = LeaveBuilding({})
+    invalid = replace(Room().observation(0), reading=None)
+    assert skill.step(invalid).status == "running"
+    result = skill.step(Room().observation(0.1))
+    assert result.status == "failed" and result.reason == "place-unread"
+    assert result.pad == NEUTRAL_PAD
+
+
+@pytest.mark.parametrize("answers", ["absent", "ambiguous", "alternating"])
+def test_p81_unconfirmed_place_model_fails_after_eight_valid_seconds(monkeypatch, answers):
+    from types import SimpleNamespace
+
+    class Model:
+        count = 0
+
+        def ask(self, *args, **kwargs):
+            return True
+
+        def answer(self, at):
+            self.count += 1
+            if answers == "absent":
+                return None
+            share = 0.7 if answers == "ambiguous" else (1.0 if self.count % 2 else 0.0)
+            return SimpleNamespace(indoors=share, error=None)
+
+    monkeypatch.setattr(indoors, "INDEPENDENT", False)
+    monkeypatch.setattr(indoors, "read", lambda frame: None)
+    monkeypatch.setattr(ahead, "place", Model)
+    skill = LeaveBuilding({})
+    trace = [skill.step(Room().observation(i / 10)) for i in range(81)]
+    assert all(result.status == "running" and result.pad == NEUTRAL_PAD for result in trace[:-1])
+    assert trace[-1].status == "failed" and trace[-1].reason == "place-unread"
+
+
+def test_p81_invalid_frames_pause_but_do_not_erase_place_wait(monkeypatch):
+    monkeypatch.setattr(indoors, "INDEPENDENT", False)
+    skill = LeaveBuilding({})
+    skill.place.model = object()
+    monkeypatch.setattr(skill.place, "sample", lambda observation: None)
+    room = Room()
+    for i in range(41):
+        assert skill.step(room.observation(i / 10)).status == "running"
+    for i in range(41, 61):
+        assert skill.step(replace(room.observation(i / 10), reading=None)).status == "running"
+    for i in range(61, 101):
+        assert skill.step(room.observation(i / 10)).status == "running"
+    result = skill.step(room.observation(10.1))
+    assert result.status == "failed" and result.reason == "place-unread"
+
+
+@pytest.mark.parametrize(
+    "absolute,age,used",
+    [
+        (False, 30, True),
+        (False, 30.01, False),
+        (True, 180, True),
+        (True, 180.01, False),
+        (False, -1, False),
+        (True, -1, False),
+        (False, None, False),
+    ],
+)
+def test_p81_only_fresh_entrances_guide_the_exit(monkeypatch, absolute, age, used):
+    from types import SimpleNamespace
+
+    monkeypatch.setattr(indoors, "INDEPENDENT", True)
+    monkeypatch.setattr("pilot.leave.north_bearing", lambda crop: 10)
+    now = 200.0
+    entry = SimpleNamespace(heading=30, at=None if age is None else now - age, absolute=absolute)
+    monkeypatch.setattr(indoors, "entrance", lambda: entry)
+    skill = LeaveBuilding({})
+    monkeypatch.setattr(skill.place, "sample", lambda observation: True)
+    headings, searches = [], []
+    monkeypatch.setattr(skill.guard, "leave_heading", lambda observation, heading: headings.append(heading))
+    monkeypatch.setattr(skill.guard, "leave", lambda observation: searches.append(observation.time))
+    monkeypatch.setattr(
+        skill.guard,
+        "step",
+        lambda *args: SimpleNamespace(failed=False, state="look", left=(0, 0), right=(0, 0), buttons=()),
+    )
+    frame = np.full((720, 1280, 3), 100, dtype=np.uint8)
+    skill.step(replace(Room(inside=True).observation(now), frame=frame))
+    assert bool(headings) == used
+    if used:
+        assert headings == [220 if absolute else 210]
+    else:
+        assert searches
+
+
+def test_p81_walk_records_the_confirmed_entrance_time(monkeypatch):
+    skill = WalkTo({"enter": True, "roads": False, "sprint": False})
+    monkeypatch.setattr(skill.enter_place, "sample", lambda observation: True)
+    result = skill._entering(Room(inside=True).observation(12.5))
+    assert result.reason.startswith("entered")
+    assert indoors.entrance().at == 12.5
+
+
+def test_p81_unsure_model_does_not_cancel_confirmed_outdoors(monkeypatch):
+    from types import SimpleNamespace
+
+    class Model:
+        def ask(self, *args, **kwargs):
+            return True
+
+        def answer(self, at):
+            return SimpleNamespace(indoors=1.0 if at < 0.8 else 0.0 if at < 1.6 else 0.7, error=None)
+
+    monkeypatch.setattr(indoors, "INDEPENDENT", False)
+    monkeypatch.setattr(indoors, "read", lambda frame: None)
+    monkeypatch.setattr(ahead, "place", Model)
+    skill = LeaveBuilding({})
+    monkeypatch.setattr(
+        skill.guard,
+        "step",
+        lambda *args: SimpleNamespace(failed=False, state="look", left=(0, 0), right=(0, 0), buttons=()),
+    )
+    room = Room(inside=True)
+    first_clear = None
+    for i in range(80):
+        result = skill.step(room.observation(i / 10))
+        if skill.clear is not None:
+            first_clear = skill.clear if first_clear is None else first_clear
+            assert skill.clear == first_clear
+        if result.status != "running":
+            break
+    assert first_clear is not None and first_clear < 1.7
+    assert result.status == "done" and result.reason == "outdoors"

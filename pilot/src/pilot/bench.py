@@ -600,6 +600,8 @@ CAUSE_RULES: dict[str, str | None] = {
     "map-shift-wrong-direction": "act",
     "map-move-limit": "act",
     "melee-target-too-far": "act",
+    "target-out-of-range": "act",
+    "place-unread": "see",
     "legend-selection-did-not-move": "act",
     "legend-selection-skips-the-place": "act",
     "five-presses": "act",
@@ -628,6 +630,7 @@ CAUSE_RULES: dict[str, str | None] = {
     "pad_refused": "world",  # a hand on the controller: the bridge refused the pilot's pad
     # the bridge, the stream, gaps in the frames
     "clock-reversed": "tech",
+    "clock-stalled": "tech",
     "clock-invalid": "tech",
     "invalid-clock": "tech",
     "invalid observation": "tech",

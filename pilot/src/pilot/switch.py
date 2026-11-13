@@ -101,6 +101,8 @@ class SwitchCharacter:
         self.started = None
         self.last_time = None
         self.last_pad = Pad()
+        self.clock_stalls = 0
+        self.release_bad_clocks = 0
         self.phase_time = None
         self.was = None
         self.chosen = None
@@ -124,12 +126,17 @@ class SwitchCharacter:
         return SkillResult(Pad(buttons=("down",), right=DIRECTIONS[self.slot]))
 
     def _release(self, now, failure=None, slot=None):
+        if failure and slot is None:
+            slot = SLOTS[self.was] if self.was else None if self.phase == "opening" else self.slot
         self.phase = "releasing"
         self.phase_time = now
         self.failure = failure
-        if slot is not None:
+        if slot is not None or failure:
             self.slot = slot
-        return SkillResult(Pad(right=DIRECTIONS[self.slot]))
+        return SkillResult(self._release_pad())
+
+    def _release_pad(self):
+        return Pad(right=DIRECTIONS[self.slot]) if self.slot else Pad()
 
     @staticmethod
     def _picture_ok(obs):
@@ -156,7 +163,15 @@ class SwitchCharacter:
 
     def step(self, observation: Observation) -> SkillResult:
         # A repeated capture cannot count as another confirmed highlight.
-        if self.finished is None and self.last_time == observation.time:
+        now = observation.time
+        repeated = (
+            not isinstance(now, bool)
+            and isinstance(now, (int, float))
+            and math.isfinite(now)
+            and self.last_time == now
+        )
+        self.clock_stalls = self.clock_stalls + 1 if repeated else 0
+        if self.finished is None and repeated and self.phase != "releasing" and self.clock_stalls < 15:
             return SkillResult(self.last_pad)
         result = self._step(observation)
         self.last_pad = result.pad
@@ -171,6 +186,8 @@ class SwitchCharacter:
             if isinstance(now, bool) or not isinstance(now, (int, float)) or not math.isfinite(now)
             else "clock-reversed"
             if self.last_time is not None and now < self.last_time
+            else "clock-stalled"
+            if self.last_time == now
             else None
         )
         if bad_clock:
@@ -181,7 +198,13 @@ class SwitchCharacter:
             if self.phase != "releasing":
                 return self._release(self.last_time, bad_clock)
             self.failure = self.failure or bad_clock
-            return SkillResult(Pad(right=DIRECTIONS[self.slot]))
+            self.release_bad_clocks += 1
+            if self.was:
+                self.slot = SLOTS[self.was]
+            if self.release_bad_clocks >= 15:
+                return self._finish("failed", bad_clock)
+            return SkillResult(self._release_pad())
+        self.release_bad_clocks = 0
         self.last_time = now
         if self.started is None:
             self.started = now
@@ -189,7 +212,7 @@ class SwitchCharacter:
         # No picture, timeout or repeated stop may shorten the release interval.
         if self.phase == "releasing":
             if now - self.phase_time < RELEASE_SECONDS:
-                return SkillResult(Pad(right=DIRECTIONS[self.slot]))
+                return SkillResult(self._release_pad())
             if self.failure:
                 return self._finish("failed", self.failure)
             self.phase = "returning"
@@ -251,7 +274,7 @@ class SwitchCharacter:
             self.failure = "online-slot-seen" if reading.highlight == "bottom" else "wheel-unread"
             self.phase = "rescuing"
             self.phase_time = now
-            self.slot = "top"
+            self.slot = SLOTS[self.was] if self.was else "top"
             return self._held()
 
         if self.phase == "opening":
@@ -291,8 +314,8 @@ class SwitchCharacter:
             return self.finished
         if self.phase == "preflight":
             return self._finish("failed", reason)
-        # The contract cannot drain ticks after an external stop. Return the
-        # card's one-tick story-stick fallback, never a neutral wheel release.
-        result = SkillResult(Pad(right=DIRECTIONS[self.slot]), "failed", self._reason(reason))
+        # The runner cannot drain release ticks after an external stop.
+        self.slot = SLOTS[self.was] if self.was else None if self.phase == "opening" else self.slot
+        result = SkillResult(self._release_pad(), "failed", self._reason(reason))
         self._finish("failed", reason)
         return result
