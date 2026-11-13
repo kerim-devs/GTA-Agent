@@ -508,7 +508,7 @@ The aim is now taken at 20 px where the way from the car, the line to the path's
 
 At 172.6 s the car entered the Braddock tunnel, where the game draws no route on the radar (`head-0015.jpg`, `head-0018.jpg`). The drive failed, the waypoint was set again, the drive failed within a second, and for four minutes the head opened the map, then tried a cruise, a shop and the story again while the car stood. Card P91 (on along the road where the map shows no route) is with a worker. P90 (a car from the traffic) is delivered and not yet reviewed.
 
-### The steering against Kerim's hand, 13 November, 18:30 to 19:45
+### The steering against Kerim's hand, 13 November, 18:30 to 19:20
 
 The comparison within one drive (`/Users/kerim/recordings/pilot/20261113-183223`, `PILOT_AIM_AB=30`, the same country road and jeep) gives, over the three clean half minutes of each aim and without the three seconds after a switch, 4.9 degrees of spread on 68 s of straights with the far aim (3.6, 4.4, 6.7) against 12.5 on 64 s with the short one (12.0, 15.9, 10.7), the stick at 0.24 to 0.30 against 0.44 to 0.60 by root mean square. Over all twelve half minutes it is 12.1 against 15.2: the later ones hold a junction and a change of goal. Kerim watched and does not accept the steering: strong weaving. What he saw was, by the design of the comparison, the old aim in every other half minute, and the short aim on a quarter of all ticks of the drive, in the bends and before junctions. In bins of 5 s the heading left the route by 18 to 37 degrees to either side where the short aim steered and by 1 to 6 where the far one did, with the stick at rest for 30 to 100 percent of a bin there. The next run at the console alternates nothing.
 
