@@ -175,6 +175,11 @@ def test_water_cannot_extend_the_skill_time_limit(monkeypatch):
 def test_bypass_uses_an_observed_free_side_but_never_stale_boxes():
     car = Detection("car", (540, 300, 740, 460), 0.9)
     avoider = Avoider()
+    for tick in range(5):  # the car comes closer, which is what gets it gone round without the bypass
+        shrunk = Detection(
+            "car", (540 + 6 * (5 - tick), 300 + 8 * (5 - tick), 740 - 6 * (5 - tick), 460), 0.9
+        )
+        normal = avoider.step((shrunk,), tick * 0.1 - 0.5, tick * 0.1 - 0.5)
     normal = avoider.step((car,), 0, 0)
     bypass = avoider.step((car,), 0.1, 0.1, bypass=True)
     assert abs(bypass.steer) > abs(normal.steer)
