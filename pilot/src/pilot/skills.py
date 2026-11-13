@@ -239,7 +239,7 @@ class DriveRoute(RegisteredSkill):
     name = "drive_route"
     parameters: ClassVar[dict] = {"duration": (0.1, 120, 60), "style": ("bold", "careful")}
     prompt = (
-        "Follow a visible GPS route in a vehicle. Done with arrived after small, falling distances and "
+        "Follow a visible GPS route in a vehicle. Done with arrived after a recent small distance and "
         "route loss, or with time-limit. Fails on lost route, no progress, dead-or-held car, "
         "exhausted recovery or a picture it cannot read (map-unreadable)."
     )
@@ -342,7 +342,7 @@ class DriveRoute(RegisteredSkill):
             or abs(distance - self.end_distance)
             > self.driver.config.gps_max_speed * (at - self.distance_time) + 20
         ):
-            # A reroute or OCR gap starts a new progress window, never an arrival trend.
+            # A reroute or OCR gap starts a new progress window.
             self._distances.clear()
         if self.start_distance is None:
             self.start_distance = distance
@@ -351,24 +351,30 @@ class DriveRoute(RegisteredSkill):
         while len(self._distances) > 1 and at - self._distances[1][0] >= self.progress_window:
             self._distances.popleft()
 
-    def _route_end(self):
-        from itertools import pairwise
+    def _route_end(self, observation):
+        from .drive import _number
+
+        reading = observation.reading
+        distance, at = _number(reading.gps_distance), _number(reading.gps_time)
+        # Arrival needs a nearby fix, not an uninterrupted OCR descent.
+        # The route can vanish after the driving sampler's shorter stale limit.
+        if (
+            not reading.corrupt
+            and reading.minimap == "tilted"
+            and distance is not None
+            and 0 <= distance <= self.arrival_metres
+            and at is not None
+            and 0 <= self._now - at <= self.arrival_age
+            and (self.distance_time is None or at >= self.distance_time)
+        ):
+            self.end_distance, self.distance_time = distance, at
 
         if self.distance_time is None or self._now - self.distance_time > self.arrival_age:
             return self.stop("route-lost-unknown")
         if self.end_distance > self.arrival_metres:
             return self.stop("route-lost-far")
-        close = [(t, d) for t, d, _ in self._distances if self.distance_time - t <= 5]
-        if (
-            len(close) >= 3
-            and close[-1][0] - close[0][0] >= 0.5
-            and all(d <= 2 * self.arrival_metres for _, d in close)
-            and close[0][1] - close[-1][1] >= 3
-            and all(b[1] <= a[1] + 1 for a, b in pairwise(close))
-        ):
-            self.finished = self._result(status="done", reason="arrived")
-            return self.finished
-        return self.stop("route-lost-unknown")
+        self.finished = self._result(status="done", reason="arrived")
+        return self.finished
 
     def step(self, observation: Observation) -> SkillResult:
         from .drive import _number
@@ -411,7 +417,7 @@ class DriveRoute(RegisteredSkill):
             if command.state == "route-gone":
                 if command.brake:
                     return self._result(pad=Pad.from_command(command))
-                return self._route_end()
+                return self._route_end(observation)
             if command.state in ("dead-or-held", "failed-recovery", "map-unreadable"):
                 return self.stop(command.state)
             if len(self._distances) >= 3 and self.distance_time is not None:

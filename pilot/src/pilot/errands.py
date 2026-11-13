@@ -404,7 +404,9 @@ class Errands:
         )
 
     def decide(self, request, mode, *, escape_plan=None, recovery_plan=None, keep_heading=False):
+        from .drive import _number
         from .goals import HELD, STALLED, fits, leave_vehicle, occupancy, own_stop
+        from .skills import DriveRoute
 
         now = self.now(request)
         wanted = (request.hud or {}).get("wanted")
@@ -457,6 +459,35 @@ class Errands:
         if done and skill == "set_waypoint":
             goal.waypoint_set = True
         goal.seen_route |= request.minimap.get("route") in {"yellow", "purple"}
+        if (
+            failed
+            and skill == "drive_route"
+            and reason.startswith("route-lost")
+            and goal.name == "story"
+            and goal.step == "travel"
+            and (goal.seen_route or last.get("route_seen"))
+        ):
+            distance = _number(request.minimap.get("gps_distance"))
+            sampled_at = _number(request.minimap.get("gps_time"))
+            recorded_distance = _number(last.get("end_distance"))
+            recorded_age = _number(last.get("distance_age"))
+            near_reading = (
+                not request.minimap.get("corrupt")
+                and request.minimap.get("minimap") == "tilted"
+                and request.minimap.get("route") not in {"purple", "yellow"}
+                and distance is not None
+                and 0 <= distance <= DriveRoute.arrival_metres
+                and sampled_at is not None
+                and 0 <= now - sampled_at <= DriveRoute.arrival_age
+            )
+            near_record = (
+                recorded_distance is not None
+                and 0 <= recorded_distance <= DriveRoute.arrival_metres
+                and recorded_age is not None
+                and 0 <= recorded_age <= DriveRoute.arrival_age
+            )
+            if near_reading or near_record:
+                failed, done, reason = False, True, "arrived"
         plan = None
         free_step = False
         note = "retry: observed skill failure" if failed else ""
@@ -666,6 +697,8 @@ class Errands:
         if self.active is None:
             goal = self._start(request, seat, cars, wanted)
             plan = None
+        if goal.name == "story" and goal.step == "exit" and seat != "vehicle":
+            goal.step = "approach"
         if plan is None:
             if goal.step == "replace_car":
                 if seat == "vehicle":

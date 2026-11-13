@@ -28,7 +28,7 @@ def lose_route(skill, t):
     return result
 
 
-def test_arrival_needs_a_recent_small_falling_trend_and_serializes_distances():
+def test_arrival_needs_a_recent_small_distance_and_serializes_distances():
     skill = DriveRoute({})
     for t, distance in ((0, 30), (0.5, 20), (1, 10), (1.5, 5)):
         assert tick(skill, t, distance).status == "running"
@@ -40,19 +40,19 @@ def test_arrival_needs_a_recent_small_falling_trend_and_serializes_distances():
 
 
 @pytest.mark.parametrize(
-    "distances,reason",
+    "distances,status,reason",
     [
-        ([1500, 1490, 1480], "route-lost-far"),
-        ([5, 5, 5], "route-lost-unknown"),
-        ([3, 5, 8], "route-lost-unknown"),
+        ([1500, 1490, 1480], "failed", "route-lost-far"),
+        ([5, 5, 5], "done", "arrived"),
+        ([3, 5, 8], "done", "arrived"),
     ],
 )
-def test_lost_route_is_not_arrival(distances, reason):
+def test_lost_route_uses_the_recent_distance(distances, status, reason):
     skill = DriveRoute({})
     for i, distance in enumerate(distances):
         tick(skill, i / 2, distance)
     result = lose_route(skill, 1.1)
-    assert (result.status, result.reason, result.pad) == ("failed", reason, NEUTRAL_PAD)
+    assert (result.status, result.reason, result.pad) == (status, reason, NEUTRAL_PAD)
 
 
 def test_old_distance_is_kept_with_age_but_cannot_prove_arrival():
@@ -111,12 +111,13 @@ def test_deadline_is_not_arrival_and_interrupt_retains_distance():
     assert stopped.end_distance == 100 and stopped.pad == NEUTRAL_PAD
 
 
-def test_duplicate_near_fixes_cannot_invent_a_falling_trend():
+def test_duplicate_near_fixes_keep_the_original_arrival_evidence():
     skill = DriveRoute({})
     tick(skill, 0, 15)
     for i in range(1, 10):
         tick(skill, i / 10, 5, sampled_at=0)
-    assert lose_route(skill, 1).reason == "route-lost-unknown"
+    result = lose_route(skill, 1)
+    assert result.reason == "arrived" and result.end_distance == 15
 
 
 def test_measured_eight_second_ocr_gap_keeps_progress_window_but_does_not_end_in_the_gap():
