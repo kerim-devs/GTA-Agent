@@ -863,7 +863,10 @@ class Trip:
             raise ValueError("trip seconds must be finite and positive")
         self.place, self.seconds = place.strip(), seconds
         self.started = None
-        self.step = "car"
+        # The map first, on foot or wherever the figure is, then the car: the seat taken from a
+        # driver is driven off at once. With the map opened after it the car stood for eighteen
+        # seconds and its owner pulled the figure out again (20261114-004115, 285 to 305 s).
+        self.step = "waypoint"
         self.verdict = None
         self.events = []
         self.issued = None
@@ -952,7 +955,7 @@ class Trip:
             self.retry = None
             self.method = "route"
             self.best_distance = self.progress_distance = self.distance_time = None
-            self.change("car", now)
+            self.change("waypoint", now)
         elif reason in {"human", "picture"}:
             self.seat_check = True
             self.car_started, self.car_attempts = now, 0
@@ -1119,7 +1122,9 @@ class Trip:
                 self.best_distance = self.progress_distance = self.distance_time = None
                 self.last_distance = self.route_at = self.purple_at = self.near_since = None
                 self.route_waited = self.waypoint_check = False
-                self.change("drive", now)
+                # The way into a car ends at once for a figure that already sits.
+                self.car_started, self.car_attempts = now, 0
+                self.change("car", now)
                 self.retry = None
             else:
                 self.waypoint_attempts += 1
@@ -1227,6 +1232,10 @@ class Trip:
         if self.failure:
             self.finish("failed", self.failure, now)
             return reply("trip: failed")
+        if self.step == "waypoint":
+            if self.retry == "waypoint":
+                return issue("wait", duration=1)
+            return issue("set_waypoint", place=self.place, instance=0, duration=45)
         if self.step == "car" or self.seat_check:
             if now - self.car_started >= self.CAR_SECONDS:
                 self.finish("failed", "no car within five minutes", now)
@@ -1260,10 +1269,9 @@ class Trip:
                 # No route after the hand: the waypoint is gone and is set again.
                 self.waypoint_check = self.route_waited = False
                 self.waypoint_id = None
-        if self.step == "waypoint" or self.waypoint_id is None:
-            if self.retry == "waypoint":
-                return issue("wait", duration=1)
-            return issue("set_waypoint", place=self.place, instance=0, duration=45)
+        if self.waypoint_id is None:
+            self.change("waypoint", now)
+            return self.decide(request)
         if self.method == "exit":
             if self.foot_since is not None and now - self.foot_since >= 0.5:
                 self.method = "away"

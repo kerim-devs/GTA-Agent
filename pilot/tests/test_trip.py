@@ -58,7 +58,8 @@ class Session:
                     return SkillResult()
                 if self.finished is None and owner.outcomes:
                     status, reason, screen = owner.outcomes.popleft()
-                    owner.screen(screen)
+                    if screen:  # None: the map closes on the picture the test has set
+                        owner.screen(screen)
                     self.finished = SkillResult(status=status, reason=reason)
                 return self.finished or SkillResult()
 
@@ -117,6 +118,10 @@ class Session:
         active = self.conductor.runner.active
         return active is not None and active.name == name
 
+    def mapped(self):
+        """The waypoint, which the trip sets first, succeeds and leaves the test's picture alone."""
+        self.outcomes.append(("done", SUCCESS, None))
+
     def drive(self):
         self.outcomes.append(("done", SUCCESS, "game"))
         self.until(lambda: self.active("drive_route"))
@@ -147,12 +152,14 @@ def test_recorded_car_beside_foot_marker_owns_the_first_plan(session):
     session.reading = Reading(**reading)
     session.objects = tuple(Detection(**obj) for obj in raw["objects"])
     session.mode = "foot"
+    session.mapped()
     session.until(lambda: session.active("enter_vehicle"))
     for _ in range(15):
         session.tick()
     plans = [row["plan"] for row in session.rows("response") if row["plan"]]
-    assert [plan[0]["name"] for plan in plans] == ["enter_vehicle"]
-    assert not session.waypoints
+    # 20261114-004115: the map comes first, so that the seat taken is driven off at once.
+    assert [plan[0]["name"] for plan in plans] == ["set_waypoint", "enter_vehicle"]
+    assert len(session.waypoints) == 1
     assert session.trip.step == "car"
 
 
@@ -163,11 +170,12 @@ def test_recorded_unknown_tilted_map_does_not_skip_entry(session):
         **{**raw["minimap"], "blips": tuple(Blip(**b) for b in raw["minimap"]["blips"])}
     )
     session.mode = "unknown"
+    session.mapped()
     session.until(lambda: session.active("enter_vehicle"))
     for _ in range(10):
         session.tick()
     assert session.trip.step == "car"
-    assert not session.waypoints
+    assert len(session.waypoints) == 1
 
 
 def test_quiet_sixty_second_request_preserves_drive_and_queue(session):
@@ -441,7 +449,7 @@ def test_news_does_not_take_the_running_drive(session, news):
     assert session.trip.verdict is None
 
 
-def test_death_restarts_same_destination_at_car_only_twice(session):
+def test_death_restarts_same_destination_at_the_map_only_twice(session):
     session.drive()
     for death in range(3):
         session.screen("wasted")
@@ -452,9 +460,12 @@ def test_death_restarts_same_destination_at_car_only_twice(session):
         session.screen("game")
         session.reading = replace(session.reading, minimap="flat", route="none")
         session.mode = "foot"
-        session.until(lambda: session.active("enter_vehicle"))
-        assert session.trip.step == "car" and session.trip.place == PLACE
+        session.until(lambda: session.active("set_waypoint"))
+        assert session.trip.step == "waypoint" and session.trip.place == PLACE
         assert session.trip.waypoint_id is None
+        session.mapped()
+        session.until(lambda: session.active("enter_vehicle"))
+        assert session.trip.step == "car" and len(session.waypoints) == death + 2
     assert session.trip.verdict["status"] == "failed"
     assert "death/arrest" in session.trip.verdict["reason"]
 
@@ -485,7 +496,7 @@ def test_a_waypoint_gone_after_the_hand_is_set_again_for_the_same_place(session)
     session.conductor.refuse(session.now, False)
     session.outcomes.append(("done", SUCCESS, "game"))
     session.until(lambda: len(session.waypoints) == 2)
-    assert session.waypoints[1]["place"] == PLACE and session.trip.step == "drive"
+    assert session.waypoints[1]["place"] == PLACE
     session.reading = replace(session.reading, route="purple")
     session.until(lambda: session.active("drive_route"))
     assert session.trip.recovery == 0
@@ -676,6 +687,7 @@ def test_failed_car_tries_change_method_and_keep_a_recently_seen_car(session):
     session.reading = replace(GOOD, minimap="flat", route="none")
     session.mode = "foot"
     session.objects = (Detection("car", (600, 280, 900, 600), 0.95),)
+    session.mapped()
     session.until(lambda: session.active("enter_vehicle"))
     session.conductor.runner.stop("no entry observed")
     session.until(lambda: session.active("walk"))
@@ -702,6 +714,7 @@ def test_failed_car_tries_change_method_and_keep_a_recently_seen_car(session):
 def test_car_retry_without_recent_detection_looks_before_trying_again(session):
     session.reading = replace(GOOD, minimap="flat", route="none")
     session.mode = "foot"
+    session.mapped()
     session.until(lambda: session.active("enter_vehicle"))
     session.conductor.runner.stop("no vehicle found")
     session.until(lambda: session.active("look"))
