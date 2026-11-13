@@ -18,7 +18,7 @@ style=${2:-bold}
 code=${3:-/Users/kerim/Documents/ChatGPT/gta}
 api=http://127.0.0.1:9395
 server=http://192.168.0.248:1234
-model=qwen/qwen3-vl-8b
+model=qwen/qwen3-vl-4b
 out=/Users/kerim/recordings/pilot
 now() { date +%H:%M:%S }
 is() { [[ $state == *"\"$1\": true"* ]] }
