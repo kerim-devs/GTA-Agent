@@ -1,0 +1,643 @@
+{
+  "variant": "combined",
+  "config": {
+    "dt": 0.03333333333333333,
+    "delay": 0.63,
+    "map_scale": 1.0,
+    "gps_interval": 0.25,
+    "gps_delay": 0.15,
+    "gps_wrong": 0.3,
+    "gps_dropout": 2.0,
+    "scale_with_speed": 1.0,
+    "dead_zone": 0.0,
+    "wheelbase": 2.7,
+    "max_wheel_angle": 35.0,
+    "acceleration": 4.5,
+    "drag": 0.45,
+    "top_speed": 12.0,
+    "reverse_speed": 3.0,
+    "brake_acceleration": 8.0,
+    "grip": 4.0,
+    "sensor_delay": 0.06,
+    "speed_window": 0.2,
+    "speed_noise": 0.5,
+    "speed_missing": 0.08,
+    "path_noise": 0,
+    "path_missing": 0,
+    "path_hidden": 11.0,
+    "camera_lag": 0.3,
+    "noise_degrees": 1.3,
+    "noise_tail_multiplier": 1,
+    "noise_tail_probability": 0,
+    "outlier_probability": 0,
+    "damage_probability": 0,
+    "arrival_radius": 3.0,
+    "progress_distance": 0.5,
+    "max_time": 180
+  },
+  "raster_sample_spacing_px": 6,
+  "raster_independent_noise_sd_px": 1.2,
+  "results": [
+    {
+      "course": "straight",
+      "seed": 0,
+      "unknown_speed": false,
+      "recorded_speed_availability": false,
+      "reached": true,
+      "elapsed": 22.200000000000262,
+      "mean_distance": 0.5067837057947232,
+      "max_distance": 1.5750664643201047,
+      "max_no_progress": 1.8000000000000023,
+      "steering_flips_per_second": 0.22522522522522256,
+      "recoveries": 0,
+      "collisions": 0,
+      "max_overspeed_time": 0.0,
+      "max_bend_speed": 0.0,
+      "max_speed": 7.850690098996468,
+      "final_position": [
+        -0.8942365773775348,
+        117.22250746971244
+      ],
+      "windows": [
+        {
+          "start": 5,
+          "end": 20,
+          "samples": 320,
+          "straight_seconds": 11.599999999999994,
+          "runs": 1,
+          "heading_sd_deg": 4.868848313697675,
+          "heading_rms_deg": 4.869061609802613,
+          "heading_p90_span_deg": 15.574457011072559,
+          "stick_mean_abs": 0.011572986957989303,
+          "stick_rms": 0.033726047512682274,
+          "path_residual_sd_px": 0.8015668221355425
+        }
+      ]
+    },
+    {
+      "course": "left",
+      "seed": 0,
+      "unknown_speed": false,
+      "recorded_speed_availability": false,
+      "reached": true,
+      "elapsed": 37.00000000000046,
+      "mean_distance": 0.6582720533816022,
+      "max_distance": 5.502460841336557,
+      "max_no_progress": 1.8000000000000023,
+      "steering_flips_per_second": 0.2162162162162135,
+      "recoveries": 0,
+      "collisions": 0,
+      "max_overspeed_time": 0.0,
+      "max_bend_speed": 5.263377338798246,
+      "max_speed": 7.371860633361098,
+      "final_position": [
+        -97.34151840276799,
+        98.8382823015131
+      ],
+      "windows": [
+        {
+          "start": 5,
+          "end": 20,
+          "samples": 312,
+          "straight_seconds": 11.96666666666669,
+          "runs": 2,
+          "heading_sd_deg": 4.58767922537132,
+          "heading_rms_deg": 24.303752332738192,
+          "heading_p90_span_deg": 15.128835552580801,
+          "stick_mean_abs": 0.03884557874605036,
+          "stick_rms": 0.12190994661403427,
+          "path_residual_sd_px": 0.8471880414158421
+        },
+        {
+          "start": 20,
+          "end": 35,
+          "samples": 292,
+          "straight_seconds": 10.200000000000507,
+          "runs": 1,
+          "heading_sd_deg": 14.65473798367239,
+          "heading_rms_deg": 18.031926445470404,
+          "heading_p90_span_deg": 49.548945600755175,
+          "stick_mean_abs": 0.08953035967757078,
+          "stick_rms": 0.2083182483233536,
+          "path_residual_sd_px": 0.8151898248436906
+        }
+      ]
+    },
+    {
+      "course": "right",
+      "seed": 0,
+      "unknown_speed": false,
+      "recorded_speed_availability": false,
+      "reached": true,
+      "elapsed": 37.40000000000044,
+      "mean_distance": 0.6997077280252098,
+      "max_distance": 5.182468684711964,
+      "max_no_progress": 1.8000000000000023,
+      "steering_flips_per_second": 0.4545454545454492,
+      "recoveries": 0,
+      "collisions": 0,
+      "max_overspeed_time": 0.0,
+      "max_bend_speed": 4.9886527979430975,
+      "max_speed": 7.3887003457795775,
+      "final_position": [
+        97.49942308233602,
+        98.43882308428293
+      ],
+      "windows": [
+        {
+          "start": 5,
+          "end": 20,
+          "samples": 318,
+          "straight_seconds": 12.3666666666667,
+          "runs": 2,
+          "heading_sd_deg": 4.884158526777375,
+          "heading_rms_deg": 27.833660032621538,
+          "heading_p90_span_deg": 15.546162835584381,
+          "stick_mean_abs": 0.046506671991520275,
+          "stick_rms": 0.13967903966145645,
+          "path_residual_sd_px": 0.8626483214149623
+        },
+        {
+          "start": 20,
+          "end": 35,
+          "samples": 299,
+          "straight_seconds": 10.233333333333842,
+          "runs": 1,
+          "heading_sd_deg": 16.958556620336385,
+          "heading_rms_deg": 19.75091898058713,
+          "heading_p90_span_deg": 56.52366775033912,
+          "stick_mean_abs": 0.11176069750787299,
+          "stick_rms": 0.24606097983914746,
+          "path_residual_sd_px": 0.83333458079271
+        }
+      ]
+    },
+    {
+      "course": "s_bend",
+      "seed": 0,
+      "unknown_speed": false,
+      "recorded_speed_availability": false,
+      "reached": true,
+      "elapsed": 65.99999999999882,
+      "mean_distance": 0.9314780908407615,
+      "max_distance": 3.780048397833983,
+      "max_no_progress": 1.8000000000000023,
+      "steering_flips_per_second": 0.37878787878788556,
+      "recoveries": 0,
+      "collisions": 0,
+      "max_overspeed_time": 0.0,
+      "max_bend_speed": 7.122764042512075,
+      "max_speed": 7.474888143993908,
+      "final_position": [
+        -0.5597135185933103,
+        277.06618785649107
+      ],
+      "windows": [
+        {
+          "start": 5,
+          "end": 20,
+          "samples": 256,
+          "straight_seconds": 9.633333333333391,
+          "runs": 2,
+          "heading_sd_deg": 13.978911185266208,
+          "heading_rms_deg": 23.56615397543625,
+          "heading_p90_span_deg": 42.77452489917046,
+          "stick_mean_abs": 0.0996575922737611,
+          "stick_rms": 0.19031841765327734,
+          "path_residual_sd_px": 0.9164351555906296
+        },
+        {
+          "start": 20,
+          "end": 35,
+          "samples": 387,
+          "straight_seconds": 13.800000000000367,
+          "runs": 1,
+          "heading_sd_deg": 26.7043769673278,
+          "heading_rms_deg": 32.196075407881295,
+          "heading_p90_span_deg": 84.55223966256155,
+          "stick_mean_abs": 0.13343402648239905,
+          "stick_rms": 0.2961515587266215,
+          "path_residual_sd_px": 0.8762107046502678
+        },
+        {
+          "start": 35,
+          "end": 50,
+          "samples": 220,
+          "straight_seconds": 8.533333333332848,
+          "runs": 2,
+          "heading_sd_deg": 38.65649875520735,
+          "heading_rms_deg": 48.27567283890186,
+          "heading_p90_span_deg": 101.99103568128277,
+          "stick_mean_abs": 0.3632348183701031,
+          "stick_rms": 0.5480910752651279,
+          "path_residual_sd_px": 0.8461195240578187
+        },
+        {
+          "start": 50,
+          "end": 65,
+          "samples": 84,
+          "straight_seconds": 3.3999999999998067,
+          "runs": 1,
+          "heading_sd_deg": 12.165080289379826,
+          "heading_rms_deg": 29.2198180514239,
+          "heading_p90_span_deg": 34.904243918810266,
+          "stick_mean_abs": 0.1460254784314196,
+          "stick_rms": 0.18376292089095167,
+          "path_residual_sd_px": 0.8743694555720263
+        }
+      ]
+    },
+    {
+      "course": "straight",
+      "seed": 1,
+      "unknown_speed": false,
+      "recorded_speed_availability": false,
+      "reached": true,
+      "elapsed": 24.166666666667027,
+      "mean_distance": 0.3592124985360516,
+      "max_distance": 1.1735935152677819,
+      "max_no_progress": 1.8000000000000023,
+      "steering_flips_per_second": 0.20689655172413485,
+      "recoveries": 0,
+      "collisions": 0,
+      "max_overspeed_time": 0.0,
+      "max_bend_speed": 0.0,
+      "max_speed": 7.92495268860966,
+      "final_position": [
+        -0.9544349614412794,
+        117.37252185866309
+      ],
+      "windows": [
+        {
+          "start": 5,
+          "end": 20,
+          "samples": 294,
+          "straight_seconds": 11.066666666666674,
+          "runs": 2,
+          "heading_sd_deg": 4.21474209377473,
+          "heading_rms_deg": 4.743235470626771,
+          "heading_p90_span_deg": 14.298237414264598,
+          "stick_mean_abs": 0.01292080535210332,
+          "stick_rms": 0.04640622964637902,
+          "path_residual_sd_px": 0.8142920123696892
+        }
+      ]
+    },
+    {
+      "course": "left",
+      "seed": 1,
+      "unknown_speed": false,
+      "recorded_speed_availability": false,
+      "reached": true,
+      "elapsed": 36.9333333333338,
+      "mean_distance": 0.7205731903851184,
+      "max_distance": 4.112730774220239,
+      "max_no_progress": 1.8000000000000023,
+      "steering_flips_per_second": 0.40613718411551836,
+      "recoveries": 0,
+      "collisions": 0,
+      "max_overspeed_time": 0.0,
+      "max_bend_speed": 5.552732677286306,
+      "max_speed": 7.43742913620047,
+      "final_position": [
+        -97.01841161205228,
+        100.31342798059283
+      ],
+      "windows": [
+        {
+          "start": 5,
+          "end": 20,
+          "samples": 254,
+          "straight_seconds": 9.433333333333302,
+          "runs": 1,
+          "heading_sd_deg": 4.962903067430075,
+          "heading_rms_deg": 5.154987457387468,
+          "heading_p90_span_deg": 15.735295070244986,
+          "stick_mean_abs": 0.023074685537730157,
+          "stick_rms": 0.06854674150918352,
+          "path_residual_sd_px": 0.8743581751746662
+        },
+        {
+          "start": 20,
+          "end": 35,
+          "samples": 260,
+          "straight_seconds": 9.133333333333788,
+          "runs": 1,
+          "heading_sd_deg": 26.01197407237498,
+          "heading_rms_deg": 31.50871289043186,
+          "heading_p90_span_deg": 81.6520287015172,
+          "stick_mean_abs": 0.1510967833852817,
+          "stick_rms": 0.31061000358580465,
+          "path_residual_sd_px": 0.8211758988308167
+        }
+      ]
+    },
+    {
+      "course": "right",
+      "seed": 1,
+      "unknown_speed": false,
+      "recorded_speed_availability": false,
+      "reached": true,
+      "elapsed": 39.93333333333363,
+      "mean_distance": 0.8317716062273972,
+      "max_distance": 3.9276857767912645,
+      "max_no_progress": 1.8000000000000023,
+      "steering_flips_per_second": 0.3005008347245387,
+      "recoveries": 0,
+      "collisions": 0,
+      "max_overspeed_time": 0.0,
+      "max_bend_speed": 4.884244401486761,
+      "max_speed": 7.428454213174689,
+      "final_position": [
+        97.0580047940341,
+        99.71549855407316
+      ],
+      "windows": [
+        {
+          "start": 5,
+          "end": 20,
+          "samples": 253,
+          "straight_seconds": 9.799999999999965,
+          "runs": 1,
+          "heading_sd_deg": 4.229485606783387,
+          "heading_rms_deg": 4.253264511358942,
+          "heading_p90_span_deg": 13.528252822931567,
+          "stick_mean_abs": 0.005249676783726346,
+          "stick_rms": 0.021730299227768334,
+          "path_residual_sd_px": 0.8841283835576362
+        },
+        {
+          "start": 20,
+          "end": 35,
+          "samples": 270,
+          "straight_seconds": 9.566666666667142,
+          "runs": 1,
+          "heading_sd_deg": 23.10824890093478,
+          "heading_rms_deg": 28.75601264371866,
+          "heading_p90_span_deg": 77.4257441090061,
+          "stick_mean_abs": 0.16993157156707706,
+          "stick_rms": 0.3403650573563775,
+          "path_residual_sd_px": 0.8317908347318741
+        }
+      ]
+    },
+    {
+      "course": "s_bend",
+      "seed": 1,
+      "unknown_speed": false,
+      "recorded_speed_availability": false,
+      "reached": true,
+      "elapsed": 62.13333333333237,
+      "mean_distance": 0.813562622918572,
+      "max_distance": 4.529655028167623,
+      "max_no_progress": 1.8000000000000023,
+      "steering_flips_per_second": 0.3218884120171724,
+      "recoveries": 0,
+      "collisions": 0,
+      "max_overspeed_time": 0.0,
+      "max_bend_speed": 6.101694897433191,
+      "max_speed": 7.4062177335109,
+      "final_position": [
+        0.9843306061751561,
+        277.2463373862331
+      ],
+      "windows": [
+        {
+          "start": 5,
+          "end": 20,
+          "samples": 287,
+          "straight_seconds": 10.400000000000107,
+          "runs": 2,
+          "heading_sd_deg": 17.223192679075705,
+          "heading_rms_deg": 22.85851762323921,
+          "heading_p90_span_deg": 52.585984894604486,
+          "stick_mean_abs": 0.1015505702920896,
+          "stick_rms": 0.19903467280040255,
+          "path_residual_sd_px": 0.8871026453699089
+        },
+        {
+          "start": 20,
+          "end": 35,
+          "samples": 375,
+          "straight_seconds": 13.633333333333692,
+          "runs": 1,
+          "heading_sd_deg": 27.59912013836478,
+          "heading_rms_deg": 32.71489439438902,
+          "heading_p90_span_deg": 91.95286837407428,
+          "stick_mean_abs": 0.14418612018976262,
+          "stick_rms": 0.28603009406279833,
+          "path_residual_sd_px": 0.8701885800882219
+        },
+        {
+          "start": 35,
+          "end": 50,
+          "samples": 173,
+          "straight_seconds": 6.466666666666299,
+          "runs": 2,
+          "heading_sd_deg": 33.473701575093784,
+          "heading_rms_deg": 45.18380492347668,
+          "heading_p90_span_deg": 90.86881245333284,
+          "stick_mean_abs": 0.3171204203075854,
+          "stick_rms": 0.4918911377469894,
+          "path_residual_sd_px": 0.8335308857569103
+        }
+      ]
+    },
+    {
+      "course": "straight",
+      "seed": 2,
+      "unknown_speed": false,
+      "recorded_speed_availability": false,
+      "reached": true,
+      "elapsed": 21.333333333333552,
+      "mean_distance": 0.3593478036284961,
+      "max_distance": 1.1298090091762976,
+      "max_no_progress": 1.8000000000000023,
+      "steering_flips_per_second": 0.37499999999999617,
+      "recoveries": 0,
+      "collisions": 0,
+      "max_overspeed_time": 0.0,
+      "max_bend_speed": 0.0,
+      "max_speed": 7.913099409136204,
+      "final_position": [
+        -1.0662020287998621,
+        117.42614956566666
+      ],
+      "windows": [
+        {
+          "start": 5,
+          "end": 20,
+          "samples": 247,
+          "straight_seconds": 9.033333333333303,
+          "runs": 1,
+          "heading_sd_deg": 4.2681793339137775,
+          "heading_rms_deg": 4.277824844664688,
+          "heading_p90_span_deg": 14.188793898473257,
+          "stick_mean_abs": 0.0074876241659354095,
+          "stick_rms": 0.030369939671533553,
+          "path_residual_sd_px": 0.8678327423917945
+        }
+      ]
+    },
+    {
+      "course": "left",
+      "seed": 2,
+      "unknown_speed": false,
+      "recorded_speed_availability": false,
+      "reached": true,
+      "elapsed": 36.50000000000049,
+      "mean_distance": 0.5233305937835331,
+      "max_distance": 2.344943893494719,
+      "max_no_progress": 1.8000000000000023,
+      "steering_flips_per_second": 0.43835616438355574,
+      "recoveries": 0,
+      "collisions": 0,
+      "max_overspeed_time": 0.0,
+      "max_bend_speed": 5.313459004521454,
+      "max_speed": 7.4497146743404175,
+      "final_position": [
+        -97.15122676281399,
+        100.19362356979553
+      ],
+      "windows": [
+        {
+          "start": 5,
+          "end": 20,
+          "samples": 300,
+          "straight_seconds": 11.033333333333353,
+          "runs": 2,
+          "heading_sd_deg": 4.476840000033989,
+          "heading_rms_deg": 30.528401550018362,
+          "heading_p90_span_deg": 15.458454224179265,
+          "stick_mean_abs": 0.05573051078658653,
+          "stick_rms": 0.18099145634334568,
+          "path_residual_sd_px": 0.8493651415171881
+        },
+        {
+          "start": 20,
+          "end": 35,
+          "samples": 236,
+          "straight_seconds": 8.466666666667088,
+          "runs": 1,
+          "heading_sd_deg": 20.205751079470502,
+          "heading_rms_deg": 23.16987808566631,
+          "heading_p90_span_deg": 66.83020356320529,
+          "stick_mean_abs": 0.18715512575782164,
+          "stick_rms": 0.38943484652465454,
+          "path_residual_sd_px": 0.8444570633548657
+        }
+      ]
+    },
+    {
+      "course": "right",
+      "seed": 2,
+      "unknown_speed": false,
+      "recorded_speed_availability": false,
+      "reached": true,
+      "elapsed": 36.3000000000005,
+      "mean_distance": 0.5056619491646245,
+      "max_distance": 1.4889407542922726,
+      "max_no_progress": 1.8000000000000023,
+      "steering_flips_per_second": 0.33057851239668967,
+      "recoveries": 0,
+      "collisions": 0,
+      "max_overspeed_time": 0.0,
+      "max_bend_speed": 5.498725434037303,
+      "max_speed": 7.64107362494097,
+      "final_position": [
+        97.33601922075279,
+        100.79479168993713
+      ],
+      "windows": [
+        {
+          "start": 5,
+          "end": 20,
+          "samples": 289,
+          "straight_seconds": 10.966666666666683,
+          "runs": 2,
+          "heading_sd_deg": 4.930550016913438,
+          "heading_rms_deg": 29.58006377993478,
+          "heading_p90_span_deg": 15.71442195395092,
+          "stick_mean_abs": 0.03675055839449234,
+          "stick_rms": 0.13942300957596993,
+          "path_residual_sd_px": 0.8799982277634609
+        },
+        {
+          "start": 20,
+          "end": 35,
+          "samples": 255,
+          "straight_seconds": 9.333333333333798,
+          "runs": 1,
+          "heading_sd_deg": 22.874852308945396,
+          "heading_rms_deg": 24.820646327237977,
+          "heading_p90_span_deg": 79.50151315155314,
+          "stick_mean_abs": 0.20750784122948715,
+          "stick_rms": 0.4116137713354912,
+          "path_residual_sd_px": 0.8520955983004063
+        }
+      ]
+    },
+    {
+      "course": "s_bend",
+      "seed": 2,
+      "unknown_speed": false,
+      "recorded_speed_availability": false,
+      "reached": true,
+      "elapsed": 61.03333333333243,
+      "mean_distance": 0.7572452250799767,
+      "max_distance": 3.2814826887366184,
+      "max_no_progress": 1.8000000000000023,
+      "steering_flips_per_second": 0.44238121245221845,
+      "recoveries": 0,
+      "collisions": 0,
+      "max_overspeed_time": 0.0,
+      "max_bend_speed": 6.495070523423412,
+      "max_speed": 7.4721847048547865,
+      "final_position": [
+        0.9000082560831995,
+        277.213703242005
+      ],
+      "windows": [
+        {
+          "start": 5,
+          "end": 20,
+          "samples": 253,
+          "straight_seconds": 9.633333333333384,
+          "runs": 2,
+          "heading_sd_deg": 14.381421352355014,
+          "heading_rms_deg": 21.168280661167085,
+          "heading_p90_span_deg": 42.61021582384528,
+          "stick_mean_abs": 0.0904514386117211,
+          "stick_rms": 0.17172588111817685,
+          "path_residual_sd_px": 0.8929239063898473
+        },
+        {
+          "start": 20,
+          "end": 35,
+          "samples": 379,
+          "straight_seconds": 13.700000000000362,
+          "runs": 1,
+          "heading_sd_deg": 26.935851262393424,
+          "heading_rms_deg": 29.31952843555785,
+          "heading_p90_span_deg": 89.03828348447199,
+          "stick_mean_abs": 0.14507396696386565,
+          "stick_rms": 0.3120403528825419,
+          "path_residual_sd_px": 0.8747207290761393
+        },
+        {
+          "start": 35,
+          "end": 50,
+          "samples": 186,
+          "straight_seconds": 8.133333333332871,
+          "runs": 3,
+          "heading_sd_deg": 27.18398335487819,
+          "heading_rms_deg": 41.15309692549405,
+          "heading_p90_span_deg": 71.92092148984779,
+          "stick_mean_abs": 0.2559233272016266,
+          "stick_rms": 0.3950126815384732,
+          "path_residual_sd_px": 0.990615044142128
+        }
+      ]
+    }
+  ]
+}

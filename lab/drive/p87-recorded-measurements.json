@@ -1,0 +1,166 @@
+{
+  "straight_bend_limit_deg": 15,
+  "chord_px": 20,
+  "minimum_run_seconds": 1,
+  "maximum_gap_seconds": 0.2,
+  "provisional_heading_sd_limit_deg": 10,
+  "sources": [
+    {
+      "recording": "pilot/20261113-163218",
+      "source_sha256": "1c54ff12da84d802a4f7ab567de5c7a1e1f611624cfa934cc554701219a3291d",
+      "windows": [
+        {
+          "start": 120,
+          "end": 135,
+          "samples": 107,
+          "straight_seconds": 4.79719579200173,
+          "runs": 1,
+          "heading_sd_deg": 61.72652651999413,
+          "heading_rms_deg": 68.15531756750579,
+          "heading_p90_span_deg": 163.6935380262297,
+          "stick_mean_abs": 0.6249192881973309,
+          "stick_rms": 0.727683851645519,
+          "path_residual_sd_px": 0.4017904396515298
+        },
+        {
+          "start": 135,
+          "end": 150,
+          "samples": 111,
+          "straight_seconds": 4.574505249998765,
+          "runs": 2,
+          "heading_sd_deg": 46.074754330915205,
+          "heading_rms_deg": 98.8561693050668,
+          "heading_p90_span_deg": 137.6396398559784,
+          "stick_mean_abs": 0.8370350818769379,
+          "stick_rms": 0.8653534904101811,
+          "path_residual_sd_px": 0.5141476070564426
+        },
+        {
+          "start": 150,
+          "end": 165,
+          "samples": 333,
+          "straight_seconds": 13.021636749996105,
+          "runs": 1,
+          "heading_sd_deg": 24.02835611066181,
+          "heading_rms_deg": 24.324995880502517,
+          "heading_p90_span_deg": 95.53514353681746,
+          "stick_mean_abs": 0.3923470504157072,
+          "stick_rms": 0.4824752094300564,
+          "path_residual_sd_px": 0.3676582728442403
+        },
+        {
+          "start": 165,
+          "end": 180,
+          "samples": 389,
+          "straight_seconds": 14.928945708998071,
+          "runs": 1,
+          "heading_sd_deg": 9.230962750923728,
+          "heading_rms_deg": 12.473122344072161,
+          "heading_p90_span_deg": 28.695130121641302,
+          "stick_mean_abs": 0.22852121843167555,
+          "stick_rms": 0.4262828897804532,
+          "path_residual_sd_px": 0.35248583824093926
+        },
+        {
+          "start": 180,
+          "end": 195,
+          "samples": 175,
+          "straight_seconds": 7.036508709003101,
+          "runs": 2,
+          "heading_sd_deg": 20.969880125778943,
+          "heading_rms_deg": 21.643206366433063,
+          "heading_p90_span_deg": 64.59127944063877,
+          "stick_mean_abs": 0.41692053441872595,
+          "stick_rms": 0.49641860181545927,
+          "path_residual_sd_px": 0.33568886956543464
+        },
+        {
+          "start": 195,
+          "end": 210,
+          "samples": 0
+        },
+        {
+          "start": 210,
+          "end": 225,
+          "samples": 0
+        },
+        {
+          "start": 225,
+          "end": 240,
+          "samples": 0
+        },
+        {
+          "start": 240,
+          "end": 255,
+          "samples": 207,
+          "straight_seconds": 7.975288415997056,
+          "runs": 2,
+          "heading_sd_deg": 7.946829296198754,
+          "heading_rms_deg": 70.27635177498918,
+          "heading_p90_span_deg": 23.884085341607108,
+          "stick_mean_abs": 0.30729610516361977,
+          "stick_rms": 0.4443595109614847,
+          "path_residual_sd_px": 0.8583593639091712
+        },
+        {
+          "start": 255,
+          "end": 270,
+          "samples": 0
+        },
+        {
+          "start": 270,
+          "end": 285,
+          "samples": 0
+        },
+        {
+          "start": 285,
+          "end": 300,
+          "samples": 0
+        },
+        {
+          "start": 300,
+          "end": 315,
+          "samples": 0
+        }
+      ]
+    },
+    {
+      "recording": "kerim/20261113-141634",
+      "source_sha256": "c2cab9e35529c33333d177c8cfffae8bbdbe3b5595fb786582ce07ce0ed32a5e",
+      "windows": [
+        {
+          "start": 120,
+          "end": 135,
+          "samples": 108,
+          "straight_seconds": 4.290700000000001,
+          "runs": 3,
+          "heading_sd_deg": 2.8266416470510336,
+          "heading_rms_deg": 27.26947636804284,
+          "heading_p90_span_deg": 8.225455051322335,
+          "stick_mean_abs": 0.15962962962962965,
+          "stick_rms": 0.3405850086955504,
+          "path_residual_sd_px": 0.6285343469652207
+        }
+      ]
+    },
+    {
+      "recording": "kerim/20261113-031159",
+      "source_sha256": "ca6e08b19086f93077a480b907caaee2e3de359301782ccf6154036c9a344e90",
+      "windows": [
+        {
+          "start": 15,
+          "end": 30,
+          "samples": 266,
+          "straight_seconds": 9.632000000000001,
+          "runs": 1,
+          "heading_sd_deg": 3.475913216086097,
+          "heading_rms_deg": 4.796155700449971,
+          "heading_p90_span_deg": 11.142648314045012,
+          "stick_mean_abs": 0.10157894736842105,
+          "stick_rms": 0.27222143794748327,
+          "path_residual_sd_px": 0.32562586292827556
+        }
+      ]
+    }
+  ]
+}
