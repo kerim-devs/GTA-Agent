@@ -8,7 +8,7 @@ from typing import ClassVar
 
 import numpy as np
 
-from . import sides
+from . import ahead, sides
 from .breath import Breath
 from .contract import NEUTRAL_PAD, Blip, Observation, Pad, SkillResult, player_mode
 from .foot import hud_crop, road_position, stick_for
@@ -125,7 +125,7 @@ class WalkTo:
             setattr(self, key, value)
         self.limit = float(self.duration)
         self.profile = active()
-        self.guard = WayRound(sides=sides.active())
+        self.guard = WayRound(sides=sides.active(), ahead=ahead.active())
         self.breath = Breath()
         self.winded = False  # the figure has run itself out and jogs until it has its breath back
         self.spot = Spot()
@@ -298,7 +298,7 @@ class WalkTo:
             self.fresh, self.absent, self.last_direction, self.way = False, 0.0, None, None
             # On 12 November the picture was gone for twenty seconds, and the guard, still holding
             # a push from before it, called the figure stuck three tenths of a second after it.
-            self.guard = WayRound(sides=sides.active())
+            self.guard = WayRound(sides=sides.active(), ahead=ahead.active())
             self.breath.gap()
             return self._stand()
         frame = observation.frame

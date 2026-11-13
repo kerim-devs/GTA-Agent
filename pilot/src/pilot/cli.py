@@ -7,7 +7,7 @@ import sys
 from dataclasses import asdict, fields
 from pathlib import Path
 
-from . import hud, profile, sides
+from . import ahead, hud, profile, sides
 from .bridge import Bridge
 from .calibrate import RECORDINGS as CALIBRATIONS
 from .calibrate import run_calibrate, selection
@@ -195,6 +195,7 @@ def main(argv: list[str] | None = None) -> None:
         try:
             judge = JudgeReader(args.judge) if args.judge else None
             sides.use(args.judge)
+            ahead.use(args.judge)
         except ValueError as error:
             parser.error(str(error))
         if args.plan and args.head != "scripted":

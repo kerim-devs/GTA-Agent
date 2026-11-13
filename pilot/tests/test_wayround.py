@@ -325,3 +325,78 @@ def test_a_press_of_square_cut_by_a_tick_that_says_nothing_is_not_pressed_again(
     # Uncut, the press is held for its fifteen hundredths of a second: five ticks.
     guard = Told(lambda time, guard: "still")
     assert sum(bool(guard.step(tick(index / 30), FORWARD, sprint=True).buttons) for index in range(75)) == 5
+
+
+class Looks:
+    """A model that answers at once: how open each view is, in the order the views are asked about."""
+
+    def __init__(self, *shares, silent=False):
+        self.shares, self.silent, self.asked = list(shares), silent, []
+
+    def ask(self, frame, capture):
+        self.asked.append(capture)
+        return True
+
+    def answer(self, since):
+        if self.silent:
+            return None
+        return (self.shares[len(self.asked) - 1] if len(self.asked) <= len(self.shares) else 0.0, None)
+
+
+def running_where_the_model_said_open(time, guard):
+    return "going" if guard.state == "round" and guard.phase == "run" else "still"
+
+
+def test_with_a_model_to_ask_the_guard_looks_round_before_it_feels_for_a_way():
+    # Kerim, 13 November: stuck, the model is to look and say where the way goes on.
+    model = Looks(0.05, 0.97)
+    guard = Told(running_where_the_model_said_open, ahead=model)
+    steers = run(guard, 7.5)
+    assert went(steers, ("go", 0.0), ("climb", 1.5), ("look", 3.1), ("round", 4.7), ("go", 6.7))
+    # A look: the figure stands, the camera goes right for half a second, and the picture settles.
+    looking = [steer for time, steer in steers.items() if steer.state == "look"]
+    assert all(steer.left == (0.0, 0.0) and not steer.buttons for steer in looking)
+    assert [steers[time / 10].right for time in range(31, 39)] == [(1.0, 0.0)] * 5 + [(0.0, 0.0)] * 3
+    assert model.asked == pytest.approx([3.9, 4.7]) and guard.views == [0.05, 0.97]
+    # Into the view it called open the figure runs straight, for as long as a leg sideways.
+    assert all(steers[time / 10].left == (0.0, -1.0) for time in range(47, 67))
+    assert all(steers[time / 10].right == (0.0, 0.0) for time in range(47, 76))
+    assert steers[7.0].left == FORWARD and guard.round_ended == pytest.approx(6.7) and not guard.closed
+    assert ";views=0.05/0.97" in guard.diagnostic()
+
+
+def test_a_way_the_model_calls_open_is_judged_by_the_feet_like_any_other():
+    # Open by the model's word and closed in fact, as a chain-link fence is: a jump at it, and the
+    # camera goes on round.
+    model = Looks(0.99, 0.99)
+
+    def seen(time, guard):
+        return "going" if guard.state == "round" and guard.phase == "run" and guard.looked == 2 else "still"
+
+    guard = Told(seen, ahead=model)
+    steers = run(guard, 10.6)
+    states = [state for state, _ in stretches(steers)]
+    assert states == ["go", "climb", "look", "round", "climb", "look", "round", "go"]
+    assert guard.looked == 2 and model.asked == pytest.approx([3.9, 8.4])
+    pressed = [time for time, steer in steers.items() if steer.buttons]
+    assert len(pressed) == 4 and steers[pressed[2]].left == (0.0, -1.0)
+
+
+def test_with_every_view_called_blocked_or_no_answer_the_sides_are_felt_for_as_before():
+    guard = Told(still_unless_going_round, ahead=Looks(0.1, 0.2, 0.0, 0.3))
+
+    def seen(time, guard):
+        return "going" if guard.state == "round" and guard.phase in ("out", "in") else "still"
+
+    guard.seen = seen
+    steers = run(guard, 9.5)
+    # Four looks of eight tenths of a second, once round, and then out to the right.
+    assert went(steers, ("go", 0.0), ("climb", 1.5), ("look", 3.1), ("round", 6.3), ("go", 9.3))
+    assert len(guard.ahead.asked) == 4 and steers[7.0].left == pytest.approx(RIGHT)
+    # A model that does not answer costs one look and a second of waiting, at this obstacle.
+    silent = Looks(silent=True)
+    guard = Told(seen, ahead=silent)
+    steers = run(guard, 8.5)
+    assert went(steers, ("go", 0.0), ("climb", 1.5), ("look", 3.1), ("round", 4.9), ("go", 7.9))
+    assert len(silent.asked) == 1 and guard.views == [None]
+    assert all(steer.left == (0.0, 0.0) for steer in steers.values() if steer.state == "look")
