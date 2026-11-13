@@ -1,0 +1,859 @@
+{
+  "evidence": "recorded replay with reconstructed object detections",
+  "model_sha256": "7860ae79de6c89a3c1eb72ae9a2756c0ccfbe04b7791bb5880afabd97855a411",
+  "confidence": 0.4,
+  "detection_interval": 0.25,
+  "note": "The source has no object boxes. Detections come from the recorded full frames, not historical detector output.",
+  "windows": [
+    {
+      "session": "20261112-102851",
+      "start": 199.018,
+      "end": 206.61,
+      "ticks": 201,
+      "detections": 29,
+      "starts": 0,
+      "reverse_entries": 0,
+      "damaged_start_violations": 0,
+      "stale_start_violations": 0,
+      "states": {
+        "follow": 125,
+        "recovery-reverse": 26,
+        "coast": 2,
+        "idle": 48
+      }
+    },
+    {
+      "session": "20261112-103305",
+      "start": 112.997,
+      "end": 172.985,
+      "ticks": 1569,
+      "detections": 223,
+      "starts": 0,
+      "reverse_entries": 0,
+      "damaged_start_violations": 0,
+      "stale_start_violations": 0,
+      "states": {
+        "follow": 1542,
+        "coast": 27
+      }
+    },
+    {
+      "session": "20261112-103305",
+      "start": 173.024,
+      "end": 198.435,
+      "ticks": 675,
+      "detections": 96,
+      "starts": 0,
+      "reverse_entries": 0,
+      "damaged_start_violations": 0,
+      "stale_start_violations": 0,
+      "states": {
+        "follow": 268,
+        "recovery-reverse": 149,
+        "recovery-forward": 258
+      }
+    },
+    {
+      "session": "20261112-104424",
+      "start": 3.11,
+      "end": 63.124,
+      "ticks": 1515,
+      "detections": 225,
+      "starts": 1,
+      "reverse_entries": 1,
+      "damaged_start_violations": 0,
+      "stale_start_violations": 0,
+      "states": {
+        "follow": 1286,
+        "coast": 64,
+        "bypass-wait": 1,
+        "turn-reverse": 42,
+        "turn-forward": 22,
+        "recovery-reverse": 49,
+        "recovery-forward": 51
+      }
+    },
+    {
+      "session": "20261112-104424",
+      "start": 63.163,
+      "end": 99.902,
+      "ticks": 929,
+      "detections": 138,
+      "starts": 0,
+      "reverse_entries": 0,
+      "damaged_start_violations": 0,
+      "stale_start_violations": 0,
+      "states": {
+        "follow": 52,
+        "recovery-reverse": 33,
+        "recovery-forward": 101,
+        "dead-or-held": 743
+      }
+    },
+    {
+      "session": "20261112-104424",
+      "start": 155.304,
+      "end": 173.418,
+      "ticks": 409,
+      "detections": 66,
+      "starts": 0,
+      "reverse_entries": 0,
+      "damaged_start_violations": 0,
+      "stale_start_violations": 0,
+      "states": {
+        "follow": 98,
+        "bypass-wait": 31,
+        "recovery-reverse": 71,
+        "recovery-forward": 177,
+        "dead-or-held": 32
+      }
+    },
+    {
+      "session": "20261112-104827",
+      "start": 25.474,
+      "end": 65.308,
+      "ticks": 881,
+      "detections": 145,
+      "starts": 1,
+      "reverse_entries": 3,
+      "damaged_start_violations": 0,
+      "stale_start_violations": 0,
+      "states": {
+        "follow": 81,
+        "recovery-reverse": 33,
+        "recovery-forward": 66,
+        "turn-reverse": 233,
+        "turn-forward": 239,
+        "coast": 28,
+        "failed-recovery": 201
+      }
+    },
+    {
+      "session": "20261112-104827",
+      "start": 65.408,
+      "end": 125.336,
+      "ticks": 1410,
+      "detections": 221,
+      "starts": 2,
+      "reverse_entries": 2,
+      "damaged_start_violations": 0,
+      "stale_start_violations": 0,
+      "states": {
+        "follow": 1020,
+        "coast": 18,
+        "bypass-wait": 77,
+        "bypass-reverse": 47,
+        "bypass-forward": 176,
+        "recovery-reverse": 31,
+        "recovery-forward": 41
+      }
+    },
+    {
+      "session": "20261112-104827",
+      "start": 125.346,
+      "end": 171.183,
+      "ticks": 1079,
+      "detections": 171,
+      "starts": 0,
+      "reverse_entries": 0,
+      "damaged_start_violations": 0,
+      "stale_start_violations": 0,
+      "states": {
+        "follow": 1062,
+        "bypass-wait": 12,
+        "coast": 5
+      }
+    },
+    {
+      "session": "20261112-104827",
+      "start": 174.896,
+      "end": 234.877,
+      "ticks": 1514,
+      "detections": 225,
+      "starts": 1,
+      "reverse_entries": 1,
+      "damaged_start_violations": 0,
+      "stale_start_violations": 0,
+      "states": {
+        "follow": 1241,
+        "turn-forward": 92,
+        "coast": 55,
+        "bypass-wait": 54,
+        "bypass-reverse": 24,
+        "bypass-forward": 15,
+        "route-gone": 33
+      }
+    },
+    {
+      "session": "20261112-105230",
+      "start": 4.329,
+      "end": 36.872,
+      "ticks": 832,
+      "detections": 122,
+      "starts": 1,
+      "reverse_entries": 1,
+      "damaged_start_violations": 0,
+      "stale_start_violations": 0,
+      "states": {
+        "bypass-wait": 49,
+        "follow": 321,
+        "bypass-reverse": 23,
+        "coast": 15,
+        "bypass-forward": 10,
+        "recovery-reverse": 82,
+        "recovery-forward": 205,
+        "dead-or-held": 127
+      }
+    },
+    {
+      "session": "20261112-105230",
+      "start": 36.949,
+      "end": 54.972,
+      "ticks": 453,
+      "detections": 68,
+      "starts": 0,
+      "reverse_entries": 0,
+      "damaged_start_violations": 0,
+      "stale_start_violations": 0,
+      "states": {
+        "follow": 53,
+        "recovery-reverse": 33,
+        "recovery-forward": 101,
+        "dead-or-held": 266
+      }
+    },
+    {
+      "session": "20261112-105230",
+      "start": 55.053,
+      "end": 59.992,
+      "ticks": 124,
+      "detections": 19,
+      "starts": 0,
+      "reverse_entries": 0,
+      "damaged_start_violations": 0,
+      "stale_start_violations": 0,
+      "states": {
+        "follow": 51,
+        "recovery-reverse": 32,
+        "recovery-forward": 41
+      }
+    },
+    {
+      "session": "20261112-105332",
+      "start": 3.229,
+      "end": 21.109,
+      "ticks": 452,
+      "detections": 67,
+      "starts": 0,
+      "reverse_entries": 0,
+      "damaged_start_violations": 0,
+      "stale_start_violations": 0,
+      "states": {
+        "follow": 52,
+        "recovery-reverse": 32,
+        "recovery-forward": 101,
+        "dead-or-held": 267
+      }
+    }
+  ],
+  "starts": [
+    {
+      "session": "20261112-104424",
+      "window_start": 3.11,
+      "t": 52.99236566602485,
+      "frame_id": 267738,
+      "i": 3175,
+      "capture_t": 52.989,
+      "phase": "turn-reverse",
+      "moving": true,
+      "gps_speed": 4.571894367170171e-13,
+      "corrupt": false,
+      "box_age": 0.19428645801963285,
+      "bearing": -108.57458136238218,
+      "arrow": -1.97516078256416,
+      "objects": [
+        {
+          "kind": "car",
+          "box": [
+            304.96746826171875,
+            346.2619323730469,
+            402.85858154296875,
+            384.4147033691406
+          ],
+          "confidence": 0.8564715385437012
+        },
+        {
+          "kind": "car",
+          "box": [
+            511.7903137207031,
+            348.0598449707031,
+            564.9159545898438,
+            372.3852844238281
+          ],
+          "confidence": 0.7390193939208984
+        },
+        {
+          "kind": "car",
+          "box": [
+            645.3331909179688,
+            343.2765808105469,
+            674.9811401367188,
+            368.8653259277344
+          ],
+          "confidence": 0.6506031155586243
+        },
+        {
+          "kind": "car",
+          "box": [
+            48.388919830322266,
+            346.1389465332031,
+            140.36708068847656,
+            390.8047790527344
+          ],
+          "confidence": 0.41120481491088867
+        }
+      ]
+    },
+    {
+      "session": "20261112-104827",
+      "window_start": 25.474,
+      "t": 32.43842525000218,
+      "frame_id": 281098,
+      "i": 1938,
+      "capture_t": 32.4294,
+      "phase": "turn-reverse",
+      "moving": true,
+      "gps_speed": 2.1171181912816642e-13,
+      "corrupt": false,
+      "box_age": 0.24031591601669788,
+      "bearing": -127.8894048565667,
+      "arrow": 127.26369803855437,
+      "objects": []
+    },
+    {
+      "session": "20261112-104827",
+      "window_start": 65.408,
+      "t": 73.92660916701425,
+      "frame_id": 283585,
+      "i": 4425,
+      "capture_t": 73.9235,
+      "phase": "bypass-reverse",
+      "moving": false,
+      "gps_speed": 1.6374532035608908e-13,
+      "corrupt": false,
+      "box_age": 0.22365599998738617,
+      "bearing": -15.464481479311802,
+      "arrow": -23.505764918183104,
+      "objects": [
+        {
+          "kind": "truck",
+          "box": [
+            0.91461181640625,
+            105.6414794921875,
+            571.31591796875,
+            709.546142578125
+          ],
+          "confidence": 0.9054075479507446
+        },
+        {
+          "kind": "car",
+          "box": [
+            763.8110961914062,
+            287.28302001953125,
+            803.7605590820312,
+            312.9886474609375
+          ],
+          "confidence": 0.8163923621177673
+        }
+      ]
+    },
+    {
+      "session": "20261112-104827",
+      "window_start": 65.408,
+      "t": 77.6605951670208,
+      "frame_id": 283809,
+      "i": 4649,
+      "capture_t": 77.6571,
+      "phase": "bypass-reverse",
+      "moving": false,
+      "gps_speed": null,
+      "corrupt": false,
+      "box_age": 0.07536008302122355,
+      "bearing": -11.42309043761844,
+      "arrow": -38.63439328371561,
+      "objects": [
+        {
+          "kind": "truck",
+          "box": [
+            0.299957275390625,
+            52.3460693359375,
+            577.4522705078125,
+            710.1814575195312
+          ],
+          "confidence": 0.8931606411933899
+        },
+        {
+          "kind": "person",
+          "box": [
+            37.78939437866211,
+            342.1875915527344,
+            112.91429138183594,
+            406.2725524902344
+          ],
+          "confidence": 0.7856636047363281
+        }
+      ]
+    },
+    {
+      "session": "20261112-104827",
+      "window_start": 174.896,
+      "t": 196.1184810840059,
+      "frame_id": 290903,
+      "i": 11743,
+      "capture_t": 196.1093,
+      "phase": "bypass-reverse",
+      "moving": false,
+      "gps_speed": null,
+      "corrupt": false,
+      "box_age": 0.0780802919762209,
+      "bearing": 71.1810938886993,
+      "arrow": 13.217155671417544,
+      "objects": [
+        {
+          "kind": "car",
+          "box": [
+            22.118682861328125,
+            397.88031005859375,
+            880.6910400390625,
+            709.8931274414062
+          ],
+          "confidence": 0.9030996561050415
+        },
+        {
+          "kind": "car",
+          "box": [
+            0.0,
+            314.2264709472656,
+            171.71383666992188,
+            391.3175964355469
+          ],
+          "confidence": 0.8310927748680115
+        },
+        {
+          "kind": "car",
+          "box": [
+            593.8911743164062,
+            320.8821716308594,
+            688.7145385742188,
+            358.9539489746094
+          ],
+          "confidence": 0.5854297876358032
+        },
+        {
+          "kind": "truck",
+          "box": [
+            750.953369140625,
+            283.3040466308594,
+            874.3607177734375,
+            343.1046447753906
+          ],
+          "confidence": 0.50032639503479
+        },
+        {
+          "kind": "person",
+          "box": [
+            451.1251220703125,
+            444.7845764160156,
+            607.338623046875,
+            527.7999877929688
+          ],
+          "confidence": 0.41649332642555237
+        }
+      ]
+    },
+    {
+      "session": "20261112-105230",
+      "window_start": 4.329,
+      "t": 7.169636790989898,
+      "frame_id": 294111,
+      "i": 425,
+      "capture_t": 7.1655,
+      "phase": "bypass-reverse",
+      "moving": false,
+      "gps_speed": null,
+      "corrupt": false,
+      "box_age": 0.16542404098436236,
+      "bearing": -38.06018771146347,
+      "arrow": -8.615962798196733,
+      "objects": [
+        {
+          "kind": "car",
+          "box": [
+            491.7812194824219,
+            382.2283935546875,
+            1027.27880859375,
+            712.4295654296875
+          ],
+          "confidence": 0.9397984147071838
+        },
+        {
+          "kind": "car",
+          "box": [
+            0.616668701171875,
+            509.90594482421875,
+            286.0688171386719,
+            715.0527954101562
+          ],
+          "confidence": 0.4135313034057617
+        }
+      ]
+    }
+  ],
+  "reverse_entries": [
+    {
+      "session": "20261112-104424",
+      "window_start": 3.11,
+      "t": 52.99236566602485,
+      "frame_id": 267738,
+      "i": 3175,
+      "capture_t": 52.989,
+      "phase": "turn-reverse",
+      "moving": true,
+      "gps_speed": 4.571894367170171e-13,
+      "corrupt": false,
+      "box_age": 0.19428645801963285,
+      "bearing": -108.57458136238218,
+      "arrow": -1.97516078256416,
+      "objects": [
+        {
+          "kind": "car",
+          "box": [
+            304.96746826171875,
+            346.2619323730469,
+            402.85858154296875,
+            384.4147033691406
+          ],
+          "confidence": 0.8564715385437012
+        },
+        {
+          "kind": "car",
+          "box": [
+            511.7903137207031,
+            348.0598449707031,
+            564.9159545898438,
+            372.3852844238281
+          ],
+          "confidence": 0.7390193939208984
+        },
+        {
+          "kind": "car",
+          "box": [
+            645.3331909179688,
+            343.2765808105469,
+            674.9811401367188,
+            368.8653259277344
+          ],
+          "confidence": 0.6506031155586243
+        },
+        {
+          "kind": "car",
+          "box": [
+            48.388919830322266,
+            346.1389465332031,
+            140.36708068847656,
+            390.8047790527344
+          ],
+          "confidence": 0.41120481491088867
+        }
+      ]
+    },
+    {
+      "session": "20261112-104827",
+      "window_start": 25.474,
+      "t": 32.43842525000218,
+      "frame_id": 281098,
+      "i": 1938,
+      "capture_t": 32.4294,
+      "phase": "turn-reverse",
+      "moving": true,
+      "gps_speed": 2.1171181912816642e-13,
+      "corrupt": false,
+      "box_age": 0.24031591601669788,
+      "bearing": -127.8894048565667,
+      "arrow": 127.26369803855437,
+      "objects": []
+    },
+    {
+      "session": "20261112-104827",
+      "window_start": 25.474,
+      "t": 39.55427366698859,
+      "frame_id": 281518,
+      "i": 2358,
+      "capture_t": 39.5363,
+      "phase": "turn-reverse",
+      "moving": true,
+      "gps_speed": null,
+      "corrupt": false,
+      "box_age": 0.08865916699869558,
+      "bearing": -24.474177374054463,
+      "arrow": 10.0664665163969,
+      "objects": [
+        {
+          "kind": "car",
+          "box": [
+            499.588623046875,
+            335.656494140625,
+            533.9757080078125,
+            366.27557373046875
+          ],
+          "confidence": 0.5884857177734375
+        },
+        {
+          "kind": "car",
+          "box": [
+            651.3831787109375,
+            340.6429748535156,
+            687.3690185546875,
+            364.7392883300781
+          ],
+          "confidence": 0.566419780254364
+        },
+        {
+          "kind": "car",
+          "box": [
+            525.0914916992188,
+            350.95501708984375,
+            630.2609252929688,
+            420.73040771484375
+          ],
+          "confidence": 0.4340917766094208
+        }
+      ]
+    },
+    {
+      "session": "20261112-104827",
+      "window_start": 25.474,
+      "t": 47.23444962501526,
+      "frame_id": 281984,
+      "i": 2824,
+      "capture_t": 47.2237,
+      "phase": "turn-reverse",
+      "moving": true,
+      "gps_speed": 5.118463006997936,
+      "corrupt": false,
+      "box_age": 0.16857216600328684,
+      "bearing": -107.84152838931091,
+      "arrow": -3.087196544318715,
+      "objects": [
+        {
+          "kind": "car",
+          "box": [
+            659.2538452148438,
+            339.3652648925781,
+            694.5005493164062,
+            361.8957824707031
+          ],
+          "confidence": 0.6430158019065857
+        },
+        {
+          "kind": "car",
+          "box": [
+            501.56878662109375,
+            332.2857666015625,
+            539.0798950195312,
+            357.74322509765625
+          ],
+          "confidence": 0.6257712841033936
+        },
+        {
+          "kind": "car",
+          "box": [
+            567.3424072265625,
+            330.194580078125,
+            605.353759765625,
+            359.2509765625
+          ],
+          "confidence": 0.5774136185646057
+        }
+      ]
+    },
+    {
+      "session": "20261112-104827",
+      "window_start": 65.408,
+      "t": 73.92660916701425,
+      "frame_id": 283585,
+      "i": 4425,
+      "capture_t": 73.9235,
+      "phase": "bypass-reverse",
+      "moving": false,
+      "gps_speed": 1.6374532035608908e-13,
+      "corrupt": false,
+      "box_age": 0.22365599998738617,
+      "bearing": -15.464481479311802,
+      "arrow": -23.505764918183104,
+      "objects": [
+        {
+          "kind": "truck",
+          "box": [
+            0.91461181640625,
+            105.6414794921875,
+            571.31591796875,
+            709.546142578125
+          ],
+          "confidence": 0.9054075479507446
+        },
+        {
+          "kind": "car",
+          "box": [
+            763.8110961914062,
+            287.28302001953125,
+            803.7605590820312,
+            312.9886474609375
+          ],
+          "confidence": 0.8163923621177673
+        }
+      ]
+    },
+    {
+      "session": "20261112-104827",
+      "window_start": 65.408,
+      "t": 77.6605951670208,
+      "frame_id": 283809,
+      "i": 4649,
+      "capture_t": 77.6571,
+      "phase": "bypass-reverse",
+      "moving": false,
+      "gps_speed": null,
+      "corrupt": false,
+      "box_age": 0.07536008302122355,
+      "bearing": -11.42309043761844,
+      "arrow": -38.63439328371561,
+      "objects": [
+        {
+          "kind": "truck",
+          "box": [
+            0.299957275390625,
+            52.3460693359375,
+            577.4522705078125,
+            710.1814575195312
+          ],
+          "confidence": 0.8931606411933899
+        },
+        {
+          "kind": "person",
+          "box": [
+            37.78939437866211,
+            342.1875915527344,
+            112.91429138183594,
+            406.2725524902344
+          ],
+          "confidence": 0.7856636047363281
+        }
+      ]
+    },
+    {
+      "session": "20261112-104827",
+      "window_start": 174.896,
+      "t": 196.1184810840059,
+      "frame_id": 290903,
+      "i": 11743,
+      "capture_t": 196.1093,
+      "phase": "bypass-reverse",
+      "moving": false,
+      "gps_speed": null,
+      "corrupt": false,
+      "box_age": 0.0780802919762209,
+      "bearing": 71.1810938886993,
+      "arrow": 13.217155671417544,
+      "objects": [
+        {
+          "kind": "car",
+          "box": [
+            22.118682861328125,
+            397.88031005859375,
+            880.6910400390625,
+            709.8931274414062
+          ],
+          "confidence": 0.9030996561050415
+        },
+        {
+          "kind": "car",
+          "box": [
+            0.0,
+            314.2264709472656,
+            171.71383666992188,
+            391.3175964355469
+          ],
+          "confidence": 0.8310927748680115
+        },
+        {
+          "kind": "car",
+          "box": [
+            593.8911743164062,
+            320.8821716308594,
+            688.7145385742188,
+            358.9539489746094
+          ],
+          "confidence": 0.5854297876358032
+        },
+        {
+          "kind": "truck",
+          "box": [
+            750.953369140625,
+            283.3040466308594,
+            874.3607177734375,
+            343.1046447753906
+          ],
+          "confidence": 0.50032639503479
+        },
+        {
+          "kind": "person",
+          "box": [
+            451.1251220703125,
+            444.7845764160156,
+            607.338623046875,
+            527.7999877929688
+          ],
+          "confidence": 0.41649332642555237
+        }
+      ]
+    },
+    {
+      "session": "20261112-105230",
+      "window_start": 4.329,
+      "t": 7.169636790989898,
+      "frame_id": 294111,
+      "i": 425,
+      "capture_t": 7.1655,
+      "phase": "bypass-reverse",
+      "moving": false,
+      "gps_speed": null,
+      "corrupt": false,
+      "box_age": 0.16542404098436236,
+      "bearing": -38.06018771146347,
+      "arrow": -8.615962798196733,
+      "objects": [
+        {
+          "kind": "car",
+          "box": [
+            491.7812194824219,
+            382.2283935546875,
+            1027.27880859375,
+            712.4295654296875
+          ],
+          "confidence": 0.9397984147071838
+        },
+        {
+          "kind": "car",
+          "box": [
+            0.616668701171875,
+            509.90594482421875,
+            286.0688171386719,
+            715.0527954101562
+          ],
+          "confidence": 0.4135313034057617
+        }
+      ]
+    }
+  ]
+}

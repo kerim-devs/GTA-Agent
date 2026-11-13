@@ -1,0 +1,3020 @@
+[
+  {
+    "profile": "nominal",
+    "gap": 2,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 259,
+    "position": [
+      0.016580407960214934,
+      0.5034120764142022
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.533,
+        "recovery-reverse"
+      ],
+      [
+        8.8,
+        "recovery-forward"
+      ],
+      [
+        11.267,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "nominal",
+    "gap": 2,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 259,
+    "position": [
+      0.14830334880078633,
+      0.559431072406003
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.533,
+        "recovery-reverse"
+      ],
+      [
+        8.8,
+        "recovery-forward"
+      ],
+      [
+        11.267,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "nominal",
+    "gap": 2,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 259,
+    "position": [
+      -0.14830334880078633,
+      0.559431072406003
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.533,
+        "recovery-reverse"
+      ],
+      [
+        8.8,
+        "recovery-forward"
+      ],
+      [
+        11.267,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "nominal",
+    "gap": 4,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 272,
+    "position": [
+      -1.2550163920257538,
+      0.17390707344311854
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.933,
+        "recovery-reverse"
+      ],
+      [
+        10.2,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "nominal",
+    "gap": 4,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 272,
+    "position": [
+      1.2550163920257538,
+      0.17390707344311854
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.933,
+        "recovery-reverse"
+      ],
+      [
+        10.2,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "nominal",
+    "gap": 4,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 272,
+    "position": [
+      -1.2550163920257538,
+      0.17390707344311854
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.933,
+        "recovery-reverse"
+      ],
+      [
+        10.2,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "nominal",
+    "gap": 7,
+    "blocked": 0,
+    "passed_at": 5.799999999999989,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 3.5666666666666558,
+    "collisions": 0,
+    "position": [
+      -1.3857922609007796,
+      9.028275855414769
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "nominal",
+    "gap": 7,
+    "blocked": -1,
+    "passed_at": 5.799999999999989,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 3.5666666666666558,
+    "collisions": 0,
+    "position": [
+      1.3857922609007796,
+      9.028275855414769
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "nominal",
+    "gap": 7,
+    "blocked": 1,
+    "passed_at": 5.799999999999989,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 3.5666666666666558,
+    "collisions": 0,
+    "position": [
+      -1.3857922609007796,
+      9.028275855414769
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "nominal",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 6.499999999999987,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 4.266666666666653,
+    "collisions": 0,
+    "position": [
+      -1.7242147449277276,
+      14.02233529525229
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-00",
+    "gap": 2,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 243,
+    "position": [
+      -0.5886789023210608,
+      -1.0550455916855008
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.867,
+        "recovery-reverse"
+      ],
+      [
+        9.133,
+        "recovery-forward"
+      ],
+      [
+        11.433,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-00",
+    "gap": 2,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 243,
+    "position": [
+      0.6078086730412836,
+      -1.0486196225360533
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.867,
+        "recovery-reverse"
+      ],
+      [
+        9.133,
+        "recovery-forward"
+      ],
+      [
+        11.433,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-00",
+    "gap": 2,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 243,
+    "position": [
+      -0.6078086730412836,
+      -1.0486196225360533
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.867,
+        "recovery-reverse"
+      ],
+      [
+        9.133,
+        "recovery-forward"
+      ],
+      [
+        11.433,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-00",
+    "gap": 4,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 253,
+    "position": [
+      -1.0583931182654938,
+      0.2555969571751401
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        9.567,
+        "recovery-reverse"
+      ],
+      [
+        10.833,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-00",
+    "gap": 4,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 253,
+    "position": [
+      1.0583931182654938,
+      0.2555969571751401
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        9.567,
+        "recovery-reverse"
+      ],
+      [
+        10.833,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-00",
+    "gap": 4,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 253,
+    "position": [
+      -1.0583931182654938,
+      0.2555969571751401
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        9.567,
+        "recovery-reverse"
+      ],
+      [
+        10.833,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-00",
+    "gap": 7,
+    "blocked": 0,
+    "passed_at": 7.299999999999984,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 5.06666666666665,
+    "collisions": 0,
+    "position": [
+      -1.3392854931216527,
+      9.007168968737638
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-00",
+    "gap": 7,
+    "blocked": -1,
+    "passed_at": 7.299999999999984,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 5.06666666666665,
+    "collisions": 0,
+    "position": [
+      1.3392854931216527,
+      9.00716896873764
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-00",
+    "gap": 7,
+    "blocked": 1,
+    "passed_at": 7.299999999999984,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 5.06666666666665,
+    "collisions": 0,
+    "position": [
+      -1.3392854931216527,
+      9.007168968737638
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-00",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 8.366666666666648,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 6.133333333333315,
+    "collisions": 0,
+    "position": [
+      -1.651638543973172,
+      14.022125907151505
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-01",
+    "gap": 2,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 259,
+    "position": [
+      0.016580407960214934,
+      0.5034120764142022
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.533,
+        "recovery-reverse"
+      ],
+      [
+        8.8,
+        "recovery-forward"
+      ],
+      [
+        11.267,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-01",
+    "gap": 2,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 259,
+    "position": [
+      0.14830334880078633,
+      0.559431072406003
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.533,
+        "recovery-reverse"
+      ],
+      [
+        8.8,
+        "recovery-forward"
+      ],
+      [
+        11.267,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-01",
+    "gap": 2,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 259,
+    "position": [
+      -0.14830334880078633,
+      0.559431072406003
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.533,
+        "recovery-reverse"
+      ],
+      [
+        8.8,
+        "recovery-forward"
+      ],
+      [
+        11.267,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-01",
+    "gap": 4,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 272,
+    "position": [
+      -1.2550163920257538,
+      0.17390707344311854
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.933,
+        "recovery-reverse"
+      ],
+      [
+        10.2,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-01",
+    "gap": 4,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 272,
+    "position": [
+      1.2550163920257538,
+      0.17390707344311854
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.933,
+        "recovery-reverse"
+      ],
+      [
+        10.2,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-01",
+    "gap": 4,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 272,
+    "position": [
+      -1.2550163920257538,
+      0.17390707344311854
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.933,
+        "recovery-reverse"
+      ],
+      [
+        10.2,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-01",
+    "gap": 7,
+    "blocked": 0,
+    "passed_at": 5.799999999999989,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 3.5666666666666558,
+    "collisions": 0,
+    "position": [
+      -1.3857922609007796,
+      9.028275855414769
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-01",
+    "gap": 7,
+    "blocked": -1,
+    "passed_at": 5.799999999999989,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 3.5666666666666558,
+    "collisions": 0,
+    "position": [
+      1.3857922609007796,
+      9.028275855414769
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-01",
+    "gap": 7,
+    "blocked": 1,
+    "passed_at": 5.799999999999989,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 3.5666666666666558,
+    "collisions": 0,
+    "position": [
+      -1.3857922609007796,
+      9.028275855414769
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-01",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 6.499999999999987,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 4.266666666666653,
+    "collisions": 0,
+    "position": [
+      -1.7242147449277276,
+      14.02233529525229
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-02",
+    "gap": 2,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 309,
+    "position": [
+      0.5000215816604626,
+      1.9989882752470498
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.167,
+        "recovery-reverse"
+      ],
+      [
+        8.433,
+        "recovery-forward"
+      ],
+      [
+        10.733,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-02",
+    "gap": 2,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 309,
+    "position": [
+      -0.300310945439689,
+      1.999894018107597
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.167,
+        "recovery-reverse"
+      ],
+      [
+        8.433,
+        "recovery-forward"
+      ],
+      [
+        10.733,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-02",
+    "gap": 2,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 309,
+    "position": [
+      0.300310945439689,
+      1.999894018107597
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.167,
+        "recovery-reverse"
+      ],
+      [
+        8.433,
+        "recovery-forward"
+      ],
+      [
+        10.733,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-02",
+    "gap": 4,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 288,
+    "position": [
+      -0.3379149093499819,
+      2.6079441164309083
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.333,
+        "recovery-reverse"
+      ],
+      [
+        9.6,
+        "recovery-forward"
+      ],
+      [
+        11.9,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-02",
+    "gap": 4,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 288,
+    "position": [
+      0.3379149093499819,
+      2.6079441164309083
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.333,
+        "recovery-reverse"
+      ],
+      [
+        9.6,
+        "recovery-forward"
+      ],
+      [
+        11.9,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-02",
+    "gap": 4,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 288,
+    "position": [
+      -0.3379149093499819,
+      2.6079441164309083
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.333,
+        "recovery-reverse"
+      ],
+      [
+        9.6,
+        "recovery-forward"
+      ],
+      [
+        11.9,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-02",
+    "gap": 7,
+    "blocked": 0,
+    "passed_at": 4.633333333333327,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.3999999999999932,
+    "collisions": 0,
+    "position": [
+      -1.4801047060384278,
+      9.000190925296426
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-02",
+    "gap": 7,
+    "blocked": -1,
+    "passed_at": 4.633333333333327,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.3999999999999932,
+    "collisions": 0,
+    "position": [
+      1.4801047060384278,
+      9.000190925296426
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-02",
+    "gap": 7,
+    "blocked": 1,
+    "passed_at": 4.633333333333327,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.3999999999999932,
+    "collisions": 0,
+    "position": [
+      -1.4801047060384278,
+      9.000190925296426
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-02",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 4.933333333333326,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.699999999999992,
+    "collisions": 0,
+    "position": [
+      -1.7654408654480818,
+      14.076590778375955
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-10",
+    "gap": 2,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 243,
+    "position": [
+      -0.5886789023210608,
+      -1.0550455916855008
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.867,
+        "recovery-reverse"
+      ],
+      [
+        9.133,
+        "recovery-forward"
+      ],
+      [
+        11.433,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-10",
+    "gap": 2,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 243,
+    "position": [
+      0.6078086730412836,
+      -1.0486196225360533
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.867,
+        "recovery-reverse"
+      ],
+      [
+        9.133,
+        "recovery-forward"
+      ],
+      [
+        11.433,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-10",
+    "gap": 2,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 243,
+    "position": [
+      -0.6078086730412836,
+      -1.0486196225360533
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.867,
+        "recovery-reverse"
+      ],
+      [
+        9.133,
+        "recovery-forward"
+      ],
+      [
+        11.433,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-10",
+    "gap": 4,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 253,
+    "position": [
+      -1.0583931182654938,
+      0.2555969571751401
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        9.567,
+        "recovery-reverse"
+      ],
+      [
+        10.833,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-10",
+    "gap": 4,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 253,
+    "position": [
+      1.0583931182654938,
+      0.2555969571751401
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        9.567,
+        "recovery-reverse"
+      ],
+      [
+        10.833,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-10",
+    "gap": 4,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 253,
+    "position": [
+      -1.0583931182654938,
+      0.2555969571751401
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        9.567,
+        "recovery-reverse"
+      ],
+      [
+        10.833,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-10",
+    "gap": 7,
+    "blocked": 0,
+    "passed_at": 7.299999999999984,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 5.06666666666665,
+    "collisions": 0,
+    "position": [
+      -1.3392854931216527,
+      9.007168968737638
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-10",
+    "gap": 7,
+    "blocked": -1,
+    "passed_at": 7.299999999999984,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 5.06666666666665,
+    "collisions": 0,
+    "position": [
+      1.3392854931216527,
+      9.00716896873764
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-10",
+    "gap": 7,
+    "blocked": 1,
+    "passed_at": 7.299999999999984,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 5.06666666666665,
+    "collisions": 0,
+    "position": [
+      -1.3392854931216527,
+      9.007168968737638
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-10",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 8.366666666666648,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 6.133333333333315,
+    "collisions": 0,
+    "position": [
+      -1.651638543973172,
+      14.022125907151505
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-11",
+    "gap": 2,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 259,
+    "position": [
+      0.016580407960214934,
+      0.5034120764142022
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.533,
+        "recovery-reverse"
+      ],
+      [
+        8.8,
+        "recovery-forward"
+      ],
+      [
+        11.267,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-11",
+    "gap": 2,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 259,
+    "position": [
+      0.14830334880078633,
+      0.559431072406003
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.533,
+        "recovery-reverse"
+      ],
+      [
+        8.8,
+        "recovery-forward"
+      ],
+      [
+        11.267,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-11",
+    "gap": 2,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 259,
+    "position": [
+      -0.14830334880078633,
+      0.559431072406003
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.533,
+        "recovery-reverse"
+      ],
+      [
+        8.8,
+        "recovery-forward"
+      ],
+      [
+        11.267,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-11",
+    "gap": 4,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 272,
+    "position": [
+      -1.2550163920257538,
+      0.17390707344311854
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.933,
+        "recovery-reverse"
+      ],
+      [
+        10.2,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-11",
+    "gap": 4,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 272,
+    "position": [
+      1.2550163920257538,
+      0.17390707344311854
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.933,
+        "recovery-reverse"
+      ],
+      [
+        10.2,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-11",
+    "gap": 4,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 272,
+    "position": [
+      -1.2550163920257538,
+      0.17390707344311854
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.933,
+        "recovery-reverse"
+      ],
+      [
+        10.2,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-11",
+    "gap": 7,
+    "blocked": 0,
+    "passed_at": 5.799999999999989,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 3.5666666666666558,
+    "collisions": 0,
+    "position": [
+      -1.3857922609007796,
+      9.028275855414769
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-11",
+    "gap": 7,
+    "blocked": -1,
+    "passed_at": 5.799999999999989,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 3.5666666666666558,
+    "collisions": 0,
+    "position": [
+      1.3857922609007796,
+      9.028275855414769
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-11",
+    "gap": 7,
+    "blocked": 1,
+    "passed_at": 5.799999999999989,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 3.5666666666666558,
+    "collisions": 0,
+    "position": [
+      -1.3857922609007796,
+      9.028275855414769
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-11",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 6.499999999999987,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 4.266666666666653,
+    "collisions": 0,
+    "position": [
+      -1.7242147449277276,
+      14.02233529525229
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-12",
+    "gap": 2,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 309,
+    "position": [
+      0.5000215816604626,
+      1.9989882752470498
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.167,
+        "recovery-reverse"
+      ],
+      [
+        8.433,
+        "recovery-forward"
+      ],
+      [
+        10.733,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-12",
+    "gap": 2,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 310,
+    "position": [
+      -0.2935836837654332,
+      1.9991682032346558
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.167,
+        "recovery-reverse"
+      ],
+      [
+        8.433,
+        "recovery-forward"
+      ],
+      [
+        10.733,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-12",
+    "gap": 2,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 310,
+    "position": [
+      0.2935836837654332,
+      1.9991682032346558
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.167,
+        "recovery-reverse"
+      ],
+      [
+        8.433,
+        "recovery-forward"
+      ],
+      [
+        10.733,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-12",
+    "gap": 4,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 288,
+    "position": [
+      -0.3379149093499819,
+      2.6079441164309083
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.333,
+        "recovery-reverse"
+      ],
+      [
+        9.6,
+        "recovery-forward"
+      ],
+      [
+        11.9,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-12",
+    "gap": 4,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 288,
+    "position": [
+      0.3379149093499819,
+      2.6079441164309083
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.333,
+        "recovery-reverse"
+      ],
+      [
+        9.6,
+        "recovery-forward"
+      ],
+      [
+        11.9,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-12",
+    "gap": 4,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 288,
+    "position": [
+      -0.3379149093499819,
+      2.6079441164309083
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.333,
+        "recovery-reverse"
+      ],
+      [
+        9.6,
+        "recovery-forward"
+      ],
+      [
+        11.9,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-12",
+    "gap": 7,
+    "blocked": 0,
+    "passed_at": 4.633333333333327,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.3999999999999932,
+    "collisions": 0,
+    "position": [
+      -1.4623392578844916,
+      9.000537517222268
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-12",
+    "gap": 7,
+    "blocked": -1,
+    "passed_at": 4.633333333333327,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.3999999999999932,
+    "collisions": 0,
+    "position": [
+      1.4623392578844916,
+      9.00053751722227
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-12",
+    "gap": 7,
+    "blocked": 1,
+    "passed_at": 4.633333333333327,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.3999999999999932,
+    "collisions": 0,
+    "position": [
+      -1.4623392578844916,
+      9.000537517222268
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-12",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 4.933333333333326,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.699999999999992,
+    "collisions": 0,
+    "position": [
+      -1.7018302598485653,
+      14.077027238506904
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-20",
+    "gap": 2,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 243,
+    "position": [
+      -0.5886789023210608,
+      -1.0550455916855008
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.867,
+        "recovery-reverse"
+      ],
+      [
+        9.133,
+        "recovery-forward"
+      ],
+      [
+        11.433,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-20",
+    "gap": 2,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 243,
+    "position": [
+      0.6078086730412836,
+      -1.0486196225360533
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.867,
+        "recovery-reverse"
+      ],
+      [
+        9.133,
+        "recovery-forward"
+      ],
+      [
+        11.433,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-20",
+    "gap": 2,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 243,
+    "position": [
+      -0.6078086730412836,
+      -1.0486196225360533
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.867,
+        "recovery-reverse"
+      ],
+      [
+        9.133,
+        "recovery-forward"
+      ],
+      [
+        11.433,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-20",
+    "gap": 4,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 253,
+    "position": [
+      -1.0583931182654938,
+      0.2555969571751401
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        9.567,
+        "recovery-reverse"
+      ],
+      [
+        10.833,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-20",
+    "gap": 4,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 253,
+    "position": [
+      1.0583931182654938,
+      0.2555969571751401
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        9.567,
+        "recovery-reverse"
+      ],
+      [
+        10.833,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-20",
+    "gap": 4,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 253,
+    "position": [
+      -1.0583931182654938,
+      0.2555969571751401
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        9.567,
+        "recovery-reverse"
+      ],
+      [
+        10.833,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-20",
+    "gap": 7,
+    "blocked": 0,
+    "passed_at": 7.299999999999984,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 5.06666666666665,
+    "collisions": 0,
+    "position": [
+      -1.3392854931216527,
+      9.007168968737638
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-20",
+    "gap": 7,
+    "blocked": -1,
+    "passed_at": 7.299999999999984,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 5.06666666666665,
+    "collisions": 0,
+    "position": [
+      1.3392854931216527,
+      9.00716896873764
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-20",
+    "gap": 7,
+    "blocked": 1,
+    "passed_at": 7.299999999999984,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 5.06666666666665,
+    "collisions": 0,
+    "position": [
+      -1.3392854931216527,
+      9.007168968737638
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-20",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 8.366666666666648,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 6.133333333333315,
+    "collisions": 0,
+    "position": [
+      -1.651638543973172,
+      14.022125907151505
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-21",
+    "gap": 2,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 259,
+    "position": [
+      0.016580407960214934,
+      0.5034120764142022
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.533,
+        "recovery-reverse"
+      ],
+      [
+        8.8,
+        "recovery-forward"
+      ],
+      [
+        11.267,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-21",
+    "gap": 2,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 259,
+    "position": [
+      0.14830334880078633,
+      0.559431072406003
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.533,
+        "recovery-reverse"
+      ],
+      [
+        8.8,
+        "recovery-forward"
+      ],
+      [
+        11.267,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-21",
+    "gap": 2,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 259,
+    "position": [
+      -0.14830334880078633,
+      0.559431072406003
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.533,
+        "recovery-reverse"
+      ],
+      [
+        8.8,
+        "recovery-forward"
+      ],
+      [
+        11.267,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-21",
+    "gap": 4,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 272,
+    "position": [
+      -1.2550163920257538,
+      0.17390707344311854
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.933,
+        "recovery-reverse"
+      ],
+      [
+        10.2,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-21",
+    "gap": 4,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 272,
+    "position": [
+      1.2550163920257538,
+      0.17390707344311854
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.933,
+        "recovery-reverse"
+      ],
+      [
+        10.2,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-21",
+    "gap": 4,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 272,
+    "position": [
+      -1.2550163920257538,
+      0.17390707344311854
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.933,
+        "recovery-reverse"
+      ],
+      [
+        10.2,
+        "recovery-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-21",
+    "gap": 7,
+    "blocked": 0,
+    "passed_at": 5.799999999999989,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 3.5666666666666558,
+    "collisions": 0,
+    "position": [
+      -1.3857922609007796,
+      9.028275855414769
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-21",
+    "gap": 7,
+    "blocked": -1,
+    "passed_at": 5.799999999999989,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 3.5666666666666558,
+    "collisions": 0,
+    "position": [
+      1.3857922609007796,
+      9.028275855414769
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-21",
+    "gap": 7,
+    "blocked": 1,
+    "passed_at": 5.799999999999989,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 3.5666666666666558,
+    "collisions": 0,
+    "position": [
+      -1.3857922609007796,
+      9.028275855414769
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-21",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 6.499999999999987,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 4.266666666666653,
+    "collisions": 0,
+    "position": [
+      -1.7242147449277276,
+      14.02233529525229
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-22",
+    "gap": 2,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 309,
+    "position": [
+      0.5000215816604626,
+      1.9989882752470498
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.167,
+        "recovery-reverse"
+      ],
+      [
+        8.433,
+        "recovery-forward"
+      ],
+      [
+        10.733,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-22",
+    "gap": 2,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 310,
+    "position": [
+      -0.2935836837654332,
+      1.9991682032346558
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.167,
+        "recovery-reverse"
+      ],
+      [
+        8.433,
+        "recovery-forward"
+      ],
+      [
+        10.733,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-22",
+    "gap": 2,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 310,
+    "position": [
+      0.2935836837654332,
+      1.9991682032346558
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.167,
+        "recovery-reverse"
+      ],
+      [
+        8.433,
+        "recovery-forward"
+      ],
+      [
+        10.733,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-22",
+    "gap": 4,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 288,
+    "position": [
+      -0.3379149093499819,
+      2.6079441164309083
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.333,
+        "recovery-reverse"
+      ],
+      [
+        9.6,
+        "recovery-forward"
+      ],
+      [
+        11.9,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-22",
+    "gap": 4,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 288,
+    "position": [
+      0.3379149093499819,
+      2.6079441164309083
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.333,
+        "recovery-reverse"
+      ],
+      [
+        9.6,
+        "recovery-forward"
+      ],
+      [
+        11.9,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-22",
+    "gap": 4,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 288,
+    "position": [
+      -0.3379149093499819,
+      2.6079441164309083
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.333,
+        "recovery-reverse"
+      ],
+      [
+        9.6,
+        "recovery-forward"
+      ],
+      [
+        11.9,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-22",
+    "gap": 7,
+    "blocked": 0,
+    "passed_at": 4.633333333333327,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.3999999999999932,
+    "collisions": 0,
+    "position": [
+      -1.4623392578844916,
+      9.000537517222268
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-22",
+    "gap": 7,
+    "blocked": -1,
+    "passed_at": 4.633333333333327,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.3999999999999932,
+    "collisions": 0,
+    "position": [
+      1.4623392578844916,
+      9.00053751722227
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-22",
+    "gap": 7,
+    "blocked": 1,
+    "passed_at": 4.633333333333327,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.3999999999999932,
+    "collisions": 0,
+    "position": [
+      -1.4623392578844916,
+      9.000537517222268
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "range-22",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 4.933333333333326,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.699999999999992,
+    "collisions": 0,
+    "position": [
+      -1.7018302598485653,
+      14.077027238506904
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "fast-low-grip",
+    "gap": 2,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 309,
+    "position": [
+      0.5000215816604626,
+      1.9989882752470498
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.167,
+        "recovery-reverse"
+      ],
+      [
+        8.433,
+        "recovery-forward"
+      ],
+      [
+        10.733,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "fast-low-grip",
+    "gap": 2,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 309,
+    "position": [
+      -0.300310945439689,
+      1.999894018107597
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.167,
+        "recovery-reverse"
+      ],
+      [
+        8.433,
+        "recovery-forward"
+      ],
+      [
+        10.733,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "fast-low-grip",
+    "gap": 2,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 309,
+    "position": [
+      0.300310945439689,
+      1.999894018107597
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        7.167,
+        "recovery-reverse"
+      ],
+      [
+        8.433,
+        "recovery-forward"
+      ],
+      [
+        10.733,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "fast-low-grip",
+    "gap": 4,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 288,
+    "position": [
+      -0.3379149093499819,
+      2.6079441164309083
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.333,
+        "recovery-reverse"
+      ],
+      [
+        9.6,
+        "recovery-forward"
+      ],
+      [
+        11.9,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "fast-low-grip",
+    "gap": 4,
+    "blocked": -1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 288,
+    "position": [
+      0.3379149093499819,
+      2.6079441164309083
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.333,
+        "recovery-reverse"
+      ],
+      [
+        9.6,
+        "recovery-forward"
+      ],
+      [
+        11.9,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "fast-low-grip",
+    "gap": 4,
+    "blocked": 1,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "collisions": 288,
+    "position": [
+      -0.3379149093499819,
+      2.6079441164309083
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        8.333,
+        "recovery-reverse"
+      ],
+      [
+        9.6,
+        "recovery-forward"
+      ],
+      [
+        11.9,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "fast-low-grip",
+    "gap": 7,
+    "blocked": 0,
+    "passed_at": 4.633333333333327,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.3999999999999932,
+    "collisions": 0,
+    "position": [
+      -1.4801047060384278,
+      9.000190925296426
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "fast-low-grip",
+    "gap": 7,
+    "blocked": -1,
+    "passed_at": 4.633333333333327,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.3999999999999932,
+    "collisions": 0,
+    "position": [
+      1.4801047060384278,
+      9.000190925296426
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "fast-low-grip",
+    "gap": 7,
+    "blocked": 1,
+    "passed_at": 4.633333333333327,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.3999999999999932,
+    "collisions": 0,
+    "position": [
+      -1.4801047060384278,
+      9.000190925296426
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "profile": "fast-low-grip",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 4.933333333333326,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 2.699999999999992,
+    "collisions": 0,
+    "position": [
+      -1.7654408654480818,
+      14.076590778375955
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  }
+]

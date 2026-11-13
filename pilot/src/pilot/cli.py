@@ -55,6 +55,7 @@ CAREFUL = {
 # Keep the console baseline available while simulator comparisons qualify bold.
 LIVE = CAREFUL
 BOLD = {
+    "manoeuvres": 1.0,
     **CAREFUL,
     "queue_wait": 2.0,  # P73's bound before committing to an observed free side.
     "route_gone_time": 0.5,  # Leaves 0.7 s braking plus tick rounding within the 1.5 s arrival budget.
