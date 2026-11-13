@@ -1,0 +1,1094 @@
+{
+ "model": "qwen3.5-4b",
+ "extra": {
+  "reasoning_effort": "none"
+ },
+ "think": true,
+ "frames": 99,
+ "right": 93,
+ "right_share": 0.939,
+ "by_place": {
+  "room": {
+   "n": 34,
+   "right": 33,
+   "said": {
+    "room": 33,
+    "landing": 1
+   }
+  },
+  "landing": {
+   "n": 31,
+   "right": 30,
+   "said": {
+    "landing": 30,
+    "street": 1
+   }
+  },
+  "street": {
+   "n": 34,
+   "right": 30,
+   "said": {
+    "landing": 4,
+    "street": 30
+   }
+  },
+  "porch": {
+   "n": 31,
+   "right": null,
+   "said": {
+    "landing": 29,
+    "street": 2
+   }
+  }
+ },
+ "seconds": {
+  "n": 130,
+  "median": 0.443,
+  "p90": 0.538,
+  "p99": 0.633,
+  "max": 0.649
+ },
+ "completion_tokens_median": 53.0,
+ "rows": [
+  {
+   "session": "20261113-024118",
+   "t": 2.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.572,
+   "content": "displays, and interior walls. There are no signs indicating an outdoor setting like street level or a balcony. Answer: A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 6.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.434,
+   "content": "ding on a floor inside this enclosed space. Therefore, the player's character is inside a building in a room.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 10.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.615,
+   "content": "dication of being outdoors. Therefore, the player's character is clearly located inside a building in a room.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 14.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.526,
+   "content": "r setting such as a water cooler and shelves. This clearly indicates the scene takes place inside a building.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 18.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.421,
+   "content": "here is no view of the outside world or sky visible. Therefore, the character is inside a building in a room.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 22.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.627,
+   "content": "rld or street-level elements like roads or pavement. Therefore, the character is inside a building in a room.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 26.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.522,
+   "content": "at the character is on a balcony or street level. The environment clearly depicts the inside of a barbershop.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 30.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.387,
+   "content": "here are no outdoor elements like streets or yards visible. The character is clearly within a room structure.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 34.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.466,
+   "content": "nt includes walls, a ceiling fan, and indoor lighting, confirming it is an interior space rather than outside. Answer: A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 38.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.346,
+   "content": "ior space rather than an exterior environment. The character is standing on a floor within this enclosed area. Answer: A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 42.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.391,
+   "content": "her than an outdoor setting. The character is standing on a checkered floor typical of rooms inside buildings. Answer: A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 46.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.511,
+   "content": "f the outside world or any outdoor elements visible. Therefore, the character is inside a building in a room.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 50.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.357,
+   "content": "ershop or similar establishment, surrounded by shelves, decorations, and fixtures typical of an interior room. Answer: A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 54.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.492,
+   "content": "utside world such as sky, ground, or street visible. Therefore, the character is inside a building in a room.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 58.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.384,
+   "content": "There are no signs of being outside or on a balcony; the environment clearly depicts the inside of a building. Answer: A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 62.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.414,
+   "content": " no view of the outdoors or sky visible in the frame. Therefore, the player's character is inside a building.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 120.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.276,
+   "content": "tanding indoors within a room that has wallpaper and furniture, clearly inside a building rather than outside. Answer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 200.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.498,
+   "content": "oor elements visible such as sky, ground, or street. Therefore, the character is inside a building in a room.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 320.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.361,
+   "content": "and curtains, all indicating an indoor setting. There is no evidence of being outside or on a balcony/landing. Answer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 500.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.372,
+   "content": ", all indicating an indoor setting within a room. There are no signs of being outside or on a balcony/landing. Answer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 580.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.512,
+   "content": "oor elements visible such as sky, ground, or street. Therefore, the character is inside a building in a room.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 660.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.407,
+   "content": "ng. There is no evidence of being outside or on a balcony; everything suggests the character is within a room. Answer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 740.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.446,
+   "content": "a ceiling fan, furniture like a bookshelf and couch, and curtains clearly indicates an interior room setting.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 820.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.432,
+   "content": " as sky, ground, or street features present. Therefore, the character is clearly inside a building in a room.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 900.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.495,
+   "content": "el elements like trees and buildings in the distance, but the character themselves is clearly inside the room. Answer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1000.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.397,
+   "content": " setting. The character is standing within these boundaries, not outside or in any transitional outdoor space. Answer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1140.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.345,
+   "content": "hat looks out onto a street scene. The presence of walls, a TV, and furniture confirms they are inside a room. Answer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1220.0,
+   "where": "room",
+   "said": "landing",
+   "seconds": 0.504,
+   "content": " to a building. This location is clearly elevated above ground level but still part of the exterior structure. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1340.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.337,
+   "content": "a chair and TV, all indicating an indoor setting. The character is walking on a floor within these boundaries. Answer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1420.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.633,
+   "content": "elow, confirming an elevated position. Therefore, the player is inside a building looking out onto a balcony.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1520.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.391,
+   "content": "TV visible through a doorway. The presence of these indoor elements indicates the player is inside a building. Answer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1620.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.506,
+   "content": " character is on a balcony or street level. Therefore, the player's character is inside a building in a room.\n\nAnswer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1700.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.364,
+   "content": "nce of walls, furniture (like the dresser and bed), and interior lighting confirms they are inside a building. Answer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1780.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.406,
+   "content": "walls, furniture (like the dresser and bed), and interior lighting confirms they are inside a building's room. Answer: A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 22.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.525,
+   "content": " like a balcony or landing outside a building, rather than being inside or at ground level on the road itself. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 22.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.489,
+   "content": " a raised platform or landing suggests they are on a balcony or outside staircase rather than at ground level. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 23.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.517,
+   "content": "lcony or landing outside a building entrance. This eliminates being inside a room (A) or at ground level (C).\n\nAnswer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 23.25,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.483,
+   "content": "a balcony or outside staircase attached to a building. This rules out being inside a room or at street level.\n\nAnswer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 23.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.515,
+   "content": "e presence of stairs leading downward and the height relative to the outside scenery supports this conclusion. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 23.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.522,
+   "content": "ading up and the elevated view confirm this is not at ground level but on an exterior landing or balcony area. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 24.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.527,
+   "content": "gest this is an outdoor area like a balcony or landing attached to a building, not inside nor at street level. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 24.25,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.424,
+   "content": "lative to the door suggest they are on an exterior landing or staircase rather than inside or at street level. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 24.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.493,
+   "content": "rather than directly on the street level. The presence of stairs leading down suggests this elevated position. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 24.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.34,
+   "content": "'s entrance, which appears to be a balcony or landing area above ground level, not inside nor at street level. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 25.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.362,
+   "content": " which indicates a raised outdoor space like a landing or balcony rather than being inside or at street level. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 25.25,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.349,
+   "content": "eet level, indicating they are on a raised landing or outside staircase rather than inside or at ground level. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 25.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.434,
+   "content": "ide or at street level; instead, they are positioned above ground level near a gate and air conditioning unit. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 25.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.417,
+   "content": "g, not inside nor at street level. The presence of a railing and the view above ground confirms this location. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 26.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.339,
+   "content": " to be an exterior landing or staircase leading up from street level, not inside nor directly at ground level. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 26.25,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.535,
+   "content": " to the doorway suggest this is a raised entryway or small balcony-like space directly adjacent to the house.\n\nAnswer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 26.5,
+   "where": "landing",
+   "said": "street",
+   "seconds": 0.5,
+   "content": " room. This fits the description of being outside at street level in an open area such as a yard or pavement.\n\nAnswer: C"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 26.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.527,
+   "content": "ence of a map in the corner suggests this is likely a rooftop or elevated outdoor space accessible via stairs. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 27.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.384,
+   "content": " down towards the street through a gate. This fits the description of being above street level but not inside. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 27.25,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.49,
+   "content": "s and railings suggests it's part of a building's exterior access rather than being inside or at ground level. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 27.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.367,
+   "content": "ps leading down to street level, indicating they are on a raised landing or balcony outside a building's door. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 27.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.392,
+   "content": ". The presence of a railing and elevated ground indicates they are on a balcony or landing outside a building. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 28.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.458,
+   "content": "uilding. The presence of stairs leading down further confirms this elevated position relative to street level. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 28.25,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.433,
+   "content": "resence of a railing further supports this being an outdoor raised area rather than inside or at street level. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 28.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.477,
+   "content": "a railing visible which suggests an elevated outdoor space like a balcony or landing near a building entrance. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 28.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.413,
+   "content": "w. The presence of a railing suggests a raised platform like a balcony or landing, not street level or inside. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 29.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.484,
+   "content": "part of the street below in the mini-map context, confirming they are not at ground level but rather above it. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 29.25,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.489,
+   "content": "ailing and the angle suggest they are on a balcony or outside staircase rather than inside or at street level. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 29.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.431,
+   "content": "d tiled flooring suggests a raised area like a balcony or landing rather than being inside or at street level. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 29.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.459,
+   "content": "nit, which indicates they are on an elevated outdoor area like a balcony or landing outside a building's door. Answer: B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 30.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.486,
+   "content": "her than street level. The presence of walls on both sides indicates it's not open ground like a yard or road. Answer: B"
+  },
+  {
+   "session": "20261113-002130",
+   "t": 37.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.526,
+   "content": "ent which includes other roads and buildings at ground level. This confirms they are outside at street level.\n\nAnswer: C"
+  },
+  {
+   "session": "20261113-002235",
+   "t": 3.4,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.559,
+   "content": "hey on a raised structure above street level. They seem positioned at ground level near a road or paved area.\n\nAnswer: C"
+  },
+  {
+   "session": "20261113-002739",
+   "t": 19.8,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.343,
+   "content": "background under nighttime lighting. The character is lying on the ground next to a vehicle on this open area. Answer: C"
+  },
+  {
+   "session": "20261113-003405",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.475,
+   "content": "e palm trees and distant hills. There are no signs of being inside a building or elevated above street level.\n\nAnswer: C"
+  },
+  {
+   "session": "20261113-003502",
+   "t": 12.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.402,
+   "content": "ription of being outside at street level or in open ground rather than inside a building or elevated above it. Answer: C"
+  },
+  {
+   "session": "20261113-003502",
+   "t": 52.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.398,
+   "content": "d, which is clearly outside and at street level. They are not inside a building nor elevated above the ground. Answer: C"
+  },
+  {
+   "session": "20261113-003852",
+   "t": 35.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.442,
+   "content": "ly outdoors at ground level. This fits the description of being outside at street level on a road or pavement. Answer: C"
+  },
+  {
+   "session": "20261113-003852",
+   "t": 75.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.428,
+   "content": "s to be at street level or yard level, typical of outdoor gameplay environments like this desert town setting. Answer: C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 27.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.622,
+   "content": "above street level. This fits the description of being outside at street level on open ground or near a road.\n\nAnswer: C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 67.7,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.342,
+   "content": "side a paved road, which clearly places them outside at street level rather than inside or elevated above it.\n\nAnswer: C"
+  },
+  {
+   "session": "20261113-004331",
+   "t": 28.0,
+   "where": "street",
+   "said": "landing",
+   "seconds": 0.387,
+   "content": "ide a building. The presence of stairs leading down suggests they are not at street level but rather elevated. Answer: B"
+  },
+  {
+   "session": "20261113-004331",
+   "t": 40.7,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.389,
+   "content": "and open ground. This matches option C as it describes being outside at street level on a road or open ground. Answer: C"
+  },
+  {
+   "session": "20261113-004456",
+   "t": 22.0,
+   "where": "street",
+   "said": "landing",
+   "seconds": 0.649,
+   "content": "w crate and the angle suggest this is likely an outside staircase or balcony area leading up from the street.\n\nAnswer: B"
+  },
+  {
+   "session": "20261113-004456",
+   "t": 50.8,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.553,
+   "content": "p. There are no signs indicating being inside or elevated; the ground appears to be at standard street level.\n\nAnswer: C"
+  },
+  {
+   "session": "20261113-005402",
+   "t": 35.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.494,
+   "content": "ass, and trees. This matches option C, which describes being outside at street level on a road or open ground. Answer: C"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 116.1,
+   "where": "street",
+   "said": "landing",
+   "seconds": 0.574,
+   "content": "a raised platform like a landing or staircase. This rules out being inside a room (A) or at street level (C).\n\nAnswer: B"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 35.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.476,
+   "content": "ide or elevated above street level. The terrain appears to be open ground typical of a game's exterior world.\n\nAnswer: C"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 75.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.524,
+   "content": "gs indicating they are inside a building, and they are not elevated on a balcony or landing above the ground.\n\nAnswer: C"
+  },
+  {
+   "session": "20261113-005928",
+   "t": 29.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.524,
+   "content": " presence of ground-level vegetation and open space suggests they are at street level or in an open yard area. Answer: C"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 21.7,
+   "where": "street",
+   "said": "landing",
+   "seconds": 0.525,
+   "content": "de a building nor at street level; they are on an outdoor platform or landing area adjacent to the structure.\n\nAnswer: B"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 62.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.344,
+   "content": ", which constitutes open ground at street level. They are not inside a building nor elevated above the street. Answer: C"
+  },
+  {
+   "session": "20261113-010226",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.407,
+   "content": "in the background under a sunset sky. There are no signs of being inside a building or elevated above ground.\n\nAnswer: C"
+  },
+  {
+   "session": "20261113-010324",
+   "t": 11.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.626,
+   "content": "tains, and open ground confirms they are at street level or slightly elevated but still in an outdoor setting. Answer: C"
+  },
+  {
+   "session": "20261113-010324",
+   "t": 51.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.371,
+   "content": "hich constitutes open ground or yard space rather than being inside a building or elevated above street level. Answer: C"
+  },
+  {
+   "session": "20261113-010655",
+   "t": 23.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.348,
+   "content": "n and building wall, clearly on an unpaved area adjacent to a road, not inside or elevated above street level. Answer: C"
+  },
+  {
+   "session": "20261113-010655",
+   "t": 44.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.374,
+   "content": " a palm tree, clearly outdoors at ground level. They are not inside a building nor elevated above the street.\n\nAnswer: C"
+  },
+  {
+   "session": "20261113-010813",
+   "t": 27.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.376,
+   "content": "car is driving. This indicates they are outside at street level, not inside a building nor elevated above it.\n\nAnswer: C"
+  },
+  {
+   "session": "20261113-010920",
+   "t": 19.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.486,
+   "content": "background under a twilight sky. There are no signs of being inside a building or elevated above ground level. Answer: C"
+  },
+  {
+   "session": "20261113-011036",
+   "t": 3.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.432,
+   "content": "ings and streetlights. There are no signs indicating they are inside a building or elevated above the street.\n\nAnswer: C"
+  },
+  {
+   "session": "20261113-011036",
+   "t": 43.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.432,
+   "content": "nder a night sky. This indicates they are outdoors at ground level, not inside or elevated above street level. Answer: C"
+  },
+  {
+   "session": "20261113-011145",
+   "t": 30.4,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.358,
+   "content": "getation, clearly outdoors at ground level. There are no signs of being inside or elevated above street level. Answer: C"
+  },
+  {
+   "session": "20261113-011452",
+   "t": 19.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.491,
+   "content": "doors and not inside any structure. The ground level matches typical outdoor terrain in this game environment. Answer: C"
+  },
+  {
+   "session": "20261113-022645",
+   "t": 11.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.399,
+   "content": "earby. The ground level matches the surrounding environment, not elevated like a balcony or inside a building. Answer: C"
+  },
+  {
+   "session": "20261113-022742",
+   "t": 19.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.322,
+   "content": "ushes next to a dirt path, which is clearly outdoors and not inside a building or elevated above street level. Answer: C"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 66.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.411,
+   "content": "a street and desert landscape. The presence of railings and the view above ground level confirm this location. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 67.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.54,
+   "content": "roof above suggests this is part of a porch or balcony area rather than being at street level or fully inside. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 68.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.426,
+   "content": "looks a street and desert landscape, which corresponds to a raised landing or balcony area outside a building. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 69.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.525,
+   "content": "which suggests they are on a raised platform like a balcony or outside staircase. This matches option B best.\n\nAnswer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 70.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.411,
+   "content": "resence of stairs leading down confirms this is a raised landing or balcony-like space attached to a building. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 71.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.438,
+   "content": "g down to street level. This matches the description of being on a raised landing or balcony above the street. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 72.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.417,
+   "content": "railings, indicating it functions as an entrance or landing rather than being fully inside or at street level. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 73.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.388,
+   "content": " visible outside. This suggests they are on a raised landing or balcony rather than inside or at street level. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 74.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.52,
+   "content": "ggests they are on a raised landing or balcony near the building's door, not fully inside nor at street level. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 75.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.447,
+   "content": "not directly on the street level. This suggests they are on a raised area like a balcony or outside staircase. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 76.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.388,
+   "content": "way or landing overlooking the street below. This area is clearly outdoors and not inside the building itself. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 77.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 0.343,
+   "content": " which appears to be an outdoor sidewalk or pavement at street level, not inside nor elevated like a balcony.\n\nAnswer: C"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 78.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 0.513,
+   "content": "t inside the building. This fits the description of being outside at street level on pavement or open ground.\n\nAnswer: C"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 79.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.522,
+   "content": "ng the street below. This position is clearly elevated above ground level but not inside the structure itself. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 80.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.526,
+   "content": " itself. This matches the description of being outside a building's door on a raised landing or balcony area.\n\nAnswer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 81.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.361,
+   "content": "outside. This suggests they are on a raised landing or balcony rather than directly at street level or inside. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 82.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.388,
+   "content": " street level but not inside the building. The presence of steps leading down suggests this elevated position. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 83.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.492,
+   "content": "eps leading down to the yard confirms this is an exterior landing or balcony, not inside nor at street level.\n\nAnswer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 84.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.41,
+   "content": " visible outside. This suggests they are on a raised landing or balcony rather than at street level or inside. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 85.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.444,
+   "content": " visible outside. This suggests they are on a raised landing or balcony rather than at street level or inside. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 86.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.552,
+   "content": " like a balcony or outside staircase. This positioning places them outside the building but above the street.\n\nAnswer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 87.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.498,
+   "content": " is visible). This suggests they are not inside nor at ground level but rather on a raised exterior platform.\n\nAnswer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 88.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.538,
+   "content": " outdoors, yet elevated slightly from ground level\u2014consistent with a raised landing or balcony near the door.\n\nAnswer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 89.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.537,
+   "content": " balcony or outside staircase. This placement indicates they are not fully inside nor at direct street level.\n\nAnswer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 90.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.357,
+   "content": "ed position outside a building. The character is not inside, nor are they at ground level on the road or yard. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 91.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.519,
+   "content": "his is not inside a room but rather on an exterior platform like a balcony or landing just above ground level. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 92.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.542,
+   "content": "er elevated, likely on a balcony or landing outside the building. This positioning aligns best with option B.\n\nAnswer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 93.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.453,
+   "content": "elow. This indicates they are on a raised landing or balcony area rather than being inside or at ground level. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 94.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.413,
+   "content": " street below. This position is clearly outside but raised above ground level, not inside nor at street level. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 95.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.512,
+   "content": "is suggests they are on a raised landing, balcony, or outside staircase rather than inside or at street level. Answer: B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 96.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.425,
+   "content": "tches the description of being on a raised landing or balcony-like structure adjacent to a building entrance.\n\nAnswer: B"
+  }
+ ]
+}

@@ -1,0 +1,1593 @@
+{
+ "model": "qwen/qwen3-vl-4b",
+ "extra": {},
+ "max_tokens": 300,
+ "situations": 150,
+ "answered": 149,
+ "right": 133,
+ "right_share_of_all": 0.887,
+ "seconds": {
+  "n": 150,
+  "median": 0.302,
+  "p90": 0.37,
+  "p99": 0.617,
+  "max": 0.621
+ },
+ "completion_tokens_median": 48.0,
+ "rows": [
+  {
+   "id": 1,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.617,
+   "completion_tokens": 46,
+   "content": "ad and fence nearby. There\u2019s no immediate instruction, so exploration is logical. The safest next step is to look around and proceed cautiously ahead.\nAnswer: B"
+  },
+  {
+   "id": 2,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.302,
+   "completion_tokens": 46,
+   "content": "curving ahead. There\u2019s no immediate action required\u2014just observation. The minimap suggests movement is possible, but no specific instruction is given.\nAnswer: B"
+  },
+  {
+   "id": 3,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.275,
+   "completion_tokens": 45,
+   "content": "dicated. The safest and most logical next step is to explore the surroundings cautiously. The minimap and environment suggest movement is appropriate.\nAnswer: B"
+  },
+  {
+   "id": 4,
+   "name": "road",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.284,
+   "completion_tokens": 49,
+   "content": "eats or objectives visible. No specific instruction is given, so exploration is logical. The safest next step is to proceed cautiously along the road.\nAnswer: A"
+  },
+  {
+   "id": 5,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.328,
+   "completion_tokens": 48,
+   "content": "ndicating direction. There\u2019s no immediate instruction, so exploration is logical. The safest next step is to look around and proceed cautiously ahead.\nAnswer: B"
+  },
+  {
+   "id": 6,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.357,
+   "completion_tokens": 55,
+   "content": "iate danger or clear objective visible, so exploring the surroundings is logical. The safest next step is to look around and proceed cautiously ahead.\nAnswer: B"
+  },
+  {
+   "id": 7,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.328,
+   "completion_tokens": 51,
+   "content": "here\u2019s no immediate instruction, so scanning the surroundings and moving forward is logical. The safest next step is to look around and proceed ahead.\nAnswer: B"
+  },
+  {
+   "id": 8,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.277,
+   "completion_tokens": 47,
+   "content": "ration is logical since the environment is open and no clear target is visible. The safest next step is to survey surroundings and proceed cautiously.\nAnswer: B"
+  },
+  {
+   "id": 9,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.294,
+   "completion_tokens": 48,
+   "content": "xploration is logical, as the environment suggests potential hidden items or events. The safest next step is to survey surroundings before proceeding.\nAnswer: B"
+  },
+  {
+   "id": 10,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.311,
+   "completion_tokens": 48,
+   "content": " visible. Exploration is logical, as the area may contain hidden items or paths. The safest next step is to survey surroundings before moving forward.\nAnswer: B"
+  },
+  {
+   "id": 11,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.361,
+   "completion_tokens": 53,
+   "content": "iate danger or clear objective visible, so exploring the surroundings is logical. The safest next step is to look around and proceed cautiously ahead.\nAnswer: B"
+  },
+  {
+   "id": 12,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.34,
+   "completion_tokens": 51,
+   "content": "e\u2019s no immediate need to enter a vehicle or follow a specific path. The safest and most logical next step is to explore the surroundings cautiously.  \nAnswer: C"
+  },
+  {
+   "id": 13,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.337,
+   "completion_tokens": 48,
+   "content": " immediate threat or clear objective indicated. The safest and most logical next step is to explore cautiously by looking around and moving forward.  \nAnswer: C"
+  },
+  {
+   "id": 14,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.372,
+   "completion_tokens": 55,
+   "content": "essible for entry, and the environment suggests exploration or movement forward. The safest and most logical next step is to proceed cautiously ahead.\nAnswer: C"
+  },
+  {
+   "id": 15,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.369,
+   "completion_tokens": 56,
+   "content": "f a vehicle to enter or a clear path to follow. The safest and most logical next step is to explore the surroundings and proceed forward cautiously.  \nAnswer: C"
+  },
+  {
+   "id": 16,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.346,
+   "completion_tokens": 58,
+   "content": "the road; instead, exploring the surroundings is logical. The minimap suggests movement ahead, so scanning the area and proceeding forward is prudent.\nAnswer: C"
+  },
+  {
+   "id": 17,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.335,
+   "completion_tokens": 49,
+   "content": "s no immediate need to enter a vehicle or walk along the road. The safest and most logical next step is to look around and proceed cautiously ahead.  \nAnswer: C"
+  },
+  {
+   "id": 18,
+   "name": "road",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.328,
+   "completion_tokens": 49,
+   "content": "ahead. There\u2019s no immediate danger or objective indicated, so exploration is reasonable. The safest next step is to proceed cautiously along the road.\nAnswer: A"
+  },
+  {
+   "id": 19,
+   "name": "road",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.296,
+   "completion_tokens": 49,
+   "content": "ahead. There\u2019s no immediate danger or objective indicated, so exploration is reasonable. The safest next step is to proceed cautiously along the road.\nAnswer: A"
+  },
+  {
+   "id": 20,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.296,
+   "completion_tokens": 47,
+   "content": "threats or objectives visible, suggesting exploration is appropriate. The safest next step is to survey the surroundings and proceed cautiously ahead.\nAnswer: B"
+  },
+  {
+   "id": 21,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.283,
+   "completion_tokens": 48,
+   "content": " interaction point. No specific instruction is given, so exploration is logical. The safest next step is to survey the surroundings before proceeding.\nAnswer: B"
+  },
+  {
+   "id": 22,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.256,
+   "completion_tokens": 41,
+   "content": "n the background. There\u2019s no immediate action required beyond observing the surroundings. The map in the corner suggests movement is possible ahead.  \nAnswer: B"
+  },
+  {
+   "id": 23,
+   "name": "road",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.328,
+   "completion_tokens": 57,
+   "content": "r or clear objective indicated. The safest and most logical next step is to proceed cautiously along the road, as it\u2019s the most direct path forward.  \nAnswer: A"
+  },
+  {
+   "id": 24,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.311,
+   "completion_tokens": 45,
+   "content": " a road and houses visible. There\u2019s no immediate instruction, so exploration is logical. The minimap suggests movement ahead, not just along the road.\nAnswer: B"
+  },
+  {
+   "id": 25,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.326,
+   "completion_tokens": 41,
+   "content": "mediate threats or objectives visible. Moving forward cautiously is prudent. The safest next step is to proceed ahead while scanning the surroundings.\nAnswer: B"
+  },
+  {
+   "id": 26,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.305,
+   "completion_tokens": 46,
+   "content": "here\u2019s no immediate threat or objective visible, so exploration is logical. The safest next step is to proceed cautiously while scanning surroundings.\nAnswer: B"
+  },
+  {
+   "id": 27,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.243,
+   "completion_tokens": 39,
+   "content": " objective indicated. No specific action is required based on the observation alone. The safest next step is to explore the surroundings cautiously.  \nAnswer: B"
+  },
+  {
+   "id": 28,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.301,
+   "completion_tokens": 52,
+   "content": "ger or objective indicated, so exploring the area is logical. The minimap suggests movement is possible in multiple directions, but forward is safest.\nAnswer: B"
+  },
+  {
+   "id": 29,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.397,
+   "completion_tokens": 54,
+   "content": "ests exploration is needed, as there\u2019s no immediate clear path forward. The best next step is to survey the surroundings and proceed cautiously ahead.\nAnswer: B"
+  },
+  {
+   "id": 30,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.327,
+   "completion_tokens": 51,
+   "content": "The environment suggests exploration is needed, as there\u2019s no clear path forward. The minimap and surroundings imply movement is required to progress.\nAnswer: B"
+  },
+  {
+   "id": 31,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.299,
+   "completion_tokens": 50,
+   "content": "ggests caution, as there are abandoned vehicles and a dark, possibly dangerous area. The safest next step is to survey surroundings before proceeding.\nAnswer: B"
+  },
+  {
+   "id": 32,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.268,
+   "completion_tokens": 45,
+   "content": "oration is logical since the environment suggests potential points of interest. The safest next step is to survey surroundings and proceed cautiously.\nAnswer: B"
+  },
+  {
+   "id": 33,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.293,
+   "completion_tokens": 49,
+   "content": "s no immediate objective indicated, so exploring the surroundings is logical. The safest next step is to survey the area and proceed cautiously ahead.\nAnswer: B"
+  },
+  {
+   "id": 34,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.294,
+   "completion_tokens": 50,
+   "content": "he area by looking around and moving forward is a safe and logical next step. No specific instruction is given, so general exploration is appropriate.\nAnswer: B"
+  },
+  {
+   "id": 35,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.417,
+   "completion_tokens": 47,
+   "content": "gs visible. There\u2019s no immediate clear objective indicated, so exploring the surroundings is logical. The minimap suggests movement is possible ahead.\nAnswer: B"
+  },
+  {
+   "id": 36,
+   "name": "wait",
+   "right": [
+    "wait"
+   ],
+   "seconds": 0.274,
+   "completion_tokens": 42,
+   "content": "on prompts or waypoints visible. No action is indicated by on-screen text or context. The only logical next step is to wait briefly before proceeding.\nAnswer: B"
+  },
+  {
+   "id": 37,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.281,
+   "completion_tokens": 44,
+   "content": "cle visible on the road. There\u2019s no immediate instruction, so exploring the area is logical. The best next step is to look around and proceed forward.\nAnswer: C"
+  },
+  {
+   "id": 38,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.266,
+   "completion_tokens": 43,
+   "content": "path leading away. There\u2019s no immediate instruction, so exploration is logical. The safest next step is to survey surroundings and proceed cautiously.\nAnswer: B"
+  },
+  {
+   "id": 39,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.304,
+   "completion_tokens": 50,
+   "content": "sible on the road. There\u2019s no immediate action prompt, so exploration is logical. The safest next step is to look around and proceed cautiously ahead.\nAnswer: C"
+  },
+  {
+   "id": 40,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.295,
+   "completion_tokens": 50,
+   "content": "sible on the road. There\u2019s no immediate action prompt, so exploration is logical. The safest next step is to look around and proceed cautiously ahead.\nAnswer: C"
+  },
+  {
+   "id": 41,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.35,
+   "completion_tokens": 45,
+   "content": "he road. There\u2019s no immediate action required beyond observing the surroundings. The safest and most logical next step is to explore the area ahead.  \nAnswer: C"
+  },
+  {
+   "id": 42,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.328,
+   "completion_tokens": 44,
+   "content": " the road. There\u2019s no immediate action required beyond observing the surroundings. The safest and most logical next step is to explore the area ahead.\nAnswer: C"
+  },
+  {
+   "id": 43,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.291,
+   "completion_tokens": 48,
+   "content": "mediate action required beyond exploring the area. The safest and most logical next step is to look around and proceed forward to assess surroundings.\nAnswer: C"
+  },
+  {
+   "id": 44,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.294,
+   "completion_tokens": 49,
+   "content": " immediate action indicated by on-screen text, so exploration is logical. The safest next step is to survey surroundings and proceed cautiously ahead.\nAnswer: B"
+  },
+  {
+   "id": 45,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.275,
+   "completion_tokens": 45,
+   "content": "mmediate threats or objectives visible, suggesting exploration is appropriate. The safest next step is to survey the surroundings and proceed forward.\nAnswer: B"
+  },
+  {
+   "id": 46,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.28,
+   "completion_tokens": 45,
+   "content": "sible. There\u2019s no immediate action indicated by on-screen text, so exploration is logical. Moving forward cautiously is prudent given the environment.\nAnswer: B"
+  },
+  {
+   "id": 47,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.434,
+   "completion_tokens": 48,
+   "content": " logical since the environment is open and no specific target is visible. The safest next step is to survey surroundings and proceed cautiously ahead.\nAnswer: B"
+  },
+  {
+   "id": 48,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.283,
+   "completion_tokens": 45,
+   "content": "ogression. No specific objective is given, so general movement is appropriate. The safest next step is to survey the surroundings and proceed forward.\nAnswer: B"
+  },
+  {
+   "id": 49,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.241,
+   "completion_tokens": 36,
+   "content": "standing behind a fence with a road and open area ahead. There\u2019s no immediate danger or clear objective indicated. Exploration is logical next step.  \nAnswer: B"
+  },
+  {
+   "id": 50,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.282,
+   "completion_tokens": 46,
+   "content": "und. There\u2019s no immediate objective indicated, so exploring the surroundings is logical. The safest next step is to survey the area before proceeding.\nAnswer: B"
+  },
+  {
+   "id": 51,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.243,
+   "completion_tokens": 36,
+   "content": "th no immediate objective indicated. No specific action is required beyond observing the environment. The screen text does not provide instructions.  \nAnswer: B"
+  },
+  {
+   "id": 52,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.291,
+   "completion_tokens": 48,
+   "content": "cated. There\u2019s no clear path or instruction, so exploration is logical. The best next step is to survey the surroundings and proceed cautiously ahead.\nAnswer: B"
+  },
+  {
+   "id": 53,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.278,
+   "completion_tokens": 43,
+   "content": "ate objective indicated. Exploration or movement ahead is logical given the open environment. No specific instruction is given, so observation is key.\nAnswer: B"
+  },
+  {
+   "id": 54,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.318,
+   "completion_tokens": 53,
+   "content": " left. There\u2019s no immediate objective indicated, so exploration is logical. The safest next step is to survey the surroundings and proceed cautiously.\nAnswer: B"
+  },
+  {
+   "id": 55,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.354,
+   "completion_tokens": 46,
+   "content": "t islands. There\u2019s no immediate objective indicated, so exploration is logical. The safest next step is to survey surroundings and proceed cautiously.\nAnswer: B"
+  },
+  {
+   "id": 56,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.328,
+   "completion_tokens": 49,
+   "content": " There\u2019s no immediate objective indicated, so exploration is logical. The safest next step is to survey the surroundings and proceed cautiously ahead.\nAnswer: B"
+  },
+  {
+   "id": 57,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.297,
+   "completion_tokens": 50,
+   "content": "s no immediate threat or objective indicated, so exploring the area is logical. The safest next step is to survey surroundings and proceed cautiously.\nAnswer: B"
+  },
+  {
+   "id": 58,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.321,
+   "completion_tokens": 54,
+   "content": "d and moving forward is logical for gathering information or finding a path. No specific instruction is given, so exploration is the safest next step.\nAnswer: B"
+  },
+  {
+   "id": 59,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.432,
+   "completion_tokens": 49,
+   "content": " distance. There\u2019s no immediate danger or clear objective indicated. Exploring the area by looking around and moving forward is a logical next step.  \nAnswer: B"
+  },
+  {
+   "id": 60,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.324,
+   "completion_tokens": 56,
+   "content": "is logical here, as the environment suggests potential hidden items or paths ahead. No specific instruction is given, so cautious movement is advised.\nAnswer: B"
+  },
+  {
+   "id": 61,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.276,
+   "completion_tokens": 45,
+   "content": " indicated. Exploration is logical given the open environment. No specific instruction is given, so observation and cautious movement are appropriate.\nAnswer: B"
+  },
+  {
+   "id": 62,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.27,
+   "completion_tokens": 45,
+   "content": "e indicated. Exploration is logical since the environment offers multiple paths. No specific instruction is given, so general movement is appropriate.\nAnswer: B"
+  },
+  {
+   "id": 63,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.263,
+   "completion_tokens": 44,
+   "content": "te clear objective indicated. Exploration is logical given the open environment. No specific instruction is given, so general movement is appropriate.\nAnswer: B"
+  },
+  {
+   "id": 64,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.276,
+   "completion_tokens": 46,
+   "content": "e indicated. Exploration is logical since the environment offers multiple paths. No specific instruction is given, so general movement is appropriate.\nAnswer: B"
+  },
+  {
+   "id": 65,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.359,
+   "completion_tokens": 52,
+   "content": "ronment suggests potential hidden paths or points of interest. No specific instruction is given, so observation and cautious movement are appropriate.\nAnswer: B"
+  },
+  {
+   "id": 66,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.327,
+   "completion_tokens": 54,
+   "content": "s no immediate clear objective indicated, so exploring the surroundings is logical. The safest next step is to survey the area and proceed cautiously.\nAnswer: B"
+  },
+  {
+   "id": 67,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.302,
+   "completion_tokens": 51,
+   "content": "nd and moving forward is logical for gathering information or finding a path. No specific instruction is given, so general exploration is appropriate.\nAnswer: B"
+  },
+  {
+   "id": 68,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.29,
+   "completion_tokens": 41,
+   "content": " no immediate clear objective indicated. The minimap suggests movement is possible ahead. No specific instruction is given, so exploration is logical.\nAnswer: B"
+  },
+  {
+   "id": 69,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.278,
+   "completion_tokens": 44,
+   "content": "d area visible. There\u2019s no clear objective indicated, so exploration is logical. The safest next step is to survey the surroundings before proceeding.\nAnswer: B"
+  },
+  {
+   "id": 70,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.376,
+   "completion_tokens": 54,
+   "content": "around and moving forward is logical for discovering hidden paths or objects. No specific instruction is given, so general exploration is appropriate.\nAnswer: B"
+  },
+  {
+   "id": 71,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.328,
+   "completion_tokens": 38,
+   "content": "rvation. The player should explore the environment for objectives or paths. Since no specific action is indicated, general exploration is appropriate.\nAnswer: B"
+  },
+  {
+   "id": 72,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.264,
+   "completion_tokens": 43,
+   "content": "o immediate objective indicated. There\u2019s no instruction to follow, only observation. The safest next step is to explore the surroundings cautiously.  \nAnswer: B"
+  },
+  {
+   "id": 73,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.289,
+   "completion_tokens": 50,
+   "content": "specific objective is indicated, so exploration is logical. The minimap suggests movement is possible in multiple directions, but forward is safest.  \nAnswer: B"
+  },
+  {
+   "id": 74,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.283,
+   "completion_tokens": 48,
+   "content": "ncouraged by the open terrain and distant mountains. The safest and most logical next step is to proceed cautiously ahead while scanning surroundings.\nAnswer: B"
+  },
+  {
+   "id": 75,
+   "name": "look",
+   "right": [
+    "road",
+    "target",
+    "look"
+   ],
+   "seconds": 0.304,
+   "completion_tokens": 51,
+   "content": "gical next step is to explore the surroundings cautiously. The instruction is to look around and proceed ahead, as no specific objective is indicated.\nAnswer: C"
+  },
+  {
+   "id": 76,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.432,
+   "completion_tokens": 45,
+   "content": "s needed. The minimap indicates movement is possible ahead. No specific instruction is given, so observation and cautious advancement are appropriate.\nAnswer: B"
+  },
+  {
+   "id": 77,
+   "name": "look",
+   "right": [
+    "road",
+    "target",
+    "look"
+   ],
+   "seconds": 0.3,
+   "completion_tokens": 50,
+   "content": "nd most exploratory next step is to look around and proceed cautiously ahead. No specific instruction is given, so general exploration is appropriate.\nAnswer: C"
+  },
+  {
+   "id": 78,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.252,
+   "completion_tokens": 40,
+   "content": " no visible road nearby. The environment suggests exploration is the next logical step. The minimap and context imply movement forward is appropriate.\nAnswer: B"
+  },
+  {
+   "id": 79,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.339,
+   "completion_tokens": 48,
+   "content": "d. The minimap indicates movement is possible in multiple directions. The safest next step is to survey the surroundings and proceed cautiously ahead.\nAnswer: B"
+  },
+  {
+   "id": 80,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.356,
+   "completion_tokens": 45,
+   "content": "res. There\u2019s no immediate objective indicated, so exploration is logical. The safest next step is to survey surroundings and proceed cautiously ahead.\nAnswer: B"
+  },
+  {
+   "id": 81,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.327,
+   "completion_tokens": 45,
+   "content": "nt structures. There\u2019s no immediate danger or clear objective indicated. Exploration is logical given the open terrain and lack of specific targets.  \nAnswer: B"
+  },
+  {
+   "id": 82,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.32,
+   "completion_tokens": 54,
+   "content": "er or clear objective visible, suggesting exploration is appropriate. The safest next step is to survey the surroundings and proceed cautiously ahead.\nAnswer: B"
+  },
+  {
+   "id": 83,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.306,
+   "completion_tokens": 51,
+   "content": "iate danger or clear objective visible, so exploring the area is logical. The best next step is to survey surroundings and proceed forward cautiously.\nAnswer: B"
+  },
+  {
+   "id": 84,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.422,
+   "completion_tokens": 49,
+   "content": "pecific objective is indicated, so general movement is appropriate. The safest next step is to survey the surroundings and proceed forward cautiously.\nAnswer: B"
+  },
+  {
+   "id": 85,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.282,
+   "completion_tokens": 47,
+   "content": " There\u2019s no immediate objective indicated, so exploration is logical. The best next step is to survey the surroundings and proceed forward cautiously.\nAnswer: B"
+  },
+  {
+   "id": 86,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.291,
+   "completion_tokens": 49,
+   "content": "le. No specific objective is indicated, so general exploration is appropriate. The safest next step is to survey the surroundings and proceed forward.\nAnswer: B"
+  },
+  {
+   "id": 87,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.27,
+   "completion_tokens": 43,
+   "content": "ains in the distance. There\u2019s no immediate objective indicated, so exploration is logical. The minimap and environment suggest movement is encouraged.\nAnswer: B"
+  },
+  {
+   "id": 88,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.26,
+   "completion_tokens": 42,
+   "content": " visible in the distance. There\u2019s no immediate objective indicated, so exploring the area is logical. The minimap suggests movement is possible ahead.\nAnswer: B"
+  },
+  {
+   "id": 89,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.285,
+   "completion_tokens": 46,
+   "content": "ion objectives. No explicit instruction is given, so the map\u2019s guidance should be followed. The map likely indicates the correct path for the mission.\nAnswer: B"
+  },
+  {
+   "id": 90,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.236,
+   "completion_tokens": 36,
+   "content": "mission or instruction. The player is in a parking garage with no immediate objective visible. No action is required beyond observing the environment.\nAnswer: B"
+  },
+  {
+   "id": 91,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.314,
+   "completion_tokens": 55,
+   "content": " is given, so the player must interpret the map and proceed accordingly. The options provided are not actionable instructions but rather observations.\nAnswer: A"
+  },
+  {
+   "id": 92,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.354,
+   "completion_tokens": 54,
+   "content": "ruction is given, so the player must interpret the map and proceed accordingly. The options provided are not actionable instructions but observations.\nAnswer: A"
+  },
+  {
+   "id": 93,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.327,
+   "completion_tokens": 43,
+   "content": "direct instruction is given. The player must rely on game context or mission objectives, which aren\u2019t visible here. No action is mandated by the text.\nAnswer: B"
+  },
+  {
+   "id": 94,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.275,
+   "completion_tokens": 41,
+   "content": "e mission or instruction, only observation. No waypoint is set, and no timer is triggered. The player must act based on game context, not screen text.\nAnswer: A"
+  },
+  {
+   "id": 95,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.444,
+   "completion_tokens": 64,
+   "content": "l step is to follow the mission\u2019s guidance, which is typically indicated by waypoints or route markers. The mini-map suggests navigation is required.\n\nAnswer: A"
+  },
+  {
+   "id": 96,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.353,
+   "completion_tokens": 57,
+   "content": "No explicit instruction is given, so the player must choose based on context. The most logical next step is to follow the route indicated on the map.\n\nAnswer: A"
+  },
+  {
+   "id": 97,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.228,
+   "completion_tokens": 35,
+   "content": "ides no actionable instruction. The player must rely on game context or objectives not shown here. No immediate action is dictated by the image alone.\nAnswer: A"
+  },
+  {
+   "id": 98,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.274,
+   "completion_tokens": 43,
+   "content": ". The player must rely on the game\u2019s interface, such as the map or mission objectives, to proceed. No immediate action is indicated by the text alone.\nAnswer: B"
+  },
+  {
+   "id": 99,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.263,
+   "completion_tokens": 42,
+   "content": "ely observational. The player must rely on game mechanics or mission objectives, not the displayed text. No immediate action is indicated by the text.\nAnswer: A"
+  },
+  {
+   "id": 100,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.282,
+   "completion_tokens": 46,
+   "content": "ing navigation or mission progression. No explicit instruction is given, so the only logical next step is to observe and plan based on available cues. Answer: A"
+  },
+  {
+   "id": 101,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.3,
+   "completion_tokens": 51,
+   "content": "get location. No explicit instruction is given, so the player must interpret the context. The map suggests movement toward a waypoint or destination.\n\nAnswer: A"
+  },
+  {
+   "id": 102,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.22,
+   "completion_tokens": 29,
+   "content": "No mission waypoint is visible or indicated. No timer or countdown is present. The player has no explicit instruction to follow.  \nAnswer: A"
+  },
+  {
+   "id": 103,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.232,
+   "completion_tokens": 36,
+   "content": " provides no instruction, only observation. No mission waypoint or timing is indicated. The player must act based on game context, not on-screen text.\nAnswer: A"
+  },
+  {
+   "id": 104,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.289,
+   "completion_tokens": 49,
+   "content": "r is in a mission briefing or navigation phase. No explicit instruction is given, only observation. The player must choose based on context, not text. Answer: A"
+  },
+  {
+   "id": 105,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.246,
+   "completion_tokens": 36,
+   "content": "t provides no instruction, only observation. No mission waypoint or timing is indicated. The player must act based on game context, not screen text.  \nAnswer: A"
+  },
+  {
+   "id": 106,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.263,
+   "completion_tokens": 40,
+   "content": "y observation. The player must rely on game context or mission objectives, not the displayed text. No immediate action is dictated by the image alone.\nAnswer: A"
+  },
+  {
+   "id": 107,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.24,
+   "completion_tokens": 38,
+   "content": "n, only observation. The player has no immediate action required based on the visual context or text. No waypoint or timing is indicated as necessary.\nAnswer: A"
+  },
+  {
+   "id": 108,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.283,
+   "completion_tokens": 39,
+   "content": "s no instruction, only observation. No mission waypoint is set, and no timer is indicated. The player must act based on game context, not screen text.\nAnswer: A"
+  },
+  {
+   "id": 109,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.338,
+   "completion_tokens": 52,
+   "content": "sion objectives. No explicit instruction is given, only observation. The map and location hint at following a route, but no direct command is present. Answer: A"
+  },
+  {
+   "id": 110,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.383,
+   "completion_tokens": 64,
+   "content": "ion. The map icon implies route guidance, but no mission waypoint is set. The safest next step is to follow the visible route as indicated by the map.\nAnswer: A"
+  },
+  {
+   "id": 111,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.344,
+   "completion_tokens": 58,
+   "content": "e. No explicit instruction is given, so no action is required beyond observation. The minimap indicates a route, but no mission waypoint has been set. Answer: A"
+  },
+  {
+   "id": 112,
+   "name": "wait",
+   "right": [],
+   "seconds": 0.273,
+   "completion_tokens": 45,
+   "content": "ating a mission is active. No explicit instruction is given, only observation. The player must wait for further prompts or instructions from the game. Answer: B"
+  },
+  {
+   "id": 113,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.234,
+   "completion_tokens": 29,
+   "content": "No mission waypoint is visible or indicated. No timer or countdown is present. The player has no explicit instruction to follow.  \nAnswer: A"
+  },
+  {
+   "id": 114,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.291,
+   "completion_tokens": 44,
+   "content": ". The player must rely on game mechanics or mission objectives, not on the displayed text. No specific action is indicated by the text or scene alone. Answer: A"
+  },
+  {
+   "id": 115,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.285,
+   "completion_tokens": 48,
+   "content": " key. No explicit instruction is given, so the map\u2019s visible route should guide movement. The map icon implies route-following is the intended action.\nAnswer: A"
+  },
+  {
+   "id": 116,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.308,
+   "completion_tokens": 53,
+   "content": "ated, so following the visible route is the safest immediate action. The map and context imply exploration or travel, not waiting or waypoint setting.\nAnswer: A"
+  },
+  {
+   "id": 117,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.362,
+   "completion_tokens": 50,
+   "content": "on mode. No mission waypoint is visible, and no instruction is given. The only logical next step is to observe the environment and proceed cautiously. Answer: B"
+  },
+  {
+   "id": 118,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.327,
+   "completion_tokens": 38,
+   "content": "ion, only observation. The player has no immediate action required based on the visual or textual cues. No waypoint or timing instruction is provided.\nAnswer: A"
+  },
+  {
+   "id": 119,
+   "name": "observe",
+   "right": [],
+   "seconds": 0.301,
+   "completion_tokens": 50,
+   "content": " No action is required beyond observing the interface. The instruction to \"wait briefly\" is not a command but an observation about the current state.\n\nAnswer: A"
+  },
+  {
+   "id": 120,
+   "name": "observe",
+   "right": [
+    "observe"
+   ],
+   "seconds": 0.26,
+   "completion_tokens": 44,
+   "content": "rough the exit. The player is likely observing traffic or scenery, not given direct instructions. No immediate action is required beyond observation.\n\nAnswer: A"
+  },
+  {
+   "id": 121,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.247,
+   "completion_tokens": 39,
+   "content": "instruction, only observation. The player must proceed based on game context, not on-screen text. No specific action is mandated by the image alone.  \nAnswer: A"
+  },
+  {
+   "id": 122,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.246,
+   "completion_tokens": 37,
+   "content": "uction, only observation. The player has no immediate action required based on the visual or textual cues. No waypoint or timing instruction is given.\nAnswer: A"
+  },
+  {
+   "id": 123,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.265,
+   "completion_tokens": 43,
+   "content": "ion is instructed. The player must rely on game context or mission objectives, not the displayed text. No specific next step is indicated by the text.\nAnswer: B"
+  },
+  {
+   "id": 124,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.271,
+   "completion_tokens": 46,
+   "content": "igation is possible. No mission objective or waypoint is explicitly shown, so following a route isn\u2019t instructed. Waiting is not a game mechanic here. Answer: A"
+  },
+  {
+   "id": 125,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.334,
+   "completion_tokens": 60,
+   "content": "ated, so no specific route or timing instruction is given. The only logical action is to follow the visible route as no other instruction is provided.\nAnswer: A"
+  },
+  {
+   "id": 126,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.366,
+   "completion_tokens": 54,
+   "content": "text provides no direct instruction, so the player must rely on game mechanics. The most logical next step is to set a waypoint for mission guidance.\n\nAnswer: B"
+  },
+  {
+   "id": 127,
+   "name": "observe",
+   "right": [],
+   "seconds": 0.329,
+   "completion_tokens": 42,
+   "content": "t no direct instruction is given. The player must interpret the context or wait for further cues. No action is explicitly required based on the text.\n\nAnswer: A"
+  },
+  {
+   "id": 128,
+   "name": "observe",
+   "right": [
+    "observe"
+   ],
+   "seconds": 0.308,
+   "completion_tokens": 48,
+   "content": "shows a cityscape at dusk, suggesting it\u2019s safe to proceed once visibility improves. No immediate action is required beyond observing the environment.\nAnswer: A"
+  },
+  {
+   "id": 129,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.273,
+   "completion_tokens": 47,
+   "content": " The minimap indicates a path to follow, which is the most direct instruction for progression. No mission waypoint or timer is indicated as necessary.\nAnswer: A"
+  },
+  {
+   "id": 130,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.286,
+   "completion_tokens": 50,
+   "content": "n is key. No mission objective is visible, so following the map\u2019s route is logical. The map indicates a path, implying the player should adhere to it.\nAnswer: A"
+  },
+  {
+   "id": 131,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.38,
+   "completion_tokens": 57,
+   "content": " the visible route is the safest immediate action. The minimap doesn\u2019t provide specific mission instructions, so no waypoint setting is necessary yet.\nAnswer: A"
+  },
+  {
+   "id": 132,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.327,
+   "completion_tokens": 54,
+   "content": " mission objective is indicated, so following the route on the minimap is logical. The minimap shows a path, implying the player should align with it.\nAnswer: A"
+  },
+  {
+   "id": 133,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.337,
+   "completion_tokens": 57,
+   "content": " the visible route is the safest immediate action. The minimap doesn\u2019t provide specific mission instructions, so no waypoint setting is necessary yet.\nAnswer: A"
+  },
+  {
+   "id": 134,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.383,
+   "completion_tokens": 53,
+   "content": "ed. No mission objective is visible, so following the minimap\u2019s guidance is logical. The question asks for the next action, not a passive observation.\nAnswer: A"
+  },
+  {
+   "id": 135,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.329,
+   "completion_tokens": 51,
+   "content": " is indicated, so following the visible route is the safest immediate action. The minimap suggests a path, but no explicit instruction overrides it.  \nAnswer: A"
+  },
+  {
+   "id": 136,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.301,
+   "completion_tokens": 48,
+   "content": "wing a route. No mission objective is visible, so no waypoint is set. The safest next step is to follow the visible route as indicated by the minimap. Answer: A"
+  },
+  {
+   "id": 137,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.294,
+   "completion_tokens": 51,
+   "content": " is indicated, so following the visible route is the safest immediate action. The minimap suggests a path, but no explicit instruction overrides it.  \nAnswer: A"
+  },
+  {
+   "id": 138,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.286,
+   "completion_tokens": 47,
+   "content": "route. No mission or specific instruction is given, only observation. The safest next step is to follow the visible route as indicated by the minimap. Answer: A"
+  },
+  {
+   "id": 139,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.36,
+   "completion_tokens": 53,
+   "content": "on. The minimap shows a route, but the instruction is not to follow it. No time delay is indicated. The player must proceed to the objective location.\nAnswer: A"
+  },
+  {
+   "id": 140,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.346,
+   "completion_tokens": 60,
+   "content": "route, but the instruction is not to follow it. No timer or waypoint setting is indicated. The player must act on the objective, not the map or timer.\nAnswer: A"
+  },
+  {
+   "id": 141,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.328,
+   "completion_tokens": 55,
+   "content": "ission objective. The minimap shows a route, but the instruction is not to follow it directly. The player must act on the mission prompt, not the map. Answer: A"
+  },
+  {
+   "id": 142,
+   "name": null,
+   "right": [
+    "look"
+   ],
+   "seconds": 0.286,
+   "completion_tokens": 47,
+   "content": "plying a direct action. The player should mount the vehicle as instructed, not just look around or walk ahead. The objective is clear and actionable.\n\nAnswer: B"
+  },
+  {
+   "id": 143,
+   "name": "vehicle",
+   "right": [
+    "target",
+    "vehicle"
+   ],
+   "seconds": 0.418,
+   "completion_tokens": 55,
+   "content": "he quad bike. A quad bike is visible in the scene, and the player should approach it to mount. The screen text is not an instruction, so we ignore it.\nAnswer: B"
+  },
+  {
+   "id": 144,
+   "name": "target",
+   "right": [
+    "target"
+   ],
+   "seconds": 0.37,
+   "completion_tokens": 65,
+   "content": "et or interacting with the environment. The objective \"Steig auf das Quad.\" suggests mounting a quad bike, but the screen text doesn\u2019t instruct this.\n\nAnswer: A"
+  },
+  {
+   "id": 145,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.352,
+   "completion_tokens": 60,
+   "content": "ion, not a direct command. No specific route or waypoint is visible or required to be set. The next logical step is to follow the mission's directive.\nAnswer: B"
+  },
+  {
+   "id": 146,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.329,
+   "completion_tokens": 52,
+   "content": "low the visible route as the objective is not actionable via waypoints or waiting. The route is clearly indicated by the ATV\u2019s path and surroundings.\n\nAnswer: A"
+  },
+  {
+   "id": 147,
+   "name": "look",
+   "right": [
+    "look"
+   ],
+   "seconds": 0.318,
+   "completion_tokens": 54,
+   "content": " on the quad.\" The objective implies preparing to ride. The screen text is not an instruction, so the player should explore the area for next steps.  \nAnswer: A"
+  },
+  {
+   "id": 148,
+   "name": "look",
+   "right": [
+    "look"
+   ],
+   "seconds": 0.304,
+   "completion_tokens": 50,
+   "content": "back on it. No specific action is required beyond observing the environment. The next logical step is to explore the surroundings or proceed forward.\n\nAnswer: A"
+  },
+  {
+   "id": 149,
+   "name": "look",
+   "right": [
+    "look"
+   ],
+   "seconds": 0.621,
+   "completion_tokens": 60,
+   "content": "eside it, so the next logical step is to mount the vehicle. The observation doesn\u2019t give a direct instruction, so the player must infer from context.\n\nAnswer: A"
+  },
+  {
+   "id": 150,
+   "name": "press_circle",
+   "right": [
+    "press_circle"
+   ],
+   "seconds": 0.326,
+   "completion_tokens": 45,
+   "content": "ve it. The player must interact with the UI or game controls to proceed. No button press is indicated as a required action based on the text provided.\nAnswer: A"
+  }
+ ]
+}

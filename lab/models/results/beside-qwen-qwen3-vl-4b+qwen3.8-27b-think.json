@@ -1,0 +1,30 @@
+{
+ "fast": "qwen/qwen3-vl-4b",
+ "big": "qwen3.8-27b",
+ "rate_hz": 4.0,
+ "seconds_each": 40.0,
+ "big_tokens": 300,
+ "fast_alone": {
+  "n": 149,
+  "median": 0.212,
+  "p90": 0.307,
+  "p99": 0.451,
+  "max": 0.537
+ },
+ "fast_alone_over_1s": 0,
+ "fast_beside_big": {
+  "n": 51,
+  "median": 0.194,
+  "p90": 0.578,
+  "p99": 0.928,
+  "max": 0.928
+ },
+ "fast_beside_big_over_1s": 23,
+ "big_beside_fast": {
+  "n": 5,
+  "median": 8.99,
+  "p90": 12.958,
+  "p99": 12.958,
+  "max": 12.958
+ }
+}

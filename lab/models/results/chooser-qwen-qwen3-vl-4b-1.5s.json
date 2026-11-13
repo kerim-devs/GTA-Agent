@@ -1,0 +1,2122 @@
+{
+  "server": "http://192.168.0.248:1234=qwen/qwen3-vl-4b",
+  "situations": 150,
+  "thresholds": [
+    {
+      "threshold": 0.4,
+      "accepted": 149,
+      "right": 137,
+      "right_share_of_answers": 0.9194630872483222,
+      "right_share_of_all": 0.9133333333333333,
+      "none_rate": 0.006666666666666667,
+      "correct_abstentions": 0
+    },
+    {
+      "threshold": 0.5,
+      "accepted": 149,
+      "right": 137,
+      "right_share_of_answers": 0.9194630872483222,
+      "right_share_of_all": 0.9133333333333333,
+      "none_rate": 0.006666666666666667,
+      "correct_abstentions": 0
+    },
+    {
+      "threshold": 0.6,
+      "accepted": 147,
+      "right": 136,
+      "right_share_of_answers": 0.9251700680272109,
+      "right_share_of_all": 0.9066666666666666,
+      "none_rate": 0.02,
+      "correct_abstentions": 0
+    },
+    {
+      "threshold": 0.7,
+      "accepted": 142,
+      "right": 133,
+      "right_share_of_answers": 0.9366197183098591,
+      "right_share_of_all": 0.8866666666666667,
+      "none_rate": 0.05333333333333334,
+      "correct_abstentions": 0
+    },
+    {
+      "threshold": 0.8,
+      "accepted": 139,
+      "right": 130,
+      "right_share_of_answers": 0.935251798561151,
+      "right_share_of_all": 0.8666666666666667,
+      "none_rate": 0.07333333333333333,
+      "correct_abstentions": 0
+    },
+    {
+      "threshold": 0.9,
+      "accepted": 134,
+      "right": 125,
+      "right_share_of_answers": 0.9328358208955224,
+      "right_share_of_all": 0.8333333333333334,
+      "none_rate": 0.10666666666666667,
+      "correct_abstentions": 0
+    }
+  ],
+  "latency_seconds": {
+    "median": 0.08113335450070736,
+    "p95": 0.09451904099842068,
+    "max": 0.1252272499987157
+  },
+  "rows": [
+    {
+      "id": 1,
+      "name": "look",
+      "probability": 0.995,
+      "probabilities": {
+        "road": 0.005,
+        "look": 0.995
+      },
+      "seconds": 0.1252272499987157,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.09371049999754177,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "look",
+      "probability": 0.6,
+      "probabilities": {
+        "road": 0.4,
+        "look": 0.6
+      },
+      "seconds": 0.09100491700155544,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "look",
+      "probability": 0.983,
+      "probabilities": {
+        "road": 0.017,
+        "look": 0.983
+      },
+      "seconds": 0.08025212500069756,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07484066699907999,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07377016700047534,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07606612499876064,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "look",
+      "probability": 0.999,
+      "probabilities": {
+        "road": 0.001,
+        "look": 0.999
+      },
+      "seconds": 0.07359058299698518,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07969133299775422,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.0772871250010212,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07663083399893367,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "vehicle": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07793041700278991,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "vehicle": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.0794683329986583,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "look",
+      "probability": 0.965,
+      "probabilities": {
+        "road": 0.001,
+        "vehicle": 0.034,
+        "look": 0.965
+      },
+      "seconds": 0.07614241699775448,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "vehicle": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08315500000026077,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 16,
+      "name": "look",
+      "probability": 0.998,
+      "probabilities": {
+        "road": 0.001,
+        "vehicle": 0.0,
+        "look": 0.998
+      },
+      "seconds": 0.08321866600090289,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "look",
+      "probability": 0.999,
+      "probabilities": {
+        "road": 0.0,
+        "vehicle": 0.0,
+        "look": 0.999
+      },
+      "seconds": 0.07615249999798834,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 18,
+      "name": "look",
+      "probability": 0.996,
+      "probabilities": {
+        "road": 0.004,
+        "look": 0.996
+      },
+      "seconds": 0.07837695800117217,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 19,
+      "name": "look",
+      "probability": 0.998,
+      "probabilities": {
+        "road": 0.002,
+        "look": 0.998
+      },
+      "seconds": 0.07722241699957522,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 20,
+      "name": "look",
+      "probability": 0.998,
+      "probabilities": {
+        "road": 0.002,
+        "look": 0.998
+      },
+      "seconds": 0.07843045800109394,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 21,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07505629200022668,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 22,
+      "name": "look",
+      "probability": 0.999,
+      "probabilities": {
+        "road": 0.001,
+        "look": 0.999
+      },
+      "seconds": 0.08459870799924829,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 23,
+      "name": "look",
+      "probability": 0.975,
+      "probabilities": {
+        "road": 0.025,
+        "look": 0.975
+      },
+      "seconds": 0.09191587500026799,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 24,
+      "name": "look",
+      "probability": 0.996,
+      "probabilities": {
+        "road": 0.004,
+        "look": 0.996
+      },
+      "seconds": 0.07631283299997449,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 25,
+      "name": "look",
+      "probability": 0.982,
+      "probabilities": {
+        "road": 0.018,
+        "look": 0.982
+      },
+      "seconds": 0.07848937499875319,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 26,
+      "name": "look",
+      "probability": 0.993,
+      "probabilities": {
+        "road": 0.007,
+        "look": 0.993
+      },
+      "seconds": 0.08009204200061504,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 27,
+      "name": "look",
+      "probability": 0.968,
+      "probabilities": {
+        "road": 0.032,
+        "look": 0.968
+      },
+      "seconds": 0.07543595900278888,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 28,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08141149999937625,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 29,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07822933300121804,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 30,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07511745800002245,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 31,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08428075000119861,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 32,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07763766700009,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 33,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08502237499851617,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 34,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.0872770420028246,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 35,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08635141699778615,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 36,
+      "name": "mission",
+      "probability": 0.997,
+      "probabilities": {
+        "mission": 0.997,
+        "wait": 0.003
+      },
+      "seconds": 0.08885691600153223,
+      "right": [
+        "wait"
+      ]
+    },
+    {
+      "id": 37,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "vehicle": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07883220800067647,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 38,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.0773255420026544,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 39,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "vehicle": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08600358300100197,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 40,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "vehicle": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08423862500058021,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 41,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "vehicle": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08614045899958,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 42,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "vehicle": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08226195799943525,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 43,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "vehicle": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08290079200014588,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 44,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08496258399827639,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 45,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08321575000081793,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 46,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08288829199955217,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 47,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.09427595799934352,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 48,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08184566700219875,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 49,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08916512500218232,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 50,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08274949999758974,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 51,
+      "name": "look",
+      "probability": 0.643,
+      "probabilities": {
+        "road": 0.357,
+        "look": 0.643
+      },
+      "seconds": 0.08969437500127242,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 52,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08801374999893596,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 53,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08649095799773932,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 54,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08277920899854507,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 55,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08434816700173542,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 56,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.09469212499971036,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 57,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.086662541001715,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 58,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07946420799999032,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 59,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.09103679100007867,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 60,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.09124279100069543,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 61,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08538683399820002,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 62,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08241912499943282,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 63,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07871624999825144,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 64,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.0806269999993674,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 65,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08515016700039268,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 66,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07769150000240188,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 67,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08383362500171643,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 68,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07733991600252921,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 69,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07937716699962039,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 70,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.09962916700169444,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 71,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07775241600029403,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 72,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08318054100163863,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 73,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08417262500006473,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 74,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08882254100171849,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 75,
+      "name": "look",
+      "probability": 0.755,
+      "probabilities": {
+        "road": 0.0,
+        "target": 0.245,
+        "look": 0.755
+      },
+      "seconds": 0.09646287500072503,
+      "right": [
+        "road",
+        "target",
+        "look"
+      ]
+    },
+    {
+      "id": 76,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.077365083998302,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 77,
+      "name": "look",
+      "probability": 0.985,
+      "probabilities": {
+        "road": 0.0,
+        "target": 0.015,
+        "look": 0.985
+      },
+      "seconds": 0.08407320900005288,
+      "right": [
+        "road",
+        "target",
+        "look"
+      ]
+    },
+    {
+      "id": 78,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08955299999797717,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 79,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07935633300076006,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 80,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07783187499808264,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 81,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08136970800114796,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 82,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08370433299933211,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 83,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.09027399999831687,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 84,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.0810965419987042,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 85,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07948483400105033,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 86,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.09447879200160969,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 87,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.07702962500115973,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 88,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "road": 0.0,
+        "look": 1.0
+      },
+      "seconds": 0.08907379199808929,
+      "right": [
+        "road",
+        "look"
+      ]
+    },
+    {
+      "id": 89,
+      "name": "route",
+      "probability": 0.772,
+      "probabilities": {
+        "route": 0.772,
+        "mission": 0.228,
+        "wait": 0.0
+      },
+      "seconds": 0.08060829100213596,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 90,
+      "name": "mission",
+      "probability": 0.984,
+      "probabilities": {
+        "mission": 0.984,
+        "wait": 0.016
+      },
+      "seconds": 0.07861845799925504,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 91,
+      "name": "mission",
+      "probability": 1.0,
+      "probabilities": {
+        "mission": 1.0,
+        "wait": 0.0
+      },
+      "seconds": 0.08568766700045671,
+      "right": []
+    },
+    {
+      "id": 92,
+      "name": "mission",
+      "probability": 1.0,
+      "probabilities": {
+        "mission": 1.0,
+        "wait": 0.0
+      },
+      "seconds": 0.08657433299958939,
+      "right": []
+    },
+    {
+      "id": 93,
+      "name": "mission",
+      "probability": 0.973,
+      "probabilities": {
+        "mission": 0.973,
+        "wait": 0.027
+      },
+      "seconds": 0.0857788330031326,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 94,
+      "name": "mission",
+      "probability": 0.997,
+      "probabilities": {
+        "mission": 0.997,
+        "wait": 0.003
+      },
+      "seconds": 0.0866585000003397,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 95,
+      "name": "mission",
+      "probability": 0.992,
+      "probabilities": {
+        "mission": 0.992,
+        "wait": 0.008
+      },
+      "seconds": 0.07754937499703374,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 96,
+      "name": "mission",
+      "probability": 1.0,
+      "probabilities": {
+        "mission": 1.0,
+        "wait": 0.0
+      },
+      "seconds": 0.088443874999939,
+      "right": []
+    },
+    {
+      "id": 97,
+      "name": "mission",
+      "probability": 0.994,
+      "probabilities": {
+        "mission": 0.994,
+        "wait": 0.006
+      },
+      "seconds": 0.07546104200082482,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 98,
+      "name": "mission",
+      "probability": 0.631,
+      "probabilities": {
+        "route": 0.369,
+        "mission": 0.631,
+        "wait": 0.0
+      },
+      "seconds": 0.07238358299946412,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 99,
+      "name": "route",
+      "probability": 0.818,
+      "probabilities": {
+        "route": 0.818,
+        "mission": 0.182,
+        "wait": 0.0
+      },
+      "seconds": 0.08117016700271051,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 100,
+      "name": "mission",
+      "probability": 0.999,
+      "probabilities": {
+        "mission": 0.999,
+        "wait": 0.001
+      },
+      "seconds": 0.07198708400028409,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 101,
+      "name": "mission",
+      "probability": 1.0,
+      "probabilities": {
+        "mission": 1.0,
+        "wait": 0.0
+      },
+      "seconds": 0.08132420799665852,
+      "right": []
+    },
+    {
+      "id": 102,
+      "name": "mission",
+      "probability": 0.998,
+      "probabilities": {
+        "mission": 0.998,
+        "wait": 0.002
+      },
+      "seconds": 0.07267645800311584,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 103,
+      "name": "mission",
+      "probability": 0.994,
+      "probabilities": {
+        "mission": 0.994,
+        "wait": 0.006
+      },
+      "seconds": 0.07838037500187056,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 104,
+      "name": "mission",
+      "probability": 1.0,
+      "probabilities": {
+        "mission": 1.0,
+        "wait": 0.0
+      },
+      "seconds": 0.08727012500094133,
+      "right": []
+    },
+    {
+      "id": 105,
+      "name": "mission",
+      "probability": 0.996,
+      "probabilities": {
+        "mission": 0.996,
+        "wait": 0.004
+      },
+      "seconds": 0.07250462499723653,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 106,
+      "name": "mission",
+      "probability": 0.998,
+      "probabilities": {
+        "mission": 0.998,
+        "wait": 0.002
+      },
+      "seconds": 0.09131062499727705,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 107,
+      "name": "mission",
+      "probability": 0.997,
+      "probabilities": {
+        "mission": 0.997,
+        "wait": 0.003
+      },
+      "seconds": 0.08133112499854178,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 108,
+      "name": "mission",
+      "probability": 0.997,
+      "probabilities": {
+        "mission": 0.997,
+        "wait": 0.003
+      },
+      "seconds": 0.0939002499981143,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 109,
+      "name": "route",
+      "probability": 0.644,
+      "probabilities": {
+        "route": 0.644,
+        "mission": 0.356,
+        "wait": 0.0
+      },
+      "seconds": 0.09146470799896633,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 110,
+      "name": "route",
+      "probability": 0.973,
+      "probabilities": {
+        "route": 0.973,
+        "mission": 0.027,
+        "wait": 0.0
+      },
+      "seconds": 0.08075341600124375,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 111,
+      "name": "mission",
+      "probability": 0.999,
+      "probabilities": {
+        "mission": 0.999,
+        "wait": 0.001
+      },
+      "seconds": 0.08770004200050607,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 112,
+      "name": "mission",
+      "probability": 1.0,
+      "probabilities": {
+        "mission": 1.0,
+        "wait": 0.0
+      },
+      "seconds": 0.0785807920001389,
+      "right": []
+    },
+    {
+      "id": 113,
+      "name": "mission",
+      "probability": 0.986,
+      "probabilities": {
+        "mission": 0.986,
+        "wait": 0.014
+      },
+      "seconds": 0.07346483400033321,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 114,
+      "name": "route",
+      "probability": 0.875,
+      "probabilities": {
+        "route": 0.875,
+        "mission": 0.125,
+        "wait": 0.0
+      },
+      "seconds": 0.0818173339976056,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 115,
+      "name": "route",
+      "probability": 0.95,
+      "probabilities": {
+        "route": 0.95,
+        "mission": 0.05,
+        "wait": 0.0
+      },
+      "seconds": 0.07445883399850572,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 116,
+      "name": "route",
+      "probability": 0.905,
+      "probabilities": {
+        "route": 0.905,
+        "mission": 0.095,
+        "wait": 0.0
+      },
+      "seconds": 0.07443337499717018,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 117,
+      "name": "mission",
+      "probability": 0.995,
+      "probabilities": {
+        "mission": 0.995,
+        "wait": 0.005
+      },
+      "seconds": 0.07916487500187941,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 118,
+      "name": "mission",
+      "probability": 0.984,
+      "probabilities": {
+        "mission": 0.984,
+        "wait": 0.016
+      },
+      "seconds": 0.07772770900191972,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 119,
+      "name": "observe",
+      "probability": 1.0,
+      "probabilities": {
+        "observe": 1.0
+      },
+      "seconds": 0.07926066700019874,
+      "right": []
+    },
+    {
+      "id": 120,
+      "name": "observe",
+      "probability": 1.0,
+      "probabilities": {
+        "observe": 1.0
+      },
+      "seconds": 0.07371608299945365,
+      "right": [
+        "observe"
+      ]
+    },
+    {
+      "id": 121,
+      "name": "mission",
+      "probability": 0.977,
+      "probabilities": {
+        "mission": 0.977,
+        "wait": 0.023
+      },
+      "seconds": 0.07649820799997542,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 122,
+      "name": "mission",
+      "probability": 0.977,
+      "probabilities": {
+        "mission": 0.977,
+        "wait": 0.023
+      },
+      "seconds": 0.08008633299687062,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 123,
+      "name": "mission",
+      "probability": 0.952,
+      "probabilities": {
+        "mission": 0.952,
+        "wait": 0.048
+      },
+      "seconds": 0.07655429200167418,
+      "right": [
+        "mission"
+      ]
+    },
+    {
+      "id": 124,
+      "name": "route",
+      "probability": 0.895,
+      "probabilities": {
+        "route": 0.895,
+        "mission": 0.105,
+        "wait": 0.0
+      },
+      "seconds": 0.07848479200038128,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 125,
+      "name": "route",
+      "probability": 0.888,
+      "probabilities": {
+        "route": 0.888,
+        "mission": 0.112,
+        "wait": 0.0
+      },
+      "seconds": 0.08798741699865786,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 126,
+      "name": "route",
+      "probability": 0.59,
+      "probabilities": {
+        "route": 0.59,
+        "mission": 0.41,
+        "wait": 0.0
+      },
+      "seconds": 0.07615508299932117,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 127,
+      "name": "observe",
+      "probability": 1.0,
+      "probabilities": {
+        "observe": 1.0
+      },
+      "seconds": 0.09038954100105911,
+      "right": []
+    },
+    {
+      "id": 128,
+      "name": "observe",
+      "probability": 1.0,
+      "probabilities": {
+        "observe": 1.0
+      },
+      "seconds": 0.07952554199800943,
+      "right": [
+        "observe"
+      ]
+    },
+    {
+      "id": 129,
+      "name": "route",
+      "probability": 0.998,
+      "probabilities": {
+        "route": 0.998,
+        "mission": 0.002,
+        "wait": 0.0
+      },
+      "seconds": 0.07575566599916783,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 130,
+      "name": "route",
+      "probability": 0.979,
+      "probabilities": {
+        "route": 0.979,
+        "mission": 0.021,
+        "wait": 0.0
+      },
+      "seconds": 0.07844462499997462,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 131,
+      "name": "route",
+      "probability": 0.994,
+      "probabilities": {
+        "route": 0.994,
+        "mission": 0.006,
+        "wait": 0.0
+      },
+      "seconds": 0.07595708400185686,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 132,
+      "name": "route",
+      "probability": 0.993,
+      "probabilities": {
+        "route": 0.993,
+        "mission": 0.007,
+        "wait": 0.0
+      },
+      "seconds": 0.0825109999968845,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 133,
+      "name": "route",
+      "probability": 0.992,
+      "probabilities": {
+        "route": 0.992,
+        "mission": 0.008,
+        "wait": 0.0
+      },
+      "seconds": 0.07512529199811979,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 134,
+      "name": "route",
+      "probability": 0.995,
+      "probabilities": {
+        "route": 0.995,
+        "mission": 0.005,
+        "wait": 0.0
+      },
+      "seconds": 0.09138924999933806,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 135,
+      "name": "route",
+      "probability": 0.991,
+      "probabilities": {
+        "route": 0.991,
+        "mission": 0.009,
+        "wait": 0.0
+      },
+      "seconds": 0.0777010829988285,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 136,
+      "name": "route",
+      "probability": 0.995,
+      "probabilities": {
+        "route": 0.995,
+        "mission": 0.005,
+        "wait": 0.0
+      },
+      "seconds": 0.07353341699854354,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 137,
+      "name": "route",
+      "probability": 0.994,
+      "probabilities": {
+        "route": 0.994,
+        "mission": 0.006,
+        "wait": 0.0
+      },
+      "seconds": 0.07981804099836154,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 138,
+      "name": "route",
+      "probability": 0.997,
+      "probabilities": {
+        "route": 0.997,
+        "mission": 0.003,
+        "wait": 0.0
+      },
+      "seconds": 0.07948654199935845,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 139,
+      "name": "route",
+      "probability": 0.992,
+      "probabilities": {
+        "route": 0.992,
+        "mission": 0.008,
+        "wait": 0.0
+      },
+      "seconds": 0.0810572910013434,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 140,
+      "name": "route",
+      "probability": 0.99,
+      "probabilities": {
+        "route": 0.99,
+        "mission": 0.01,
+        "wait": 0.0
+      },
+      "seconds": 0.08078374999968219,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 141,
+      "name": "route",
+      "probability": 0.98,
+      "probabilities": {
+        "route": 0.98,
+        "mission": 0.02,
+        "wait": 0.0
+      },
+      "seconds": 0.08694525000100839,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 142,
+      "name": null,
+      "probability": null,
+      "probabilities": {},
+      "seconds": 0.09542625000176486,
+      "right": [
+        "look"
+      ]
+    },
+    {
+      "id": 143,
+      "name": "vehicle",
+      "probability": 0.882,
+      "probabilities": {
+        "target": 0.118,
+        "vehicle": 0.882
+      },
+      "seconds": 0.09513158399931854,
+      "right": [
+        "target",
+        "vehicle"
+      ]
+    },
+    {
+      "id": 144,
+      "name": "target",
+      "probability": 1.0,
+      "probabilities": {
+        "target": 1.0
+      },
+      "seconds": 0.09451904099842068,
+      "right": [
+        "target"
+      ]
+    },
+    {
+      "id": 145,
+      "name": "mission",
+      "probability": 0.663,
+      "probabilities": {
+        "route": 0.337,
+        "mission": 0.663,
+        "wait": 0.0
+      },
+      "seconds": 0.07694945800176356,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 146,
+      "name": "route",
+      "probability": 0.752,
+      "probabilities": {
+        "route": 0.752,
+        "mission": 0.248,
+        "wait": 0.0
+      },
+      "seconds": 0.07648508400234277,
+      "right": [
+        "route"
+      ]
+    },
+    {
+      "id": 147,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "look": 1.0
+      },
+      "seconds": 0.08683516599921859,
+      "right": [
+        "look"
+      ]
+    },
+    {
+      "id": 148,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "look": 1.0
+      },
+      "seconds": 0.07913470899802633,
+      "right": [
+        "look"
+      ]
+    },
+    {
+      "id": 149,
+      "name": "look",
+      "probability": 1.0,
+      "probabilities": {
+        "look": 1.0
+      },
+      "seconds": 0.0903068749976228,
+      "right": [
+        "look"
+      ]
+    },
+    {
+      "id": 150,
+      "name": "press_l2",
+      "probability": 0.53,
+      "probabilities": {
+        "press_circle": 0.102,
+        "press_l2": 0.53,
+        "press_r2": 0.062,
+        "press_r3": 0.305
+      },
+      "seconds": 0.10286212500068359,
+      "right": [
+        "press_circle"
+      ]
+    }
+  ]
+}

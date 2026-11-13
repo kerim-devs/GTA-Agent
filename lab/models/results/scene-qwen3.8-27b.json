@@ -1,0 +1,2966 @@
+{
+ "model": "qwen3.8-27b",
+ "extra": {
+  "reasoning_effort": "none"
+ },
+ "think": false,
+ "frames": 333,
+ "right": 323,
+ "right_share": 0.97,
+ "by_place": {
+  "room": {
+   "n": 133,
+   "right": 133,
+   "said": {
+    "room": 133
+   }
+  },
+  "landing": {
+   "n": 31,
+   "right": 30,
+   "said": {
+    "room": 1,
+    "landing": 30
+   }
+  },
+  "street": {
+   "n": 169,
+   "right": 160,
+   "said": {
+    "room": 2,
+    "landing": 7,
+    "street": 160
+   }
+  },
+  "porch": {
+   "n": 31,
+   "right": null,
+   "said": {
+    "landing": 21,
+    "street": 10
+   }
+  }
+ },
+ "seconds": {
+  "n": 364,
+  "median": 0.428,
+  "p90": 0.496,
+  "p99": 0.533,
+  "max": 0.625
+ },
+ "completion_tokens_median": 2.0,
+ "rows": [
+  {
+   "session": "20261113-024118",
+   "t": 2.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.498,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 3.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.523,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 4.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.424,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 5.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.625,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 6.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.412,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 7.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.486,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 8.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.48,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 9.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.523,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 10.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.407,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 11.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.404,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 12.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.434,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 13.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.427,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 14.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.489,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 15.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.461,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 16.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.411,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 17.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.497,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 18.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.407,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 19.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.453,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 20.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.42,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 21.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.499,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 22.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.459,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 23.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.406,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 24.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.391,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 25.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.447,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 26.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.397,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 27.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.456,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 28.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.406,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 29.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.414,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 30.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.424,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 31.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.401,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 32.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.452,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 33.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.432,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 34.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.481,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 35.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.407,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 36.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.447,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 37.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.399,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 38.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.454,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 39.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.41,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 40.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.496,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 41.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.396,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 42.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.465,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 43.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.41,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 44.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.484,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 45.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.483,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 46.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.4,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 47.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.401,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 48.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.444,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 49.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.39,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 50.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.464,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 51.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.411,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 52.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.503,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 53.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.412,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 54.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.439,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 55.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.397,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 56.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.457,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 57.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.526,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 58.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.398,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 59.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.395,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 60.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.449,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 61.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.396,
+   "content": "A"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 62.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.459,
+   "content": "A"
+  },
+  {
+   "session": "20261113-002130",
+   "t": 37.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.394,
+   "content": "C"
+  },
+  {
+   "session": "20261113-002130",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.399,
+   "content": "C"
+  },
+  {
+   "session": "20261113-002130",
+   "t": 11.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.448,
+   "content": "C"
+  },
+  {
+   "session": "20261113-002130",
+   "t": 19.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.39,
+   "content": "C"
+  },
+  {
+   "session": "20261113-002130",
+   "t": 27.9,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.464,
+   "content": "C"
+  },
+  {
+   "session": "20261113-002235",
+   "t": 3.4,
+   "where": "street",
+   "said": "room",
+   "seconds": 0.403,
+   "content": "A"
+  },
+  {
+   "session": "20261113-002235",
+   "t": 9.9,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.411,
+   "content": "C"
+  },
+  {
+   "session": "20261113-002439",
+   "t": 25.4,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.428,
+   "content": "C"
+  },
+  {
+   "session": "20261113-002439",
+   "t": 11.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.405,
+   "content": "C"
+  },
+  {
+   "session": "20261113-002439",
+   "t": 19.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.504,
+   "content": "C"
+  },
+  {
+   "session": "20261113-002739",
+   "t": 19.8,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.467,
+   "content": "C"
+  },
+  {
+   "session": "20261113-002739",
+   "t": 3.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.396,
+   "content": "C"
+  },
+  {
+   "session": "20261113-002739",
+   "t": 11.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.399,
+   "content": "C"
+  },
+  {
+   "session": "20261113-002739",
+   "t": 24.5,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.45,
+   "content": "C"
+  },
+  {
+   "session": "20261113-002739",
+   "t": 32.5,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.4,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003405",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.455,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003405",
+   "t": 11.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.396,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003405",
+   "t": 19.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.411,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003405",
+   "t": 27.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.435,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003405",
+   "t": 35.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.4,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003502",
+   "t": 12.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.453,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003502",
+   "t": 20.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.394,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003502",
+   "t": 28.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.399,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003502",
+   "t": 36.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.45,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003502",
+   "t": 44.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.414,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003502",
+   "t": 52.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.496,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003852",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.479,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003852",
+   "t": 11.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.407,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003852",
+   "t": 19.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.496,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003852",
+   "t": 27.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.515,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003852",
+   "t": 35.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.409,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003852",
+   "t": 43.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.452,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003852",
+   "t": 51.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.401,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003852",
+   "t": 59.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.501,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003852",
+   "t": 67.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.475,
+   "content": "C"
+  },
+  {
+   "session": "20261113-003852",
+   "t": 75.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.413,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 8.9,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.499,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 15.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.42,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 22.9,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.437,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.396,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 27.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.456,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 35.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.415,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 43.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.504,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 51.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.407,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 59.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.441,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 67.7,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.416,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 75.7,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.506,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 84.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.456,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 92.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.423,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004125",
+   "t": 100.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.511,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004331",
+   "t": 28.0,
+   "where": "street",
+   "said": "landing",
+   "seconds": 0.494,
+   "content": "B"
+  },
+  {
+   "session": "20261113-004331",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.401,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004331",
+   "t": 11.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.461,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004331",
+   "t": 19.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.524,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004331",
+   "t": 32.7,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.428,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004331",
+   "t": 40.7,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.507,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004331",
+   "t": 48.7,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.504,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004331",
+   "t": 56.8,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.462,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004331",
+   "t": 64.8,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.398,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004456",
+   "t": 13.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.415,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004456",
+   "t": 22.0,
+   "where": "street",
+   "said": "landing",
+   "seconds": 0.431,
+   "content": "B"
+  },
+  {
+   "session": "20261113-004456",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.4,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004456",
+   "t": 26.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.452,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004456",
+   "t": 34.7,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.419,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004456",
+   "t": 42.7,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.494,
+   "content": "C"
+  },
+  {
+   "session": "20261113-004456",
+   "t": 50.8,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.391,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005402",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.466,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005402",
+   "t": 11.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.422,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005402",
+   "t": 19.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.486,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005402",
+   "t": 27.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.467,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005402",
+   "t": 35.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.412,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005402",
+   "t": 43.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.497,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005541",
+   "t": 3.0,
+   "where": "street",
+   "said": "landing",
+   "seconds": 0.399,
+   "content": "B"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 101.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.46,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 108.0,
+   "where": "street",
+   "said": "room",
+   "seconds": 0.387,
+   "content": "A"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 116.1,
+   "where": "street",
+   "said": "landing",
+   "seconds": 0.467,
+   "content": "B"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.42,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 11.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.514,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 19.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.413,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 27.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.421,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 35.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.406,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 43.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.489,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 51.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.482,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 59.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.412,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 67.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.484,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 75.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.402,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 83.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.469,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005625",
+   "t": 91.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.404,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005928",
+   "t": 6.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.451,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005928",
+   "t": 13.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.523,
+   "content": "C"
+  },
+  {
+   "session": "20261113-005928",
+   "t": 29.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.404,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 2.9,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.396,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 6.0,
+   "where": "street",
+   "said": "landing",
+   "seconds": 0.442,
+   "content": "B"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 11.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.403,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 25.4,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.451,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 21.7,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.396,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 30.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.404,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 38.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.442,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 46.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.399,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 54.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.455,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 62.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.41,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 70.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.488,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 78.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.432,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 86.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.436,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 94.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.393,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010226",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.497,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010226",
+   "t": 11.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.489,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010226",
+   "t": 19.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.399,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010226",
+   "t": 27.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.396,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010324",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.446,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010324",
+   "t": 11.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.398,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010324",
+   "t": 19.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.457,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010324",
+   "t": 27.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.391,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010324",
+   "t": 35.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.387,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010324",
+   "t": 43.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.466,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010324",
+   "t": 51.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.401,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010434",
+   "t": 3.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.452,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010434",
+   "t": 6.9,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.408,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010434",
+   "t": 11.6,
+   "where": "street",
+   "said": "landing",
+   "seconds": 0.482,
+   "content": "B"
+  },
+  {
+   "session": "20261113-010655",
+   "t": 9.8,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.381,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010655",
+   "t": 23.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.384,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010655",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.442,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010655",
+   "t": 17.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.39,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010655",
+   "t": 28.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.387,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010655",
+   "t": 36.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.466,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010655",
+   "t": 44.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.417,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010655",
+   "t": 52.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.54,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010813",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.494,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010813",
+   "t": 11.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.449,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010813",
+   "t": 19.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.402,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010813",
+   "t": 27.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.389,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010813",
+   "t": 35.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.454,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010813",
+   "t": 43.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.405,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010920",
+   "t": 4.0,
+   "where": "street",
+   "said": "landing",
+   "seconds": 0.451,
+   "content": "B"
+  },
+  {
+   "session": "20261113-010920",
+   "t": 11.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.383,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010920",
+   "t": 19.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.394,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010920",
+   "t": 27.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.467,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010920",
+   "t": 35.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.39,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010920",
+   "t": 43.7,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.461,
+   "content": "C"
+  },
+  {
+   "session": "20261113-010920",
+   "t": 51.7,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.393,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011036",
+   "t": 3.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.401,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011036",
+   "t": 11.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.451,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011036",
+   "t": 19.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.397,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011036",
+   "t": 27.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.454,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011036",
+   "t": 35.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.393,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011036",
+   "t": 43.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.401,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011145",
+   "t": 1.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.451,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011145",
+   "t": 6.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.393,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011145",
+   "t": 14.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.46,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011145",
+   "t": 22.3,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.401,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011145",
+   "t": 30.4,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.393,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011145",
+   "t": 38.4,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.448,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011145",
+   "t": 46.4,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.384,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011452",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.468,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011452",
+   "t": 11.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.412,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011452",
+   "t": 19.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.492,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011452",
+   "t": 27.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.385,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011452",
+   "t": 35.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.389,
+   "content": "C"
+  },
+  {
+   "session": "20261113-011452",
+   "t": 43.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.473,
+   "content": "C"
+  },
+  {
+   "session": "20261113-022645",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.47,
+   "content": "C"
+  },
+  {
+   "session": "20261113-022645",
+   "t": 11.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.403,
+   "content": "C"
+  },
+  {
+   "session": "20261113-022645",
+   "t": 19.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.432,
+   "content": "C"
+  },
+  {
+   "session": "20261113-022645",
+   "t": 27.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.409,
+   "content": "C"
+  },
+  {
+   "session": "20261113-022742",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.396,
+   "content": "C"
+  },
+  {
+   "session": "20261113-022742",
+   "t": 11.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.458,
+   "content": "C"
+  },
+  {
+   "session": "20261113-022742",
+   "t": 19.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.394,
+   "content": "C"
+  },
+  {
+   "session": "20261113-022742",
+   "t": 27.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.414,
+   "content": "C"
+  },
+  {
+   "session": "20261113-022742",
+   "t": 35.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.435,
+   "content": "C"
+  },
+  {
+   "session": "20261113-022742",
+   "t": 43.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 0.428,
+   "content": "C"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 66.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.501,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 67.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.504,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 68.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.529,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 69.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.517,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 70.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.471,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 71.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.526,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 72.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.389,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 73.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.395,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 74.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.458,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 75.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.408,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 76.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 0.511,
+   "content": "C"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 77.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 0.457,
+   "content": "C"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 78.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 0.41,
+   "content": "C"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 79.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 0.402,
+   "content": "C"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 80.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 0.435,
+   "content": "C"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 81.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 0.407,
+   "content": "C"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 82.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.492,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 83.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 0.476,
+   "content": "C"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 84.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 0.398,
+   "content": "C"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 85.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 0.406,
+   "content": "C"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 86.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.442,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 87.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.397,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 88.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.455,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 89.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.394,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 90.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.507,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 91.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.385,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 92.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.481,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 93.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 0.417,
+   "content": "C"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 94.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.493,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 95.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.467,
+   "content": "B"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 96.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 0.419,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 40.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.533,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 60.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.484,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 80.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.503,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 120.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.408,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 140.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.471,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 160.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.393,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 180.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.459,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 200.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.407,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 220.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.398,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 240.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.441,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 260.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.402,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 320.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.45,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 440.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.409,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 460.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.395,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 480.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.44,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 500.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.395,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 520.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.457,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 540.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.545,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 560.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.395,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 580.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.497,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 600.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.401,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 620.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.454,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 640.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.406,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 660.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.51,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 680.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.463,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 700.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.397,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 720.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.407,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 740.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.438,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 760.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.416,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 780.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.49,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 800.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.474,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 820.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.408,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 840.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.399,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 860.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.436,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 880.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.392,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 900.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.461,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 920.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.418,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 940.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.488,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 980.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.408,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1000.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.456,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1020.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.406,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1040.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.489,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1120.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.481,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1140.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.417,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1160.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.49,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1180.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.39,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1200.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.472,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1220.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.404,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1240.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.446,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1300.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.396,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1320.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.398,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1340.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.452,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1360.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.393,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1380.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.457,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1400.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.417,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1420.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.486,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1460.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.399,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1480.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.47,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1500.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.425,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1520.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.488,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1540.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.463,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1560.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.399,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1580.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.392,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1620.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.454,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1640.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.404,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1660.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.448,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1680.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.394,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1700.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.399,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1720.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.453,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1740.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.393,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1760.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.459,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1780.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 0.392,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 22.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.389,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 22.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.462,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 23.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.394,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 23.25,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.459,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 23.5,
+   "where": "landing",
+   "said": "room",
+   "seconds": 0.421,
+   "content": "A"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 23.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.488,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 24.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.397,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 24.25,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.463,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 24.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.394,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 24.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.458,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 25.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.404,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 25.25,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.388,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 25.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.452,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 25.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.389,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 26.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.466,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 26.25,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.403,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 26.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.494,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 26.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.384,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 27.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.483,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 27.25,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.397,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 27.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.458,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 27.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.39,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 28.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.389,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 28.25,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.464,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 28.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.402,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 28.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.45,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 29.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.378,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 29.25,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.402,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 29.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.467,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 29.75,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.405,
+   "content": "B"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 30.0,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 0.447,
+   "content": "B"
+  }
+ ]
+}

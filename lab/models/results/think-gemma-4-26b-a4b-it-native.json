@@ -1,0 +1,330 @@
+{
+ "model": "gemma-4-26b-a4b-it",
+ "extra": {},
+ "max_tokens": 1500,
+ "situations": 30,
+ "answered": 26,
+ "right": 22,
+ "right_share_of_all": 0.733,
+ "seconds": {
+  "n": 30,
+  "median": 5.848,
+  "p90": 9.437,
+  "p99": 9.668,
+  "max": 9.668
+ },
+ "completion_tokens_median": 902.5,
+ "rows": [
+  {
+   "id": 1,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 5.929,
+   "completion_tokens": 891,
+   "content": "is facing down an empty road at night, the most natural next step for exploration would be to orient themselves and then proceed.\n\nB: Look around and walk ahead"
+  },
+  {
+   "id": 6,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 5.586,
+   "completion_tokens": 887,
+   "content": ",-unfamiliar environment at night, the most natural and common player action would be to orient themselves before proceeding.\n\n**B: Look around and walk ahead**"
+  },
+  {
+   "id": 11,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 6.169,
+   "completion_tokens": 948,
+   "content": " a situation, the most natural and common gameplay action for exploration would be to observe the surroundings before proceeding.\n\nB: Look around and walk ahead"
+  },
+  {
+   "id": 16,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 6.445,
+   "completion_tokens": 1002,
+   "content": " this, the most natural and continuous action would be to continue exploring the surroundings.\n\nTherefore, the best option is:\n**C: Look around and walk ahead**"
+  },
+  {
+   "id": 21,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 8.415,
+   "completion_tokens": 1313,
+   "content": " new, dimly lit area, the most logical and standard exploratory action would be to assess the surroundings before proceeding.\n\n**B: Look around and walk ahead**"
+  },
+  {
+   "id": 26,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 8.513,
+   "completion_tokens": 1328,
+   "content": " exploration would be to observe the surroundings before proceeding further into the darkness.\n\nTherefore, the best option is:\n**B: Look around and walk ahead**"
+  },
+  {
+   "id": 31,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 8.059,
+   "completion_tokens": 1284,
+   "content": "e choice as it describes the standard exploratory behavior of observing the new area (noticing \"Willie's\" and the nearby buildings) while moving into the scene."
+  },
+  {
+   "id": 36,
+   "name": null,
+   "right": [
+    "wait"
+   ],
+   "seconds": 9.437,
+   "completion_tokens": 1500,
+   "content": ""
+  },
+  {
+   "id": 41,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 5.768,
+   "completion_tokens": 914,
+   "content": "ing this new scene would be to observe the surroundings and move forward into the environment.\n\nTherefore, the best option is:\n**C: Look around and walk ahead**"
+  },
+  {
+   "id": 46,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 5.047,
+   "completion_tokens": 795,
+   "content": "s a character in a stationary position within an open-world environment, the most logical next step for exploration would be:\n\n**B: Look around and walk ahead**"
+  },
+  {
+   "id": 51,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 4.751,
+   "completion_tokens": 743,
+   "content": "ayer character moving into a new area in an open-world game environment, the most natural next step for exploration would be:\n\n**B: Look around and walk ahead**"
+  },
+  {
+   "id": 56,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 5.405,
+   "completion_tokens": 841,
+   "content": "t natural action for a player arriving at this location would be to take in the surroundings before continuing their journey.\n\n**B: Look around and walk ahead**"
+  },
+  {
+   "id": 61,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 4.524,
+   "completion_tokens": 705,
+   "content": "the most natural and exploratory next step for a player would be to take in the surroundings and continue exploring the area.\n\n**B: Look around and walk ahead**"
+  },
+  {
+   "id": 66,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 2.508,
+   "completion_tokens": 373,
+   "content": "Based on the image provided, the most natural next step for a player exploring this environment would be:\n\n**B: Look around and walk ahead**"
+  },
+  {
+   "id": 71,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 2.583,
+   "completion_tokens": 399,
+   "content": "n expansive landscape without a clearly visible road or immediate objective, the most logical next step for exploration would be:\n\nB: Look around and walk ahead"
+  },
+  {
+   "id": 76,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 2.113,
+   "completion_tokens": 318,
+   "content": "B"
+  },
+  {
+   "id": 81,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 4.006,
+   "completion_tokens": 627,
+   "content": "d and distant hills, the most natural next step for exploration would be to observe the surroundings and continue moving forward.\n\nB: Look around and walk ahead"
+  },
+  {
+   "id": 86,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 2.092,
+   "completion_tokens": 321,
+   "content": "Based on the image provided, the most natural next action for a player in this scenic environment would be:\n\n**B: Look around and walk ahead**"
+  },
+  {
+   "id": 91,
+   "name": "mission",
+   "right": [],
+   "seconds": 9.244,
+   "completion_tokens": 1446,
+   "content": ": Wait three seconds** has no clear justification based on the visual information in the screenshot.\n\nTherefore, the most plausible intended answer is A.\n\n**A**"
+  },
+  {
+   "id": 96,
+   "name": "mission",
+   "right": [],
+   "seconds": 8.91,
+   "completion_tokens": 1394,
+   "content": "tion and set it as a waypoint.\n\nTherefore, the most logical next action for a player wanting to navigate is:\n\n**A: Set a mission waypoint and follow its route**"
+  },
+  {
+   "id": 101,
+   "name": null,
+   "right": [],
+   "seconds": 9.464,
+   "completion_tokens": 1500,
+   "content": ""
+  },
+  {
+   "id": 106,
+   "name": null,
+   "right": [
+    "mission"
+   ],
+   "seconds": 9.649,
+   "completion_tokens": 1500,
+   "content": "o V), there is no explicit visual instruction or UI element that dictates what the player must do next.\n\nHowever, in the context of typical gameplay and action-"
+  },
+  {
+   "id": 111,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 9.297,
+   "completion_tokens": 1431,
+   "content": "ng between these two options is speculative, but \"Set a mission waypoint\" represents a logical next step for a player intending to continue playing the game.\n\nA"
+  },
+  {
+   "id": 116,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 3.931,
+   "completion_tokens": 587,
+   "content": "ge, which shows a vehicle positioned on a road leading out of an underpass, the most logical next action for a player would be:\n\n**A: Follow the visible route**"
+  },
+  {
+   "id": 121,
+   "name": null,
+   "right": [
+    "mission"
+   ],
+   "seconds": 9.668,
+   "completion_tokens": 1500,
+   "content": "k environment with a distant city view, there are no visible mission markers or active objectives that would necessitate setting a waypoint immediately. Without"
+  },
+  {
+   "id": 126,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 2.573,
+   "completion_tokens": 391,
+   "content": "Based on the image, the player should:\n\n**A: Follow the visible route**"
+  },
+  {
+   "id": 131,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 7.077,
+   "completion_tokens": 1108,
+   "content": "he mini-map (which represents an established navigation path or mission route), the player should continue following that path.\n\n**A: Follow the visible route**"
+  },
+  {
+   "id": 136,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 6.211,
+   "completion_tokens": 954,
+   "content": "lated indicators present, the most logical and direct next action for a player is to continue their current course of movement.\n\n**A: Follow the visible route**"
+  },
+  {
+   "id": 141,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 2.771,
+   "completion_tokens": 424,
+   "content": "specific location. In games like this, the standard way to do this is by marking the destination on the map.\n\n**B: Set a mission waypoint and follow its route**"
+  },
+  {
+   "id": 146,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 3.334,
+   "completion_tokens": 519,
+   "content": "s type, the standard way to do this is to mark the destination on the map.\n\nTherefore, the correct action is:\n**B: Set a mission waypoint and follow its route**"
+  }
+ ]
+}

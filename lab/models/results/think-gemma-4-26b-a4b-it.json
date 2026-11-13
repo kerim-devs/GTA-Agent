@@ -1,0 +1,1595 @@
+{
+ "model": "gemma-4-26b-a4b-it",
+ "extra": {
+  "reasoning_effort": "none"
+ },
+ "max_tokens": 300,
+ "situations": 150,
+ "answered": 149,
+ "right": 129,
+ "right_share_of_all": 0.86,
+ "seconds": {
+  "n": 150,
+  "median": 0.476,
+  "p90": 0.586,
+  "p99": 1.025,
+  "max": 1.942
+ },
+ "completion_tokens_median": 54.0,
+ "rows": [
+  {
+   "id": 1,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.407,
+   "completion_tokens": 39,
+   "content": "e of a road at night. To progress through the environment safely and explore the scene, they should observe their surroundings before moving forward.\n\nAnswer: B"
+  },
+  {
+   "id": 2,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.553,
+   "completion_tokens": 62,
+   "content": "creen that dictate a single correct action. In an open-world game environment like this, the most natural progression is to explore the surroundings.\n\nAnswer: B"
+  },
+  {
+   "id": 3,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.58,
+   "completion_tokens": 66,
+   "content": "t action, but exploring the environment is the standard gameplay loop. Looking around and moving forward allows for further exploration of the scene.\n\nAnswer: B"
+  },
+  {
+   "id": 4,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.447,
+   "completion_tokens": 43,
+   "content": "here are no immediate obstacles or specific objectives visible, so exploring the surroundings and continuing forward is the most natural progression.\n\nAnswer: B"
+  },
+  {
+   "id": 5,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.55,
+   "completion_tokens": 61,
+   "content": ", suggesting exploration is the most natural next step. Looking around to assess the surroundings before moving forward is the best course of action.\n\nAnswer: B"
+  },
+  {
+   "id": 6,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.483,
+   "completion_tokens": 53,
+   "content": "s visible, suggesting exploration is the primary option. Looking around and moving forward allows for discovering what lies ahead in the environment.\n\nAnswer: B"
+  },
+  {
+   "id": 7,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.494,
+   "completion_tokens": 61,
+   "content": " suggesting they should explore the surroundings to find something to do. Therefore, looking around and moving forward is the most logical next step.\n\nAnswer: B"
+  },
+  {
+   "id": 8,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.447,
+   "completion_tokens": 48,
+   "content": "jectives or immediate threats visible that would dictate a single correct action. Therefore, exploring the environment is the most natural next step.\n\nAnswer: B"
+  },
+  {
+   "id": 9,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.455,
+   "completion_tokens": 52,
+   "content": "fic objectives or prompts visible that dictate a single correct action, but exploring the environment is the natural next step in an open-world game.\n\nAnswer: B"
+  },
+  {
+   "id": 10,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.607,
+   "completion_tokens": 77,
+   "content": "tion, but exploring the environment is the standard way to progress. Looking around and moving forward allows for more discovery of the surroundings.\n\nAnswer: B"
+  },
+  {
+   "id": 11,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.573,
+   "completion_tokens": 72,
+   "content": "ives or prompts visible that dictate a single correct action, but \"looking around and walking ahead\" is a natural way to explore such an environment.\n\nAnswer: B"
+  },
+  {
+   "id": 12,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.44,
+   "completion_tokens": 45,
+   "content": "es and a dark vehicle. There are no immediate objectives or direct instructions visible, so exploring the surroundings is the most natural next step.\n\nAnswer: C"
+  },
+  {
+   "id": 13,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.431,
+   "completion_tokens": 50,
+   "content": "objectives or prompts visible to dictate a single correct action, but looking around and moving forward is a standard way to explore the environment.\n\nAnswer: C"
+  },
+  {
+   "id": 14,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.497,
+   "completion_tokens": 56,
+   "content": "h them, suggesting they should explore the surroundings. Looking around and moving forward would be the most natural progression in this environment.\n\nAnswer: C"
+  },
+  {
+   "id": 15,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.433,
+   "completion_tokens": 47,
+   "content": "d. There are no immediate objectives or vehicles being interacted with, so the most natural progression is to continue moving forward into the scene.\n\nAnswer: C"
+  },
+  {
+   "id": 16,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.488,
+   "completion_tokens": 56,
+   "content": "he dark, they should move away from the roadway or continue their path safely. Looking around ensures no other hazards are present before proceeding.\n\nAnswer: C"
+  },
+  {
+   "id": 17,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.426,
+   "completion_tokens": 48,
+   "content": "e are no specific objectives or prompts visible to indicate a mandatory action, so exploring the immediate environment is the most natural next step.\n\nAnswer: C"
+  },
+  {
+   "id": 18,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.433,
+   "completion_tokens": 47,
+   "content": "re are no specific objectives or prompts visible that dictate a single correct action, but exploring the environment is the standard way to progress.\n\nAnswer: B"
+  },
+  {
+   "id": 19,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.487,
+   "completion_tokens": 58,
+   "content": "esting exploration is the primary activity. The most natural action in this setting would be to explore the surroundings and continue moving forward.\n\nAnswer: B"
+  },
+  {
+   "id": 20,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.379,
+   "completion_tokens": 40,
+   "content": "r driveway near some buildings at night. There are no specific objectives visible, so the logical next step is to explore the immediate surroundings.\n\nAnswer: B"
+  },
+  {
+   "id": 21,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.372,
+   "completion_tokens": 36,
+   "content": "k, quiet street scene from a video game. There are no immediate objectives or threats visible, suggesting the player should explore the surroundings.\n\nAnswer: B"
+  },
+  {
+   "id": 22,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.434,
+   "completion_tokens": 50,
+   "content": "ives or prompts visible that dictate a single correct action. However, looking around and moving forward is a natural way to explore the environment.\n\nAnswer: B"
+  },
+  {
+   "id": 23,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.447,
+   "completion_tokens": 52,
+   "content": "r threats visible, suggesting exploration is the primary activity. The most natural progression in this setting would be to explore the surroundings.\n\nAnswer: B"
+  },
+  {
+   "id": 24,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.371,
+   "completion_tokens": 39,
+   "content": "dewalk next to a road at night. There are no immediate threats or specific objectives visible, suggesting the player should explore the surroundings.\n\nAnswer: B"
+  },
+  {
+   "id": 25,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.516,
+   "completion_tokens": 61,
+   "content": "sitate staying on the path or turning. The most natural progression in an open-world environment like this is to continue exploring the surroundings.\n\nAnswer: B"
+  },
+  {
+   "id": 26,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.51,
+   "completion_tokens": 62,
+   "content": "ict movement to just walking along the road. Exploring the surroundings and moving forward seems like the most natural next step in this environment.\n\nAnswer: B"
+  },
+  {
+   "id": 27,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.467,
+   "completion_tokens": 54,
+   "content": "diate threats visible that would dictate a single correct action. However, exploring the environment is a standard way to progress in such a setting.\n\nAnswer: B"
+  },
+  {
+   "id": 28,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.441,
+   "completion_tokens": 52,
+   "content": "ectives visible, suggesting exploration is the logical next step. Looking around and moving forward allows for discovering nearby points of interest.\n\nAnswer: B"
+  },
+  {
+   "id": 29,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.449,
+   "completion_tokens": 51,
+   "content": "ar objectives visible, suggesting exploration is the logical step. Looking around and moving forward allows for further discovery of the environment.\n\nAnswer: B"
+  },
+  {
+   "id": 30,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.378,
+   "completion_tokens": 40,
+   "content": "n a dirt path or shoulder next to a road at night. There are no immediate objectives visible, so exploring the surroundings is the logical next step.\n\nAnswer: B"
+  },
+  {
+   "id": 31,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.499,
+   "completion_tokens": 59,
+   "content": "te staying in one spot or following a specific path. Exploring the surroundings by looking around and moving forward is the most natural progression.\n\nAnswer: B"
+  },
+  {
+   "id": 32,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.445,
+   "completion_tokens": 51,
+   "content": " threats visible, suggesting exploration is the logical next step. Looking around and moving forward allows for further discovery of the environment.\n\nAnswer: B"
+  },
+  {
+   "id": 33,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.46,
+   "completion_tokens": 53,
+   "content": "visible, suggesting exploration is the logical next step. Looking around to assess the surroundings before moving forward is the most natural action.\n\nAnswer: B"
+  },
+  {
+   "id": 34,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.456,
+   "completion_tokens": 53,
+   "content": "paths visible, suggesting exploration is the next logical step. Looking around and moving forward allows for more information about the surroundings.\n\nAnswer: B"
+  },
+  {
+   "id": 35,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.544,
+   "completion_tokens": 65,
+   "content": "ible other than exploring the surrounding environment. Looking around to assess the surroundings before moving forward is the most logical next step.\n\nAnswer: B"
+  },
+  {
+   "id": 36,
+   "name": "wait",
+   "right": [
+    "wait"
+   ],
+   "seconds": 0.404,
+   "completion_tokens": 44,
+   "content": "arkers or gameplay prompts visible. There is no information provided to suggest any specific action is required other than observing the environment.\n\nAnswer: B"
+  },
+  {
+   "id": 37,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.484,
+   "completion_tokens": 56,
+   "content": "han exploring the environment. The most natural progression in an open-world setting like this would be to continue moving forward through the scene.\n\nAnswer: C"
+  },
+  {
+   "id": 38,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.453,
+   "completion_tokens": 49,
+   "content": "e threats visible, suggesting exploration is the primary activity. Looking around and moving forward allows for further discovery of the environment.\n\nAnswer: B"
+  },
+  {
+   "id": 39,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.466,
+   "completion_tokens": 54,
+   "content": "jectives or direct instructions visible, so the most natural progression in an open-world environment like this would be to explore the surroundings.\n\nAnswer: C"
+  },
+  {
+   "id": 40,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.453,
+   "completion_tokens": 50,
+   "content": "r visible on the road and an open area ahead. The most natural progression in this environment would be to continue moving forward through the scene.\n\nAnswer: C"
+  },
+  {
+   "id": 41,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.485,
+   "completion_tokens": 54,
+   "content": "isible, and there is a vehicle parked nearby, but the most natural progression in an open-world environment like this is to explore the surroundings.\n\nAnswer: C"
+  },
+  {
+   "id": 42,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.413,
+   "completion_tokens": 45,
+   "content": "g towards an open area with a road and buildings. There are no immediate objectives visible, so the logical next step is to explore the surroundings.\n\nAnswer: C"
+  },
+  {
+   "id": 43,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.406,
+   "completion_tokens": 42,
+   "content": "oking a road and some greenery. There are no immediate objectives visible, so the most natural progression is to explore the surrounding environment.\n\nAnswer: C"
+  },
+  {
+   "id": 44,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.518,
+   "completion_tokens": 61,
+   "content": " in the scene that would restrict movement. Therefore, exploring the surroundings by looking around and moving forward is the most natural next step.\n\nAnswer: B"
+  },
+  {
+   "id": 45,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.523,
+   "completion_tokens": 61,
+   "content": " that would restrict movement, suggesting exploration. Looking around and moving forward allows for more information gathering about the environment.\n\nAnswer: B"
+  },
+  {
+   "id": 46,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.568,
+   "completion_tokens": 67,
+   "content": "that would restrict movement to just walking along the road. Looking around provides more context for the environment before deciding on a direction.\n\nAnswer: B"
+  },
+  {
+   "id": 47,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.441,
+   "completion_tokens": 48,
+   "content": "re are no specific objectives or prompts visible to indicate a mandatory path, so exploring the immediate surroundings is the most natural next step.\n\nAnswer: B"
+  },
+  {
+   "id": 48,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.476,
+   "completion_tokens": 54,
+   "content": "lear road visible to walk along, but there is open space ahead. The most natural next step is to explore the immediate surroundings and move forward.\n\nAnswer: B"
+  },
+  {
+   "id": 49,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.547,
+   "completion_tokens": 64,
+   "content": "nt to just walking along the road. Exploring the surroundings by looking around and moving forward is the most natural next step in this environment.\n\nAnswer: B"
+  },
+  {
+   "id": 50,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.565,
+   "completion_tokens": 66,
+   "content": "loring the environment is the standard way to progress in such a setting. Looking around and walking ahead allows for further discovery of the scene.\n\nAnswer: B"
+  },
+  {
+   "id": 51,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.477,
+   "completion_tokens": 53,
+   "content": "ould restrict movement to just the road or require looking around specifically. Walking ahead into the scene seems like the most natural progression.\n\nAnswer: B"
+  },
+  {
+   "id": 52,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.496,
+   "completion_tokens": 58,
+   "content": "e immediate vicinity, but there is an open path ahead through the grass. Therefore, looking around and walking forward is the most logical next step.\n\nAnswer: B"
+  },
+  {
+   "id": 53,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.48,
+   "completion_tokens": 56,
+   "content": "sible in the immediate vicinity, and the path ahead leads into an open area. Therefore, looking around and moving forward is the most logical action.\n\nAnswer: B"
+  },
+  {
+   "id": 54,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.396,
+   "completion_tokens": 42,
+   "content": "g the ocean. There are no specific objectives visible, so the natural progression is to explore the environment by looking around and moving forward.\n\nAnswer: B"
+  },
+  {
+   "id": 55,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.529,
+   "completion_tokens": 62,
+   "content": "s visible in the frame, suggesting exploration is the primary activity. Therefore, the most natural action is to explore the surrounding environment.\n\nAnswer: B"
+  },
+  {
+   "id": 56,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.436,
+   "completion_tokens": 46,
+   "content": "n. There is no clear path or objective indicated, so exploring the immediate surroundings and moving forward seems like the most natural progression.\n\nAnswer: B"
+  },
+  {
+   "id": 57,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.404,
+   "completion_tokens": 42,
+   "content": "rea near a fence and some buildings. There are no specific objectives visible, so exploring the immediate surroundings is the most natural next step.\n\nAnswer: B"
+  },
+  {
+   "id": 58,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.478,
+   "completion_tokens": 57,
+   "content": "specific objectives visible in the frame, suggesting exploration. The most natural progression is to continue moving forward through the environment.\n\nAnswer: B"
+  },
+  {
+   "id": 59,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.479,
+   "completion_tokens": 55,
+   "content": "hreats visible, suggesting exploration is the most natural action. Looking around and moving forward allows for further discovery of the environment.\n\nAnswer: B"
+  },
+  {
+   "id": 60,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.511,
+   "completion_tokens": 53,
+   "content": "o follow, but there is an open area ahead towards the buildings. Looking around and moving forward allows for further exploration of the environment.\n\nAnswer: B"
+  },
+  {
+   "id": 61,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.412,
+   "completion_tokens": 42,
+   "content": "verlooking a beach and the ocean. There is no clear path or objective visible, so exploring the immediate surroundings is the most logical next step.\n\nAnswer: B"
+  },
+  {
+   "id": 62,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.469,
+   "completion_tokens": 52,
+   "content": "icated by the environment other than exploring the visible landscape. Looking around and walking ahead allows for further exploration of the scenery.\n\nAnswer: B"
+  },
+  {
+   "id": 63,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.521,
+   "completion_tokens": 61,
+   "content": "here is an open path leading toward the coastline. Looking around and walking ahead would allow the player to explore the scenery or reach the beach.\n\nAnswer: B"
+  },
+  {
+   "id": 64,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.417,
+   "completion_tokens": 43,
+   "content": "ing a beach and a pier. There is no clear path or objective indicated, so exploring the immediate surroundings seems like the most natural next step.\n\nAnswer: B"
+  },
+  {
+   "id": 65,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.453,
+   "completion_tokens": 49,
+   "content": "e is no specific objective or path indicated by the environment that would force a single action, but exploring the scenery is the natural next step.\n\nAnswer: B"
+  },
+  {
+   "id": 66,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.506,
+   "completion_tokens": 53,
+   "content": "fic road visible to walk along, but there is a clear path ahead. Therefore, exploring the surroundings and moving forward is the most logical action.\n\nAnswer: B"
+  },
+  {
+   "id": 67,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.396,
+   "completion_tokens": 39,
+   "content": "immediate obstacles or clear objectives visible. The player is positioned near a fence and can explore the surrounding area to find more information.\n\nAnswer: B"
+  },
+  {
+   "id": 68,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.493,
+   "completion_tokens": 56,
+   "content": "ediate vicinity, but there is an open path ahead through the grassy area. Therefore, looking around and moving forward is the most logical next step.\n\nAnswer: B"
+  },
+  {
+   "id": 69,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.553,
+   "completion_tokens": 65,
+   "content": "ible in the frame, suggesting exploration is the natural next step. Therefore, the most logical action is to look around and continue moving forward.\n\nAnswer: B"
+  },
+  {
+   "id": 70,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.499,
+   "completion_tokens": 56,
+   "content": "s or immediate threats visible, suggesting exploration is the primary activity. Therefore, the most natural next step is to explore the surroundings.\n\nAnswer: B"
+  },
+  {
+   "id": 71,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.498,
+   "completion_tokens": 54,
+   "content": "ned facing an expansive view of mountains and valleys. Given the lack of specific direction, exploring the environment is the most natural next step.\n\nAnswer: B"
+  },
+  {
+   "id": 72,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.386,
+   "completion_tokens": 37,
+   "content": " path overlooking a vast landscape. There are no immediate obstacles or specific objectives visible, suggesting exploration is the natural next step.\n\nAnswer: B"
+  },
+  {
+   "id": 73,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.435,
+   "completion_tokens": 46,
+   "content": "ined path or road. To continue exploring the environment and see what lies beyond the immediate terrain, they should move forward into the landscape.\n\nAnswer: B"
+  },
+  {
+   "id": 74,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.409,
+   "completion_tokens": 40,
+   "content": "teep, grassy hillside. There is no visible road in the immediate vicinity, so continuing forward on the current path is the only logical progression.\n\nAnswer: B"
+  },
+  {
+   "id": 75,
+   "name": "look",
+   "right": [
+    "road",
+    "target",
+    "look"
+   ],
+   "seconds": 0.476,
+   "completion_tokens": 48,
+   "content": "ere are no roads or specific targets marked on the screen to guide movement. The most natural progression is to continue exploring the terrain ahead.\n\nAnswer: C"
+  },
+  {
+   "id": 76,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.419,
+   "completion_tokens": 45,
+   "content": "the top of the hill. There is no visible road in the immediate vicinity, so walking ahead into the landscape seems like the most natural progression.\n\nAnswer: B"
+  },
+  {
+   "id": 77,
+   "name": "look",
+   "right": [
+    "road",
+    "target",
+    "look"
+   ],
+   "seconds": 0.51,
+   "completion_tokens": 56,
+   "content": " positioned facing towards the upper part of the hill. Therefore, the most natural action is to explore the surroundings and continue moving forward.\n\nAnswer: C"
+  },
+  {
+   "id": 78,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.457,
+   "completion_tokens": 49,
+   "content": "st of the hill. There is no visible road in the immediate vicinity to walk along. The most logical next step is to continue exploring the path ahead.\n\nAnswer: B"
+  },
+  {
+   "id": 79,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.48,
+   "completion_tokens": 53,
+   "content": "e road in the immediate vicinity to walk along. The most logical next step is to continue exploring the terrain by looking around and moving forward.\n\nAnswer: B"
+  },
+  {
+   "id": 80,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.415,
+   "completion_tokens": 43,
+   "content": "d. There are no immediate obstacles or specific objectives visible, so exploring the surroundings and moving forward is the most natural progression.\n\nAnswer: B"
+  },
+  {
+   "id": 81,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.461,
+   "completion_tokens": 49,
+   "content": " specific objective or immediate danger visible, so exploring the surrounding area and moving forward along the path is the most natural progression.\n\nAnswer: B"
+  },
+  {
+   "id": 82,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.502,
+   "completion_tokens": 58,
+   "content": "ted by the game interface, suggesting exploration. The most natural action in this open-world setting would be to explore the immediate surroundings.\n\nAnswer: B"
+  },
+  {
+   "id": 83,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.461,
+   "completion_tokens": 52,
+   "content": " a hill. There are no specific objectives or roads immediately in front of them that require following a set path, so exploring the area makes sense.\n\nAnswer: B"
+  },
+  {
+   "id": 84,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.446,
+   "completion_tokens": 47,
+   "content": "The player is standing on a grassy hill overlooking a valley. Exploring the surroundings to find a destination seems like the most natural next step.\n\nAnswer: B"
+  },
+  {
+   "id": 85,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.461,
+   "completion_tokens": 52,
+   "content": "e or path indicated other than the open terrain ahead. The most natural action in this setting would be to explore the surroundings and move forward.\n\nAnswer: B"
+  },
+  {
+   "id": 86,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.403,
+   "completion_tokens": 41,
+   "content": "overlooking a vast landscape. There is no road visible in the immediate vicinity, so moving forward into the terrain is the most natural progression.\n\nAnswer: B"
+  },
+  {
+   "id": 87,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.405,
+   "completion_tokens": 42,
+   "content": "ng a vast landscape. There is no road immediately visible in the direct path ahead, so exploring the terrain seems like the most natural progression.\n\nAnswer: B"
+  },
+  {
+   "id": 88,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.478,
+   "completion_tokens": 53,
+   "content": "rward or reach a destination, they need to explore the surrounding terrain. Therefore, looking around and moving ahead is the most logical next step.\n\nAnswer: B"
+  },
+  {
+   "id": 89,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.57,
+   "completion_tokens": 70,
+   "content": " no indication that waiting is necessary for gameplay progression. Therefore, the most logical action is to continue driving along the existing path.\n\nAnswer: A"
+  },
+  {
+   "id": 90,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.534,
+   "completion_tokens": 63,
+   "content": "ded to suggest an urgent action like setting a waypoint is required right now. Therefore, waiting is the only logical choice among the given options.\n\nAnswer: B"
+  },
+  {
+   "id": 91,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.533,
+   "completion_tokens": 65,
+   "content": "self. There is no instruction in the screen text to perform any specific action. Therefore, there is no indicated next step for the player to follow.\n\nAnswer: A"
+  },
+  {
+   "id": 92,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.603,
+   "completion_tokens": 75,
+   "content": "ired other than standard gameplay. Without an instruction, there is nothing to indicate that waiting or setting a waypoint is the intended next step.\n\nAnswer: A"
+  },
+  {
+   "id": 93,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.599,
+   "completion_tokens": 73,
+   "content": "n, nor is there a specific destination indicated on the screen. However, in typical gameplay loops, moving toward a goal is the standard progression.\n\nAnswer: A"
+  },
+  {
+   "id": 94,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.521,
+   "completion_tokens": 63,
+   "content": "de the next action. Without any specific context or objective presented, there is nothing to indicate that waiting or setting a waypoint is required.\n\nAnswer: A"
+  },
+  {
+   "id": 95,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.466,
+   "completion_tokens": 53,
+   "content": "e threats visible. There is no information provided to suggest that waiting or setting a waypoint is necessary or beneficial in this specific moment.\n\nAnswer: A"
+  },
+  {
+   "id": 96,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.67,
+   "completion_tokens": 81,
+   "content": "ext step for the player's character. However, in the context of typical gameplay loops involving navigation, setting a waypoint is a standard action.\n\nAnswer: A"
+  },
+  {
+   "id": 97,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.596,
+   "completion_tokens": 72,
+   "content": "g is a necessary action or that a mission waypoint has been set. Without further context, there is no logical instruction for the player's next move.\n\nAnswer: A"
+  },
+  {
+   "id": 98,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.552,
+   "completion_tokens": 65,
+   "content": " waypoints visible on the screen to guide the next action. Therefore, the most logical step is to continue following the path currently being driven.\n\nAnswer: A"
+  },
+  {
+   "id": 99,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.562,
+   "completion_tokens": 67,
+   "content": " and there are no instructions provided to wait. Therefore, the most logical next step for a player navigating an open world is to set a destination.\n\nAnswer: B"
+  },
+  {
+   "id": 100,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.567,
+   "completion_tokens": 67,
+   "content": "est that waiting or setting a waypoint is necessary or beneficial. Without further context, there is no clear instruction for the player's next move.\n\nAnswer: A"
+  },
+  {
+   "id": 101,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.446,
+   "completion_tokens": 48,
+   "content": " lines indicating active mission objectives or routes. To progress through the game content shown, the player needs to navigate toward these markers.\n\nAnswer: A"
+  },
+  {
+   "id": 102,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.556,
+   "completion_tokens": 69,
+   "content": "ut any context or objective provided in the frame, there is no logical basis to choose one action over another based on the visual information alone.\n\nAnswer: A"
+  },
+  {
+   "id": 103,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.869,
+   "completion_tokens": 115,
+   "content": "ed by the visual evidence, and setting a mission waypoint is a standard gameplay loop, there is no clear correct answer provided by the image itself.\n\nAnswer: A"
+  },
+  {
+   "id": 104,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.649,
+   "completion_tokens": 76,
+   "content": "of multiple routes implies active navigation is needed. Therefore, the most logical next step for a player is to navigate toward one of these points.\n\nAnswer: A"
+  },
+  {
+   "id": 105,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.48,
+   "completion_tokens": 57,
+   "content": " screen directing the player to perform any specific action. Therefore, there is no information provided to determine what the player should do next.\n\nAnswer: A"
+  },
+  {
+   "id": 106,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.612,
+   "completion_tokens": 80,
+   "content": "uired by the game state shown. However, since there are no instructions present, there is no logical \"next step\" defined by the visual context alone.\n\nAnswer: A"
+  },
+  {
+   "id": 107,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.511,
+   "completion_tokens": 63,
+   "content": "ggest that waiting or setting a waypoint is necessary for any specific objective. Without further context, there is no logical instruction to follow.\n\nAnswer: B"
+  },
+  {
+   "id": 108,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.476,
+   "completion_tokens": 57,
+   "content": "immediate threats visible. There is no information provided to suggest an urgent action is required, and waiting is a neutral choice in this context.\n\nAnswer: B"
+  },
+  {
+   "id": 109,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.495,
+   "completion_tokens": 55,
+   "content": "s visible on the screen to guide the player's next action. Therefore, the most logical step is to continue following the path currently being driven.\n\nAnswer: A"
+  },
+  {
+   "id": 110,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.449,
+   "completion_tokens": 52,
+   "content": "nts or specific instructions visible on the screen to guide movement. Therefore, the most logical action is to continue driving along the path ahead.\n\nAnswer: A"
+  },
+  {
+   "id": 111,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.497,
+   "completion_tokens": 59,
+   "content": "ble on the screen. There is no information provided to suggest that waiting or setting a waypoint is required by any in-game mechanic at this moment.\n\nAnswer: B"
+  },
+  {
+   "id": 112,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.448,
+   "completion_tokens": 52,
+   "content": "x network of streets and a highlighted route. There are no instructions or prompts on the screen directing the player to perform any specific action.\n\nAnswer: A"
+  },
+  {
+   "id": 113,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.453,
+   "completion_tokens": 53,
+   "content": " under a bridge. There are no active gameplay prompts or instructions visible on the screen that would dictate a specific next action for the player.\n\nAnswer: A"
+  },
+  {
+   "id": 114,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.456,
+   "completion_tokens": 54,
+   "content": "ific instructions visible on the screen to guide movement. Therefore, the most logical action is to continue along the path currently being traveled.\n\nAnswer: A"
+  },
+  {
+   "id": 115,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.486,
+   "completion_tokens": 59,
+   "content": "sible on the screen to guide movement. Therefore, the most logical action in such an uncertain situation is to follow the only path that can be seen.\n\nAnswer: A"
+  },
+  {
+   "id": 116,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.51,
+   "completion_tokens": 63,
+   "content": "reen to suggest any action other than continuing forward. Therefore, the most logical next step is to continue along the path currently being driven.\n\nAnswer: A"
+  },
+  {
+   "id": 117,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.518,
+   "completion_tokens": 64,
+   "content": "o guide immediate action. Without further context or an active objective, there is nothing specific for the player to do other than continue driving.\n\nAnswer: A"
+  },
+  {
+   "id": 118,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.679,
+   "completion_tokens": 91,
+   "content": "in the image, and based on typical logic for such questions where no action is prompted, \"Wait three seconds\" is often used as a neutral placeholder.\n\nAnswer: B"
+  },
+  {
+   "id": 119,
+   "name": "observe",
+   "right": [],
+   "seconds": 0.429,
+   "completion_tokens": 46,
+   "content": "t Auto V that is currently blurred or out of focus. To see the details of the map clearly, the player needs to wait for the camera/view to stabilize.\n\nAnswer: A"
+  },
+  {
+   "id": 120,
+   "name": "observe",
+   "right": [
+    "observe"
+   ],
+   "seconds": 0.398,
+   "completion_tokens": 44,
+   "content": "d view where much of the scene is hidden in shadow. To see more clearly, the player would need to wait for the lighting or camera position to adjust.\n\nAnswer: A"
+  },
+  {
+   "id": 121,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.556,
+   "completion_tokens": 70,
+   "content": "gest any specific action like setting a waypoint or waiting. Without further information, there is no logical way to determine a \"correct\" next move.\n\nAnswer: A"
+  },
+  {
+   "id": 122,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.586,
+   "completion_tokens": 75,
+   "content": " by the current situation. However, since there are no instructions present, there is no logical next step defined by the context of the image alone.\n\nAnswer: A"
+  },
+  {
+   "id": 123,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.424,
+   "completion_tokens": 47,
+   "content": " There are no specific instructions or immediate threats visible that would necessitate waiting or setting a new waypoint beyond standard navigation.\n\nAnswer: A"
+  },
+  {
+   "id": 124,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.48,
+   "completion_tokens": 57,
+   "content": "ible on the screen to guide the player toward a destination. Therefore, the most logical action is to continue along the path currently being driven.\n\nAnswer: A"
+  },
+  {
+   "id": 125,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.501,
+   "completion_tokens": 57,
+   "content": " waypoints visible on the mini-map. The only clear path is the road ahead. Therefore, the most logical action is to continue along the existing path.\n\nAnswer: A"
+  },
+  {
+   "id": 126,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.457,
+   "completion_tokens": 54,
+   "content": "ecific instructions visible on the screen to guide movement. Therefore, the most logical action is to continue along the path currently being driven.\n\nAnswer: A"
+  },
+  {
+   "id": 127,
+   "name": "observe",
+   "right": [],
+   "seconds": 0.446,
+   "completion_tokens": 52,
+   "content": "obscured by bright light/glare. To see the details of the map clearly, the player needs to wait for the lighting effect to pass or adjust their view.\n\nAnswer: A"
+  },
+  {
+   "id": 128,
+   "name": "observe",
+   "right": [
+    "observe"
+   ],
+   "seconds": 0.407,
+   "completion_tokens": 45,
+   "content": " see any details or surroundings clearly. Waiting for more light or a better view would allow the player to understand their location and objectives.\n\nAnswer: A"
+  },
+  {
+   "id": 129,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.506,
+   "completion_tokens": 56,
+   "content": "le on the mini-map. The road ahead is clear and follows a continuous path. Therefore, the most logical action is to continue along the existing path.\n\nAnswer: A"
+  },
+  {
+   "id": 130,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.47,
+   "completion_tokens": 56,
+   "content": "le on the mini-map. The road ahead is clear and follows a continuous path. Therefore, the most logical action is to continue along the existing road.\n\nAnswer: A"
+  },
+  {
+   "id": 131,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.468,
+   "completion_tokens": 53,
+   "content": "on the screen. The player is currently moving along the existing road. Therefore, the most logical next step is to continue following the path ahead.\n\nAnswer: A"
+  },
+  {
+   "id": 132,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.466,
+   "completion_tokens": 54,
+   "content": "on the screen. The player is currently moving along the existing road. Therefore, the most logical next step is to continue following the path ahead.\n\nAnswer: A"
+  },
+  {
+   "id": 133,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.449,
+   "completion_tokens": 50,
+   "content": "any active navigation markers or waypoints visible on the mini-map. To progress in a typical gameplay loop, the player needs to define a destination.\n\nAnswer: B"
+  },
+  {
+   "id": 134,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.458,
+   "completion_tokens": 53,
+   "content": "uctions or waypoints displayed on the screen to guide the player elsewhere. Therefore, the most logical action is to continue along the current path.\n\nAnswer: A"
+  },
+  {
+   "id": 135,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.46,
+   "completion_tokens": 52,
+   "content": "or waypoints visible on the screen. The only clear path is the road ahead. Therefore, the most logical action is to continue along the existing path.\n\nAnswer: A"
+  },
+  {
+   "id": 136,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.462,
+   "completion_tokens": 55,
+   "content": "on the screen. The player is currently moving along the existing path. Therefore, the most logical next step is to continue following the road ahead.\n\nAnswer: A"
+  },
+  {
+   "id": 137,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.457,
+   "completion_tokens": 52,
+   "content": "or waypoints visible on the screen. The only clear path is the road ahead. Therefore, the most logical action is to continue along the existing path.\n\nAnswer: A"
+  },
+  {
+   "id": 138,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.467,
+   "completion_tokens": 56,
+   "content": "screen to guide the player toward a different destination. Therefore, the most logical action is to continue along the path currently being traveled.\n\nAnswer: A"
+  },
+  {
+   "id": 139,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.462,
+   "completion_tokens": 53,
+   "content": "ates to \"Go to Ammu-Nation.\" To achieve this, the player needs to navigate toward that destination by setting a waypoint on the map and following it.\n\nAnswer: B"
+  },
+  {
+   "id": 140,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.444,
+   "completion_tokens": 50,
+   "content": ",\" which translates to \"Go to Ammu-Nation.\" To achieve this, the player needs to navigate toward that destination using the game's navigation system.\n\nAnswer: B"
+  },
+  {
+   "id": 141,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.589,
+   "completion_tokens": 74,
+   "content": "using the game's navigation tools. Setting a waypoint on the map and following its route is the standard way to reach a target location in this game.\n\nAnswer: B"
+  },
+  {
+   "id": 142,
+   "name": "look",
+   "right": [
+    "look"
+   ],
+   "seconds": 1.025,
+   "completion_tokens": 147,
+   "content": "eans \"Get back on the quad.\" Option A is \"Look around and walk ahead,\" which is incorrect. However, if I must choose from the single provided option:\n\nAnswer: A"
+  },
+  {
+   "id": 143,
+   "name": "vehicle",
+   "right": [
+    "target",
+    "vehicle"
+   ],
+   "seconds": 0.42,
+   "completion_tokens": 47,
+   "content": "d,\" which translates to \"Get on the quad.\" There is a quad bike visible in the scene near the player. Therefore, the player should enter the vehicle.\n\nAnswer: B"
+  },
+  {
+   "id": 144,
+   "name": "target",
+   "right": [
+    "target"
+   ],
+   "seconds": 0.448,
+   "completion_tokens": 42,
+   "content": "Steig auf das Quad,\" which translates to \"Get on the quad.\" To follow this instruction, the player should move toward the vehicle shown in the scene.\n\nAnswer: A"
+  },
+  {
+   "id": 145,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.484,
+   "completion_tokens": 57,
+   "content": " indicates that the player needs to navigate toward a specific destination. Therefore, the player should set a mission waypoint and follow its route.\n\nAnswer: B"
+  },
+  {
+   "id": 146,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.536,
+   "completion_tokens": 65,
+   "content": " task, the player needs to navigate toward that specific destination. Therefore, setting a waypoint and following its route is the logical next step.\n\nAnswer: B"
+  },
+  {
+   "id": 147,
+   "name": "look",
+   "right": [
+    "look"
+   ],
+   "seconds": 0.896,
+   "completion_tokens": 126,
+   "content": "rovided list where only A exists:)\n\nWait, looking at the prompt again, there are no other options provided besides A. If \"A\" is the only option given:\nAnswer: A"
+  },
+  {
+   "id": 148,
+   "name": null,
+   "right": [
+    "look"
+   ],
+   "seconds": 1.942,
+   "completion_tokens": 300,
+   "content": "logical next step for a player who just finished an action, they might look around. But strictly following the prompt's instruction \"Steig wieder auf das Quad\":"
+  },
+  {
+   "id": 149,
+   "name": "look",
+   "right": [
+    "look"
+   ],
+   "seconds": 0.972,
+   "completion_tokens": 136,
+   "content": "oose from the options below:\nThe objective \"Steig wieder auf das Quad\" implies getting back on the vehicle. Option A is \"Look around and walk ahead.\"\n\nAnswer: A"
+  },
+  {
+   "id": 150,
+   "name": "press_circle",
+   "right": [
+    "press_circle"
+   ],
+   "seconds": 0.669,
+   "completion_tokens": 86,
+   "content": "looking at standard gameplay mechanics for this interface, there is no instruction present. Since I must choose one letter from the options provided:\n\nAnswer: A"
+  }
+ ]
+}

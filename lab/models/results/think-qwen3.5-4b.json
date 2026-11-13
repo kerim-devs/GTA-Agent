@@ -1,0 +1,1595 @@
+{
+ "model": "qwen3.5-4b",
+ "extra": {
+  "reasoning_effort": "none"
+ },
+ "max_tokens": 300,
+ "situations": 150,
+ "answered": 150,
+ "right": 127,
+ "right_share_of_all": 0.847,
+ "seconds": {
+  "n": 150,
+  "median": 0.392,
+  "p90": 0.506,
+  "p99": 0.665,
+  "max": 0.79
+ },
+ "completion_tokens_median": 55.0,
+ "rows": [
+  {
+   "id": 1,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.434,
+   "completion_tokens": 60,
+   "content": "y visual cues like arrows or signs. Looking around and moving forward allows the player to assess their surroundings before deciding where to go next. Answer: B"
+  },
+  {
+   "id": 2,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.361,
+   "completion_tokens": 48,
+   "content": "jective marker nearby, suggesting movement toward it. Looking around and proceeding forward aligns with typical gameplay progression in this context.\n\nAnswer: B"
+  },
+  {
+   "id": 3,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.35,
+   "completion_tokens": 47,
+   "content": "d by text. Looking around and moving forward allows for better situational awareness before deciding on a specific action like walking along the road. Answer: B"
+  },
+  {
+   "id": 4,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.392,
+   "completion_tokens": 50,
+   "content": " to continue moving forward while being aware of surroundings, rather than just following the path blindly or stopping to look around without purpose. Answer: B"
+  },
+  {
+   "id": 5,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.465,
+   "completion_tokens": 67,
+   "content": "s, or specific objectives indicated in the scene. The most logical next step would be to continue moving forward while staying aware of surroundings.\n\nAnswer: B"
+  },
+  {
+   "id": 6,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.405,
+   "completion_tokens": 56,
+   "content": "ound urgently. The safest and most logical next step in an open-world game at night is to continue moving forward while staying aware of surroundings. Answer: B"
+  },
+  {
+   "id": 7,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.401,
+   "completion_tokens": 56,
+   "content": "ound urgently. The safest and most logical next step in an open-world game at night is to continue moving forward while staying aware of surroundings. Answer: B"
+  },
+  {
+   "id": 8,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.59,
+   "completion_tokens": 92,
+   "content": "ike NPCs, vehicles, or signs) before moving forward makes sense. Walking straight along the road might lead into a dead end or less interesting area.\n\nAnswer: B"
+  },
+  {
+   "id": 9,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.438,
+   "completion_tokens": 60,
+   "content": "Since there\u2019s no immediate threat or objective visible, looking around and moving forward makes sense to gather information or progress toward goals.\n\nAnswer: B"
+  },
+  {
+   "id": 10,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.468,
+   "completion_tokens": 69,
+   "content": " and moving forward allows them to explore their surroundings, check for objectives, or follow a trail that may be illuminated by streetlights ahead.\n\nAnswer: B"
+  },
+  {
+   "id": 11,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.41,
+   "completion_tokens": 56,
+   "content": "ound urgently. The safest and most logical next step in an open-world game at night is to continue moving forward while staying aware of surroundings. Answer: B"
+  },
+  {
+   "id": 12,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.495,
+   "completion_tokens": 71,
+   "content": "ike entering a car or following traffic. Therefore, looking around and continuing forward aligns best with typical gameplay behavior in this context.\n\nAnswer: C"
+  },
+  {
+   "id": 13,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.43,
+   "completion_tokens": 63,
+   "content": "king along the road might be risky due to traffic. Looking around and proceeding cautiously seems like the most prudent action given the environment.\n\nAnswer: C"
+  },
+  {
+   "id": 14,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.402,
+   "completion_tokens": 57,
+   "content": "s along the road that suggest movement in a specific direction. The most logical action is to survey the surroundings and proceed cautiously forward.\n\nAnswer: C"
+  },
+  {
+   "id": 15,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.404,
+   "completion_tokens": 55,
+   "content": " most logical action is to look around for context before moving forward, as there are no obvious objectives like vehicles or roads directly in front. Answer: C"
+  },
+  {
+   "id": 16,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.509,
+   "completion_tokens": 76,
+   "content": "und and walking ahead allows the player to assess the environment safely before deciding on an action like entering a vehicle or crossing the street.\n\nAnswer: C"
+  },
+  {
+   "id": 17,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.571,
+   "completion_tokens": 89,
+   "content": "player to assess the situation\u2014checking for safety, identifying available vehicles, or deciding whether to stay on foot\u2014before taking further action.\n\nAnswer: C"
+  },
+  {
+   "id": 18,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.49,
+   "completion_tokens": 73,
+   "content": "rst allows awareness of surroundings before committing to movement. Walking ahead without checking could lead to getting lost or encountering danger.\n\nAnswer: B"
+  },
+  {
+   "id": 19,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.39,
+   "completion_tokens": 55,
+   "content": "isible. Looking around helps assess the surroundings before moving forward, which aligns with typical gameplay caution in open-world games like GTA V. Answer: B"
+  },
+  {
+   "id": 20,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.426,
+   "completion_tokens": 63,
+   "content": "ther to move forward, turn, or interact with something nearby. Walking ahead without checking could lead into potential hazards or missed objectives.\n\nAnswer: B"
+  },
+  {
+   "id": 21,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.377,
+   "completion_tokens": 50,
+   "content": "mediate threat or objective visible, looking around for context before moving forward is the most logical next step in an open-world game environment. Answer: B"
+  },
+  {
+   "id": 22,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.387,
+   "completion_tokens": 54,
+   "content": "ut their position. To proceed effectively, they should shift their attention to the environment and move forward along the path shown in the mini-map. Answer: B"
+  },
+  {
+   "id": 23,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.377,
+   "completion_tokens": 50,
+   "content": "n. Looking around and moving forward allows them to assess their surroundings before deciding whether to proceed along the road or take another route. Answer: B"
+  },
+  {
+   "id": 24,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.359,
+   "completion_tokens": 50,
+   "content": "n. Looking around and moving forward allows them to assess their surroundings before deciding whether to proceed along the road or take another route. Answer: B"
+  },
+  {
+   "id": 25,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.324,
+   "completion_tokens": 39,
+   "content": "lk near a house. To continue progressing through the game world, they should look around for any new objectives or paths and move forward accordingly. Answer: B"
+  },
+  {
+   "id": 26,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.371,
+   "completion_tokens": 51,
+   "content": "cated to continue straight along the road. Looking around and moving forward allows for better situational awareness in an open environment like this. Answer: B"
+  },
+  {
+   "id": 27,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.303,
+   "completion_tokens": 39,
+   "content": "lk near a house. To continue progressing through the game world, they should look around for any new objectives or paths and move forward accordingly. Answer: B"
+  },
+  {
+   "id": 28,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.374,
+   "completion_tokens": 53,
+   "content": "he environment for threats or opportunities before proceeding. Walking ahead aligns with typical gameplay progression in open-world games like GTA V.\n\nAnswer: B"
+  },
+  {
+   "id": 29,
+   "name": "road",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.345,
+   "completion_tokens": 43,
+   "content": "te obstacles or clear path indicated by on-screen text. The environment suggests exploration or movement along the road as the most logical next step. Answer: A"
+  },
+  {
+   "id": 30,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.422,
+   "completion_tokens": 60,
+   "content": "n area where exploration or interaction might occur, so looking around and moving forward makes sense rather than immediately walking along the road.\n\nAnswer: B"
+  },
+  {
+   "id": 31,
+   "name": "road",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.328,
+   "completion_tokens": 42,
+   "content": "g forward to progress through the game environment. Walking along the road would be more appropriate than stopping or looking around without purpose.\n\nAnswer: A"
+  },
+  {
+   "id": 32,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.533,
+   "completion_tokens": 81,
+   "content": "ound and walking ahead (B) allows the player to explore the immediate environment, which is typical gameplay behavior when in an open area like this.\n\nAnswer: B"
+  },
+  {
+   "id": 33,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.537,
+   "completion_tokens": 82,
+   "content": " and walking ahead (B) allows the player to assess their surroundings and find a safe route forward without making assumptions about terrain changes.\n\nAnswer: B"
+  },
+  {
+   "id": 34,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.324,
+   "completion_tokens": 41,
+   "content": "suggesting exploration or movement forward is appropriate. Looking around and walking ahead aligns with typical gameplay behavior in this environment. Answer: B"
+  },
+  {
+   "id": 35,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.361,
+   "completion_tokens": 50,
+   "content": "ntial threats or paths before moving forward. Walking along the road might be safer but requires first checking surroundings for obstacles or enemies. Answer: B"
+  },
+  {
+   "id": 36,
+   "name": "wait",
+   "right": [
+    "wait"
+   ],
+   "seconds": 0.452,
+   "completion_tokens": 64,
+   "content": "w NPCs to approach. Since there\u2019s no clear mission marker or interactive object nearby, pausing briefly may be the intended action before proceeding.\n\nAnswer: B"
+  },
+  {
+   "id": 37,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.48,
+   "completion_tokens": 72,
+   "content": "tion in an open-world game like this, when not interacting with specific objects, is to explore the environment by looking around and moving forward.\n\nAnswer: C"
+  },
+  {
+   "id": 38,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.392,
+   "completion_tokens": 55,
+   "content": "fically. Walking ahead along the path toward the road seems like the most logical next step for exploration or progression in this open-world setting. Answer: B"
+  },
+  {
+   "id": 39,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.493,
+   "completion_tokens": 69,
+   "content": "nt as the primary action. The most natural next step in this open-world environment would be to explore further by looking around and moving forward.\n\nAnswer: C"
+  },
+  {
+   "id": 40,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.403,
+   "completion_tokens": 58,
+   "content": "along the road right now; instead, observing the surroundings and moving forward seems like the most logical next step in this open-world environment. Answer: C"
+  },
+  {
+   "id": 41,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.356,
+   "completion_tokens": 46,
+   "content": "te vehicles to enter or clear path along the road. The most logical next step is to explore the surroundings and move forward from this vantage point. Answer: C"
+  },
+  {
+   "id": 42,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.395,
+   "completion_tokens": 55,
+   "content": "this would be to observe the environment and proceed cautiously, rather than immediately entering a vehicle or walking along the road without context. Answer: C"
+  },
+  {
+   "id": 43,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.469,
+   "completion_tokens": 68,
+   "content": " entering a vehicle that isn't clearly accessible yet. Looking around and walking ahead allows for natural progression in an open-world game context.\n\nAnswer: C"
+  },
+  {
+   "id": 44,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.462,
+   "completion_tokens": 66,
+   "content": "the road or proceed into the neighborhood. Given typical gameplay patterns, checking surroundings first makes sense before committing to a direction.\n\nAnswer: B"
+  },
+  {
+   "id": 45,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.46,
+   "completion_tokens": 67,
+   "content": "ad or proceed ahead into the neighborhood. Given typical gameplay patterns, checking surroundings first makes sense before committing to a direction.\n\nAnswer: B"
+  },
+  {
+   "id": 46,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.463,
+   "completion_tokens": 66,
+   "content": " the road or proceed ahead into the neighborhood. Given typical gameplay patterns, checking surroundings first makes sense for safety and navigation.\n\nAnswer: B"
+  },
+  {
+   "id": 47,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.447,
+   "completion_tokens": 65,
+   "content": "to walk along the road or proceed into the neighborhood. Given typical gameplay patterns, looking around first makes sense for situational awareness.\n\nAnswer: B"
+  },
+  {
+   "id": 48,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.265,
+   "completion_tokens": 29,
+   "content": "layer is standing in an open area near buildings and should explore their surroundings to gather information or find objectives before moving forward. Answer: B"
+  },
+  {
+   "id": 49,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.438,
+   "completion_tokens": 62,
+   "content": "tacle or instruction suggesting walking along the road specifically. Looking around and moving forward seems like a natural next step in exploration.\n\nAnswer: B"
+  },
+  {
+   "id": 50,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.364,
+   "completion_tokens": 48,
+   "content": "ince there's no immediate obstacle or specific target visible, the safest and most logical action is to look around for context before moving forward. Answer: B"
+  },
+  {
+   "id": 51,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.416,
+   "completion_tokens": 57,
+   "content": " which is standard cautious behavior in open-world games. Walking ahead without checking surroundings could lead to unintended actions or collisions.\n\nAnswer: B"
+  },
+  {
+   "id": 52,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.372,
+   "completion_tokens": 50,
+   "content": "re's no clear road to follow, and looking around makes sense given the open environment. Walking ahead seems like a natural next step in exploration.\n\nAnswer: B"
+  },
+  {
+   "id": 53,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.415,
+   "completion_tokens": 58,
+   "content": "oration rather than following a specific route. Therefore, looking around and moving forward makes more sense than walking along a non-existent road.\n\nAnswer: B"
+  },
+  {
+   "id": 54,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.368,
+   "completion_tokens": 51,
+   "content": "nment suggests exploration rather than following a specific route. Looking around and continuing forward makes more sense in this open-world setting.\n\nAnswer: B"
+  },
+  {
+   "id": 55,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.495,
+   "completion_tokens": 72,
+   "content": "l action in an open-world game like this would be to explore the surroundings\u2014look around for points of interest or objectives\u2014and then move forward.\n\nAnswer: B"
+  },
+  {
+   "id": 56,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.454,
+   "completion_tokens": 66,
+   "content": "here's no visible road nearby. Looking around and walking ahead allows exploration of the terrain and potential discovery of new areas or objectives.\n\nAnswer: B"
+  },
+  {
+   "id": 57,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.348,
+   "completion_tokens": 47,
+   "content": " open area. Looking around helps assess the environment before deciding on the next path, which aligns with typical gameplay behavior in this context. Answer: B"
+  },
+  {
+   "id": 58,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.356,
+   "completion_tokens": 44,
+   "content": "t or clear objective visible. Looking around helps assess the environment for potential dangers or opportunities before moving forward along the road. Answer: B"
+  },
+  {
+   "id": 59,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.39,
+   "completion_tokens": 52,
+   "content": "nvironment for potential dangers or opportunities before moving forward. Walking ahead aligns with typical exploration behavior in this game context.\n\nAnswer: B"
+  },
+  {
+   "id": 60,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.45,
+   "completion_tokens": 65,
+   "content": " most logical action in this context, given typical gameplay patterns, is to continue exploring by looking around the environment and moving forward.\n\nAnswer: B"
+  },
+  {
+   "id": 61,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.338,
+   "completion_tokens": 45,
+   "content": " immediate path or road to follow, so walking along a road isn't applicable. Looking around and moving forward makes sense given the open environment. Answer: B"
+  },
+  {
+   "id": 62,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.366,
+   "completion_tokens": 45,
+   "content": " immediate path or road to follow, so walking along a road isn't applicable. Looking around and moving forward makes sense given the open environment. Answer: B"
+  },
+  {
+   "id": 63,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.467,
+   "completion_tokens": 62,
+   "content": "oving forward while observing the surroundings for any objectives, NPCs, or events. Walking ahead aligns with typical gameplay flow in such settings.\n\nAnswer: B"
+  },
+  {
+   "id": 64,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.325,
+   "completion_tokens": 43,
+   "content": " clear path or road to follow immediately. Looking around and moving forward seems like the most logical next step to explore the environment further. Answer: B"
+  },
+  {
+   "id": 65,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.275,
+   "completion_tokens": 31,
+   "content": "r is currently near a fence overlooking water; looking around helps assess the environment before moving forward along the path or road visible ahead. Answer: B"
+  },
+  {
+   "id": 66,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.311,
+   "completion_tokens": 40,
+   "content": "a grassy hill overlooking water. There's no immediate road to follow, and looking around makes sense given the open environment before moving forward. Answer: B"
+  },
+  {
+   "id": 67,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.496,
+   "completion_tokens": 72,
+   "content": "Since there's no clear road directly in front, \"look around and walk ahead\" is more appropriate than committing to walking along a non-existent road.\n\nAnswer: B"
+  },
+  {
+   "id": 68,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.561,
+   "completion_tokens": 87,
+   "content": "n and water. Walking along a non-existent road isn\u2019t logical. Looking around and moving forward aligns with both the environment and the minimap cue.\n\nAnswer: B"
+  },
+  {
+   "id": 69,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.438,
+   "completion_tokens": 60,
+   "content": "for walking along. The most logical next step in an open-world game like this would be to explore the surroundings and move forward into the terrain.\n\nAnswer: B"
+  },
+  {
+   "id": 70,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.279,
+   "completion_tokens": 34,
+   "content": "nding near a fence overlooking water; there's no immediate path or road to follow, so continuing forward while observing the surroundings makes sense. Answer: B"
+  },
+  {
+   "id": 71,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.4,
+   "completion_tokens": 55,
+   "content": "ic target or hazard to avoid, the safest and most logical action is to continue exploring by moving forward while keeping an eye on the surroundings.\n\nAnswer: B"
+  },
+  {
+   "id": 72,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.376,
+   "completion_tokens": 54,
+   "content": "ploration rather than following a specific route. Therefore, looking around and moving forward makes more sense than walking along an undefined road.\n\nAnswer: B"
+  },
+  {
+   "id": 73,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.35,
+   "completion_tokens": 47,
+   "content": "irectly ahead. Looking around helps identify potential paths or hazards before moving forward. Walking blindly could lead to falling off the hillside. Answer: B"
+  },
+  {
+   "id": 74,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.373,
+   "completion_tokens": 52,
+   "content": " lead to falling off the cliff. Looking around helps identify safe terrain and potential paths, making it the safer next action before moving further. Answer: B"
+  },
+  {
+   "id": 75,
+   "name": "look",
+   "right": [
+    "road",
+    "target",
+    "look"
+   ],
+   "seconds": 0.305,
+   "completion_tokens": 39,
+   "content": "ll with no visible road or specific target marker. The most logical action is to continue exploring by looking around and moving forward up the slope. Answer: C"
+  },
+  {
+   "id": 76,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.346,
+   "completion_tokens": 45,
+   "content": "ation rather than following infrastructure. Looking around and moving forward aligns with typical open-world gameplay when navigating natural terrain. Answer: B"
+  },
+  {
+   "id": 77,
+   "name": "look",
+   "right": [
+    "road",
+    "target",
+    "look"
+   ],
+   "seconds": 0.363,
+   "completion_tokens": 48,
+   "content": "loration is appropriate. The environment appears open and unstructured, implying there's no specific path to follow but rather an area to investigate. Answer: C"
+  },
+  {
+   "id": 78,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.363,
+   "completion_tokens": 37,
+   "content": "y hill with no visible roads or clear path forward. Looking around helps assess the environment for potential paths or objectives before moving ahead. Answer: B"
+  },
+  {
+   "id": 79,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.299,
+   "completion_tokens": 37,
+   "content": "sy hill with no visible road or clear path forward. Looking around helps assess the environment for potential paths or objectives before moving ahead. Answer: B"
+  },
+  {
+   "id": 80,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.27,
+   "completion_tokens": 34,
+   "content": "yer is on a hillside path near a road; looking around helps assess the environment before proceeding safely along the road or continuing up the slope. Answer: B"
+  },
+  {
+   "id": 81,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.276,
+   "completion_tokens": 34,
+   "content": "yer is on a hillside path near a road; looking around helps assess the environment before proceeding safely along the road or continuing up the slope. Answer: B"
+  },
+  {
+   "id": 82,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.427,
+   "completion_tokens": 62,
+   "content": "ironment before deciding whether to continue forward or change direction. Walking ahead blindly might lead into hazards or dead ends without context.\n\nAnswer: B"
+  },
+  {
+   "id": 83,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.506,
+   "completion_tokens": 75,
+   "content": "ural action would be to observe the environment and decide where to go next, which aligns with looking around and walking forward to explore further.\n\nAnswer: B"
+  },
+  {
+   "id": 84,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.319,
+   "completion_tokens": 42,
+   "content": "ds or clear path markers. Looking around allows them to assess their environment for potential paths or objectives before deciding where to walk next. Answer: B"
+  },
+  {
+   "id": 85,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.349,
+   "completion_tokens": 47,
+   "content": "king along a non-existent road would be illogical. Looking around and continuing forward aligns with typical exploration gameplay in this environment. Answer: B"
+  },
+  {
+   "id": 86,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.488,
+   "completion_tokens": 72,
+   "content": "p. The most logical action, given the open environment and lack of specific objectives shown, is to explore by looking around and continuing forward.\n\nAnswer: B"
+  },
+  {
+   "id": 87,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.355,
+   "completion_tokens": 44,
+   "content": "e distance. There are no roads immediately visible or accessible to walk along, and looking around would be more appropriate given the open landscape. Answer: B"
+  },
+  {
+   "id": 88,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 0.338,
+   "completion_tokens": 46,
+   "content": "d, so walking along the road isn't feasible or logical right now. Looking around and continuing forward makes more sense given the open terrain ahead. Answer: B"
+  },
+  {
+   "id": 89,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.79,
+   "completion_tokens": 128,
+   "content": "y Tony\" storyline), it\u2019s more likely the player should set a waypoint to follow a specific route rather than just following the visible road blindly.\n\nAnswer: B"
+  },
+  {
+   "id": 90,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.495,
+   "completion_tokens": 75,
+   "content": "uction visible that would require waiting. Following the route set by the mission waypoint is the logical next step to progress toward the objective.\n\nAnswer: A"
+  },
+  {
+   "id": 91,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.33,
+   "completion_tokens": 44,
+   "content": "ener's Club,\" which is typically a mission location in this game. The player should follow the indicated route to proceed with the current objective.\n\nAnswer: A"
+  },
+  {
+   "id": 92,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.286,
+   "completion_tokens": 34,
+   "content": "ows a highlighted route with a waypoint marker, indicating an active mission path. The player should follow this marked route to progress in the game. Answer: A"
+  },
+  {
+   "id": 93,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.354,
+   "completion_tokens": 49,
+   "content": "nce there's no active mission objective shown and the car is moving freely, waiting allows for natural progression or reaction to unseen events ahead. Answer: B"
+  },
+  {
+   "id": 94,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.507,
+   "completion_tokens": 77,
+   "content": "ext step in such gameplay scenarios\u2014especially when approaching a road labeled as part of a route\u2014is to follow the indicated path via a set waypoint.\n\nAnswer: A"
+  },
+  {
+   "id": 95,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.405,
+   "completion_tokens": 57,
+   "content": " on the minimap. The correct action would be to return to the road and follow the mission waypoint displayed in the bottom-left corner of the screen.\n\nAnswer: A"
+  },
+  {
+   "id": 96,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.357,
+   "completion_tokens": 46,
+   "content": "ayer should navigate toward it. The UI elements like \"Mission Waypoint\" and directional markers imply active gameplay progression rather than waiting. Answer: A"
+  },
+  {
+   "id": 97,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.37,
+   "completion_tokens": 52,
+   "content": "kers or urgent events requiring immediate action. Waiting allows time for any in-game event to trigger naturally or for a mission objective to appear. Answer: B"
+  },
+  {
+   "id": 98,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.498,
+   "completion_tokens": 75,
+   "content": "that appears to be drivable, and setting a mission waypoint would guide the player toward the correct path. Waiting would not progress the objective.\n\nAnswer: B"
+  },
+  {
+   "id": 99,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.665,
+   "completion_tokens": 100,
+   "content": "oint shown in the current view\u2014though one may be set later. The most logical immediate action based on visual cues is to follow the highlighted path.\n\nAnswer: A"
+  },
+  {
+   "id": 100,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.454,
+   "completion_tokens": 65,
+   "content": "ion. Waiting without purpose would be inefficient; setting a waypoint aligns with typical gameplay progression when approaching a new objective zone.\n\nAnswer: A"
+  },
+  {
+   "id": 101,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.264,
+   "completion_tokens": 30,
+   "content": "The map interface shows a highlighted area indicating a mission objective or waypoint. The player should follow this route to progress in the game. Answer: A"
+  },
+  {
+   "id": 102,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.515,
+   "completion_tokens": 74,
+   "content": "iven. In such scenarios, players are typically expected to proceed with the current activity\u2014often involving driving toward a waypoint if one exists.\n\nAnswer: A"
+  },
+  {
+   "id": 103,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.455,
+   "completion_tokens": 65,
+   "content": "llow a waypoint. The most logical next step in such gameplay contexts\u2014especially if this is part of a sequence\u2014is to pause briefly before proceeding.\n\nAnswer: B"
+  },
+  {
+   "id": 104,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.276,
+   "completion_tokens": 32,
+   "content": "p interface shows a highlighted area indicating a mission objective or location to visit. The player should follow this route to progress in the game. Answer: A"
+  },
+  {
+   "id": 105,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.403,
+   "completion_tokens": 57,
+   "content": "arker or instruction to follow a route. Waiting may allow the drift to stabilize or end naturally without triggering unintended consequences in-game.\n\nAnswer: B"
+  },
+  {
+   "id": 106,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.522,
+   "completion_tokens": 78,
+   "content": "essary. The environment appears static with no immediate action required, suggesting waiting may be appropriate if part of a timed event or cutscene.\n\nAnswer: B"
+  },
+  {
+   "id": 107,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.606,
+   "completion_tokens": 97,
+   "content": "ath or reaching a designated point, the most logical next step is to engage with the mission system by setting a waypoint and proceeding accordingly.\n\nAnswer: A"
+  },
+  {
+   "id": 108,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.364,
+   "completion_tokens": 48,
+   "content": "o urgent action required and the environment appears stable, waiting briefly allows for natural gameplay pacing before deciding on a mission waypoint. Answer: B"
+  },
+  {
+   "id": 109,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.417,
+   "completion_tokens": 59,
+   "content": "rs to be the intended path forward. Following this visible route would logically guide the player back toward civilization and any active objectives.\n\nAnswer: A"
+  },
+  {
+   "id": 110,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.426,
+   "completion_tokens": 61,
+   "content": "ilization and possibly toward mission objectives. Following this visible route will allow the player to recover and continue progressing in the game.\n\nAnswer: A"
+  },
+  {
+   "id": 111,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.453,
+   "completion_tokens": 64,
+   "content": "y the purple arrow), suggesting that continuing toward it is the intended next step in gameplay progression. Waiting would not advance the objective.\n\nAnswer: A"
+  },
+  {
+   "id": 112,
+   "name": "mission",
+   "right": [],
+   "seconds": 0.34,
+   "completion_tokens": 47,
+   "content": "r should navigate toward it. The UI elements like \"Set Mission Waypoint\" and directional arrows imply active gameplay progression rather than waiting. Answer: A"
+  },
+  {
+   "id": 113,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.339,
+   "completion_tokens": 46,
+   "content": "ical gameplay behavior in racing games like Forza Horizon. The player likely needs to continue driving toward a mission objective rather than waiting. Answer: A"
+  },
+  {
+   "id": 114,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.441,
+   "completion_tokens": 66,
+   "content": "a highlighted route, indicating a mission or objective path ahead. Following this marked route is the most logical next step to progress in the game.\n\nAnswer: A"
+  },
+  {
+   "id": 115,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.451,
+   "completion_tokens": 63,
+   "content": " should navigate back to the main path indicated by the map. Following the visible route will likely lead them closer to a mission point or safe zone. Answer: A"
+  },
+  {
+   "id": 116,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.436,
+   "completion_tokens": 62,
+   "content": " into daylight, suggesting it's the intended path forward in this game scenario. There are no mission markers or urgent prompts indicating otherwise.\n\nAnswer: A"
+  },
+  {
+   "id": 117,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.541,
+   "completion_tokens": 83,
+   "content": "e player to follow a predefined route efficiently. Waiting without purpose is generally not optimal gameplay strategy unless specifically instructed.\n\nAnswer: A"
+  },
+  {
+   "id": 118,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.492,
+   "completion_tokens": 70,
+   "content": "waypoints. The scene suggests normal gameplay progression, and waiting briefly may allow for natural movement or observation without disrupting flow.\n\nAnswer: B"
+  },
+  {
+   "id": 119,
+   "name": "observe",
+   "right": [],
+   "seconds": 0.346,
+   "completion_tokens": 45,
+   "content": "motion blur. To proceed effectively, the player should wait for the image to stabilize and become clear enough to identify locations and plan actions. Answer: A"
+  },
+  {
+   "id": 120,
+   "name": "observe",
+   "right": [
+    "observe"
+   ],
+   "seconds": 0.291,
+   "completion_tokens": 37,
+   "content": "iew is currently obscured by darkness and glare, making it difficult to see clearly ahead. Waiting will allow for better visibility before proceeding. Answer: A"
+  },
+  {
+   "id": 121,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.468,
+   "completion_tokens": 65,
+   "content": "ollowing the waypoint is the intended action to progress in the game. There's no indication of needing to wait; movement and navigation are key here.\n\nAnswer: A"
+  },
+  {
+   "id": 122,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.592,
+   "completion_tokens": 90,
+   "content": "eting the current mission. Waiting three seconds would not advance the player\u2019s progress or align with typical gameplay mechanics for this situation.\n\nAnswer: A"
+  },
+  {
+   "id": 123,
+   "name": "wait",
+   "right": [
+    "mission"
+   ],
+   "seconds": 0.393,
+   "completion_tokens": 56,
+   "content": "ed and the HUD shows normal gameplay elements without alerts, waiting briefly allows for natural progression in open-world games like GTA San Andreas. Answer: B"
+  },
+  {
+   "id": 124,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.322,
+   "completion_tokens": 42,
+   "content": " mission objective indicated by the waypoint on the minimap. The logical next step is to continue following the marked route to reach the destination. Answer: A"
+  },
+  {
+   "id": 125,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.355,
+   "completion_tokens": 50,
+   "content": "art of a mission or objective given the game's HUD and context. Following the visible route aligns with typical gameplay progression in this scenario. Answer: A"
+  },
+  {
+   "id": 126,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.483,
+   "completion_tokens": 70,
+   "content": "e most logical action is to continue following the visible path ahead, which aligns with typical gameplay flow unless a mission objective intervenes.\n\nAnswer: A"
+  },
+  {
+   "id": 127,
+   "name": "observe",
+   "right": [],
+   "seconds": 0.333,
+   "completion_tokens": 42,
+   "content": "t are not yet clear enough to read or interact with effectively. The player should wait for the view to stabilize so they can make informed decisions. Answer: A"
+  },
+  {
+   "id": 128,
+   "name": "observe",
+   "right": [
+    "observe"
+   ],
+   "seconds": 0.348,
+   "completion_tokens": 47,
+   "content": " and glare, making it difficult to see clearly ahead. Waiting will allow the lights to adjust or the visibility to improve slightly before proceeding. Answer: A"
+  },
+  {
+   "id": 129,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.407,
+   "completion_tokens": 56,
+   "content": "mediate obstacle or instruction requiring waiting. The most logical action is to continue following the road ahead as indicated by the visible route.\n\nAnswer: A"
+  },
+  {
+   "id": 130,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.406,
+   "completion_tokens": 57,
+   "content": "ission route is necessary. The most logical action in an open-world game like this is to continue along the current path unless instructed otherwise.\n\nAnswer: A"
+  },
+  {
+   "id": 131,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.467,
+   "completion_tokens": 68,
+   "content": "obstacle or instruction to wait, and the path ahead is clear, continuing along the current direction makes sense unless a specific objective appears.\n\nAnswer: A"
+  },
+  {
+   "id": 132,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.509,
+   "completion_tokens": 72,
+   "content": "the current path unless a mission objective changes this. Since no specific mission context is given, continuing along the visible route makes sense.\n\nAnswer: A"
+  },
+  {
+   "id": 133,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.435,
+   "completion_tokens": 59,
+   "content": " highlighted route ahead, indicating a mission or objective path. Following the visible route aligns with typical gameplay when a waypoint is active.\n\nAnswer: A"
+  },
+  {
+   "id": 134,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.371,
+   "completion_tokens": 48,
+   "content": "visible. The most logical action is to continue following the current path as shown by the road ahead and the GPS minimap indicating forward movement. Answer: A"
+  },
+  {
+   "id": 135,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.354,
+   "completion_tokens": 43,
+   "content": "ate obstacles or mission indicators visible. The most logical action is to continue following the current path as it leads forward along the highway.\n\nAnswer: A"
+  },
+  {
+   "id": 136,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.428,
+   "completion_tokens": 60,
+   "content": "e's a mission or objective to follow. Following the visible route aligns with typical gameplay progression when no specific instruction overrides it.\n\nAnswer: A"
+  },
+  {
+   "id": 137,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.287,
+   "completion_tokens": 36,
+   "content": "open road at night with no immediate obstacles or mission indicators visible. The most logical action is to continue following the current path ahead. Answer: A"
+  },
+  {
+   "id": 138,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.344,
+   "completion_tokens": 47,
+   "content": "quiring a stop. The most logical action is to continue following the current path as indicated by the open road and lack of alternative instructions.\n\nAnswer: A"
+  },
+  {
+   "id": 139,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.298,
+   "completion_tokens": 37,
+   "content": "s to \"Go to Ammu-Nation,\" which is a mission objective requiring navigation to a specific location rather than following an existing route or waiting. Answer: B"
+  },
+  {
+   "id": 140,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.297,
+   "completion_tokens": 36,
+   "content": "slates to \"Go to Ammo-Nation,\" which is a mission objective requiring travel to a specific location rather than following the current path or waiting. Answer: B"
+  },
+  {
+   "id": 141,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.369,
+   "completion_tokens": 49,
+   "content": ". In video games like this, such instructions typically require setting a waypoint or navigation point to follow the correct path to that destination. Answer: B"
+  },
+  {
+   "id": 142,
+   "name": "look",
+   "right": [
+    "look"
+   ],
+   "seconds": 0.389,
+   "completion_tokens": 51,
+   "content": "e quad,\" which is an instruction for the player's next action. Therefore, the player should look around and walk ahead to find the vehicle mentioned.\n\nAnswer: A"
+  },
+  {
+   "id": 143,
+   "name": "vehicle",
+   "right": [
+    "target",
+    "vehicle"
+   ],
+   "seconds": 0.361,
+   "completion_tokens": 48,
+   "content": "et on the quad,\" which directly instructs the player to mount the vehicle visible nearby. Therefore, the correct next action is to enter the vehicle.\n\nAnswer: B"
+  },
+  {
+   "id": 144,
+   "name": "target",
+   "right": [
+    "target"
+   ],
+   "seconds": 0.35,
+   "completion_tokens": 46,
+   "content": " \"Get on the quad,\" which is an instruction for the player to mount the vehicle shown nearby. The star marker indicates the target location or object. Answer: A"
+  },
+  {
+   "id": 145,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.394,
+   "completion_tokens": 55,
+   "content": "to Ammu-Nation,\" which is a clear instruction for the player to travel to that location. Therefore, the next step is to follow the route to reach it.\n\nAnswer: A"
+  },
+  {
+   "id": 146,
+   "name": "mission",
+   "right": [
+    "route"
+   ],
+   "seconds": 0.357,
+   "completion_tokens": 47,
+   "content": " objective directing the player to travel to that location. Therefore, the correct action is to follow the route indicated by this mission objective.\n\nAnswer: B"
+  },
+  {
+   "id": 147,
+   "name": "look",
+   "right": [
+    "look"
+   ],
+   "seconds": 0.256,
+   "completion_tokens": 28,
+   "content": "The German text translates to \"Get back on the quad,\" indicating the player should mount or return to riding the ATV. Answer: A"
+  },
+  {
+   "id": 148,
+   "name": "look",
+   "right": [
+    "look"
+   ],
+   "seconds": 0.248,
+   "completion_tokens": 28,
+   "content": "The German text translates to \"Get back on the quad,\" indicating the player should mount or return to riding the ATV. Answer: A"
+  },
+  {
+   "id": 149,
+   "name": "look",
+   "right": [
+    "look"
+   ],
+   "seconds": 0.383,
+   "completion_tokens": 50,
+   "content": "e player should mount or return to riding the vehicle shown. Since the character is standing next to it, the logical action is to get on and proceed.\n\nAnswer: A"
+  },
+  {
+   "id": 150,
+   "name": "press_r2",
+   "right": [
+    "press_circle"
+   ],
+   "seconds": 0.382,
+   "completion_tokens": 51,
+   "content": "ng R2 (right bumper) closes the map or returns to gameplay. The other options either don't close the map or are not standard controls for this action. Answer: C"
+  }
+ ]
+}

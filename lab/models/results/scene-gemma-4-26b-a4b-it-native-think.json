@@ -1,0 +1,339 @@
+{
+ "model": "gemma-4-26b-a4b-it",
+ "extra": {},
+ "think": true,
+ "frames": 28,
+ "right": 25,
+ "right_share": 0.893,
+ "by_place": {
+  "room": {
+   "n": 10,
+   "right": 10,
+   "said": {
+    "room": 10
+   }
+  },
+  "landing": {
+   "n": 8,
+   "right": 5,
+   "said": {
+    "landing": 5,
+    "None": 3
+   }
+  },
+  "street": {
+   "n": 10,
+   "right": 10,
+   "said": {
+    "street": 10
+   }
+  },
+  "porch": {
+   "n": 8,
+   "right": null,
+   "said": {
+    "landing": 4,
+    "street": 2,
+    "None": 2
+   }
+  }
+ },
+ "seconds": {
+  "n": 36,
+  "median": 2.404,
+  "p90": 4.666,
+  "p99": 9.754,
+  "max": 9.754
+ },
+ "completion_tokens_median": 355.5,
+ "rows": [
+  {
+   "session": "20261113-024118",
+   "t": 2.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 2.32,
+   "content": "The correct answer is **A: inside a building, in a room**."
+  },
+  {
+   "session": "20261113-024118",
+   "t": 16.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 1.709,
+   "content": "The correct answer is **A: inside a building, in a room**."
+  },
+  {
+   "session": "20261113-024118",
+   "t": 30.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 1.933,
+   "content": "The player's character is **A: inside a building, in a room**."
+  },
+  {
+   "session": "20261113-024118",
+   "t": 44.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 1.96,
+   "content": "The correct answer is **A: inside a building, in a room**."
+  },
+  {
+   "session": "20261113-024118",
+   "t": 58.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 2.098,
+   "content": "The correct answer is **A: inside a building, in a room**."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 240.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 2.14,
+   "content": "The player's character is **A: inside a building, in a room**."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 660.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 1.922,
+   "content": "The correct answer is **A: inside a building, in a room**."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 940.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 2.203,
+   "content": "The player's character is **A: inside a building, in a room**."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1340.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 2.172,
+   "content": "The player's character is **A: inside a building, in a room**."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1660.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 2.252,
+   "content": "The player's character is **A: inside a building, in a room**."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 22.5,
+   "where": "landing",
+   "said": null,
+   "seconds": 4.666,
+   "content": "s seen by the stairs/ledge at the bottom) through a metal fence/railing, with a wall of a building visible to the right."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 23.5,
+   "where": "landing",
+   "said": null,
+   "seconds": 3.491,
+   "content": "character is on a raised platform like a balcony or landing rather than at street level or inside a fully enclosed room."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 24.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 2.95,
+   "content": "er's character is:\n\n**B: outside a building's door on a raised landing, balcony or outside staircase, above the street**"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 25.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 3.36,
+   "content": "racter is located:\n\n**B: outside a building's door on a raised landing, balcony or outside staircase, above the street**"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 26.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 2.941,
+   "content": "er's character is:\n\n**B: outside a building's door on a raised landing, balcony or outside staircase, above the street**"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 27.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 7.88,
+   "content": "ate description is:\n**B: outside a building's door on a raised landing, balcony or outside staircase, above the street**"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 28.5,
+   "where": "landing",
+   "said": null,
+   "seconds": 4.399,
+   "content": "ioned on an elevated structure like a balcony, landing, or staircase rather than being at street level or inside a room."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 29.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 4.338,
+   "content": " correct answer is:\n**B: outside a building's door on a raised landing, balcony or outside staircase, above the street**"
+  },
+  {
+   "session": "20261113-002130",
+   "t": 37.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 2.288,
+   "content": "The correct answer is **C: outside at street level, on a road, a pavement, a yard or open ground**."
+  },
+  {
+   "session": "20261113-003405",
+   "t": 19.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 2.129,
+   "content": "The correct answer is **C: outside at street level, on a road, a pavement, a yard or open ground**."
+  },
+  {
+   "session": "20261113-003852",
+   "t": 67.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 2.275,
+   "content": "The correct answer is **C: outside at street level, on a road, a pavement, a yard or open ground**."
+  },
+  {
+   "session": "20261113-004331",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 2.16,
+   "content": "The correct answer is **C: outside at street level, on a road, a pavement, a yard or open ground**."
+  },
+  {
+   "session": "20261113-005402",
+   "t": 19.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 2.351,
+   "content": "The correct answer is **C: outside at street level, on a road, a pavement, a yard or open ground**."
+  },
+  {
+   "session": "20261113-005625",
+   "t": 75.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 2.249,
+   "content": "The correct answer is **C: outside at street level, on a road, a pavement, a yard or open ground**."
+  },
+  {
+   "session": "20261113-010026",
+   "t": 78.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 1.98,
+   "content": "The correct answer is **C: outside at street level, on a road, a pavement, a yard or open ground**."
+  },
+  {
+   "session": "20261113-010655",
+   "t": 9.8,
+   "where": "street",
+   "said": "street",
+   "seconds": 2.584,
+   "content": "The correct answer is **C: outside at street level, on a road, a pavement, a yard or open ground**."
+  },
+  {
+   "session": "20261113-010920",
+   "t": 27.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 2.252,
+   "content": "The correct answer is **C: outside at street level, on a road, a pavement, a yard or open ground**."
+  },
+  {
+   "session": "20261113-011452",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 2.521,
+   "content": "The correct answer is **C: outside at street level, on a road, a pavement, a yard or open ground**."
+  },
+  {
+   "session": "20261113-025632",
+   "t": 66.0,
+   "where": "porch",
+   "said": null,
+   "seconds": 4.623,
+   "content": " and wooden beam at the top left) on what appears to be a concrete porch or landing, looking out over an open landscape."
+  },
+  {
+   "session": "20261113-025632",
+   "t": 70.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 2.456,
+   "content": " correct answer is **B: outside a building's door on a raised landing, balcony or outside staircase, above the street**."
+  },
+  {
+   "session": "20261113-025632",
+   "t": 74.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 3.537,
+   "content": "racter is located:\n\n**B: outside a building's door on a raised landing, balcony or outside staircase, above the street**"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 78.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 3.147,
+   "content": "image provided, the player's character is:\n\n**C: outside at street level, on a road, a pavement, a yard or open ground**"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 82.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 3.505,
+   "content": "ter is located at:\n\n**B: outside a building's door on a raised landing, balcony or outside staircase, above the street**"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 86.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 9.054,
+   "content": "avement.\n\nTherefore, the correct answer is:\n**C: outside at street level, on a road, a pavement, a yard or open ground**"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 90.0,
+   "where": "porch",
+   "said": null,
+   "seconds": 9.754,
+   "content": "ith bright sunlight, trees, and sky, which indicates that the character is looking out from a more sheltered location.\n*"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 94.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 2.5,
+   "content": " correct answer is **B: outside a building's door on a raised landing, balcony or outside staircase, above the street**."
+  }
+ ]
+}

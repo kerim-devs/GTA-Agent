@@ -1,0 +1,330 @@
+{
+ "model": "qwen3.8-27b",
+ "extra": {},
+ "max_tokens": 1500,
+ "situations": 30,
+ "answered": 18,
+ "right": 15,
+ "right_share_of_all": 0.5,
+ "seconds": {
+  "n": 30,
+  "median": 12.829,
+  "p90": 19.074,
+  "p99": 19.382,
+  "max": 19.382
+ },
+ "completion_tokens_median": 1058.5,
+ "rows": [
+  {
+   "id": 1,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 9.881,
+   "completion_tokens": 792,
+   "content": " and then proceed forward rather than simply drifting sideways along the pavement. This matches the more complete, cautious action described in option B.\n\n**B**"
+  },
+  {
+   "id": 6,
+   "name": null,
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 19.382,
+   "completion_tokens": 1500,
+   "content": ""
+  },
+  {
+   "id": 11,
+   "name": null,
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 19.202,
+   "completion_tokens": 1500,
+   "content": ""
+  },
+  {
+   "id": 16,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 17.827,
+   "completion_tokens": 1348,
+   "content": "C"
+  },
+  {
+   "id": 21,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 11.011,
+   "completion_tokens": 877,
+   "content": "B"
+  },
+  {
+   "id": 26,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 13.685,
+   "completion_tokens": 1085,
+   "content": "B"
+  },
+  {
+   "id": 31,
+   "name": null,
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 19.209,
+   "completion_tokens": 1500,
+   "content": ""
+  },
+  {
+   "id": 36,
+   "name": null,
+   "right": [
+    "wait"
+   ],
+   "seconds": 18.752,
+   "completion_tokens": 1500,
+   "content": ""
+  },
+  {
+   "id": 41,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 7.63,
+   "completion_tokens": 622,
+   "content": "C"
+  },
+  {
+   "id": 46,
+   "name": null,
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 18.944,
+   "completion_tokens": 1500,
+   "content": "Looking at the scene, the character is standing"
+  },
+  {
+   "id": 51,
+   "name": null,
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 18.55,
+   "completion_tokens": 1500,
+   "content": "he middle of an empty two\u2011lane road, oriented perpendicular to the traffic flow (facing toward the far sidewalk/house rather than left or right along the road)."
+  },
+  {
+   "id": 56,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 8.881,
+   "completion_tokens": 690,
+   "content": "B"
+  },
+  {
+   "id": 61,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 5.889,
+   "completion_tokens": 481,
+   "content": "along,\" which rules out option A. The terrain ahead is open and traversable, so the sensible next step is to survey the surroundings and proceed forward.\n\n**B**"
+  },
+  {
+   "id": 66,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 6.424,
+   "completion_tokens": 524,
+   "content": "B"
+  },
+  {
+   "id": 71,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 5.766,
+   "completion_tokens": 481,
+   "content": "an open vantage point, so the sensible next step is to survey the surroundings and continue moving forward rather than committing to a path that isn't there.\n\nB"
+  },
+  {
+   "id": 76,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 4.233,
+   "completion_tokens": 329,
+   "content": "B"
+  },
+  {
+   "id": 81,
+   "name": null,
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 18.872,
+   "completion_tokens": 1500,
+   "content": " to the left. Since they are not positioned on the road itself, \"walking along the road\" isn't directly possible from here. The sensible next step in this open\u2011"
+  },
+  {
+   "id": 86,
+   "name": "look",
+   "right": [
+    "road",
+    "look"
+   ],
+   "seconds": 5.402,
+   "completion_tokens": 439,
+   "content": "ible from this position. The sensible next step is to survey the surroundings and continue moving forward across the terrain.\n\n**B: Look around and walk ahead**"
+  },
+  {
+   "id": 91,
+   "name": "mission",
+   "right": [],
+   "seconds": 15.047,
+   "completion_tokens": 1189,
+   "content": "her cue that would make \"waiting\" the correct action. The meaningful next step is to commit to and travel along the plotted route to reach the objective.\n\n**A**"
+  },
+  {
+   "id": 96,
+   "name": "mission",
+   "right": [],
+   "seconds": 9.595,
+   "completion_tokens": 759,
+   "content": "hat would justify idling, so \"wait three seconds\" has no supporting evidence.\n\nTherefore the appropriate next action is to commit to the route and follow it.\n\nA"
+  },
+  {
+   "id": 101,
+   "name": "mission",
+   "right": [],
+   "seconds": 10.519,
+   "completion_tokens": 805,
+   "content": "A"
+  },
+  {
+   "id": 106,
+   "name": null,
+   "right": [
+    "mission"
+   ],
+   "seconds": 18.84,
+   "completion_tokens": 1500,
+   "content": ""
+  },
+  {
+   "id": 111,
+   "name": "mission",
+   "right": [
+    "mission"
+   ],
+   "seconds": 5.962,
+   "completion_tokens": 487,
+   "content": "A"
+  },
+  {
+   "id": 116,
+   "name": null,
+   "right": [
+    "route"
+   ],
+   "seconds": 19.008,
+   "completion_tokens": 1500,
+   "content": ""
+  },
+  {
+   "id": 121,
+   "name": null,
+   "right": [
+    "mission"
+   ],
+   "seconds": 19.074,
+   "completion_tokens": 1500,
+   "content": ""
+  },
+  {
+   "id": 126,
+   "name": null,
+   "right": [
+    "route"
+   ],
+   "seconds": 18.452,
+   "completion_tokens": 1500,
+   "content": ""
+  },
+  {
+   "id": 131,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 9.899,
+   "completion_tokens": 827,
+   "content": "n screen and does not need to be re\u2011set. The correct action is therefore to drive along that existing path rather than creating a new waypoint or idling.\n\n**A**"
+  },
+  {
+   "id": 136,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 3.716,
+   "completion_tokens": 320,
+   "content": "A"
+  },
+  {
+   "id": 141,
+   "name": "route",
+   "right": [
+    "route"
+   ],
+   "seconds": 11.973,
+   "completion_tokens": 1032,
+   "content": "hing in the scene indicates a timed/loading state that would require waiting (ruling out C). The correct next action is simply to drive along the path shown.\n\nA"
+  },
+  {
+   "id": 146,
+   "name": null,
+   "right": [
+    "route"
+   ],
+   "seconds": 18.349,
+   "completion_tokens": 1500,
+   "content": ""
+  }
+ ]
+}

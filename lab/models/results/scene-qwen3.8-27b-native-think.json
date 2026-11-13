@@ -1,0 +1,342 @@
+{
+ "model": "qwen3.8-27b",
+ "extra": {},
+ "think": true,
+ "frames": 28,
+ "right": 19,
+ "right_share": 0.679,
+ "by_place": {
+  "room": {
+   "n": 10,
+   "right": 4,
+   "said": {
+    "room": 4,
+    "street": 1,
+    "None": 5
+   }
+  },
+  "landing": {
+   "n": 8,
+   "right": 7,
+   "said": {
+    "landing": 7,
+    "None": 1
+   }
+  },
+  "street": {
+   "n": 10,
+   "right": 8,
+   "said": {
+    "landing": 2,
+    "street": 8
+   }
+  },
+  "porch": {
+   "n": 8,
+   "right": null,
+   "said": {
+    "landing": 2,
+    "street": 2,
+    "None": 4
+   }
+  }
+ },
+ "seconds": {
+  "n": 36,
+  "median": 6.459,
+  "p90": 20.123,
+  "p99": 21.27,
+  "max": 21.27
+ },
+ "completion_tokens_median": 550.5,
+ "rows": [
+  {
+   "session": "20261113-024118",
+   "t": 2.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 5.667,
+   "content": "hese elements indicate an indoor space rather than an open landing or outdoor area.\n\n**A: inside a building, in a room**"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 16.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 5.214,
+   "content": "landing, or outdoor ground level.\n\nTherefore, the player's character is **inside a building, in a room**.\n\n**Answer: A**"
+  },
+  {
+   "session": "20261113-024118",
+   "t": 30.0,
+   "where": "room",
+   "said": null,
+   "seconds": 13.833,
+   "content": "oulder, positioned within this room facing Trevor. Therefore the player's character is **inside a building, in a room**."
+  },
+  {
+   "session": "20261113-024118",
+   "t": 44.0,
+   "where": "room",
+   "said": "street",
+   "seconds": 6.4,
+   "content": "erior room (likely a break/office area). There is no sky, street, or outdoor ground visible, ruling out options B and C."
+  },
+  {
+   "session": "20261113-024118",
+   "t": 58.0,
+   "where": "room",
+   "said": null,
+   "seconds": 6.384,
+   "content": "n outdoor area anywhere in view, so this is clearly an indoor room (a bathroom/break\u2011room type space) inside a building."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 240.0,
+   "where": "room",
+   "said": null,
+   "seconds": 5.572,
+   "content": "droom, confirming the character is standing inside a room within a building\u2014not outside on a landing or at street level."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 660.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 5.727,
+   "content": "ments confirm he is indoors, within a room of a building (this scene is from *A Way Out*).\n\nThe correct answer is **A**."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 940.0,
+   "where": "room",
+   "said": null,
+   "seconds": 5.754,
+   "content": "ts confirm the character is standing within an enclosed room of a building, not outside on a landing or at street level."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1340.0,
+   "where": "room",
+   "said": null,
+   "seconds": 5.4,
+   "content": "would appear in an outdoor landing or street-level setting, so the character is clearly inside a room within a building."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 1660.0,
+   "where": "room",
+   "said": "room",
+   "seconds": 5.531,
+   "content": "cture visible. The camera (i.e., the player) is standing inside this room.\n\n**Answer: A \u2014 inside a building, in a room**"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 22.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 9.672,
+   "content": "street level.\n- Open sky and far\u2011off scenery rule out being *inside* a room (option A).\n\nSo the correct choice is **B**."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 23.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 15.832,
+   "content": "on (balcony / landing / outside staircase) above street level, not an interior room and not ground level.\n\n**Answer: B**"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 24.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 8.163,
+   "content": "correct choice is:\n\n**B: outside a building's door on a raised landing, balcony or outside staircase, above the street**"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 25.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 17.189,
+   "content": "ior landing/balcony (or outside staircase) above street level, not inside a room nor out in open ground at street level."
+  },
+  {
+   "session": "20261113-121513",
+   "t": 26.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 18.07,
+   "content": "st outside a door.\n\n**B: outside a building's door on a raised landing, balcony or outside staircase, above the street**"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 27.5,
+   "where": "landing",
+   "said": null,
+   "seconds": 20.123,
+   "content": ""
+  },
+  {
+   "session": "20261113-121513",
+   "t": 28.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 9.753,
+   "content": "door.\n\nTherefore the player is positioned outside the building on an elevated walkway above street level.\n\n**Answer: B**"
+  },
+  {
+   "session": "20261113-121513",
+   "t": 29.5,
+   "where": "landing",
+   "said": "landing",
+   "seconds": 9.458,
+   "content": "\n\nThese details rule out an interior room (A) and ground\u2011level pavement/road (C), leaving **B** as the correct location."
+  },
+  {
+   "session": "20261113-002130",
+   "t": 37.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 5.219,
+   "content": "onfirming they are at ground/street level.\n\n**C: outside at street level, on a road, a pavement, a yard or open ground**"
+  },
+  {
+   "session": "20261113-003405",
+   "t": 19.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 5.245,
+   "content": "elevated on a balcony or landing above the street (ruling out B). Therefore, option C accurately describes the location."
+  },
+  {
+   "session": "20261113-003852",
+   "t": 67.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 5.496,
+   "content": "e clearly on the same plane as the street.\n\n**C: outside at street level, on a road, a pavement, a yard or open ground**"
+  },
+  {
+   "session": "20261113-004331",
+   "t": 3.0,
+   "where": "street",
+   "said": "landing",
+   "seconds": 6.134,
+   "content": " drop\u2011off\u2014just open outdoor ground at street level. This rules out being indoors (A) or on a raised balcony/landing (B)."
+  },
+  {
+   "session": "20261113-005402",
+   "t": 19.0,
+   "where": "street",
+   "said": "landing",
+   "seconds": 6.005,
+   "content": "ony, or staircase above street level (ruling out B). The setting is clearly an outdoor open area at ground/street level."
+  },
+  {
+   "session": "20261113-005625",
+   "t": 75.2,
+   "where": "street",
+   "said": "street",
+   "seconds": 6.519,
+   "content": "the street.\n\nTherefore, the character is **outside at street level, on a road / pavement / open ground**.\n\n**Answer: C**"
+  },
+  {
+   "session": "20261113-010026",
+   "t": 78.1,
+   "where": "street",
+   "said": "street",
+   "seconds": 5.404,
+   "content": "volved.\n\nTherefore, the correct answer is:\n\n**C: outside at street level, on a road, a pavement, a yard or open ground**"
+  },
+  {
+   "session": "20261113-010655",
+   "t": 9.8,
+   "where": "street",
+   "said": "street",
+   "seconds": 5.046,
+   "content": " level, in an open area/yard beside roads.\n\n**C: outside at street level, on a road, a pavement, a yard or open ground**"
+  },
+  {
+   "session": "20261113-010920",
+   "t": 27.6,
+   "where": "street",
+   "said": "street",
+   "seconds": 5.242,
+   "content": "on; he is out in the open at ground level.\n\n**C: outside at street level, on a road, a pavement, a yard or open ground**"
+  },
+  {
+   "session": "20261113-011452",
+   "t": 3.0,
+   "where": "street",
+   "said": "street",
+   "seconds": 5.964,
+   "content": " ground.\n\nTherefore, the correct answer is **C: outside at street level, on a road, a pavement, a yard or open ground**."
+  },
+  {
+   "session": "20261113-025632",
+   "t": 66.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 19.507,
+   "content": "tom right), a vertical support column, an overhead hanging sign/screen, and stored equipment (a generator/piping) tucked"
+  },
+  {
+   "session": "20261113-025632",
+   "t": 70.0,
+   "where": "porch",
+   "said": "street",
+   "seconds": 7.875,
+   "content": "t street/ground level (ruling out C)\u2014he is positioned above the surrounding open ground on this raised exterior landing."
+  },
+  {
+   "session": "20261113-025632",
+   "t": 74.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 9.681,
+   "content": " over the street\u2011level desert. This matches \"outside a building's door on a raised landing / balcony, above the street.\""
+  },
+  {
+   "session": "20261113-025632",
+   "t": 78.0,
+   "where": "porch",
+   "said": null,
+   "seconds": 18.51,
+   "content": ""
+  },
+  {
+   "session": "20261113-025632",
+   "t": 82.0,
+   "where": "porch",
+   "said": "landing",
+   "seconds": 12.268,
+   "content": "em show they are on an elevated exterior landing/porch above street level, not inside a room nor standing at road level."
+  },
+  {
+   "session": "20261113-025632",
+   "t": 86.0,
+   "where": "porch",
+   "said": null,
+   "seconds": 20.978,
+   "content": ""
+  },
+  {
+   "session": "20261113-025632",
+   "t": 90.0,
+   "where": "porch",
+   "said": null,
+   "seconds": 20.6,
+   "content": ""
+  },
+  {
+   "session": "20261113-025632",
+   "t": 94.0,
+   "where": "porch",
+   "said": null,
+   "seconds": 21.27,
+   "content": ""
+  }
+ ]
+}

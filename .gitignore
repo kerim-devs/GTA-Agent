@@ -82,3 +82,9 @@ lab/actions/sheets/
 # rebuilt by pilot/tools/human_drive.py, 110 MB
 lab/human-drive/out/*/drive.json
 lab/human-drive/out/*/readings-v3.jsonl
+
+# frames cut from recordings by lab/models/bench.py scene, rebuilt on the next run
+lab/models/cache/
+
+# frames a judge run answered wrong, written beside its results
+lab/models/results/wrong-frames/

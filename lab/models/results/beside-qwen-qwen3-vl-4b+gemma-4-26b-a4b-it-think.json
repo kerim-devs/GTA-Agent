@@ -1,0 +1,30 @@
+{
+ "fast": "qwen/qwen3-vl-4b",
+ "big": "gemma-4-26b-a4b-it",
+ "rate_hz": 4.0,
+ "seconds_each": 40.0,
+ "big_tokens": 300,
+ "fast_alone": {
+  "n": 153,
+  "median": 0.202,
+  "p90": 0.274,
+  "p99": 0.396,
+  "max": 0.411
+ },
+ "fast_alone_over_1s": 0,
+ "fast_beside_big": {
+  "n": 71,
+  "median": 0.544,
+  "p90": 0.807,
+  "p99": 0.863,
+  "max": 0.863
+ },
+ "fast_beside_big_over_1s": 0,
+ "big_beside_fast": {
+  "n": 6,
+  "median": 7.363,
+  "p90": 8.995,
+  "p99": 8.995,
+  "max": 8.995
+ }
+}

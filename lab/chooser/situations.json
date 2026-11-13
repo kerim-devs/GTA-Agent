@@ -21370,7 +21370,7 @@
           {
             "name": "wait",
             "args": {
-              "duration": 0.1
+              "duration": 1
             }
           }
         ]
@@ -21533,7 +21533,7 @@
           {
             "name": "wait",
             "args": {
-              "duration": 0.1
+              "duration": 1
             }
           }
         ]
@@ -22910,7 +22910,7 @@
           {
             "name": "wait",
             "args": {
-              "duration": 0.1
+              "duration": 1
             }
           }
         ]
@@ -23063,7 +23063,7 @@
           {
             "name": "wait",
             "args": {
-              "duration": 0.1
+              "duration": 1
             }
           }
         ]
