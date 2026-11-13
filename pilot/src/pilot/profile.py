@@ -13,6 +13,7 @@ class Profile:
     sprint: str
     sprint_held: bool
     enter_vehicle: str = "triangle"
+    context: str = "right"
     melee: str = "circle"
     cover: str = "r1"
     pause: str = "options"

@@ -1,0 +1,1802 @@
+{
+  "ammu": {
+    "recording": "20261111-185323",
+    "samples": [
+      {
+        "requested_t": 51.5,
+        "t": 51.5062,
+        "i": 3072,
+        "help": "DrQck8 • o urn dir Waffen 8n2U88hen.",
+        "phone_menu": "",
+        "lines": [
+          {
+            "text": "DrQck8 • o urn dir Waffen 8n2U88hen.",
+            "confidence": 0.5,
+            "box": [
+              74,
+              45,
+              246,
+              11
+            ],
+            "region": "help"
+          },
+          {
+            "text": "TVP RAYGE",
+            "confidence": 0.30000001192092896,
+            "box": [
+              360,
+              50,
+              49,
+              10
+            ],
+            "region": "other"
+          },
+          {
+            "text": "Okay. Alter. Schnapp dir deine Schrotflinte mit dem taktischen Licht.",
+            "confidence": 0.5,
+            "box": [
+              328,
+              665,
+              624,
+              19
+            ],
+            "region": "subtitle"
+          }
+        ]
+      },
+      {
+        "requested_t": 52.55,
+        "t": 52.5516,
+        "i": 3133,
+        "help": "AMMU*NATION WAFFEN Standard-Händfeuerwaffe, eine Pistole im . Kall￿r.4& Das Magazin fasst",
+        "phone_menu": "s*1ènma619 12 Patronen, kann abèr euf16 rÖ@8rt warden. Schaden Feuerrate Génauigkè Sehussweite ZurÖck O AuliÖsien",
+        "lines": [
+          {
+            "text": "$989",
+            "confidence": 0.5,
+            "box": [
+              1163,
+              40,
+              51,
+              21
+            ],
+            "region": "other"
+          },
+          {
+            "text": "AMMU*NATION",
+            "confidence": 0.30000001192092896,
+            "box": [
+              102,
+              58,
+              212,
+              26
+            ],
+            "region": "help"
+          },
+          {
+            "text": "5512",
+            "confidence": 0.5,
+            "box": [
+              1167,
+              69,
+              48,
+              14
+            ],
+            "region": "other"
+          },
+          {
+            "text": "WAFFEN",
+            "confidence": 0.5,
+            "box": [
+              70,
+              115,
+              55,
+              10
+            ],
+            "region": "help"
+          },
+          {
+            "text": "Standard-Händfeuerwaffe, eine Pistole im",
+            "confidence": 0.5,
+            "box": [
+              71,
+              168,
+              266,
+              12
+            ],
+            "region": "help"
+          },
+          {
+            "text": ". Kall￿r.4& Das Magazin fasst",
+            "confidence": 0.5,
+            "box": [
+              65,
+              185,
+              197,
+              14
+            ],
+            "region": "help"
+          },
+          {
+            "text": "s*1ènma619 12 Patronen, kann abèr euf16",
+            "confidence": 0.5,
+            "box": [
+              71,
+              202,
+              271,
+              15
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "rÖ@8rt warden.",
+            "confidence": 0.5,
+            "box": [
+              150,
+              220,
+              92,
+              11
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Schaden",
+            "confidence": 0.30000001192092896,
+            "box": [
+              71,
+              259,
+              56,
+              11
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Feuerrate",
+            "confidence": 0.5,
+            "box": [
+              71,
+              285,
+              62,
+              10
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Génauigkè",
+            "confidence": 0.5,
+            "box": [
+              71,
+              310,
+              70,
+              14
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Sehussweite",
+            "confidence": 0.5,
+            "box": [
+              71,
+              334,
+              79,
+              11
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "ZurÖck O AuliÖsien",
+            "confidence": 0.30000001192092896,
+            "box": [
+              1058,
+              663,
+              128,
+              18
+            ],
+            "region": "phone"
+          },
+          {
+            "text": "Zoomen IFJ An8èhe",
+            "confidence": 0.5,
+            "box": [
+              653,
+              665,
+              124,
+              14
+            ],
+            "region": "subtitle"
+          },
+          {
+            "text": "L2",
+            "confidence": 0.5,
+            "box": [
+              706,
+              667,
+              12,
+              9
+            ],
+            "region": "subtitle"
+          },
+          {
+            "text": "Navlgleren D o Pl8ySt8tiönTMBiore",
+            "confidence": 0.5,
+            "box": [
+              823,
+              667,
+              197,
+              12
+            ],
+            "region": "subtitle"
+          }
+        ]
+      },
+      {
+        "requested_t": 73.0,
+        "t": 73.0005,
+        "i": 4358,
+        "help": "AMMU*NATION PISTOLE Standardmagazln * Größeres Magazin",
+        "phone_menu": "* Taktisches Llcht 473$ * SchalldaFnpfer 1823 $ * LUX￿￿0b￿rf1ache Yusuf Arnlr 46500 $ Sehwarzer Ferbton * Artneefarblon 100$ * Grüner Farbton 200$ * Oranger Farbton 400$ Schaden Feuerrate ßenauigkeit )CME¢KSIC¢EVTEO ZurÖek O Kaufen",
+        "lines": [
+          {
+            "text": "$1500",
+            "confidence": 0.30000001192092896,
+            "box": [
+              1149,
+              40,
+              65,
+              21
+            ],
+            "region": "other"
+          },
+          {
+            "text": "AMMU*NATION",
+            "confidence": 0.30000001192092896,
+            "box": [
+              102,
+              57,
+              212,
+              27
+            ],
+            "region": "help"
+          },
+          {
+            "text": "5S12",
+            "confidence": 0.30000001192092896,
+            "box": [
+              1167,
+              69,
+              48,
+              14
+            ],
+            "region": "other"
+          },
+          {
+            "text": "iaMI",
+            "confidence": 0.30000001192092896,
+            "box": [
+              835,
+              79,
+              36,
+              14
+            ],
+            "region": "other"
+          },
+          {
+            "text": "PISTOLE",
+            "confidence": 0.5,
+            "box": [
+              71,
+              115,
+              53,
+              10
+            ],
+            "region": "help"
+          },
+          {
+            "text": "Standardmagazln",
+            "confidence": 0.5,
+            "box": [
+              71,
+              164,
+              112,
+              14
+            ],
+            "region": "help"
+          },
+          {
+            "text": "* Größeres Magazin",
+            "confidence": 0.5,
+            "box": [
+              72,
+              189,
+              134,
+              14
+            ],
+            "region": "help"
+          },
+          {
+            "text": "388$",
+            "confidence": 0.5,
+            "box": [
+              311,
+              189,
+              34,
+              11
+            ],
+            "region": "other"
+          },
+          {
+            "text": "* Taktisches Llcht",
+            "confidence": 0.5,
+            "box": [
+              72,
+              214,
+              120,
+              12
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "473$",
+            "confidence": 0.5,
+            "box": [
+              311,
+              214,
+              34,
+              10
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "* SchalldaFnpfer",
+            "confidence": 0.5,
+            "box": [
+              72,
+              239,
+              110,
+              13
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "1823 $",
+            "confidence": 0.5,
+            "box": [
+              306,
+              239,
+              39,
+              10
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "* LUX￿￿0b￿rf1ache Yusuf Arnlr",
+            "confidence": 0.5,
+            "box": [
+              71,
+              264,
+              197,
+              12
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "46500 $",
+            "confidence": 0.5,
+            "box": [
+              294,
+              264,
+              51,
+              10
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Sehwarzer Ferbton",
+            "confidence": 0.5,
+            "box": [
+              71,
+              289,
+              120,
+              10
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "* Artneefarblon",
+            "confidence": 0.5,
+            "box": [
+              71,
+              314,
+              105,
+              12
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "100$",
+            "confidence": 0.5,
+            "box": [
+              313,
+              314,
+              32,
+              10
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Xr",
+            "confidence": 0.30000001192092896,
+            "box": [
+              887,
+              332,
+              31,
+              13
+            ],
+            "region": "other"
+          },
+          {
+            "text": "* Grüner Farbton",
+            "confidence": 0.5,
+            "box": [
+              72,
+              339,
+              115,
+              12
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "200$",
+            "confidence": 0.5,
+            "box": [
+              310,
+              339,
+              35,
+              10
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "* Oranger Farbton",
+            "confidence": 0.5,
+            "box": [
+              71,
+              364,
+              124,
+              14
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "400$",
+            "confidence": 0.5,
+            "box": [
+              310,
+              364,
+              35,
+              10
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Schaden",
+            "confidence": 0.5,
+            "box": [
+              71,
+              422,
+              56,
+              10
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Feuerrate",
+            "confidence": 0.5,
+            "box": [
+              72,
+              447,
+              61,
+              10
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "ßenauigkeit",
+            "confidence": 0.30000001192092896,
+            "box": [
+              71,
+              472,
+              78,
+              14
+            ],
+            "region": "menu"
+          },
+          {
+            "text": ")CME¢KSIC¢EVTEO",
+            "confidence": 0.30000001192092896,
+            "box": [
+              1007,
+              606,
+              118,
+              31
+            ],
+            "region": "phone"
+          },
+          {
+            "text": "ZurÖek O Kaufen",
+            "confidence": 0.5,
+            "box": [
+              1071,
+              663,
+              114,
+              18
+            ],
+            "region": "phone"
+          },
+          {
+            "text": "Zth)men IFJ Ansehen",
+            "confidence": 0.5,
+            "box": [
+              810,
+              665,
+              131,
+              14
+            ],
+            "region": "subtitle"
+          },
+          {
+            "text": "L2",
+            "confidence": 0.5,
+            "box": [
+              863,
+              667,
+              12,
+              9
+            ],
+            "region": "subtitle"
+          },
+          {
+            "text": "Wechseln",
+            "confidence": 0.5,
+            "box": [
+              979,
+              667,
+              53,
+              9
+            ],
+            "region": "subtitle"
+          }
+        ]
+      },
+      {
+        "requested_t": 99.0,
+        "t": 99.0111,
+        "i": 5922,
+        "help": "AMMU*NATION WAFFEN Standard-splittergranate. Slcherungsstift Z18hen. Gr8n81e werfen und in D@ckung",
+        "phone_menu": "gehen. Ideal, eng ZUS8mmeng8drangiè Gegner zu bekJmpfen. Seh8den Fèuèrratè G8nauigkèit Schusswèbte ZurÖck O Kaufen",
+        "lines": [
+          {
+            "text": "$998",
+            "confidence": 0.5,
+            "box": [
+              1163,
+              40,
+              51,
+              21
+            ],
+            "region": "other"
+          },
+          {
+            "text": "AMMU*NATION",
+            "confidence": 0.30000001192092896,
+            "box": [
+              102,
+              57,
+              212,
+              27
+            ],
+            "region": "help"
+          },
+          {
+            "text": "WAFFEN",
+            "confidence": 0.5,
+            "box": [
+              70,
+              115,
+              55,
+              10
+            ],
+            "region": "help"
+          },
+          {
+            "text": "Standard-splittergranate. Slcherungsstift",
+            "confidence": 0.5,
+            "box": [
+              71,
+              168,
+              261,
+              14
+            ],
+            "region": "help"
+          },
+          {
+            "text": "Z18hen. Gr8n81e werfen und in D@ckung",
+            "confidence": 0.5,
+            "box": [
+              71,
+              185,
+              254,
+              14
+            ],
+            "region": "help"
+          },
+          {
+            "text": "gehen. Ideal, eng",
+            "confidence": 0.5,
+            "box": [
+              71,
+              202,
+              134,
+              15
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "ZUS8mmeng8drangiè Gegner zu",
+            "confidence": 0.5,
+            "box": [
+              71,
+              220,
+              208,
+              14
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "bekJmpfen.",
+            "confidence": 0.5,
+            "box": [
+              71,
+              232,
+              76,
+              19
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Seh8den",
+            "confidence": 0.30000001192092896,
+            "box": [
+              71,
+              278,
+              56,
+              11
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Fèuèrratè",
+            "confidence": 0.5,
+            "box": [
+              72,
+              304,
+              61,
+              10
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "G8nauigkèit",
+            "confidence": 0.30000001192092896,
+            "box": [
+              71,
+              328,
+              78,
+              15
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Schusswèbte",
+            "confidence": 0.5,
+            "box": [
+              71,
+              353,
+              79,
+              11
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "ZurÖck O Kaufen",
+            "confidence": 0.5,
+            "box": [
+              1071,
+              663,
+              114,
+              18
+            ],
+            "region": "phone"
+          },
+          {
+            "text": "z￿Men IFJ Ansehen",
+            "confidence": 0.5,
+            "box": [
+              666,
+              665,
+              131,
+              14
+            ],
+            "region": "subtitle"
+          },
+          {
+            "text": "L2",
+            "confidence": 0.5,
+            "box": [
+              719,
+              667,
+              12,
+              9
+            ],
+            "region": "subtitle"
+          },
+          {
+            "text": "Navlgleren D o Play818tiönTpAsiore",
+            "confidence": 0.5,
+            "box": [
+              836,
+              667,
+              197,
+              12
+            ],
+            "region": "subtitle"
+          }
+        ]
+      },
+      {
+        "requested_t": 105.0,
+        "t": 105.0139,
+        "i": 6280,
+        "help": "Drucke • ö urn dir Waffen 8nzus8h8n.",
+        "phone_menu": "",
+        "lines": [
+          {
+            "text": "Drucke • ö urn dir Waffen 8nzus8h8n.",
+            "confidence": 0.5,
+            "box": [
+              74,
+              45,
+              246,
+              11
+            ],
+            "region": "help"
+          },
+          {
+            "text": "Wow. heiß wie In der Hölle hier drin, Alter.",
+            "confidence": 0.5,
+            "box": [
+              450,
+              665,
+              379,
+              17
+            ],
+            "region": "subtitle"
+          }
+        ]
+      }
+    ]
+  },
+  "suburban": {
+    "recording": "20261111-193105",
+    "samples": [
+      {
+        "requested_t": 592.5,
+        "t": 592.5017,
+        "i": 35221,
+        "help": "Druck8 •% urn dir Hemd8n anzus8h8n.",
+        "phone_menu": "",
+        "lines": [
+          {
+            "text": "Druck8 •% urn dir Hemd8n anzus8h8n.",
+            "confidence": 0.5,
+            "box": [
+              74,
+              44,
+              256,
+              12
+            ],
+            "region": "help"
+          },
+          {
+            "text": "ri",
+            "confidence": 0.5,
+            "box": [
+              717,
+              224,
+              19,
+              26
+            ],
+            "region": "other"
+          },
+          {
+            "text": "Kauf dir passe",
+            "confidence": 0.5,
+            "box": [
+              511,
+              665,
+              131,
+              20
+            ],
+            "region": "subtitle"
+          }
+        ]
+      },
+      {
+        "requested_t": 594.0,
+        "t": 594.0023,
+        "i": 35308,
+        "help": "B SUBURBAN È. EMDEN * Weißes Hemd * Grünes Karohemd",
+        "phone_menu": "* Marlneblaues Suburbsn T4hlrt 39$ * Woieè8 arnel nès Ho ,* Schw ès Hetn * Zitr9n￿geIb0￿H0vAaIihernd 55$ * Orangenhain- ZurÖek O Kaufen",
+        "lines": [
+          {
+            "text": "97BGO,",
+            "confidence": 0.30000001192092896,
+            "box": [
+              1149,
+              40,
+              70,
+              21
+            ],
+            "region": "other"
+          },
+          {
+            "text": "B SUBURBAN È.",
+            "confidence": 0.5,
+            "box": [
+              74,
+              49,
+              266,
+              45
+            ],
+            "region": "help"
+          },
+          {
+            "text": "•l",
+            "confidence": 0.30000001192092896,
+            "box": [
+              323,
+              91,
+              17,
+              13
+            ],
+            "region": "other"
+          },
+          {
+            "text": "¥$•",
+            "confidence": 0.30000001192092896,
+            "box": [
+              428,
+              97,
+              19,
+              7
+            ],
+            "region": "other"
+          },
+          {
+            "text": "EMDEN",
+            "confidence": 0.5,
+            "box": [
+              81,
+              115,
+              46,
+              10
+            ],
+            "region": "help"
+          },
+          {
+            "text": "* Weißes Hemd",
+            "confidence": 0.5,
+            "box": [
+              72,
+              164,
+              106,
+              12
+            ],
+            "region": "help"
+          },
+          {
+            "text": "115$",
+            "confidence": 0.5,
+            "box": [
+              317,
+              164,
+              28,
+              10
+            ],
+            "region": "other"
+          },
+          {
+            "text": "* Grünes Karohemd",
+            "confidence": 0.5,
+            "box": [
+              71,
+              188,
+              135,
+              13
+            ],
+            "region": "help"
+          },
+          {
+            "text": "95$",
+            "confidence": 0.5,
+            "box": [
+              319,
+              189,
+              26,
+              11
+            ],
+            "region": "other"
+          },
+          {
+            "text": "* Marlneblaues Suburbsn T4hlrt",
+            "confidence": 0.5,
+            "box": [
+              71,
+              213,
+              217,
+              13
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "39$",
+            "confidence": 0.5,
+            "box": [
+              318,
+              214,
+              27,
+              10
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "* Woieè8",
+            "confidence": 0.5,
+            "box": [
+              72,
+              238,
+              64,
+              13
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "arnel",
+            "confidence": 0.5,
+            "box": [
+              98,
+              264,
+              30,
+              11
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "nès Ho",
+            "confidence": 0.5,
+            "box": [
+              164,
+              264,
+              44,
+              11
+            ],
+            "region": "menu"
+          },
+          {
+            "text": ",* Schw",
+            "confidence": 0.5,
+            "box": [
+              69,
+              289,
+              54,
+              12
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "ès Hetn",
+            "confidence": 0.5,
+            "box": [
+              142,
+              289,
+              49,
+              11
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "* Zitr9n￿geIb0￿H0vAaIihernd",
+            "confidence": 0.5,
+            "box": [
+              72,
+              314,
+              196,
+              14
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "55$",
+            "confidence": 0.5,
+            "box": [
+              319,
+              314,
+              26,
+              11
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "* Orangenhain-",
+            "confidence": 0.5,
+            "box": [
+              72,
+              339,
+              104,
+              14
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "ZurÖek O Kaufen",
+            "confidence": 0.5,
+            "box": [
+              1071,
+              663,
+              114,
+              18
+            ],
+            "region": "phone"
+          },
+          {
+            "text": "ZcA)men IFJ Kamera",
+            "confidence": 0.5,
+            "box": [
+              853,
+              665,
+              126,
+              14
+            ],
+            "region": "subtitle"
+          },
+          {
+            "text": "L2",
+            "confidence": 0.5,
+            "box": [
+              906,
+              667,
+              12,
+              9
+            ],
+            "region": "subtitle"
+          }
+        ]
+      },
+      {
+        "requested_t": 604.0,
+        "t": 604.003,
+        "i": 35902,
+        "help": "SHORTS T8trffjvar9oshört5",
+        "phone_menu": "68$tr Weiße CargoshortS ZurÖek O Kaufen",
+        "lines": [
+          {
+            "text": "$7745",
+            "confidence": 0.5,
+            "box": [
+              1149,
+              40,
+              65,
+              21
+            ],
+            "region": "other"
+          },
+          {
+            "text": "SUBURBAN _",
+            "confidence": 0.5,
+            "box": [
+              123,
+              59,
+              209,
+              28
+            ],
+            "region": "other"
+          },
+          {
+            "text": "SHORTS",
+            "confidence": 0.5,
+            "box": [
+              70,
+              115,
+              54,
+              10
+            ],
+            "region": "help"
+          },
+          {
+            "text": "68$",
+            "confidence": 0.5,
+            "box": [
+              319,
+              164,
+              26,
+              11
+            ],
+            "region": "other"
+          },
+          {
+            "text": "T8trffjvar9oshört5",
+            "confidence": 0.30000001192092896,
+            "box": [
+              89,
+              188,
+              112,
+              15
+            ],
+            "region": "help"
+          },
+          {
+            "text": "68$tr",
+            "confidence": 0.30000001192092896,
+            "box": [
+              318,
+              214,
+              38,
+              10
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "'r",
+            "confidence": 0.30000001192092896,
+            "box": [
+              736,
+              238,
+              17,
+              18
+            ],
+            "region": "other"
+          },
+          {
+            "text": "Weiße CargoshortS",
+            "confidence": 0.5,
+            "box": [
+              85,
+              239,
+              127,
+              14
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "ZurÖek O Kaufen",
+            "confidence": 0.5,
+            "box": [
+              1071,
+              663,
+              114,
+              18
+            ],
+            "region": "phone"
+          },
+          {
+            "text": "ZcA)men IFJ Kamera t￿egen",
+            "confidence": 0.30000001192092896,
+            "box": [
+              853,
+              665,
+              180,
+              14
+            ],
+            "region": "subtitle"
+          },
+          {
+            "text": "L2",
+            "confidence": 0.5,
+            "box": [
+              906,
+              667,
+              12,
+              9
+            ],
+            "region": "subtitle"
+          }
+        ]
+      },
+      {
+        "requested_t": 619.5,
+        "t": 619.538,
+        "i": 36823,
+        "help": "B SUBURBAN GILETS * Rotes Fruntalot Gllet * Bloues Yeli Gilet",
+        "phone_menu": "l.,*'8r•unes A￿rw￿lI Gilet 120$ genss Rearw811 Glbt 120$ l&li I ZurÖck O Kaufen",
+        "lines": [
+          {
+            "text": "$767*7",
+            "confidence": 0.5,
+            "box": [
+              1149,
+              40,
+              65,
+              21
+            ],
+            "region": "other"
+          },
+          {
+            "text": "B SUBURBAN",
+            "confidence": 0.5,
+            "box": [
+              74,
+              52,
+              221,
+              42
+            ],
+            "region": "help"
+          },
+          {
+            "text": "I rJfHI",
+            "confidence": 0.5,
+            "box": [
+              1196,
+              82,
+              55,
+              14
+            ],
+            "region": "other"
+          },
+          {
+            "text": "GILETS",
+            "confidence": 0.5,
+            "box": [
+              70,
+              115,
+              46,
+              10
+            ],
+            "region": "help"
+          },
+          {
+            "text": "* Rotes Fruntalot Gllet",
+            "confidence": 0.5,
+            "box": [
+              72,
+              164,
+              149,
+              12
+            ],
+            "region": "help"
+          },
+          {
+            "text": "120$",
+            "confidence": 0.5,
+            "box": [
+              314,
+              164,
+              31,
+              10
+            ],
+            "region": "other"
+          },
+          {
+            "text": "* Bloues Yeli Gilet",
+            "confidence": 0.5,
+            "box": [
+              72,
+              188,
+              122,
+              12
+            ],
+            "region": "help"
+          },
+          {
+            "text": "120$",
+            "confidence": 0.5,
+            "box": [
+              314,
+              189,
+              31,
+              10
+            ],
+            "region": "other"
+          },
+          {
+            "text": "l.,*'8r•unes A￿rw￿lI Gilet",
+            "confidence": 0.30000001192092896,
+            "box": [
+              60,
+              209,
+              174,
+              20
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "120$",
+            "confidence": 0.5,
+            "box": [
+              314,
+              214,
+              31,
+              10
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "genss Rearw811 Glbt",
+            "confidence": 0.30000001192092896,
+            "box": [
+              121,
+              239,
+              132,
+              13
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "120$",
+            "confidence": 0.5,
+            "box": [
+              314,
+              239,
+              31,
+              10
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "l&li I",
+            "confidence": 0.30000001192092896,
+            "box": [
+              937,
+              424,
+              258,
+              155
+            ],
+            "region": "phone"
+          },
+          {
+            "text": "ZurÖck O Kaufen",
+            "confidence": 0.5,
+            "box": [
+              1071,
+              663,
+              114,
+              18
+            ],
+            "region": "phone"
+          },
+          {
+            "text": "Zoomen IFJ Kamera beW￿n",
+            "confidence": 0.30000001192092896,
+            "box": [
+              853,
+              665,
+              180,
+              14
+            ],
+            "region": "subtitle"
+          },
+          {
+            "text": "L2",
+            "confidence": 0.5,
+            "box": [
+              906,
+              667,
+              12,
+              9
+            ],
+            "region": "subtitle"
+          }
+        ]
+      },
+      {
+        "requested_t": 623.4,
+        "t": 623.5133,
+        "i": 37063,
+        "help": "",
+        "phone_menu": "",
+        "lines": [
+          {
+            "text": "-51211",
+            "confidence": 0.5,
+            "box": [
+              1160,
+              43,
+              54,
+              17
+            ],
+            "region": "other"
+          }
+        ]
+      }
+    ]
+  },
+  "wardrobe": {
+    "recording": "20261111-210812",
+    "samples": [
+      {
+        "requested_t": 155.5,
+        "t": 155.5008,
+        "i": 9315,
+        "help": "Drucke •6, um dich umzuzi8h8n.",
+        "phone_menu": "",
+        "lines": [
+          {
+            "text": "Drucke •6, um dich umzuzi8h8n.",
+            "confidence": 0.5,
+            "box": [
+              74,
+              45,
+              214,
+              13
+            ],
+            "region": "help"
+          },
+          {
+            "text": "HOMMEtllIll,",
+            "confidence": 0.30000001192092896,
+            "box": [
+              293,
+              100,
+              91,
+              23
+            ],
+            "region": "other"
+          },
+          {
+            "text": "R£¥",
+            "confidence": 0.30000001192092896,
+            "box": [
+              549,
+              115,
+              20,
+              7
+            ],
+            "region": "other"
+          },
+          {
+            "text": "I HM",
+            "confidence": 0.5,
+            "box": [
+              185,
+              116,
+              77,
+              41
+            ],
+            "region": "other"
+          },
+          {
+            "text": "IloMMEtllIll,",
+            "confidence": 0.30000001192092896,
+            "box": [
+              295,
+              139,
+              91,
+              23
+            ],
+            "region": "other"
+          }
+        ]
+      },
+      {
+        "requested_t": 157.0,
+        "t": 157.0089,
+        "i": 9403,
+        "help": "KLLILUNG AnzDge",
+        "phone_menu": "* thken Polohom#gn _ Oflena Homthn Hemd Shorts Tanktops ZurÖck O Auswahlen",
+        "lines": [
+          {
+            "text": "KLLILUNG",
+            "confidence": 0.5,
+            "box": [
+              71,
+              115,
+              66,
+              10
+            ],
+            "region": "help"
+          },
+          {
+            "text": "AnzDge",
+            "confidence": 0.30000001192092896,
+            "box": [
+              71,
+              164,
+              47,
+              14
+            ],
+            "region": "help"
+          },
+          {
+            "text": "* thken",
+            "confidence": 0.5,
+            "box": [
+              71,
+              214,
+              64,
+              12
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Polohom#gn _",
+            "confidence": 0.5,
+            "box": [
+              71,
+              264,
+              97,
+              11
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Oflena Homthn",
+            "confidence": 0.30000001192092896,
+            "box": [
+              71,
+              288,
+              102,
+              12
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Hemd",
+            "confidence": 0.5,
+            "box": [
+              72,
+              313,
+              37,
+              11
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Shorts",
+            "confidence": 0.5,
+            "box": [
+              71,
+              338,
+              40,
+              12
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "Tanktops",
+            "confidence": 0.5,
+            "box": [
+              71,
+              364,
+              59,
+              14
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "ZurÖck O Auswahlen",
+            "confidence": 0.5,
+            "box": [
+              1051,
+              663,
+              135,
+              18
+            ],
+            "region": "phone"
+          },
+          {
+            "text": "Kamera t￿egen",
+            "confidence": 0.30000001192092896,
+            "box": [
+              917,
+              667,
+              96,
+              12
+            ],
+            "region": "subtitle"
+          }
+        ]
+      },
+      {
+        "requested_t": 159.0,
+        "t": 159.009,
+        "i": 9523,
+        "help": "ANIUCIL * S&kko$ * Anzughosen",
+        "phone_menu": "Pulbvor ZurÖck O Auswahlen",
+        "lines": [
+          {
+            "text": "ANIUCIL",
+            "confidence": 0.5,
+            "box": [
+              70,
+              115,
+              54,
+              10
+            ],
+            "region": "help"
+          },
+          {
+            "text": "* S&kko$",
+            "confidence": 0.5,
+            "box": [
+              72,
+              164,
+              63,
+              12
+            ],
+            "region": "help"
+          },
+          {
+            "text": "* Anzughosen",
+            "confidence": 0.5,
+            "box": [
+              71,
+              188,
+              97,
+              15
+            ],
+            "region": "help"
+          },
+          {
+            "text": "Pulbvor",
+            "confidence": 0.5,
+            "box": [
+              71,
+              238,
+              51,
+              12
+            ],
+            "region": "menu"
+          },
+          {
+            "text": "ZurÖck O Auswahlen",
+            "confidence": 0.5,
+            "box": [
+              1051,
+              663,
+              135,
+              18
+            ],
+            "region": "phone"
+          },
+          {
+            "text": "Kamera t￿egen",
+            "confidence": 0.30000001192092896,
+            "box": [
+              917,
+              667,
+              96,
+              12
+            ],
+            "region": "subtitle"
+          }
+        ]
+      },
+      {
+        "requested_t": 162.5,
+        "t": 162.5068,
+        "i": 9727,
+        "help": "ANIUGL Gr&vgr Anzug Topa￿a1beneT Anzug",
+        "phone_menu": "ZurÖck O Auswahlen",
+        "lines": [
+          {
+            "text": "MnMMF¥lhll,",
+            "confidence": 0.30000001192092896,
+            "box": [
+              488,
+              5,
+              70,
+              22
+            ],
+            "region": "other"
+          },
+          {
+            "text": "kWUFWI.III",
+            "confidence": 0.30000001192092896,
+            "box": [
+              737,
+              10,
+              68,
+              20
+            ],
+            "region": "other"
+          },
+          {
+            "text": "ANIUGL",
+            "confidence": 0.30000001192092896,
+            "box": [
+              70,
+              115,
+              54,
+              10
+            ],
+            "region": "help"
+          },
+          {
+            "text": "Gr&vgr Anzug",
+            "confidence": 0.30000001192092896,
+            "box": [
+              71,
+              164,
+              88,
+              14
+            ],
+            "region": "help"
+          },
+          {
+            "text": "Topa￿a1beneT Anzug",
+            "confidence": 0.5,
+            "box": [
+              70,
+              188,
+              138,
+              15
+            ],
+            "region": "help"
+          },
+          {
+            "text": "ZurÖck O Auswahlen",
+            "confidence": 0.5,
+            "box": [
+              1051,
+              663,
+              135,
+              18
+            ],
+            "region": "phone"
+          },
+          {
+            "text": "Kamera bew￿en",
+            "confidence": 0.30000001192092896,
+            "box": [
+              917,
+              667,
+              96,
+              12
+            ],
+            "region": "subtitle"
+          }
+        ]
+      },
+      {
+        "requested_t": 170.0,
+        "t": 170.0161,
+        "i": 10177,
+        "help": "Druck8 • a um dich urnzuziahen.",
+        "phone_menu": "",
+        "lines": [
+          {
+            "text": "Druck8 • a um dich urnzuziahen.",
+            "confidence": 0.5,
+            "box": [
+              74,
+              45,
+              214,
+              11
+            ],
+            "region": "help"
+          },
+          {
+            "text": "Il¥ . ¥•14¥",
+            "confidence": 0.5,
+            "box": [
+              569,
+              149,
+              129,
+              23
+            ],
+            "region": "other"
+          }
+        ]
+      }
+    ]
+  }
+}

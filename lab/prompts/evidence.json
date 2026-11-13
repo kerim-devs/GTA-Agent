@@ -1,0 +1,693 @@
+{
+  "generated_from": {
+    "texts": "/Users/kerim/recordings/derived/kerim/*/texts.jsonl",
+    "pads": "/Users/kerim/recordings/kerim/*/pad.jsonl",
+    "new_20261113": "frames/pads inspected; OCR unavailable in this sandbox"
+  },
+  "ocr_limit": "TextReader failed before extraction with NSOSStatusErrorDomain -6662 Failed to create CVPixelBuffer Width = 630 Height = 180 Format = 420f. No 20261113 texts/readings were written.",
+  "candidates": [
+    {
+      "wording": "Drücke [glyph], um dir Waffen anzusehen",
+      "patterns": [
+        "um dir waffen anzusehen"
+      ],
+      "button": "right",
+      "kind": "press",
+      "seconds": 0.2,
+      "count": 5,
+      "confidence": "observed",
+      "examples": [
+        "20261111-185323@51.996",
+        "20261111-185323@136.166",
+        "20261112-130333@264.010"
+      ]
+    },
+    {
+      "wording": "Drücke [glyph], um dir Panzerungen anzusehen",
+      "patterns": [
+        "um dir panzerungen anzusehen"
+      ],
+      "button": "right",
+      "kind": "press",
+      "seconds": 0.2,
+      "count": 4,
+      "confidence": "observed",
+      "examples": [
+        "20261111-185323@110.978",
+        "20261111-185323@112.852",
+        "20261112-130333@274.053"
+      ]
+    },
+    {
+      "wording": "Drücke [glyph], um dir <Kleidung> anzusehen",
+      "patterns": [
+        "um dir gilets anzusehen",
+        "um dir hemden anzusehen",
+        "um dir shorts anzusehen"
+      ],
+      "button": "right",
+      "kind": "press",
+      "seconds": 0.2,
+      "count": 3,
+      "confidence": "observed",
+      "examples": [
+        "20261111-193105@593.536",
+        "20261111-193105@603.528",
+        "20261111-193105@619.010"
+      ]
+    },
+    {
+      "wording": "Drücke [glyph], um dich umzuziehen",
+      "patterns": [
+        "um dich umzuziehen"
+      ],
+      "button": "right",
+      "kind": "press",
+      "seconds": 0.2,
+      "count": 2,
+      "confidence": "observed",
+      "examples": [
+        "20261111-210812@156.280",
+        "20261111-210812@178.958"
+      ]
+    },
+    {
+      "wording": "Drücke [glyph], um in Deckung zu gehen",
+      "patterns": [
+        "um in deckung zu gehen",
+        "neben einem fahrzeug um es als deckung zu nutzen"
+      ],
+      "button": "r1",
+      "kind": "press",
+      "seconds": 0.2,
+      "count": 2,
+      "confidence": "observed",
+      "examples": [
+        "20261111-164039@658.044",
+        "20261111-164039@691.184"
+      ]
+    },
+    {
+      "wording": "Drücke [glyph], um über das Auto zu klettern",
+      "patterns": [
+        "um uber das auto",
+        "um ueber das auto"
+      ],
+      "button": "square",
+      "kind": "press",
+      "seconds": 0.2,
+      "count": 3,
+      "confidence": "observed",
+      "examples": [
+        "20261111-172549@184.944",
+        "20261111-172549@190.400",
+        "20261111-172549@192.953"
+      ]
+    },
+    {
+      "wording": "Drücke [glyph], um mit <person> zu reden",
+      "patterns": [
+        "um mit",
+        "zu reden"
+      ],
+      "button": "right",
+      "kind": "press",
+      "seconds": 0.2,
+      "count": 1,
+      "confidence": "observed",
+      "examples": [
+        "20261111-175312@500.840"
+      ]
+    }
+  ],
+  "replay_fixtures": [
+    {
+      "recording": "20261111-185323",
+      "t": 51.506,
+      "text": "Drücke [glyph], um dir Waffen anzusehen.",
+      "button": "right",
+      "pad_down": 51.996,
+      "duration": 0.21
+    },
+    {
+      "recording": "20261111-185323",
+      "t": 109.012,
+      "text": "Drücke [glyph], um dir Panzerungen anzusehen.",
+      "button": "right",
+      "pad_down": 110.978,
+      "duration": 0.197
+    },
+    {
+      "recording": "20261111-185323",
+      "t": 136.005,
+      "text": "Drücke [glyph], um dir Waffen anzusehen.",
+      "button": "right",
+      "pad_down": 136.166,
+      "duration": 0.146
+    },
+    {
+      "recording": "20261111-193105",
+      "t": 592.502,
+      "text": "Drücke [glyph], um dir Hemden anzusehen.",
+      "button": "right",
+      "pad_down": 593.536,
+      "duration": 0.288
+    },
+    {
+      "recording": "20261111-193105",
+      "t": 603.014,
+      "text": "Drücke [glyph], um dir Shorts anzusehen.",
+      "button": "right",
+      "pad_down": 603.528,
+      "duration": 0.138
+    },
+    {
+      "recording": "20261111-193105",
+      "t": 618.012,
+      "text": "Drücke [glyph], um dir Gilets anzusehen.",
+      "button": "right",
+      "pad_down": 619.01,
+      "duration": 0.206
+    },
+    {
+      "recording": "20261111-210812",
+      "t": 155.501,
+      "text": "Drücke [glyph], um dich umzuziehen.",
+      "button": "right",
+      "pad_down": 156.28,
+      "duration": 0.137
+    },
+    {
+      "recording": "20261111-164039",
+      "t": 657.5,
+      "text": "Drücke [glyph] neben einem Fahrzeug, um es als Deckung zu nutzen.",
+      "button": "r1",
+      "pad_down": 658.044,
+      "duration": 0.177
+    },
+    {
+      "recording": "20261111-164039",
+      "t": 690.5,
+      "text": "Drücke [glyph], um in Deckung zu gehen.",
+      "button": "r1",
+      "pad_down": 691.184,
+      "duration": 0.147
+    },
+    {
+      "recording": "20261111-172549",
+      "t": 183.2,
+      "text": "Drücke [glyph], um über das Auto auf das Dach zu klettern.",
+      "button": "square",
+      "pad_down": 184.944,
+      "duration": 0.158
+    },
+    {
+      "recording": "20261111-175312",
+      "t": 499.5,
+      "text": "Drücke [glyph], um mit Ohnmächtiger Zorn zu reden.",
+      "button": "right",
+      "pad_down": 500.84,
+      "duration": 0.176
+    }
+  ],
+  "coverage": {
+    "corpus": "pre-existing derived recordings only; original 469 prompt-like OCR intervals; excludes 20261113-031159",
+    "denominator": 469,
+    "offer_known_total": 40,
+    "offer_known_rate": 0.08528784648187633,
+    "offer_counts": {
+      "guess": 423,
+      "Drücke [glyph], um in Deckung zu gehen": 4,
+      "Drücke [glyph], um über das Auto zu klettern": 2,
+      "Drücke [glyph], um mit <person> zu reden": 3,
+      "Drücke [glyph], um dir Waffen anzusehen": 9,
+      "Drücke [glyph], um dir Panzerungen anzusehen": 13,
+      "Drücke [glyph], um dir <Kleidung> anzusehen": 7,
+      "none": 6,
+      "Drücke [glyph], um dich umzuziehen": 2
+    },
+    "warning": "Offer pattern matches are coverage, not a correct-button score. The eleven raw fixtures are source/training evidence, not independent evaluation.",
+    "original_eleven_raw_fixtures": {
+      "matches": 11,
+      "total": 11
+    },
+    "independent_withheld_after_removing_source_rows": {
+      "fixtures": 3,
+      "correct": 0,
+      "rate": 0.0
+    }
+  },
+  "places": [
+    {
+      "kind": "Ammu-Nation",
+      "recording": "20261111-185323",
+      "visit": "51.506-105.014",
+      "entry_prompt": "Drücke [glyph], um dir Waffen anzusehen.",
+      "entry_button": "right",
+      "entry_pad": 51.996,
+      "entry_duration": 0.21,
+      "menu_title": "AMMU-NATION WAFFEN",
+      "entries": [
+        "Standard-Handfeuerwaffe",
+        "PISTOLE",
+        "Standardmagazin",
+        "Größeres Magazin",
+        "Standard-Splittergranate"
+      ],
+      "price": "readable prices in raw menu lines: 388$ (Größeres Magazin), 473$ (Taktisches Licht), 1823$ (Schalldämpfer), 46500$ (Luxusoberfläche), 100$/200$/400$ (Farbtöne)",
+      "footer": "Zoomen; Ansehen; L2 Navigieren",
+      "buttons": [
+        {
+          "t": 72.574,
+          "button": "cross"
+        },
+        {
+          "t": 74.71,
+          "button": "cross"
+        },
+        {
+          "t": 87.574,
+          "button": "circle"
+        },
+        {
+          "t": 99.668,
+          "button": "cross"
+        },
+        {
+          "t": 104.293,
+          "button": "circle"
+        }
+      ],
+      "exit": "menu returns to weapon prompt at 105.014",
+      "hud_screen": "game (no menu class)",
+      "frames": "/Users/kerim/recordings/kerim/20261111-185323/video.mp4 frames 51.5-105.0"
+    },
+    {
+      "kind": "clothes / Suburban",
+      "recording": "20261111-193105",
+      "visit": "592.502-609.576; second visit 619.015-623.361",
+      "entry_prompt": "Drücke [glyph], um dir Hemden anzusehen.",
+      "entry_button": "right",
+      "entry_pad": 593.536,
+      "entry_duration": 0.288,
+      "menu_title": "SUBURBAN HEMDEN / SHORTS / GILETS",
+      "entries": [
+        "Weißes Hemd",
+        "Grünes Karohemd",
+        "Dunkles Karohemd",
+        "Tarn-Cargoshorts",
+        "Rotes Fruntalot Gilet",
+        "Blaues Yeti Gilet"
+      ],
+      "price": "readable prices in raw menu lines: Weißes Hemd 115$, Grünes Karohemd 95$, Marineblaues Suburban T-Shirt 39$, Zitronengelbes Hawaiihemd 55$, Gilet entries 120$",
+      "footer": "Zoomen; Kamera; L2",
+      "buttons": [
+        {
+          "t": 595.035,
+          "button": "down"
+        },
+        {
+          "t": 596.107,
+          "button": "cross"
+        },
+        {
+          "t": 596.88,
+          "button": "circle"
+        },
+        {
+          "t": 604.996,
+          "button": "down"
+        },
+        {
+          "t": 607.493,
+          "button": "cross"
+        },
+        {
+          "t": 608.067,
+          "button": "circle"
+        }
+      ],
+      "exit": "prompt returns at 609.576",
+      "hud_screen": "game (no menu class)",
+      "frames": "/Users/kerim/recordings/kerim/20261111-193105/video.mp4 frames 592.5-609.6"
+    },
+    {
+      "kind": "safehouse wardrobe",
+      "recording": "20261111-210812",
+      "visit": "155.501-170.517",
+      "entry_prompt": "Drücke [glyph], um dich umzuziehen.",
+      "entry_button": "right",
+      "entry_pad": 156.28,
+      "entry_duration": 0.137,
+      "menu_title": "KLEIDUNG / ANZÜGE",
+      "entries": [
+        "Anzüge",
+        "Sakkos",
+        "Anzughosen",
+        "Grauer Anzug",
+        "Topazfarbener Anzug"
+      ],
+      "price": "not shown in sampled menu lines",
+      "footer": "Kamera; Bewegen; L2",
+      "buttons": [
+        {
+          "t": 158.422,
+          "button": "down"
+        },
+        {
+          "t": 158.695,
+          "button": "cross"
+        },
+        {
+          "t": 165.335,
+          "button": "circle"
+        },
+        {
+          "t": 165.92,
+          "button": "cross"
+        },
+        {
+          "t": 166.76,
+          "button": "circle"
+        }
+      ],
+      "exit": "prompt returns 170.016-171.501",
+      "hud_screen": "game, then loading at 185.101",
+      "frames": "/Users/kerim/recordings/kerim/20261111-210812/video.mp4 frames 155.5-171.5"
+    },
+    {
+      "kind": "barber",
+      "status": "no completed in-menu visit in usable derived text; 13-Nov video visually shows barber interior but no OCR extraction"
+    },
+    {
+      "kind": "tattoo studio",
+      "status": "no completed visit; only availability tutorial at 20261112-093524 417.501-427.067"
+    }
+  ],
+  "new_20261113_visual_sheets": [
+    "/tmp/p71-20261113-031159.jpg",
+    "/tmp/p71-20261113-033200.jpg",
+    "/tmp/p71-20261113-035200.jpg",
+    "/tmp/p71-20261113-041201.jpg",
+    "/tmp/p71-20261113-043201.jpg",
+    "/tmp/p71-20261113-045201.jpg"
+  ],
+  "raw_file_schemas": {
+    "fixture_raw": {
+      "path": "/tmp/p71-fixture-raw.json",
+      "top_level": "list",
+      "row_keys": [
+        "group",
+        "recording",
+        "requested_t",
+        "reading_t",
+        "reading_i",
+        "raw_help",
+        "raw_help_lines",
+        "consolidated_interval"
+      ]
+    },
+    "menu_readings": {
+      "path": "/tmp/p71-menu-readings.json",
+      "top_level": "object keyed ammu/suburban/wardrobe",
+      "visit_keys": [
+        "recording",
+        "samples"
+      ],
+      "sample_keys": [
+        "requested_t",
+        "t",
+        "i",
+        "help",
+        "phone_menu",
+        "lines"
+      ]
+    },
+    "shop_sheets": {
+      "path": "/tmp/p71-shop-sheets.json",
+      "top_level": "object keyed ammu/suburban/wardrobe",
+      "visit_keys": [
+        "path",
+        "frames"
+      ]
+    }
+  },
+  "new_derived_status": {
+    "20261113-031159": [
+      "readings.jsonl",
+      "texts.jsonl"
+    ],
+    "other_20261113_folders": "no texts.jsonl/readings.jsonl at check time"
+  },
+  "probe": {
+    "path": "/tmp/p71-vision-probe-20261113-031159.json",
+    "status": "external native OCR succeeded",
+    "recording": "20261113-031159",
+    "t": 120.0131,
+    "finding": "no help or menu text in selected frame"
+  },
+  "new_20261113_031159_heldout": {
+    "prompt_intervals": 19,
+    "intervals": [
+      {
+        "first": 376.5494,
+        "last": 376.5494,
+        "text": "Der g8lb8 8alk8n z8igt d8n St8nd von Trevöß Spezialfähigkeit. Drückè gleichzeitig. um Trevor wuiend zu machèn, w8s dÈn von ihm *rlitten8n Scheden beträchtlich reduziert und den von Ihm v8rurs8chien Schaden erhöht.",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "Der g8lb8 8alk8n z8igt d8n St8nd von Trevöß Spezialfähigkeit. Drückè gleichzeitig. um Trevor wuiend zu machèn, w8s dÈn von ihm *rlitten8n Scheden beträchtlich reduziert und den von Ihm v8rurs8chien Schaden erhöht."
+        },
+        "button_down_events": [
+          {
+            "t": 377.4972,
+            "buttons": [
+              "r1"
+            ]
+          }
+        ]
+      },
+      {
+        "first": 377.0707,
+        "last": 377.0707,
+        "text": "D8r 98lb8 8alk8n 28igt d8n St8nd von Trevörs Spezialfähigkeit. Drückè gleichzeitig. um Trevor wutend zu machen. w8s dÈn von ihm *rlitt&n8n SchBden beträchtlich reduziert und den von Ihm v8rurs8chien Schaden erhöht.",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "D8r 98lb8 8alk8n 28igt d8n St8nd von Trevörs Spezialfähigkeit. Drückè gleichzeitig. um Trevor wutend zu machen. w8s dÈn von ihm *rlitt&n8n SchBden beträchtlich reduziert und den von Ihm v8rurs8chien Schaden erhöht."
+        },
+        "button_down_events": [
+          {
+            "t": 377.4972,
+            "buttons": [
+              "r1"
+            ]
+          }
+        ]
+      },
+      {
+        "first": 378.5025,
+        "last": 378.5025,
+        "text": "D8r 981b8 8alk8n 28igt d8n St8nd von Trevörs Spèzialfähigkeit. Drückè gleichzgitig. um Trevor wuiend zu machen. w8s dÈn von ihm &rlitt& SchBden beträchtliW reduziert und den von Ihm verur88chi8n Schaden 8rhoht.",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "D8r 981b8 8alk8n 28igt d8n St8nd von Trevörs Spèzialfähigkeit. Drückè gleichzgitig. um Trevor wuiend zu machen. w8s dÈn von ihm &rlitt& SchBden beträchtliW reduziert und den von Ihm verur88chi8n Schaden 8rhoht."
+        },
+        "button_down_events": []
+      },
+      {
+        "first": 379.0097,
+        "last": 380.0063,
+        "text": "Der gelb8 8alk8n z8igt d8n St8nd von Trevörs SpèzialfähigkÈit. Drückè gleichzeitig. um Trevor wuiend zu machen. w8s dÈn von ihm *rlitt*n8n Scheden beträchtlich reduziert und den von Ihm verur8ach18n Schaden 8rhOht.",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "Der gelb8 8alk8n z8igt d8n St8nd von Trevörs SpèzialfähigkÈit. Drückè gleichzeitig. um Trevor wuiend zu machen. w8s dÈn von ihm *rlitt*n8n Scheden beträchtlich reduziert und den von Ihm verur8ach18n Schaden 8rhOht."
+        },
+        "button_down_events": []
+      },
+      {
+        "first": 380.5058,
+        "last": 382.5099,
+        "text": "Der 981b8 Balken zeigt den St8nd von Trevörs Spèzialfähigkelt. Drückè gleichzeitig. um Trevor wuiend zu machen. w8s dÈn von ihm &rlitt*n8n SchBden beträchtlich reduziert und den von Ihm V8fuf8ach18n Schaden erhoht.",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "Der 981b8 Balken zeigt den St8nd von Trevörs Spèzialfähigkelt. Drückè gleichzeitig. um Trevor wuiend zu machen. w8s dÈn von ihm &rlitt*n8n SchBden beträchtlich reduziert und den von Ihm V8fuf8ach18n Schaden erhoht."
+        },
+        "button_down_events": []
+      },
+      {
+        "first": 383.0076,
+        "last": 383.509,
+        "text": "D8r g8lb8 8alk8n 28igt den St8nd von Trevörs Spèzialfähigkeit. Drückè gleichzeitig. um Trevor wuiend zu machen. w8s dÈn von ihm *rlitt&n8n SchBden beträchtlich reduziert und den von Ihm v8rursachien Schaden erhöht.",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "D8r g8lb8 8alk8n 28igt den St8nd von Trevörs Spèzialfähigkeit. Drückè gleichzeitig. um Trevor wuiend zu machen. w8s dÈn von ihm *rlitt&n8n SchBden beträchtlich reduziert und den von Ihm v8rursachien Schaden erhöht."
+        },
+        "button_down_events": []
+      },
+      {
+        "first": 384.0033,
+        "last": 384.0033,
+        "text": "Der g8lb8 Balk8n z8igt den St8nd von Trevörs Spèzialfähigkeit. Drücke gleichzeitig. um Trovor wutend zu machen, w8s dtn von ihm *rlitt&n8n Scheden beträchtlich reduziert und den von Ihm V8fursach18n Schaden erhöht.",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "Der g8lb8 Balk8n z8igt den St8nd von Trevörs Spèzialfähigkeit. Drücke gleichzeitig. um Trovor wutend zu machen, w8s dtn von ihm *rlitt&n8n Scheden beträchtlich reduziert und den von Ihm V8fursach18n Schaden erhöht."
+        },
+        "button_down_events": []
+      },
+      {
+        "first": 384.5106,
+        "last": 385.0043,
+        "text": "Der g8lb8 Balken z8igr den St8nd von Trevörs Spèzialfähigkèit. Drückè gleichzeitig. um Trevor wuiend zu m8ch8n, w8s dÈn von ihm &rlitt&n8n Scheden beträchtlich reduziert und den von Ihm V8fursach18n Schaden erhöht.",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "Der g8lb8 Balken z8igr den St8nd von Trevörs Spèzialfähigkèit. Drückè gleichzeitig. um Trevor wuiend zu m8ch8n, w8s dÈn von ihm &rlitt&n8n Scheden beträchtlich reduziert und den von Ihm V8fursach18n Schaden erhöht."
+        },
+        "button_down_events": []
+      },
+      {
+        "first": 385.5119,
+        "last": 385.5119,
+        "text": "D8r gelb8 Balken zeigt den St8nd von Trevörs Spèzlalfähigkèlt Drückè gleichzgitig. um Trevor wuiend zu machen. w8s dÈn von ihm *rlitten8n SchBden beträchllich reduziert und den von Ihm v8rursachr8n Schaden erhoht.",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "D8r gelb8 Balken zeigt den St8nd von Trevörs Spèzlalfähigkèlt Drückè gleichzgitig. um Trevor wuiend zu machen. w8s dÈn von ihm *rlitten8n SchBden beträchllich reduziert und den von Ihm v8rursachr8n Schaden erhoht."
+        },
+        "button_down_events": []
+      },
+      {
+        "first": 386.0096,
+        "last": 386.5099,
+        "text": "D8r gelb8 Balken z8igt d8n St8nd von Trevörs Spèzlalfähigkèit. Drückè gleichzeitig. um Trevor wuiend zu machen. w8s dÈn von ihm &riitt&n8n SchBden beträchtlich reduziert und den von Ihm verursachi8n Schaden erhoht.",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "D8r gelb8 Balken z8igt d8n St8nd von Trevörs Spèzlalfähigkèit. Drückè gleichzeitig. um Trevor wuiend zu machen. w8s dÈn von ihm &riitt&n8n SchBden beträchtlich reduziert und den von Ihm verursachi8n Schaden erhoht."
+        },
+        "button_down_events": []
+      },
+      {
+        "first": 1131.0007,
+        "last": 1132.0476,
+        "text": "Di8 Anzeige d8r spezi8llahlgk8it ist voll. AktivierÈ SIÈ durth Drückèn vön",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "Di8 Anzeige d8r spezi8llahlgk8it ist voll. AktivierÈ SIÈ durth Drückèn vön"
+        },
+        "button_down_events": []
+      },
+      {
+        "first": 1132.5712,
+        "last": 1132.5712,
+        "text": "D18 Anz8ig8 der Sp8ziallèhlgk81t 181 voll. Aktivier8 si8 durth Drückèn von",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "D18 Anz8ig8 der Sp8ziallèhlgk81t 181 voll. Aktivier8 si8 durth Drückèn von"
+        },
+        "button_down_events": []
+      },
+      {
+        "first": 1133.0937,
+        "last": 1138.0029,
+        "text": "Di8 Anzeige d8r Sp8zialfahlgk8lt ist voll. Aktiviere SIÈ durth Drückèn vön",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "Di8 Anzeige d8r Sp8zialfahlgk8lt ist voll. Aktiviere SIÈ durth Drückèn vön"
+        },
+        "button_down_events": []
+      },
+      {
+        "first": 1138.5004,
+        "last": 1138.5004,
+        "text": "Die Anzeig8 iJ8r Sp8zialfählgkeit ist voll. Aktivl8re sl&'iIu￿h Drücken von",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "Die Anzeig8 iJ8r Sp8zialfählgkeit ist voll. Aktivl8re sl&'iIu￿h Drücken von"
+        },
+        "button_down_events": [
+          {
+            "t": 1139.487,
+            "buttons": [
+              "r1"
+            ]
+          }
+        ]
+      },
+      {
+        "first": 1139.0027,
+        "last": 1140.5057,
+        "text": "D18 Anz8ig8 der Sp8zialfähl9k8lt ist voll. Aktivlere siè durth DrückèA vDn",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "D18 Anz8ig8 der Sp8zialfähl9k8lt ist voll. Aktivlere siè durth DrückèA vDn"
+        },
+        "button_down_events": [
+          {
+            "t": 1139.487,
+            "buttons": [
+              "r1"
+            ]
+          }
+        ]
+      },
+      {
+        "first": 1141.5045,
+        "last": 1141.5045,
+        "text": "D18 Anzelge der Sp8zialfählgkeit ist voll. Aktiviere sie durth Drückèn vön",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "D18 Anzelge der Sp8zialfählgkeit ist voll. Aktiviere sie durth Drückèn vön"
+        },
+        "button_down_events": []
+      },
+      {
+        "first": 1142.0104,
+        "last": 1142.0104,
+        "text": "Dk? Anz8198 d8r Sp8zialfählgk81t ist voll. Aktiviera sie durch Drückèn vön",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "Dk? Anz8198 d8r Sp8zialfählgk81t ist voll. Aktiviera sie durch Drückèn vön"
+        },
+        "button_down_events": []
+      },
+      {
+        "first": 1142.5308,
+        "last": 1143.5826,
+        "text": "D18 Anzeig8 d8r Sp8zialfahigkeit ist voll. Aktiviere sie dLJr¢h Drücken vön",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "D18 Anzeig8 d8r Sp8zialfahigkeit ist voll. Aktiviere sie dLJr¢h Drücken vön"
+        },
+        "button_down_events": []
+      },
+      {
+        "first": 1169.5012,
+        "last": 1170.5151,
+        "text": "Haltet ihn vom Labor fernl",
+        "offer": {
+          "button": "right",
+          "known": false,
+          "wording": "Haltet ihn vom Labor fernl"
+        },
+        "button_down_events": []
+      }
+    ],
+    "clean_action_evidence": "No new known offer has an observed matching expected action label; button down events are reported without assigning intent."
+  },
+  "gate_status": "ruff check and ruff format check passed; pytest log has one failure marker around 5 percent and no final summary in /tmp/p71-gate.log at measurement time."
+}

@@ -1,0 +1,78 @@
+{
+  "path": "/tmp/p71-glyph-crop-attempt.jpg",
+  "samples": [
+    {
+      "recording": "20261111-185323",
+      "t": 51.5062,
+      "frame": 3072,
+      "expected": "right",
+      "crop_xywh": [
+        105,
+        28,
+        120,
+        50
+      ]
+    },
+    {
+      "recording": "20261111-193105",
+      "t": 592.5172,
+      "frame": 35222,
+      "expected": "right",
+      "crop_xywh": [
+        105,
+        28,
+        120,
+        50
+      ]
+    },
+    {
+      "recording": "20261111-210812",
+      "t": 155.5182,
+      "frame": 9316,
+      "expected": "right",
+      "crop_xywh": [
+        105,
+        28,
+        120,
+        50
+      ]
+    },
+    {
+      "recording": "20261111-164039",
+      "t": 690.5481,
+      "frame": 40191,
+      "expected": "r1",
+      "crop_xywh": [
+        105,
+        28,
+        120,
+        50
+      ]
+    },
+    {
+      "recording": "20261111-172549",
+      "t": 183.2498,
+      "frame": 10906,
+      "expected": "square",
+      "crop_xywh": [
+        105,
+        28,
+        120,
+        50
+      ]
+    },
+    {
+      "recording": "20261111-175312",
+      "t": 499.5087,
+      "frame": 19116,
+      "expected": "right",
+      "crop_xywh": [
+        105,
+        28,
+        120,
+        50
+      ]
+    }
+  ],
+  "assessment": "Crops are positioned from the help-line geometry, not glyph labels. They are suitable for visual inspection but provide no labelled train/test template set."
+}
