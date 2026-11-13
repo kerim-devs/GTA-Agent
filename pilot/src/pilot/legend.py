@@ -139,11 +139,13 @@ def read_legend(lines, frame=None):
     bars = []
     # The legend is set flush right: all 2,012 rows of the recording by hand end between 1188 and 1215.
     # Writing of the world behind the map (a sign reading "SANDY'S", session 20261112-121107) does not.
+    # A long row begins far to the left: "Immobilie: McKenzie-Feldhangar: 150.000 $" at 877, where the
+    # selection stood on it unread for forty seconds (session 20261113-000319).
     body = sorted(
         (
             row
             for row in rows
-            if row[1][0] >= 900 and 25 <= row[1][1] < 600 and 1180 <= row[1][0] + row[1][2] <= 1225
+            if row[1][0] >= 780 and 25 <= row[1][1] < 600 and 1180 <= row[1][0] + row[1][2] <= 1225
         ),
         key=lambda row: row[1][1],
     )
@@ -338,9 +340,15 @@ class LegendWaypoint:
             # A direction that is held moves the selection again: in session 20261112-115658 holds of
             # 0.25 s and 0.35 s each stepped over an entry, one of 0.19 s did not. A tick with the text
             # reader in it takes 0.08 to 0.17 s, so a direction is let go on the tick after its press.
-            if self.held.buttons[0] not in DIRECTIONS and 0.07 < now - self.pressed <= 1.0:
-                self.release_at = now + 0.10
-                self.ready_at = self.release_at + self.settle
+            # So is every other button, on a tick that read the screen's text: its pad goes out when
+            # the reading is done, and the button has been down for as long by then. The bridge lets
+            # go of a pad that is not sent again within 250 ms, so a button sent on two such ticks is
+            # two presses where the second is slower than that: on 13 November, 01:12 and 01:28, it
+            # took 0.37 s, the game got the cross twice, the second took away the waypoint the first
+            # had set, and the skill, which had read the new distance, called it set.
+            if self.held.buttons[0] not in DIRECTIONS and not game:
+                self.release_at = now
+                self.ready_at = now + 0.10 + self.settle
             self.hold = False
         if now < self.release_at:
             allowed = {"game", "pause"} if self.held.buttons == (self.profile.pause,) else {"pause", "map"}

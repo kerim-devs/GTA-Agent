@@ -7,7 +7,7 @@ import sys
 from dataclasses import asdict, fields
 from pathlib import Path
 
-from . import hud, profile
+from . import hud, profile, sides
 from .bridge import Bridge
 from .calibrate import RECORDINGS as CALIBRATIONS
 from .calibrate import run_calibrate, selection
@@ -135,7 +135,7 @@ def main(argv: list[str] | None = None) -> None:
         default=[],
         metavar="JSON",
         help='with the scripted head: a plan to run, e.g. \'[{"name": "enter_vehicle", "args": {}}]\'; '
-        "give it again for the answer to the next request",
+        "give it again for the answer to the next request, or the word go_on to leave what runs running",
     )
     play.add_argument("--head-model")
     play.add_argument("--head-effort", default="low")
@@ -194,6 +194,7 @@ def main(argv: list[str] | None = None) -> None:
     elif args.command == "play":
         try:
             judge = JudgeReader(args.judge) if args.judge else None
+            sides.use(args.judge)
         except ValueError as error:
             parser.error(str(error))
         if args.plan and args.head != "scripted":
@@ -202,7 +203,12 @@ def main(argv: list[str] | None = None) -> None:
         # built under.
         profile.use(args.game)
         try:
-            plans = [{"plan": json.loads(plan), "sentence": "Geplanter Schritt."} for plan in args.plan]
+            plans = [
+                {"action": "go_on", "plan": [], "sentence": "Weiter."}
+                if plan.strip() == "go_on"
+                else {"plan": json.loads(plan), "sentence": "Geplanter Schritt."}
+                for plan in args.plan
+            ]
         except json.JSONDecodeError as error:
             parser.error(f"--plan is not JSON: {error}")
         if args.head == "scripted":

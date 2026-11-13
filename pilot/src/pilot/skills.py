@@ -417,6 +417,7 @@ from .combat import Fight, Melee  # noqa: E402
 from .level import LevelCamera  # noqa: E402
 from .punch import Punch  # noqa: E402
 from .vehicle_entry import EnterVehicle  # noqa: E402
+from .walkto import WalkTo as WalkToPoint  # noqa: E402
 from .waypoint import SetWaypoint  # noqa: E402
 
 REGISTRY = {
@@ -438,6 +439,7 @@ REGISTRY = {
         LevelCamera,
         SetFarView,
         WalkRoad,
+        WalkToPoint,
     )
 }
 

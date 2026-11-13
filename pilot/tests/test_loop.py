@@ -8,7 +8,7 @@ import pytest
 
 from pilot.bridge import Bridge
 from pilot.contract import Command, Reading
-from pilot.loop import Pipeline, run_drive
+from pilot.loop import Pipeline, RuntimeInterruptedError, run_drive
 
 READING = Reading("tilted", "yellow", 12.0, 20.0, 0.0, False, 0.9)
 COMMAND = Command(0.4, 0.5, 0.0, "follow")
@@ -184,6 +184,45 @@ def test_every_exit_neutralizes_before_stopping_recorder(tmp_path, ending):
     assert harness.events[-2][1:3] == ("/pad", {})
     assert harness.events[-1][1:3] == ("/record", {"action": "stop"})
     assert all(signal.getsignal(signum) == handler for signum, handler in handlers.items())
+
+
+def test_a_signal_to_stop_is_not_caught_by_a_reader_that_catches_whatever_a_picture_throws(tmp_path):
+    harness = Harness(tmp_path)
+
+    def reader(crop):
+        try:
+            if harness.frames == 2:
+                signal.raise_signal(signal.SIGINT)
+        except Exception:
+            pass
+        return READING
+
+    harness.pipeline.reader = reader
+    summary = harness.run(seconds=5)
+    assert summary.ticks <= 2
+    assert harness.events[-2][1:3] == ("/pad", {})
+    assert harness.events[-1][1:3] == ("/record", {"action": "stop"})
+
+
+def test_a_second_signal_does_not_cut_the_release_short(tmp_path):
+    harness = Harness(tmp_path)
+    harness.frame_rule = lambda request: harness.frames != 2 or signal.raise_signal(signal.SIGINT) or True
+
+    second = []
+
+    def pad_rule(body):
+        # The release the first signal leads to is where the second arrives, once.
+        if body == {} and not second:
+            second.append(True)
+            signal.raise_signal(signal.SIGTERM)
+        return 200
+
+    harness.pad_rule = pad_rule
+    with pytest.raises(RuntimeInterruptedError, match="SIGTERM"):
+        harness.run(seconds=5)
+    # The release that was cut short is sent again, and reaches the console before the recorder stops.
+    assert harness.events[-2][1:3] == ("/pad", {})
+    assert harness.events[-1][1:3] == ("/record", {"action": "stop"})
 
 
 def test_failed_cleanup_still_stops_recorder_and_preserves_original_error(tmp_path):

@@ -145,8 +145,10 @@ class Summary:
         )
 
 
-class RuntimeInterruptedError(Exception):
-    pass
+class RuntimeInterruptedError(BaseException):
+    """A signal to stop. Not an Exception: the readers and skills on a tick's way catch Exception,
+    since a damaged picture may throw anything, and a signal raised while one of them ran was caught
+    there. On 13 November, 00:36, a session asked to stop played on until it was asked again."""
 
 
 class ControllerRuntime:
@@ -221,10 +223,16 @@ def cleanup_runtime(runtime, *, recording, pipeline, logs=()):
     if getattr(pipeline, "close", None) is not None:
         actions.append(pipeline.close)
     for action in actions:
-        try:
-            action()
-        except Exception as exc:
-            errors.append(exc)
+        for _ in range(2):
+            try:
+                action()
+            except RuntimeInterruptedError as exc:
+                # A second signal cut the step short, the release of the pad it may be: once more.
+                errors.append(exc)
+                continue
+            except Exception as exc:
+                errors.append(exc)
+            break
     if errors:
         if active_error is None:
             raise errors[0]

@@ -322,8 +322,9 @@ def _rotate(stick: tuple[float, float], degrees: float) -> tuple[float, float]:
 class Steer:
     left: tuple[float, float]
     right: tuple[float, float] = (0.0, 0.0)
-    state: str = "go"  # "go" | "escape" | "look" | "ahead" | "odd" | "idle"
+    state: str = "go"  # "go" | "escape" | "look" | "ahead" | "odd" | "idle"; "climb" | "round" in wayround
     failed: str | None = None
+    buttons: tuple[str, ...] = ()  # what the guard presses itself; a skill that reads none presses none
 
 
 class FootGuard:
@@ -368,6 +369,7 @@ class FootGuard:
         self.state_since = None
         self.push_since = None
         self.failures = 0
+        self.still_shift, self.going_shift = self.STILL_SHIFT, self.GOING_SHIFT
         self.first_side = 1 if first_side >= 0 else -1
         self.escape = None
         self.wanted = (0.0, 0.0)
@@ -400,9 +402,9 @@ class FootGuard:
                         image_shift = measure(history[0][1], current)
                 history.append((now, current.copy()))
         if shift is not None:
-            if shift < self.STILL_SHIFT:
+            if shift < self.still_shift:
                 return "still"
-            return "going" if shift >= self.GOING_SHIFT else None
+            return "going" if shift >= self.going_shift else None
         if image_shift is not None:
             if image_shift < 0.25:
                 return "still"
@@ -460,7 +462,8 @@ class FootGuard:
         self.state, self.state_since = state, now
         self.events.append((now, state))
 
-    def step(self, observation: Observation, want: tuple[float, float]) -> Steer:
+    def step(self, observation: Observation, want: tuple[float, float], *, sprint: bool = False) -> Steer:
+        # `sprint` is for the guard in wayround, which measures a sprint by a sprint's pace.
         now = observation.time
         self._note_judgment(observation)
         if player_mode(observation) != "foot":
