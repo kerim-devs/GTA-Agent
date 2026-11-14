@@ -1073,6 +1073,11 @@ class Trip:
             self.car_started, self.car_attempts = now, 0
             self.change("car", now)
             self.method = "route"
+        elif stage == "loose" and reason.startswith("route-lost"):
+            # The car drives and only its route was away: the drive is taken up again as it is.
+            # Driving off without an eye on the road turned the car into a sign at 20 m/s
+            # (20261114-005357). A route that stays away is driven on under by the step below.
+            self.method = "route"
         else:
             self.method = stage
             self.exit_presses = self.exit_waits = 0

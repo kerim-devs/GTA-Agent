@@ -323,6 +323,15 @@ def test_a_drive_that_gives_up_beside_its_route_keeps_the_car(session):
     assert session.trip.verdict is None and len(session.waypoints) == 1
 
 
+def test_a_route_lost_on_the_way_takes_the_drive_up_again_without_driving_off(session):
+    session.drive()
+    session.conductor.runner.stop("route-lost-far")
+    session.tick()
+    session.until(lambda: session.active("drive_route"), seconds=5)
+    assert not [row for row in session.rows("trip_attempt") if row["name"] == "get_away"]
+    assert [row["stage"] for row in session.rows("trip_recovery")] == [1]
+
+
 def test_driving_off_under_stars_to_its_limit_costs_no_second_recovery(session):
     session.drive()
     session.conductor.runner.stop("failed-recovery")

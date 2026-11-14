@@ -251,6 +251,12 @@ class DriveRoute(RegisteredSkill):
     # The route vanished with 27 m and 23 m still printed on the two recorded arrivals.
     arrival_metres = 50.0
     arrival_age = 5.0  # Includes the driver's two seconds of confirmed route absence.
+    # 20261114-005357, 4750 m from the place at 25 m/s: the route was off the map for two seconds
+    # past a junction, the car braked hard and the drive ended. With this much way left, printed
+    # this short a time ago, a route that is away is waited for while the car rolls on.
+    far_metres = 300.0
+    far_age = 10.0
+    far_seconds = 4.0
 
     def __init__(self, args: dict, *, driver=None):
         super().__init__(args, driver=driver)
@@ -266,6 +272,7 @@ class DriveRoute(RegisteredSkill):
         self._water_seen = None
         self._water_time = 0.0
         self._foot_since = None
+        self._gone_since = None
 
     # A figure the judge sees on foot over a sound flat map, for this long: nobody drives. The map
     # lies flat and sound in no car, and on 13 November, 17:20, a drive planned on the judge's word
@@ -417,9 +424,21 @@ class DriveRoute(RegisteredSkill):
                 or (observation.objects_time is not None and 0 <= now - observation.objects_time <= STALE),
             )
             if command.state == "route-gone":
+                if self._gone_since is None:
+                    self._gone_since = now
+                if (
+                    self.end_distance is not None
+                    and self.end_distance > self.far_metres
+                    and now - self.distance_time <= self.far_age
+                    and now - self._gone_since < self.far_seconds
+                ):
+                    # Far from the place the route has not ended, the game is drawing another: the
+                    # car rolls on straight, with no brake, until it is back.
+                    return self._result(pad=Pad())
                 if command.brake:
                     return self._result(pad=Pad.from_command(command))
                 return self._route_end(observation)
+            self._gone_since = None
             if command.state in ("dead-or-held", "failed-recovery", "map-unreadable"):
                 return self.stop(command.state)
             if len(self._distances) >= 3 and self.distance_time is not None:

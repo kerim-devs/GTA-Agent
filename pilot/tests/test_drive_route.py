@@ -21,9 +21,9 @@ def tick(skill, t, distance=None, *, moving=True, route="purple", sampled_at=Non
     return skill.step(Observation(reading, moving, t))
 
 
-def lose_route(skill, t):
+def lose_route(skill, t, ticks=23):
     result = None
-    for i in range(23):
+    for i in range(ticks):
         result = tick(skill, t + i / 10, route="none")
     return result
 
@@ -51,8 +51,21 @@ def test_lost_route_uses_the_recent_distance(distances, status, reason):
     skill = DriveRoute({})
     for i, distance in enumerate(distances):
         tick(skill, i / 2, distance)
-    result = lose_route(skill, 1.1)
+    # Far from the place the route is waited for, for four seconds, before the drive ends.
+    result = lose_route(skill, 1.1, 70 if distances[0] > 300 else 23)
     assert (result.status, result.reason, result.pad) == (status, reason, NEUTRAL_PAD)
+
+
+def test_a_route_that_is_away_for_two_seconds_far_from_the_place_costs_no_brake():
+    # 20261114-005357: 4750 m to go at 25 m/s, the route off the map for two seconds past a junction.
+    skill = DriveRoute({})
+    for i, distance in enumerate((4800, 4790, 4780, 4770, 4760, 4750)):
+        tick(skill, i / 2, distance)
+    for i in range(25):
+        result = tick(skill, 2.6 + i / 10, route="none")
+        assert result.status == "running" and result.pad.l2 == 0
+    result = tick(skill, 5.2, 4690)
+    assert result.status == "running" and result.pad.r2 > 0
 
 
 def test_old_distance_is_kept_with_age_but_cannot_prove_arrival():
