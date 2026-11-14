@@ -636,3 +636,15 @@ The crawl to a junction. Over five trips the limit `hidden-turn`, a turn under t
 The brake's cost. In the eight trips after P106 the avoider had L2 down for 5.9 percent of the following time (65 s of 1109 s, 170 onsets) and the speed law for 1.2 percent; Kerim's own driving shows 0.7 to 3.6 percent in all. No trip in them needed a recovery for driving into the back of a queue at speed. Card P107, "The brake has a reason", is with a Codex worker (`feat/pilot-brake-with-a-reason`, dispatch `ctx_c65ea8c30e88`): the brakes for oncoming traffic and empty junctions go, the rest is as strong and as long as its reason asks. Sent after it, the other side: in trip 67 (`20261114-061133`, 76 to 86 s) the brake took the car from 23.7 to about 7 m/s before a queue at a red light and then let go, and the car rolled into the car before it at 4 m/s with the pedal at 0.8 to 0.97 and pushed; the vehicle ahead is half hidden by the own car there.
 
 A figure pulled out. In trips 65 and 66, by day, the car touched a van and a motorcycle, a man pulled the figure out, and it was beaten to death in the road; the six seconds of running built at 02:14 did not save it. It now hits back first with `punch`, the skill tried at the console on 12 November, and runs where that fails (`b9f6fc3`). On trial; not yet seen at the console.
+
+## 14 November 2026 / The night at the console, towards seven: the punch, a star on foot, a wall
+
+Thirty-five arrivals by 06:39; of the twenty-one trips from 52 on, nineteen arrived.
+
+The punch at the console. In trip 72 (`20261114-062755`) a man pulled the figure out of its car at 240 s; it turned to him, he lay on the ground at 247 s, and at 257 s it sat in the car again and drove on. The skill ended "pressed 16 times in reach; nobody seen going down" although he went down: its own proof of the end is not right yet, the trip does not depend on it.
+
+A star on foot. With a star lit the game shows the vehicle's map on foot as well (found on 12 November, and the trip still went by the map alone). In trip 68 (`20261114-061504`) the figure got out of a wedged car at 92 s, was taken to sit in it, and the second press of triangle put it back; the trip ended "vehicle exit not observed". The judge had said "foot" throughout. Where the eye's accepted word is that the figure stands, the trip takes that, for the exit and for what it does first with a star lit (`036cfc4`). The failures "star on foot" of trips 34 and 38 were most likely the same.
+
+A wall. The clearing leg of a joining turn was 0.9 s every time, a metre back and into the same wall again, for a minute in trips 62 and 68. It now lasts as many times 0.9 s as the forward leg has been held, up to four (`b69341a`).
+
+Seen and left: in rain with a strong rear-driven car the pedal at 1.0 from a standstill turns the car across the road, and trip 72 needed three and a half minutes for its first 350 m. The pedal knows nothing of the car or the weather.
