@@ -1177,6 +1177,12 @@ class Trip:
                 # a star lit it hides the place itself (the pier, 20261114-014541, 85 m last printed).
                 self.finish("reached", "the route went near the place and the map holds no waypoint", now)
             else:
+                if "place-not-in-legend" in why:
+                    # A star hides the place, and the flight from the police may not have been one:
+                    # pulled out of the car five seconds into it and back in a car with the star
+                    # lit, the trip looked three times at a legend without the car wash and ended
+                    # after 68 s (20261114-080928). While a star is lit the police are lost again.
+                    self.fled = False
                 self.waypoint_attempts += 1
                 if self.waypoint_attempts >= 3:
                     self.failure = "waypoint failed after three attempts: " + why

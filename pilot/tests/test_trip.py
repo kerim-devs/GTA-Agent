@@ -682,6 +682,20 @@ def test_with_a_star_lit_the_police_are_lost_before_the_map_is_opened(session):
     assert len(session.waypoints) == 1
 
 
+def test_a_place_hidden_under_a_star_sends_the_car_away_from_the_police_again(session):
+    # 20261114-080928: pulled out five seconds into the flight, back in a car with the star lit,
+    # and three looks at a legend without the car wash ended the trip after 68 s.
+    session.hud = replace(session.hud, wanted=1)
+    session.until(lambda: session.active("get_away"), seconds=5)
+    session.conductor.runner.stop("flow")
+    hidden = f"place-not-in-legend: {PLACE}; gameplay observed; places: Suburban"
+    session.outcomes.append(("failed", hidden, "game"))
+    session.until(lambda: len(session.waypoints) == 1, seconds=20)
+    session.until(lambda: session.active("get_away"), seconds=20)
+    assert len(session.waypoints) == 1
+    assert session.trip.verdict is None
+
+
 def test_three_waypoint_tries_taken_away_by_the_screen_end_the_trip(session):
     # 20261114-043707: in a house the map was a screen the try could not read, seven times over.
     for _ in range(3):
