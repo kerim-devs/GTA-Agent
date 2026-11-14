@@ -8,10 +8,9 @@ from pathlib import Path
 
 import pytest
 
-from pilot.contract import NEUTRAL_PAD, Detection, Observation, Pad, Reading, SkillResult
+from pilot.contract import NEUTRAL_PAD, Detection, Observation, Pad, Reading
 from pilot.vehicle_entry import (
     DOOR_WAIT,
-    HOLD_SECONDS,
     MAX_ATTEMPTS,
     MAX_SECONDS,
     EnterVehicle,
@@ -70,7 +69,7 @@ def test_metadata_clamping_and_hard_limit():
     assert skill.limit == 0.1
     skill.step(obs(8, ()))
     result = skill.step(obs(8.11, ()))
-    assert result.status == "failed" and result.reason == "nothing found"
+    assert result.status == "failed" and result.reason.startswith("nothing found")
     assert result.pad == NEUTRAL_PAD
 
 
@@ -85,7 +84,7 @@ def test_release_then_human_length_press_then_neutral_animation_wait():
     for time in (0.20, 0.7, 1.5, 2.9, DOOR_WAIT + 0.02):
         assert skill.step(obs(time, (), delivered=False, corrupt=True)).pad == NEUTRAL_PAD
     result = skill.step(obs(DOOR_WAIT + 0.05, (NEAR,)))
-    assert result.pad.left[1] < 0 and not result.pad.buttons
+    assert result.status == "failed" and result.pad == NEUTRAL_PAD
 
 
 def test_seated_proof_survives_corrupt_tick_but_rejects_short_false_map():
@@ -111,12 +110,12 @@ def test_already_seated_needs_two_seconds_and_uses_accepted_mode():
     skill = EnterVehicle({})
     for time in (0, 0.5, 0.83):
         assert skill.step(obs(time, minimap="tilted")).pad == NEUTRAL_PAD
-    assert skill.step(obs(0.9)).pad.left[1] < 0
+    assert skill.step(obs(0.9)).pad == NEUTRAL_PAD
     for time in (1.0, 2.0, 2.99):
         assert skill.step(replace(obs(time), mode="vehicle")).status == "running"
     result = skill.step(replace(obs(3), mode="vehicle"))
     assert result.reason == "already in a vehicle" and result.pad == NEUTRAL_PAD
-    assert EnterVehicle({}).step(replace(obs(0, minimap="tilted"), mode="foot")).pad.left[1] < 0
+    assert EnterVehicle({}).step(replace(obs(0, minimap="tilted"), mode="foot")).pad == NEUTRAL_PAD
 
 
 @pytest.mark.parametrize(
@@ -124,6 +123,7 @@ def test_already_seated_needs_two_seconds_and_uses_accepted_mode():
 )
 def test_unusable_detection_or_non_game_releases_motion(kwargs):
     skill = EnterVehicle({})
+    skill.step(obs(-0.5))
     assert skill.step(obs(0)).pad.left[1] < 0
     assert skill.step(obs(0.51, **kwargs)).pad == NEUTRAL_PAD
 
@@ -154,12 +154,14 @@ def test_target_leaving_range_between_release_and_press_is_approached_again():
     skill = EnterVehicle({})
     assert skill.step(obs(0, (near,))).pad == NEUTRAL_PAD
     result = skill.step(obs(0.04, (receding,)))
-    assert "triangle" not in result.pad.buttons and result.pad.left[1] < 0
+    assert result.pad == NEUTRAL_PAD  # A receding car is observed before another approach.
 
 
 def test_figure_steers_while_camera_follows_and_bumper_is_in_reach():
     side = Detection("car", px(0.72, 0.4, 0.92, 0.55), 0.9)
-    pad = EnterVehicle({}).step(obs(0, (side,))).pad
+    skill = EnterVehicle({})
+    skill.step(obs(0, (side,)))
+    pad = skill.step(obs(0.5, (side,))).pad
     assert pad.left[0] > 0 and pad.left[1] <= -0.8 and pad.right[0] > 0
     normalized = replace(side, box=(0.72, 0.4, 0.92, 0.55))
     assert approach(normalized) == replace(pad, buttons=())
@@ -174,7 +176,7 @@ def test_choice_prefers_standing_then_near_then_car():
         detection = Detection(kind, box, 0.9)
         return Vehicle(detection, 0, detection, 0, motion)
 
-    car = vehicle("car", (0.3, 0.4, 0.5, 0.6))
+    car = vehicle("car", (0.3, 0.4, 0.5, 0.64))
     bus = vehicle("bus", (0.2, 0.2, 0.8, 0.6))
     passing = vehicle("car", (0.2, 0.3, 0.8, 0.9), "moving")
     far = vehicle("car", (0.4, 0.3, 0.5, 0.4))
@@ -183,15 +185,15 @@ def test_choice_prefers_standing_then_near_then_car():
     assert choose_vehicle([far, car]) is car
 
 
-def test_uncertain_motion_during_approach_keeps_the_chosen_car():
+def test_stationary_probe_passes_over_traffic_before_starting_approach():
     skill = EnterVehicle({})
     parked = Detection("car", px(0.36, 0.36, 0.46, 0.49), 0.9)
     for tick in range(6):
         time = tick / 10
         passing = Detection("car", px(0.44 + time * 0.20, 0.37, 0.56 + time * 0.20, 0.54), 0.9)
         skill.step(obs(time, (passing, parked)))
-    assert skill.target.obj.box == pytest.approx((0.54, 0.37, 0.66, 0.54))
-    assert skill.target.motion == "unknown"
+    assert skill.target.obj.box == pytest.approx((0.36, 0.36, 0.46, 0.49))
+    assert skill.target.motion == "standing"
 
 
 def test_kind_filter_bad_boxes_and_confidence():
@@ -210,36 +212,22 @@ def test_kind_filter_bad_boxes_and_confidence():
         assert skill.target is None
 
 
-def test_no_vehicle_looks_once_then_calls_existing_road_skill_until_limit(monkeypatch):
-    calls = []
-
-    class Road:
-        def __init__(self, args):
-            calls.append(args)
-
-        def step(self, observation):
-            calls.append(observation.time)
-            return SkillResult(Pad(left=(0.2, -0.6)))
-
-        def stop(self, reason):
-            calls.append(reason)
-
-    monkeypatch.setattr("pilot.vehicle_entry.WalkRoad", Road)
+def test_no_vehicle_looks_locally_then_returns_search_early():
     skill = EnterVehicle({"duration": 12})
     assert skill.step(obs(0, ())).pad.right != (0, 0)
-    for time in (1.5, 5, 11.9):
+    for time in (1.5, 3.9):
         result = skill.step(obs(time, ()))
-        assert result.pad.left[1] < 0 and result.status == "running"
-    result = skill.step(obs(12, ()))
-    assert result.reason == "nothing found" and result.pad == NEUTRAL_PAD
-    assert calls[1:4] == [1.5, 5, 11.9]
+        assert result.pad.left == (0, 0) and result.status == "running"
+    result = skill.step(obs(4, ()))
+    assert "no car in reach" in result.reason and result.pad == NEUTRAL_PAD
 
 
-def test_missing_road_frame_is_reported_at_deadline_not_as_success():
+def test_no_car_ends_early_without_needing_a_road_frame():
     skill = EnterVehicle({"duration": 6})
-    for t in (0, 2, 5):
+    for t in (0, 2):
         assert skill.step(obs(t, ())).status == "running"
-    assert skill.step(obs(6, ())).reason == "nothing found; road search unavailable: no-frame"
+    result = skill.step(obs(4, ()))
+    assert result.status == "failed" and "no car in reach" in result.reason
 
 
 def test_lost_detections_after_press_end_neutrally_without_waiting_full_limit():
@@ -264,25 +252,12 @@ def test_neighbouring_cars_keep_identity_when_detector_order_changes():
         assert all(v.tries == 0 for v in skill.vehicles if v is not chosen)
 
 
-def test_road_search_is_released_when_vehicle_appears(monkeypatch):
-    stopped = []
-
-    class Road:
-        def __init__(self, args):
-            pass
-
-        def step(self, observation):
-            return SkillResult(Pad(left=(0, -0.6)))
-
-        def stop(self, reason):
-            stopped.append(reason)
-
-    monkeypatch.setattr("pilot.vehicle_entry.WalkRoad", Road)
+def test_local_search_changes_to_approach_when_a_stopped_vehicle_appears():
     skill = EnterVehicle({})
     skill.step(obs(0, ()))
-    skill.step(obs(2, ()))
+    assert skill.step(obs(2, ())).pad.left == (0, 0)
     skill.step(obs(3, (FAR,)))
-    assert stopped == ["vehicle found"] and skill.road is None
+    assert skill.step(obs(3.5, (FAR,))).pad.left[1] < 0
 
 
 @pytest.mark.parametrize("phase", ["approach", "tap", "wait", "retry"])
@@ -365,6 +340,9 @@ class EntryGame:
             )
             objects += (person,)
         observation = obs(time, objects, minimap="tilted" if self.seated else "flat")
+        if self.pending is not None and not self.seated:
+            # A real door animation changes the standing pose before the map tilts.
+            observation = replace(observation, figure=Detection("person", px(0.5, 0.5, 0.58, 0.9), 0.9))
         if self.road_x is not None:
             from test_foot import road_frame
 
@@ -429,8 +407,13 @@ def play(game, duration=MAX_SECONDS):
         {"locked": True, "alternate": True},
     ],
 )
-def test_game_model_gets_seated_after_delay_loss_early_press_or_alternate(options):
+def test_game_model_confirms_animation_but_leaves_an_ineffective_press(options):
     result, game, presses = play(EntryGame(**options))
+    if options.get("lost") or options.get("locked"):
+        assert result.status == "failed" and not game.seated
+        assert len(presses) == 1 and result.pad == NEUTRAL_PAD
+        assert result.reason.startswith("door locked or blocked")
+        return
     assert result.status == "done" and result.reason.startswith("entered vehicle; vehicle=")
     assert game.seated and game.cancelled == 0
     assert 1 <= len(presses) <= MAX_ATTEMPTS
@@ -451,10 +434,10 @@ def test_game_model_failures_are_bounded_actionable_and_neutral(options, reason)
     assert not game.seated and len(presses) <= MAX_ATTEMPTS
 
 
-def test_out_of_range_press_is_followed_by_closer_approach_and_retry():
+def test_approach_reaches_the_door_before_its_only_press():
     result, game, _ = play(EntryGame(distance=2.5))
-    assert game.out_of_range >= 1
-    assert result.status == "done" and game.presses >= 2
+    assert game.out_of_range == 0
+    assert result.status == "done" and game.presses == 1
 
 
 RUNS = json.loads((Path(__file__).resolve().parents[2] / "lab/enter/runs.json").read_text())["runs"]
@@ -497,37 +480,23 @@ def test_recorded_stopped_sedan_still_needs_player_evidence():
         assert "triangle" not in skill.step(recorded_observation(sample)).pad.buttons
 
 
-def test_recorded_far_vehicle_stretch_walks_without_claiming_an_entry():
+def test_recorded_far_vehicle_stretch_returns_search_without_claiming_an_entry():
     skill = EnterVehicle({})
-    pads = [skill.step(recorded_observation(s)).pad for s in RUNS[0]["samples"]]
-    assert any(p.left[1] < 0 for p in pads)
-    assert not any("triangle" in p.buttons for p in pads)
-    assert skill.finished is None
+    results = [skill.step(recorded_observation(s)) for s in RUNS[0]["samples"]]
+    assert not any("triangle" in r.pad.buttons for r in results)
+    assert results[-1].status == "failed" and "no car in reach" in results[-1].reason
 
 
-def test_recorded_no_vehicle_stretch_reaches_road_fallback(monkeypatch):
-    times = []
-
-    class Road:
-        def __init__(self, args):
-            pass
-
-        def step(self, observation):
-            times.append(observation.time)
-            return SkillResult(Pad(left=(0, -0.6)))
-
-        def stop(self, reason):
-            pass
-
-    monkeypatch.setattr("pilot.vehicle_entry.WalkRoad", Road)
+def test_recorded_no_vehicle_stretch_never_follows_the_map():
     skill = EnterVehicle({})
     results = [skill.step(recorded_observation(s)) for s in RUNS[7]["samples"]]
-    assert times and any(r.pad.left[1] < 0 for r in results)
-    assert all(r.status == "running" and not r.pad.buttons for r in results)
+    assert all(r.pad.left == (0, 0) and not r.pad.buttons for r in results)
+    assert results[-1].status == "failed" and "no car in reach" in results[-1].reason
 
 
 def test_between_two_deliveries_of_detections_the_walk_goes_on():
     skill = EnterVehicle({})
+    skill.step(obs(-0.5))
     first = skill.step(obs(0.0))
     assert first.pad.left[1] < 0
     # Ticks come thirty times a second, detections twenty: this tick has the detections of the last.
@@ -664,22 +633,22 @@ def test_allow_is_explicit_and_driver_can_get_out_after_success():
     assert game.driver_out and not game.seated
 
 
-@pytest.mark.parametrize("speed, longest, moving", [(0.25, 1.0, True), (0.12, HOLD_SECONDS + 0.25, False)])
-def test_traffic_alone_neither_draws_a_press_nor_holds_the_search(speed, longest, moving):
-    """A car crossing the picture beside a figure at the roadside. One seen moving holds nothing; one not
-    yet clear (slow) is waited for at most HOLD_SECONDS, and then the search goes on."""
+@pytest.mark.parametrize("speed, moving", [(0.25, True), (0.12, False)])
+def test_traffic_alone_ends_the_try_without_chasing(speed, moving):
+    """Passing traffic is waited for locally, then the bounded try returns to the trip."""
     from test_foot import road_frame
 
     skill = EnterVehicle({})
-    still = 0.0
     for tick in range(60):
         t = tick / 10
         x = 0.02 + t * speed
         objects = (Detection("car", px(x, 0.35, x + 0.1, 0.45), 0.9),) if x + 0.1 <= 1 else ()
         result = skill.step(replace(obs(t, objects), frame=road_frame(-12)))
         assert "triangle" not in result.pad.buttons
-        still = still + 0.1 if result.pad == NEUTRAL_PAD else 0.0
-        assert still <= longest
+        assert result.pad.left == (0, 0)
+        if result.status != "running":
+            break
+    assert result.status == "failed" and t <= 4.1
     assert any(v.moved for v in skill.ever) is moving
 
 
@@ -739,13 +708,11 @@ def longest_idle(ticks, after=0.0):
 def test_a_locked_car_does_not_hold_the_search_when_the_map_cannot_tell_the_side():
     # A thin road line: the map shows a road and not which side of it the figure is on.
     result, _game, presses, ticks = run_game(EntryGame(distance=1, road_x=20, locked=True, road_width=3))
-    assert len(presses) == 3 and result.status == "failed"
+    assert len(presses) == 1 and result.status == "failed"
     assert result.reason.startswith("door locked or blocked")
     assert "saw 1 vehicle (rejected 1, avoided 0, moving 0)" in result.reason
-    rejected_at = presses[-1] + DOOR_WAIT
-    assert longest_idle(ticks, after=rejected_at) <= HOLD_SECONDS + 0.25  # it was 29 s
-    walked = [t for t, r in ticks if t > rejected_at and r.pad.left != (0, 0)]
-    assert len(walked) > 10 * 10  # and it walked on, looking for another
+    assert ticks[-1][0] - presses[0] <= 4
+    assert ticks[-1][1].pad == NEUTRAL_PAD
 
 
 def test_a_driver_seen_is_passed_over_and_the_search_goes_on_when_the_map_cannot_tell():
@@ -754,8 +721,8 @@ def test_a_driver_seen_is_passed_over_and_the_search_goes_on_when_the_map_cannot
     )
     assert not presses and result.status == "failed" and not game.driver_out
     assert "saw 1 vehicle (rejected 0, avoided 1, moving 0)" in result.reason
-    assert longest_idle(ticks) <= HOLD_SECONDS + 0.25
-    assert sum(r.pad.left != (0, 0) for _, r in ticks) > 100
+    assert ticks[-1][0] <= 4.1
+    assert all(r.pad.left == (0, 0) for _, r in ticks)
 
 
 def test_the_same_driver_is_taken_when_the_rules_allow_it():

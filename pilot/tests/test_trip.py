@@ -766,26 +766,25 @@ def test_quiet_request_uses_recorded_news_without_injecting_old_plan_results(ses
     assert session.rows("response")[-1]["action"] == "go_on"
 
 
-def test_failed_car_tries_change_method_and_keep_a_recently_seen_car(session):
+def test_failed_car_tries_wait_for_traffic_and_never_follow_unverified_roads(session):
     session.reading = replace(GOOD, minimap="flat", route="none")
     session.mode = "foot"
     session.objects = (Detection("car", (600, 280, 900, 600), 0.95),)
     session.mapped()
     session.until(lambda: session.active("enter_vehicle"))
     session.conductor.runner.stop("no entry observed")
-    session.until(lambda: session.active("walk"))
+    session.until(lambda: session.active("wait"))
     result = session.tick()
-    assert result.pad.left[1] < 0  # Toward the last car, never away down the road.
+    assert result.pad == NEUTRAL_PAD
     session.objects = ()
     session.until(lambda: session.active("enter_vehicle"))
-    session.tick(2.1)  # The last detection has expired; road search is now justified.
+    session.tick(2.1)  # The last detection expired; look locally without translating.
     session.conductor.runner.stop("no entry observed")
-    session.until(lambda: session.active("walk_road"))
+    session.until(lambda: session.active("look"))
     session.until(lambda: session.active("enter_vehicle"))
     session.conductor.runner.stop("no entry observed")
-    # 20261113-225835: a third try without a car is not the end, the search goes on along the road
-    # until its five minutes are spent.
-    session.until(lambda: session.active("walk_road"))
+    # A third try is not the end: local looks continue within the trip budget.
+    session.until(lambda: session.active("look"))
     session.until(lambda: session.active("enter_vehicle"))
     assert session.trip.verdict is None
     session.until(lambda: session.trip.verdict is not None, seconds=400)

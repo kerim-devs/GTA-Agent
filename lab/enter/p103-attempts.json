@@ -1,0 +1,2674 @@
+[
+  {
+    "session": "20261114-011429",
+    "attempt": 4,
+    "start": 39.435028958003386,
+    "end": 56.88727779100009,
+    "status": "done",
+    "reason": "entered vehicle; vehicle=car; occupancy=parked-candidate; road=unknown",
+    "presses": [
+      50.369124000004376
+    ],
+    "sheet": "p103-20261114-011429-4.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:2328",
+        "t": 39.435028958003386,
+        "video_frame": 2328,
+        "frame_id": 26170,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -22.101542862735528,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:2676",
+        "t": 45.23564462500508,
+        "video_frame": 2676,
+        "frame_id": 26518,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -3.5793669732731814,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:2983",
+        "t": 50.369124000004376,
+        "video_frame": 2983,
+        "frame_id": 26825,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -1.6585955298853037,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:3025",
+        "t": 51.06246904100408,
+        "video_frame": 3025,
+        "frame_id": 26867,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 0.4021203228715535,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:3367",
+        "t": 56.769200374998036,
+        "video_frame": 3367,
+        "frame_id": 27209,
+        "reading": {
+          "minimap": "tilted",
+          "route": "purple",
+          "bearing": -178.75463573323165,
+          "far_bearing": -178.75463573323165,
+          "arrow": -8.925628176265036,
+          "corrupt": false,
+          "confidence": 0.8,
+          "path": [
+            [
+              -1.0,
+              -13.0
+            ],
+            [
+              -1.0,
+              -18.0
+            ],
+            [
+              -1.0,
+              -23.0
+            ]
+          ],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-011429",
+    "attempt": 6,
+    "start": 73.65442099999927,
+    "end": 98.72324500000104,
+    "status": "failed",
+    "reason": "vehicle out of reach; tried=1,12,30,31; presses=2; switches=3; saw 39 vehicles (rejected 0, avoided 0, moving 11)",
+    "presses": [
+      73.73651412500476,
+      82.76435900000797
+    ],
+    "sheet": "p103-20261114-011429-6.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:4379",
+        "t": 73.65442099999927,
+        "video_frame": 4379,
+        "frame_id": 28221,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 89.74743770364364,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:4384",
+        "t": 73.73651412500476,
+        "video_frame": 4384,
+        "frame_id": 28226,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 89.8562752126852,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:4881",
+        "t": 82.02695216600841,
+        "video_frame": 4881,
+        "frame_id": 28723,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 3.1821036641506453,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:4925",
+        "t": 82.76435900000797,
+        "video_frame": 4925,
+        "frame_id": 28767,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -1.9708865430096125,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "red",
+              "x": 1.9,
+              "y": -4.3,
+              "border": false
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:5381",
+        "t": 90.37317370800884,
+        "video_frame": 5381,
+        "frame_id": 29223,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -3.078376902292206,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "red",
+              "x": 42.59,
+              "y": 33.07,
+              "border": false
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:5875",
+        "t": 98.612129000001,
+        "video_frame": 5875,
+        "frame_id": 29717,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 0.38886308063143815,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "red",
+              "x": 12.06,
+              "y": 1.38,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": 12.06,
+              "y": -3.62,
+              "border": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-011429",
+    "attempt": 8,
+    "start": 100.36727566600894,
+    "end": 116.03462779099937,
+    "status": "failed",
+    "reason": "flow",
+    "presses": [
+      101.59609325000201,
+      109.54383462500118
+    ],
+    "sheet": "p103-20261114-011429-8.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:5980",
+        "t": 100.36727566600894,
+        "video_frame": 5980,
+        "frame_id": 29822,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 25.793384824755265,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "red",
+              "x": 11.44,
+              "y": -0.22,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": 5.05,
+              "y": -2.73,
+              "border": false
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:6054",
+        "t": 101.59609325000201,
+        "video_frame": 6054,
+        "frame_id": 29896,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -10.255339992794461,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "red",
+              "x": 12.27,
+              "y": 0.05,
+              "border": false
+            },
+            {
+              "color": "red",
+              "x": 3.79,
+              "y": -4.21,
+              "border": false
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:6293",
+        "t": 105.59612495799956,
+        "video_frame": 6293,
+        "frame_id": 30135,
+        "reading": {
+          "minimap": "none",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": null,
+          "corrupt": false,
+          "confidence": 0.0,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:6528",
+        "t": 109.54383462500118,
+        "video_frame": 6528,
+        "frame_id": 30370,
+        "reading": {
+          "minimap": "none",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": null,
+          "corrupt": false,
+          "confidence": 0.0,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:6603",
+        "t": 110.79509091599903,
+        "video_frame": 6603,
+        "frame_id": 30445,
+        "reading": {
+          "minimap": "none",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": null,
+          "corrupt": false,
+          "confidence": 0.0,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:6913",
+        "t": 115.99756770800741,
+        "video_frame": 6913,
+        "frame_id": 30755,
+        "reading": {
+          "minimap": "none",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": null,
+          "corrupt": false,
+          "confidence": 0.0,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-011429",
+    "attempt": 9,
+    "start": 116.07238475000486,
+    "end": 141.13819629100908,
+    "status": "failed",
+    "reason": "vehicle out of reach; tried=1,6; presses=1; switches=1; saw 6 vehicles (rejected 0, avoided 0, moving 1)",
+    "presses": [
+      133.1308068750077
+    ],
+    "sheet": "p103-20261114-011429-9.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:6918",
+        "t": 116.07238475000486,
+        "video_frame": 6918,
+        "frame_id": 30760,
+        "reading": {
+          "minimap": "none",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": null,
+          "corrupt": false,
+          "confidence": 0.0,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:7416",
+        "t": 124.42684204100806,
+        "video_frame": 7416,
+        "frame_id": 31258,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -28.614281627094897,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:7918",
+        "t": 132.7999481660081,
+        "video_frame": 7918,
+        "frame_id": 31760,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -45.38365661787981,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -21.37,
+              "y": 86.61,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:7938",
+        "t": 133.1308068750077,
+        "video_frame": 7938,
+        "frame_id": 31780,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -118.4064054096799,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -19.82,
+              "y": 86.79,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:8411",
+        "t": 141.0241817500064,
+        "video_frame": 8411,
+        "frame_id": 32253,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -32.968189251518766,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 72.32,
+              "y": 87.37,
+              "border": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-011429",
+    "attempt": 11,
+    "start": 142.77663612501055,
+    "end": 167.83486137499858,
+    "status": "failed",
+    "reason": "vehicle drove away or was lost; tried=1; presses=0; switches=1; saw 1 vehicle (rejected 0, avoided 0, moving 0)",
+    "presses": [],
+    "sheet": "p103-20261114-011429-11.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:8516",
+        "t": 142.77663612501055,
+        "video_frame": 8516,
+        "frame_id": 32358,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -22.55960832919243,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 91.5,
+              "y": 85.5,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:9014",
+        "t": 151.1205830000108,
+        "video_frame": 9014,
+        "frame_id": 32856,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 0.25932416726374186,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:9515",
+        "t": 159.4711025830038,
+        "video_frame": 9515,
+        "frame_id": 33357,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 0.11353794772514902,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:10009",
+        "t": 167.71988804099965,
+        "video_frame": 10009,
+        "frame_id": 33851,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -29.11843647946546,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-011429",
+    "attempt": 13,
+    "start": 177.962939791003,
+    "end": 203.00642495800275,
+    "status": "failed",
+    "reason": "vehicle drove away or was lost; tried=1; presses=0; switches=1; saw 1 vehicle (rejected 0, avoided 0, moving 0)",
+    "presses": [],
+    "sheet": "p103-20261114-011429-13.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:10623",
+        "t": 177.962939791003,
+        "video_frame": 10623,
+        "frame_id": 34465,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 0.8236039297218554,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:11124",
+        "t": 186.31278366599872,
+        "video_frame": 11124,
+        "frame_id": 34966,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -25.248874281832855,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:11624",
+        "t": 194.6646987080021,
+        "video_frame": 11624,
+        "frame_id": 35466,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -76.25019687090463,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:12118",
+        "t": 202.89082470801077,
+        "video_frame": 12118,
+        "frame_id": 35960,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -14.30841883271546,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-011429",
+    "attempt": 15,
+    "start": 213.1293466250063,
+    "end": 238.18109691599966,
+    "status": "failed",
+    "reason": "vehicle drove away or was lost; tried=1,5; presses=0; switches=2; saw 6 vehicles (rejected 0, avoided 0, moving 0)",
+    "presses": [],
+    "sheet": "p103-20261114-011429-15.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:12731",
+        "t": 213.1293466250063,
+        "video_frame": 12731,
+        "frame_id": 36573,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -138.72035013520303,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:13232",
+        "t": 221.48794250001083,
+        "video_frame": 13232,
+        "frame_id": 37074,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 111.91682302885084,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 87.73,
+              "y": 86.86,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:13726",
+        "t": 229.8448532080074,
+        "video_frame": 13726,
+        "frame_id": 37568,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 133.58623211048013,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:14219",
+        "t": 238.06673145800596,
+        "video_frame": 14219,
+        "frame_id": 38061,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 13.076099196115848,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 90.58,
+              "y": 24.0,
+              "border": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-011429",
+    "attempt": 17,
+    "start": 248.2955173329974,
+    "end": 279.9778708750091,
+    "status": "failed",
+    "reason": "vehicle drove away or was lost; tried=1; presses=1; switches=0; saw 1 vehicle (rejected 0, avoided 0, moving 0)",
+    "presses": [
+      272.88992549999966
+    ],
+    "sheet": "p103-20261114-011429-17.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:14832",
+        "t": 248.2955173329974,
+        "video_frame": 14832,
+        "frame_id": 38674,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -2.1176352568832897,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:15466",
+        "t": 258.8635876250046,
+        "video_frame": 15466,
+        "frame_id": 39308,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -8.477855594185485,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:16097",
+        "t": 269.4027820830088,
+        "video_frame": 16097,
+        "frame_id": 39939,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 75.81652076271507,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:16306",
+        "t": 272.88992549999966,
+        "video_frame": 16306,
+        "frame_id": 40148,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -29.461320128933664,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 82.31,
+              "y": 86.6,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:16725",
+        "t": 279.86354208301054,
+        "video_frame": 16725,
+        "frame_id": 40567,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -1.7255405308151524,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 82.35,
+              "y": 86.55,
+              "border": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-011429",
+    "attempt": 19,
+    "start": 290.1139149579976,
+    "end": 315.17568766600743,
+    "status": "failed",
+    "reason": "vehicle out of reach; tried=1,2,4; presses=0; switches=3; saw 4 vehicles (rejected 0, avoided 0, moving 0)",
+    "presses": [],
+    "sheet": "p103-20261114-011429-19.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:17338",
+        "t": 290.1139149579976,
+        "video_frame": 17338,
+        "frame_id": 41180,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -17.386885102866927,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:17838",
+        "t": 298.4629882910085,
+        "video_frame": 17838,
+        "frame_id": 41680,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 5.8698057024985815,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:18340",
+        "t": 306.8385580000031,
+        "video_frame": 18340,
+        "frame_id": 42182,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -92.62952557837303,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:18833",
+        "t": 315.06341275000887,
+        "video_frame": 18833,
+        "frame_id": 42675,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -2.9385613596755604,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 88.38,
+              "y": 15.42,
+              "border": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-011429",
+    "attempt": 21,
+    "start": 316.8099893750041,
+    "end": 341.86632533300144,
+    "status": "failed",
+    "reason": "nothing found; road search unavailable: stuck",
+    "presses": [],
+    "sheet": "p103-20261114-011429-21.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:18938",
+        "t": 316.8099893750041,
+        "video_frame": 18938,
+        "frame_id": 42780,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 0.6852347525740186,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 89.32,
+              "y": 9.86,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:19438",
+        "t": 325.17882745800307,
+        "video_frame": 19438,
+        "frame_id": 43280,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 61.63507450772653,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 88.41,
+              "y": -13.92,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:19937",
+        "t": 333.53445512500184,
+        "video_frame": 19937,
+        "frame_id": 43779,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -84.71602970818526,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 89.85,
+              "y": 38.06,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:20432",
+        "t": 341.7824200000032,
+        "video_frame": 20432,
+        "frame_id": 44274,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -7.0106320032386975,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 3.12,
+              "y": 4.12,
+              "border": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-011429",
+    "attempt": 23,
+    "start": 351.97709429101087,
+    "end": 364.7962685829989,
+    "status": "done",
+    "reason": "entered vehicle; vehicle=car; occupancy=unknown; road=unknown",
+    "presses": [
+      359.68433383300726
+    ],
+    "sheet": "p103-20261114-011429-23.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:21043",
+        "t": 351.97709429101087,
+        "video_frame": 21043,
+        "frame_id": 44885,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 4.963205471371907,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:21298",
+        "t": 356.2439704580029,
+        "video_frame": 21298,
+        "frame_id": 45140,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -3.2675138149931797,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:21505",
+        "t": 359.68433383300726,
+        "video_frame": 21505,
+        "frame_id": 45347,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -2.2504744849816234,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 88.75,
+              "y": 85.1,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:21553",
+        "t": 360.5165680000064,
+        "video_frame": 21553,
+        "frame_id": 45395,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 80.12989002225908,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:21803",
+        "t": 364.6856956249976,
+        "video_frame": 21803,
+        "frame_id": 45645,
+        "reading": {
+          "minimap": "tilted",
+          "route": "purple",
+          "bearing": 78.64397278169022,
+          "far_bearing": 79.99202019855866,
+          "arrow": 74.04561549183776,
+          "corrupt": false,
+          "confidence": 1.0,
+          "path": [
+            [
+              13.0,
+              3.0
+            ],
+            [
+              18.0,
+              5.0
+            ],
+            [
+              24.0,
+              5.0
+            ],
+            [
+              31.0,
+              6.0
+            ],
+            [
+              36.0,
+              7.0
+            ],
+            [
+              43.0,
+              8.0
+            ],
+            [
+              48.0,
+              9.0
+            ],
+            [
+              55.0,
+              9.0
+            ],
+            [
+              60.0,
+              10.0
+            ],
+            [
+              66.0,
+              11.0
+            ],
+            [
+              72.0,
+              11.0
+            ],
+            [
+              78.0,
+              13.0
+            ],
+            [
+              85.0,
+              13.0
+            ],
+            [
+              89.0,
+              9.0
+            ],
+            [
+              90.0,
+              1.0
+            ]
+          ],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 67.89,
+              "y": 86.76,
+              "border": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-011429",
+    "attempt": 30,
+    "start": 494.16805462499906,
+    "end": 501.52461558301,
+    "status": "done",
+    "reason": "entered vehicle; vehicle=car; occupancy=unknown; road=unknown",
+    "presses": [
+      497.6324488750106
+    ],
+    "sheet": "p103-20261114-011429-30.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:29554",
+        "t": 494.16805462499906,
+        "video_frame": 29554,
+        "frame_id": 53396,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 4.096586454192902,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 61.97,
+              "y": 85.79,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:29701",
+        "t": 496.6270507910085,
+        "video_frame": 29701,
+        "frame_id": 53543,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 10.47188678167035,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:29761",
+        "t": 497.6324488750106,
+        "video_frame": 29761,
+        "frame_id": 53603,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 158.2714152348981,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -88.0,
+              "y": 87.5,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:29847",
+        "t": 499.066221208006,
+        "video_frame": 29847,
+        "frame_id": 53689,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 149.07147909468142,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:29990",
+        "t": 501.4415655830089,
+        "video_frame": 29990,
+        "frame_id": 53832,
+        "reading": {
+          "minimap": "tilted",
+          "route": "purple",
+          "bearing": 95.81048909428642,
+          "far_bearing": 103.33924891252714,
+          "arrow": 86.90022057873932,
+          "corrupt": false,
+          "confidence": 1.0,
+          "path": [
+            [
+              13.0,
+              4.0
+            ],
+            [
+              18.0,
+              1.0
+            ],
+            [
+              24.0,
+              -1.0
+            ],
+            [
+              30.0,
+              -3.0
+            ],
+            [
+              37.0,
+              -5.0
+            ],
+            [
+              42.0,
+              -8.0
+            ],
+            [
+              49.0,
+              -10.0
+            ],
+            [
+              55.0,
+              -12.0
+            ],
+            [
+              60.0,
+              -14.0
+            ],
+            [
+              67.0,
+              -12.0
+            ],
+            [
+              72.0,
+              -6.0
+            ],
+            [
+              76.0,
+              1.0
+            ],
+            [
+              79.0,
+              7.0
+            ],
+            [
+              82.0,
+              14.0
+            ],
+            [
+              84.0,
+              20.0
+            ],
+            [
+              86.0,
+              25.0
+            ],
+            [
+              84.0,
+              29.0
+            ]
+          ],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 87.87,
+              "y": 78.79,
+              "border": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-010438",
+    "attempt": 10,
+    "start": 150.45022912501008,
+    "end": 165.99096595800074,
+    "status": "done",
+    "reason": "entered vehicle; vehicle=car; occupancy=occupied; road=unknown",
+    "presses": [
+      160.15600258299673
+    ],
+    "sheet": "p103-20261114-010438-10.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:8960",
+        "t": 150.45022912501008,
+        "video_frame": 8960,
+        "frame_id": 299630,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 0.364678695948669,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -87.73,
+              "y": 35.58,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:9271",
+        "t": 155.64158525000676,
+        "video_frame": 9271,
+        "frame_id": 299941,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -2.7725728374336995,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:9542",
+        "t": 160.15600258299673,
+        "video_frame": 9542,
+        "frame_id": 300212,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -1.0170937904973982,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:9581",
+        "t": 160.8167182920006,
+        "video_frame": 9581,
+        "frame_id": 300251,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 84.65623970602553,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:9885",
+        "t": 165.87580208299914,
+        "video_frame": 9885,
+        "frame_id": 300555,
+        "reading": {
+          "minimap": "tilted",
+          "route": "purple",
+          "bearing": 97.16193386887,
+          "far_bearing": 91.42026554639905,
+          "arrow": -96.92750964391621,
+          "corrupt": false,
+          "confidence": 1.0,
+          "path": [
+            [
+              12.0,
+              -6.0
+            ],
+            [
+              17.0,
+              -5.0
+            ],
+            [
+              23.0,
+              -5.0
+            ],
+            [
+              30.0,
+              -4.0
+            ],
+            [
+              35.0,
+              -3.0
+            ],
+            [
+              41.0,
+              -3.0
+            ],
+            [
+              48.0,
+              -3.0
+            ],
+            [
+              53.0,
+              -2.0
+            ],
+            [
+              59.0,
+              -1.0
+            ],
+            [
+              65.0,
+              -1.0
+            ],
+            [
+              71.0,
+              -1.0
+            ],
+            [
+              77.0,
+              1.0
+            ],
+            [
+              83.0,
+              1.0
+            ],
+            [
+              88.0,
+              1.0
+            ]
+          ],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-010438",
+    "attempt": 19,
+    "start": 281.7655237500003,
+    "end": 306.8239482920035,
+    "status": "failed",
+    "reason": "vehicle out of reach; tried=2,31,39,30,45; presses=2; switches=4; saw 47 vehicles (rejected 1, avoided 0, moving 13)",
+    "presses": [
+      281.84353266700055,
+      293.1572465830104
+    ],
+    "sheet": "p103-20261114-010438-19.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:15615",
+        "t": 281.7655237500003,
+        "video_frame": 15615,
+        "frame_id": 5308,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 60.74317880815019,
+          "corrupt": false,
+          "confidence": 0.7,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:15620",
+        "t": 281.84353266700055,
+        "video_frame": 15620,
+        "frame_id": 5313,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 73.16816335524734,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:16117",
+        "t": 290.13029545800237,
+        "video_frame": 16117,
+        "frame_id": 5810,
+        "reading": {
+          "minimap": "tilted",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -93.31869501777845,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:16298",
+        "t": 293.1572465830104,
+        "video_frame": 16298,
+        "frame_id": 5991,
+        "reading": {
+          "minimap": "tilted",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -100.56040724600058,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:16617",
+        "t": 298.4753991250036,
+        "video_frame": 16617,
+        "frame_id": 6310,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -56.42864389523578,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "red",
+              "x": -2.89,
+              "y": -0.44,
+              "border": false
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:17113",
+        "t": 306.7446808329987,
+        "video_frame": 17113,
+        "frame_id": 6806,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 0.2890504757964436,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-010438",
+    "attempt": 21,
+    "start": 308.4615270420036,
+    "end": 331.10837658299715,
+    "status": "failed",
+    "reason": "flow",
+    "presses": [
+      308.57759149999765,
+      315.7402237500064
+    ],
+    "sheet": "p103-20261114-010438-21.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:17216",
+        "t": 308.4615270420036,
+        "video_frame": 17216,
+        "frame_id": 6909,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 135.22105567917686,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:17223",
+        "t": 308.57759149999765,
+        "video_frame": 17223,
+        "frame_id": 6916,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 135.28087722639168,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:17652",
+        "t": 315.7402237500064,
+        "video_frame": 17652,
+        "frame_id": 7345,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 125.67088656458446,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:17667",
+        "t": 315.9970998750068,
+        "video_frame": 17667,
+        "frame_id": 7360,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 128.0194337426425,
+          "corrupt": true,
+          "confidence": 0.35,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:18009",
+        "t": 321.74074041700806,
+        "video_frame": 18009,
+        "frame_id": 7702,
+        "reading": {
+          "minimap": "none",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": null,
+          "corrupt": false,
+          "confidence": 0.0,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:18567",
+        "t": 331.0751304169971,
+        "video_frame": 18567,
+        "frame_id": 8260,
+        "reading": {
+          "minimap": "none",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": null,
+          "corrupt": false,
+          "confidence": 0.0,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-004115",
+    "attempt": 13,
+    "start": 215.89136008400237,
+    "end": 246.41398033400765,
+    "status": "failed",
+    "reason": "vehicle drove away or was lost; tried=1,3,4,6,10,12; presses=1; switches=6; saw 12 vehicles (rejected 0, avoided 0, moving 0)",
+    "presses": [
+      239.33288154201
+    ],
+    "sheet": "p103-20261114-004115-13.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:12923",
+        "t": 215.89136008400237,
+        "video_frame": 12923,
+        "frame_id": 219713,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 44.8966283148776,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 90.5,
+              "y": -20.5,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:13532",
+        "t": 226.06307358400954,
+        "video_frame": 13532,
+        "frame_id": 220322,
+        "reading": {
+          "minimap": "tilted",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 1.937826467500372,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 88.39,
+              "y": 71.19,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:14142",
+        "t": 236.228656709005,
+        "video_frame": 14142,
+        "frame_id": 220932,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -52.22590007354478,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:14328",
+        "t": 239.33288154201,
+        "video_frame": 14328,
+        "frame_id": 221118,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -3.1092386202129205,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 88.57,
+              "y": 10.76,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:14745",
+        "t": 246.29454870900372,
+        "video_frame": 14745,
+        "frame_id": 221535,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 5.584327945063308,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": 88.56,
+              "y": 10.74,
+              "border": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-004115",
+    "attempt": 28,
+    "start": 450.32439016700664,
+    "end": 475.3807973750081,
+    "status": "failed",
+    "reason": "vehicle drove away or was lost; tried=1,2; presses=2; switches=2; saw 3 vehicles (rejected 0, avoided 0, moving 0)",
+    "presses": [
+      450.39538612500473,
+      458.3937312920025
+    ],
+    "sheet": "p103-20261114-004115-28.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:26936",
+        "t": 450.32439016700664,
+        "video_frame": 26936,
+        "frame_id": 233726,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -1.4898529072762017,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -87.38,
+              "y": 67.45,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:26941",
+        "t": 450.39538612500473,
+        "video_frame": 26941,
+        "frame_id": 233731,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -1.4987917284142043,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -87.38,
+              "y": 67.45,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:27420",
+        "t": 458.3937312920025,
+        "video_frame": 27420,
+        "frame_id": 234210,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -1.478257486696009,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -87.38,
+              "y": 67.45,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:27436",
+        "t": 458.6657831670018,
+        "video_frame": 27436,
+        "frame_id": 234226,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -1.478257486696009,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -87.38,
+              "y": 67.45,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:27937",
+        "t": 467.02803079200385,
+        "video_frame": 27937,
+        "frame_id": 234727,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -25.989718310867715,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -87.31,
+              "y": 45.02,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:28431",
+        "t": 475.2647803340078,
+        "video_frame": 28431,
+        "frame_id": 235221,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -65.7960370931188,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      }
+    ]
+  },
+  {
+    "session": "20261114-011017",
+    "attempt": 4,
+    "start": 34.2473850420065,
+    "end": 51.740479125001,
+    "status": "done",
+    "reason": "entered vehicle; vehicle=car; occupancy=occupied; road=unknown",
+    "presses": [
+      49.189798874998814
+    ],
+    "sheet": "p103-20261114-011017-4.jpg",
+    "samples": [
+      {
+        "source": "video.mp4:2050",
+        "t": 34.2473850420065,
+        "video_frame": 2050,
+        "frame_id": 10785,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": -102.67915772655095,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:2399",
+        "t": 40.08061712500057,
+        "video_frame": 2399,
+        "frame_id": 11134,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 2.46732061796817,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": []
+        }
+      },
+      {
+        "source": "video.mp4:2748",
+        "t": 45.89345966700057,
+        "video_frame": 2748,
+        "frame_id": 11483,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 0.9398329452592691,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -87.79,
+              "y": 53.7,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:2945",
+        "t": 49.189798874998814,
+        "video_frame": 2945,
+        "frame_id": 11680,
+        "reading": {
+          "minimap": "flat",
+          "route": "none",
+          "bearing": null,
+          "far_bearing": null,
+          "arrow": 3.4234842349958683,
+          "corrupt": false,
+          "confidence": 0.9,
+          "path": [],
+          "gps_distance": null,
+          "gps_arrow": null,
+          "gps_speed": null,
+          "gps_time": null,
+          "blips": [
+            {
+              "color": "blue",
+              "x": -85.35,
+              "y": 85.09,
+              "border": true
+            }
+          ]
+        }
+      },
+      {
+        "source": "video.mp4:3091",
+        "t": 51.62715804199979,
+        "video_frame": 3091,
+        "frame_id": 11826,
+        "reading": {
+          "minimap": "tilted",
+          "route": "purple",
+          "bearing": -38.736509385665464,
+          "far_bearing": -77.62741244733283,
+          "arrow": 7.780503809844532,
+          "corrupt": false,
+          "confidence": 1.0,
+          "path": [
+            [
+              3.0,
+              12.0
+            ],
+            [
+              -1.0,
+              18.0
+            ],
+            [
+              -8.0,
+              20.0
+            ],
+            [
+              -14.0,
+              21.0
+            ],
+            [
+              -21.0,
+              22.0
+            ],
+            [
+              -27.0,
+              21.0
+            ],
+            [
+              -33.0,
+              19.0
+            ],
+            [
+              -39.0,
+              18.0
+            ],
+            [
+              -45.0,
+              17.0
+            ],
+            [
+              -51.0,
+              15.0
+            ],
+            [
+              -57.0,
+              13.0
+            ],
+            [
+              -63.0,
+              11.0
+            ],
+            [
+              -69.0,
+              8.0
+            ],
+            [
+              -75.0,
+              6.0
+            ],
+            [
+              -80.0,
+              4.0
+            ],
+            [
+              -87.0,
+              3.0
+            ]
+          ],
+          "gps_distance": 6310,
+          "gps_arrow": "left",
+          "gps_speed": null,
+          "gps_time": 71309.766214541,
+          "blips": []
+        }
+      }
+    ]
+  }
+]

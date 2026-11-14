@@ -1,0 +1,956 @@
+[
+  {
+    "session": "20261114-011429",
+    "t": 278.01276791600685,
+    "video_frame": 16614,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -1.7252412889825166,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 82.35,
+          "y": 86.55,
+          "border": true
+        }
+      ]
+    },
+    "objects": [
+      {
+        "kind": "bus",
+        "box": [
+          826.4625854492188,
+          1.91741943359375,
+          1278.2535400390625,
+          704.3291015625
+        ],
+        "confidence": 0.9490540027618408
+      },
+      {
+        "kind": "person",
+        "box": [
+          1124.6260986328125,
+          149.93911743164062,
+          1279.1805419921875,
+          372.8135681152344
+        ],
+        "confidence": 0.9097757339477539
+      }
+    ],
+    "figure": {
+      "kind": "person",
+      "box": [
+        479.54791259765625,
+        278.9993591308594,
+        635.0304565429688,
+        653.3607177734375
+      ],
+      "confidence": 0.9446185827255249
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f16614.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 278.50853841600474,
+    "video_frame": 16644,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -1.7252412889825166,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 82.35,
+          "y": 86.55,
+          "border": true
+        }
+      ]
+    },
+    "objects": [
+      {
+        "kind": "bus",
+        "box": [
+          823.4312133789062,
+          1.4541015625,
+          1279.03857421875,
+          705.3250732421875
+        ],
+        "confidence": 0.9409424662590027
+      },
+      {
+        "kind": "person",
+        "box": [
+          1122.14306640625,
+          148.40927124023438,
+          1279.091064453125,
+          371.9634094238281
+        ],
+        "confidence": 0.898719847202301
+      }
+    ],
+    "figure": {
+      "kind": "person",
+      "box": [
+        481.9977111816406,
+        278.63311767578125,
+        632.9425048828125,
+        653.30859375
+      ],
+      "confidence": 0.9442159533500671
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f16644.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 279.0220054579986,
+    "video_frame": 16674,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -1.7252412889825166,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 82.35,
+          "y": 86.55,
+          "border": true
+        }
+      ]
+    },
+    "objects": [
+      {
+        "kind": "bus",
+        "box": [
+          823.392333984375,
+          1.50152587890625,
+          1279.070556640625,
+          705.231201171875
+        ],
+        "confidence": 0.9465373158454895
+      },
+      {
+        "kind": "person",
+        "box": [
+          1122.135986328125,
+          148.61480712890625,
+          1279.148681640625,
+          371.79840087890625
+        ],
+        "confidence": 0.9017205834388733
+      }
+    ],
+    "figure": {
+      "kind": "person",
+      "box": [
+        482.82366943359375,
+        278.9652099609375,
+        637.0183715820312,
+        653.2369384765625
+      ],
+      "confidence": 0.9427088499069214
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f16674.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 279.52646691600967,
+    "video_frame": 16705,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -1.7252412889825166,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 82.35,
+          "y": 86.55,
+          "border": true
+        }
+      ]
+    },
+    "objects": [
+      {
+        "kind": "bus",
+        "box": [
+          825.08984375,
+          0.80255126953125,
+          1278.6962890625,
+          706.1962890625
+        ],
+        "confidence": 0.9545073509216309
+      },
+      {
+        "kind": "person",
+        "box": [
+          1122.1319580078125,
+          147.93402099609375,
+          1279.0975341796875,
+          371.877685546875
+        ],
+        "confidence": 0.9061427712440491
+      }
+    ],
+    "figure": {
+      "kind": "person",
+      "box": [
+        484.0410461425781,
+        279.6593017578125,
+        637.38330078125,
+        653.0331420898438
+      ],
+      "confidence": 0.9440184235572815
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f16705.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 280.0178122080106,
+    "video_frame": 16734,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -1.7255405308151524,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 82.35,
+          "y": 86.55,
+          "border": true
+        }
+      ]
+    },
+    "objects": [
+      {
+        "kind": "bus",
+        "box": [
+          824.0695190429688,
+          2.10107421875,
+          1278.3648681640625,
+          704.3450927734375
+        ],
+        "confidence": 0.9510965943336487
+      },
+      {
+        "kind": "person",
+        "box": [
+          1122.2054443359375,
+          148.023681640625,
+          1279.1229248046875,
+          371.98297119140625
+        ],
+        "confidence": 0.9069817066192627
+      }
+    ],
+    "figure": {
+      "kind": "person",
+      "box": [
+        486.1131286621094,
+        279.1903381347656,
+        635.9750366210938,
+        652.826171875
+      ],
+      "confidence": 0.9441636204719543
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f16734.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 280.5036411250039,
+    "video_frame": 16763,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 69.78924474870473,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          983.244384765625,
+          152.99920654296875,
+          1112.56201171875,
+          344.65765380859375
+        ],
+        "confidence": 0.9066742062568665
+      },
+      {
+        "kind": "bus",
+        "box": [
+          709.8663940429688,
+          1.54217529296875,
+          1278.61962890625,
+          711.8169555664062
+        ],
+        "confidence": 0.8722505569458008
+      }
+    ],
+    "figure": {
+      "kind": "person",
+      "box": [
+        416.646240234375,
+        311.6452941894531,
+        649.1097412109375,
+        641.5245361328125
+      ],
+      "confidence": 0.9493656754493713
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f16763.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 281.02590454100573,
+    "video_frame": 16794,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 57.60615395527117,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 25.41,
+          "y": 86.91,
+          "border": true
+        }
+      ]
+    },
+    "objects": [
+      {
+        "kind": "person",
+        "box": [
+          849.8851928710938,
+          163.54446411132812,
+          951.6670532226562,
+          330.8659973144531
+        ],
+        "confidence": 0.89796382188797
+      }
+    ],
+    "figure": {
+      "kind": "person",
+      "box": [
+        524.8526000976562,
+        296.23614501953125,
+        621.9628295898438,
+        621.6068725585938
+      ],
+      "confidence": 0.9028409719467163
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f16794.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 290.010937708008,
+    "video_frame": 17332,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -34.3189956081236,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 44.03,
+          "y": 87.27,
+          "border": true
+        }
+      ]
+    },
+    "objects": [],
+    "figure": {
+      "kind": "person",
+      "box": [
+        475.7050476074219,
+        273.35211181640625,
+        630.2510986328125,
+        661.7260131835938
+      ],
+      "confidence": 0.9390069246292114
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f17332.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 290.52991870800906,
+    "video_frame": 17363,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -12.53690127854452,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "objects": [],
+    "figure": {
+      "kind": "person",
+      "box": [
+        500.3401794433594,
+        298.005615234375,
+        632.0137939453125,
+        609.2645263671875
+      ],
+      "confidence": 0.9420952796936035
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f17363.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 291.0286575409991,
+    "video_frame": 17392,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -37.949328006899634,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "objects": [],
+    "figure": {
+      "kind": "person",
+      "box": [
+        495.8051452636719,
+        294.31951904296875,
+        617.9982299804688,
+        582.5722045898438
+      ],
+      "confidence": 0.9305869936943054
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f17392.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 291.5260417910031,
+    "video_frame": 17422,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -3.5620592067002406,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "objects": [
+      {
+        "kind": "truck",
+        "box": [
+          43.830223083496094,
+          542.6127319335938,
+          257.1634521484375,
+          682.8634643554688
+        ],
+        "confidence": 0.49788233637809753
+      }
+    ],
+    "figure": {
+      "kind": "person",
+      "box": [
+        519.0501708984375,
+        290.4569396972656,
+        631.1043701171875,
+        587.48681640625
+      ],
+      "confidence": 0.9424272179603577
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f17422.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 292.0044290000078,
+    "video_frame": 17451,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 38.100819774357944,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "objects": [],
+    "figure": {
+      "kind": "person",
+      "box": [
+        504.4552307128906,
+        317.59771728515625,
+        628.5929565429688,
+        579.7164306640625
+      ],
+      "confidence": 0.9344270825386047
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f17451.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 292.5308112500061,
+    "video_frame": 17483,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -2.4576186950153556,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "objects": [],
+    "figure": {
+      "kind": "person",
+      "box": [
+        501.9737548828125,
+        314.18975830078125,
+        626.26220703125,
+        568.5114135742188
+      ],
+      "confidence": 0.9223487973213196
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f17483.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 293.00287058300455,
+    "video_frame": 17511,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -15.805163164738588,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": -4.58,
+          "y": 87.16,
+          "border": true
+        }
+      ]
+    },
+    "objects": [],
+    "figure": {
+      "kind": "person",
+      "box": [
+        514.9083251953125,
+        308.0684814453125,
+        623.8919677734375,
+        573.7299194335938
+      ],
+      "confidence": 0.930571973323822
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f17511.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 316.00176633300725,
+    "video_frame": 18889,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -0.8534356008625821,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 88.91,
+          "y": 21.0,
+          "border": true
+        }
+      ]
+    },
+    "objects": [
+      {
+        "kind": "car",
+        "box": [
+          888.0379638671875,
+          206.4949493408203,
+          1137.39111328125,
+          299.00909423828125
+        ],
+        "confidence": 0.9211936593055725
+      }
+    ],
+    "figure": {
+      "kind": "person",
+      "box": [
+        538.3914794921875,
+        315.7285461425781,
+        645.1319580078125,
+        532.99853515625
+      ],
+      "confidence": 0.9269660115242004
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f18889.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 316.5178527500102,
+    "video_frame": 18920,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -2.0183904941261517,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "objects": [
+      {
+        "kind": "car",
+        "box": [
+          1146.023681640625,
+          202.49644470214844,
+          1279.59716796875,
+          317.86767578125
+        ],
+        "confidence": 0.9181100726127625
+      }
+    ],
+    "figure": {
+      "kind": "person",
+      "box": [
+        533.9398803710938,
+        320.38031005859375,
+        634.4397583007812,
+        529.8012084960938
+      ],
+      "confidence": 0.9223328828811646
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f18920.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 317.03267650000635,
+    "video_frame": 18951,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 1.3315993392828886,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 88.29,
+          "y": 9.12,
+          "border": true
+        }
+      ]
+    },
+    "objects": [],
+    "figure": {
+      "kind": "person",
+      "box": [
+        550.4349975585938,
+        310.43084716796875,
+        639.0181274414062,
+        518.3810424804688
+      ],
+      "confidence": 0.9237208366394043
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f18951.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 317.5150538750022,
+    "video_frame": 18980,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -26.791724474001057,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 88.97,
+          "y": 86.53,
+          "border": true
+        }
+      ]
+    },
+    "objects": [],
+    "figure": {
+      "kind": "person",
+      "box": [
+        544.3964233398438,
+        312.3455505371094,
+        626.9680786132812,
+        512.51953125
+      ],
+      "confidence": 0.864750325679779
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f18980.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 318.03084320800554,
+    "video_frame": 19010,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": -16.722212054175316,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": []
+    },
+    "objects": [],
+    "figure": {
+      "kind": "person",
+      "box": [
+        556.479736328125,
+        311.4156799316406,
+        631.0560302734375,
+        513.6945190429688
+      ],
+      "confidence": 0.8940187692642212
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f19010.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 318.51749800000107,
+    "video_frame": 19039,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 2.5937202940756663,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 89.06,
+          "y": -10.23,
+          "border": true
+        }
+      ]
+    },
+    "objects": [],
+    "figure": {
+      "kind": "person",
+      "box": [
+        555.7335815429688,
+        311.2298889160156,
+        634.8948364257812,
+        515.9209594726562
+      ],
+      "confidence": 0.9174508452415466
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f19039.jpg"
+  },
+  {
+    "session": "20261114-011429",
+    "t": 319.02816291600175,
+    "video_frame": 19070,
+    "reading": {
+      "minimap": "flat",
+      "route": "none",
+      "bearing": null,
+      "far_bearing": null,
+      "arrow": 14.43565523231851,
+      "corrupt": false,
+      "confidence": 0.9,
+      "path": [],
+      "gps_distance": null,
+      "gps_arrow": null,
+      "gps_speed": null,
+      "gps_time": null,
+      "blips": [
+        {
+          "color": "blue",
+          "x": 88.35,
+          "y": -18.88,
+          "border": true
+        }
+      ]
+    },
+    "objects": [],
+    "figure": {
+      "kind": "person",
+      "box": [
+        549.469482421875,
+        333.277099609375,
+        645.902099609375,
+        523.5443725585938
+      ],
+      "confidence": 0.9000231623649597
+    },
+    "figure_vehicle": null,
+    "image": "p103-cutting-f19070.jpg"
+  }
+]
