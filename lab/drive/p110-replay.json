@@ -1,0 +1,27 @@
+{
+  "before": {
+    "full_lock_s": 2.05236958299065,
+    "full_l2_s": 1.8181738339917501,
+    "strong_lock_s": 2.05236958299065,
+    "states": {
+      "follow": 119,
+      "bypass-reverse": 145,
+      "bypass-forward": 179,
+      "bypass-pass": 62,
+      "coast": 1
+    }
+  },
+  "after": {
+    "full_lock_s": 0,
+    "full_l2_s": 0,
+    "strong_lock_s": 1.573724707996007,
+    "states": {
+      "follow": 74,
+      "bypass-push": 27,
+      "bypass-reverse": 144,
+      "bypass-forward": 212,
+      "bypass-pass": 48,
+      "coast": 1
+    }
+  }
+}

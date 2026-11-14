@@ -1,0 +1,519 @@
+[
+  {
+    "version": "before",
+    "seconds": 12,
+    "profile": "range-00",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "queue_started": 1.5333333333333348,
+    "reverse_started": 9.666666666666643,
+    "reverse_distance": 0.7585191211637632,
+    "longest_reverse": 0.8999999999999968,
+    "first_side": -1.0,
+    "stopped_after_rolling": true,
+    "collisions": 0,
+    "position": [
+      -0.11471993346899781,
+      7.968984907216592
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        1.533,
+        "bypass-wait"
+      ],
+      [
+        1.767,
+        "follow"
+      ],
+      [
+        7.633,
+        "bypass-wait"
+      ],
+      [
+        8.167,
+        "follow"
+      ],
+      [
+        8.367,
+        "bypass-wait"
+      ],
+      [
+        9.667,
+        "bypass-reverse"
+      ],
+      [
+        10.567,
+        "bypass-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "version": "before",
+    "seconds": 12,
+    "profile": "range-10",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "queue_started": 1.5333333333333348,
+    "reverse_started": 9.53333333333331,
+    "reverse_distance": 0.7768195395489306,
+    "longest_reverse": 0.8999999999999968,
+    "first_side": -1.0,
+    "stopped_after_rolling": true,
+    "collisions": 0,
+    "position": [
+      -0.12431147161073987,
+      7.823489205466006
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        1.533,
+        "bypass-wait"
+      ],
+      [
+        1.767,
+        "follow"
+      ],
+      [
+        7.633,
+        "bypass-wait"
+      ],
+      [
+        9.533,
+        "bypass-reverse"
+      ],
+      [
+        10.433,
+        "bypass-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "version": "before",
+    "seconds": 12,
+    "profile": "range-20",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": null,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": null,
+    "queue_started": 1.5333333333333348,
+    "reverse_started": 9.266666666666644,
+    "reverse_distance": 0.8300472695713941,
+    "longest_reverse": 0.8999999999999968,
+    "first_side": -1.0,
+    "stopped_after_rolling": true,
+    "collisions": 0,
+    "position": [
+      -0.2658397591108291,
+      8.063169709194097
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        1.533,
+        "bypass-wait"
+      ],
+      [
+        1.767,
+        "follow"
+      ],
+      [
+        7.367,
+        "bypass-wait"
+      ],
+      [
+        9.267,
+        "bypass-reverse"
+      ],
+      [
+        10.167,
+        "bypass-forward"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "version": "after",
+    "seconds": 20,
+    "profile": "nominal",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 15.699999999999955,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 4.7333333333333165,
+    "queue_started": 1.3666666666666676,
+    "reverse_started": 10.966666666666638,
+    "reverse_distance": 2.287776812581418,
+    "longest_reverse": 1.4666666666666615,
+    "first_side": 0.95,
+    "stopped_after_rolling": true,
+    "collisions": 159,
+    "position": [
+      -4.100619159195926,
+      14.059861618983026
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        1.367,
+        "bypass-wait"
+      ],
+      [
+        1.567,
+        "follow"
+      ],
+      [
+        6.333,
+        "bypass-wait"
+      ],
+      [
+        6.467,
+        "follow"
+      ],
+      [
+        9.933,
+        "bypass-push"
+      ],
+      [
+        10.967,
+        "bypass-reverse"
+      ],
+      [
+        12.433,
+        "bypass-forward"
+      ],
+      [
+        15.567,
+        "bypass-pass"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "version": "after",
+    "seconds": 20,
+    "profile": "range-00",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 16.199999999999964,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 6.533333333333321,
+    "queue_started": 1.5333333333333348,
+    "reverse_started": 9.666666666666643,
+    "reverse_distance": 1.998134263591509,
+    "longest_reverse": 1.699999999999994,
+    "first_side": 0.95,
+    "stopped_after_rolling": true,
+    "collisions": 0,
+    "position": [
+      -2.5000772650251846,
+      14.058491669761167
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        1.533,
+        "bypass-wait"
+      ],
+      [
+        1.767,
+        "follow"
+      ],
+      [
+        7.633,
+        "bypass-wait"
+      ],
+      [
+        8.167,
+        "follow"
+      ],
+      [
+        8.367,
+        "bypass-wait"
+      ],
+      [
+        9.667,
+        "bypass-reverse"
+      ],
+      [
+        11.367,
+        "bypass-forward"
+      ],
+      [
+        14.7,
+        "bypass-pass"
+      ],
+      [
+        16.167,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "version": "after",
+    "seconds": 20,
+    "profile": "range-01",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 15.699999999999955,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 4.7333333333333165,
+    "queue_started": 1.3666666666666676,
+    "reverse_started": 10.966666666666638,
+    "reverse_distance": 2.287776812581418,
+    "longest_reverse": 1.4666666666666615,
+    "first_side": 0.95,
+    "stopped_after_rolling": true,
+    "collisions": 159,
+    "position": [
+      -4.100523823351355,
+      14.059993162109222
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        1.367,
+        "bypass-wait"
+      ],
+      [
+        1.567,
+        "follow"
+      ],
+      [
+        6.333,
+        "bypass-wait"
+      ],
+      [
+        6.467,
+        "follow"
+      ],
+      [
+        9.933,
+        "bypass-push"
+      ],
+      [
+        10.967,
+        "bypass-reverse"
+      ],
+      [
+        12.433,
+        "bypass-forward"
+      ],
+      [
+        15.567,
+        "bypass-pass"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "version": "after",
+    "seconds": 20,
+    "profile": "range-10",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 15.866666666666621,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 6.333333333333311,
+    "queue_started": 1.5333333333333348,
+    "reverse_started": 9.53333333333331,
+    "reverse_distance": 1.7147490373629184,
+    "longest_reverse": 1.566666666666661,
+    "first_side": 0.95,
+    "stopped_after_rolling": true,
+    "collisions": 0,
+    "position": [
+      -2.478358615416857,
+      14.019388488522399
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        1.533,
+        "bypass-wait"
+      ],
+      [
+        1.767,
+        "follow"
+      ],
+      [
+        7.633,
+        "bypass-wait"
+      ],
+      [
+        9.533,
+        "bypass-reverse"
+      ],
+      [
+        11.1,
+        "bypass-forward"
+      ],
+      [
+        14.433,
+        "bypass-pass"
+      ],
+      [
+        15.633,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "version": "after",
+    "seconds": 20,
+    "profile": "range-11",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 15.499999999999956,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 4.866666666666649,
+    "queue_started": 1.3666666666666676,
+    "reverse_started": 10.633333333333306,
+    "reverse_distance": 2.482392958936547,
+    "longest_reverse": 1.5333333333333279,
+    "first_side": 0.95,
+    "stopped_after_rolling": true,
+    "collisions": 161,
+    "position": [
+      -3.982847128249715,
+      14.099744653136403
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        1.367,
+        "bypass-wait"
+      ],
+      [
+        1.567,
+        "follow"
+      ],
+      [
+        6.2,
+        "bypass-wait"
+      ],
+      [
+        6.3,
+        "follow"
+      ],
+      [
+        9.6,
+        "bypass-push"
+      ],
+      [
+        10.633,
+        "bypass-reverse"
+      ],
+      [
+        12.167,
+        "bypass-forward"
+      ],
+      [
+        15.3,
+        "bypass-pass"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  },
+  {
+    "version": "after",
+    "seconds": 20,
+    "profile": "range-20",
+    "gap": 12,
+    "blocked": 0,
+    "passed_at": 16.266666666666634,
+    "first_stationary": 0.2333333333333333,
+    "after_wait": 6.999999999999989,
+    "queue_started": 1.5333333333333348,
+    "reverse_started": 9.266666666666644,
+    "reverse_distance": 2.4029046359699704,
+    "longest_reverse": 1.8333333333333268,
+    "first_side": 0.95,
+    "stopped_after_rolling": true,
+    "collisions": 0,
+    "position": [
+      -2.0222969342443755,
+      14.044550030641997
+    ],
+    "phases": [
+      [
+        0.0,
+        "follow"
+      ],
+      [
+        1.533,
+        "bypass-wait"
+      ],
+      [
+        1.767,
+        "follow"
+      ],
+      [
+        7.367,
+        "bypass-wait"
+      ],
+      [
+        9.267,
+        "bypass-reverse"
+      ],
+      [
+        11.1,
+        "bypass-forward"
+      ],
+      [
+        14.433,
+        "bypass-pass"
+      ],
+      [
+        15.9,
+        "follow"
+      ]
+    ],
+    "status": "running",
+    "reason": null
+  }
+]

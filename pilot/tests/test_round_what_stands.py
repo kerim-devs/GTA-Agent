@@ -133,8 +133,10 @@ def test_careful_does_not_use_the_new_gps_standing_fallback():
 
 def test_unseen_reverse_stops_early_when_the_rear_is_blocked():
     driver = Driver(drive_config(["style=bold"]))
-    for tick in range(65):
+    for tick in range(120):
         command = driver.step(picture(), tick / 30, False, speed=0)
+        if command.state == "bypass-reverse":
+            break
     assert command.state == "bypass-reverse"
     start = driver._phase_since
     driver.step(picture(), start + 0.7, True, speed=2)
