@@ -139,6 +139,8 @@ class Skill:
         rolling = speed is not None and speed > self.AROUND_BRAKE_SPEED and observation.moving is not False
         if around.urgent and rolling:
             brake = max(brake, self.AROUND_BRAKE)
+        # For the log: what the avoider did to the pedal on this tick, -1 where it braked.
+        self.around_pedal = -1.0 if brake > command.brake else around.pedal
         return Pad(
             left=(around.steer if bypass else clamp(command.steer + around.steer, -1, 1), 0.0),
             l2=brake,
@@ -236,6 +238,8 @@ class DriveRoute(RegisteredSkill):
         flagged_seconds: float = 0.0
         aim_px: float | None = None  # how far out the driver aimed on this tick
         driver_state: str | None = None  # what the driver was doing: follow, coast, a turn, a recovery
+        speed_reason: str | None = None  # what set the driver's speed: straight, curve, arrival, ...
+        around_pedal: float | None = None  # the avoider's share of the pedal, -1 where it braked
 
     name = "drive_route"
     parameters: ClassVar[dict] = {"duration": (0.1, 120, 60), "style": ("bold", "careful")}
@@ -325,6 +329,8 @@ class DriveRoute(RegisteredSkill):
             self.driver.flagged_time,
             getattr(self.driver, "aim_px", None),
             getattr(getattr(self.driver, "_last", None), "state", None),
+            getattr(self.driver, "speed_reason", None),
+            getattr(self, "around_pedal", None),
         )
 
     def stop(self, reason="interrupted") -> SkillResult:
@@ -413,6 +419,7 @@ class DriveRoute(RegisteredSkill):
                 return self.stop("on-foot")
             from .avoid import STALE, passing_side
 
+            self.around_pedal = None
             command = self.driver.step(
                 observation.reading,
                 now,
