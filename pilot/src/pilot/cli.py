@@ -289,7 +289,14 @@ def main(argv: list[str] | None = None) -> None:
             # Three steps and what they are carried out with; every other skill leaves the registry.
             simple.only()
             chooser.use(args.judge)
-            head = simple.SimpleHead()
+            if args.head in {"codex", "codex-server"}:
+                # The same seven skills, planned by a Codex model in place of the local one: its
+                # prompt lists the registry, which holds nothing else by now.
+                head = (CodexHead if args.head == "codex" else CodexServerHead)(
+                    model=args.head_model, effort=args.head_effort, timeout=args.head_timeout
+                )
+            else:
+                head = simple.SimpleHead()
         elif args.head == "scripted":
             head = ScriptedHead(plans or None)
         elif args.head == "rules-only":
