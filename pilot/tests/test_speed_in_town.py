@@ -114,3 +114,30 @@ def test_simulator_abstains_across_a_town_bend_without_leaving_the_road(dropout)
         Driver(drive_config(["style=bold"]))
     )
     assert result.reached and result.max_distance <= 5 and result.collisions == 0
+
+
+def test_a_print_that_lost_its_leading_digit_is_not_the_distance():
+    # 20261114-035459 at 277 s: the car stood against parked cars 756 m from the shop, the "7" lay
+    # over a sunlit pavement, and "56" was read for four seconds.
+    meter = Speedometer()
+    at = 0.0
+    for distance in (764, 762, 760, 758, 757, 756, 756, 756):
+        meter.update(at, Fix(distance, None, 1.0), sampled_at=at)
+        at += 0.25
+    assert meter.fix.distance >= 756
+    for _ in range(16):
+        meter.update(at, Fix(56, None, 1.0), sampled_at=at)
+        at += 0.25
+    assert meter.fix.distance >= 756
+
+
+def test_a_route_made_shorter_is_believed_when_the_time_allows_the_fall():
+    meter = Speedometer()
+    at = 0.0
+    for distance in (1764, 1762, 1760, 1758, 1757, 1756):
+        meter.update(at, Fix(distance, None, 1.0), sampled_at=at)
+        at += 0.25
+    for step in range(60):
+        meter.update(at, Fix(1300 - 3 * step, None, 1.0), sampled_at=at)
+        at += 0.25
+    assert meter.fix.distance < 1300

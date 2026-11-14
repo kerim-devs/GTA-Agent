@@ -190,8 +190,8 @@ class Speedometer:
     Increasing distance measures rolling speed, not forward route progress.
     """
 
-    def __init__(self, window=3.0, stale=1.5, max_speed=50.0, tolerance=8.0, acceleration=8.0):
-        self.window, self.stale, self.max_speed = window, stale, max_speed
+    def __init__(self, window=3.0, stale=1.5, max_speed=50.0, tolerance=8.0, acceleration=8.0, fall=60.0):
+        self.window, self.stale, self.max_speed, self.fall = window, stale, max_speed, fall
         self.tolerance, self.acceleration = tolerance, acceleration
         self.pending = deque()
         self._slope = None
@@ -231,6 +231,18 @@ class Speedometer:
             and (self._last_input is None or at - self._last_input >= 0.1)
         ):
             self._last_input = at
+            if (
+                self.fix is not None
+                and self.time is not None
+                and at > self.time
+                and self.fix.distance - fix.distance
+                > self.max_speed * (at - self.time) + self.fall + max(fix.quantum, self.fix.quantum)
+            ):
+                # No car closes on its destination faster than it drives. Over a light road by day
+                # "756m" was read as 56 for four seconds with the car standing (20261114-035459): a
+                # trip takes that for the door. A route the game has made shorter is believed once
+                # the time since the last distance allows the fall.
+                return self.value(t)
             self._distance(at, fix)
             if self._speed_fix is not None and self._speed_time is not None and self._slope is not None:
                 dt = at - self._speed_time
