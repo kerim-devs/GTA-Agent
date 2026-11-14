@@ -22,7 +22,7 @@ _BASE[(_X - 123) ** 2 + (_Y - 117) ** 2 < 20**2] = 0
 _BASE[(_X - 125) ** 2 + (_Y - 39) ** 2 < 14**2] = 0
 
 
-def map_motion(prev: np.ndarray, cur: np.ndarray) -> float | None:
+def map_motion(prev: np.ndarray, cur: np.ndarray, painted: bool = False) -> float | None:
     """How far the map content moved between two HUD crops, in crop pixels. None when it cannot be told:
     no minimap in one of the crops, a damaged picture, too little structure. Pure, never raises."""
     try:
@@ -33,7 +33,7 @@ def map_motion(prev: np.ndarray, cur: np.ndarray) -> float | None:
                 return None
             # Cheap HUD checks avoid running the complete reader twice. Refuse
             # codec damage even if enough optical-flow tracks would survive it.
-            if _bars(crop) < 2 or _blocks(crop)[0] >= 2:
+            if _bars(crop) < 2 or (not painted and _blocks(crop)[0] >= 2):
                 return None
         return _displacement(prev, cur)
     except Exception:  # Degenerate image data must not escape to the driver.

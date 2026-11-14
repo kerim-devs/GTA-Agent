@@ -1,6 +1,7 @@
 import json
 import signal
 from dataclasses import asdict
+from pathlib import Path
 
 import httpx
 import numpy as np
@@ -315,3 +316,33 @@ def test_a_recording_that_could_not_be_started_is_not_stopped(tmp_path):
     with pytest.raises(httpx.HTTPStatusError):
         harness.run(seconds=0.2)
     assert [event[2] for event in harness.events if event[1] == "/record"] == [{"action": "start"}]
+
+
+def _crop(path):
+    import cv2
+
+    return np.ascontiguousarray(cv2.cvtColor(cv2.imread(str(path)), cv2.COLOR_BGR2RGB))
+
+
+def test_block_steps_that_stand_still_on_fresh_pictures_are_a_painted_road():
+    # 20261114-021738 at 424 s: the car stands in a straight street behind another, the edge of the
+    # road across lies on a block border, the clean map is called damaged and nobody drives, for a minute.
+    crop = _crop(Path(__file__).parent / "fixtures" / "crop_painted_021738.png")
+    pipeline = Pipeline()
+    readings = [pipeline.step(crop, 10 + 0.05 * tick)[0] for tick in range(60)]
+    assert readings[0].corrupt and readings[20].corrupt
+    assert not any(reading.corrupt for reading in readings[31:])
+    assert readings[-1].route == "purple" and readings[-1].confidence > 0.35
+    # The same picture again and again without a newer frame time is a stream that stands, not a road.
+    frozen = Pipeline()
+    assert all(frozen.step(crop, 10.0)[0].corrupt for _ in range(60))
+
+
+def test_block_steps_that_move_between_pictures_stay_damage():
+    damaged = Path(__file__).resolve().parents[2] / "lab/minimap/p54"
+    crops = [_crop(damaged / f"100713-{name}.png") for name in ("179.3", "194.3", "199.5", "207.1")]
+    pipeline = Pipeline()
+    for tick in range(120):
+        # Each damaged picture stays for a second, as a stream does that is repaired at its next key frame.
+        reading = pipeline.step(crops[tick // 20 % 4], 10 + 0.05 * tick)[0]
+        assert reading.corrupt

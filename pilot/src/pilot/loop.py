@@ -9,6 +9,7 @@ import time
 from collections import Counter, deque
 from contextlib import contextmanager
 from dataclasses import asdict, dataclass, field, replace
+from functools import partial
 from pathlib import Path
 
 import numpy as np
@@ -18,7 +19,7 @@ from .contract import HUD_RECT, Command, Pad, Reading
 from .drive import DriveConfig, Driver
 from .gps import Reader as GPSReader
 from .gps import Speedometer
-from .minimap import read
+from .minimap import block_lines, read
 from .motion import map_motion, motion_state
 
 RECORDINGS = Path(__file__).resolve().parents[3] / "recordings"
@@ -28,6 +29,9 @@ END_STATES = ("route-gone", "failed-recovery", "dead-or-held", "map-unreadable")
 
 class Pipeline:
     """Shared live/replay interpretation, using frame time for motion and driving."""
+
+    PAINTED_SECONDS = 1.5
+    PAINTED_FORGET = 3.0
 
     def __init__(self, *, reader=read, motion=map_motion, driver=None, gps_reader=None):
         self.reader = reader
@@ -39,11 +43,29 @@ class Pipeline:
             cfg.gps_window, cfg.gps_stale, cfg.gps_max_speed, cfg.gps_tolerance, cfg.gps_acceleration
         )
         self.history: deque[tuple[float, np.ndarray]] = deque()
+        self.steps: tuple[frozenset, float, float] | None = None  # block borders with a step, since, last
 
     def close(self):
         close = getattr(self.gps_reader, "close", None)
         if close is not None:
             close()
+
+    def _painted(self, crop: np.ndarray, frame_time: float) -> bool:
+        """Whether the block steps of a map called damaged are the edges of its painted roads.
+
+        A car that stands, or drives along a straight street, keeps the edge of a broad road on a block
+        border of the codec, and the reader calls the clean map damaged for as long: on 14 November the
+        car stood for a minute behind another with nobody driving (20261114-021738 from 352 s), and
+        forty seconds of 20261114-015901. Damage of the codec comes and goes with the pictures. Steps
+        that stay on the same borders for a second and a half of fresh pictures are taken as painted.
+        """
+        lines = block_lines(crop)
+        held = self.steps
+        if held is None or not lines <= held[0] or not 0 <= frame_time - held[2] <= self.PAINTED_FORGET:
+            self.steps = (lines, frame_time, frame_time)
+            return False
+        self.steps = (held[0], held[1], frame_time)
+        return frame_time - held[1] >= self.PAINTED_SECONDS
 
     def step(
         self, crop: np.ndarray, frame_time: float, feedback: bool = True
@@ -51,6 +73,11 @@ class Pipeline:
         """With `feedback` off the driver is not told whether the map moves: while a human drives,
         its own commands move nothing, and it would take every red light for being stuck."""
         reading = self.reader(crop)
+        motion = self.motion
+        if reading.corrupt and self.reader is read and self._painted(crop, frame_time):
+            reading = read(crop, painted=True)
+            if motion is map_motion:
+                motion = partial(map_motion, painted=True)
         moving = None
         if self.history and frame_time <= self.history[-1][0]:
             self.history.clear()
@@ -58,10 +85,10 @@ class Pipeline:
             self.history.popleft()
         if self.history and frame_time - self.history[0][0] >= 0.15:
             _previous_time, previous = min(self.history, key=lambda item: abs(frame_time - item[0] - 0.2))
-            displacement = self.motion(previous, crop)
+            displacement = motion(previous, crop)
             moving = motion_state(displacement)
             if moving is not True and frame_time - self.history[0][0] >= 0.8:
-                moving = motion_state(self.motion(self.history[0][1], crop))
+                moving = motion_state(motion(self.history[0][1], crop))
         self.history.append((frame_time, crop.copy()))
         result = self.gps_reader.poll(crop, frame_time)
         sample_time, fix = result if result is not None else (frame_time, None)

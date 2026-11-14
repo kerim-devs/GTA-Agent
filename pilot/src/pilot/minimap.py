@@ -542,6 +542,19 @@ def _blocks(crop: np.ndarray, *, route_strokes: bool = False):
     return int(bv.sum() + bh.sum()), int(bv[_BV_NEAR].sum() + bh[_BH_NEAR].sum())
 
 
+def block_lines(crop: np.ndarray) -> frozenset:
+    """The block borders of the crop that carry a step: ("v", column) and ("h", row) by their index."""
+    g = cv2.cvtColor(crop, cv2.COLOR_RGB2GRAY).astype(np.int16)
+    _, vertical = _block_pieces(g, _BX, 14, 158, False)
+    _, horizontal = _block_pieces(g.T, _BY, 2, 258, False)
+    vertical[:, _BV_SKIP] = False
+    horizontal[:, _BH_SKIP] = False
+    return frozenset(
+        [("v", int(k)) for k in np.flatnonzero(vertical.any(axis=0))]
+        + [("h", int(k)) for k in np.flatnonzero(horizontal.any(axis=0))]
+    )
+
+
 def _continuous_roads(crop: np.ndarray) -> bool:
     """Explain route-free block steps only with broad, continuing painted roads.
 
@@ -753,11 +766,13 @@ def _blips(hsv: np.ndarray, yellow_path=()) -> tuple[Blip, ...]:
     return tuple(found)
 
 
-def read(crop: np.ndarray) -> Reading:
+def read(crop: np.ndarray, painted: bool = False) -> Reading:
+    """`painted`: the caller has seen the block steps of this picture stand still on fresh pictures, as
+    the edge of a painted road does and damage of the codec does not, and they raise no alarm."""
     try:
         if not isinstance(crop, np.ndarray) or crop.shape != (H, W, 3) or crop.dtype != np.uint8:
             return Reading("none", "none", None, None, None, False, 0.0)
-        return _analyse(crop)[0]
+        return _analyse(crop, painted=painted)[0]
     except Exception:  # never raise on any input
         return Reading("none", "none", None, None, None, False, 0.0)
 
@@ -873,7 +888,7 @@ def _heading(crop):
     return 180.0 if angle == -180.0 else angle
 
 
-def _analyse(crop: np.ndarray, keep: bool = False):
+def _analyse(crop: np.ndarray, keep: bool = False, painted: bool = False):
     info: dict = {}
     crop = np.ascontiguousarray(crop)
     hsv = cv2.cvtColor(crop, cv2.COLOR_RGB2HSV)
@@ -883,7 +898,7 @@ def _analyse(crop: np.ndarray, keep: bool = False):
     _, arrow_score = _read_arrow(full)
     has_arrow = arrow_score > 0.3
     present = bars >= 2 or (bars >= 1 and has_arrow) or arrow_score > 0.45
-    n_blocks, n_local = _blocks(crop)
+    n_blocks, n_local = (0, 0) if painted else _blocks(crop)
     corrupt = n_blocks >= 2
     info.update(bars=bars, arrow_score=round(arrow_score, 3), blocks=n_blocks, blocks_near=n_local)
     if not present:
