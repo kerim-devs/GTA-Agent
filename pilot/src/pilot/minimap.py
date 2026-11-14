@@ -66,6 +66,9 @@ _NEAR_ZONE = np.flatnonzero(_DIST_FLAT < 36)
 
 # Close one-pixel gaps in the colour mask.
 _K3 = np.ones((3, 3), np.uint8)
+_BRIDGE = (np.hypot(*np.mgrid[-6:7, -6:7]) <= 6.5).astype(
+    np.uint8
+)  # a disc: closes a gap of a symbol's width
 # Flood in two-pixel steps across compression gaps.
 _K5 = np.ones((5, 5), np.uint8)
 
@@ -923,6 +926,15 @@ def _analyse(crop: np.ndarray, keep: bool = False, painted: bool = False):
     damaged_here = n_local >= 4  # the damage covers the surroundings of the arrow
     oky = _route_ok(ty, world, damaged_here)
     okp = _route_ok(tp, False, damaged_here)
+    if not oky and tp is not None and cv2.countNonZero(wp) >= max(150, 3 * tp["n"]):
+        # A shop's symbol lies on the route a few pixels from the arrow and the flood ends at it, with
+        # most of the line beyond: 88 m before the door the route was called gone and the car was
+        # given up (20261114-035459 at 475 s). The gap is closed and the same proofs are asked.
+        bridged = _trace(cv2.morphologyEx(wp, cv2.MORPH_CLOSE, _BRIDGE), sp, val)
+        if _route_ok(bridged, False, damaged_here) and bridged["n"] > tp["n"]:
+            tp, okp = bridged, True
+            if keep:
+                info["purple"] = tp
     if not oky and not okp and has_arrow and bars >= 2 and not corrupt:
         # Preserve every accepted trace and all quality filters. Seed outside
         # the failed circle so a small coloured speck cannot hide the line.

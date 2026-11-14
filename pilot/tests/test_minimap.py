@@ -114,3 +114,12 @@ def test_path_starts_where_the_route_is_visible(case):
     # The arrow hides the route below 11 px, and the driver drops a path with a point nearer than 10.
     assert min(radii) >= 11
     assert radii[0] <= 16
+
+
+def test_a_symbol_on_the_route_does_not_end_it():
+    # 20261114-035459 at 475 s: 88 m before the shop, its symbol on the line a few pixels from the
+    # arrow. The route was called gone and the car that stood before it was given up.
+    path = Path(__file__).parent / "fixtures/crop_symbol_on_route_035459.png"
+    reading = read(cv2.cvtColor(cv2.imread(str(path)), cv2.COLOR_BGR2RGB))
+    assert reading.route == "purple"
+    assert len(reading.path) >= 8 and reading.path[-1][0] > 40  # the line runs off to the right
