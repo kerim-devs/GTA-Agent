@@ -754,7 +754,9 @@ class Driver:
         if self._turn_limit is not None and heading_error >= 10:
             if self._turn_limit < limit:
                 limit, self.speed_reason = self._turn_limit, "curve-exit"
-            self._brake_limit = min(self._brake_limit, self._turn_limit)
+            # In the turn the pedal is lifted and the brake left alone: on the drive to the golf
+            # club (20261114-015901) twenty of 46 brake pulses fell here, at 9 to 21 m/s, where
+            # Kerim's turns are taken at 14 to 21 with no brake at all.
         if heading_error > 60:
             target = _target(path, cfg.lookahead_px)
             radius = hypot(*target) * scale
