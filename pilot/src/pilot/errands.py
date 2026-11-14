@@ -848,6 +848,9 @@ class Trip:
     # tries are not counted to an end: a look after the first, then along the road and again, for
     # five minutes, a third of the trip's own budget.
     CAR_SECONDS = 300.0
+    # Entries in a row with nothing in reach after which the figure goes to a road: six looks of
+    # sixty degrees are once round.
+    EMPTY_ROUND = 6
     SCREEN_SECONDS = 15.0
     ROUTE_GONE = 2.0  # as drive_route: a route that stays away this long has gone
     ROUTE_RECENT = 3.0  # a route read this short a time ago is one reading missed, not a route lost
@@ -892,6 +895,7 @@ class Trip:
         self.suspended = None
         self.suspended_at = None
         self.car_seen = None
+        self.empty = 0  # entries in a row that found no car in reach
         self.failure = None
         self.failure_at = None
         self.exit_presses = self.exit_waits = 0
@@ -1136,8 +1140,10 @@ class Trip:
                 if self.step == "car":
                     self.change("waypoint" if self.waypoint_id is None else "drive", now)
                 self.method = "route"
+                self.empty = 0
             else:
                 self.retry = None if why.startswith("door locked or blocked") else "look"
+                self.empty = self.empty + 1 if why.startswith("nothing found") else 0
         elif name == "set_waypoint":
             match = WAYPOINT.match(why) if done else None
             if (
@@ -1312,6 +1318,12 @@ class Trip:
                 # back to the same door twice and was beaten to death there. A player runs first.
                 self.thrown = False
                 return issue("walk", x=0, y=1, sprint=True, duration=6)
+            if self.empty >= self.EMPTY_ROUND:
+                # Looked once round with nothing in reach: the figure stood on a hospital's forecourt
+                # for five minutes, the street sixty metres off (20261114-052653). To the nearest road
+                # the map shows, and the search goes on there.
+                self.empty = 0
+                return issue("walk_road", duration=15)
             if self.retry in {"look", "road"}:
                 if self.car_seen is not None and now - self.car_seen[1] <= 2:
                     return issue("wait", duration=1)

@@ -884,6 +884,21 @@ def test_car_retry_without_recent_detection_looks_before_trying_again(session):
     assert session.trip.car_attempts == 1
 
 
+def test_a_search_that_has_looked_once_round_goes_to_a_road(session):
+    # 20261114-052653: after the hospital the figure stood on the forecourt for five minutes, 46 entries
+    # with nothing in reach, and the street with its cars sixty metres off.
+    session.reading = replace(GOOD, minimap="flat", route="none")
+    session.mode = "foot"
+    session.mapped()
+    for _ in range(6):
+        assert not [row for row in session.rows("trip_attempt") if row["name"] == "walk_road"]
+        session.until(lambda: session.active("enter_vehicle"))
+        session.conductor.runner.stop("nothing found; no car in reach")
+    session.until(lambda: session.active("walk_road"), seconds=5)
+    session.conductor.runner.stop("time-limit")
+    session.until(lambda: session.active("enter_vehicle"), seconds=5)
+
+
 def test_the_search_for_a_car_turns_one_way_round(session):
     # 20261114-030957: before a shop front, the street behind the camera, the look went 45 degrees to
     # the right and 45 back to the left for a hundred seconds.
