@@ -217,6 +217,8 @@ class LegendWaypoint:
     max_attempts = 3
     # The legend showed a new waypoint 0.7 s after its cross (session 20261112-115941).
     legend_lag = 2.0
+    unread_for = 2.0  # seconds a selection may stay unread before a step is taken to get another row
+    max_nudges = 3
     max_steps = 80
 
     def __init__(self, args):
@@ -247,6 +249,9 @@ class LegendWaypoint:
         self.standing = None
         self.total_before = None
         self.steps = 0
+        self.moved = None  # the direction of the last step through the list
+        self.unread_since = None
+        self.nudges = 0
 
     def stop(self, reason="interrupted"):
         self.finished = SkillResult(status="failed", reason=reason)
@@ -438,7 +443,17 @@ class LegendWaypoint:
             return self._press(self.profile.confirm, observation, ("confirm",))
         selected = picture.selected
         if selected is None:
+            # The row under the white bar is not always read: on 14 November, 02:59, the list stood on
+            # "Kfz-Abschleppplatz", one row above the place, for the 28 s that were left of the try. A
+            # step further in the direction of the last one gives the reader another row to name.
+            if self.unread_since is None:
+                self.unread_since = now
+            if self.moved and now - self.unread_since >= self.unread_for and self.nudges < self.max_nudges:
+                self.nudges += 1
+                self.unread_since = None
+                return self._press(self.moved, observation, None)
             return SkillResult()
+        self.unread_since = None
         self.phase = "browse"
         # A name stands in the legend once; the counter under it is misread too often to be asked for.
         identity = (selected.name, selected.instance)
@@ -481,6 +496,7 @@ class LegendWaypoint:
         elif here is not None and there < here:
             button = "up"
         self.attempts = 1
+        self.moved = button
         return self._press(button, observation, ("move", identity, button))
 
     def _wanted(self, entry):
