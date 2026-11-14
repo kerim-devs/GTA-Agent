@@ -4,7 +4,10 @@ Kerim's rule of 13 November for the nights the pilot practises alone: draw a wea
 police come and end it, and the figure begins again at the hospital, on foot in a town with cars. It
 leaves a car first, takes a weapon from the wheel (L1 held, the right stick toward a slot, tried slot
 by slot until shots bring a star), fires in bursts while turning, and waits for the game to come back.
-Exit code 0 when the figure stood in the game again after a death or an arrest, 1 otherwise.
+Where nobody hears the shots (the tram's cutting, 14 November: thirty slots and no star) his second way
+out follows: the other figure. The switch wheel is held open with the pad's down, the right stick picks
+Michael on its left or Franklin above, and the game goes on wherever that one is.
+Exit code 0 when the figure stood in the game again after a death, an arrest or a switch, 1 otherwise.
 """
 
 import sys
@@ -17,12 +20,21 @@ from pilot.contract import Pad
 
 SLOTS = ((1.0, 0.0), (0.7, -0.7), (0.0, -1.0), (-0.7, -0.7), (0.7, 0.7), (0.0, 1.0))
 OVER = ("wasted", "busted")
+QUIET = 2 * len(SLOTS)  # slots fired through without a star: nobody is there to hear it
+FIGURES = (
+    (-1.0, 0.0),
+    (0.0, -1.0),
+)  # on the switch wheel: Michael to the left, Franklin above
 
 
 def main(limit):
     with Bridge() as bridge:
         status = bridge.status()
-        if status.get("human_input") or status.get("recording") or not status.get("session_up"):
+        if (
+            status.get("human_input")
+            or status.get("recording")
+            or not status.get("session_up")
+        ):
             return "a hand, a recording or no session: nothing sent", 1
         end = time.monotonic() + limit
 
@@ -36,7 +48,9 @@ def main(limit):
             until = time.monotonic() + seconds
             while time.monotonic() < until:
                 if bridge.pad(pad) != 200:
-                    raise SystemExit("the bridge refused the pad: a hand is on the controller")
+                    raise SystemExit(
+                        "the bridge refused the pad: a hand is on the controller"
+                    )
                 time.sleep(0.04)
             bridge.pad(Pad())
 
@@ -46,12 +60,15 @@ def main(limit):
 
         now, reading = see()
         if now is None or now.screen != "game":
-            return f"no game picture ({now.screen if now else 'no frame'}): nothing sent", 1
+            return (
+                f"no game picture ({now.screen if now else 'no frame'}): nothing sent",
+                1,
+            )
         if reading.minimap == "tilted":
             hold(Pad(buttons=("triangle",)), 0.15)
             hold(Pad(), 3.0)
         died, slot, stars, turn = False, 0, False, 1.0
-        while time.monotonic() < end and not died:
+        while time.monotonic() < end and not died and (stars or slot < QUIET):
             if not stars:
                 x, y = SLOTS[slot % len(SLOTS)]
                 hold(Pad(buttons=("l1",), right=(x, y)), 0.7)
@@ -68,7 +85,37 @@ def main(limit):
             turn = -turn
         bridge.pad(Pad())
         if not died:
-            return f"no death within {limit:.0f} s (stars seen: {stars}, slots tried: {slot})", 1
+            for x, y in FIGURES:
+                hold(Pad(buttons=("down",)), 1.0)
+                hold(Pad(buttons=("down",), right=(x, y)), 1.0)
+                hold(Pad(), 0.2)
+                # The switch takes the picture away within a few seconds, or this is that figure.
+                away, until = None, time.monotonic() + 8
+                while time.monotonic() < until and away is None:
+                    now, _ = see()
+                    if now is not None and now.screen != "game":
+                        away = time.monotonic()
+                    time.sleep(0.25)
+                if away is None:
+                    continue
+                back = None
+                while time.monotonic() < away + 90:
+                    now, _ = see()
+                    if now is not None and now.screen == "game":
+                        back = back or time.monotonic()
+                        if time.monotonic() - back >= 3:
+                            return (
+                                f"no death (stars: {stars}, slots: {slot}); the other figure plays",
+                                0,
+                            )
+                    else:
+                        back = None
+                    time.sleep(0.25)
+                return "switched, and the game did not come back in time", 1
+            return (
+                f"no death within {limit:.0f} s (stars seen: {stars}, slots tried: {slot}), no switch",
+                1,
+            )
         back = None
         while time.monotonic() < end + 90:
             now, _ = see()
