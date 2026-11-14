@@ -88,6 +88,8 @@ class DriveConfig:
     gps_tolerance: float = 8.0  # Metres of OCR scatter around a consistent trend.
     gps_acceleration: float = 8.0  # Plausible m/s^2 change before quarantining a jump.
     map_scale_min: float = 0.35  # Low-speed 0.7 m/px with a factor-of-two safety band.
+    coast_loss: float = 0.0  # m/s the car loses each second off the pedal; 0: the reading is taken as it is
+    speed_lag: float = 0.7  # seconds the speed reading runs behind a car that slows
     arrival_distance: float = 8.0  # Enter the approach speed in the last metres.
     arrival_speed: float = 1.5  # Approach at walking pace; route loss ends the run.
     damage_hold: float = 0.5  # Conservative bound below replay gap p90 .555s; damage cannot renew it.
@@ -234,6 +236,8 @@ class Driver:
         self._trusted_route: str | None = None
         self._trusted_error: float | None = None
         self._brake_since: float | None = None
+        self._off: deque[tuple[float, float]] = deque()  # ticks off the pedal: when, and for how long
+        self._pedal_time: float | None = None
         self.speed_reason = "unknown-speed"
         self._turn_limit: float | None = None
         self._turn_junction = False  # whether the remembered corner is a right angle at a junction
@@ -803,6 +807,7 @@ class Driver:
                 cfg.unknown_throttle * (4 / 3 if self._speed_at is not None else 1),
                 cfg.unknown_throttle * limit / max(cfg.junction_speed, 1.0),
             ), 0.0
+        speed = self._present_speed(speed, now)
         if self.speed_reason == "straight":
             # A noisy GPS slope may ease the pedal, but cannot brake an empty straight.
             return _clip(
@@ -831,6 +836,22 @@ class Driver:
         if not self._last.brake and brake < cfg.brake_gain:
             brake = 0.0
         return throttle, self._pulsed(brake, speed, now)
+
+    def _present_speed(self, speed: float, now: float) -> float:
+        """The speed now, from a reading that still shows the car as it was before the pedal came off.
+
+        Off the pedal the game's cars lose about 5 m/s each second (quartiles 2.8 to 6.3 over twenty such
+        seconds of the night of 14 November), and while a car slows the slope of the printed distance is
+        3.5 m/s above it at the median. With the pedal held off until the reading fell below a turn's
+        speed the car stood before the junction (20261114-042324 at 134 to 139 s: read 15 m/s, driven 2)."""
+        cfg = self.config
+        dt = 0.0 if self._pedal_time is None else min(max(now - self._pedal_time, 0.0), cfg.max_step_time)
+        self._pedal_time = now
+        if self._last.throttle < 0.05 and dt > 0:
+            self._off.append((now, dt))
+        while self._off and now - self._off[0][0] > cfg.speed_lag:
+            self._off.popleft()
+        return max(0.0, speed - cfg.coast_loss * sum(seconds for _, seconds in self._off))
 
     def _pulsed(self, brake: float, speed: float, now: float) -> float:
         """L2 for speed in bounded pulses: the reading lags, and a brake held too long ends in reverse."""
