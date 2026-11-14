@@ -35,10 +35,18 @@ with Bridge() as bridge:
         raise SystemExit("no fresh game picture")
     reading = minimap.read(minimap_crop(frame.rgb))
     screen = hud.read(frame.rgb).screen
-    if screen != "game" or reading.corrupt or reading.minimap not in {"flat", "tilted"}:
+    # A map called damaged is still the game's map: where a broad road's edge lies on a block border
+    # the reader says so of a clean one, and five starts in a row were refused for it on 14 November.
+    if screen != "game" or reading.minimap not in {"flat", "tilted"}:
         raise SystemExit("start the trip with GTA gameplay visible")
 CHECK
 
+# TRIP_SET="name=value name=value": driving settings on top of the style, for a trial at the console.
+# Without it the line in lab/live/trial.set is read, if that file is there (it is not in the repository).
+[[ -z $TRIP_SET && -r ${0:A:h}/trial.set ]] && TRIP_SET=$(<${0:A:h}/trial.set)
+more=()
+for setting in ${=TRIP_SET}; do more+=(--set $setting); done
+[[ -n $TRIP_SET ]] && echo "$(now) trial settings: $TRIP_SET"
 judge=()
 if curl -s -m 3 $server/v1/models >/dev/null; then
   judge=(--judge $server=$model)
@@ -48,7 +56,7 @@ else
 fi
 echo "$(now) going to $place for at most $limit s; Ctrl-C ends it"
 env -u PS5_HOST .venv/bin/python -m pilot.cli play --task trip --place "$place" --seconds "$limit" \
-  --set style=$style $judge --record-dir $out
+  --set style=$style $more $judge --record-dir $out
 result=$?
 echo "$(now) trip session ended with $result"
 exit $result
