@@ -257,8 +257,8 @@ def main(argv: list[str] | None = None) -> None:
             if args.plan or args.guard or args.no_hud_flow:
                 parser.error("--task trip needs the screen reflex and accepts neither --plan nor --guard")
             args.seconds = args.seconds or 900
-        elif args.place is not None:
-            parser.error("--place needs --task trip")
+        elif args.place is not None and args.task != "simple":
+            parser.error("--place needs --task trip or --task simple")
         if args.task == "simple":
             if args.plan or args.guard or args.no_hud_flow or not args.judge:
                 parser.error("--task simple needs --judge and the screen reflex, without --plan and --guard")
@@ -295,6 +295,9 @@ def main(argv: list[str] | None = None) -> None:
                 head = (CodexHead if args.head == "codex" else CodexServerHead)(
                     model=args.head_model, effort=args.head_effort, timeout=args.head_timeout
                 )
+            elif args.place:
+                # One destination, named by whoever starts the session, in place of the model's choice.
+                head = simple.SimpleHead(places={args.place.strip(): "Drive to the marked place"})
             else:
                 head = simple.SimpleHead()
         elif args.head == "scripted":

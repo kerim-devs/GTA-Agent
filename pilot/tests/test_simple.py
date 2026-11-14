@@ -181,3 +181,13 @@ def test_a_walk_to_the_road_that_fails_is_not_begun_again_at_once(tmp_path, mode
     assert plan[0] == "walk_road"
     failed = {"name": "walk_road", "status": "failed", "reason": "map-unreadable"}
     assert names(head.decide(request(tmp_path, last=failed))) == ["look", "enter_vehicle"]
+
+
+@pytest.mark.usefixtures("model")
+def test_a_single_named_place_is_marked_without_asking_and_again_after_it_is_reached(tmp_path):
+    head = simple.SimpleHead(places={"Ammu-Nation": "Drive to the marked place"})
+    first = head.decide(request(tmp_path, seat="vehicle"))
+    assert first.plan[0].args["place"] == "Ammu-Nation"
+    arrived = {"name": "drive_route", "status": "done", "reason": "arrived"}
+    again = head.decide(request(tmp_path, seat="vehicle", last=arrived))
+    assert again.plan[0].args["place"] == "Ammu-Nation"

@@ -171,6 +171,7 @@ class SimpleHead:
         elif step == "mark":
             if self.place is None:
                 places = {place: text for place, text in self.places.items() if place not in self.left}
+                places = places or self.places  # a single place is driven to again
                 self.place, chosen = self._choose(
                     "What would be fun for the player to do next?", places, request, state, next(iter(places))
                 )

@@ -60,6 +60,8 @@ if ! curl -s -m 3 $server/v1/models >/dev/null; then
   exit 1
 fi
 [[ -n $shadow ]] && more+=(--shadow --no-record)
+# SIMPLE_PLACE="Ammu-Nation": one destination by its printed name, in place of the model's choice.
+[[ -n $SIMPLE_PLACE ]] && more+=(--place $SIMPLE_PLACE)
 echo "$(now) car, destination, drive for at most $limit s; $model chooses; Ctrl-C ends it"
 env -u PS5_HOST $python -m pilot.cli play --task simple --seconds "$limit" \
   --set style=$style $more --judge $server=$model --record-dir $out
