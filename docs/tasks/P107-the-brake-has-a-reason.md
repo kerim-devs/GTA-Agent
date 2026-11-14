@@ -1,0 +1,31 @@
+# P107: The brake has a reason
+
+## Why
+
+P106 gave the avoider the time to contact and a full brake for what stands in the lane. At the console it did what it was for: in the eight trips since (`/Users/kerim/recordings/pilot/20261114-051709`, `-052018`, `-052402`, `-052653`, `-053655`, `-054734`, `-055349`, `-055729`, all by night or at dawn, with `DECELERATION` at 7) the car did not once drive into the back of a queue or a lorry and need a recovery for it, where the night before P106 had that in most trips.
+
+The cost is the brake. Kerim's order for the driving is that the car drives through and brakes only with a reason ("Er darf auch nicht so oft bremsen. Er soll durchfahren. Es gibt keinen Grund, dass er bremst"); in his own drives L2 is down for 0.7 to 3.6 percent of the time. In those eight trips L2 was down for 5.9 percent of the following time by the avoider alone (65 s of 1109 s, 170 onsets, 5 to 13 a minute) and for 1.2 percent by the speed law. I looked at twelve of the onsets of `051709` in the picture: eight had a queue at a red light or a vehicle ahead in the lane (37.6, 58.1, 74.9, 84.9, 87.6, 108.4 s among them), three or four had nothing in the lane: an oncoming car in the other lane at 50.0 s and at 124.9 s (there for 0.54 s, from 19.3 to 8.9 m/s, on a bend), an empty junction with a van far off to the left at 64.9 s (0.64 s, 23 to 20 m/s), a car far ahead at 51.6 s. And where there is a reason the brake is often more than the reason asks: behind a car that drives slower the speed fell from 14 to 4 m/s (25.2 s) and from 17 to 7 (74.9 s), a stop asked of a car that only had to fall in behind.
+
+`must_brake` in `avoid.py` takes the closing speed as the smaller of the car's own speed and distance over time to contact. A thing that comes towards the car closes at about twice the car's speed and is braked for as if it stood; whether it is in the car's lane is judged by the picture's middle, which on a bend is not where the lane goes.
+
+## What to do
+
+Measure first. `play.jsonl` holds no detections, only `around_pedal` in each tick's `result` (-1 where the avoider braked) with `sent_pad`, the reading and its `gps_speed`. Run the detector (`objects.Detector`) over the second and a half before each onset in the eight recordings, as P106's scripts under `lab/avoid/` do, and sort every onset by the picture: a vehicle that stands in the car's lane, one that drives ahead slower, one that comes towards the car in the other lane, one that crosses, one parked or driving beside the lane, nothing. For each class the count, the seconds of L2, the speed lost, and for the thing braked for the closing speed the avoider reckoned against the car's own. That table decides what is changed; my twelve are a first look.
+
+Then take the brakes without a reason away without giving back what P106 won. What the measurement supports, in the order of what it costs: a thing whose closing speed is far above the car's own comes towards it and is not braked for (the push on the stick stays); the lane on a bend (`DriveRoute._around` knows the driver's stick and the reading's bearings, the avoider today only the picture's middle); a brake that ends when the time to contact is long again, and is as strong as the closing speed asks, so that behind a slower car the speed falls to that car's and not to a stop. State for each what it would have done to the two approaches of P106 (`035459` at 273 s and at 297 s): they must still be braked for in time.
+
+## Your files
+
+`pilot/src/pilot/avoid.py`; in `pilot/src/pilot/skills.py` only `DriveRoute._around` and the `AROUND_*` constants above it; tests in `pilot/tests/test_brake_for_the_lane.py` and new ones in `pilot/tests/test_brake_with_a_reason.py`, with recorded box sequences as small JSON fixtures under `pilot/tests/fixtures/`; `pilot/tests/test_avoid.py` only where a behaviour changes on purpose, each change named in the report; scripts and their output under `lab/avoid/` with the prefix `p107`, small files only (contact sheets as JPEG under 300 kB each); `docs/reports/P107-the-brake-has-a-reason.md`. Not yours: `drive.py`, `errands.py`, `minimap.py`, `gps.py`, `loop.py`, `objects.py` and the model.
+
+You work in `/private/tmp/gta-nearest-car` (branch `feat/pilot-brake-with-a-reason`, from the head of `feat/pilot-trip`; the environment is installed) and nowhere else. The untracked `lab/gps/p104-*.jsonl` there are another card's and stay as they are. The rules of `docs/tasks/README.md` hold: no commit, no console, no `PS5_HOST`, nothing sent to `127.0.0.1:9395`. The pilot drives at the console on this machine and uses the same detector on the same accelerator: one process at a time with `nice -n 15`, the detector over no more than 6000 frames in all with a pause of a few seconds between batches, the whole gate once at the end (`cd pilot && nice -n 15 .venv/bin/python tools/gate.py`; under this load it takes about 135 s and prints "default gate exceeded 90 seconds", and `test_a_server_that_is_silent_twice_is_left_alone_for_a_minute` fails now and then under load and passes alone, both known and not yours to fix).
+
+## Done when
+
+The report has the table of the onsets by class, before and after, by replay of the detector's boxes through the avoider over the same seconds. The replay is open loop, the recorded car had already braked: say what that can and cannot show.
+
+Tests that fail with the code as it is: over the recorded boxes of an oncoming vehicle in the other lane (`051709` at 124.9 s, and one more from your table) no brake is asked for; behind a recorded vehicle that drives slower the brake ends while the car is still faster than a crawl; the two approaches of P106 are braked for as early as today, to a tick.
+
+Replayed over the eight trips, the avoider's L2 is under 3 percent of the following time, or the report says by which class it is not and why that class is a reason. The tests of P96, P101, P106 and of the avoider pass, or the report says for each changed one what it asserted and why that is no longer wanted. The gate passes.
+
+What the console has to show cannot be tried by you. The next town trips are judged by: collisions followed by a recovery or a way round, the avoider's L2 as a share of the following time, its onsets a minute, and metres of route a second over the drive.
