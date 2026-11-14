@@ -3,7 +3,7 @@
 import pytest
 
 from pilot.cli import drive_config
-from pilot.contract import Reading
+from pilot.contract import Command, Reading
 from pilot.drive import Driver
 from pilot.sim import CAR_PROFILES, SimConfig, Simulator
 
@@ -135,3 +135,22 @@ def test_the_turn_at_a_junction_is_held_at_its_speed_and_not_crept_through():
             break
     assert progress >= sim.length - 3
     assert lowest >= 3.2
+
+
+def test_a_reading_that_runs_behind_does_not_keep_the_pedal_off():
+    # 20261114-042324 at 134 to 139 s: off the pedal before a junction the car lost 5 m/s each second,
+    # the slope of the printed distance still said 15 m/s two seconds later, and the car stood.
+    driver = Driver(drive_config(["style=bold", "coast_loss=4", "speed_lag=1.6"]))
+    plain = Driver(drive_config(["style=bold"]))
+    for each in (driver, plain):
+        each._last = Command(0.0, 0.0, 0.0, "follow")
+        each.speed_reason = "curve"
+        each._brake_limit = 9.0
+    throttle = brake = 0.0
+    for tick in range(40):  # 1.6 s with the reading stuck at 15 and the turn's speed at 9
+        now = 10 + tick * 0.04
+        throttle, brake = driver._pedal(9.0, 15.0, now, False, None)
+        driver._last = Command(0.0, throttle, brake, "follow")
+        still_off = plain._pedal(9.0, 15.0, now, False, None)
+    assert throttle > 0 and brake == 0
+    assert still_off[0] == 0

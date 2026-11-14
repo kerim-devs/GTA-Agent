@@ -904,6 +904,7 @@ class Trip:
         self.new_seat = False  # a seat just taken, not yet driven off from where it was taken
         self.fled = False  # whether the police were driven away from before the map was opened
         self.car_first = False  # whether a figure on foot with a star lit was sent to a car before the map
+        self.waypoint_stops = 0  # tries at the waypoint that the screen's guard took away
         self.thrown = False  # put on foot during the drive: the figure runs before it looks for a car
         self.retry_wait = 1
 
@@ -1114,6 +1115,14 @@ class Trip:
         self.issued = None
         name, why, done = last["name"], str(last.get("reason") or ""), last["status"] == "done"
         if why in {"flow", "pad_refused", "interrupted", "goal_trip_recovery", "replaced"}:
+            if name == "set_waypoint" and why == "flow":
+                # A try that ends on a screen it cannot read is taken away by the screen's guard, and
+                # was begun again for as long as the trip had time: seven times in a house, 45 s each
+                # (20261114-043707). Three of them are a failed waypoint like any other.
+                self.waypoint_stops += 1
+                if self.waypoint_stops >= 3:
+                    self.failure = "waypoint failed: three tries were taken away on a screen not read"
+                    self.failure_at = now
             return
         if name == "enter_vehicle":
             self.car_attempts += 1

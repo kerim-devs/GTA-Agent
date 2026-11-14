@@ -56,6 +56,10 @@ def test_the_map_is_known_by_its_footer_as_read_with_the_first_row_selected():
         assert map_screen(frame, text) == "map"
     other = SceneText((TextLine("Zoomen Wegpunkt Zurück Auswählen", 1.0, (700, 670, 900, 690), "full"),))
     assert map_screen(frame, other) is None
+    # 20261114-043707, in Michael's house: the footer as it was read there.
+    rooms = ("Markierung wählen ja Zurück O", "Ansicht wechseln")
+    text = SceneText(tuple(TextLine(word, 1.0, (700, 670, 900, 690), "full") for word in rooms))
+    assert map_screen(frame, text) == "interior"
 
 
 def test_other_selected_pause_tab_does_not_authorise_cross():

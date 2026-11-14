@@ -51,10 +51,14 @@ class Model:
         self.confirm = confirm
         self.wrong_menu = wrong_menu
         self.scroll_seen = False
+        self.house = False  # whether the map opens on the plan of a house
 
     def picture(self, frame):
         if self.screen == "pause":
             return read_legend([line("KARTE", 100, 100)])
+        if self.screen == "interior":
+            rooms = lines(["Spieler", "Kleidung", "Persönliches Fahrzeug", "Yoga"], 0, 0, None, 4, 1)
+            return replace(read_legend(rooms), screen="interior")
         if self.screen == "wrong":
             return read_legend([line("STATISTIKEN", 100, 100)])
         if self.lingering is not None:
@@ -92,9 +96,11 @@ class Model:
                 if button == "options" and self.screen == "game":
                     self.screen = "wrong" if self.wrong_menu else "pause"
                 elif button == "cross" and self.screen == "pause":
+                    self.screen = "interior" if self.house else "map"
+                elif button == "touchpad" and self.screen == "interior":
                     self.screen = "map"
                 elif button == "circle":
-                    self.screen = "pause" if self.screen == "map" else "game"
+                    self.screen = "pause" if self.screen in {"map", "interior"} else "game"
                 elif self.screen == "map":
                     rows = self.rows()
                     if button in {"up", "down"} and not self.stuck:
@@ -196,6 +202,15 @@ def test_explicit_instance_and_interruption():
     assert result.status == "done", result.reason
     assert model.instance == 3
     assert skill.stop().pad == NEUTRAL_PAD
+
+
+def test_in_a_house_the_view_is_changed_to_the_city_before_the_legend_is_read():
+    # 20261114-043707: Michael in his house after a switch, the map on its rooms, 45 s of nothing.
+    model = Model(["Spieler", "Golf", "Kino"])
+    model.house = True
+    _, result, _ = run({"place": "Kino"}, model)
+    assert result.status == "done" and "Kino" in result.reason
+    assert model.presses.count("touchpad") == 1
 
 
 def test_unknown_menu_never_gets_a_button():

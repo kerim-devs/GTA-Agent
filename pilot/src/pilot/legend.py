@@ -252,6 +252,7 @@ class LegendWaypoint:
         self.moved = None  # the direction of the last step through the list
         self.unread_since = None
         self.nudges = 0
+        self.views = 0  # presses of the touchpad on the plan of a house
 
     def stop(self, reason="interrupted"):
         self.finished = SkillResult(status="failed", reason=reason)
@@ -268,7 +269,7 @@ class LegendWaypoint:
         screen = map_screen(frame, text)
         if screen == "overview":
             screen = "pause"
-        elif screen != "map":
+        elif screen not in {"map", "interior"}:
             tabs = {line.text.upper() for line in text.lines if line.box[1] < 160}
             screen = "menu" if len(tabs & {"KARTE", "STATISTIKEN", "EINSTELLUNGEN", "SPIEL"}) >= 3 else None
         return replace(picture, screen=screen)
@@ -358,7 +359,11 @@ class LegendWaypoint:
                 self.ready_at = now + 0.10 + self.settle
             self.hold = False
         if now < self.release_at:
-            allowed = {"game", "pause"} if self.held.buttons == (self.profile.pause,) else {"pause", "map"}
+            allowed = (
+                {"game", "pause"}
+                if self.held.buttons == (self.profile.pause,)
+                else {"pause", "map", "interior"}
+            )
             if self.held.buttons == (self.profile.back,):
                 allowed.add("menu")
             return SkillResult(self.held) if screen in allowed else SkillResult()
@@ -386,7 +391,7 @@ class LegendWaypoint:
             if game:
                 return self._result()
             # Unknown pictures never authorise even a back button.
-            if screen in {"map", "pause", "menu"}:
+            if screen in {"map", "pause", "menu", "interior"}:
                 return self._press(self.profile.back, observation, ("exit", screen))
             return SkillResult()
         if self.phase == "open":
@@ -395,6 +400,14 @@ class LegendWaypoint:
             self.phase = "enter"
             self.attempts = 1
             return self._press(self.profile.pause, observation, ("open",))
+        if screen == "interior":
+            # After a switch Michael stood in his house: the map showed its rooms, the legend clothes,
+            # his car and yoga, the skill took it for no map and pressed nothing for 45 s, seven times
+            # over (20261114-043707). The touchpad changes the view to the city's map.
+            if self.views >= 2:
+                return self._fail("interior-map; the view did not change")
+            self.views += 1
+            return self._press("touchpad", observation, ("view",))
         if screen is None or screen == "menu":
             return self._fail("menu-not-map; inspect the screen")
         if screen == "game":

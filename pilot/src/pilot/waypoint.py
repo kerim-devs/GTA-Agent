@@ -36,6 +36,9 @@ def map_screen(frame: np.ndarray, text: SceneText) -> str | None:
     # With the list's first row selected the footer is read as "Markerung walen" and "Untersanter or"
     # (20261114-020515, three tries of 45 s each lost on it): a word near "Markierung" is enough.
     marking = get_close_matches("markierung", re.findall(r"[a-zäöüß]+", footer), n=1, cutoff=0.8)
+    if marking and "ansicht wechseln" in footer and "zoomen" not in footer:
+        # In a house the map opens on the plan of its rooms, with three rows of its own in the legend.
+        return "interior"
     if (
         "wegpunkt" in footer
         and "zoomen" in footer
