@@ -11,6 +11,9 @@ from pilot.contract import NEUTRAL, Command, Reading
 # Metres a second taken for a car that moves with its speed unread: the mean of the first town drives
 # (docs/LOG.md, 11 November).
 ASSUMED_SPEED = 4.0
+# Metres a second above the straight limit up to which the holding pedal rests; beyond it the pedal
+# falls with the excess, since the reading's noise on a straight stays inside this.
+STRAIGHT_EXCESS = 3.0
 
 
 @dataclass(frozen=True)
@@ -809,10 +812,12 @@ class Driver:
             ), 0.0
         speed = self._present_speed(speed, now)
         if self.speed_reason == "straight":
-            # A noisy GPS slope may ease the pedal, but cannot brake an empty straight.
+            # A noisy GPS slope may ease the pedal, but cannot brake an empty straight. The pedal
+            # that holds the limit in one car carries a faster one far past it (35 m/s under a
+            # limit of 22), so well above the limit it falls with the excess instead of resting.
             return _clip(
                 cfg.hold_throttle + cfg.speed_gain * (cfg.speed_limit - speed),
-                cfg.hold_throttle,
+                cfg.hold_throttle if speed <= cfg.speed_limit + STRAIGHT_EXCESS else 0.0,
                 cfg.cruise_throttle,
             ), 0.0
         error = limit - speed

@@ -35,6 +35,16 @@ def test_heading_correction_does_not_brake_a_straight_road():
     assert any(c.steer > 0.3 for c in commands)
 
 
+def test_a_car_far_above_the_limit_on_a_straight_is_not_held_at_the_pedal():
+    path = [(0, y) for y in range(12, 100, 6)]
+    fast = Driver(drive_config(["style=bold", "speed_limit=22"]))
+    commands = [fast.step(road(path), i / 30, True, speed=33) for i in range(30)]
+    assert all(c.throttle == 0 and c.brake == 0 for c in commands)
+    near = Driver(drive_config(["style=bold", "speed_limit=22"]))
+    commands = [near.step(road(path), i / 30, True, speed=24) for i in range(30)]
+    assert all(c.throttle >= 0.6 and c.brake == 0 for c in commands)
+
+
 def test_curve_ahead_lifts_before_braking_is_needed():
     path = [(0, y) for y in range(12, 43, 6)] + [(-x, 42) for x in range(6, 85, 6)]
     driver = Driver(drive_config(["style=bold"]))
