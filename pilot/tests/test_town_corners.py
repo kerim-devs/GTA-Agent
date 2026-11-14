@@ -100,3 +100,38 @@ def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
     assert progress >= sim.length - 3
     assert maximum <= 5
     assert len(entries) == blocks and max(entries) <= 7
+
+
+def test_the_turn_at_a_junction_is_held_at_its_speed_and_not_crept_through():
+    # 20261114-015901: the car came to its turns at 0 to 4 m/s. Planned at 3 m/s with the pedal
+    # lifted two early, the nominal car fell to 2.5 in the junction; held at the turn's speed it
+    # keeps 3.5, and the block's five-metre bound above still holds for every profile.
+    config = SimConfig(
+        **CAR_PROFILES["nominal"],
+        dead_zone=0.25,
+        delay=0.14,
+        max_time=160,
+        gps_wrong=0,
+        gps_dropout=0,
+        path_missing=0,
+        damage_probability=0,
+        outlier_probability=0,
+        noise_degrees=0.5,
+        path_noise=0.15,
+        path_spacing=6,
+        path_horizon=90,
+    )
+    sim = Simulator(((0.0, 0.0), (0.0, 150.0), (150.0, 150.0)), config=config)
+    driver = Driver(drive_config(["style=bold"]))
+    lowest = 99.0
+    while sim.time < config.max_time:
+        reading, moving = sim.observe()
+        command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+        _error, progress = sim._route_position()
+        if 135 <= progress <= 170:
+            lowest = min(lowest, sim.speed)
+        sim.advance(command)
+        if progress >= sim.length - 3:
+            break
+    assert progress >= sim.length - 3
+    assert lowest >= 3.2

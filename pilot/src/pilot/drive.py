@@ -73,6 +73,7 @@ class DriveConfig:
     planned_deceleration: float = 2.0  # Metres/s^2 used to lift ahead of a bend.
     braking_deceleration: float = 4.0  # Forward braking envelope; lift at planned_deceleration first.
     junction_speed: float = 6.0  # Tight junction target, below the measured human 14-21 m/s turns.
+    turn_speed: float = 0.0  # Least speed planned for a turn of sixty degrees and more at a junction.
     speed_smoothing: float = 0.25  # Suppress frame-pair sensor noise before pedal feedback.
     speed_gain: float = 0.18  # Throttle feedback per m/s below the target.
     brake_gain: float = 0.18  # Brake feedback per m/s above the target.
@@ -235,6 +236,7 @@ class Driver:
         self._brake_since: float | None = None
         self.speed_reason = "unknown-speed"
         self._turn_limit: float | None = None
+        self._turn_junction = False  # whether the remembered corner is a right angle at a junction
         self._road_heading = 0.0
         self._turn_remaining = 0.0
 
@@ -711,7 +713,7 @@ class Driver:
         self._brake_limit = min(
             self._brake_limit, sqrt(cfg.junction_speed**2 + 2 * cfg.braking_deceleration * remaining)
         )
-        near_corner = None
+        near_corner, near_junction = None, False
         step = cfg.curve_step
         for index in range(1, len(path) - 1):
             left, right = max(0, index - step), min(len(path) - 1, index + step)
@@ -731,6 +733,11 @@ class Driver:
             corner = max(cfg.slow_speed, sqrt(cfg.lateral_acceleration * scale / max(curvature, 1e-6)))
             if angle >= 60:
                 corner = min(corner, cfg.junction_speed)
+            junction = angle >= 80 and cfg.turn_speed > 0
+            if junction:
+                # At a right angle the route's line has a corner where the car has a junction's
+                # width to turn in. A bend of sixty degrees is the road itself and keeps its speed.
+                corner = max(corner, cfg.turn_speed)
             # Plan to the measured bend at b, while remembering an arc from a.
             bend_at = travel[index]
             remaining = max(0.0, bend_at * scale - reserve)
@@ -740,7 +747,8 @@ class Driver:
             if planned < limit:
                 limit, self.speed_reason = planned, "curve"
             if travel[left] * scale <= max(40.0, (speed or 0) * 2):
-                near_corner = corner if near_corner is None else min(near_corner, corner)
+                if near_corner is None or corner < near_corner:
+                    near_corner, near_junction = corner, junction
         # Keep a genuine nearby corner while it passes under the arrow. Pixel wander
         # on a straight must not create a remembered corner during a heading correction.
         a, b = path[0], path[min(step, len(path) - 1)]
@@ -749,6 +757,7 @@ class Driver:
         if heading_error < 10:
             self._turn_limit = None
         if near_corner is not None and (self._turn_limit is None or near_corner <= self._turn_limit * 1.1):
+            self._turn_junction = near_junction
             self._turn_limit = near_corner if self._turn_limit is None else min(self._turn_limit, near_corner)
             self._turn_remaining = max(2 * cfg.lookahead_px * scale, (speed or 0) * cfg.gps_window / 2)
         if self._turn_limit is not None and heading_error >= 10:
@@ -798,7 +807,12 @@ class Driver:
         # A small nonzero command is lifted above the trigger dead zone by the profile.
         # Lift completely before the bend instead of continuing to accelerate into it.
         hold = min(cfg.hold_throttle, limit * 0.05)
-        throttle = _clip(hold + cfg.speed_gain * (error - 2), 0, cfg.cruise_throttle) if error > 0 else 0.0
+        # Before a bend the pedal is lifted two metres a second early. In the turn at a junction
+        # there is nothing left to lift for: the car is held at the turn's speed, not let fall below.
+        early = 0.0 if self.speed_reason == "curve-exit" and self._turn_junction else 2.0
+        throttle = (
+            _clip(hold + cfg.speed_gain * (error - early), 0, cfg.cruise_throttle) if error > 0 else 0.0
+        )
         if self.speed_reason in {"arrival", "flagged-map"}:
             throttle = _clip(0.25 + cfg.speed_gain * error, 0, cfg.cruise_throttle)
         brake = 0.0

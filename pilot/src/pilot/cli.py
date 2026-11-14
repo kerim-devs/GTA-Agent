@@ -63,6 +63,10 @@ BOLD = {
     "speed_limit": 28.0,
     "cruise_throttle": 1.0,
     "slow_speed": 3.0,
+    # A junction is wider than the corner of the route's line. Planned at 3 m/s the car came to its
+    # turns at 0 to 4 (20261114-015901), where Kerim turns at 14 to 21. Six is what the simulator's
+    # low-grip car still takes within five metres of the line; seven and eight leave it.
+    "turn_speed": 6.0,
     "hold_throttle": 0.6,
     "lateral_acceleration": 3.0,
     "map_scale_min": 1.4,
