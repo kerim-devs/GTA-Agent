@@ -1,0 +1,6 @@
+interval 0.05 planned {'rain-start': 310, 'rain-end': 207}
+rain-start 150 / 310 total 4934 pause 3s
+rain-start 300 / 310 total 5084 pause 3s
+finished rain-start 310 total 5094
+rain-end 150 / 207 total 5244 pause 3s
+finished rain-end 207 total 5301

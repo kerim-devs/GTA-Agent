@@ -1,0 +1,19 @@
+..F..................................................................... [ 86%]
+...........                                                              [100%]
+=================================== FAILURES ===================================
+_____________ test_the_closer_the_harder_and_close_ahead_is_urgent _____________
+
+    def test_the_closer_the_harder_and_close_ahead_is_urgent():
+        far = approach(centre=0.5, bottom=0.5, height=0.05)
+        close = approach(centre=0.5, bottom=0.6, height=0.14)
+>       assert abs(close.steer) > abs(far.steer) > 0 and close.pedal < far.pedal
+E       assert (0.15352941176470591 > 0 and 0.0 < 0.0)
+E        +  where 0.15352941176470591 = abs(-0.15352941176470591)
+E        +    where -0.15352941176470591 = Around(steer=-0.15352941176470591, pedal=0.0, urgent=True, brake=1.0).steer
+E        +  and   0.0 = Around(steer=-0.45, pedal=0.0, urgent=True, brake=1.0).pedal
+E        +  and   0.0 = Around(steer=-0.15352941176470591, pedal=0.0, urgent=True, brake=1.0).pedal
+
+pilot/tests/test_avoid.py:60: AssertionError
+=========================== short test summary info ============================
+FAILED pilot/tests/test_avoid.py::test_the_closer_the_harder_and_close_ahead_is_urgent
+1 failed, 82 passed in 3.27s

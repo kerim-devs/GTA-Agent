@@ -1,0 +1,50 @@
+..F.........................FF.......................................... [ 86%]
+...........                                                              [100%]
+=================================== FAILURES ===================================
+_____________ test_the_closer_the_harder_and_close_ahead_is_urgent _____________
+
+    def test_the_closer_the_harder_and_close_ahead_is_urgent():
+        far = approach(centre=0.5, bottom=0.5, height=0.05)
+        close = approach(centre=0.5, bottom=0.6, height=0.14)
+>       assert abs(close.steer) > abs(far.steer) > 0 and close.pedal < far.pedal
+E       assert (0.15352941176470591 > 0 and 0.0 < 0.0)
+E        +  where 0.15352941176470591 = abs(-0.15352941176470591)
+E        +    where -0.15352941176470591 = Around(steer=-0.15352941176470591, pedal=0.0, urgent=True, brake=1.0).steer
+E        +  and   0.0 = Around(steer=-0.45, pedal=0.0, urgent=True, brake=1.0).pedal
+E        +  and   0.0 = Around(steer=-0.15352941176470591, pedal=0.0, urgent=True, brake=1.0).pedal
+
+pilot/tests/test_avoid.py:60: AssertionError
+_ test_a_queue_that_moves_on_after_twenty_seconds_is_waited_out_and_the_drive_goes_on _
+
+    def test_a_queue_that_moves_on_after_twenty_seconds_is_waited_out_and_the_drive_goes_on():
+        sim = world(wall=8)
+        lead = [10.0]
+    
+        def moves_on(sim):
+            if sim.time >= 20:
+                sim.walls = ()
+                lead[0] += 5 * sim.config.dt
+    
+        result, stood, states = drive(sim, 60, boxes=lambda sim: box(sim, lead[0]), until=moves_on)
+>       assert stood is not None and stood < 12
+E       assert (None is not None)
+
+pilot/tests/test_drive_queue.py:99: AssertionError
+_ test_a_parked_car_that_never_moves_is_waited_behind_for_thirty_seconds_and_then_met_as_before _
+
+    def test_a_parked_car_that_never_moves_is_waited_behind_for_thirty_seconds_and_then_met_as_before():
+        sim = world(wall=8)
+        result, stood, states = drive(sim, 70, boxes=lambda sim: box(sim, 10.0))
+        assert stood is not None
+        assert first(states, "dead-or-held") is None
+        # Nothing is tried while the wait lasts; the usual two seconds of standing and the recovery follow it.
+        began = first(states, "recovery-reverse")
+>       assert began is not None and 30 <= began - stood <= 36
+E       assert (44.30000000000005 is not None and 30 <= (44.30000000000005 - 50.86666666666634))
+
+pilot/tests/test_drive_queue.py:113: AssertionError
+=========================== short test summary info ============================
+FAILED pilot/tests/test_avoid.py::test_the_closer_the_harder_and_close_ahead_is_urgent
+FAILED pilot/tests/test_drive_queue.py::test_a_queue_that_moves_on_after_twenty_seconds_is_waited_out_and_the_drive_goes_on
+FAILED pilot/tests/test_drive_queue.py::test_a_parked_car_that_never_moves_is_waited_behind_for_thirty_seconds_and_then_met_as_before
+3 failed, 80 passed in 3.13s

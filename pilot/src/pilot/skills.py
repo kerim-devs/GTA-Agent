@@ -118,8 +118,8 @@ class Skill:
         except Exception as exc:
             return self.stop(f"skill-error: {type(exc).__name__}")
 
-    AROUND_BRAKE = 0.6  # L2 before something close and straight ahead
-    AROUND_BRAKE_SPEED = 5.0  # m/s the speed has to be known above; a brake held at a standstill is reverse
+    AROUND_BRAKE = 1.0  # full L2 when the closing obstacle consumes the stopping distance
+    AROUND_BRAKE_SPEED = 2.0  # release before a held brake becomes reverse
 
     def _around(self, command, observation: Observation) -> Pad:
         """The driver's command, bent around what the detector sees in the way while the route is followed."""
@@ -131,14 +131,16 @@ class Skill:
             and self.driver.bypassing
             and waits_behind(observation.objects, observation.objects_time, observation.time)
         )
-        around = self.avoider.step(
-            observation.objects, observation.objects_time, observation.time, bypass=bypass
-        )
         speed = observation.reading.gps_speed
+        if speed is not None and not 0 <= speed < float("inf"):
+            speed = None
+        around = self.avoider.step(
+            observation.objects, observation.objects_time, observation.time, bypass=bypass, speed=speed
+        )
         brake = command.brake
-        rolling = speed is not None and speed > self.AROUND_BRAKE_SPEED and observation.moving is not False
-        if around.urgent and rolling:
-            brake = max(brake, self.AROUND_BRAKE)
+        rolling = (speed is None or speed > self.AROUND_BRAKE_SPEED) and observation.moving is not False
+        if around.brake and rolling:
+            brake = max(brake, self.AROUND_BRAKE * around.brake)
         # For the log: what the avoider did to the pedal on this tick, -1 where it braked.
         self.around_pedal = -1.0 if brake > command.brake else around.pedal
         return Pad(

@@ -1,0 +1,479 @@
+[
+  {
+    "session": "035459",
+    "batch": "same-clean",
+    "onset": 259.474,
+    "frame_id": 271495,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Black car crossing the intersection"
+  },
+  {
+    "session": "035459",
+    "batch": "same-clean",
+    "onset": 259.641,
+    "frame_id": 271507,
+    "old_active": true,
+    "verdict": "observed traffic",
+    "reason": "Black car crossing the intersection"
+  },
+  {
+    "session": "035459",
+    "batch": "same-clean",
+    "onset": 260.893,
+    "frame_id": 271582,
+    "old_active": false,
+    "verdict": "unproved",
+    "reason": "Small vehicle box after the intersection turn; collision path unproved"
+  },
+  {
+    "session": "035459",
+    "batch": "same-clean",
+    "onset": 263.477,
+    "frame_id": 271733,
+    "old_active": false,
+    "verdict": "unproved",
+    "reason": "Small car-labelled box at the palm tree; identity and brake attribution unproved"
+  },
+  {
+    "session": "040426",
+    "batch": "day-clean",
+    "onset": 109.817,
+    "frame_id": 296449,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing car ahead or crossing the junction"
+  },
+  {
+    "session": "040426",
+    "batch": "day-clean",
+    "onset": 110.767,
+    "frame_id": 296504,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing lorry ahead"
+  },
+  {
+    "session": "040426",
+    "batch": "day-clean",
+    "onset": 111.47,
+    "frame_id": 296549,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing car ahead or crossing the junction"
+  },
+  {
+    "session": "040426",
+    "batch": "day-clean",
+    "onset": 112.687,
+    "frame_id": 296621,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing car ahead or crossing the junction"
+  },
+  {
+    "session": "040426",
+    "batch": "day-clean",
+    "onset": 115.072,
+    "frame_id": 296765,
+    "old_active": false,
+    "verdict": "fault",
+    "reason": "Oncoming vehicle left of the own lane"
+  },
+  {
+    "session": "040426",
+    "batch": "day-clean",
+    "onset": 129.454,
+    "frame_id": 297622,
+    "old_active": true,
+    "verdict": "fault",
+    "reason": "Duplicate box on the own white car after the impact"
+  },
+  {
+    "session": "040426",
+    "batch": "day-clean",
+    "onset": 129.637,
+    "frame_id": 297633,
+    "old_active": true,
+    "verdict": "fault",
+    "reason": "Duplicate own-car box, a second onset in the same incident"
+  },
+  {
+    "session": "040426",
+    "batch": "day-clean",
+    "onset": 136.078,
+    "frame_id": 298020,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing lorry ahead"
+  },
+  {
+    "session": "040426",
+    "batch": "day-clean",
+    "onset": 136.327,
+    "frame_id": 298033,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing lorry ahead"
+  },
+  {
+    "session": "040426",
+    "batch": "day-clean",
+    "onset": 137.461,
+    "frame_id": 298103,
+    "old_active": false,
+    "verdict": "unproved",
+    "reason": "Small vehicle beyond the adjacent lorry; target association unproved"
+  },
+  {
+    "session": "040426",
+    "batch": "day-clean",
+    "onset": 143.752,
+    "frame_id": 298477,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing car ahead or crossing the junction"
+  },
+  {
+    "session": "040426",
+    "batch": "day-clean",
+    "onset": 145.851,
+    "frame_id": 298604,
+    "old_active": true,
+    "verdict": "fault",
+    "reason": "Lorry left beside the right-hand bend after the intended path turns away"
+  },
+  {
+    "session": "040426",
+    "batch": "day-clean",
+    "onset": 166.841,
+    "frame_id": 299863,
+    "old_active": false,
+    "verdict": "unproved",
+    "reason": "Vehicle beyond the junction while the own car turns onto the pavement"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-start",
+    "onset": 16.237,
+    "frame_id": 17845,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Queue ahead"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-start",
+    "onset": 16.671,
+    "frame_id": 17876,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Queue ahead"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-start",
+    "onset": 17.389,
+    "frame_id": 17919,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Queue ahead"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-start",
+    "onset": 31.218,
+    "frame_id": 18746,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Car crossing the intersection"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-start",
+    "onset": 31.47,
+    "frame_id": 18763,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Car crossing the intersection"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-clean",
+    "onset": 41.929,
+    "frame_id": 19390,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing car ahead or crossing the junction"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-clean",
+    "onset": 47.166,
+    "frame_id": 19703,
+    "old_active": false,
+    "verdict": "fault",
+    "reason": "White car in the adjacent right lane"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-clean",
+    "onset": 48.734,
+    "frame_id": 19797,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing car ahead or crossing the junction"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-clean",
+    "onset": 51.938,
+    "frame_id": 19990,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing car ahead or crossing the junction"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-clean",
+    "onset": 53.191,
+    "frame_id": 20065,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing car ahead or crossing the junction"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-clean",
+    "onset": 60.465,
+    "frame_id": 20501,
+    "old_active": false,
+    "verdict": "unproved",
+    "reason": "Central traffic at the junction; lane ownership unproved"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-clean",
+    "onset": 60.931,
+    "frame_id": 20527,
+    "old_active": false,
+    "verdict": "unproved",
+    "reason": "Same junction traffic, repeated onset; lane ownership unproved"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-clean",
+    "onset": 61.265,
+    "frame_id": 20548,
+    "old_active": false,
+    "verdict": "unproved",
+    "reason": "Same junction traffic, repeated onset; lane ownership unproved"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-clean",
+    "onset": 61.498,
+    "frame_id": 20562,
+    "old_active": false,
+    "verdict": "unproved",
+    "reason": "Same junction traffic, repeated onset; lane ownership unproved"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-clean",
+    "onset": 63.884,
+    "frame_id": 20705,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing car ahead or crossing the junction"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-clean",
+    "onset": 67.252,
+    "frame_id": 20907,
+    "old_active": false,
+    "verdict": "unproved",
+    "reason": "Vehicle right beside the current track; the retained threat may already be clear"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-clean",
+    "onset": 79.183,
+    "frame_id": 21623,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing car ahead or crossing the junction"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-clean",
+    "onset": 81.301,
+    "frame_id": 21749,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing car ahead or crossing the junction"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-clean",
+    "onset": 83.669,
+    "frame_id": 21892,
+    "old_active": true,
+    "verdict": "observed traffic",
+    "reason": "Closing car ahead or crossing the junction"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-end",
+    "onset": 92.578,
+    "frame_id": 22423,
+    "old_active": true,
+    "verdict": "fault",
+    "reason": "Oversized false vehicle box over the road/own car"
+  },
+  {
+    "session": "024817",
+    "batch": "rain-end",
+    "onset": 97.299,
+    "frame_id": 22709,
+    "old_active": false,
+    "verdict": "fault",
+    "reason": "Oversized false vehicle box over the road/own car"
+  },
+  {
+    "session": "005357",
+    "batch": "freeway-clean",
+    "onset": 416.382,
+    "frame_id": 277266,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing vehicle ahead on the freeway"
+  },
+  {
+    "session": "005357",
+    "batch": "freeway-clean",
+    "onset": 417.165,
+    "frame_id": 277312,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing vehicle ahead on the freeway"
+  },
+  {
+    "session": "005357",
+    "batch": "freeway-clean",
+    "onset": 477.243,
+    "frame_id": 280913,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing vehicle ahead on the freeway"
+  },
+  {
+    "session": "005357",
+    "batch": "freeway-clean",
+    "onset": 479.979,
+    "frame_id": 281079,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing vehicle ahead on the freeway"
+  },
+  {
+    "session": "005357",
+    "batch": "freeway-clean",
+    "onset": 481.714,
+    "frame_id": 281182,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing vehicle ahead on the freeway"
+  },
+  {
+    "session": "005357",
+    "batch": "freeway-clean",
+    "onset": 482.231,
+    "frame_id": 281214,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing vehicle ahead on the freeway"
+  },
+  {
+    "session": "005357",
+    "batch": "freeway-clean",
+    "onset": 482.899,
+    "frame_id": 281254,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing vehicle ahead on the freeway"
+  },
+  {
+    "session": "005357",
+    "batch": "freeway-clean",
+    "onset": 484.214,
+    "frame_id": 281322,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing vehicle ahead on the freeway"
+  },
+  {
+    "session": "005357",
+    "batch": "freeway-clean",
+    "onset": 484.532,
+    "frame_id": 281342,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing vehicle ahead on the freeway"
+  },
+  {
+    "session": "005357",
+    "batch": "freeway-clean",
+    "onset": 484.832,
+    "frame_id": 281360,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing vehicle ahead on the freeway"
+  },
+  {
+    "session": "005357",
+    "batch": "freeway-clean",
+    "onset": 514.778,
+    "frame_id": 283134,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing lorry ahead"
+  },
+  {
+    "session": "005357",
+    "batch": "freeway-clean",
+    "onset": 516.064,
+    "frame_id": 283209,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing lorry ahead"
+  },
+  {
+    "session": "005357",
+    "batch": "freeway-clean",
+    "onset": 518.682,
+    "frame_id": 283362,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing lorry ahead"
+  },
+  {
+    "session": "005357",
+    "batch": "freeway-clean",
+    "onset": 518.934,
+    "frame_id": 283376,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing lorry ahead"
+  },
+  {
+    "session": "005357",
+    "batch": "freeway-clean",
+    "onset": 519.602,
+    "frame_id": 283419,
+    "old_active": false,
+    "verdict": "observed traffic",
+    "reason": "Closing lorry ahead"
+  }
+]

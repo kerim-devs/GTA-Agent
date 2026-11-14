@@ -1,0 +1,37 @@
+interval 0.05 planned {'day-queue': 124, 'day-lorry': 113, 'night-pile': 139, 'night-light': 154, 'garbage': 311, 'same-clean': 227, 'day-clean': 1075, 'rain-clean': 768, 'freeway-clean': 1680}
+finished day-queue 124 total 124
+finished day-lorry 113 total 237
+finished night-pile 139 total 376
+night-light 150 / 154 total 526 pause 3s
+finished night-light 154 total 530
+garbage 150 / 311 total 680 pause 3s
+garbage 300 / 311 total 830 pause 3s
+finished garbage 311 total 841
+same-clean 150 / 227 total 991 pause 3s
+finished same-clean 227 total 1068
+day-clean 150 / 1075 total 1218 pause 3s
+day-clean 300 / 1075 total 1368 pause 3s
+day-clean 450 / 1075 total 1518 pause 3s
+day-clean 600 / 1075 total 1668 pause 3s
+day-clean 750 / 1075 total 1818 pause 3s
+day-clean 900 / 1075 total 1968 pause 3s
+day-clean 1050 / 1075 total 2118 pause 3s
+finished day-clean 1075 total 2143
+rain-clean 150 / 768 total 2293 pause 3s
+rain-clean 300 / 768 total 2443 pause 3s
+rain-clean 450 / 768 total 2593 pause 3s
+rain-clean 600 / 768 total 2743 pause 3s
+rain-clean 750 / 768 total 2893 pause 3s
+finished rain-clean 768 total 2911
+freeway-clean 150 / 1680 total 3061 pause 3s
+freeway-clean 300 / 1680 total 3211 pause 3s
+freeway-clean 450 / 1680 total 3361 pause 3s
+freeway-clean 600 / 1680 total 3511 pause 3s
+freeway-clean 750 / 1680 total 3661 pause 3s
+freeway-clean 900 / 1680 total 3811 pause 3s
+freeway-clean 1050 / 1680 total 3961 pause 3s
+freeway-clean 1200 / 1680 total 4111 pause 3s
+freeway-clean 1350 / 1680 total 4261 pause 3s
+freeway-clean 1500 / 1680 total 4411 pause 3s
+freeway-clean 1650 / 1680 total 4561 pause 3s
+finished freeway-clean 1680 total 4591

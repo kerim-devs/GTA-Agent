@@ -1,0 +1,31 @@
+....F................................................................... [ 68%]
+.................................                                        [100%]
+=================================== FAILURES ===================================
+_______ test_a_known_speed_and_a_far_obstacle_use_the_stopping_distance ________
+
+    def test_a_known_speed_and_a_far_obstacle_use_the_stopping_distance():
+        skill = DriveRoute({})
+        # A visible stopped car at 80 m, with 3 m/s² and a 0.2 s pad delay. Boxes remain beyond FAR
+        # when L2 must begin. This model checks the stopping law, not the detector's live range.
+        distance, speed, dt = 80.0, 22.0, 0.05
+        pending = [0.0] * 4
+        first = None
+        for i in range(200):
+            pad = skill._around(FORWARD, observation(i * dt, [vehicle(distance)], speed))
+            if pad.l2 and first is None:
+                first = distance
+            pending.append(pad.l2)
+            applied = pending.pop(0)
+            next_speed = max(0.0, speed - 3.0 * applied * dt)
+            # The runtime releases L2 near rest; passive drag completes the last two m/s.
+            if pad.r2 == 0 and next_speed <= 2:
+                next_speed = max(0.0, next_speed - 3.0 * dt)
+            distance -= (speed + next_speed) / 2 * dt
+            speed = next_speed
+>           assert distance > 0
+E           assert -0.2000000000001454 > 0
+
+pilot/tests/test_brake_for_the_lane.py:77: AssertionError
+=========================== short test summary info ============================
+FAILED pilot/tests/test_brake_for_the_lane.py::test_a_known_speed_and_a_far_obstacle_use_the_stopping_distance
+1 failed, 104 passed in 3.11s

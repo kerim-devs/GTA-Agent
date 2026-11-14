@@ -1,0 +1,65 @@
+growth_alone_brakes_a_fast_approach(speed):
+        skill = DriveRoute({})
+        pads = [skill._around(FORWARD, observation(i * 0.1, [vehicle(60 - 5 * i)], speed)) for i in range(6)]
+>       assert any(p.l2 == 1 and p.r2 == 0 for p in pads)
+E       assert False
+E        +  where False = any(<generator object test_growth_alone_brakes_a_fast_approach.<locals>.<genexpr> at 0x10ac03d30>)
+
+tests/test_brake_for_the_lane.py:131: AssertionError
+_________________ test_growth_alone_brakes_a_fast_approach[-1] _________________
+
+speed = -1
+
+    @pytest.mark.parametrize("speed", [None, float("nan"), float("inf"), -1])
+    def test_growth_alone_brakes_a_fast_approach(speed):
+        skill = DriveRoute({})
+        pads = [skill._around(FORWARD, observation(i * 0.1, [vehicle(60 - 5 * i)], speed)) for i in range(6)]
+>       assert any(p.l2 == 1 and p.r2 == 0 for p in pads)
+E       assert False
+E        +  where False = any(<generator object test_growth_alone_brakes_a_fast_approach.<locals>.<genexpr> at 0x1172a7b90>)
+
+tests/test_brake_for_the_lane.py:131: AssertionError
+__________ test_a_stopped_car_releases_l2_and_waits_without_creeping ___________
+
+    def test_a_stopped_car_releases_l2_and_waits_without_creeping():
+        skill = DriveRoute({})
+        for i in range(15):
+            skill._around(FORWARD, observation(i * 0.1, [vehicle(20 - i)], 12))
+        pad = skill._around(FORWARD, observation(1.6, [vehicle(0.8)], 0, moving=False))
+>       assert pad.l2 == pad.r2 == 0
+E       assert 0.0 == 0.09999999999999998
+E        +  where 0.0 = Pad(buttons=(), left=(0.0, 0.0), right=(0.0, 0.0), l2=0.0, r2=0.09999999999999998).l2
+E        +  and   0.09999999999999998 = Pad(buttons=(), left=(0.0, 0.0), right=(0.0, 0.0), l2=0.0, r2=0.09999999999999998).r2
+
+tests/test_brake_for_the_lane.py:139: AssertionError
+_____ test_a_close_obstacle_hidden_by_the_own_car_keeps_only_a_fresh_brake _____
+
+    def test_a_close_obstacle_hidden_by_the_own_car_keeps_only_a_fresh_brake():
+        skill = DriveRoute({})
+        for i in range(8):
+            skill._around(FORWARD, observation(i * 0.1, [vehicle(25 - i * 2)], 16))
+        pad = skill._around(FORWARD, observation(0.85, [], 16))
+>       assert pad.l2 == 1 and pad.r2 == 0
+E       assert (0.0 == 1)
+E        +  where 0.0 = Pad(buttons=(), left=(0.0, 0.0), right=(0.0, 0.0), l2=0.0, r2=1.0).l2
+
+tests/test_brake_for_the_lane.py:149: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_brake_for_the_lane.py::test_the_recorded_approach_brakes_before_the_old_nearness_threshold[queue-272.3]
+FAILED tests/test_brake_for_the_lane.py::test_the_recorded_approach_brakes_before_the_old_nearness_threshold[lorry-295.26]
+FAILED tests/test_brake_for_the_lane.py::test_the_recorded_lorry_still_gets_full_braking_during_the_gps_gap
+FAILED tests/test_brake_for_the_lane.py::test_the_recorded_queue_grows_fast_enough_without_any_gps_speed
+FAILED tests/test_brake_for_the_lane.py::test_width_growth_still_brakes_when_the_bonnet_hides_the_lead_cars_height
+FAILED tests/test_brake_for_the_lane.py::test_a_known_speed_and_a_far_obstacle_use_the_stopping_distance[100.0-22.0]
+FAILED tests/test_brake_for_the_lane.py::test_a_known_speed_and_a_far_obstacle_use_the_stopping_distance[250.0-34.0]
+FAILED tests/test_brake_for_the_lane.py::test_the_recorded_queue_does_not_prove_a_stop_at_three_metres_per_second_squared
+FAILED tests/test_brake_for_the_lane.py::test_growth_alone_brakes_a_fast_approach[None]
+FAILED tests/test_brake_for_the_lane.py::test_growth_alone_brakes_a_fast_approach[nan]
+FAILED tests/test_brake_for_the_lane.py::test_growth_alone_brakes_a_fast_approach[inf]
+FAILED tests/test_brake_for_the_lane.py::test_growth_alone_brakes_a_fast_approach[-1]
+FAILED tests/test_brake_for_the_lane.py::test_a_stopped_car_releases_l2_and_waits_without_creeping
+FAILED tests/test_brake_for_the_lane.py::test_a_close_obstacle_hidden_by_the_own_car_keeps_only_a_fresh_brake
+14 failed, 10 passed in 0.27s
+
+baseline exit 1
+Both current files restored byte for byte.

@@ -1,0 +1,24 @@
+day-queue frames 124 seconds 9 onsets {'before': 0, 'after': 5} per minute {'before': 0.0, 'after': 33.333}
+after onsets [(267.798, 271991), (272.286, 272255), (273.27, 272314), (274.14, 272365), (274.509, 272383)]
+day-lorry frames 113 seconds 8 onsets {'before': 2, 'after': 4} per minute {'before': 15.0, 'after': 30.0}
+after onsets [(290.387, 273335), (294.358, 273573), (295.241, 273625), (297.743, 273775)]
+night-pile frames 139 seconds 10 onsets {'before': 4, 'after': 6} per minute {'before': 24.0, 'after': 36.0}
+after onsets [(20.828, 205705), (22.946, 205831), (23.664, 205874), (24.229, 205910), (24.347, 205917), (25.63, 205992)]
+night-light frames 154 seconds 11 onsets {'before': 0, 'after': 3} per minute {'before': 0.0, 'after': 16.364}
+after onsets [(62.444, 229368), (63.545, 229436), (65.03, 229525)]
+garbage frames 311 seconds 26 onsets {'before': 0, 'after': 1} per minute {'before': 0.0, 'after': 2.308}
+after onsets [(20.666, 75553)]
+garbage-approach frames 193 seconds 14 onsets {'before': 0, 'after': 1} per minute {'before': 0.0, 'after': 4.286}
+after onsets [(35.014, 76415)]
+same-clean frames 227 seconds 16 onsets {'before': 1, 'after': 4} per minute {'before': 3.75, 'after': 15.0}
+after onsets [(259.474, 271495), (259.641, 271507), (260.893, 271582), (263.477, 271733)]
+day-clean frames 1075 seconds 77 onsets {'before': 3, 'after': 13} per minute {'before': 2.338, 'after': 10.13}
+after onsets [(109.817, 296449), (110.767, 296504), (111.47, 296549), (112.687, 296621), (115.072, 296765), (129.454, 297622), (129.637, 297633), (136.078, 298020), (136.327, 298033), (137.461, 298103), (143.752, 298477), (145.851, 298604), (166.841, 299863)]
+rain-clean frames 768 seconds 55 onsets {'before': 1, 'after': 14} per minute {'before': 1.091, 'after': 15.273}
+after onsets [(41.929, 19390), (47.166, 19703), (48.734, 19797), (51.938, 19990), (53.191, 20065), (60.465, 20501), (60.931, 20527), (61.265, 20548), (61.498, 20562), (63.884, 20705), (67.252, 20907), (79.183, 21623), (81.301, 21749), (83.669, 21892)]
+rain-start frames 310 seconds 22 onsets {'before': 0, 'after': 5} per minute {'before': 0.0, 'after': 13.636}
+after onsets [(16.237, 17845), (16.671, 17876), (17.389, 17919), (31.218, 18746), (31.47, 18763)]
+rain-end frames 207 seconds 14.7 onsets {'before': 2, 'after': 2} per minute {'before': 8.163, 'after': 8.163}
+after onsets [(92.578, 22423), (97.299, 22709)]
+freeway-clean frames 1680 seconds 120 onsets {'before': 2, 'after': 15} per minute {'before': 1.0, 'after': 7.5}
+after onsets [(416.382, 277266), (417.165, 277312), (477.243, 280913), (479.979, 281079), (481.714, 281182), (482.231, 281214), (482.899, 281254), (484.214, 281322), (484.532, 281342), (484.832, 281360), (514.778, 283134), (516.064, 283209), (518.682, 283362), (518.934, 283376), (519.602, 283419)]

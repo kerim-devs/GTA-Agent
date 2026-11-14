@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import math
 from dataclasses import dataclass
+from statistics import median
 
 from .contract import Detection
 
@@ -34,13 +35,22 @@ SPAN_MIN = 0.5  # the shortest history that says it; before that nothing is push
 GROW = 0.2  # growth of a box's height per second from which the car closes on it: 10 percent in half a second
 LOST = 0.7  # seconds a thing is remembered without a box; the detector drops a thing for a few frames
 QUEUE = 0.5  # nearness from which a vehicle ahead is the one the car waits behind, about six metres
+DECELERATION = 3.0  # m/s² planning rate from P106's GPS falls; full-L2 braking remains uncalibrated
+BRAKE_DELAY = 0.25  # wired delay plus sampling reserve; detection age is added separately
+BRAKE_GAP = 1.0  # metres left between the bumpers
+BRAKE_SPEED = 2.0  # below this L2 risks reversing; release the accelerator and let the queue logic act
+UNKNOWN_TTC = 3.0  # seconds: growth can demand braking even when GPS has no speed
+FOCAL = 800.0  # approximate pixels; P106's recorded approaches bound, but do not calibrate, this scale
+CAMERA = 6.0  # approximate metres from the camera to the front bumper
+TALL = {"car": 1.5, "truck": 3.0, "bus": 3.0, "motorcycle": 1.4, "bicycle": 1.5, "person": 1.75}
 
 
 @dataclass(frozen=True)
 class Around:
     steer: float = 0.0  # added to the route's stick
     pedal: float = 1.0  # factor on the accelerator
-    urgent: bool = False  # close and straight ahead: brake, if the speed is known to allow it
+    urgent: bool = False  # geometric proximity, also true when time to contact demands braking
+    brake: float = 0.0  # L2 for a closing obstacle, independent of the route driver's speed control
 
 
 CLEAR = Around()
@@ -95,7 +105,10 @@ class _Thing:
     def __init__(self, item, now: float) -> None:
         self.kind, self.box, self.seen = item.kind, item.box, now
         self.heights: list[tuple[float, float]] = []
+        self.widths: list[tuple[float, float]] = []
+        self.lateral: list[tuple[float, float]] = []
         self.kinds: list[str] = []
+        self.braking = False
         self.add(item, now)
 
     def add(self, item, now: float) -> None:
@@ -103,7 +116,12 @@ class _Thing:
         self.heights = [(t, h) for t, h in self.heights if now - t <= SPAN] + [
             (now, item.box[3] - item.box[1])
         ]
+        self.widths = [(t, w) for t, w in self.widths if now - t <= SPAN] + [(now, item.box[2] - item.box[0])]
         self.kinds = [*self.kinds, item.kind][-8:]
+        offset, wide, _ = _seen(item)
+        self.lateral = [(t, x) for t, x in self.lateral if now - t <= 0.6] + [
+            (now, abs(offset) / max(min(wide, OWN), 1e-6))
+        ]
         # The detector calls one lorry a truck in one frame and a bus in the next: the name most often given.
         self.kind = max(set(self.kinds), key=self.kinds.count)
 
@@ -128,6 +146,61 @@ class _Thing:
         new = sum(h for _, h in self.heights[-2:]) / 2
         span = (self.heights[-1][0] + self.heights[-2][0] - self.heights[0][0] - self.heights[1][0]) / 2
         return old > 0 and new > 0 and math.log(new / old) / span >= GROW
+
+    def contact(self) -> float | None:
+        """Height / growth, using reciprocal height to fit a constant closing speed.
+
+        Short history is unknown; a steady or shrinking box has infinite contact time. A median
+        across separated pairs keeps one badly cut box from deciding the slope.
+        """
+        # At 034036/24s the player's car hides a lead car's lower half: height stays flat
+        # while width doubles. Use width growth there, without a class-dependent scale jump.
+        occluded = self.widths[-1][1] > self.heights[-1][1] * WIDE.get(self.kind, 1.0) * 1.2
+        history = self.widths if occluded else self.heights
+        samples = [(t, h) for t, h in history if self.seen - t <= 0.6 and h > 0]
+        slopes = [
+            (1 / ha - 1 / hb) / (tb - ta)
+            for i, (ta, ha) in enumerate(samples)
+            for tb, hb in samples[i + 1 :]
+            if tb - ta >= 0.15
+        ]
+        if len(samples) < 3 or not slopes:
+            return None
+        slope = median(slopes)
+        inverse = max(1e-6, median(1 / h + slope * (t - self.seen) for t, h in samples))
+        return inverse / slope if slope > 0 else math.inf
+
+    def distance(self) -> float:
+        x0, y0, x1, y1 = self.box
+        # Width survives when the player's bonnet hides the bottom of a close vehicle.
+        height = max(y1 - y0, (x1 - x0) / WIDE.get(self.kind, 1.0))
+        return max(0.0, FOCAL * TALL.get(self.kind, 1.5) / max(height, 1.0) - CAMERA)
+
+    def in_path(self) -> bool:
+        # The wider P96 corridor is useful for steering. For L2, its outer part must actually
+        # be converging on our track; adjacent oncoming cars move away from it as they grow.
+        now, lateral = self.lateral[-1]
+        if lateral <= 0.45:
+            return True
+        if lateral >= LANE:
+            return False
+        slopes = [(lateral - x) / (now - t) for t, x in self.lateral[:-1] if now - t >= 0.15]
+        return bool(slopes) and median(slopes) < -0.3
+
+    def must_brake(self, speed: float | None, age: float) -> bool:
+        contact = self.contact()
+        if speed is None:
+            return contact is not None and contact - age <= UNKNOWN_TTC
+        if speed <= BRAKE_SPEED or contact == math.inf:
+            return False
+        distance = self.distance()
+        # A first box cannot distinguish a moving lead car from a stopped one. Only immediate
+        # proximity bypasses the short growth measurement; a steady lead car never asks for L2.
+        if contact is None:
+            return _seen(self)[2] >= 0.8
+        closing = min(speed, (distance + CAMERA) / contact)
+        stopping = closing * (BRAKE_DELAY + age) + closing * closing / (2 * DECELERATION) + BRAKE_GAP
+        return distance <= stopping
 
 
 class Avoider:
@@ -162,22 +235,56 @@ class Avoider:
         self.matched = matched
         return matched
 
-    def step(self, objects, objects_time: float | None, now: float, *, bypass: bool = False) -> Around:
+    def step(
+        self,
+        objects,
+        objects_time: float | None,
+        now: float,
+        *,
+        bypass: bool = False,
+        speed: float | None = None,
+    ) -> Around:
         if self.seen is not None and not 0 <= now - self.seen <= HOLD:
             self.side, self.seen = 0, None
-        if not objects or objects_time is None or not 0 <= now - objects_time <= STALE:
+        if objects_time is None or not 0 <= now - objects_time <= STALE:
             return CLEAR
+        if speed is not None and (not math.isfinite(speed) or speed < 0):
+            speed = None
         # The detector takes the minimap for a car now and then.
         boxes = [item for item in objects if not _minimap(item.box)]
         things = [_seen(item) for item in boxes]
+        followed = self._track(objects, objects_time)
+        brake = False
+        for thing in followed.values():
+            thing.braking = thing.in_path() and thing.must_brake(speed, now - objects_time)
+            brake |= thing.braking
+        # A close obstacle can disappear behind the player's own car. Remember only a brake
+        # already justified by that obstacle, and only as long as its last box is fresh.
+        brake |= any(
+            thing.braking
+            and thing not in followed.values()
+            and 0 <= now - thing.seen <= STALE
+            and (speed is None or speed > BRAKE_SPEED)
+            for thing in self.things
+        )
+        waiting = any(
+            thing.in_path()
+            and (
+                _seen(thing)[2] >= 0.8
+                if speed is None
+                else speed <= BRAKE_SPEED
+                and thing.distance() <= BRAKE_GAP + speed * BRAKE_DELAY + speed * speed / (2 * DECELERATION)
+            )
+            for thing in followed.values()
+        )
         if bypass:
             ahead = [
                 (near, offset, wide)
                 for item, (offset, wide, near) in zip(boxes, things, strict=True)
                 if 0 < near and _in_lane(item)
             ]
-            return self._around(ahead, things, now, bypass=True) if ahead else CLEAR
-        followed = self._track(objects, objects_time)
+            result = self._around(ahead, things, now, bypass=True) if ahead else CLEAR
+            return Around(result.steer, 0.0, True, 1.0) if brake else result
         ahead, following = [], []
         for index, (item, (offset, wide, near)) in enumerate(zip(boxes, things, strict=True)):
             if not 0 < near or not _in_lane(item):
@@ -191,13 +298,19 @@ class Avoider:
             else:
                 following.append((near, offset, wide, closing is None))
         if ahead:
-            return self._around(ahead, things, now, bypass=False)
+            result = self._around(ahead, things, now, bypass=False)
+            if brake:
+                return Around(result.steer, 0.0, True, 1.0)
+            return Around(result.steer, 0.0, result.urgent) if waiting else result
+        if brake:
+            return Around(0.0, 0.0, True, 1.0)
         if not following:
             return CLEAR
         near, offset, wide, _ = max(following)
         lift = FOLLOW_LIFT * min(1.0, max(0.0, (near - FOLLOW_FROM) / (1 - FOLLOW_FROM)))
-        # Close and straight ahead is braked for as before, whether the car closes on it or not: a
-        # vehicle that slows a little at a time never grows fast enough to be gone round.
+        if waiting:
+            return Around(0.0, 0.0, True)
+        # Proximity still lifts the pedal; only observed closing justifies collision braking.
         return Around(0.0, 1 - lift, near >= 0.8 and abs(offset) < wide / 2)
 
     def _around(self, ahead, things, now: float, *, bypass: bool) -> Around:

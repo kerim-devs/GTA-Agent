@@ -54,11 +54,12 @@ def test_a_car_that_comes_closer_pushes_to_the_other_side_and_lifts_the_pedal():
     assert mirrored.steer == -around.steer
 
 
-def test_the_closer_the_harder_and_close_ahead_is_urgent():
+def test_the_closer_the_harder_the_push_but_a_short_contact_time_brakes_at_both_distances():
     far = approach(centre=0.5, bottom=0.5, height=0.05)
     close = approach(centre=0.5, bottom=0.6, height=0.14)
-    assert abs(close.steer) > abs(far.steer) > 0 and close.pedal < far.pedal
-    assert close.urgent and not far.urgent
+    assert abs(close.steer) > abs(far.steer) > 0
+    assert close.pedal == far.pedal == 0
+    assert close.brake == far.brake == 1
 
 
 def test_the_side_is_kept_while_the_thing_is_in_the_way():
