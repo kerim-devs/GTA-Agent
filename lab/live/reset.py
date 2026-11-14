@@ -21,10 +21,56 @@ from pilot.contract import Pad
 SLOTS = ((1.0, 0.0), (0.7, -0.7), (0.0, -1.0), (-0.7, -0.7), (0.7, 0.7), (0.0, 1.0))
 OVER = ("wasted", "busted")
 QUIET = 2 * len(SLOTS)  # slots fired through without a star: nobody is there to hear it
-FIGURES = (
-    (-1.0, 0.0),
-    (0.0, -1.0),
-)  # on the switch wheel: Michael to the left, Franklin above
+# The switch wheel: Michael to the left, Franklin above, Trevor, who lives in the desert, last.
+FIGURES = {"left": (-1.0, 0.0), "top": (0.0, -1.0), "right": (1.0, 0.0)}
+
+
+def switch(bridge):
+    """Open the switch wheel, pick a figure other than the one who plays, and say which, or None."""
+    from pilot.wheel import wheel
+
+    def read():
+        frame = bridge.frame()
+        return None if frame is None or not 0 <= frame.age <= 0.5 else wheel(frame.rgb)
+
+    def held(pad, seconds, enough):
+        until, reading = time.monotonic() + seconds, None
+        while time.monotonic() < until:
+            if bridge.pad(pad) != 200:
+                raise SystemExit(
+                    "the bridge refused the pad: a hand is on the controller"
+                )
+            time.sleep(0.04)
+            reading = read()
+            if reading is not None and reading.visible and enough(reading):
+                return reading
+        return None
+
+    reading = held(Pad(buttons=("down",)), 3.0, lambda r: r.highlight in FIGURES)
+    if reading is None:
+        # The wheel was not read. Blind, as on 14 November at 01:40, when it brought Michael.
+        held(Pad(buttons=("down",), right=FIGURES["left"]), 1.0, lambda r: False)
+        held(Pad(right=FIGURES["left"]), 0.3, lambda r: False)
+        bridge.pad(Pad())
+        return "left (wheel unread)"
+    target = reading and next(
+        (
+            slot
+            for slot in FIGURES
+            if slot != reading.highlight and slot not in reading.disabled
+        ),
+        None,
+    )
+    seen = target and held(
+        Pad(buttons=("down",), right=FIGURES[target]),
+        3.0,
+        lambda r: r.highlight == target,
+    )
+    if seen:
+        # The stick is held across the release, or the wheel falls back on the figure who plays.
+        held(Pad(right=FIGURES[target]), 0.3, lambda r: False)
+    bridge.pad(Pad())
+    return target if seen else None
 
 
 def main(limit):
@@ -85,37 +131,29 @@ def main(limit):
             turn = -turn
         bridge.pad(Pad())
         if not died:
-            for x, y in FIGURES:
-                hold(Pad(buttons=("down",)), 1.0)
-                hold(Pad(buttons=("down",), right=(x, y)), 1.0)
-                hold(Pad(), 0.2)
-                # The switch takes the picture away within a few seconds, or this is that figure.
-                away, until = None, time.monotonic() + 8
-                while time.monotonic() < until and away is None:
-                    now, _ = see()
-                    if now is not None and now.screen != "game":
-                        away = time.monotonic()
-                    time.sleep(0.25)
-                if away is None:
-                    continue
-                back = None
-                while time.monotonic() < away + 90:
-                    now, _ = see()
-                    if now is not None and now.screen == "game":
-                        back = back or time.monotonic()
-                        if time.monotonic() - back >= 3:
-                            return (
-                                f"no death (stars: {stars}, slots: {slot}); the other figure plays",
-                                0,
-                            )
-                    else:
-                        back = None
-                    time.sleep(0.25)
-                return "switched, and the game did not come back in time", 1
-            return (
-                f"no death within {limit:.0f} s (stars seen: {stars}, slots tried: {slot}), no switch",
-                1,
-            )
+            chosen = switch(bridge)
+            if chosen is None:
+                return (
+                    f"no death within {limit:.0f} s (stars: {stars}, slots: {slot}), no switch",
+                    1,
+                )
+            # The picture stays a game picture while the camera rises and comes down on the other
+            # figure, so the wheel's word is the proof and the time is waited out.
+            time.sleep(15)
+            back, until = None, time.monotonic() + 90
+            while time.monotonic() < until:
+                now, _ = see()
+                if now is not None and now.screen == "game":
+                    back = back or time.monotonic()
+                    if time.monotonic() - back >= 3:
+                        return (
+                            f"no death (stars: {stars}, slots: {slot}); switched to the {chosen} figure",
+                            0,
+                        )
+                else:
+                    back = None
+                time.sleep(0.25)
+            return "switched, and the game did not come back in time", 1
         back = None
         while time.monotonic() < end + 90:
             now, _ = see()
