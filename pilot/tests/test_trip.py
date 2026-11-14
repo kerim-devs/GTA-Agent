@@ -865,6 +865,10 @@ def test_a_figure_pulled_out_of_its_car_runs_before_it_looks_for_the_next(sessio
     entries = len([row for row in session.rows("trip_attempt") if row["name"] == "enter_vehicle"])
     session.conductor.runner.stop("on-foot")
     session.reading, session.mode = replace(GOOD, minimap="flat", route="none"), "foot"
+    # It hits back first (20261114-060700: running alone, it was caught and beaten to death), and
+    # runs where that fails.
+    session.until(lambda: session.active("punch"), seconds=5)
+    session.conductor.runner.stop("nobody-seen")
     session.until(lambda: session.active("walk"), seconds=5)
     assert len([row for row in session.rows("trip_attempt") if row["name"] == "enter_vehicle"]) == entries
     result = session.tick()

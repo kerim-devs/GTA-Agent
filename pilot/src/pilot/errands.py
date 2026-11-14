@@ -1090,7 +1090,7 @@ class Trip:
         elif reason.startswith("on-foot"):
             # Out of the car already: the next thing is a car, with the destination kept.
             self.car_started, self.car_attempts = now, 0
-            self.thrown = True
+            self.thrown = "hit"
             self.change("car", now)
             self.method = "route"
         else:
@@ -1239,6 +1239,9 @@ class Trip:
             self.car_started, self.car_attempts = now, 0
             self.change("car", now)
             self.method = "route"
+        elif name == "punch":
+            if done:
+                self.thrown = False  # the man is down: the car beside him is the next thing
         elif name in {"look", "walk", "walk_road", "wait"}:
             self.retry = None
 
@@ -1316,6 +1319,12 @@ class Trip:
             if self.thrown and not self.seat_check:
                 # Whoever pulled the figure out stands beside it and hits: on 14 November, 02:14, it went
                 # back to the same door twice and was beaten to death there. A player runs first.
+                # Running alone did not save it either: twice in a row the man who pulled the figure
+                # out caught up with it and beat it to death in the road (20261114-060000 at 137 s,
+                # 20261114-060700 at 37 s). It hits back first, and runs where that fails.
+                if self.thrown == "hit":
+                    self.thrown = "run"
+                    return issue("punch", duration=10, hits=4)
                 self.thrown = False
                 return issue("walk", x=0, y=1, sprint=True, duration=6)
             if self.empty >= self.EMPTY_ROUND:
