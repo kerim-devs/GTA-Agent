@@ -837,6 +837,7 @@ class Trip:
     PROGRESS_METRES = 20.0
     READ_SECONDS = 2.0  # a distance read this short a time ago is one the drive can be judged on
     NEAR_METRES = 60.0  # of printed way to the waypoint, within sight of the door
+    GONE_METRES = 300.0  # of printed way when last read, for a waypoint the game has taken away
     NEAR_SECONDS = (
         6.0  # this long there and no nearer; a car still closing in ends by the drive's own arrival
     )
@@ -899,6 +900,7 @@ class Trip:
         self.waypoint_check = False
         self.asked_map = False  # whether the map was asked about a route that stayed away
         self.new_seat = False  # a seat just taken, not yet driven off from where it was taken
+        self.fled = False  # whether the police were driven away from before the map was opened
         self.retry_wait = 1
 
     def emit(self, kind, now, **data):
@@ -952,7 +954,7 @@ class Trip:
         if reason == "death_or_arrest":
             self.car_attempts = self.waypoint_attempts = 0
             self.failure = self.failure_at = None
-            self.seat_check = self.new_seat = False
+            self.seat_check = self.new_seat = self.asked_map = False
             self.car_started = now
             self.waypoint_id = None
             self.retry = None
@@ -1140,6 +1142,17 @@ class Trip:
                 self.car_started, self.car_attempts = now, 0
                 self.change("car", now)
                 self.retry = None
+            elif (
+                self.asked_map
+                and "place-not-in-legend" in why
+                and "Wegpunkt" not in why
+                and self.last_distance is not None
+                and self.last_distance <= self.GONE_METRES
+            ):
+                # The route went for good, the map was asked, and its legend lists neither a waypoint
+                # nor the place: the game took the waypoint away, which it does at the place, and with
+                # a star lit it hides the place itself (the pier, 20261114-014541, 85 m last printed).
+                self.finish("reached", "the route went near the place and the map holds no waypoint", now)
             else:
                 self.waypoint_attempts += 1
                 if self.waypoint_attempts >= 3:
@@ -1255,6 +1268,13 @@ class Trip:
             self.finish("failed", self.failure, now)
             return reply("trip: failed")
         if self.step == "waypoint":
+            stars = (request.hud or {}).get("wanted")
+            seated = request.minimap.get("minimap") == "tilted" and not request.minimap.get("corrupt")
+            if stars and seated and not self.fled:
+                # With a star lit the map hides the shops and the car wash (20261114-015324): the
+                # police are lost first, once, and the place is looked up after.
+                self.fled = True
+                return issue("get_away", duration=60)
             if self.retry == "waypoint":
                 return issue("wait", duration=self.retry_wait)
             return issue("set_waypoint", place=self.place, instance=0, duration=45)

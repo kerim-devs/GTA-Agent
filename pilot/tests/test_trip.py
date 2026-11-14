@@ -606,6 +606,45 @@ def test_a_route_gone_at_the_place_with_a_long_way_still_printed_is_an_arrival(s
     assert not [row for row in session.rows("trip_attempt") if row["name"] == "press"]
 
 
+def test_a_route_gone_near_a_place_the_map_no_longer_lists_is_an_arrival(session):
+    # 20261114-014541: on the pier with a star lit, 85 m last printed, the legend without the place
+    # and without a waypoint.
+    session.drive()
+    session.distance = 85
+    for _ in range(5):
+        session.tick()
+    session.reading = replace(session.reading, route="none")
+    session.distance = None
+    gone = f"place-not-in-legend: {PLACE}; gameplay observed; places: Suburban, Tattoo-Studio"
+    session.outcomes.append(("failed", gone, "game"))
+    session.until(lambda: session.trip.verdict is not None, seconds=30)
+    assert session.trip.verdict["status"] == "reached"
+    assert "holds no waypoint" in session.trip.verdict["reason"]
+
+
+def test_a_place_missing_from_a_map_that_still_holds_the_waypoint_is_no_arrival(session):
+    session.drive()
+    session.distance = 85
+    for _ in range(5):
+        session.tick()
+    session.reading = replace(session.reading, route="none")
+    session.distance = None
+    kept = f"place-not-in-legend: {PLACE}; gameplay observed; places: Suburban, Wegpunkt 85m)"
+    session.outcomes.extend([("failed", kept, "game")] * 3)
+    session.until(lambda: session.trip.verdict is not None, seconds=60)
+    assert session.trip.verdict["status"] == "failed"
+
+
+def test_with_a_star_lit_the_police_are_lost_before_the_map_is_opened(session):
+    session.hud = replace(session.hud, wanted=1)
+    session.until(lambda: session.active("get_away"), seconds=5)
+    assert not session.waypoints
+    session.hud = replace(session.hud, wanted=0)
+    session.outcomes.append(("done", SUCCESS, "game"))
+    session.until(lambda: session.active("drive_route"), seconds=30)
+    assert len(session.waypoints) == 1
+
+
 def test_a_map_that_is_not_back_after_the_hospital_is_given_five_seconds(session):
     session.outcomes.extend(
         [
