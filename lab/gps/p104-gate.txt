@@ -1,0 +1,204 @@
+$ ruff check src tests tools
+All checks passed!
+$ ruff format --check src tests tools
+212 files already formatted
+$ pytest -q
+........................................................................ [  1%]
+........................................................................ [  3%]
+........................................................................ [  5%]
+........................................................................ [  7%]
+........................................................................ [  9%]
+........................................................................ [ 11%]
+........................................................................ [ 13%]
+........................................................................ [ 15%]
+........................................................................ [ 16%]
+........................................................................ [ 18%]
+........................................................................ [ 20%]
+........................................................................ [ 22%]
+........................................................................ [ 24%]
+..............................F...............FF........................ [ 26%]
+........................................................................ [ 28%]
+........................................................................ [ 30%]
+........................................................................ [ 32%]
+........................................................................ [ 33%]
+........................................................................ [ 35%]
+................................F....................................... [ 37%]
+........................................................................ [ 39%]
+........................................................................ [ 41%]
+........................................................................ [ 43%]
+........................................................................ [ 45%]
+........................................................................ [ 47%]
+........................................................................ [ 48%]
+........................................................................ [ 50%]
+........................................................................ [ 52%]
+........................................................................ [ 54%]
+........................................................................ [ 56%]
+........................................................................ [ 58%]
+........................................................................ [ 60%]
+........................................................................ [ 62%]
+........................................................................ [ 64%]
+..................................s..................................... [ 65%]
+........................................................................ [ 67%]
+........................................................................ [ 69%]
+........................................................................ [ 71%]
+........................................................................ [ 73%]
+........................................................................ [ 75%]
+........................................................................ [ 77%]
+........................................................................ [ 79%]
+.............x.......................................................... [ 81%]
+........................................................................ [ 82%]
+........................................................................ [ 84%]
+........................................................................ [ 86%]
+........................................................................ [ 88%]
+........................................................................ [ 90%]
+........................................................................ [ 92%]
+........................................................................ [ 94%]
+........................................................................ [ 96%]
+........................................................................ [ 97%]
+........................................................................ [ 99%]
+.....                                                                    [100%]
+=================================== FAILURES ===================================
+_ test_drive_through_roads_with_the_existing_car_profiles[range-12-kilometre] __
+
+name = 'kilometre', profile = 'range-12'
+
+    @pytest.mark.parametrize("name", tuple(drive_through_roads()))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_drive_through_roads_with_the_existing_car_profiles(name, profile):
+        cfg = SimConfig(
+            **CAR_PROFILES[profile],
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=300,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+        )
+        sim = Simulator(drive_through_roads()[name], config=cfg)
+        driver = Driver(drive_config(["style=bold"]))
+        cruise = []
+        maximum_error = 0
+        while sim.time < cfg.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum_error = max(maximum_error, error)
+            # Every road starts with the same clear approach, before the bend is in view.
+            if 80 < progress < 100:
+                cruise.append(sim.speed)
+                assert command.brake == 0
+            if name == "kilometre" and 50 < progress < 975:
+>               assert command.brake == 0
+E               AssertionError: assert 0.34920930446230214 == 0
+E                +  where 0.34920930446230214 = Command(steer=0.0, throttle=0, brake=0.34920930446230214, state='follow').brake
+
+tests/test_drive_through.py:95: AssertionError
+_ test_drive_through_roads_with_the_existing_car_profiles[fast-low-grip-kilometre] _
+
+name = 'kilometre', profile = 'fast-low-grip'
+
+    @pytest.mark.parametrize("name", tuple(drive_through_roads()))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_drive_through_roads_with_the_existing_car_profiles(name, profile):
+        cfg = SimConfig(
+            **CAR_PROFILES[profile],
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=300,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+        )
+        sim = Simulator(drive_through_roads()[name], config=cfg)
+        driver = Driver(drive_config(["style=bold"]))
+        cruise = []
+        maximum_error = 0
+        while sim.time < cfg.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum_error = max(maximum_error, error)
+            # Every road starts with the same clear approach, before the bend is in view.
+            if 80 < progress < 100:
+                cruise.append(sim.speed)
+                assert command.brake == 0
+            if name == "kilometre" and 50 < progress < 975:
+>               assert command.brake == 0
+E               AssertionError: assert 0.34920930446230214 == 0
+E                +  where 0.34920930446230214 = Command(steer=0.0, throttle=0, brake=0.34920930446230214, state='follow').brake
+
+tests/test_drive_through.py:95: AssertionError
+_ test_drive_through_roads_with_the_existing_car_profiles[fast-low-grip-bend-60] _
+
+name = 'bend-60', profile = 'fast-low-grip'
+
+    @pytest.mark.parametrize("name", tuple(drive_through_roads()))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_drive_through_roads_with_the_existing_car_profiles(name, profile):
+        cfg = SimConfig(
+            **CAR_PROFILES[profile],
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=300,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+        )
+        sim = Simulator(drive_through_roads()[name], config=cfg)
+        driver = Driver(drive_config(["style=bold"]))
+        cruise = []
+        maximum_error = 0
+        while sim.time < cfg.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum_error = max(maximum_error, error)
+            # Every road starts with the same clear approach, before the bend is in view.
+            if 80 < progress < 100:
+                cruise.append(sim.speed)
+                assert command.brake == 0
+            if name == "kilometre" and 50 < progress < 975:
+                assert command.brake == 0
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum_error <= 5.0
+E       assert 7.268191852017367 <= 5.0
+
+tests/test_drive_through.py:100: AssertionError
+_____ test_native_recognition_reads_a_real_crop_without_keeping_its_images _____
+
+    def test_native_recognition_reads_a_real_crop_without_keeping_its_images():
+        pytest.importorskip("Vision")
+        path = Path(__file__).parent / "fixtures" / "crop_1020.png"  # the map prints 326m at 282.6 s
+        crop = cv2.cvtColor(cv2.imread(str(path)), cv2.COLOR_BGR2RGB)
+        try:
+            fix = native_recognize(crop)
+        except RuntimeError as exc:
+            if "failed: None" in str(exc):  # the framework imports in a sandbox and then cannot run
+                pytest.skip(f"Vision runtime unavailable: {exc}")
+            raise
+>       assert fix is not None and fix.distance == 326
+E       assert (None is not None)
+
+tests/test_gps.py:202: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_drive_through.py::test_drive_through_roads_with_the_existing_car_profiles[range-12-kilometre]
+FAILED tests/test_drive_through.py::test_drive_through_roads_with_the_existing_car_profiles[fast-low-grip-kilometre]
+FAILED tests/test_drive_through.py::test_drive_through_roads_with_the_existing_car_profiles[fast-low-grip-bend-60]
+FAILED tests/test_gps.py::test_native_recognition_reads_a_real_crop_without_keeping_its_images
+4 failed, 3815 passed, 1 skipped, 1376 deselected, 1 xfailed in 128.72s (0:02:08)
+gate failed at: pytest -q

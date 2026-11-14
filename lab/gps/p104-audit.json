@@ -1,0 +1,104 @@
+{
+  "scores": {
+    "all": {
+      "total": 105,
+      "visible": 104,
+      "before": {
+        "correct": 43,
+        "wrong": 3,
+        "missed": 58
+      },
+      "after": {
+        "correct": 77,
+        "wrong": 0,
+        "missed": 27
+      }
+    },
+    "light-road": {
+      "total": 52,
+      "visible": 52,
+      "before": {
+        "correct": 12,
+        "wrong": 3,
+        "missed": 37
+      },
+      "after": {
+        "correct": 32,
+        "wrong": 0,
+        "missed": 20
+      }
+    },
+    "dark-road": {
+      "total": 52,
+      "visible": 52,
+      "before": {
+        "correct": 31,
+        "wrong": 0,
+        "missed": 21
+      },
+      "after": {
+        "correct": 45,
+        "wrong": 0,
+        "missed": 7
+      }
+    },
+    "absent": {
+      "total": 1,
+      "visible": 0,
+      "before": {
+        "correct": 0,
+        "wrong": 0,
+        "missed": 0
+      },
+      "after": {
+        "correct": 0,
+        "wrong": 0,
+        "missed": 0
+      }
+    }
+  },
+  "gap_categories": {
+    "Turn symbol / blip or unit contamination": 12,
+    "Correct exemplar; reacquisition / consensus timing": 20,
+    "Light road obscures digits / decimal / unit": 23,
+    "Wrong OCR; not a meter fault": 3,
+    "HUD absent at arrival": 1
+  },
+  "gap_seconds": {
+    "Turn symbol / blip or unit contamination": 39.32165983598679,
+    "Correct exemplar; reacquisition / consensus timing": 10.84705054301594,
+    "Light road obscures digits / decimal / unit": 63.451167668026756,
+    "Wrong OCR; not a meter fault": 3.1696296669833828,
+    "HUD absent at arrival": 0.07712425000499934
+  },
+  "replay": {
+    "024431": {
+      "before": {
+        "parsed": 437,
+        "not_freshened": 75
+      },
+      "after": {
+        "parsed": 601,
+        "not_freshened": 59
+      },
+      "recovered_original_unknown": {
+        "total": 1830,
+        "with_speed": 1593
+      }
+    },
+    "015901": {
+      "before": {
+        "parsed": 830,
+        "not_freshened": 150
+      },
+      "after": {
+        "parsed": 901,
+        "not_freshened": 111
+      },
+      "recovered_original_unknown": {
+        "total": 2004,
+        "with_speed": 1546
+      }
+    }
+  }
+}

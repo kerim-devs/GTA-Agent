@@ -1,0 +1,62 @@
+{
+  "015516": {
+    "ticks": 4814,
+    "missing": {
+      "distance": 2818,
+      "speed": 3198,
+      "unknown_reason": 2057,
+      "unknown_follow": 781
+    },
+    "known_km_share": 0.1593186372745491
+  },
+  "005357": {
+    "ticks": 12286,
+    "missing": {
+      "distance": 4041,
+      "speed": 4805,
+      "unknown_reason": 0,
+      "unknown_follow": 0
+    },
+    "known_km_share": 0.7337780473013947
+  },
+  "024431": {
+    "ticks": 5408,
+    "missing": {
+      "distance": 1609,
+      "speed": 1830,
+      "unknown_reason": 1653,
+      "unknown_follow": 1215
+    },
+    "known_km_share": 0.2471703079757831
+  },
+  "015901": {
+    "ticks": 8384,
+    "missing": {
+      "distance": 1461,
+      "speed": 2004,
+      "unknown_reason": 1844,
+      "unknown_follow": 1446
+    },
+    "known_km_share": 0.5317059078434205
+  },
+  "014037": {
+    "ticks": 7109,
+    "missing": {
+      "distance": 731,
+      "speed": 992,
+      "unknown_reason": 867,
+      "unknown_follow": 860
+    },
+    "known_km_share": 0.5624020068987143
+  },
+  "024817": {
+    "ticks": 2412,
+    "missing": {
+      "distance": 59,
+      "speed": 110,
+      "unknown_reason": 110,
+      "unknown_follow": 110
+    },
+    "known_km_share": 0.0
+  }
+}

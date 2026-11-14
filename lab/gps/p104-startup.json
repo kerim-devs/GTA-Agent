@@ -1,0 +1,86 @@
+[
+  {
+    "quantum": 1,
+    "acceleration": 2,
+    "before": {
+      "first_speed_at": 1.15,
+      "speed": 1.199999999998395,
+      "actual_at_capture": 2.0
+    },
+    "after": {
+      "first_speed_at": 0.9,
+      "speed": 1.1999999999991995,
+      "actual_at_capture": 1.5
+    }
+  },
+  {
+    "quantum": 1,
+    "acceleration": 4,
+    "before": {
+      "first_speed_at": 1.15,
+      "speed": 1.9999999999985425,
+      "actual_at_capture": 4.0
+    },
+    "after": {
+      "first_speed_at": 0.9,
+      "speed": 1.1999999999991995,
+      "actual_at_capture": 3.0
+    }
+  },
+  {
+    "quantum": 1,
+    "acceleration": 8,
+    "before": {
+      "first_speed_at": 1.15,
+      "speed": 3.9999999999980815,
+      "actual_at_capture": 8.0
+    },
+    "after": {
+      "first_speed_at": 0.9,
+      "speed": 2.7999999999996716,
+      "actual_at_capture": 6.0
+    }
+  },
+  {
+    "quantum": 10,
+    "acceleration": 2,
+    "before": {
+      "first_speed_at": 1.15,
+      "speed": 1.3284020375799112e-12,
+      "actual_at_capture": 2.0
+    },
+    "after": {
+      "first_speed_at": 1.15,
+      "speed": 1.3284020375799112e-12,
+      "actual_at_capture": 2.0
+    }
+  },
+  {
+    "quantum": 10,
+    "acceleration": 4,
+    "before": {
+      "first_speed_at": 1.15,
+      "speed": 1.3284020375799112e-12,
+      "actual_at_capture": 4.0
+    },
+    "after": {
+      "first_speed_at": 1.15,
+      "speed": 1.3284020375799112e-12,
+      "actual_at_capture": 4.0
+    }
+  },
+  {
+    "quantum": 10,
+    "acceleration": 8,
+    "before": {
+      "first_speed_at": 1.15,
+      "speed": 1.3284020375799112e-12,
+      "actual_at_capture": 8.0
+    },
+    "after": {
+      "first_speed_at": 1.15,
+      "speed": 1.3284020375799112e-12,
+      "actual_at_capture": 8.0
+    }
+  }
+]

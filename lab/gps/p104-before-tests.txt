@@ -1,0 +1,143 @@
+FFFFF..F..                                                               [100%]
+=================================== FAILURES ===================================
+____ test_native_print_over_light_roads_and_beside_blips[024431-02546-1460] ____
+
+name = '024431-02546', distance = 1460
+
+    @pytest.mark.parametrize(
+        "name,distance",
+        [
+            ("024431-02546", 1460),
+            ("024431-02629", 1450),
+            ("015901-03025", 2080),
+            ("024431-07071", 847),
+        ],
+    )
+    def test_native_print_over_light_roads_and_beside_blips(name, distance):
+        pytest.importorskip("Vision")
+        crop = cv2.cvtColor(cv2.imread(str(LAB / f"p104-{name}.png")), cv2.COLOR_BGR2RGB)
+        try:
+            fix = native_recognize(crop)
+        except RuntimeError as exc:
+            if "failed: None" in str(exc):
+                pytest.skip(f"Vision runtime unavailable: {exc}")
+            raise
+>       assert fix is not None and fix.distance == distance
+E       assert (None is not None)
+
+tests/test_speed_in_town.py:37: AssertionError
+____ test_native_print_over_light_roads_and_beside_blips[024431-02629-1450] ____
+
+name = '024431-02629', distance = 1450
+
+    @pytest.mark.parametrize(
+        "name,distance",
+        [
+            ("024431-02546", 1460),
+            ("024431-02629", 1450),
+            ("015901-03025", 2080),
+            ("024431-07071", 847),
+        ],
+    )
+    def test_native_print_over_light_roads_and_beside_blips(name, distance):
+        pytest.importorskip("Vision")
+        crop = cv2.cvtColor(cv2.imread(str(LAB / f"p104-{name}.png")), cv2.COLOR_BGR2RGB)
+        try:
+            fix = native_recognize(crop)
+        except RuntimeError as exc:
+            if "failed: None" in str(exc):
+                pytest.skip(f"Vision runtime unavailable: {exc}")
+            raise
+>       assert fix is not None and fix.distance == distance
+E       assert (None is not None)
+
+tests/test_speed_in_town.py:37: AssertionError
+____ test_native_print_over_light_roads_and_beside_blips[015901-03025-2080] ____
+
+name = '015901-03025', distance = 2080
+
+    @pytest.mark.parametrize(
+        "name,distance",
+        [
+            ("024431-02546", 1460),
+            ("024431-02629", 1450),
+            ("015901-03025", 2080),
+            ("024431-07071", 847),
+        ],
+    )
+    def test_native_print_over_light_roads_and_beside_blips(name, distance):
+        pytest.importorskip("Vision")
+        crop = cv2.cvtColor(cv2.imread(str(LAB / f"p104-{name}.png")), cv2.COLOR_BGR2RGB)
+        try:
+            fix = native_recognize(crop)
+        except RuntimeError as exc:
+            if "failed: None" in str(exc):
+                pytest.skip(f"Vision runtime unavailable: {exc}")
+            raise
+>       assert fix is not None and fix.distance == distance
+E       assert (None is not None)
+
+tests/test_speed_in_town.py:37: AssertionError
+____ test_native_print_over_light_roads_and_beside_blips[024431-07071-847] _____
+
+name = '024431-07071', distance = 847
+
+    @pytest.mark.parametrize(
+        "name,distance",
+        [
+            ("024431-02546", 1460),
+            ("024431-02629", 1450),
+            ("015901-03025", 2080),
+            ("024431-07071", 847),
+        ],
+    )
+    def test_native_print_over_light_roads_and_beside_blips(name, distance):
+        pytest.importorskip("Vision")
+        crop = cv2.cvtColor(cv2.imread(str(LAB / f"p104-{name}.png")), cv2.COLOR_BGR2RGB)
+        try:
+            fix = native_recognize(crop)
+        except RuntimeError as exc:
+            if "failed: None" in str(exc):
+                pytest.skip(f"Vision runtime unavailable: {exc}")
+            raise
+>       assert fix is not None and fix.distance == distance
+E       assert (None is not None)
+
+tests/test_speed_in_town.py:37: AssertionError
+_________ test_four_coherent_metre_captures_measure_before_one_second __________
+
+    def test_four_coherent_metre_captures_measure_before_one_second():
+        meter = Speedometer()
+        for index in range(3):
+            assert meter.update(index / 4, Fix(500 - 2 * index)) is None
+>       assert meter.update(.75, Fix(494)) == pytest.approx(8)
+E       assert None == 8 ± 8.0e-06
+E         
+E         comparison failed
+E         Obtained: None
+E         Expected: 8 ± 8.0e-06
+
+tests/test_speed_in_town.py:44: AssertionError
+________ test_unknown_speed_pedal_follows_visible_road_and_never_brakes ________
+
+    def test_unknown_speed_pedal_follows_visible_road_and_never_brakes():
+        config = drive_config(["style=bold"])
+        straight = picture([(0, y) for y in range(12, 100, 6)])
+        corner = picture([(0, y) for y in range(12, 25, 6)] + [(-x, 24) for x in range(6, 85, 6)])
+        open_command = Driver(config).step(straight, 0, True, speed=None)
+        bend_command = Driver(config).step(corner, 0, True, speed=None)
+        arrival = Driver(config).step(replace(straight, gps_distance=4), 0, True, speed=None)
+>       assert config.unknown_throttle < open_command.throttle <= .24
+E       AssertionError: assert 0.18 < 0.18
+E        +  where 0.18 = DriveConfig(steer_gain=0.02, steer_zero=0.005, max_step_time=0.5, steer_smoothing=0.05, bearing_smoothing=0.1, steer_d...step=3, curve_trim=3, hold_throttle=0.6, straight_hold_throttle=0.3, brake_floor=7.0, brake_pulse=0.35, brake_rest=1.0).unknown_throttle
+E        +  and   0.18 = Command(steer=0.0, throttle=0.18, brake=0, state='follow').throttle
+
+tests/test_speed_in_town.py:82: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_speed_in_town.py::test_native_print_over_light_roads_and_beside_blips[024431-02546-1460]
+FAILED tests/test_speed_in_town.py::test_native_print_over_light_roads_and_beside_blips[024431-02629-1450]
+FAILED tests/test_speed_in_town.py::test_native_print_over_light_roads_and_beside_blips[015901-03025-2080]
+FAILED tests/test_speed_in_town.py::test_native_print_over_light_roads_and_beside_blips[024431-07071-847]
+FAILED tests/test_speed_in_town.py::test_four_coherent_metre_captures_measure_before_one_second
+FAILED tests/test_speed_in_town.py::test_unknown_speed_pedal_follows_visible_road_and_never_brakes
+6 failed, 4 passed in 0.75s

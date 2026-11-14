@@ -1,0 +1,4 @@
+$ nice -n 15 .venv/bin/python -m pytest -q tests/test_drive_through.py tests/test_speed_in_town.py tests/test_gps.py
+100 passed in 27.55s
+$ nice -n 15 .venv/bin/python -m pytest -q tests/test_drive.py tests/test_cli.py tests/test_path_speed.py
+191 passed in 0.30s

@@ -82,15 +82,31 @@ def recognize(crop: np.ndarray) -> Fix | None:
     """Accurate Apple Vision OCR; imports and framework errors are optional."""
     foundation, objc, q, v = frameworks()
 
-    patch = cv2.resize(crop[118:142, 36:120], None, fx=5, fy=5, interpolation=cv2.INTER_CUBIC)
-    pixels = np.ascontiguousarray(patch)
+    # Keep the turn symbol and blips out of the number. On P104's light roads,
+    # removing the broad background recovers glyphs that the RGB crop loses.
+    raw = crop[119:141, 53:120]
+    gray = cv2.cvtColor(raw, cv2.COLOR_RGB2GRAY)
+    patches = [
+        raw,
+        cv2.cvtColor(cv2.createCLAHE(clipLimit=2, tileGridSize=(4, 2)).apply(gray), cv2.COLOR_GRAY2RGB),
+    ]
+    for size in (3, 5):
+        foreground = cv2.morphologyEx(gray, cv2.MORPH_TOPHAT, np.ones((size, size), np.uint8))
+        foreground = np.clip(foreground.astype(float) * 4, 0, 255).astype(np.uint8)
+        patches.append(cv2.cvtColor(foreground, cv2.COLOR_GRAY2RGB))
+    # One request, including on a miss; no retry can occupy another live slot.
+    pixels = np.full((560, 335, 3), 100, np.uint8)
+    for index, patch in enumerate(patches):
+        pixels[index * 140 + 15 : index * 140 + 125] = cv2.resize(
+            patch, None, fx=5, fy=5, interpolation=cv2.INTER_CUBIC
+        )
     height, width = pixels.shape[:2]
     # Handing the pixels over as Python bytes, or without a pool, keeps every image alive:
     # 170 KB per call measured over 1000 calls, which is gigabytes over a stream. Under Python 3.12
     # the same happens (250 KB per call) unless the observations are still referenced when the pool
     # drains, so `results` is a local that lives to the end of the function on purpose.
     results = []
-    texts = []
+    texts = [[] for _ in patches]
     with objc.autorelease_pool():
         data = foundation.NSData.dataWithBytes_length_(pixels.tobytes(), pixels.nbytes)
         provider = q.CGDataProviderCreateWithCFData(data)
@@ -108,10 +124,19 @@ def recognize(crop: np.ndarray) -> Fix | None:
         for observation in results:
             candidates = observation.topCandidates_(1)
             if candidates:
-                texts.append(str(candidates[0].string()))
-    fix = parse(texts)
-    if fix is None:
+                (_, y), (_, h) = observation.boundingBox()
+                index = max(0, min(3, int((1 - y - h / 2) * 4)))
+                texts[index].append(str(candidates[0].string()))
+    # Background removal helps bright roads but can break closed digits on a
+    # dark field (326 becomes 328 in the existing cable fixture). Measure only
+    # the digit band, not the lighter map margin above it.
+    bright = np.median(cv2.cvtColor(crop[125:137, 54:83], cv2.COLOR_RGB2GRAY)) >= 140
+    fixes = [fix for band in texts[: 4 if bright else 2] if (fix := parse(band)) is not None]
+    # Different preparations can drop a leading digit or turn 6 into 8. An
+    # explicit disagreement is not resolved by choosing the more convenient one.
+    if not fixes or len({fix.distance for fix in fixes}) != 1:
         return None
+    fix = fixes[0]
     return Fix(fix.distance, fix.arrow or turn_arrow(crop), fix.quantum)
 
 
@@ -232,7 +257,9 @@ class Speedometer:
             self.samples.append((at, fix))
             while self.samples and at - self.samples[0][0] > self.window:
                 self.samples.popleft()
-            if len(self.samples) >= 4 and at - self.samples[0][0] >= 1.0:
+            span = at - self.samples[0][0]
+            fine = all(sample.quantum <= 1 for _, sample in self.samples)
+            if len(self.samples) >= 4 and span >= (0.75 if fine else 1.0):
                 times = np.array([p[0] - at for p in self.samples])
                 values = np.array([p[1].distance for p in self.samples])
                 dt = times[None, :] - times[:, None]
@@ -247,7 +274,13 @@ class Speedometer:
                 inside = np.abs(values - (intercept + slope * times)) <= tolerance
                 if abs(slope) <= self.max_speed and inside.sum() >= 3 and inside.mean() >= 0.55:
                     good = np.flatnonzero(inside)
-                    if times[good[-1]] - times[good[0]] >= 1.0:
+                    # Four metre readings can start at 0.75 s only when all four
+                    # fit within one printed metre. Coarse kilometres and a
+                    # disputed startup still need the full second of consensus.
+                    early = (
+                        fine and inside.all() and np.max(np.abs(values - (intercept + slope * times))) <= 1
+                    )
+                    if times[good[-1]] - times[good[0]] >= (0.75 if early else 1.0):
                         # Refit only the consensus, retaining the HUD quantisation.
                         fit = np.polyfit(times[inside], values[inside], 1)
                         self._slope = float(fit[0])

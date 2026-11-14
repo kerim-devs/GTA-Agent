@@ -795,7 +795,14 @@ class Driver:
             return cfg.unknown_throttle, 0.0
         if speed is None:
             self.speed_reason = "unknown-speed"
-            return cfg.unknown_throttle, 0.0
+            # Keep startup unchanged until this driver has measured speed. The
+            # P104 gap trials bound the later open-road increase to one third;
+            # the road limit lowers it for bends, arrival and flagged maps.
+            return min(
+                cfg.cruise_throttle,
+                cfg.unknown_throttle * (4 / 3 if self._speed_at is not None else 1),
+                cfg.unknown_throttle * limit / max(cfg.junction_speed, 1.0),
+            ), 0.0
         if self.speed_reason == "straight":
             # A noisy GPS slope may ease the pedal, but cannot brake an empty straight.
             return _clip(
