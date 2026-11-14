@@ -9,7 +9,6 @@ import time
 from collections import Counter, deque
 from contextlib import contextmanager
 from dataclasses import asdict, dataclass, field, replace
-from functools import partial
 from pathlib import Path
 
 import numpy as np
@@ -42,7 +41,7 @@ class Pipeline:
         self.speedometer = Speedometer(
             cfg.gps_window, cfg.gps_stale, cfg.gps_max_speed, cfg.gps_tolerance, cfg.gps_acceleration
         )
-        self.history: deque[tuple[float, np.ndarray]] = deque()
+        self.history: deque[tuple[float, np.ndarray, bool]] = deque()
         self.steps: tuple[frozenset, float, float] | None = None  # block borders with a step, since, last
 
     def close(self):
@@ -67,29 +66,37 @@ class Pipeline:
         self.steps = (held[0], held[1], frame_time)
         return frame_time - held[1] >= self.PAINTED_SECONDS
 
+    def _motion(self, previous: np.ndarray, crop: np.ndarray, clean: bool) -> float | None:
+        if clean and self.motion is map_motion:
+            return map_motion(previous, crop, painted=True)
+        return self.motion(previous, crop)
+
     def step(
         self, crop: np.ndarray, frame_time: float, feedback: bool = True
     ) -> tuple[Reading, bool | None, Command]:
         """With `feedback` off the driver is not told whether the map moves: while a human drives,
         its own commands move nothing, and it would take every red light for being stuck."""
         reading = self.reader(crop)
-        motion = self.motion
         if reading.corrupt and self.reader is read and self._painted(crop, frame_time):
             reading = read(crop, painted=True)
-            if motion is map_motion:
-                motion = partial(map_motion, painted=True)
+        # The measure of motion has the block detector's first word only, which takes a broad road's
+        # edge for damage where the reader, looking further, does not: on 14 November, 03:05, the car
+        # pushed against a lorry for 23 s with a clean map and no word on whether it moved
+        # (20261114-030418). Two pictures the reader called clean are measured without that check.
+        clean = self.reader is read and not reading.corrupt
         moving = None
         if self.history and frame_time <= self.history[-1][0]:
             self.history.clear()
         while self.history and self.history[0][0] < frame_time - 1.2:
             self.history.popleft()
         if self.history and frame_time - self.history[0][0] >= 0.15:
-            _previous_time, previous = min(self.history, key=lambda item: abs(frame_time - item[0] - 0.2))
-            displacement = motion(previous, crop)
-            moving = motion_state(displacement)
+            _previous_time, previous, was_clean = min(
+                self.history, key=lambda item: abs(frame_time - item[0] - 0.2)
+            )
+            moving = motion_state(self._motion(previous, crop, clean and was_clean))
             if moving is not True and frame_time - self.history[0][0] >= 0.8:
-                moving = motion_state(motion(self.history[0][1], crop))
-        self.history.append((frame_time, crop.copy()))
+                moving = motion_state(self._motion(self.history[0][1], crop, clean and self.history[0][2]))
+        self.history.append((frame_time, crop.copy(), clean))
         result = self.gps_reader.poll(crop, frame_time)
         sample_time, fix = result if result is not None else (frame_time, None)
         if reading.minimap != "tilted":

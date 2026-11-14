@@ -565,3 +565,23 @@ def test_a_long_row_that_begins_far_to_the_left_is_still_the_selection():
     legend = read_legend(rows)
     assert legend.selected is not None and legend.selected.name.startswith("Immobilie")
     assert legend.selected.instance == 1 and legend.selected.count == 4
+
+
+def test_a_selected_row_that_is_not_read_is_stepped_past():
+    # 20261114-025903 at 16 s: the white bar on "Kfz-Abschleppplatz", one above the place, was not
+    # read for the 28 s the try had left, and nothing was pressed.
+    model = Model(["Spieler", "Ammu-Nation", "Chinesen", "Golf", "Kino", "Friseursalon"])
+    seen = model.picture
+
+    def unread(frame):
+        legend = seen(frame)
+        if model.screen == "map" and legend.selected is not None and legend.selected.name == "Golf":
+            rest = tuple(entry for entry in legend.entries if entry.name != "Golf")
+            return replace(legend, selected=None, entries=rest)
+        return legend
+
+    model.picture = unread
+    _skill, result, _ = run({"place": "Kino"}, model)
+    assert result.status == "done", result.reason
+    assert "Kino" in result.reason
+    assert model.distance == 532

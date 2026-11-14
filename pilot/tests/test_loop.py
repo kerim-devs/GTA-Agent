@@ -346,3 +346,14 @@ def test_block_steps_that_move_between_pictures_stay_damage():
         # Each damaged picture stays for a second, as a stream does that is repaired at its next key frame.
         reading = pipeline.step(crops[tick // 20 % 4], 10 + 0.05 * tick)[0]
         assert reading.corrupt
+
+
+def test_a_car_that_stands_before_a_clean_map_is_known_to_stand():
+    # 20261114-030418 at 50 s: the car pushes against a lorry, the reader calls the map clean, the
+    # block detector alone finds two steps on a road's edge, and the measure of motion said nothing
+    # for 23 s, so that the driver did not know it was stuck.
+    crop = _crop(Path(__file__).parent / "fixtures" / "crop_standing_030418.png")
+    pipeline = Pipeline()
+    states = [pipeline.step(crop, 10 + 0.05 * tick)[:2] for tick in range(30)]
+    assert not states[-1][0].corrupt
+    assert [moving for _reading, moving in states[8:]] == [False] * 22

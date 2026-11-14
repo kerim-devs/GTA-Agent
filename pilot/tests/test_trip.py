@@ -550,6 +550,18 @@ def test_route_gone_near_the_place_while_on_along_the_road_is_an_arrival(session
     assert len(session.rows("trip_end")) == 1
 
 
+def test_a_route_gone_at_52_metres_during_the_drive_is_an_arrival(session):
+    # 20261114-032141 at 293 s: more than the drive's own fifty metres, less than the sixty within
+    # which the printed distance alone is an arrival.
+    session.drive()
+    session.distance = 52
+    for _ in range(5):
+        session.tick()
+    session.reading = replace(session.reading, route="none")
+    session.until(lambda: session.trip.verdict is not None, seconds=8)
+    assert session.trip.verdict["status"] == "reached"
+
+
 def test_route_gone_far_from_the_place_is_no_arrival(session):
     session.drive()
     session.until(lambda: session.active("get_away"), seconds=30)
@@ -833,6 +845,20 @@ def test_car_retry_without_recent_detection_looks_before_trying_again(session):
     session.until(lambda: session.active("look"))
     session.until(lambda: session.active("enter_vehicle"))
     assert session.trip.car_attempts == 1
+
+
+def test_the_search_for_a_car_turns_one_way_round(session):
+    # 20261114-030957: before a shop front, the street behind the camera, the look went 45 degrees to
+    # the right and 45 back to the left for a hundred seconds.
+    session.reading = replace(GOOD, minimap="flat", route="none")
+    session.mode = "foot"
+    session.mapped()
+    for _ in range(3):
+        session.until(lambda: session.active("enter_vehicle"))
+        session.conductor.runner.stop("no vehicle found")
+        session.until(lambda: session.active("look"))
+    angles = [row["args"]["angle"] for row in session.rows("trip_attempt") if row["name"] == "look"]
+    assert len(angles) >= 2 and len(set(angles)) == 1 and angles[0] >= 45
 
 
 def test_progress_window_outlasts_short_drive_stretches(session):
