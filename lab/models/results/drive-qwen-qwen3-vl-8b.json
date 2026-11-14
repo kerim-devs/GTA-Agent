@@ -1,0 +1,62 @@
+{
+ "model": "qwen/qwen3-vl-8b",
+ "extra": {},
+ "items": 309,
+ "ways": {
+  "pic": {
+   "asked": 309,
+   "right": 0.605,
+   "missed of what asks for slowing": 0.899,
+   "needless brake where the way is free": 0.0,
+   "needless lift where the way is free": 0.092,
+   "brake behind a slower vehicle": 0.0,
+   "unread": 0.0,
+   "median seconds": 0.239,
+   "p90 seconds": 0.317
+  },
+  "two": {
+   "asked": 309,
+   "right": 0.638,
+   "missed of what asks for slowing": 0.672,
+   "needless brake where the way is free": 0.0,
+   "needless lift where the way is free": 0.196,
+   "brake behind a slower vehicle": 0.0,
+   "unread": 0.0,
+   "median seconds": 0.313,
+   "p90 seconds": 0.435
+  },
+  "state": {
+   "asked": 309,
+   "right": 0.638,
+   "missed of what asks for slowing": 0.639,
+   "needless brake where the way is free": 0.0,
+   "needless lift where the way is free": 0.221,
+   "brake behind a slower vehicle": 0.0,
+   "unread": 0.0,
+   "median seconds": 0.213,
+   "p90 seconds": 0.277
+  },
+  "focus": {
+   "asked": 309,
+   "right": 0.566,
+   "missed of what asks for slowing": 0.529,
+   "needless brake where the way is free": 0.239,
+   "needless lift where the way is free": 0.117,
+   "brake behind a slower vehicle": 0.481,
+   "unread": 0.0,
+   "median seconds": 0.276,
+   "p90 seconds": 0.419
+  },
+  "think": {
+   "asked": 103,
+   "right": 0.612,
+   "missed of what asks for slowing": 0.634,
+   "needless brake where the way is free": 0.148,
+   "needless lift where the way is free": 0.037,
+   "brake behind a slower vehicle": 0.5,
+   "unread": 0.0,
+   "median seconds": 0.368,
+   "p90 seconds": 0.503
+  }
+ }
+}

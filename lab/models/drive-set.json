@@ -1,0 +1,4047 @@
+[
+ {
+  "id": "night-051709-1",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 23.52,
+  "speed": 14.6,
+  "route": "bends to the left ahead",
+  "things": [
+   "car to the right, very close, coming closer fast",
+   "car slightly to the right, very close, coming closer fast",
+   "car to the left, at a medium distance"
+  ],
+  "note": "Side collision with traffic at the junction; the own car begins to roll."
+ },
+ {
+  "id": "night-051709-4",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 27.55,
+  "speed": 3.6,
+  "route": "bends to the left ahead",
+  "things": [
+   "person to the right, far, coming closer fast, moving to the right across the picture",
+   "person to the left, far, moving away, moving to the right across the picture"
+  ],
+  "note": "Own car rolling, no lead vehicle visible."
+ },
+ {
+  "id": "night-051709-5",
+  "source": "night",
+  "label": "slower",
+  "seconds": 37.22,
+  "speed": 34.2,
+  "route": "bends to the right ahead",
+  "things": [
+   "car to the left, very close, coming closer fast, moving to the left across the picture",
+   "car to the left, close"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-051709-7",
+  "source": "night",
+  "label": "oncoming",
+  "seconds": 49.75,
+  "speed": 35.7,
+  "route": "bends to the right ahead",
+  "things": [
+   "car slightly to the left, at a medium distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-051709-9",
+  "source": "night",
+  "label": "standing",
+  "seconds": 55.49,
+  "speed": 29.5,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, very close",
+   "person to the right, close",
+   "car straight ahead, at a medium distance, coming closer fast",
+   "car to the left, far, coming closer fast, moving to the left across the picture",
+   "person to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-051709-10",
+  "source": "night",
+  "label": "beside",
+  "seconds": 57.83,
+  "speed": 28.4,
+  "route": "straight ahead",
+  "things": [
+   "car slightly to the left, very close, coming closer fast",
+   "car to the left, far, coming closer fast, moving to the left across the picture"
+  ],
+  "note": "Queue is left of the sidewalk trajectory."
+ },
+ {
+  "id": "night-051709-11",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 64.65,
+  "speed": 22.1,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, far, coming closer fast, moving to the left across the picture"
+  ],
+  "note": "Van crosses far to the left; own part of the junction is empty."
+ },
+ {
+  "id": "night-051709-12",
+  "source": "night",
+  "label": "slower",
+  "seconds": 74.68,
+  "speed": 20.9,
+  "route": "turns right at the next junction",
+  "things": [
+   "car to the left, very close, moving away",
+   "person to the right, close, coming closer fast, moving to the right across the picture",
+   "car slightly to the left, at a medium distance, moving away, moving to the right across the picture",
+   "car to the right, far, moving away, moving to the right across the picture"
+  ],
+  "note": "SUV ahead draws away left while own car turns right; competing oncoming traffic."
+ },
+ {
+  "id": "night-051709-13",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 77.59,
+  "speed": 4.0,
+  "route": "bends to the right ahead",
+  "things": [
+   "car straight ahead, very close, at a steady distance, moving to the left across the picture",
+   "person to the right, very close",
+   "car slightly to the right, at a medium distance, moving away, moving to the right across the picture",
+   "person to the left, far",
+   "car to the right, far, moving away, moving to the right across the picture"
+  ],
+  "note": "Pedestrian in sidewalk trajectory."
+ },
+ {
+  "id": "night-051709-15",
+  "source": "night",
+  "label": "slower",
+  "seconds": 81.72,
+  "speed": 11.0,
+  "route": "bends to the right ahead",
+  "things": [
+   "car straight ahead, very close, coming closer, moving to the left across the picture",
+   "person to the left, far",
+   "person to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-051709-16",
+  "source": "night",
+  "label": "standing",
+  "seconds": 83.83,
+  "speed": 18.6,
+  "route": "bends to the left ahead",
+  "things": [
+   "car to the left, very close, moving away, moving to the left across the picture",
+   "car to the left, far, coming closer fast",
+   "person slightly to the right, far",
+   "car to the left, far, moving away",
+   "car slightly to the left, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-051709-22",
+  "source": "night",
+  "label": "beside",
+  "seconds": 94.21,
+  "speed": null,
+  "route": "bends to the left ahead",
+  "things": [
+   "car to the right, very close",
+   "person to the right, far, at a steady distance, moving to the left across the picture",
+   "car straight ahead, far, coming closer"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-051709-23",
+  "source": "night",
+  "label": "standing",
+  "seconds": 97.17,
+  "speed": 13.3,
+  "route": "straight ahead",
+  "things": [
+   "car straight ahead, at a medium distance, coming closer fast",
+   "car straight ahead, at a medium distance, coming closer fast",
+   "person to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-051709-24",
+  "source": "night",
+  "label": "slower",
+  "seconds": 108.1,
+  "speed": 15.6,
+  "route": "turns left at the next junction",
+  "things": [
+   "bus straight ahead, close",
+   "car straight ahead, far, coming closer fast",
+   "person to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-051709-25",
+  "source": "night",
+  "label": "oncoming",
+  "seconds": 123.89,
+  "speed": 22.3,
+  "route": "bends to the left ahead",
+  "things": [
+   "person to the left, far",
+   "car to the right, far, moving away, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-051709-27",
+  "source": "night",
+  "label": "beside",
+  "seconds": 138.53,
+  "speed": 17.9,
+  "route": "bends to the right ahead",
+  "things": [
+   "person to the right, far",
+   "car to the left, far, moving away, moving to the left across the picture",
+   "person to the right, far",
+   "car slightly to the right, far, moving away, moving to the right across the picture"
+  ],
+  "note": "People on pavement beside the right bend, roadway clear."
+ },
+ {
+  "id": "night-051709-29",
+  "source": "night",
+  "label": "standing",
+  "seconds": 142.31,
+  "speed": 18.0,
+  "route": "bends to the right ahead",
+  "things": [
+   "car straight ahead, far, at a steady distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-051709-31",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 31.16,
+  "speed": 9.5,
+  "route": "straight ahead",
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "clear-051709-43",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 43.65,
+  "speed": 8.8,
+  "route": "straight ahead",
+  "things": [
+   "person to the right, close",
+   "car slightly to the left, far, coming closer, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-051709-61",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 61.59,
+  "speed": 20.0,
+  "route": "bends to the right ahead",
+  "things": [
+   "person to the right, at a medium distance",
+   "car slightly to the right, far, moving away, moving to the right across the picture",
+   "car slightly to the right, far, coming closer, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-051709-100",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 100.46,
+  "speed": 10.4,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, close, coming closer fast, moving to the right across the picture",
+   "bus to the left, at a medium distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052018-1",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 54.26,
+  "speed": 2.7,
+  "route": "turns left at the next junction",
+  "things": [
+   "car straight ahead, very close",
+   "car to the right, far"
+  ],
+  "note": "Cross traffic while pulling out from pavement."
+ },
+ {
+  "id": "night-052018-3",
+  "source": "night",
+  "label": "slower",
+  "seconds": 59.59,
+  "speed": 9.4,
+  "route": "turns right at the next junction",
+  "things": [
+   "car slightly to the left, at a medium distance, coming closer fast, moving to the right across the picture",
+   "car slightly to the left, far, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052018-6",
+  "source": "night",
+  "label": "standing",
+  "seconds": 63.1,
+  "speed": 2.9,
+  "route": "turns right at the next junction",
+  "things": [
+   "car straight ahead, very close, coming closer, moving to the left across the picture",
+   "car to the right, far",
+   "car to the left, far, at a steady distance, moving to the left across the picture",
+   "car to the left, far, at a steady distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052018-7",
+  "source": "night",
+  "label": "beside",
+  "seconds": 77.17,
+  "speed": 16.0,
+  "route": "bends to the left ahead",
+  "things": [
+   "person slightly to the left, far",
+   "car to the right, far",
+   "person to the left, far",
+   "car to the left, far"
+  ],
+  "note": "People on the pavement beside the turn."
+ },
+ {
+  "id": "night-052018-9",
+  "source": "night",
+  "label": "slower",
+  "seconds": 94.52,
+  "speed": 19.9,
+  "route": "bends to the left ahead",
+  "things": [
+   "motorcycle to the left, at a medium distance, coming closer",
+   "person to the left, far, moving away, moving to the left across the picture",
+   "car slightly to the left, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052018-10",
+  "source": "night",
+  "label": "slower",
+  "seconds": 113.69,
+  "speed": 8.8,
+  "route": "turns right at the next junction",
+  "things": [
+   "car straight ahead, at a medium distance, coming closer",
+   "car to the right, far, coming closer",
+   "car slightly to the right, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052018-12",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 117.33,
+  "speed": 6.1,
+  "route": "turns right at the next junction",
+  "things": [
+   "car to the left, very close",
+   "car to the right, far, coming closer",
+   "car slightly to the right, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052018-13",
+  "source": "night",
+  "label": "slower",
+  "seconds": 124.12,
+  "speed": 16.3,
+  "route": "bends to the left ahead",
+  "things": [
+   "person to the right, very close"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052018-14",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 182.68,
+  "speed": 6.7,
+  "route": "turns right at the next junction",
+  "things": [
+   "car to the right, far",
+   "car to the left, far"
+  ],
+  "note": "Own car spinning; no object ahead."
+ },
+ {
+  "id": "night-052018-15",
+  "source": "night",
+  "label": "oncoming",
+  "seconds": 197.46,
+  "speed": 3.1,
+  "route": "turns left at the next junction",
+  "things": [
+   "car straight ahead, close, coming closer fast, moving to the right across the picture",
+   "car to the left, at a medium distance, coming closer fast",
+   "car straight ahead, at a medium distance, at a steady distance, moving to the right across the picture"
+  ],
+  "note": "Oncoming vehicle near the centre line; path separation uncertain."
+ },
+ {
+  "id": "clear-052018-26",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 26.11,
+  "speed": 10.0,
+  "route": "bends to the right ahead",
+  "things": [
+   "person slightly to the right, very close, coming closer fast, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052018-81",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 81.83,
+  "speed": 8.3,
+  "route": "turns left at the next junction",
+  "things": [
+   "car to the right, very close, coming closer, moving to the right across the picture",
+   "car slightly to the right, very close, moving away, moving to the left across the picture",
+   "bus slightly to the right, close, at a steady distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052018-89",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 89.84,
+  "speed": 8.4,
+  "route": "bends to the left ahead",
+  "things": [
+   "car slightly to the right, far, moving away, moving to the right across the picture",
+   "motorcycle to the left, far, coming closer fast, moving to the right across the picture",
+   "car to the right, far, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052018-98",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 98.32,
+  "speed": 16.2,
+  "route": "bends to the left ahead",
+  "things": [
+   "person to the right, at a medium distance",
+   "person slightly to the right, at a medium distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052018-106",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 106.33,
+  "speed": 20.4,
+  "route": "bends to the right ahead",
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "clear-052018-121",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 121.02,
+  "speed": 8.1,
+  "route": "straight ahead",
+  "things": [
+   "car slightly to the right, very close, moving away, moving to the left across the picture",
+   "person to the right, close",
+   "car slightly to the right, at a medium distance, moving away",
+   "car to the left, at a medium distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052018-130",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 130.92,
+  "speed": 10.9,
+  "route": "turns left at the next junction",
+  "things": [
+   "car to the left, close",
+   "car to the right, far, at a steady distance, moving to the right across the picture",
+   "car straight ahead, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052018-138",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 138.95,
+  "speed": 9.2,
+  "route": "turns left at the next junction",
+  "things": [
+   "car slightly to the left, far, coming closer fast, moving to the left across the picture",
+   "car slightly to the right, far, moving away, moving to the right across the picture",
+   "car slightly to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052018-155",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 155.43,
+  "speed": 8.7,
+  "route": "bends to the right ahead",
+  "things": [
+   "car slightly to the right, far",
+   "car slightly to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052018-211",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 211.99,
+  "speed": 20.5,
+  "route": "bends to the right ahead",
+  "things": [
+   "person to the right, very close",
+   "person to the right, close",
+   "car to the left, far",
+   "person slightly to the right, far",
+   "car to the left, far, coming closer fast, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052402-1",
+  "source": "night",
+  "label": "slower",
+  "seconds": 23.74,
+  "speed": 9.8,
+  "route": "turns left at the next junction",
+  "things": [
+   "person to the right, close",
+   "person to the right, close",
+   "car slightly to the right, close, coming closer fast",
+   "car straight ahead, far, coming closer",
+   "car to the right, far, coming closer, moving to the right across the picture",
+   "car slightly to the right, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052402-2",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 26.79,
+  "speed": 8.6,
+  "route": "turns left at the next junction",
+  "things": [
+   "car slightly to the right, very close, at a steady distance, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052402-3",
+  "source": "night",
+  "label": "oncoming",
+  "seconds": 33.31,
+  "speed": 9.9,
+  "route": "bends to the right ahead",
+  "things": [
+   "car slightly to the left, at a medium distance, coming closer",
+   "truck to the left, far",
+   "car to the left, far, moving away, moving to the left across the picture"
+  ],
+  "note": "Oncoming lights under the bridge left of own lane."
+ },
+ {
+  "id": "night-052402-4",
+  "source": "night",
+  "label": "oncoming",
+  "seconds": 42.64,
+  "speed": 25.1,
+  "route": "bends to the right ahead",
+  "things": [
+   "car to the left, very close",
+   "car to the left, far, moving away, moving to the left across the picture",
+   "car straight ahead, far",
+   "car slightly to the right, far",
+   "car slightly to the left, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052402-8",
+  "source": "night",
+  "label": "slower",
+  "seconds": 73.6,
+  "speed": 25.3,
+  "route": "bends to the left ahead",
+  "things": [
+   "car to the left, far",
+   "car straight ahead, far, coming closer, moving to the right across the picture",
+   "car slightly to the left, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052402-9",
+  "source": "night",
+  "label": "standing",
+  "seconds": 78.88,
+  "speed": 11.4,
+  "route": "turns left at the next junction",
+  "things": [
+   "car to the left, far, coming closer, moving to the left across the picture",
+   "car to the left, far, moving away, moving to the right across the picture",
+   "car to the left, far, moving away",
+   "car to the left, far, coming closer, moving to the left across the picture",
+   "car straight ahead, far, coming closer",
+   "car straight ahead, far, coming closer"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052402-10",
+  "source": "night",
+  "label": "standing",
+  "seconds": 84.08,
+  "speed": 5.2,
+  "route": "turns left at the next junction",
+  "things": [
+   "car slightly to the left, very close, coming closer fast, moving to the left across the picture",
+   "car slightly to the right, very close, coming closer fast, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052402-11",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 96.47,
+  "speed": 6.5,
+  "route": "turns right at the next junction",
+  "things": [
+   "bus slightly to the left, very close"
+  ],
+  "note": "Bus crossing far ahead at the junction."
+ },
+ {
+  "id": "night-052402-12",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 102.34,
+  "speed": 5.2,
+  "route": "turns right at the next junction",
+  "things": [
+   "car to the right, close, coming closer fast",
+   "car slightly to the right, at a medium distance, coming closer fast, moving to the left across the picture",
+   "person to the left, far"
+  ],
+  "note": "Crossing brown car and approaching white car during a right turn."
+ },
+ {
+  "id": "night-052402-13",
+  "source": "night",
+  "label": "beside",
+  "seconds": 112.31,
+  "speed": 18.0,
+  "route": "turns right at the next junction",
+  "things": [
+   "person to the right, very close"
+  ],
+  "note": "Own car tipped at pavement; passing vehicle on road beside it."
+ },
+ {
+  "id": "night-052402-14",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 118.35,
+  "speed": 12.9,
+  "route": "straight ahead",
+  "things": [
+   "car slightly to the left, very close"
+  ],
+  "note": "Palm/tree impact; no detected-road-user reason visible."
+ },
+ {
+  "id": "night-052402-15",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 127.87,
+  "speed": 16.2,
+  "route": "bends to the left ahead",
+  "things": [
+   "person to the right, far, coming closer fast, moving to the right across the picture",
+   "person straight ahead, far, coming closer fast"
+  ],
+  "note": "Pedestrian directly in sidewalk trajectory."
+ },
+ {
+  "id": "night-052402-16",
+  "source": "night",
+  "label": "slower",
+  "seconds": 135.04,
+  "speed": 9.3,
+  "route": "bends to the left ahead",
+  "things": [
+   "car slightly to the left, very close, coming closer fast",
+   "car to the right, at a medium distance",
+   "person to the left, at a medium distance, coming closer fast, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052402-17",
+  "source": "night",
+  "label": "standing",
+  "seconds": 137.27,
+  "speed": 7.4,
+  "route": "turns left at the next junction",
+  "things": [
+   "car to the left, very close, coming closer",
+   "car straight ahead, very close, moving away",
+   "person to the right, close, coming closer, moving to the right across the picture",
+   "car to the left, at a medium distance, coming closer fast, moving to the left across the picture",
+   "car slightly to the left, far, moving away, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052402-18",
+  "source": "night",
+  "label": "oncoming",
+  "seconds": 148.07,
+  "speed": 2.8,
+  "route": "bends to the left ahead",
+  "things": [
+   "car to the left, close",
+   "car to the left, at a medium distance, coming closer fast",
+   "car straight ahead, far",
+   "car straight ahead, far",
+   "car slightly to the right, far"
+  ],
+  "note": "Own car turns toward opposite traffic; separation uncertain."
+ },
+ {
+  "id": "clear-052402-36",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 36.85,
+  "speed": 12.4,
+  "route": "straight ahead",
+  "things": [
+   "car straight ahead, far, coming closer",
+   "car to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052402-48",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 48.69,
+  "speed": 9.5,
+  "route": "bends to the left ahead",
+  "things": [
+   "car to the left, close, coming closer fast, moving to the left across the picture",
+   "car to the left, close, coming closer fast",
+   "car slightly to the left, far, coming closer fast",
+   "car to the left, far, moving away, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052402-56",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 56.73,
+  "speed": 21.6,
+  "route": "straight ahead",
+  "things": [
+   "car slightly to the left, very close, coming closer fast",
+   "car to the left, far, coming closer fast",
+   "car to the left, far, coming closer fast, moving to the left across the picture",
+   "car to the left, far",
+   "car to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052402-64",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 64.77,
+  "speed": 20.7,
+  "route": "straight ahead",
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "clear-052402-90",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 90.68,
+  "speed": 14.2,
+  "route": "turns right at the next junction",
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "clear-052402-106",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 106.48,
+  "speed": 8.9,
+  "route": "bends to the left ahead",
+  "things": [
+   "bus to the left, close, coming closer fast",
+   "person to the right, close, coming closer fast, moving to the right across the picture",
+   "car to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052402-121",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 121.86,
+  "speed": 17.6,
+  "route": "bends to the left ahead",
+  "things": [
+   "car to the left, close, coming closer, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052402-155",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 155.48,
+  "speed": 8.8,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, very close, moving away, moving to the right across the picture",
+   "car to the left, far, coming closer fast",
+   "car straight ahead, far, coming closer, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052653-1",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 25.68,
+  "speed": 0.4,
+  "route": "turns right at the next junction",
+  "things": [
+   "car to the right, very close, coming closer fast, moving to the right across the picture",
+   "car to the right, very close, coming closer fast, moving to the left across the picture",
+   "person to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052653-2",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 27.98,
+  "speed": 10.0,
+  "route": "turns right at the next junction",
+  "things": [
+   "car to the right, close",
+   "car to the right, far, moving away, moving to the right across the picture",
+   "car to the left, far, moving away, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052653-4",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 35.02,
+  "speed": 10.6,
+  "route": "straight ahead",
+  "things": [
+   "person to the right, at a medium distance, coming closer fast, moving to the right across the picture",
+   "person to the right, at a medium distance, coming closer fast, moving to the right across the picture",
+   "person straight ahead, far, moving away, moving to the left across the picture",
+   "person straight ahead, far, moving away, moving to the left across the picture"
+  ],
+  "note": "Pedestrians directly in sidewalk trajectory."
+ },
+ {
+  "id": "night-052653-5",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 40.03,
+  "speed": 11.4,
+  "route": null,
+  "things": [
+   "car straight ahead, very close"
+  ],
+  "note": "Own car at a tree."
+ },
+ {
+  "id": "night-052653-6",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 42.73,
+  "speed": 5.5,
+  "route": "straight ahead",
+  "things": [
+   "car straight ahead, far"
+  ],
+  "note": "Clear downhill lane and pavement."
+ },
+ {
+  "id": "night-052653-7",
+  "source": "night",
+  "label": "standing",
+  "seconds": 45.27,
+  "speed": 13.5,
+  "route": "straight ahead",
+  "things": [
+   "car straight ahead, far, coming closer fast",
+   "car slightly to the left, far, coming closer fast, moving to the left across the picture",
+   "car slightly to the left, far, coming closer"
+  ],
+  "note": "Parked van in own curb trajectory."
+ },
+ {
+  "id": "night-052653-8",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 59.71,
+  "speed": 15.1,
+  "route": "bends to the right ahead",
+  "things": [],
+  "note": "Own car pitching after pavement impact."
+ },
+ {
+  "id": "night-052653-9",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 67.97,
+  "speed": 11.6,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, close, coming closer fast",
+   "car to the left, far, moving away, moving to the left across the picture",
+   "car to the left, far, moving away",
+   "car to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-052653-11",
+  "source": "night",
+  "label": "standing",
+  "seconds": 81.71,
+  "speed": 18.5,
+  "route": "bends to the left ahead",
+  "things": [
+   "truck slightly to the left, close"
+  ],
+  "note": "Truck ahead at right turn; car then hits kerb."
+ },
+ {
+  "id": "night-052653-12",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 100.22,
+  "speed": 21.2,
+  "route": "bends to the left ahead",
+  "things": [
+   "car straight ahead, far, coming closer fast, moving to the left across the picture",
+   "car to the left, far",
+   "car to the left, far"
+  ],
+  "note": "Clear junction."
+ },
+ {
+  "id": "night-052653-13",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 109.27,
+  "speed": 22.1,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, far, moving away, moving to the left across the picture",
+   "car to the left, far, moving away"
+  ],
+  "note": "Side impact at junction."
+ },
+ {
+  "id": "night-052653-17",
+  "source": "night",
+  "label": "standing",
+  "seconds": 131.57,
+  "speed": 10.9,
+  "route": "bends to the left ahead",
+  "things": [
+   "car straight ahead, close, coming closer fast",
+   "person slightly to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052653-64",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 64.54,
+  "speed": 9.5,
+  "route": "straight ahead",
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "clear-052653-74",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 74.82,
+  "speed": 9.8,
+  "route": "straight ahead",
+  "things": [
+   "car slightly to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052653-85",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 85.84,
+  "speed": 14.3,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, at a medium distance",
+   "car slightly to the left, far, coming closer fast, moving to the left across the picture",
+   "car to the right, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052653-95",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 95.21,
+  "speed": 21.1,
+  "route": "straight ahead",
+  "things": [
+   "car slightly to the left, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-052653-103",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 103.75,
+  "speed": 26.4,
+  "route": "bends to the right ahead",
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "clear-052653-126",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 126.28,
+  "speed": 9.7,
+  "route": "bends to the left ahead",
+  "things": [
+   "car slightly to the left, far, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-053655-1",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 387.64,
+  "speed": 4.6,
+  "route": "turns left at the next junction",
+  "things": [
+   "truck to the right, very close",
+   "truck slightly to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-053655-3",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 395.73,
+  "speed": 1.9,
+  "route": "turns left at the next junction",
+  "things": [
+   "car straight ahead, very close, coming closer fast, moving to the left across the picture",
+   "truck to the right, very close, at a steady distance",
+   "car to the right, close, at a steady distance",
+   "person to the left, at a medium distance, coming closer fast",
+   "person to the left, at a medium distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-053655-4",
+  "source": "night",
+  "label": "oncoming",
+  "seconds": 415.53,
+  "speed": null,
+  "route": "turns left at the next junction",
+  "things": [
+   "car straight ahead, close, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-053655-6",
+  "source": "night",
+  "label": "oncoming",
+  "seconds": 417.61,
+  "speed": 16.4,
+  "route": "bends to the left ahead",
+  "things": [
+   "car straight ahead, at a medium distance, coming closer fast"
+  ],
+  "note": "Head-on contact under bridge; own car has crossed into opposing path."
+ },
+ {
+  "id": "night-053655-7",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 501.47,
+  "speed": 3.5,
+  "route": "turns left at the next junction",
+  "things": [
+   "car slightly to the right, very close, coming closer fast",
+   "car to the left, close",
+   "car straight ahead, at a medium distance, coming closer fast, moving to the left across the picture",
+   "car to the right, at a medium distance, coming closer fast",
+   "car to the right, far, moving away, moving to the left across the picture",
+   "car to the right, far, moving away, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-053655-8",
+  "source": "night",
+  "label": "slower",
+  "seconds": 508.93,
+  "speed": 21.8,
+  "route": "straight ahead",
+  "things": [
+   "car slightly to the right, far, coming closer fast, moving to the right across the picture",
+   "truck straight ahead, far",
+   "car slightly to the right, far, at a steady distance",
+   "car slightly to the left, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-053655-10",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 529.0,
+  "speed": 5.0,
+  "route": "bends to the left ahead",
+  "things": [
+   "car slightly to the right, very close",
+   "truck to the right, close",
+   "car slightly to the left, far, at a steady distance, moving to the right across the picture"
+  ],
+  "note": "Clear road after pavement impact."
+ },
+ {
+  "id": "night-053655-11",
+  "source": "night",
+  "label": "slower",
+  "seconds": 546.08,
+  "speed": 0.0,
+  "route": "straight ahead",
+  "things": [
+   "car slightly to the left, close, coming closer fast",
+   "car straight ahead, far, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-053655-12",
+  "source": "night",
+  "label": "slower",
+  "seconds": 548.75,
+  "speed": 22.2,
+  "route": "straight ahead",
+  "things": [
+   "car to the right, very close, coming closer fast",
+   "car slightly to the left, close",
+   "car to the left, far, coming closer fast, moving to the left across the picture",
+   "car to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-053655-13",
+  "source": "night",
+  "label": "oncoming",
+  "seconds": 560.07,
+  "speed": 29.3,
+  "route": "bends to the right ahead",
+  "things": [
+   "car slightly to the left, very close"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-053655-14",
+  "source": "night",
+  "label": "slower",
+  "seconds": 564.58,
+  "speed": 21.6,
+  "route": "bends to the right ahead",
+  "things": [
+   "person to the right, at a medium distance",
+   "car straight ahead, far, coming closer fast",
+   "car slightly to the right, far, moving away, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-053655-16",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 579.33,
+  "speed": 2.4,
+  "route": "turns left at the next junction",
+  "things": [
+   "car straight ahead, very close",
+   "car to the right, close, at a steady distance, moving to the left across the picture"
+  ],
+  "note": "Cross traffic at turn with side contact."
+ },
+ {
+  "id": "night-053655-17",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 595.19,
+  "speed": 11.4,
+  "route": "turns left at the next junction",
+  "things": [
+   "person to the right, close, coming closer fast",
+   "person slightly to the right, at a medium distance, coming closer fast, moving to the left across the picture",
+   "bus slightly to the right, far, coming closer fast, moving to the left across the picture"
+  ],
+  "note": "Pedestrian on pavement trajectory."
+ },
+ {
+  "id": "night-053655-18",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 598.43,
+  "speed": 3.7,
+  "route": "turns left at the next junction",
+  "things": [
+   "bus slightly to the right, close, coming closer fast",
+   "person straight ahead, far",
+   "person straight ahead, far",
+   "car to the left, far, coming closer fast"
+  ],
+  "note": "Bus crosses directly through path."
+ },
+ {
+  "id": "night-053655-21",
+  "source": "night",
+  "label": "slower",
+  "seconds": 607.85,
+  "speed": 15.0,
+  "route": "bends to the right ahead",
+  "things": [
+   "car slightly to the left, at a medium distance, coming closer fast",
+   "person to the right, far",
+   "car to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-053655-23",
+  "source": "night",
+  "label": "slower",
+  "seconds": 614.04,
+  "speed": 10.9,
+  "route": "bends to the right ahead",
+  "things": [
+   "car slightly to the right, close, coming closer fast",
+   "person to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-053655-24",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 621.11,
+  "speed": 8.0,
+  "route": "turns right at the next junction",
+  "things": [
+   "car slightly to the right, close, coming closer fast, moving to the left across the picture"
+  ],
+  "note": "Pedestrian in sidewalk trajectory."
+ },
+ {
+  "id": "night-053655-26",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 623.96,
+  "speed": 5.4,
+  "route": "bends to the right ahead",
+  "things": [
+   "car to the left, at a medium distance, coming closer",
+   "car to the left, at a medium distance, coming closer"
+  ],
+  "note": "Person now down beside own car; no lead hazard."
+ },
+ {
+  "id": "clear-053655-504",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 504.84,
+  "speed": 10.7,
+  "route": "straight ahead",
+  "things": [
+   "car straight ahead, far, coming closer, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-053655-552",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 552.44,
+  "speed": 12.4,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, far, moving away",
+   "car slightly to the left, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-053655-582",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 582.67,
+  "speed": 13.5,
+  "route": "turns left at the next junction",
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "clear-053655-590",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 590.68,
+  "speed": 11.6,
+  "route": "turns left at the next junction",
+  "things": [
+   "car to the left, very close, coming closer fast, moving to the left across the picture",
+   "car to the left, far, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-054734-1",
+  "source": "night",
+  "label": "oncoming",
+  "seconds": 32.74,
+  "speed": null,
+  "route": "turns right at the next junction",
+  "things": [
+   "car straight ahead, at a medium distance",
+   "car straight ahead, far",
+   "car slightly to the left, far"
+  ],
+  "note": "Opposing cars during right turn."
+ },
+ {
+  "id": "night-054734-4",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 47.93,
+  "speed": 14.2,
+  "route": "turns left at the next junction",
+  "things": [
+   "car straight ahead, far",
+   "car slightly to the right, far"
+  ],
+  "note": "Road clear; distant traffic only."
+ },
+ {
+  "id": "night-054734-5",
+  "source": "night",
+  "label": "slower",
+  "seconds": 58.03,
+  "speed": 0.0,
+  "route": "turns right at the next junction",
+  "things": [
+   "person to the right, at a medium distance, coming closer fast",
+   "person to the right, far, coming closer fast, moving to the right across the picture",
+   "car to the left, far",
+   "car straight ahead, far, moving away",
+   "car straight ahead, far, coming closer fast, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-054734-6",
+  "source": "night",
+  "label": "standing",
+  "seconds": 64.41,
+  "speed": 17.3,
+  "route": "bends to the right ahead",
+  "things": [
+   "car straight ahead, far, moving away, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-054734-9",
+  "source": "night",
+  "label": "slower",
+  "seconds": 96.72,
+  "speed": 7.3,
+  "route": "turns left at the next junction",
+  "things": [
+   "car slightly to the left, very close, moving away, moving to the right across the picture",
+   "car straight ahead, close",
+   "car slightly to the left, far, moving away, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-054734-10",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 107.99,
+  "speed": 25.5,
+  "route": "straight ahead",
+  "things": [
+   "truck to the right, at a medium distance",
+   "person to the right, far",
+   "car to the left, far, moving away, moving to the right across the picture"
+  ],
+  "note": "Pedestrian hit in road trajectory."
+ },
+ {
+  "id": "night-054734-11",
+  "source": "night",
+  "label": "beside",
+  "seconds": 114.59,
+  "speed": 14.4,
+  "route": "straight ahead",
+  "things": [
+   "motorcycle to the right, very close",
+   "car to the right, close, coming closer fast, moving to the right across the picture",
+   "car straight ahead, far, moving away, moving to the left across the picture",
+   "car straight ahead, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-054734-12",
+  "source": "night",
+  "label": "beside",
+  "seconds": 118.79,
+  "speed": 21.0,
+  "route": "turns left at the next junction",
+  "things": [
+   "bus to the right, very close, coming closer fast, moving to the right across the picture",
+   "person straight ahead, at a medium distance",
+   "person slightly to the left, far",
+   "person slightly to the left, far"
+  ],
+  "note": "Own car spinning beside bus."
+ },
+ {
+  "id": "night-054734-13",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 121.3,
+  "speed": null,
+  "route": "turns left at the next junction",
+  "things": [
+   "person straight ahead, at a medium distance, at a steady distance",
+   "person slightly to the right, far, at a steady distance"
+  ],
+  "note": "Own car spinning; road clear."
+ },
+ {
+  "id": "night-054734-15",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 152.16,
+  "speed": 17.3,
+  "route": "straight ahead",
+  "things": [
+   "car straight ahead, at a medium distance, coming closer"
+  ],
+  "note": "Own car rolling after pavement impact."
+ },
+ {
+  "id": "night-054734-17",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 157.55,
+  "speed": 8.3,
+  "route": "straight ahead",
+  "things": [
+   "car slightly to the left, close, coming closer fast, moving to the left across the picture",
+   "car to the right, far",
+   "car to the left, far, coming closer, moving to the left across the picture",
+   "car to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-054734-20",
+  "source": "night",
+  "label": "slower",
+  "seconds": 165.36,
+  "speed": 7.2,
+  "route": "bends to the left ahead",
+  "things": [
+   "car to the left, very close, coming closer fast, moving to the left across the picture",
+   "car to the left, very close, coming closer fast, moving to the left across the picture",
+   "car slightly to the left, close, coming closer fast",
+   "car to the left, close, moving away, moving to the left across the picture",
+   "car slightly to the left, far, coming closer fast",
+   "car to the left, far, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-054734-21",
+  "source": "night",
+  "label": "standing",
+  "seconds": 176.18,
+  "speed": null,
+  "route": "bends to the right ahead",
+  "things": [
+   "person to the right, at a medium distance, moving away"
+  ],
+  "note": "Parked vehicle directly in pavement trajectory."
+ },
+ {
+  "id": "night-054734-22",
+  "source": "night",
+  "label": "standing",
+  "seconds": 193.5,
+  "speed": 1.3,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, very close",
+   "car to the left, far, coming closer fast",
+   "car slightly to the left, far, moving away"
+  ],
+  "note": "Truck in path at junction."
+ },
+ {
+  "id": "night-054734-23",
+  "source": "night",
+  "label": "slower",
+  "seconds": 327.3,
+  "speed": 4.9,
+  "route": "bends to the right ahead",
+  "things": [
+   "car slightly to the right, very close, coming closer fast, moving to the right across the picture",
+   "car straight ahead, close, at a steady distance, moving to the left across the picture",
+   "car to the right, close, coming closer fast, moving to the left across the picture",
+   "car to the left, at a medium distance, coming closer fast",
+   "car to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-054734-37",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 37.43,
+  "speed": 11.4,
+  "route": "bends to the right ahead",
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "clear-054734-53",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 53.32,
+  "speed": 8.1,
+  "route": "turns left at the next junction",
+  "things": [
+   "person to the right, far",
+   "car slightly to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-054734-78",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 78.83,
+  "speed": 9.3,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, at a medium distance, coming closer fast, moving to the left across the picture",
+   "car slightly to the left, far, moving away, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-054734-100",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 100.43,
+  "speed": 12.3,
+  "route": "turns left at the next junction",
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "clear-054734-137",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 137.13,
+  "speed": 10.7,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, very close, coming closer fast",
+   "car to the left, very close, coming closer fast, moving to the right across the picture",
+   "person to the right, far",
+   "car slightly to the right, far, at a steady distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-054734-185",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 185.36,
+  "speed": 8.5,
+  "route": "bends to the right ahead",
+  "things": [
+   "person to the right, very close"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-054734-198",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 198.81,
+  "speed": 10.1,
+  "route": "straight ahead",
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "clear-054734-207",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 207.09,
+  "speed": 10.5,
+  "route": "turns right at the next junction",
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "night-055349-1",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 23.92,
+  "speed": 5.9,
+  "route": "bends to the left ahead",
+  "things": [
+   "car to the right, very close, coming closer fast, moving to the left across the picture",
+   "car slightly to the left, close, at a steady distance",
+   "person to the right, far",
+   "car to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-055349-2",
+  "source": "night",
+  "label": "standing",
+  "seconds": 30.17,
+  "speed": 21.7,
+  "route": "straight ahead",
+  "things": [
+   "car slightly to the right, very close, coming closer fast, moving to the right across the picture",
+   "car slightly to the left, very close, at a steady distance",
+   "car to the left, far, coming closer fast, moving to the left across the picture",
+   "car straight ahead, far, moving away, moving to the left across the picture"
+  ],
+  "note": "Van in curb trajectory."
+ },
+ {
+  "id": "night-055349-3",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 42.81,
+  "speed": 20.8,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, at a medium distance",
+   "car to the left, far, coming closer fast, moving to the left across the picture"
+  ],
+  "note": "Tree/pavement impact, no lead object."
+ },
+ {
+  "id": "night-055349-4",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 57.29,
+  "speed": null,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, very close, moving away"
+  ],
+  "note": "Distant cross traffic, no immediate conflict visible."
+ },
+ {
+  "id": "night-055349-6",
+  "source": "night",
+  "label": "slower",
+  "seconds": 63.18,
+  "speed": 12.2,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, very close",
+   "motorcycle to the left, very close, coming closer fast, moving to the left across the picture",
+   "person to the left, very close, moving away, moving to the left across the picture",
+   "car slightly to the left, close, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-055349-8",
+  "source": "night",
+  "label": "slower",
+  "seconds": 66.49,
+  "speed": 13.7,
+  "route": "straight ahead",
+  "things": [
+   "car slightly to the left, very close, coming closer",
+   "car straight ahead, far, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-055349-9",
+  "source": "night",
+  "label": "oncoming",
+  "seconds": 71.47,
+  "speed": 14.1,
+  "route": "straight ahead",
+  "things": [
+   "car slightly to the left, very close, moving away, moving to the right across the picture",
+   "car straight ahead, close",
+   "car to the left, far, coming closer fast",
+   "car to the left, far, coming closer fast",
+   "motorcycle to the left, far"
+  ],
+  "note": "Approaching motorcycle at junction."
+ },
+ {
+  "id": "night-055349-10",
+  "source": "night",
+  "label": "standing",
+  "seconds": 81.39,
+  "speed": 23.1,
+  "route": "straight ahead",
+  "things": [
+   "car straight ahead, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-055349-16",
+  "source": "night",
+  "label": "oncoming",
+  "seconds": 143.63,
+  "speed": null,
+  "route": "turns left at the next junction",
+  "things": [
+   "car to the right, very close, moving away, moving to the left across the picture",
+   "car to the right, at a medium distance, coming closer",
+   "car to the left, far",
+   "person to the right, far",
+   "person to the right, far",
+   "car to the right, far, moving away"
+  ],
+  "note": "Oncoming black car passes left of SUV."
+ },
+ {
+  "id": "night-055349-17",
+  "source": "night",
+  "label": "slower",
+  "seconds": 156.29,
+  "speed": 13.5,
+  "route": "straight ahead",
+  "things": [
+   "truck straight ahead, far, coming closer",
+   "car straight ahead, far, coming closer fast",
+   "car slightly to the left, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-055349-18",
+  "source": "night",
+  "label": "slower",
+  "seconds": 192.72,
+  "speed": 19.1,
+  "route": "bends to the right ahead",
+  "things": [
+   "person slightly to the right, far",
+   "car to the left, far, moving away",
+   "car straight ahead, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-055349-19",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 201.5,
+  "speed": 11.4,
+  "route": "turns left at the next junction",
+  "things": [
+   "car slightly to the left, at a medium distance, coming closer fast, moving to the left across the picture",
+   "truck to the right, far",
+   "person to the left, far",
+   "car to the right, far, at a steady distance, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-055349-27",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 27.25,
+  "speed": 11.5,
+  "route": "straight ahead",
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "clear-055349-35",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 35.98,
+  "speed": 8.0,
+  "route": "straight ahead",
+  "things": [
+   "person to the right, far, coming closer fast, moving to the right across the picture",
+   "car straight ahead, far, coming closer"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-055349-75",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 75.24,
+  "speed": 13.9,
+  "route": "straight ahead",
+  "things": [
+   "car to the right, very close",
+   "car to the left, very close",
+   "car slightly to the right, close, coming closer fast, moving to the right across the picture",
+   "car slightly to the right, at a medium distance, coming closer fast",
+   "car straight ahead, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-055349-153",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 153.13,
+  "speed": 9.1,
+  "route": "turns left at the next junction",
+  "things": [
+   "car to the left, far, coming closer fast, moving to the left across the picture",
+   "truck to the right, far, coming closer fast, moving to the right across the picture",
+   "person to the left, far",
+   "car to the right, far, at a steady distance, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-055349-161",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 161.15,
+  "speed": 19.0,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, very close, coming closer fast, moving to the left across the picture",
+   "car to the right, far, coming closer, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-055349-178",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 178.68,
+  "speed": 8.3,
+  "route": "turns right at the next junction",
+  "things": [
+   "bus straight ahead, at a medium distance, coming closer",
+   "bus straight ahead, far, coming closer"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-055349-196",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 196.41,
+  "speed": 13.3,
+  "route": "bends to the left ahead",
+  "things": [
+   "car slightly to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-055349-205",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 205.73,
+  "speed": 8.3,
+  "route": "bends to the left ahead",
+  "things": [
+   "truck to the right, very close, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-055729-1",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 51.97,
+  "speed": 0.0,
+  "route": "turns right at the next junction",
+  "things": [
+   "car straight ahead, far",
+   "truck to the left, far",
+   "person to the left, far",
+   "car to the right, far",
+   "car slightly to the right, far"
+  ],
+  "note": "Own car mounting empty median."
+ },
+ {
+  "id": "night-055729-4",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 68.51,
+  "speed": null,
+  "route": "bends to the left ahead",
+  "things": [
+   "car straight ahead, very close"
+  ],
+  "note": "Own car airborne at palm tree."
+ },
+ {
+  "id": "night-055729-6",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 71.54,
+  "speed": 1.4,
+  "route": "turns right at the next junction",
+  "things": [
+   "car straight ahead, very close, coming closer fast, moving to the left across the picture",
+   "car to the right, far, moving away, moving to the left across the picture",
+   "car to the right, far",
+   "car to the left, far, moving away, moving to the right across the picture",
+   "car to the left, far, moving away, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-055729-8",
+  "source": "night",
+  "label": "beside",
+  "seconds": 80.41,
+  "speed": 9.6,
+  "route": "turns right at the next junction",
+  "things": [
+   "car to the right, very close, coming closer fast, moving to the right across the picture",
+   "car straight ahead, very close, coming closer",
+   "person to the right, far, coming closer, moving to the right across the picture",
+   "person to the left, far",
+   "car to the left, far, at a steady distance"
+  ],
+  "note": "Cars alongside on right, own lane open."
+ },
+ {
+  "id": "night-055729-9",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 85.75,
+  "speed": 11.4,
+  "route": "turns right at the next junction",
+  "things": [
+   "car to the left, close, coming closer fast, moving to the left across the picture",
+   "car slightly to the right, at a medium distance",
+   "car to the left, far, moving away, moving to the right across the picture"
+  ],
+  "note": "Clear split junction."
+ },
+ {
+  "id": "night-055729-10",
+  "source": "night",
+  "label": "oncoming",
+  "seconds": 90.54,
+  "speed": null,
+  "route": "bends to the right ahead",
+  "things": [
+   "truck slightly to the right, very close",
+   "car to the right, far, coming closer fast",
+   "car to the right, far",
+   "car to the right, far"
+  ],
+  "note": "Oncoming lorry left of lane."
+ },
+ {
+  "id": "night-055729-12",
+  "source": "night",
+  "label": "slower",
+  "seconds": 108.1,
+  "speed": 24.3,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, very close, coming closer fast, moving to the left across the picture",
+   "car straight ahead, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-055729-15",
+  "source": "night",
+  "label": "crossing",
+  "seconds": 114.8,
+  "speed": 10.6,
+  "route": "bends to the left ahead",
+  "things": [
+   "truck to the right, at a medium distance",
+   "car slightly to the left, at a medium distance",
+   "car to the left, far, coming closer fast, moving to the right across the picture",
+   "car to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-055729-16",
+  "source": "night",
+  "label": "oncoming",
+  "seconds": 120.82,
+  "speed": null,
+  "route": "bends to the right ahead",
+  "things": [
+   "car to the left, close, coming closer fast, moving to the left across the picture",
+   "car straight ahead, far, coming closer fast",
+   "car to the left, far, moving away",
+   "car to the left, far, moving away",
+   "car slightly to the left, far, moving away, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-055729-17",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 123.0,
+  "speed": null,
+  "route": "bends to the right ahead",
+  "things": [
+   "car to the left, close, coming closer fast, moving to the left across the picture",
+   "truck to the left, far",
+   "car to the left, far, coming closer fast",
+   "car straight ahead, far, moving away",
+   "car straight ahead, far, coming closer, moving to the right across the picture"
+  ],
+  "note": "Own lane open; traffic distant."
+ },
+ {
+  "id": "night-055729-18",
+  "source": "night",
+  "label": "slower",
+  "seconds": 125.13,
+  "speed": 12.1,
+  "route": "bends to the right ahead",
+  "things": [
+   "car to the left, very close",
+   "car straight ahead, at a medium distance, coming closer fast",
+   "car straight ahead, far, coming closer fast, moving to the left across the picture",
+   "person to the right, far",
+   "person to the right, far",
+   "car to the left, far, moving away, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-055729-19",
+  "source": "night",
+  "label": "nothing",
+  "seconds": 133.69,
+  "speed": null,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, far"
+  ],
+  "note": "Empty sidewalk trajectory; distant traffic."
+ },
+ {
+  "id": "clear-055729-62",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 62.17,
+  "speed": 9.9,
+  "route": "turns left at the next junction",
+  "things": [
+   "truck straight ahead, far",
+   "person straight ahead, far",
+   "car to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-055729-76",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 76.79,
+  "speed": 9.3,
+  "route": "turns right at the next junction",
+  "things": [
+   "car slightly to the right, very close, coming closer fast, moving to the right across the picture",
+   "car slightly to the right, at a medium distance, moving away, moving to the right across the picture",
+   "car slightly to the right, far, moving away",
+   "truck straight ahead, far",
+   "person to the left, far, coming closer, moving to the right across the picture",
+   "car to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-055729-96",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 96.19,
+  "speed": 10.1,
+  "route": "bends to the left ahead",
+  "things": [
+   "person to the left, at a medium distance",
+   "motorcycle to the left, at a medium distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-055729-104",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 104.2,
+  "speed": 25.2,
+  "route": "bends to the left ahead",
+  "things": [
+   "bus straight ahead, close, coming closer fast",
+   "car to the left, at a medium distance, coming closer fast, moving to the left across the picture",
+   "car to the left, far, moving away",
+   "car to the left, far, coming closer"
+  ],
+  "note": ""
+ },
+ {
+  "id": "clear-055729-129",
+  "source": "clear",
+  "label": "clear",
+  "seconds": 129.86,
+  "speed": 8.6,
+  "route": "bends to the right ahead",
+  "things": [
+   "car to the left, far",
+   "truck slightly to the left, far",
+   "car to the left, far, moving away, moving to the left across the picture",
+   "car to the left, far, moving away",
+   "car slightly to the left, far, coming closer"
+  ],
+  "note": ""
+ },
+ {
+  "id": "night-073626-93.8",
+  "source": "night",
+  "label": "standing",
+  "seconds": 93.8,
+  "speed": 19.5,
+  "route": "straight ahead",
+  "things": [],
+  "note": "dark car standing at a red light, struck at 96.2 s"
+ },
+ {
+  "id": "night-073626-94.3",
+  "source": "night",
+  "label": "standing",
+  "seconds": 94.3,
+  "speed": 21.4,
+  "route": "straight ahead",
+  "things": [
+   "car straight ahead, far",
+   "car slightly to the left, far"
+  ],
+  "note": "dark car standing at a red light, struck at 96.2 s"
+ },
+ {
+  "id": "night-073626-94.9",
+  "source": "night",
+  "label": "standing",
+  "seconds": 94.9,
+  "speed": 22.5,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, far",
+   "car straight ahead, far, coming closer fast",
+   "car slightly to the left, far, coming closer fast, moving to the left across the picture"
+  ],
+  "note": "dark car standing at a red light, struck at 96.2 s"
+ },
+ {
+  "id": "night-073626-95.4",
+  "source": "night",
+  "label": "standing",
+  "seconds": 95.4,
+  "speed": 25.8,
+  "route": "straight ahead",
+  "things": [
+   "car to the left, close, coming closer fast, moving to the left across the picture",
+   "car straight ahead, close, coming closer fast",
+   "car to the left, at a medium distance",
+   "car slightly to the left, far, moving away, moving to the right across the picture",
+   "car to the left, far"
+  ],
+  "note": "dark car standing at a red light, struck at 96.2 s"
+ },
+ {
+  "id": "kerim-20261111-180814-217-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 217.91,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-193105-120-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 120.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, very close, coming closer fast, moving to the left across the picture",
+   "motorcycle straight ahead, very close, coming closer",
+   "truck to the right, close, coming closer fast, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-085011-571-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 571.93,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the left, far",
+   "car to the left, far",
+   "car slightly to the left, far, coming closer fast, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-085011-79-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 80.37,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car straight ahead, far, at a steady distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-171046-335-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 335.4,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-165543-676-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 677.18,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the right, very close, coming closer fast",
+   "car slightly to the left, very close, coming closer fast, moving to the left across the picture",
+   "car to the right, far, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-035200-630-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 630.91,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-180814-480-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 480.91,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-085011-321-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 321.86,
+  "speed": null,
+  "route": null,
+  "things": [
+   "truck to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-085011-482-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 482.87,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the right, at a medium distance, moving away, moving to the left across the picture",
+   "person to the right, far, coming closer fast, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-093524-158-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 159.4,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-205309-555-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 555.84,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the right, close, coming closer fast, moving to the right across the picture",
+   "car slightly to the left, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-171046-2-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 2.96,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the right, close, coming closer fast",
+   "person to the right, far, coming closer fast, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-213150-595-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 595.41,
+  "speed": null,
+  "route": null,
+  "things": [
+   "truck to the left, very close",
+   "person to the right, far, at a steady distance",
+   "car straight ahead, far",
+   "car slightly to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-175312-668-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 669.0,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, far",
+   "car straight ahead, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-033200-634-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 635.39,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the right, very close, at a steady distance, moving to the left across the picture",
+   "car slightly to the left, at a medium distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-190825-123-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 124.39,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car straight ahead, close",
+   "car to the left, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-190825-105-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 105.91,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car straight ahead, far, coming closer, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-092019-291-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 291.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, at a medium distance",
+   "person straight ahead, at a medium distance, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-033200-1124-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 1124.93,
+  "speed": null,
+  "route": null,
+  "things": [
+   "truck to the right, far, moving away, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-172549-64-brake",
+  "source": "kerim",
+  "label": "brake",
+  "seconds": 65.37,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the right, very close",
+   "car to the right, at a medium distance",
+   "car to the right, far, moving away, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-190825-796-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 796.91,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-093524-135-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 135.44,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the left, very close, coming closer fast, moving to the left across the picture",
+   "person straight ahead, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-200111-344-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 345.39,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the right, far",
+   "car to the right, far",
+   "car slightly to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-035200-505-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 505.9,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-205309-863-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 864.35,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, far",
+   "car straight ahead, far, moving away",
+   "car slightly to the right, far, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-210812-816-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 816.4,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-201615-756-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 757.39,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person slightly to the right, very close, moving away",
+   "person slightly to the right, very close, at a steady distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-041201-63-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 63.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car slightly to the right, far, coming closer, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-164039-532-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 533.39,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car slightly to the left, at a medium distance",
+   "car straight ahead, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-041201-1074-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 1075.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "truck straight ahead, very close",
+   "bus to the left, very close"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-180814-608-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 608.99,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, close"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-085011-588-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 589.37,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car straight ahead, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-035200-87-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 87.4,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-085011-489-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 489.95,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the right, very close",
+   "person to the left, far",
+   "person slightly to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-130333-2708-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 2708.89,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-200111-723-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 724.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, far",
+   "car straight ahead, far, coming closer, moving to the left across the picture",
+   "car slightly to the right, far, coming closer fast, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-180814-234-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 235.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car slightly to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-171046-234-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 234.89,
+  "speed": null,
+  "route": null,
+  "things": [
+   "bus to the left, close",
+   "person straight ahead, far",
+   "car to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-174628-488-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 488.89,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the right, at a medium distance, coming closer fast, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-205309-354-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 354.85,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-164039-349-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 349.87,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the right, very close, coming closer fast, moving to the right across the picture",
+   "car to the left, very close, coming closer fast, moving to the right across the picture",
+   "person slightly to the right, very close, coming closer fast",
+   "car to the left, close, coming closer, moving to the left across the picture",
+   "car to the left, far, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-035200-98-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 98.41,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car straight ahead, far, coming closer fast, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-185323-9-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 9.96,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the right, very close, coming closer fast, moving to the right across the picture",
+   "bus to the right, at a medium distance, coming closer fast, moving to the right across the picture",
+   "truck straight ahead, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-165543-355-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 355.41,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car slightly to the right, very close, coming closer fast",
+   "car to the left, far, moving away, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-205309-713-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 714.35,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car straight ahead, far",
+   "car slightly to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-182316-72-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 72.82,
+  "speed": null,
+  "route": null,
+  "things": [
+   "truck straight ahead, very close, coming closer fast, moving to the left across the picture",
+   "car to the right, at a medium distance, coming closer fast, moving to the right across the picture",
+   "truck slightly to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-174628-676-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 676.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, very close"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-085011-463-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 463.4,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-033200-1054-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 1055.39,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car slightly to the right, far, coming closer fast, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-210812-848-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 848.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car straight ahead, far",
+   "car straight ahead, far",
+   "car straight ahead, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-093524-357-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 357.89,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-165543-611-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 611.98,
+  "speed": null,
+  "route": null,
+  "things": [
+   "truck to the left, close",
+   "car to the left, at a medium distance, moving away, moving to the left across the picture",
+   "car to the left, far, moving away, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-201615-628-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 628.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person straight ahead, close",
+   "person straight ahead, close"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-183820-698-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 698.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, at a medium distance",
+   "car slightly to the right, far, coming closer fast, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-043201-662-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 662.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the left, far",
+   "person to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-041201-1138-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 1138.89,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-041201-97-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 97.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car straight ahead, at a medium distance, coming closer fast, moving to the left across the picture",
+   "car to the right, far, coming closer fast, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-174628-708-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 709.39,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-041201-781-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 782.39,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person straight ahead, very close, coming closer",
+   "person straight ahead, far, coming closer",
+   "person slightly to the right, far, moving away, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-190825-182-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 182.79,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-190825-350-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 350.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "truck to the right, very close",
+   "car to the left, at a medium distance, coming closer fast, moving to the left across the picture",
+   "car to the left, far, moving away, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-185323-243-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 243.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, very close, coming closer fast, moving to the left across the picture",
+   "person to the left, far",
+   "car to the left, far, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-193105-178-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 178.49,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car straight ahead, very close, coming closer fast",
+   "motorcycle straight ahead, close, at a steady distance",
+   "truck to the right, far",
+   "car slightly to the left, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-130333-2574-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 2575.39,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-210812-675-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 675.41,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, at a medium distance, moving away, moving to the right across the picture",
+   "car slightly to the right, at a medium distance",
+   "car to the right, far",
+   "car to the right, far",
+   "car to the right, far",
+   "bus to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-164039-789-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 790.37,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-174628-873-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 874.39,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the right, very close",
+   "motorcycle to the right, at a medium distance",
+   "person to the right, far",
+   "car to the left, far, coming closer fast, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-212314-221-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 222.39,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-213150-238-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 238.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the left, far, coming closer, moving to the left across the picture",
+   "person to the left, far",
+   "car to the left, far, moving away, moving to the left across the picture",
+   "car to the left, far, coming closer"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-171046-706-lift",
+  "source": "kerim",
+  "label": "lift",
+  "seconds": 706.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, very close",
+   "car slightly to the left, far, coming closer, moving to the right across the picture",
+   "car slightly to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-085011-67-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 67.89,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car straight ahead, far, moving away, moving to the left across the picture",
+   "car straight ahead, far, moving away, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-201615-674-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 675.39,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-174628-337-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 337.89,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car slightly to the left, far, coming closer fast, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-043201-844-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 844.41,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the left, at a medium distance, coming closer fast, moving to the left across the picture",
+   "car slightly to the left, far, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-031159-792-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 792.41,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car straight ahead, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-033200-677-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 677.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car slightly to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-182316-129-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 129.92,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, at a medium distance, coming closer fast, moving to the left across the picture",
+   "car to the left, far, moving away, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-035200-208-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 208.41,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car straight ahead, far, moving away, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-205309-663-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 663.85,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-033200-688-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 688.9,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-130333-2260-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 2261.39,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-105402-49-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 50.38,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, far, moving away",
+   "car straight ahead, far, at a steady distance",
+   "car slightly to the left, far, coming closer",
+   "car slightly to the left, far, coming closer"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-130333-2175-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 2176.39,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-043201-36-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 36.89,
+  "speed": null,
+  "route": null,
+  "things": [
+   "truck straight ahead, very close, at a steady distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-035200-14-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 14.41,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car straight ahead, far, coming closer, moving to the left across the picture",
+   "car slightly to the right, far, coming closer"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-033200-1074-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 1074.89,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-033200-319-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 319.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person straight ahead, close, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-193105-436-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 436.96,
+  "speed": null,
+  "route": null,
+  "things": [
+   "motorcycle straight ahead, very close, coming closer fast",
+   "car to the left, at a medium distance, coming closer, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-130333-2117-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 2118.39,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-185323-870-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 871.4,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-043201-566-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 567.39,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-174628-371-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 371.44,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-041201-731-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 731.89,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person straight ahead, very close, coming closer",
+   "truck slightly to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-130333-2363-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 2364.4,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-105402-66-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 66.42,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, far, coming closer fast, moving to the left across the picture",
+   "truck straight ahead, far, at a steady distance",
+   "car slightly to the left, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-114541-248-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 248.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "motorcycle straight ahead, very close, at a steady distance",
+   "car slightly to the left, at a medium distance, coming closer fast, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-193105-645-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 645.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-092019-298-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 298.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person straight ahead, at a medium distance, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-085011-286-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 287.35,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the left, far",
+   "motorcycle to the left, far, moving away, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-043201-763-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 763.48,
+  "speed": null,
+  "route": null,
+  "things": [
+   "truck slightly to the left, far, coming closer fast, moving to the left across the picture",
+   "car to the left, far, moving away, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-130333-2071-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 2072.39,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-172549-317-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 318.37,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the right, far",
+   "person to the right, far",
+   "person to the right, far",
+   "person to the right, far",
+   "person to the left, far",
+   "car to the left, far, coming closer fast, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-033200-713-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 713.89,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-190825-340-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 340.41,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, close, coming closer fast, moving to the left across the picture",
+   "car slightly to the left, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-193105-89-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 89.91,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the right, very close, coming closer, moving to the right across the picture",
+   "motorcycle straight ahead, very close",
+   "truck slightly to the left, close, coming closer fast, moving to the left across the picture",
+   "truck to the left, close",
+   "truck to the right, at a medium distance",
+   "car to the left, at a medium distance, moving away, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-085011-472-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 472.87,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person slightly to the right, far, coming closer, moving to the right across the picture",
+   "person slightly to the right, far, coming closer"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-175312-276-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 276.4,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-043201-575-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 575.9,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-041201-27-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 27.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, at a medium distance",
+   "car slightly to the right, far, at a steady distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-200111-365-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 366.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the right, far",
+   "person to the right, far",
+   "car to the left, far, moving away, moving to the right across the picture",
+   "car to the left, far, moving away, moving to the left across the picture",
+   "car slightly to the right, far, coming closer"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-193105-656-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 656.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "motorcycle straight ahead, close, at a steady distance",
+   "truck to the left, far, coming closer fast, moving to the left across the picture",
+   "car to the right, far",
+   "car to the left, far, moving away",
+   "car to the left, far, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-174628-156-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 156.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the right, very close",
+   "truck slightly to the right, far, coming closer fast",
+   "person to the left, far",
+   "car slightly to the right, far, coming closer fast",
+   "car slightly to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-165543-29-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 29.91,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the left, far",
+   "car to the right, far, coming closer fast, moving to the right across the picture",
+   "car slightly to the right, far, at a steady distance, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-114541-222-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 222.89,
+  "speed": null,
+  "route": null,
+  "things": [
+   "motorcycle straight ahead, very close, coming closer",
+   "truck straight ahead, far, coming closer",
+   "car slightly to the right, far, coming closer fast, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-205309-772-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 772.84,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car slightly to the right, far, at a steady distance, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-085011-263-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 263.86,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-085011-247-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 247.92,
+  "speed": null,
+  "route": null,
+  "things": [
+   "truck to the left, far",
+   "truck straight ahead, far",
+   "car straight ahead, far",
+   "car straight ahead, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-190825-566-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 566.9,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-041201-408-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 409.39,
+  "speed": null,
+  "route": null,
+  "things": [
+   "truck straight ahead, far, coming closer fast",
+   "car to the left, far, moving away, moving to the right across the picture",
+   "car to the left, far, moving away",
+   "car to the left, far, at a steady distance, moving to the right across the picture",
+   "car slightly to the right, far, coming closer fast, moving to the right across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-114541-101-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 101.91,
+  "speed": null,
+  "route": null,
+  "things": [
+   "truck to the left, at a medium distance",
+   "car slightly to the left, far",
+   "car slightly to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-182316-614-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 614.88,
+  "speed": null,
+  "route": null,
+  "things": [
+   "truck to the left, at a medium distance",
+   "car to the left, far",
+   "car straight ahead, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-174628-294-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 294.89,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person straight ahead, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-210812-613-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 613.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the right, very close",
+   "truck slightly to the left, close, coming closer fast, moving to the left across the picture",
+   "person to the right, at a medium distance, coming closer fast, moving to the right across the picture",
+   "person to the right, at a medium distance, coming closer fast, moving to the right across the picture",
+   "person to the right, far, coming closer",
+   "car to the left, far, coming closer fast, moving to the left across the picture"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-041201-813-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 814.39,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person straight ahead, far, moving away"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-174628-885-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 885.9,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-103708-8-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 9.39,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the left, far",
+   "person to the left, far",
+   "car to the left, far, coming closer fast, moving to the left across the picture",
+   "car to the left, far, coming closer fast",
+   "car to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-041201-110-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 111.39,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car straight ahead, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-165543-414-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 414.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car straight ahead, very close, coming closer",
+   "bus slightly to the left, very close, coming closer fast",
+   "car straight ahead, far, moving away, moving to the left across the picture",
+   "car slightly to the left, far, at a steady distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-213150-591-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 591.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "truck straight ahead, far, coming closer fast",
+   "person to the right, far, at a steady distance"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-180814-515-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 515.91,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-201615-829-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 829.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person straight ahead, close, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-200111-267-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 268.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the right, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-200111-241-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 242.39,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261112-114541-58-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 59.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, far, coming closer fast",
+   "car to the left, far, coming closer"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-203117-4-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 5.35,
+  "speed": null,
+  "route": null,
+  "things": [],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-201615-116-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 117.4,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the left, far",
+   "car slightly to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-190825-192-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 192.9,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, close, at a steady distance, moving to the left across the picture",
+   "car to the right, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261113-031159-809-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 809.91,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the right, far",
+   "car straight ahead, far, coming closer fast"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-190825-218-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 218.91,
+  "speed": null,
+  "route": null,
+  "things": [
+   "car to the left, at a medium distance",
+   "car slightly to the left, far"
+  ],
+  "note": ""
+ },
+ {
+  "id": "kerim-20261111-172549-335-cruise",
+  "source": "kerim",
+  "label": "cruise",
+  "seconds": 336.37,
+  "speed": null,
+  "route": null,
+  "things": [
+   "person to the left, far",
+   "car to the right, far, coming closer fast, moving to the right across the picture",
+   "car slightly to the right, far, coming closer fast"
+  ],
+  "note": ""
+ }
+]

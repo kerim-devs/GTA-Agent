@@ -1,0 +1,6 @@
+{
+ "model": "qwen3.5-35b-a3b",
+ "three at once, median seconds": 0.541,
+ "three at once, p90 seconds": 0.583,
+ "one alone, median seconds": 0.146
+}

@@ -1,0 +1,6 @@
+{
+ "model": "gemma-4-26b-a4b-it",
+ "three at once, median seconds": 0.39,
+ "three at once, p90 seconds": 0.457,
+ "one alone, median seconds": 0.151
+}
