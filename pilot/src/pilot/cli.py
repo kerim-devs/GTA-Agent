@@ -8,7 +8,7 @@ from contextlib import closing
 from dataclasses import asdict, fields
 from pathlib import Path
 
-from . import ahead, chooser, hud, memory, profile, sides
+from . import ahead, chooser, hud, memory, profile, sides, simple
 from .bridge import Bridge
 from .calibrate import RECORDINGS as CALIBRATIONS
 from .calibrate import run_calibrate, selection
@@ -144,7 +144,7 @@ def main(argv: list[str] | None = None) -> None:
     replay.add_argument("--out", type=Path)
     play = subcommands.add_parser("play", help="Run event-driven skills and an asynchronous head")
     play.add_argument("--seconds", type=duration)
-    play.add_argument("--task", choices=("trip",))
+    play.add_argument("--task", choices=("trip", "simple"))
     play.add_argument("--place", help="fixed destination as printed in the map legend")
     play.add_argument("--shadow", action="store_true")
     play.add_argument("--no-record", action="store_true")
@@ -259,6 +259,10 @@ def main(argv: list[str] | None = None) -> None:
             args.seconds = args.seconds or 900
         elif args.place is not None:
             parser.error("--place needs --task trip")
+        if args.task == "simple":
+            if args.plan or args.guard or args.no_hud_flow or not args.judge:
+                parser.error("--task simple needs --judge and the screen reflex, without --plan and --guard")
+            args.seconds = args.seconds or 600
         try:
             judge = JudgeReader(args.judge) if args.judge else None
             sides.use(args.judge)
@@ -281,6 +285,11 @@ def main(argv: list[str] | None = None) -> None:
             parser.error(f"--plan is not JSON: {error}")
         if args.task == "trip":
             head = MissionHead(task="trip", place=args.place, task_seconds=args.seconds)
+        elif args.task == "simple":
+            # Three steps and what they are carried out with; every other skill leaves the registry.
+            simple.only()
+            chooser.use(args.judge)
+            head = simple.SimpleHead()
         elif args.head == "scripted":
             head = ScriptedHead(plans or None)
         elif args.head == "rules-only":
@@ -324,7 +333,7 @@ def main(argv: list[str] | None = None) -> None:
                 awake=Conductor.AWAKE_SECONDS,
                 hud=None if args.no_hud_flow else hud,
                 flow=None if args.no_hud_flow else Flow(calls=True),
-                opening=() if args.task == "trip" else opening(args),
+                opening=() if args.task else opening(args),
                 guard=Guard() if args.guard else None,
                 standing=None if args.no_standing or args.head == "scripted" else Conductor.STANDING_SECONDS,
             )
