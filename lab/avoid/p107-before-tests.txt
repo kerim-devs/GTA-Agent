@@ -1,0 +1,95 @@
+FFF..FF..FF                                                              [100%]
+=================================== FAILURES ===================================
+____ test_recorded_opposite_lane_traffic_does_not_request_l2[oncoming_bend] ____
+
+name = 'oncoming_bend'
+
+    @pytest.mark.parametrize("name", ["oncoming_bend", "oncoming_second"])
+    def test_recorded_opposite_lane_traffic_does_not_request_l2(name):
+        rows = list(replay(name))
+        assert any(r["before"] for r, _ in rows)
+>       assert all(p.l2 == 0 for _, p in rows)
+E       assert False
+E        +  where False = all(<generator object test_recorded_opposite_lane_traffic_does_not_request_l2.<locals>.<genexpr> at 0x115203b90>)
+
+tests/test_brake_with_a_reason.py:34: AssertionError
+___ test_recorded_opposite_lane_traffic_does_not_request_l2[oncoming_second] ___
+
+name = 'oncoming_second'
+
+    @pytest.mark.parametrize("name", ["oncoming_bend", "oncoming_second"])
+    def test_recorded_opposite_lane_traffic_does_not_request_l2(name):
+        rows = list(replay(name))
+        assert any(r["before"] for r, _ in rows)
+>       assert all(p.l2 == 0 for _, p in rows)
+E       assert False
+E        +  where False = all(<generator object test_recorded_opposite_lane_traffic_does_not_request_l2.<locals>.<genexpr> at 0x1153e6f60>)
+
+tests/test_brake_with_a_reason.py:34: AssertionError
+__________ test_a_slower_recorded_car_gets_a_lift_before_a_full_stop ___________
+
+    def test_a_slower_recorded_car_gets_a_lift_before_a_full_stop():
+        rows = list(replay("slower"))
+        original = sum(r["dt"] for r, _ in rows if r["before"])
+        braking = [(r, p) for r, p in rows if p.l2]
+>       assert sum(r["dt"] for r, _ in braking) < original / 2
+E       assert 0.1153713749954477 < (0.1153713749954477 / 2)
+E        +  where 0.1153713749954477 = sum(<generator object test_a_slower_recorded_car_gets_a_lift_before_a_full_stop.<locals>.<genexpr> at 0x11549ef60>)
+
+tests/test_brake_with_a_reason.py:41: AssertionError
+_ test_the_half_hidden_queue_keeps_the_pedal_off_through_the_gps_gap_and_stop __
+
+    def test_the_half_hidden_queue_keeps_the_pedal_off_through_the_gps_gap_and_stop():
+        rows = list(replay("hidden_queue"))
+        assert next(r["now"] for r, p in rows if p.l2) <= next(r["now"] for r, _ in rows if r["before"])
+        waiting = [(r, p) for r, p in rows if r["now"] >= 80.3]
+>       assert waiting and all(p.r2 == 0 for _, p in waiting)
+E       AssertionError: assert ([({'now': 80.33776187499461, 'dt': 0.03939725000236649, 'frame_id': 69411, 'reading': {'bearing': 28.4665255194906, 'f..., 'confidence': 1.0, ...}, ...}, Pad(buttons=(), left=(0.0, 0.0), right=(0.0, 0.0), l2=0, r2=0.9869336376869351)), ...] and False)
+E        +  where False = all(<generator object test_the_half_hidden_queue_keeps_the_pedal_off_through_the_gps_gap_and_stop.<locals>.<genexpr> at 0x115466400>)
+
+tests/test_brake_with_a_reason.py:59: AssertionError
+_ test_a_recorded_brake_releases_while_still_following_at_twelve_metres_a_second _
+
+    def test_a_recorded_brake_releases_while_still_following_at_twelve_metres_a_second():
+        rows = list(replay("slower_release"))
+        original = [r for r, _ in rows if r["before"]]
+        braking = [r for r, p in rows if p.l2]
+>       assert braking and sum(r["dt"] for r in braking) < sum(r["dt"] for r in original) / 2
+E       AssertionError: assert ([{'now': 614.452172749996, 'dt': 0.03372704199864529, 'frame_id': 303613, 'reading': {'bearing': 18.364904482459636, '...: 15.49484832058381, 'far_bearing': 34.9043507765764, 'arrow': 0.31102836887652074, 'confidence': 1.0, ...}, ...}, ...] and 0.2510134170006495 < (0.2510134170006495 / 2))
+E        +  where 0.2510134170006495 = sum(<generator object test_a_recorded_brake_releases_while_still_following_at_twelve_metres_a_second.<locals>.<genexpr> at 0x1154628e0>)
+E        +  and   0.2510134170006495 = sum(<generator object test_a_recorded_brake_releases_while_still_following_at_twelve_metres_a_second.<locals>.<genexpr> at 0x115462810>)
+
+tests/test_brake_with_a_reason.py:68: AssertionError
+______ test_a_small_closing_speed_gets_a_partial_brake_and_keeps_the_push ______
+
+    def test_a_small_closing_speed_gets_a_partial_brake_and_keeps_the_push():
+        from pilot.avoid import Avoider
+    
+        skill = Avoider()
+        for i in range(8):
+            h = 1200 / (17 - i * 0.8)
+            box = Detection("car", (640 - h * 0.625, 360 - h, 640 + h * 0.625, 360), 0.9)
+            result = skill.step([box], i * 0.1, i * 0.1, speed=20)
+>       assert 0 < result.brake < 1 and result.pedal == 0
+E       assert (1.0 < 1)
+E        +  where 1.0 = Around(steer=-0.35275764705882356, pedal=0.0, urgent=True, brake=1.0).brake
+
+tests/test_brake_with_a_reason.py:104: AssertionError
+____________ test_a_lost_queue_box_cannot_hold_a_stop_indefinitely _____________
+
+    def test_a_lost_queue_box_cannot_hold_a_stop_indefinitely():
+        rows = list(replay("hidden_queue"))
+>       assert rows[-1][1].r2 == 0
+E       assert 0.2091527521202441 == 0
+E        +  where 0.2091527521202441 = Pad(buttons=(), left=(0.45403941656145, 0.0), right=(0.0, 0.0), l2=0, r2=0.2091527521202441).r2
+
+tests/test_brake_with_a_reason.py:110: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_brake_with_a_reason.py::test_recorded_opposite_lane_traffic_does_not_request_l2[oncoming_bend]
+FAILED tests/test_brake_with_a_reason.py::test_recorded_opposite_lane_traffic_does_not_request_l2[oncoming_second]
+FAILED tests/test_brake_with_a_reason.py::test_a_slower_recorded_car_gets_a_lift_before_a_full_stop
+FAILED tests/test_brake_with_a_reason.py::test_the_half_hidden_queue_keeps_the_pedal_off_through_the_gps_gap_and_stop
+FAILED tests/test_brake_with_a_reason.py::test_a_recorded_brake_releases_while_still_following_at_twelve_metres_a_second
+FAILED tests/test_brake_with_a_reason.py::test_a_small_closing_speed_gets_a_partial_brake_and_keeps_the_push
+FAILED tests/test_brake_with_a_reason.py::test_a_lost_queue_box_cannot_hold_a_stop_indefinitely
+7 failed, 4 passed in 0.20s

@@ -1,0 +1,38 @@
+{
+  "standing": {
+    "count": 31,
+    "seconds": 12.628562208017684,
+    "gps_loss_sum": 97.01274195312051,
+    "gps_known": 29
+  },
+  "slower": {
+    "count": 36,
+    "seconds": 13.524921626012656,
+    "gps_loss_sum": 53.4077561864854,
+    "gps_known": 32
+  },
+  "oncoming": {
+    "count": 23,
+    "seconds": 7.500690916014719,
+    "gps_loss_sum": 48.010151763357094,
+    "gps_known": 18
+  },
+  "crossing": {
+    "count": 42,
+    "seconds": 20.492691044011735,
+    "gps_loss_sum": 121.69384473857279,
+    "gps_known": 40
+  },
+  "beside": {
+    "count": 9,
+    "seconds": 2.9788153339759447,
+    "gps_loss_sum": 7.05925354863291,
+    "gps_known": 8
+  },
+  "nothing": {
+    "count": 29,
+    "seconds": 8.071285875019385,
+    "gps_loss_sum": 69.98468948914706,
+    "gps_known": 18
+  }
+}

@@ -120,6 +120,8 @@ class Skill:
 
     AROUND_BRAKE = 1.0  # full L2 when the closing obstacle consumes the stopping distance
     AROUND_BRAKE_SPEED = 2.0  # release before a held brake becomes reverse
+    AROUND_BEND = 8.0  # below this the P106 straight-road corridor is unchanged
+    AROUND_LANE = 0.01  # approximate 800 px focal projection per degree, with a straight-road allowance
 
     def _around(self, command, observation: Observation) -> Pad:
         """The driver's command, bent around what the detector sees in the way while the route is followed."""
@@ -134,8 +136,47 @@ class Skill:
         speed = observation.reading.gps_speed
         if speed is not None and not 0 <= speed < float("inf"):
             speed = None
+        reading = observation.reading
+        lane = 0.0
+        history = [
+            (t, e) for t, e in getattr(self, "_around_bearings", []) if 0 < observation.time - t <= 0.6
+        ]
+        if not reading.corrupt and reading.confidence >= 0.7:
+            near, arrow = reading.bearing, reading.arrow
+            if near is not None and arrow is not None:
+                error = (near - arrow + 180) % 360 - 180
+                previous = [abs(e) for t, e in history if observation.time - t >= 0.3 and e * error > 0]
+                improving = previous and min(previous) - abs(error) >= 3
+                if improving and (speed is None or speed > 8):
+                    self._around_turn = (observation.time, error)
+                turn_time, turn_error = getattr(self, "_around_turn", (-float("inf"), 0.0))
+                rounding = 0 <= observation.time - turn_time <= 0.6 and turn_error * error > 0
+                far = reading.far_bearing
+                smooth = far is not None and abs((far - near + 180) % 360 - 180) <= self.AROUND_BEND
+                # A shrinking heading error shows the car is already rounding the bend.
+                # A growing error can be the next junction beyond a stationary queue (061133).
+                if (
+                    self.AROUND_BEND < abs(error) <= 45
+                    and error * command.steer >= -1.0
+                    and (smooth or rounding)
+                ):
+                    lane = clamp(
+                        (error - (self.AROUND_BEND if error > 0 else -self.AROUND_BEND)) * self.AROUND_LANE,
+                        -0.18,
+                        0.18,
+                    )
+                history.append((observation.time, error))
+        else:
+            history = []
+            self._around_turn = (-float("inf"), 0.0)
+        self._around_bearings = history
         around = self.avoider.step(
-            observation.objects, observation.objects_time, observation.time, bypass=bypass, speed=speed
+            observation.objects,
+            observation.objects_time,
+            observation.time,
+            bypass=bypass,
+            speed=speed,
+            lane=lane,
         )
         brake = command.brake
         rolling = (speed is None or speed > self.AROUND_BRAKE_SPEED) and observation.moving is not False

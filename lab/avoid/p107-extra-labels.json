@@ -1,0 +1,253 @@
+{
+  "051709": [
+    {
+      "start": 144.27,
+      "class": "nothing",
+      "note": "Open lane; distant traffic only."
+    },
+    {
+      "start": 63.58,
+      "class": "slower",
+      "note": "Lead SUV being passed on its left."
+    },
+    {
+      "start": 83.13,
+      "class": "beside",
+      "note": "Car in the lane to the left."
+    },
+    {
+      "start": 98.93,
+      "class": "beside",
+      "note": "Own car between the queue lanes, cars on both sides."
+    }
+  ],
+  "052018": [
+    {
+      "start": 120.56,
+      "class": "slower",
+      "note": "Dark lead car at the underpass."
+    },
+    {
+      "start": 120.69,
+      "class": "slower",
+      "note": "Same underpass lead car."
+    },
+    {
+      "start": 120.76,
+      "class": "slower",
+      "note": "Same underpass lead car."
+    },
+    {
+      "start": 131.97,
+      "class": "slower",
+      "note": "Distant moving lead; the scene alone does not justify this early brake."
+    },
+    {
+      "start": 82.71,
+      "class": "standing",
+      "note": "Queue before the signal."
+    },
+    {
+      "start": 86.41,
+      "class": "standing",
+      "note": "Same queue before the signal."
+    }
+  ],
+  "052402": [
+    {
+      "start": 76.29,
+      "class": "nothing",
+      "note": "Open junction; distant cars do not obstruct the immediate path."
+    },
+    {
+      "start": 104.34,
+      "class": "oncoming",
+      "note": "Own car has entered opposing traffic and is already in contact."
+    },
+    {
+      "start": 104.53,
+      "class": "oncoming",
+      "note": "Own car alongside opposing car after contact."
+    },
+    {
+      "start": 105.56,
+      "class": "standing",
+      "note": "Bus at the curb; own car turns toward its rear."
+    },
+    {
+      "start": 85.52,
+      "class": "slower",
+      "note": "Moving lead car across the junction."
+    },
+    {
+      "start": 105.27,
+      "class": "standing",
+      "note": "Bus ahead as own car turns toward the curb."
+    },
+    {
+      "start": 105.83,
+      "class": "standing",
+      "note": "Same bus ahead at the curb."
+    },
+    {
+      "start": 159.22,
+      "class": "beside",
+      "note": "Taxi in road beside own car on the pavement."
+    }
+  ],
+  "052653": [
+    {
+      "start": 114.17,
+      "class": "nothing",
+      "note": "Own car sideways after a collision, no obstacle ahead."
+    },
+    {
+      "start": 47.6,
+      "class": "standing",
+      "note": "Own car against the rear of a van on the curb."
+    },
+    {
+      "start": 48.66,
+      "class": "standing",
+      "note": "Same van on the curb."
+    },
+    {
+      "start": 129.55,
+      "class": "beside",
+      "note": "Police car passing on the left."
+    },
+    {
+      "start": 48.81,
+      "class": "standing",
+      "note": "Same van on the curb; sustained approach confirmation shifts onset by 0.15 s."
+    }
+  ],
+  "053655": [
+    {
+      "start": 492.92,
+      "class": "nothing",
+      "note": "Own car rotated in the junction; cross traffic is far away."
+    },
+    {
+      "start": 513.35,
+      "class": "slower",
+      "note": "SUV ahead moving away through the green signal."
+    },
+    {
+      "start": 540.65,
+      "class": "standing",
+      "note": "Bus across the front as own car turns behind it."
+    },
+    {
+      "start": 619.91,
+      "class": "slower",
+      "note": "Lead car beside the pavement, own car follows close on its right."
+    }
+  ],
+  "054734": [
+    {
+      "start": 76.66,
+      "class": "oncoming",
+      "note": "Approaching vehicle toward the left of own path in the junction."
+    },
+    {
+      "start": 175.48,
+      "class": "standing",
+      "note": "Parked car directly ahead of own car at the curb."
+    },
+    {
+      "start": 98.38,
+      "class": "oncoming",
+      "note": "Own car turns toward opposing traffic."
+    },
+    {
+      "start": 117.58,
+      "class": "standing",
+      "note": "Own car closes on a bus before contact."
+    },
+    {
+      "start": 164.75,
+      "class": "slower",
+      "note": "Moving lead car before own car leaves road to the right."
+    }
+  ],
+  "055349": [
+    {
+      "start": 29.6,
+      "class": "slower",
+      "note": "Van ahead moving downhill."
+    },
+    {
+      "start": 60.29,
+      "class": "crossing",
+      "note": "Turning car crosses the junction toward own path."
+    },
+    {
+      "start": 60.97,
+      "class": "crossing",
+      "note": "Same turning car."
+    },
+    {
+      "start": 62.18,
+      "class": "nothing",
+      "note": "Motorcycle is behind own car, no obstacle ahead."
+    },
+    {
+      "start": 67.93,
+      "class": "beside",
+      "note": "Black car in the lane to the left."
+    },
+    {
+      "start": 75.68,
+      "class": "slower",
+      "note": "Moving lead car further downhill."
+    },
+    {
+      "start": 76.42,
+      "class": "beside",
+      "note": "Car on the right as own car threads between traffic."
+    },
+    {
+      "start": 157.58,
+      "class": "crossing",
+      "note": "Vehicle ahead turning out toward the right."
+    },
+    {
+      "start": 180.4,
+      "class": "crossing",
+      "note": "Car crosses in front through the junction."
+    },
+    {
+      "start": 194.57,
+      "class": "beside",
+      "note": "People on the pavement to the right; own car remains in road."
+    },
+    {
+      "start": 206.77,
+      "class": "beside",
+      "note": "Lorry alongside on the right, own car rubbing its side."
+    },
+    {
+      "start": 207.17,
+      "class": "beside",
+      "note": "Same lorry alongside."
+    }
+  ],
+  "055729": [
+    {
+      "start": 105.02,
+      "class": "beside",
+      "note": "Bus to the left; own car passes along curb."
+    },
+    {
+      "start": 105.38,
+      "class": "beside",
+      "note": "Same bus to the left."
+    },
+    {
+      "start": 127.15,
+      "class": "beside",
+      "note": "Pickup beside own car on its left."
+    }
+  ]
+}

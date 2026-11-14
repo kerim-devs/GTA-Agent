@@ -43,6 +43,8 @@ DECELERATION = 7.0
 BRAKE_DELAY = 0.25  # wired delay plus sampling reserve; detection age is added separately
 BRAKE_GAP = 1.0  # metres left between the bumpers
 BRAKE_SPEED = 2.0  # below this L2 risks reversing; release the accelerator and let the queue logic act
+ONCOMING = 2.5  # P106's stopped queue itself fits 2.16 times GPS speed; leave that uncertainty intact
+FOLLOW_TTC = 1.5  # a slower lead with this much time still calls for a lift, not a stop
 UNKNOWN_TTC = 3.0  # seconds: growth can demand braking even when GPS has no speed
 FOCAL = 800.0  # approximate pixels; P106's recorded approaches bound, but do not calibrate, this scale
 CAMERA = 6.0  # approximate metres from the camera to the front bumper
@@ -112,7 +114,9 @@ class _Thing:
         self.widths: list[tuple[float, float]] = []
         self.lateral: list[tuple[float, float]] = []
         self.kinds: list[str] = []
-        self.braking = False
+        self.braking = 0.0
+        self.queuing = False
+        self.approach: float | None = None
         self.add(item, now)
 
     def add(self, item, now: float) -> None:
@@ -180,9 +184,12 @@ class _Thing:
         height = max(y1 - y0, (x1 - x0) / WIDE.get(self.kind, 1.0))
         return max(0.0, FOCAL * TALL.get(self.kind, 1.5) / max(height, 1.0) - CAMERA)
 
-    def in_path(self) -> bool:
+    def in_path(self, lane: float = 0.0) -> bool:
         # The wider P96 corridor is useful for steering. For L2, its outer part must actually
         # be converging on our track; adjacent oncoming cars move away from it as they grow.
+        if lane:
+            offset, wide, _ = _seen(self)
+            return abs(offset - lane) <= 0.45 * min(wide, OWN)
         now, lateral = self.lateral[-1]
         if lateral <= 0.45:
             return True
@@ -191,20 +198,44 @@ class _Thing:
         slopes = [(lateral - x) / (now - t) for t, x in self.lateral[:-1] if now - t >= 0.15]
         return bool(slopes) and median(slopes) < -0.3
 
-    def must_brake(self, speed: float | None, age: float) -> bool:
+    def crowds_lane(self, speed: float | None, lane: float) -> bool:
+        # 061133: the bonnet hides the queued car's right half. Its visible body still
+        # overlaps our track, even after its centre moves outside it.
+        offset, wide, near = _seen(self)
+        return (
+            (speed is not None or self.queuing)
+            and abs(lane) < 0.03
+            and self.kind in VEHICLES
+            and self.box[3] < 510
+            and near >= 0.8
+            and (self.queuing or abs(offset) / max(min(wide, OWN), 1e-6) > 0.45)
+            and abs(offset) / max(min(wide, OWN), 1e-6) < TRACK
+        )
+
+    def must_brake(self, speed: float | None, age: float) -> float:
         contact = self.contact()
         if speed is None:
-            return contact is not None and contact - age <= UNKNOWN_TTC
-        if speed <= BRAKE_SPEED or contact == math.inf:
-            return False
+            return float(contact is not None and contact - age <= UNKNOWN_TTC)
+        if speed <= BRAKE_SPEED:
+            return 0.0
         distance = self.distance()
+        if contact == math.inf:
+            return 0.0
         # A first box cannot distinguish a moving lead car from a stopped one. Only immediate
         # proximity bypasses the short growth measurement; a steady lead car never asks for L2.
         if contact is None:
-            return _seen(self)[2] >= 0.8
-        closing = min(speed, (distance + CAMERA) / contact)
+            return float(_seen(self)[2] >= 0.8)
+        closing = (distance + CAMERA) / contact
+        if self.kind in VEHICLES and speed > 5 and closing > ONCOMING * speed and self.lateral[-1][1] > 0.25:
+            return 0.0
+        closing = min(speed, closing)
+        # Near walking speed, GPS lag can make a stopped obstacle look like a moving lead.
+        if speed > 5 and closing < 0.7 * speed and contact - age > FOLLOW_TTC and distance > BRAKE_GAP:
+            return 0.0
         stopping = closing * (BRAKE_DELAY + age) + closing * closing / (2 * DECELERATION) + BRAKE_GAP
-        return distance <= stopping
+        if distance > stopping:
+            return 0.0
+        return min(1.0, closing / (0.7 * speed))
 
 
 class Avoider:
@@ -247,6 +278,7 @@ class Avoider:
         *,
         bypass: bool = False,
         speed: float | None = None,
+        lane: float = 0.0,
     ) -> Around:
         if self.seen is not None and not 0 <= now - self.seen <= HOLD:
             self.side, self.seen = 0, None
@@ -258,26 +290,52 @@ class Avoider:
         boxes = [item for item in objects if not _minimap(item.box)]
         things = [_seen(item) for item in boxes]
         followed = self._track(objects, objects_time)
-        brake = False
+        brake = 0.0
         for thing in followed.values():
-            thing.braking = thing.in_path() and thing.must_brake(speed, now - objects_time)
-            brake |= thing.braking
+            thing.braking = thing.must_brake(speed, now - objects_time) if thing.in_path(lane) else 0.0
+            contact = thing.contact()
+            closing = (thing.distance() + CAMERA) / contact if contact else 0.0
+            approaching = (
+                speed is not None
+                and speed > BRAKE_SPEED
+                and contact is not None
+                and contact <= FOLLOW_TTC
+                and 0.7 * speed <= closing <= 1.3 * speed
+            )
+            # A single fitted spike must not latch the stop behind a neighbouring car.
+            thing.approach = (
+                (thing.approach if thing.approach is not None else objects_time) if approaching else None
+            )
+            confirmed = thing.approach is not None and objects_time - thing.approach >= 0.15
+            thing.queuing = thing.crowds_lane(speed, lane) and (thing.queuing or confirmed)
+            if thing.queuing and speed is not None and speed > BRAKE_SPEED:
+                thing.braking = 1.0
+            brake = max(brake, thing.braking)
         # A close obstacle can disappear behind the player's own car. Remember only a brake
         # already justified by that obstacle, and only as long as its last box is fresh.
-        brake |= any(
-            thing.braking
-            and thing not in followed.values()
-            and 0 <= now - thing.seen <= STALE
-            and (speed is None or speed > BRAKE_SPEED)
-            for thing in self.things
+        brake = max(
+            [brake]
+            + [
+                min(thing.braking, thing.must_brake(speed, now - thing.seen))
+                for thing in self.things
+                if thing.braking
+                and thing not in followed.values()
+                and thing.in_path(lane)
+                and 0 <= now - thing.seen <= STALE
+                and (speed is None or speed > BRAKE_SPEED)
+            ]
         )
         waiting = any(
-            thing.in_path()
+            (thing.in_path(lane) or thing.queuing)
             and (
                 _seen(thing)[2] >= 0.8
                 if speed is None
                 else speed <= BRAKE_SPEED
-                and thing.distance() <= BRAKE_GAP + speed * BRAKE_DELAY + speed * speed / (2 * DECELERATION)
+                and (
+                    (thing.queuing and _seen(thing)[2] >= 0.8)
+                    or thing.distance()
+                    <= BRAKE_GAP + speed * BRAKE_DELAY + speed * speed / (2 * DECELERATION)
+                )
             )
             for thing in followed.values()
         )
@@ -288,7 +346,7 @@ class Avoider:
                 if 0 < near and _in_lane(item)
             ]
             result = self._around(ahead, things, now, bypass=True) if ahead else CLEAR
-            return Around(result.steer, 0.0, True, 1.0) if brake else result
+            return Around(result.steer, 0.0, True, brake) if brake else result
         ahead, following = [], []
         for index, (item, (offset, wide, near)) in enumerate(zip(boxes, things, strict=True)):
             if not 0 < near or not _in_lane(item):
@@ -304,16 +362,16 @@ class Avoider:
         if ahead:
             result = self._around(ahead, things, now, bypass=False)
             if brake:
-                return Around(result.steer, 0.0, True, 1.0)
+                return Around(result.steer, 0.0, True, brake)
             return Around(result.steer, 0.0, result.urgent) if waiting else result
         if brake:
-            return Around(0.0, 0.0, True, 1.0)
+            return Around(0.0, 0.0, True, brake)
+        if waiting:
+            return Around(0.0, 0.0, True)
         if not following:
             return CLEAR
         near, offset, wide, _ = max(following)
         lift = FOLLOW_LIFT * min(1.0, max(0.0, (near - FOLLOW_FROM) / (1 - FOLLOW_FROM)))
-        if waiting:
-            return Around(0.0, 0.0, True)
         # Proximity still lifts the pedal; only observed closing justifies collision braking.
         return Around(0.0, 1 - lift, near >= 0.8 and abs(offset) < wide / 2)
 

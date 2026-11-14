@@ -1,0 +1,16 @@
+oncoming_bend {'first_before': 124.21580483300204, 'first_after': None, 'last_after': None, 'last_speed': None, 'before_seconds': 0.9494024580199039, 'after_seconds': 0}
+oncoming_second {'first_before': 90.90867520800384, 'first_after': None, 'last_after': None, 'last_speed': None, 'before_seconds': 0.4976971260039136, 'after_seconds': 0}
+slower {'first_before': 75.53868850000435, 'first_after': None, 'last_after': None, 'last_speed': None, 'before_seconds': 0.1153713749954477, 'after_seconds': 0}
+slower_release {'first_before': 614.452172749996, 'first_after': 614.452172749996, 'last_after': 614.5257931669912, 'last_speed': 12.333122116885006, 'before_seconds': 0.2510134170006495, 'after_seconds': 0.10994183299771976}
+hidden_queue {'first_before': 77.01472879100766, 'first_after': 77.01472879100766, 'last_after': 83.47596966600395, 'last_speed': 2.4216946361120053, 'before_seconds': 1.2931397919892333, 'after_seconds': 5.556027375976555}
+p106_queue {'first_before': 272.27009999999996, 'first_after': 272.27009999999996, 'last_after': 273.72119999999995, 'last_speed': 22.145161988734927, 'before_seconds': 0, 'after_seconds': 0}
+p106_lorry {'first_before': 295.22429999999997, 'first_after': 295.22429999999997, 'last_after': 296.9405, 'last_speed': None, 'before_seconds': 0, 'after_seconds': 0}
+standing recorded: 31 / 12.629 s / 3.35 m/s | before: 31 / 12.362 s / 3.42 m/s | after: 36 / 11.850 s / 3.70 m/s
+slower recorded: 36 / 13.525 s / 1.67 m/s | before: 35 / 11.655 s / 1.57 m/s | after: 42 / 11.141 s / 1.75 m/s
+oncoming recorded: 23 / 7.501 s / 2.67 m/s | before: 22 / 7.498 s / 4.15 m/s | after: 17 / 5.170 s / 3.59 m/s
+crossing recorded: 42 / 20.493 s / 3.04 m/s | before: 44 / 22.316 s / 2.84 m/s | after: 45 / 20.048 s / 2.46 m/s
+beside recorded: 9 / 2.979 s / 0.88 m/s | before: 8 / 3.295 s / 0.57 m/s | after: 17 / 4.618 s / 1.38 m/s
+nothing recorded: 29 / 8.071 s / 3.89 m/s | before: 25 / 7.441 s / 3.06 m/s | after: 21 / 5.056 s / 3.04 m/s
+recorded follow 1109.3347810420091 seconds 65.19696700305212 percent 5.87712276917992 onsets 170 per minute 9.194699539140961
+before follow 1109.3347810420091 seconds 64.56592499595718 percent 5.820238047103307 onsets 165 per minute 8.924267199754462
+after follow 1109.3347810420091 seconds 57.88360465991718 percent 5.217866206768217 onsets 178 per minute 9.627391282159358
