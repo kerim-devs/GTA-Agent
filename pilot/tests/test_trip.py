@@ -550,6 +550,18 @@ def test_route_gone_near_the_place_while_on_along_the_road_is_an_arrival(session
     assert len(session.rows("trip_end")) == 1
 
 
+def test_a_route_gone_at_52_metres_during_the_drive_is_an_arrival(session):
+    # 20261114-032141 at 293 s: more than the drive's own fifty metres, less than the sixty within
+    # which the printed distance alone is an arrival.
+    session.drive()
+    session.distance = 52
+    for _ in range(5):
+        session.tick()
+    session.reading = replace(session.reading, route="none")
+    session.until(lambda: session.trip.verdict is not None, seconds=8)
+    assert session.trip.verdict["status"] == "reached"
+
+
 def test_route_gone_far_from_the_place_is_no_arrival(session):
     session.drive()
     session.until(lambda: session.active("get_away"), seconds=30)
