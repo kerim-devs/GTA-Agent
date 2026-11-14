@@ -15,10 +15,11 @@ import tempfile
 import time
 from pathlib import Path
 
-from pilot import hud, minimap
 from pilot.bridge import Bridge
 from pilot.conductor import minimap_crop
 from pilot.contract import Pad
+
+from pilot import hud, minimap
 
 SLOTS = ((1.0, 0.0), (0.7, -0.7), (0.0, -1.0), (-0.7, -0.7), (0.7, 0.7), (0.0, 1.0))
 OVER = ("wasted", "busted")
