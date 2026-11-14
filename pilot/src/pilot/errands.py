@@ -996,13 +996,11 @@ class Trip:
                 self.game_since = now
         else:
             self.game_since = None
-        if (
-            screen == "game"
-            and not reading.corrupt
-            and reading.minimap == "flat"
-            and reading.confidence >= 0.45
-            and player_mode(observation) == "foot"
-        ):
+        # With a star lit the game shows the vehicle's map on foot as well (the log, 12 November), and
+        # the figure that had got out of a wedged car was taken to sit in it and pressed back in
+        # (20261114-061504 at 92 s). There the eye's own word that it stands is enough.
+        flat = reading.minimap == "flat" and reading.confidence >= 0.45 and player_mode(observation) == "foot"
+        if screen == "game" and not reading.corrupt and (flat or observation.mode == "foot"):
             if self.foot_since is None:
                 self.foot_since = now
         else:
@@ -1296,6 +1294,7 @@ class Trip:
         if self.step == "waypoint":
             stars = (request.hud or {}).get("wanted")
             seated = request.minimap.get("minimap") == "tilted" and not request.minimap.get("corrupt")
+            seated = seated and self.foot_since is None
             if stars and seated and not self.fled:
                 # With a star lit the map hides the shops and the car wash (20261114-015324): the
                 # police are lost first, once, and the place is looked up after.
@@ -1367,6 +1366,7 @@ class Trip:
                 self.method = "away"
                 return issue("walk_road", duration=10)
             seated = request.minimap.get("minimap") == "tilted" and not request.minimap.get("corrupt")
+            seated = seated and self.foot_since is None
             if not seated and self.exit_waits < self.EXIT_WAITS:
                 # The door takes two seconds and the eye another: a second press now would get back in.
                 self.exit_waits += 1

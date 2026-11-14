@@ -369,6 +369,20 @@ def test_an_exit_seen_late_is_not_pressed_a_second_time(session):
     assert len(presses) == 1
 
 
+def test_an_exit_under_a_star_is_seen_by_the_eye_though_the_map_stays_tilted(session):
+    # 20261114-061504 at 92 s: with a star lit the game shows the vehicle's map on foot as well. The
+    # figure stood beside its wedged car, was taken to sit in it, and a second triangle put it back.
+    session.drive()
+    session.hud = replace(session.hud, wanted=1)
+    session.conductor.runner.stop("dead-or-held")
+    session.until(lambda: session.active("press"), seconds=5)
+    session.until(lambda: session.active("wait"), seconds=5)
+    session.mode = "foot"
+    session.until(lambda: session.active("walk_road"), seconds=10)
+    presses = [row for row in session.rows("trip_attempt") if row["name"] == "press"]
+    assert len(presses) == 1
+
+
 def test_an_exit_that_stays_unclear_is_not_pressed_a_second_time(session):
     session.drive()
     session.conductor.runner.stop("dead-or-held")
@@ -692,6 +706,14 @@ def test_on_foot_with_a_star_lit_a_car_is_taken_before_the_map_is_opened(session
     session.outcomes.append(("done", SUCCESS, "game"))
     session.until(lambda: session.active("drive_route"), seconds=30)
     assert len(session.waypoints) == 1
+
+
+def test_on_foot_with_a_star_and_the_vehicles_map_a_car_is_still_taken_first(session):
+    # With a star the map is the vehicle's on foot as well: the eye says that the figure stands.
+    session.mode = "foot"
+    session.hud = replace(session.hud, wanted=1)
+    session.until(lambda: session.active("enter_vehicle"), seconds=5)
+    assert not [row for row in session.rows("trip_attempt") if row["name"] == "get_away"]
 
 
 def test_a_map_that_is_not_back_after_the_hospital_is_given_five_seconds(session):
