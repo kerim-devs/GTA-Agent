@@ -606,6 +606,7 @@ CAUSE_RULES: dict[str, str | None] = {
     "legend-selection-skips-the-place": "act",
     "five-presses": "act",
     "map-did-not-open": "act",
+    "interior-map": "act",  # the touchpad did not change the plan of a house to the city's map
     "menu-not-map": "act",
     "time-limit:": "act",  # the waypoint skills name the phase they were pressing in
     "still-in-lane": "act",

@@ -668,6 +668,17 @@ def test_with_a_star_lit_the_police_are_lost_before_the_map_is_opened(session):
     assert len(session.waypoints) == 1
 
 
+def test_three_waypoint_tries_taken_away_by_the_screen_end_the_trip(session):
+    # 20261114-043707: in a house the map was a screen the try could not read, seven times over.
+    for _ in range(3):
+        session.until(lambda: session.active("set_waypoint"), seconds=10)
+        session.conductor.runner.stop("flow")
+        session.tick()
+    session.until(lambda: session.trip.verdict is not None, seconds=10)
+    assert session.trip.verdict["status"] == "failed"
+    assert "taken away" in session.trip.verdict["reason"]
+
+
 def test_on_foot_with_a_star_lit_a_car_is_taken_before_the_map_is_opened(session):
     # 20261114-034858: out of the car at the shop with a star lit, the legend without the cinema.
     session.reading, session.mode = replace(GOOD, minimap="flat", route="none"), "foot"
