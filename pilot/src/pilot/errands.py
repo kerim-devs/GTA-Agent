@@ -1291,7 +1291,9 @@ class Trip:
             if self.retry in {"look", "road"}:
                 if self.car_seen is not None and now - self.car_seen[1] <= 2:
                     return issue("wait", duration=1)
-                return issue("look", angle=45 if self.car_attempts % 2 else -45, duration=0.6)
+                # Always the same way round: by turns to either side the camera never left the shop
+                # front the figure stood before, with the street behind it (20261114-030957, 100 s).
+                return issue("look", angle=60, duration=0.6)
             return issue("enter_vehicle", kind="car", occupied="allow", duration=12, search=self.car_started)
         if self.waypoint_check and self.waypoint_id is not None:
             if self.purple_at is not None and now - self.purple_at <= self.ROUTE_RECENT:

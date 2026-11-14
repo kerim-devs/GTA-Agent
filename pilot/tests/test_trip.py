@@ -835,6 +835,20 @@ def test_car_retry_without_recent_detection_looks_before_trying_again(session):
     assert session.trip.car_attempts == 1
 
 
+def test_the_search_for_a_car_turns_one_way_round(session):
+    # 20261114-030957: before a shop front, the street behind the camera, the look went 45 degrees to
+    # the right and 45 back to the left for a hundred seconds.
+    session.reading = replace(GOOD, minimap="flat", route="none")
+    session.mode = "foot"
+    session.mapped()
+    for _ in range(3):
+        session.until(lambda: session.active("enter_vehicle"))
+        session.conductor.runner.stop("no vehicle found")
+        session.until(lambda: session.active("look"))
+    angles = [row["args"]["angle"] for row in session.rows("trip_attempt") if row["name"] == "look"]
+    assert len(angles) >= 2 and len(set(angles)) == 1 and angles[0] >= 45
+
+
 def test_progress_window_outlasts_short_drive_stretches(session):
     session.drive()
     for _ in range(260):
