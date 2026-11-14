@@ -112,6 +112,21 @@ def test_a_held_car_cannot_cycle_the_join_clearance_forever():
     assert command.steer == command.throttle == command.brake == 0
 
 
+def test_a_car_held_again_backs_off_for_longer_each_time():
+    # 20261114-061504: a metre back and into the same wall again, for a minute.
+    car = driver()
+    reading, _ = BENCH.world("nominal", "join").observe()
+    legs, last = [], None
+    for tick in range(700):
+        state = car.step(reading, tick / 10, False, speed=0).state
+        if state == "turn-clear" and last != "turn-clear":
+            legs.append(0)
+        if state == "turn-clear":
+            legs[-1] += 1
+        last = state
+    assert len(legs) >= 3 and legs[0] < legs[1] < legs[2]
+
+
 def test_a_car_that_moved_but_could_not_join_reports_failed_recovery_instead_of_dead():
     car = driver()
     skill = DriveRoute({"style": "bold", "duration": 120}, driver=car)
