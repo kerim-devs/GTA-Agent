@@ -898,6 +898,7 @@ class Trip:
         self.route_waited = False
         self.waypoint_check = False
         self.asked_map = False  # whether the map was asked about a route that stayed away
+        self.new_seat = False  # a seat just taken, not yet driven off from where it was taken
         self.retry_wait = 1
 
     def emit(self, kind, now, **data):
@@ -951,7 +952,7 @@ class Trip:
         if reason == "death_or_arrest":
             self.car_attempts = self.waypoint_attempts = 0
             self.failure = self.failure_at = None
-            self.seat_check = False
+            self.seat_check = self.new_seat = False
             self.car_started = now
             self.waypoint_id = None
             self.retry = None
@@ -1106,6 +1107,10 @@ class Trip:
         if name == "enter_vehicle":
             self.car_attempts += 1
             if done and why.startswith(("entered vehicle", "already in a vehicle")):
+                # A car just taken is driven off before anything else. Its driver stands beside it:
+                # while the map was open, and again while the car turned round to its route on the
+                # spot, he pulled the figure out (20261114-004115 at 305 s, 20261114-011429 at 71 s).
+                self.new_seat = why.startswith("entered vehicle")
                 self.seat_check = False
                 self.retry = None
                 if self.step == "car":
@@ -1324,6 +1329,9 @@ class Trip:
         route = request.minimap.get("route") in {"purple", "yellow"} or (
             self.route_at is not None and now - self.route_at <= self.ROUTE_RECENT
         )
+        if self.new_seat:
+            self.new_seat = False
+            return issue("get_away", duration=10)
         if self.method == "loose":
             # With a route on the map the car is driven off as it stands, with no eye on the route:
             # the route begins behind it or beside it, and from another spot the game draws another.

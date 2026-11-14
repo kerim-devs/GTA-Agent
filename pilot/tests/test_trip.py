@@ -755,6 +755,22 @@ def test_failed_car_tries_change_method_and_keep_a_recently_seen_car(session):
     assert session.now >= 300
 
 
+def test_a_car_just_taken_is_driven_off_before_its_route_is_followed(session):
+    # 20261114-011429: the car turned round to its route beside the driver it was taken from, and
+    # he pulled the figure out after fourteen seconds.
+    session.reading = replace(GOOD, minimap="flat", route="none")
+    session.mode = "foot"
+    session.objects = (Detection("car", (500, 300, 800, 620), 0.95),)
+    session.mapped()
+    session.until(lambda: session.active("enter_vehicle"))
+    session.until(lambda: "triangle" in session.tick().pad.buttons, seconds=20)
+    session.reading, session.mode, session.objects = GOOD, "vehicle", ()
+    session.until(lambda: session.active("get_away"), seconds=10)
+    assert not [row for row in session.rows("trip_attempt") if row["name"] == "drive_route"]
+    session.until(lambda: session.active("drive_route"), seconds=15)
+    assert session.trip.recovery == 0
+
+
 def test_car_retry_without_recent_detection_looks_before_trying_again(session):
     session.reading = replace(GOOD, minimap="flat", route="none")
     session.mode = "foot"
