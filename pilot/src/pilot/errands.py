@@ -1151,6 +1151,7 @@ class Trip:
                 and self.game_since is not None
             ):
                 self.waypoint_id = ident
+                self.waypoint_attempts = 0  # three failed tries in a row end the trip, not three in all
                 if match[2] is not None and float(match[2]) <= self.NEAR_METRES:
                     # The legend's own distance, straight to the place. The game takes a waypoint
                     # away at its place, with whatever way round the block was still printed: 228 m

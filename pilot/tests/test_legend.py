@@ -353,6 +353,17 @@ def test_frozen_frames_never_authorise_further_input():
     assert "gameplay not verified" in result.reason
 
 
+def test_a_waypoint_that_stood_on_a_later_pages_place_is_set_again_after_the_cross_took_it():
+    # 20261114-064206: after a death on the way the waypoint still stood on the cinema, on the
+    # legend's fourth page. The cross took it away, the counter fell by one, and the try ended unproven.
+    names = ["Spieler", "Ammu-Nation", "Chinesen", "Golf", "Kino", "Fremde und Freaks", "Friseursalon"]
+    model = Model(names)
+    model.distance = 532  # the waypoint the game takes away at a cross on its own place
+    _, result, _ = run({"place": "Friseursalon"}, model)
+    assert result.status == "done", result.reason
+    assert "Friseursalon" in result.reason and model.distance == 532 and model.screen == "game"
+
+
 def test_missing_or_ambiguous_arrows_on_a_scrolled_page_are_unknown():
     rows = lines(["Golf", "Kino"], selected=6, offset=5, total=28)
     rows[1]["text"] = "Kino"

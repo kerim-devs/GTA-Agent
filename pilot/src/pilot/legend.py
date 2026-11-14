@@ -445,6 +445,14 @@ class LegendWaypoint:
                     return SkillResult()
                 if now - self.pressed < self.legend_lag:
                     return SkillResult()
+                gone = self.total_before is not None and picture.total == self.total_before - 1
+                if gone and self.attempts < self.max_attempts:
+                    # One entry fewer: the waypoint stood on this very place, as after a death on the
+                    # way to it, and the cross took it away (the cinema, 20261114-064206 at 426 and
+                    # 522 s, where the third such try ended the trip). The next cross sets it.
+                    self.total_before = picture.total
+                    self.attempts += 1
+                    return self._press(self.profile.confirm, observation, ("confirm",))
                 return self._fail("waypoint-unproven-on-a-later-page")
             if now - self.pressed < self.legend_lag:
                 return SkillResult()
