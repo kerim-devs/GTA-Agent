@@ -996,13 +996,11 @@ class Trip:
                 self.game_since = now
         else:
             self.game_since = None
-        if (
-            screen == "game"
-            and not reading.corrupt
-            and reading.minimap == "flat"
-            and reading.confidence >= 0.45
-            and player_mode(observation) == "foot"
-        ):
+        # With a star lit the game shows the vehicle's map on foot as well (the log, 12 November), and
+        # the figure that had got out of a wedged car was taken to sit in it and pressed back in
+        # (20261114-061504 at 92 s). There the eye's own word that it stands is enough.
+        flat = reading.minimap == "flat" and reading.confidence >= 0.45 and player_mode(observation) == "foot"
+        if screen == "game" and not reading.corrupt and (flat or observation.mode == "foot"):
             if self.foot_since is None:
                 self.foot_since = now
         else:
@@ -1090,7 +1088,7 @@ class Trip:
         elif reason.startswith("on-foot"):
             # Out of the car already: the next thing is a car, with the destination kept.
             self.car_started, self.car_attempts = now, 0
-            self.thrown = True
+            self.thrown = "hit"
             self.change("car", now)
             self.method = "route"
         else:
@@ -1239,6 +1237,9 @@ class Trip:
             self.car_started, self.car_attempts = now, 0
             self.change("car", now)
             self.method = "route"
+        elif name == "punch":
+            if done:
+                self.thrown = False  # the man is down: the car beside him is the next thing
         elif name in {"look", "walk", "walk_road", "wait"}:
             self.retry = None
 
@@ -1293,6 +1294,7 @@ class Trip:
         if self.step == "waypoint":
             stars = (request.hud or {}).get("wanted")
             seated = request.minimap.get("minimap") == "tilted" and not request.minimap.get("corrupt")
+            seated = seated and self.foot_since is None
             if stars and seated and not self.fled:
                 # With a star lit the map hides the shops and the car wash (20261114-015324): the
                 # police are lost first, once, and the place is looked up after.
@@ -1316,6 +1318,12 @@ class Trip:
             if self.thrown and not self.seat_check:
                 # Whoever pulled the figure out stands beside it and hits: on 14 November, 02:14, it went
                 # back to the same door twice and was beaten to death there. A player runs first.
+                # Running alone did not save it either: twice in a row the man who pulled the figure
+                # out caught up with it and beat it to death in the road (20261114-060000 at 137 s,
+                # 20261114-060700 at 37 s). It hits back first, and runs where that fails.
+                if self.thrown == "hit":
+                    self.thrown = "run"
+                    return issue("punch", duration=10, hits=4)
                 self.thrown = False
                 return issue("walk", x=0, y=1, sprint=True, duration=6)
             if self.empty >= self.EMPTY_ROUND:
@@ -1358,6 +1366,7 @@ class Trip:
                 self.method = "away"
                 return issue("walk_road", duration=10)
             seated = request.minimap.get("minimap") == "tilted" and not request.minimap.get("corrupt")
+            seated = seated and self.foot_since is None
             if not seated and self.exit_waits < self.EXIT_WAITS:
                 # The door takes two seconds and the eye another: a second press now would get back in.
                 self.exit_waits += 1

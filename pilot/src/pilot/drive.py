@@ -997,7 +997,10 @@ class Driver:
             if elapsed > 0.6 and moved:
                 self._manoeuvre_moved = self._recovery_moved = True
             if self._phase == "turn-clear":
-                if elapsed < self.config.bypass_reverse_time:
+                # Each time the forward leg is held again the car backs off for longer: with 0.9 s
+                # every time it moved a metre back and drove into the same wall, for a minute
+                # (20261114-061504 from 25 s, 20261114-054734 from 226 s).
+                if elapsed < self.config.bypass_reverse_time * min(max(self._turns, 1), 4):
                     return self._emit(-_clip(course * 0.04), 0, 1, self._phase)
                 self._phase, self._phase_since = "turn-along", now
                 self._manoeuvre_moved = False
