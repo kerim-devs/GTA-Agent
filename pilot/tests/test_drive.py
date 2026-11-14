@@ -402,6 +402,12 @@ def test_the_aim_under_the_arrow_goes_by_the_cars_own_way_to_the_line() -> None:
     assert _target(corner(9), 8.0, 180.0) == pytest.approx(_target(corner(9), 8.0))
     crossing = ((-6.0, 10.0), (-2.0, 14.0), (2.0, 18.0))
     assert _target(crossing, 8.0, 0.0) == pytest.approx(_target(crossing, 8.0))
+    # A route behind the car on its left (20261114-052018 at 137.7 and 140.5 s): its line met the car's
+    # way 14 and 22 px ahead, in plain view and not under the arrow, and the aim lay straight on.
+    early, late = ((-11.0, 6.0), (-19.0, 0.0), (-24.0, -4.0)), ((-13.0, -4.0), (-16.0, -10.0), (-21.0, -17.0))
+    for behind in (early, late):
+        aim = _target(behind, 8.0, 0.0)
+        assert aim == pytest.approx(_target(behind, 8.0)) and aim[0] < -5
 
 
 def test_the_middle_aim_steers_where_the_paths_beginning_goes_on_from_the_car(monkeypatch) -> None:

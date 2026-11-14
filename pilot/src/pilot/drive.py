@@ -14,6 +14,8 @@ ASSUMED_SPEED = 4.0
 # Metres a second above the straight limit up to which the holding pedal rests; beyond it the pedal
 # falls with the excess, since the reading's noise on a straight stays inside this.
 STRAIGHT_EXCESS = 3.0
+# Pixels by which a corner taken to lie under the arrow may lie beyond the path's first point.
+HIDDEN_SLACK = 1.0
 
 
 @dataclass(frozen=True)
@@ -1323,7 +1325,11 @@ def _target(path, radius: float, heading: float | None = None):
                 if abs(cross) > 1e-6:
                     ahead = (dx * y - dy * x) / cross  # along the heading to the line
                     before = (hx * y - hy * x) / cross  # from the first point along the line, back negative
-                    if ahead >= radius and before <= 0:
+                    # The meeting point is hidden only under the arrow, no farther off than the
+                    # path's first point: on 14 November (20261114-052018, 135 to 147 s) a route
+                    # that lay behind the car on its left met the heading 14 to 22 px ahead, in
+                    # plain view, and the car was aimed straight on, away from it, for 12 s.
+                    if radius <= ahead <= hypot(x, y) + HIDDEN_SLACK and before <= 0:
                         return radius * hx, radius * hy
             projection = x * dx + y * dy
             discriminant = projection * projection - x * x - y * y + radius * radius
