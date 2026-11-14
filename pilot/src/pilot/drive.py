@@ -776,7 +776,11 @@ class Driver:
             # club (20261114-015901) twenty of 46 brake pulses fell here, at 9 to 21 m/s, where
             # Kerim's turns are taken at 14 to 21 with no brake at all.
         if heading_error > 60:
-            target = _target(path, cfg.lookahead_px)
+            # The aim the stick is steered at. Without the car's heading the aim lay on the first
+            # segment continued backwards, on the far side of the car, and a corner 20 px ahead was
+            # taken for one under the arrow: the car crept at 3 to 5 m/s for the last 25 m to a
+            # junction (20261114-054734 at 48 s, 37 such stretches in five trips).
+            target = _target(path, cfg.lookahead_px, self._road_heading)
             radius = hypot(*target) * scale
             error = radians(_angle(degrees(atan2(*target)) - self._road_heading))
             turn = max(

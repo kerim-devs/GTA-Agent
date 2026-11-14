@@ -46,6 +46,20 @@ def test_a_near_junction_brakes_before_the_arrow_turns():
     assert abs(command.steer) < 0.1
 
 
+def test_a_corner_twenty_pixels_ahead_is_not_a_turn_under_the_arrow():
+    # 20261114-054734 at 48.1 s: a left turn 20 px ahead of the car. The limit for a turn under the
+    # arrow was taken from an aim on the far side of the car, and the car crept to the junction.
+    path = [(0, 13), (-5, 19), (-13, 20), (-19, 20), (-25, 20), (-31, 20), (-37, 20)]
+    driver = Driver(drive_config(["style=bold"]))
+    driver.step(road(path), 0, True, speed=10)
+    assert driver.speed_reason != "hidden-turn"
+    # Under the arrow it still is one: the path begins beside the car and runs across its way.
+    beside = [(-11, 8), (-17, 9), (-23, 9), (-29, 9), (-35, 9), (-41, 9)]
+    driver = Driver(drive_config(["style=bold"]))
+    driver.step(road(beside), 0, True, speed=10)
+    assert driver.speed_reason == "hidden-turn"
+
+
 def test_a_floor_crossing_cannot_reopen_the_same_brake_pulse():
     driver = Driver(drive_config(["style=bold"]))
     brakes = [driver._pulsed(0.5, speed, i / 30) for i, speed in enumerate([9, 6.9, 7.2, 6.9, 7.2, 6.9, 7.2])]
