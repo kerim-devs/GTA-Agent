@@ -160,3 +160,24 @@ def test_a_drive_that_ran_out_of_its_time_is_driven_on_with(tmp_path, model):
     response = simple.SimpleHead().decide(request(tmp_path, seat="vehicle", route="purple", last=late))
     assert "drive" in asked[0][1]
     assert names(response) == ["drive_route"]
+
+
+def test_without_a_game_picture_nothing_is_chosen(tmp_path, model):
+    asked, _ = model
+    scene = request(tmp_path, seat="foot")
+    scene.minimap["minimap"] = "none"
+    assert names(simple.SimpleHead().decide(scene)) == ["wait"]
+    menu = request(tmp_path, seat="vehicle")
+    menu.hud["screen"] = "cutscene"
+    assert names(simple.SimpleHead().decide(menu)) == ["wait"]
+    assert not asked
+
+
+def test_a_walk_to_the_road_that_fails_is_not_begun_again_at_once(tmp_path, model):
+    head = simple.SimpleHead()
+    missed = {"name": "enter_vehicle", "status": "failed", "reason": "no car in reach"}
+    for _ in range(simple.LOOKS + 1):
+        plan = names(head.decide(request(tmp_path, last=missed)))
+    assert plan[0] == "walk_road"
+    failed = {"name": "walk_road", "status": "failed", "reason": "map-unreadable"}
+    assert names(head.decide(request(tmp_path, last=failed))) == ["look", "enter_vehicle"]

@@ -116,6 +116,17 @@ class SimpleHead:
         if last.get("status") == "running":
             # Asked while a step runs, for news of some kind: the step is not begun again.
             return parse_response({"action": "go_on", "plan": [], "sentence": "Weiter."})
+        if (request.hud or {}).get("screen") not in {None, "game"} or request.minimap.get("minimap") not in {
+            "flat",
+            "tilted",
+        }:
+            # A scene, a menu, a black picture: none of the three steps begins there. In the third run
+            # the walk to the road was begun fourteen times under a mission's scene (20261114-115256).
+            plan = [_call("wait", duration=2)]
+            return replace(
+                parse_response({"plan": plan, "sentence": "Ich warte auf das Spielbild."}),
+                reason="no game picture: nothing is chosen",
+            )
         name, status, why = last.get("name"), last.get("status"), str(last.get("reason") or "")
         visible = request.minimap.get("route") in {"purple", "yellow"}
         if visible:
@@ -129,8 +140,11 @@ class SimpleHead:
             and self.hidden < HIDDEN
         )
         mode, route, state = self.state(request, tunnel=tunnel)
-        if name == "enter_vehicle":
-            self.misses = self.misses + 1 if status == "failed" else 0
+        if status == "failed" and name in {"enter_vehicle", "look", "walk_road"}:
+            # A walk to the road that fails counts as well, or it is begun again for ever.
+            self.misses += 1
+        elif name == "enter_vehicle":
+            self.misses = 0
         refused = name == "set_waypoint" and status == "failed" and "place-not-in-legend" in why
         arrived = name == "drive_route" and status == "done" and why == "arrived"
         if self.place and (refused or arrived):
