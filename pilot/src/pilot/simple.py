@@ -20,8 +20,10 @@ from .head import HeadRequest, HeadResponse, parse_response
 from .mission import movement
 
 # What the three steps are carried out with. `look` and `walk_road` belong to the first: a figure
-# with no car in reach turns the camera, and after a round of that walks to the road.
-SKILLS = ("enter_vehicle", "set_waypoint", "drive_route", "look", "walk_road", "wait")
+# with no car in reach turns the camera, and after a round of that walks to the road. `drive_on`
+# belongs to the third: in a tunnel the map shows no route, and the car follows the road until it
+# is back.
+SKILLS = ("enter_vehicle", "set_waypoint", "drive_route", "look", "walk_road", "wait", "drive_on")
 
 STEPS = {
     "car": "Get into a car nearby. For a player who is on foot",
@@ -40,6 +42,11 @@ PLACES = {
 }
 
 LOOKS = 5  # camera turns of 60 degrees with no car in reach before the figure walks to the road
+# Drives in a row that lost their route far from the place before the route counts as gone. Kerim,
+# 14 November: in a tunnel the way is not shown, the car has to drive on and the way comes back; it
+# had opened the map four times in a tunnel instead (20261114-114025, 522 to 558 s).
+HIDDEN = 3
+HIDDEN_SECONDS = 20
 
 
 def only(names=SKILLS):
@@ -62,9 +69,10 @@ class SimpleHead:
         self.place = None  # the destination chosen and not reached yet
         self.left = set()  # the place reached last and one the map did not have: not chosen next
         self.misses = 0  # tries at a car in a row that found none
+        self.hidden = 0  # drives in a row that lost a route far from its end
         self.asked = self.answered = self.plain = 0
 
-    def state(self, request: HeadRequest):
+    def state(self, request: HeadRequest, *, tunnel=False):
         mode = movement(request)
         seat = {"vehicle": "The player sits in a car.", "on_foot": "The player is on foot."}.get(
             mode, "It is unclear whether the player sits in a car."
@@ -77,11 +85,14 @@ class SimpleHead:
             how = "succeeded" if last["status"] == "done" else "failed"
             reason = " ".join(str(last.get("reason") or "").split())[:80]
             ended = f" The last step ({step}) {how}" + (f": {reason}." if reason else ".")
-        return (
-            mode,
-            route,
-            seat + (" A route is marked on the map." if route else " No route is marked on the map.") + ended,
+        marked = (
+            " A route is marked on the map."
+            if route
+            else " A route is marked, but out of sight for the moment, as in a tunnel."
+            if tunnel
+            else " No route is marked on the map."
         )
+        return mode, route, seat + marked + ended
 
     def _choose(self, question, options, request, state, fallback):
         self.asked += 1
@@ -105,20 +116,32 @@ class SimpleHead:
         if last.get("status") == "running":
             # Asked while a step runs, for news of some kind: the step is not begun again.
             return parse_response({"action": "go_on", "plan": [], "sentence": "Weiter."})
-        mode, route, state = self.state(request)
         name, status, why = last.get("name"), last.get("status"), str(last.get("reason") or "")
+        visible = request.minimap.get("route") in {"purple", "yellow"}
+        if visible:
+            self.hidden = 0
+        # A route lost far from its end is out of sight, not gone: the car drives on along the road.
+        tunnel = (
+            not visible
+            and name == "drive_route"
+            and status == "failed"
+            and why.startswith("route-lost")
+            and self.hidden < HIDDEN
+        )
+        mode, route, state = self.state(request, tunnel=tunnel)
         if name == "enter_vehicle":
             self.misses = self.misses + 1 if status == "failed" else 0
         refused = name == "set_waypoint" and status == "failed" and "place-not-in-legend" in why
-        if self.place and (refused or (name == "drive_route" and status == "done")):
+        arrived = name == "drive_route" and status == "done" and why == "arrived"
+        if self.place and (refused or arrived):
             # Reached, or not on the map: the next destination is another one. A destination that
             # only failed to be marked, or was lost on the way, stays and is marked again.
             self.left, self.place = {self.place}, None
-        plain = "car" if mode != "vehicle" else "drive" if route else "mark"
-        # A step that has just succeeded is not offered again at once.
-        done = {"enter_vehicle": "car", "set_waypoint": "mark", "drive_route": "drive"}.get(
-            name if status == "done" else None
-        )
+        plain = "car" if mode != "vehicle" else "drive" if route or tunnel else "mark"
+        # A step that has just succeeded is not offered again at once; a drive that only ran out of
+        # its time has not succeeded. With the route out of sight the map is not offered.
+        done = {"enter_vehicle": "car", "set_waypoint": "mark"}.get(name if status == "done" else None)
+        done = "drive" if arrived else "mark" if tunnel else done
         steps = {step: text for step, text in STEPS.items() if step != done}
         if plain not in steps:
             plain = next(iter(steps))
@@ -140,6 +163,10 @@ class SimpleHead:
                 reason += "; destination: " + chosen
             plan = [_call("set_waypoint", place=self.place, instance=0, duration=45)]
             sentence = f"Ich markiere mir ein Ziel: {self.place}."
+        elif tunnel:
+            self.hidden += 1
+            plan = [_call("drive_on", duration=HIDDEN_SECONDS), _call("drive_route", duration=120)]
+            sentence = "Die Route ist gerade nicht zu sehen, ich fahre der Straße nach weiter."
         else:
             plan = [_call("drive_route", duration=120)]
             sentence = "Ich fahre zum Ziel." if not self.place else f"Ich fahre zum Ziel: {self.place}."

@@ -136,3 +136,27 @@ def test_a_destination_is_kept_until_it_is_reached_and_another_is_chosen_then(tm
     arrived = {"name": "drive_route", "status": "done", "reason": "arrived"}
     head.decide(request(tmp_path, seat="vehicle", last=arrived))
     assert "Kino" not in asked[-1][1]
+
+
+def test_a_route_lost_far_from_its_end_is_driven_on_for_and_the_map_stays_shut(tmp_path, model):
+    asked, _ = model
+    head = simple.SimpleHead()
+    lost = {"name": "drive_route", "status": "failed", "reason": "route-lost-far"}
+    for _ in range(simple.HIDDEN):
+        response = head.decide(request(tmp_path, seat="vehicle", last=lost))
+        assert names(response) == ["drive_on", "drive_route"]
+        assert "mark" not in asked[-1][1]
+        assert "tunnel" in asked[-1][2]["state"]
+    # A route that stays away that long has gone: the map is asked.
+    assert names(head.decide(request(tmp_path, seat="vehicle", last=lost))) == ["set_waypoint"]
+    # And one that came back in between counts from the start again.
+    head.decide(request(tmp_path, seat="vehicle", route="purple"))
+    assert names(head.decide(request(tmp_path, seat="vehicle", last=lost))) == ["drive_on", "drive_route"]
+
+
+def test_a_drive_that_ran_out_of_its_time_is_driven_on_with(tmp_path, model):
+    asked, _ = model
+    late = {"name": "drive_route", "status": "done", "reason": "time-limit"}
+    response = simple.SimpleHead().decide(request(tmp_path, seat="vehicle", route="purple", last=late))
+    assert "drive" in asked[0][1]
+    assert names(response) == ["drive_route"]
