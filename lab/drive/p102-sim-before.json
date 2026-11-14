@@ -1,0 +1,828 @@
+[
+  {
+    "road": "junction",
+    "profile": "nominal",
+    "reached": true,
+    "elapsed": 51.667,
+    "max_error": 1.761,
+    "median_speed": 6.447,
+    "entry_speeds": [
+      4.509
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.133,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "junction",
+    "profile": "range-00",
+    "reached": true,
+    "elapsed": 69.267,
+    "max_error": 1.709,
+    "median_speed": 5.886,
+    "entry_speeds": [
+      3.524
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "junction",
+    "profile": "range-01",
+    "reached": true,
+    "elapsed": 51.633,
+    "max_error": 3.508,
+    "median_speed": 6.502,
+    "entry_speeds": [
+      4.509
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.5,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "junction",
+    "profile": "range-02",
+    "reached": true,
+    "elapsed": 41.167,
+    "max_error": 9.429,
+    "median_speed": 7.356,
+    "entry_speeds": [
+      5.439
+    ],
+    "brake_pulses": 2,
+    "pulses": [
+      [
+        7.6,
+        62.694,
+        "curve"
+      ],
+      [
+        10.9,
+        95.558,
+        "curve"
+      ]
+    ],
+    "lifted_seconds": 3.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "junction",
+    "profile": "range-10",
+    "reached": true,
+    "elapsed": 70.067,
+    "max_error": 1.596,
+    "median_speed": 5.897,
+    "entry_speeds": [
+      3.524
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "junction",
+    "profile": "range-11",
+    "reached": true,
+    "elapsed": 54.5,
+    "max_error": 1.772,
+    "median_speed": 6.858,
+    "entry_speeds": [
+      4.497
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "junction",
+    "profile": "range-12",
+    "reached": true,
+    "elapsed": 40.233,
+    "max_error": 2.937,
+    "median_speed": 7.514,
+    "entry_speeds": [
+      5.948
+    ],
+    "brake_pulses": 4,
+    "pulses": [
+      [
+        9.833,
+        88.06,
+        "curve"
+      ],
+      [
+        10.0,
+        89.606,
+        "curve"
+      ],
+      [
+        10.167,
+        91.078,
+        "curve"
+      ],
+      [
+        11.5,
+        100.031,
+        "curve"
+      ]
+    ],
+    "lifted_seconds": 2.633,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "junction",
+    "profile": "range-20",
+    "reached": true,
+    "elapsed": 70.067,
+    "max_error": 1.596,
+    "median_speed": 5.897,
+    "entry_speeds": [
+      3.524
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "junction",
+    "profile": "range-21",
+    "reached": true,
+    "elapsed": 51.667,
+    "max_error": 1.761,
+    "median_speed": 6.447,
+    "entry_speeds": [
+      4.509
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.133,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "junction",
+    "profile": "range-22",
+    "reached": true,
+    "elapsed": 46.467,
+    "max_error": 1.564,
+    "median_speed": 7.988,
+    "entry_speeds": [
+      5.654
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.6,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "junction",
+    "profile": "fast-low-grip",
+    "reached": true,
+    "elapsed": 41.7,
+    "max_error": 12.913,
+    "median_speed": 8.001,
+    "entry_speeds": [
+      5.948
+    ],
+    "brake_pulses": 4,
+    "pulses": [
+      [
+        9.833,
+        88.06,
+        "curve"
+      ],
+      [
+        10.0,
+        89.606,
+        "curve"
+      ],
+      [
+        10.167,
+        91.078,
+        "curve"
+      ],
+      [
+        11.5,
+        100.031,
+        "curve"
+      ]
+    ],
+    "lifted_seconds": 3.133,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "two-blocks",
+    "profile": "nominal",
+    "reached": true,
+    "elapsed": 72.867,
+    "max_error": 1.935,
+    "median_speed": 6.268,
+    "entry_speeds": [
+      4.509,
+      4.989
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.767,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "two-blocks",
+    "profile": "range-00",
+    "reached": true,
+    "elapsed": 97.667,
+    "max_error": 1.709,
+    "median_speed": 5.863,
+    "entry_speeds": [
+      3.524,
+      3.555
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "two-blocks",
+    "profile": "range-01",
+    "reached": true,
+    "elapsed": 73.1,
+    "max_error": 3.508,
+    "median_speed": 6.308,
+    "entry_speeds": [
+      4.509,
+      4.841
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 1.433,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "two-blocks",
+    "profile": "range-02",
+    "reached": true,
+    "elapsed": 60.767,
+    "max_error": 13.472,
+    "median_speed": 7.879,
+    "entry_speeds": [
+      5.567,
+      6.112
+    ],
+    "brake_pulses": 4,
+    "pulses": [
+      [
+        9.633,
+        86.054,
+        "curve"
+      ],
+      [
+        9.9,
+        88.741,
+        "curve"
+      ],
+      [
+        11.0,
+        97.122,
+        "curve"
+      ],
+      [
+        28.467,
+        229.543,
+        "curve-exit"
+      ]
+    ],
+    "lifted_seconds": 5.567,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "two-blocks",
+    "profile": "range-10",
+    "reached": true,
+    "elapsed": 96.733,
+    "max_error": 1.666,
+    "median_speed": 5.88,
+    "entry_speeds": [
+      3.524,
+      4.217
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "two-blocks",
+    "profile": "range-11",
+    "reached": true,
+    "elapsed": 77.0,
+    "max_error": 1.839,
+    "median_speed": 6.756,
+    "entry_speeds": [
+      4.497,
+      4.889
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.633,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "two-blocks",
+    "profile": "range-12",
+    "reached": true,
+    "elapsed": 58.0,
+    "max_error": 4.088,
+    "median_speed": 6.902,
+    "entry_speeds": [
+      6.104,
+      6.138
+    ],
+    "brake_pulses": 10,
+    "pulses": [
+      [
+        9.7,
+        86.316,
+        "curve"
+      ],
+      [
+        9.967,
+        88.912,
+        "curve"
+      ],
+      [
+        11.533,
+        100.062,
+        "curve"
+      ],
+      [
+        11.7,
+        101.084,
+        "curve"
+      ],
+      [
+        24.3,
+        195.359,
+        "curve"
+      ],
+      [
+        27.767,
+        235.21,
+        "curve"
+      ],
+      [
+        27.833,
+        235.903,
+        "curve"
+      ],
+      [
+        27.9,
+        236.581,
+        "curve"
+      ],
+      [
+        28.067,
+        238.203,
+        "curve"
+      ],
+      [
+        29.133,
+        246.258,
+        "curve"
+      ]
+    ],
+    "lifted_seconds": 5.6,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "two-blocks",
+    "profile": "range-20",
+    "reached": true,
+    "elapsed": 96.733,
+    "max_error": 1.666,
+    "median_speed": 5.88,
+    "entry_speeds": [
+      3.524,
+      4.217
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "two-blocks",
+    "profile": "range-21",
+    "reached": true,
+    "elapsed": 72.567,
+    "max_error": 1.888,
+    "median_speed": 6.317,
+    "entry_speeds": [
+      4.509,
+      4.989
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.733,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "two-blocks",
+    "profile": "range-22",
+    "reached": true,
+    "elapsed": 66.933,
+    "max_error": 1.642,
+    "median_speed": 8.0,
+    "entry_speeds": [
+      5.654,
+      6.193
+    ],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 1.2,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "two-blocks",
+    "profile": "fast-low-grip",
+    "reached": true,
+    "elapsed": 61.267,
+    "max_error": 13.956,
+    "median_speed": 7.73,
+    "entry_speeds": [
+      6.104,
+      6.587
+    ],
+    "brake_pulses": 5,
+    "pulses": [
+      [
+        9.7,
+        86.316,
+        "curve"
+      ],
+      [
+        9.967,
+        88.912,
+        "curve"
+      ],
+      [
+        11.533,
+        100.062,
+        "curve"
+      ],
+      [
+        11.7,
+        101.084,
+        "curve"
+      ],
+      [
+        39.633,
+        301.229,
+        "hidden-turn"
+      ]
+    ],
+    "lifted_seconds": 5.667,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "kilometre",
+    "profile": "nominal",
+    "reached": true,
+    "elapsed": 107.333,
+    "max_error": 0.0,
+    "median_speed": 10.0,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "kilometre",
+    "profile": "range-00",
+    "reached": true,
+    "elapsed": 158.833,
+    "max_error": 0.0,
+    "median_speed": 6.667,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "kilometre",
+    "profile": "range-01",
+    "reached": true,
+    "elapsed": 107.333,
+    "max_error": 0.0,
+    "median_speed": 10.0,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "kilometre",
+    "profile": "range-02",
+    "reached": true,
+    "elapsed": 88.767,
+    "max_error": 0.0,
+    "median_speed": 12.0,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "kilometre",
+    "profile": "range-10",
+    "reached": true,
+    "elapsed": 158.833,
+    "max_error": 0.0,
+    "median_speed": 6.667,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "kilometre",
+    "profile": "range-11",
+    "reached": true,
+    "elapsed": 131.167,
+    "max_error": 0.0,
+    "median_speed": 8.0,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "kilometre",
+    "profile": "range-12",
+    "reached": true,
+    "elapsed": 71.367,
+    "max_error": 0.0,
+    "median_speed": 15.556,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "kilometre",
+    "profile": "range-20",
+    "reached": true,
+    "elapsed": 158.833,
+    "max_error": 0.0,
+    "median_speed": 6.667,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "kilometre",
+    "profile": "range-21",
+    "reached": true,
+    "elapsed": 107.333,
+    "max_error": 0.0,
+    "median_speed": 10.0,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "kilometre",
+    "profile": "range-22",
+    "reached": true,
+    "elapsed": 129.3,
+    "max_error": 0.0,
+    "median_speed": 8.0,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "kilometre",
+    "profile": "fast-low-grip",
+    "reached": true,
+    "elapsed": 71.367,
+    "max_error": 0.0,
+    "median_speed": 15.556,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "exit",
+    "profile": "nominal",
+    "reached": true,
+    "elapsed": 95.233,
+    "max_error": 1.511,
+    "median_speed": 9.971,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.4,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "exit",
+    "profile": "range-00",
+    "reached": true,
+    "elapsed": 133.867,
+    "max_error": 1.463,
+    "median_speed": 6.666,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "exit",
+    "profile": "range-01",
+    "reached": true,
+    "elapsed": 95.1,
+    "max_error": 1.511,
+    "median_speed": 9.97,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.4,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "exit",
+    "profile": "range-02",
+    "reached": true,
+    "elapsed": 77.667,
+    "max_error": 2.428,
+    "median_speed": 12.0,
+    "entry_speeds": [],
+    "brake_pulses": 4,
+    "pulses": [
+      [
+        28.4,
+        311.318,
+        "curve"
+      ],
+      [
+        31.4,
+        341.929,
+        "curve"
+      ],
+      [
+        33.7,
+        366.495,
+        "curve"
+      ],
+      [
+        35.2,
+        376.349,
+        "curve"
+      ]
+    ],
+    "lifted_seconds": 1.933,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "exit",
+    "profile": "range-10",
+    "reached": true,
+    "elapsed": 133.867,
+    "max_error": 1.463,
+    "median_speed": 6.666,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "exit",
+    "profile": "range-11",
+    "reached": true,
+    "elapsed": 109.9,
+    "max_error": 1.487,
+    "median_speed": 8.0,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "exit",
+    "profile": "range-12",
+    "reached": true,
+    "elapsed": 68.6,
+    "max_error": 1.706,
+    "median_speed": 14.172,
+    "entry_speeds": [],
+    "brake_pulses": 3,
+    "pulses": [
+      [
+        29.433,
+        367.005,
+        "curve"
+      ],
+      [
+        29.533,
+        367.923,
+        "curve"
+      ],
+      [
+        29.6,
+        368.511,
+        "curve"
+      ]
+    ],
+    "lifted_seconds": 1.567,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "exit",
+    "profile": "range-20",
+    "reached": true,
+    "elapsed": 133.867,
+    "max_error": 1.463,
+    "median_speed": 6.666,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.0,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "exit",
+    "profile": "range-21",
+    "reached": true,
+    "elapsed": 95.233,
+    "max_error": 1.511,
+    "median_speed": 9.971,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.4,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "exit",
+    "profile": "range-22",
+    "reached": true,
+    "elapsed": 105.533,
+    "max_error": 1.481,
+    "median_speed": 8.0,
+    "entry_speeds": [],
+    "brake_pulses": 0,
+    "pulses": [],
+    "lifted_seconds": 0.4,
+    "minimum_speed": 0.0
+  },
+  {
+    "road": "exit",
+    "profile": "fast-low-grip",
+    "reached": true,
+    "elapsed": 68.7,
+    "max_error": 1.361,
+    "median_speed": 14.096,
+    "entry_speeds": [],
+    "brake_pulses": 2,
+    "pulses": [
+      [
+        29.5,
+        367.607,
+        "curve"
+      ],
+      [
+        29.6,
+        368.492,
+        "curve"
+      ]
+    ],
+    "lifted_seconds": 1.7,
+    "minimum_speed": 0.0
+  }
+]

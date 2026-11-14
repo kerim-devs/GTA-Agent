@@ -35,11 +35,11 @@ def test_heading_correction_does_not_brake_a_straight_road():
     assert any(c.steer > 0.3 for c in commands)
 
 
-def test_curve_ahead_lifts_and_brakes_before_the_car_turns():
+def test_curve_ahead_lifts_before_braking_is_needed():
     path = [(0, y) for y in range(12, 43, 6)] + [(-x, 42) for x in range(6, 85, 6)]
     driver = Driver(drive_config(["style=bold"]))
     commands = [driver.step(road(path), i / 30, True, speed=22) for i in range(30)]
-    assert any(c.throttle == 0 and c.brake > 0 for c in commands)
+    assert all(c.throttle == 0 and c.brake == 0 for c in commands)
     assert all(c.throttle == 0 for c in commands if c.brake)
     assert max(abs(c.steer) for c in commands) < 0.1
 

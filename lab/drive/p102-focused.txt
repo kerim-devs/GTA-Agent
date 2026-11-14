@@ -1,0 +1,166 @@
+...F.......................F...............F...........................F [ 22%]
+F....................................................................... [ 44%]
+........................................................................ [ 66%]
+........................................................................ [ 89%]
+...................................                                      [100%]
+=================================== FAILURES ===================================
+___________ test_a_floor_crossing_cannot_reopen_the_same_brake_pulse ___________
+
+    def test_a_floor_crossing_cannot_reopen_the_same_brake_pulse():
+        config = replace(drive_config(["style=bold"]), speed_smoothing=0)
+        driver = Driver(config)
+        picture = road([(x, 12) for x in range(0, 85, 6)])
+        commands = [driver.step(picture, i / 30, True, speed=speed)
+                    for i, speed in enumerate([9, 6.9, 7.2, 6.9, 7.2, 6.9, 7.2])]
+>       assert commands[0].brake > 0
+E       AssertionError: assert 0 > 0
+E        +  where 0 = Command(steer=0.0, throttle=1.0, brake=0, state='follow').brake
+
+pilot/tests/test_town_corners.py:48: AssertionError
+____________ test_curve_ahead_lifts_and_brakes_before_the_car_turns ____________
+
+    def test_curve_ahead_lifts_and_brakes_before_the_car_turns():
+        path = [(0, y) for y in range(12, 43, 6)] + [(-x, 42) for x in range(6, 85, 6)]
+        driver = Driver(drive_config(["style=bold"]))
+        commands = [driver.step(road(path), i / 30, True, speed=22) for i in range(30)]
+>       assert any(c.throttle == 0 and c.brake > 0 for c in commands)
+E       assert False
+E        +  where False = any(<generator object test_curve_ahead_lifts_and_brakes_before_the_car_turns.<locals>.<genexpr> at 0x115669f20>)
+
+pilot/tests/test_drive_through.py:42: AssertionError
+__ test_drive_through_roads_with_the_existing_car_profiles[range-02-bend-60] ___
+
+name = 'bend-60', profile = 'range-02'
+
+    @pytest.mark.parametrize("name", tuple(drive_through_roads()))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_drive_through_roads_with_the_existing_car_profiles(name, profile):
+        cfg = SimConfig(
+            **CAR_PROFILES[profile],
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=300,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+        )
+        sim = Simulator(drive_through_roads()[name], config=cfg)
+        driver = Driver(drive_config(["style=bold"]))
+        cruise = []
+        maximum_error = 0
+        while sim.time < cfg.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum_error = max(maximum_error, error)
+            # Every road starts with the same clear approach, before the bend is in view.
+            if 80 < progress < 100:
+                cruise.append(sim.speed)
+                assert command.brake == 0
+            if name == "kilometre" and 50 < progress < 975:
+                assert command.brake == 0
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum_error <= 5.0
+E       assert 5.326182501424114 <= 5.0
+
+pilot/tests/test_drive_through.py:100: AssertionError
+_ test_drive_through_roads_with_the_existing_car_profiles[fast-low-grip-bend-60] _
+
+name = 'bend-60', profile = 'fast-low-grip'
+
+    @pytest.mark.parametrize("name", tuple(drive_through_roads()))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_drive_through_roads_with_the_existing_car_profiles(name, profile):
+        cfg = SimConfig(
+            **CAR_PROFILES[profile],
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=300,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+        )
+        sim = Simulator(drive_through_roads()[name], config=cfg)
+        driver = Driver(drive_config(["style=bold"]))
+        cruise = []
+        maximum_error = 0
+        while sim.time < cfg.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum_error = max(maximum_error, error)
+            # Every road starts with the same clear approach, before the bend is in view.
+            if 80 < progress < 100:
+                cruise.append(sim.speed)
+                assert command.brake == 0
+            if name == "kilometre" and 50 < progress < 975:
+                assert command.brake == 0
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum_error <= 5.0
+E       assert 37.30774169115779 <= 5.0
+
+pilot/tests/test_drive_through.py:100: AssertionError
+_ test_drive_through_roads_with_the_existing_car_profiles[fast-low-grip-bend-120] _
+
+name = 'bend-120', profile = 'fast-low-grip'
+
+    @pytest.mark.parametrize("name", tuple(drive_through_roads()))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_drive_through_roads_with_the_existing_car_profiles(name, profile):
+        cfg = SimConfig(
+            **CAR_PROFILES[profile],
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=300,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+        )
+        sim = Simulator(drive_through_roads()[name], config=cfg)
+        driver = Driver(drive_config(["style=bold"]))
+        cruise = []
+        maximum_error = 0
+        while sim.time < cfg.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum_error = max(maximum_error, error)
+            # Every road starts with the same clear approach, before the bend is in view.
+            if 80 < progress < 100:
+                cruise.append(sim.speed)
+                assert command.brake == 0
+            if name == "kilometre" and 50 < progress < 975:
+                assert command.brake == 0
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum_error <= 5.0
+E       assert 5.522059668581505 <= 5.0
+
+pilot/tests/test_drive_through.py:100: AssertionError
+=========================== short test summary info ============================
+FAILED pilot/tests/test_town_corners.py::test_a_floor_crossing_cannot_reopen_the_same_brake_pulse
+FAILED pilot/tests/test_drive_through.py::test_curve_ahead_lifts_and_brakes_before_the_car_turns
+FAILED pilot/tests/test_drive_through.py::test_drive_through_roads_with_the_existing_car_profiles[range-02-bend-60]
+FAILED pilot/tests/test_drive_through.py::test_drive_through_roads_with_the_existing_car_profiles[fast-low-grip-bend-60]
+FAILED pilot/tests/test_drive_through.py::test_drive_through_roads_with_the_existing_car_profiles[fast-low-grip-bend-120]
+5 failed, 318 passed in 17.80s

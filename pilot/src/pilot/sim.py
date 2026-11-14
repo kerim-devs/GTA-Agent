@@ -46,6 +46,8 @@ class SimConfig:
     speed_missing: float = 0.08
     path_noise: float = 0.25  # Pixels, shared offset plus per-sample noise.
     path_missing: float = 0.03
+    path_spacing: float = 3.0  # The town reader samples at about six pixels; P98 used three.
+    path_horizon: float = 105.0  # Furthest forward path pixel, before clipping at the map rim.
     path_hidden: float = 11.0  # Arrow occlusion radius in pixels.
     camera_lag: float = 0.3
     noise_degrees: float = 3.0
@@ -65,6 +67,8 @@ class SimConfig:
         for name in (
             "dt",
             "map_scale",
+            "path_spacing",
+            "path_horizon",
             "wheelbase",
             "top_speed",
             "arrival_radius",
@@ -319,7 +323,7 @@ class Simulator:
             samples = []
             while travel < length:
                 samples.append(travel)
-                travel += 3 * scale
+                travel += cfg.path_spacing * scale
             samples.append(length)
             for along in samples:
                 rx = (ax + dx * along / length - self.x) / scale
@@ -328,13 +332,17 @@ class Simulator:
                 y = rx * sin(self.camera_heading) + ry * cos(self.camera_heading)
                 if hypot(x, y) < cfg.path_hidden:
                     continue
-                if abs(x) > 85 or y > 105 or y < -20:
+                if abs(x) > 85 or y > cfg.path_horizon or y < -20:
                     return tuple(path)
                 point = (
                     x + offset_x + rng.gauss(0, cfg.path_noise * 0.2),
                     y + offset_y + rng.gauss(0, cfg.path_noise * 0.2),
                 )
-                if not path or hypot(point[0] - path[-1][0], point[1] - path[-1][1]) >= 3 or along == length:
+                if (
+                    not path
+                    or hypot(point[0] - path[-1][0], point[1] - path[-1][1]) >= cfg.path_spacing
+                    or along == length
+                ):
                     path.append(point)
         return tuple(path)
 
