@@ -838,6 +838,8 @@ class Trip:
     READ_SECONDS = 2.0  # a distance read this short a time ago is one the drive can be judged on
     NEAR_METRES = 60.0  # of printed way to the waypoint, within sight of the door
     GONE_METRES = 300.0  # of printed way when last read, for a waypoint the game has taken away
+    # Of printed way when the game itself takes the route off the map; beyond it the map is asked.
+    VANISH_METRES = 80.0
     NEAR_SECONDS = (
         6.0  # this long there and no nearer; a car still closing in ends by the drive's own arrival
     )
@@ -1017,11 +1019,11 @@ class Trip:
                 self.purple_at is not None
                 and now - self.purple_at >= self.ROUTE_GONE
                 and self.last_distance is not None
-                # Within sight of the door, as for the printed distance itself: at the cinema the
-                # route went at 52 m, two more than the drive's own arrival asks, the waypoint set
-                # again was taken away at once, and a car that stood there was given up
-                # (20261114-032141).
-                and self.last_distance <= self.NEAR_METRES
+                # The game takes a waypoint away by the straight line to it, and the print counts
+                # the way: at the cinema the route went at 52 m (20261114-032141) and at 65 m
+                # (20261114-033352), the waypoint set again was taken away at once, and a car that
+                # stood before the door was given up both times.
+                and self.last_distance <= self.VANISH_METRES
                 and self.distance_time is not None
                 and 0 <= self.purple_at - self.distance_time <= DriveRoute.arrival_age
             ):
