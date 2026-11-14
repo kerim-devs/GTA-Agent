@@ -44,6 +44,20 @@ def test_recorded_map_and_other_screens(row):
         assert map_screen(frame, text) == "transition"
 
 
+def test_the_map_is_known_by_its_footer_as_read_with_the_first_row_selected():
+    # 20261114-020515 at 20 and at 60 s: the map open on "Spieler", the footer read like this, the
+    # screen called unknown and the try left to its time limit, three times over.
+    frame = np.zeros((720, 1280, 3), np.uint8)
+    for words in (
+        ("Zoomen La Ra Markerung walen ° Untersanter or L", "O", "Zurück (", "Wegpunkt ("),
+        ("Zoomen La Ra Markerung wanken se Unteresaner or A", "Zurück O", "Wegpunkt X"),
+    ):
+        text = SceneText(tuple(TextLine(word, 1.0, (700, 670, 900, 690), "full") for word in words))
+        assert map_screen(frame, text) == "map"
+    other = SceneText((TextLine("Zoomen Wegpunkt Zurück Auswählen", 1.0, (700, 670, 900, 690), "full"),))
+    assert map_screen(frame, other) is None
+
+
 def test_other_selected_pause_tab_does_not_authorise_cross():
     frame = np.zeros((720, 1280, 3), np.uint8)
     frame[123:145, 355:490] = 240

@@ -1,7 +1,9 @@
 """Picture-checked pause-map navigation. Registration belongs to the skill registry."""
 
 import math
+import re
 from dataclasses import dataclass
+from difflib import get_close_matches
 from typing import ClassVar
 
 import cv2
@@ -31,10 +33,13 @@ def map_screen(frame: np.ndarray, text: SceneText) -> str | None:
         return "transition"
     if overview:
         return "overview"
+    # With the list's first row selected the footer is read as "Markerung walen" and "Untersanter or"
+    # (20261114-020515, three tries of 45 s each lost on it): a word near "Markierung" is enough.
+    marking = get_close_matches("markierung", re.findall(r"[a-zäöüß]+", footer), n=1, cutoff=0.8)
     if (
         "wegpunkt" in footer
         and "zoomen" in footer
-        and any(word in footer for word in ("markierung", "interessanter ort", "wenig details"))
+        and (marking or any(word in footer for word in ("interessanter ort", "wenig details")))
     ):
         return "map"
     return None
