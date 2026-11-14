@@ -1,0 +1,68 @@
+[
+  {
+    "excluded_run": "005357",
+    "tilt": 0.0065,
+    "aspect": 0.6,
+    "heldout_relative_residual": null
+  },
+  {
+    "excluded_run": "014037",
+    "tilt": 0.007,
+    "aspect": 0.6,
+    "heldout_relative_residual": [
+      0.05665895100876061,
+      0.07259071654122841,
+      0.10143861536925895
+    ]
+  },
+  {
+    "excluded_run": "015901",
+    "tilt": 0.0065,
+    "aspect": 0.6,
+    "heldout_relative_residual": [
+      0.045858178324617416,
+      0.07342865943391005,
+      0.1723011649716166
+    ]
+  },
+  {
+    "excluded_run": "021738",
+    "tilt": 0.007,
+    "aspect": 0.6,
+    "heldout_relative_residual": [
+      0.048242478213607845,
+      0.06287311967109444,
+      0.09158880807180868
+    ]
+  },
+  {
+    "excluded_run": "024431",
+    "tilt": 0.0075,
+    "aspect": 0.65,
+    "heldout_relative_residual": [
+      0.05780230526718488,
+      0.07518905548693987,
+      0.08829416062313637
+    ]
+  },
+  {
+    "excluded_run": "024817",
+    "tilt": 0.0075,
+    "aspect": 0.65,
+    "heldout_relative_residual": [
+      0.06516801583287436,
+      0.09312739261613799,
+      0.10799305831178019
+    ]
+  },
+  {
+    "excluded_run": "025345",
+    "tilt": 0.0065,
+    "aspect": 0.6,
+    "heldout_relative_residual": [
+      0.05694205900910979,
+      0.08031911211206824,
+      0.14608680244208963
+    ]
+  }
+]

@@ -88,6 +88,8 @@ class DriveConfig:
     gps_tolerance: float = 8.0  # Metres of OCR scatter around a consistent trend.
     gps_acceleration: float = 8.0  # Plausible m/s^2 change before quarantining a jump.
     map_scale_min: float = 0.35  # Low-speed 0.7 m/px with a factor-of-two safety band.
+    map_tilt: float = 0.0  # Inverse perspective coefficient per forward pixel; zero keeps the flat bench.
+    map_aspect: float = 0.575  # Transverse/forward scale from P105 road-texture correspondences.
     arrival_distance: float = 8.0  # Enter the approach speed in the last metres.
     arrival_speed: float = 1.5  # Approach at walking pace; route loss ends the run.
     damage_hold: float = 0.5  # Conservative bound below replay gap p90 .555s; damage cannot renew it.
@@ -670,9 +672,10 @@ class Driver:
         path = path[: len(path) - cfg.curve_trim]
         if len(path) < 2 * step + 1:
             return limit
-        travel = hypot(*path[0])
+        metres = self._map_path(path, speed)
+        travel = hypot(*metres[0])
         for index in range(len(path) - 2 * step):
-            a, b, c = path[index], path[index + step], path[index + 2 * step]
+            a, b, c = metres[index], metres[index + step], metres[index + 2 * step]
             ab, bc = hypot(b[0] - a[0], b[1] - a[1]), hypot(c[0] - b[0], c[1] - b[1])
             if min(ab, bc) < 1:
                 continue
@@ -680,16 +683,17 @@ class Driver:
             curvature = 2 * cross / max(ab * bc * hypot(c[0] - a[0], c[1] - a[1]), 1e-6)
             corner = max(
                 min(cfg.slow_speed, cfg.speed_limit),
-                sqrt(cfg.lateral_acceleration * cfg.map_scale_min / max(curvature, 1e-6)),
+                sqrt(cfg.lateral_acceleration / max(curvature, 1e-6)),
             )
             # Reserve the hidden near-arrow section and the command delay for turning in.
             remaining = max(
                 0,
-                (travel - cfg.lookahead_px) * cfg.map_scale_min
+                travel
+                - hypot(*self._map_point((0, cfg.lookahead_px), speed))
                 - (speed or 0) * (cfg.command_delay + cfg.gps_window / 2),
             )
             limit = min(limit, sqrt(corner * corner + 2 * cfg.planned_deceleration * remaining))
-            travel += hypot(path[index + 1][0] - a[0], path[index + 1][1] - a[1])
+            travel += hypot(metres[index + 1][0] - a[0], metres[index + 1][1] - a[1])
         return limit
 
     def _road_limit(self, path, speed):
@@ -700,13 +704,14 @@ class Driver:
         if len(path) < 3:
             self.speed_reason = "unknown-path"
             return cfg.slow_speed
-        scale = self._map_scale(speed)
-        travel = [hypot(*path[0])]
-        for a, b in pairwise(path):
+        metres = self._map_path(path, speed)
+        near = hypot(*self._map_point((0, cfg.lookahead_px), speed))
+        travel = [hypot(*metres[0])]
+        for a, b in pairwise(metres):
             travel.append(travel[-1] + hypot(b[0] - a[0], b[1] - a[1]))
-        reserve = cfg.lookahead_px * scale + (speed or 0) * (cfg.command_delay + cfg.gps_window / 2)
+        reserve = near + (speed or 0) * (cfg.command_delay + cfg.gps_window / 2)
         # A clipped straight proves only the distance in view, not an open kilometre.
-        remaining = max(0.0, travel[-1] * scale - reserve)
+        remaining = max(0.0, travel[-1] - reserve)
         horizon = sqrt(cfg.junction_speed**2 + 2 * cfg.planned_deceleration * remaining)
         if horizon < limit:
             limit, self.speed_reason = horizon, "visibility"
@@ -728,9 +733,11 @@ class Driver:
             # Short end chords keep a newly visible turn, but not one pixel of rim noise.
             if not interior and angle < 30:
                 continue
+            a, b, c = metres[left], metres[index], metres[right]
+            ab, bc = hypot(b[0] - a[0], b[1] - a[1]), hypot(c[0] - b[0], c[1] - b[1])
             cross = abs((b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0]))
             curvature = 2 * cross / max(ab * bc * hypot(c[0] - a[0], c[1] - a[1]), 1e-6)
-            corner = max(cfg.slow_speed, sqrt(cfg.lateral_acceleration * scale / max(curvature, 1e-6)))
+            corner = max(cfg.slow_speed, sqrt(cfg.lateral_acceleration / max(curvature, 1e-6)))
             if angle >= 60:
                 corner = min(corner, cfg.junction_speed)
             junction = angle >= 80 and cfg.turn_speed > 0
@@ -740,13 +747,13 @@ class Driver:
                 corner = max(corner, cfg.turn_speed)
             # Plan to the measured bend at b, while remembering an arc from a.
             bend_at = travel[index]
-            remaining = max(0.0, bend_at * scale - reserve)
+            remaining = max(0.0, bend_at - reserve)
             planned = sqrt(corner * corner + 2 * cfg.planned_deceleration * remaining)
             deceleration = cfg.braking_deceleration
             self._brake_limit = min(self._brake_limit, sqrt(corner * corner + 2 * deceleration * remaining))
             if planned < limit:
                 limit, self.speed_reason = planned, "curve"
-            if travel[left] * scale <= max(40.0, (speed or 0) * 2):
+            if travel[left] <= max(40.0, (speed or 0) * 2):
                 if near_corner is None or corner < near_corner:
                     near_corner, near_junction = corner, junction
         # Keep a genuine nearby corner while it passes under the arrow. Pixel wander
@@ -759,7 +766,7 @@ class Driver:
         if near_corner is not None and (self._turn_limit is None or near_corner <= self._turn_limit * 1.1):
             self._turn_junction = near_junction
             self._turn_limit = near_corner if self._turn_limit is None else min(self._turn_limit, near_corner)
-            self._turn_remaining = max(2 * cfg.lookahead_px * scale, (speed or 0) * cfg.gps_window / 2)
+            self._turn_remaining = max(2 * near, (speed or 0) * cfg.gps_window / 2)
         if self._turn_limit is not None and heading_error >= 10:
             if self._turn_limit < limit:
                 limit, self.speed_reason = self._turn_limit, "curve-exit"
@@ -768,7 +775,7 @@ class Driver:
             # Kerim's turns are taken at 14 to 21 with no brake at all.
         if heading_error > 60:
             target = _target(path, cfg.lookahead_px)
-            radius = hypot(*target) * scale
+            radius = hypot(*self._map_point(target, speed))
             error = radians(_angle(degrees(atan2(*target)) - self._road_heading))
             turn = max(
                 cfg.slow_speed, sqrt(cfg.lateral_acceleration * radius / max(2 * abs(sin(error)), 1e-6))
@@ -779,11 +786,30 @@ class Driver:
         return limit
 
     def _map_scale(self, speed):
-        speed = speed or 0.0
+        speed = max(0.0, speed or 0.0)
+        if self.config.map_tilt:
+            # P105: p10 near-arrow forward scales 1.29/1.74/1.94 m/px, less 15-18% for
+            # image/GPS error and zoom lag. Do not retain the larger scale after braking.
+            return (
+                1.05 + 0.4 * min(1.0, max(0.0, (speed - 6) / 6)) + 0.15 * min(1.0, max(0.0, (speed - 12) / 6))
+            )
         return max(
             self.config.map_scale_min,
             0.7 if speed < 6 else 1.0 if speed < 12 else 2.1 if speed < 18 else 3.6 if speed < 24 else 3.7,
         )
+
+    def _map_point(self, point, speed):
+        cfg = self.config
+        scale = self._map_scale(speed) if cfg.drive_through or cfg.map_tilt else cfg.map_scale_min
+        x, y = point
+        if not cfg.map_tilt:
+            return x * scale, y * scale
+        # Never extrapolate the projective singularity beyond the observed map rim.
+        depth = max(0.4, 1 - cfg.map_tilt * min(90.0, max(-20.0, y)))
+        return x * cfg.map_aspect * scale / depth, y * scale / depth
+
+    def _map_path(self, path, speed):
+        return tuple(self._map_point(point, speed) for point in path)
 
     def _pedal(self, limit, speed, now, flagged, distance):
         cfg = self.config

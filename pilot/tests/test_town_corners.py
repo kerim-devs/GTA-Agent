@@ -27,7 +27,7 @@ def test_the_last_visible_outgoing_chord_already_limits_the_approach():
     command = driver.step(picture, 0, True, speed=22)
     assert driver.speed_reason == "curve"
     assert command.throttle == 0
-    assert command.brake == 0  # There is still enough distance to lift first.
+    assert command.brake > 0  # P105: 42 tilted pixels are already inside the braking envelope.
     assert abs(command.steer) < 0.1
 
 
@@ -70,6 +70,7 @@ def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
         route += ((150.0, 300.0),)
     config = SimConfig(
         **CAR_PROFILES[profile],
+        map_tilt=0.0065,
         dead_zone=0.25,
         delay=0.14,
         max_time=160,
@@ -108,6 +109,7 @@ def test_the_turn_at_a_junction_is_held_at_its_speed_and_not_crept_through():
     # keeps 3.5, and the block's five-metre bound above still holds for every profile.
     config = SimConfig(
         **CAR_PROFILES["nominal"],
+        map_tilt=0.0065,
         dead_zone=0.25,
         delay=0.14,
         max_time=160,

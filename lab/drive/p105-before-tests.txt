@@ -1,0 +1,40 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_ test_recorded_junction_lifts_by_the_measured_braking_distance[20261114-014037:261.096] _
+
+case = {'run': '20261114-014037:261.096', 'speed': 25.981, 'corner': (-23.719, 54.241), 'metres': 212.808, ...}
+
+    @pytest.mark.parametrize("case", CASES, ids=[c["run"] for c in CASES])
+    def test_recorded_junction_lifts_by_the_measured_braking_distance(case):
+        driver = Driver(drive_config(["style=bold"]))
+        cfg, speed = driver.config, case["speed"]
+        required = (speed**2 - cfg.junction_speed**2) / (2 * cfg.planned_deceleration)
+        required += speed * (cfg.command_delay + cfg.gps_window / 2)
+        assert case["metres"] - (case["metres"] * 0.15 + 3) <= required
+>       assert driver._speed_limit(case["path"], 0, speed) < speed
+E       assert 28.0 < 25.981
+E        +  where 28.0 = _speed_limit(((-4, 13), (-6, 18), (-8, 25), (-12, 31), (-15, 37), (-19, 43), ...), 0, 25.981)
+E        +    where _speed_limit = <p98_before.Driver object at 0x11c8976b0>._speed_limit
+
+pilot/tests/test_metres_on_the_map.py:78: AssertionError
+_ test_recorded_junction_lifts_by_the_measured_braking_distance[20261114-021738:600.855] _
+
+case = {'run': '20261114-021738:600.855', 'speed': 19.622, 'corner': (6.429, 40.898), 'metres': 112.945, ...}
+
+    @pytest.mark.parametrize("case", CASES, ids=[c["run"] for c in CASES])
+    def test_recorded_junction_lifts_by_the_measured_braking_distance(case):
+        driver = Driver(drive_config(["style=bold"]))
+        cfg, speed = driver.config, case["speed"]
+        required = (speed**2 - cfg.junction_speed**2) / (2 * cfg.planned_deceleration)
+        required += speed * (cfg.command_delay + cfg.gps_window / 2)
+        assert case["metres"] - (case["metres"] * 0.15 + 3) <= required
+>       assert driver._speed_limit(case["path"], 0, speed) < speed
+E       assert 21.649804796779126 < 19.622
+E        +  where 21.649804796779126 = _speed_limit(((0, 13), (2, 19), (3, 24), (3, 31), (6, 36), (12, 41), ...), 0, 19.622)
+E        +    where _speed_limit = <p98_before.Driver object at 0x11c897ec0>._speed_limit
+
+pilot/tests/test_metres_on_the_map.py:78: AssertionError
+=========================== short test summary info ============================
+FAILED pilot/tests/test_metres_on_the_map.py::test_recorded_junction_lifts_by_the_measured_braking_distance[20261114-014037:261.096]
+FAILED pilot/tests/test_metres_on_the_map.py::test_recorded_junction_lifts_by_the_measured_braking_distance[20261114-021738:600.855]
+2 failed, 5 deselected in 0.04s

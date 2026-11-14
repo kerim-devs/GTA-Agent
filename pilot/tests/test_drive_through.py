@@ -36,7 +36,7 @@ def test_heading_correction_does_not_brake_a_straight_road():
 
 
 def test_curve_ahead_lifts_before_braking_is_needed():
-    path = [(0, y) for y in range(12, 43, 6)] + [(-x, 42) for x in range(6, 85, 6)]
+    path = [(0, y) for y in range(12, 55, 6)] + [(-x, 54) for x in range(6, 85, 6)]
     driver = Driver(drive_config(["style=bold"]))
     commands = [driver.step(road(path), i / 30, True, speed=22) for i in range(30)]
     assert all(c.throttle == 0 and c.brake == 0 for c in commands)
@@ -67,6 +67,7 @@ def test_slow_car_gets_the_lock_for_a_visible_exit():
 def test_drive_through_roads_with_the_existing_car_profiles(name, profile):
     cfg = SimConfig(
         **CAR_PROFILES[profile],
+        map_tilt=0.0065,
         dead_zone=0.25,
         delay=0.14,
         max_time=300,

@@ -26,6 +26,9 @@ class SimConfig:
     dt: float = 1 / 30
     delay: float = 0.21
     map_scale: float = 1.0
+    map_tilt: float = 0.0  # Legacy affine fixtures opt out; P105 roads use the measured 0.0065.
+    map_aspect: float = 0.575
+    map_zoom_delay: float = 1.0
     gps_interval: float = 0.25
     gps_delay: float = 0.15
     gps_wrong: float = 0.30
@@ -145,6 +148,7 @@ class Simulator:
         self.camera_heading = self.heading
         self.walls = walls
         self.speed = 0.0
+        self._map_speed = 0.0
         self.time = 0.0
         self.applied = NEUTRAL
         self._queue: deque[tuple[float, Command]] = deque()
@@ -202,8 +206,19 @@ class Simulator:
     @property
     def map_scale(self):
         speed = abs(self.speed)
+        if self.config.map_tilt:
+            # P105 texture/GPS medians, independent of the driver's lower-percentile envelope.
+            return self.config.map_scale * (1.8 + 0.4 * min(1.0, self._map_speed / 24))
         table = 0.7 if speed < 6 else 1.0 if speed < 12 else 2.1 if speed < 18 else 3.6 if speed < 24 else 3.7
         return self.config.map_scale * (table if self.config.scale_with_speed else 1.0)
+
+    def _map_project(self, x, y):
+        scale = self.map_scale
+        x, y = x / scale, y / scale
+        if self.config.map_tilt:
+            depth = max(0.25, 1 + self.config.map_tilt * y)
+            return x / self.config.map_aspect / depth, y / depth
+        return x, y
 
     def _gps_reading(self):
         cfg = self.config
@@ -243,6 +258,12 @@ class Simulator:
         bearing = degrees(atan2(near[0] - self.x, near[1] - self.y) - self.camera_heading)
         far_bearing = degrees(atan2(far[0] - self.x, far[1] - self.y) - self.camera_heading)
         arrow = degrees(self.heading - self.camera_heading)
+        if cfg.map_tilt:
+            bearing = degrees(atan2(sin(radians(bearing)) / cfg.map_aspect, cos(radians(bearing))))
+            far_bearing = degrees(
+                atan2(sin(radians(far_bearing)) / cfg.map_aspect, cos(radians(far_bearing)))
+            )
+            arrow = degrees(atan2(sin(radians(arrow)) / cfg.map_aspect, cos(radians(arrow))))
         # A fixed heavy-tail mixture approximates the observed temporal jitter.
         sigma = cfg.noise_degrees * (
             cfg.noise_tail_multiplier if self._rng.random() < cfg.noise_tail_probability else 1
@@ -326,10 +347,12 @@ class Simulator:
                 travel += cfg.path_spacing * scale
             samples.append(length)
             for along in samples:
-                rx = (ax + dx * along / length - self.x) / scale
-                ry = (ay + dy * along / length - self.y) / scale
-                x = rx * cos(self.camera_heading) - ry * sin(self.camera_heading)
-                y = rx * sin(self.camera_heading) + ry * cos(self.camera_heading)
+                rx = ax + dx * along / length - self.x
+                ry = ay + dy * along / length - self.y
+                x, y = self._map_project(
+                    rx * cos(self.camera_heading) - ry * sin(self.camera_heading),
+                    rx * sin(self.camera_heading) + ry * cos(self.camera_heading),
+                )
                 if hypot(x, y) < cfg.path_hidden:
                     continue
                 if abs(x) > 85 or y > cfg.path_horizon or y < -20:
@@ -378,6 +401,7 @@ class Simulator:
             acceleration = cfg.acceleration * command.throttle
         self.speed += (acceleration - cfg.drag * self.speed) * dt
         self.speed = max(-cfg.reverse_speed, min(cfg.top_speed, self.speed))
+        self._map_speed += (abs(self.speed) - self._map_speed) * dt / max(dt, cfg.map_zoom_delay)
         steer = max(0.0, abs(command.steer) - cfg.dead_zone) / (1 - cfg.dead_zone)
         steer = steer if command.steer >= 0 else -steer
         yaw_rate = self.speed / cfg.wheelbase * tan(radians(cfg.max_wheel_angle) * steer)

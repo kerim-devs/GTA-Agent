@@ -1,0 +1,3 @@
+Changed existing Driver methods: ['_speed_limit', '_road_limit', '_map_scale']
+Added Driver methods: ['_map_path', '_map_point']
+_pedal unchanged: True

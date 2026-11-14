@@ -57,8 +57,8 @@ LIVE = CAREFUL
 BOLD = {
     "manoeuvres": 1.0,
     **CAREFUL,
-    # P98: human straight speeds centre on 18-22 m/s, with p90 near 28-31. The
-    # 1.4 m/px floor is a nominal estimate (low-speed GPS/flow median 1.34), not a zoom reading.
+    # Human straight speeds centre on 18-22 m/s, with p90 near 28-31.
+    # P105 measures the tilted map independently of the speed law.
     "drive_through": 1.0,
     "speed_limit": 28.0,
     "cruise_throttle": 1.0,
@@ -69,7 +69,9 @@ BOLD = {
     "turn_speed": 6.0,
     "hold_throttle": 0.6,
     "lateral_acceleration": 3.0,
-    "map_scale_min": 1.4,
+    "map_scale_min": 1.05,
+    "map_tilt": 0.0065,
+    "map_aspect": 0.575,
     "brake_margin": 1.0,
     "queue_wait": 2.0,  # P73's bound before committing to an observed free side.
     "route_gone_time": 0.5,  # Leaves 0.7 s braking plus tick rounding within the 1.5 s arrival budget.

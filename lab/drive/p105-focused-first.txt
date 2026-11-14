@@ -1,0 +1,1187 @@
+F....FFFFFF..FFFFFFFFFFFF....F.............F...F.........F.F...........F [ 91%]
+.F.F...                                                                  [100%]
+=================================== FAILURES ===================================
+_______ test_the_last_visible_outgoing_chord_already_limits_the_approach _______
+
+    def test_the_last_visible_outgoing_chord_already_limits_the_approach():
+        picture = road([(0, y) for y in range(12, 43, 6)] + [(6, 42), (12, 42)])
+        driver = Driver(drive_config(["style=bold"]))
+        command = driver.step(picture, 0, True, speed=22)
+        assert driver.speed_reason == "curve"
+        assert command.throttle == 0
+>       assert command.brake == 0  # There is still enough distance to lift first.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 0.7 == 0
+E        +  where 0.7 = Command(steer=0.0, throttle=0, brake=0.7, state='follow').brake
+
+pilot/tests/test_town_corners.py:30: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[nominal-1] ______
+
+profile = 'nominal', blocks = 1
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 6.716604082498407 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[nominal-2] ______
+
+profile = 'nominal', blocks = 2
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 7.063599411018032 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-00-1] _____
+
+profile = 'range-00', blocks = 1
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 6.872880701100318 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-00-2] _____
+
+profile = 'range-00', blocks = 2
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 6.873993680041129 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-01-1] _____
+
+profile = 'range-01', blocks = 1
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 6.440710933073262 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-01-2] _____
+
+profile = 'range-01', blocks = 2
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 6.5294651797446255 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-10-1] _____
+
+profile = 'range-10', blocks = 1
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 6.872880701100318 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-10-2] _____
+
+profile = 'range-10', blocks = 2
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 6.873993680041129 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-11-1] _____
+
+profile = 'range-11', blocks = 1
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 6.748288280486605 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-11-2] _____
+
+profile = 'range-11', blocks = 2
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 6.789897365107663 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-12-1] _____
+
+profile = 'range-12', blocks = 1
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 5.432600340456457 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-12-2] _____
+
+profile = 'range-12', blocks = 2
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 6.487120697650539 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-20-1] _____
+
+profile = 'range-20', blocks = 1
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 6.872880701100318 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-20-2] _____
+
+profile = 'range-20', blocks = 2
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 6.873993680041129 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-21-1] _____
+
+profile = 'range-21', blocks = 1
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 6.716604082498407 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-21-2] _____
+
+profile = 'range-21', blocks = 2
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 7.063599411018032 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-22-1] _____
+
+profile = 'range-22', blocks = 1
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 6.507739683376968 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_____ test_town_blocks_keep_the_existing_five_metre_road_bound[range-22-2] _____
+
+profile = 'range-22', blocks = 2
+
+    @pytest.mark.parametrize("blocks", (1, 2))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_town_blocks_keep_the_existing_five_metre_road_bound(profile, blocks):
+        route = ((0.0, 0.0), (0.0, 150.0), (150.0, 150.0))
+        if blocks == 2:
+            route += ((150.0, 300.0),)
+        config = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=160,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+            path_spacing=6,
+            path_horizon=90,
+        )
+        sim = Simulator(route, config=config)
+        driver = Driver(drive_config(["style=bold"]))
+        entries = []
+        maximum = 0
+        while sim.time < config.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum = max(maximum, error)
+            if len(entries) < blocks and progress >= 150 * (len(entries) + 1) - 5:
+                entries.append(sim.speed)
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum <= 5
+E       assert 6.503074487756982 <= 5
+
+pilot/tests/test_town_corners.py:102: AssertionError
+_______________ test_curve_ahead_lifts_before_braking_is_needed ________________
+
+    def test_curve_ahead_lifts_before_braking_is_needed():
+        path = [(0, y) for y in range(12, 43, 6)] + [(-x, 42) for x in range(6, 85, 6)]
+        driver = Driver(drive_config(["style=bold"]))
+        commands = [driver.step(road(path), i / 30, True, speed=22) for i in range(30)]
+>       assert all(c.throttle == 0 and c.brake == 0 for c in commands)
+E       assert False
+E        +  where False = all(<generator object test_curve_ahead_lifts_before_braking_is_needed.<locals>.<genexpr> at 0x113222260>)
+
+pilot/tests/test_drive_through.py:42: AssertionError
+____ test_drive_through_roads_with_the_existing_car_profiles[range-01-exit] ____
+
+name = 'exit', profile = 'range-01'
+
+    @pytest.mark.parametrize("name", tuple(drive_through_roads()))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_drive_through_roads_with_the_existing_car_profiles(name, profile):
+        cfg = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=300,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+        )
+        sim = Simulator(drive_through_roads()[name], config=cfg)
+        driver = Driver(drive_config(["style=bold"]))
+        cruise = []
+        maximum_error = 0
+        while sim.time < cfg.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum_error = max(maximum_error, error)
+            # Every road starts with the same clear approach, before the bend is in view.
+            if 80 < progress < 100:
+                cruise.append(sim.speed)
+                assert command.brake == 0
+            if name == "kilometre" and 50 < progress < 975:
+                assert command.brake == 0
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum_error <= 5.0
+E       assert 5.050652077961037 <= 5.0
+
+pilot/tests/test_drive_through.py:101: AssertionError
+____ test_drive_through_roads_with_the_existing_car_profiles[range-02-exit] ____
+
+name = 'exit', profile = 'range-02'
+
+    @pytest.mark.parametrize("name", tuple(drive_through_roads()))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_drive_through_roads_with_the_existing_car_profiles(name, profile):
+        cfg = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=300,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+        )
+        sim = Simulator(drive_through_roads()[name], config=cfg)
+        driver = Driver(drive_config(["style=bold"]))
+        cruise = []
+        maximum_error = 0
+        while sim.time < cfg.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum_error = max(maximum_error, error)
+            # Every road starts with the same clear approach, before the bend is in view.
+            if 80 < progress < 100:
+                cruise.append(sim.speed)
+                assert command.brake == 0
+            if name == "kilometre" and 50 < progress < 975:
+                assert command.brake == 0
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum_error <= 5.0
+E       assert 5.154404214404445 <= 5.0
+
+pilot/tests/test_drive_through.py:101: AssertionError
+__ test_drive_through_roads_with_the_existing_car_profiles[range-12-bend-60] ___
+
+name = 'bend-60', profile = 'range-12'
+
+    @pytest.mark.parametrize("name", tuple(drive_through_roads()))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_drive_through_roads_with_the_existing_car_profiles(name, profile):
+        cfg = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=300,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+        )
+        sim = Simulator(drive_through_roads()[name], config=cfg)
+        driver = Driver(drive_config(["style=bold"]))
+        cruise = []
+        maximum_error = 0
+        while sim.time < cfg.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum_error = max(maximum_error, error)
+            # Every road starts with the same clear approach, before the bend is in view.
+            if 80 < progress < 100:
+                cruise.append(sim.speed)
+                assert command.brake == 0
+            if name == "kilometre" and 50 < progress < 975:
+                assert command.brake == 0
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+        assert maximum_error <= 5.0
+>       assert min(cruise) >= 0.95 * min(cfg.top_speed, cfg.acceleration / cfg.drag)
+E       assert 13.798853721848053 >= (0.95 * 15.555555555555555)
+E        +  where 13.798853721848053 = min([14.73722942358079, 14.726012553186015, 14.715835683572307, 14.704695808066802, 14.693599696771765, 14.683177488539199, ...])
+E        +  and   15.555555555555555 = min(18.0, (7.0 / 0.45))
+E        +    where 18.0 = SimConfig(dt=0.03333333333333333, delay=0.14, map_scale=1.0, map_tilt=0.0065, map_aspect=0.575, map_zoom_delay=1.0, gp...probability=0.15, outlier_probability=0, damage_probability=0, arrival_radius=3.0, progress_distance=0.5, max_time=300).top_speed
+E        +    and   7.0 = SimConfig(dt=0.03333333333333333, delay=0.14, map_scale=1.0, map_tilt=0.0065, map_aspect=0.575, map_zoom_delay=1.0, gp...probability=0.15, outlier_probability=0, damage_probability=0, arrival_radius=3.0, progress_distance=0.5, max_time=300).acceleration
+E        +    and   0.45 = SimConfig(dt=0.03333333333333333, delay=0.14, map_scale=1.0, map_tilt=0.0065, map_aspect=0.575, map_zoom_delay=1.0, gp...probability=0.15, outlier_probability=0, damage_probability=0, arrival_radius=3.0, progress_distance=0.5, max_time=300).drag
+
+pilot/tests/test_drive_through.py:102: AssertionError
+____ test_drive_through_roads_with_the_existing_car_profiles[range-12-exit] ____
+
+name = 'exit', profile = 'range-12'
+
+    @pytest.mark.parametrize("name", tuple(drive_through_roads()))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_drive_through_roads_with_the_existing_car_profiles(name, profile):
+        cfg = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=300,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+        )
+        sim = Simulator(drive_through_roads()[name], config=cfg)
+        driver = Driver(drive_config(["style=bold"]))
+        cruise = []
+        maximum_error = 0
+        while sim.time < cfg.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum_error = max(maximum_error, error)
+            # Every road starts with the same clear approach, before the bend is in view.
+            if 80 < progress < 100:
+                cruise.append(sim.speed)
+                assert command.brake == 0
+            if name == "kilometre" and 50 < progress < 975:
+                assert command.brake == 0
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum_error <= 5.0
+E       assert 5.161944434837821 <= 5.0
+
+pilot/tests/test_drive_through.py:101: AssertionError
+____ test_drive_through_roads_with_the_existing_car_profiles[range-22-exit] ____
+
+name = 'exit', profile = 'range-22'
+
+    @pytest.mark.parametrize("name", tuple(drive_through_roads()))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_drive_through_roads_with_the_existing_car_profiles(name, profile):
+        cfg = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=300,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+        )
+        sim = Simulator(drive_through_roads()[name], config=cfg)
+        driver = Driver(drive_config(["style=bold"]))
+        cruise = []
+        maximum_error = 0
+        while sim.time < cfg.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum_error = max(maximum_error, error)
+            # Every road starts with the same clear approach, before the bend is in view.
+            if 80 < progress < 100:
+                cruise.append(sim.speed)
+                assert command.brake == 0
+            if name == "kilometre" and 50 < progress < 975:
+                assert command.brake == 0
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum_error <= 5.0
+E       assert 5.294608289863215 <= 5.0
+
+pilot/tests/test_drive_through.py:101: AssertionError
+_ test_drive_through_roads_with_the_existing_car_profiles[fast-low-grip-bend-60] _
+
+name = 'bend-60', profile = 'fast-low-grip'
+
+    @pytest.mark.parametrize("name", tuple(drive_through_roads()))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_drive_through_roads_with_the_existing_car_profiles(name, profile):
+        cfg = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=300,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+        )
+        sim = Simulator(drive_through_roads()[name], config=cfg)
+        driver = Driver(drive_config(["style=bold"]))
+        cruise = []
+        maximum_error = 0
+        while sim.time < cfg.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum_error = max(maximum_error, error)
+            # Every road starts with the same clear approach, before the bend is in view.
+            if 80 < progress < 100:
+                cruise.append(sim.speed)
+                assert command.brake == 0
+            if name == "kilometre" and 50 < progress < 975:
+                assert command.brake == 0
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+        assert maximum_error <= 5.0
+>       assert min(cruise) >= 0.95 * min(cfg.top_speed, cfg.acceleration / cfg.drag)
+E       assert 13.798853721848053 >= (0.95 * 15.555555555555555)
+E        +  where 13.798853721848053 = min([14.73722942358079, 14.726012553186015, 14.715835683572307, 14.704695808066802, 14.693599696771765, 14.683177488539199, ...])
+E        +  and   15.555555555555555 = min(18.0, (7.0 / 0.45))
+E        +    where 18.0 = SimConfig(dt=0.03333333333333333, delay=0.14, map_scale=1.0, map_tilt=0.0065, map_aspect=0.575, map_zoom_delay=1.0, gp...probability=0.15, outlier_probability=0, damage_probability=0, arrival_radius=3.0, progress_distance=0.5, max_time=300).top_speed
+E        +    and   7.0 = SimConfig(dt=0.03333333333333333, delay=0.14, map_scale=1.0, map_tilt=0.0065, map_aspect=0.575, map_zoom_delay=1.0, gp...probability=0.15, outlier_probability=0, damage_probability=0, arrival_radius=3.0, progress_distance=0.5, max_time=300).acceleration
+E        +    and   0.45 = SimConfig(dt=0.03333333333333333, delay=0.14, map_scale=1.0, map_tilt=0.0065, map_aspect=0.575, map_zoom_delay=1.0, gp...probability=0.15, outlier_probability=0, damage_probability=0, arrival_radius=3.0, progress_distance=0.5, max_time=300).drag
+
+pilot/tests/test_drive_through.py:102: AssertionError
+_ test_drive_through_roads_with_the_existing_car_profiles[fast-low-grip-exit] __
+
+name = 'exit', profile = 'fast-low-grip'
+
+    @pytest.mark.parametrize("name", tuple(drive_through_roads()))
+    @pytest.mark.parametrize("profile", tuple(CAR_PROFILES))
+    def test_drive_through_roads_with_the_existing_car_profiles(name, profile):
+        cfg = SimConfig(
+            **CAR_PROFILES[profile],
+            map_tilt=0.0065,
+            dead_zone=0.25,
+            delay=0.14,
+            max_time=300,
+            gps_wrong=0,
+            gps_dropout=0,
+            path_missing=0,
+            damage_probability=0,
+            outlier_probability=0,
+            noise_degrees=0.5,
+            path_noise=0.15,
+        )
+        sim = Simulator(drive_through_roads()[name], config=cfg)
+        driver = Driver(drive_config(["style=bold"]))
+        cruise = []
+        maximum_error = 0
+        while sim.time < cfg.max_time:
+            reading, moving = sim.observe()
+            command = driver.step(reading, sim.time, moving, speed=sim.observed_speed)
+            error, progress = sim._route_position()
+            maximum_error = max(maximum_error, error)
+            # Every road starts with the same clear approach, before the bend is in view.
+            if 80 < progress < 100:
+                cruise.append(sim.speed)
+                assert command.brake == 0
+            if name == "kilometre" and 50 < progress < 975:
+                assert command.brake == 0
+            sim.advance(command)
+            if progress >= sim.length - 3:
+                break
+        assert progress >= sim.length - 3
+>       assert maximum_error <= 5.0
+E       assert 5.001772524206957 <= 5.0
+
+pilot/tests/test_drive_through.py:101: AssertionError
+=========================== short test summary info ============================
+FAILED pilot/tests/test_town_corners.py::test_the_last_visible_outgoing_chord_already_limits_the_approach
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[nominal-1]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[nominal-2]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-00-1]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-00-2]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-01-1]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-01-2]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-10-1]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-10-2]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-11-1]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-11-2]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-12-1]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-12-2]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-20-1]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-20-2]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-21-1]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-21-2]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-22-1]
+FAILED pilot/tests/test_town_corners.py::test_town_blocks_keep_the_existing_five_metre_road_bound[range-22-2]
+FAILED pilot/tests/test_drive_through.py::test_curve_ahead_lifts_before_braking_is_needed
+FAILED pilot/tests/test_drive_through.py::test_drive_through_roads_with_the_existing_car_profiles[range-01-exit]
+FAILED pilot/tests/test_drive_through.py::test_drive_through_roads_with_the_existing_car_profiles[range-02-exit]
+FAILED pilot/tests/test_drive_through.py::test_drive_through_roads_with_the_existing_car_profiles[range-12-bend-60]
+FAILED pilot/tests/test_drive_through.py::test_drive_through_roads_with_the_existing_car_profiles[range-12-exit]
+FAILED pilot/tests/test_drive_through.py::test_drive_through_roads_with_the_existing_car_profiles[range-22-exit]
+FAILED pilot/tests/test_drive_through.py::test_drive_through_roads_with_the_existing_car_profiles[fast-low-grip-bend-60]
+FAILED pilot/tests/test_drive_through.py::test_drive_through_roads_with_the_existing_car_profiles[fast-low-grip-exit]
+27 failed, 52 passed in 32.73s
