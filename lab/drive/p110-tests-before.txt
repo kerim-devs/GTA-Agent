@@ -1,0 +1,197 @@
+FFFFFFFFFFFFF                                                            [100%]
+=================================== FAILURES ===================================
+____ test_parked_box_is_passed_without_turning_away_from_the_road[nominal] _____
+
+profile = 'nominal'
+
+    @pytest.mark.parametrize('profile', CAR_PROFILES)
+    def test_parked_box_is_passed_without_turning_away_from_the_road(profile):
+        row = simulations.parked(profile)
+        assert row['after_contact'] is not None and row['after_contact'] < 20, row
+        assert row['joined_at'] is not None, row
+>       assert row['max_heading'] <= 50, row
+E       AssertionError: {'profile': 'nominal', 'blocked': 0, 'detected': False, 'first_contact': 1.9000000000000026, ...}
+E       assert 90.18242473281636 <= 50
+
+tests/test_swerve.py:19: AssertionError
+____ test_parked_box_is_passed_without_turning_away_from_the_road[range-00] ____
+
+profile = 'range-00'
+
+    @pytest.mark.parametrize('profile', CAR_PROFILES)
+    def test_parked_box_is_passed_without_turning_away_from_the_road(profile):
+        row = simulations.parked(profile)
+        assert row['after_contact'] is not None and row['after_contact'] < 20, row
+        assert row['joined_at'] is not None, row
+>       assert row['max_heading'] <= 50, row
+E       AssertionError: {'profile': 'range-00', 'blocked': 0, 'detected': False, 'first_contact': 2.1666666666666687, ...}
+E       assert 62.216363946677056 <= 50
+
+tests/test_swerve.py:19: AssertionError
+____ test_parked_box_is_passed_without_turning_away_from_the_road[range-01] ____
+
+profile = 'range-01'
+
+    @pytest.mark.parametrize('profile', CAR_PROFILES)
+    def test_parked_box_is_passed_without_turning_away_from_the_road(profile):
+        row = simulations.parked(profile)
+        assert row['after_contact'] is not None and row['after_contact'] < 20, row
+        assert row['joined_at'] is not None, row
+>       assert row['max_heading'] <= 50, row
+E       AssertionError: {'profile': 'range-01', 'blocked': 0, 'detected': False, 'first_contact': 1.9000000000000026, ...}
+E       assert 62.435645386894166 <= 50
+
+tests/test_swerve.py:19: AssertionError
+____ test_parked_box_is_passed_without_turning_away_from_the_road[range-02] ____
+
+profile = 'range-02'
+
+    @pytest.mark.parametrize('profile', CAR_PROFILES)
+    def test_parked_box_is_passed_without_turning_away_from_the_road(profile):
+        row = simulations.parked(profile)
+        assert row['after_contact'] is not None and row['after_contact'] < 20, row
+        assert row['joined_at'] is not None, row
+        assert row['max_heading'] <= 50, row
+>       assert row['end_heading'] < 20, row
+E       AssertionError: {'profile': 'range-02', 'blocked': 0, 'detected': False, 'first_contact': 1.6666666666666685, ...}
+E       assert 30.74364380749482 < 20
+
+tests/test_swerve.py:20: AssertionError
+____ test_parked_box_is_passed_without_turning_away_from_the_road[range-10] ____
+
+profile = 'range-10'
+
+    @pytest.mark.parametrize('profile', CAR_PROFILES)
+    def test_parked_box_is_passed_without_turning_away_from_the_road(profile):
+        row = simulations.parked(profile)
+        assert row['after_contact'] is not None and row['after_contact'] < 20, row
+        assert row['joined_at'] is not None, row
+>       assert row['max_heading'] <= 50, row
+E       AssertionError: {'profile': 'range-10', 'blocked': 0, 'detected': False, 'first_contact': 2.1666666666666687, ...}
+E       assert 70.38050659165164 <= 50
+
+tests/test_swerve.py:19: AssertionError
+____ test_parked_box_is_passed_without_turning_away_from_the_road[range-11] ____
+
+profile = 'range-11'
+
+    @pytest.mark.parametrize('profile', CAR_PROFILES)
+    def test_parked_box_is_passed_without_turning_away_from_the_road(profile):
+        row = simulations.parked(profile)
+        assert row['after_contact'] is not None and row['after_contact'] < 20, row
+        assert row['joined_at'] is not None, row
+>       assert row['max_heading'] <= 50, row
+E       AssertionError: {'profile': 'range-11', 'blocked': 0, 'detected': False, 'first_contact': 1.9000000000000026, ...}
+E       assert 90.18242473281636 <= 50
+
+tests/test_swerve.py:19: AssertionError
+____ test_parked_box_is_passed_without_turning_away_from_the_road[range-12] ____
+
+profile = 'range-12'
+
+    @pytest.mark.parametrize('profile', CAR_PROFILES)
+    def test_parked_box_is_passed_without_turning_away_from_the_road(profile):
+        row = simulations.parked(profile)
+        assert row['after_contact'] is not None and row['after_contact'] < 20, row
+        assert row['joined_at'] is not None, row
+>       assert row['max_heading'] <= 50, row
+E       AssertionError: {'profile': 'range-12', 'blocked': 0, 'detected': False, 'first_contact': 1.6666666666666685, ...}
+E       assert 77.87343526399151 <= 50
+
+tests/test_swerve.py:19: AssertionError
+____ test_parked_box_is_passed_without_turning_away_from_the_road[range-20] ____
+
+profile = 'range-20'
+
+    @pytest.mark.parametrize('profile', CAR_PROFILES)
+    def test_parked_box_is_passed_without_turning_away_from_the_road(profile):
+        row = simulations.parked(profile)
+        assert row['after_contact'] is not None and row['after_contact'] < 20, row
+        assert row['joined_at'] is not None, row
+>       assert row['max_heading'] <= 50, row
+E       AssertionError: {'profile': 'range-20', 'blocked': 0, 'detected': False, 'first_contact': 2.1666666666666687, ...}
+E       assert 70.38050659165164 <= 50
+
+tests/test_swerve.py:19: AssertionError
+____ test_parked_box_is_passed_without_turning_away_from_the_road[range-21] ____
+
+profile = 'range-21'
+
+    @pytest.mark.parametrize('profile', CAR_PROFILES)
+    def test_parked_box_is_passed_without_turning_away_from_the_road(profile):
+        row = simulations.parked(profile)
+        assert row['after_contact'] is not None and row['after_contact'] < 20, row
+        assert row['joined_at'] is not None, row
+>       assert row['max_heading'] <= 50, row
+E       AssertionError: {'profile': 'range-21', 'blocked': 0, 'detected': False, 'first_contact': 1.9000000000000026, ...}
+E       assert 112.33788918671591 <= 50
+
+tests/test_swerve.py:19: AssertionError
+____ test_parked_box_is_passed_without_turning_away_from_the_road[range-22] ____
+
+profile = 'range-22'
+
+    @pytest.mark.parametrize('profile', CAR_PROFILES)
+    def test_parked_box_is_passed_without_turning_away_from_the_road(profile):
+        row = simulations.parked(profile)
+        assert row['after_contact'] is not None and row['after_contact'] < 20, row
+        assert row['joined_at'] is not None, row
+>       assert row['max_heading'] <= 50, row
+E       AssertionError: {'profile': 'range-22', 'blocked': 0, 'detected': False, 'first_contact': 1.6666666666666685, ...}
+E       assert 116.23472251187282 <= 50
+
+tests/test_swerve.py:19: AssertionError
+_ test_parked_box_is_passed_without_turning_away_from_the_road[fast-low-grip] __
+
+profile = 'fast-low-grip'
+
+    @pytest.mark.parametrize('profile', CAR_PROFILES)
+    def test_parked_box_is_passed_without_turning_away_from_the_road(profile):
+        row = simulations.parked(profile)
+        assert row['after_contact'] is not None and row['after_contact'] < 20, row
+        assert row['joined_at'] is not None, row
+        assert row['max_heading'] <= 50, row
+>       assert row['end_heading'] < 20, row
+E       AssertionError: {'profile': 'fast-low-grip', 'blocked': 0, 'detected': False, 'first_contact': 1.6666666666666685, ...}
+E       assert 31.01188865363357 < 20
+
+tests/test_swerve.py:20: AssertionError
+_______ test_standing_at_a_clear_kerb_first_drives_on_without_reversing ________
+
+    def test_standing_at_a_clear_kerb_first_drives_on_without_reversing():
+        driver = Driver(drive_config(['style=bold']))
+        pushed_at = None
+        for tick in range(180):
+            now = tick/30
+            # A kerb needs more pedal than normal unknown-speed following supplies.
+            moving = pushed_at is not None and now-pushed_at > 0.3
+            command = driver.step(picture(), now, moving)
+>           assert command.brake == 0
+E           AssertionError: assert 1.0 == 0
+E            +  where 1.0 = Command(steer=0, throttle=0, brake=1.0, state='bypass-reverse').brake
+
+tests/test_swerve.py:32: AssertionError
+____________ test_downhill_backing_releases_l2_within_a_car_length _____________
+
+    def test_downhill_backing_releases_l2_within_a_car_length():
+        row = simulations.slope()
+>       assert row['metres'] <= 4, row
+E       AssertionError: {'reverse_command_seconds': 1.8333333333333357, 'metres': 15.01873586212786, 'last_brake': 0, 'last_state': 'bypass-forward'}
+E       assert 15.01873586212786 <= 4
+
+tests/test_swerve.py:41: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_swerve.py::test_parked_box_is_passed_without_turning_away_from_the_road[nominal]
+FAILED tests/test_swerve.py::test_parked_box_is_passed_without_turning_away_from_the_road[range-00]
+FAILED tests/test_swerve.py::test_parked_box_is_passed_without_turning_away_from_the_road[range-01]
+FAILED tests/test_swerve.py::test_parked_box_is_passed_without_turning_away_from_the_road[range-02]
+FAILED tests/test_swerve.py::test_parked_box_is_passed_without_turning_away_from_the_road[range-10]
+FAILED tests/test_swerve.py::test_parked_box_is_passed_without_turning_away_from_the_road[range-11]
+FAILED tests/test_swerve.py::test_parked_box_is_passed_without_turning_away_from_the_road[range-12]
+FAILED tests/test_swerve.py::test_parked_box_is_passed_without_turning_away_from_the_road[range-20]
+FAILED tests/test_swerve.py::test_parked_box_is_passed_without_turning_away_from_the_road[range-21]
+FAILED tests/test_swerve.py::test_parked_box_is_passed_without_turning_away_from_the_road[range-22]
+FAILED tests/test_swerve.py::test_parked_box_is_passed_without_turning_away_from_the_road[fast-low-grip]
+FAILED tests/test_swerve.py::test_standing_at_a_clear_kerb_first_drives_on_without_reversing
+FAILED tests/test_swerve.py::test_downhill_backing_releases_l2_within_a_car_length
+13 failed in 1.18s

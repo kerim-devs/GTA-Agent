@@ -1,0 +1,2045 @@
+{
+  "parked": [
+    {
+      "profile": "nominal",
+      "blocked": 0,
+      "detected": false,
+      "first_contact": 1.9000000000000026,
+      "passed_at": 11.766666666666636,
+      "joined_at": 16.333333333333304,
+      "after_contact": 9.866666666666633,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.2,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.0,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.6333,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          13.3,
+          "follow",
+          1
+        ]
+      ],
+      "states": {
+        "follow": 247,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 110
+      },
+      "collisions": 198,
+      "final_position": [
+        -0.6130599952992539,
+        41.14089996967753
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 90.18242473281636,
+      "end_heading": 10.12551711748421,
+      "reversed_m": 5.117550616876811,
+      "longest_retreat_m": 5.117550616876811
+    },
+    {
+      "profile": "nominal",
+      "blocked": -1,
+      "detected": false,
+      "first_contact": 1.9000000000000026,
+      "passed_at": 15.933333333333287,
+      "joined_at": 21.500000000000227,
+      "after_contact": 14.033333333333285,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.2,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.0,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.6333,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          10.4,
+          "bypass-reverse",
+          0
+        ],
+        [
+          12.2,
+          "bypass-forward",
+          -1.0
+        ],
+        [
+          14.8333,
+          "bypass-pass",
+          -1.0
+        ],
+        [
+          17.5,
+          "follow",
+          -0.4273136304722911
+        ]
+      ],
+      "states": {
+        "follow": 276,
+        "bypass-reverse": 108,
+        "bypass-forward": 158,
+        "bypass-pass": 103
+      },
+      "collisions": 282,
+      "final_position": [
+        0.7119338589061806,
+        58.07447199256266
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 50.667865538249835,
+      "end_heading": 3.526221423996211,
+      "reversed_m": 10.235101233753626,
+      "longest_retreat_m": 5.117550616876813
+    },
+    {
+      "profile": "nominal",
+      "blocked": 1,
+      "detected": false,
+      "first_contact": 1.9000000000000026,
+      "passed_at": 11.766666666666636,
+      "joined_at": 16.333333333333304,
+      "after_contact": 9.866666666666633,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.2,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.0,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.6333,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          13.3,
+          "follow",
+          1
+        ]
+      ],
+      "states": {
+        "follow": 247,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 110
+      },
+      "collisions": 198,
+      "final_position": [
+        -0.6130599952992539,
+        41.14089996967753
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 90.18242473281636,
+      "end_heading": 10.12551711748421,
+      "reversed_m": 5.117550616876811,
+      "longest_retreat_m": 5.117550616876811
+    },
+    {
+      "profile": "range-00",
+      "blocked": 0,
+      "detected": false,
+      "first_contact": 2.1666666666666687,
+      "passed_at": 12.099999999999968,
+      "joined_at": 20.033333333333488,
+      "after_contact": 9.933333333333298,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.4333,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.2333,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.8667,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          13.6,
+          "follow",
+          0.6149467326609479
+        ]
+      ],
+      "states": {
+        "follow": 356,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 112
+      },
+      "collisions": 196,
+      "final_position": [
+        -0.7494406380962209,
+        57.379863074434226
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 62.216363946677056,
+      "end_heading": 6.710091514387488,
+      "reversed_m": 4.770098177751115,
+      "longest_retreat_m": 4.770098177751115
+    },
+    {
+      "profile": "range-00",
+      "blocked": -1,
+      "detected": false,
+      "first_contact": 2.1666666666666687,
+      "passed_at": 17.400000000000023,
+      "joined_at": 21.266666666666882,
+      "after_contact": 15.233333333333356,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.4333,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.2333,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.8667,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          11.0667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          12.8667,
+          "bypass-forward",
+          -1.0
+        ],
+        [
+          15.5,
+          "bypass-pass",
+          -0.23275706457426623
+        ],
+        [
+          18.9667,
+          "follow",
+          -0.3184245520983786
+        ]
+      ],
+      "states": {
+        "follow": 232,
+        "bypass-reverse": 108,
+        "bypass-forward": 158,
+        "bypass-pass": 140
+      },
+      "collisions": 268,
+      "final_position": [
+        0.7306959102816468,
+        31.382539065101486
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 51.26921142044508,
+      "end_heading": 1.285001067583505,
+      "reversed_m": 9.540196355502227,
+      "longest_retreat_m": 4.770098177751115
+    },
+    {
+      "profile": "range-00",
+      "blocked": 1,
+      "detected": false,
+      "first_contact": 2.1666666666666687,
+      "passed_at": 12.099999999999968,
+      "joined_at": 20.033333333333488,
+      "after_contact": 9.933333333333298,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.4333,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.2333,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.8667,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          13.6,
+          "follow",
+          0.6149467326609479
+        ]
+      ],
+      "states": {
+        "follow": 356,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 112
+      },
+      "collisions": 196,
+      "final_position": [
+        -0.7494406380962209,
+        57.379863074434226
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 62.216363946677056,
+      "end_heading": 6.710091514387488,
+      "reversed_m": 4.770098177751115,
+      "longest_retreat_m": 4.770098177751115
+    },
+    {
+      "profile": "range-01",
+      "blocked": 0,
+      "detected": false,
+      "first_contact": 1.9000000000000026,
+      "passed_at": 11.19999999999997,
+      "joined_at": 22.533333333333612,
+      "after_contact": 9.299999999999969,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.2,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.0,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.6333,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          12.7,
+          "follow",
+          1
+        ],
+        [
+          12.7333,
+          "turn-join",
+          1.0
+        ],
+        [
+          20.5,
+          "follow",
+          0.5791817153295827
+        ]
+      ],
+      "states": {
+        "follow": 218,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 92,
+        "turn-join": 233
+      },
+      "collisions": 198,
+      "final_position": [
+        -0.7439516845351196,
+        72.1289927337428
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 62.435645386894166,
+      "end_heading": 19.870035446528092,
+      "reversed_m": 5.1175507288370685,
+      "longest_retreat_m": 5.1175507288370685
+    },
+    {
+      "profile": "range-01",
+      "blocked": -1,
+      "detected": false,
+      "first_contact": 1.9000000000000026,
+      "passed_at": 15.833333333333288,
+      "joined_at": 20.433333333333508,
+      "after_contact": 13.933333333333286,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.2,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.0,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.6333,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          10.4,
+          "bypass-reverse",
+          0
+        ],
+        [
+          12.2,
+          "bypass-forward",
+          -1.0
+        ],
+        [
+          14.8333,
+          "bypass-pass",
+          -0.6547775611841189
+        ],
+        [
+          17.4667,
+          "follow",
+          -0.35097539209649814
+        ]
+      ],
+      "states": {
+        "follow": 245,
+        "bypass-reverse": 108,
+        "bypass-forward": 158,
+        "bypass-pass": 102
+      },
+      "collisions": 277,
+      "final_position": [
+        0.7379266075974693,
+        48.667243500343744
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 43.77188431102267,
+      "end_heading": 2.057474557528703,
+      "reversed_m": 10.235101457674137,
+      "longest_retreat_m": 5.1175507288370685
+    },
+    {
+      "profile": "range-01",
+      "blocked": 1,
+      "detected": false,
+      "first_contact": 1.9000000000000026,
+      "passed_at": 11.19999999999997,
+      "joined_at": 22.533333333333612,
+      "after_contact": 9.299999999999969,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.2,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.0,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.6333,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          12.7,
+          "follow",
+          1
+        ],
+        [
+          12.7333,
+          "turn-join",
+          1.0
+        ],
+        [
+          20.5,
+          "follow",
+          0.5791817153295827
+        ]
+      ],
+      "states": {
+        "follow": 218,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 92,
+        "turn-join": 233
+      },
+      "collisions": 198,
+      "final_position": [
+        -0.7439516845351196,
+        72.1289927337428
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 62.435645386894166,
+      "end_heading": 19.870035446528092,
+      "reversed_m": 5.1175507288370685,
+      "longest_retreat_m": 5.1175507288370685
+    },
+    {
+      "profile": "range-02",
+      "blocked": 0,
+      "detected": false,
+      "first_contact": 1.6666666666666685,
+      "passed_at": 9.699999999999976,
+      "joined_at": 22.633333333333617,
+      "after_contact": 8.033333333333308,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          4.9667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          6.7667,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.4,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          11.3,
+          "follow",
+          1
+        ],
+        [
+          11.7667,
+          "turn-join",
+          1.0
+        ],
+        [
+          20.6333,
+          "follow",
+          0.5759032616439981
+        ]
+      ],
+      "states": {
+        "follow": 223,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 57,
+        "turn-join": 266
+      },
+      "collisions": 199,
+      "final_position": [
+        -0.7470665570005933,
+        112.8171848145177
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 47.81653846281501,
+      "end_heading": 30.74364380749482,
+      "reversed_m": 5.284582490952259,
+      "longest_retreat_m": 5.284582490952259
+    },
+    {
+      "profile": "range-02",
+      "blocked": -1,
+      "detected": false,
+      "first_contact": 1.6666666666666685,
+      "passed_at": 14.733333333333292,
+      "joined_at": 19.833333333333478,
+      "after_contact": 13.066666666666624,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          4.9667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          6.7667,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.4,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          10.1667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          11.9667,
+          "bypass-forward",
+          -1.0
+        ],
+        [
+          14.6,
+          "bypass-pass",
+          -0.5934016886763368
+        ],
+        [
+          16.3667,
+          "follow",
+          -0.35245693698939623
+        ]
+      ],
+      "states": {
+        "follow": 253,
+        "bypass-reverse": 108,
+        "bypass-forward": 158,
+        "bypass-pass": 76
+      },
+      "collisions": 300,
+      "final_position": [
+        0.7440813075273893,
+        67.54820605608653
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 31.634104895732502,
+      "end_heading": 0.38277845649717057,
+      "reversed_m": 10.569164981904517,
+      "longest_retreat_m": 5.284582490952265
+    },
+    {
+      "profile": "range-02",
+      "blocked": 1,
+      "detected": false,
+      "first_contact": 1.6666666666666685,
+      "passed_at": 9.699999999999976,
+      "joined_at": 22.633333333333617,
+      "after_contact": 8.033333333333308,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          4.9667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          6.7667,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.4,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          11.3,
+          "follow",
+          1
+        ],
+        [
+          11.7667,
+          "turn-join",
+          1.0
+        ],
+        [
+          20.6333,
+          "follow",
+          0.5759032616439981
+        ]
+      ],
+      "states": {
+        "follow": 223,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 57,
+        "turn-join": 266
+      },
+      "collisions": 199,
+      "final_position": [
+        -0.7470665570005933,
+        112.8171848145177
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 47.81653846281501,
+      "end_heading": 30.74364380749482,
+      "reversed_m": 5.284582490952259,
+      "longest_retreat_m": 5.284582490952259
+    },
+    {
+      "profile": "range-10",
+      "blocked": 0,
+      "detected": false,
+      "first_contact": 2.1666666666666687,
+      "passed_at": 11.999999999999968,
+      "joined_at": 18.800000000000093,
+      "after_contact": 9.8333333333333,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.4333,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.2333,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.8667,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          13.5,
+          "follow",
+          0.3804185583091412
+        ]
+      ],
+      "states": {
+        "follow": 322,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 109
+      },
+      "collisions": 196,
+      "final_position": [
+        -0.7385112934182155,
+        50.418019115038966
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 70.38050659165164,
+      "end_heading": 3.8736803542343896,
+      "reversed_m": 4.770097980719094,
+      "longest_retreat_m": 4.770097980719094
+    },
+    {
+      "profile": "range-10",
+      "blocked": -1,
+      "detected": false,
+      "first_contact": 2.1666666666666687,
+      "passed_at": 17.400000000000023,
+      "joined_at": 21.100000000000207,
+      "after_contact": 15.233333333333356,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.4333,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.2333,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.8667,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          11.0667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          12.8667,
+          "bypass-forward",
+          -1.0
+        ],
+        [
+          15.5,
+          "bypass-pass",
+          -0.3295096419619222
+        ],
+        [
+          18.9333,
+          "follow",
+          -0.3272179585237488
+        ]
+      ],
+      "states": {
+        "follow": 228,
+        "bypass-reverse": 108,
+        "bypass-forward": 158,
+        "bypass-pass": 139
+      },
+      "collisions": 271,
+      "final_position": [
+        0.7266935783473946,
+        30.297407898890473
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 52.837847296021764,
+      "end_heading": 1.4529314777203546,
+      "reversed_m": 9.540195961438192,
+      "longest_retreat_m": 4.7700979807190995
+    },
+    {
+      "profile": "range-10",
+      "blocked": 1,
+      "detected": false,
+      "first_contact": 2.1666666666666687,
+      "passed_at": 11.999999999999968,
+      "joined_at": 18.800000000000093,
+      "after_contact": 9.8333333333333,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.4333,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.2333,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.8667,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          13.5,
+          "follow",
+          0.3804185583091412
+        ]
+      ],
+      "states": {
+        "follow": 322,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 109
+      },
+      "collisions": 196,
+      "final_position": [
+        -0.7385112934182155,
+        50.418019115038966
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 70.38050659165164,
+      "end_heading": 3.8736803542343896,
+      "reversed_m": 4.770097980719094,
+      "longest_retreat_m": 4.770097980719094
+    },
+    {
+      "profile": "range-11",
+      "blocked": 0,
+      "detected": false,
+      "first_contact": 1.9000000000000026,
+      "passed_at": 11.766666666666636,
+      "joined_at": 16.63333333333332,
+      "after_contact": 9.866666666666633,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.2,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.0,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.6333,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          13.3333,
+          "follow",
+          1
+        ]
+      ],
+      "states": {
+        "follow": 255,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 111
+      },
+      "collisions": 198,
+      "final_position": [
+        -0.6084702152573986,
+        36.556663416036706
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 90.18242473281636,
+      "end_heading": 13.409719509454215,
+      "reversed_m": 5.117550616876811,
+      "longest_retreat_m": 5.117550616876811
+    },
+    {
+      "profile": "range-11",
+      "blocked": -1,
+      "detected": false,
+      "first_contact": 1.9000000000000026,
+      "passed_at": 15.933333333333287,
+      "joined_at": 21.566666666666897,
+      "after_contact": 14.033333333333285,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.2,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.0,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.6333,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          10.4,
+          "bypass-reverse",
+          0
+        ],
+        [
+          12.2,
+          "bypass-forward",
+          -1.0
+        ],
+        [
+          14.8333,
+          "bypass-pass",
+          -1.0
+        ],
+        [
+          17.5,
+          "follow",
+          -0.43051185602086417
+        ]
+      ],
+      "states": {
+        "follow": 278,
+        "bypass-reverse": 108,
+        "bypass-forward": 158,
+        "bypass-pass": 103
+      },
+      "collisions": 282,
+      "final_position": [
+        0.7271990197731284,
+        52.51438704215483
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 50.667865538249835,
+      "end_heading": 3.330337589443121,
+      "reversed_m": 10.235101233753626,
+      "longest_retreat_m": 5.117550616876813
+    },
+    {
+      "profile": "range-11",
+      "blocked": 1,
+      "detected": false,
+      "first_contact": 1.9000000000000026,
+      "passed_at": 11.766666666666636,
+      "joined_at": 16.63333333333332,
+      "after_contact": 9.866666666666633,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.2,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.0,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.6333,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          13.3333,
+          "follow",
+          1
+        ]
+      ],
+      "states": {
+        "follow": 255,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 111
+      },
+      "collisions": 198,
+      "final_position": [
+        -0.6084702152573986,
+        36.556663416036706
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 90.18242473281636,
+      "end_heading": 13.409719509454215,
+      "reversed_m": 5.117550616876811,
+      "longest_retreat_m": 5.117550616876811
+    },
+    {
+      "profile": "range-12",
+      "blocked": 0,
+      "detected": false,
+      "first_contact": 1.6666666666666685,
+      "passed_at": 10.56666666666664,
+      "joined_at": 22.833333333333627,
+      "after_contact": 8.899999999999972,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          4.9667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          6.7667,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.4,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          11.9667,
+          "follow",
+          1
+        ],
+        [
+          12.0,
+          "turn-join",
+          1.0
+        ],
+        [
+          21.0667,
+          "follow",
+          0.5789376875447774
+        ]
+      ],
+      "states": {
+        "follow": 203,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 77,
+        "turn-join": 272
+      },
+      "collisions": 199,
+      "final_position": [
+        -0.6031119637947088,
+        103.20378247528527
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 77.87343526399151,
+      "end_heading": 32.789434105121835,
+      "reversed_m": 5.284582438660962,
+      "longest_retreat_m": 5.284582438660962
+    },
+    {
+      "profile": "range-12",
+      "blocked": -1,
+      "detected": false,
+      "first_contact": 1.6666666666666685,
+      "passed_at": 14.833333333333291,
+      "joined_at": 23.300000000000317,
+      "after_contact": 13.166666666666623,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          4.9667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          6.7667,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.4,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          10.1667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          11.9667,
+          "bypass-forward",
+          -1.0
+        ],
+        [
+          14.6,
+          "bypass-pass",
+          -1.0
+        ],
+        [
+          16.4333,
+          "follow",
+          -0.5149894724939287
+        ]
+      ],
+      "states": {
+        "follow": 355,
+        "bypass-reverse": 108,
+        "bypass-forward": 158,
+        "bypass-pass": 78
+      },
+      "collisions": 302,
+      "final_position": [
+        0.7484381702779203,
+        108.9292716075125
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 42.15834897992224,
+      "end_heading": 3.2879139720029715,
+      "reversed_m": 10.569164877321922,
+      "longest_retreat_m": 5.284582438660964
+    },
+    {
+      "profile": "range-12",
+      "blocked": 1,
+      "detected": false,
+      "first_contact": 1.6666666666666685,
+      "passed_at": 10.56666666666664,
+      "joined_at": 22.833333333333627,
+      "after_contact": 8.899999999999972,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          4.9667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          6.7667,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.4,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          11.9667,
+          "follow",
+          1
+        ],
+        [
+          12.0,
+          "turn-join",
+          1.0
+        ],
+        [
+          21.0667,
+          "follow",
+          0.5789376875447774
+        ]
+      ],
+      "states": {
+        "follow": 203,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 77,
+        "turn-join": 272
+      },
+      "collisions": 199,
+      "final_position": [
+        -0.6031119637947088,
+        103.20378247528527
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 77.87343526399151,
+      "end_heading": 32.789434105121835,
+      "reversed_m": 5.284582438660962,
+      "longest_retreat_m": 5.284582438660962
+    },
+    {
+      "profile": "range-20",
+      "blocked": 0,
+      "detected": false,
+      "first_contact": 2.1666666666666687,
+      "passed_at": 11.999999999999968,
+      "joined_at": 17.70000000000004,
+      "after_contact": 9.8333333333333,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.4333,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.2333,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.8667,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          13.5,
+          "follow",
+          0.36549024318108714
+        ]
+      ],
+      "states": {
+        "follow": 289,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 109
+      },
+      "collisions": 196,
+      "final_position": [
+        -0.7397311395273509,
+        43.39793939395901
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 70.38050659165164,
+      "end_heading": 3.343078957292868,
+      "reversed_m": 4.770097980719094,
+      "longest_retreat_m": 4.770097980719094
+    },
+    {
+      "profile": "range-20",
+      "blocked": -1,
+      "detected": false,
+      "first_contact": 2.1666666666666687,
+      "passed_at": 17.400000000000023,
+      "joined_at": 21.100000000000207,
+      "after_contact": 15.233333333333356,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.4333,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.2333,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.8667,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          11.0667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          12.8667,
+          "bypass-forward",
+          -1.0
+        ],
+        [
+          15.5,
+          "bypass-pass",
+          -0.3295096419619222
+        ],
+        [
+          18.9333,
+          "follow",
+          -0.3272179585237488
+        ]
+      ],
+      "states": {
+        "follow": 228,
+        "bypass-reverse": 108,
+        "bypass-forward": 158,
+        "bypass-pass": 139
+      },
+      "collisions": 271,
+      "final_position": [
+        0.7266935783473946,
+        30.297407898890473
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 52.837847296021764,
+      "end_heading": 1.4529314777203546,
+      "reversed_m": 9.540195961438192,
+      "longest_retreat_m": 4.7700979807190995
+    },
+    {
+      "profile": "range-20",
+      "blocked": 1,
+      "detected": false,
+      "first_contact": 2.1666666666666687,
+      "passed_at": 11.999999999999968,
+      "joined_at": 17.70000000000004,
+      "after_contact": 9.8333333333333,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.4333,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.2333,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.8667,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          13.5,
+          "follow",
+          0.36549024318108714
+        ]
+      ],
+      "states": {
+        "follow": 289,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 109
+      },
+      "collisions": 196,
+      "final_position": [
+        -0.7397311395273509,
+        43.39793939395901
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 70.38050659165164,
+      "end_heading": 3.343078957292868,
+      "reversed_m": 4.770097980719094,
+      "longest_retreat_m": 4.770097980719094
+    },
+    {
+      "profile": "range-21",
+      "blocked": 0,
+      "detected": false,
+      "first_contact": 1.9000000000000026,
+      "passed_at": 11.899999999999968,
+      "joined_at": 15.766666666666621,
+      "after_contact": 9.999999999999966,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.2,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.0,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.6333,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          13.5,
+          "follow",
+          1
+        ]
+      ],
+      "states": {
+        "follow": 224,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 116
+      },
+      "collisions": 198,
+      "final_position": [
+        -0.6138390770540199,
+        37.72459278409736
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 112.33788918671591,
+      "end_heading": 9.120559639957666,
+      "reversed_m": 5.117550616876811,
+      "longest_retreat_m": 5.117550616876811
+    },
+    {
+      "profile": "range-21",
+      "blocked": -1,
+      "detected": false,
+      "first_contact": 1.9000000000000026,
+      "passed_at": 16.066666666666624,
+      "joined_at": 20.433333333333508,
+      "after_contact": 14.166666666666622,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.2,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.0,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.6333,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          10.4,
+          "bypass-reverse",
+          0
+        ],
+        [
+          12.2,
+          "bypass-forward",
+          -1.0
+        ],
+        [
+          14.8333,
+          "bypass-pass",
+          -1.0
+        ],
+        [
+          17.6,
+          "follow",
+          -0.5752373930318014
+        ]
+      ],
+      "states": {
+        "follow": 241,
+        "bypass-reverse": 108,
+        "bypass-forward": 158,
+        "bypass-pass": 106
+      },
+      "collisions": 282,
+      "final_position": [
+        0.7215841973410733,
+        46.080366372573046
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 61.54404802446428,
+      "end_heading": 4.9329179432956565,
+      "reversed_m": 10.235101233753626,
+      "longest_retreat_m": 5.1175506168768115
+    },
+    {
+      "profile": "range-21",
+      "blocked": 1,
+      "detected": false,
+      "first_contact": 1.9000000000000026,
+      "passed_at": 11.899999999999968,
+      "joined_at": 15.766666666666621,
+      "after_contact": 9.999999999999966,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          5.2,
+          "bypass-reverse",
+          0
+        ],
+        [
+          7.0,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.6333,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          13.5,
+          "follow",
+          1
+        ]
+      ],
+      "states": {
+        "follow": 224,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 116
+      },
+      "collisions": 198,
+      "final_position": [
+        -0.6138390770540199,
+        37.72459278409736
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 112.33788918671591,
+      "end_heading": 9.120559639957666,
+      "reversed_m": 5.117550616876811,
+      "longest_retreat_m": 5.117550616876811
+    },
+    {
+      "profile": "range-22",
+      "blocked": 0,
+      "detected": false,
+      "first_contact": 1.6666666666666685,
+      "passed_at": 11.899999999999968,
+      "joined_at": 16.799999999999994,
+      "after_contact": 10.2333333333333,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          4.9667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          6.7667,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.4,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          13.5333,
+          "follow",
+          1
+        ]
+      ],
+      "states": {
+        "follow": 247,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 124
+      },
+      "collisions": 199,
+      "final_position": [
+        -0.633576455908858,
+        30.341893342749703
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 116.23472251187282,
+      "end_heading": 12.749197817386092,
+      "reversed_m": 5.284582438660962,
+      "longest_retreat_m": 5.284582438660962
+    },
+    {
+      "profile": "range-22",
+      "blocked": -1,
+      "detected": false,
+      "first_contact": 1.6666666666666685,
+      "passed_at": 15.33333333333329,
+      "joined_at": 19.233333333333448,
+      "after_contact": 13.666666666666622,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          4.9667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          6.7667,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.4,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          10.1667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          11.9667,
+          "bypass-forward",
+          -1.0
+        ],
+        [
+          14.6,
+          "bypass-pass",
+          -1.0
+        ],
+        [
+          16.8333,
+          "follow",
+          -1
+        ]
+      ],
+      "states": {
+        "follow": 221,
+        "bypass-reverse": 108,
+        "bypass-forward": 158,
+        "bypass-pass": 90
+      },
+      "collisions": 304,
+      "final_position": [
+        0.7252669508152935,
+        33.57362867861895
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 68.13129128037122,
+      "end_heading": 7.531434418659273,
+      "reversed_m": 10.56916487732192,
+      "longest_retreat_m": 5.284582438660962
+    },
+    {
+      "profile": "range-22",
+      "blocked": 1,
+      "detected": false,
+      "first_contact": 1.6666666666666685,
+      "passed_at": 11.899999999999968,
+      "joined_at": 16.799999999999994,
+      "after_contact": 10.2333333333333,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          4.9667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          6.7667,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.4,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          13.5333,
+          "follow",
+          1
+        ]
+      ],
+      "states": {
+        "follow": 247,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 124
+      },
+      "collisions": 199,
+      "final_position": [
+        -0.633576455908858,
+        30.341893342749703
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 116.23472251187282,
+      "end_heading": 12.749197817386092,
+      "reversed_m": 5.284582438660962,
+      "longest_retreat_m": 5.284582438660962
+    },
+    {
+      "profile": "fast-low-grip",
+      "blocked": 0,
+      "detected": false,
+      "first_contact": 1.6666666666666685,
+      "passed_at": 9.699999999999976,
+      "joined_at": 23.300000000000317,
+      "after_contact": 8.033333333333308,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          4.9667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          6.7667,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.4,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          11.3,
+          "follow",
+          1
+        ],
+        [
+          11.7,
+          "turn-join",
+          1.0
+        ],
+        [
+          21.2333,
+          "follow",
+          0.576014235174711
+        ]
+      ],
+      "states": {
+        "follow": 223,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 57,
+        "turn-join": 286
+      },
+      "collisions": 199,
+      "final_position": [
+        -0.6452035522221002,
+        120.67077642556438
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 47.81653846281501,
+      "end_heading": 31.01188865363357,
+      "reversed_m": 5.284582490952259,
+      "longest_retreat_m": 5.284582490952259
+    },
+    {
+      "profile": "fast-low-grip",
+      "blocked": -1,
+      "detected": false,
+      "first_contact": 1.6666666666666685,
+      "passed_at": 14.733333333333292,
+      "joined_at": 21.566666666666897,
+      "after_contact": 13.066666666666624,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          4.9667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          6.7667,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.4,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          10.1667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          11.9667,
+          "bypass-forward",
+          -1.0
+        ],
+        [
+          14.6,
+          "bypass-pass",
+          -0.5934016886763368
+        ],
+        [
+          16.3667,
+          "follow",
+          -0.3550498692298736
+        ]
+      ],
+      "states": {
+        "follow": 305,
+        "bypass-reverse": 108,
+        "bypass-forward": 158,
+        "bypass-pass": 76
+      },
+      "collisions": 300,
+      "final_position": [
+        0.7474410708869559,
+        91.4779391136673
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 31.634104895732502,
+      "end_heading": 0.5636119053656724,
+      "reversed_m": 10.569164981904517,
+      "longest_retreat_m": 5.284582490952265
+    },
+    {
+      "profile": "fast-low-grip",
+      "blocked": 1,
+      "detected": false,
+      "first_contact": 1.6666666666666685,
+      "passed_at": 9.699999999999976,
+      "joined_at": 23.300000000000317,
+      "after_contact": 8.033333333333308,
+      "longest_reverse": 1.7999999999999938,
+      "phases": [
+        [
+          0.0,
+          "follow",
+          0.0
+        ],
+        [
+          4.9667,
+          "bypass-reverse",
+          0
+        ],
+        [
+          6.7667,
+          "bypass-forward",
+          1.0
+        ],
+        [
+          9.4,
+          "bypass-pass",
+          1.0
+        ],
+        [
+          11.3,
+          "follow",
+          1
+        ],
+        [
+          11.7,
+          "turn-join",
+          1.0
+        ],
+        [
+          21.2333,
+          "follow",
+          0.576014235174711
+        ]
+      ],
+      "states": {
+        "follow": 223,
+        "bypass-reverse": 54,
+        "bypass-forward": 79,
+        "bypass-pass": 57,
+        "turn-join": 286
+      },
+      "collisions": 199,
+      "final_position": [
+        -0.6452035522221002,
+        120.67077642556438
+      ],
+      "status": "running",
+      "reason": null,
+      "max_heading": 47.81653846281501,
+      "end_heading": 31.01188865363357,
+      "reversed_m": 5.284582490952259,
+      "longest_retreat_m": 5.284582490952259
+    }
+  ],
+  "slope": {
+    "reverse_command_seconds": 1.8333333333333357,
+    "metres": 15.01873586212786,
+    "last_brake": 0,
+    "last_state": "bypass-forward"
+  }
+}

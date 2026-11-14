@@ -60,14 +60,27 @@ def test_bypass_wait_reverse_forward_and_return_to_route():
     command = driver.step(picture(), 0, False, speed=0, ahead=True, bypass_side=-1)
     assert command.state == "bypass-wait" and command.throttle == command.brake == 0
     command = wait_for_bypass(driver)
-    assert command.steer == command.throttle == 0 and command.brake == 1
-    command = driver.step(picture(), 3.1, True, speed=2, ahead=True, bypass_side=-1)
-    assert command.state == "bypass-forward" and command.steer == -1
-    assert command.throttle == 1 and command.brake == 0
-    command = driver.step(picture(), 3.7, True, speed=2, ahead=False)
-    assert command.state == "bypass-forward" and command.steer == -1
-    for tick in range(38, 95):
+    assert command.steer == command.throttle == 0 and 0 < command.brake < 1
+    for tick in range(22, 80):
+        command = driver.step(picture(), tick / 10, True, speed=2, ahead=True, bypass_side=-1)
+        if command.state == "bypass-forward":
+            break
+    assert command.state == "bypass-forward" and 0 < command.throttle < 1 and command.brake == 0
+    forward_at = tick
+    # Reaching the outward heading must unwind the wheel, even with no box ahead.
+    for tick in range(forward_at + 1, forward_at + 70):
+        command = driver.step(picture(32), tick / 10, True, speed=2, ahead=False)
+        assert command.state != "follow"
+        if command.state == "bypass-forward":
+            assert abs(command.steer) < 0.1
+        if command.state == "bypass-pass":
+            break
+    assert command.state == "bypass-pass" and command.steer > 0
+    pass_at = tick
+    for tick in range(pass_at + 1, pass_at + 30):
         command = driver.step(picture(), tick / 10, True, speed=2, ahead=False)
+        if command.state == "follow":
+            break
     assert command.state == "follow" and driver._phase is None
 
 
@@ -141,11 +154,14 @@ def test_reverse_is_bounded_and_ends_when_motion_stops(kind):
     else:
         driver.step(reading, 0, False, speed=0)
     start = driver._phase_since
-    bound = driver.config.bypass_reverse_time if kind == "bypass" else driver.config.turn_reverse_time
-    command = driver.step(
-        reading, start + bound + 0.01, True, speed=2, ahead=kind == "bypass", bypass_side=-1
-    )
+    bound = 1.8 if kind == "bypass" else driver.config.turn_reverse_time
+    for tick in range(2, 50):
+        now = start + tick / 10
+        command = driver.step(reading, now, True, speed=2, ahead=kind == "bypass", bypass_side=-1)
+        if command.state == f"{kind}-forward":
+            break
     assert command.brake == 0 and command.state == f"{kind}-forward"
+    assert now - start <= bound + 0.1
 
 
 @pytest.mark.parametrize(
@@ -153,22 +169,20 @@ def test_reverse_is_bounded_and_ends_when_motion_stops(kind):
 )
 def test_external_stop_in_every_phase_returns_and_keeps_a_complete_neutral_pad(phase):
     skill = DriveRoute({"style": "bold"})
-    if phase.startswith("bypass"):
-        observation = Observation(picture(), False, 0, objects=(car(),), objects_time=0)
+    bypass = phase.startswith("bypass")
+    moving = False
+    for tick in range(80):
+        observation = Observation(
+            picture(0 if bypass else 170),
+            moving,
+            tick / 10,
+            objects=(car(),) if bypass else (),
+            objects_time=tick / 10,
+        )
         skill.step(observation)
-        if phase != "bypass-wait":
-            for tick in range(1, 23):
-                observation = replace(observation, time=tick / 10, objects_time=tick / 10)
-                skill.step(observation)
-        if phase == "bypass-forward":
-            observation = replace(observation, time=3.2, objects_time=3.2, moving=True)
-            skill.step(observation)
-    else:
-        observation = Observation(picture(170), False, 0)
-        skill.step(observation)
-        if phase == "turn-forward":
-            observation = replace(observation, time=3.7, moving=True)
-            skill.step(observation)
+        if skill.driver._last.state == phase:
+            break
+        moving |= skill.driver._last.state.endswith("reverse")
     assert skill.driver._last.state == phase
     stopped = skill.stop("operator-stop")
     assert stopped.status == "failed" and stopped.reason == "operator-stop"
@@ -190,15 +204,24 @@ def test_bypass_retries_other_side_and_respects_existing_recovery_limit():
     driver = bold(max_recoveries=2)
     wait_for_bypass(driver)
     first = driver._manoeuvre_side
-    driver.step(picture(), 3.1, True, speed=2, ahead=True, bypass_side=-1)
-    driver.step(picture(), 4.7, True, speed=2, ahead=True, bypass_side=-1)
-    driver.step(picture(), 4.8, False, speed=0, ahead=True, bypass_side=-1)
-    driver.step(picture(), 4.95, False, speed=0, ahead=True, bypass_side=-1)
-    driver.step(picture(), 5.1, False, speed=0, ahead=True, bypass_side=-1)
+    forward_at = None
+    for tick in range(22, 120):
+        now = tick / 10
+        moving = forward_at is None or now - forward_at < 1.6
+        command = driver.step(picture(), now, moving, speed=2 if moving else 0, ahead=True, bypass_side=-1)
+        if command.state == "bypass-forward" and forward_at is None:
+            forward_at = now
+        if driver._manoeuvre_side != first:
+            break
+    assert forward_at is not None and command.state == "bypass-reverse"
     assert driver._manoeuvre_side == -first
-    for tick in range(52, 180):
+    retry_at = tick
+    for tick in range(retry_at + 1, retry_at + 180):
         command = driver.step(picture(), tick / 10, False, speed=0, ahead=True, bypass_side=-1)
+        if command.state == "failed-recovery":
+            break
     assert command.state == "failed-recovery" and driver._attempts == 2
+    assert command.steer == command.throttle == command.brake == 0
 
 
 def test_one_damaged_tick_is_neutral_without_cancelling_the_phase():
