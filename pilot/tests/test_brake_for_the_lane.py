@@ -5,6 +5,7 @@ from pathlib import Path
 
 import pytest
 
+from pilot import avoid
 from pilot.contract import Command, Detection, Observation, Pad, Reading
 from pilot.skills import DriveRoute
 
@@ -62,13 +63,14 @@ def test_width_growth_still_brakes_when_the_bonnet_hides_the_lead_cars_height():
         width = 1500 / (41 - 2 * i)
         box = Detection("car", (640 - width / 2, 340, 640 + width / 2, 358), 0.9)
         pads.append(skill._around(FORWARD, observation(i * 0.1, [box], 18)))
-    assert any(p.l2 == 1 and p.r2 == 0 for p in pads[:4])
+    assert any(p.l2 == 1 and p.r2 == 0 for p in pads[:6])
 
 
 @pytest.mark.parametrize("distance,speed", [(100.0, 22.0), (250.0, 34.0)])
 def test_a_known_speed_and_a_far_obstacle_use_the_stopping_distance(distance, speed):
     skill = DriveRoute({})
-    # A visible stopped car, with 3 m/s² and a 0.2 s pad delay. Boxes remain beyond FAR
+    start_speed = speed
+    # A visible stopped car, with the planned deceleration and a 0.2 s pad delay. Boxes remain beyond FAR
     # when L2 must begin. This model checks the stopping law, not the detector's live range.
     dt = 0.05
     pending = [0.0] * 4
@@ -79,25 +81,25 @@ def test_a_known_speed_and_a_far_obstacle_use_the_stopping_distance(distance, sp
             first = distance
         pending.append(pad.l2)
         applied = pending.pop(0)
-        next_speed = max(0.0, speed - 3.0 * applied * dt)
+        next_speed = max(0.0, speed - avoid.DECELERATION * applied * dt)
         # The runtime releases L2 near rest; passive drag completes the last two m/s.
         if pad.r2 == 0 and next_speed <= 2:
-            next_speed = max(0.0, next_speed - 3.0 * dt)
+            next_speed = max(0.0, next_speed - avoid.DECELERATION * dt)
         distance -= (speed + next_speed) / 2 * dt
         speed = next_speed
         assert distance > 0
         if speed == 0:
             break
-    assert first is not None and first > 60
+    assert first is not None and first > start_speed**2 / (2 * avoid.DECELERATION)
     assert speed == 0
 
 
-def test_the_recorded_queue_does_not_prove_a_stop_at_three_metres_per_second_squared():
+def test_the_recorded_queue_does_not_prove_a_stop_at_the_planned_deceleration():
     row, _ = next((r, p) for r, p in replay("queue") if p.l2)
     available = row["speed"] * (FIXTURE["queue"]["contact"] - row["now"])
-    required = row["speed"] ** 2 / (2 * 3.0)
+    required = row["speed"] ** 2 / (2 * avoid.DECELERATION)
     # This is an acceptance shortfall: even the ideal constant-speed approach has too little
-    # room at the measured GPS-fall planning rate. Do not turn earlier L2 into a collision claim.
+    # room at the planned rate. Do not turn earlier L2 into a collision claim.
     assert available < required
 
 

@@ -35,7 +35,11 @@ SPAN_MIN = 0.5  # the shortest history that says it; before that nothing is push
 GROW = 0.2  # growth of a box's height per second from which the car closes on it: 10 percent in half a second
 LOST = 0.7  # seconds a thing is remembered without a box; the detector drops a thing for a few frames
 QUEUE = 0.5  # nearness from which a vehicle ahead is the one the car waits behind, about six metres
-DECELERATION = 3.0  # m/s² planning rate from P106's GPS falls; full-L2 braking remains uncalibrated
+# m/s² the brake is planned with. Off both pedals alone the game's cars lose 5 m/s each second
+# (quartiles 2.8 to 6.3, twenty cases of the night of 14 November), so full L2 takes more; the 3 m/s²
+# read from the fall of the speed reading after short pulses asked for a brake behind everything that
+# closes at all. Full L2 itself is not measured yet.
+DECELERATION = 7.0
 BRAKE_DELAY = 0.25  # wired delay plus sampling reserve; detection age is added separately
 BRAKE_GAP = 1.0  # metres left between the bumpers
 BRAKE_SPEED = 2.0  # below this L2 risks reversing; release the accelerator and let the queue logic act
