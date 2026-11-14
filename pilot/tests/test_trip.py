@@ -329,7 +329,7 @@ def test_a_route_lost_on_the_way_takes_the_drive_up_again_without_driving_off(se
     session.tick()
     session.until(lambda: session.active("drive_route"), seconds=5)
     assert not [row for row in session.rows("trip_attempt") if row["name"] == "get_away"]
-    assert [row["stage"] for row in session.rows("trip_recovery")] == [1]
+    assert not session.rows("trip_recovery")
 
 
 def test_driving_off_under_stars_to_its_limit_costs_no_second_recovery(session):
@@ -574,13 +574,48 @@ def test_a_route_drawn_a_moment_after_the_waypoint_costs_no_recovery(session):
     assert session.trip.recovery == 0 and not session.rows("trip_recovery")
 
 
-def test_a_route_that_stays_away_goes_to_recovery_after_one_wait(session):
+def test_a_route_that_stays_away_is_asked_of_the_map_once_before_recovery(session):
     session.reading = replace(session.reading, route="none")
+    session.outcomes.append(("done", SUCCESS, "game"))
+    session.until(lambda: len(session.waypoints) == 2, seconds=20)
+    assert not session.rows("trip_recovery")
+    # The map gives the place a kilometre away: the waypoint stands again and the drive is rescued.
     session.outcomes.append(("done", SUCCESS, "game"))
     session.until(lambda: session.active("drive_on"), seconds=20)
     assert [row["reason"] for row in session.rows("trip_recovery")] == ["route absent"]
+    assert len(session.waypoints) == 2
+
+
+def test_a_route_gone_at_the_place_with_a_long_way_still_printed_is_an_arrival(session):
+    # 20261114-010438: the car cut the corner to the car wash, the game took the waypoint away with
+    # 228 m of way round the block still printed, and the trip left a car that had arrived.
+    session.drive()
+    session.distance = 228
+    for _ in range(5):
+        session.tick()
+    session.reading = replace(session.reading, route="none")
+    session.distance = None
+    session.outcomes.append(("done", f"waypoint set: {PLACE} (41m); gameplay observed", "game"))
+    session.until(lambda: session.trip.verdict is not None, seconds=30)
+    assert session.trip.verdict == {
+        "status": "reached",
+        "reason": "the map gives the place within sixty metres",
+        "place": PLACE,
+        "trip_id": 1,
+    }
+    assert not [row for row in session.rows("trip_attempt") if row["name"] == "press"]
+
+
+def test_a_map_that_is_not_back_after_the_hospital_is_given_five_seconds(session):
+    session.outcomes.extend(
+        [
+            ("failed", "start-screen-unverified; start from visible gameplay", "game"),
+            ("done", SUCCESS, "game"),
+        ]
+    )
+    session.until(lambda: session.active("drive_route"))
     waits = [row for row in session.rows("trip_attempt") if row["name"] == "wait"]
-    assert len(waits) == 1
+    assert [row["args"] for row in waits] == [{"duration": 5}]
 
 
 def test_one_odd_screen_reading_does_not_cut_a_held_button_in_two(session):

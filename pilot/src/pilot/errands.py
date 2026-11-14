@@ -897,6 +897,8 @@ class Trip:
         self.route_at = self.purple_at = None
         self.route_waited = False
         self.waypoint_check = False
+        self.asked_map = False  # whether the map was asked about a route that stayed away
+        self.retry_wait = 1
 
     def emit(self, kind, now, **data):
         self.events.append({"type": "trip_" + kind, "t": now, "trip_id": 1, "place": self.place, **data})
@@ -1055,6 +1057,7 @@ class Trip:
                 # or three bumps on a long drive would end it. The budget of seconds still does.
                 self.recovery = self.stretches_without_progress = 0
             self.progress_distance, self.progress_at = distance, now
+            self.asked_map = False
             self.emit("progress", now, step="drive", distance=distance, distance_time=at)
 
     def recover(self, now, reason):
@@ -1072,11 +1075,6 @@ class Trip:
             # Out of the car already: the next thing is a car, with the destination kept.
             self.car_started, self.car_attempts = now, 0
             self.change("car", now)
-            self.method = "route"
-        elif stage == "loose" and reason.startswith("route-lost"):
-            # The car drives and only its route was away: the drive is taken up again as it is.
-            # Driving off without an eye on the road turned the car into a sign at 20 m/s
-            # (20261114-005357). A route that stays away is driven on under by the step below.
             self.method = "route"
         else:
             self.method = stage
@@ -1124,6 +1122,12 @@ class Trip:
                 and self.game_since is not None
             ):
                 self.waypoint_id = ident
+                if match[2] is not None and float(match[2]) <= self.NEAR_METRES:
+                    # The legend's own distance, straight to the place. The game takes a waypoint
+                    # away at its place, with whatever way round the block was still printed: 228 m
+                    # at the car wash's kerb, and a car that had arrived was left (20261114-010438).
+                    self.finish("reached", "the map gives the place within sixty metres", now)
+                    return
                 self.best_distance = self.progress_distance = self.distance_time = None
                 self.last_distance = self.route_at = self.purple_at = self.near_since = None
                 self.route_waited = self.waypoint_check = False
@@ -1138,6 +1142,8 @@ class Trip:
                     self.failure_at = now
                 else:
                     self.retry = "waypoint"
+                    # After the hospital the game's picture is back some seconds before its map.
+                    self.retry_wait = 5 if "start-screen-unverified" in why else 1
         elif name == "drive_route":
             distance, age = last.get("end_distance"), last.get("distance_age")
             if (
@@ -1167,6 +1173,12 @@ class Trip:
                     self.stretches_without_progress = 0 if nearer else self.stretches_without_progress + 1
                 if self.stretches_without_progress >= 2:
                     self.recover(now, "two stretches without closer destination")
+            elif why.startswith("route-lost"):
+                # The car drives and only its route is away: nothing of the car's is tried. Driving
+                # off without an eye on the road turned it into a sign at 20 m/s (20261114-005357),
+                # and three such ends in two seconds left a car that had arrived (20261114-010438).
+                # The route is looked for afresh: back, the drive goes on; away, the map is asked.
+                self.route_at = None
             else:
                 self.recover(now, why or "arrival not proven")
         elif name in {"drive_on", "get_away"}:
@@ -1239,7 +1251,7 @@ class Trip:
             return reply("trip: failed")
         if self.step == "waypoint":
             if self.retry == "waypoint":
-                return issue("wait", duration=1)
+                return issue("wait", duration=self.retry_wait)
             return issue("set_waypoint", place=self.place, instance=0, duration=45)
         if self.step == "car" or self.seat_check:
             if now - self.car_started >= self.CAR_SECONDS:
@@ -1324,6 +1336,13 @@ class Trip:
                 self.route_waited = True
                 return issue("wait", duration=self.ROUTE_GONE)
             self.route_waited = False
+            if not self.asked_map:
+                # A route that stays away is first asked of the map: at the place the game has
+                # taken the waypoint away, and anywhere else it is set again.
+                self.asked_map = True
+                self.waypoint_id = None
+                self.change("waypoint", now)
+                return self.decide(request)
             self.recover(now, "route absent")
             return self.decide(request)
         self.route_waited = False
