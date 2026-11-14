@@ -1,0 +1,1122 @@
+{
+  "town": {
+    "recorded_pulses": [
+      {
+        "t": 202.297,
+        "cause": "curve",
+        "around_pedal": null,
+        "scene": "right junction ahead; visible in the route, still on the approach",
+        "brake": 0.7,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 203.668,
+        "cause": "curve",
+        "around_pedal": null,
+        "scene": "right junction ahead; visible in the route, still on the approach",
+        "brake": 0.6140630233384262,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 205.052,
+        "cause": "curve",
+        "around_pedal": null,
+        "scene": "right junction ahead; visible in the route, still on the approach",
+        "brake": 0.32743167237629833,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 210.244,
+        "cause": "curve",
+        "around_pedal": null,
+        "scene": "right junction ahead; visible in the route, still on the approach",
+        "brake": 0.029372139531767247,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 211.624,
+        "cause": "curve-exit",
+        "around_pedal": null,
+        "scene": "right junction ahead; visible in the route, still on the approach",
+        "brake": 0.5930435409123236,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 212.993,
+        "cause": "curve-exit",
+        "around_pedal": null,
+        "scene": "right junction ahead; visible in the route, still on the approach",
+        "brake": 0.34745569349759725,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 213.264,
+        "cause": "curve",
+        "around_pedal": null,
+        "scene": "right junction ahead; visible in the route, still on the approach",
+        "brake": 0.03488729943039095,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 217.591,
+        "cause": "hidden-turn",
+        "around_pedal": null,
+        "scene": "right junction entered and exited",
+        "brake": 0.1874032334691936,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 217.841,
+        "cause": "hidden-turn",
+        "around_pedal": null,
+        "scene": "right junction entered and exited",
+        "brake": 0.19266570487118487,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 218.948,
+        "cause": "hidden-turn",
+        "around_pedal": null,
+        "scene": "right junction entered and exited",
+        "brake": 0.7,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 220.301,
+        "cause": "curve-exit",
+        "around_pedal": null,
+        "scene": "right junction entered and exited",
+        "brake": 0.4886810091874212,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 230.118,
+        "cause": "curve-exit",
+        "around_pedal": null,
+        "scene": "left junction ahead",
+        "brake": 0.010282540658451288,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 231.682,
+        "cause": "curve-exit",
+        "around_pedal": null,
+        "scene": "left junction ahead",
+        "brake": 0.24606286322459123,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 235.952,
+        "cause": "vehicle urgent",
+        "around_pedal": null,
+        "scene": "left junction and crossing red car ahead",
+        "brake": 0.6,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 236.141,
+        "cause": "vehicle urgent",
+        "around_pedal": null,
+        "scene": "left junction and crossing red car ahead",
+        "brake": 0.6,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 236.737,
+        "cause": "hidden-turn",
+        "around_pedal": null,
+        "scene": "left junction and crossing red car ahead",
+        "brake": 0.24594869655032622,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 238.518,
+        "cause": "vehicle urgent",
+        "around_pedal": null,
+        "scene": "left junction and crossing red car ahead",
+        "brake": 0.6,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 243.636,
+        "cause": "curve",
+        "around_pedal": null,
+        "scene": "shallow S bend on the current road and a right route turn farther ahead",
+        "brake": 0.009204277197472254,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 245.008,
+        "cause": "curve",
+        "around_pedal": null,
+        "scene": "shallow S bend on the current road and a right route turn farther ahead",
+        "brake": 0.538406774911869,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 246.391,
+        "cause": "curve",
+        "around_pedal": null,
+        "scene": "shallow S bend on the current road and a right route turn farther ahead",
+        "brake": 0.6004627159337356,
+        "original_boxes": "not logged"
+      }
+    ],
+    "recorded_lifted_seconds": [
+      {
+        "second": 202,
+        "causes": {
+          "curve": 0.7123925420019077
+        },
+        "scene": "right junction ahead; visible in the route, still on the approach"
+      },
+      {
+        "second": 203,
+        "causes": {
+          "curve": 1.0076966250053374
+        },
+        "scene": "right junction ahead; visible in the route, still on the approach"
+      },
+      {
+        "second": 204,
+        "causes": {
+          "curve": 0.9924259160034126
+        },
+        "scene": "right junction ahead; visible in the route, still on the approach"
+      },
+      {
+        "second": 205,
+        "causes": {
+          "curve": 0.6252937499957625
+        },
+        "scene": "right junction ahead; visible in the route, still on the approach"
+      },
+      {
+        "second": 209,
+        "causes": {
+          "curve": 0.03358400000433903
+        },
+        "scene": "right junction ahead; visible in the route, still on the approach"
+      },
+      {
+        "second": 210,
+        "causes": {
+          "curve": 0.7247228339983849,
+          "curve-exit": 0.3003670409962069
+        },
+        "scene": "right junction ahead; visible in the route, still on the approach"
+      },
+      {
+        "second": 211,
+        "causes": {
+          "curve-exit": 0.9769195840053726
+        },
+        "scene": "right junction ahead; visible in the route, still on the approach"
+      },
+      {
+        "second": 212,
+        "causes": {
+          "curve-exit": 0.6821957489883061,
+          "curve": 0.33367491701210383
+        },
+        "scene": "right junction ahead; visible in the route, still on the approach"
+      },
+      {
+        "second": 213,
+        "causes": {
+          "curve-exit": 0.23808716700295918,
+          "curve": 0.1819842919940129
+        },
+        "scene": "right junction ahead; visible in the route, still on the approach"
+      },
+      {
+        "second": 217,
+        "causes": {
+          "hidden-turn": 0.38204479099658784
+        },
+        "scene": "right junction entered and exited"
+      },
+      {
+        "second": 218,
+        "causes": {
+          "hidden-turn": 0.9950517089891946
+        },
+        "scene": "right junction entered and exited"
+      },
+      {
+        "second": 219,
+        "causes": {
+          "hidden-turn": 0.038163791003171355,
+          "curve": 0.11484012501023244,
+          "curve-exit": 0.34183249999477994
+        },
+        "scene": "right junction entered and exited"
+      },
+      {
+        "second": 220,
+        "causes": {
+          "curve-exit": 1.0055648749985266
+        },
+        "scene": "right junction entered and exited"
+      },
+      {
+        "second": 221,
+        "causes": {
+          "curve-exit": 0.5597753750043921
+        },
+        "scene": "right junction entered and exited"
+      },
+      {
+        "second": 227,
+        "causes": {
+          "coast": 0.04303716600406915
+        },
+        "scene": "left junction ahead"
+      },
+      {
+        "second": 229,
+        "causes": {
+          "curve-exit": 0.03748875000746921
+        },
+        "scene": "left junction ahead"
+      },
+      {
+        "second": 230,
+        "causes": {
+          "curve-exit": 0.9875273749930784
+        },
+        "scene": "left junction ahead"
+      },
+      {
+        "second": 231,
+        "causes": {
+          "curve-exit": 0.7589342080027563,
+          "hidden-turn": 0.03357583399338182
+        },
+        "scene": "left junction ahead"
+      },
+      {
+        "second": 232,
+        "causes": {
+          "curve-exit": 0.03386891599802766,
+          "hidden-turn": 0.5361985419876873
+        },
+        "scene": "left junction ahead"
+      },
+      {
+        "second": 235,
+        "causes": {
+          "vehicle urgent": 0.071262666999246
+        },
+        "scene": "left junction and crossing red car ahead"
+      },
+      {
+        "second": 236,
+        "causes": {
+          "hidden-turn": 0.7512646660179598,
+          "vehicle urgent": 0.23027237498899922
+        },
+        "scene": "left junction and crossing red car ahead"
+      },
+      {
+        "second": 237,
+        "causes": {
+          "hidden-turn": 0.14664291699591558
+        },
+        "scene": "left junction and crossing red car ahead"
+      },
+      {
+        "second": 238,
+        "causes": {
+          "vehicle urgent": 0.14799808300449513
+        },
+        "scene": "left junction and crossing red car ahead"
+      },
+      {
+        "second": 242,
+        "causes": {
+          "curve": 0.077339249997749
+        },
+        "scene": "shallow S bend on the current road and a right route turn farther ahead"
+      },
+      {
+        "second": 243,
+        "causes": {
+          "curve": 0.691759874986019,
+          "coast": 0.03921233300934546
+        },
+        "scene": "shallow S bend on the current road and a right route turn farther ahead"
+      },
+      {
+        "second": 244,
+        "causes": {
+          "curve": 0.7545512079959735,
+          "coast": 0.23740791701129638
+        },
+        "scene": "shallow S bend on the current road and a right route turn farther ahead"
+      },
+      {
+        "second": 245,
+        "causes": {
+          "curve": 0.9315338329906808,
+          "coast": 0.0762954170058947
+        },
+        "scene": "shallow S bend on the current road and a right route turn farther ahead"
+      },
+      {
+        "second": 246,
+        "causes": {
+          "curve": 0.9983899590006331
+        },
+        "scene": "shallow S bend on the current road and a right route turn farther ahead"
+      },
+      {
+        "second": 247,
+        "causes": {
+          "curve": 0.23607254099624697
+        },
+        "scene": "shallow S bend on the current road and a right route turn farther ahead"
+      }
+    ],
+    "before": {
+      "pulses": [
+        {
+          "t": 202.297,
+          "cause": "curve",
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "t": 203.668,
+          "cause": "curve",
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "t": 205.052,
+          "cause": "curve",
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "t": 210.244,
+          "cause": "curve",
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "t": 211.624,
+          "cause": "curve-exit",
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "t": 212.993,
+          "cause": "curve-exit",
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "t": 213.264,
+          "cause": "curve",
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "t": 217.591,
+          "cause": "hidden-turn",
+          "scene": "right junction entered and exited"
+        },
+        {
+          "t": 217.841,
+          "cause": "hidden-turn",
+          "scene": "right junction entered and exited"
+        },
+        {
+          "t": 218.948,
+          "cause": "hidden-turn",
+          "scene": "right junction entered and exited"
+        },
+        {
+          "t": 220.301,
+          "cause": "curve-exit",
+          "scene": "right junction entered and exited"
+        },
+        {
+          "t": 230.118,
+          "cause": "curve-exit",
+          "scene": "left junction ahead"
+        },
+        {
+          "t": 231.682,
+          "cause": "curve-exit",
+          "scene": "left junction ahead"
+        },
+        {
+          "t": 236.737,
+          "cause": "hidden-turn",
+          "scene": "left junction and crossing red car ahead"
+        },
+        {
+          "t": 243.636,
+          "cause": "curve",
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        },
+        {
+          "t": 245.008,
+          "cause": "curve",
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        },
+        {
+          "t": 246.391,
+          "cause": "curve",
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        }
+      ],
+      "lifted_seconds": [
+        {
+          "second": 202,
+          "causes": {
+            "curve": 0.7123925420019077
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 203,
+          "causes": {
+            "curve": 1.0076966250053374
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 204,
+          "causes": {
+            "curve": 0.9924259160034126
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 205,
+          "causes": {
+            "curve": 0.6252937499957625
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 209,
+          "causes": {
+            "curve": 0.03358400000433903
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 210,
+          "causes": {
+            "curve": 0.7247228339983849,
+            "curve-exit": 0.3003670409962069
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 211,
+          "causes": {
+            "curve-exit": 0.9769195840053726
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 212,
+          "causes": {
+            "curve-exit": 0.6821957489883061,
+            "curve": 0.33367491701210383
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 213,
+          "causes": {
+            "curve-exit": 0.23808716700295918,
+            "curve": 0.1819842919940129
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 217,
+          "causes": {
+            "hidden-turn": 0.38204479099658784
+          },
+          "scene": "right junction entered and exited"
+        },
+        {
+          "second": 218,
+          "causes": {
+            "hidden-turn": 0.9950517089891946
+          },
+          "scene": "right junction entered and exited"
+        },
+        {
+          "second": 219,
+          "causes": {
+            "hidden-turn": 0.038163791003171355,
+            "curve": 0.11484012501023244,
+            "curve-exit": 0.34183249999477994
+          },
+          "scene": "right junction entered and exited"
+        },
+        {
+          "second": 220,
+          "causes": {
+            "curve-exit": 1.0055648749985266
+          },
+          "scene": "right junction entered and exited"
+        },
+        {
+          "second": 221,
+          "causes": {
+            "curve-exit": 0.5597753750043921
+          },
+          "scene": "right junction entered and exited"
+        },
+        {
+          "second": 227,
+          "causes": {
+            "coast": 0.04303716600406915
+          },
+          "scene": "left junction ahead"
+        },
+        {
+          "second": 229,
+          "causes": {
+            "curve-exit": 0.03748875000746921
+          },
+          "scene": "left junction ahead"
+        },
+        {
+          "second": 230,
+          "causes": {
+            "curve-exit": 0.9875273749930784
+          },
+          "scene": "left junction ahead"
+        },
+        {
+          "second": 231,
+          "causes": {
+            "curve-exit": 0.7589342080027563,
+            "hidden-turn": 0.03357583399338182
+          },
+          "scene": "left junction ahead"
+        },
+        {
+          "second": 232,
+          "causes": {
+            "curve-exit": 0.03386891599802766,
+            "hidden-turn": 0.5361985419876873
+          },
+          "scene": "left junction ahead"
+        },
+        {
+          "second": 235,
+          "causes": {
+            "hidden-turn": 0.034862791988416575
+          },
+          "scene": "left junction and crossing red car ahead"
+        },
+        {
+          "second": 236,
+          "causes": {
+            "hidden-turn": 0.981537041006959
+          },
+          "scene": "left junction and crossing red car ahead"
+        },
+        {
+          "second": 237,
+          "causes": {
+            "hidden-turn": 0.14664291699591558
+          },
+          "scene": "left junction and crossing red car ahead"
+        },
+        {
+          "second": 242,
+          "causes": {
+            "curve": 0.077339249997749
+          },
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        },
+        {
+          "second": 243,
+          "causes": {
+            "curve": 0.691759874986019,
+            "coast": 0.03921233300934546
+          },
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        },
+        {
+          "second": 244,
+          "causes": {
+            "curve": 0.7545512079959735,
+            "coast": 0.23740791701129638
+          },
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        },
+        {
+          "second": 245,
+          "causes": {
+            "curve": 0.9315338329906808,
+            "coast": 0.0762954170058947
+          },
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        },
+        {
+          "second": 246,
+          "causes": {
+            "curve": 0.9983899590006331
+          },
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        },
+        {
+          "second": 247,
+          "causes": {
+            "curve": 0.23607254099624697
+          },
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        }
+      ]
+    },
+    "after": {
+      "pulses": [
+        {
+          "t": 210.351,
+          "cause": "curve",
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "t": 211.741,
+          "cause": "curve-exit",
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "t": 213.108,
+          "cause": "curve-exit",
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "t": 217.591,
+          "cause": "hidden-turn",
+          "scene": "right junction entered and exited"
+        },
+        {
+          "t": 218.948,
+          "cause": "hidden-turn",
+          "scene": "right junction entered and exited"
+        },
+        {
+          "t": 220.301,
+          "cause": "curve-exit",
+          "scene": "right junction entered and exited"
+        },
+        {
+          "t": 228.878,
+          "cause": "curve-exit",
+          "scene": "left junction ahead"
+        },
+        {
+          "t": 230.26,
+          "cause": "curve-exit",
+          "scene": "left junction ahead"
+        },
+        {
+          "t": 231.682,
+          "cause": "curve-exit",
+          "scene": "left junction ahead"
+        },
+        {
+          "t": 233.059,
+          "cause": "curve-exit",
+          "scene": "left junction ahead"
+        },
+        {
+          "t": 243.941,
+          "cause": "curve",
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        },
+        {
+          "t": 244.134,
+          "cause": "curve",
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        },
+        {
+          "t": 245.312,
+          "cause": "curve-exit",
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        },
+        {
+          "t": 246.702,
+          "cause": "curve-exit",
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        }
+      ],
+      "lifted_seconds": [
+        {
+          "second": 202,
+          "causes": {
+            "curve": 0.7123925420019077
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 203,
+          "causes": {
+            "curve": 1.0076966250053374
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 204,
+          "causes": {
+            "curve": 0.6892115819937317
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 205,
+          "causes": {
+            "curve": 0.04207574999600183
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 209,
+          "causes": {
+            "curve-exit": 0.23557666600390803
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 210,
+          "causes": {
+            "curve": 0.6411400000069989,
+            "curve-exit": 0.3003670409962069
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 211,
+          "causes": {
+            "curve-exit": 0.9769195840053726
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 212,
+          "causes": {
+            "curve-exit": 1.01587066600041
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 213,
+          "causes": {
+            "curve-exit": 0.9652786669903435
+          },
+          "scene": "right junction ahead; visible in the route, still on the approach"
+        },
+        {
+          "second": 217,
+          "causes": {
+            "curve-exit": 0.7139563749951776,
+            "hidden-turn": 0.11349408300884534
+          },
+          "scene": "right junction entered and exited"
+        },
+        {
+          "second": 218,
+          "causes": {
+            "curve-exit": 0.44795512600103393,
+            "hidden-turn": 0.5470965829881607
+          },
+          "scene": "right junction entered and exited"
+        },
+        {
+          "second": 219,
+          "causes": {
+            "hidden-turn": 0.038163791003171355,
+            "curve-exit": 0.41835858300328255
+          },
+          "scene": "right junction entered and exited"
+        },
+        {
+          "second": 220,
+          "causes": {
+            "curve-exit": 1.0055648749985266
+          },
+          "scene": "right junction entered and exited"
+        },
+        {
+          "second": 221,
+          "causes": {
+            "curve-exit": 0.5597753750043921
+          },
+          "scene": "right junction entered and exited"
+        },
+        {
+          "second": 227,
+          "causes": {
+            "coast": 0.04303716600406915
+          },
+          "scene": "left junction ahead"
+        },
+        {
+          "second": 228,
+          "causes": {
+            "curve-exit": 0.27067166699271183,
+            "coast": 0.042472333007026464
+          },
+          "scene": "left junction ahead"
+        },
+        {
+          "second": 229,
+          "causes": {
+            "curve-exit": 0.9784229170036269
+          },
+          "scene": "left junction ahead"
+        },
+        {
+          "second": 230,
+          "causes": {
+            "curve-exit": 0.441248084011022,
+            "curve": 0.5462792909820564
+          },
+          "scene": "left junction ahead"
+        },
+        {
+          "second": 231,
+          "causes": {
+            "curve": 0.3008280000067316,
+            "curve-exit": 0.45810620799602475,
+            "hidden-turn": 0.03357583399338182
+          },
+          "scene": "left junction ahead"
+        },
+        {
+          "second": 232,
+          "causes": {
+            "curve-exit": 0.7700732490047812,
+            "hidden-turn": 0.2245772919995943
+          },
+          "scene": "left junction ahead"
+        },
+        {
+          "second": 233,
+          "causes": {
+            "curve-exit": 0.4324484999960987
+          },
+          "scene": "left junction ahead"
+        },
+        {
+          "second": 235,
+          "causes": {
+            "hidden-turn": 0.034862791988416575
+          },
+          "scene": "left junction and crossing red car ahead"
+        },
+        {
+          "second": 236,
+          "causes": {
+            "hidden-turn": 0.981537041006959
+          },
+          "scene": "left junction and crossing red car ahead"
+        },
+        {
+          "second": 237,
+          "causes": {
+            "hidden-turn": 0.14664291699591558
+          },
+          "scene": "left junction and crossing red car ahead"
+        },
+        {
+          "second": 243,
+          "causes": {
+            "curve-exit": 0.03525795899622608,
+            "curve": 0.26669887399475556,
+            "coast": 0.03921233300934546
+          },
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        },
+        {
+          "second": 244,
+          "causes": {
+            "curve": 0.38516383299429435,
+            "coast": 0.15841629200440366,
+            "curve-exit": 0.03521279100095853
+          },
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        },
+        {
+          "second": 245,
+          "causes": {
+            "curve-exit": 0.9315338329906808,
+            "coast": 0.0762954170058947
+          },
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        },
+        {
+          "second": 246,
+          "causes": {
+            "curve-exit": 0.9983899590006331
+          },
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        },
+        {
+          "second": 247,
+          "causes": {
+            "curve-exit": 0.23607254099624697
+          },
+          "scene": "shallow S bend on the current road and a right route turn farther ahead"
+        }
+      ]
+    }
+  },
+  "incident": {
+    "recorded_pulses": [
+      {
+        "t": 102.905,
+        "cause": "vehicle urgent",
+        "around_pedal": -1.0,
+        "scene": "police vehicle enters the own track; contact begins before hidden-turn",
+        "brake": 0.6,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 103.243,
+        "cause": "vehicle urgent",
+        "around_pedal": -1.0,
+        "scene": "police vehicle enters the own track; contact begins before hidden-turn",
+        "brake": 0.6,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 103.929,
+        "cause": "hidden-turn",
+        "around_pedal": 1.0,
+        "scene": "post-contact car turned across the route; hidden-turn is a response to changed heading",
+        "brake": 0.7,
+        "original_boxes": "not logged"
+      },
+      {
+        "t": 105.286,
+        "cause": "hidden-turn",
+        "around_pedal": 1.0,
+        "scene": "post-contact car turned across the route; hidden-turn is a response to changed heading",
+        "brake": 0.7,
+        "original_boxes": "not logged"
+      }
+    ],
+    "recorded_lifted_seconds": [
+      {
+        "second": 96,
+        "causes": {
+          "curve": 0.08057724998798221
+        },
+        "scene": "straight current block; distant right bend at the map rim; lorry left and van right"
+      },
+      {
+        "second": 102,
+        "causes": {
+          "vehicle urgent": 0.11446487500506919
+        },
+        "scene": "straight current block; distant right bend at the map rim; lorry left and van right"
+      },
+      {
+        "second": 103,
+        "causes": {
+          "vehicle urgent": 0.3530824179906631,
+          "hidden-turn": 0.07250191699131392
+        },
+        "scene": "post-contact car turned across the route; hidden-turn is a response to changed heading"
+      },
+      {
+        "second": 104,
+        "causes": {
+          "hidden-turn": 1.0099672910000663
+        },
+        "scene": "post-contact car turned across the route; hidden-turn is a response to changed heading"
+      },
+      {
+        "second": 105,
+        "causes": {
+          "hidden-turn": 0.7338287919992581
+        },
+        "scene": "post-contact car turned across the route; hidden-turn is a response to changed heading"
+      }
+    ],
+    "before": {
+      "pulses": [
+        {
+          "t": 103.929,
+          "cause": "hidden-turn",
+          "scene": "post-contact car turned across the route; hidden-turn is a response to changed heading"
+        },
+        {
+          "t": 105.286,
+          "cause": "hidden-turn",
+          "scene": "post-contact car turned across the route; hidden-turn is a response to changed heading"
+        }
+      ],
+      "lifted_seconds": [
+        {
+          "second": 103,
+          "causes": {
+            "hidden-turn": 0.07250191699131392
+          },
+          "scene": "post-contact car turned across the route; hidden-turn is a response to changed heading"
+        },
+        {
+          "second": 104,
+          "causes": {
+            "coast": 0.17940854199696332,
+            "hidden-turn": 0.830558749003103
+          },
+          "scene": "post-contact car turned across the route; hidden-turn is a response to changed heading"
+        },
+        {
+          "second": 105,
+          "causes": {
+            "hidden-turn": 0.7338287919992581
+          },
+          "scene": "post-contact car turned across the route; hidden-turn is a response to changed heading"
+        }
+      ]
+    },
+    "after": {
+      "pulses": [
+        {
+          "t": 103.929,
+          "cause": "hidden-turn",
+          "scene": "post-contact car turned across the route; hidden-turn is a response to changed heading"
+        },
+        {
+          "t": 105.286,
+          "cause": "hidden-turn",
+          "scene": "post-contact car turned across the route; hidden-turn is a response to changed heading"
+        }
+      ],
+      "lifted_seconds": [
+        {
+          "second": 103,
+          "causes": {
+            "hidden-turn": 0.07250191699131392
+          },
+          "scene": "post-contact car turned across the route; hidden-turn is a response to changed heading"
+        },
+        {
+          "second": 104,
+          "causes": {
+            "coast": 0.17940854199696332,
+            "hidden-turn": 0.830558749003103
+          },
+          "scene": "post-contact car turned across the route; hidden-turn is a response to changed heading"
+        },
+        {
+          "second": 105,
+          "causes": {
+            "hidden-turn": 0.7338287919992581
+          },
+          "scene": "post-contact car turned across the route; hidden-turn is a response to changed heading"
+        }
+      ]
+    }
+  }
+}

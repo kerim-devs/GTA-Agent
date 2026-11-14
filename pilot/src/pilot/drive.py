@@ -3,6 +3,7 @@
 import os
 from collections import deque
 from dataclasses import dataclass
+from itertools import pairwise
 from math import atan2, copysign, cos, degrees, hypot, isfinite, radians, sin, sqrt
 
 from pilot.contract import NEUTRAL, Command, Reading
@@ -70,6 +71,8 @@ class DriveConfig:
     slow_speed: float = 2.0  # Lowest planned corner speed, in metres per second.
     lateral_acceleration: float = 1.2  # Conservative m/s^2 cornering budget.
     planned_deceleration: float = 2.0  # Metres/s^2 used to lift ahead of a bend.
+    braking_deceleration: float = 4.0  # Forward braking envelope; lift at planned_deceleration first.
+    junction_speed: float = 6.0  # Tight junction target, below the measured human 14-21 m/s turns.
     speed_smoothing: float = 0.25  # Suppress frame-pair sensor noise before pedal feedback.
     speed_gain: float = 0.18  # Throttle feedback per m/s below the target.
     brake_gain: float = 0.18  # Brake feedback per m/s above the target.
@@ -690,59 +693,78 @@ class Driver:
     def _road_limit(self, path, speed):
         cfg = self.config
         limit = cfg.speed_limit
+        self._brake_limit = cfg.speed_limit
         self.speed_reason = "straight"
-        if len(path) < 2 * cfg.curve_step + 1:
+        if len(path) < 3:
             self.speed_reason = "unknown-path"
             return cfg.slow_speed
-        # P9 measured the map zoom at these speeds; pixel motion alone cannot give m/s.
         scale = self._map_scale(speed)
-        path = path[: max(0, len(path) - cfg.curve_trim)]
-        travel = hypot(*path[0]) if path else 0.0
+        travel = [hypot(*path[0])]
+        for a, b in pairwise(path):
+            travel.append(travel[-1] + hypot(b[0] - a[0], b[1] - a[1]))
+        reserve = cfg.lookahead_px * scale + (speed or 0) * (cfg.command_delay + cfg.gps_window / 2)
+        # A clipped straight proves only the distance in view, not an open kilometre.
+        remaining = max(0.0, travel[-1] * scale - reserve)
+        horizon = sqrt(cfg.junction_speed**2 + 2 * cfg.planned_deceleration * remaining)
+        if horizon < limit:
+            limit, self.speed_reason = horizon, "visibility"
+        self._brake_limit = min(
+            self._brake_limit, sqrt(cfg.junction_speed**2 + 2 * cfg.braking_deceleration * remaining)
+        )
         near_corner = None
         step = cfg.curve_step
-        for index in range(len(path) - 2 * step):
-            a, b, c = path[index], path[index + step], path[index + 2 * step]
+        for index in range(1, len(path) - 1):
+            left, right = max(0, index - step), min(len(path) - 1, index + step)
+            a, b, c = path[left], path[index], path[right]
             ab, bc = hypot(b[0] - a[0], b[1] - a[1]), hypot(c[0] - b[0], c[1] - b[1])
+            interior = index >= step and index + step < len(path) - cfg.curve_trim
+            if min(ab, bc) < (1 if interior else 5):
+                continue
+            angle = abs(
+                _angle(degrees(atan2(c[0] - b[0], c[1] - b[1])) - degrees(atan2(b[0] - a[0], b[1] - a[1])))
+            )
+            # Short end chords keep a newly visible turn, but not one pixel of rim noise.
+            if not interior and angle < 30:
+                continue
             cross = abs((b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0]))
             curvature = 2 * cross / max(ab * bc * hypot(c[0] - a[0], c[1] - a[1]), 1e-6)
-            if min(ab, bc) >= 1 and curvature > 1e-6:
-                corner = max(cfg.slow_speed, sqrt(cfg.lateral_acceleration * scale / curvature))
-                if travel * scale < max(40.0, (speed or 0) * 2):
-                    near_corner = corner if near_corner is None else min(near_corner, corner)
-                remaining = max(
-                    0.0,
-                    (travel - cfg.lookahead_px) * scale
-                    - (speed or 0) * (cfg.command_delay + cfg.gps_window / 2),
-                )
-                planned = sqrt(corner * corner + 2 * cfg.planned_deceleration * remaining)
-                if planned < limit:
-                    limit, self.speed_reason = planned, "curve"
-            travel += hypot(path[index + 1][0] - a[0], path[index + 1][1] - a[1])
-        # Once a corner is hidden by the arrow, its outgoing road is straight again.
-        # A road running across the car's way still needs a turn at the short target.
-        if path and len(path) > step:
-            a, b = path[0], path[step]
-            course = degrees(atan2(b[0] - a[0], b[1] - a[1]))
-            heading_error = abs(_angle(course - self._road_heading))
-            if heading_error < 10:
-                self._turn_limit = None
-            if near_corner is not None and (
-                self._turn_limit is None or near_corner <= self._turn_limit * 1.1
-            ):
-                self._turn_limit = (
-                    near_corner if self._turn_limit is None else min(self._turn_limit, near_corner)
-                )
-                self._turn_remaining = max(2 * cfg.lookahead_px * scale, (speed or 0) * cfg.gps_window / 2)
-            if self._turn_limit is not None and heading_error >= 10:
-                if self._turn_limit < limit:
-                    limit, self.speed_reason = self._turn_limit, "curve-exit"
-            if heading_error > 60:
-                target = _target(path, cfg.lookahead_px)
-                radius = hypot(*target) * scale
-                error = radians(_angle(degrees(atan2(*target)) - self._road_heading))
-                turn = sqrt(cfg.lateral_acceleration * radius / max(2 * abs(sin(error)), 1e-6))
-                if turn < limit:
-                    limit, self.speed_reason = max(cfg.slow_speed, turn), "hidden-turn"
+            corner = max(cfg.slow_speed, sqrt(cfg.lateral_acceleration * scale / max(curvature, 1e-6)))
+            if angle >= 60:
+                corner = min(corner, cfg.junction_speed)
+            # Plan to the measured bend at b, while remembering an arc from a.
+            bend_at = travel[index]
+            remaining = max(0.0, bend_at * scale - reserve)
+            planned = sqrt(corner * corner + 2 * cfg.planned_deceleration * remaining)
+            deceleration = cfg.braking_deceleration
+            self._brake_limit = min(self._brake_limit, sqrt(corner * corner + 2 * deceleration * remaining))
+            if planned < limit:
+                limit, self.speed_reason = planned, "curve"
+            if travel[left] * scale <= max(40.0, (speed or 0) * 2):
+                near_corner = corner if near_corner is None else min(near_corner, corner)
+        # Keep a genuine nearby corner while it passes under the arrow. Pixel wander
+        # on a straight must not create a remembered corner during a heading correction.
+        a, b = path[0], path[min(step, len(path) - 1)]
+        course = degrees(atan2(b[0] - a[0], b[1] - a[1]))
+        heading_error = abs(_angle(course - self._road_heading))
+        if heading_error < 10:
+            self._turn_limit = None
+        if near_corner is not None and (self._turn_limit is None or near_corner <= self._turn_limit * 1.1):
+            self._turn_limit = near_corner if self._turn_limit is None else min(self._turn_limit, near_corner)
+            self._turn_remaining = max(2 * cfg.lookahead_px * scale, (speed or 0) * cfg.gps_window / 2)
+        if self._turn_limit is not None and heading_error >= 10:
+            if self._turn_limit < limit:
+                limit, self.speed_reason = self._turn_limit, "curve-exit"
+            self._brake_limit = min(self._brake_limit, self._turn_limit)
+        if heading_error > 60:
+            target = _target(path, cfg.lookahead_px)
+            radius = hypot(*target) * scale
+            error = radians(_angle(degrees(atan2(*target)) - self._road_heading))
+            turn = max(
+                cfg.slow_speed, sqrt(cfg.lateral_acceleration * radius / max(2 * abs(sin(error)), 1e-6))
+            )
+            if turn < limit:
+                limit, self.speed_reason = turn, "hidden-turn"
+            self._brake_limit = min(self._brake_limit, turn)
         return limit
 
     def _map_scale(self, speed):
@@ -778,15 +800,23 @@ class Driver:
         if self.speed_reason in {"arrival", "flagged-map"}:
             throttle = _clip(0.25 + cfg.speed_gain * error, 0, cfg.cruise_throttle)
         brake = 0.0
-        if speed > limit + cfg.brake_margin:
-            brake = self._pulsed(
-                _clip(cfg.brake_gain * (speed - limit - cfg.brake_margin), 0, 0.7), speed, now
-            )
-        return throttle, brake
+        brake_limit = limit if self.speed_reason in {"arrival", "flagged-map"} else self._brake_limit
+        if speed > brake_limit + cfg.brake_margin:
+            brake = _clip(cfg.brake_gain * (speed - brake_limit - cfg.brake_margin), 0, 0.7)
+        # Even tiny L2 is raised past the trigger dead zone. Start a pulse only
+        # with another m/s of evidence; once started it can taper down normally.
+        if not self._last.brake and brake < cfg.brake_gain:
+            brake = 0.0
+        return throttle, self._pulsed(brake, speed, now)
 
     def _pulsed(self, brake: float, speed: float, now: float) -> float:
         """L2 for speed in bounded pulses: the reading lags, and a brake held too long ends in reverse."""
         cfg = self.config
+        if cfg.drive_through and cfg.brake_pulse and (brake or self._last.brake) and speed < cfg.brake_floor:
+            # A requested pulse cut short by the speed floor gets its rest too;
+            # GPS noise around the floor must not reopen it on the next tick.
+            self._brake_since = now - cfg.brake_pulse
+            return 0.0
         if not brake or not cfg.brake_pulse:
             return brake
         if speed < cfg.brake_floor:

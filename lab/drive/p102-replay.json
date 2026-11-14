@@ -1,0 +1,767 @@
+{
+  "town": {
+    "before": {
+      "ticks": 1342,
+      "seconds": 51.001,
+      "brake_pulses": 17,
+      "no_pedal_ticks": 469,
+      "no_pedal_share": 0.3495,
+      "no_pedal_seconds": 17.883,
+      "mean_pedal": 0.3286,
+      "median_limit": 10.014,
+      "median_speed": 8.591,
+      "max_abs_steer": 1.0,
+      "lift_causes": {
+        "curve": 220,
+        "curve-exit": 156,
+        "hidden-turn": 83,
+        "coast": 10
+      },
+      "brake_causes": {
+        "curve": 66,
+        "curve-exit": 44,
+        "hidden-turn": 17,
+        "coast": 2
+      },
+      "pulses": [
+        {
+          "t": 202.29706962499768,
+          "cause": "curve",
+          "limit": 11.34297049204439,
+          "filtered_speed": 17.08955523836164,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 203.6677451669966,
+          "cause": "curve",
+          "limit": 11.269462862103905,
+          "filtered_speed": 16.363216351026747,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 205.05166045800433,
+          "cause": "curve",
+          "limit": 11.73238794378205,
+          "filtered_speed": 14.91526575962404,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 210.2437576670054,
+          "cause": "curve",
+          "limit": 8.613784876353655,
+          "filtered_speed": 9.80959913989877,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 211.62383329200384,
+          "cause": "curve-exit",
+          "limit": 8.557541289970327,
+          "filtered_speed": 13.511164896052485,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 212.9925121670094,
+          "cause": "curve-exit",
+          "limit": 11.622090735904415,
+          "filtered_speed": 14.938462025888397,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 213.26431900000898,
+          "cause": "curve",
+          "limit": 10.3513430458963,
+          "filtered_speed": 11.583925042098906,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 217.5909928750043,
+          "cause": "hidden-turn",
+          "limit": 5.522862905740578,
+          "filtered_speed": 7.772217795535202,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 217.84127058299782,
+          "cause": "hidden-turn",
+          "limit": 5.985132021046348,
+          "filtered_speed": 8.269570053520914,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 218.9478536670067,
+          "cause": "hidden-turn",
+          "limit": 5.104592380051842,
+          "filtered_speed": 11.697699170927612,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 220.30113020799763,
+          "cause": "curve-exit",
+          "limit": 7.7320424599910575,
+          "filtered_speed": 11.989915854573866,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 230.11841741700482,
+          "cause": "curve-exit",
+          "limit": 8.384279956848763,
+          "filtered_speed": 9.452830227905105,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 231.68216933299846,
+          "cause": "curve-exit",
+          "limit": 8.384279956848763,
+          "filtered_speed": 11.024699045012705,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 236.73693145799916,
+          "cause": "hidden-turn",
+          "limit": 4.378134007998546,
+          "filtered_speed": 7.017791985000721,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 243.6361658329988,
+          "cause": "curve",
+          "limit": 11.846040953013082,
+          "filtered_speed": 12.90740280099623,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 245.00822570800665,
+          "cause": "curve",
+          "limit": 10.016034464401926,
+          "filtered_speed": 14.605412963814386,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 246.390822166999,
+          "cause": "curve",
+          "limit": 10.016034464401926,
+          "filtered_speed": 15.019119237293497,
+          "around_pedal": null,
+          "logged_reason": null
+        }
+      ],
+      "lifted_seconds": {
+        "202": {
+          "curve": 0.7123925420019077
+        },
+        "203": {
+          "curve": 1.0076966250053374
+        },
+        "204": {
+          "curve": 0.9924259160034126
+        },
+        "205": {
+          "curve": 0.6252937499957625
+        },
+        "209": {
+          "curve": 0.03358400000433903
+        },
+        "210": {
+          "curve": 0.7247228339983849,
+          "curve-exit": 0.3003670409962069
+        },
+        "211": {
+          "curve-exit": 0.9769195840053726
+        },
+        "212": {
+          "curve-exit": 0.6821957489883061,
+          "curve": 0.33367491701210383
+        },
+        "213": {
+          "curve-exit": 0.23808716700295918,
+          "curve": 0.1819842919940129
+        },
+        "217": {
+          "hidden-turn": 0.38204479099658784
+        },
+        "218": {
+          "hidden-turn": 0.9950517089891946
+        },
+        "219": {
+          "hidden-turn": 0.038163791003171355,
+          "curve": 0.11484012501023244,
+          "curve-exit": 0.34183249999477994
+        },
+        "220": {
+          "curve-exit": 1.0055648749985266
+        },
+        "221": {
+          "curve-exit": 0.5597753750043921
+        },
+        "227": {
+          "coast": 0.04303716600406915
+        },
+        "229": {
+          "curve-exit": 0.03748875000746921
+        },
+        "230": {
+          "curve-exit": 0.9875273749930784
+        },
+        "231": {
+          "curve-exit": 0.7589342080027563,
+          "hidden-turn": 0.03357583399338182
+        },
+        "232": {
+          "curve-exit": 0.03386891599802766,
+          "hidden-turn": 0.5361985419876873
+        },
+        "235": {
+          "hidden-turn": 0.034862791988416575
+        },
+        "236": {
+          "hidden-turn": 0.981537041006959
+        },
+        "237": {
+          "hidden-turn": 0.14664291699591558
+        },
+        "242": {
+          "curve": 0.077339249997749
+        },
+        "243": {
+          "curve": 0.691759874986019,
+          "coast": 0.03921233300934546
+        },
+        "244": {
+          "curve": 0.7545512079959735,
+          "coast": 0.23740791701129638
+        },
+        "245": {
+          "curve": 0.9315338329906808,
+          "coast": 0.0762954170058947
+        },
+        "246": {
+          "curve": 0.9983899590006331
+        },
+        "247": {
+          "curve": 0.23607254099624697
+        }
+      }
+    },
+    "after": {
+      "ticks": 1342,
+      "seconds": 51.001,
+      "brake_pulses": 14,
+      "no_pedal_ticks": 507,
+      "no_pedal_share": 0.3778,
+      "no_pedal_seconds": 19.298,
+      "mean_pedal": 0.3154,
+      "median_limit": 8.704,
+      "median_speed": 8.591,
+      "max_abs_steer": 1.0,
+      "lift_causes": {
+        "curve": 119,
+        "curve-exit": 323,
+        "hidden-turn": 56,
+        "coast": 9
+      },
+      "brake_causes": {
+        "curve": 22,
+        "curve-exit": 86,
+        "hidden-turn": 7,
+        "coast": 2
+      },
+      "pulses": [
+        {
+          "t": 210.35102316700795,
+          "cause": "curve",
+          "limit": 7.7454668609724715,
+          "filtered_speed": 10.384398279019814,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 211.7413022499968,
+          "cause": "curve-exit",
+          "limit": 6.0,
+          "filtered_speed": 14.471122507953744,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 213.10791808299837,
+          "cause": "curve-exit",
+          "limit": 6.0,
+          "filtered_speed": 13.834644796695905,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 217.5909928750043,
+          "cause": "hidden-turn",
+          "limit": 5.522862905740578,
+          "filtered_speed": 7.772217795535202,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 218.9478536670067,
+          "cause": "hidden-turn",
+          "limit": 5.104592380051842,
+          "filtered_speed": 11.697699170927612,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 220.30113020799763,
+          "cause": "curve-exit",
+          "limit": 6.0,
+          "filtered_speed": 11.989915854573866,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 228.87799137500406,
+          "cause": "curve-exit",
+          "limit": 6.0,
+          "filtered_speed": 8.01765778777503,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 230.25994112499757,
+          "cause": "curve-exit",
+          "limit": 6.0,
+          "filtered_speed": 9.949635993719514,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 231.68216933299846,
+          "cause": "curve-exit",
+          "limit": 6.0,
+          "filtered_speed": 11.024699045012705,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 233.05855016699934,
+          "cause": "curve-exit",
+          "limit": 6.0,
+          "filtered_speed": 9.35664244064134,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 243.94127354200464,
+          "cause": "curve",
+          "limit": 10.749713212948212,
+          "filtered_speed": 13.037249022602099,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 244.13372491700284,
+          "cause": "curve",
+          "limit": 10.700088166247317,
+          "filtered_speed": 13.199512345036158,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 245.31193016700854,
+          "cause": "curve-exit",
+          "limit": 12.352223643944651,
+          "filtered_speed": 15.06965445994022,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 246.70191499999783,
+          "cause": "curve-exit",
+          "limit": 12.352223643944651,
+          "filtered_speed": 14.988434087867518,
+          "around_pedal": null,
+          "logged_reason": null
+        }
+      ],
+      "lifted_seconds": {
+        "202": {
+          "curve": 0.7123925420019077
+        },
+        "203": {
+          "curve": 1.0076966250053374
+        },
+        "204": {
+          "curve": 0.6892115819937317
+        },
+        "205": {
+          "curve": 0.04207574999600183
+        },
+        "209": {
+          "curve-exit": 0.23557666600390803
+        },
+        "210": {
+          "curve": 0.6411400000069989,
+          "curve-exit": 0.3003670409962069
+        },
+        "211": {
+          "curve-exit": 0.9769195840053726
+        },
+        "212": {
+          "curve-exit": 1.01587066600041
+        },
+        "213": {
+          "curve-exit": 0.9652786669903435
+        },
+        "217": {
+          "curve-exit": 0.7139563749951776,
+          "hidden-turn": 0.11349408300884534
+        },
+        "218": {
+          "curve-exit": 0.44795512600103393,
+          "hidden-turn": 0.5470965829881607
+        },
+        "219": {
+          "hidden-turn": 0.038163791003171355,
+          "curve-exit": 0.41835858300328255
+        },
+        "220": {
+          "curve-exit": 1.0055648749985266
+        },
+        "221": {
+          "curve-exit": 0.5597753750043921
+        },
+        "227": {
+          "coast": 0.04303716600406915
+        },
+        "228": {
+          "curve-exit": 0.27067166699271183,
+          "coast": 0.042472333007026464
+        },
+        "229": {
+          "curve-exit": 0.9784229170036269
+        },
+        "230": {
+          "curve-exit": 0.441248084011022,
+          "curve": 0.5462792909820564
+        },
+        "231": {
+          "curve": 0.3008280000067316,
+          "curve-exit": 0.45810620799602475,
+          "hidden-turn": 0.03357583399338182
+        },
+        "232": {
+          "curve-exit": 0.7700732490047812,
+          "hidden-turn": 0.2245772919995943
+        },
+        "233": {
+          "curve-exit": 0.4324484999960987
+        },
+        "235": {
+          "hidden-turn": 0.034862791988416575
+        },
+        "236": {
+          "hidden-turn": 0.981537041006959
+        },
+        "237": {
+          "hidden-turn": 0.14664291699591558
+        },
+        "243": {
+          "curve-exit": 0.03525795899622608,
+          "curve": 0.26669887399475556,
+          "coast": 0.03921233300934546
+        },
+        "244": {
+          "curve": 0.38516383299429435,
+          "coast": 0.15841629200440366,
+          "curve-exit": 0.03521279100095853
+        },
+        "245": {
+          "curve-exit": 0.9315338329906808,
+          "coast": 0.0762954170058947
+        },
+        "246": {
+          "curve-exit": 0.9983899590006331
+        },
+        "247": {
+          "curve-exit": 0.23607254099624697
+        }
+      }
+    }
+  },
+  "incident": {
+    "before": {
+      "ticks": 263,
+      "seconds": 9.993,
+      "brake_pulses": 2,
+      "no_pedal_ticks": 48,
+      "no_pedal_share": 0.1825,
+      "no_pedal_seconds": 1.816,
+      "mean_pedal": 0.7937,
+      "median_limit": 28.0,
+      "median_speed": 7.967,
+      "max_abs_steer": 1.0,
+      "lift_causes": {
+        "hidden-turn": 43,
+        "coast": 5
+      },
+      "brake_causes": {
+        "hidden-turn": 10,
+        "coast": 5
+      },
+      "pulses": [
+        {
+          "t": 103.92949575000966,
+          "cause": "hidden-turn",
+          "limit": 8.19619680735668,
+          "filtered_speed": 22.22428431194972,
+          "around_pedal": 1.0,
+          "logged_reason": "hidden-turn"
+        },
+        {
+          "t": 105.28644137500669,
+          "cause": "hidden-turn",
+          "limit": 4.393276616416562,
+          "filtered_speed": 10.460873010111762,
+          "around_pedal": 1.0,
+          "logged_reason": "hidden-turn"
+        }
+      ],
+      "lifted_seconds": {
+        "103": {
+          "hidden-turn": 0.07250191699131392
+        },
+        "104": {
+          "coast": 0.17940854199696332,
+          "hidden-turn": 0.830558749003103
+        },
+        "105": {
+          "hidden-turn": 0.7338287919992581
+        }
+      }
+    },
+    "after": {
+      "ticks": 263,
+      "seconds": 9.993,
+      "brake_pulses": 2,
+      "no_pedal_ticks": 48,
+      "no_pedal_share": 0.1825,
+      "no_pedal_seconds": 1.816,
+      "mean_pedal": 0.7902,
+      "median_limit": 21.711,
+      "median_speed": 7.967,
+      "max_abs_steer": 1.0,
+      "lift_causes": {
+        "hidden-turn": 43,
+        "coast": 5
+      },
+      "brake_causes": {
+        "hidden-turn": 10,
+        "coast": 5
+      },
+      "pulses": [
+        {
+          "t": 103.92949575000966,
+          "cause": "hidden-turn",
+          "limit": 8.19619680735668,
+          "filtered_speed": 22.22428431194972,
+          "around_pedal": 1.0,
+          "logged_reason": "hidden-turn"
+        },
+        {
+          "t": 105.28644137500669,
+          "cause": "hidden-turn",
+          "limit": 4.393276616416562,
+          "filtered_speed": 10.460873010111762,
+          "around_pedal": 1.0,
+          "logged_reason": "hidden-turn"
+        }
+      ],
+      "lifted_seconds": {
+        "103": {
+          "hidden-turn": 0.07250191699131392
+        },
+        "104": {
+          "coast": 0.17940854199696332,
+          "hidden-turn": 0.830558749003103
+        },
+        "105": {
+          "hidden-turn": 0.7338287919992581
+        }
+      }
+    }
+  },
+  "freeway": {
+    "before": {
+      "ticks": 3149,
+      "seconds": 119.98,
+      "brake_pulses": 10,
+      "no_pedal_ticks": 85,
+      "no_pedal_share": 0.027,
+      "no_pedal_seconds": 3.213,
+      "mean_pedal": 0.5009,
+      "median_limit": 28.0,
+      "median_speed": 26.73,
+      "max_abs_steer": 0.453,
+      "lift_causes": {
+        "curve": 85
+      },
+      "brake_causes": {
+        "curve": 23
+      },
+      "pulses": [
+        {
+          "t": 416.00572725001257,
+          "cause": "curve",
+          "limit": 26.69341449514508,
+          "filtered_speed": 27.708983229035375,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 416.1505635000067,
+          "cause": "curve",
+          "limit": 27.031165436333815,
+          "filtered_speed": 28.04404667225458,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 416.27013750000333,
+          "cause": "curve",
+          "limit": 26.59866458134692,
+          "filtered_speed": 28.193825501034876,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 422.6369730410079,
+          "cause": "curve",
+          "limit": 26.522317528852142,
+          "filtered_speed": 27.722677622753746,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 423.9892498750123,
+          "cause": "curve",
+          "limit": 24.843257551598775,
+          "filtered_speed": 27.754457470569466,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 424.2566175000102,
+          "cause": "curve",
+          "limit": 25.734870282453326,
+          "filtered_speed": 27.51685589335184,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 424.3358987910033,
+          "cause": "curve",
+          "limit": 24.745916075479844,
+          "filtered_speed": 27.481317665861546,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 476.438754666,
+          "cause": "curve",
+          "limit": 27.84197519361183,
+          "filtered_speed": 29.671172671120402,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 482.9037045830046,
+          "cause": "curve",
+          "limit": 27.396006658378145,
+          "filtered_speed": 32.502294253611225,
+          "around_pedal": null,
+          "logged_reason": null
+        },
+        {
+          "t": 484.4090036250127,
+          "cause": "curve",
+          "limit": 27.855803196868187,
+          "filtered_speed": 32.87439249053417,
+          "around_pedal": null,
+          "logged_reason": null
+        }
+      ],
+      "lifted_seconds": {
+        "416": {
+          "curve": 0.6743960409803549
+        },
+        "417": {
+          "curve": 0.3831640830030665
+        },
+        "421": {
+          "curve": 0.07306508299370762
+        },
+        "422": {
+          "curve": 0.5517923749866895
+        },
+        "423": {
+          "curve": 0.41842770799121354
+        },
+        "424": {
+          "curve": 0.5302591259969631
+        },
+        "425": {
+          "curve": 0.31596537498990074
+        },
+        "476": {
+          "curve": 0.03876983400550671
+        },
+        "477": {
+          "curve": 0.03458749999117572
+        },
+        "482": {
+          "curve": 0.10956062500190455
+        },
+        "483": {
+          "curve": 0.04313066699251067
+        },
+        "484": {
+          "curve": 0.04010662499058526
+        }
+      }
+    },
+    "after": {
+      "ticks": 3149,
+      "seconds": 119.98,
+      "brake_pulses": 0,
+      "no_pedal_ticks": 2,
+      "no_pedal_share": 0.0006,
+      "no_pedal_seconds": 0.082,
+      "mean_pedal": 0.5243,
+      "median_limit": 28.0,
+      "median_speed": 26.73,
+      "max_abs_steer": 0.453,
+      "lift_causes": {
+        "curve": 2
+      },
+      "brake_causes": {},
+      "pulses": [],
+      "lifted_seconds": {
+        "417": {
+          "curve": 0.0817327499971725
+        }
+      }
+    }
+  }
+}

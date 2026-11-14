@@ -1,0 +1,17 @@
+............................F........................................... [ 92%]
+......                                                                   [100%]
+=================================== FAILURES ===================================
+____________ test_curve_ahead_lifts_and_brakes_before_the_car_turns ____________
+
+    def test_curve_ahead_lifts_and_brakes_before_the_car_turns():
+        path = [(0, y) for y in range(12, 43, 6)] + [(-x, 42) for x in range(6, 85, 6)]
+        driver = Driver(drive_config(["style=bold"]))
+        commands = [driver.step(road(path), i / 30, True, speed=22) for i in range(30)]
+>       assert any(c.throttle == 0 and c.brake > 0 for c in commands)
+E       assert False
+E        +  where False = any(<generator object test_curve_ahead_lifts_and_brakes_before_the_car_turns.<locals>.<genexpr> at 0x115d03e00>)
+
+pilot/tests/test_drive_through.py:42: AssertionError
+=========================== short test summary info ============================
+FAILED pilot/tests/test_drive_through.py::test_curve_ahead_lifts_and_brakes_before_the_car_turns
+1 failed, 77 passed in 20.24s
