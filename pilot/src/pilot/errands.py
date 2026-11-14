@@ -903,6 +903,7 @@ class Trip:
         self.asked_map = False  # whether the map was asked about a route that stayed away
         self.new_seat = False  # a seat just taken, not yet driven off from where it was taken
         self.fled = False  # whether the police were driven away from before the map was opened
+        self.car_first = False  # whether a figure on foot with a star lit was sent to a car before the map
         self.thrown = False  # put on foot during the drive: the figure runs before it looks for a car
         self.retry_wait = 1
 
@@ -1282,9 +1283,17 @@ class Trip:
                 # police are lost first, once, and the place is looked up after.
                 self.fled = True
                 return issue("get_away", duration=60)
-            if self.retry == "waypoint":
+            if stars and not seated and not self.fled and not self.car_first:
+                # On foot with a star lit the map hides the cinema and the car wash as well, and three
+                # looks at it ended the trip beside the car it had just left (20261114-034858). A car
+                # first, once: seated, the police are lost and the place is looked up after.
+                self.car_first = True
+                self.car_started, self.car_attempts = now, 0
+                self.change("car", now)
+            elif self.retry == "waypoint":
                 return issue("wait", duration=self.retry_wait)
-            return issue("set_waypoint", place=self.place, instance=0, duration=45)
+            else:
+                return issue("set_waypoint", place=self.place, instance=0, duration=45)
         if self.step == "car" or self.seat_check:
             if now - self.car_started >= self.CAR_SECONDS:
                 self.finish("failed", "no car within five minutes", now)

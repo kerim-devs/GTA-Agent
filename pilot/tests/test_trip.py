@@ -668,6 +668,21 @@ def test_with_a_star_lit_the_police_are_lost_before_the_map_is_opened(session):
     assert len(session.waypoints) == 1
 
 
+def test_on_foot_with_a_star_lit_a_car_is_taken_before_the_map_is_opened(session):
+    # 20261114-034858: out of the car at the shop with a star lit, the legend without the cinema.
+    session.reading, session.mode = replace(GOOD, minimap="flat", route="none"), "foot"
+    session.hud = replace(session.hud, wanted=1)
+    session.until(lambda: session.active("enter_vehicle"), seconds=5)
+    assert not session.waypoints
+    session.reading, session.mode = GOOD, "vehicle"
+    session.until(lambda: session.active("get_away"), seconds=20)
+    assert not session.waypoints
+    session.hud = replace(session.hud, wanted=0)
+    session.outcomes.append(("done", SUCCESS, "game"))
+    session.until(lambda: session.active("drive_route"), seconds=30)
+    assert len(session.waypoints) == 1
+
+
 def test_a_map_that_is_not_back_after_the_hospital_is_given_five_seconds(session):
     session.outcomes.extend(
         [
