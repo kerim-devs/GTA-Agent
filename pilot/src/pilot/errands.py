@@ -901,6 +901,7 @@ class Trip:
         self.asked_map = False  # whether the map was asked about a route that stayed away
         self.new_seat = False  # a seat just taken, not yet driven off from where it was taken
         self.fled = False  # whether the police were driven away from before the map was opened
+        self.thrown = False  # put on foot during the drive: the figure runs before it looks for a car
         self.retry_wait = 1
 
     def emit(self, kind, now, **data):
@@ -954,7 +955,7 @@ class Trip:
         if reason == "death_or_arrest":
             self.car_attempts = self.waypoint_attempts = 0
             self.failure = self.failure_at = None
-            self.seat_check = self.new_seat = self.asked_map = False
+            self.seat_check = self.new_seat = self.asked_map = self.thrown = False
             self.car_started = now
             self.waypoint_id = None
             self.retry = None
@@ -1077,6 +1078,7 @@ class Trip:
         elif reason.startswith("on-foot"):
             # Out of the car already: the next thing is a car, with the destination kept.
             self.car_started, self.car_attempts = now, 0
+            self.thrown = True
             self.change("car", now)
             self.method = "route"
         else:
@@ -1281,6 +1283,11 @@ class Trip:
             if now - self.car_started >= self.CAR_SECONDS:
                 self.finish("failed", "no car within five minutes", now)
                 return reply("trip: failed")
+            if self.thrown and not self.seat_check:
+                # Whoever pulled the figure out stands beside it and hits: on 14 November, 02:14, it went
+                # back to the same door twice and was beaten to death there. A player runs first.
+                self.thrown = False
+                return issue("walk", x=0, y=1, sprint=True, duration=6)
             if self.retry in {"look", "road"}:
                 if self.car_seen is not None and now - self.car_seen[1] <= 2:
                     return issue("wait", duration=1)

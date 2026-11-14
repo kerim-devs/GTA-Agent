@@ -809,6 +809,21 @@ def test_a_car_just_taken_is_driven_off_before_its_route_is_followed(session):
     assert session.trip.recovery == 0
 
 
+def test_a_figure_pulled_out_of_its_car_runs_before_it_looks_for_the_next(session):
+    # 20261114-020515 at 519 s: the driver pulled the figure out, it went back to his door twice and was
+    # beaten to death beside the car.
+    session.drive()
+    entries = len([row for row in session.rows("trip_attempt") if row["name"] == "enter_vehicle"])
+    session.conductor.runner.stop("on-foot")
+    session.reading, session.mode = replace(GOOD, minimap="flat", route="none"), "foot"
+    session.until(lambda: session.active("walk"), seconds=5)
+    assert len([row for row in session.rows("trip_attempt") if row["name"] == "enter_vehicle"]) == entries
+    result = session.tick()
+    assert result.pad.left[1] > 0.9
+    session.until(lambda: session.active("enter_vehicle"), seconds=10)
+    assert len([row for row in session.rows("trip_attempt") if row["name"] == "walk"]) == 1
+
+
 def test_car_retry_without_recent_detection_looks_before_trying_again(session):
     session.reading = replace(GOOD, minimap="flat", route="none")
     session.mode = "foot"
