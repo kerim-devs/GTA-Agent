@@ -1,0 +1,254 @@
+FFFFFFFF.FFFFF                                                           [100%]
+=================================== FAILURES ===================================
+_____ test_no_reachable_car_returns_search_within_eight_seconds[objects0] ______
+
+objects = ()
+
+    @pytest.mark.parametrize("objects", [(), (FAR,)])
+    def test_no_reachable_car_returns_search_within_eight_seconds(objects):
+        skill = EnterVehicle({"duration": 25})
+        for tick in range(81):
+            result = skill.step(replace(obs(tick / 10, objects), moving=True))
+            if result.status != "running":
+                break
+>       assert result.status == "failed" and tick / 10 <= 8
+E       AssertionError: assert ('running' == 'failed'
+E         
+E         - failed
+E         + running)
+
+tests/test_car_in_town.py:25: AssertionError
+_____ test_no_reachable_car_returns_search_within_eight_seconds[objects1] ______
+
+objects = (Detection(kind='car', box=(550.4, 302.4, 729.5999999999999, 374.40000000000003), confidence=0.9),)
+
+    @pytest.mark.parametrize("objects", [(), (FAR,)])
+    def test_no_reachable_car_returns_search_within_eight_seconds(objects):
+        skill = EnterVehicle({"duration": 25})
+        for tick in range(81):
+            result = skill.step(replace(obs(tick / 10, objects), moving=True))
+            if result.status != "running":
+                break
+>       assert result.status == "failed" and tick / 10 <= 8
+E       AssertionError: assert ('running' == 'failed'
+E         
+E         - failed
+E         + running)
+
+tests/test_car_in_town.py:25: AssertionError
+___ test_unresponsive_door_is_left_within_four_seconds_and_not_pressed_twice ___
+
+    def test_unresponsive_door_is_left_within_four_seconds_and_not_pressed_twice():
+        skill = EnterVehicle({"duration": 25})
+        presses = []
+        previous = False
+        for tick in range(60):
+            result = skill.step(obs(tick / 10, (NEAR,)))
+            pressed = "triangle" in result.pad.buttons
+            if pressed and not previous:
+                presses.append(tick / 10)
+            previous = pressed
+            if result.status != "running":
+                break
+        assert len(presses) == 1
+>       assert result.status == "failed" and tick / 10 - presses[0] <= 4
+E       AssertionError: assert ('running' == 'failed'
+E         
+E         - failed
+E         + running)
+
+tests/test_car_in_town.py:43: AssertionError
+_______________ test_rejected_door_is_not_the_next_trips_target ________________
+
+    def test_rejected_door_is_not_the_next_trips_target():
+        trip = Trip("Ammu-Nation")
+        trip.start(100)
+        trip.step, trip.game_since = "car", 100
+        first = trip.decide(SimpleNamespace(time=101, last_skill=None)).plan[0]
+        skill = EnterVehicle(first.args)
+        for tick in range(50):
+            result = skill.step(obs(101 + tick / 10, (NEAR,)))
+            if result.status != "running":
+                break
+>       assert result.status == "failed"
+E       AssertionError: assert 'running' == 'failed'
+E         
+E         - failed
+E         + running
+
+tests/test_car_in_town.py:58: AssertionError
+________________ test_failed_try_with_cars_stays_at_the_street _________________
+
+    def test_failed_try_with_cars_stays_at_the_street():
+        trip = Trip("Ammu-Nation")
+        trip.start(0)
+        trip.step, trip.game_since = "car", 0
+        trip.car_seen = (FAR, 10)
+        trip.retry = "road"
+        result = trip.decide(SimpleNamespace(time=10, last_skill=None))
+>       assert result.plan[0].name == "wait"
+E       AssertionError: assert 'walk' == 'wait'
+E         
+E         - wait
+E         + walk
+
+tests/test_car_in_town.py:93: AssertionError
+______________ test_map_line_without_traffic_never_starts_a_walk _______________
+
+    def test_map_line_without_traffic_never_starts_a_walk():
+        skill = EnterVehicle({"duration": 25})
+        for tick in range(50):
+            result = skill.step(replace(obs(tick / 10, ()), frame=road_frame(25)))
+>           assert result.pad.left == (0, 0)
+E           assert (0.8499603285...1217708765942) == (0, 0)
+E             
+E             At index 0 diff: 0.8499603285727404 != 0
+E             Use -v to get more diff
+
+tests/test_car_in_town.py:101: AssertionError
+_ test_distant_passing_car_is_observed_without_chasing_then_stopped_car_is_taken _
+
+    def test_distant_passing_car_is_observed_without_chasing_then_stopped_car_is_taken():
+        skill = EnterVehicle({"duration": 25, "occupied": "allow"})
+        for tick in range(7):
+            t = tick / 10
+            passing = Detection("car", px(0.3 + t * 0.2, 0.4, 0.4 + t * 0.2, 0.52), 0.95)
+            result = skill.step(obs(t, (passing,)))
+>           assert result.pad.left == (0, 0)
+E           assert (-0.2700000000000001, -0.85) == (0, 0)
+E             
+E             At index 0 diff: -0.2700000000000001 != 0
+E             Use -v to get more diff
+
+tests/test_car_in_town.py:113: AssertionError
+__ test_traffic_that_has_stopped_beside_the_figure_beats_a_distant_parked_car __
+
+    def test_traffic_that_has_stopped_beside_the_figure_beats_a_distant_parked_car():
+        near = replace(NEAR, box=(0.30, 0.45, 0.70, 0.90))
+        far = replace(FAR, box=(0.43, 0.42, 0.57, 0.52))
+        stopped = Vehicle(near, 0, near, 0, motion="standing", occupancy="occupied", moved=True)
+        parked = Vehicle(far, 0, far, 0, motion="standing", occupancy="parked-candidate")
+>       assert choose_vehicle([parked, stopped], "allow") is stopped
+E       AssertionError: assert Vehicle(obj=Detection(kind='car', box=(0.43, 0.42, 0.57, 0.52), confidence=0.9), seen=0, anchor=Detection(kind='car', ..., driver_since=None, last_hint=None, stood_clear=False, moved=False, held=0.0, approached=0.0, stalled=0.0, height=0.0) is Vehicle(obj=Detection(kind='car', box=(0.3, 0.45, 0.7, 0.9), confidence=0.9), seen=0, anchor=Detection(kind='car', box...', driver_since=None, last_hint=None, stood_clear=False, moved=True, held=0.0, approached=0.0, stalled=0.0, height=0.0)
+E        +  where Vehicle(obj=Detection(kind='car', box=(0.43, 0.42, 0.57, 0.52), confidence=0.9), seen=0, anchor=Detection(kind='car', ..., driver_since=None, last_hint=None, stood_clear=False, moved=False, held=0.0, approached=0.0, stalled=0.0, height=0.0) = choose_vehicle([Vehicle(obj=Detection(kind='car', box=(0.43, 0.42, 0.57, 0.52), confidence=0.9), seen=0, anchor=Detection(kind='car',..., driver_since=None, last_hint=None, stood_clear=False, moved=True, held=0.0, approached=0.0, stalled=0.0, height=0.0)], 'allow')
+
+tests/test_car_in_town.py:127: AssertionError
+______ test_one_bad_pose_does_not_buy_an_unresponsive_door_seven_seconds _______
+
+    def test_one_bad_pose_does_not_buy_an_unresponsive_door_seven_seconds():
+        skill = EnterVehicle({"duration": 25})
+        for tick in range(45):
+            observation = obs(tick / 10, (NEAR,))
+            if tick == 10:
+                observation = replace(observation, figure=Detection("person", px(0.7, 0.5, 0.9, 0.9), 0.9))
+            result = skill.step(observation)
+            if result.status != "running":
+                break
+>       assert result.status == "failed" and tick / 10 <= 4.1
+E       AssertionError: assert ('running' == 'failed'
+E         
+E         - failed
+E         + running)
+
+tests/test_car_in_town.py:154: AssertionError
+_ test_recorded_cutting_map_does_not_send_the_figure_further_along_the_tracks[278] _
+
+start = 278
+
+    @pytest.mark.parametrize("start", [278, 290, 316])
+    def test_recorded_cutting_map_does_not_send_the_figure_further_along_the_tracks(start):
+        folder = Path(__file__).resolve().parents[2] / "lab/enter"
+        samples = json.loads((folder / "p103-cutting.json").read_text())
+        skill = EnterVehicle({"duration": 25, "kind": "car", "occupied": "allow"})
+        for sample in samples:
+            if not start <= sample["t"] <= start + 3.1:
+                continue
+            frame = cv2.cvtColor(cv2.imread(str(folder / sample["image"])), cv2.COLOR_BGR2RGB)
+            result = skill.step(replace(recorded(sample), frame=frame))
+>           assert result.pad.left == (0, 0)
+E           assert (-0.552313976...1031426990289) == (0, 0)
+E             
+E             At index 0 diff: -0.5523139768233628 != 0
+E             Use -v to get more diff
+
+tests/test_car_in_town.py:176: AssertionError
+_ test_recorded_cutting_map_does_not_send_the_figure_further_along_the_tracks[290] _
+
+start = 290
+
+    @pytest.mark.parametrize("start", [278, 290, 316])
+    def test_recorded_cutting_map_does_not_send_the_figure_further_along_the_tracks(start):
+        folder = Path(__file__).resolve().parents[2] / "lab/enter"
+        samples = json.loads((folder / "p103-cutting.json").read_text())
+        skill = EnterVehicle({"duration": 25, "kind": "car", "occupied": "allow"})
+        for sample in samples:
+            if not start <= sample["t"] <= start + 3.1:
+                continue
+            frame = cv2.cvtColor(cv2.imread(str(folder / sample["image"])), cv2.COLOR_BGR2RGB)
+            result = skill.step(replace(recorded(sample), frame=frame))
+>           assert result.pad.left == (0, 0)
+E           assert (0.3885085365...5601661162016) == (0, 0)
+E             
+E             At index 0 diff: 0.3885085365270268 != 0
+E             Use -v to get more diff
+
+tests/test_car_in_town.py:176: AssertionError
+_ test_recorded_cutting_map_does_not_send_the_figure_further_along_the_tracks[316] _
+
+start = 316
+
+    @pytest.mark.parametrize("start", [278, 290, 316])
+    def test_recorded_cutting_map_does_not_send_the_figure_further_along_the_tracks(start):
+        folder = Path(__file__).resolve().parents[2] / "lab/enter"
+        samples = json.loads((folder / "p103-cutting.json").read_text())
+        skill = EnterVehicle({"duration": 25, "kind": "car", "occupied": "allow"})
+        for sample in samples:
+            if not start <= sample["t"] <= start + 3.1:
+                continue
+            frame = cv2.cvtColor(cv2.imread(str(folder / sample["image"])), cv2.COLOR_BGR2RGB)
+            result = skill.step(replace(recorded(sample), frame=frame))
+>           assert result.pad.left == (0, 0)
+E           assert (0.5241298198699952, -0.85) == (0, 0)
+E             
+E             At index 0 diff: 0.5241298198699952 != 0
+E             Use -v to get more diff
+
+tests/test_car_in_town.py:176: AssertionError
+___________ test_recorded_wreck_is_left_after_one_ineffective_press ____________
+
+    def test_recorded_wreck_is_left_after_one_ineffective_press():
+        folder = Path(__file__).resolve().parents[2] / "lab/enter"
+        samples = json.loads((folder / "p103-detections.json").read_text())
+        skill = EnterVehicle({"duration": 25, "kind": "car", "occupied": "allow"})
+        pressed = None
+        for sample in samples:
+            if sample["session"] != "20261114-004115":
+                continue
+            result = skill.step(recorded(sample))
+            if "triangle" in result.pad.buttons:
+                assert pressed is None
+                pressed = sample["t"]
+            if result.status != "running":
+                break
+>       assert pressed is not None and result.status == "failed"
+E       AssertionError: assert (450.92841579200467 is not None and 'running' == 'failed'
+E         
+E         - failed
+E         + running)
+
+tests/test_car_in_town.py:194: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_car_in_town.py::test_no_reachable_car_returns_search_within_eight_seconds[objects0]
+FAILED tests/test_car_in_town.py::test_no_reachable_car_returns_search_within_eight_seconds[objects1]
+FAILED tests/test_car_in_town.py::test_unresponsive_door_is_left_within_four_seconds_and_not_pressed_twice
+FAILED tests/test_car_in_town.py::test_rejected_door_is_not_the_next_trips_target
+FAILED tests/test_car_in_town.py::test_failed_try_with_cars_stays_at_the_street
+FAILED tests/test_car_in_town.py::test_map_line_without_traffic_never_starts_a_walk
+FAILED tests/test_car_in_town.py::test_distant_passing_car_is_observed_without_chasing_then_stopped_car_is_taken
+FAILED tests/test_car_in_town.py::test_traffic_that_has_stopped_beside_the_figure_beats_a_distant_parked_car
+FAILED tests/test_car_in_town.py::test_one_bad_pose_does_not_buy_an_unresponsive_door_seven_seconds
+FAILED tests/test_car_in_town.py::test_recorded_cutting_map_does_not_send_the_figure_further_along_the_tracks[278]
+FAILED tests/test_car_in_town.py::test_recorded_cutting_map_does_not_send_the_figure_further_along_the_tracks[290]
+FAILED tests/test_car_in_town.py::test_recorded_cutting_map_does_not_send_the_figure_further_along_the_tracks[316]
+FAILED tests/test_car_in_town.py::test_recorded_wreck_is_left_after_one_ineffective_press
+13 failed, 1 passed in 0.27s

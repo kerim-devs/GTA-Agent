@@ -22,7 +22,7 @@ def hospital(attempt):
     return next(r for r in RUNS if r["session"] == "20261113-230030" and r["attempt"] == attempt)
 
 
-@pytest.mark.parametrize("attempt", [3, 7, 9])
+@pytest.mark.parametrize("attempt", [3, 9])
 def test_recorded_hospital_approaches_run_instead_of_walking_the_whole_budget(attempt):
     run = hospital(attempt)
     assert not run["sprint_ticks"]
@@ -32,15 +32,17 @@ def test_recorded_hospital_approaches_run_instead_of_walking_the_whole_budget(at
     assert all(not ({"cross", "triangle"} <= set(r.pad.buttons)) for r in results)
 
 
-def test_recorded_hospital_late_door_press_keeps_the_animation_until_seat_proof():
-    run = hospital(9)
+@pytest.mark.parametrize("attempt", [7, 9])
+def test_recorded_long_hospital_search_returns_before_the_old_late_press(attempt):
+    run = hospital(attempt)
     skill = EnterVehicle({"duration": 25, "kind": "car", "occupied": "allow"})
     results = [(s["play"]["t"], skill.step(REPLAY.observation(s))) for s in run["samples"]]
     presses = [t for t, r in results if "triangle" in r.pad.buttons]
-    assert presses and presses[0] < 550
-    assert all(r.status != "failed" for _, r in results)
-    assert results[-1][1].status == "done"
-    assert all(r.pad == NEUTRAL_PAD for t, r in results if t > presses[-1] + 0.15)
+    assert not presses
+    ended = next((t, r) for t, r in results if r.status == "failed")
+    assert ended[0] - results[0][0] <= 8.6
+    assert "no car in reach" in ended[1].reason
+    assert ended[1].pad == NEUTRAL_PAD
 
 
 def test_small_nearness_changes_do_not_change_the_car_being_approached():
@@ -103,23 +105,23 @@ def test_a_way_around_a_pole_reaches_the_door_without_cancelling_entry():
 
 
 def test_a_failed_late_press_cannot_open_another_animation_budget():
-    skill = EnterVehicle({"duration": 25})
+    skill = EnterVehicle({"duration": 1})
     skill.step(obs(0, ()))
-    skill.step(obs(24, (NEAR,)))
-    assert skill.step(obs(24.05, (NEAR,))).pad.buttons == ("triangle",)
-    for tick in range(242, 340):
+    skill.step(obs(0.9, (NEAR,)))
+    assert skill.step(obs(0.95, (NEAR,))).pad.buttons == ("triangle",)
+    for tick in range(11, 100):
         result = skill.step(obs(tick / 10, (NEAR,)))
         if result.status != "running":
             break
     assert result.status == "failed" and skill.attempts == 1
-    assert result.pad == NEUTRAL_PAD and tick / 10 <= 33.1
+    assert result.pad == NEUTRAL_PAD and tick / 10 <= 9
 
 
 def test_a_late_press_never_extends_the_absolute_skill_cap():
     skill = EnterVehicle({"duration": 45})
-    skill.step(obs(0, ()))
-    skill.step(obs(44, (NEAR,)))
-    assert skill.step(obs(44.05, (NEAR,))).pad.buttons == ("triangle",)
+    skill.step(obs(0, (NEAR,)))
+    assert skill.step(obs(0.05, (NEAR,))).pad.buttons == ("triangle",)
+    assert skill.step(obs(44.5, (), minimap="tilted")).status == "running"
     result = skill.step(obs(45.01, (NEAR,)))
     assert result.status == "failed" and result.pad == NEUTRAL_PAD
 

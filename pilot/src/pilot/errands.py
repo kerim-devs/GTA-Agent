@@ -1117,7 +1117,7 @@ class Trip:
                     self.change("waypoint" if self.waypoint_id is None else "drive", now)
                 self.method = "route"
             else:
-                self.retry = "look" if self.car_attempts == 1 else "road"
+                self.retry = None if why.startswith("door locked or blocked") else "look"
         elif name == "set_waypoint":
             match = WAYPOINT.match(why) if done else None
             if (
@@ -1219,7 +1219,6 @@ class Trip:
 
     def decide(self, request):
         from .head import HeadResponse, SkillCall
-        from .vehicle_entry import approach
 
         now = request.time
         self.start(now)
@@ -1264,23 +1263,9 @@ class Trip:
                 return reply("trip: failed")
             if self.retry in {"look", "road"}:
                 if self.car_seen is not None and now - self.car_seen[1] <= 2:
-                    from .contract import FRAME_SIZE, Detection
-
-                    car = self.car_seen[0]
-                    x0, y0, x1, y1 = car.box
-                    width, height = FRAME_SIZE
-                    x, y = approach(
-                        Detection(
-                            car.kind,
-                            (x0 / width, y0 / height, x1 / width, y1 / height),
-                            car.confidence,
-                        )
-                    ).left
-                    return issue("walk", x=x, y=y, duration=1.5)
-                if self.retry == "look":
-                    return issue("look", angle=120, duration=1.5)
-                return issue("walk_road", duration=10)
-            return issue("enter_vehicle", kind="car", occupied="allow", duration=25)
+                    return issue("wait", duration=1)
+                return issue("look", angle=45 if self.car_attempts % 2 else -45, duration=0.6)
+            return issue("enter_vehicle", kind="car", occupied="allow", duration=12, search=self.car_started)
         if self.waypoint_check and self.waypoint_id is not None:
             if self.purple_at is not None and now - self.purple_at <= self.ROUTE_RECENT:
                 self.waypoint_check = self.route_waited = False
