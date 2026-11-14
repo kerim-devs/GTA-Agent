@@ -64,4 +64,4 @@ FAILED tests/test_foot.py::test_standalone_vehicle_skill_description_does_not_re
 gate failed at: pytest -q
 ```
 
-This run also took longer than the default gate's 90-second limit, although the failing test stopped the script before that final time check. A later complete green run must satisfy that limit or explicitly report the shared-machine timing limitation; the 150 focused passes are not a full-gate pass.
+This run also took longer than the default gate's 90-second limit, although the failing test stopped the script before that final time check. The coordinator explicitly requested handover without a second run and will run the whole gate after the merge. The coordinator attributes the runtime to tonight's machine load and does not require this worker to prove the 90-second limit. The whole gate remains open; the 150 focused passes are not a full-gate pass.
