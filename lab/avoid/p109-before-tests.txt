@@ -1,0 +1,75 @@
+FFFF.....F.                                                              [100%]
+=================================== FAILURES ===================================
+__ test_recorded_full_brake_stays_on_until_the_car_leaves_the_overlap[False] ___
+
+drop = False
+
+    @pytest.mark.parametrize("drop", [False, True])
+    def test_recorded_full_brake_stays_on_until_the_car_leaves_the_overlap(drop):
+        rows = list(replay(drop=drop))
+        first = next(row["now"] for row, pad in rows if pad.l2)
+        assert first == pytest.approx(94.51664962499973)
+        held = [(row, pad) for row, pad in rows if first <= row["now"] <= 95.97]
+>       assert held and all(pad.l2 == 1 and pad.r2 == 0 for _, pad in held)
+E       AssertionError: assert ([({'now': 94.5166073750006, 'frame_id': 6517, 'steer': 0.2916048908089592, 'reading': {'bearing': 1.8778774472853594, ..., 'confidence': 0.947, ...}}, Pad(buttons=(), left=(0.03389091892219051, 0.0), right=(0.0, 0.0), l2=1.0, r2=0.0)), ...] and False)
+E        +  where False = all(<generator object test_recorded_full_brake_stays_on_until_the_car_leaves_the_overlap.<locals>.<genexpr> at 0x113174fb0>)
+
+pilot/tests/test_brake_held.py:38: AssertionError
+___ test_recorded_full_brake_stays_on_until_the_car_leaves_the_overlap[True] ___
+
+drop = True
+
+    @pytest.mark.parametrize("drop", [False, True])
+    def test_recorded_full_brake_stays_on_until_the_car_leaves_the_overlap(drop):
+        rows = list(replay(drop=drop))
+        first = next(row["now"] for row, pad in rows if pad.l2)
+        assert first == pytest.approx(94.51664962499973)
+        held = [(row, pad) for row, pad in rows if first <= row["now"] <= 95.97]
+>       assert held and all(pad.l2 == 1 and pad.r2 == 0 for _, pad in held)
+E       AssertionError: assert ([({'now': 94.5166073750006, 'frame_id': 6517, 'steer': 0.2916048908089592, 'reading': {'bearing': 1.8778774472853594, ..., 'confidence': 0.947, ...}}, Pad(buttons=(), left=(0.03389091892219051, 0.0), right=(0.0, 0.0), l2=1.0, r2=0.0)), ...] and False)
+E        +  where False = all(<generator object test_recorded_full_brake_stays_on_until_the_car_leaves_the_overlap.<locals>.<genexpr> at 0x113175d80>)
+
+pilot/tests/test_brake_held.py:38: AssertionError
+_ test_a_few_steady_boxes_do_not_reclassify_a_confirmed_standing_car_as_a_lead _
+
+    def test_a_few_steady_boxes_do_not_reclassify_a_confirmed_standing_car_as_a_lead():
+        skill = approach()
+        for i in range(7, 17):
+            pad = step(skill, i * 0.1, [vehicle(21.4, 0.6)])
+>           assert pad.l2 == 1 and pad.r2 == 0
+E           assert (0 == 1)
+E            +  where 0 = Pad(buttons=(), left=(0.0, 0.0), right=(0.0, 0.0), l2=0, r2=1.0).l2
+
+pilot/tests/test_brake_held.py:69: AssertionError
+__ test_a_missing_speed_does_not_release_a_confirmed_stop_while_still_moving ___
+
+    def test_a_missing_speed_does_not_release_a_confirmed_stop_while_still_moving():
+        skill = approach()
+        for i in range(7, 17):
+            pad = step(skill, i * 0.1, [vehicle(21.4, 0.6)], speed=None)
+>           assert pad.l2 == 1 and pad.r2 == 0
+E           assert (0 == 1)
+E            +  where 0 = Pad(buttons=(), left=(0.0, 0.0), right=(0.0, 0.0), l2=0, r2=1.0).l2
+
+pilot/tests/test_brake_held.py:76: AssertionError
+_ test_a_completed_stop_waits_without_creeping_and_follows_when_the_gap_opens __
+
+    def test_a_completed_stop_waits_without_creeping_and_follows_when_the_gap_opens():
+        skill = approach()
+        for i in range(7, 16):
+            step(skill, i * 0.1, [vehicle(34 - 2.1 * i)])
+        pad = step(skill, 1.6, [vehicle(2.5)], speed=0, moving=False)
+>       assert pad.l2 == pad.r2 == 0
+E       assert 0 == 0.3289882352941177
+E        +  where 0 = Pad(buttons=(), left=(-0.43136470588235293, 0.0), right=(0.0, 0.0), l2=0, r2=0.3289882352941177).l2
+E        +  and   0.3289882352941177 = Pad(buttons=(), left=(-0.43136470588235293, 0.0), right=(0.0, 0.0), l2=0, r2=0.3289882352941177).r2
+
+pilot/tests/test_brake_held.py:107: AssertionError
+=========================== short test summary info ============================
+FAILED pilot/tests/test_brake_held.py::test_recorded_full_brake_stays_on_until_the_car_leaves_the_overlap[False]
+FAILED pilot/tests/test_brake_held.py::test_recorded_full_brake_stays_on_until_the_car_leaves_the_overlap[True]
+FAILED pilot/tests/test_brake_held.py::test_a_few_steady_boxes_do_not_reclassify_a_confirmed_standing_car_as_a_lead
+FAILED pilot/tests/test_brake_held.py::test_a_missing_speed_does_not_release_a_confirmed_stop_while_still_moving
+FAILED pilot/tests/test_brake_held.py::test_a_completed_stop_waits_without_creeping_and_follows_when_the_gap_opens
+5 failed, 6 passed in 0.16s
+Baseline pytest exit: 1 ; working file restored byte for byte

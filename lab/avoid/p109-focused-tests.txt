@@ -1,0 +1,198 @@
+..FFFFFFF............................................................... [ 56%]
+F......................................................                  [100%]
+=================================== FAILURES ===================================
+_ test_a_few_steady_boxes_do_not_reclassify_a_confirmed_standing_car_as_a_lead _
+
+    def test_a_few_steady_boxes_do_not_reclassify_a_confirmed_standing_car_as_a_lead():
+>       skill = approach()
+                ^^^^^^^^^^
+
+pilot/tests/test_brake_held.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pilot/tests/test_brake_held.py:60: in approach
+    pad = step(skill, i * 0.1, [vehicle(34 - 2.1 * i)])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+skill = <pilot.skills.DriveRoute object at 0x10b95a5a0>, now = 0.0
+objects = [Detection(kind='car', box=(621.25, 330.0, 658.75, 360), confidence=0.9)]
+speed = 20, at = None, moving = True
+
+    def step(skill, now, objects, *, speed=20, at=None, moving=True):
+>       reading = Reading("tilted", "purple", gps_speed=speed)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Reading.__init__() missing 5 required positional arguments: 'bearing', 'far_bearing', 'arrow', 'corrupt', and 'confidence'
+
+pilot/tests/test_brake_held.py:50: TypeError
+_______ test_a_confirmed_stop_keeps_only_fresh_memory_through_lost_boxes _______
+
+    def test_a_confirmed_stop_keeps_only_fresh_memory_through_lost_boxes():
+>       skill = approach()
+                ^^^^^^^^^^
+
+pilot/tests/test_brake_held.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pilot/tests/test_brake_held.py:60: in approach
+    pad = step(skill, i * 0.1, [vehicle(34 - 2.1 * i)])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+skill = <pilot.skills.DriveRoute object at 0x1179afb60>, now = 0.0
+objects = [Detection(kind='car', box=(621.25, 330.0, 658.75, 360), confidence=0.9)]
+speed = 20, at = None, moving = True
+
+    def step(skill, now, objects, *, speed=20, at=None, moving=True):
+>       reading = Reading("tilted", "purple", gps_speed=speed)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Reading.__init__() missing 5 required positional arguments: 'bearing', 'far_bearing', 'arrow', 'corrupt', and 'confidence'
+
+pilot/tests/test_brake_held.py:50: TypeError
+_________________ test_a_stop_does_not_hold_l2_at_rest[2-True] _________________
+
+speed = 2, moving = True
+
+    @pytest.mark.parametrize("speed,moving", [(2, True), (0, False), (20, False)])
+    def test_a_stop_does_not_hold_l2_at_rest(speed, moving):
+>       skill = approach()
+                ^^^^^^^^^^
+
+pilot/tests/test_brake_held.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pilot/tests/test_brake_held.py:60: in approach
+    pad = step(skill, i * 0.1, [vehicle(34 - 2.1 * i)])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+skill = <pilot.skills.DriveRoute object at 0x1179b04a0>, now = 0.0
+objects = [Detection(kind='car', box=(621.25, 330.0, 658.75, 360), confidence=0.9)]
+speed = 20, at = None, moving = True
+
+    def step(skill, now, objects, *, speed=20, at=None, moving=True):
+>       reading = Reading("tilted", "purple", gps_speed=speed)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Reading.__init__() missing 5 required positional arguments: 'bearing', 'far_bearing', 'arrow', 'corrupt', and 'confidence'
+
+pilot/tests/test_brake_held.py:50: TypeError
+________________ test_a_stop_does_not_hold_l2_at_rest[0-False] _________________
+
+speed = 0, moving = False
+
+    @pytest.mark.parametrize("speed,moving", [(2, True), (0, False), (20, False)])
+    def test_a_stop_does_not_hold_l2_at_rest(speed, moving):
+>       skill = approach()
+                ^^^^^^^^^^
+
+pilot/tests/test_brake_held.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pilot/tests/test_brake_held.py:60: in approach
+    pad = step(skill, i * 0.1, [vehicle(34 - 2.1 * i)])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+skill = <pilot.skills.DriveRoute object at 0x1179b3380>, now = 0.0
+objects = [Detection(kind='car', box=(621.25, 330.0, 658.75, 360), confidence=0.9)]
+speed = 20, at = None, moving = True
+
+    def step(skill, now, objects, *, speed=20, at=None, moving=True):
+>       reading = Reading("tilted", "purple", gps_speed=speed)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Reading.__init__() missing 5 required positional arguments: 'bearing', 'far_bearing', 'arrow', 'corrupt', and 'confidence'
+
+pilot/tests/test_brake_held.py:50: TypeError
+________________ test_a_stop_does_not_hold_l2_at_rest[20-False] ________________
+
+speed = 20, moving = False
+
+    @pytest.mark.parametrize("speed,moving", [(2, True), (0, False), (20, False)])
+    def test_a_stop_does_not_hold_l2_at_rest(speed, moving):
+>       skill = approach()
+                ^^^^^^^^^^
+
+pilot/tests/test_brake_held.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pilot/tests/test_brake_held.py:60: in approach
+    pad = step(skill, i * 0.1, [vehicle(34 - 2.1 * i)])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+skill = <pilot.skills.DriveRoute object at 0x1179b3e30>, now = 0.0
+objects = [Detection(kind='car', box=(621.25, 330.0, 658.75, 360), confidence=0.9)]
+speed = 20, at = None, moving = True
+
+    def step(skill, now, objects, *, speed=20, at=None, moving=True):
+>       reading = Reading("tilted", "purple", gps_speed=speed)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Reading.__init__() missing 5 required positional arguments: 'bearing', 'far_bearing', 'arrow', 'corrupt', and 'confidence'
+
+pilot/tests/test_brake_held.py:50: TypeError
+_______ test_a_confirmed_stop_releases_when_the_body_no_longer_overlaps ________
+
+    def test_a_confirmed_stop_releases_when_the_body_no_longer_overlaps():
+>       skill = approach()
+                ^^^^^^^^^^
+
+pilot/tests/test_brake_held.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+pilot/tests/test_brake_held.py:60: in approach
+    pad = step(skill, i * 0.1, [vehicle(34 - 2.1 * i)])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+skill = <pilot.skills.DriveRoute object at 0x1179b2ab0>, now = 0.0
+objects = [Detection(kind='car', box=(621.25, 330.0, 658.75, 360), confidence=0.9)]
+speed = 20, at = None, moving = True
+
+    def step(skill, now, objects, *, speed=20, at=None, moving=True):
+>       reading = Reading("tilted", "purple", gps_speed=speed)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Reading.__init__() missing 5 required positional arguments: 'bearing', 'far_bearing', 'arrow', 'corrupt', and 'confidence'
+
+pilot/tests/test_brake_held.py:50: TypeError
+_ test_reusing_one_full_brake_detection_does_not_confirm_a_stationary_obstacle _
+
+    def test_reusing_one_full_brake_detection_does_not_confirm_a_stationary_obstacle():
+        skill = DriveRoute({})
+        for i in range(3):
+            box = vehicle(34 - 2.1 * i)
+>           pad = step(skill, i * 0.1, [box])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+pilot/tests/test_brake_held.py:100: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+skill = <pilot.skills.DriveRoute object at 0x1179b2d50>, now = 0.0
+objects = [Detection(kind='car', box=(621.25, 330.0, 658.75, 360), confidence=0.9)]
+speed = 20, at = None, moving = True
+
+    def step(skill, now, objects, *, speed=20, at=None, moving=True):
+>       reading = Reading("tilted", "purple", gps_speed=speed)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Reading.__init__() missing 5 required positional arguments: 'bearing', 'far_bearing', 'arrow', 'corrupt', and 'confidence'
+
+pilot/tests/test_brake_held.py:50: TypeError
+_ test_a_queue_that_moves_on_after_twenty_seconds_is_waited_out_and_the_drive_goes_on _
+
+    def test_a_queue_that_moves_on_after_twenty_seconds_is_waited_out_and_the_drive_goes_on():
+        sim = world(wall=8)
+        lead = [10.0]
+    
+        def moves_on(sim):
+            if sim.time >= 20:
+                sim.walls = ()
+                lead[0] += 5 * sim.config.dt
+    
+        result, stood, states = drive(sim, 60, boxes=lambda sim: box(sim, lead[0]), until=moves_on)
+>       assert stood is not None and stood < 12
+E       assert (12.566666666666633 is not None and 12.566666666666633 < 12)
+
+pilot/tests/test_drive_queue.py:99: AssertionError
+=========================== short test summary info ============================
+FAILED pilot/tests/test_brake_held.py::test_a_few_steady_boxes_do_not_reclassify_a_confirmed_standing_car_as_a_lead
+FAILED pilot/tests/test_brake_held.py::test_a_confirmed_stop_keeps_only_fresh_memory_through_lost_boxes
+FAILED pilot/tests/test_brake_held.py::test_a_stop_does_not_hold_l2_at_rest[2-True]
+FAILED pilot/tests/test_brake_held.py::test_a_stop_does_not_hold_l2_at_rest[0-False]
+FAILED pilot/tests/test_brake_held.py::test_a_stop_does_not_hold_l2_at_rest[20-False]
+FAILED pilot/tests/test_brake_held.py::test_a_confirmed_stop_releases_when_the_body_no_longer_overlaps
+FAILED pilot/tests/test_brake_held.py::test_reusing_one_full_brake_detection_does_not_confirm_a_stationary_obstacle
+FAILED pilot/tests/test_drive_queue.py::test_a_queue_that_moves_on_after_twenty_seconds_is_waited_out_and_the_drive_goes_on
+8 failed, 119 passed in 3.92s

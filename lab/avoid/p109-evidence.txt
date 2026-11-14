@@ -1,0 +1,161 @@
+{
+  "follow": 1109.3347810420091,
+  "versions": {
+    "p106": {
+      "seconds": 64.56592499595718,
+      "percent": 5.820238047103307,
+      "onsets": 165,
+      "onsets_per_minute": 8.924267199754462,
+      "equivalent_full_l2_seconds": 64.56592499595718,
+      "classes": {}
+    },
+    "p107": {
+      "seconds": 57.99387286891579,
+      "percent": 5.2278062366747005,
+      "onsets": 178,
+      "onsets_per_minute": 9.627391282159358,
+      "equivalent_full_l2_seconds": 48.99118999315548,
+      "classes": {
+        "crossing": {
+          "onsets": 45,
+          "seconds": 20.04827949893661
+        },
+        "slower": {
+          "onsets": 42,
+          "seconds": 11.141227956977673
+        },
+        "oncoming": {
+          "onsets": 17,
+          "seconds": 5.170348791958531
+        },
+        "nothing": {
+          "onsets": 21,
+          "seconds": 5.056128833006369
+        },
+        "standing": {
+          "onsets": 36,
+          "seconds": 11.850058456038823
+        },
+        "beside": {
+          "onsets": 17,
+          "seconds": 4.727829331997782
+        }
+      }
+    },
+    "p109": {
+      "seconds": 60.23590649392281,
+      "percent": 5.429912369405981,
+      "onsets": 176,
+      "onsets_per_minute": 9.51921834640476,
+      "equivalent_full_l2_seconds": 51.29003446789953,
+      "classes": {
+        "crossing": {
+          "onsets": 45,
+          "seconds": 20.04827949893661
+        },
+        "slower": {
+          "onsets": 40,
+          "seconds": 12.541600373966503
+        },
+        "oncoming": {
+          "onsets": 17,
+          "seconds": 5.546648083967739
+        },
+        "nothing": {
+          "onsets": 21,
+          "seconds": 5.056128833006369
+        },
+        "standing": {
+          "onsets": 36,
+          "seconds": 12.31542037204781
+        },
+        "beside": {
+          "onsets": 17,
+          "seconds": 4.727829331997782
+        }
+      }
+    }
+  },
+  "extensions": [
+    {
+      "session": "051709",
+      "start": 88.21391029200458,
+      "end": 88.67927220801357,
+      "seconds": 0.46536191600898746,
+      "class": "standing",
+      "note": "",
+      "onset": 87.40390420801123
+    },
+    {
+      "session": "052018",
+      "start": 94.69707724999171,
+      "end": 94.81363224999222,
+      "seconds": 0.11655500000051688,
+      "class": "slower",
+      "note": "",
+      "onset": 94.27468545800366
+    },
+    {
+      "session": "052018",
+      "start": 125.23730525000428,
+      "end": 126.09356308299175,
+      "seconds": 0.8562578329874668,
+      "class": "slower",
+      "note": "",
+      "onset": 124.62657870800467
+    },
+    {
+      "session": "052402",
+      "start": 149.52220091699564,
+      "end": 149.86084433400538,
+      "seconds": 0.33864341700973455,
+      "class": "oncoming",
+      "note": "Own car turns toward opposite traffic; separation uncertain.",
+      "onset": 148.50346737500513
+    },
+    {
+      "session": "053655",
+      "start": 418.2373302920023,
+      "end": 418.27498616700177,
+      "seconds": 0.03765587499947287,
+      "class": "oncoming",
+      "note": "Head-on contact under bridge; own car has crossed into opposing path.",
+      "onset": 417.86139716699836
+    },
+    {
+      "session": "055349",
+      "start": 193.51238054099667,
+      "end": 193.93994012499752,
+      "seconds": 0.42755958400084637,
+      "class": "slower",
+      "note": "",
+      "onset": 193.01013141599833
+    }
+  ],
+  "archive_differences": [
+    {
+      "session": "055729",
+      "t": 81.31117579100828,
+      "frame_id": 19139,
+      "archived_frame": 19139,
+      "archived": 0,
+      "current": 1.0
+    },
+    {
+      "session": "055729",
+      "t": 81.34595325001283,
+      "frame_id": 19139,
+      "archived_frame": 19139,
+      "archived": 0,
+      "current": 1.0
+    },
+    {
+      "session": "055729",
+      "t": 81.3836647499993,
+      "frame_id": 19139,
+      "archived_frame": 19139,
+      "archived": 0,
+      "current": 1.0
+    }
+  ]
+}

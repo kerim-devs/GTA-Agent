@@ -115,6 +115,8 @@ class _Thing:
         self.lateral: list[tuple[float, float]] = []
         self.kinds: list[str] = []
         self.braking = 0.0
+        self.held = False
+        self.stopping: float | None = None
         self.queuing = False
         self.approach: float | None = None
         self.add(item, now)
@@ -212,6 +214,10 @@ class _Thing:
             and abs(offset) / max(min(wide, OWN), 1e-6) < TRACK
         )
 
+    def overlaps(self, lane: float) -> bool:
+        offset, wide, _ = _seen(self)
+        return abs(offset - lane) < TRACK * min(wide, OWN)
+
     def must_brake(self, speed: float | None, age: float) -> float:
         contact = self.contact()
         if speed is None:
@@ -295,6 +301,25 @@ class Avoider:
             thing.braking = thing.must_brake(speed, now - objects_time) if thing.in_path(lane) else 0.0
             contact = thing.contact()
             closing = (thing.distance() + CAMERA) / contact if contact else 0.0
+            # 073626: the stopped car's centre leaves the narrow entry corridor while
+            # its body still blocks us. Confirm a quarter second of full braking first;
+            # isolated fits in P107's trips must not become held stops.
+            stopping = (
+                thing.braking == 1.0
+                and speed is not None
+                and speed > 5
+                and speed <= closing <= ONCOMING * speed
+            )
+            thing.stopping = (
+                (thing.stopping if thing.stopping is not None else objects_time) if stopping else None
+            )
+            if thing.held and speed is not None and speed <= BRAKE_SPEED and _seen(thing)[2] >= 0.8:
+                thing.queuing = True
+            thing.held = (
+                (speed is None or speed > BRAKE_SPEED)
+                and thing.overlaps(lane)
+                and (thing.held or (thing.stopping is not None and objects_time - thing.stopping >= 0.25))
+            )
             approaching = (
                 speed is not None
                 and speed > BRAKE_SPEED
@@ -308,7 +333,9 @@ class Avoider:
             )
             confirmed = thing.approach is not None and objects_time - thing.approach >= 0.15
             thing.queuing = thing.crowds_lane(speed, lane) and (thing.queuing or confirmed)
-            if thing.queuing and speed is not None and speed > BRAKE_SPEED:
+            if (thing.held and (speed is None or speed > BRAKE_SPEED)) or (
+                thing.queuing and speed is not None and speed > BRAKE_SPEED
+            ):
                 thing.braking = 1.0
             brake = max(brake, thing.braking)
         # A close obstacle can disappear behind the player's own car. Remember only a brake
@@ -316,11 +343,11 @@ class Avoider:
         brake = max(
             [brake]
             + [
-                min(thing.braking, thing.must_brake(speed, now - thing.seen))
+                thing.braking if thing.held else min(thing.braking, thing.must_brake(speed, now - thing.seen))
                 for thing in self.things
                 if thing.braking
                 and thing not in followed.values()
-                and thing.in_path(lane)
+                and (thing.overlaps(lane) if thing.held else thing.in_path(lane))
                 and 0 <= now - thing.seen <= STALE
                 and (speed is None or speed > BRAKE_SPEED)
             ]
