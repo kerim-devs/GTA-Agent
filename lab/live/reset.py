@@ -11,7 +11,9 @@ Exit code 0 when the figure stood in the game again after a death, an arrest or 
 """
 
 import sys
+import tempfile
 import time
+from pathlib import Path
 
 from pilot import hud, minimap
 from pilot.bridge import Bridge
@@ -23,6 +25,9 @@ OVER = ("wasted", "busted")
 QUIET = 2 * len(SLOTS)  # slots fired through without a star: nobody is there to hear it
 # The switch wheel: Michael to the left, Franklin above, Trevor, who lives in the desert, last.
 FIGURES = {"left": (-1.0, 0.0), "top": (0.0, -1.0), "right": (1.0, 0.0)}
+BLIND = (
+    Path(tempfile.gettempdir()) / "gta-reset-blind-slot"
+)  # how often the wheel was switched unread
 
 
 def switch(bridge):
@@ -48,11 +53,18 @@ def switch(bridge):
 
     reading = held(Pad(buttons=("down",)), 3.0, lambda r: r.highlight in FIGURES)
     if reading is None:
-        # The wheel was not read. Blind, as on 14 November at 01:40, when it brought Michael.
-        held(Pad(buttons=("down",), right=FIGURES["left"]), 1.0, lambda r: False)
-        held(Pad(right=FIGURES["left"]), 0.3, lambda r: False)
+        # The wheel was not read. Blind, as on 14 November at 01:40, when it brought Michael; each
+        # time the next slot, since the same one twice in a row leaves the figure where it is.
+        try:
+            turn = int(BLIND.read_text())
+        except (OSError, ValueError):
+            turn = 1  # the first blind switch of the night went left
+        slot = list(FIGURES)[turn % len(FIGURES)]
+        BLIND.write_text(str(turn + 1))
+        held(Pad(buttons=("down",), right=FIGURES[slot]), 1.0, lambda r: False)
+        held(Pad(right=FIGURES[slot]), 0.3, lambda r: False)
         bridge.pad(Pad())
-        return "left (wheel unread)"
+        return f"{slot} (wheel unread)"
     target = reading and next(
         (
             slot
